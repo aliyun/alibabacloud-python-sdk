@@ -1063,6 +1063,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.close_order_with_options_async(request, runtime)
 
+    def create_authority_template_with_options(
+        self,
+        request: dms_enterprise_20181101_models.CreateAuthorityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateAuthorityTemplateResponse:
+        """
+        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: CreateAuthorityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAuthorityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAuthorityTemplate',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateAuthorityTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_authority_template_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateAuthorityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateAuthorityTemplateResponse:
+        """
+        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: CreateAuthorityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAuthorityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAuthorityTemplate',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateAuthorityTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_authority_template(
+        self,
+        request: dms_enterprise_20181101_models.CreateAuthorityTemplateRequest,
+    ) -> dms_enterprise_20181101_models.CreateAuthorityTemplateResponse:
+        """
+        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: CreateAuthorityTemplateRequest
+        @return: CreateAuthorityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_authority_template_with_options(request, runtime)
+
+    async def create_authority_template_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateAuthorityTemplateRequest,
+    ) -> dms_enterprise_20181101_models.CreateAuthorityTemplateResponse:
+        """
+        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: CreateAuthorityTemplateRequest
+        @return: CreateAuthorityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_authority_template_with_options_async(request, runtime)
+
     def create_data_correct_order_with_options(
         self,
         tmp_req: dms_enterprise_20181101_models.CreateDataCorrectOrderRequest,
@@ -2253,7 +2357,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
         """
-        For more instructions on this feature, see [SQL audit](~~60374~~) .
+        For more information about the SQL review feature, see [SQL review](~~60374~~).
         
         @param tmp_req: CreateSQLReviewOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2300,7 +2404,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
         """
-        For more instructions on this feature, see [SQL audit](~~60374~~) .
+        For more information about the SQL review feature, see [SQL review](~~60374~~).
         
         @param tmp_req: CreateSQLReviewOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2346,7 +2450,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateSQLReviewOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
         """
-        For more instructions on this feature, see [SQL audit](~~60374~~) .
+        For more information about the SQL review feature, see [SQL review](~~60374~~).
         
         @param request: CreateSQLReviewOrderRequest
         @return: CreateSQLReviewOrderResponse
@@ -2359,7 +2463,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateSQLReviewOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
         """
-        For more instructions on this feature, see [SQL audit](~~60374~~) .
+        For more information about the SQL review feature, see [SQL review](~~60374~~).
         
         @param request: CreateSQLReviewOrderRequest
         @return: CreateSQLReviewOrderResponse
@@ -4653,8 +4757,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
         """
-        If the security rules of the instance need to be approved for synchronization, call [SubmitStructSyncOrderApproval](~~206166~~) The interface initiates an approval process and completes the approval.
-        >  You can call [GetStructSyncJobDetail](~~206160~~) You can call this operation to query whether the target instance requires an approval.
+        If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+        >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
         
         @param request: ExecuteStructSyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4691,8 +4795,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
         """
-        If the security rules of the instance need to be approved for synchronization, call [SubmitStructSyncOrderApproval](~~206166~~) The interface initiates an approval process and completes the approval.
-        >  You can call [GetStructSyncJobDetail](~~206160~~) You can call this operation to query whether the target instance requires an approval.
+        If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+        >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
         
         @param request: ExecuteStructSyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4728,8 +4832,8 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ExecuteStructSyncRequest,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
         """
-        If the security rules of the instance need to be approved for synchronization, call [SubmitStructSyncOrderApproval](~~206166~~) The interface initiates an approval process and completes the approval.
-        >  You can call [GetStructSyncJobDetail](~~206160~~) You can call this operation to query whether the target instance requires an approval.
+        If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+        >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
         
         @param request: ExecuteStructSyncRequest
         @return: ExecuteStructSyncResponse
@@ -4742,8 +4846,8 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ExecuteStructSyncRequest,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
         """
-        If the security rules of the instance need to be approved for synchronization, call [SubmitStructSyncOrderApproval](~~206166~~) The interface initiates an approval process and completes the approval.
-        >  You can call [GetStructSyncJobDetail](~~206160~~) You can call this operation to query whether the target instance requires an approval.
+        If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+        >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
         
         @param request: ExecuteStructSyncRequest
         @return: ExecuteStructSyncResponse
@@ -4824,6 +4928,206 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetApprovalDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_approval_detail_with_options_async(request, runtime)
+
+    def get_authority_template_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetAuthorityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetAuthorityTemplateResponse:
+        """
+        You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: GetAuthorityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthorityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAuthorityTemplate',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetAuthorityTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_authority_template_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetAuthorityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetAuthorityTemplateResponse:
+        """
+        You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: GetAuthorityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthorityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAuthorityTemplate',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetAuthorityTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_authority_template(
+        self,
+        request: dms_enterprise_20181101_models.GetAuthorityTemplateRequest,
+    ) -> dms_enterprise_20181101_models.GetAuthorityTemplateResponse:
+        """
+        You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: GetAuthorityTemplateRequest
+        @return: GetAuthorityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_authority_template_with_options(request, runtime)
+
+    async def get_authority_template_async(
+        self,
+        request: dms_enterprise_20181101_models.GetAuthorityTemplateRequest,
+    ) -> dms_enterprise_20181101_models.GetAuthorityTemplateResponse:
+        """
+        You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: GetAuthorityTemplateRequest
+        @return: GetAuthorityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_authority_template_with_options_async(request, runtime)
+
+    def get_authority_template_item_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetAuthorityTemplateItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetAuthorityTemplateItemResponse:
+        """
+        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: GetAuthorityTemplateItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthorityTemplateItemResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAuthorityTemplateItem',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetAuthorityTemplateItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_authority_template_item_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetAuthorityTemplateItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetAuthorityTemplateItemResponse:
+        """
+        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: GetAuthorityTemplateItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthorityTemplateItemResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAuthorityTemplateItem',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetAuthorityTemplateItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_authority_template_item(
+        self,
+        request: dms_enterprise_20181101_models.GetAuthorityTemplateItemRequest,
+    ) -> dms_enterprise_20181101_models.GetAuthorityTemplateItemResponse:
+        """
+        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: GetAuthorityTemplateItemRequest
+        @return: GetAuthorityTemplateItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_authority_template_item_with_options(request, runtime)
+
+    async def get_authority_template_item_async(
+        self,
+        request: dms_enterprise_20181101_models.GetAuthorityTemplateItemRequest,
+    ) -> dms_enterprise_20181101_models.GetAuthorityTemplateItemResponse:
+        """
+        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: GetAuthorityTemplateItemRequest
+        @return: GetAuthorityTemplateItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_authority_template_item_with_options_async(request, runtime)
 
     def get_dbtask_sqljob_log_with_options(
         self,
@@ -5213,7 +5517,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse:
         """
-        This interface applies to: [Common data change](~~58419~~) and [Batch Data import](~~144643~~) .
+        This operation applies to [regular data change](~~58419~~) and [batch data import](~~144643~~).
         
         @param request: GetDataCorrectSQLFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5250,7 +5554,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse:
         """
-        This interface applies to: [Common data change](~~58419~~) and [Batch Data import](~~144643~~) .
+        This operation applies to [regular data change](~~58419~~) and [batch data import](~~144643~~).
         
         @param request: GetDataCorrectSQLFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5286,7 +5590,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCorrectSQLFileRequest,
     ) -> dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse:
         """
-        This interface applies to: [Common data change](~~58419~~) and [Batch Data import](~~144643~~) .
+        This operation applies to [regular data change](~~58419~~) and [batch data import](~~144643~~).
         
         @param request: GetDataCorrectSQLFileRequest
         @return: GetDataCorrectSQLFileResponse
@@ -5299,7 +5603,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCorrectSQLFileRequest,
     ) -> dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse:
         """
-        This interface applies to: [Common data change](~~58419~~) and [Batch Data import](~~144643~~) .
+        This operation applies to [regular data change](~~58419~~) and [batch data import](~~144643~~).
         
         @param request: GetDataCorrectSQLFileRequest
         @return: GetDataCorrectSQLFileResponse
@@ -5688,6 +5992,84 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataExportOrderDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_data_export_order_detail_with_options_async(request, runtime)
+
+    def get_data_import_sqlwith_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataImportSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataImportSQLResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.sql_id):
+            query['SqlId'] = request.sql_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataImportSQL',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataImportSQLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_import_sqlwith_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataImportSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataImportSQLResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.sql_id):
+            query['SqlId'] = request.sql_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataImportSQL',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataImportSQLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_import_sql(
+        self,
+        request: dms_enterprise_20181101_models.GetDataImportSQLRequest,
+    ) -> dms_enterprise_20181101_models.GetDataImportSQLResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_import_sqlwith_options(request, runtime)
+
+    async def get_data_import_sql_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataImportSQLRequest,
+    ) -> dms_enterprise_20181101_models.GetDataImportSQLResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_import_sqlwith_options_async(request, runtime)
 
     def get_database_with_options(
         self,
@@ -6136,6 +6518,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetMetaTableColumnRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetMetaTableColumnResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: GetMetaTableColumnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableColumnResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -6166,6 +6555,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetMetaTableColumnRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetMetaTableColumnResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: GetMetaTableColumnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableColumnResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -6195,6 +6591,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetMetaTableColumnRequest,
     ) -> dms_enterprise_20181101_models.GetMetaTableColumnResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: GetMetaTableColumnRequest
+        @return: GetMetaTableColumnResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_table_column_with_options(request, runtime)
 
@@ -6202,6 +6604,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetMetaTableColumnRequest,
     ) -> dms_enterprise_20181101_models.GetMetaTableColumnResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: GetMetaTableColumnRequest
+        @return: GetMetaTableColumnResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_column_with_options_async(request, runtime)
 
@@ -6210,6 +6618,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetMetaTableDetailInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: GetMetaTableDetailInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableDetailInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -6240,6 +6655,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetMetaTableDetailInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: GetMetaTableDetailInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableDetailInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -6269,6 +6691,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetMetaTableDetailInfoRequest,
     ) -> dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: GetMetaTableDetailInfoRequest
+        @return: GetMetaTableDetailInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_table_detail_info_with_options(request, runtime)
 
@@ -6276,6 +6704,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetMetaTableDetailInfoRequest,
     ) -> dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: GetMetaTableDetailInfoRequest
+        @return: GetMetaTableDetailInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_detail_info_with_options_async(request, runtime)
 
@@ -6697,7 +7131,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
         """
-        This interface is applicable to obtaining: *Database-permission** , **Table-permissions** , **sensitive column-permission** .
+        You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
         
         @param request: GetPermApplyOrderDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6734,7 +7168,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
         """
-        This interface is applicable to obtaining: *Database-permission** , **Table-permissions** , **sensitive column-permission** .
+        You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
         
         @param request: GetPermApplyOrderDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6770,7 +7204,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetPermApplyOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
         """
-        This interface is applicable to obtaining: *Database-permission** , **Table-permissions** , **sensitive column-permission** .
+        You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
         
         @param request: GetPermApplyOrderDetailRequest
         @return: GetPermApplyOrderDetailResponse
@@ -6783,7 +7217,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetPermApplyOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
         """
-        This interface is applicable to obtaining: *Database-permission** , **Table-permissions** , **sensitive column-permission** .
+        You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
         
         @param request: GetPermApplyOrderDetailRequest
         @return: GetPermApplyOrderDetailResponse
@@ -6872,8 +7306,6 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetProxyResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.proxy_id):
             query['ProxyId'] = request.proxy_id
         if not UtilClient.is_unset(request.tid):
@@ -6904,8 +7336,6 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetProxyResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.proxy_id):
             query['ProxyId'] = request.proxy_id
         if not UtilClient.is_unset(request.tid):
@@ -8277,6 +8707,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_user_upload_file_job_with_options_async(request, runtime)
 
+    def grant_template_authority_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GrantTemplateAuthorityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GrantTemplateAuthorityResponse:
+        """
+        You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: GrantTemplateAuthorityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantTemplateAuthorityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.expire_date):
+            query['ExpireDate'] = request.expire_date
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantTemplateAuthority',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GrantTemplateAuthorityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grant_template_authority_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GrantTemplateAuthorityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GrantTemplateAuthorityResponse:
+        """
+        You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: GrantTemplateAuthorityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantTemplateAuthorityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.expire_date):
+            query['ExpireDate'] = request.expire_date
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantTemplateAuthority',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GrantTemplateAuthorityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def grant_template_authority(
+        self,
+        request: dms_enterprise_20181101_models.GrantTemplateAuthorityRequest,
+    ) -> dms_enterprise_20181101_models.GrantTemplateAuthorityResponse:
+        """
+        You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: GrantTemplateAuthorityRequest
+        @return: GrantTemplateAuthorityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.grant_template_authority_with_options(request, runtime)
+
+    async def grant_template_authority_async(
+        self,
+        request: dms_enterprise_20181101_models.GrantTemplateAuthorityRequest,
+    ) -> dms_enterprise_20181101_models.GrantTemplateAuthorityResponse:
+        """
+        You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: GrantTemplateAuthorityRequest
+        @return: GrantTemplateAuthorityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.grant_template_authority_with_options_async(request, runtime)
+
     def grant_user_permission_with_options(
         self,
         request: dms_enterprise_20181101_models.GrantUserPermissionRequest,
@@ -8532,6 +9074,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListColumnsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListColumnsResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: ListColumnsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListColumnsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.logic):
@@ -8564,6 +9113,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListColumnsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListColumnsResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: ListColumnsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListColumnsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.logic):
@@ -8595,6 +9151,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListColumnsRequest,
     ) -> dms_enterprise_20181101_models.ListColumnsResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: ListColumnsRequest
+        @return: ListColumnsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_columns_with_options(request, runtime)
 
@@ -8602,6 +9164,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListColumnsRequest,
     ) -> dms_enterprise_20181101_models.ListColumnsResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: ListColumnsRequest
+        @return: ListColumnsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_columns_with_options_async(request, runtime)
 
@@ -9144,6 +9712,170 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_correct_pre_check_sqlwith_options_async(request, runtime)
+
+    def list_data_import_sqlpre_check_detail_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.page_numer):
+            query['PageNumer'] = request.page_numer
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not UtilClient.is_unset(request.status_code):
+            query['StatusCode'] = request.status_code
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataImportSQLPreCheckDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_import_sqlpre_check_detail_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.page_numer):
+            query['PageNumer'] = request.page_numer
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not UtilClient.is_unset(request.status_code):
+            query['StatusCode'] = request.status_code
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataImportSQLPreCheckDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_import_sqlpre_check_detail(
+        self,
+        request: dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailRequest,
+    ) -> dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_import_sqlpre_check_detail_with_options(request, runtime)
+
+    async def list_data_import_sqlpre_check_detail_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailRequest,
+    ) -> dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_import_sqlpre_check_detail_with_options_async(request, runtime)
+
+    def list_data_import_sqltype_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDataImportSQLTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataImportSQLTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataImportSQLType',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataImportSQLTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_import_sqltype_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataImportSQLTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataImportSQLTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataImportSQLType',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataImportSQLTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_import_sqltype(
+        self,
+        request: dms_enterprise_20181101_models.ListDataImportSQLTypeRequest,
+    ) -> dms_enterprise_20181101_models.ListDataImportSQLTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_import_sqltype_with_options(request, runtime)
+
+    async def list_data_import_sqltype_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataImportSQLTypeRequest,
+    ) -> dms_enterprise_20181101_models.ListDataImportSQLTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_import_sqltype_with_options_async(request, runtime)
 
     def list_database_user_permssions_with_options(
         self,
@@ -11352,6 +12084,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTablesResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: ListTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.database_id):
@@ -11390,6 +12129,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTablesResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: ListTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.database_id):
@@ -11427,6 +12173,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTablesRequest,
     ) -> dms_enterprise_20181101_models.ListTablesResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tables_with_options(request, runtime)
 
@@ -11434,6 +12186,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTablesRequest,
     ) -> dms_enterprise_20181101_models.ListTablesResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tables_with_options_async(request, runtime)
 
@@ -13873,6 +14631,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.retry_data_correct_pre_check_with_options_async(request, runtime)
 
+    def revoke_template_authority_with_options(
+        self,
+        request: dms_enterprise_20181101_models.RevokeTemplateAuthorityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RevokeTemplateAuthorityResponse:
+        """
+        You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: RevokeTemplateAuthorityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeTemplateAuthorityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeTemplateAuthority',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RevokeTemplateAuthorityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_template_authority_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.RevokeTemplateAuthorityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RevokeTemplateAuthorityResponse:
+        """
+        You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: RevokeTemplateAuthorityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeTemplateAuthorityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeTemplateAuthority',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RevokeTemplateAuthorityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_template_authority(
+        self,
+        request: dms_enterprise_20181101_models.RevokeTemplateAuthorityRequest,
+    ) -> dms_enterprise_20181101_models.RevokeTemplateAuthorityResponse:
+        """
+        You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: RevokeTemplateAuthorityRequest
+        @return: RevokeTemplateAuthorityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.revoke_template_authority_with_options(request, runtime)
+
+    async def revoke_template_authority_async(
+        self,
+        request: dms_enterprise_20181101_models.RevokeTemplateAuthorityRequest,
+    ) -> dms_enterprise_20181101_models.RevokeTemplateAuthorityResponse:
+        """
+        You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: RevokeTemplateAuthorityRequest
+        @return: RevokeTemplateAuthorityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.revoke_template_authority_with_options_async(request, runtime)
+
     def revoke_user_permission_with_options(
         self,
         request: dms_enterprise_20181101_models.RevokeUserPermissionRequest,
@@ -14082,6 +14944,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SearchTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SearchTableResponse:
+        """
+        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        
+        @param request: SearchTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_type):
@@ -14126,6 +14995,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SearchTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SearchTableResponse:
+        """
+        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        
+        @param request: SearchTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_type):
@@ -14169,6 +15045,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SearchTableRequest,
     ) -> dms_enterprise_20181101_models.SearchTableResponse:
+        """
+        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        
+        @param request: SearchTableRequest
+        @return: SearchTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_table_with_options(request, runtime)
 
@@ -14176,6 +15058,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SearchTableRequest,
     ) -> dms_enterprise_20181101_models.SearchTableResponse:
+        """
+        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        
+        @param request: SearchTableRequest
+        @return: SearchTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_table_with_options_async(request, runtime)
 
@@ -14648,6 +15536,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SyncInstanceMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SyncInstanceMetaResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: SyncInstanceMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncInstanceMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ignore_table):
@@ -14680,6 +15575,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SyncInstanceMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SyncInstanceMetaResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: SyncInstanceMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncInstanceMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ignore_table):
@@ -14711,6 +15613,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SyncInstanceMetaRequest,
     ) -> dms_enterprise_20181101_models.SyncInstanceMetaResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: SyncInstanceMetaRequest
+        @return: SyncInstanceMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sync_instance_meta_with_options(request, runtime)
 
@@ -14718,8 +15626,122 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SyncInstanceMetaRequest,
     ) -> dms_enterprise_20181101_models.SyncInstanceMetaResponse:
+        """
+        You can call this operation only for database instances whose control mode is Security Collaboration.
+        
+        @param request: SyncInstanceMetaRequest
+        @return: SyncInstanceMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sync_instance_meta_with_options_async(request, runtime)
+
+    def update_authority_template_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateAuthorityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateAuthorityTemplateResponse:
+        """
+        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: UpdateAuthorityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAuthorityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAuthorityTemplate',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateAuthorityTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_authority_template_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateAuthorityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateAuthorityTemplateResponse:
+        """
+        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: UpdateAuthorityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAuthorityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAuthorityTemplate',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateAuthorityTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_authority_template(
+        self,
+        request: dms_enterprise_20181101_models.UpdateAuthorityTemplateRequest,
+    ) -> dms_enterprise_20181101_models.UpdateAuthorityTemplateResponse:
+        """
+        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: UpdateAuthorityTemplateRequest
+        @return: UpdateAuthorityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_authority_template_with_options(request, runtime)
+
+    async def update_authority_template_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateAuthorityTemplateRequest,
+    ) -> dms_enterprise_20181101_models.UpdateAuthorityTemplateResponse:
+        """
+        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        
+        @param request: UpdateAuthorityTemplateRequest
+        @return: UpdateAuthorityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_authority_template_with_options_async(request, runtime)
 
     def update_instance_with_options(
         self,
