@@ -1,3 +1,6 @@
+2023-04-11 Version: 1.1.0
+- Add image batch translate API.
+
 2023-04-11 Version: 1.0.4
 - Update Core .
 
