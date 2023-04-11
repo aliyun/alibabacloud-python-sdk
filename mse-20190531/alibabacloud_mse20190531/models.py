@@ -13488,7 +13488,6 @@ class FetchLosslessRuleListRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
-        source: str = None,
     ):
         # The language of the response. In compliance with [RFC 7231](https://tools.ietf.org/html/rfc7231), the backend service must return a response based on the language used by the user.
         # 
@@ -13508,8 +13507,6 @@ class FetchLosslessRuleListRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region.
         self.region_id = region_id
-        # The service source that the application accesses.
-        self.source = source
 
     def validate(self):
         pass
@@ -13534,8 +13531,6 @@ class FetchLosslessRuleListRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.source is not None:
-            result['Source'] = self.source
         return result
 
     def from_map(self, m: dict = None):
@@ -13554,8 +13549,6 @@ class FetchLosslessRuleListRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
         return self
 
 
@@ -13572,7 +13565,6 @@ class FetchLosslessRuleListResponseBodyDataResults(TeaModel):
         loss_less_detail: bool = None,
         notice: bool = None,
         related: bool = None,
-        shutdown_wait_seconds: int = None,
         warmup_time: int = None,
     ):
         # Indicates whether delayed registration is enabled.
@@ -13598,8 +13590,6 @@ class FetchLosslessRuleListResponseBodyDataResults(TeaModel):
         self.notice = notice
         # Indicates whether service prefetching is associated.
         self.related = related
-        # The wait time for application shutdown.
-        self.shutdown_wait_seconds = shutdown_wait_seconds
         # The prefetching duration.
         self.warmup_time = warmup_time
 
@@ -13632,8 +13622,6 @@ class FetchLosslessRuleListResponseBodyDataResults(TeaModel):
             result['Notice'] = self.notice
         if self.related is not None:
             result['Related'] = self.related
-        if self.shutdown_wait_seconds is not None:
-            result['ShutdownWaitSeconds'] = self.shutdown_wait_seconds
         if self.warmup_time is not None:
             result['WarmupTime'] = self.warmup_time
         return result
@@ -13660,8 +13648,6 @@ class FetchLosslessRuleListResponseBodyDataResults(TeaModel):
             self.notice = m.get('Notice')
         if m.get('Related') is not None:
             self.related = m.get('Related')
-        if m.get('ShutdownWaitSeconds') is not None:
-            self.shutdown_wait_seconds = m.get('ShutdownWaitSeconds')
         if m.get('WarmupTime') is not None:
             self.warmup_time = m.get('WarmupTime')
         return self
@@ -13727,9 +13713,10 @@ class FetchLosslessRuleListResponseBodyData(TeaModel):
 class FetchLosslessRuleListResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
+        code: int = None,
         data: FetchLosslessRuleListResponseBodyData = None,
-        http_code: str = None,
+        error_code: str = None,
+        http_status_code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -13738,8 +13725,8 @@ class FetchLosslessRuleListResponseBody(TeaModel):
         self.code = code
         # The response.
         self.data = data
-        # The HTTP status code returned.
-        self.http_code = http_code
+        self.error_code = error_code
+        self.http_status_code = http_status_code
         # The message returned.
         self.message = message
         # The ID of the request.
@@ -13764,8 +13751,10 @@ class FetchLosslessRuleListResponseBody(TeaModel):
             result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -13781,8 +13770,10 @@ class FetchLosslessRuleListResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = FetchLosslessRuleListResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -36487,8 +36478,6 @@ class ModifyLosslessRuleRequest(TeaModel):
         notice: bool = None,
         region_id: str = None,
         related: bool = None,
-        shutdown_wait_seconds: int = None,
-        source: str = None,
         warmup_time: int = None,
     ):
         # The language of the response. Valid values:
@@ -36521,10 +36510,6 @@ class ModifyLosslessRuleRequest(TeaModel):
         self.region_id = region_id
         # Specifies whether to associate with service prefetching.
         self.related = related
-        # The cooldown duration. Unit: seconds.
-        self.shutdown_wait_seconds = shutdown_wait_seconds
-        # The service source.
-        self.source = source
         # The prefetching duration.
         self.warmup_time = warmup_time
 
@@ -36561,10 +36546,6 @@ class ModifyLosslessRuleRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.related is not None:
             result['Related'] = self.related
-        if self.shutdown_wait_seconds is not None:
-            result['ShutdownWaitSeconds'] = self.shutdown_wait_seconds
-        if self.source is not None:
-            result['Source'] = self.source
         if self.warmup_time is not None:
             result['WarmupTime'] = self.warmup_time
         return result
@@ -36595,10 +36576,6 @@ class ModifyLosslessRuleRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Related') is not None:
             self.related = m.get('Related')
-        if m.get('ShutdownWaitSeconds') is not None:
-            self.shutdown_wait_seconds = m.get('ShutdownWaitSeconds')
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
         if m.get('WarmupTime') is not None:
             self.warmup_time = m.get('WarmupTime')
         return self
@@ -36607,16 +36584,19 @@ class ModifyLosslessRuleRequest(TeaModel):
 class ModifyLosslessRuleResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
+        data: Any = None,
         error_code: str = None,
-        http_code: str = None,
+        http_status_code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
+        self.code = code
+        self.data = data
         # The error code returned if the request failed.
         self.error_code = error_code
-        # The HTTP status code returned.
-        self.http_code = http_code
+        self.http_status_code = http_status_code
         # The message returned.
         self.message = message
         # The ID of the request.
@@ -36636,10 +36616,14 @@ class ModifyLosslessRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -36650,10 +36634,14 @@ class ModifyLosslessRuleResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:

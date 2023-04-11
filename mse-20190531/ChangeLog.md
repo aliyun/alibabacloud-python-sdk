@@ -1,3 +1,6 @@
+2023-04-11 Version: 3.0.66
+- Optimize lossless offline and online.
+
 2023-04-10 Version: 3.0.65
 - Fixed some desc.
 - Fixed public param.
