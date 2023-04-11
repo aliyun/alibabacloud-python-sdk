@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_fc-open20210406.
 
-Created on 28/03/2023
+Created on 11/04/2023
 
 @author: Alibaba Cloud SDK
 """
@@ -43,7 +43,7 @@ REQUIRES = [
     "alibabacloud_endpoint_util>=0.0.3, <1.0.0",
     "alibabacloud_credentials>=0.3.1, <1.0.0",
     "requests>=2.21.0, <3.0.0",
-    "alibabacloud_gateway_fc_util>=0.0.3, <1.0.0"
+    "alibabacloud_gateway_fc_util>=0.0.4, <1.0.0"
 ]
 
 LONG_DESCRIPTION = ''

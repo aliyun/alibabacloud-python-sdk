@@ -1,3 +1,6 @@
+2023-04-11 Version: 2.0.8
+- Fix http invocation with sts credentials.
+
 2023-03-28 Version: 2.0.6
 - Change policyItem type.
 

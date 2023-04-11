@@ -2143,10 +2143,10 @@ class PathConfig(TeaModel):
 class PolicyItem(TeaModel):
     def __init__(
         self,
-        key: bytes = None,
-        operator: bytes = None,
-        type: bytes = None,
-        value: bytes = None,
+        key: str = None,
+        operator: str = None,
+        type: str = None,
+        value: str = None,
     ):
         self.key = key
         self.operator = operator
@@ -2367,7 +2367,7 @@ class RouteConfig(TeaModel):
 class RoutePolicy(TeaModel):
     def __init__(
         self,
-        condition: bytes = None,
+        condition: str = None,
         policy_items: List[PolicyItem] = None,
     ):
         self.condition = condition
@@ -3855,7 +3855,7 @@ class CreateFunctionRequest(TeaModel):
         self.handler = handler
         # The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period expires, the execution of the Initializer hook is terminated.
         self.initialization_timeout = initialization_timeout
-        # The handler of the Initializer hook. For more information, see [Initializer hook](~~157704~~).
+        # The handler of the Initializer hook. For more information, see [Initializer hooks](~~157704~~).
         self.initializer = initializer
         # The number of requests that can be concurrently processed by a single instance.
         self.instance_concurrency = instance_concurrency
@@ -3875,9 +3875,9 @@ class CreateFunctionRequest(TeaModel):
         self.instance_type = instance_type
         # The information about layers.
         # 
-        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name as a layer with a larger subscript.
+        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
         self.layers = layers
-        # The memory size for the function. Unit: MB. The memory size must be a multiple of 64 MB. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
+        # The memory size for the function. Unit: MB. The value must be a multiple of 64. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
         self.memory_size = memory_size
         # The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
         self.runtime = runtime
@@ -4096,7 +4096,7 @@ class CreateFunctionResponseBody(TeaModel):
         self.last_modified_time = last_modified_time
         # An array that consists of the information of layers.
         # 
-        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name as a layer with a larger subscript.
+        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
         self.layers = layers
         # The memory size that is configured for the function. Unit: MB.
         self.memory_size = memory_size
@@ -8117,7 +8117,7 @@ class GetServiceHeaders(TeaModel):
         self.common_headers = common_headers
         # The ID of your Alibaba Cloud account.
         self.x_fc_account_id = x_fc_account_id
-        # The time when the function is invoked. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
+        # The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
         self.x_fc_date = x_fc_date
         # The custom request ID.
         self.x_fc_trace_id = x_fc_trace_id
@@ -8205,13 +8205,13 @@ class GetServiceResponseBody(TeaModel):
         # Specifies whether to allow functions to access the Internet. Valid values:
         # 
         # *   **true**: allows functions in the specified service to access the Internet.
-        # *   **false**: does not allow functions in the specified service to access the Internet.
+        # *   **false**: does not allow functions to access the Internet.
         self.internet_access = internet_access
         # The time when the service was last modified.
         self.last_modified_time = last_modified_time
         # The log configuration, which specifies a Logstore to store function execution logs.
         self.log_config = log_config
-        # The configuration of the NAS file system. The configuration allows functions in the specified service in Function Compute to access the NAS file system.
+        # The configurations of the NAS file system. The configuration allows functions in the specified service in Function Compute to access the NAS file system.
         self.nas_config = nas_config
         # The OSS mount configurations.
         self.oss_mount_config = oss_mount_config
@@ -8224,7 +8224,7 @@ class GetServiceResponseBody(TeaModel):
         self.service_id = service_id
         # The name of the service.
         self.service_name = service_name
-        # The configurations of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
+        # The configuration of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
         self.tracing_config = tracing_config
         # The VPC configuration. The configuration allows a function to access the specified VPC.
         self.vpc_config = vpc_config
@@ -9958,7 +9958,7 @@ class ListFunctionsRequest(TeaModel):
         self.prefix = prefix
         # The version or alias of the service.
         self.qualifier = qualifier
-        # The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned.
+        # The starting position of the result list. The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned.
         self.start_key = start_key
 
     def validate(self):
@@ -10030,11 +10030,11 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
         self.ca_port = ca_port
         # The CRC-64 value of the function code package.
         self.code_checksum = code_checksum
-        # The size of the function code package that is returned by the system. Unit: byte.
+        # The size of the function code package that is returned by the system. Unit: bytes.
         self.code_size = code_size
         # The number of vCPUs of the function. The value must be a multiple of 0.05.
         self.cpu = cpu
-        # The time when the function is created.
+        # The time when the function was created.
         self.created_time = created_time
         # The configurations of the custom container runtime.
         self.custom_container_config = custom_container_config
@@ -10050,19 +10050,19 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
         self.function_id = function_id
         # The name of the function.
         self.function_name = function_name
-        # The GPU memory capacity for the function. Unit: MB. The memory capacity must be a multiple of 1024 MB.
+        # The GPU memory capacity for the function. Unit: MB. The value is a multiple of 1,024.
         self.gpu_memory_size = gpu_memory_size
         # The handler of the function.
         self.handler = handler
-        # The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period ends, the execution of the initializer function is terminated.
+        # The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period ends, the execution of the Initializer hook is terminated.
         self.initialization_timeout = initialization_timeout
-        # The handler of the initializer function. The format of the value is determined by the programming language that you use. For more information, see [Initializer function](~~157704~~).
+        # The handler of the Initializer hook. The format of the value is determined by the programming language that you use. For more information, see [Initializer hook](~~157704~~).
         self.initializer = initializer
         # The number of requests that can be concurrently processed by a single instance.
         self.instance_concurrency = instance_concurrency
         # The lifecycle configurations of the instance.
         self.instance_lifecycle_config = instance_lifecycle_config
-        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
+        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
         # 
         # The value must be less than or equal to that of the **instanceConcurrency** parameter.
         self.instance_soft_concurrency = instance_soft_concurrency
@@ -10070,15 +10070,15 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
         # 
         # *   **e1**: elastic instance
         # *   **c1**: performance instance
-        # *   **fc.gpu.tesla.1**: GPU-accelerated instances (Tesla T4)
-        # *   **fc.gpu.ampere.1**: GPU-accelerated instances (Ampere A10)
-        # *   **g1**: same fc.gpu.tesla.1
+        # *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
+        # *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
+        # *   **g1**: same as fc.gpu.tesla.1
         self.instance_type = instance_type
         # The time when the function was last modified.
         self.last_modified_time = last_modified_time
-        # An array that consists of the information of layers.
+        # The information about layers.
         # 
-        # > If multiple layers exist, the layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
+        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
         self.layers = layers
         # The memory size that is configured for the function. Unit: MB.
         self.memory_size = memory_size
@@ -10219,7 +10219,7 @@ class ListFunctionsResponseBody(TeaModel):
     ):
         # The information about functions.
         self.functions = functions
-        # The token used to obtain more results. If this parameter is left empty, all the results are returned.
+        # The token used to obtain more results. If this parameter is not returned, all the layers are returned.
         self.next_token = next_token
 
     def validate(self):
@@ -15726,7 +15726,7 @@ class UpdateServiceRequest(TeaModel):
         # Specifies whether to allow functions to access the Internet. Valid values:
         # 
         # *   **true**: allows functions in the specified service to access the Internet.
-        # *   **false**: does not allow functions in the specified service to access the Internet.
+        # *   **false**: does not allow functions to access the Internet.
         self.internet_access = internet_access
         # The log configuration. Function Compute writes function execution logs to the specified Logstore.
         self.log_config = log_config
@@ -15829,7 +15829,7 @@ class UpdateServiceResponseBody(TeaModel):
         # Specifies whether to allow functions to access the Internet. Valid values:
         # 
         # *   **true**: allows functions in the specified service to access the Internet.
-        # *   **false**: does not allow functions in the specified service to access the Internet.
+        # *   **false**: does not allow functions to access the Internet.
         self.internet_access = internet_access
         # The time when the service was last modified.
         self.last_modified_time = last_modified_time
@@ -15848,7 +15848,7 @@ class UpdateServiceResponseBody(TeaModel):
         self.service_id = service_id
         # The name of the service.
         self.service_name = service_name
-        # The configurations of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
+        # The configuration of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
         self.tracing_config = tracing_config
         # The VPC configuration. The configuration allows a function to access the specified VPC.
         self.vpc_config = vpc_config
