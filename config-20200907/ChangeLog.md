@@ -1,3 +1,6 @@
+2023-04-12 Version: 2.2.7
+- Fix resourceOwnerId param.
+
 2022-12-27 Version: 2.2.3
 - Open Integrated Api.
 
