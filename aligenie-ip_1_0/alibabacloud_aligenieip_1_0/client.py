@@ -583,108 +583,6 @@ class Client(OpenApiClient):
         headers = ali_genieip__1__0_models.AddOrUpdateHotelSettingHeaders()
         return await self.add_or_update_hotel_setting_with_options_async(request, headers, runtime)
 
-    def add_or_update_night_mode_with_options(
-        self,
-        tmp_req: ali_genieip__1__0_models.AddOrUpdateNightModeRequest,
-        headers: ali_genieip__1__0_models.AddOrUpdateNightModeHeaders,
-        runtime: util_models.RuntimeOptions,
-    ) -> ali_genieip__1__0_models.AddOrUpdateNightModeResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ali_genieip__1__0_models.AddOrUpdateNightModeShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.night_mode):
-            request.night_mode_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.night_mode, 'NightMode', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.hotel_id):
-            body['HotelId'] = request.hotel_id
-        if not UtilClient.is_unset(request.night_mode_shrink):
-            body['NightMode'] = request.night_mode_shrink
-        real_headers = {}
-        if not UtilClient.is_unset(headers.common_headers):
-            real_headers = headers.common_headers
-        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
-        if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
-        req = open_api_models.OpenApiRequest(
-            headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AddOrUpdateNightMode',
-            version='ip_1.0',
-            protocol='HTTPS',
-            pathname=f'/v1.0/ip/addOrUpdateNightMode',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddOrUpdateNightModeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def add_or_update_night_mode_with_options_async(
-        self,
-        tmp_req: ali_genieip__1__0_models.AddOrUpdateNightModeRequest,
-        headers: ali_genieip__1__0_models.AddOrUpdateNightModeHeaders,
-        runtime: util_models.RuntimeOptions,
-    ) -> ali_genieip__1__0_models.AddOrUpdateNightModeResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ali_genieip__1__0_models.AddOrUpdateNightModeShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.night_mode):
-            request.night_mode_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.night_mode, 'NightMode', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.hotel_id):
-            body['HotelId'] = request.hotel_id
-        if not UtilClient.is_unset(request.night_mode_shrink):
-            body['NightMode'] = request.night_mode_shrink
-        real_headers = {}
-        if not UtilClient.is_unset(headers.common_headers):
-            real_headers = headers.common_headers
-        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
-        if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
-        req = open_api_models.OpenApiRequest(
-            headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AddOrUpdateNightMode',
-            version='ip_1.0',
-            protocol='HTTPS',
-            pathname=f'/v1.0/ip/addOrUpdateNightMode',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddOrUpdateNightModeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def add_or_update_night_mode(
-        self,
-        request: ali_genieip__1__0_models.AddOrUpdateNightModeRequest,
-    ) -> ali_genieip__1__0_models.AddOrUpdateNightModeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = ali_genieip__1__0_models.AddOrUpdateNightModeHeaders()
-        return self.add_or_update_night_mode_with_options(request, headers, runtime)
-
-    async def add_or_update_night_mode_async(
-        self,
-        request: ali_genieip__1__0_models.AddOrUpdateNightModeRequest,
-    ) -> ali_genieip__1__0_models.AddOrUpdateNightModeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = ali_genieip__1__0_models.AddOrUpdateNightModeHeaders()
-        return await self.add_or_update_night_mode_with_options_async(request, headers, runtime)
-
     def add_or_update_screen_saver_with_options(
         self,
         tmp_req: ali_genieip__1__0_models.AddOrUpdateScreenSaverRequest,
@@ -1385,11 +1283,15 @@ class Client(OpenApiClient):
 
     def create_hotel_with_options(
         self,
-        request: ali_genieip__1__0_models.CreateHotelRequest,
+        tmp_req: ali_genieip__1__0_models.CreateHotelRequest,
         headers: ali_genieip__1__0_models.CreateHotelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.CreateHotelResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.CreateHotelShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_pks):
+            request.related_pks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_pks, 'RelatedPks', 'json')
         body = {}
         if not UtilClient.is_unset(request.app_key):
             body['AppKey'] = request.app_key
@@ -1405,6 +1307,8 @@ class Client(OpenApiClient):
             body['PhoneNumber'] = request.phone_number
         if not UtilClient.is_unset(request.related_pk):
             body['RelatedPk'] = request.related_pk
+        if not UtilClient.is_unset(request.related_pks_shrink):
+            body['RelatedPks'] = request.related_pks_shrink
         if not UtilClient.is_unset(request.remark):
             body['Remark'] = request.remark
         if not UtilClient.is_unset(request.room_num):
@@ -1440,11 +1344,15 @@ class Client(OpenApiClient):
 
     async def create_hotel_with_options_async(
         self,
-        request: ali_genieip__1__0_models.CreateHotelRequest,
+        tmp_req: ali_genieip__1__0_models.CreateHotelRequest,
         headers: ali_genieip__1__0_models.CreateHotelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.CreateHotelResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.CreateHotelShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_pks):
+            request.related_pks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_pks, 'RelatedPks', 'json')
         body = {}
         if not UtilClient.is_unset(request.app_key):
             body['AppKey'] = request.app_key
@@ -1460,6 +1368,8 @@ class Client(OpenApiClient):
             body['PhoneNumber'] = request.phone_number
         if not UtilClient.is_unset(request.related_pk):
             body['RelatedPk'] = request.related_pk
+        if not UtilClient.is_unset(request.related_pks_shrink):
+            body['RelatedPks'] = request.related_pks_shrink
         if not UtilClient.is_unset(request.remark):
             body['Remark'] = request.remark
         if not UtilClient.is_unset(request.room_num):
@@ -7057,6 +6967,16 @@ class Client(OpenApiClient):
             body['RoomNo'] = request.room_no
         if not UtilClient.is_unset(request.switch):
             body['Switch'] = request.switch
+        if not UtilClient.is_unset(request.fan_speed):
+            body['fanSpeed'] = request.fan_speed
+        if not UtilClient.is_unset(request.mode):
+            body['mode'] = request.mode
+        if not UtilClient.is_unset(request.room_temperature):
+            body['roomTemperature'] = request.room_temperature
+        if not UtilClient.is_unset(request.temperature):
+            body['temperature'] = request.temperature
+        if not UtilClient.is_unset(request.value):
+            body['value'] = request.value
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -7110,6 +7030,16 @@ class Client(OpenApiClient):
             body['RoomNo'] = request.room_no
         if not UtilClient.is_unset(request.switch):
             body['Switch'] = request.switch
+        if not UtilClient.is_unset(request.fan_speed):
+            body['fanSpeed'] = request.fan_speed
+        if not UtilClient.is_unset(request.mode):
+            body['mode'] = request.mode
+        if not UtilClient.is_unset(request.room_temperature):
+            body['roomTemperature'] = request.room_temperature
+        if not UtilClient.is_unset(request.temperature):
+            body['temperature'] = request.temperature
+        if not UtilClient.is_unset(request.value):
+            body['value'] = request.value
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -7415,11 +7345,15 @@ class Client(OpenApiClient):
 
     def update_hotel_with_options(
         self,
-        request: ali_genieip__1__0_models.UpdateHotelRequest,
+        tmp_req: ali_genieip__1__0_models.UpdateHotelRequest,
         headers: ali_genieip__1__0_models.UpdateHotelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateHotelResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.UpdateHotelShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_pks):
+            request.related_pks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_pks, 'RelatedPks', 'json')
         body = {}
         if not UtilClient.is_unset(request.app_key):
             body['AppKey'] = request.app_key
@@ -7435,6 +7369,8 @@ class Client(OpenApiClient):
             body['HotelName'] = request.hotel_name
         if not UtilClient.is_unset(request.phone_number):
             body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.related_pks_shrink):
+            body['RelatedPks'] = request.related_pks_shrink
         if not UtilClient.is_unset(request.remark):
             body['Remark'] = request.remark
         if not UtilClient.is_unset(request.room_num):
@@ -7470,11 +7406,15 @@ class Client(OpenApiClient):
 
     async def update_hotel_with_options_async(
         self,
-        request: ali_genieip__1__0_models.UpdateHotelRequest,
+        tmp_req: ali_genieip__1__0_models.UpdateHotelRequest,
         headers: ali_genieip__1__0_models.UpdateHotelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateHotelResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.UpdateHotelShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_pks):
+            request.related_pks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_pks, 'RelatedPks', 'json')
         body = {}
         if not UtilClient.is_unset(request.app_key):
             body['AppKey'] = request.app_key
@@ -7490,6 +7430,8 @@ class Client(OpenApiClient):
             body['HotelName'] = request.hotel_name
         if not UtilClient.is_unset(request.phone_number):
             body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.related_pks_shrink):
+            body['RelatedPks'] = request.related_pks_shrink
         if not UtilClient.is_unset(request.remark):
             body['Remark'] = request.remark
         if not UtilClient.is_unset(request.room_num):

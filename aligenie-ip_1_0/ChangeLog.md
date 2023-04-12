@@ -1,3 +1,6 @@
+2023-04-12 Version: 1.0.20
+- Update related pk api.
+
 2023-03-08 Version: 1.0.19
 - Add get union id api.
 

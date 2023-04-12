@@ -831,17 +831,17 @@ class AddOrUpdateHotelSettingRequestHotelScreenSaver(TeaModel):
 class AddOrUpdateHotelSettingRequestNightMode(TeaModel):
     def __init__(
         self,
+        default_bright: str = None,
+        default_volume: str = None,
         enable: bool = None,
         end: str = None,
-        max_bright: str = None,
-        max_volume: str = None,
         standby_action: str = None,
         start: str = None,
     ):
+        self.default_bright = default_bright
+        self.default_volume = default_volume
         self.enable = enable
         self.end = end
-        self.max_bright = max_bright
-        self.max_volume = max_volume
         self.standby_action = standby_action
         self.start = start
 
@@ -854,14 +854,14 @@ class AddOrUpdateHotelSettingRequestNightMode(TeaModel):
             return _map
 
         result = dict()
+        if self.default_bright is not None:
+            result['DefaultBright'] = self.default_bright
+        if self.default_volume is not None:
+            result['DefaultVolume'] = self.default_volume
         if self.enable is not None:
             result['Enable'] = self.enable
         if self.end is not None:
             result['End'] = self.end
-        if self.max_bright is not None:
-            result['MaxBright'] = self.max_bright
-        if self.max_volume is not None:
-            result['MaxVolume'] = self.max_volume
         if self.standby_action is not None:
             result['StandbyAction'] = self.standby_action
         if self.start is not None:
@@ -870,14 +870,14 @@ class AddOrUpdateHotelSettingRequestNightMode(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefaultBright') is not None:
+            self.default_bright = m.get('DefaultBright')
+        if m.get('DefaultVolume') is not None:
+            self.default_volume = m.get('DefaultVolume')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
         if m.get('End') is not None:
             self.end = m.get('End')
-        if m.get('MaxBright') is not None:
-            self.max_bright = m.get('MaxBright')
-        if m.get('MaxVolume') is not None:
-            self.max_volume = m.get('MaxVolume')
         if m.get('StandbyAction') is not None:
             self.standby_action = m.get('StandbyAction')
         if m.get('Start') is not None:
@@ -1089,259 +1089,6 @@ class AddOrUpdateHotelSettingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddOrUpdateHotelSettingResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class AddOrUpdateNightModeHeaders(TeaModel):
-    def __init__(
-        self,
-        common_headers: Dict[str, str] = None,
-        x_acs_aligenie_access_token: str = None,
-        authorization: str = None,
-    ):
-        self.common_headers = common_headers
-        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
-        self.authorization = authorization
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.common_headers is not None:
-            result['commonHeaders'] = self.common_headers
-        if self.x_acs_aligenie_access_token is not None:
-            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
-        if self.authorization is not None:
-            result['Authorization'] = self.authorization
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('commonHeaders') is not None:
-            self.common_headers = m.get('commonHeaders')
-        if m.get('x-acs-aligenie-access-token') is not None:
-            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
-        if m.get('Authorization') is not None:
-            self.authorization = m.get('Authorization')
-        return self
-
-
-class AddOrUpdateNightModeRequestNightMode(TeaModel):
-    def __init__(
-        self,
-        enable: bool = None,
-        end: str = None,
-        max_bright: str = None,
-        max_volume: str = None,
-        standby_action: str = None,
-        start: str = None,
-    ):
-        self.enable = enable
-        self.end = end
-        self.max_bright = max_bright
-        self.max_volume = max_volume
-        self.standby_action = standby_action
-        self.start = start
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.enable is not None:
-            result['Enable'] = self.enable
-        if self.end is not None:
-            result['End'] = self.end
-        if self.max_bright is not None:
-            result['MaxBright'] = self.max_bright
-        if self.max_volume is not None:
-            result['MaxVolume'] = self.max_volume
-        if self.standby_action is not None:
-            result['StandbyAction'] = self.standby_action
-        if self.start is not None:
-            result['Start'] = self.start
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Enable') is not None:
-            self.enable = m.get('Enable')
-        if m.get('End') is not None:
-            self.end = m.get('End')
-        if m.get('MaxBright') is not None:
-            self.max_bright = m.get('MaxBright')
-        if m.get('MaxVolume') is not None:
-            self.max_volume = m.get('MaxVolume')
-        if m.get('StandbyAction') is not None:
-            self.standby_action = m.get('StandbyAction')
-        if m.get('Start') is not None:
-            self.start = m.get('Start')
-        return self
-
-
-class AddOrUpdateNightModeRequest(TeaModel):
-    def __init__(
-        self,
-        hotel_id: str = None,
-        night_mode: AddOrUpdateNightModeRequestNightMode = None,
-    ):
-        self.hotel_id = hotel_id
-        self.night_mode = night_mode
-
-    def validate(self):
-        if self.night_mode:
-            self.night_mode.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.hotel_id is not None:
-            result['HotelId'] = self.hotel_id
-        if self.night_mode is not None:
-            result['NightMode'] = self.night_mode.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('HotelId') is not None:
-            self.hotel_id = m.get('HotelId')
-        if m.get('NightMode') is not None:
-            temp_model = AddOrUpdateNightModeRequestNightMode()
-            self.night_mode = temp_model.from_map(m['NightMode'])
-        return self
-
-
-class AddOrUpdateNightModeShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        hotel_id: str = None,
-        night_mode_shrink: str = None,
-    ):
-        self.hotel_id = hotel_id
-        self.night_mode_shrink = night_mode_shrink
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.hotel_id is not None:
-            result['HotelId'] = self.hotel_id
-        if self.night_mode_shrink is not None:
-            result['NightMode'] = self.night_mode_shrink
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('HotelId') is not None:
-            self.hotel_id = m.get('HotelId')
-        if m.get('NightMode') is not None:
-            self.night_mode_shrink = m.get('NightMode')
-        return self
-
-
-class AddOrUpdateNightModeResponseBody(TeaModel):
-    def __init__(
-        self,
-        message: str = None,
-        request_id: str = None,
-        result: bool = None,
-        status_code: int = None,
-    ):
-        self.message = message
-        self.request_id = request_id
-        self.result = result
-        self.status_code = status_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result is not None:
-            result['Result'] = self.result
-        if self.status_code is not None:
-            result['StatusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Result') is not None:
-            self.result = m.get('Result')
-        if m.get('StatusCode') is not None:
-            self.status_code = m.get('StatusCode')
-        return self
-
-
-class AddOrUpdateNightModeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: AddOrUpdateNightModeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = AddOrUpdateNightModeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2749,6 +2496,7 @@ class CreateHotelRequest(TeaModel):
         hotel_name: str = None,
         phone_number: str = None,
         related_pk: str = None,
+        related_pks: List[str] = None,
         remark: str = None,
         room_num: int = None,
         tb_open_id: str = None,
@@ -2760,6 +2508,7 @@ class CreateHotelRequest(TeaModel):
         self.hotel_name = hotel_name
         self.phone_number = phone_number
         self.related_pk = related_pk
+        self.related_pks = related_pks
         self.remark = remark
         self.room_num = room_num
         self.tb_open_id = tb_open_id
@@ -2787,6 +2536,8 @@ class CreateHotelRequest(TeaModel):
             result['PhoneNumber'] = self.phone_number
         if self.related_pk is not None:
             result['RelatedPk'] = self.related_pk
+        if self.related_pks is not None:
+            result['RelatedPks'] = self.related_pks
         if self.remark is not None:
             result['Remark'] = self.remark
         if self.room_num is not None:
@@ -2811,6 +2562,95 @@ class CreateHotelRequest(TeaModel):
             self.phone_number = m.get('PhoneNumber')
         if m.get('RelatedPk') is not None:
             self.related_pk = m.get('RelatedPk')
+        if m.get('RelatedPks') is not None:
+            self.related_pks = m.get('RelatedPks')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RoomNum') is not None:
+            self.room_num = m.get('RoomNum')
+        if m.get('TbOpenId') is not None:
+            self.tb_open_id = m.get('TbOpenId')
+        return self
+
+
+class CreateHotelShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: str = None,
+        est_open_time: str = None,
+        hotel_address: str = None,
+        hotel_email: str = None,
+        hotel_name: str = None,
+        phone_number: str = None,
+        related_pk: str = None,
+        related_pks_shrink: str = None,
+        remark: str = None,
+        room_num: int = None,
+        tb_open_id: str = None,
+    ):
+        self.app_key = app_key
+        self.est_open_time = est_open_time
+        self.hotel_address = hotel_address
+        self.hotel_email = hotel_email
+        self.hotel_name = hotel_name
+        self.phone_number = phone_number
+        self.related_pk = related_pk
+        self.related_pks_shrink = related_pks_shrink
+        self.remark = remark
+        self.room_num = room_num
+        self.tb_open_id = tb_open_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.est_open_time is not None:
+            result['EstOpenTime'] = self.est_open_time
+        if self.hotel_address is not None:
+            result['HotelAddress'] = self.hotel_address
+        if self.hotel_email is not None:
+            result['HotelEmail'] = self.hotel_email
+        if self.hotel_name is not None:
+            result['HotelName'] = self.hotel_name
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.related_pk is not None:
+            result['RelatedPk'] = self.related_pk
+        if self.related_pks_shrink is not None:
+            result['RelatedPks'] = self.related_pks_shrink
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.room_num is not None:
+            result['RoomNum'] = self.room_num
+        if self.tb_open_id is not None:
+            result['TbOpenId'] = self.tb_open_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('EstOpenTime') is not None:
+            self.est_open_time = m.get('EstOpenTime')
+        if m.get('HotelAddress') is not None:
+            self.hotel_address = m.get('HotelAddress')
+        if m.get('HotelEmail') is not None:
+            self.hotel_email = m.get('HotelEmail')
+        if m.get('HotelName') is not None:
+            self.hotel_name = m.get('HotelName')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('RelatedPk') is not None:
+            self.related_pk = m.get('RelatedPk')
+        if m.get('RelatedPks') is not None:
+            self.related_pks_shrink = m.get('RelatedPks')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
         if m.get('RoomNum') is not None:
@@ -8685,17 +8525,17 @@ class GetHotelSettingResponseBodyResultHotelScreenSaver(TeaModel):
 class GetHotelSettingResponseBodyResultNightMode(TeaModel):
     def __init__(
         self,
+        default_bright: str = None,
+        default_volume: str = None,
         enable: bool = None,
         end: str = None,
-        max_bright: str = None,
-        max_volume: str = None,
         standby_action: str = None,
         start: str = None,
     ):
+        self.default_bright = default_bright
+        self.default_volume = default_volume
         self.enable = enable
         self.end = end
-        self.max_bright = max_bright
-        self.max_volume = max_volume
         self.standby_action = standby_action
         self.start = start
 
@@ -8708,14 +8548,14 @@ class GetHotelSettingResponseBodyResultNightMode(TeaModel):
             return _map
 
         result = dict()
+        if self.default_bright is not None:
+            result['DefaultBright'] = self.default_bright
+        if self.default_volume is not None:
+            result['DefaultVolume'] = self.default_volume
         if self.enable is not None:
             result['Enable'] = self.enable
         if self.end is not None:
             result['End'] = self.end
-        if self.max_bright is not None:
-            result['MaxBright'] = self.max_bright
-        if self.max_volume is not None:
-            result['MaxVolume'] = self.max_volume
         if self.standby_action is not None:
             result['StandbyAction'] = self.standby_action
         if self.start is not None:
@@ -8724,14 +8564,14 @@ class GetHotelSettingResponseBodyResultNightMode(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefaultBright') is not None:
+            self.default_bright = m.get('DefaultBright')
+        if m.get('DefaultVolume') is not None:
+            self.default_volume = m.get('DefaultVolume')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
         if m.get('End') is not None:
             self.end = m.get('End')
-        if m.get('MaxBright') is not None:
-            self.max_bright = m.get('MaxBright')
-        if m.get('MaxVolume') is not None:
-            self.max_volume = m.get('MaxVolume')
         if m.get('StandbyAction') is not None:
             self.standby_action = m.get('StandbyAction')
         if m.get('Start') is not None:
@@ -18510,6 +18350,11 @@ class SyncDeviceStatusWithAkRequest(TeaModel):
         number: str = None,
         room_no: str = None,
         switch: int = None,
+        fan_speed: str = None,
+        mode: str = None,
+        room_temperature: str = None,
+        temperature: str = None,
+        value: int = None,
     ):
         self.category_cn_name = category_cn_name
         self.category_en_name = category_en_name
@@ -18520,6 +18365,11 @@ class SyncDeviceStatusWithAkRequest(TeaModel):
         self.number = number
         self.room_no = room_no
         self.switch = switch
+        self.fan_speed = fan_speed
+        self.mode = mode
+        self.room_temperature = room_temperature
+        self.temperature = temperature
+        self.value = value
 
     def validate(self):
         pass
@@ -18548,6 +18398,16 @@ class SyncDeviceStatusWithAkRequest(TeaModel):
             result['RoomNo'] = self.room_no
         if self.switch is not None:
             result['Switch'] = self.switch
+        if self.fan_speed is not None:
+            result['fanSpeed'] = self.fan_speed
+        if self.mode is not None:
+            result['mode'] = self.mode
+        if self.room_temperature is not None:
+            result['roomTemperature'] = self.room_temperature
+        if self.temperature is not None:
+            result['temperature'] = self.temperature
+        if self.value is not None:
+            result['value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
@@ -18570,6 +18430,16 @@ class SyncDeviceStatusWithAkRequest(TeaModel):
             self.room_no = m.get('RoomNo')
         if m.get('Switch') is not None:
             self.switch = m.get('Switch')
+        if m.get('fanSpeed') is not None:
+            self.fan_speed = m.get('fanSpeed')
+        if m.get('mode') is not None:
+            self.mode = m.get('mode')
+        if m.get('roomTemperature') is not None:
+            self.room_temperature = m.get('roomTemperature')
+        if m.get('temperature') is not None:
+            self.temperature = m.get('temperature')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
@@ -19174,6 +19044,7 @@ class UpdateHotelRequest(TeaModel):
         hotel_id: str = None,
         hotel_name: str = None,
         phone_number: str = None,
+        related_pks: List[str] = None,
         remark: str = None,
         room_num: int = None,
         tb_open_id: str = None,
@@ -19185,6 +19056,7 @@ class UpdateHotelRequest(TeaModel):
         self.hotel_id = hotel_id
         self.hotel_name = hotel_name
         self.phone_number = phone_number
+        self.related_pks = related_pks
         self.remark = remark
         self.room_num = room_num
         self.tb_open_id = tb_open_id
@@ -19212,6 +19084,8 @@ class UpdateHotelRequest(TeaModel):
             result['HotelName'] = self.hotel_name
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.related_pks is not None:
+            result['RelatedPks'] = self.related_pks
         if self.remark is not None:
             result['Remark'] = self.remark
         if self.room_num is not None:
@@ -19236,6 +19110,95 @@ class UpdateHotelRequest(TeaModel):
             self.hotel_name = m.get('HotelName')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('RelatedPks') is not None:
+            self.related_pks = m.get('RelatedPks')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RoomNum') is not None:
+            self.room_num = m.get('RoomNum')
+        if m.get('TbOpenId') is not None:
+            self.tb_open_id = m.get('TbOpenId')
+        return self
+
+
+class UpdateHotelShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: str = None,
+        est_open_time: str = None,
+        hotel_address: str = None,
+        hotel_email: str = None,
+        hotel_id: str = None,
+        hotel_name: str = None,
+        phone_number: str = None,
+        related_pks_shrink: str = None,
+        remark: str = None,
+        room_num: int = None,
+        tb_open_id: str = None,
+    ):
+        self.app_key = app_key
+        self.est_open_time = est_open_time
+        self.hotel_address = hotel_address
+        self.hotel_email = hotel_email
+        self.hotel_id = hotel_id
+        self.hotel_name = hotel_name
+        self.phone_number = phone_number
+        self.related_pks_shrink = related_pks_shrink
+        self.remark = remark
+        self.room_num = room_num
+        self.tb_open_id = tb_open_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.est_open_time is not None:
+            result['EstOpenTime'] = self.est_open_time
+        if self.hotel_address is not None:
+            result['HotelAddress'] = self.hotel_address
+        if self.hotel_email is not None:
+            result['HotelEmail'] = self.hotel_email
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.hotel_name is not None:
+            result['HotelName'] = self.hotel_name
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.related_pks_shrink is not None:
+            result['RelatedPks'] = self.related_pks_shrink
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.room_num is not None:
+            result['RoomNum'] = self.room_num
+        if self.tb_open_id is not None:
+            result['TbOpenId'] = self.tb_open_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('EstOpenTime') is not None:
+            self.est_open_time = m.get('EstOpenTime')
+        if m.get('HotelAddress') is not None:
+            self.hotel_address = m.get('HotelAddress')
+        if m.get('HotelEmail') is not None:
+            self.hotel_email = m.get('HotelEmail')
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('HotelName') is not None:
+            self.hotel_name = m.get('HotelName')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('RelatedPks') is not None:
+            self.related_pks_shrink = m.get('RelatedPks')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
         if m.get('RoomNum') is not None:
