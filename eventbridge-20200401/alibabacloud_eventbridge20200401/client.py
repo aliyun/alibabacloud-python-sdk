@@ -2841,6 +2841,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_event_streaming_with_options_async(request, runtime)
 
+    def test_event_pattern_with_options(
+        self,
+        request: eventbridge_20200401_models.TestEventPatternRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.TestEventPatternResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.event):
+            body['Event'] = request.event
+        if not UtilClient.is_unset(request.event_pattern):
+            body['EventPattern'] = request.event_pattern
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TestEventPattern',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.TestEventPatternResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def test_event_pattern_with_options_async(
+        self,
+        request: eventbridge_20200401_models.TestEventPatternRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.TestEventPatternResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.event):
+            body['Event'] = request.event
+        if not UtilClient.is_unset(request.event_pattern):
+            body['EventPattern'] = request.event_pattern
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TestEventPattern',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.TestEventPatternResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def test_event_pattern(
+        self,
+        request: eventbridge_20200401_models.TestEventPatternRequest,
+    ) -> eventbridge_20200401_models.TestEventPatternResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.test_event_pattern_with_options(request, runtime)
+
+    async def test_event_pattern_async(
+        self,
+        request: eventbridge_20200401_models.TestEventPatternRequest,
+    ) -> eventbridge_20200401_models.TestEventPatternResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.test_event_pattern_with_options_async(request, runtime)
+
     def update_api_destination_with_options(
         self,
         tmp_req: eventbridge_20200401_models.UpdateApiDestinationRequest,
