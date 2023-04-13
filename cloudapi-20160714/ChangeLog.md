@@ -1,3 +1,6 @@
+2023-04-13 Version: 2.2.16
+- DescribeDomain add CertificateValid date.
+
 2023-03-23 Version: 2.2.15
 - DescribeApis add tag parameter.
 - CreateApp hidden parameter. 
