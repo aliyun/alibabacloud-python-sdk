@@ -579,6 +579,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.create_option):
             query['CreateOption'] = request.create_option
+        if not UtilClient.is_unset(request.create_options):
+            query['CreateOptions'] = request.create_options
         if not UtilClient.is_unset(request.deletion_protection):
             query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.disable_rollback):
@@ -658,6 +660,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.create_option):
             query['CreateOption'] = request.create_option
+        if not UtilClient.is_unset(request.create_options):
+            query['CreateOptions'] = request.create_options
         if not UtilClient.is_unset(request.deletion_protection):
             query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.disable_rollback):
@@ -5695,6 +5699,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -5713,6 +5719,8 @@ class Client(OpenApiClient):
             query['StackIds'] = request.stack_ids
         if not UtilClient.is_unset(request.stack_name):
             query['StackName'] = request.stack_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tag):
@@ -5750,6 +5758,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -5768,6 +5778,8 @@ class Client(OpenApiClient):
             query['StackIds'] = request.stack_ids
         if not UtilClient.is_unset(request.stack_name):
             query['StackName'] = request.stack_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tag):

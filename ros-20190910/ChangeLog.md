@@ -1,3 +1,7 @@
+2023-04-13 Version: 3.2.24
+- Added StartTime and EndTime to ListStacks to filter Stacks based on time range.
+- CreateStack adds CreateOptions for specifying multiple creation options.
+
 2023-03-30 Version: 3.2.23
 - GetFeatureDetails supports ResourceImport and DriftDetection.
 - DeleteStack supports DeleteOptions.
