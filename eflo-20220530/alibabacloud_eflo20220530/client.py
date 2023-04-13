@@ -50,14 +50,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assign_mac):
             body['AssignMac'] = request.assign_mac
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.network_interface_id):
             body['NetworkInterfaceId'] = request.network_interface_id
         if not UtilClient.is_unset(request.private_ip_address):
             body['PrivateIpAddress'] = request.private_ip_address
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.skip_config):
+            body['SkipConfig'] = request.skip_config
         if not UtilClient.is_unset(request.subnet_id):
             body['SubnetId'] = request.subnet_id
         req = open_api_models.OpenApiRequest(
@@ -88,14 +88,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assign_mac):
             body['AssignMac'] = request.assign_mac
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.network_interface_id):
             body['NetworkInterfaceId'] = request.network_interface_id
         if not UtilClient.is_unset(request.private_ip_address):
             body['PrivateIpAddress'] = request.private_ip_address
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.skip_config):
+            body['SkipConfig'] = request.skip_config
         if not UtilClient.is_unset(request.subnet_id):
             body['SubnetId'] = request.subnet_id
         req = open_api_models.OpenApiRequest(
@@ -131,6 +131,296 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.assign_private_ip_address_with_options_async(request, runtime)
 
+    def create_er_with_options(
+        self,
+        request: eflo_20220530_models.CreateErRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.CreateErResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.er_name):
+            body['ErName'] = request.er_name
+        if not UtilClient.is_unset(request.master_zone_id):
+            body['MasterZoneId'] = request.master_zone_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEr',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.CreateErResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_er_with_options_async(
+        self,
+        request: eflo_20220530_models.CreateErRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.CreateErResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.er_name):
+            body['ErName'] = request.er_name
+        if not UtilClient.is_unset(request.master_zone_id):
+            body['MasterZoneId'] = request.master_zone_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEr',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.CreateErResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_er(
+        self,
+        request: eflo_20220530_models.CreateErRequest,
+    ) -> eflo_20220530_models.CreateErResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_er_with_options(request, runtime)
+
+    async def create_er_async(
+        self,
+        request: eflo_20220530_models.CreateErRequest,
+    ) -> eflo_20220530_models.CreateErResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_er_with_options_async(request, runtime)
+
+    def create_er_attachment_with_options(
+        self,
+        request: eflo_20220530_models.CreateErAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.CreateErAttachmentResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_receive_all_route):
+            body['AutoReceiveAllRoute'] = request.auto_receive_all_route
+        if not UtilClient.is_unset(request.er_attachment_name):
+            body['ErAttachmentName'] = request.er_attachment_name
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            body['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_tenant_id):
+            body['ResourceTenantId'] = request.resource_tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateErAttachment',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.CreateErAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_er_attachment_with_options_async(
+        self,
+        request: eflo_20220530_models.CreateErAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.CreateErAttachmentResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_receive_all_route):
+            body['AutoReceiveAllRoute'] = request.auto_receive_all_route
+        if not UtilClient.is_unset(request.er_attachment_name):
+            body['ErAttachmentName'] = request.er_attachment_name
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            body['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_tenant_id):
+            body['ResourceTenantId'] = request.resource_tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateErAttachment',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.CreateErAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_er_attachment(
+        self,
+        request: eflo_20220530_models.CreateErAttachmentRequest,
+    ) -> eflo_20220530_models.CreateErAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_er_attachment_with_options(request, runtime)
+
+    async def create_er_attachment_async(
+        self,
+        request: eflo_20220530_models.CreateErAttachmentRequest,
+    ) -> eflo_20220530_models.CreateErAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_er_attachment_with_options_async(request, runtime)
+
+    def create_er_route_map_with_options(
+        self,
+        request: eflo_20220530_models.CreateErRouteMapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.CreateErRouteMapResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.reception_instance_id):
+            body['ReceptionInstanceId'] = request.reception_instance_id
+        if not UtilClient.is_unset(request.reception_instance_owner):
+            body['ReceptionInstanceOwner'] = request.reception_instance_owner
+        if not UtilClient.is_unset(request.reception_instance_type):
+            body['ReceptionInstanceType'] = request.reception_instance_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_map_action):
+            body['RouteMapAction'] = request.route_map_action
+        if not UtilClient.is_unset(request.route_map_num):
+            body['RouteMapNum'] = request.route_map_num
+        if not UtilClient.is_unset(request.transmission_instance_id):
+            body['TransmissionInstanceId'] = request.transmission_instance_id
+        if not UtilClient.is_unset(request.transmission_instance_owner):
+            body['TransmissionInstanceOwner'] = request.transmission_instance_owner
+        if not UtilClient.is_unset(request.transmission_instance_type):
+            body['TransmissionInstanceType'] = request.transmission_instance_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateErRouteMap',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.CreateErRouteMapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_er_route_map_with_options_async(
+        self,
+        request: eflo_20220530_models.CreateErRouteMapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.CreateErRouteMapResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.reception_instance_id):
+            body['ReceptionInstanceId'] = request.reception_instance_id
+        if not UtilClient.is_unset(request.reception_instance_owner):
+            body['ReceptionInstanceOwner'] = request.reception_instance_owner
+        if not UtilClient.is_unset(request.reception_instance_type):
+            body['ReceptionInstanceType'] = request.reception_instance_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_map_action):
+            body['RouteMapAction'] = request.route_map_action
+        if not UtilClient.is_unset(request.route_map_num):
+            body['RouteMapNum'] = request.route_map_num
+        if not UtilClient.is_unset(request.transmission_instance_id):
+            body['TransmissionInstanceId'] = request.transmission_instance_id
+        if not UtilClient.is_unset(request.transmission_instance_owner):
+            body['TransmissionInstanceOwner'] = request.transmission_instance_owner
+        if not UtilClient.is_unset(request.transmission_instance_type):
+            body['TransmissionInstanceType'] = request.transmission_instance_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateErRouteMap',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.CreateErRouteMapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_er_route_map(
+        self,
+        request: eflo_20220530_models.CreateErRouteMapRequest,
+    ) -> eflo_20220530_models.CreateErRouteMapResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_er_route_map_with_options(request, runtime)
+
+    async def create_er_route_map_async(
+        self,
+        request: eflo_20220530_models.CreateErRouteMapRequest,
+    ) -> eflo_20220530_models.CreateErRouteMapResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_er_route_map_with_options_async(request, runtime)
+
     def create_subnet_with_options(
         self,
         request: eflo_20220530_models.CreateSubnetRequest,
@@ -140,8 +430,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cidr):
             body['Cidr'] = request.cidr
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.subnet_name):
@@ -182,8 +470,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cidr):
             body['Cidr'] = request.cidr
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.subnet_name):
@@ -238,6 +524,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.access_could_service):
             body['AccessCouldService'] = request.access_could_service
+        if not UtilClient.is_unset(request.bandwidth):
+            body['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.bgp_cidr):
             body['BgpCidr'] = request.bgp_cidr
         if not UtilClient.is_unset(request.cen_id):
@@ -292,6 +580,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.access_could_service):
             body['AccessCouldService'] = request.access_could_service
+        if not UtilClient.is_unset(request.bandwidth):
+            body['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.bgp_cidr):
             body['BgpCidr'] = request.bgp_cidr
         if not UtilClient.is_unset(request.cen_id):
@@ -351,6 +641,166 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_vcc_with_options_async(request, runtime)
 
+    def create_vcc_grant_rule_with_options(
+        self,
+        request: eflo_20220530_models.CreateVccGrantRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.CreateVccGrantRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.grant_tenant_id):
+            body['GrantTenantId'] = request.grant_tenant_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVccGrantRule',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.CreateVccGrantRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vcc_grant_rule_with_options_async(
+        self,
+        request: eflo_20220530_models.CreateVccGrantRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.CreateVccGrantRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.grant_tenant_id):
+            body['GrantTenantId'] = request.grant_tenant_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVccGrantRule',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.CreateVccGrantRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vcc_grant_rule(
+        self,
+        request: eflo_20220530_models.CreateVccGrantRuleRequest,
+    ) -> eflo_20220530_models.CreateVccGrantRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_vcc_grant_rule_with_options(request, runtime)
+
+    async def create_vcc_grant_rule_async(
+        self,
+        request: eflo_20220530_models.CreateVccGrantRuleRequest,
+    ) -> eflo_20220530_models.CreateVccGrantRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_vcc_grant_rule_with_options_async(request, runtime)
+
+    def create_vcc_route_entry_with_options(
+        self,
+        request: eflo_20220530_models.CreateVccRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.CreateVccRouteEntryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vcc_id):
+            body['VccId'] = request.vcc_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVccRouteEntry',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.CreateVccRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vcc_route_entry_with_options_async(
+        self,
+        request: eflo_20220530_models.CreateVccRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.CreateVccRouteEntryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vcc_id):
+            body['VccId'] = request.vcc_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVccRouteEntry',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.CreateVccRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vcc_route_entry(
+        self,
+        request: eflo_20220530_models.CreateVccRouteEntryRequest,
+    ) -> eflo_20220530_models.CreateVccRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_vcc_route_entry_with_options(request, runtime)
+
+    async def create_vcc_route_entry_async(
+        self,
+        request: eflo_20220530_models.CreateVccRouteEntryRequest,
+    ) -> eflo_20220530_models.CreateVccRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_vcc_route_entry_with_options_async(request, runtime)
+
     def create_vpd_with_options(
         self,
         request: eflo_20220530_models.CreateVpdRequest,
@@ -360,8 +810,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cidr):
             body['Cidr'] = request.cidr
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -400,8 +848,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cidr):
             body['Cidr'] = request.cidr
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -527,6 +973,236 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_vpd_grant_rule_with_options_async(request, runtime)
 
+    def delete_er_with_options(
+        self,
+        request: eflo_20220530_models.DeleteErRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.DeleteErResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteEr',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.DeleteErResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_er_with_options_async(
+        self,
+        request: eflo_20220530_models.DeleteErRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.DeleteErResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteEr',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.DeleteErResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_er(
+        self,
+        request: eflo_20220530_models.DeleteErRequest,
+    ) -> eflo_20220530_models.DeleteErResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_er_with_options(request, runtime)
+
+    async def delete_er_async(
+        self,
+        request: eflo_20220530_models.DeleteErRequest,
+    ) -> eflo_20220530_models.DeleteErResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_er_with_options_async(request, runtime)
+
+    def delete_er_attachment_with_options(
+        self,
+        request: eflo_20220530_models.DeleteErAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.DeleteErAttachmentResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_attachment_id):
+            body['ErAttachmentId'] = request.er_attachment_id
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteErAttachment',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.DeleteErAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_er_attachment_with_options_async(
+        self,
+        request: eflo_20220530_models.DeleteErAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.DeleteErAttachmentResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_attachment_id):
+            body['ErAttachmentId'] = request.er_attachment_id
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteErAttachment',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.DeleteErAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_er_attachment(
+        self,
+        request: eflo_20220530_models.DeleteErAttachmentRequest,
+    ) -> eflo_20220530_models.DeleteErAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_er_attachment_with_options(request, runtime)
+
+    async def delete_er_attachment_async(
+        self,
+        request: eflo_20220530_models.DeleteErAttachmentRequest,
+    ) -> eflo_20220530_models.DeleteErAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_er_attachment_with_options_async(request, runtime)
+
+    def delete_er_route_map_with_options(
+        self,
+        request: eflo_20220530_models.DeleteErRouteMapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.DeleteErRouteMapResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_route_map_ids):
+            body['ErRouteMapIds'] = request.er_route_map_ids
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteErRouteMap',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.DeleteErRouteMapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_er_route_map_with_options_async(
+        self,
+        request: eflo_20220530_models.DeleteErRouteMapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.DeleteErRouteMapResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_route_map_ids):
+            body['ErRouteMapIds'] = request.er_route_map_ids
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteErRouteMap',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.DeleteErRouteMapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_er_route_map(
+        self,
+        request: eflo_20220530_models.DeleteErRouteMapRequest,
+    ) -> eflo_20220530_models.DeleteErRouteMapResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_er_route_map_with_options(request, runtime)
+
+    async def delete_er_route_map_async(
+        self,
+        request: eflo_20220530_models.DeleteErRouteMapRequest,
+    ) -> eflo_20220530_models.DeleteErRouteMapResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_er_route_map_with_options_async(request, runtime)
+
     def delete_subnet_with_options(
         self,
         request: eflo_20220530_models.DeleteSubnetRequest,
@@ -608,6 +1284,170 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.DeleteSubnetResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_subnet_with_options_async(request, runtime)
+
+    def delete_vcc_grant_rule_with_options(
+        self,
+        request: eflo_20220530_models.DeleteVccGrantRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.DeleteVccGrantRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.grant_rule_id):
+            body['GrantRuleId'] = request.grant_rule_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteVccGrantRule',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.DeleteVccGrantRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vcc_grant_rule_with_options_async(
+        self,
+        request: eflo_20220530_models.DeleteVccGrantRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.DeleteVccGrantRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.grant_rule_id):
+            body['GrantRuleId'] = request.grant_rule_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteVccGrantRule',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.DeleteVccGrantRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vcc_grant_rule(
+        self,
+        request: eflo_20220530_models.DeleteVccGrantRuleRequest,
+    ) -> eflo_20220530_models.DeleteVccGrantRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_vcc_grant_rule_with_options(request, runtime)
+
+    async def delete_vcc_grant_rule_async(
+        self,
+        request: eflo_20220530_models.DeleteVccGrantRuleRequest,
+    ) -> eflo_20220530_models.DeleteVccGrantRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_vcc_grant_rule_with_options_async(request, runtime)
+
+    def delete_vcc_route_entry_with_options(
+        self,
+        request: eflo_20220530_models.DeleteVccRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.DeleteVccRouteEntryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vcc_id):
+            body['VccId'] = request.vcc_id
+        if not UtilClient.is_unset(request.vcc_route_entry_id):
+            body['VccRouteEntryId'] = request.vcc_route_entry_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteVccRouteEntry',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.DeleteVccRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vcc_route_entry_with_options_async(
+        self,
+        request: eflo_20220530_models.DeleteVccRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.DeleteVccRouteEntryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vcc_id):
+            body['VccId'] = request.vcc_id
+        if not UtilClient.is_unset(request.vcc_route_entry_id):
+            body['VccRouteEntryId'] = request.vcc_route_entry_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteVccRouteEntry',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.DeleteVccRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vcc_route_entry(
+        self,
+        request: eflo_20220530_models.DeleteVccRouteEntryRequest,
+    ) -> eflo_20220530_models.DeleteVccRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_vcc_route_entry_with_options(request, runtime)
+
+    async def delete_vcc_route_entry_async(
+        self,
+        request: eflo_20220530_models.DeleteVccRouteEntryRequest,
+    ) -> eflo_20220530_models.DeleteVccRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_vcc_route_entry_with_options_async(request, runtime)
 
     def delete_vpd_with_options(
         self,
@@ -839,6 +1679,314 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_slr_with_options_async(request, runtime)
 
+    def get_er_with_options(
+        self,
+        request: eflo_20220530_models.GetErRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetErResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetEr',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetErResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_er_with_options_async(
+        self,
+        request: eflo_20220530_models.GetErRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetErResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetEr',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetErResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_er(
+        self,
+        request: eflo_20220530_models.GetErRequest,
+    ) -> eflo_20220530_models.GetErResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_er_with_options(request, runtime)
+
+    async def get_er_async(
+        self,
+        request: eflo_20220530_models.GetErRequest,
+    ) -> eflo_20220530_models.GetErResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_er_with_options_async(request, runtime)
+
+    def get_er_attachment_with_options(
+        self,
+        request: eflo_20220530_models.GetErAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetErAttachmentResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_attachment_id):
+            body['ErAttachmentId'] = request.er_attachment_id
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetErAttachment',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetErAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_er_attachment_with_options_async(
+        self,
+        request: eflo_20220530_models.GetErAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetErAttachmentResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_attachment_id):
+            body['ErAttachmentId'] = request.er_attachment_id
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetErAttachment',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetErAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_er_attachment(
+        self,
+        request: eflo_20220530_models.GetErAttachmentRequest,
+    ) -> eflo_20220530_models.GetErAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_er_attachment_with_options(request, runtime)
+
+    async def get_er_attachment_async(
+        self,
+        request: eflo_20220530_models.GetErAttachmentRequest,
+    ) -> eflo_20220530_models.GetErAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_er_attachment_with_options_async(request, runtime)
+
+    def get_er_route_entry_with_options(
+        self,
+        request: eflo_20220530_models.GetErRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetErRouteEntryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_route_entry_id):
+            body['ErRouteEntryId'] = request.er_route_entry_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetErRouteEntry',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetErRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_er_route_entry_with_options_async(
+        self,
+        request: eflo_20220530_models.GetErRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetErRouteEntryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_route_entry_id):
+            body['ErRouteEntryId'] = request.er_route_entry_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetErRouteEntry',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetErRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_er_route_entry(
+        self,
+        request: eflo_20220530_models.GetErRouteEntryRequest,
+    ) -> eflo_20220530_models.GetErRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_er_route_entry_with_options(request, runtime)
+
+    async def get_er_route_entry_async(
+        self,
+        request: eflo_20220530_models.GetErRouteEntryRequest,
+    ) -> eflo_20220530_models.GetErRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_er_route_entry_with_options_async(request, runtime)
+
+    def get_er_route_map_with_options(
+        self,
+        request: eflo_20220530_models.GetErRouteMapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetErRouteMapResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_route_map_id):
+            body['ErRouteMapId'] = request.er_route_map_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetErRouteMap',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetErRouteMapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_er_route_map_with_options_async(
+        self,
+        request: eflo_20220530_models.GetErRouteMapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetErRouteMapResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_route_map_id):
+            body['ErRouteMapId'] = request.er_route_map_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetErRouteMap',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetErRouteMapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_er_route_map(
+        self,
+        request: eflo_20220530_models.GetErRouteMapRequest,
+    ) -> eflo_20220530_models.GetErRouteMapResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_er_route_map_with_options(request, runtime)
+
+    async def get_er_route_map_async(
+        self,
+        request: eflo_20220530_models.GetErRouteMapRequest,
+    ) -> eflo_20220530_models.GetErRouteMapResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_er_route_map_with_options_async(request, runtime)
+
     def get_lni_private_ip_address_with_options(
         self,
         request: eflo_20220530_models.GetLniPrivateIpAddressRequest,
@@ -846,8 +1994,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.GetLniPrivateIpAddressResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.ip_name):
             body['IpName'] = request.ip_name
         if not UtilClient.is_unset(request.network_interface_id):
@@ -880,8 +2026,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.GetLniPrivateIpAddressResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.ip_name):
             body['IpName'] = request.ip_name
         if not UtilClient.is_unset(request.network_interface_id):
@@ -921,6 +2065,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_lni_private_ip_address_with_options_async(request, runtime)
 
+    def get_network_interface_with_options(
+        self,
+        request: eflo_20220530_models.GetNetworkInterfaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetNetworkInterfaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            body['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subnet_id):
+            body['SubnetId'] = request.subnet_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkInterface',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetNetworkInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_network_interface_with_options_async(
+        self,
+        request: eflo_20220530_models.GetNetworkInterfaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetNetworkInterfaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            body['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subnet_id):
+            body['SubnetId'] = request.subnet_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkInterface',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetNetworkInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_network_interface(
+        self,
+        request: eflo_20220530_models.GetNetworkInterfaceRequest,
+    ) -> eflo_20220530_models.GetNetworkInterfaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_network_interface_with_options(request, runtime)
+
+    async def get_network_interface_async(
+        self,
+        request: eflo_20220530_models.GetNetworkInterfaceRequest,
+    ) -> eflo_20220530_models.GetNetworkInterfaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_network_interface_with_options_async(request, runtime)
+
     def get_subnet_with_options(
         self,
         request: eflo_20220530_models.GetSubnetRequest,
@@ -928,8 +2150,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.GetSubnetResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.subnet_id):
@@ -962,8 +2182,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.GetSubnetResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.subnet_id):
@@ -1089,6 +2307,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_vcc_with_options_async(request, runtime)
 
+    def get_vcc_grant_rule_with_options(
+        self,
+        request: eflo_20220530_models.GetVccGrantRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetVccGrantRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.grant_rule_id):
+            body['GrantRuleId'] = request.grant_rule_id
+        if not UtilClient.is_unset(request.grant_tenant_id):
+            body['GrantTenantId'] = request.grant_tenant_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVccGrantRule',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetVccGrantRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vcc_grant_rule_with_options_async(
+        self,
+        request: eflo_20220530_models.GetVccGrantRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetVccGrantRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.grant_rule_id):
+            body['GrantRuleId'] = request.grant_rule_id
+        if not UtilClient.is_unset(request.grant_tenant_id):
+            body['GrantTenantId'] = request.grant_tenant_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVccGrantRule',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetVccGrantRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vcc_grant_rule(
+        self,
+        request: eflo_20220530_models.GetVccGrantRuleRequest,
+    ) -> eflo_20220530_models.GetVccGrantRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_vcc_grant_rule_with_options(request, runtime)
+
+    async def get_vcc_grant_rule_async(
+        self,
+        request: eflo_20220530_models.GetVccGrantRuleRequest,
+    ) -> eflo_20220530_models.GetVccGrantRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_vcc_grant_rule_with_options_async(request, runtime)
+
+    def get_vcc_route_entry_with_options(
+        self,
+        request: eflo_20220530_models.GetVccRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetVccRouteEntryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vcc_id):
+            body['VccId'] = request.vcc_id
+        if not UtilClient.is_unset(request.vcc_route_entry_id):
+            body['VccRouteEntryId'] = request.vcc_route_entry_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVccRouteEntry',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetVccRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vcc_route_entry_with_options_async(
+        self,
+        request: eflo_20220530_models.GetVccRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetVccRouteEntryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vcc_id):
+            body['VccId'] = request.vcc_id
+        if not UtilClient.is_unset(request.vcc_route_entry_id):
+            body['VccRouteEntryId'] = request.vcc_route_entry_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVccRouteEntry',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetVccRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vcc_route_entry(
+        self,
+        request: eflo_20220530_models.GetVccRouteEntryRequest,
+    ) -> eflo_20220530_models.GetVccRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_vcc_route_entry_with_options(request, runtime)
+
+    async def get_vcc_route_entry_async(
+        self,
+        request: eflo_20220530_models.GetVccRouteEntryRequest,
+    ) -> eflo_20220530_models.GetVccRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_vcc_route_entry_with_options_async(request, runtime)
+
     def get_vpd_with_options(
         self,
         request: eflo_20220530_models.GetVpdRequest,
@@ -1096,8 +2478,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.GetVpdResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.vpd_id):
@@ -1128,8 +2508,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.GetVpdResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.vpd_id):
@@ -1166,6 +2544,170 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.GetVpdResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_vpd_with_options_async(request, runtime)
+
+    def get_vpd_grant_rule_with_options(
+        self,
+        request: eflo_20220530_models.GetVpdGrantRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetVpdGrantRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.grant_rule_id):
+            body['GrantRuleId'] = request.grant_rule_id
+        if not UtilClient.is_unset(request.grant_tenant_id):
+            body['GrantTenantId'] = request.grant_tenant_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVpdGrantRule',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetVpdGrantRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vpd_grant_rule_with_options_async(
+        self,
+        request: eflo_20220530_models.GetVpdGrantRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetVpdGrantRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.grant_rule_id):
+            body['GrantRuleId'] = request.grant_rule_id
+        if not UtilClient.is_unset(request.grant_tenant_id):
+            body['GrantTenantId'] = request.grant_tenant_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVpdGrantRule',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetVpdGrantRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vpd_grant_rule(
+        self,
+        request: eflo_20220530_models.GetVpdGrantRuleRequest,
+    ) -> eflo_20220530_models.GetVpdGrantRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_vpd_grant_rule_with_options(request, runtime)
+
+    async def get_vpd_grant_rule_async(
+        self,
+        request: eflo_20220530_models.GetVpdGrantRuleRequest,
+    ) -> eflo_20220530_models.GetVpdGrantRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_vpd_grant_rule_with_options_async(request, runtime)
+
+    def get_vpd_route_entry_with_options(
+        self,
+        request: eflo_20220530_models.GetVpdRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetVpdRouteEntryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpd_id):
+            body['VpdId'] = request.vpd_id
+        if not UtilClient.is_unset(request.vpd_route_entry_id):
+            body['VpdRouteEntryId'] = request.vpd_route_entry_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVpdRouteEntry',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetVpdRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vpd_route_entry_with_options_async(
+        self,
+        request: eflo_20220530_models.GetVpdRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.GetVpdRouteEntryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpd_id):
+            body['VpdId'] = request.vpd_id
+        if not UtilClient.is_unset(request.vpd_route_entry_id):
+            body['VpdRouteEntryId'] = request.vpd_route_entry_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVpdRouteEntry',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.GetVpdRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vpd_route_entry(
+        self,
+        request: eflo_20220530_models.GetVpdRouteEntryRequest,
+    ) -> eflo_20220530_models.GetVpdRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_vpd_route_entry_with_options(request, runtime)
+
+    async def get_vpd_route_entry_async(
+        self,
+        request: eflo_20220530_models.GetVpdRouteEntryRequest,
+    ) -> eflo_20220530_models.GetVpdRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_vpd_route_entry_with_options_async(request, runtime)
 
     def initialize_vcc_with_options(
         self,
@@ -1236,6 +2778,458 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.InitializeVccResponse:
         runtime = util_models.RuntimeOptions()
         return await self.initialize_vcc_with_options_async(request, runtime)
+
+    def list_er_attachments_with_options(
+        self,
+        request: eflo_20220530_models.ListErAttachmentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.ListErAttachmentsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_receive_all_route):
+            body['AutoReceiveAllRoute'] = request.auto_receive_all_route
+        if not UtilClient.is_unset(request.enable_page):
+            body['EnablePage'] = request.enable_page
+        if not UtilClient.is_unset(request.er_attachment_id):
+            body['ErAttachmentId'] = request.er_attachment_id
+        if not UtilClient.is_unset(request.er_attachment_name):
+            body['ErAttachmentName'] = request.er_attachment_name
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            body['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_tenant_id):
+            body['ResourceTenantId'] = request.resource_tenant_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListErAttachments',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.ListErAttachmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_er_attachments_with_options_async(
+        self,
+        request: eflo_20220530_models.ListErAttachmentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.ListErAttachmentsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_receive_all_route):
+            body['AutoReceiveAllRoute'] = request.auto_receive_all_route
+        if not UtilClient.is_unset(request.enable_page):
+            body['EnablePage'] = request.enable_page
+        if not UtilClient.is_unset(request.er_attachment_id):
+            body['ErAttachmentId'] = request.er_attachment_id
+        if not UtilClient.is_unset(request.er_attachment_name):
+            body['ErAttachmentName'] = request.er_attachment_name
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            body['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_tenant_id):
+            body['ResourceTenantId'] = request.resource_tenant_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListErAttachments',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.ListErAttachmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_er_attachments(
+        self,
+        request: eflo_20220530_models.ListErAttachmentsRequest,
+    ) -> eflo_20220530_models.ListErAttachmentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_er_attachments_with_options(request, runtime)
+
+    async def list_er_attachments_async(
+        self,
+        request: eflo_20220530_models.ListErAttachmentsRequest,
+    ) -> eflo_20220530_models.ListErAttachmentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_er_attachments_with_options_async(request, runtime)
+
+    def list_er_route_entries_with_options(
+        self,
+        request: eflo_20220530_models.ListErRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.ListErRouteEntriesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.enable_page):
+            body['EnablePage'] = request.enable_page
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.next_hop_id):
+            body['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.next_hop_type):
+            body['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_type):
+            body['RouteType'] = request.route_type
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListErRouteEntries',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.ListErRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_er_route_entries_with_options_async(
+        self,
+        request: eflo_20220530_models.ListErRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.ListErRouteEntriesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.enable_page):
+            body['EnablePage'] = request.enable_page
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.next_hop_id):
+            body['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.next_hop_type):
+            body['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_type):
+            body['RouteType'] = request.route_type
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListErRouteEntries',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.ListErRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_er_route_entries(
+        self,
+        request: eflo_20220530_models.ListErRouteEntriesRequest,
+    ) -> eflo_20220530_models.ListErRouteEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_er_route_entries_with_options(request, runtime)
+
+    async def list_er_route_entries_async(
+        self,
+        request: eflo_20220530_models.ListErRouteEntriesRequest,
+    ) -> eflo_20220530_models.ListErRouteEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_er_route_entries_with_options_async(request, runtime)
+
+    def list_er_route_maps_with_options(
+        self,
+        request: eflo_20220530_models.ListErRouteMapsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.ListErRouteMapsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.enable_page):
+            body['EnablePage'] = request.enable_page
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_route_map_id):
+            body['ErRouteMapId'] = request.er_route_map_id
+        if not UtilClient.is_unset(request.er_route_map_num):
+            body['ErRouteMapNum'] = request.er_route_map_num
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reception_instance_id):
+            body['ReceptionInstanceId'] = request.reception_instance_id
+        if not UtilClient.is_unset(request.reception_instance_name):
+            body['ReceptionInstanceName'] = request.reception_instance_name
+        if not UtilClient.is_unset(request.reception_instance_type):
+            body['ReceptionInstanceType'] = request.reception_instance_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_map_action):
+            body['RouteMapAction'] = request.route_map_action
+        if not UtilClient.is_unset(request.transmission_instance_id):
+            body['TransmissionInstanceId'] = request.transmission_instance_id
+        if not UtilClient.is_unset(request.transmission_instance_name):
+            body['TransmissionInstanceName'] = request.transmission_instance_name
+        if not UtilClient.is_unset(request.transmission_instance_type):
+            body['TransmissionInstanceType'] = request.transmission_instance_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListErRouteMaps',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.ListErRouteMapsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_er_route_maps_with_options_async(
+        self,
+        request: eflo_20220530_models.ListErRouteMapsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.ListErRouteMapsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.enable_page):
+            body['EnablePage'] = request.enable_page
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_route_map_id):
+            body['ErRouteMapId'] = request.er_route_map_id
+        if not UtilClient.is_unset(request.er_route_map_num):
+            body['ErRouteMapNum'] = request.er_route_map_num
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reception_instance_id):
+            body['ReceptionInstanceId'] = request.reception_instance_id
+        if not UtilClient.is_unset(request.reception_instance_name):
+            body['ReceptionInstanceName'] = request.reception_instance_name
+        if not UtilClient.is_unset(request.reception_instance_type):
+            body['ReceptionInstanceType'] = request.reception_instance_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_map_action):
+            body['RouteMapAction'] = request.route_map_action
+        if not UtilClient.is_unset(request.transmission_instance_id):
+            body['TransmissionInstanceId'] = request.transmission_instance_id
+        if not UtilClient.is_unset(request.transmission_instance_name):
+            body['TransmissionInstanceName'] = request.transmission_instance_name
+        if not UtilClient.is_unset(request.transmission_instance_type):
+            body['TransmissionInstanceType'] = request.transmission_instance_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListErRouteMaps',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.ListErRouteMapsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_er_route_maps(
+        self,
+        request: eflo_20220530_models.ListErRouteMapsRequest,
+    ) -> eflo_20220530_models.ListErRouteMapsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_er_route_maps_with_options(request, runtime)
+
+    async def list_er_route_maps_async(
+        self,
+        request: eflo_20220530_models.ListErRouteMapsRequest,
+    ) -> eflo_20220530_models.ListErRouteMapsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_er_route_maps_with_options_async(request, runtime)
+
+    def list_ers_with_options(
+        self,
+        request: eflo_20220530_models.ListErsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.ListErsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enable_page):
+            body['EnablePage'] = request.enable_page
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_name):
+            body['ErName'] = request.er_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            body['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.master_zone_id):
+            body['MasterZoneId'] = request.master_zone_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListErs',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.ListErsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ers_with_options_async(
+        self,
+        request: eflo_20220530_models.ListErsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.ListErsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enable_page):
+            body['EnablePage'] = request.enable_page
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_name):
+            body['ErName'] = request.er_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            body['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.master_zone_id):
+            body['MasterZoneId'] = request.master_zone_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListErs',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.ListErsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ers(
+        self,
+        request: eflo_20220530_models.ListErsRequest,
+    ) -> eflo_20220530_models.ListErsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_ers_with_options(request, runtime)
+
+    async def list_ers_async(
+        self,
+        request: eflo_20220530_models.ListErsRequest,
+    ) -> eflo_20220530_models.ListErsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ers_with_options_async(request, runtime)
 
     def list_lni_private_ip_address_with_options(
         self,
@@ -1653,6 +3647,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_vcc_grant_rules_with_options_async(request, runtime)
 
+    def list_vcc_route_entries_with_options(
+        self,
+        request: eflo_20220530_models.ListVccRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.ListVccRouteEntriesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.enable_page):
+            body['EnablePage'] = request.enable_page
+        if not UtilClient.is_unset(request.next_hop_id):
+            body['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.next_hop_type):
+            body['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_type):
+            body['RouteType'] = request.route_type
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.vcc_id):
+            body['VccId'] = request.vcc_id
+        if not UtilClient.is_unset(request.vpd_route_entry_id):
+            body['VpdRouteEntryId'] = request.vpd_route_entry_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListVccRouteEntries',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.ListVccRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vcc_route_entries_with_options_async(
+        self,
+        request: eflo_20220530_models.ListVccRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.ListVccRouteEntriesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.enable_page):
+            body['EnablePage'] = request.enable_page
+        if not UtilClient.is_unset(request.next_hop_id):
+            body['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.next_hop_type):
+            body['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_type):
+            body['RouteType'] = request.route_type
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.vcc_id):
+            body['VccId'] = request.vcc_id
+        if not UtilClient.is_unset(request.vpd_route_entry_id):
+            body['VpdRouteEntryId'] = request.vpd_route_entry_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListVccRouteEntries',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.ListVccRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vcc_route_entries(
+        self,
+        request: eflo_20220530_models.ListVccRouteEntriesRequest,
+    ) -> eflo_20220530_models.ListVccRouteEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_vcc_route_entries_with_options(request, runtime)
+
+    async def list_vcc_route_entries_async(
+        self,
+        request: eflo_20220530_models.ListVccRouteEntriesRequest,
+    ) -> eflo_20220530_models.ListVccRouteEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_vcc_route_entries_with_options_async(request, runtime)
+
     def list_vccs_with_options(
         self,
         request: eflo_20220530_models.ListVccsRequest,
@@ -1881,6 +3985,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_vpd_grant_rules_with_options_async(request, runtime)
 
+    def list_vpd_route_entries_with_options(
+        self,
+        request: eflo_20220530_models.ListVpdRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.ListVpdRouteEntriesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.enable_page):
+            body['EnablePage'] = request.enable_page
+        if not UtilClient.is_unset(request.next_hop_id):
+            body['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.next_hop_type):
+            body['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_type):
+            body['RouteType'] = request.route_type
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.vpd_id):
+            body['VpdId'] = request.vpd_id
+        if not UtilClient.is_unset(request.vpd_route_entry_id):
+            body['VpdRouteEntryId'] = request.vpd_route_entry_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListVpdRouteEntries',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.ListVpdRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vpd_route_entries_with_options_async(
+        self,
+        request: eflo_20220530_models.ListVpdRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.ListVpdRouteEntriesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            body['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.enable_page):
+            body['EnablePage'] = request.enable_page
+        if not UtilClient.is_unset(request.next_hop_id):
+            body['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.next_hop_type):
+            body['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_type):
+            body['RouteType'] = request.route_type
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.vpd_id):
+            body['VpdId'] = request.vpd_id
+        if not UtilClient.is_unset(request.vpd_route_entry_id):
+            body['VpdRouteEntryId'] = request.vpd_route_entry_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListVpdRouteEntries',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.ListVpdRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vpd_route_entries(
+        self,
+        request: eflo_20220530_models.ListVpdRouteEntriesRequest,
+    ) -> eflo_20220530_models.ListVpdRouteEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_vpd_route_entries_with_options(request, runtime)
+
+    async def list_vpd_route_entries_async(
+        self,
+        request: eflo_20220530_models.ListVpdRouteEntriesRequest,
+    ) -> eflo_20220530_models.ListVpdRouteEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_vpd_route_entries_with_options_async(request, runtime)
+
     def list_vpds_with_options(
         self,
         request: eflo_20220530_models.ListVpdsRequest,
@@ -1888,8 +4102,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.ListVpdsResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.enable_page):
             body['EnablePage'] = request.enable_page
         if not UtilClient.is_unset(request.filter_er_id):
@@ -1942,8 +4154,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.ListVpdsResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.enable_page):
             body['EnablePage'] = request.enable_page
         if not UtilClient.is_unset(request.filter_er_id):
@@ -2010,8 +4220,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.UnAssignPrivateIpAddressResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.ip_name):
             body['IpName'] = request.ip_name
         if not UtilClient.is_unset(request.network_interface_id):
@@ -2048,8 +4256,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.UnAssignPrivateIpAddressResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.ip_name):
             body['IpName'] = request.ip_name
         if not UtilClient.is_unset(request.network_interface_id):
@@ -2093,6 +4299,252 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.un_assign_private_ip_address_with_options_async(request, runtime)
 
+    def update_er_with_options(
+        self,
+        request: eflo_20220530_models.UpdateErRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.UpdateErResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_name):
+            body['ErName'] = request.er_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEr',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.UpdateErResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_er_with_options_async(
+        self,
+        request: eflo_20220530_models.UpdateErRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.UpdateErResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_name):
+            body['ErName'] = request.er_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEr',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.UpdateErResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_er(
+        self,
+        request: eflo_20220530_models.UpdateErRequest,
+    ) -> eflo_20220530_models.UpdateErResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_er_with_options(request, runtime)
+
+    async def update_er_async(
+        self,
+        request: eflo_20220530_models.UpdateErRequest,
+    ) -> eflo_20220530_models.UpdateErResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_er_with_options_async(request, runtime)
+
+    def update_er_attachment_with_options(
+        self,
+        request: eflo_20220530_models.UpdateErAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.UpdateErAttachmentResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_attachment_id):
+            body['ErAttachmentId'] = request.er_attachment_id
+        if not UtilClient.is_unset(request.er_attachment_name):
+            body['ErAttachmentName'] = request.er_attachment_name
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateErAttachment',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.UpdateErAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_er_attachment_with_options_async(
+        self,
+        request: eflo_20220530_models.UpdateErAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.UpdateErAttachmentResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.er_attachment_id):
+            body['ErAttachmentId'] = request.er_attachment_id
+        if not UtilClient.is_unset(request.er_attachment_name):
+            body['ErAttachmentName'] = request.er_attachment_name
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateErAttachment',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.UpdateErAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_er_attachment(
+        self,
+        request: eflo_20220530_models.UpdateErAttachmentRequest,
+    ) -> eflo_20220530_models.UpdateErAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_er_attachment_with_options(request, runtime)
+
+    async def update_er_attachment_async(
+        self,
+        request: eflo_20220530_models.UpdateErAttachmentRequest,
+    ) -> eflo_20220530_models.UpdateErAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_er_attachment_with_options_async(request, runtime)
+
+    def update_er_route_map_with_options(
+        self,
+        request: eflo_20220530_models.UpdateErRouteMapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.UpdateErRouteMapResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_route_map_id):
+            body['ErRouteMapId'] = request.er_route_map_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateErRouteMap',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.UpdateErRouteMapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_er_route_map_with_options_async(
+        self,
+        request: eflo_20220530_models.UpdateErRouteMapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.UpdateErRouteMapResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.er_id):
+            body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_route_map_id):
+            body['ErRouteMapId'] = request.er_route_map_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateErRouteMap',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.UpdateErRouteMapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_er_route_map(
+        self,
+        request: eflo_20220530_models.UpdateErRouteMapRequest,
+    ) -> eflo_20220530_models.UpdateErRouteMapResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_er_route_map_with_options(request, runtime)
+
+    async def update_er_route_map_async(
+        self,
+        request: eflo_20220530_models.UpdateErRouteMapRequest,
+    ) -> eflo_20220530_models.UpdateErRouteMapResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_er_route_map_with_options_async(request, runtime)
+
     def update_subnet_with_options(
         self,
         request: eflo_20220530_models.UpdateSubnetRequest,
@@ -2100,8 +4552,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.UpdateSubnetResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.description):
-            body['Description'] = request.description
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.subnet_id):
@@ -2138,8 +4588,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.UpdateSubnetResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.description):
-            body['Description'] = request.description
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.subnet_id):
@@ -2276,8 +4724,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.UpdateVpdResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.vpd_id):
@@ -2310,8 +4756,6 @@ class Client(OpenApiClient):
     ) -> eflo_20220530_models.UpdateVpdResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.vpd_id):
