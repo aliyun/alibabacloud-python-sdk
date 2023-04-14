@@ -561,6 +561,10 @@ class Client(OpenApiClient):
             body['drive_id'] = request.drive_id
         if not UtilClient.is_unset(request.file_id):
             body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.share_id):
+            body['share_id'] = request.share_id
+        if not UtilClient.is_unset(request.to_drive_id):
+            body['to_drive_id'] = request.to_drive_id
         if not UtilClient.is_unset(request.to_parent_file_id):
             body['to_parent_file_id'] = request.to_parent_file_id
         req = open_api_models.OpenApiRequest(
@@ -597,6 +601,10 @@ class Client(OpenApiClient):
             body['drive_id'] = request.drive_id
         if not UtilClient.is_unset(request.file_id):
             body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.share_id):
+            body['share_id'] = request.share_id
+        if not UtilClient.is_unset(request.to_drive_id):
+            body['to_drive_id'] = request.to_drive_id
         if not UtilClient.is_unset(request.to_parent_file_id):
             body['to_parent_file_id'] = request.to_parent_file_id
         req = open_api_models.OpenApiRequest(
@@ -1111,6 +1119,8 @@ class Client(OpenApiClient):
             body['preview_limit'] = request.preview_limit
         if not UtilClient.is_unset(request.save_limit):
             body['save_limit'] = request.save_limit
+        if not UtilClient.is_unset(request.share_all_files):
+            body['share_all_files'] = request.share_all_files
         if not UtilClient.is_unset(request.share_name):
             body['share_name'] = request.share_name
         if not UtilClient.is_unset(request.share_pwd):
@@ -1165,6 +1175,8 @@ class Client(OpenApiClient):
             body['preview_limit'] = request.preview_limit
         if not UtilClient.is_unset(request.save_limit):
             body['save_limit'] = request.save_limit
+        if not UtilClient.is_unset(request.share_all_files):
+            body['share_all_files'] = request.share_all_files
         if not UtilClient.is_unset(request.share_name):
             body['share_name'] = request.share_name
         if not UtilClient.is_unset(request.share_pwd):
@@ -1322,6 +1334,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_user_with_options_async(request, headers, runtime)
+
+    def csi_get_file_info_with_options(
+        self,
+        request: pds_20220301_models.CsiGetFileInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CsiGetFileInfoResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.file_id):
+            body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.url_expire_sec):
+            body['url_expire_sec'] = request.url_expire_sec
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CsiGetFileInfo',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/csi/get_file_info',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CsiGetFileInfoResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def csi_get_file_info_with_options_async(
+        self,
+        request: pds_20220301_models.CsiGetFileInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CsiGetFileInfoResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.file_id):
+            body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.url_expire_sec):
+            body['url_expire_sec'] = request.url_expire_sec
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CsiGetFileInfo',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/csi/get_file_info',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CsiGetFileInfoResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def csi_get_file_info(
+        self,
+        request: pds_20220301_models.CsiGetFileInfoRequest,
+    ) -> pds_20220301_models.CsiGetFileInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.csi_get_file_info_with_options(request, headers, runtime)
+
+    async def csi_get_file_info_async(
+        self,
+        request: pds_20220301_models.CsiGetFileInfoRequest,
+    ) -> pds_20220301_models.CsiGetFileInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.csi_get_file_info_with_options_async(request, headers, runtime)
 
     def delete_domain_with_options(
         self,
@@ -1887,6 +1983,8 @@ class Client(OpenApiClient):
             body['image_thumbnail_process'] = request.image_thumbnail_process
         if not UtilClient.is_unset(request.office_thumbnail_process):
             body['office_thumbnail_process'] = request.office_thumbnail_process
+        if not UtilClient.is_unset(request.share_id):
+            body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.video_thumbnail_process):
             body['video_thumbnail_process'] = request.video_thumbnail_process
         req = open_api_models.OpenApiRequest(
@@ -1925,6 +2023,8 @@ class Client(OpenApiClient):
             body['image_thumbnail_process'] = request.image_thumbnail_process
         if not UtilClient.is_unset(request.office_thumbnail_process):
             body['office_thumbnail_process'] = request.office_thumbnail_process
+        if not UtilClient.is_unset(request.share_id):
+            body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.video_thumbnail_process):
             body['video_thumbnail_process'] = request.video_thumbnail_process
         req = open_api_models.OpenApiRequest(
@@ -2627,6 +2727,8 @@ class Client(OpenApiClient):
             body['file_id'] = request.file_id
         if not UtilClient.is_unset(request.file_name):
             body['file_name'] = request.file_name
+        if not UtilClient.is_unset(request.share_id):
+            body['share_id'] = request.share_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2663,6 +2765,8 @@ class Client(OpenApiClient):
             body['file_id'] = request.file_id
         if not UtilClient.is_unset(request.file_name):
             body['file_name'] = request.file_name
+        if not UtilClient.is_unset(request.share_id):
+            body['share_id'] = request.share_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2789,6 +2893,8 @@ class Client(OpenApiClient):
             body['fields'] = request.fields
         if not UtilClient.is_unset(request.file_id):
             body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.share_id):
+            body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.url_expire_sec):
             body['url_expire_sec'] = request.url_expire_sec
         req = open_api_models.OpenApiRequest(
@@ -2825,6 +2931,8 @@ class Client(OpenApiClient):
             body['fields'] = request.fields
         if not UtilClient.is_unset(request.file_id):
             body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.share_id):
+            body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.url_expire_sec):
             body['url_expire_sec'] = request.url_expire_sec
         req = open_api_models.OpenApiRequest(
@@ -3887,6 +3995,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.import_user_with_options_async(request, headers, runtime)
 
+    def investigate_file_with_options(
+        self,
+        request: pds_20220301_models.InvestigateFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.InvestigateFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_file_ids):
+            body['drive_file_ids'] = request.drive_file_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InvestigateFile',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/csi/investigate_file',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.InvestigateFileResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def investigate_file_with_options_async(
+        self,
+        request: pds_20220301_models.InvestigateFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.InvestigateFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_file_ids):
+            body['drive_file_ids'] = request.drive_file_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InvestigateFile',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/csi/investigate_file',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.InvestigateFileResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def investigate_file(
+        self,
+        request: pds_20220301_models.InvestigateFileRequest,
+    ) -> pds_20220301_models.InvestigateFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.investigate_file_with_options(request, headers, runtime)
+
+    async def investigate_file_async(
+        self,
+        request: pds_20220301_models.InvestigateFileRequest,
+    ) -> pds_20220301_models.InvestigateFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.investigate_file_with_options_async(request, headers, runtime)
+
     def link_account_with_options(
         self,
         request: pds_20220301_models.LinkAccountRequest,
@@ -4439,6 +4623,8 @@ class Client(OpenApiClient):
             body['order_direction'] = request.order_direction
         if not UtilClient.is_unset(request.parent_file_id):
             body['parent_file_id'] = request.parent_file_id
+        if not UtilClient.is_unset(request.share_id):
+            body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
         if not UtilClient.is_unset(request.type):
@@ -4487,6 +4673,8 @@ class Client(OpenApiClient):
             body['order_direction'] = request.order_direction
         if not UtilClient.is_unset(request.parent_file_id):
             body['parent_file_id'] = request.parent_file_id
+        if not UtilClient.is_unset(request.share_id):
+            body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
         if not UtilClient.is_unset(request.type):
@@ -6963,6 +7151,8 @@ class Client(OpenApiClient):
             body['drive_id'] = request.drive_id
         if not UtilClient.is_unset(request.drive_name):
             body['drive_name'] = request.drive_name
+        if not UtilClient.is_unset(request.owner):
+            body['owner'] = request.owner
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
         if not UtilClient.is_unset(request.total_size):
@@ -7001,6 +7191,8 @@ class Client(OpenApiClient):
             body['drive_id'] = request.drive_id
         if not UtilClient.is_unset(request.drive_name):
             body['drive_name'] = request.drive_name
+        if not UtilClient.is_unset(request.owner):
+            body['owner'] = request.owner
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
         if not UtilClient.is_unset(request.total_size):

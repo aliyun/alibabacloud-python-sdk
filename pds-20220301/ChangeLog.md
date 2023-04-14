@@ -1,3 +1,8 @@
+2023-04-14 Version: 1.0.8
+- support modify owner when update drive.
+- support share drive
+- suport live transcoding
+
 2023-04-06 Version: 1.0.7
 - Add domain api
 
