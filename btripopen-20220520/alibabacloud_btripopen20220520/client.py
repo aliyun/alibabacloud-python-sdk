@@ -2987,6 +2987,100 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.CostCenterSaveHeaders()
         return await self.cost_center_save_with_options_async(request, headers, runtime)
 
+    def create_sub_corp_with_options(
+        self,
+        request: btrip_open_20220520_models.CreateSubCorpRequest,
+        headers: btrip_open_20220520_models.CreateSubCorpHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CreateSubCorpResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.outer_corp_id):
+            body['outer_corp_id'] = request.outer_corp_id
+        if not UtilClient.is_unset(request.outer_corp_name):
+            body['outer_corp_name'] = request.outer_corp_name
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSubCorp',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/sub_corps/v1/corps',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CreateSubCorpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sub_corp_with_options_async(
+        self,
+        request: btrip_open_20220520_models.CreateSubCorpRequest,
+        headers: btrip_open_20220520_models.CreateSubCorpHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CreateSubCorpResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.outer_corp_id):
+            body['outer_corp_id'] = request.outer_corp_id
+        if not UtilClient.is_unset(request.outer_corp_name):
+            body['outer_corp_name'] = request.outer_corp_name
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSubCorp',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/sub_corps/v1/corps',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CreateSubCorpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sub_corp(
+        self,
+        request: btrip_open_20220520_models.CreateSubCorpRequest,
+    ) -> btrip_open_20220520_models.CreateSubCorpResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.CreateSubCorpHeaders()
+        return self.create_sub_corp_with_options(request, headers, runtime)
+
+    async def create_sub_corp_async(
+        self,
+        request: btrip_open_20220520_models.CreateSubCorpRequest,
+    ) -> btrip_open_20220520_models.CreateSubCorpResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.CreateSubCorpHeaders()
+        return await self.create_sub_corp_with_options_async(request, headers, runtime)
+
     def delete_invoice_entity_with_options(
         self,
         tmp_req: btrip_open_20220520_models.DeleteInvoiceEntityRequest,
@@ -5358,6 +5452,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightSearchListHeaders()
         return await self.flight_search_list_with_options_async(request, headers, runtime)
+
+    def group_depart_save_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.GroupDepartSaveRequest,
+        headers: btrip_open_20220520_models.GroupDepartSaveHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.GroupDepartSaveResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.GroupDepartSaveShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_corp_id_list):
+            request.sub_corp_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_corp_id_list, 'sub_corp_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dept_name):
+            body['dept_name'] = request.dept_name
+        if not UtilClient.is_unset(request.manager_ids):
+            body['manager_ids'] = request.manager_ids
+        if not UtilClient.is_unset(request.outer_dept_id):
+            body['outer_dept_id'] = request.outer_dept_id
+        if not UtilClient.is_unset(request.outer_dept_pid):
+            body['outer_dept_pid'] = request.outer_dept_pid
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        if not UtilClient.is_unset(request.sub_corp_id_list_shrink):
+            body['sub_corp_id_list'] = request.sub_corp_id_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GroupDepartSave',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/sub_corps/v1/departs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.GroupDepartSaveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def group_depart_save_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.GroupDepartSaveRequest,
+        headers: btrip_open_20220520_models.GroupDepartSaveHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.GroupDepartSaveResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.GroupDepartSaveShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_corp_id_list):
+            request.sub_corp_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_corp_id_list, 'sub_corp_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dept_name):
+            body['dept_name'] = request.dept_name
+        if not UtilClient.is_unset(request.manager_ids):
+            body['manager_ids'] = request.manager_ids
+        if not UtilClient.is_unset(request.outer_dept_id):
+            body['outer_dept_id'] = request.outer_dept_id
+        if not UtilClient.is_unset(request.outer_dept_pid):
+            body['outer_dept_pid'] = request.outer_dept_pid
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        if not UtilClient.is_unset(request.sub_corp_id_list_shrink):
+            body['sub_corp_id_list'] = request.sub_corp_id_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GroupDepartSave',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/sub_corps/v1/departs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.GroupDepartSaveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def group_depart_save(
+        self,
+        request: btrip_open_20220520_models.GroupDepartSaveRequest,
+    ) -> btrip_open_20220520_models.GroupDepartSaveResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.GroupDepartSaveHeaders()
+        return self.group_depart_save_with_options(request, headers, runtime)
+
+    async def group_depart_save_async(
+        self,
+        request: btrip_open_20220520_models.GroupDepartSaveRequest,
+    ) -> btrip_open_20220520_models.GroupDepartSaveResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.GroupDepartSaveHeaders()
+        return await self.group_depart_save_with_options_async(request, headers, runtime)
+
+    def group_user_save_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.GroupUserSaveRequest,
+        headers: btrip_open_20220520_models.GroupUserSaveHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.GroupUserSaveResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.GroupUserSaveShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_corp_id_list):
+            request.sub_corp_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_corp_id_list, 'sub_corp_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.job_no):
+            body['job_no'] = request.job_no
+        if not UtilClient.is_unset(request.leave_status):
+            body['leave_status'] = request.leave_status
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.real_name_en):
+            body['real_name_en'] = request.real_name_en
+        if not UtilClient.is_unset(request.sub_corp_id_list_shrink):
+            body['sub_corp_id_list'] = request.sub_corp_id_list_shrink
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_name):
+            body['user_name'] = request.user_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GroupUserSave',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/sub_corps/v1/users',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.GroupUserSaveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def group_user_save_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.GroupUserSaveRequest,
+        headers: btrip_open_20220520_models.GroupUserSaveHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.GroupUserSaveResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.GroupUserSaveShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_corp_id_list):
+            request.sub_corp_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_corp_id_list, 'sub_corp_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.job_no):
+            body['job_no'] = request.job_no
+        if not UtilClient.is_unset(request.leave_status):
+            body['leave_status'] = request.leave_status
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.real_name_en):
+            body['real_name_en'] = request.real_name_en
+        if not UtilClient.is_unset(request.sub_corp_id_list_shrink):
+            body['sub_corp_id_list'] = request.sub_corp_id_list_shrink
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_name):
+            body['user_name'] = request.user_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GroupUserSave',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/sub_corps/v1/users',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.GroupUserSaveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def group_user_save(
+        self,
+        request: btrip_open_20220520_models.GroupUserSaveRequest,
+    ) -> btrip_open_20220520_models.GroupUserSaveResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.GroupUserSaveHeaders()
+        return self.group_user_save_with_options(request, headers, runtime)
+
+    async def group_user_save_async(
+        self,
+        request: btrip_open_20220520_models.GroupUserSaveRequest,
+    ) -> btrip_open_20220520_models.GroupUserSaveResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.GroupUserSaveHeaders()
+        return await self.group_user_save_with_options_async(request, headers, runtime)
 
     def hotel_bill_settlement_query_with_options(
         self,
