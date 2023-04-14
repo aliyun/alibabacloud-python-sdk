@@ -1,3 +1,6 @@
+2023-04-14 Version: 1.0.9
+- Supported Fusion Auth.
+
 2022-12-27 Version: 1.0.8
 - Support Sms Verification for Dypnsapi.
 

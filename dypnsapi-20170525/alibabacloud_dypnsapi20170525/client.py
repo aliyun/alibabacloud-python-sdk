@@ -532,6 +532,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_authorization_url_with_options_async(request, runtime)
 
+    def get_fusion_auth_token_with_options(
+        self,
+        request: dypnsapi_20170525_models.GetFusionAuthTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetFusionAuthTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bundle_id):
+            query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.duration_seconds):
+            query['DurationSeconds'] = request.duration_seconds
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.package_name):
+            query['PackageName'] = request.package_name
+        if not UtilClient.is_unset(request.package_sign):
+            query['PackageSign'] = request.package_sign
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_code):
+            query['SchemeCode'] = request.scheme_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFusionAuthToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetFusionAuthTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_fusion_auth_token_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.GetFusionAuthTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetFusionAuthTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bundle_id):
+            query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.duration_seconds):
+            query['DurationSeconds'] = request.duration_seconds
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.package_name):
+            query['PackageName'] = request.package_name
+        if not UtilClient.is_unset(request.package_sign):
+            query['PackageSign'] = request.package_sign
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_code):
+            query['SchemeCode'] = request.scheme_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFusionAuthToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetFusionAuthTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_fusion_auth_token(
+        self,
+        request: dypnsapi_20170525_models.GetFusionAuthTokenRequest,
+    ) -> dypnsapi_20170525_models.GetFusionAuthTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_fusion_auth_token_with_options(request, runtime)
+
+    async def get_fusion_auth_token_async(
+        self,
+        request: dypnsapi_20170525_models.GetFusionAuthTokenRequest,
+    ) -> dypnsapi_20170525_models.GetFusionAuthTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_fusion_auth_token_with_options_async(request, runtime)
+
     def get_mobile_with_options(
         self,
         request: dypnsapi_20170525_models.GetMobileRequest,
@@ -1239,3 +1341,85 @@ class Client(OpenApiClient):
     ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.verify_sms_code_with_options_async(request, runtime)
+
+    def verify_with_fusion_auth_token_with_options(
+        self,
+        request: dypnsapi_20170525_models.VerifyWithFusionAuthTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.VerifyWithFusionAuthTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.verify_token):
+            query['VerifyToken'] = request.verify_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyWithFusionAuthToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.VerifyWithFusionAuthTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_with_fusion_auth_token_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.VerifyWithFusionAuthTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.VerifyWithFusionAuthTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.verify_token):
+            query['VerifyToken'] = request.verify_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyWithFusionAuthToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.VerifyWithFusionAuthTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_with_fusion_auth_token(
+        self,
+        request: dypnsapi_20170525_models.VerifyWithFusionAuthTokenRequest,
+    ) -> dypnsapi_20170525_models.VerifyWithFusionAuthTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_with_fusion_auth_token_with_options(request, runtime)
+
+    async def verify_with_fusion_auth_token_async(
+        self,
+        request: dypnsapi_20170525_models.VerifyWithFusionAuthTokenRequest,
+    ) -> dypnsapi_20170525_models.VerifyWithFusionAuthTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_with_fusion_auth_token_with_options_async(request, runtime)
