@@ -3368,6 +3368,8 @@ class Client(OpenApiClient):
             query['IPv6CidrBlock'] = request.ipv_6cidr_block
         if not UtilClient.is_unset(request.ip_version):
             query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.ipam_pool_id):
+            query['IpamPoolId'] = request.ipam_pool_id
         if not UtilClient.is_unset(request.ipv_6isp):
             query['Ipv6Isp'] = request.ipv_6isp
         if not UtilClient.is_unset(request.owner_account):
@@ -3426,6 +3428,8 @@ class Client(OpenApiClient):
             query['IPv6CidrBlock'] = request.ipv_6cidr_block
         if not UtilClient.is_unset(request.ip_version):
             query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.ipam_pool_id):
+            query['IpamPoolId'] = request.ipam_pool_id
         if not UtilClient.is_unset(request.ipv_6isp):
             query['Ipv6Isp'] = request.ipv_6isp
         if not UtilClient.is_unset(request.owner_account):
@@ -11310,6 +11314,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.enable_ipv_6):
             query['EnableIpv6'] = request.enable_ipv_6
+        if not UtilClient.is_unset(request.ipv_4ipam_pool_id):
+            query['Ipv4IpamPoolId'] = request.ipv_4ipam_pool_id
         if not UtilClient.is_unset(request.ipv_6cidr_block):
             query['Ipv6CidrBlock'] = request.ipv_6cidr_block
         if not UtilClient.is_unset(request.ipv_6isp):
@@ -11382,6 +11388,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.enable_ipv_6):
             query['EnableIpv6'] = request.enable_ipv_6
+        if not UtilClient.is_unset(request.ipv_4ipam_pool_id):
+            query['Ipv4IpamPoolId'] = request.ipv_4ipam_pool_id
         if not UtilClient.is_unset(request.ipv_6cidr_block):
             query['Ipv6CidrBlock'] = request.ipv_6cidr_block
         if not UtilClient.is_unset(request.ipv_6isp):
@@ -43460,6 +43468,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.packet_length):
+            query['PacketLength'] = request.packet_length
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
@@ -43528,6 +43538,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.packet_length):
+            query['PacketLength'] = request.packet_length
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):

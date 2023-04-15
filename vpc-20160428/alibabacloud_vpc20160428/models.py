@@ -4421,6 +4421,7 @@ class AssociateVpcCidrBlockRequest(TeaModel):
         self,
         ipv_6cidr_block: str = None,
         ip_version: str = None,
+        ipam_pool_id: str = None,
         ipv_6isp: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -4439,6 +4440,7 @@ class AssociateVpcCidrBlockRequest(TeaModel):
         # *   **IPV4**: IPv4
         # *   **IPV6**: IPv6. If you set **IpVersion** to **IPV6** and do not set **SecondaryCidrBlock**, you can add IPv6 CIDR blocks to the VPC.
         self.ip_version = ip_version
+        self.ipam_pool_id = ipam_pool_id
         # The type of the IPv6 CIDR block. Valid values:
         # 
         # *   **BGP** (default): Alibaba Cloud Border Gateway Protocol (BGP) IPv6
@@ -4484,6 +4486,8 @@ class AssociateVpcCidrBlockRequest(TeaModel):
             result['IPv6CidrBlock'] = self.ipv_6cidr_block
         if self.ip_version is not None:
             result['IpVersion'] = self.ip_version
+        if self.ipam_pool_id is not None:
+            result['IpamPoolId'] = self.ipam_pool_id
         if self.ipv_6isp is not None:
             result['Ipv6Isp'] = self.ipv_6isp
         if self.owner_account is not None:
@@ -4508,6 +4512,8 @@ class AssociateVpcCidrBlockRequest(TeaModel):
             self.ipv_6cidr_block = m.get('IPv6CidrBlock')
         if m.get('IpVersion') is not None:
             self.ip_version = m.get('IpVersion')
+        if m.get('IpamPoolId') is not None:
+            self.ipam_pool_id = m.get('IpamPoolId')
         if m.get('Ipv6Isp') is not None:
             self.ipv_6isp = m.get('Ipv6Isp')
         if m.get('OwnerAccount') is not None:
@@ -12851,7 +12857,7 @@ class CreatePublicIpAddressPoolResponse(TeaModel):
 class CreateRouteEntriesRequestRouteEntries(TeaModel):
     def __init__(
         self,
-        describption: str = None,
+        description: str = None,
         dst_cidr_block: str = None,
         ip_version: int = None,
         name: str = None,
@@ -12859,10 +12865,7 @@ class CreateRouteEntriesRequestRouteEntries(TeaModel):
         next_hop_type: str = None,
         route_table_id: str = None,
     ):
-        # The description of the custom route entry. You can specify up to 50 descriptions.
-        # 
-        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
-        self.describption = describption
+        self.description = description
         # The destination CIDR block of the custom route entry. Both IPv4 and IPv6 CIDR blocks are supported. You can specify up to 50 destination CIDR blocks. Make sure that the destination CIDR block meets the following requirements:
         # 
         # *   The destination CIDR block is not 100.64.0.0/10 or a subset of 100.64.0.0/10.
@@ -12903,8 +12906,8 @@ class CreateRouteEntriesRequestRouteEntries(TeaModel):
             return _map
 
         result = dict()
-        if self.describption is not None:
-            result['Describption'] = self.describption
+        if self.description is not None:
+            result['Description'] = self.description
         if self.dst_cidr_block is not None:
             result['DstCidrBlock'] = self.dst_cidr_block
         if self.ip_version is not None:
@@ -12921,8 +12924,8 @@ class CreateRouteEntriesRequestRouteEntries(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Describption') is not None:
-            self.describption = m.get('Describption')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('DstCidrBlock') is not None:
             self.dst_cidr_block = m.get('DstCidrBlock')
         if m.get('IpVersion') is not None:
@@ -16832,6 +16835,7 @@ class CreateVpcRequest(TeaModel):
         description: str = None,
         dry_run: bool = None,
         enable_ipv_6: bool = None,
+        ipv_4ipam_pool_id: str = None,
         ipv_6cidr_block: str = None,
         ipv_6isp: str = None,
         owner_account: str = None,
@@ -16868,6 +16872,7 @@ class CreateVpcRequest(TeaModel):
         # *   **false** (default): no
         # *   **true**: yes
         self.enable_ipv_6 = enable_ipv_6
+        self.ipv_4ipam_pool_id = ipv_4ipam_pool_id
         # The IPv6 CIDR blocks of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
         # The type of the IPv6 CIDR block. Valid values:
@@ -16919,6 +16924,8 @@ class CreateVpcRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.enable_ipv_6 is not None:
             result['EnableIpv6'] = self.enable_ipv_6
+        if self.ipv_4ipam_pool_id is not None:
+            result['Ipv4IpamPoolId'] = self.ipv_4ipam_pool_id
         if self.ipv_6cidr_block is not None:
             result['Ipv6CidrBlock'] = self.ipv_6cidr_block
         if self.ipv_6isp is not None:
@@ -16953,6 +16960,8 @@ class CreateVpcRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('EnableIpv6') is not None:
             self.enable_ipv_6 = m.get('EnableIpv6')
+        if m.get('Ipv4IpamPoolId') is not None:
+            self.ipv_4ipam_pool_id = m.get('Ipv4IpamPoolId')
         if m.get('Ipv6CidrBlock') is not None:
             self.ipv_6cidr_block = m.get('Ipv6CidrBlock')
         if m.get('Ipv6Isp') is not None:
@@ -31529,6 +31538,7 @@ class DescribeEipSegmentResponseBodyEipSegmentsEipSegment(TeaModel):
         region_id: str = None,
         segment: str = None,
         status: str = None,
+        zone: str = None,
     ):
         # The time when the contiguous EIP group was created. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
         self.creation_time = creation_time
@@ -31550,6 +31560,7 @@ class DescribeEipSegmentResponseBodyEipSegmentsEipSegment(TeaModel):
         # *   **Allocated**: allocated
         # *   **Releasing**: being released
         self.status = status
+        self.zone = zone
 
     def validate(self):
         pass
@@ -31576,6 +31587,8 @@ class DescribeEipSegmentResponseBodyEipSegmentsEipSegment(TeaModel):
             result['Segment'] = self.segment
         if self.status is not None:
             result['Status'] = self.status
+        if self.zone is not None:
+            result['Zone'] = self.zone
         return result
 
     def from_map(self, m: dict = None):
@@ -31596,6 +31609,8 @@ class DescribeEipSegmentResponseBodyEipSegmentsEipSegment(TeaModel):
             self.segment = m.get('Segment')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
         return self
 
 
@@ -85353,6 +85368,7 @@ class UpdateTrafficMirrorSessionAttributeRequest(TeaModel):
         enabled: bool = None,
         owner_account: str = None,
         owner_id: int = None,
+        packet_length: int = None,
         priority: int = None,
         region_id: str = None,
         resource_owner_account: str = None,
@@ -85383,6 +85399,7 @@ class UpdateTrafficMirrorSessionAttributeRequest(TeaModel):
         self.enabled = enabled
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.packet_length = packet_length
         # The priority of the traffic mirror session. Valid values: **1** to **32766**.
         # 
         # A smaller value specifies a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
@@ -85434,6 +85451,8 @@ class UpdateTrafficMirrorSessionAttributeRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.packet_length is not None:
+            result['PacketLength'] = self.packet_length
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.region_id is not None:
@@ -85470,6 +85489,8 @@ class UpdateTrafficMirrorSessionAttributeRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PacketLength') is not None:
+            self.packet_length = m.get('PacketLength')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('RegionId') is not None:
