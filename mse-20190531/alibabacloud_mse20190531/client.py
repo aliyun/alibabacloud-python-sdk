@@ -279,6 +279,8 @@ class Client(OpenApiClient):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.replica):
             query['Replica'] = request.replica
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.slb_spec):
@@ -339,6 +341,8 @@ class Client(OpenApiClient):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.replica):
             query['Replica'] = request.replica
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.slb_spec):
