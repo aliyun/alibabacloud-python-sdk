@@ -342,6 +342,110 @@ class AssociateProductWithPortfolioResponse(TeaModel):
         return self
 
 
+class AssociateTagOptionWithResourceRequest(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        tag_option_id: str = None,
+    ):
+        self.resource_id = resource_id
+        self.tag_option_id = tag_option_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.tag_option_id is not None:
+            result['TagOptionId'] = self.tag_option_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('TagOptionId') is not None:
+            self.tag_option_id = m.get('TagOptionId')
+        return self
+
+
+class AssociateTagOptionWithResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateTagOptionWithResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateTagOptionWithResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateTagOptionWithResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelProvisionedProductPlanRequest(TeaModel):
     def __init__(
         self,
@@ -436,6 +540,110 @@ class CancelProvisionedProductPlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CancelProvisionedProductPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CopyProductRequest(TeaModel):
+    def __init__(
+        self,
+        source_product_arn: str = None,
+        target_product_name: str = None,
+    ):
+        self.source_product_arn = source_product_arn
+        self.target_product_name = target_product_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_product_arn is not None:
+            result['SourceProductArn'] = self.source_product_arn
+        if self.target_product_name is not None:
+            result['TargetProductName'] = self.target_product_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceProductArn') is not None:
+            self.source_product_arn = m.get('SourceProductArn')
+        if m.get('TargetProductName') is not None:
+            self.target_product_name = m.get('TargetProductName')
+        return self
+
+
+class CopyProductResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CopyProductResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CopyProductResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CopyProductResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -718,10 +926,10 @@ class CreateProductRequestProductVersionParameters(TeaModel):
         template_type: str = None,
         template_url: str = None,
     ):
-        # Specifies whether the product version is visible to end users. Valid values:
+        # Specifies whether to enable the product version. Valid values:
         # 
-        # *   true: The product version is visible to end users. This is the default value.
-        # *   false: The product version is invisible to end users.
+        # *   true: enables the product version. This is the default value.
+        # *   false: disables the product version.
         self.active = active
         # The description of the product version.
         # 
@@ -730,9 +938,9 @@ class CreateProductRequestProductVersionParameters(TeaModel):
         # The recommendation information. Valid values:
         # 
         # *   Default: No recommendation information is provided. This is the default value.
-        # *   Recommended: the recommendation version.
+        # *   Recommended: the recommended version.
         # *   Latest: the latest version.
-        # *   Deprecated: the version that is about to be deprecated.
+        # *   Deprecated: the version that is about to be discontinued.
         self.guidance = guidance
         # The name of the product version.
         # 
@@ -740,7 +948,7 @@ class CreateProductRequestProductVersionParameters(TeaModel):
         self.product_version_name = product_version_name
         # The type of the template.
         # 
-        # The value is fixed as RosTerraformTemplate, which specifies that the Terraform template is supported by ROS.
+        # Set the value to RosTerraformTemplate, which specifies the Terraform template that is supported by ROS.
         self.template_type = template_type
         # The URL of the template.
         # 
@@ -806,7 +1014,7 @@ class CreateProductRequest(TeaModel):
         self.product_name = product_name
         # The type of the product.
         # 
-        # The value is fixed as Ros, which specifies Resource Orchestration Service (ROS).
+        # Set the value to Ros, which specifies Resource Orchestration Service (ROS).
         self.product_type = product_type
         # The information about the product version.
         self.product_version_parameters = product_version_parameters
@@ -872,7 +1080,7 @@ class CreateProductShrinkRequest(TeaModel):
         self.product_name = product_name
         # The type of the product.
         # 
-        # The value is fixed as Ros, which specifies Resource Orchestration Service (ROS).
+        # Set the value to Ros, which specifies Resource Orchestration Service (ROS).
         self.product_type = product_type
         # The information about the product version.
         self.product_version_parameters_shrink = product_version_parameters_shrink
@@ -1014,10 +1222,10 @@ class CreateProductVersionRequest(TeaModel):
         template_type: str = None,
         template_url: str = None,
     ):
-        # Specifies whether the product version is visible to end users. Valid values:
+        # Specifies whether the product version is active. Valid values:
         # 
-        # *   true: The product version is visible to end users. This is the default value.
-        # *   false: The product version is invisible to end users.
+        # *   true: The product version is active. This is the default value.
+        # *   false: The product version is inactive.
         self.active = active
         # The description of the product version.
         # 
@@ -1028,7 +1236,7 @@ class CreateProductVersionRequest(TeaModel):
         # *   Default: No recommendation information is provided. This is the default value.
         # *   Recommended: the recommendation version.
         # *   Latest: the latest version.
-        # *   Deprecated: the version that is about to be deprecated.
+        # *   Deprecated: the version that is about to be discontinued.
         self.guidance = guidance
         # The ID of the product to which the product version belongs.
         self.product_id = product_id
@@ -1038,7 +1246,7 @@ class CreateProductVersionRequest(TeaModel):
         self.product_version_name = product_version_name
         # The type of the template.
         # 
-        # The value is fixed as RosTerraformTemplate, which specifies that the Terraform template is supported by Resource Orchestration Service (ROS).
+        # The value is fixed as RosTerraformTemplate, which specifies the Terraform template that is supported by Resource Orchestration Service (ROS).
         self.template_type = template_type
         # The URL of the template.
         # 
@@ -1448,13 +1656,180 @@ class CreateProvisionedProductPlanResponse(TeaModel):
         return self
 
 
+class CreateTagOptionRequest(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateTagOptionResponseBodyTagOptionDetail(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        key: str = None,
+        owner: str = None,
+        tag_option_id: str = None,
+        value: str = None,
+    ):
+        self.active = active
+        self.key = key
+        self.owner = owner
+        self.tag_option_id = tag_option_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.tag_option_id is not None:
+            result['TagOptionId'] = self.tag_option_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('TagOptionId') is not None:
+            self.tag_option_id = m.get('TagOptionId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateTagOptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        tag_option_detail: CreateTagOptionResponseBodyTagOptionDetail = None,
+    ):
+        self.request_id = request_id
+        self.tag_option_detail = tag_option_detail
+
+    def validate(self):
+        if self.tag_option_detail:
+            self.tag_option_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_option_detail is not None:
+            result['TagOptionDetail'] = self.tag_option_detail.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagOptionDetail') is not None:
+            temp_model = CreateTagOptionResponseBodyTagOptionDetail()
+            self.tag_option_detail = temp_model.from_map(m['TagOptionDetail'])
+        return self
+
+
+class CreateTagOptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTagOptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTagOptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateTemplateRequestTerraformVariables(TeaModel):
     def __init__(
         self,
         description: str = None,
         variable_name: str = None,
     ):
+        # The description of the variable.
+        # 
+        # For more information about the format of variable descriptions, see [Methods and suggestions for Terraform code development](~~322216~~).
         self.description = description
+        # The name of the variable.
         self.variable_name = variable_name
 
     def validate(self):
@@ -1494,8 +1869,11 @@ class CreateTemplateRequest(TeaModel):
         self.template_body = template_body
         # The type of the template.
         # 
-        # The value is fixed as RosTerraformTemplate, which specifies that the Terraform template is supported by Resource Orchestration Service (ROS).
+        # Set the value to RosTerraformTemplate, which specifies the Terraform template that is supported by Resource Orchestration Service (ROS).
         self.template_type = template_type
+        # The variable settings of the Terraform template. You can configure the variables in a structured manner. Service Catalog applies the variable settings to the template.
+        # 
+        # > The variables must be defined in the Terraform template.
         self.terraform_variables = terraform_variables
 
     def validate(self):
@@ -2109,6 +2487,208 @@ class DeleteProvisionedProductPlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteProvisionedProductPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTagOptionRequest(TeaModel):
+    def __init__(
+        self,
+        tag_option_id: str = None,
+    ):
+        self.tag_option_id = tag_option_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_option_id is not None:
+            result['TagOptionId'] = self.tag_option_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagOptionId') is not None:
+            self.tag_option_id = m.get('TagOptionId')
+        return self
+
+
+class DeleteTagOptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTagOptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTagOptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTagOptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisAssociateTagOptionFromResourceRequest(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        tag_option_id: str = None,
+    ):
+        self.resource_id = resource_id
+        self.tag_option_id = tag_option_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.tag_option_id is not None:
+            result['TagOptionId'] = self.tag_option_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('TagOptionId') is not None:
+            self.tag_option_id = m.get('TagOptionId')
+        return self
+
+
+class DisAssociateTagOptionFromResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisAssociateTagOptionFromResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisAssociateTagOptionFromResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisAssociateTagOptionFromResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2733,20 +3313,77 @@ class GetPortfolioResponseBodyPortfolioDetail(TeaModel):
         return self
 
 
+class GetPortfolioResponseBodyTagOptions(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        key: str = None,
+        owner: str = None,
+        tag_option_id: str = None,
+        value: str = None,
+    ):
+        self.active = active
+        self.key = key
+        self.owner = owner
+        self.tag_option_id = tag_option_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.tag_option_id is not None:
+            result['TagOptionId'] = self.tag_option_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('TagOptionId') is not None:
+            self.tag_option_id = m.get('TagOptionId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetPortfolioResponseBody(TeaModel):
     def __init__(
         self,
         portfolio_detail: GetPortfolioResponseBodyPortfolioDetail = None,
         request_id: str = None,
+        tag_options: List[GetPortfolioResponseBodyTagOptions] = None,
     ):
         # The details of the product portfolio.
         self.portfolio_detail = portfolio_detail
         # The ID of the request.
         self.request_id = request_id
+        self.tag_options = tag_options
 
     def validate(self):
         if self.portfolio_detail:
             self.portfolio_detail.validate()
+        if self.tag_options:
+            for k in self.tag_options:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2758,6 +3395,10 @@ class GetPortfolioResponseBody(TeaModel):
             result['PortfolioDetail'] = self.portfolio_detail.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['TagOptions'] = []
+        if self.tag_options is not None:
+            for k in self.tag_options:
+                result['TagOptions'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2767,6 +3408,11 @@ class GetPortfolioResponseBody(TeaModel):
             self.portfolio_detail = temp_model.from_map(m['PortfolioDetail'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        self.tag_options = []
+        if m.get('TagOptions') is not None:
+            for k in m.get('TagOptions'):
+                temp_model = GetPortfolioResponseBodyTagOptions()
+                self.tag_options.append(temp_model.from_map(k))
         return self
 
 
@@ -2916,20 +3562,77 @@ class GetProductAsAdminResponseBodyProductDetail(TeaModel):
         return self
 
 
+class GetProductAsAdminResponseBodyTagOptions(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        key: str = None,
+        owner: str = None,
+        tag_option_id: str = None,
+        value: str = None,
+    ):
+        self.active = active
+        self.key = key
+        self.owner = owner
+        self.tag_option_id = tag_option_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.tag_option_id is not None:
+            result['TagOptionId'] = self.tag_option_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('TagOptionId') is not None:
+            self.tag_option_id = m.get('TagOptionId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetProductAsAdminResponseBody(TeaModel):
     def __init__(
         self,
         product_detail: GetProductAsAdminResponseBodyProductDetail = None,
         request_id: str = None,
+        tag_options: List[GetProductAsAdminResponseBodyTagOptions] = None,
     ):
         # The information about the product.
         self.product_detail = product_detail
         # The ID of the request.
         self.request_id = request_id
+        self.tag_options = tag_options
 
     def validate(self):
         if self.product_detail:
             self.product_detail.validate()
+        if self.tag_options:
+            for k in self.tag_options:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2941,6 +3644,10 @@ class GetProductAsAdminResponseBody(TeaModel):
             result['ProductDetail'] = self.product_detail.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['TagOptions'] = []
+        if self.tag_options is not None:
+            for k in self.tag_options:
+                result['TagOptions'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2950,6 +3657,11 @@ class GetProductAsAdminResponseBody(TeaModel):
             self.product_detail = temp_model.from_map(m['ProductDetail'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        self.tag_options = []
+        if m.get('TagOptions') is not None:
+            for k in m.get('TagOptions'):
+                temp_model = GetProductAsAdminResponseBodyTagOptions()
+                self.tag_options.append(temp_model.from_map(k))
         return self
 
 
@@ -3037,7 +3749,7 @@ class GetProductAsEndUserResponseBodyProductSummary(TeaModel):
         product_type: str = None,
         provider_name: str = None,
     ):
-        # The time when the product is created.
+        # The time when the product was created.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
@@ -3048,7 +3760,7 @@ class GetProductAsEndUserResponseBodyProductSummary(TeaModel):
         # *   true: The default launch option exists. In this case, the PortfolioId parameter is not required when the product is launched or when the information about the product instance is updated.
         # *   false: The default launch option does not exist. In this case, the PortfolioId parameter is required when the product is launched or when the information about the product instance is updated. For more information about how to obtain the value of the PortfolioId parameter, see [ListLaunchOptions](~~ListLaunchOptions~~).
         # 
-        # >  If the product is added to only one product portfolio, the default launch option exists. If the product is added to multiple product portfolios, multiple launch options exist at the same time. However, no default launch options exist.
+        # > If the product is added to only one product portfolio, the default launch option exists. If the product is added to multiple product portfolios, multiple launch options exist at the same time. However, no default launch options exist.
         self.has_default_launch_option = has_default_launch_option
         # The Alibaba Cloud Resource Name (ARN) of the product.
         self.product_arn = product_arn
@@ -3238,9 +3950,9 @@ class GetProductVersionResponseBodyProductVersionDetail(TeaModel):
         # *   true: The product version is visible to end users. This is the default value.
         # *   false: The product version is invisible to end users.
         self.active = active
-        # The time when the product version is created.
+        # The time when the product version was created.
         # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
         # The description of the product version.
         self.description = description
@@ -3448,27 +4160,27 @@ class GetProvisionedProductResponseBodyProvisionedProductDetail(TeaModel):
         status: str = None,
         status_message: str = None,
     ):
-        # The time when the product instance is created.
+        # The time when the product instance was created.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The ID of the task that is last run on the product instance.
+        # The ID of the task that was last run on the product instance.
         # 
         # The task can be one of the following types:
         # 
-        # *   LaunchProduct: launches the product.
-        # *   UpdateProvisionedProduct: updates the information about the product instance.
-        # *   TerminateProvisionedProduct: terminates the product instance.
+        # *   LaunchProduct: a task that launches the product.
+        # *   UpdateProvisionedProduct: a task that updates the information about the product instance.
+        # *   TerminateProvisionedProduct: a task that terminates the product instance.
         self.last_provisioning_task_id = last_provisioning_task_id
-        # The ID of the last task successfully run on the product instance.
+        # The ID of the last task that was successfully run on the product instance.
         # 
         # The task can be one of the following types:
         # 
-        # *   LaunchProduct: launches the product.
-        # *   UpdateProvisionedProduct: updates the information about the product instance.
-        # *   TerminateProvisionedProduct: terminates the product instance.
+        # *   LaunchProduct: a task that launches the product.
+        # *   UpdateProvisionedProduct: a task that updates the information about the product instance.
+        # *   TerminateProvisionedProduct: a task that terminates the product instance.
         self.last_successful_provisioning_task_id = last_successful_provisioning_task_id
-        # The ID of the task that is last run.
+        # The ID of the task that was last run.
         self.last_task_id = last_task_id
         # The ID of the RAM entity to which the product instance belongs.
         self.owner_principal_id = owner_principal_id
@@ -3495,7 +4207,7 @@ class GetProvisionedProductResponseBodyProvisionedProductDetail(TeaModel):
         self.provisioned_product_name = provisioned_product_name
         # The type of the product instance.
         # 
-        # The value is fixed as RosStack, which indicates a ROS stack.
+        # The value is fixed as RosStack, which indicates an ROS stack.
         self.provisioned_product_type = provisioned_product_type
         # The ID of the Resource Orchestration Service (ROS) stack.
         self.stack_id = stack_id
@@ -3503,13 +4215,13 @@ class GetProvisionedProductResponseBodyProvisionedProductDetail(TeaModel):
         self.stack_region_id = stack_region_id
         # The state of the product instance. Valid values:
         # 
-        # *   Available: The product instance is available.
-        # *   UnderChange: The information about the product instance is being changed.
+        # *   Available: The product instance was available.
+        # *   UnderChange: The information about the product instance was being changed.
         # *   Error: An exception occurred on the product instance.
         self.status = status
-        # The message that is returned for the state.
+        # The message that is returned for the status of the product instance.
         # 
-        # >  This parameter is returned only when Error is returned for the Status parameter.
+        # > This parameter is returned only when Error is returned for the Status parameter.
         self.status_message = status_message
 
     def validate(self):
@@ -4580,6 +5292,163 @@ class GetProvisionedProductPlanResponse(TeaModel):
         return self
 
 
+class GetTagOptionRequest(TeaModel):
+    def __init__(
+        self,
+        tag_option_id: str = None,
+    ):
+        self.tag_option_id = tag_option_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_option_id is not None:
+            result['TagOptionId'] = self.tag_option_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagOptionId') is not None:
+            self.tag_option_id = m.get('TagOptionId')
+        return self
+
+
+class GetTagOptionResponseBodyTagOptionDetail(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        key: str = None,
+        owner: str = None,
+        tag_option_id: str = None,
+        value: str = None,
+    ):
+        self.active = active
+        self.key = key
+        self.owner = owner
+        self.tag_option_id = tag_option_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.tag_option_id is not None:
+            result['TagOptionId'] = self.tag_option_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('TagOptionId') is not None:
+            self.tag_option_id = m.get('TagOptionId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetTagOptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        tag_option_detail: GetTagOptionResponseBodyTagOptionDetail = None,
+    ):
+        self.request_id = request_id
+        self.tag_option_detail = tag_option_detail
+
+    def validate(self):
+        if self.tag_option_detail:
+            self.tag_option_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_option_detail is not None:
+            result['TagOptionDetail'] = self.tag_option_detail.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagOptionDetail') is not None:
+            temp_model = GetTagOptionResponseBodyTagOptionDetail()
+            self.tag_option_detail = temp_model.from_map(m['TagOptionDetail'])
+        return self
+
+
+class GetTagOptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTagOptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTagOptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTaskRequest(TeaModel):
     def __init__(
         self,
@@ -4615,7 +5484,7 @@ class GetTaskResponseBodyTaskDetailLogTerraformLogs(TeaModel):
         content: str = None,
         stream: str = None,
     ):
-        # The name of the Terraform command. Valid values:
+        # The name of the Terraform command that is run. Valid values:
         # 
         # *   apply
         # *   plan
@@ -4624,7 +5493,7 @@ class GetTaskResponseBodyTaskDetailLogTerraformLogs(TeaModel):
         # 
         # For more information about Terraform commands, see [Basic CLI Features](https://www.terraform.io/cli/commands).
         self.command = command
-        # The content of the output stream that is returned after you run the command.
+        # The content of the output stream that is returned after the command is run.
         self.content = content
         # The output stream. Valid values:
         # 
@@ -4665,7 +5534,7 @@ class GetTaskResponseBodyTaskDetailLog(TeaModel):
         self,
         terraform_logs: List[GetTaskResponseBodyTaskDetailLogTerraformLogs] = None,
     ):
-        # An array that consists of Terraform logs.
+        # The Terraform logs.
         self.terraform_logs = terraform_logs
 
     def validate(self):
@@ -4703,11 +5572,11 @@ class GetTaskResponseBodyTaskDetailOutputs(TeaModel):
         output_key: str = None,
         output_value: str = None,
     ):
-        # The description of the parameter that is specified in the output of the template.
+        # The description of the output parameter for the template.
         self.description = description
-        # The name of the parameter that is specified in the output of the template.
+        # The name of the output parameter for the template.
         self.output_key = output_key
-        # The value of the parameter that is specified in the output of the template.
+        # The value of the output parameter for the template.
         self.output_value = output_value
 
     def validate(self):
@@ -4744,9 +5613,9 @@ class GetTaskResponseBodyTaskDetailParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of the parameter in the template.
+        # The name of the input parameter for the template.
         self.parameter_key = parameter_key
-        # The value of the parameter in the template.
+        # The value of the input parameter for the template.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -4779,13 +5648,7 @@ class GetTaskResponseBodyTaskDetailTaskTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the custom tag.
-        # 
-        # The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the custom tag.
-        # 
-        # The tag value can be up to 128 characters in length, and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -4839,9 +5702,9 @@ class GetTaskResponseBodyTaskDetail(TeaModel):
         self.create_time = create_time
         # The logs of the product instance.
         self.log = log
-        # An array that consists of the parameters specified in the output of the template.
+        # The output parameters of the template.
         self.outputs = outputs
-        # An array that consists of the parameters in the template.
+        # The input parameters of the template.
         self.parameters = parameters
         # The ID of the product portfolio.
         self.portfolio_id = portfolio_id
@@ -4851,31 +5714,30 @@ class GetTaskResponseBodyTaskDetail(TeaModel):
         self.product_name = product_name
         # The ID of the product version.
         self.product_version_id = product_version_id
-        # The name for the version of the product.
+        # The name of the product version.
         self.product_version_name = product_version_name
         # The ID of the product instance.
         self.provisioned_product_id = provisioned_product_id
         # The name of the product instance.
         self.provisioned_product_name = provisioned_product_name
-        # The status of the task. Valid values:
+        # The state of the task. Valid values:
         # 
         # *   Succeeded: The task was successful.
-        # *   InProgress: The task is in progress.
+        # *   InProgress: The task was in progress.
         # *   Failed: The task failed.
         self.status = status
-        # The message that is returned for the state.
+        # The message that is returned for the status of the task.
         # 
         # > This parameter is returned only when Failed is returned for the Status parameter.
         self.status_message = status_message
         # The ID of the task.
         self.task_id = task_id
-        # An array consisting of custom tags that are specified by the end user.
         self.task_tags = task_tags
         # The type of the task. Valid values:
         # 
-        # *   LaunchProduct: launches the product.
-        # *   UpdateProvisionedProduct: updates the information about the product instance.
-        # *   TerminateProvisionedProduct: terminates the product instance.
+        # *   LaunchProduct: a task that launches the product.
+        # *   UpdateProvisionedProduct: a task that updates the information about the product instance.
+        # *   TerminateProvisionedProduct: a task that terminates the product instance.
         self.task_type = task_type
         # The time when the task was last modified.
         # 
@@ -5003,7 +5865,7 @@ class GetTaskResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The details of the download task.
+        # The details of the task.
         self.task_detail = task_detail
 
     def validate(self):
@@ -5484,7 +6346,7 @@ class ListPortfoliosRequest(TeaModel):
         sort_by: str = None,
         sort_order: str = None,
     ):
-        # The filter condition.
+        # The filter conditions.
         self.filters = filters
         # The number of the page to return.
         # 
@@ -5492,7 +6354,7 @@ class ListPortfoliosRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         # 
-        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
+        # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The ID of the product.
         self.product_id = product_id
@@ -5500,11 +6362,11 @@ class ListPortfoliosRequest(TeaModel):
         # 
         # *   Local: the product portfolios that are created by using the current account. This is the default value.
         # *   Import: the product portfolios that are imported from other accounts.
-        # *   All: All available product portfolios.
+        # *   All: all available product portfolios.
         self.scope = scope
         # The field that is used to sort the queried data.
         # 
-        # The value is fixed as CreateTime, which specifies the creation time of product portfolios.
+        # The value is fixed as CreateTime, which specifies the time when the product portfolio was created.
         self.sort_by = sort_by
         # The order in which you want to sort the queried data. Valid values:
         # 
@@ -5574,7 +6436,7 @@ class ListPortfoliosResponseBodyPortfolioDetails(TeaModel):
         portfolio_name: str = None,
         provider_name: str = None,
     ):
-        # The time when the product portfolio is created.
+        # The time when the product portfolio was created.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
@@ -5642,7 +6504,7 @@ class ListPortfoliosResponseBody(TeaModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # An array that consists of the product portfolios.
+        # The product portfolios.
         self.portfolio_details = portfolio_details
         # The ID of the request.
         self.request_id = request_id
@@ -5809,7 +6671,7 @@ class ListPrincipalsResponseBody(TeaModel):
         principals: List[ListPrincipalsResponseBodyPrincipals] = None,
         request_id: str = None,
     ):
-        # An array that consists of RAM entities.
+        # The RAM entities.
         self.principals = principals
         # The ID of the request.
         self.request_id = request_id
@@ -5895,7 +6757,7 @@ class ListProductVersionsRequest(TeaModel):
         self,
         product_id: str = None,
     ):
-        # The ID of the product to which the product version belongs.
+        # The ID of the product.
         self.product_id = product_id
 
     def validate(self):
@@ -5931,11 +6793,11 @@ class ListProductVersionsResponseBodyProductVersionDetails(TeaModel):
         template_type: str = None,
         template_url: str = None,
     ):
-        # Indicates whether the product version is visible to end users. Valid values:
+        # Indicates whether the product version is enabled. Valid values:
         # 
-        # true: The product version is visible to end users. This is the default value. false: The product version is invisible to end users.
+        # true: The product version is enabled. This is the default value. false: The product version is disabled.
         self.active = active
-        # The time when the product version is created.
+        # The time when the product version was created.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
@@ -5944,9 +6806,9 @@ class ListProductVersionsResponseBodyProductVersionDetails(TeaModel):
         # The recommendation information. Valid values:
         # 
         # *   Default: No recommendation information is provided. This is the default value.
-        # *   Recommended: the recommendation version.
+        # *   Recommended: the recommended version.
         # *   Latest: the latest version.
-        # *   Deprecated: the version that is about to be deprecated.
+        # *   Deprecated: the version that is about to be discontinued.
         self.guidance = guidance
         # The ID of the product to which the product version belongs.
         self.product_id = product_id
@@ -5956,7 +6818,7 @@ class ListProductVersionsResponseBodyProductVersionDetails(TeaModel):
         self.product_version_name = product_version_name
         # The type of the template.
         # 
-        # The value is fixed as RosTerraformTemplate, which indicates that the Terraform template is supported by Resource Orchestration Service (ROS).
+        # The value is fixed as RosTerraformTemplate, which indicates the Terraform template that is supported by Resource Orchestration Service (ROS).
         self.template_type = template_type
         # The URL of the template.
         self.template_url = template_url
@@ -6019,7 +6881,7 @@ class ListProductVersionsResponseBody(TeaModel):
         product_version_details: List[ListProductVersionsResponseBodyProductVersionDetails] = None,
         request_id: str = None,
     ):
-        # An array that consists of the product versions.
+        # The versions of the product.
         self.product_version_details = product_version_details
         # The ID of the request.
         self.request_id = request_id
@@ -6149,15 +7011,15 @@ class ListProductsAsAdminRequest(TeaModel):
         sort_by: str = None,
         sort_order: str = None,
     ):
-        # An array that consists of filter conditions.
+        # The filter conditions.
         self.filters = filters
         # The number of the page to return.
         # 
         # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries to return on each page.
         # 
-        # Valid values: 1 to 100. Pages start from page 1. Default value: 10.
+        # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The ID of the product portfolio.
         self.portfolio_id = portfolio_id
@@ -6167,11 +7029,11 @@ class ListProductsAsAdminRequest(TeaModel):
         # *   Import: the products that are imported from other accounts.
         # *   All: all available products.
         self.scope = scope
-        # The information based on which you want to sort the products.
+        # The field that is used to sort the queried data.
         # 
-        # The value is fixed as CreateTime, which specifies the creation time of products.
+        # Set the value to CreateTime, which specifies the time when the product was created.
         self.sort_by = sort_by
-        # The order in which you want to sort the query results. Valid values:
+        # The order in which you want to sort the queried data. Valid values:
         # 
         # *   Asc: the ascending order
         # *   Desc: the descending order
@@ -6254,7 +7116,7 @@ class ListProductsAsAdminResponseBodyProductDetails(TeaModel):
         self.product_name = product_name
         # The type of the product.
         # 
-        # The value is fixed as Ros, which specifies Resource Orchestration Service (ROS).
+        # The value is fixed as Ros, which indicates Resource Orchestration Service (ROS).
         self.product_type = product_type
         # The provider of the product.
         self.provider_name = provider_name
@@ -6312,11 +7174,11 @@ class ListProductsAsAdminResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of the returned page.
+        # The page number of the returned page.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # An array that consists of products.
+        # The products.
         self.product_details = product_details
         # The ID of the request.
         self.request_id = request_id
@@ -6458,7 +7320,7 @@ class ListProductsAsEndUserRequest(TeaModel):
         sort_by: str = None,
         sort_order: str = None,
     ):
-        # An array that consists of filter conditions.
+        # The filter conditions.
         self.filters = filters
         # The number of the page to return.
         # 
@@ -6466,11 +7328,11 @@ class ListProductsAsEndUserRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         # 
-        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
+        # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The field that is used to sort the queried data.
         # 
-        # The value is fixed as CreateTime, which specifies the creation time of products.
+        # Set the value to CreateTime, which specifies the time when the product was created.
         self.sort_by = sort_by
         # The order in which you want to sort the queried data. Valid values:
         # 
@@ -6534,7 +7396,7 @@ class ListProductsAsEndUserResponseBodyProductSummaries(TeaModel):
         product_type: str = None,
         provider_name: str = None,
     ):
-        # The time when the product is created.
+        # The time when the product was created.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
@@ -6545,7 +7407,7 @@ class ListProductsAsEndUserResponseBodyProductSummaries(TeaModel):
         # *   true: The default launch option exists. In this case, the PortfolioId parameter is not required when the product is launched or when the information about the product instance is updated.
         # *   false: The default launch option does not exist. In this case, the PortfolioId parameter is required when the product is launched or when the information about the product instance is updated. For more information about how to obtain the value of the PortfolioId parameter, see [ListLaunchOptions](~~ListLaunchOptions~~).
         # 
-        # >  If the product is added to only one product portfolio, the default launch option exists. If the product is added to multiple product portfolios, multiple launch options exist at the same time. However, no default launch options exist.
+        # > If the product is added to only one product portfolio, the default launch option exists. If the product is added to multiple product portfolios, multiple launch options exist at the same time. However, no default launch options exist.
         self.has_default_launch_option = has_default_launch_option
         # The Alibaba Cloud Resource Name (ARN) of the product.
         self.product_arn = product_arn
@@ -6621,11 +7483,11 @@ class ListProductsAsEndUserResponseBody(TeaModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # An array that consists of products.
+        # The products.
         self.product_summaries = product_summaries
         # The ID of the request.
         self.request_id = request_id
-        # The total number of returned rows.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7470,7 +8332,7 @@ class ListProvisionedProductsRequest(TeaModel):
         # *   User: queries the product instances that are created by the current requester. This is the default value.
         # *   Account: queries the product instances that belong to the current Alibaba Cloud account.
         self.access_level_filter = access_level_filter
-        # The filter condition.
+        # The filter conditions.
         self.filters = filters
         # The number of the page to return.
         # 
@@ -7478,11 +8340,11 @@ class ListProvisionedProductsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         # 
-        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
+        # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The field that is used to sort the queried data.
         # 
-        # The value is fixed as CreateTime, which specifies the creation time of product instances.
+        # Set the value to CreateTime, which specifies the time when the product instance was created.
         self.sort_by = sort_by
         # The order in which you want to sort the queried data. Valid values:
         # 
@@ -7561,27 +8423,27 @@ class ListProvisionedProductsResponseBodyProvisionedProductDetails(TeaModel):
         status: str = None,
         status_message: str = None,
     ):
-        # The time when the product instance is created.
+        # The time when the product instance was created.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The ID of the task that is last run on the product instance.
+        # The ID of the task that was last run on the product instance.
         # 
         # The task can be one of the following types:
         # 
-        # *   LaunchProduct: launches the product.
-        # *   UpdateProvisionedProduct: updates the information about the product instance.
-        # *   TerminateProvisionedProduct: terminates the product instance.
+        # *   LaunchProduct: a task that launches the product.
+        # *   UpdateProvisionedProduct: a task that updates the information about the product instance.
+        # *   TerminateProvisionedProduct: a task that terminates the product instance.
         self.last_provisioning_task_id = last_provisioning_task_id
-        # The ID of the last task successfully run on the product instance.
+        # The ID of the last task that was successfully run on the product instance.
         # 
         # The task can be one of the following types:
         # 
-        # *   LaunchProduct: launches the product.
-        # *   UpdateProvisionedProduct: updates the information about the product instance.
-        # *   TerminateProvisionedProduct: terminates the product instance.
+        # *   LaunchProduct: a task that launches the product.
+        # *   UpdateProvisionedProduct: a task that updates the information about the product instance.
+        # *   TerminateProvisionedProduct: a task that terminates the product instance.
         self.last_successful_provisioning_task_id = last_successful_provisioning_task_id
-        # The ID of the task that is last run.
+        # The ID of the task that was last run.
         self.last_task_id = last_task_id
         # The ID of the RAM entity to which the product instance belongs.
         self.owner_principal_id = owner_principal_id
@@ -7608,7 +8470,7 @@ class ListProvisionedProductsResponseBodyProvisionedProductDetails(TeaModel):
         self.provisioned_product_name = provisioned_product_name
         # The type of the product instance.
         # 
-        # The value is fixed as RosStack, which indicates a ROS stack.
+        # The value is fixed as RosStack, which indicates an ROS stack.
         self.provisioned_product_type = provisioned_product_type
         # The ID of the Resource Orchestration Service (ROS) stack.
         self.stack_id = stack_id
@@ -7616,13 +8478,13 @@ class ListProvisionedProductsResponseBodyProvisionedProductDetails(TeaModel):
         self.stack_region_id = stack_region_id
         # The state of the product instance. Valid values:
         # 
-        # *   Available: The product instance is available.
-        # *   UnderChange: The information about the product instance is being changed.
+        # *   Available: The product instance was available.
+        # *   UnderChange: The information about the product instance was being changed.
         # *   Error: An exception occurred on the product instance.
         self.status = status
-        # The description of the state.
+        # The message that is returned for the status of the product instance.
         # 
-        # >  This parameter is returned only when Error is returned for the Status parameter.
+        # > This parameter is returned only when Error is returned for the Status parameter.
         self.status_message = status_message
 
     def validate(self):
@@ -7730,7 +8592,7 @@ class ListProvisionedProductsResponseBody(TeaModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # An array that consists of product instances.
+        # The product instances.
         self.provisioned_product_details = provisioned_product_details
         # The ID of the request.
         self.request_id = request_id
@@ -7873,7 +8735,7 @@ class ListRegionsResponseBody(TeaModel):
         regions: List[ListRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # An array that consists of regions.
+        # The details of regions.
         self.regions = regions
         # The ID of the request.
         self.request_id = request_id
@@ -7954,6 +8816,508 @@ class ListRegionsResponse(TeaModel):
         return self
 
 
+class ListResourcesForTagOptionRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        resource_type: str = None,
+        tag_option_id: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_type = resource_type
+        self.tag_option_id = tag_option_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_option_id is not None:
+            result['TagOptionId'] = self.tag_option_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagOptionId') is not None:
+            self.tag_option_id = m.get('TagOptionId')
+        return self
+
+
+class ListResourcesForTagOptionResponseBodyResourceDetails(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        resource_arn: str = None,
+        resource_id: str = None,
+        resource_name: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.resource_arn = resource_arn
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        return self
+
+
+class ListResourcesForTagOptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        resource_details: List[ListResourcesForTagOptionResponseBodyResourceDetails] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.resource_details = resource_details
+        self.total_count = total_count
+
+    def validate(self):
+        if self.resource_details:
+            for k in self.resource_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourceDetails'] = []
+        if self.resource_details is not None:
+            for k in self.resource_details:
+                result['ResourceDetails'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_details = []
+        if m.get('ResourceDetails') is not None:
+            for k in m.get('ResourceDetails'):
+                temp_model = ListResourcesForTagOptionResponseBodyResourceDetails()
+                self.resource_details.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListResourcesForTagOptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListResourcesForTagOptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListResourcesForTagOptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTagOptionsRequestFilters(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        full_text_search: str = None,
+        key: str = None,
+        value: str = None,
+    ):
+        self.active = active
+        self.full_text_search = full_text_search
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.full_text_search is not None:
+            result['FullTextSearch'] = self.full_text_search
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('FullTextSearch') is not None:
+            self.full_text_search = m.get('FullTextSearch')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagOptionsRequest(TeaModel):
+    def __init__(
+        self,
+        filters: ListTagOptionsRequestFilters = None,
+        page_number: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+        sort_order: str = None,
+    ):
+        self.filters = filters
+        self.page_number = page_number
+        self.page_size = page_size
+        self.sort_by = sort_by
+        self.sort_order = sort_order
+
+    def validate(self):
+        if self.filters:
+            self.filters.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filters is not None:
+            result['Filters'] = self.filters.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filters') is not None:
+            temp_model = ListTagOptionsRequestFilters()
+            self.filters = temp_model.from_map(m['Filters'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
+        return self
+
+
+class ListTagOptionsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filters_shrink: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+        sort_order: str = None,
+    ):
+        self.filters_shrink = filters_shrink
+        self.page_number = page_number
+        self.page_size = page_size
+        self.sort_by = sort_by
+        self.sort_order = sort_order
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filters_shrink is not None:
+            result['Filters'] = self.filters_shrink
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filters') is not None:
+            self.filters_shrink = m.get('Filters')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
+        return self
+
+
+class ListTagOptionsResponseBodyTagOptionDetails(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        key: str = None,
+        owner: str = None,
+        tag_option_id: str = None,
+        value: str = None,
+    ):
+        self.active = active
+        self.key = key
+        self.owner = owner
+        self.tag_option_id = tag_option_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.tag_option_id is not None:
+            result['TagOptionId'] = self.tag_option_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('TagOptionId') is not None:
+            self.tag_option_id = m.get('TagOptionId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagOptionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        tag_option_details: List[ListTagOptionsResponseBodyTagOptionDetails] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.tag_option_details = tag_option_details
+        self.total_count = total_count
+
+    def validate(self):
+        if self.tag_option_details:
+            for k in self.tag_option_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagOptionDetails'] = []
+        if self.tag_option_details is not None:
+            for k in self.tag_option_details:
+                result['TagOptionDetails'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_option_details = []
+        if m.get('TagOptionDetails') is not None:
+            for k in m.get('TagOptionDetails'):
+                temp_model = ListTagOptionsResponseBodyTagOptionDetails()
+                self.tag_option_details.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTagOptionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagOptionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagOptionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTasksRequest(TeaModel):
     def __init__(
         self,
@@ -7969,13 +9333,13 @@ class ListTasksRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         # 
-        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
+        # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The ID of the product instance.
         self.provisioned_product_id = provisioned_product_id
         # The field that is used to sort the queried data.
         # 
-        # The value is fixed as CreateTime, which specifies the creation time of tasks.
+        # Set the value to CreateTime, which specifies the time when the task was created.
         self.sort_by = sort_by
         # The order in which you want to sort the queried data. Valid values:
         # 
@@ -8026,7 +9390,7 @@ class ListTasksResponseBodyTaskDetailsLogTerraformLogs(TeaModel):
         content: str = None,
         stream: str = None,
     ):
-        # The name of the Terraform command. Valid values:
+        # The name of the Terraform command that is run. Valid values:
         # 
         # *   apply
         # *   plan
@@ -8035,7 +9399,7 @@ class ListTasksResponseBodyTaskDetailsLogTerraformLogs(TeaModel):
         # 
         # For more information about Terraform commands, see [Basic CLI Features](https://www.terraform.io/cli/commands).
         self.command = command
-        # The content of the output stream that is returned after you run the command.
+        # The content of the output stream that is returned after the command is run.
         self.content = content
         # The output stream. Valid values:
         # 
@@ -8076,7 +9440,7 @@ class ListTasksResponseBodyTaskDetailsLog(TeaModel):
         self,
         terraform_logs: List[ListTasksResponseBodyTaskDetailsLogTerraformLogs] = None,
     ):
-        # An array that consists of Terraform logs.
+        # The Terraform logs.
         self.terraform_logs = terraform_logs
 
     def validate(self):
@@ -8114,11 +9478,11 @@ class ListTasksResponseBodyTaskDetailsOutputs(TeaModel):
         output_key: str = None,
         output_value: str = None,
     ):
-        # The description of the parameter that is specified in the output of the template.
+        # The description of the output parameter for the template.
         self.description = description
-        # The name of the parameter that is specified in the output of the template.
+        # The name of the output parameter for the template.
         self.output_key = output_key
-        # The value of the parameter that is specified in the output of the template.
+        # The value of the output parameter for the template.
         self.output_value = output_value
 
     def validate(self):
@@ -8155,9 +9519,9 @@ class ListTasksResponseBodyTaskDetailsParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of the parameter in the template.
+        # The name of the input parameter for the template.
         self.parameter_key = parameter_key
-        # The value of the parameter in the template.
+        # The value of the input parameter for the template.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -8204,15 +9568,15 @@ class ListTasksResponseBodyTaskDetails(TeaModel):
         task_type: str = None,
         update_time: str = None,
     ):
-        # The time when the task is created.
+        # The time when the task was created.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
         # The logs of the product instance.
         self.log = log
-        # An array that consists of the parameters specified in the output of the template.
+        # The output parameters of the template.
         self.outputs = outputs
-        # An array that consists of the parameters in the template. The parameters are specified by the administrator.
+        # The input parameters of the template.
         self.parameters = parameters
         # The ID of the product portfolio.
         self.portfolio_id = portfolio_id
@@ -8222,7 +9586,7 @@ class ListTasksResponseBodyTaskDetails(TeaModel):
         self.product_name = product_name
         # The ID of the product version.
         self.product_version_id = product_version_id
-        # The name for the version of the product.
+        # The name of the product version.
         self.product_version_name = product_version_name
         # The ID of the product instance.
         self.provisioned_product_id = provisioned_product_id
@@ -8230,21 +9594,21 @@ class ListTasksResponseBodyTaskDetails(TeaModel):
         self.provisioned_product_name = provisioned_product_name
         # The state of the task. Valid values:
         # 
-        # *   Succeeded: The task is successful.
-        # *   InProgress: The task is in progress.
+        # *   Succeeded: The task was successful.
+        # *   InProgress: The task was in progress.
         # *   Failed: The task failed.
         self.status = status
-        # The message that is returned for the state.
+        # The message that is returned for the status of the task.
         # 
-        # >  This parameter is returned only when Failed is returned for the Status parameter.
+        # > This parameter is returned only when Failed is returned for the Status parameter.
         self.status_message = status_message
         # The ID of the task.
         self.task_id = task_id
         # The type of the task. Valid values:
         # 
-        # *   LaunchProduct: launches the product.
-        # *   UpdateProvisionedProduct: updates the information about the product instance.
-        # *   TerminateProvisionedProduct: terminates the product instance.
+        # *   LaunchProduct: a task that launches the product.
+        # *   UpdateProvisionedProduct: a task that updates the information about the product instance.
+        # *   TerminateProvisionedProduct: a task that terminates the product instance.
         self.task_type = task_type
         # The time when the task was last modified.
         # 
@@ -8366,9 +9730,9 @@ class ListTasksResponseBody(TeaModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # An array that consists of tasks.
+        # The tasks.
         self.task_details = task_details
-        # The total number of returned rows.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -8566,7 +9930,7 @@ class UpdateConstraintRequest(TeaModel):
         constraint_id: str = None,
         description: str = None,
     ):
-        # The configuration of the constraint.
+        # The configurations of the constraint.
         # 
         # Format: { "LocalRoleName": "\<role_name>" }.
         self.config = config
@@ -8961,10 +10325,10 @@ class UpdateProductVersionRequest(TeaModel):
         product_version_id: str = None,
         product_version_name: str = None,
     ):
-        # Specifies whether the product version is visible to end users. Valid values:
+        # Specifies whether to enable the product version. Valid values:
         # 
-        # *   true: The product version is visible to end users. This is the default value.
-        # *   false: The product version is invisible to end users.
+        # *   true: enables the product version. This is the default value.
+        # *   false: disables the product version.
         self.active = active
         # The description of the product version.
         # 
@@ -8973,9 +10337,9 @@ class UpdateProductVersionRequest(TeaModel):
         # The recommendation information. Valid values:
         # 
         # *   Default: No recommendation information is provided. This is the default value.
-        # *   Recommended: the recommendation version.
+        # *   Recommended: the recommended version.
         # *   Latest: the latest version.
-        # *   Deprecated: the version that is about to be deprecated.
+        # *   Deprecated: the version that is about to be discontinued.
         self.guidance = guidance
         # The ID of the product version.
         self.product_version_id = product_version_id
@@ -9105,9 +10469,9 @@ class UpdateProvisionedProductRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of the parameter in the template.
+        # The name of the input parameter for the template.
         self.parameter_key = parameter_key
-        # The value of the parameter in the template.
+        # The value of the input parameter for the template.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -9140,7 +10504,13 @@ class UpdateProvisionedProductRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the custom tag.
+        # 
+        # The tag key must be 1 to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
         self.key = key
+        # The tag value of the custom tag.
+        # 
+        # The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -9177,25 +10547,35 @@ class UpdateProvisionedProductRequest(TeaModel):
         provisioned_product_id: str = None,
         tags: List[UpdateProvisionedProductRequestTags] = None,
     ):
-        # An array that consists of the parameters in the template. The parameters are specified by the administrator.
+        # The input parameters of the template.
         # 
         # You can specify up to 200 parameters.
         # 
-        # > - This parameter is optional. If you specify the Parameters parameter, you must specify the ParameterKey and ParameterValue parameters.
-        # > - If the values of the ProductVersionId and Parameters parameters are not changed, you are not allowed to update the information about the product instance.
+        # > 
+        # *   This parameter is optional. If you specify the Parameters parameter, you must specify the ParameterKey and ParameterValue parameters.
+        # > 
+        # *   If the values of the ProductVersionId and Parameters parameters are not changed, you are not allowed to update the information about the product instance.
         self.parameters = parameters
         # The ID of the product portfolio.
         # 
-        # >  If the PortfolioId parameter is not required, you do not need to specify the PortfolioId parameter. If the PortfolioId parameter is required, you must specify the PortfolioId parameter. For more information about how to obtain the value of the PortfolioId parameter, see [ListLaunchOptions](~~ListLaunchOptions~~).
+        # > The PortfolioId parameter is not required if the default launch option exists. The PortfolioId parameter is required if the default launch option does not exist. For more information about how to obtain the value of the PortfolioId parameter, see [ListLaunchOptions](~~ListLaunchOptions~~).
         self.portfolio_id = portfolio_id
         # The ID of the product.
         self.product_id = product_id
         # The ID of the product version.
         # 
-        # >  If the values of the ProductVersionId and Parameters parameters are not changed, the information about the product instance cannot be updated.
+        # > If the values of the ProductVersionId and Parameters parameters are not changed, the information about the product instance cannot be updated.
         self.product_version_id = product_version_id
         # The ID of the product instance.
         self.provisioned_product_id = provisioned_product_id
+        # The input custom tags.
+        # 
+        # Maximum value of N: 20.
+        # 
+        # > 
+        # *   The Tags parameter is optional. If you need to specify the Tags parameter, you must specify the Tags.N.Key and Tags.N.Value parameters.
+        # > 
+        # *   The tag is propagated to each stack resource that supports the tag feature.
         self.tags = tags
 
     def validate(self):
@@ -9559,6 +10939,175 @@ class UpdateProvisionedProductPlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateProvisionedProductPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTagOptionRequest(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        tag_option_id: str = None,
+        value: str = None,
+    ):
+        self.active = active
+        self.tag_option_id = tag_option_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.tag_option_id is not None:
+            result['TagOptionId'] = self.tag_option_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('TagOptionId') is not None:
+            self.tag_option_id = m.get('TagOptionId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateTagOptionResponseBodyTagOptionDetail(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        key: str = None,
+        owner: str = None,
+        tag_option_id: str = None,
+        value: str = None,
+    ):
+        self.active = active
+        self.key = key
+        self.owner = owner
+        self.tag_option_id = tag_option_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.tag_option_id is not None:
+            result['TagOptionId'] = self.tag_option_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('TagOptionId') is not None:
+            self.tag_option_id = m.get('TagOptionId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateTagOptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        tag_option_detail: UpdateTagOptionResponseBodyTagOptionDetail = None,
+    ):
+        self.request_id = request_id
+        self.tag_option_detail = tag_option_detail
+
+    def validate(self):
+        if self.tag_option_detail:
+            self.tag_option_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_option_detail is not None:
+            result['TagOptionDetail'] = self.tag_option_detail.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagOptionDetail') is not None:
+            temp_model = UpdateTagOptionResponseBodyTagOptionDetail()
+            self.tag_option_detail = temp_model.from_map(m['TagOptionDetail'])
+        return self
+
+
+class UpdateTagOptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTagOptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTagOptionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

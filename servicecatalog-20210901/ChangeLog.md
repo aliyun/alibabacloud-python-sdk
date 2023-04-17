@@ -1,3 +1,6 @@
+2023-04-17 Version: 1.1.4
+- Support TagOption.
+
 2023-03-20 Version: 1.1.3
 - Support create approval constraint and approver check and approve provisioned product plan.
 

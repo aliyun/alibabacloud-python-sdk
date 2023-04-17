@@ -271,6 +271,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.associate_product_with_portfolio_with_options_async(request, runtime)
 
+    def associate_tag_option_with_resource_with_options(
+        self,
+        request: servicecatalog_20210901_models.AssociateTagOptionWithResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.AssociateTagOptionWithResourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag_option_id):
+            body['TagOptionId'] = request.tag_option_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssociateTagOptionWithResource',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.AssociateTagOptionWithResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_tag_option_with_resource_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.AssociateTagOptionWithResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.AssociateTagOptionWithResourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag_option_id):
+            body['TagOptionId'] = request.tag_option_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssociateTagOptionWithResource',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.AssociateTagOptionWithResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_tag_option_with_resource(
+        self,
+        request: servicecatalog_20210901_models.AssociateTagOptionWithResourceRequest,
+    ) -> servicecatalog_20210901_models.AssociateTagOptionWithResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.associate_tag_option_with_resource_with_options(request, runtime)
+
+    async def associate_tag_option_with_resource_async(
+        self,
+        request: servicecatalog_20210901_models.AssociateTagOptionWithResourceRequest,
+    ) -> servicecatalog_20210901_models.AssociateTagOptionWithResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.associate_tag_option_with_resource_with_options_async(request, runtime)
+
     def cancel_provisioned_product_plan_with_options(
         self,
         request: servicecatalog_20210901_models.CancelProvisionedProductPlanRequest,
@@ -340,6 +414,80 @@ class Client(OpenApiClient):
     ) -> servicecatalog_20210901_models.CancelProvisionedProductPlanResponse:
         runtime = util_models.RuntimeOptions()
         return await self.cancel_provisioned_product_plan_with_options_async(request, runtime)
+
+    def copy_product_with_options(
+        self,
+        request: servicecatalog_20210901_models.CopyProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.CopyProductResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.source_product_arn):
+            body['SourceProductArn'] = request.source_product_arn
+        if not UtilClient.is_unset(request.target_product_name):
+            body['TargetProductName'] = request.target_product_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CopyProduct',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.CopyProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_product_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.CopyProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.CopyProductResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.source_product_arn):
+            body['SourceProductArn'] = request.source_product_arn
+        if not UtilClient.is_unset(request.target_product_name):
+            body['TargetProductName'] = request.target_product_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CopyProduct',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.CopyProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_product(
+        self,
+        request: servicecatalog_20210901_models.CopyProductRequest,
+    ) -> servicecatalog_20210901_models.CopyProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.copy_product_with_options(request, runtime)
+
+    async def copy_product_async(
+        self,
+        request: servicecatalog_20210901_models.CopyProductRequest,
+    ) -> servicecatalog_20210901_models.CopyProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.copy_product_with_options_async(request, runtime)
 
     def create_constraint_with_options(
         self,
@@ -855,6 +1003,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_provisioned_product_plan_with_options_async(request, runtime)
 
+    def create_tag_option_with_options(
+        self,
+        request: servicecatalog_20210901_models.CreateTagOptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.CreateTagOptionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTagOption',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.CreateTagOptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tag_option_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.CreateTagOptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.CreateTagOptionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTagOption',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.CreateTagOptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tag_option(
+        self,
+        request: servicecatalog_20210901_models.CreateTagOptionRequest,
+    ) -> servicecatalog_20210901_models.CreateTagOptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_tag_option_with_options(request, runtime)
+
+    async def create_tag_option_async(
+        self,
+        request: servicecatalog_20210901_models.CreateTagOptionRequest,
+    ) -> servicecatalog_20210901_models.CreateTagOptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_tag_option_with_options_async(request, runtime)
+
     def create_template_with_options(
         self,
         request: servicecatalog_20210901_models.CreateTemplateRequest,
@@ -1282,6 +1504,150 @@ class Client(OpenApiClient):
     ) -> servicecatalog_20210901_models.DeleteProvisionedProductPlanResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_provisioned_product_plan_with_options_async(request, runtime)
+
+    def delete_tag_option_with_options(
+        self,
+        request: servicecatalog_20210901_models.DeleteTagOptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.DeleteTagOptionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tag_option_id):
+            body['TagOptionId'] = request.tag_option_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTagOption',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.DeleteTagOptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_tag_option_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.DeleteTagOptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.DeleteTagOptionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tag_option_id):
+            body['TagOptionId'] = request.tag_option_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTagOption',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.DeleteTagOptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_tag_option(
+        self,
+        request: servicecatalog_20210901_models.DeleteTagOptionRequest,
+    ) -> servicecatalog_20210901_models.DeleteTagOptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_tag_option_with_options(request, runtime)
+
+    async def delete_tag_option_async(
+        self,
+        request: servicecatalog_20210901_models.DeleteTagOptionRequest,
+    ) -> servicecatalog_20210901_models.DeleteTagOptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_tag_option_with_options_async(request, runtime)
+
+    def dis_associate_tag_option_from_resource_with_options(
+        self,
+        request: servicecatalog_20210901_models.DisAssociateTagOptionFromResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.DisAssociateTagOptionFromResourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag_option_id):
+            body['TagOptionId'] = request.tag_option_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisAssociateTagOptionFromResource',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.DisAssociateTagOptionFromResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dis_associate_tag_option_from_resource_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.DisAssociateTagOptionFromResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.DisAssociateTagOptionFromResourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag_option_id):
+            body['TagOptionId'] = request.tag_option_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisAssociateTagOptionFromResource',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.DisAssociateTagOptionFromResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dis_associate_tag_option_from_resource(
+        self,
+        request: servicecatalog_20210901_models.DisAssociateTagOptionFromResourceRequest,
+    ) -> servicecatalog_20210901_models.DisAssociateTagOptionFromResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.dis_associate_tag_option_from_resource_with_options(request, runtime)
+
+    async def dis_associate_tag_option_from_resource_async(
+        self,
+        request: servicecatalog_20210901_models.DisAssociateTagOptionFromResourceRequest,
+    ) -> servicecatalog_20210901_models.DisAssociateTagOptionFromResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.dis_associate_tag_option_from_resource_with_options_async(request, runtime)
 
     def disassociate_principal_from_portfolio_with_options(
         self,
@@ -1721,7 +2087,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.GetProductAsEndUserResponse:
         """
-        Make sure that the administrator grants the end user the permissions to manage the product. For more information, see [Grant the end user the permissions to access the product](~~405233~~).
+        Make sure that you are granted the permissions to manage relevant products as a user by an administrator. For more information, see [Manage access permissions](~~405233~~).
         
         @param request: GetProductAsEndUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1756,7 +2122,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.GetProductAsEndUserResponse:
         """
-        Make sure that the administrator grants the end user the permissions to manage the product. For more information, see [Grant the end user the permissions to access the product](~~405233~~).
+        Make sure that you are granted the permissions to manage relevant products as a user by an administrator. For more information, see [Manage access permissions](~~405233~~).
         
         @param request: GetProductAsEndUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1790,7 +2156,7 @@ class Client(OpenApiClient):
         request: servicecatalog_20210901_models.GetProductAsEndUserRequest,
     ) -> servicecatalog_20210901_models.GetProductAsEndUserResponse:
         """
-        Make sure that the administrator grants the end user the permissions to manage the product. For more information, see [Grant the end user the permissions to access the product](~~405233~~).
+        Make sure that you are granted the permissions to manage relevant products as a user by an administrator. For more information, see [Manage access permissions](~~405233~~).
         
         @param request: GetProductAsEndUserRequest
         @return: GetProductAsEndUserResponse
@@ -1803,7 +2169,7 @@ class Client(OpenApiClient):
         request: servicecatalog_20210901_models.GetProductAsEndUserRequest,
     ) -> servicecatalog_20210901_models.GetProductAsEndUserResponse:
         """
-        Make sure that the administrator grants the end user the permissions to manage the product. For more information, see [Grant the end user the permissions to access the product](~~405233~~).
+        Make sure that you are granted the permissions to manage relevant products as a user by an administrator. For more information, see [Manage access permissions](~~405233~~).
         
         @param request: GetProductAsEndUserRequest
         @return: GetProductAsEndUserResponse
@@ -2020,6 +2386,72 @@ class Client(OpenApiClient):
     ) -> servicecatalog_20210901_models.GetProvisionedProductPlanResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_provisioned_product_plan_with_options_async(request, runtime)
+
+    def get_tag_option_with_options(
+        self,
+        request: servicecatalog_20210901_models.GetTagOptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.GetTagOptionResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTagOption',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.GetTagOptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_tag_option_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.GetTagOptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.GetTagOptionResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTagOption',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.GetTagOptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_tag_option(
+        self,
+        request: servicecatalog_20210901_models.GetTagOptionRequest,
+    ) -> servicecatalog_20210901_models.GetTagOptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_tag_option_with_options(request, runtime)
+
+    async def get_tag_option_async(
+        self,
+        request: servicecatalog_20210901_models.GetTagOptionRequest,
+    ) -> servicecatalog_20210901_models.GetTagOptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_tag_option_with_options_async(request, runtime)
 
     def get_task_with_options(
         self,
@@ -2593,7 +3025,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.ListProductsAsEndUserResponse:
         """
-        Make sure that the administrator grants the end user the permissions to manage the product. For more information, see [Grant the end user the permissions to access the product](~~405233~~).
+        Make sure that you are granted the permissions to manage relevant products as a user by an administrator. For more information, see [Manage access permissions](~~405233~~).
         
         @param request: ListProductsAsEndUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2636,7 +3068,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.ListProductsAsEndUserResponse:
         """
-        Make sure that the administrator grants the end user the permissions to manage the product. For more information, see [Grant the end user the permissions to access the product](~~405233~~).
+        Make sure that you are granted the permissions to manage relevant products as a user by an administrator. For more information, see [Manage access permissions](~~405233~~).
         
         @param request: ListProductsAsEndUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2678,7 +3110,7 @@ class Client(OpenApiClient):
         request: servicecatalog_20210901_models.ListProductsAsEndUserRequest,
     ) -> servicecatalog_20210901_models.ListProductsAsEndUserResponse:
         """
-        Make sure that the administrator grants the end user the permissions to manage the product. For more information, see [Grant the end user the permissions to access the product](~~405233~~).
+        Make sure that you are granted the permissions to manage relevant products as a user by an administrator. For more information, see [Manage access permissions](~~405233~~).
         
         @param request: ListProductsAsEndUserRequest
         @return: ListProductsAsEndUserResponse
@@ -2691,7 +3123,7 @@ class Client(OpenApiClient):
         request: servicecatalog_20210901_models.ListProductsAsEndUserRequest,
     ) -> servicecatalog_20210901_models.ListProductsAsEndUserResponse:
         """
-        Make sure that the administrator grants the end user the permissions to manage the product. For more information, see [Grant the end user the permissions to access the product](~~405233~~).
+        Make sure that you are granted the permissions to manage relevant products as a user by an administrator. For more information, see [Manage access permissions](~~405233~~).
         
         @param request: ListProductsAsEndUserRequest
         @return: ListProductsAsEndUserResponse
@@ -3002,6 +3434,146 @@ class Client(OpenApiClient):
     async def list_regions_async(self) -> servicecatalog_20210901_models.ListRegionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_regions_with_options_async(runtime)
+
+    def list_resources_for_tag_option_with_options(
+        self,
+        request: servicecatalog_20210901_models.ListResourcesForTagOptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.ListResourcesForTagOptionResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourcesForTagOption',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.ListResourcesForTagOptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resources_for_tag_option_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.ListResourcesForTagOptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.ListResourcesForTagOptionResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourcesForTagOption',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.ListResourcesForTagOptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resources_for_tag_option(
+        self,
+        request: servicecatalog_20210901_models.ListResourcesForTagOptionRequest,
+    ) -> servicecatalog_20210901_models.ListResourcesForTagOptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_resources_for_tag_option_with_options(request, runtime)
+
+    async def list_resources_for_tag_option_async(
+        self,
+        request: servicecatalog_20210901_models.ListResourcesForTagOptionRequest,
+    ) -> servicecatalog_20210901_models.ListResourcesForTagOptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_resources_for_tag_option_with_options_async(request, runtime)
+
+    def list_tag_options_with_options(
+        self,
+        tmp_req: servicecatalog_20210901_models.ListTagOptionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.ListTagOptionsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = servicecatalog_20210901_models.ListTagOptionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filters):
+            request.filters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filters, 'Filters', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagOptions',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.ListTagOptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_options_with_options_async(
+        self,
+        tmp_req: servicecatalog_20210901_models.ListTagOptionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.ListTagOptionsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = servicecatalog_20210901_models.ListTagOptionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filters):
+            request.filters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filters, 'Filters', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagOptions',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.ListTagOptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_options(
+        self,
+        request: servicecatalog_20210901_models.ListTagOptionsRequest,
+    ) -> servicecatalog_20210901_models.ListTagOptionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_options_with_options(request, runtime)
+
+    async def list_tag_options_async(
+        self,
+        request: servicecatalog_20210901_models.ListTagOptionsRequest,
+    ) -> servicecatalog_20210901_models.ListTagOptionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_options_with_options_async(request, runtime)
 
     def list_tasks_with_options(
         self,
@@ -3696,3 +4268,81 @@ class Client(OpenApiClient):
     ) -> servicecatalog_20210901_models.UpdateProvisionedProductPlanResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_provisioned_product_plan_with_options_async(request, runtime)
+
+    def update_tag_option_with_options(
+        self,
+        request: servicecatalog_20210901_models.UpdateTagOptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.UpdateTagOptionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.active):
+            body['Active'] = request.active
+        if not UtilClient.is_unset(request.tag_option_id):
+            body['TagOptionId'] = request.tag_option_id
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTagOption',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.UpdateTagOptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_tag_option_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.UpdateTagOptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.UpdateTagOptionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.active):
+            body['Active'] = request.active
+        if not UtilClient.is_unset(request.tag_option_id):
+            body['TagOptionId'] = request.tag_option_id
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTagOption',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.UpdateTagOptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_tag_option(
+        self,
+        request: servicecatalog_20210901_models.UpdateTagOptionRequest,
+    ) -> servicecatalog_20210901_models.UpdateTagOptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_tag_option_with_options(request, runtime)
+
+    async def update_tag_option_async(
+        self,
+        request: servicecatalog_20210901_models.UpdateTagOptionRequest,
+    ) -> servicecatalog_20210901_models.UpdateTagOptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_tag_option_with_options_async(request, runtime)
