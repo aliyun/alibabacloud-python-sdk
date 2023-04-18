@@ -285,9 +285,11 @@ class BeginSessionResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        silence_reply_timeout: int = None,
         welcome_message: str = None,
     ):
         self.request_id = request_id
+        self.silence_reply_timeout = silence_reply_timeout
         self.welcome_message = welcome_message
 
     def validate(self):
@@ -301,6 +303,8 @@ class BeginSessionResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.silence_reply_timeout is not None:
+            result['SilenceReplyTimeout'] = self.silence_reply_timeout
         if self.welcome_message is not None:
             result['WelcomeMessage'] = self.welcome_message
         return result
@@ -309,6 +313,8 @@ class BeginSessionResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SilenceReplyTimeout') is not None:
+            self.silence_reply_timeout = m.get('SilenceReplyTimeout')
         if m.get('WelcomeMessage') is not None:
             self.welcome_message = m.get('WelcomeMessage')
         return self

@@ -1,3 +1,6 @@
+2023-04-18 Version: 1.0.8
+- Add SilenceReplyTimeout in BeginSession to get the silence timeout.
+
 2023-03-22 Version: 1.0.7
 - Update ListAgent.
 
