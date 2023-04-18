@@ -49,8 +49,6 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.AccessTokenResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.app_key):
-            query['app_key'] = request.app_key
         if not UtilClient.is_unset(request.app_secret):
             query['app_secret'] = request.app_secret
         req = open_api_models.OpenApiRequest(
@@ -81,8 +79,6 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.AccessTokenResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.app_key):
-            query['app_key'] = request.app_key
         if not UtilClient.is_unset(request.app_secret):
             query['app_secret'] = request.app_secret
         req = open_api_models.OpenApiRequest(
