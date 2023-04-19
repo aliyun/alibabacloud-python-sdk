@@ -115,6 +115,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.adjust_jmeter_scene_speed_with_options_async(request, runtime)
 
+    def adjust_pts_scene_speed_with_options(
+        self,
+        tmp_req: pts20201020_models.AdjustPtsSceneSpeedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.AdjustPtsSceneSpeedResponse:
+        UtilClient.validate_model(tmp_req)
+        request = pts20201020_models.AdjustPtsSceneSpeedShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.api_speed_list):
+            request.api_speed_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.api_speed_list, 'ApiSpeedList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.api_speed_list_shrink):
+            query['ApiSpeedList'] = request.api_speed_list_shrink
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AdjustPtsSceneSpeed',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.AdjustPtsSceneSpeedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def adjust_pts_scene_speed_with_options_async(
+        self,
+        tmp_req: pts20201020_models.AdjustPtsSceneSpeedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.AdjustPtsSceneSpeedResponse:
+        UtilClient.validate_model(tmp_req)
+        request = pts20201020_models.AdjustPtsSceneSpeedShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.api_speed_list):
+            request.api_speed_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.api_speed_list, 'ApiSpeedList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.api_speed_list_shrink):
+            query['ApiSpeedList'] = request.api_speed_list_shrink
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AdjustPtsSceneSpeed',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.AdjustPtsSceneSpeedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def adjust_pts_scene_speed(
+        self,
+        request: pts20201020_models.AdjustPtsSceneSpeedRequest,
+    ) -> pts20201020_models.AdjustPtsSceneSpeedResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.adjust_pts_scene_speed_with_options(request, runtime)
+
+    async def adjust_pts_scene_speed_async(
+        self,
+        request: pts20201020_models.AdjustPtsSceneSpeedRequest,
+    ) -> pts20201020_models.AdjustPtsSceneSpeedResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.adjust_pts_scene_speed_with_options_async(request, runtime)
+
     def create_pts_scene_with_options(
         self,
         request: pts20201020_models.CreatePtsSceneRequest,
@@ -968,6 +1050,84 @@ class Client(OpenApiClient):
     ) -> pts20201020_models.GetOpenJMeterSceneResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_open_jmeter_scene_with_options_async(request, runtime)
+
+    def get_pts_debug_sample_logs_with_options(
+        self,
+        request: pts20201020_models.GetPtsDebugSampleLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.GetPtsDebugSampleLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plan_id):
+            query['PlanId'] = request.plan_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPtsDebugSampleLogs',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.GetPtsDebugSampleLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_pts_debug_sample_logs_with_options_async(
+        self,
+        request: pts20201020_models.GetPtsDebugSampleLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.GetPtsDebugSampleLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plan_id):
+            query['PlanId'] = request.plan_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPtsDebugSampleLogs',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.GetPtsDebugSampleLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_pts_debug_sample_logs(
+        self,
+        request: pts20201020_models.GetPtsDebugSampleLogsRequest,
+    ) -> pts20201020_models.GetPtsDebugSampleLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_pts_debug_sample_logs_with_options(request, runtime)
+
+    async def get_pts_debug_sample_logs_async(
+        self,
+        request: pts20201020_models.GetPtsDebugSampleLogsRequest,
+    ) -> pts20201020_models.GetPtsDebugSampleLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_pts_debug_sample_logs_with_options_async(request, runtime)
 
     def get_pts_report_details_with_options(
         self,
