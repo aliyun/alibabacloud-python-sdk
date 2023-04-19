@@ -220,6 +220,8 @@ class Client(OpenApiClient):
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.crop):
+            query['Crop'] = request.crop
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.face_picture_base_64):
@@ -228,12 +230,18 @@ class Client(OpenApiClient):
             query['FacePictureUrl'] = request.face_picture_url
         if not UtilClient.is_unset(request.flow_type):
             query['FlowType'] = request.flow_type
+        if not UtilClient.is_unset(request.id_face_quality):
+            query['IdFaceQuality'] = request.id_face_quality
+        if not UtilClient.is_unset(request.id_spoof):
+            query['IdSpoof'] = request.id_spoof
         if not UtilClient.is_unset(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not UtilClient.is_unset(request.merchant_user_id):
             query['MerchantUserId'] = request.merchant_user_id
         if not UtilClient.is_unset(request.meta_info):
             query['MetaInfo'] = request.meta_info
+        if not UtilClient.is_unset(request.ocr):
+            query['Ocr'] = request.ocr
         if not UtilClient.is_unset(request.operation_mode):
             query['OperationMode'] = request.operation_mode
         if not UtilClient.is_unset(request.pages):
@@ -242,6 +250,8 @@ class Client(OpenApiClient):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_config):
             query['ProductConfig'] = request.product_config
+        if not UtilClient.is_unset(request.return_url):
+            query['ReturnUrl'] = request.return_url
         if not UtilClient.is_unset(request.scene_code):
             query['SceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.service_level):
@@ -272,6 +282,8 @@ class Client(OpenApiClient):
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.crop):
+            query['Crop'] = request.crop
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.face_picture_base_64):
@@ -280,12 +292,18 @@ class Client(OpenApiClient):
             query['FacePictureUrl'] = request.face_picture_url
         if not UtilClient.is_unset(request.flow_type):
             query['FlowType'] = request.flow_type
+        if not UtilClient.is_unset(request.id_face_quality):
+            query['IdFaceQuality'] = request.id_face_quality
+        if not UtilClient.is_unset(request.id_spoof):
+            query['IdSpoof'] = request.id_spoof
         if not UtilClient.is_unset(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not UtilClient.is_unset(request.merchant_user_id):
             query['MerchantUserId'] = request.merchant_user_id
         if not UtilClient.is_unset(request.meta_info):
             query['MetaInfo'] = request.meta_info
+        if not UtilClient.is_unset(request.ocr):
+            query['Ocr'] = request.ocr
         if not UtilClient.is_unset(request.operation_mode):
             query['OperationMode'] = request.operation_mode
         if not UtilClient.is_unset(request.pages):
@@ -294,6 +312,8 @@ class Client(OpenApiClient):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_config):
             query['ProductConfig'] = request.product_config
+        if not UtilClient.is_unset(request.return_url):
+            query['ReturnUrl'] = request.return_url
         if not UtilClient.is_unset(request.scene_code):
             query['SceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.service_level):

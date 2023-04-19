@@ -394,31 +394,41 @@ class FaceCompareResponse(TeaModel):
 class InitializeRequest(TeaModel):
     def __init__(
         self,
+        crop: str = None,
         doc_type: str = None,
         face_picture_base_64: str = None,
         face_picture_url: str = None,
         flow_type: str = None,
+        id_face_quality: str = None,
+        id_spoof: str = None,
         merchant_biz_id: str = None,
         merchant_user_id: str = None,
         meta_info: str = None,
+        ocr: str = None,
         operation_mode: str = None,
         pages: str = None,
         product_code: str = None,
         product_config: str = None,
+        return_url: str = None,
         scene_code: str = None,
         service_level: str = None,
     ):
+        self.crop = crop
         self.doc_type = doc_type
         self.face_picture_base_64 = face_picture_base_64
         self.face_picture_url = face_picture_url
         self.flow_type = flow_type
+        self.id_face_quality = id_face_quality
+        self.id_spoof = id_spoof
         self.merchant_biz_id = merchant_biz_id
         self.merchant_user_id = merchant_user_id
         self.meta_info = meta_info
+        self.ocr = ocr
         self.operation_mode = operation_mode
         self.pages = pages
         self.product_code = product_code
         self.product_config = product_config
+        self.return_url = return_url
         self.scene_code = scene_code
         self.service_level = service_level
 
@@ -431,6 +441,8 @@ class InitializeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.crop is not None:
+            result['Crop'] = self.crop
         if self.doc_type is not None:
             result['DocType'] = self.doc_type
         if self.face_picture_base_64 is not None:
@@ -439,12 +451,18 @@ class InitializeRequest(TeaModel):
             result['FacePictureUrl'] = self.face_picture_url
         if self.flow_type is not None:
             result['FlowType'] = self.flow_type
+        if self.id_face_quality is not None:
+            result['IdFaceQuality'] = self.id_face_quality
+        if self.id_spoof is not None:
+            result['IdSpoof'] = self.id_spoof
         if self.merchant_biz_id is not None:
             result['MerchantBizId'] = self.merchant_biz_id
         if self.merchant_user_id is not None:
             result['MerchantUserId'] = self.merchant_user_id
         if self.meta_info is not None:
             result['MetaInfo'] = self.meta_info
+        if self.ocr is not None:
+            result['Ocr'] = self.ocr
         if self.operation_mode is not None:
             result['OperationMode'] = self.operation_mode
         if self.pages is not None:
@@ -453,6 +471,8 @@ class InitializeRequest(TeaModel):
             result['ProductCode'] = self.product_code
         if self.product_config is not None:
             result['ProductConfig'] = self.product_config
+        if self.return_url is not None:
+            result['ReturnUrl'] = self.return_url
         if self.scene_code is not None:
             result['SceneCode'] = self.scene_code
         if self.service_level is not None:
@@ -461,6 +481,8 @@ class InitializeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Crop') is not None:
+            self.crop = m.get('Crop')
         if m.get('DocType') is not None:
             self.doc_type = m.get('DocType')
         if m.get('FacePictureBase64') is not None:
@@ -469,12 +491,18 @@ class InitializeRequest(TeaModel):
             self.face_picture_url = m.get('FacePictureUrl')
         if m.get('FlowType') is not None:
             self.flow_type = m.get('FlowType')
+        if m.get('IdFaceQuality') is not None:
+            self.id_face_quality = m.get('IdFaceQuality')
+        if m.get('IdSpoof') is not None:
+            self.id_spoof = m.get('IdSpoof')
         if m.get('MerchantBizId') is not None:
             self.merchant_biz_id = m.get('MerchantBizId')
         if m.get('MerchantUserId') is not None:
             self.merchant_user_id = m.get('MerchantUserId')
         if m.get('MetaInfo') is not None:
             self.meta_info = m.get('MetaInfo')
+        if m.get('Ocr') is not None:
+            self.ocr = m.get('Ocr')
         if m.get('OperationMode') is not None:
             self.operation_mode = m.get('OperationMode')
         if m.get('Pages') is not None:
@@ -483,6 +511,8 @@ class InitializeRequest(TeaModel):
             self.product_code = m.get('ProductCode')
         if m.get('ProductConfig') is not None:
             self.product_config = m.get('ProductConfig')
+        if m.get('ReturnUrl') is not None:
+            self.return_url = m.get('ReturnUrl')
         if m.get('SceneCode') is not None:
             self.scene_code = m.get('SceneCode')
         if m.get('ServiceLevel') is not None:
@@ -495,9 +525,11 @@ class InitializeResponseBodyResult(TeaModel):
         self,
         client_cfg: str = None,
         transaction_id: str = None,
+        transaction_url: str = None,
     ):
         self.client_cfg = client_cfg
         self.transaction_id = transaction_id
+        self.transaction_url = transaction_url
 
     def validate(self):
         pass
@@ -512,6 +544,8 @@ class InitializeResponseBodyResult(TeaModel):
             result['ClientCfg'] = self.client_cfg
         if self.transaction_id is not None:
             result['TransactionId'] = self.transaction_id
+        if self.transaction_url is not None:
+            result['TransactionUrl'] = self.transaction_url
         return result
 
     def from_map(self, m: dict = None):
@@ -520,6 +554,8 @@ class InitializeResponseBodyResult(TeaModel):
             self.client_cfg = m.get('ClientCfg')
         if m.get('TransactionId') is not None:
             self.transaction_id = m.get('TransactionId')
+        if m.get('TransactionUrl') is not None:
+            self.transaction_url = m.get('TransactionUrl')
         return self
 
 
