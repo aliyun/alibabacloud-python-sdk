@@ -374,6 +374,16 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CreateLoadBalancerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateLoadBalancerResponse:
+        """
+        When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
+        *   **CreateLoadBalancer** is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~445873~~) to query the status of an NLB instance.
+        *   If an NLB instance is in the **Provisioning** state, the NLB instance is being created.
+        *   If an NLB instance is in the **Active** state, the NLB instance is created.
+        
+        @param request: CreateLoadBalancerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadBalancerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address_ip_version):
@@ -431,6 +441,16 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CreateLoadBalancerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateLoadBalancerResponse:
+        """
+        When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
+        *   **CreateLoadBalancer** is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~445873~~) to query the status of an NLB instance.
+        *   If an NLB instance is in the **Provisioning** state, the NLB instance is being created.
+        *   If an NLB instance is in the **Active** state, the NLB instance is created.
+        
+        @param request: CreateLoadBalancerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadBalancerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address_ip_version):
@@ -487,6 +507,15 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.CreateLoadBalancerRequest,
     ) -> nlb_20220430_models.CreateLoadBalancerResponse:
+        """
+        When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
+        *   **CreateLoadBalancer** is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~445873~~) to query the status of an NLB instance.
+        *   If an NLB instance is in the **Provisioning** state, the NLB instance is being created.
+        *   If an NLB instance is in the **Active** state, the NLB instance is created.
+        
+        @param request: CreateLoadBalancerRequest
+        @return: CreateLoadBalancerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_load_balancer_with_options(request, runtime)
 
@@ -494,6 +523,15 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.CreateLoadBalancerRequest,
     ) -> nlb_20220430_models.CreateLoadBalancerResponse:
+        """
+        When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
+        *   **CreateLoadBalancer** is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~445873~~) to query the status of an NLB instance.
+        *   If an NLB instance is in the **Provisioning** state, the NLB instance is being created.
+        *   If an NLB instance is in the **Active** state, the NLB instance is created.
+        
+        @param request: CreateLoadBalancerRequest
+        @return: CreateLoadBalancerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_load_balancer_with_options_async(request, runtime)
 
@@ -596,6 +634,17 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CreateServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateServerGroupResponse:
+        """
+        **protocol** specifies the protocol used to forward requests to the backend servers.
+        *   NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
+        *   **CreateServerGroup** is an asynchronous operation. After you send the request, the system returns a request ID even though the operation is still being performed in the background. You can call the [GetJobStatus](~~445904~~) operation to query the creation status of a server group.
+        *   If the task is in the **Succeeded** status, the server group is created.
+        *   If the task is in the **Processing** status, the server group is being created.
+        
+        @param request: CreateServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServerGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address_ipversion):
@@ -655,6 +704,17 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CreateServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateServerGroupResponse:
+        """
+        **protocol** specifies the protocol used to forward requests to the backend servers.
+        *   NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
+        *   **CreateServerGroup** is an asynchronous operation. After you send the request, the system returns a request ID even though the operation is still being performed in the background. You can call the [GetJobStatus](~~445904~~) operation to query the creation status of a server group.
+        *   If the task is in the **Succeeded** status, the server group is created.
+        *   If the task is in the **Processing** status, the server group is being created.
+        
+        @param request: CreateServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServerGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address_ipversion):
@@ -713,6 +773,16 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.CreateServerGroupRequest,
     ) -> nlb_20220430_models.CreateServerGroupResponse:
+        """
+        **protocol** specifies the protocol used to forward requests to the backend servers.
+        *   NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
+        *   **CreateServerGroup** is an asynchronous operation. After you send the request, the system returns a request ID even though the operation is still being performed in the background. You can call the [GetJobStatus](~~445904~~) operation to query the creation status of a server group.
+        *   If the task is in the **Succeeded** status, the server group is created.
+        *   If the task is in the **Processing** status, the server group is being created.
+        
+        @param request: CreateServerGroupRequest
+        @return: CreateServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_server_group_with_options(request, runtime)
 
@@ -720,6 +790,16 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.CreateServerGroupRequest,
     ) -> nlb_20220430_models.CreateServerGroupResponse:
+        """
+        **protocol** specifies the protocol used to forward requests to the backend servers.
+        *   NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
+        *   **CreateServerGroup** is an asynchronous operation. After you send the request, the system returns a request ID even though the operation is still being performed in the background. You can call the [GetJobStatus](~~445904~~) operation to query the creation status of a server group.
+        *   If the task is in the **Succeeded** status, the server group is created.
+        *   If the task is in the **Processing** status, the server group is being created.
+        
+        @param request: CreateServerGroupRequest
+        @return: CreateServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_server_group_with_options_async(request, runtime)
 
@@ -974,6 +1054,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteServerGroupResponse:
+        """
+        You can delete server groups that are not associated with listeners.
+        
+        @param request: DeleteServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServerGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1008,6 +1095,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteServerGroupResponse:
+        """
+        You can delete server groups that are not associated with listeners.
+        
+        @param request: DeleteServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServerGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1041,6 +1135,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DeleteServerGroupRequest,
     ) -> nlb_20220430_models.DeleteServerGroupResponse:
+        """
+        You can delete server groups that are not associated with listeners.
+        
+        @param request: DeleteServerGroupRequest
+        @return: DeleteServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_server_group_with_options(request, runtime)
 
@@ -1048,6 +1148,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DeleteServerGroupRequest,
     ) -> nlb_20220430_models.DeleteServerGroupResponse:
+        """
+        You can delete server groups that are not associated with listeners.
+        
+        @param request: DeleteServerGroupRequest
+        @return: DeleteServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_server_group_with_options_async(request, runtime)
 
@@ -1798,10 +1904,6 @@ class Client(OpenApiClient):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page):
-            body['Page'] = request.page
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -1836,10 +1938,6 @@ class Client(OpenApiClient):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page):
-            body['Page'] = request.page
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -2592,6 +2690,18 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.LoadBalancerJoinSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse:
+        """
+        Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](~~25553~~).
+        *   An NLB instance can be associated with up to four security groups.
+        *   You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](~~214362~~) operation.
+        *   LoadBalancerJoinSecurityGroup is an asynchronous operation. After you call the operation, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
+        *   If the task is in the **Succeeded** state, the security group is associated.
+        *   If the task is in the **Processing** state, the security group is being associated. In this case, you can perform only query operations.
+        
+        @param request: LoadBalancerJoinSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LoadBalancerJoinSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2628,6 +2738,18 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.LoadBalancerJoinSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse:
+        """
+        Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](~~25553~~).
+        *   An NLB instance can be associated with up to four security groups.
+        *   You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](~~214362~~) operation.
+        *   LoadBalancerJoinSecurityGroup is an asynchronous operation. After you call the operation, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
+        *   If the task is in the **Succeeded** state, the security group is associated.
+        *   If the task is in the **Processing** state, the security group is being associated. In this case, you can perform only query operations.
+        
+        @param request: LoadBalancerJoinSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LoadBalancerJoinSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2663,6 +2785,17 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.LoadBalancerJoinSecurityGroupRequest,
     ) -> nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse:
+        """
+        Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](~~25553~~).
+        *   An NLB instance can be associated with up to four security groups.
+        *   You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](~~214362~~) operation.
+        *   LoadBalancerJoinSecurityGroup is an asynchronous operation. After you call the operation, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
+        *   If the task is in the **Succeeded** state, the security group is associated.
+        *   If the task is in the **Processing** state, the security group is being associated. In this case, you can perform only query operations.
+        
+        @param request: LoadBalancerJoinSecurityGroupRequest
+        @return: LoadBalancerJoinSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.load_balancer_join_security_group_with_options(request, runtime)
 
@@ -2670,6 +2803,17 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.LoadBalancerJoinSecurityGroupRequest,
     ) -> nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse:
+        """
+        Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](~~25553~~).
+        *   An NLB instance can be associated with up to four security groups.
+        *   You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](~~214362~~) operation.
+        *   LoadBalancerJoinSecurityGroup is an asynchronous operation. After you call the operation, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
+        *   If the task is in the **Succeeded** state, the security group is associated.
+        *   If the task is in the **Processing** state, the security group is being associated. In this case, you can perform only query operations.
+        
+        @param request: LoadBalancerJoinSecurityGroupRequest
+        @return: LoadBalancerJoinSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.load_balancer_join_security_group_with_options_async(request, runtime)
 
@@ -2678,6 +2822,15 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.LoadBalancerLeaveSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
+        """
+        LoadBalancerLeaveSecurityGroup is an asynchronous operation. After you call the operation, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
+        *   If the task is in the **Succeeded** state, the security group is disassociated.
+        *   If the task is in the **Processing** state, the security group is being disassociated. In this case, you can perform only query operations.
+        
+        @param request: LoadBalancerLeaveSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LoadBalancerLeaveSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2714,6 +2867,15 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.LoadBalancerLeaveSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
+        """
+        LoadBalancerLeaveSecurityGroup is an asynchronous operation. After you call the operation, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
+        *   If the task is in the **Succeeded** state, the security group is disassociated.
+        *   If the task is in the **Processing** state, the security group is being disassociated. In this case, you can perform only query operations.
+        
+        @param request: LoadBalancerLeaveSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LoadBalancerLeaveSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2749,6 +2911,14 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.LoadBalancerLeaveSecurityGroupRequest,
     ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
+        """
+        LoadBalancerLeaveSecurityGroup is an asynchronous operation. After you call the operation, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
+        *   If the task is in the **Succeeded** state, the security group is disassociated.
+        *   If the task is in the **Processing** state, the security group is being disassociated. In this case, you can perform only query operations.
+        
+        @param request: LoadBalancerLeaveSecurityGroupRequest
+        @return: LoadBalancerLeaveSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.load_balancer_leave_security_group_with_options(request, runtime)
 
@@ -2756,6 +2926,14 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.LoadBalancerLeaveSecurityGroupRequest,
     ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
+        """
+        LoadBalancerLeaveSecurityGroup is an asynchronous operation. After you call the operation, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
+        *   If the task is in the **Succeeded** state, the security group is disassociated.
+        *   If the task is in the **Processing** state, the security group is being disassociated. In this case, you can perform only query operations.
+        
+        @param request: LoadBalancerLeaveSecurityGroupRequest
+        @return: LoadBalancerLeaveSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.load_balancer_leave_security_group_with_options_async(request, runtime)
 
@@ -3344,6 +3522,17 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse:
+        """
+        Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](~~445868~~).
+        *   You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the **AddressType** value of an NLB instance after you change the network type.
+        *   **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After you send a request, the request ID is returned but the operation is still being performed in the system background. You can call the [GetJobStatus](~~445904~~) operation to query the task status:
+        *   If the task is in the **Succeeded** state, the network type of the IPv4 address of the NLB instance is changed.
+        *   If the task is in the **Processing** state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
+        
+        @param request: UpdateLoadBalancerAddressTypeConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoadBalancerAddressTypeConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address_type):
@@ -3382,6 +3571,17 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse:
+        """
+        Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](~~445868~~).
+        *   You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the **AddressType** value of an NLB instance after you change the network type.
+        *   **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After you send a request, the request ID is returned but the operation is still being performed in the system background. You can call the [GetJobStatus](~~445904~~) operation to query the task status:
+        *   If the task is in the **Succeeded** state, the network type of the IPv4 address of the NLB instance is changed.
+        *   If the task is in the **Processing** state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
+        
+        @param request: UpdateLoadBalancerAddressTypeConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoadBalancerAddressTypeConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address_type):
@@ -3419,6 +3619,16 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse:
+        """
+        Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](~~445868~~).
+        *   You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the **AddressType** value of an NLB instance after you change the network type.
+        *   **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After you send a request, the request ID is returned but the operation is still being performed in the system background. You can call the [GetJobStatus](~~445904~~) operation to query the task status:
+        *   If the task is in the **Succeeded** state, the network type of the IPv4 address of the NLB instance is changed.
+        *   If the task is in the **Processing** state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
+        
+        @param request: UpdateLoadBalancerAddressTypeConfigRequest
+        @return: UpdateLoadBalancerAddressTypeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_load_balancer_address_type_config_with_options(request, runtime)
 
@@ -3426,6 +3636,16 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse:
+        """
+        Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](~~445868~~).
+        *   You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the **AddressType** value of an NLB instance after you change the network type.
+        *   **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After you send a request, the request ID is returned but the operation is still being performed in the system background. You can call the [GetJobStatus](~~445904~~) operation to query the task status:
+        *   If the task is in the **Succeeded** state, the network type of the IPv4 address of the NLB instance is changed.
+        *   If the task is in the **Processing** state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
+        
+        @param request: UpdateLoadBalancerAddressTypeConfigRequest
+        @return: UpdateLoadBalancerAddressTypeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_load_balancer_address_type_config_with_options_async(request, runtime)
 
@@ -3626,6 +3846,19 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerZonesResponse:
+        """
+        - Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](/help/en/server-load-balancer/latest/createloadbalancer).
+        - You can call the [GetLoadBalancerAttribute](/help/en/server-load-balancer/latest/getloadbalancerattribute-nlb) operation to query the zones and zone attributes of an NLB instance.
+        - **UpdateLoadBalancerZones** is an asynchronous operation. After you send a request, the request ID is returned but the operation is still being performed in the system background. You can call the [GetJobStatus](/help/en/server-load-balancer/latest/getjobstatus) operation to query the status of a task:
+        - If the task is in the **Succeeded** state, the zones and zone attributes are modified.
+        - If the task is in the **Processing** state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
+        ## Precautions
+        When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
+        
+        @param request: UpdateLoadBalancerZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoadBalancerZonesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3662,6 +3895,19 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerZonesResponse:
+        """
+        - Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](/help/en/server-load-balancer/latest/createloadbalancer).
+        - You can call the [GetLoadBalancerAttribute](/help/en/server-load-balancer/latest/getloadbalancerattribute-nlb) operation to query the zones and zone attributes of an NLB instance.
+        - **UpdateLoadBalancerZones** is an asynchronous operation. After you send a request, the request ID is returned but the operation is still being performed in the system background. You can call the [GetJobStatus](/help/en/server-load-balancer/latest/getjobstatus) operation to query the status of a task:
+        - If the task is in the **Succeeded** state, the zones and zone attributes are modified.
+        - If the task is in the **Processing** state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
+        ## Precautions
+        When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
+        
+        @param request: UpdateLoadBalancerZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoadBalancerZonesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3697,6 +3943,18 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateLoadBalancerZonesRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerZonesResponse:
+        """
+        - Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](/help/en/server-load-balancer/latest/createloadbalancer).
+        - You can call the [GetLoadBalancerAttribute](/help/en/server-load-balancer/latest/getloadbalancerattribute-nlb) operation to query the zones and zone attributes of an NLB instance.
+        - **UpdateLoadBalancerZones** is an asynchronous operation. After you send a request, the request ID is returned but the operation is still being performed in the system background. You can call the [GetJobStatus](/help/en/server-load-balancer/latest/getjobstatus) operation to query the status of a task:
+        - If the task is in the **Succeeded** state, the zones and zone attributes are modified.
+        - If the task is in the **Processing** state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
+        ## Precautions
+        When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
+        
+        @param request: UpdateLoadBalancerZonesRequest
+        @return: UpdateLoadBalancerZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_load_balancer_zones_with_options(request, runtime)
 
@@ -3704,6 +3962,18 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateLoadBalancerZonesRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerZonesResponse:
+        """
+        - Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](/help/en/server-load-balancer/latest/createloadbalancer).
+        - You can call the [GetLoadBalancerAttribute](/help/en/server-load-balancer/latest/getloadbalancerattribute-nlb) operation to query the zones and zone attributes of an NLB instance.
+        - **UpdateLoadBalancerZones** is an asynchronous operation. After you send a request, the request ID is returned but the operation is still being performed in the system background. You can call the [GetJobStatus](/help/en/server-load-balancer/latest/getjobstatus) operation to query the status of a task:
+        - If the task is in the **Succeeded** state, the zones and zone attributes are modified.
+        - If the task is in the **Processing** state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
+        ## Precautions
+        When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
+        
+        @param request: UpdateLoadBalancerZonesRequest
+        @return: UpdateLoadBalancerZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_load_balancer_zones_with_options_async(request, runtime)
 
@@ -3918,6 +4188,19 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateServerGroupServersAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateServerGroupServersAttributeResponse:
+        """
+        The *UpdateServerGroupServersAttribute** operation is asynchronous. After you send a request, the system returns the request ID, but the operation is still being performed in the system background.
+        1\\. You can call [ListServerGroups](~~445895~~) to query the status of a server group.
+        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        *   If a server group is in the **Available** state, it indicates that the server group is running.
+        2\\. You can call [ListServerGroupServers](~~445896~~) to query the status of a backend server.
+        *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
+        *   If a backend server is in the **Available** state, it indicates that the backend server is running.
+        
+        @param request: UpdateServerGroupServersAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServerGroupServersAttributeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3954,6 +4237,19 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateServerGroupServersAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateServerGroupServersAttributeResponse:
+        """
+        The *UpdateServerGroupServersAttribute** operation is asynchronous. After you send a request, the system returns the request ID, but the operation is still being performed in the system background.
+        1\\. You can call [ListServerGroups](~~445895~~) to query the status of a server group.
+        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        *   If a server group is in the **Available** state, it indicates that the server group is running.
+        2\\. You can call [ListServerGroupServers](~~445896~~) to query the status of a backend server.
+        *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
+        *   If a backend server is in the **Available** state, it indicates that the backend server is running.
+        
+        @param request: UpdateServerGroupServersAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServerGroupServersAttributeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3989,6 +4285,18 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateServerGroupServersAttributeRequest,
     ) -> nlb_20220430_models.UpdateServerGroupServersAttributeResponse:
+        """
+        The *UpdateServerGroupServersAttribute** operation is asynchronous. After you send a request, the system returns the request ID, but the operation is still being performed in the system background.
+        1\\. You can call [ListServerGroups](~~445895~~) to query the status of a server group.
+        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        *   If a server group is in the **Available** state, it indicates that the server group is running.
+        2\\. You can call [ListServerGroupServers](~~445896~~) to query the status of a backend server.
+        *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
+        *   If a backend server is in the **Available** state, it indicates that the backend server is running.
+        
+        @param request: UpdateServerGroupServersAttributeRequest
+        @return: UpdateServerGroupServersAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_server_group_servers_attribute_with_options(request, runtime)
 
@@ -3996,5 +4304,17 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateServerGroupServersAttributeRequest,
     ) -> nlb_20220430_models.UpdateServerGroupServersAttributeResponse:
+        """
+        The *UpdateServerGroupServersAttribute** operation is asynchronous. After you send a request, the system returns the request ID, but the operation is still being performed in the system background.
+        1\\. You can call [ListServerGroups](~~445895~~) to query the status of a server group.
+        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        *   If a server group is in the **Available** state, it indicates that the server group is running.
+        2\\. You can call [ListServerGroupServers](~~445896~~) to query the status of a backend server.
+        *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
+        *   If a backend server is in the **Available** state, it indicates that the backend server is running.
+        
+        @param request: UpdateServerGroupServersAttributeRequest
+        @return: UpdateServerGroupServersAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_server_group_servers_attribute_with_options_async(request, runtime)
