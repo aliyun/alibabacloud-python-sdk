@@ -533,12 +533,46 @@ class AttachInstancesResponse(TeaModel):
         return self
 
 
+class AttachLoadBalancersRequestLoadBalancerConfigs(TeaModel):
+    def __init__(
+        self,
+        load_balancer_id: str = None,
+        weight: int = None,
+    ):
+        self.load_balancer_id = load_balancer_id
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
 class AttachLoadBalancersRequest(TeaModel):
     def __init__(
         self,
         async_: bool = None,
         client_token: str = None,
         force_attach: bool = None,
+        load_balancer_configs: List[AttachLoadBalancersRequestLoadBalancerConfigs] = None,
         load_balancers: List[str] = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -555,6 +589,7 @@ class AttachLoadBalancersRequest(TeaModel):
         self.client_token = client_token
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
         self.force_attach = force_attach
+        self.load_balancer_configs = load_balancer_configs
         # The IDs of the CLB instances.
         self.load_balancers = load_balancers
         self.owner_id = owner_id
@@ -568,7 +603,10 @@ class AttachLoadBalancersRequest(TeaModel):
         self.scaling_group_id = scaling_group_id
 
     def validate(self):
-        pass
+        if self.load_balancer_configs:
+            for k in self.load_balancer_configs:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -582,6 +620,10 @@ class AttachLoadBalancersRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.force_attach is not None:
             result['ForceAttach'] = self.force_attach
+        result['LoadBalancerConfigs'] = []
+        if self.load_balancer_configs is not None:
+            for k in self.load_balancer_configs:
+                result['LoadBalancerConfigs'].append(k.to_map() if k else None)
         if self.load_balancers is not None:
             result['LoadBalancers'] = self.load_balancers
         if self.owner_id is not None:
@@ -600,6 +642,11 @@ class AttachLoadBalancersRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('ForceAttach') is not None:
             self.force_attach = m.get('ForceAttach')
+        self.load_balancer_configs = []
+        if m.get('LoadBalancerConfigs') is not None:
+            for k in m.get('LoadBalancerConfigs'):
+                temp_model = AttachLoadBalancersRequestLoadBalancerConfigs()
+                self.load_balancer_configs.append(temp_model.from_map(k))
         if m.get('LoadBalancers') is not None:
             self.load_balancers = m.get('LoadBalancers')
         if m.get('OwnerId') is not None:
@@ -698,18 +745,18 @@ class AttachServerGroupsRequestServerGroups(TeaModel):
         type: str = None,
         weight: int = None,
     ):
-        # The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the backend vServer group. Valid values: 1 to 65535.
+        # The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the server group. Valid values: 1 to 65535.
         self.port = port
         # The ID of the server group.
         self.server_group_id = server_group_id
-        # The type of the vServer group. Valid values:
+        # The type of the server group. Valid values:
         # 
         # *   ALB
         # *   NLB
         self.type = type
-        # The weight of an ECS instance in the scaling group as a backend server after Auto Scaling adds the ECS instance to the backend vServer group.
+        # The weight of an ECS instance after Auto Scaling adds the ECS instance to the server group as a backend server.
         # 
-        # If you increase the weight of an ECS instance in the backend vServer group, the number of access requests that are forwarded to the ECS instance increases. If you set the Weight parameter for an ECS instance to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100.
+        # A higher weight specifies that a larger number of requests are forwarded to the ECS instance. If you set the Weight parameter for an ECS instance in the server group to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100.
         self.weight = weight
 
     def validate(self):
@@ -755,11 +802,11 @@ class AttachServerGroupsRequest(TeaModel):
         scaling_group_id: str = None,
         server_groups: List[AttachServerGroupsRequestServerGroups] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
         # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25965~~).
         self.client_token = client_token
-        # Specifies whether to add the Elastic Compute Service (ECS) instances in the scaling group to the vServer groups of the newly attached SLB instance.
+        # Specifies whether to add the Elastic Compute Service (ECS) instances in the scaling group to the new server group.
         # 
         # *   true
         # *   false
@@ -772,7 +819,7 @@ class AttachServerGroupsRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
-        # Details of the vServer groups.
+        # Details of the server groups.
         self.server_groups = server_groups
 
     def validate(self):
@@ -835,9 +882,9 @@ class AttachServerGroupsResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The ID of the scaling activity in which an ALB instance is attached to the scaling group and the ECS instances in the scaling group are added to the backend vServer group of the ALB instance.
+        # The ID of the scaling activity in which you attach the server group to the scaling group and Auto Scaling adds the ECS instances in the scaling group to the server group.
         # 
-        # > This parameter is returned only after you set the ForceAttach parameter to true.
+        # > This parameter is returned only if you set the ForceAttach parameter to true.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
@@ -1297,21 +1344,22 @@ class CompleteLifecycleActionRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
         # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
         self.client_token = client_token
-        # The action that you want Auto Scaling to perform after the lifecycle hook ends. Valid values:
+        # The action that you want Auto Scaling to perform after the lifecycle hook times out. Valid values:
         # 
-        # *   CONTINUE: Auto Scaling continues to add Elastic Compute Service (ECS) instances to the scaling group, or continues to remove ECS instances from the scaling group.
-        # *   ABANDON: Auto Scaling stops adding ECS instances to the scaling group and releases the ECS instances, or continues to respond to scale-in requests and remove ECS instances from the scaling group.
+        # *   CONTINUE: Auto Scaling continues to respond to a scale-in or scale-out request.
+        # *   ABANDON: Auto Scaling releases Elastic Compute Service (ECS) instances that are created during scale-out activities or removes ECS instances from the scaling group during scale-in activities.
+        # *   ROLLBACK: For scale-in activities, Auto Scaling rejects the requests to release ECS instances but rolls back ECS instances. For scale-out activities, the ROLLBACK setting has the same effect as the ABANDON setting.
         # 
-        # Default value: CONTINUE.
+        # If you do not specify this parameter, Auto Scaling performs the action that is specified by the `DefaultResult` parameter after the lifecycle hook times out.
         # 
-        # If multiple lifecycle hooks exist in a scaling group and are triggered at the same time, the following rules apply:
+        # If multiple lifecycle hooks exist in a scaling group and the lifecycle hooks are triggered at the same time, the following rules apply:
         # 
-        # *   If you set the LifecycleActionResult parameter to ABANDON for the lifecycle hook that is applied to a scale-in activity, Auto Scaling immediately removes ECS instances from the scaling group after the lifecycle hook ends, without the need to wait for the last lifecycle hook to end.
-        # *   If you set the LifecycleActionResult parameter to CONTINUE for the lifecycle hook that is applied to a scale-in or scale-out activity, Auto Scaling performs the next action until the last lifecycle hook in the scaling group ends. The action that Auto Scaling performs varies based on the value that you specify for the LifecycleActionResult parameter of the last lifecycle hook.
+        # *   For scale-in activities, when lifecycle hooks whose LifecycleActionResult parameter is set to ABANDON or ROLLBACK time out, other lifecycle hooks time out ahead of schedule.
+        # *   For scale-in and scale-out activities, if you set the LifecycleActionResult parameter for all lifecycle hooks to CONTINUE, Auto Scaling performs the next action only after the last lifecycle hook times out. The action that Auto Scaling performs varies based on the value that you specify for the LifecycleActionResult parameter of the lifecycle hook that last times out.
         self.lifecycle_action_result = lifecycle_action_result
         # The token of the lifecycle hook. You can obtain this token by using a Message Service (MNS) queue or an MNS topic that is specified for the lifecycle hook.
         self.lifecycle_action_token = lifecycle_action_token
@@ -4132,52 +4180,60 @@ class CreateLifecycleHookRequest(TeaModel):
         # The action that you want Auto Scaling to perform after the lifecycle hook times out. Valid values:
         # 
         # *   CONTINUE: Auto Scaling continues to respond to scale-in or scale-out requests.
-        # *   ABANDON: Auto Scaling releases Elastic Compute Service (ECS) instances that are created during scale-out activities, or removes ECS instances from the scaling group during scale-in activities.
+        # *   ABANDON: Auto Scaling releases ECS instances that are created during scale-out activities or removes ECS instances from the scaling group during scale-in activities.
+        # *   ROLLBACK: For scale-in activities, Auto Scaling rejects the requests to release ECS instances but rolls back ECS instances. For scale-out activities, the ROLLBACK setting has the same effect as the ABANDON setting.
         # 
-        # If multiple lifecycle hooks in a scaling group are triggered during scale-in activities and you set the DefaultResult parameter to ABANDON for one of the lifecycle hooks, Auto Scaling immediately performs the action after the lifecycle hook whose DefaultResult is set to ABANDON times out. As a result, other lifecycle hooks time out ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks time out.
+        # If a scaling group has multiple lifecycle hooks in effect and you set the DefaultResult parameter for one of the lifecycle hooks to ABANDON or ROLLBACK, the following rule applies to scale-in activities: When the lifecycle hook whose DefaultResult parameter is set to ABANDON or ROLLBACK times out, other lifecycle hooks time out ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks time out. The action that Auto Scaling performs is specified by the DefaultResult parameter of the last lifecycle hook that times out.
         # 
         # Default value: CONTINUE.
         self.default_result = default_result
-        # The period of time before the lifecycle hook times out. After the lifecycle hook times out, Auto Scaling performs the default action. Valid values: 30 to 21600. Unit: seconds.
+        # The period of time before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action specified by the DefaultResult parameter. Valid values: 30 to 21600. Unit: seconds.
         # 
-        # After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to prolong the timeout period of the lifecycle hook. You can also call the CompleteLifecycleAction operation to end the timeout period of the lifecycle hook ahead of schedule.
+        # After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the timeout period of the lifecycle hook. You can also call the CompleteLifecycleAction operation to end the timeout period ahead of schedule.
         # 
         # Default value: 600.
         self.heartbeat_timeout = heartbeat_timeout
-        # The name of the lifecycle hook. Each lifecycle hook name must be unique within a scaling group. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). It must start with a letter or a digit.
+        # The name of the lifecycle hook. Each lifecycle hook name must be unique within a scaling group. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). The name must start with a letter or a digit.
         # 
         # If you do not specify this parameter, the value of the LifecycleHookId parameter is used.
         self.lifecycle_hook_name = lifecycle_hook_name
-        # The type of the scaling activity to which the lifecycle hook applies. Valid values:
+        # The type of the scaling activity to which you want to apply the lifecycle hook. Valid values:
         # 
-        # *   SCALE_OUT
-        # *   SCALE_IN
+        # *   SCALE_OUT: scale-out activity.
+        # *   SCALE_IN: scale-in activity.
         self.lifecycle_transition = lifecycle_transition
-        # The Alibaba Cloud Resource Name (ARN) of the notification method that is used by Auto Scaling to send notifications when the lifecycle hook takes effect. If you do not specify this parameter, no notification is sent when the lifecycle hook takes effect. If you specify this parameter, the following rules apply:
+        # The Alibaba Cloud Resource Name (ARN) of the notification method. If you do not specify this parameter, no notification is sent when the lifecycle hook takes effect. If you specify this parameter, the following rules apply:
         # 
         # *   If you use a Message Service (MNS) queue as the notification method, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
         # *   If you use an MNS topic as the notification method, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
         # *   If you use an OOS template as the notification method, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
         # 
-        # The variables in the preceding parameter formats have the following meanings:
+        # The variables in the preceding formats have the following meanings:
         # 
         # *   region-id: the region ID of the scaling group.
-        # *   account-id: the ID of the Alibaba Cloud account. The ID of the RAM user is not supported.
+        # *   account-id: the ID of the Alibaba Cloud account. The ID of a RAM user is not supported.
         # *   queuename: the name of the MNS queue.
         # *   topicname: the name of the MNS topic.
         # *   templatename: the name of the OOS template.
         self.notification_arn = notification_arn
-        # The notification metadata that is sent when the lifecycle hook takes effect. This helps you manage and categorize notifications in an efficient manner. If you specify this parameter, you must specify the NotificationArn parameter. The parameter value cannot exceed 4,096 characters in length.
+        # The notification metadata that is sent when the lifecycle hook takes effect. This helps you manage and categorize notifications in an efficient manner. If you specify this parameter, you must also specify the NotificationArn parameter. The value of this parameter cannot exceed 4,096 characters in length.
         # 
-        # If you use the NotificationArn parameter to specify a public or customOOS template, the value of the NotificationMetadata parameter must be a JSON string that contains the OOS template parameters. For example, your OOS template includes the following parameters: `{"dbInstanceId": "dds-bp17661e0135****", "modifyMode": "Append"}`, `dbInstanceId`, and `modifyMode`. Some parameters defined in your OOS template have default values. When you specify the NotificationMetadata parameter, specify parameters that do not have default values. If you specify parameters that have default values, the default values are overwritten. However, the default values of the following parameters must be retained to obtain information about scaling activities that are in progress:
+        # The fixed string that is included in a notification that Auto Scaling sends when the lifecycle hook takes effect. Auto Scaling sends the value of the NotificationMetadata parameter together with the notification. This helps you categorize your notifications. For example, your OOS template includes the following parameters: `{"dbInstanceId": "dds-bp17661e0135****", "modifyMode": "Append"}`, `dbInstanceId`, and `modifyMode`. Specific parameters that are defined in your OOS template have default values. When you specify the NotificationMetadata parameter, specify parameters that do not have default values. If you specify parameters that have default values, the default values are overwritten. The default values of the following parameters must be retained to obtain information about scaling activities that are in progress:
         # 
         # *   `regionId`: the region ID of the scaling activity that is in progress. Default value: ${regionId}.
-        # *   `instanceIds`: the IDs of ECS instances that are scaled in in the scaling activity. Default value: ${instanceIds}.
+        # *   `instanceIds`: the IDs of ECS instances that are scaled in the scaling activity. Default value: ${instanceIds}.
         # *   `lifecycleHookId`: the ID of the lifecycle hook. Default value: ${lifecycleHookId}.
-        # *   `lifecycleActionToken`: the token of the lifecycle action. You can use the token to end the timeout period of the lifecycle hook ahead of schedule. Default value: ${lifecycleActionToken}
+        # *   `lifecycleActionToken`: the token of the lifecycle hook. You can use the token to end the timeout period of the lifecycle hook ahead of schedule. Default value: ${lifecycleActionToken}
         # *   `scalingGroupId`: the ID of the scaling group in which the scaling activity is executed. Default value: ${scalingGroupId}.
+        # *   `lifecycleActionResult`: the action that Auto Scaling performs after the lifecycle hook times out. If the OOS template fails to be executed, the lifecycle hook times out ahead of schedule. If you set the DefalutResult parameter to ROLLBACK, the default value of this parameter is ROLLBACK. If you set the DefaultResult parameter to other values, the default value of this parameter is ABANDON.
         # 
-        # > You can obtain template parameter information in the [OOS console](https://oos.console.aliyun.com/).
+        # > 
+        # 
+        # *   You can specify a value for the lifecycleActionResult parameter to overwrite the default value. Valid values: ABANDON, CONTINUE, ROLLBACK, and ${lifecycleActionResult}.
+        # 
+        # A value of ${lifecycleActionResult} specifies that the value of the lifecycleActionResult parameter is the same as the value of the DefaultResult parameter.
+        # 
+        # *   You can view the details of the OOS template that you specify in the [OOS](https://oos.console.aliyun.com/) console.
         self.notification_metadata = notification_metadata
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4468,6 +4524,33 @@ class CreateNotificationConfigurationResponse(TeaModel):
         return self
 
 
+class CreateScalingConfigurationRequestImageOptions(TeaModel):
+    def __init__(
+        self,
+        login_as_non_root: bool = None,
+    ):
+        self.login_as_non_root = login_as_non_root
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.login_as_non_root is not None:
+            result['LoginAsNonRoot'] = self.login_as_non_root
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoginAsNonRoot') is not None:
+            self.login_as_non_root = m.get('LoginAsNonRoot')
+        return self
+
+
 class CreateScalingConfigurationRequestPrivatePoolOptions(TeaModel):
     def __init__(
         self,
@@ -4476,11 +4559,11 @@ class CreateScalingConfigurationRequestPrivatePoolOptions(TeaModel):
     ):
         # The ID of the private pool. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation for which the private pool is generated.
         self.id = id
-        # The type of the private pool that you want to use to start instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool when you start instances. Valid values:
+        # The type of the private pool that you want to use to create instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool to create instances. Valid values:
         # 
-        # *   Open: open private pool. The system selects an open private pool for instance startup. If no open private pool meets your business requirements, the resources in the public pool are used for instance startup. In this case, you do not need to specify the PrivatePoolOptions.Id parameter.
-        # *   Target: specified private pool. The resources in the specified private pool are used for instance startup. If the specified private pool is unavailable, the instance startup fails. If you set this parameter to Target, you must specify the PrivatePoolOptions.Id parameter.
-        # *   None: no private pool. The resources of private pools are not used for instance startup.
+        # *   Open: open private pool. The system selects a matching open private pool to create instances. If no matching open private pools are found, the system uses the resources in the public pool to create instances. In this case, you do not need to specify the PrivatePoolOptions.Id parameter.
+        # *   Target: specified private pool. The system uses the resources of a specified private pool to create instances. If the specified private pool is unavailable, no instances can be created. If you set this parameter to Target, you must specify the PrivatePoolOptions.Id parameter.
+        # *   None: no private pool. The system does not use the resources of private pools to create instances.
         self.match_criteria = match_criteria
 
     def validate(self):
@@ -4530,41 +4613,39 @@ class CreateScalingConfigurationRequestSystemDisk(TeaModel):
         # *   false
         # 
         # > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
-        # 
-        # For more information, see [ESSD AutoPL disks](~~368372~~).
         self.bursting_enabled = bursting_enabled
         # The category of the system disk. Valid values:
         # 
         # *   cloud: basic disk.
         # *   cloud_efficiency: ultra disk.
         # *   cloud_ssd: standard SSD.
-        # *   ephemeral_ssd: local standard SSD.
+        # *   ephemeral_ssd: local SSD.
         # *   cloud_essd: enhanced SSD (ESSD).
         # *   cloud_auto: ESSD AutoPL disk.
         # 
-        # You cannot specify the SystemDisk.Category and `SystemDiskCategories` parameters at the same time. If you do not specify the SystemDisk.Category and `SystemDiskCategories` parameters, the default value of the SystemDisk.Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
+        # If you specify the SystemDisk.Category parameter, you cannot specify the `SystemDiskCategories` parameter. If you do not specify the SystemDisk.Category parameter or the `SystemDiskCategories` parameter, the default value of the SystemDisk.Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
         self.category = category
         # The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the system disk. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.disk_name = disk_name
-        # The algorithm that is used to encrypt the system disk. Valid values:
+        # The encryption algorithm that you want to use to encrypt the system disk. Valid values:
         # 
-        # *   AES-256
-        # *   SM4-128
+        # *   AES-256.
+        # *   SM4-128.
         # 
         # Default value: AES-256.
         self.encrypt_algorithm = encrypt_algorithm
         # Specifies whether to encrypt the system disk. Valid values:
         # 
-        # *   true: encrypts the system disk.
-        # *   false: does not encrypt the system disk.
+        # *   true
+        # *   false
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The ID of the KMS key that is used to encrypt the system disk.
+        # The ID of the KMS key that you want to use to encrypt the system disk.
         self.kmskey_id = kmskey_id
-        # The PL of the system disk of the ESSD category. Valid values:
+        # The performance level (PL) of the system disk that is an ESSD. Valid values:
         # 
         # *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
         # *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
@@ -4577,9 +4658,15 @@ class CreateScalingConfigurationRequestSystemDisk(TeaModel):
         # 
         # > IOPS measures the number of read and write operations that an EBS device can process per second.
         self.provisioned_iops = provisioned_iops
-        # The size of the system disk. Unit: GiB. Valid values: 20 to 500.
+        # The size of the system disk. Unit: GiB.
         # 
-        # The value of the SystemDisk.Size parameter must be greater than or equal to max{20, ImageSize}.
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud: 20 to 500.
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_efficiency: 20 to 500
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_ssd: 20 to 500
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500
+        # 
+        # The value of the SystemDisk.Size parameter must be greater than or equal to the value of the max{20, ImageSize} parameter.
         # 
         # Default value: max{40, ImageSize}.
         self.size = size
@@ -4670,54 +4757,52 @@ class CreateScalingConfigurationRequestDataDisks(TeaModel):
         # *   false
         # 
         # > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
-        # 
-        # For more information, see [ESSD AutoPL disks](~~368372~~).
         self.bursting_enabled = bursting_enabled
-        # The categories of the data disks. You can specify 1 to 16 data disks. You can specify 1 to 4 disk categories in a scaling configuration. The first data disk that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of the data disks. If Auto Scaling cannot create instances by using the data disk that has the highest priority, Auto Scaling creates instances by using the data disk that has the next highest priority. Valid values:
+        # The categories of the data disks. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
         # 
-        # *   cloud: basic disk. The DeleteWithInstance attribute of a basic disk that is created together with the instance is set to true.
+        # *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
         # *   cloud_efficiency: ultra disk.
         # *   cloud_ssd: standard SSD.
         # *   cloud_essd: ESSD.
         # 
-        # > You cannot specify the Categories and `Category` parameters at the same time.
+        # > If you specify the Categories parameter, you cannot specify the `DataDisks.Category` parameter.
         self.categories = categories
-        # The category of the system disk. Valid values:
+        # The category of the data disk. Valid values:
         # 
-        # *   cloud: basic disk
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: ESSD
-        # *   ephemeral_ssd: local SSD
-        # *   cloud_auto: ESSD AutoPL disk
+        # *   cloud: basic disk.
+        # *   cloud_efficiency: ultra disk.
+        # *   cloud_ssd: standard SSD.
+        # *   cloud_essd: ESSD.
+        # *   ephemeral_ssd: local SSD.
+        # *   cloud_auto: ESSD AutoPL disk.
         # 
-        # You cannot specify the Category and `SystemDiskCategories` parameters at the same time. If you do not specify the Category and `SystemDiskCategories` parameters, the default value of the Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
+        # If you specify the SystemDisk.Category parameter, you cannot specify the `SystemDiskCategories` parameter. If you do not specify the SystemDisk.Category parameter or the `SystemDiskCategories` parameter, the default value of the SystemDisk.Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
         self.category = category
         # Specifies whether to release the data disk when the instance to which the data disk is attached is released. Valid values:
         # 
-        # *   true: releases the data disk when the instance is released.
-        # *   false: retains the data disk when the instance is released.
+        # *   true
+        # *   false
         # 
-        # This parameter is available only for independent disks whose Category parameter is set to cloud, cloud_efficiency, cloud_ssd, or cloud_essd. If you specify this parameter for disks of other categories, an error will be reported.
+        # This parameter is available only for independent disks whose DataDisks.Category parameter is set to cloud, cloud_efficiency, cloud_ssd, or cloud_essd. If you specify this parameter for other disks, an error is reported.
         # 
         # Default value: true.
         self.delete_with_instance = delete_with_instance
-        # The description of the data disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the data disk. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.description = description
-        # The mount target of the data disk. If you do not specify the Device parameter, the system automatically assigns a mount target when you create the ECS instance. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+        # The mount target of the data disk. If you do not specify the Device parameter, a mount target is automatically created when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
         self.device = device
-        # The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter and cannot start with `http://` or `https://`.
+        # The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.disk_name = disk_name
         # Specifies whether to encrypt the data disk. Valid values:
         # 
         # *   true
-        # *   false.
+        # *   false
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The ID of the Key Management Service (KMS) key that is used to encrypt the data disk.
+        # The ID of the Key Management Service (KMS) key that you want to use to encrypt the data disk.
         self.kmskey_id = kmskey_id
-        # The PL of the data disk of the ESSD category. If you set the Categories parameter to cloud_essd, you must also specify the PerformanceLevel parameter. Valid values:
+        # The PL of the data disk that is an ESSD. Valid values:
         # 
         # *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
         # *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
@@ -4732,14 +4817,14 @@ class CreateScalingConfigurationRequestDataDisks(TeaModel):
         self.provisioned_iops = provisioned_iops
         # The size of the data disk. Unit: GiB.
         # 
-        # *   Valid values if you set the Category parameter to cloud: 5 to 2000.
-        # *   Valid values if you set the Category parameter to cloud_efficiency: 20 to 32768.
-        # *   Valid values if you set the Category parameter to cloud_essd: 20 to 32768.
-        # *   Valid values if you set the Category parameter to ephemeral_ssd: 5 to 800.
+        # *   Valid values if you set the Categories parameter to cloud: 5 to 2000.
+        # *   Valid values if you set the Categories parameter to cloud_efficiency: 20 to 32768.
+        # *   Valid values if you set the Categories parameter to cloud_essd: 20 to 32768.
+        # *   Valid values if you set the Categories parameter to ephemeral_ssd: 5 to 800.
         # 
         # The value of the Size parameter must be greater than or equal to the size of the snapshot that is specified by the SnapshotId parameter.
         self.size = size
-        # The ID of the snapshot that is used to create the data disk. If you specify this parameter, the Size parameter is ignored. The size of the disk is the same as the size of the specified snapshot.
+        # The ID of the snapshot that you want to use to create data disks. If you specify this parameter, the DataDisks.Size parameter is ignored. The size of the disk is the same as the size of the specified snapshot.
         # 
         # If you specify a snapshot created on or before July 15, 2013, the operation fails and the system returns InvalidSnapshot.TooOld.
         self.snapshot_id = snapshot_id
@@ -4835,40 +4920,40 @@ class CreateScalingConfigurationRequestInstancePatternInfos(TeaModel):
         # *   Arm: ARM architecture.
         # *   SuperComputeCluster: Super Computing Cluster architecture.
         # 
-        # By default, all values are selected.
+        # By default, all values are included.
         self.architectures = architectures
         # Specifies whether to include burstable instance types. Valid values:
         # 
-        # *   Exclude: excludes burstable instance types.
+        # *   Exclude: does not include burstable instance types.
         # *   Include: includes burstable instance types.
         # *   Required: includes only burstable instance types.
         # 
         # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The number of vCPUs that is specified for an instance type in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see [Instance family](~~25378~~).
+        # The number of vCPUs that is specified for an instance type in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see the [Overview of instance families](~~25378~~) topic.
         # 
         # When you specify the Cores parameter, take note of the following items:
         # 
-        # *   The InstancePatternInfos parameter is available only for scaling groups that reside in VPCs.
-        # *   You must specify the InstancePatternInfos, Cores, and Memory parameters at the same time.
-        # *   If you specify an instance type by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the instance type that is specified by the InstanceType or InstanceTypes parameter for scale-out activities. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the instance type that is specified by the InstancePatternInfos parameter based on the price in ascending order.
+        # *   The InstancePatternInfos parameter is available only for scaling groups that reside in virtual private clouds (VPCs).
+        # *   If you specify the InstancePatternInfos parameter, you must also specify the Cores and Memory parameters.
+        # *   If you specify an instance type by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the instance type that is specified by the InstanceType or InstanceTypes parameter for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the lowest-priced instance type that is specified by the InstancePatternInfos parameter.
         self.cores = cores
-        # The instance types that you want to filter out. You can use wildcard characters such as an asterisk (\*) to filter out a single instance type or an instance family. Example:
+        # The instance type that you want to exclude. You can use wildcard characters such as an asterisk (\*) to exclude an instance type or an instance family. Examples:
         # 
-        # *   ecs.c6.large: The ecs.c6.large instance type is filtered out.
-        # *   ecs.c6.\*: The c6 instance family is filtered out.
+        # *   ecs.c6.large: excludes the ecs.c6.large instance type.
+        # *   ecs.c6.\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
-        # The level of the instance type, which is used to filter the instance types that meet the specified criteria. This parameter takes effect only if you set the `CostOptimization` parameter to true. Valid values:
+        # The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter is available only if you set the `CostOptimization` parameter to true. Valid values:
         # 
-        # *   EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](~~108489~~).
-        # *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Instance family](~~25378~~).
-        # *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](~~59977~~) topic of burstable instances.
+        # *   EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the [Shared instance families](~~108489~~) topic.
+        # *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the [Overview of instance families](~~25378~~) topic.
+        # *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](~~59977~~) topic of burstable instances.
         self.instance_family_level = instance_family_level
-        # The maximum hourly price for a pay-as-you-go instance or a preemptible instance in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
+        # The maximum hourly price for a pay-as-you-go instance or a preemptible instance in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
         # 
-        # > If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the MaxPrice parameter. In other cases, you do not need to specify the MaxPrice parameter.
+        # > If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the MaxPrice parameter. In other cases, the MaxPrice parameter is optional.
         self.max_price = max_price
-        # The memory size that is specified for an instance type in the intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
+        # The memory size that is specified for an instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
         self.memory = memory
 
     def validate(self):
@@ -4921,17 +5006,17 @@ class CreateScalingConfigurationRequestInstanceTypeOverrides(TeaModel):
         instance_type: str = None,
         weighted_capacity: int = None,
     ):
-        # The instance type that you want to use to overwrite the instance type specified in the launch template.
+        # The instance type that you want to use to override the instance type that is specified in the launch template.
         # 
-        # If you want Auto Scaling to scale instances based on the instance type capacity, you must specify the InstanceType parameter and the WeightedCapacity parameter. You can specify 1 to 10 instance types in the extended configurations of the launch template.
+        # If you want to scale instances based on the weighted capacities of the instances, you must specify the InstanceType parameter and the WeightedCapacity parameter. You can specify 1 to 10 instance types by using the Extended Configurations feature of the launch template.
         # 
-        # > This parameter takes effect only if you specify the LaunchTemplateId parameter.
+        # > This parameter is available only if you specify the LaunchTemplateId parameter.
         # 
         # You can specify an instance type that is available for purchase as the value of the InstanceType parameter.
         self.instance_type = instance_type
-        # The weight of the instance type. The weight of an instance type indicates the capacity of a single instance of the specified instance type in the scaling group. If you want to specify the capacity of a single instance of the specified instance type in the scaling group, you must specify the InstanceType parameter before you specify the WeightedCapacity parameter.
+        # If you want to specify the weight of the specified instance type in the scaling configuration, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
         # 
-        # A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity.
+        # The weight of an instance type specifies the capacity of an instance of the instance type in the scaling group. A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
         # 
         # Performance metrics, such as the number of vCPUs and the memory size of each instance type, may vary. You can specify different weights for different instance types based on your business requirements.
         # 
@@ -5010,6 +5095,7 @@ class CreateScalingConfigurationRequestSpotPriceLimits(TeaModel):
 class CreateScalingConfigurationRequest(TeaModel):
     def __init__(
         self,
+        image_options: CreateScalingConfigurationRequestImageOptions = None,
         private_pool_options: CreateScalingConfigurationRequestPrivatePoolOptions = None,
         system_disk: CreateScalingConfigurationRequestSystemDisk = None,
         affinity: str = None,
@@ -5061,82 +5147,83 @@ class CreateScalingConfigurationRequest(TeaModel):
         user_data: str = None,
         zone_id: str = None,
     ):
+        self.image_options = image_options
         self.private_pool_options = private_pool_options
         self.system_disk = system_disk
-        # Specifies whether to associate the instance on a dedicated host with the dedicated host. Valid values:
+        # Specifies whether to associate an instance on a dedicated host with the dedicated host. Valid values:
         # 
-        # *   default: does not associate the instance with the dedicated host. If you start an instance that was stopped in economical mode and the original dedicated host of the instance has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
-        # *   host: associates the instance with the dedicated host. If you start an instance that was stopped in economical mode, the instance remains on the original dedicated host. If the original dedicated host of the instance has insufficient resources, you cannot start the instance.
+        # *   default: does not associate the instance with the dedicated host. If you start an instance that was stopped in Economical Mode and the original dedicated host has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
+        # *   host: associates the instance with the dedicated host. If you start an instance that was stopped in Economical Mode, the instance remains on the original dedicated host. If the original dedicated host of the instance has insufficient resources, the instance cannot be started.
         # 
         # Default value: default.
         self.affinity = affinity
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25693~~).
         self.client_token = client_token
-        # The number of vCPUs.
+        # The number of vCPUs. Unit: cores.
         # 
-        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set the Cpu parameter to 2 and the Memory parameter to 16 to specify the instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set CPU to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
         # 
         # > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
         self.cpu = cpu
         # The performance mode of the burstable instance. Valid values:
         # 
-        # *   Standard: standard mode
-        # *   Unlimited: unlimited mode
+        # *   Standard: standard mode.
+        # *   Unlimited: unlimited mode.
         # 
         # For more information, see the "Performance modes" section in the [Overview](~~59977~~) topic.
         self.credit_specification = credit_specification
         # Details of the data disks.
         self.data_disks = data_disks
-        # The ID of the dedicated host on which you want to create the ECS instance. You cannot create preemptible instances on dedicated hosts. Therefore, if you configure the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit parameters are ignored.
+        # The dedicated host ID of the ECS instance. You cannot create preemptible instances on dedicated hosts. Therefore, if you configure the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit parameters are ignored.
         # 
         # You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
         self.dedicated_host_id = dedicated_host_id
-        # The ID of the deployment set to which the ECS instance belongs.
+        # The ID of the deployment set to which the ECS instances belong.
         self.deployment_set_id = deployment_set_id
-        # The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
+        # The hostname of the instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname also cannot contain consecutive periods (.) or hyphens (-). Naming conventions:
         # 
-        # *   Windows instances: The hostname must be 2 to 15 characters in length, and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
+        # *   Windows instances: The name must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). The name cannot contain periods (.) or contain only digits.
         # *   Other instances such as Linux instances: The hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instance belongs.
         self.hpc_cluster_id = hpc_cluster_id
-        # The name of the image family. You can specify this parameter to obtain the latest custom images that are available in the specified image family. The images are used to create ECS instances. If you specify the ImageId parameter, you cannot specify the ImageFamily parameter.
+        # The name of the image family. You can specify this parameter to obtain the latest custom images that are available in the specified image family. The images are used to create ECS instances. If the ImageId parameter is specified, you cannot specify the ImageFamily parameter.
         self.image_family = image_family
-        # The ID of the image that is used by Auto Scaling to automatically create instances.
+        # The ID of the image that Auto Scaling uses to automatically create ECS instances.
         self.image_id = image_id
-        # The name of the image. Each image name must be unique within a region. If you specify the ImageId parameter, the ImageName parameter is ignored.
+        # The name of the image. Each image name must be unique in a region. If you specify the ImageId parameter, the ImageName parameter is ignored.
         # 
         # You cannot use the ImageName parameter to specify images that are purchased from Alibaba Cloud Marketplace.
         self.image_name = image_name
-        # The description of the ECS instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the ECS instance. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.instance_description = instance_description
-        # The name of the ECS instance that is automatically created based on the scaling configuration.
+        # The name of an ECS instance that is automatically created based on the scaling configuration.
         self.instance_name = instance_name
-        # Information about the intelligent configuration settings, which determines the available instance types.
+        # Details of the intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
         self.instance_pattern_infos = instance_pattern_infos
-        # The instance type of the ECS instance. For more information, see the "Instance family" topic in ECS documentation.
+        # The instance type of the ECS instance. For more information, see the "Instance family" topic.
         self.instance_type = instance_type
-        # Information about the instance type.
+        # The information about the instance types.
         self.instance_type_overrides = instance_type_overrides
-        # The instance types. If you specify this parameter, the InstanceType parameter is ignored. You can specify up to 10 instance types in a scaling configuration.
+        # The instance types. If you specify the InstanceTypes parameter, the InstanceType parameter is ignored.
         # 
-        # The first instance type has the highest priority. The priority decreases based on the specified order of instance types. Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances of the instance type that has the highest priority, Auto Scaling creates instances of the instance type that has the next highest priority.
+        # Auto Scaling creates instances based on the priorities of instance types. If Auto Scaling cannot create instances of the instance type that has the highest priority, Auto Scaling creates instances of the instance type that has the next highest priority.
         self.instance_types = instance_types
         # The billing method for network usage. Valid values:
         # 
         # *   PayByBandwidth: You are charged for the maximum available bandwidth that is specified by the InternetMaxBandwidthOut parameter.
-        # *   PayByTraffic: You are charged for the actual traffic that is used. The InternetMaxBandwidthOut parameter specifies only the maximum available bandwidth.
+        # *   PayByTraffic: You are charged for the actual traffic that is used. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
         # 
-        # Default value for the classic network: PayByBandwidth. Default value for VPCs: PayByTraffic.
+        # For the classic network, the default value is PayByBandwidth. For VPCs, the default value is PayByTraffic.
         self.internet_charge_type = internet_charge_type
         # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values: 1 to 200.
         # 
         # Default value: 200. This parameter is not used for billing because inbound traffic to instances is free of charge.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound public bandwidth. Unit: Mbit/s.
+        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
-        # *   Valid values if you set the InternetChargeType parameter to PayByBandwidth: 0 to 100. If you do not specify this parameter, 0 is used as the value of this parameter.
-        # *   Valid values if you set the InternetChargeType parameter to PayByTraffic: 0 to 100. If you do not specify this parameter, an error will be reported.
+        # *   0 to 100 if you set the InternetChargeType parameter to PayByBandwidth. If you leave this parameter empty, this parameter is automatically set to 0.
+        # *   0 to 100 if you set the InternetChargeType parameter to PayByTraffic. If you leave this parameter empty, an error is returned.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # Specifies whether to create an I/O optimized instance. Valid values:
         # 
@@ -5144,26 +5231,26 @@ class CreateScalingConfigurationRequest(TeaModel):
         # 
         # For instances of retired instance types, the default value is none. For instances of other instance types, the default value is optimized.
         self.io_optimized = io_optimized
-        # The number of randomly generated IPv6 addresses that you want to allocate to the ENI.
+        # The number of randomly generated IPv6 addresses that you want to allocate to the elastic network interface (ENI).
         self.ipv_6address_count = ipv_6address_count
-        # The name of the key pair that is used to log on to the ECS instance.
+        # The name of the key pair that you use to log on to an ECS instance.
         # 
         # *   Windows instances do not use this parameter.
         # *   By default, the username and password authentication method is disabled for Linux instances.
         self.key_pair_name = key_pair_name
-        # The weight of the ECS instance as a backend server. Valid values: 1 to 100.
+        # The weight of an ECS instance as a backend server. Valid values: 1 to 100.
         # 
         # Default value: 50.
         self.load_balancer_weight = load_balancer_weight
-        # The size of the memory. Unit: GiB.
+        # The memory size. Unit: GiB.
         # 
-        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set the Cpu parameter to 2 and the Memory parameter to 16 to specify the instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
         # 
         # > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
         self.memory = memory
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The password that is used to log on to the ECS instance. The password must be 8 to 30 characters in length, and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include:
+        # The password that you use to log on to an ECS instance. The password must be 8 to 30 characters in length. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
         # 
         # \`()`  ~!@#$%^&*-_+=\|{}[]:;\"<>,.?/ `
         # 
@@ -5171,45 +5258,45 @@ class CreateScalingConfigurationRequest(TeaModel):
         # 
         # > For security reasons, we recommend that you use HTTPS to send requests if the Password parameter is specified.
         self.password = password
-        # Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured for the image. Valid values:
+        # Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured in the image. Valid values:
         # 
         # *   true
         # *   false
         self.password_inherit = password_inherit
-        # The name of the RAM role that is associated with the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles.
+        # The name of the RAM role that you attach to the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles.
         self.ram_role_name = ram_role_name
         # The ID of the resource group to which the ECS instance belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         # The name of the scaling configuration. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). The name must start with a letter or a digit.
         # 
-        # The name of the scaling configuration must be unique in a region. If you do not specify this parameter, the scaling configuration ID is used.
+        # The name of the scaling configuration must be unique within a scaling group in a region. If you do not specify this parameter, the scaling configuration ID is used.
         self.scaling_configuration_name = scaling_configuration_name
         # The ID of the scaling group in which you want to create the scaling configuration.
         self.scaling_group_id = scaling_group_id
-        # The options of the scheduler.
+        # The scheduler options.
         self.scheduler_options = scheduler_options
         # Specifies whether to enable security hardening. Valid values:
         # 
         # *   Active: enables security hardening. This value is applicable only to public images.
-        # *   Deactive: does not enable security hardening. This value is applicable to all images.
+        # *   Deactive: disables security hardening. This value is applicable to all image types.
         self.security_enhancement_strategy = security_enhancement_strategy
         # The ID of the security group with which the ECS instance is associated. The ECS instances that are associated with the same security group can access each other.
         self.security_group_id = security_group_id
-        # The IDs of the security groups with which you want to associate the ECS instance. You can associate only a limited number of security groups with an ECS instance. For more information, see the "Security group limits" section in [Limits](~~25412~~).
+        # The IDs of the security groups with which you want to associate the ECS instance. For more information, see the "Security group limits" section of the [Limits](~~25412~~) topic.
         # 
-        # > You cannot specify the SecurityGroupId and SecurityGroupIds parameters at the same time.
+        # > If you specify the SecurityGroupId parameter, you cannot specify the SecurityGroupIds parameter.
         self.security_group_ids = security_group_ids
-        # The retention period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
+        # The protection period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
         # 
         # *   The following retention periods are available in invitational preview: 2, 3, 4, 5, and 6 hours. If you want to set this parameter to one of these values, submit a ticket.
-        # *   If you set this parameter to 0, no retention period is specified for the preemptible instance.
+        # *   If you set this parameter to 0, no protection period is specified for the preemptible instance.
         # 
         # Default value: 1.
         self.spot_duration = spot_duration
-        # The interruption event of the preemptible instance. Default value: Terminate. Set the value to Terminate, which specifies that the preemptible instance is to be released.
+        # The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which specifies that the preemptible instance is to be released.
         self.spot_interruption_behavior = spot_interruption_behavior
-        # The billing information about the preemptible instance.
+        # The billing information of the preemptible instances.
         self.spot_price_limits = spot_price_limits
         # The preemption policy that you want to apply to pay-as-you-go instances and preemptible instances. Valid values:
         # 
@@ -5219,33 +5306,35 @@ class CreateScalingConfigurationRequest(TeaModel):
         # 
         # Default value: NoSpot.
         self.spot_strategy = spot_strategy
-        # The categories of the system disks. You can specify one to four disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the system disk that has the highest priority, Auto Scaling creates instances by using the system disk that has the next highest priority. Valid values:
+        # The categories of the system disks. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
         # 
-        # *   cloud: basic disk
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: ESSD
+        # *   cloud: basic disk.
+        # *   cloud_efficiency: ultra disk.
+        # *   cloud_ssd: standard SSD.
+        # *   cloud_essd: ESSD.
         # 
-        # > You cannot specify the SystemDiskCategories and `SystemDiskCategory` parameters at the same time.
+        # > If you specify the SystemDiskCategories parameter, you cannot specify the `SystemDisk.Category` parameter.
         self.system_disk_categories = system_disk_categories
-        # The tags of the ECS instance. The tags must be specified in the key-value pair format. You can specify up to 20 tags. When you specify tag keys and tag values, take note of the following items:
+        # The tags of the ECS instance. Tags must be specified as key-value pairs. You can specify up to 20 tags. When you specify tag keys and tag values, take note of the following items:
         # 
         # *   A tag key can be up to 64 characters in length. The key cannot start with acs: or aliyun and cannot contain `http://` or `https://`. You cannot specify an empty string as a tag key.
         # *   A tag value can be up to 128 characters in length. The value cannot start with acs: or aliyun and cannot contain `http://` or `https://`. You can specify an empty string as a tag value.
         self.tags = tags
         # Specifies whether to create an instance on a dedicated host. Valid values:
         # 
-        # *   default: does not create an instance on a dedicated host.
-        # *   host: creates an instance on a dedicated host. If you do not specify the DedicatedHostId parameter, Alibaba Cloud selects a dedicated host for the instance that you want to create.
+        # *   default: does not create the instance on a dedicated host.
+        # *   host: creates the instance on a dedicated host. If you do not specify the DedicatedHostId parameter, Alibaba Cloud selects a dedicated host for the instance.
         # 
         # Default value: default.
         self.tenancy = tenancy
         # The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the data before encoding is 16 KB.
         self.user_data = user_data
-        # The ID of the zone where the ECS instance resides.
+        # The zone ID of the ECS instance.
         self.zone_id = zone_id
 
     def validate(self):
+        if self.image_options:
+            self.image_options.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
         if self.system_disk:
@@ -5273,6 +5362,8 @@ class CreateScalingConfigurationRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.image_options is not None:
+            result['ImageOptions'] = self.image_options.to_map()
         if self.private_pool_options is not None:
             result['PrivatePoolOptions'] = self.private_pool_options.to_map()
         if self.system_disk is not None:
@@ -5385,6 +5476,9 @@ class CreateScalingConfigurationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImageOptions') is not None:
+            temp_model = CreateScalingConfigurationRequestImageOptions()
+            self.image_options = temp_model.from_map(m['ImageOptions'])
         if m.get('PrivatePoolOptions') is not None:
             temp_model = CreateScalingConfigurationRequestPrivatePoolOptions()
             self.private_pool_options = temp_model.from_map(m['PrivatePoolOptions'])
@@ -5502,6 +5596,33 @@ class CreateScalingConfigurationRequest(TeaModel):
         return self
 
 
+class CreateScalingConfigurationShrinkRequestImageOptions(TeaModel):
+    def __init__(
+        self,
+        login_as_non_root: bool = None,
+    ):
+        self.login_as_non_root = login_as_non_root
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.login_as_non_root is not None:
+            result['LoginAsNonRoot'] = self.login_as_non_root
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoginAsNonRoot') is not None:
+            self.login_as_non_root = m.get('LoginAsNonRoot')
+        return self
+
+
 class CreateScalingConfigurationShrinkRequestPrivatePoolOptions(TeaModel):
     def __init__(
         self,
@@ -5510,11 +5631,11 @@ class CreateScalingConfigurationShrinkRequestPrivatePoolOptions(TeaModel):
     ):
         # The ID of the private pool. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation for which the private pool is generated.
         self.id = id
-        # The type of the private pool that you want to use to start instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool when you start instances. Valid values:
+        # The type of the private pool that you want to use to create instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool to create instances. Valid values:
         # 
-        # *   Open: open private pool. The system selects an open private pool for instance startup. If no open private pool meets your business requirements, the resources in the public pool are used for instance startup. In this case, you do not need to specify the PrivatePoolOptions.Id parameter.
-        # *   Target: specified private pool. The resources in the specified private pool are used for instance startup. If the specified private pool is unavailable, the instance startup fails. If you set this parameter to Target, you must specify the PrivatePoolOptions.Id parameter.
-        # *   None: no private pool. The resources of private pools are not used for instance startup.
+        # *   Open: open private pool. The system selects a matching open private pool to create instances. If no matching open private pools are found, the system uses the resources in the public pool to create instances. In this case, you do not need to specify the PrivatePoolOptions.Id parameter.
+        # *   Target: specified private pool. The system uses the resources of a specified private pool to create instances. If the specified private pool is unavailable, no instances can be created. If you set this parameter to Target, you must specify the PrivatePoolOptions.Id parameter.
+        # *   None: no private pool. The system does not use the resources of private pools to create instances.
         self.match_criteria = match_criteria
 
     def validate(self):
@@ -5564,41 +5685,39 @@ class CreateScalingConfigurationShrinkRequestSystemDisk(TeaModel):
         # *   false
         # 
         # > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
-        # 
-        # For more information, see [ESSD AutoPL disks](~~368372~~).
         self.bursting_enabled = bursting_enabled
         # The category of the system disk. Valid values:
         # 
         # *   cloud: basic disk.
         # *   cloud_efficiency: ultra disk.
         # *   cloud_ssd: standard SSD.
-        # *   ephemeral_ssd: local standard SSD.
+        # *   ephemeral_ssd: local SSD.
         # *   cloud_essd: enhanced SSD (ESSD).
         # *   cloud_auto: ESSD AutoPL disk.
         # 
-        # You cannot specify the SystemDisk.Category and `SystemDiskCategories` parameters at the same time. If you do not specify the SystemDisk.Category and `SystemDiskCategories` parameters, the default value of the SystemDisk.Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
+        # If you specify the SystemDisk.Category parameter, you cannot specify the `SystemDiskCategories` parameter. If you do not specify the SystemDisk.Category parameter or the `SystemDiskCategories` parameter, the default value of the SystemDisk.Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
         self.category = category
         # The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the system disk. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.disk_name = disk_name
-        # The algorithm that is used to encrypt the system disk. Valid values:
+        # The encryption algorithm that you want to use to encrypt the system disk. Valid values:
         # 
-        # *   AES-256
-        # *   SM4-128
+        # *   AES-256.
+        # *   SM4-128.
         # 
         # Default value: AES-256.
         self.encrypt_algorithm = encrypt_algorithm
         # Specifies whether to encrypt the system disk. Valid values:
         # 
-        # *   true: encrypts the system disk.
-        # *   false: does not encrypt the system disk.
+        # *   true
+        # *   false
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The ID of the KMS key that is used to encrypt the system disk.
+        # The ID of the KMS key that you want to use to encrypt the system disk.
         self.kmskey_id = kmskey_id
-        # The PL of the system disk of the ESSD category. Valid values:
+        # The performance level (PL) of the system disk that is an ESSD. Valid values:
         # 
         # *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
         # *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
@@ -5611,9 +5730,15 @@ class CreateScalingConfigurationShrinkRequestSystemDisk(TeaModel):
         # 
         # > IOPS measures the number of read and write operations that an EBS device can process per second.
         self.provisioned_iops = provisioned_iops
-        # The size of the system disk. Unit: GiB. Valid values: 20 to 500.
+        # The size of the system disk. Unit: GiB.
         # 
-        # The value of the SystemDisk.Size parameter must be greater than or equal to max{20, ImageSize}.
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud: 20 to 500.
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_efficiency: 20 to 500
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_ssd: 20 to 500
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500
+        # 
+        # The value of the SystemDisk.Size parameter must be greater than or equal to the value of the max{20, ImageSize} parameter.
         # 
         # Default value: max{40, ImageSize}.
         self.size = size
@@ -5704,54 +5829,52 @@ class CreateScalingConfigurationShrinkRequestDataDisks(TeaModel):
         # *   false
         # 
         # > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
-        # 
-        # For more information, see [ESSD AutoPL disks](~~368372~~).
         self.bursting_enabled = bursting_enabled
-        # The categories of the data disks. You can specify 1 to 16 data disks. You can specify 1 to 4 disk categories in a scaling configuration. The first data disk that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of the data disks. If Auto Scaling cannot create instances by using the data disk that has the highest priority, Auto Scaling creates instances by using the data disk that has the next highest priority. Valid values:
+        # The categories of the data disks. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
         # 
-        # *   cloud: basic disk. The DeleteWithInstance attribute of a basic disk that is created together with the instance is set to true.
+        # *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
         # *   cloud_efficiency: ultra disk.
         # *   cloud_ssd: standard SSD.
         # *   cloud_essd: ESSD.
         # 
-        # > You cannot specify the Categories and `Category` parameters at the same time.
+        # > If you specify the Categories parameter, you cannot specify the `DataDisks.Category` parameter.
         self.categories = categories
-        # The category of the system disk. Valid values:
+        # The category of the data disk. Valid values:
         # 
-        # *   cloud: basic disk
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: ESSD
-        # *   ephemeral_ssd: local SSD
-        # *   cloud_auto: ESSD AutoPL disk
+        # *   cloud: basic disk.
+        # *   cloud_efficiency: ultra disk.
+        # *   cloud_ssd: standard SSD.
+        # *   cloud_essd: ESSD.
+        # *   ephemeral_ssd: local SSD.
+        # *   cloud_auto: ESSD AutoPL disk.
         # 
-        # You cannot specify the Category and `SystemDiskCategories` parameters at the same time. If you do not specify the Category and `SystemDiskCategories` parameters, the default value of the Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
+        # If you specify the SystemDisk.Category parameter, you cannot specify the `SystemDiskCategories` parameter. If you do not specify the SystemDisk.Category parameter or the `SystemDiskCategories` parameter, the default value of the SystemDisk.Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
         self.category = category
         # Specifies whether to release the data disk when the instance to which the data disk is attached is released. Valid values:
         # 
-        # *   true: releases the data disk when the instance is released.
-        # *   false: retains the data disk when the instance is released.
+        # *   true
+        # *   false
         # 
-        # This parameter is available only for independent disks whose Category parameter is set to cloud, cloud_efficiency, cloud_ssd, or cloud_essd. If you specify this parameter for disks of other categories, an error will be reported.
+        # This parameter is available only for independent disks whose DataDisks.Category parameter is set to cloud, cloud_efficiency, cloud_ssd, or cloud_essd. If you specify this parameter for other disks, an error is reported.
         # 
         # Default value: true.
         self.delete_with_instance = delete_with_instance
-        # The description of the data disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the data disk. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.description = description
-        # The mount target of the data disk. If you do not specify the Device parameter, the system automatically assigns a mount target when you create the ECS instance. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+        # The mount target of the data disk. If you do not specify the Device parameter, a mount target is automatically created when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
         self.device = device
-        # The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter and cannot start with `http://` or `https://`.
+        # The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.disk_name = disk_name
         # Specifies whether to encrypt the data disk. Valid values:
         # 
         # *   true
-        # *   false.
+        # *   false
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The ID of the Key Management Service (KMS) key that is used to encrypt the data disk.
+        # The ID of the Key Management Service (KMS) key that you want to use to encrypt the data disk.
         self.kmskey_id = kmskey_id
-        # The PL of the data disk of the ESSD category. If you set the Categories parameter to cloud_essd, you must also specify the PerformanceLevel parameter. Valid values:
+        # The PL of the data disk that is an ESSD. Valid values:
         # 
         # *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
         # *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
@@ -5766,14 +5889,14 @@ class CreateScalingConfigurationShrinkRequestDataDisks(TeaModel):
         self.provisioned_iops = provisioned_iops
         # The size of the data disk. Unit: GiB.
         # 
-        # *   Valid values if you set the Category parameter to cloud: 5 to 2000.
-        # *   Valid values if you set the Category parameter to cloud_efficiency: 20 to 32768.
-        # *   Valid values if you set the Category parameter to cloud_essd: 20 to 32768.
-        # *   Valid values if you set the Category parameter to ephemeral_ssd: 5 to 800.
+        # *   Valid values if you set the Categories parameter to cloud: 5 to 2000.
+        # *   Valid values if you set the Categories parameter to cloud_efficiency: 20 to 32768.
+        # *   Valid values if you set the Categories parameter to cloud_essd: 20 to 32768.
+        # *   Valid values if you set the Categories parameter to ephemeral_ssd: 5 to 800.
         # 
         # The value of the Size parameter must be greater than or equal to the size of the snapshot that is specified by the SnapshotId parameter.
         self.size = size
-        # The ID of the snapshot that is used to create the data disk. If you specify this parameter, the Size parameter is ignored. The size of the disk is the same as the size of the specified snapshot.
+        # The ID of the snapshot that you want to use to create data disks. If you specify this parameter, the DataDisks.Size parameter is ignored. The size of the disk is the same as the size of the specified snapshot.
         # 
         # If you specify a snapshot created on or before July 15, 2013, the operation fails and the system returns InvalidSnapshot.TooOld.
         self.snapshot_id = snapshot_id
@@ -5869,40 +5992,40 @@ class CreateScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         # *   Arm: ARM architecture.
         # *   SuperComputeCluster: Super Computing Cluster architecture.
         # 
-        # By default, all values are selected.
+        # By default, all values are included.
         self.architectures = architectures
         # Specifies whether to include burstable instance types. Valid values:
         # 
-        # *   Exclude: excludes burstable instance types.
+        # *   Exclude: does not include burstable instance types.
         # *   Include: includes burstable instance types.
         # *   Required: includes only burstable instance types.
         # 
         # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The number of vCPUs that is specified for an instance type in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see [Instance family](~~25378~~).
+        # The number of vCPUs that is specified for an instance type in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see the [Overview of instance families](~~25378~~) topic.
         # 
         # When you specify the Cores parameter, take note of the following items:
         # 
-        # *   The InstancePatternInfos parameter is available only for scaling groups that reside in VPCs.
-        # *   You must specify the InstancePatternInfos, Cores, and Memory parameters at the same time.
-        # *   If you specify an instance type by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the instance type that is specified by the InstanceType or InstanceTypes parameter for scale-out activities. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the instance type that is specified by the InstancePatternInfos parameter based on the price in ascending order.
+        # *   The InstancePatternInfos parameter is available only for scaling groups that reside in virtual private clouds (VPCs).
+        # *   If you specify the InstancePatternInfos parameter, you must also specify the Cores and Memory parameters.
+        # *   If you specify an instance type by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the instance type that is specified by the InstanceType or InstanceTypes parameter for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the lowest-priced instance type that is specified by the InstancePatternInfos parameter.
         self.cores = cores
-        # The instance types that you want to filter out. You can use wildcard characters such as an asterisk (\*) to filter out a single instance type or an instance family. Example:
+        # The instance type that you want to exclude. You can use wildcard characters such as an asterisk (\*) to exclude an instance type or an instance family. Examples:
         # 
-        # *   ecs.c6.large: The ecs.c6.large instance type is filtered out.
-        # *   ecs.c6.\*: The c6 instance family is filtered out.
+        # *   ecs.c6.large: excludes the ecs.c6.large instance type.
+        # *   ecs.c6.\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
-        # The level of the instance type, which is used to filter the instance types that meet the specified criteria. This parameter takes effect only if you set the `CostOptimization` parameter to true. Valid values:
+        # The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter is available only if you set the `CostOptimization` parameter to true. Valid values:
         # 
-        # *   EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](~~108489~~).
-        # *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Instance family](~~25378~~).
-        # *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](~~59977~~) topic of burstable instances.
+        # *   EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the [Shared instance families](~~108489~~) topic.
+        # *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the [Overview of instance families](~~25378~~) topic.
+        # *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](~~59977~~) topic of burstable instances.
         self.instance_family_level = instance_family_level
-        # The maximum hourly price for a pay-as-you-go instance or a preemptible instance in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
+        # The maximum hourly price for a pay-as-you-go instance or a preemptible instance in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
         # 
-        # > If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the MaxPrice parameter. In other cases, you do not need to specify the MaxPrice parameter.
+        # > If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the MaxPrice parameter. In other cases, the MaxPrice parameter is optional.
         self.max_price = max_price
-        # The memory size that is specified for an instance type in the intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
+        # The memory size that is specified for an instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
         self.memory = memory
 
     def validate(self):
@@ -5955,17 +6078,17 @@ class CreateScalingConfigurationShrinkRequestInstanceTypeOverrides(TeaModel):
         instance_type: str = None,
         weighted_capacity: int = None,
     ):
-        # The instance type that you want to use to overwrite the instance type specified in the launch template.
+        # The instance type that you want to use to override the instance type that is specified in the launch template.
         # 
-        # If you want Auto Scaling to scale instances based on the instance type capacity, you must specify the InstanceType parameter and the WeightedCapacity parameter. You can specify 1 to 10 instance types in the extended configurations of the launch template.
+        # If you want to scale instances based on the weighted capacities of the instances, you must specify the InstanceType parameter and the WeightedCapacity parameter. You can specify 1 to 10 instance types by using the Extended Configurations feature of the launch template.
         # 
-        # > This parameter takes effect only if you specify the LaunchTemplateId parameter.
+        # > This parameter is available only if you specify the LaunchTemplateId parameter.
         # 
         # You can specify an instance type that is available for purchase as the value of the InstanceType parameter.
         self.instance_type = instance_type
-        # The weight of the instance type. The weight of an instance type indicates the capacity of a single instance of the specified instance type in the scaling group. If you want to specify the capacity of a single instance of the specified instance type in the scaling group, you must specify the InstanceType parameter before you specify the WeightedCapacity parameter.
+        # If you want to specify the weight of the specified instance type in the scaling configuration, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
         # 
-        # A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity.
+        # The weight of an instance type specifies the capacity of an instance of the instance type in the scaling group. A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
         # 
         # Performance metrics, such as the number of vCPUs and the memory size of each instance type, may vary. You can specify different weights for different instance types based on your business requirements.
         # 
@@ -6044,6 +6167,7 @@ class CreateScalingConfigurationShrinkRequestSpotPriceLimits(TeaModel):
 class CreateScalingConfigurationShrinkRequest(TeaModel):
     def __init__(
         self,
+        image_options: CreateScalingConfigurationShrinkRequestImageOptions = None,
         private_pool_options: CreateScalingConfigurationShrinkRequestPrivatePoolOptions = None,
         system_disk: CreateScalingConfigurationShrinkRequestSystemDisk = None,
         affinity: str = None,
@@ -6095,82 +6219,83 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         user_data: str = None,
         zone_id: str = None,
     ):
+        self.image_options = image_options
         self.private_pool_options = private_pool_options
         self.system_disk = system_disk
-        # Specifies whether to associate the instance on a dedicated host with the dedicated host. Valid values:
+        # Specifies whether to associate an instance on a dedicated host with the dedicated host. Valid values:
         # 
-        # *   default: does not associate the instance with the dedicated host. If you start an instance that was stopped in economical mode and the original dedicated host of the instance has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
-        # *   host: associates the instance with the dedicated host. If you start an instance that was stopped in economical mode, the instance remains on the original dedicated host. If the original dedicated host of the instance has insufficient resources, you cannot start the instance.
+        # *   default: does not associate the instance with the dedicated host. If you start an instance that was stopped in Economical Mode and the original dedicated host has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
+        # *   host: associates the instance with the dedicated host. If you start an instance that was stopped in Economical Mode, the instance remains on the original dedicated host. If the original dedicated host of the instance has insufficient resources, the instance cannot be started.
         # 
         # Default value: default.
         self.affinity = affinity
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25693~~).
         self.client_token = client_token
-        # The number of vCPUs.
+        # The number of vCPUs. Unit: cores.
         # 
-        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set the Cpu parameter to 2 and the Memory parameter to 16 to specify the instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set CPU to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
         # 
         # > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
         self.cpu = cpu
         # The performance mode of the burstable instance. Valid values:
         # 
-        # *   Standard: standard mode
-        # *   Unlimited: unlimited mode
+        # *   Standard: standard mode.
+        # *   Unlimited: unlimited mode.
         # 
         # For more information, see the "Performance modes" section in the [Overview](~~59977~~) topic.
         self.credit_specification = credit_specification
         # Details of the data disks.
         self.data_disks = data_disks
-        # The ID of the dedicated host on which you want to create the ECS instance. You cannot create preemptible instances on dedicated hosts. Therefore, if you configure the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit parameters are ignored.
+        # The dedicated host ID of the ECS instance. You cannot create preemptible instances on dedicated hosts. Therefore, if you configure the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit parameters are ignored.
         # 
         # You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
         self.dedicated_host_id = dedicated_host_id
-        # The ID of the deployment set to which the ECS instance belongs.
+        # The ID of the deployment set to which the ECS instances belong.
         self.deployment_set_id = deployment_set_id
-        # The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
+        # The hostname of the instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname also cannot contain consecutive periods (.) or hyphens (-). Naming conventions:
         # 
-        # *   Windows instances: The hostname must be 2 to 15 characters in length, and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
+        # *   Windows instances: The name must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). The name cannot contain periods (.) or contain only digits.
         # *   Other instances such as Linux instances: The hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instance belongs.
         self.hpc_cluster_id = hpc_cluster_id
-        # The name of the image family. You can specify this parameter to obtain the latest custom images that are available in the specified image family. The images are used to create ECS instances. If you specify the ImageId parameter, you cannot specify the ImageFamily parameter.
+        # The name of the image family. You can specify this parameter to obtain the latest custom images that are available in the specified image family. The images are used to create ECS instances. If the ImageId parameter is specified, you cannot specify the ImageFamily parameter.
         self.image_family = image_family
-        # The ID of the image that is used by Auto Scaling to automatically create instances.
+        # The ID of the image that Auto Scaling uses to automatically create ECS instances.
         self.image_id = image_id
-        # The name of the image. Each image name must be unique within a region. If you specify the ImageId parameter, the ImageName parameter is ignored.
+        # The name of the image. Each image name must be unique in a region. If you specify the ImageId parameter, the ImageName parameter is ignored.
         # 
         # You cannot use the ImageName parameter to specify images that are purchased from Alibaba Cloud Marketplace.
         self.image_name = image_name
-        # The description of the ECS instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the ECS instance. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.instance_description = instance_description
-        # The name of the ECS instance that is automatically created based on the scaling configuration.
+        # The name of an ECS instance that is automatically created based on the scaling configuration.
         self.instance_name = instance_name
-        # Information about the intelligent configuration settings, which determines the available instance types.
+        # Details of the intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
         self.instance_pattern_infos = instance_pattern_infos
-        # The instance type of the ECS instance. For more information, see the "Instance family" topic in ECS documentation.
+        # The instance type of the ECS instance. For more information, see the "Instance family" topic.
         self.instance_type = instance_type
-        # Information about the instance type.
+        # The information about the instance types.
         self.instance_type_overrides = instance_type_overrides
-        # The instance types. If you specify this parameter, the InstanceType parameter is ignored. You can specify up to 10 instance types in a scaling configuration.
+        # The instance types. If you specify the InstanceTypes parameter, the InstanceType parameter is ignored.
         # 
-        # The first instance type has the highest priority. The priority decreases based on the specified order of instance types. Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances of the instance type that has the highest priority, Auto Scaling creates instances of the instance type that has the next highest priority.
+        # Auto Scaling creates instances based on the priorities of instance types. If Auto Scaling cannot create instances of the instance type that has the highest priority, Auto Scaling creates instances of the instance type that has the next highest priority.
         self.instance_types = instance_types
         # The billing method for network usage. Valid values:
         # 
         # *   PayByBandwidth: You are charged for the maximum available bandwidth that is specified by the InternetMaxBandwidthOut parameter.
-        # *   PayByTraffic: You are charged for the actual traffic that is used. The InternetMaxBandwidthOut parameter specifies only the maximum available bandwidth.
+        # *   PayByTraffic: You are charged for the actual traffic that is used. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
         # 
-        # Default value for the classic network: PayByBandwidth. Default value for VPCs: PayByTraffic.
+        # For the classic network, the default value is PayByBandwidth. For VPCs, the default value is PayByTraffic.
         self.internet_charge_type = internet_charge_type
         # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values: 1 to 200.
         # 
         # Default value: 200. This parameter is not used for billing because inbound traffic to instances is free of charge.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound public bandwidth. Unit: Mbit/s.
+        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
-        # *   Valid values if you set the InternetChargeType parameter to PayByBandwidth: 0 to 100. If you do not specify this parameter, 0 is used as the value of this parameter.
-        # *   Valid values if you set the InternetChargeType parameter to PayByTraffic: 0 to 100. If you do not specify this parameter, an error will be reported.
+        # *   0 to 100 if you set the InternetChargeType parameter to PayByBandwidth. If you leave this parameter empty, this parameter is automatically set to 0.
+        # *   0 to 100 if you set the InternetChargeType parameter to PayByTraffic. If you leave this parameter empty, an error is returned.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # Specifies whether to create an I/O optimized instance. Valid values:
         # 
@@ -6178,26 +6303,26 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         # 
         # For instances of retired instance types, the default value is none. For instances of other instance types, the default value is optimized.
         self.io_optimized = io_optimized
-        # The number of randomly generated IPv6 addresses that you want to allocate to the ENI.
+        # The number of randomly generated IPv6 addresses that you want to allocate to the elastic network interface (ENI).
         self.ipv_6address_count = ipv_6address_count
-        # The name of the key pair that is used to log on to the ECS instance.
+        # The name of the key pair that you use to log on to an ECS instance.
         # 
         # *   Windows instances do not use this parameter.
         # *   By default, the username and password authentication method is disabled for Linux instances.
         self.key_pair_name = key_pair_name
-        # The weight of the ECS instance as a backend server. Valid values: 1 to 100.
+        # The weight of an ECS instance as a backend server. Valid values: 1 to 100.
         # 
         # Default value: 50.
         self.load_balancer_weight = load_balancer_weight
-        # The size of the memory. Unit: GiB.
+        # The memory size. Unit: GiB.
         # 
-        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set the Cpu parameter to 2 and the Memory parameter to 16 to specify the instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
         # 
         # > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
         self.memory = memory
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The password that is used to log on to the ECS instance. The password must be 8 to 30 characters in length, and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include:
+        # The password that you use to log on to an ECS instance. The password must be 8 to 30 characters in length. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
         # 
         # \`()`  ~!@#$%^&*-_+=\|{}[]:;\"<>,.?/ `
         # 
@@ -6205,45 +6330,45 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         # 
         # > For security reasons, we recommend that you use HTTPS to send requests if the Password parameter is specified.
         self.password = password
-        # Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured for the image. Valid values:
+        # Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured in the image. Valid values:
         # 
         # *   true
         # *   false
         self.password_inherit = password_inherit
-        # The name of the RAM role that is associated with the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles.
+        # The name of the RAM role that you attach to the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles.
         self.ram_role_name = ram_role_name
         # The ID of the resource group to which the ECS instance belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         # The name of the scaling configuration. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). The name must start with a letter or a digit.
         # 
-        # The name of the scaling configuration must be unique in a region. If you do not specify this parameter, the scaling configuration ID is used.
+        # The name of the scaling configuration must be unique within a scaling group in a region. If you do not specify this parameter, the scaling configuration ID is used.
         self.scaling_configuration_name = scaling_configuration_name
         # The ID of the scaling group in which you want to create the scaling configuration.
         self.scaling_group_id = scaling_group_id
-        # The options of the scheduler.
+        # The scheduler options.
         self.scheduler_options_shrink = scheduler_options_shrink
         # Specifies whether to enable security hardening. Valid values:
         # 
         # *   Active: enables security hardening. This value is applicable only to public images.
-        # *   Deactive: does not enable security hardening. This value is applicable to all images.
+        # *   Deactive: disables security hardening. This value is applicable to all image types.
         self.security_enhancement_strategy = security_enhancement_strategy
         # The ID of the security group with which the ECS instance is associated. The ECS instances that are associated with the same security group can access each other.
         self.security_group_id = security_group_id
-        # The IDs of the security groups with which you want to associate the ECS instance. You can associate only a limited number of security groups with an ECS instance. For more information, see the "Security group limits" section in [Limits](~~25412~~).
+        # The IDs of the security groups with which you want to associate the ECS instance. For more information, see the "Security group limits" section of the [Limits](~~25412~~) topic.
         # 
-        # > You cannot specify the SecurityGroupId and SecurityGroupIds parameters at the same time.
+        # > If you specify the SecurityGroupId parameter, you cannot specify the SecurityGroupIds parameter.
         self.security_group_ids = security_group_ids
-        # The retention period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
+        # The protection period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
         # 
         # *   The following retention periods are available in invitational preview: 2, 3, 4, 5, and 6 hours. If you want to set this parameter to one of these values, submit a ticket.
-        # *   If you set this parameter to 0, no retention period is specified for the preemptible instance.
+        # *   If you set this parameter to 0, no protection period is specified for the preemptible instance.
         # 
         # Default value: 1.
         self.spot_duration = spot_duration
-        # The interruption event of the preemptible instance. Default value: Terminate. Set the value to Terminate, which specifies that the preemptible instance is to be released.
+        # The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which specifies that the preemptible instance is to be released.
         self.spot_interruption_behavior = spot_interruption_behavior
-        # The billing information about the preemptible instance.
+        # The billing information of the preemptible instances.
         self.spot_price_limits = spot_price_limits
         # The preemption policy that you want to apply to pay-as-you-go instances and preemptible instances. Valid values:
         # 
@@ -6253,33 +6378,35 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         # 
         # Default value: NoSpot.
         self.spot_strategy = spot_strategy
-        # The categories of the system disks. You can specify one to four disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the system disk that has the highest priority, Auto Scaling creates instances by using the system disk that has the next highest priority. Valid values:
+        # The categories of the system disks. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
         # 
-        # *   cloud: basic disk
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: standard SSD
-        # *   cloud_essd: ESSD
+        # *   cloud: basic disk.
+        # *   cloud_efficiency: ultra disk.
+        # *   cloud_ssd: standard SSD.
+        # *   cloud_essd: ESSD.
         # 
-        # > You cannot specify the SystemDiskCategories and `SystemDiskCategory` parameters at the same time.
+        # > If you specify the SystemDiskCategories parameter, you cannot specify the `SystemDisk.Category` parameter.
         self.system_disk_categories = system_disk_categories
-        # The tags of the ECS instance. The tags must be specified in the key-value pair format. You can specify up to 20 tags. When you specify tag keys and tag values, take note of the following items:
+        # The tags of the ECS instance. Tags must be specified as key-value pairs. You can specify up to 20 tags. When you specify tag keys and tag values, take note of the following items:
         # 
         # *   A tag key can be up to 64 characters in length. The key cannot start with acs: or aliyun and cannot contain `http://` or `https://`. You cannot specify an empty string as a tag key.
         # *   A tag value can be up to 128 characters in length. The value cannot start with acs: or aliyun and cannot contain `http://` or `https://`. You can specify an empty string as a tag value.
         self.tags = tags
         # Specifies whether to create an instance on a dedicated host. Valid values:
         # 
-        # *   default: does not create an instance on a dedicated host.
-        # *   host: creates an instance on a dedicated host. If you do not specify the DedicatedHostId parameter, Alibaba Cloud selects a dedicated host for the instance that you want to create.
+        # *   default: does not create the instance on a dedicated host.
+        # *   host: creates the instance on a dedicated host. If you do not specify the DedicatedHostId parameter, Alibaba Cloud selects a dedicated host for the instance.
         # 
         # Default value: default.
         self.tenancy = tenancy
         # The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the data before encoding is 16 KB.
         self.user_data = user_data
-        # The ID of the zone where the ECS instance resides.
+        # The zone ID of the ECS instance.
         self.zone_id = zone_id
 
     def validate(self):
+        if self.image_options:
+            self.image_options.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
         if self.system_disk:
@@ -6307,6 +6434,8 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.image_options is not None:
+            result['ImageOptions'] = self.image_options.to_map()
         if self.private_pool_options is not None:
             result['PrivatePoolOptions'] = self.private_pool_options.to_map()
         if self.system_disk is not None:
@@ -6419,6 +6548,9 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImageOptions') is not None:
+            temp_model = CreateScalingConfigurationShrinkRequestImageOptions()
+            self.image_options = temp_model.from_map(m['ImageOptions'])
         if m.get('PrivatePoolOptions') is not None:
             temp_model = CreateScalingConfigurationShrinkRequestPrivatePoolOptions()
             self.private_pool_options = temp_model.from_map(m['PrivatePoolOptions'])
@@ -6626,9 +6758,9 @@ class CreateScalingGroupRequestAlbServerGroups(TeaModel):
         # 
         # You can associate only a limited number of ALB server groups with a scaling group. Go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas) to check the maximum number of ALB server groups that you can associate with a scaling group.
         self.alb_server_group_id = alb_server_group_id
-        # The port number used by the ECS instance after Auto Scaling adds the ECS instance to the ALB server group. Valid values: 1 to 65535.
+        # The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the ALB server group. Valid values: 1 to 65535.
         self.port = port
-        # The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to the ALB server group. If you increase the weight of an ECS instance in the ALB server group, the number of access requests that are forwarded to the ECS instance increases. If you set the Weight parameter for an ECS instance to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100.
+        # The weight of an ECS instance after Auto Scaling adds the ECS instance to the ALB server group as a backend server. If you increase the weight of an ECS instance in the ALB server group, the number of access requests that are forwarded to the ECS instance increases. If you set the Weight parameter for an ECS instance in the ALB server group to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100.
         self.weight = weight
 
     def validate(self):
@@ -6674,11 +6806,11 @@ class CreateScalingGroupRequestLaunchTemplateOverrides(TeaModel):
         # 
         # You can use the InstanceType parameter to specify only instance types that are available for purchase.
         self.instance_type = instance_type
-        # The maximum bid price of the instance type that is specified by the `LaunchTemplateOverride.N.InstanceType` parameter. You can specify N instance types by using the Extended Configurations feature of the launch template. Valid values of N: 1 to 10
+        # The maximum bid price of the instance type that is specified by the `InstanceType` parameter. You can specify 1 to 10 instance types by using the Extended Configurations feature of the launch template.
         # 
-        # > This parameter is available only if you specify the LaunchTemplateId parameter.``
+        # > This parameter is available only if you specify the `LaunchTemplateId` parameter.
         self.spot_price_limit = spot_price_limit
-        # The weight of the instance type. The weight specifies the capacity of a single instance of the specified instance type in the scaling group. If you want to scale instances based on the weighted capacities of the instances, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
+        # The weight of the instance type. The weight specifies the capacity of an instance of the specified instance type in the scaling group. If you want to scale instances based on the weighted capacities of the instances, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
         # 
         # A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
         # 
@@ -6735,12 +6867,12 @@ class CreateScalingGroupRequestLifecycleHooks(TeaModel):
         notification_arn: str = None,
         notification_metadata: str = None,
     ):
-        # The action that Auto Scaling performs after the lifecycle hook of the scaling group expires. Valid values:
+        # The action that Auto Scaling performs after the lifecycle hook of the scaling group times out. Valid values:
         # 
-        # *   CONTINUE: continues to respond to a scaling request.
+        # *   CONTINUE: continues to respond to scaling requests.
         # *   ABANDON: releases ECS instances that are created during scale-out activities, or removes ECS instances from the scaling group during scale-in activities.
         # 
-        # If multiple lifecycle hooks in a scaling group are triggered during a scale-in activity and you set the DefaultResult parameter to ABANDON for one of the lifecycle hooks, Auto Scaling immediately performs the action after the lifecycle hook whose DefaultResult is set to ABANDON times out. In this case, other lifecycle hooks time out ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks time out. The action that Auto Scaling performs is determined by the value of the DefaultResult parameter that you set for the lifecycle hook that last times out.
+        # If multiple lifecycle hooks in the scaling group are triggered during scale-in activities and you set the LifecycleHook.N.DefaultResult parameter to ABANDON for one of the lifecycle hooks, Auto Scaling immediately performs the action after the lifecycle hook whose DefaultResult parameter is set to ABANDON times out. In this case, other lifecycle hooks time out ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks time out. The action that Auto Scaling performs is determined by the value of the DefaultResult parameter that you set for the lifecycle hook that last times out.
         # 
         # Default value: CONTINUE.
         self.default_result = default_result
@@ -6752,24 +6884,24 @@ class CreateScalingGroupRequestLifecycleHooks(TeaModel):
         self.heartbeat_timeout = heartbeat_timeout
         # The name of the lifecycle hook. After you specify this parameter, you cannot change the value of this parameter. If you do not specify this parameter, the ID of the lifecycle hook is used.
         self.lifecycle_hook_name = lifecycle_hook_name
-        # The type of scaling activities for which you create the lifecycle hook. Valid values:
+        # The type of the scaling activity for which you create the lifecycle hook. Valid values:
         # 
-        # *   SCALE_OUT: scale-out activities
-        # *   SCALE_IN: scale-in activities
+        # *   SCALE_OUT: scale-out activity
+        # *   SCALE_IN: scale-in activity
         # 
         # > If you create lifecycle hooks for your scaling group, you must specify the LifecycleTransition parameter.
         self.lifecycle_transition = lifecycle_transition
-        # The Alibaba Cloud Resource Name (ARN) of the notification method that Auto Scaling uses to send a notification when a lifecycle hook takes effect. This method can be a Message Service (MNS) queue or an MNS topic. The value of this parameter is in the following format: acs:ess:{region}:{account-id}:{resource-relative-id}.
+        # The Alibaba Cloud Resource Name (ARN) of the notification method that Auto Scaling uses to send a notification when a lifecycle hook takes effect. This notification method can be a Message Service (MNS) queue or an MNS topic. Specify the value of this parameter in the following format: acs:ess:{region}:{account-id}:{resource-relative-id}.
         # 
         # *   region: the region where the scaling group resides
         # *   account-id: the ID of the Alibaba Cloud account
         # 
-        # Example:
+        # Examples:
         # 
         # *   MNS queue: acs:ess:{region}:{account-id}:queue/{queuename}
         # *   MNS topic: acs:ess:{region}:{account-id}:topic/{topicname}
         self.notification_arn = notification_arn
-        # The fixed string that is included in a notification. Auto Scaling sends the notification when the lifecycle hook takes effect. The value of this parameter cannot exceed 4,096 characters in length. Auto Scaling sends the value of the notificationmetadata parameter together with the notification. This way, you can categorize and manage your notifications in an efficient manner. You can specify the notificationmetadata parameter only after you specify the notificationarn parameter.
+        # The fixed string that is included in a notification. Auto Scaling sends the notification when the lifecycle hook takes effect. The value of this parameter cannot exceed 4,096 characters in length. Auto Scaling sends the value of the notificationmetadata parameter together with the notification. This way, you can categorize and manage your notifications in an efficient manner. If you specify the notificationmetadata parameter, you must also specify the notificationarn parameter.
         self.notification_metadata = notification_metadata
 
     def validate(self):
@@ -6809,6 +6941,39 @@ class CreateScalingGroupRequestLifecycleHooks(TeaModel):
             self.notification_arn = m.get('NotificationArn')
         if m.get('NotificationMetadata') is not None:
             self.notification_metadata = m.get('NotificationMetadata')
+        return self
+
+
+class CreateScalingGroupRequestLoadBalancerConfigs(TeaModel):
+    def __init__(
+        self,
+        load_balancer_id: str = None,
+        weight: int = None,
+    ):
+        self.load_balancer_id = load_balancer_id
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         return self
 
 
@@ -6863,9 +7028,9 @@ class CreateScalingGroupRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the scaling group.
+        # The tag key that you want to add to the scaling group.
         self.key = key
-        # The tag value of the scaling group.
+        # The tag value that you want to add to the scaling group.
         self.value = value
 
     def validate(self):
@@ -6899,11 +7064,11 @@ class CreateScalingGroupRequestVServerGroupsVServerGroupAttributes(TeaModel):
         vserver_group_id: str = None,
         weight: int = None,
     ):
-        # The port number used by the ECS instance after Auto Scaling adds the ECS instance to the vServer group. Valid values: 1 to 65535.
+        # The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the backend vServer group. Valid values: 1 to 65535.
         self.port = port
-        # The ID of the vServer group.
+        # The ID of the backend vServer group.
         self.vserver_group_id = vserver_group_id
-        # The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to the vServer group. If you increase the weight of an ECS instance, the number of access requests that are forwarded to the ECS instance increases. If you set the Weight parameter for an ECS instance to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100. Default value: 50.
+        # The weight of an ECS instance after Auto Scaling adds the ECS instance to the backend vServer group as a backend server. If you increase the weight of an ECS instance in the backend vServer group, the number of access requests that are forwarded to the ECS instance also increases. If you set the Weight parameter of an ECS instance in the backend vServer group to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100. Default value: 50.
         self.weight = weight
 
     def validate(self):
@@ -6940,9 +7105,9 @@ class CreateScalingGroupRequestVServerGroups(TeaModel):
         load_balancer_id: str = None,
         vserver_group_attributes: List[CreateScalingGroupRequestVServerGroupsVServerGroupAttributes] = None,
     ):
-        # The ID of the CLB instance to which the vServer group belongs.
+        # The ID of the CLB instance to which the backend vServer group belongs.
         self.load_balancer_id = load_balancer_id
-        # Details of the vServer group attributes.
+        # The attributes of the backend vServer groups.
         self.vserver_group_attributes = vserver_group_attributes
 
     def validate(self):
@@ -6998,6 +7163,7 @@ class CreateScalingGroupRequest(TeaModel):
         launch_template_overrides: List[CreateScalingGroupRequestLaunchTemplateOverrides] = None,
         launch_template_version: str = None,
         lifecycle_hooks: List[CreateScalingGroupRequestLifecycleHooks] = None,
+        load_balancer_configs: List[CreateScalingGroupRequestLoadBalancerConfigs] = None,
         load_balancer_ids: str = None,
         max_instance_lifetime: int = None,
         max_size: int = None,
@@ -7025,9 +7191,9 @@ class CreateScalingGroupRequest(TeaModel):
     ):
         # Details of the Application Load Balancer (ALB) server groups that you want to associate with the scaling group.
         self.alb_server_groups = alb_server_groups
-        # The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create the required number of instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter is available only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
+        # The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create the required number of instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only when you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
         # 
-        # *   priority: Auto Scaling selects instance types based on the specified orders of the instance types to create the required number of instances.
+        # *   priority: Auto Scaling selects instance types based on the specified order of the instance types to create the required number of instances.
         # *   lowestPrice: Auto Scaling selects instance types that have the lowest unit price of vCPUs to create the required number of instances.
         # 
         # Default value: priority.
@@ -7039,9 +7205,9 @@ class CreateScalingGroupRequest(TeaModel):
         # 
         # Default value: false.
         self.az_balance = az_balance
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25965~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25965~~).
         self.client_token = client_token
-        # Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as costs and insufficient resources. This parameter is available only if you set the MultiAZPolicy parameter to COST_OPTIMIZED. Valid values:
+        # Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set the MultiAZPolicy parameter to COST_OPTIMIZED. Valid values:
         # 
         # *   true
         # *   false
@@ -7050,15 +7216,15 @@ class CreateScalingGroupRequest(TeaModel):
         self.compensate_with_on_demand = compensate_with_on_demand
         # The ID of the elastic container instance.
         self.container_group_id = container_group_id
-        # The ARN of the custom scale-in policy (Function). This parameter is available only if you specify CustomPolicy as the first step to remove instances.
+        # The Alibaba Cloud Resource Name (ARN) of the custom scale-in policy (Function). This parameter is available only if you specify CustomPolicy as the first step to remove instances.
         self.custom_policy_arn = custom_policy_arn
-        # The IDs of ApsaraDB RDS instances. The value can be a JSON array that contains multiple ApsaraDB RDS instance IDs. Separate multiple IDs with commas (,).
+        # The IDs of the ApsaraDB RDS instances that you want to associate with the scaling group. The value can be a JSON array that contains multiple ApsaraDB RDS instance IDs. Separate multiple IDs with commas (,).
         # 
         # You can associate only a limited number of ApsaraDB RDS instances with a scaling group. Go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas) to check the maximum number of ApsaraDB RDS instances that you can associate with a scaling group.
         self.dbinstance_ids = dbinstance_ids
-        # The cooldown time of the scaling group after a scaling activity is executed. Valid values: 0 to 86400. Unit: seconds.
+        # The cooldown period of the scaling group after a scaling activity is complete. Valid values: 0 to 86400. Unit: seconds.
         # 
-        # During the cooldown time, Auto Scaling executes only scaling activities that are triggered by CloudMonitor event-triggered tasks.
+        # During the cooldown period, Auto Scaling executes only scaling activities that are triggered by CloudMonitor event-triggered tasks.
         # 
         # Default value: 300.
         self.default_cooldown = default_cooldown
@@ -7071,17 +7237,17 @@ class CreateScalingGroupRequest(TeaModel):
         # 
         # Default value: false.
         self.group_deletion_protection = group_deletion_protection
-        # The type of instances that are managed by the scaling group. Valid values:
+        # The type of the instances that are managed by the scaling group. Valid values:
         # 
-        # *   ECS: ECS instances
-        # *   ECI: elastic container instances
+        # *   ECS: ECS instances.
+        # *   ECI: elastic container instances.
         # 
         # Default value: ECS.
         self.group_type = group_type
         # The health check mode of the scaling group. Valid values:
         # 
-        # *   NONE: does not perform health checks on instances in the scaling group.
-        # *   ECS: performs health checks on ECS instances in the scaling group.
+        # *   NONE: Auto Scaling does not perform health checks on instances in the scaling group.
+        # *   ECS: Auto Scaling performs health checks on ECS instances in the scaling group.
         # 
         # Default value: ECS.
         self.health_check_type = health_check_type
@@ -7099,17 +7265,18 @@ class CreateScalingGroupRequest(TeaModel):
         self.launch_template_version = launch_template_version
         # The lifecycle hooks.
         self.lifecycle_hooks = lifecycle_hooks
-        # The IDs of CLB instances. The value can be a JSON array that contains multiple CLB instance IDs. Separate multiple IDs with commas (,).
+        self.load_balancer_configs = load_balancer_configs
+        # The IDs of the CLB instances that you want to associate with the scaling group. The value can be a JSON array that contains multiple CLB instance IDs. Separate multiple IDs with commas (,).
         # 
         # You can associate only a limited number of CLB instances with a scaling group. Go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas) to check the maximum number of CLB instances that you can associate with a scaling group.
         self.load_balancer_ids = load_balancer_ids
-        # The maximum life span of the ECS instance in the scaling group. Unit: seconds.
+        # The maximum life span of an instance in the scaling group. Unit: seconds.
         # 
-        # Valid values: 86400 to Integer.maxValue.
+        # Valid values: 86400 to the value of the Integer.maxValue parameter.
         # 
         # Default value: null.
         self.max_instance_lifetime = max_instance_lifetime
-        # The maximum number of ECS instances that is allowed in the scaling group. If the number of ECS instances in the scaling group is greater than the value of the MaxSize parameter, Auto Scaling removes ECS instances from the scaling group to ensure that the number of ECS instances is equal to the value of the MaxSize parameter.
+        # The maximum number of ECS instances that can be contained in the scaling group. If the number of ECS instances in the scaling group is greater than the value of the MaxSize parameter, Auto Scaling removes ECS instances from the scaling group to ensure that the number of ECS instances is equal to the value of the MaxSize parameter.
         # 
         # The value range of the MaxSize parameter varies based on the instance quota. You can go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas) to check the maximum number of instances that a scaling group can contain.****\
         # 
@@ -7123,19 +7290,19 @@ class CreateScalingGroupRequest(TeaModel):
         # 
         # *   PRIORITY: scales ECS instances based on the priority of the vSwitch that is specified by the VSwitchIds parameter. Auto Scaling preferentially scales instances in the zone where the vSwitch that has the highest priority resides. If the scaling fails, Auto Scaling scales instances in the zone where the vSwitch that has the next highest priority resides.
         # 
-        # *   COST_OPTIMIZED: scales ECS instances based on the price of vCPU. Auto Scaling preferentially creates ECS instances whose vCPUs are provided at the lowest price during scale-out activities and removes ECS instances whose vCPUs are provided at the highest price during scale-in activities. If preemptible instance types are specified in the scaling configuration, Auto Scaling preferentially creates preemptible instances. You can use the CompensateWithOnDemand parameter to specify whether to automatically create pay-as-you-go instances when preemptible instances cannot be created due to insufficient resources.
+        # *   COST_OPTIMIZED: scales ECS instances based on the unit price of vCPUs. Auto Scaling preferentially scales out ECS instances whose vCPUs are provided at the lowest price and scales in ECS instances whose vCPUs are provided at the highest price. If preemptible instance types are specified in the scaling configuration, Auto Scaling preferentially scales out preemptible instances. You can use the CompensateWithOnDemand parameter to specify whether to automatically create pay-as-you-go instances when preemptible instances cannot be created due to insufficient resources.
         # 
         #     **\
         # 
         #     **Note**The COST_OPTIMIZED setting takes effect only when multiple instance types are specified or at least one preemptible instance type is specified.
         # 
-        # *   BALANCE: evenly distributes ECS instances across zones that are specified for the scaling group. If ECS instances are unevenly distributed across zones due to insufficient resources, you can call the [RebalanceInstance](~~71516~~) operation to balance the instances across zones.
+        # *   BALANCE: evenly distributes ECS instances across zones that are specified for the scaling group. If ECS instances are unevenly distributed across zones due to insufficient resources, you can call the [RebalanceInstance](~~71516~~) operation to evenly redistribute the instances across the zones.
         # 
         # Default value: PRIORITY.
         self.multi_azpolicy = multi_azpolicy
-        # The minimum number of pay-as-you-go instances that must be included in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances.
+        # The minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances.
         self.on_demand_base_capacity = on_demand_base_capacity
-        # The percentage of pay-as-you-go instances among the excess instances when the minimum number of pay-as-you-go instances reaches the requirement. Valid values: 0 to 100.
+        # The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances reaches the requirement. Valid values: 0 to 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7148,10 +7315,13 @@ class CreateScalingGroupRequest(TeaModel):
         # *   OldestScalingConfiguration: removes ECS instances that are created based on the earliest scaling configuration.
         # *   CustomPolicy: removes ECS instances based on the custom scale-in policy (Function).
         # 
-        # The scaling configuration source specified by OldestScalingConfiguration can be a scaling configuration or a launch template. The CustomPolicy setting takes effect only if you use it as the first step to remove instances. If you use CustomPolicy, you must also specify the CustomPolicyARN parameter.
+        # The scaling configuration source specified by the OldestScalingConfiguration setting can be a scaling configuration or a launch template. The CustomPolicy setting takes effect only if you specify it as the first step to remove instances. If you specify CustomPolicy, you must also specify the CustomPolicyARN parameter.
         # 
-        # > The removal of ECS instances from a scaling group is also affected by the value of the MultiAZPolicy parameter. For more information, see [Configure a combination policy for removing instances](~~254822~~) in Auto Scaling Best Practices.
+        # > The removal of ECS instances from a scaling group is also affected by the value of the MultiAZPolicy parameter. For more information, see the [Configure a combination policy for removing instances](~~254822~~) topic.
         self.removal_policies = removal_policies
+        # The ID of the resource group to which you want to add the scaling group.
+        # 
+        # > If you specify this parameter, new scaling groups are added to the specified resource group. If you do not specify this parameter, new scaling groups are added to the default resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         # The name of the scaling group. The name of each scaling group must be unique in a region.
@@ -7168,22 +7338,22 @@ class CreateScalingGroupRequest(TeaModel):
         # The ScalingPolicy parameter specifies the reclaim mode of the scaling group. The RemovePolicy parameter of the RemoveInstances operation specifies how to remove instances in a specific manner.
         self.scaling_policy = scaling_policy
         self.server_groups = server_groups
-        # The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy of preemptible instances. This parameter is available only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
+        # The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy of preemptible instances. This parameter takes effect only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
         # 
-        # *   priority: Auto Scaling selects instance types based on the specified orders of the instance types to create the required number of preemptible instances.
+        # *   priority: Auto Scaling selects instance types based on the specified order of the instance types to create the required number of preemptible instances.
         # *   lowestPrice: Auto Scaling selects instance types that have the lowest unit price of vCPUs to create the required number of preemptible instances.
         # 
         # Default value: priority.
         self.spot_allocation_strategy = spot_allocation_strategy
-        # The number of available instance types. Auto Scaling evenly creates preemptible instances of multiple instance types that are provided at the lowest price in the scaling group. Valid values: 1 to 10.
+        # The number of available instance types. Auto Scaling evenly creates preemptible instances of multiple instance types that are provided at the lowest cost in the scaling group. Valid values: 1 to 10.
         self.spot_instance_pools = spot_instance_pools
-        # Specifies whether to supplement preemptible instances. If you set this parameter to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message that indicates the preemptible instance is to be reclaimed.
+        # Specifies whether to supplement preemptible instances. If you set this parameter to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message which indicates that the preemptible instance is to be reclaimed.
         self.spot_instance_remedy = spot_instance_remedy
         # > This parameter is unavailable.
         self.sync_alarm_rule_to_cms = sync_alarm_rule_to_cms
         # Details of the tags that you want to add to the scaling group.
         self.tags = tags
-        # Details of the vServer groups that you want to associate with the scaling group.
+        # Details of the backend vServer groups that you want to associate with the scaling group.
         self.vserver_groups = vserver_groups
         # The ID of the vSwitch. If you specify the VSwitchId parameter, the network type of the scaling group is VPC.
         # 
@@ -7195,7 +7365,7 @@ class CreateScalingGroupRequest(TeaModel):
         # 
         # *   The vSwitches must belong to the same VPC.
         # *   The vSwitches can belong to different zones.
-        # *   The vSwitches are sorted in ascending order. The first vSwitch specified by the VSwitchIds parameter has the highest priority. If Auto Scaling fails to create ECS instances in the zone where the vSwitch that has the highest priority resides, Auto Scaling creates ECS instances in the zone where the vSwitch that has the next highest priority resides.
+        # *   The vSwitches are sorted in ascending order of priority. The first vSwitch that is specified by the VSwitchIds parameter has the highest priority. If Auto Scaling fails to create ECS instances in the zone where the vSwitch that has the highest priority resides, Auto Scaling creates ECS instances in the zone where the vSwitch that has the next highest priority resides.
         # 
         # > If you do not specify the VSwitchId or VSwitchIds parameter, the network type of the scaling group is classic network.
         self.v_switch_ids = v_switch_ids
@@ -7211,6 +7381,10 @@ class CreateScalingGroupRequest(TeaModel):
                     k.validate()
         if self.lifecycle_hooks:
             for k in self.lifecycle_hooks:
+                if k:
+                    k.validate()
+        if self.load_balancer_configs:
+            for k in self.load_balancer_configs:
                 if k:
                     k.validate()
         if self.server_groups:
@@ -7274,6 +7448,10 @@ class CreateScalingGroupRequest(TeaModel):
         if self.lifecycle_hooks is not None:
             for k in self.lifecycle_hooks:
                 result['LifecycleHooks'].append(k.to_map() if k else None)
+        result['LoadBalancerConfigs'] = []
+        if self.load_balancer_configs is not None:
+            for k in self.load_balancer_configs:
+                result['LoadBalancerConfigs'].append(k.to_map() if k else None)
         if self.load_balancer_ids is not None:
             result['LoadBalancerIds'] = self.load_balancer_ids
         if self.max_instance_lifetime is not None:
@@ -7377,6 +7555,11 @@ class CreateScalingGroupRequest(TeaModel):
             for k in m.get('LifecycleHooks'):
                 temp_model = CreateScalingGroupRequestLifecycleHooks()
                 self.lifecycle_hooks.append(temp_model.from_map(k))
+        self.load_balancer_configs = []
+        if m.get('LoadBalancerConfigs') is not None:
+            for k in m.get('LoadBalancerConfigs'):
+                temp_model = CreateScalingGroupRequestLoadBalancerConfigs()
+                self.load_balancer_configs.append(temp_model.from_map(k))
         if m.get('LoadBalancerIds') is not None:
             self.load_balancer_ids = m.get('LoadBalancerIds')
         if m.get('MaxInstanceLifetime') is not None:
@@ -7516,6 +7699,39 @@ class CreateScalingGroupResponse(TeaModel):
         return self
 
 
+class CreateScalingRuleRequestAlarmDimensions(TeaModel):
+    def __init__(
+        self,
+        dimension_key: str = None,
+        dimension_value: str = None,
+    ):
+        self.dimension_key = dimension_key
+        self.dimension_value = dimension_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dimension_key is not None:
+            result['DimensionKey'] = self.dimension_key
+        if self.dimension_value is not None:
+            result['DimensionValue'] = self.dimension_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DimensionKey') is not None:
+            self.dimension_key = m.get('DimensionKey')
+        if m.get('DimensionValue') is not None:
+            self.dimension_value = m.get('DimensionValue')
+        return self
+
+
 class CreateScalingRuleRequestStepAdjustments(TeaModel):
     def __init__(
         self,
@@ -7563,6 +7779,7 @@ class CreateScalingRuleRequest(TeaModel):
         self,
         adjustment_type: str = None,
         adjustment_value: int = None,
+        alarm_dimensions: List[CreateScalingRuleRequestAlarmDimensions] = None,
         cooldown: int = None,
         disable_scale_in: bool = None,
         estimated_instance_warmup: int = None,
@@ -7600,6 +7817,7 @@ class CreateScalingRuleRequest(TeaModel):
         # 
         # Default value: SimpleScalingRule.
         self.adjustment_value = adjustment_value
+        self.alarm_dimensions = alarm_dimensions
         # The minimum number of instances that must be scaled when the AdjustmentType parameter is set to PercentChangeInCapacity. This parameter takes effect only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule.
         self.cooldown = cooldown
         # The number of consecutive times that the event-triggered task created for scale-in activities must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and then associated with the target tracking scaling rule.
@@ -7694,6 +7912,10 @@ class CreateScalingRuleRequest(TeaModel):
         self.target_value = target_value
 
     def validate(self):
+        if self.alarm_dimensions:
+            for k in self.alarm_dimensions:
+                if k:
+                    k.validate()
         if self.step_adjustments:
             for k in self.step_adjustments:
                 if k:
@@ -7709,6 +7931,10 @@ class CreateScalingRuleRequest(TeaModel):
             result['AdjustmentType'] = self.adjustment_type
         if self.adjustment_value is not None:
             result['AdjustmentValue'] = self.adjustment_value
+        result['AlarmDimensions'] = []
+        if self.alarm_dimensions is not None:
+            for k in self.alarm_dimensions:
+                result['AlarmDimensions'].append(k.to_map() if k else None)
         if self.cooldown is not None:
             result['Cooldown'] = self.cooldown
         if self.disable_scale_in is not None:
@@ -7761,6 +7987,11 @@ class CreateScalingRuleRequest(TeaModel):
             self.adjustment_type = m.get('AdjustmentType')
         if m.get('AdjustmentValue') is not None:
             self.adjustment_value = m.get('AdjustmentValue')
+        self.alarm_dimensions = []
+        if m.get('AlarmDimensions') is not None:
+            for k in m.get('AlarmDimensions'):
+                temp_model = CreateScalingRuleRequestAlarmDimensions()
+                self.alarm_dimensions.append(temp_model.from_map(k))
         if m.get('Cooldown') is not None:
             self.cooldown = m.get('Cooldown')
         if m.get('DisableScaleIn') is not None:
@@ -12299,6 +12530,7 @@ class DescribeLimitationResponseBody(TeaModel):
         max_number_of_load_balancers: int = None,
         max_number_of_max_size: int = None,
         max_number_of_min_size: int = None,
+        max_number_of_nlb_server_group: int = None,
         max_number_of_notification_configurations: int = None,
         max_number_of_scaling_configurations: int = None,
         max_number_of_scaling_groups: int = None,
@@ -12314,6 +12546,7 @@ class DescribeLimitationResponseBody(TeaModel):
         self.max_number_of_load_balancers = max_number_of_load_balancers
         self.max_number_of_max_size = max_number_of_max_size
         self.max_number_of_min_size = max_number_of_min_size
+        self.max_number_of_nlb_server_group = max_number_of_nlb_server_group
         self.max_number_of_notification_configurations = max_number_of_notification_configurations
         self.max_number_of_scaling_configurations = max_number_of_scaling_configurations
         self.max_number_of_scaling_groups = max_number_of_scaling_groups
@@ -12344,6 +12577,8 @@ class DescribeLimitationResponseBody(TeaModel):
             result['MaxNumberOfMaxSize'] = self.max_number_of_max_size
         if self.max_number_of_min_size is not None:
             result['MaxNumberOfMinSize'] = self.max_number_of_min_size
+        if self.max_number_of_nlb_server_group is not None:
+            result['MaxNumberOfNlbServerGroup'] = self.max_number_of_nlb_server_group
         if self.max_number_of_notification_configurations is not None:
             result['MaxNumberOfNotificationConfigurations'] = self.max_number_of_notification_configurations
         if self.max_number_of_scaling_configurations is not None:
@@ -12376,6 +12611,8 @@ class DescribeLimitationResponseBody(TeaModel):
             self.max_number_of_max_size = m.get('MaxNumberOfMaxSize')
         if m.get('MaxNumberOfMinSize') is not None:
             self.max_number_of_min_size = m.get('MaxNumberOfMinSize')
+        if m.get('MaxNumberOfNlbServerGroup') is not None:
+            self.max_number_of_nlb_server_group = m.get('MaxNumberOfNlbServerGroup')
         if m.get('MaxNumberOfNotificationConfigurations') is not None:
             self.max_number_of_notification_configurations = m.get('MaxNumberOfNotificationConfigurations')
         if m.get('MaxNumberOfScalingConfigurations') is not None:
@@ -13959,6 +14196,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         image_family: str = None,
         image_id: str = None,
         image_name: str = None,
+        image_options_login_as_non_root: bool = None,
         image_owner_alias: str = None,
         instance_description: str = None,
         instance_generation: str = None,
@@ -14044,6 +14282,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.image_id = image_id
         # The name of the image file.
         self.image_name = image_name
+        self.image_options_login_as_non_root = image_options_login_as_non_root
         # The source of the image. Valid values:
         # 
         # *   system: public images provided by Alibaba Cloud
@@ -14253,6 +14492,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             result['ImageId'] = self.image_id
         if self.image_name is not None:
             result['ImageName'] = self.image_name
+        if self.image_options_login_as_non_root is not None:
+            result['ImageOptionsLoginAsNonRoot'] = self.image_options_login_as_non_root
         if self.image_owner_alias is not None:
             result['ImageOwnerAlias'] = self.image_owner_alias
         if self.instance_description is not None:
@@ -14387,6 +14628,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:
             self.image_name = m.get('ImageName')
+        if m.get('ImageOptionsLoginAsNonRoot') is not None:
+            self.image_options_login_as_non_root = m.get('ImageOptionsLoginAsNonRoot')
         if m.get('ImageOwnerAlias') is not None:
             self.image_owner_alias = m.get('ImageOwnerAlias')
         if m.get('InstanceDescription') is not None:
@@ -14618,10 +14861,10 @@ class DescribeScalingGroupsRequest(TeaModel):
         scaling_group_name: str = None,
         scaling_group_names: List[str] = None,
     ):
-        # The type of instances that are managed by the scaling group. Valid values:
+        # The type of the instances that are managed by the scaling group. Valid values:
         # 
-        # *   ECS: Elastic Compute Service (ECS) instances
-        # *   ECI: elastic container instances
+        # *   ECS: Elastic Compute Service (ECS) instances.
+        # *   ECI: elastic container instances.
         # 
         # Default value: ECS.
         self.group_type = group_type
@@ -14639,19 +14882,19 @@ class DescribeScalingGroupsRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the scaling group you want to query belongs.
         # 
-        # > If the specified resource group contains no scaling groups, null is returned, and no error is reported.
+        # > If the specified resource group contains no scaling groups, null is returned.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The IDs of the scaling groups that you want to query.
         # 
-        # The IDs of inactive scaling groups are not displayed in the query results, and no error is reported.
+        # The query result does not contain the IDs of inactive scaling groups, and no errors are returned.
         self.scaling_group_ids = scaling_group_ids
         # The name of the scaling group.
         self.scaling_group_name = scaling_group_name
         # The names of the scaling groups that you want to query.
         # 
-        # The names of inactive scaling groups are not displayed in the query results, and no error is reported.
+        # The query result does not contain the names of inactive scaling groups, and no errors are returned.
         self.scaling_group_names = scaling_group_names
 
     def validate(self):
@@ -14727,9 +14970,9 @@ class DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups(TeaModel):
     ):
         # The ID of the ALB server group.
         self.alb_server_group_id = alb_server_group_id
-        # The port number used by the ECS instance after Auto Scaling adds the ECS instance to the ALB server group.
+        # The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the ALB server group.
         self.port = port
-        # The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to the ALB server group.
+        # The weight of an ECS instance after Auto Scaling adds the ECS instance to the ALB server group as a backend server.
         self.weight = weight
 
     def validate(self):
@@ -14769,7 +15012,7 @@ class DescribeScalingGroupsResponseBodyScalingGroupsLaunchTemplateOverrides(TeaM
     ):
         # The instance type. The instance type that is specified by this parameter overrides the instance type that is specified in the launch template.
         self.instance_type = instance_type
-        # The maximum bid price of instance type N that is specified by the `LaunchTemplateOverride.N.InstanceType` parameter. You can specify N instance types by using the Extended Configurations feature of the launch template. Valid values of N: 1 to 10
+        # The maximum bid price of the instance type that is specified by the `InstanceType` parameter. You can specify 1 to 10 instance types by using the Extended Configurations feature of the launch template.
         # 
         # > This parameter is available only if you specify the `LaunchTemplateId` parameter.
         self.spot_price_limit = spot_price_limit
@@ -14804,6 +15047,39 @@ class DescribeScalingGroupsResponseBodyScalingGroupsLaunchTemplateOverrides(TeaM
         return self
 
 
+class DescribeScalingGroupsResponseBodyScalingGroupsLoadBalancerConfigs(TeaModel):
+    def __init__(
+        self,
+        load_balancer_id: str = None,
+        weight: int = None,
+    ):
+        self.load_balancer_id = load_balancer_id
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
 class DescribeScalingGroupsResponseBodyScalingGroupsServerGroups(TeaModel):
     def __init__(
         self,
@@ -14812,19 +15088,9 @@ class DescribeScalingGroupsResponseBodyScalingGroupsServerGroups(TeaModel):
         type: str = None,
         weight: int = None,
     ):
-        # 弹性伸缩将ECS实例添加到ALB服务器组后，ECS实例使用的端口号。
         self.port = port
-        # 服务器组ID。
         self.server_group_id = server_group_id
-        # 服务器组类型，可能值：
-        # 
-        # - ALB。
-        # - NLB。
-        # > 支持的服务器组类型包括：
-        # - 应用型负载均衡ALB（Application Load Balancer）
-        # - 网络型负载均衡NLB（Network Load Balancer）
         self.type = type
-        # 弹性伸缩将ECS实例添加到服务器组后，ECS实例作为后端服务器的权重。
         self.weight = weight
 
     def validate(self):
@@ -14866,7 +15132,7 @@ class DescribeScalingGroupsResponseBodyScalingGroupsVServerGroupsVServerGroupAtt
         vserver_group_id: str = None,
         weight: int = None,
     ):
-        # The port number that is used by the CLB instance to provide external services.
+        # The port number that is used by the SLB instance to provide external services.
         self.port = port
         # The ID of the backend vServer group.
         self.vserver_group_id = vserver_group_id
@@ -14907,9 +15173,9 @@ class DescribeScalingGroupsResponseBodyScalingGroupsVServerGroups(TeaModel):
         load_balancer_id: str = None,
         vserver_group_attributes: List[DescribeScalingGroupsResponseBodyScalingGroupsVServerGroupsVServerGroupAttributes] = None,
     ):
-        # The ID of the Classic Load Balancer (CLB) instance to which the backend vServer group belongs.
+        # The ID of the Server Load Balancer (SLB) instance to which the backend vServer group belongs.
         self.load_balancer_id = load_balancer_id
-        # Details of the backend vServer group attributes.
+        # The attributes of the backend vServer groups.
         self.vserver_group_attributes = vserver_group_attributes
 
     def validate(self):
@@ -14968,6 +15234,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         launch_template_overrides: List[DescribeScalingGroupsResponseBodyScalingGroupsLaunchTemplateOverrides] = None,
         launch_template_version: str = None,
         lifecycle_state: str = None,
+        load_balancer_configs: List[DescribeScalingGroupsResponseBodyScalingGroupsLoadBalancerConfigs] = None,
         load_balancer_ids: List[str] = None,
         max_instance_lifetime: int = None,
         max_size: int = None,
@@ -15003,7 +15270,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # The number of ECS instances that are added to the scaling group and in the In Service state.
+        # The number of ECS instances that are in the In Service state in the scaling group.
         self.active_capacity = active_capacity
         # The ID of the active scaling configuration in the scaling group.
         self.active_scaling_configuration_id = active_scaling_configuration_id
@@ -15011,7 +15278,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         self.alb_server_groups = alb_server_groups
         # The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create the required number of instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter is available only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
         # 
-        # *   priority: Auto Scaling selects instance types based on the specified orders of the instance types to create the required number of instances.
+        # *   priority: Auto Scaling selects instance types based on the specified order of the instance types to create the required number of instances.
         # *   lowestPrice: Auto Scaling selects instance types that have the lowest unit price of vCPUs to create the required number of instances.
         self.allocation_strategy = allocation_strategy
         # Indicates whether instances in the scaling group are evenly distributed across zones. This parameter is available only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
@@ -15024,7 +15291,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         # *   true
         # *   false
         self.compensate_with_on_demand = compensate_with_on_demand
-        # The time at which the scaling group was created.
+        # The time when the scaling group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # > This parameter is unavailable.
         self.current_host_name = current_host_name
@@ -15032,7 +15299,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         self.custom_policy_arn = custom_policy_arn
         # The IDs of the ApsaraDB RDS instances that are associated with the scaling group.
         self.dbinstance_ids = dbinstance_ids
-        # The cooldown time of the scaling group. During the cooldown time, Auto Scaling executes only the scaling activities that are triggered by [CloudMonitor](~~35170~~) event-triggered tasks.
+        # The cooldown period of the scaling group. During the cooldown period, Auto Scaling executes only the scaling activities that are triggered by [CloudMonitor](~~35170~~) event-triggered tasks.
         self.default_cooldown = default_cooldown
         # The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances in the scaling group.
         self.desired_capacity = desired_capacity
@@ -15041,14 +15308,14 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         # *   true: Deletion protection is enabled for the scaling group. This way, the scaling group cannot be deleted.
         # *   false: Deletion protection is disabled for the scaling group.
         self.group_deletion_protection = group_deletion_protection
-        # The type of instances that are managed by the scaling group.
+        # The type of the instances that are managed by the scaling group.
         self.group_type = group_type
         # The health check mode of the scaling group. Valid values:
         # 
         # *   NONE: Auto Scaling does not perform health checks.
         # *   ECS: Auto Scaling performs health checks on ECS instances in the scaling group.
         self.health_check_type = health_check_type
-        # The number of instances that are in the Initialized state before the instances are scaled out in the scaling group.
+        # The number of instances that are in the Initialized state before the instances are added to the scaling group.
         self.init_capacity = init_capacity
         # > This parameter is unavailable.
         self.is_elastic_strength_in_alarm = is_elastic_strength_in_alarm
@@ -15064,21 +15331,22 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         # *   Inactive: The scaling group is inactive. Inactive scaling groups cannot receive requests to execute scaling rules.
         # *   Deleting: The scaling group is being deleted. Scaling groups that are being deleted cannot receive requests to execute scaling rules. In addition, the parameter settings of the scaling groups cannot be modified.
         self.lifecycle_state = lifecycle_state
-        # The IDs of the CLB instances that are associated with the scaling group.
+        self.load_balancer_configs = load_balancer_configs
+        # The IDs of the SLB instances that are associated with the scaling group.
         self.load_balancer_ids = load_balancer_ids
-        # The maximum life span of the instance in the scaling group. Unit: seconds.
+        # The maximum life span of an instance in the scaling group. Unit: seconds.
         # 
-        # Valid values: 0 or 86400 to the value of the `Integer.maxValue` parameter. The value 0 indicates that the instance has an unlimited life span in the scaling group.
+        # Valid values: 0 or from 86400 to the value of the `Integer.maxValue` parameter. If you set this parameter to 0, the instance has an unlimited life span.
         # 
         # Default value: null.
         # 
-        # > This parameter is unavailable for scaling groups that manage elastic container instances or scaling groups whose ScalingPolicy parameter is set to recycle.
+        # > This parameter is unavailable for scaling groups that manage elastic container instances or scaling groups whose ScalingPolicy is set to recycle.
         self.max_instance_lifetime = max_instance_lifetime
-        # The maximum number of ECS instances that is allowed in the scaling group.
+        # The maximum number of ECS instances that can be contained in the scaling group.
         self.max_size = max_size
         # The minimum number of ECS instances that must be contained in the scaling group.
         self.min_size = min_size
-        # The time when the scaling group was modified.
+        # The time when the scaling group was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.modification_time = modification_time
         # The ID of the CloudMonitor application group that is associated with the scaling group.
         self.monitor_group_id = monitor_group_id
@@ -15092,11 +15360,11 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         # 
         #     **Note**The COST_OPTIMIZED setting takes effect only when multiple instance types are specified or at least one preemptible instance type is specified.
         # 
-        # *   BALANCE: ECS instances are evenly distributed across multiple zones that are specified for the scaling group. If ECS instances are unevenly distributed across the specified zones due to insufficient resources, you can call the RebalanceInstance operation to evenly distribute the instances across the zones.
+        # *   BALANCE: ECS instances are evenly distributed across zones that are specified for the scaling group. If ECS instances are unevenly distributed across the specified zones due to insufficient resources, you can call the RebalanceInstance operation to evenly redistribute the ECS instances across the zones.
         self.multi_azpolicy = multi_azpolicy
-        # The minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances.
+        # The minimum number of pay-as-you-go instances that must be included in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances.
         self.on_demand_base_capacity = on_demand_base_capacity
-        # The percentage of pay-as-you-go instances among the excess instances when the minimum number of pay-as-you-go instances reaches the requirement. Valid values: 0 to 100.
+        # The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances reaches the requirement. Valid values: 0 to 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
         # The number of ECS instances that are being added to the scaling group and still being configured.
         self.pending_capacity = pending_capacity
@@ -15124,24 +15392,20 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         self.scaling_group_name = scaling_group_name
         # The reclaim mode of the scaling group. Valid values:
         # 
-        # *   recycle: economical mode
-        # *   release: release mode
+        # *   recycle: economical mode.
+        # *   release: release mode.
         self.scaling_policy = scaling_policy
-        # 负载均衡服务器组的相关信息集合。
-        # 
-        # > 您可以通过此参数获取伸缩组关联的ALB类型服务组和NLB类型服务器组的相关信息集合。
-        # >
         self.server_groups = server_groups
         # The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy of preemptible instances. This parameter is available only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
         # 
-        # *   priority: Auto Scaling selects instance types based on the specified orders of the instance types to create the required number of preemptible instances.
+        # *   priority: Auto Scaling selects instance types based on the specified order of the instance types to create the required number of preemptible instances.
         # *   lowestPrice: Auto Scaling selects instance types that have the lowest unit price of vCPUs to create the required number of preemptible instances.
         # 
         # Default value: priority.
         self.spot_allocation_strategy = spot_allocation_strategy
         # The number of instance types that are specified. Auto Scaling evenly creates preemptible instances of multiple instance types that are provided at the lowest price across zones. Valid values: 0 to 10.
         self.spot_instance_pools = spot_instance_pools
-        # Indicates whether preemptible instances can be supplemented. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives the system message that indicates that the preemptible instance is to be reclaimed.
+        # Indicates whether preemptible instances can be supplemented. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives the system message which indicates that the preemptible instance is to be reclaimed.
         self.spot_instance_remedy = spot_instance_remedy
         # The number of instances that are in the Standby state in the scaling group.
         self.standby_capacity = standby_capacity
@@ -15149,16 +15413,16 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         self.stopped_capacity = stopped_capacity
         # The processes that are suspended. If no process is suspended, null is returned. Valid values:
         # 
-        # *   ScaleIn: scale-in processes
-        # *   ScaleOut: scale-out processes
-        # *   HealthCheck: health check processes
-        # *   AlarmNotification: event-triggered task processes
-        # *   ScheduledAction: scheduled task processes
+        # *   ScaleIn: scale-in
+        # *   ScaleOut: scale-out
+        # *   HealthCheck: health check
+        # *   AlarmNotification: event-triggered task
+        # *   ScheduledAction: scheduled task
         self.suspended_processes = suspended_processes
-        # Indicates whether scaling activities are stopped by Auto Scaling in the scaling group. Valid values:
+        # Indicates whether Auto Scaling stops executing scaling activities in the scaling group. Valid values:
         # 
-        # *   true: If scaling activities fail for more than seven consecutive days, the scaling activities are stopped by Auto Scaling in the scaling group. You must modify the scaling group or scaling configuration to resume the execution of the scaling activities.
-        # *   false: Scaling activities are not stopped by Auto Scaling in the scaling group.
+        # *   true: If the scaling activities fail for more than seven consecutive days, Auto Scaling stops executing scaling activities in the scaling group. You must modify the scaling group or scaling configuration to resume the execution of the scaling activities.
+        # *   false: Auto Scaling does not stop executing scaling activities in the scaling group.
         self.system_suspended = system_suspended
         # If the WeightedCapacity parameter is specified, the value of this parameter indicates the total weighted capacity of all ECS instances in the scaling group. In other cases, the value of this parameter indicates the total number of ECS instances in the scaling group.
         self.total_capacity = total_capacity
@@ -15180,6 +15444,10 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
                     k.validate()
         if self.launch_template_overrides:
             for k in self.launch_template_overrides:
+                if k:
+                    k.validate()
+        if self.load_balancer_configs:
+            for k in self.load_balancer_configs:
                 if k:
                     k.validate()
         if self.server_groups:
@@ -15243,6 +15511,10 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
             result['LaunchTemplateVersion'] = self.launch_template_version
         if self.lifecycle_state is not None:
             result['LifecycleState'] = self.lifecycle_state
+        result['LoadBalancerConfigs'] = []
+        if self.load_balancer_configs is not None:
+            for k in self.load_balancer_configs:
+                result['LoadBalancerConfigs'].append(k.to_map() if k else None)
         if self.load_balancer_ids is not None:
             result['LoadBalancerIds'] = self.load_balancer_ids
         if self.max_instance_lifetime is not None:
@@ -15367,6 +15639,11 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
             self.launch_template_version = m.get('LaunchTemplateVersion')
         if m.get('LifecycleState') is not None:
             self.lifecycle_state = m.get('LifecycleState')
+        self.load_balancer_configs = []
+        if m.get('LoadBalancerConfigs') is not None:
+            for k in m.get('LoadBalancerConfigs'):
+                temp_model = DescribeScalingGroupsResponseBodyScalingGroupsLoadBalancerConfigs()
+                self.load_balancer_configs.append(temp_model.from_map(k))
         if m.get('LoadBalancerIds') is not None:
             self.load_balancer_ids = m.get('LoadBalancerIds')
         if m.get('MaxInstanceLifetime') is not None:
@@ -16102,6 +16379,39 @@ class DescribeScalingRulesRequest(TeaModel):
         return self
 
 
+class DescribeScalingRulesResponseBodyScalingRulesAlarmDimensions(TeaModel):
+    def __init__(
+        self,
+        dimension_key: str = None,
+        dimension_value: str = None,
+    ):
+        self.dimension_key = dimension_key
+        self.dimension_value = dimension_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dimension_key is not None:
+            result['DimensionKey'] = self.dimension_key
+        if self.dimension_value is not None:
+            result['DimensionValue'] = self.dimension_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DimensionKey') is not None:
+            self.dimension_key = m.get('DimensionKey')
+        if m.get('DimensionValue') is not None:
+            self.dimension_value = m.get('DimensionValue')
+        return self
+
+
 class DescribeScalingRulesResponseBodyScalingRulesAlarmsDimensions(TeaModel):
     def __init__(
         self,
@@ -16288,6 +16598,7 @@ class DescribeScalingRulesResponseBodyScalingRules(TeaModel):
         self,
         adjustment_type: str = None,
         adjustment_value: int = None,
+        alarm_dimensions: List[DescribeScalingRulesResponseBodyScalingRulesAlarmDimensions] = None,
         alarms: List[DescribeScalingRulesResponseBodyScalingRulesAlarms] = None,
         cooldown: int = None,
         disable_scale_in: bool = None,
@@ -16315,6 +16626,7 @@ class DescribeScalingRulesResponseBodyScalingRules(TeaModel):
         self.adjustment_type = adjustment_type
         # The number of consecutive times that the event-triggered task created for scale-out activities must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and then associated with the target tracking scaling rule.
         self.adjustment_value = adjustment_value
+        self.alarm_dimensions = alarm_dimensions
         # The event-triggered tasks that are associated with the scaling rule. Event-triggered tasks that are associated with the scaling rule are returned only if you set the ShowAlarmRules parameter to true. Otherwise, an empty list is returned.
         self.alarms = alarms
         # The maximum number of ECS instances in the scaling group.
@@ -16380,6 +16692,10 @@ class DescribeScalingRulesResponseBodyScalingRules(TeaModel):
         self.target_value = target_value
 
     def validate(self):
+        if self.alarm_dimensions:
+            for k in self.alarm_dimensions:
+                if k:
+                    k.validate()
         if self.alarms:
             for k in self.alarms:
                 if k:
@@ -16399,6 +16715,10 @@ class DescribeScalingRulesResponseBodyScalingRules(TeaModel):
             result['AdjustmentType'] = self.adjustment_type
         if self.adjustment_value is not None:
             result['AdjustmentValue'] = self.adjustment_value
+        result['AlarmDimensions'] = []
+        if self.alarm_dimensions is not None:
+            for k in self.alarm_dimensions:
+                result['AlarmDimensions'].append(k.to_map() if k else None)
         result['Alarms'] = []
         if self.alarms is not None:
             for k in self.alarms:
@@ -16455,6 +16775,11 @@ class DescribeScalingRulesResponseBodyScalingRules(TeaModel):
             self.adjustment_type = m.get('AdjustmentType')
         if m.get('AdjustmentValue') is not None:
             self.adjustment_value = m.get('AdjustmentValue')
+        self.alarm_dimensions = []
+        if m.get('AlarmDimensions') is not None:
+            for k in m.get('AlarmDimensions'):
+                temp_model = DescribeScalingRulesResponseBodyScalingRulesAlarmDimensions()
+                self.alarm_dimensions.append(temp_model.from_map(k))
         self.alarms = []
         if m.get('Alarms') is not None:
             for k in m.get('Alarms'):
@@ -17634,8 +17959,14 @@ class DetachServerGroupsRequestServerGroups(TeaModel):
         server_group_id: str = None,
         type: str = None,
     ):
+        # The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the server group.
         self.port = port
+        # The ID of the server group.
         self.server_group_id = server_group_id
+        # The type of the server group. Valid values:
+        # 
+        # *   ALB
+        # *   NLB
         self.type = type
 
     def validate(self):
@@ -17677,12 +18008,24 @@ class DetachServerGroupsRequest(TeaModel):
         scaling_group_id: str = None,
         server_groups: List[DetachServerGroupsRequestServerGroups] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # 
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25965~~).
         self.client_token = client_token
+        # Specifies whether to remove the Elastic Compute Service (ECS) instances in the scaling group from the detached server group.
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.force_detach = force_detach
         self.owner_id = owner_id
+        # The region ID of the scaling group.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
+        # Details of the server groups.
         self.server_groups = server_groups
 
     def validate(self):
@@ -17743,7 +18086,11 @@ class DetachServerGroupsResponseBody(TeaModel):
         request_id: str = None,
         scaling_activity_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the scaling activity in which you detach the server group from the scaling group and Auto Scaling removes the ECS instances from the server group.
+        # 
+        # > This parameter is returned only if you set the ForceAttach parameter to true.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
@@ -18415,15 +18762,15 @@ class EnableScalingGroupRequestLaunchTemplateOverrides(TeaModel):
         instance_type: str = None,
         weighted_capacity: int = None,
     ):
-        # The instance type. The instance type that you specify by using the InstanceType parameter overwrites the instance type that is specified in the launch template.
+        # The instance type that you want to use to override the instance type that is specified in the launch template.
         # 
-        # If you want Auto Scaling to scale instances in the scaling group based on the instance type weight, you must specify both the InstanceType parameter and the WeightedCapacity parameter.
+        # If you want to scale instances based on the weighted capacities of the instances, you must specify both the InstanceType and WeightedCapacity parameters.
         # 
-        # > This parameter takes effect only after you specify the LaunchTemplateId parameter.
+        # > This parameter is supported only if you specify the LaunchTemplateId parameter.
         # 
-        # You can use the InstanceType parameter to specify only instance types that are available for purchase.
+        # You can specify an instance type that is available for purchase as the value of the InstanceType parameter.
         self.instance_type = instance_type
-        # The weight of the instance type. The weight specifies the capacity of a single instance of the specified instance type in the scaling group. If you want Auto Scaling to scale instances in the scaling group based on the weighted capacity of instances, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
+        # The weight of the instance type. The weight specifies the capacity of a single instance of the specified instance type in the scaling group. If you want to scale instances based on the weighted capacities of the instances, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
         # 
         # A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
         # 
@@ -18488,24 +18835,24 @@ class EnableScalingGroupRequest(TeaModel):
         # 
         # The ECS instances must meet the following requirements:
         # 
-        # *   The instances and the scaling group must reside in the same region.
-        # *   The instances must be in the Running state.
-        # *   The instances are not added to other scaling groups.
-        # *   The instances must use the subscription or pay-as-you-go billing method or be preemptible instances.
-        # *   If you specify the VswitchID parameter for the scaling group, the instances must reside in the same virtual private cloud (VPC) as the specified vSwitch. You cannot add instances that reside in the classic network or other VPCs to the scaling group.
-        # *   If you do not specify the VswitchID parameter for the scaling group, you cannot add instances that reside in VPCs to the scaling group.
+        # *   The ECS instances and the scaling group must reside in the same region.
+        # *   The ECS instances must be in the Running state.
+        # *   The ECS instances are not added to other scaling groups.
+        # *   The billing method of the ECS instances must be subscription or pay-as-you-go, or the ECS instances must be preemptible instances.
+        # *   If you specify the VswitchID parameter for the scaling group, the ECS instances must reside in the same virtual private cloud (VPC) as the specified vSwitch. You cannot add the ECS instances that reside in the classic network or other VPCs to the scaling group.
+        # *   If you do not specify the VswitchID parameter for the scaling group, you cannot add ECS instances that reside in VPCs to the scaling group.
         self.instance_ids = instance_ids
         # The ID of the launch template that is used by Auto Scaling to create ECS instances.
         self.launch_template_id = launch_template_id
-        # Details of the instance types that are specified in the extended configurations of the launch template.
+        # Details of the instance types that you specify by using the Extended Configurations feature of the launch template.
         self.launch_template_overrides = launch_template_overrides
         # The version number of the launch template. Valid values:
         # 
         # *   A fixed template version number.
-        # *   Default: The default template version is always used.
-        # *   Latest: The latest template version is always used.
+        # *   Default: the default template version.
+        # *   Latest: the latest template version.
         self.launch_template_version = launch_template_version
-        # The weight of an ECS instance as a backend server in the associated vServer group.
+        # The weight of an ECS instance as a backend server in the backend vServer group.
         # 
         # Default value: 50.
         self.load_balancer_weights = load_balancer_weights
@@ -22393,49 +22740,23 @@ class ModifyLifecycleHookRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # The period of time before the lifecycle hook ends. Auto Scaling performs the specified action after the lifecycle hook ends. Valid values: 30 to 21600. Unit: seconds.
+        # The action that you want Auto Scaling to perform after the lifecycle hook times out. Valid values:
         # 
-        # You can call the RecordLifecycleActionHeartbeat operation to prolong the length of a lifecycle hook. You can also call the CompleteLifecycleAction operation to end a lifecycle hook ahead of schedule.
+        # *   CONTINUE: Auto Scaling continues to respond to scale-in or scale-out requests.
+        # *   ABANDON: Auto Scaling releases Elastic Compute Service (ECS) instances that are created during scale-out activities or removes ECS instances from the scaling group during scale-in activities.
+        # *   ROLLBACK: For scale-in activities, Auto Scaling rejects the requests to release ECS instances but rolls back ECS instances. For scale-out activities, the ROLLBACK setting has the same effect as the ABANDON setting.
+        # 
+        # If a scaling group has multiple lifecycle hooks in effect and you set the DefaultResult parameter for one of the lifecycle hooks to ABANDON or ROLLBACK, the following rule applies to scale-in activities: When the lifecycle hook whose DefaultResult parameter is set to ABANDON or ROLLBACK times out, other lifecycle hooks time out ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks time out. The action that Auto Scaling performs is specified by the DefaultResult parameter of the last lifecycle hook that times out.
         self.default_result = default_result
-        # The type of scaling activity to which the lifecycle hook applies. Valid values:
+        # The period of time before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action specified by the DefaultResult parameter. Valid values: 30 to 21600. Unit: seconds.
         # 
-        # *   SCALE_OUT
-        # *   SCALE_IN
+        # You can call the RecordLifecycleActionHeartbeat operation to extend the period of time before a lifecycle hook times out. You can also call the CompleteLifecycleAction operation to end a lifecycle hook ahead of schedule.
         self.heartbeat_timeout = heartbeat_timeout
-        # The ID of the scaling group to which the lifecycle hook belongs.
+        # The ID of the lifecycle hook that you want to modify.
         self.lifecycle_hook_id = lifecycle_hook_id
-        # The action that you want Auto Scaling to perform after the lifecycle hook ends. Valid values:
-        # 
-        # *   CONTINUE: Auto Scaling continues to respond to scaling requests.
-        # *   ABANDON: Auto Scaling releases Elastic Compute Service (ECS) instances that are created during scale-out activities, or removes ECS instances from the scaling group during scale-in activities.
-        # 
-        # If multiple lifecycle hooks in a scaling group are triggered during scale-in activities and you set the DefaultResult parameter to ABANDON for the lifecycle hook that you want to modify, Auto Scaling immediately performs the action after the lifecycle hook that you want to modify ends. As a result, other lifecycle hooks end ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks end.
+        # The name of the lifecycle hook that you want to modify.
         self.lifecycle_hook_name = lifecycle_hook_name
-        # The ID of the request.
-        self.lifecycle_hook_status = lifecycle_hook_status
-        # The fixed string that is included in a notification. Auto Scaling sends the notification when the lifecycle hook takes effect. The value of this parameter cannot exceed 4,096 characters in length.
-        # 
-        # Auto Scaling sends the value specified for the NotificationMetadata parameter together with the notification. This helps you categorize your notifications. The NotificationMetadata parameter takes effect only after you specify the NotificationArn parameter.
-        self.lifecycle_transition = lifecycle_transition
-        # The region ID of the scaling group.
-        self.notification_arn = notification_arn
-        # The Alibaba Cloud Resource Name (ARN) of the notification method. Specify the value in one of the following formats:
-        # 
-        # *   If the notification method is a Message Service (MNS) queue, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
-        # *   If the notification method is an MNS topic, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
-        # *   If the notification method is an Operation Orchestration Service (OOS) template, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
-        # 
-        # The variables in the preceding parameter formats have the following meanings:
-        # 
-        # *   region-id: the region ID of the scaling group.
-        # *   account-id: the ID of the Alibaba Cloud account.
-        # *   queuename: the name of the MNS queue.
-        # *   topicname: the name of the MNS topic.
-        # *   templatename: the name of the OOS template.
-        self.notification_metadata = notification_metadata
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # The status into which you want to put the lifecycle hook. Valid values:
+        # The status that you want to specify for the lifecycle hook. Valid values:
         # 
         # *   Active
         # *   InActive
@@ -22443,9 +22764,36 @@ class ModifyLifecycleHookRequest(TeaModel):
         # If you do not specify this parameter, the status of the lifecycle hook remains unchanged after you call this operation.
         # 
         # > By default, a lifecycle hook is in the Active state after you create it.
+        self.lifecycle_hook_status = lifecycle_hook_status
+        # The type of the scaling activity to which the lifecycle hook applies. Valid values:
+        # 
+        # *   SCALE_OUT: scale-out activity
+        # *   SCALE_IN: scale-in activity
+        self.lifecycle_transition = lifecycle_transition
+        # The Alibaba Cloud Resource Name (ARN) of the notification method.
+        # 
+        # *   If the notification method is a Message Service (MNS) queue, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
+        # *   If the notification method is an MNS topic, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
+        # *   If the notification method is an Operation Orchestration Service (OOS) template, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
+        # 
+        # The variables in the preceding formats have the following meanings:
+        # 
+        # *   region-id: the region ID of the scaling group.
+        # *   account-id: the ID of the Alibaba Cloud account.
+        # *   queuename: the name of the MNS queue.
+        # *   topicname: the name of the MNS topic.
+        # *   templatename: the name of the OOS template.
+        self.notification_arn = notification_arn
+        # The fixed string that is included in a notification. Auto Scaling sends the notification when the lifecycle hook takes effect. The value of this parameter cannot exceed 4,096 characters in length.
+        # 
+        # Auto Scaling sends the value of the NotificationMetadata parameter together with the notification. This helps you categorize your notifications. If you specify the NotificationMetadata parameter, you must also specify the NotificationArn parameter.
+        self.notification_metadata = notification_metadata
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID of the scaling group.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The name of the lifecycle hook that you want to modify.
+        # The ID of the scaling group to which the lifecycle hook belongs.
         self.scaling_group_id = scaling_group_id
 
     def validate(self):
@@ -22521,7 +22869,7 @@ class ModifyLifecycleHookResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # auditing
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22736,6 +23084,33 @@ class ModifyNotificationConfigurationResponse(TeaModel):
         return self
 
 
+class ModifyScalingConfigurationRequestImageOptions(TeaModel):
+    def __init__(
+        self,
+        login_as_non_root: bool = None,
+    ):
+        self.login_as_non_root = login_as_non_root
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.login_as_non_root is not None:
+            result['LoginAsNonRoot'] = self.login_as_non_root
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoginAsNonRoot') is not None:
+            self.login_as_non_root = m.get('LoginAsNonRoot')
+        return self
+
+
 class ModifyScalingConfigurationRequestPrivatePoolOptions(TeaModel):
     def __init__(
         self,
@@ -22744,11 +23119,11 @@ class ModifyScalingConfigurationRequestPrivatePoolOptions(TeaModel):
     ):
         # The ID of the private pool. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation for which the private pool is generated.
         self.id = id
-        # The type of the private pool that you want to use to create instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool when you create instances. Valid values:
+        # The type of the private pool that you want to use to create instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool to create instances. Valid values:
         # 
-        # *   Open: open private pool. The system selects an open private pool for instance startup. If no open private pool meets your business requirements, the resources in the public pool are used for instance startup. In this case, you do not need to specify the PrivatePoolOptions.Id parameter.
-        # *   Target: specified private pool. The resources in the specified private pool are used for instance startup. If the specified private pool is unavailable, the instance startup fails. If you set this parameter to Target, you must specify the PrivatePoolOptions.Id parameter.
-        # *   None: no private pool. The resources of private pools are not used for instance startup.
+        # *   Open: open private pool. The system selects a matching open private pool to create instances. If no matching open private pools are found, the system uses the resources in the public pool to create instances. In this case, you do not need to specify the PrivatePoolOptions.Id parameter.
+        # *   Target: specified private pool. The system uses the resources of a specified private pool to create instances. If the specified private pool is unavailable, no instances can be created. If you set this parameter to Target, you must specify the PrivatePoolOptions.Id parameter.
+        # *   None: no private pool. The system does not use the resources in private pools to create instances.
         self.match_criteria = match_criteria
 
     def validate(self):
@@ -22798,24 +23173,22 @@ class ModifyScalingConfigurationRequestSystemDisk(TeaModel):
         # *   false
         # 
         # > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
-        # 
-        # For more information, see [ESSD AutoPL disks](~~368372~~).
         self.bursting_enabled = bursting_enabled
         # The category of the system disk. Valid values:
         # 
-        # *   cloud: basic disk.
-        # *   cloud_efficiency: ultra disk.
-        # *   cloud_ssd: standard SSD.
-        # *   cloud_essd: ESSD.
-        # *   ephemeral_ssd: local SSD.
+        # *   cloud: basic disk
+        # *   cloud_efficiency: ultra disk
+        # *   cloud_ssd: standard SSD
+        # *   cloud_essd: enhanced SSD (ESSD)
+        # *   ephemeral_ssd: local SSD
         # 
-        # You cannot specify the SystemDisk.Category and `SystemDiskCategories` parameters at the same time. If you do not specify the Category and `SystemDiskCategories` parameters, the default value of the Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
+        # You cannot specify both the SystemDisk.Category and `SystemDiskCategories` parameters. If you do not specify the SystemDisk.Category or `SystemDiskCategories` parameter, the default value of the SystemDisk.Category parameter is used. The default value of this parameter for non-I/O optimized instances of Generation I instance types is cloud. The default value of this parameter for instances of other types is cloud_efficiency.
         self.category = category
         # The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the system disk. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with [http:// or https://. Default value: null.](http://https://。、（:）、（\_）（-）。：)
         self.disk_name = disk_name
-        # The algorithm that is used to encrypt the system disk. Valid values:
+        # The encryption algorithm that you want to use to encrypt the system disk. Valid values:
         # 
         # *   AES-256
         # *   SM4-128
@@ -22824,14 +23197,14 @@ class ModifyScalingConfigurationRequestSystemDisk(TeaModel):
         self.encrypt_algorithm = encrypt_algorithm
         # Specifies whether to encrypt the system disk. Valid values:
         # 
-        # *   true: encrypts the system disk.
-        # *   false: does not encrypt the system disk.
+        # *   true
+        # *   false
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The ID of the KMS key that is used to encrypt the system disk.
+        # The ID of the KMS key that you want to use to encrypt the system disk.
         self.kmskey_id = kmskey_id
-        # The PL of the system disk of the ESSD category. Valid values:
+        # The performance level (PL) of the system disk that is an ESSD. Valid values:
         # 
         # *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
         # *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
@@ -22847,12 +23220,12 @@ class ModifyScalingConfigurationRequestSystemDisk(TeaModel):
         # The size of the system disk. Unit: GiB.
         # 
         # *   Valid values if you set the SystemDisk.Category parameter to cloud: 20 to 500.
-        # *   Valid values if you set the SystemDisk.Category parameter to cloud_efficiency: 20 to 500
-        # *   Valid values if you set the SystemDisk.Category parameter to cloud_ssd: 20 to 500
-        # *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500
-        # *   Valid values if you set the SystemDisk.Category parameter to ephemeral_ssd: 20 to 500
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_efficiency: 20 to 500.
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_ssd: 20 to 500.
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500.
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500.
         # 
-        # The value of SystemDisk.Size must be greater than or equal to max{20, ImageSize}.
+        # The value of the SystemDisk.Size parameter must be greater than or equal to max{20, ImageSize}.
         self.size = size
 
     def validate(self):
@@ -22933,7 +23306,7 @@ class ModifyScalingConfigurationRequestDataDisks(TeaModel):
         size: int = None,
         snapshot_id: str = None,
     ):
-        # The ID of the automatic snapshot policy that you want to apply to the data disk.
+        # The ID of the automatic snapshot policy that you want to apply to data disk N. Valid values of N: 1 to 16.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
         # Specifies whether to enable the burst feature for the system disk. Valid values:
         # 
@@ -22941,52 +23314,50 @@ class ModifyScalingConfigurationRequestDataDisks(TeaModel):
         # *   false
         # 
         # > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
-        # 
-        # For more information, see [ESSD AutoPL disks](~~368372~~).
         self.bursting_enabled = bursting_enabled
-        # The categories of the data disks. You can specify 1 to 16 data disks. You can specify 1 to 4 disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the data disk that has the highest priority, Auto Scaling creates instances by using the data disk that has the next highest priority. Valid values:
+        # The categories of data disk N. You can specify 1 to 16 data disks. You can specify 1 to 4 disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
         # 
-        # *   cloud: basic disk. The DeleteWithInstance attribute of a basic disk that is created together with the instance is set to true.
+        # *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
         # *   cloud_efficiency: ultra disk.
         # *   cloud_ssd: standard SSD.
         # *   cloud_essd: ESSD.
         # 
-        # > You cannot specify the Categories and `Category` parameters at the same time.
+        # > If you specify the Categories parameter, you cannot specify the `Category` parameter.
         self.categories = categories
-        # The category of the data disk. You can specify 1 to 16 data disks. Valid values:
+        # The category of data disk N. Valid values of N: 1 to 16. Valid values:
         # 
-        # *   cloud: basic disk. The DeleteWithInstance attribute of a basic disk that is created together with the instance is set to true.
+        # *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
         # *   cloud_efficiency: ultra disk.
         # *   cloud_ssd: standard SSD.
-        # *   ephemeral_ssd: local standard SSD.
+        # *   ephemeral_ssd: local SSD.
         # *   cloud_essd: ESSD.
         # 
-        # You cannot specify the Category and `Categories` parameters at the same time. If you do not specify the Category and `Categories` parameters, the default value of the Category parameter is:
+        # If you specify the `Categories` parameter, you cannot specify the Category parameter. If you do not specify the Category or `Categories` parameter, the default value of the Category parameter is used.
         # 
-        # *   cloud_efficiency for I/O optimized instances.
-        # *   cloud for non-I/O optimized instances.
+        # *   For I/O optimized instances, the default value of this parameter is cloud_efficiency.
+        # *   For non-I/O optimized instances, the default value of this parameter is cloud.
         self.category = category
-        # Specifies whether to release the data disk when the instance to which the data disk is attached is released. Valid values:
+        # Specifies whether to release data disk N when the instance to which data disk N is attached is released. Valid values of N: 1 to 16. Valid values:
         # 
         # *   true
         # *   false
         # 
-        # This parameter is available only for independent disks whose Category parameter is set to cloud, cloud_efficiency, cloud_ssd, cloud_essd, or cloud_auto. If you specify this parameter for disks of other categories, an error will be reported.
+        # This parameter is available only for independent disks whose Category parameter is set to cloud, cloud_efficiency, cloud_ssd, cloud_essd, or cloud_auto. If you specify this parameter for other disks, an error is returned.
         self.delete_with_instance = delete_with_instance
         # The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
         self.description = description
-        # The mount target of the data disk. If you do not specify the Device parameter, a mount target is automatically created when Auto Scaling creates ECS instance. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+        # The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
         self.device = device
-        # The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.disk_name = disk_name
         # Specifies whether to encrypt the system disk. Valid values:
         # 
-        # *   true: encrypts the system disk.
-        # *   false: does not encrypt the system disk.
+        # *   true
+        # *   false
         self.encrypted = encrypted
-        # The ID of the KMS key of the data disk.
+        # The ID of the Key Management Service (KMS) key that you want to use to encrypt data disk N. Valid values of N: 1 to 16.
         self.kmskey_id = kmskey_id
-        # The PL of the data disk of the ESSD category. If you set the Category parameter to cloud_essd, you must also specify the PerformanceLevel parameter. Valid values:
+        # The PL of the data disk that is an ESSD. If you set the Category parameter to cloud_essd, you must use this parameter to specify the PL of the same ESSD. Valid values:
         # 
         # *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
         # *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
@@ -22997,19 +23368,19 @@ class ModifyScalingConfigurationRequestDataDisks(TeaModel):
         self.performance_level = performance_level
         # The input/output operations per second (IOPS) metric that is preconfigured for the data disk.
         # 
-        # > IOPS measures the number of read and write operations that an EBS device can process per second.
+        # > IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
         self.provisioned_iops = provisioned_iops
-        # The size of the data disk. Unit: GiB.
+        # The size of data disk N. Unit: GiB. Valid values of N: 1 to 16.
         # 
-        # *   Valid values if you set the Category parameter to cloud: 5 to 2000.
-        # *   Valid values if you set the Category parameter to cloud_efficiency: 20 to 32768.
-        # *   Valid values if you set the Category parameter to cloud_ssd: 20 to 32768.
-        # *   Valid values if you set the Category parameter to cloud_essd: 20 to 32768.
-        # *   Valid values if you set the Category parameter to ephemeral_ssd: 5 to 800.
+        # *   Valid values if you set the Categories parameter to cloud: 5 to 2000.
+        # *   Valid values if you set the Categories parameter to cloud_efficiency: 20 to 32768.
+        # *   Valid values if you set the Categories parameter to cloud_ssd: 20 to 32768.
+        # *   Valid values if you set the Categories parameter to cloud_essd: 20 to 32768.
+        # *   Valid values if you set the Categories parameter to ephemeral_ssd: 5 to 800.
         # 
         # The value of the Size parameter must be greater than or equal to the size of the snapshot that is specified by the SnapshotId parameter.
         self.size = size
-        # The ID of the snapshot that you want to use to create data disks. If you specify this parameter, the Size parameter is ignored. The size of the disk is the same as the size of the specified snapshot.
+        # The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, the Size parameter is ignored. The size of the disk is the same as the size of the specified snapshot.
         # 
         # If you specify a snapshot created on or before July 15, 2013, the operation fails and the system returns InvalidSnapshot.TooOld.
         self.snapshot_id = snapshot_id
@@ -23105,38 +23476,38 @@ class ModifyScalingConfigurationRequestInstancePatternInfos(TeaModel):
         # *   Arm: ARM architecture.
         # *   SuperComputeCluster: Super Computing Cluster architecture.
         # 
-        # By default, all values are selected.
+        # By default, all values are included.
         self.architectures = architectures
         # Specifies whether to include burstable instance types. Valid values:
         # 
-        # *   Exclude: excludes burstable instance types.
+        # *   Exclude: does not include burstable instance types.
         # *   Include: includes burstable instance types.
         # *   Required: includes only burstable instance types.
         # 
         # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The number of vCPUs that is specified for an instance type in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see [Instance family](~~25378~~).
+        # The number of vCPUs that are specified for an instance type in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](~~25378~~). You can specify 1 to 10 vCPUs.
         # 
-        # Take note of the following items:
+        # When you specify the Cores parameter, take note of the following items:
         # 
-        # *   The InstancePatternInfos parameter is available only for scaling groups that reside in VPCs.
+        # *   The InstancePatternInfos parameter is available only for scaling groups that reside in virtual private clouds (VPCs).
         # *   You must specify the InstancePatternInfos, Cores, and Memory parameters at the same time.
-        # *   If you specify an instance type by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the instance type that is specified by the InstanceType or InstanceTypes parameter for scale-out activities. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the instance type that is specified by the InstancePatternInfos parameter based on the price in ascending order.
+        # *   If you specify an instance type by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the instance type that is specified by the InstanceType or InstanceTypes parameter for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the lowest-priced instance type that is specified by the InstancePatternInfos parameter.
         self.cores = cores
-        # The instance types that you want to filter out. You can use wildcard characters such as an asterisk (\*) to filter out a single instance type or an instance family. Example:
+        # The instance types that you want to exclude. You can use wildcard characters such as an asterisk (\*) to exclude an instance type or an instance family. Examples:
         # 
-        # *   ecs.c6.large: The ecs.c6.large instance type is filtered out.
-        # *   ecs.c6.\*: The c6 instance family is filtered out.
+        # *   ecs.c6.large: excludes the ecs.c6.large instance type
+        # *   ecs.c6.\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
-        # The level of the instance type, which is used to filter the instance types that meet the specified criteria. This parameter takes effect only if you set the `CostOptimization` parameter to true. Valid values:
+        # The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set the `CostOptimization` parameter to true. Valid values:
         # 
         # *   EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](~~108489~~).
-        # *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Instance family](~~25378~~).
-        # *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](~~59977~~) topic of burstable instances.
+        # *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](~~25378~~).
+        # *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](~~59977~~) of burstable instances.
         self.instance_family_level = instance_family_level
         # The maximum hourly price for a pay-as-you-go instance or a preemptible instance in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
         # 
-        # > If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the MaxPrice parameter. In other cases, you do not need to specify the MaxPrice parameter.
+        # > If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the MaxPrice parameter. In other cases, the MaxPrice parameter is optional.
         self.max_price = max_price
         # The memory size that is specified for an instance type in the intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
         self.memory = memory
@@ -23191,17 +23562,17 @@ class ModifyScalingConfigurationRequestInstanceTypeOverrides(TeaModel):
         instance_type: str = None,
         weighted_capacity: int = None,
     ):
-        # The instance type. If you want to specify the weight of the instance type in the scaling configuration, you must specify the InstanceType and WeightedCapacity parameters at the same time.
+        # The instance type that you specify by using the Extended Configurations feature of the launch template. If you want to specify the weight of the specified instance type in the scaling configuration, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
         # 
-        # You can use the InstanceType parameter to specify 1 to 10 instance types. You can use the WeightedCapacity parameter to specify weights of instance types.
+        # You can use this parameter to specify 1 to 10 instance types.
         # 
-        # > You cannot specify the InstanceType and InstanceTypes parameters at the same time.
+        # > If you specify the InstanceType parameter, you cannot specify the InstanceTypes parameter.
         # 
-        # You can specify instance types that are available for purchase as the values of the InstanceType parameter.
+        # You can use the InstanceType parameter to specify only instance types that are available for purchase.
         self.instance_type = instance_type
-        # The weight of the instance type. The weight of the instance type indicates the capacity of the instance of the specified instance type in the scaling group. If you want Auto Scaling to scale instances based on the instance type weight, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
+        # The weight of the instance type. The weight specifies the capacity of an instance of the specified instance type in the scaling group. If you want to scale instances based on the weights of the instance types, you must specify this parameter after you specify the InstanceType parameter. After you use the InstanceType parameter to specify an instance type, you can use the WeightedCapacity parameter to specify weight for the same instance type.
         # 
-        # A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity.
+        # A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
         # 
         # Performance metrics, such as the number of vCPUs and the memory size of each instance type, may vary. You can specify different weights for different instance types based on your business requirements.
         # 
@@ -23248,9 +23619,9 @@ class ModifyScalingConfigurationRequestSpotPriceLimits(TeaModel):
         instance_type: str = None,
         price_limit: float = None,
     ):
-        # The instance type of the preemptible instance. This parameter takes effect only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+        # The instance type of preemptible instance N. Valid values of N: 1 to 10. This parameter is available only if you set the SpotStrategy parameter to SpotWithPriceLimit.
         self.instance_type = instance_type
-        # The price limit of the preemptible instance. This parameter takes effect only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+        # The price limit of preemptible instance N. Valid values of N: 1 to 10. This parameter is available only if you set the SpotStrategy parameter to SpotWithPriceLimit.
         self.price_limit = price_limit
 
     def validate(self):
@@ -23280,6 +23651,7 @@ class ModifyScalingConfigurationRequestSpotPriceLimits(TeaModel):
 class ModifyScalingConfigurationRequest(TeaModel):
     def __init__(
         self,
+        image_options: ModifyScalingConfigurationRequestImageOptions = None,
         private_pool_options: ModifyScalingConfigurationRequestPrivatePoolOptions = None,
         system_disk: ModifyScalingConfigurationRequestSystemDisk = None,
         affinity: str = None,
@@ -23327,23 +23699,24 @@ class ModifyScalingConfigurationRequest(TeaModel):
         user_data: str = None,
         zone_id: str = None,
     ):
+        self.image_options = image_options
         self.private_pool_options = private_pool_options
         self.system_disk = system_disk
-        # Specifies whether to associate the instance on a dedicated host with the dedicated host. Valid values:
+        # Specifies whether to associate an instance on a dedicated host with the dedicated host. Valid values:
         # 
-        # *   default: does not associate the instance with the dedicated host. If you start an instance that was stopped in economical mode and the original dedicated host of the instance has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
-        # *   host: associates the instance with the dedicated host. If you start an instance that was stopped in economical mode, the instance remains on the original dedicated host. If the original dedicated host of the instance has insufficient resources, you cannot start the instance.
+        # *   default: does not associate the instance with the dedicated host. If you start an instance that was stopped in Economical Mode and the original dedicated host has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
+        # *   host: associates the instance with the dedicated host. If you start an instance that was stopped in Economical Mode, the instance remains on the original dedicated host. If the original dedicated host has insufficient resources, the instance cannot be started.
         self.affinity = affinity
-        # The number of vCPUs.
+        # The number of vCPUs. Unit: cores.
         # 
-        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set the Cpu parameter to 2 and the Memory parameter to 16 to specify the instance types that have 2 vCPUs and 16 GiB of memory. Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
         # 
         # > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
         self.cpu = cpu
         # The performance mode of the burstable instance. Valid values:
         # 
-        # *   Standard: standard mode. For more information, see the "Standard mode" section in [Burstable instances](~~59977~~).
-        # *   Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in [Burstable instances](~~59977~~).
+        # *   Standard: standard mode. For more information, see the "Standard mode" section in the [Burstable instances](~~59977~~) topic.
+        # *   Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in the [Burstable instances](~~59977~~) topic.
         self.credit_specification = credit_specification
         # Details of the data disks.
         self.data_disks = data_disks
@@ -23353,16 +23726,16 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.dedicated_host_id = dedicated_host_id
         # The ID of the deployment set to which the ECS instance belongs.
         self.deployment_set_id = deployment_set_id
-        # The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
+        # The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname also cannot contain consecutive periods (.) or hyphens (-). Naming conventions:
         # 
         # *   Windows instances: The hostname must be 2 to 15 characters in length, and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
         # *   Other instances such as Linux instances: The hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instance belongs.
         self.hpc_cluster_id = hpc_cluster_id
-        # The name of the image family. You can specify this parameter to obtain the latest custom images that are available in the specified image family. The images are used to create instances. If the ImageId parameter is specified, you cannot specify the ImageFamily parameter.
+        # The name of the image family. You can specify this parameter to obtain the latest custom images that are available in the specified image family. The images are used to create ECS instances. If the ImageId parameter is specified, you cannot specify the ImageFamily parameter.
         self.image_family = image_family
-        # The ID of the image that is used by Auto Scaling to automatically create instances.
+        # The ID of the image that Auto Scaling uses to automatically create ECS instances.
         # 
         # > If the image that is specified in the scaling configuration contains system disks and data disks, the data that is stored in the data disks is cleared after you modify the image.
         self.image_id = image_id
@@ -23370,27 +23743,27 @@ class ModifyScalingConfigurationRequest(TeaModel):
         # 
         # You cannot use the ImageName parameter to specify Alibaba Cloud Marketplace images.
         self.image_name = image_name
-        # The description of the ECS instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the ECS instance. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
         self.instance_description = instance_description
-        # The name of the ECS instance that is automatically created based on the scaling configuration.
+        # The name of the Elastic Compute Service (ECS) instance that is automatically created based on the scaling configuration.
         self.instance_name = instance_name
-        # Information about the intelligent configuration settings, which determines the available instance types.
+        # Details of the intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
         self.instance_pattern_infos = instance_pattern_infos
-        # Information about the instance type.
+        # The information about the instance types.
         self.instance_type_overrides = instance_type_overrides
-        # The instance types. If you specify this parameter, the InstanceType parameter is ignored. You can specify up to 10 instance types in a scaling configuration.
+        # The instance types. If you specify this parameter, the InstanceType parameter is ignored. Valid values of N: 1 to 10.
         # 
-        # The first instance type has the highest priority. The priority decreases based on the specified order of instance types. Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances of the instance type that has the highest priority, Auto Scaling creates instances of the instance type that has the next highest priority.
+        # The first instance type has the highest priority. The priority decreases based on the specified order of the instance types. Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances of the instance type that has the highest priority, Auto Scaling creates instances of the instance type that has the next highest priority.
         self.instance_types = instance_types
         # The billing method for network usage. Valid values:
         # 
         # *   PayByBandwidth: You are charged for the maximum available bandwidth that is specified by the InternetMaxBandwidthOut parameter.
-        # *   PayByTraffic: You are charged for the actual traffic that is used. The InternetMaxBandwidthOut parameter specifies only the maximum available bandwidth.
+        # *   PayByTraffic: You are charged for the actual data transfer. The InternetMaxBandwidthOut parameter specifies only the maximum available bandwidth.
         self.internet_charge_type = internet_charge_type
         # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
         # *   0 to 100 if you set the InternetChargeType parameter to PayByBandwidth. If you leave this parameter empty, this parameter is automatically set to 0.
-        # *   0 to 100 if you set the InternetChargeType parameter to PayByTraffic. If you leave this parameter empty, an error will be reported.
+        # *   0 to 100 if you set the InternetChargeType parameter to PayByTraffic. If you leave this parameter empty, an error is returned.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # Specifies whether to create an I/O optimized instance. Valid values:
         # 
@@ -23399,27 +23772,27 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.io_optimized = io_optimized
         # The number of randomly generated IPv6 addresses that you want to allocate to the elastic network interface (ENI).
         self.ipv_6address_count = ipv_6address_count
-        # The name of the key pair that is used to log on to the ECS instance.
+        # The name of the key pair that you use to log on to an ECS instance.
         # 
         # *   Windows instances do not use this parameter.
         # *   By default, the username and password authentication method is disabled for Linux instances.
         self.key_pair_name = key_pair_name
-        # The weight of the ECS instance as a backend server. Valid values: 1 to 100.
+        # The weight of a backend server. Valid values: 1 to 100.
         self.load_balancer_weight = load_balancer_weight
-        # The size of the memory. Unit: GiB.
+        # The memory size. Unit: GiB.
         # 
-        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set the Cpu parameter to 2 and the Memory parameter to 16 to specify the instance types that have 2 vCPUs and 16 GiB of memory. Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
         # 
         # > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
         self.memory = memory
         # Specifies whether to overwrite existing data. Valid values:
         # 
-        # *   true: overwrites existing data.
-        # *   false: does not overwrite existing data.
+        # *   true
+        # *   false
         self.override = override
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured for the image.
+        # Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured in the image.
         self.password_inherit = password_inherit
         # The name of the RAM role that is associated with the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles. You can call the CreateRole operation to create RAM roles.
         self.ram_role_name = ram_role_name
@@ -23443,41 +23816,43 @@ class ModifyScalingConfigurationRequest(TeaModel):
         # *   The following retention periods are available in invitational preview: 2, 3, 4, 5, and 6 hours. If you want to set this parameter to one of these values, submit a ticket.
         # *   If you set this parameter to 0, no retention period is specified for the preemptible instance.
         self.spot_duration = spot_duration
-        # The interruption event of the preemptible instance. Default value: Terminate. Set the value to Terminate, which specifies that the preemptible instance is to be released.
+        # The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which indicates that the instance is released.
         self.spot_interruption_behavior = spot_interruption_behavior
-        # Information about the instance types of preemptible instances.
+        # The information about the preemptible instance types.
         self.spot_price_limits = spot_price_limits
         # The preemption policy that you want to apply to pay-as-you-go instances and preemptible instances. Valid values:
         # 
         # *   NoSpot: The instance is created as a pay-as-you-go instance.
         # *   SpotWithPriceLimit: The instance is a preemptible instance that has a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
+        # *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
         self.spot_strategy = spot_strategy
-        # The categories of the system disks. You can specify one to four disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the disk category that has the highest priority, Auto Scaling creates instances by using the disk category that has the next highest priority. Valid values:
+        # The categories of the system disks. You can specify 1 to 4 disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
         # 
-        # *   cloud: basic disk.
-        # *   cloud_efficiency: ultra disk.
-        # *   cloud_ssd: standard SSD.
-        # *   cloud_essd: ESSD.
+        # *   cloud: basic disk
+        # *   cloud_efficiency: ultra disk
+        # *   cloud_ssd: standard SSD
+        # *   cloud_essd: ESSD
         # 
-        # > You cannot specify the SystemDiskCategories and `SystemDisk.Category` parameters at the same time.
+        # > You cannot specify both the SystemDiskCategories parameter and the `SystemDisk.Category` parameter.
         self.system_disk_categories = system_disk_categories
-        # The tags of the ECS instance. The tags must be specified in the key-value pair format. You can specify up to 20 tags. When you specify tag keys and tag values, take note of the following items:
+        # The tags of the ECS instance. Tags must be specified as key-value pairs. You can specify up to 20 tags. The following rules apply to tag keys and tag values:
         # 
         # *   A tag key can be up to 64 characters in length. The key cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. You cannot specify an empty string as a tag key.
         # *   A tag value can be up to 128 characters in length. The value cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. You can specify an empty string as a tag value.
         self.tags = tags
-        # Specifies whether to create the instance on a dedicated host. Valid values:
+        # Specifies whether to create an instance on a dedicated host. Valid values:
         # 
         # *   default: does not create the instance on a dedicated host.
-        # *   host: creates the instance on a dedicated host. If you do not specify the DedicatedHostId parameter, Alibaba Cloud selects a dedicated host for the instance that you want to create.
+        # *   host: creates the instance on a dedicated host. If you do not specify the DedicatedHostId parameter, Alibaba Cloud selects a dedicated host for the instance.
         self.tenancy = tenancy
         # The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the data before encoding is 16 KB.
         self.user_data = user_data
-        # The zone ID of the ECS instance.
+        # The ID of the zone where the ECS instance resides.
         self.zone_id = zone_id
 
     def validate(self):
+        if self.image_options:
+            self.image_options.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
         if self.system_disk:
@@ -23505,6 +23880,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.image_options is not None:
+            result['ImageOptions'] = self.image_options.to_map()
         if self.private_pool_options is not None:
             result['PrivatePoolOptions'] = self.private_pool_options.to_map()
         if self.system_disk is not None:
@@ -23609,6 +23986,9 @@ class ModifyScalingConfigurationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImageOptions') is not None:
+            temp_model = ModifyScalingConfigurationRequestImageOptions()
+            self.image_options = temp_model.from_map(m['ImageOptions'])
         if m.get('PrivatePoolOptions') is not None:
             temp_model = ModifyScalingConfigurationRequestPrivatePoolOptions()
             self.private_pool_options = temp_model.from_map(m['PrivatePoolOptions'])
@@ -23718,6 +24098,33 @@ class ModifyScalingConfigurationRequest(TeaModel):
         return self
 
 
+class ModifyScalingConfigurationShrinkRequestImageOptions(TeaModel):
+    def __init__(
+        self,
+        login_as_non_root: bool = None,
+    ):
+        self.login_as_non_root = login_as_non_root
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.login_as_non_root is not None:
+            result['LoginAsNonRoot'] = self.login_as_non_root
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoginAsNonRoot') is not None:
+            self.login_as_non_root = m.get('LoginAsNonRoot')
+        return self
+
+
 class ModifyScalingConfigurationShrinkRequestPrivatePoolOptions(TeaModel):
     def __init__(
         self,
@@ -23726,11 +24133,11 @@ class ModifyScalingConfigurationShrinkRequestPrivatePoolOptions(TeaModel):
     ):
         # The ID of the private pool. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation for which the private pool is generated.
         self.id = id
-        # The type of the private pool that you want to use to create instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool when you create instances. Valid values:
+        # The type of the private pool that you want to use to create instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool to create instances. Valid values:
         # 
-        # *   Open: open private pool. The system selects an open private pool for instance startup. If no open private pool meets your business requirements, the resources in the public pool are used for instance startup. In this case, you do not need to specify the PrivatePoolOptions.Id parameter.
-        # *   Target: specified private pool. The resources in the specified private pool are used for instance startup. If the specified private pool is unavailable, the instance startup fails. If you set this parameter to Target, you must specify the PrivatePoolOptions.Id parameter.
-        # *   None: no private pool. The resources of private pools are not used for instance startup.
+        # *   Open: open private pool. The system selects a matching open private pool to create instances. If no matching open private pools are found, the system uses the resources in the public pool to create instances. In this case, you do not need to specify the PrivatePoolOptions.Id parameter.
+        # *   Target: specified private pool. The system uses the resources of a specified private pool to create instances. If the specified private pool is unavailable, no instances can be created. If you set this parameter to Target, you must specify the PrivatePoolOptions.Id parameter.
+        # *   None: no private pool. The system does not use the resources in private pools to create instances.
         self.match_criteria = match_criteria
 
     def validate(self):
@@ -23780,24 +24187,22 @@ class ModifyScalingConfigurationShrinkRequestSystemDisk(TeaModel):
         # *   false
         # 
         # > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
-        # 
-        # For more information, see [ESSD AutoPL disks](~~368372~~).
         self.bursting_enabled = bursting_enabled
         # The category of the system disk. Valid values:
         # 
-        # *   cloud: basic disk.
-        # *   cloud_efficiency: ultra disk.
-        # *   cloud_ssd: standard SSD.
-        # *   cloud_essd: ESSD.
-        # *   ephemeral_ssd: local SSD.
+        # *   cloud: basic disk
+        # *   cloud_efficiency: ultra disk
+        # *   cloud_ssd: standard SSD
+        # *   cloud_essd: enhanced SSD (ESSD)
+        # *   ephemeral_ssd: local SSD
         # 
-        # You cannot specify the SystemDisk.Category and `SystemDiskCategories` parameters at the same time. If you do not specify the Category and `SystemDiskCategories` parameters, the default value of the Category parameter is used. For non-I/O optimized instances of Generation I instance types, the default value is cloud. For instances of other instance types, the default value is cloud_efficiency.
+        # You cannot specify both the SystemDisk.Category and `SystemDiskCategories` parameters. If you do not specify the SystemDisk.Category or `SystemDiskCategories` parameter, the default value of the SystemDisk.Category parameter is used. The default value of this parameter for non-I/O optimized instances of Generation I instance types is cloud. The default value of this parameter for instances of other types is cloud_efficiency.
         self.category = category
         # The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the system disk. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with [http:// or https://. Default value: null.](http://https://。、（:）、（\_）（-）。：)
         self.disk_name = disk_name
-        # The algorithm that is used to encrypt the system disk. Valid values:
+        # The encryption algorithm that you want to use to encrypt the system disk. Valid values:
         # 
         # *   AES-256
         # *   SM4-128
@@ -23806,14 +24211,14 @@ class ModifyScalingConfigurationShrinkRequestSystemDisk(TeaModel):
         self.encrypt_algorithm = encrypt_algorithm
         # Specifies whether to encrypt the system disk. Valid values:
         # 
-        # *   true: encrypts the system disk.
-        # *   false: does not encrypt the system disk.
+        # *   true
+        # *   false
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The ID of the KMS key that is used to encrypt the system disk.
+        # The ID of the KMS key that you want to use to encrypt the system disk.
         self.kmskey_id = kmskey_id
-        # The PL of the system disk of the ESSD category. Valid values:
+        # The performance level (PL) of the system disk that is an ESSD. Valid values:
         # 
         # *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
         # *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
@@ -23829,12 +24234,12 @@ class ModifyScalingConfigurationShrinkRequestSystemDisk(TeaModel):
         # The size of the system disk. Unit: GiB.
         # 
         # *   Valid values if you set the SystemDisk.Category parameter to cloud: 20 to 500.
-        # *   Valid values if you set the SystemDisk.Category parameter to cloud_efficiency: 20 to 500
-        # *   Valid values if you set the SystemDisk.Category parameter to cloud_ssd: 20 to 500
-        # *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500
-        # *   Valid values if you set the SystemDisk.Category parameter to ephemeral_ssd: 20 to 500
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_efficiency: 20 to 500.
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_ssd: 20 to 500.
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500.
+        # *   Valid values if you set the SystemDisk.Category parameter to cloud_essd: 20 to 500.
         # 
-        # The value of SystemDisk.Size must be greater than or equal to max{20, ImageSize}.
+        # The value of the SystemDisk.Size parameter must be greater than or equal to max{20, ImageSize}.
         self.size = size
 
     def validate(self):
@@ -23915,7 +24320,7 @@ class ModifyScalingConfigurationShrinkRequestDataDisks(TeaModel):
         size: int = None,
         snapshot_id: str = None,
     ):
-        # The ID of the automatic snapshot policy that you want to apply to the data disk.
+        # The ID of the automatic snapshot policy that you want to apply to data disk N. Valid values of N: 1 to 16.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
         # Specifies whether to enable the burst feature for the system disk. Valid values:
         # 
@@ -23923,52 +24328,50 @@ class ModifyScalingConfigurationShrinkRequestDataDisks(TeaModel):
         # *   false
         # 
         # > This parameter is available only if you set the `SystemDisk.Category` parameter to `cloud_auto`.
-        # 
-        # For more information, see [ESSD AutoPL disks](~~368372~~).
         self.bursting_enabled = bursting_enabled
-        # The categories of the data disks. You can specify 1 to 16 data disks. You can specify 1 to 4 disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the data disk that has the highest priority, Auto Scaling creates instances by using the data disk that has the next highest priority. Valid values:
+        # The categories of data disk N. You can specify 1 to 16 data disks. You can specify 1 to 4 disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
         # 
-        # *   cloud: basic disk. The DeleteWithInstance attribute of a basic disk that is created together with the instance is set to true.
+        # *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
         # *   cloud_efficiency: ultra disk.
         # *   cloud_ssd: standard SSD.
         # *   cloud_essd: ESSD.
         # 
-        # > You cannot specify the Categories and `Category` parameters at the same time.
+        # > If you specify the Categories parameter, you cannot specify the `Category` parameter.
         self.categories = categories
-        # The category of the data disk. You can specify 1 to 16 data disks. Valid values:
+        # The category of data disk N. Valid values of N: 1 to 16. Valid values:
         # 
-        # *   cloud: basic disk. The DeleteWithInstance attribute of a basic disk that is created together with the instance is set to true.
+        # *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
         # *   cloud_efficiency: ultra disk.
         # *   cloud_ssd: standard SSD.
-        # *   ephemeral_ssd: local standard SSD.
+        # *   ephemeral_ssd: local SSD.
         # *   cloud_essd: ESSD.
         # 
-        # You cannot specify the Category and `Categories` parameters at the same time. If you do not specify the Category and `Categories` parameters, the default value of the Category parameter is:
+        # If you specify the `Categories` parameter, you cannot specify the Category parameter. If you do not specify the Category or `Categories` parameter, the default value of the Category parameter is used.
         # 
-        # *   cloud_efficiency for I/O optimized instances.
-        # *   cloud for non-I/O optimized instances.
+        # *   For I/O optimized instances, the default value of this parameter is cloud_efficiency.
+        # *   For non-I/O optimized instances, the default value of this parameter is cloud.
         self.category = category
-        # Specifies whether to release the data disk when the instance to which the data disk is attached is released. Valid values:
+        # Specifies whether to release data disk N when the instance to which data disk N is attached is released. Valid values of N: 1 to 16. Valid values:
         # 
         # *   true
         # *   false
         # 
-        # This parameter is available only for independent disks whose Category parameter is set to cloud, cloud_efficiency, cloud_ssd, cloud_essd, or cloud_auto. If you specify this parameter for disks of other categories, an error will be reported.
+        # This parameter is available only for independent disks whose Category parameter is set to cloud, cloud_efficiency, cloud_ssd, cloud_essd, or cloud_auto. If you specify this parameter for other disks, an error is returned.
         self.delete_with_instance = delete_with_instance
         # The description of the system disk. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
         self.description = description
-        # The mount target of the data disk. If you do not specify the Device parameter, a mount target is automatically created when Auto Scaling creates ECS instance. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+        # The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
         self.device = device
-        # The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name of the system disk. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.disk_name = disk_name
         # Specifies whether to encrypt the system disk. Valid values:
         # 
-        # *   true: encrypts the system disk.
-        # *   false: does not encrypt the system disk.
+        # *   true
+        # *   false
         self.encrypted = encrypted
-        # The ID of the KMS key of the data disk.
+        # The ID of the Key Management Service (KMS) key that you want to use to encrypt data disk N. Valid values of N: 1 to 16.
         self.kmskey_id = kmskey_id
-        # The PL of the data disk of the ESSD category. If you set the Category parameter to cloud_essd, you must also specify the PerformanceLevel parameter. Valid values:
+        # The PL of the data disk that is an ESSD. If you set the Category parameter to cloud_essd, you must use this parameter to specify the PL of the same ESSD. Valid values:
         # 
         # *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
         # *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
@@ -23979,19 +24382,19 @@ class ModifyScalingConfigurationShrinkRequestDataDisks(TeaModel):
         self.performance_level = performance_level
         # The input/output operations per second (IOPS) metric that is preconfigured for the data disk.
         # 
-        # > IOPS measures the number of read and write operations that an EBS device can process per second.
+        # > IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
         self.provisioned_iops = provisioned_iops
-        # The size of the data disk. Unit: GiB.
+        # The size of data disk N. Unit: GiB. Valid values of N: 1 to 16.
         # 
-        # *   Valid values if you set the Category parameter to cloud: 5 to 2000.
-        # *   Valid values if you set the Category parameter to cloud_efficiency: 20 to 32768.
-        # *   Valid values if you set the Category parameter to cloud_ssd: 20 to 32768.
-        # *   Valid values if you set the Category parameter to cloud_essd: 20 to 32768.
-        # *   Valid values if you set the Category parameter to ephemeral_ssd: 5 to 800.
+        # *   Valid values if you set the Categories parameter to cloud: 5 to 2000.
+        # *   Valid values if you set the Categories parameter to cloud_efficiency: 20 to 32768.
+        # *   Valid values if you set the Categories parameter to cloud_ssd: 20 to 32768.
+        # *   Valid values if you set the Categories parameter to cloud_essd: 20 to 32768.
+        # *   Valid values if you set the Categories parameter to ephemeral_ssd: 5 to 800.
         # 
         # The value of the Size parameter must be greater than or equal to the size of the snapshot that is specified by the SnapshotId parameter.
         self.size = size
-        # The ID of the snapshot that you want to use to create data disks. If you specify this parameter, the Size parameter is ignored. The size of the disk is the same as the size of the specified snapshot.
+        # The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, the Size parameter is ignored. The size of the disk is the same as the size of the specified snapshot.
         # 
         # If you specify a snapshot created on or before July 15, 2013, the operation fails and the system returns InvalidSnapshot.TooOld.
         self.snapshot_id = snapshot_id
@@ -24087,38 +24490,38 @@ class ModifyScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         # *   Arm: ARM architecture.
         # *   SuperComputeCluster: Super Computing Cluster architecture.
         # 
-        # By default, all values are selected.
+        # By default, all values are included.
         self.architectures = architectures
         # Specifies whether to include burstable instance types. Valid values:
         # 
-        # *   Exclude: excludes burstable instance types.
+        # *   Exclude: does not include burstable instance types.
         # *   Include: includes burstable instance types.
         # *   Required: includes only burstable instance types.
         # 
         # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The number of vCPUs that is specified for an instance type in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see [Instance family](~~25378~~).
+        # The number of vCPUs that are specified for an instance type in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](~~25378~~). You can specify 1 to 10 vCPUs.
         # 
-        # Take note of the following items:
+        # When you specify the Cores parameter, take note of the following items:
         # 
-        # *   The InstancePatternInfos parameter is available only for scaling groups that reside in VPCs.
+        # *   The InstancePatternInfos parameter is available only for scaling groups that reside in virtual private clouds (VPCs).
         # *   You must specify the InstancePatternInfos, Cores, and Memory parameters at the same time.
-        # *   If you specify an instance type by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the instance type that is specified by the InstanceType or InstanceTypes parameter for scale-out activities. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the instance type that is specified by the InstancePatternInfos parameter based on the price in ascending order.
+        # *   If you specify an instance type by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the instance type that is specified by the InstanceType or InstanceTypes parameter for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the lowest-priced instance type that is specified by the InstancePatternInfos parameter.
         self.cores = cores
-        # The instance types that you want to filter out. You can use wildcard characters such as an asterisk (\*) to filter out a single instance type or an instance family. Example:
+        # The instance types that you want to exclude. You can use wildcard characters such as an asterisk (\*) to exclude an instance type or an instance family. Examples:
         # 
-        # *   ecs.c6.large: The ecs.c6.large instance type is filtered out.
-        # *   ecs.c6.\*: The c6 instance family is filtered out.
+        # *   ecs.c6.large: excludes the ecs.c6.large instance type
+        # *   ecs.c6.\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
-        # The level of the instance type, which is used to filter the instance types that meet the specified criteria. This parameter takes effect only if you set the `CostOptimization` parameter to true. Valid values:
+        # The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set the `CostOptimization` parameter to true. Valid values:
         # 
         # *   EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](~~108489~~).
-        # *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Instance family](~~25378~~).
-        # *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](~~59977~~) topic of burstable instances.
+        # *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](~~25378~~).
+        # *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](~~59977~~) of burstable instances.
         self.instance_family_level = instance_family_level
         # The maximum hourly price for a pay-as-you-go instance or a preemptible instance in the intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
         # 
-        # > If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the MaxPrice parameter. In other cases, you do not need to specify the MaxPrice parameter.
+        # > If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the MaxPrice parameter. In other cases, the MaxPrice parameter is optional.
         self.max_price = max_price
         # The memory size that is specified for an instance type in the intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
         self.memory = memory
@@ -24173,17 +24576,17 @@ class ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides(TeaModel):
         instance_type: str = None,
         weighted_capacity: int = None,
     ):
-        # The instance type. If you want to specify the weight of the instance type in the scaling configuration, you must specify the InstanceType and WeightedCapacity parameters at the same time.
+        # The instance type that you specify by using the Extended Configurations feature of the launch template. If you want to specify the weight of the specified instance type in the scaling configuration, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
         # 
-        # You can use the InstanceType parameter to specify 1 to 10 instance types. You can use the WeightedCapacity parameter to specify weights of instance types.
+        # You can use this parameter to specify 1 to 10 instance types.
         # 
-        # > You cannot specify the InstanceType and InstanceTypes parameters at the same time.
+        # > If you specify the InstanceType parameter, you cannot specify the InstanceTypes parameter.
         # 
-        # You can specify instance types that are available for purchase as the values of the InstanceType parameter.
+        # You can use the InstanceType parameter to specify only instance types that are available for purchase.
         self.instance_type = instance_type
-        # The weight of the instance type. The weight of the instance type indicates the capacity of the instance of the specified instance type in the scaling group. If you want Auto Scaling to scale instances based on the instance type weight, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
+        # The weight of the instance type. The weight specifies the capacity of an instance of the specified instance type in the scaling group. If you want to scale instances based on the weights of the instance types, you must specify this parameter after you specify the InstanceType parameter. After you use the InstanceType parameter to specify an instance type, you can use the WeightedCapacity parameter to specify weight for the same instance type.
         # 
-        # A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity.
+        # A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
         # 
         # Performance metrics, such as the number of vCPUs and the memory size of each instance type, may vary. You can specify different weights for different instance types based on your business requirements.
         # 
@@ -24230,9 +24633,9 @@ class ModifyScalingConfigurationShrinkRequestSpotPriceLimits(TeaModel):
         instance_type: str = None,
         price_limit: float = None,
     ):
-        # The instance type of the preemptible instance. This parameter takes effect only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+        # The instance type of preemptible instance N. Valid values of N: 1 to 10. This parameter is available only if you set the SpotStrategy parameter to SpotWithPriceLimit.
         self.instance_type = instance_type
-        # The price limit of the preemptible instance. This parameter takes effect only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+        # The price limit of preemptible instance N. Valid values of N: 1 to 10. This parameter is available only if you set the SpotStrategy parameter to SpotWithPriceLimit.
         self.price_limit = price_limit
 
     def validate(self):
@@ -24262,6 +24665,7 @@ class ModifyScalingConfigurationShrinkRequestSpotPriceLimits(TeaModel):
 class ModifyScalingConfigurationShrinkRequest(TeaModel):
     def __init__(
         self,
+        image_options: ModifyScalingConfigurationShrinkRequestImageOptions = None,
         private_pool_options: ModifyScalingConfigurationShrinkRequestPrivatePoolOptions = None,
         system_disk: ModifyScalingConfigurationShrinkRequestSystemDisk = None,
         affinity: str = None,
@@ -24309,23 +24713,24 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         user_data: str = None,
         zone_id: str = None,
     ):
+        self.image_options = image_options
         self.private_pool_options = private_pool_options
         self.system_disk = system_disk
-        # Specifies whether to associate the instance on a dedicated host with the dedicated host. Valid values:
+        # Specifies whether to associate an instance on a dedicated host with the dedicated host. Valid values:
         # 
-        # *   default: does not associate the instance with the dedicated host. If you start an instance that was stopped in economical mode and the original dedicated host of the instance has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
-        # *   host: associates the instance with the dedicated host. If you start an instance that was stopped in economical mode, the instance remains on the original dedicated host. If the original dedicated host of the instance has insufficient resources, you cannot start the instance.
+        # *   default: does not associate the instance with the dedicated host. If you start an instance that was stopped in Economical Mode and the original dedicated host has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
+        # *   host: associates the instance with the dedicated host. If you start an instance that was stopped in Economical Mode, the instance remains on the original dedicated host. If the original dedicated host has insufficient resources, the instance cannot be started.
         self.affinity = affinity
-        # The number of vCPUs.
+        # The number of vCPUs. Unit: cores.
         # 
-        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set the Cpu parameter to 2 and the Memory parameter to 16 to specify the instance types that have 2 vCPUs and 16 GiB of memory. Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
         # 
         # > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
         self.cpu = cpu
         # The performance mode of the burstable instance. Valid values:
         # 
-        # *   Standard: standard mode. For more information, see the "Standard mode" section in [Burstable instances](~~59977~~).
-        # *   Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in [Burstable instances](~~59977~~).
+        # *   Standard: standard mode. For more information, see the "Standard mode" section in the [Burstable instances](~~59977~~) topic.
+        # *   Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in the [Burstable instances](~~59977~~) topic.
         self.credit_specification = credit_specification
         # Details of the data disks.
         self.data_disks = data_disks
@@ -24335,16 +24740,16 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.dedicated_host_id = dedicated_host_id
         # The ID of the deployment set to which the ECS instance belongs.
         self.deployment_set_id = deployment_set_id
-        # The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
+        # The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname also cannot contain consecutive periods (.) or hyphens (-). Naming conventions:
         # 
         # *   Windows instances: The hostname must be 2 to 15 characters in length, and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
         # *   Other instances such as Linux instances: The hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instance belongs.
         self.hpc_cluster_id = hpc_cluster_id
-        # The name of the image family. You can specify this parameter to obtain the latest custom images that are available in the specified image family. The images are used to create instances. If the ImageId parameter is specified, you cannot specify the ImageFamily parameter.
+        # The name of the image family. You can specify this parameter to obtain the latest custom images that are available in the specified image family. The images are used to create ECS instances. If the ImageId parameter is specified, you cannot specify the ImageFamily parameter.
         self.image_family = image_family
-        # The ID of the image that is used by Auto Scaling to automatically create instances.
+        # The ID of the image that Auto Scaling uses to automatically create ECS instances.
         # 
         # > If the image that is specified in the scaling configuration contains system disks and data disks, the data that is stored in the data disks is cleared after you modify the image.
         self.image_id = image_id
@@ -24352,27 +24757,27 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         # 
         # You cannot use the ImageName parameter to specify Alibaba Cloud Marketplace images.
         self.image_name = image_name
-        # The description of the ECS instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the ECS instance. The description must be 2 to 256 characters in length. The description can contain letters but cannot start with `http://` or `https://`.
         self.instance_description = instance_description
-        # The name of the ECS instance that is automatically created based on the scaling configuration.
+        # The name of the Elastic Compute Service (ECS) instance that is automatically created based on the scaling configuration.
         self.instance_name = instance_name
-        # Information about the intelligent configuration settings, which determines the available instance types.
+        # Details of the intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
         self.instance_pattern_infos = instance_pattern_infos
-        # Information about the instance type.
+        # The information about the instance types.
         self.instance_type_overrides = instance_type_overrides
-        # The instance types. If you specify this parameter, the InstanceType parameter is ignored. You can specify up to 10 instance types in a scaling configuration.
+        # The instance types. If you specify this parameter, the InstanceType parameter is ignored. Valid values of N: 1 to 10.
         # 
-        # The first instance type has the highest priority. The priority decreases based on the specified order of instance types. Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances of the instance type that has the highest priority, Auto Scaling creates instances of the instance type that has the next highest priority.
+        # The first instance type has the highest priority. The priority decreases based on the specified order of the instance types. Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances of the instance type that has the highest priority, Auto Scaling creates instances of the instance type that has the next highest priority.
         self.instance_types = instance_types
         # The billing method for network usage. Valid values:
         # 
         # *   PayByBandwidth: You are charged for the maximum available bandwidth that is specified by the InternetMaxBandwidthOut parameter.
-        # *   PayByTraffic: You are charged for the actual traffic that is used. The InternetMaxBandwidthOut parameter specifies only the maximum available bandwidth.
+        # *   PayByTraffic: You are charged for the actual data transfer. The InternetMaxBandwidthOut parameter specifies only the maximum available bandwidth.
         self.internet_charge_type = internet_charge_type
         # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
         # *   0 to 100 if you set the InternetChargeType parameter to PayByBandwidth. If you leave this parameter empty, this parameter is automatically set to 0.
-        # *   0 to 100 if you set the InternetChargeType parameter to PayByTraffic. If you leave this parameter empty, an error will be reported.
+        # *   0 to 100 if you set the InternetChargeType parameter to PayByTraffic. If you leave this parameter empty, an error is returned.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # Specifies whether to create an I/O optimized instance. Valid values:
         # 
@@ -24381,27 +24786,27 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.io_optimized = io_optimized
         # The number of randomly generated IPv6 addresses that you want to allocate to the elastic network interface (ENI).
         self.ipv_6address_count = ipv_6address_count
-        # The name of the key pair that is used to log on to the ECS instance.
+        # The name of the key pair that you use to log on to an ECS instance.
         # 
         # *   Windows instances do not use this parameter.
         # *   By default, the username and password authentication method is disabled for Linux instances.
         self.key_pair_name = key_pair_name
-        # The weight of the ECS instance as a backend server. Valid values: 1 to 100.
+        # The weight of a backend server. Valid values: 1 to 100.
         self.load_balancer_weight = load_balancer_weight
-        # The size of the memory. Unit: GiB.
+        # The memory size. Unit: GiB.
         # 
-        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set the Cpu parameter to 2 and the Memory parameter to 16 to specify the instance types that have 2 vCPUs and 16 GiB of memory. Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
+        # You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
         # 
         # > You can specify the Cpu and Memory parameters to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
         self.memory = memory
         # Specifies whether to overwrite existing data. Valid values:
         # 
-        # *   true: overwrites existing data.
-        # *   false: does not overwrite existing data.
+        # *   true
+        # *   false
         self.override = override
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured for the image.
+        # Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured in the image.
         self.password_inherit = password_inherit
         # The name of the RAM role that is associated with the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles. You can call the CreateRole operation to create RAM roles.
         self.ram_role_name = ram_role_name
@@ -24425,41 +24830,43 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         # *   The following retention periods are available in invitational preview: 2, 3, 4, 5, and 6 hours. If you want to set this parameter to one of these values, submit a ticket.
         # *   If you set this parameter to 0, no retention period is specified for the preemptible instance.
         self.spot_duration = spot_duration
-        # The interruption event of the preemptible instance. Default value: Terminate. Set the value to Terminate, which specifies that the preemptible instance is to be released.
+        # The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate, which indicates that the instance is released.
         self.spot_interruption_behavior = spot_interruption_behavior
-        # Information about the instance types of preemptible instances.
+        # The information about the preemptible instance types.
         self.spot_price_limits = spot_price_limits
         # The preemption policy that you want to apply to pay-as-you-go instances and preemptible instances. Valid values:
         # 
         # *   NoSpot: The instance is created as a pay-as-you-go instance.
         # *   SpotWithPriceLimit: The instance is a preemptible instance that has a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
+        # *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
         self.spot_strategy = spot_strategy
-        # The categories of the system disks. You can specify one to four disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the disk category that has the highest priority, Auto Scaling creates instances by using the disk category that has the next highest priority. Valid values:
+        # The categories of the system disks. You can specify 1 to 4 disk categories in a scaling configuration. The first disk category that is specified in a scaling configuration has the highest priority. The priority deceases based on the specified order of disk categories. If Auto Scaling cannot create instances by using the disk that has the highest priority, Auto Scaling creates instances by using the disk that has the next highest priority. Valid values:
         # 
-        # *   cloud: basic disk.
-        # *   cloud_efficiency: ultra disk.
-        # *   cloud_ssd: standard SSD.
-        # *   cloud_essd: ESSD.
+        # *   cloud: basic disk
+        # *   cloud_efficiency: ultra disk
+        # *   cloud_ssd: standard SSD
+        # *   cloud_essd: ESSD
         # 
-        # > You cannot specify the SystemDiskCategories and `SystemDisk.Category` parameters at the same time.
+        # > You cannot specify both the SystemDiskCategories parameter and the `SystemDisk.Category` parameter.
         self.system_disk_categories = system_disk_categories
-        # The tags of the ECS instance. The tags must be specified in the key-value pair format. You can specify up to 20 tags. When you specify tag keys and tag values, take note of the following items:
+        # The tags of the ECS instance. Tags must be specified as key-value pairs. You can specify up to 20 tags. The following rules apply to tag keys and tag values:
         # 
         # *   A tag key can be up to 64 characters in length. The key cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. You cannot specify an empty string as a tag key.
         # *   A tag value can be up to 128 characters in length. The value cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. You can specify an empty string as a tag value.
         self.tags = tags
-        # Specifies whether to create the instance on a dedicated host. Valid values:
+        # Specifies whether to create an instance on a dedicated host. Valid values:
         # 
         # *   default: does not create the instance on a dedicated host.
-        # *   host: creates the instance on a dedicated host. If you do not specify the DedicatedHostId parameter, Alibaba Cloud selects a dedicated host for the instance that you want to create.
+        # *   host: creates the instance on a dedicated host. If you do not specify the DedicatedHostId parameter, Alibaba Cloud selects a dedicated host for the instance.
         self.tenancy = tenancy
         # The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the data before encoding is 16 KB.
         self.user_data = user_data
-        # The zone ID of the ECS instance.
+        # The ID of the zone where the ECS instance resides.
         self.zone_id = zone_id
 
     def validate(self):
+        if self.image_options:
+            self.image_options.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
         if self.system_disk:
@@ -24487,6 +24894,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.image_options is not None:
+            result['ImageOptions'] = self.image_options.to_map()
         if self.private_pool_options is not None:
             result['PrivatePoolOptions'] = self.private_pool_options.to_map()
         if self.system_disk is not None:
@@ -24591,6 +25000,9 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImageOptions') is not None:
+            temp_model = ModifyScalingConfigurationShrinkRequestImageOptions()
+            self.image_options = temp_model.from_map(m['ImageOptions'])
         if m.get('PrivatePoolOptions') is not None:
             temp_model = ModifyScalingConfigurationShrinkRequestPrivatePoolOptions()
             self.private_pool_options = temp_model.from_map(m['PrivatePoolOptions'])
@@ -25199,6 +25611,39 @@ class ModifyScalingGroupResponse(TeaModel):
         return self
 
 
+class ModifyScalingRuleRequestAlarmDimensions(TeaModel):
+    def __init__(
+        self,
+        dimension_key: str = None,
+        dimension_value: str = None,
+    ):
+        self.dimension_key = dimension_key
+        self.dimension_value = dimension_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dimension_key is not None:
+            result['DimensionKey'] = self.dimension_key
+        if self.dimension_value is not None:
+            result['DimensionValue'] = self.dimension_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DimensionKey') is not None:
+            self.dimension_key = m.get('DimensionKey')
+        if m.get('DimensionValue') is not None:
+            self.dimension_value = m.get('DimensionValue')
+        return self
+
+
 class ModifyScalingRuleRequestStepAdjustments(TeaModel):
     def __init__(
         self,
@@ -25246,6 +25691,7 @@ class ModifyScalingRuleRequest(TeaModel):
         self,
         adjustment_type: str = None,
         adjustment_value: int = None,
+        alarm_dimensions: List[ModifyScalingRuleRequestAlarmDimensions] = None,
         cooldown: int = None,
         disable_scale_in: bool = None,
         estimated_instance_warmup: int = None,
@@ -25279,6 +25725,7 @@ class ModifyScalingRuleRequest(TeaModel):
         # 
         # Valid values: 0 to 86400. Unit: seconds.
         self.adjustment_value = adjustment_value
+        self.alarm_dimensions = alarm_dimensions
         # The minimum number of instances that must be scaled when the AdjustmentType parameter is set to PercentChangeInCapacity. This parameter takes effect only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule.
         self.cooldown = cooldown
         # The number of consecutive times that the event-triggered task created for scale-in activities must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and then associated with the target tracking scaling rule.
@@ -25346,6 +25793,10 @@ class ModifyScalingRuleRequest(TeaModel):
         self.target_value = target_value
 
     def validate(self):
+        if self.alarm_dimensions:
+            for k in self.alarm_dimensions:
+                if k:
+                    k.validate()
         if self.step_adjustments:
             for k in self.step_adjustments:
                 if k:
@@ -25361,6 +25812,10 @@ class ModifyScalingRuleRequest(TeaModel):
             result['AdjustmentType'] = self.adjustment_type
         if self.adjustment_value is not None:
             result['AdjustmentValue'] = self.adjustment_value
+        result['AlarmDimensions'] = []
+        if self.alarm_dimensions is not None:
+            for k in self.alarm_dimensions:
+                result['AlarmDimensions'].append(k.to_map() if k else None)
         if self.cooldown is not None:
             result['Cooldown'] = self.cooldown
         if self.disable_scale_in is not None:
@@ -25411,6 +25866,11 @@ class ModifyScalingRuleRequest(TeaModel):
             self.adjustment_type = m.get('AdjustmentType')
         if m.get('AdjustmentValue') is not None:
             self.adjustment_value = m.get('AdjustmentValue')
+        self.alarm_dimensions = []
+        if m.get('AlarmDimensions') is not None:
+            for k in m.get('AlarmDimensions'):
+                temp_model = ModifyScalingRuleRequestAlarmDimensions()
+                self.alarm_dimensions.append(temp_model.from_map(k))
         if m.get('Cooldown') is not None:
             self.cooldown = m.get('Cooldown')
         if m.get('DisableScaleIn') is not None:

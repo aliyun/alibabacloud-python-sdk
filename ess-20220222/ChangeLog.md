@@ -1,3 +1,6 @@
+2023-04-19 Version: 1.0.6
+- Configuration support LoginAsNonRoot .
+
 2023-03-09 Version: 1.0.5
 - Fix the incompatibility of some parameters in the SDK .
 
