@@ -989,6 +989,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_space_with_options_async(request, runtime)
 
+    def create_space_with_order_with_options(
+        self,
+        request: mpserverless_20190615_models.CreateSpaceWithOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mpserverless_20190615_models.CreateSpaceWithOrderResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.desc):
+            body['Desc'] = request.desc
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.package_version):
+            body['PackageVersion'] = request.package_version
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.subscription_type):
+            body['SubscriptionType'] = request.subscription_type
+        if not UtilClient.is_unset(request.use_coupon):
+            body['UseCoupon'] = request.use_coupon
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSpaceWithOrder',
+            version='2019-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mpserverless_20190615_models.CreateSpaceWithOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_space_with_order_with_options_async(
+        self,
+        request: mpserverless_20190615_models.CreateSpaceWithOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mpserverless_20190615_models.CreateSpaceWithOrderResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.desc):
+            body['Desc'] = request.desc
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.package_version):
+            body['PackageVersion'] = request.package_version
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.subscription_type):
+            body['SubscriptionType'] = request.subscription_type
+        if not UtilClient.is_unset(request.use_coupon):
+            body['UseCoupon'] = request.use_coupon
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSpaceWithOrder',
+            version='2019-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mpserverless_20190615_models.CreateSpaceWithOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_space_with_order(
+        self,
+        request: mpserverless_20190615_models.CreateSpaceWithOrderRequest,
+    ) -> mpserverless_20190615_models.CreateSpaceWithOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_space_with_order_with_options(request, runtime)
+
+    async def create_space_with_order_async(
+        self,
+        request: mpserverless_20190615_models.CreateSpaceWithOrderRequest,
+    ) -> mpserverless_20190615_models.CreateSpaceWithOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_space_with_order_with_options_async(request, runtime)
+
     def delete_ant_open_platform_config_with_options(
         self,
         request: mpserverless_20190615_models.DeleteAntOpenPlatformConfigRequest,
@@ -1858,6 +1948,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.content_type):
             body['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
         if not UtilClient.is_unset(request.filename):
             body['Filename'] = request.filename
         if not UtilClient.is_unset(request.size):
@@ -1892,6 +1984,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.content_type):
             body['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
         if not UtilClient.is_unset(request.filename):
             body['Filename'] = request.filename
         if not UtilClient.is_unset(request.size):
@@ -3297,8 +3391,12 @@ class Client(OpenApiClient):
             body['FileId'] = request.file_id
         if not UtilClient.is_unset(request.keyword):
             body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.mode):
+            body['Mode'] = request.mode
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.prefix):
+            body['Prefix'] = request.prefix
         if not UtilClient.is_unset(request.space_id):
             body['SpaceId'] = request.space_id
         req = open_api_models.OpenApiRequest(
@@ -3335,8 +3433,12 @@ class Client(OpenApiClient):
             body['FileId'] = request.file_id
         if not UtilClient.is_unset(request.keyword):
             body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.mode):
+            body['Mode'] = request.mode
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.prefix):
+            body['Prefix'] = request.prefix
         if not UtilClient.is_unset(request.space_id):
             body['SpaceId'] = request.space_id
         req = open_api_models.OpenApiRequest(

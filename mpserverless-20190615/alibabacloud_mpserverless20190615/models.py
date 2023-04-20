@@ -1521,6 +1521,152 @@ class CreateSpaceResponse(TeaModel):
         return self
 
 
+class CreateSpaceWithOrderRequest(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        name: str = None,
+        package_version: str = None,
+        period: int = None,
+        subscription_type: str = None,
+        use_coupon: bool = None,
+    ):
+        self.desc = desc
+        self.name = name
+        self.package_version = package_version
+        self.period = period
+        self.subscription_type = subscription_type
+        self.use_coupon = use_coupon
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.package_version is not None:
+            result['PackageVersion'] = self.package_version
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.subscription_type is not None:
+            result['SubscriptionType'] = self.subscription_type
+        if self.use_coupon is not None:
+            result['UseCoupon'] = self.use_coupon
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PackageVersion') is not None:
+            self.package_version = m.get('PackageVersion')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('SubscriptionType') is not None:
+            self.subscription_type = m.get('SubscriptionType')
+        if m.get('UseCoupon') is not None:
+            self.use_coupon = m.get('UseCoupon')
+        return self
+
+
+class CreateSpaceWithOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        order_id: str = None,
+        request_id: str = None,
+        space_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.order_id = order_id
+        self.request_id = request_id
+        self.space_id = space_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.space_id is not None:
+            result['SpaceId'] = self.space_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SpaceId') is not None:
+            self.space_id = m.get('SpaceId')
+        return self
+
+
+class CreateSpaceWithOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSpaceWithOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSpaceWithOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAntOpenPlatformConfigRequest(TeaModel):
     def __init__(
         self,
@@ -2752,11 +2898,13 @@ class DescribeFileUploadSignedUrlRequest(TeaModel):
     def __init__(
         self,
         content_type: str = None,
+        file_id: str = None,
         filename: str = None,
         size: int = None,
         space_id: str = None,
     ):
         self.content_type = content_type
+        self.file_id = file_id
         self.filename = filename
         self.size = size
         self.space_id = space_id
@@ -2772,6 +2920,8 @@ class DescribeFileUploadSignedUrlRequest(TeaModel):
         result = dict()
         if self.content_type is not None:
             result['ContentType'] = self.content_type
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
         if self.filename is not None:
             result['Filename'] = self.filename
         if self.size is not None:
@@ -2784,6 +2934,8 @@ class DescribeFileUploadSignedUrlRequest(TeaModel):
         m = m or dict()
         if m.get('ContentType') is not None:
             self.content_type = m.get('ContentType')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
         if m.get('Filename') is not None:
             self.filename = m.get('Filename')
         if m.get('Size') is not None:
@@ -6181,14 +6333,18 @@ class ListFileRequest(TeaModel):
         self,
         file_id: str = None,
         keyword: str = None,
+        mode: str = None,
         next_token: str = None,
         page_size: int = None,
+        prefix: str = None,
         space_id: str = None,
     ):
         self.file_id = file_id
         self.keyword = keyword
+        self.mode = mode
         self.next_token = next_token
         self.page_size = page_size
+        self.prefix = prefix
         self.space_id = space_id
 
     def validate(self):
@@ -6204,10 +6360,14 @@ class ListFileRequest(TeaModel):
             result['FileId'] = self.file_id
         if self.keyword is not None:
             result['Keyword'] = self.keyword
+        if self.mode is not None:
+            result['Mode'] = self.mode
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.prefix is not None:
+            result['Prefix'] = self.prefix
         if self.space_id is not None:
             result['SpaceId'] = self.space_id
         return result
@@ -6218,10 +6378,14 @@ class ListFileRequest(TeaModel):
             self.file_id = m.get('FileId')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Prefix') is not None:
+            self.prefix = m.get('Prefix')
         if m.get('SpaceId') is not None:
             self.space_id = m.get('SpaceId')
         return self
@@ -9920,12 +10084,14 @@ class QuerySpaceUsageResponseBodySpaceUsageDataList(TeaModel):
         self,
         cs_usage: QuerySpaceUsageResponseBodySpaceUsageDataListCsUsage = None,
         db_usage: QuerySpaceUsageResponseBodySpaceUsageDataListDbUsage = None,
+        effective_bill_flag: bool = None,
         fc_usage: QuerySpaceUsageResponseBodySpaceUsageDataListFcUsage = None,
         timestamp: str = None,
         wh_usage: QuerySpaceUsageResponseBodySpaceUsageDataListWhUsage = None,
     ):
         self.cs_usage = cs_usage
         self.db_usage = db_usage
+        self.effective_bill_flag = effective_bill_flag
         self.fc_usage = fc_usage
         self.timestamp = timestamp
         self.wh_usage = wh_usage
@@ -9950,6 +10116,8 @@ class QuerySpaceUsageResponseBodySpaceUsageDataList(TeaModel):
             result['CsUsage'] = self.cs_usage.to_map()
         if self.db_usage is not None:
             result['DbUsage'] = self.db_usage.to_map()
+        if self.effective_bill_flag is not None:
+            result['EffectiveBillFlag'] = self.effective_bill_flag
         if self.fc_usage is not None:
             result['FcUsage'] = self.fc_usage.to_map()
         if self.timestamp is not None:
@@ -9966,6 +10134,8 @@ class QuerySpaceUsageResponseBodySpaceUsageDataList(TeaModel):
         if m.get('DbUsage') is not None:
             temp_model = QuerySpaceUsageResponseBodySpaceUsageDataListDbUsage()
             self.db_usage = temp_model.from_map(m['DbUsage'])
+        if m.get('EffectiveBillFlag') is not None:
+            self.effective_bill_flag = m.get('EffectiveBillFlag')
         if m.get('FcUsage') is not None:
             temp_model = QuerySpaceUsageResponseBodySpaceUsageDataListFcUsage()
             self.fc_usage = temp_model.from_map(m['FcUsage'])

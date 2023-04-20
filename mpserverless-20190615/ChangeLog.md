@@ -1,3 +1,7 @@
+2023-04-20 Version: 1.0.8
+- Publish SDK.
+- Support api CreateSpaceWithOrder.
+
 2022-12-05 Version: 1.0.7
 - Publish SDK.
 
