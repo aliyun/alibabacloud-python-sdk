@@ -41,6 +41,96 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_account_with_options(
+        self,
+        request: amqp_open_20191212_models.CreateAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.CreateAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_access_key):
+            query['accountAccessKey'] = request.account_access_key
+        if not UtilClient.is_unset(request.create_timestamp):
+            query['createTimestamp'] = request.create_timestamp
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.secret_sign):
+            query['secretSign'] = request.secret_sign
+        if not UtilClient.is_unset(request.signature):
+            query['signature'] = request.signature
+        if not UtilClient.is_unset(request.user_name):
+            query['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAccount',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.CreateAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_account_with_options_async(
+        self,
+        request: amqp_open_20191212_models.CreateAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.CreateAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_access_key):
+            query['accountAccessKey'] = request.account_access_key
+        if not UtilClient.is_unset(request.create_timestamp):
+            query['createTimestamp'] = request.create_timestamp
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.secret_sign):
+            query['secretSign'] = request.secret_sign
+        if not UtilClient.is_unset(request.signature):
+            query['signature'] = request.signature
+        if not UtilClient.is_unset(request.user_name):
+            query['userName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAccount',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.CreateAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_account(
+        self,
+        request: amqp_open_20191212_models.CreateAccountRequest,
+    ) -> amqp_open_20191212_models.CreateAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_account_with_options(request, runtime)
+
+    async def create_account_async(
+        self,
+        request: amqp_open_20191212_models.CreateAccountRequest,
+    ) -> amqp_open_20191212_models.CreateAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_account_with_options_async(request, runtime)
+
     def create_binding_with_options(
         self,
         request: amqp_open_20191212_models.CreateBindingRequest,
@@ -412,6 +502,80 @@ class Client(OpenApiClient):
     ) -> amqp_open_20191212_models.CreateVirtualHostResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_virtual_host_with_options_async(request, runtime)
+
+    def delete_account_with_options(
+        self,
+        request: amqp_open_20191212_models.DeleteAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.DeleteAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_timestamp):
+            query['CreateTimestamp'] = request.create_timestamp
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccount',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.DeleteAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_account_with_options_async(
+        self,
+        request: amqp_open_20191212_models.DeleteAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.DeleteAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_timestamp):
+            query['CreateTimestamp'] = request.create_timestamp
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccount',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.DeleteAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_account(
+        self,
+        request: amqp_open_20191212_models.DeleteAccountRequest,
+    ) -> amqp_open_20191212_models.DeleteAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_account_with_options(request, runtime)
+
+    async def delete_account_async(
+        self,
+        request: amqp_open_20191212_models.DeleteAccountRequest,
+    ) -> amqp_open_20191212_models.DeleteAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_account_with_options_async(request, runtime)
 
     def delete_binding_with_options(
         self,
@@ -798,6 +962,76 @@ class Client(OpenApiClient):
     ) -> amqp_open_20191212_models.GetMetadataAmountResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_metadata_amount_with_options_async(request, runtime)
+
+    def list_accounts_with_options(
+        self,
+        request: amqp_open_20191212_models.ListAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.ListAccountsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAccounts',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_accounts_with_options_async(
+        self,
+        request: amqp_open_20191212_models.ListAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.ListAccountsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAccounts',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_accounts(
+        self,
+        request: amqp_open_20191212_models.ListAccountsRequest,
+    ) -> amqp_open_20191212_models.ListAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_accounts_with_options(request, runtime)
+
+    async def list_accounts_async(
+        self,
+        request: amqp_open_20191212_models.ListAccountsRequest,
+    ) -> amqp_open_20191212_models.ListAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_accounts_with_options_async(request, runtime)
 
     def list_bindings_with_options(
         self,

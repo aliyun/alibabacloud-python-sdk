@@ -4,6 +4,281 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class DataValue(TeaModel):
+    def __init__(
+        self,
+        master_uid: int = None,
+        c_instance_id: str = None,
+        access_key: str = None,
+        user_name: str = None,
+        password: str = None,
+        deleted: int = None,
+        create_timestamp: int = None,
+    ):
+        self.master_uid = master_uid
+        self.c_instance_id = c_instance_id
+        self.access_key = access_key
+        self.user_name = user_name
+        self.password = password
+        self.deleted = deleted
+        self.create_timestamp = create_timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.master_uid is not None:
+            result['masterUid'] = self.master_uid
+        if self.c_instance_id is not None:
+            result['cInstanceId'] = self.c_instance_id
+        if self.access_key is not None:
+            result['accessKey'] = self.access_key
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        if self.password is not None:
+            result['password'] = self.password
+        if self.deleted is not None:
+            result['deleted'] = self.deleted
+        if self.create_timestamp is not None:
+            result['createTimestamp'] = self.create_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('masterUid') is not None:
+            self.master_uid = m.get('masterUid')
+        if m.get('cInstanceId') is not None:
+            self.c_instance_id = m.get('cInstanceId')
+        if m.get('accessKey') is not None:
+            self.access_key = m.get('accessKey')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('deleted') is not None:
+            self.deleted = m.get('deleted')
+        if m.get('createTimestamp') is not None:
+            self.create_timestamp = m.get('createTimestamp')
+        return self
+
+
+class CreateAccountRequest(TeaModel):
+    def __init__(
+        self,
+        account_access_key: str = None,
+        create_timestamp: int = None,
+        instance_id: str = None,
+        secret_sign: str = None,
+        signature: str = None,
+        user_name: str = None,
+    ):
+        self.account_access_key = account_access_key
+        self.create_timestamp = create_timestamp
+        self.instance_id = instance_id
+        self.secret_sign = secret_sign
+        self.signature = signature
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_access_key is not None:
+            result['accountAccessKey'] = self.account_access_key
+        if self.create_timestamp is not None:
+            result['createTimestamp'] = self.create_timestamp
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.secret_sign is not None:
+            result['secretSign'] = self.secret_sign
+        if self.signature is not None:
+            result['signature'] = self.signature
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountAccessKey') is not None:
+            self.account_access_key = m.get('accountAccessKey')
+        if m.get('createTimestamp') is not None:
+            self.create_timestamp = m.get('createTimestamp')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('secretSign') is not None:
+            self.secret_sign = m.get('secretSign')
+        if m.get('signature') is not None:
+            self.signature = m.get('signature')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        return self
+
+
+class CreateAccountResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        access_key: str = None,
+        create_time_stamp: int = None,
+        instance_id: str = None,
+        master_uid: int = None,
+        password: str = None,
+        user_name: str = None,
+    ):
+        # AccessKey ID。
+        self.access_key = access_key
+        self.create_time_stamp = create_time_stamp
+        self.instance_id = instance_id
+        self.master_uid = master_uid
+        self.password = password
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key is not None:
+            result['AccessKey'] = self.access_key
+        if self.create_time_stamp is not None:
+            result['CreateTimeStamp'] = self.create_time_stamp
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.master_uid is not None:
+            result['MasterUId'] = self.master_uid
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKey') is not None:
+            self.access_key = m.get('AccessKey')
+        if m.get('CreateTimeStamp') is not None:
+            self.create_time_stamp = m.get('CreateTimeStamp')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MasterUId') is not None:
+            self.master_uid = m.get('MasterUId')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class CreateAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: CreateAccountResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateAccountResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateBindingRequest(TeaModel):
     def __init__(
         self,
@@ -530,6 +805,134 @@ class CreateVirtualHostResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateVirtualHostResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAccountRequest(TeaModel):
+    def __init__(
+        self,
+        create_timestamp: int = None,
+        user_name: str = None,
+    ):
+        self.create_timestamp = create_timestamp
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class DeleteAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAccountResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1145,6 +1548,143 @@ class GetMetadataAmountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetMetadataAmountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAccountsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListAccountsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Dict[str, List[DataValue]] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for v in self.data.values():
+                for k1 in v:
+                    if k1:
+                        k1.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = {}
+        if self.data is not None:
+            for k, v in self.data.items():
+                l1 = []
+                for k1 in v:
+                    l1.append(k1.to_map() if k1 else None)
+                result['data'][k] = l1
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = {}
+        if m.get('Data') is not None:
+            for k, v in m.get('Data').items():
+                l1 = []
+                for k1 in v:
+                    temp_model = DataValue()
+                    l1.append(temp_model.from_map(k1))
+                self.data['k'] = l1
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListAccountsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAccountsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAccountsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1972,6 +2512,7 @@ class ListExchangesResponseBodyData(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # Exchange。
         self.exchanges = exchanges
         self.max_results = max_results
         self.next_token = next_token
@@ -2928,6 +3469,7 @@ class ListQueuesResponseBodyData(TeaModel):
     ):
         self.max_results = max_results
         self.next_token = next_token
+        # Queue。
         self.queues = queues
 
     def validate(self):
@@ -3120,6 +3662,7 @@ class ListVirtualHostsResponseBodyData(TeaModel):
     ):
         self.max_results = max_results
         self.next_token = next_token
+        # Vhost。
         self.virtual_hosts = virtual_hosts
 
     def validate(self):

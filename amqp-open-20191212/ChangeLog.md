@@ -1,3 +1,6 @@
+2023-04-20 Version: 1.0.3
+- Generated python 2019-12-12 for amqp-open.
+
 2022-12-09 Version: 1.0.2
 - Generated python 2019-12-12 for amqp-open.
 
