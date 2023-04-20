@@ -1,3 +1,6 @@
+2023-04-20 Version: 1.0.21
+- Add resource tag for ga.
+
 2023-04-06 Version: 1.0.20
 - Add cross border status for Ga.
 

@@ -1098,27 +1098,27 @@ class ChangeResourceGroupRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate a value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.****\
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. **The client token can contain only ASCII characters.**\
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The ID of the new resource group.
+        # The ID of the resource group that you want to use to replace the previous resource group.
         self.new_resource_group_id = new_resource_group_id
         # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
         self.region_id = region_id
         # The ID of the GA resource.
         # 
-        # *   If **ResourceType** is set to **accelerator**, set the value of ResourceId to the ID of a standard GA instance.
-        # *   If **ResourceType** is set to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
-        # *   If **ResourceType** is set to**bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
-        # *   If **ResourceType** is set to **acl**, set the value of ResourceId to the ID of a network ACL.
+        # *   If you set the **ResourceType** parameter to **accelerator**, set the value of ResourceId to the ID of a standard GA instance.
+        # *   If you set the **ResourceType** parameter to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
+        # *   If you set the **ResourceType** parameter to **bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
+        # *   If you set the **ResourceType** parameter to **acl**, set the value of ResourceId to the ID of an access control list (ACL).
         self.resource_id = resource_id
         # The type of the GA resource. Valid values:
         # 
-        # *   **accelerator**: a standard GA instance.
-        # *   **basicaccelerator**: a basic GA instance.
-        # *   **bandwidthpackage**: a bandwidth plan.
-        # *   **acl**: a network ACL.
+        # *   **accelerator:** a standard GA instance.
+        # *   **basicaccelerator:** a basic GA instance.
+        # *   **bandwidthpackage:** a bandwidth plan.
+        # *   **acl:** an ACL.
         self.resource_type = resource_type
 
     def validate(self):
@@ -1478,7 +1478,7 @@ class CreateAcceleratorRequest(TeaModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **false:** disables automatic payment. If you select this option, you must go to the Order Center to complete the payment after an order is generated. This is the default value.
+        # *   **false:** disables automatic payment. This is the default value. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
         # *   **true:** enables automatic payment. Payments are automatically completed.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
@@ -1490,31 +1490,31 @@ class CreateAcceleratorRequest(TeaModel):
         # 
         # Valid values: **1** to **12**. Default value: **1**.
         # 
-        # >  This parameter takes effect only if **AutoRenew** is set to **true**.
+        # >  This parameter takes effect only when the **AutoPay** parameter is set to **true**.
         self.auto_renew_duration = auto_renew_duration
-        # Specifies whether to automatically pay bills by using coupons. Valid values:
+        # Specifies whether to automatically apply coupons to your bills. Valid values:
         # 
-        # *   **true:** automatically pays bills by using coupons.
-        # *   **false:** does not automatically pay bills by using coupons. This is the default value.
+        # *   **true:** automatically applies coupons to your bills.
+        # *   **false:** does not automatically apply coupons to your bills. This is the default value.
         # 
-        # >  This parameter takes effect only if **AutoPay** is set to **true**.
+        # >  This parameter takes effect only when the **AutoPay** parameter is set to **true**.
         self.auto_use_coupon = auto_use_coupon
-        # The bandwidth billing method.
+        # The bandwidth billing method. Valid values:
         # 
         # *   **BandwidthPackage:** billed based on bandwidth plans.
         # *   **CDT:** billed based on data transfer.
-        # *   **CDT95:** billed based on the 95th percentile bandwidth. The billing is managed by Cloud Data Transfer (CDT). This bandwidth billing method is available only for users that are included in the whitelist.
+        # *   **CDT95:** billed based on the 95th percentile bandwidth. The bills are managed by using Cloud Data Transfer (CDT). This bandwidth billing method is not available by default. Contact your Alibaba Cloud account manager for more information.
         self.bandwidth_billing_type = bandwidth_billing_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the value of **RequestId**as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
         # The subscription duration of the GA instance.
         # 
-        # *   If the **PricingCycle** parameter is set to **Month**, the valid values for the **Duration** parameter are **1** to **9**.
-        # *   If the **PricingCycle** parameter is set to **Year**, the valid values for the **Duration** parameter are **1** to **3**.
+        # *   If you set the **PricingCycle** parameter to **Month**, the valid values for the **Duration** parameter are **1** to **9**.
+        # *   If you set the **PricingCycle** parameter to **Year**, the valid values for the **Duration** parameter are **1** to **3**.
         self.duration = duration
         # The configurations of the acceleration area.
         self.ip_set_config = ip_set_config
@@ -1524,14 +1524,14 @@ class CreateAcceleratorRequest(TeaModel):
         self.name = name
         # The billing cycle of the GA instance. Valid values:
         # 
-        # *   **Month**: billed on a monthly basis.
-        # *   **Year**: billed on an annual basis.
+        # *   **Month:** billed on a monthly basis.
+        # *   **Year:** billed on an annual basis.
         self.pricing_cycle = pricing_cycle
-        # The coupon code.
+        # The code of the coupon.
         # 
-        # >  This parameter is available only on the Alibaba International Site (alibabacloud.com).
+        # >  This parameter takes effect only for accounts registered on the international site (alibabacloud.com).
         self.promotion_option_no = promotion_option_no
-        # The ID of the region where you want to create the GA instance. Set the value to **cn-hangzhou**.
+        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
         self.region_id = region_id
         # The ID of the resource group to which the standard GA instance belongs.
         self.resource_group_id = resource_group_id
@@ -1554,9 +1554,9 @@ class CreateAcceleratorRequest(TeaModel):
         # *   **100:** Super Large Ⅰ
         # *   **200:** Super Large Ⅱ
         # 
-        # >  The Large Ⅲ specification and higher specifications are available only for accounts that are added to the whitelist. To use these specifications, contact your Alibaba Cloud account manager.
+        # >  GA instances Large III and above are not available by default. To use these specifications, contact your Alibaba Cloud account manager.
         # 
-        # Different specifications provide different capabilities. For more information, see [Instance specifications](~~153127~~).
+        # Each instance specification provides different capabilities. For more information, see [Instance specifications](~~153127~~).
         self.spec = spec
         self.tag = tag
 
@@ -1658,7 +1658,7 @@ class CreateAcceleratorResponseBody(TeaModel):
         self.accelerator_id = accelerator_id
         # The ID of the order.
         # 
-        # If bills are not automatically paid, you must go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payments.
+        # If you did not configure automatic payment, you must go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payments.
         self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id
@@ -3024,6 +3024,39 @@ class CreateBasicAccelerateIpEndpointRelationsResponse(TeaModel):
         return self
 
 
+class CreateBasicAcceleratorRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateBasicAcceleratorRequest(TeaModel):
     def __init__(
         self,
@@ -3040,6 +3073,7 @@ class CreateBasicAcceleratorRequest(TeaModel):
         promotion_option_no: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        tag: List[CreateBasicAcceleratorRequestTag] = None,
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
@@ -3101,9 +3135,13 @@ class CreateBasicAcceleratorRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the basic GA instance belongs.
         self.resource_group_id = resource_group_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3137,6 +3175,10 @@ class CreateBasicAcceleratorRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -3167,6 +3209,11 @@ class CreateBasicAcceleratorRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateBasicAcceleratorRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -9778,7 +9825,7 @@ class DeleteCustomRoutingEndpointGroupDestinationsRequest(TeaModel):
         # 
         # You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the value of **RequestId**as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
         # The IDs of the endpoint group mappings.
         self.destination_ids = destination_ids
@@ -9917,7 +9964,7 @@ class DeleteCustomRoutingEndpointGroupsRequest(TeaModel):
         # 
         # You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the value of **RequestId**as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
@@ -28662,7 +28709,7 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # *   If you set the **ResourceType** parameter to **accelerator**, set the value of ResourceId to the ID of a standard GA instance.
         # *   If you set the **ResourceType** parameter to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
-        # *   If you set the **ResourceType** parameter to**bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
+        # *   If you set the **ResourceType** parameter to **bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
         # *   If you set the **ResourceType** parameter to **acl**, set the value of ResourceId to the ID of an ACL.
         # 
         # You can specify up to 50 GA resource IDs.
@@ -30309,16 +30356,16 @@ class UpdateAdditionalCertificateWithListenerRequest(TeaModel):
         self.certificate_id = certificate_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The ClientToken value contain only ASCII characters.
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
         # The domain name associated with the additional certificate that you want to replace.
         self.domain = domain
-        # Specifies whether to only precheck the request. Default value: false. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: prechecks the request without performing this operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false:** performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
         self.dry_run = dry_run
         # The ID of the listener. Only HTTPS listeners are supported.
         self.listener_id = listener_id
@@ -30377,7 +30424,7 @@ class UpdateAdditionalCertificateWithListenerResponseBody(TeaModel):
     ):
         # The ID of the listener.
         self.listener_id = listener_id
-        # The ID of the region.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -31774,7 +31821,7 @@ class UpdateCustomRoutingEndpointGroupDestinationsRequest(TeaModel):
         # 
         # You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the value of **RequestId**as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
         # The mapping configurations of endpoint group.
         # 
@@ -32817,7 +32864,7 @@ class UpdateEndpointGroupRequest(TeaModel):
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the value of **RequestId**as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
         # The description of the endpoint group.
         # 
