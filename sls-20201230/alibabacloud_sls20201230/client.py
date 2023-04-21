@@ -192,6 +192,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
 
+    def consumer_group_heart_beat_with_options(
+        self,
+        project: str,
+        logstore: str,
+        consumer_group: str,
+        request: sls_20201230_models.ConsumerGroupHeartBeatRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ConsumerGroupHeartBeatResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.consumer):
+            query['consumer'] = request.consumer
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='ConsumerGroupHeartBeat',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/consumergroups/{consumer_group}?type=heartbeat',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ConsumerGroupHeartBeatResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def consumer_group_heart_beat_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        consumer_group: str,
+        request: sls_20201230_models.ConsumerGroupHeartBeatRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ConsumerGroupHeartBeatResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.consumer):
+            query['consumer'] = request.consumer
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='ConsumerGroupHeartBeat',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/consumergroups/{consumer_group}?type=heartbeat',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ConsumerGroupHeartBeatResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def consumer_group_heart_beat(
+        self,
+        project: str,
+        logstore: str,
+        consumer_group: str,
+        request: sls_20201230_models.ConsumerGroupHeartBeatRequest,
+    ) -> sls_20201230_models.ConsumerGroupHeartBeatResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.consumer_group_heart_beat_with_options(project, logstore, consumer_group, request, headers, runtime)
+
+    async def consumer_group_heart_beat_async(
+        self,
+        project: str,
+        logstore: str,
+        consumer_group: str,
+        request: sls_20201230_models.ConsumerGroupHeartBeatRequest,
+    ) -> sls_20201230_models.ConsumerGroupHeartBeatResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.consumer_group_heart_beat_with_options_async(project, logstore, consumer_group, request, headers, runtime)
+
     def create_consumer_group_with_options(
         self,
         project: str,
@@ -3348,17 +3444,15 @@ class Client(OpenApiClient):
 
     def get_project_with_options(
         self,
-        request: sls_20201230_models.GetProjectRequest,
+        project: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetProjectResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.project):
-            query['project'] = request.project
+        host_map = {}
+        host_map['project'] = project
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            host_map=host_map,
+            headers=headers
         )
         params = open_api_models.Params(
             action='GetProject',
@@ -3378,17 +3472,15 @@ class Client(OpenApiClient):
 
     async def get_project_with_options_async(
         self,
-        request: sls_20201230_models.GetProjectRequest,
+        project: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetProjectResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.project):
-            query['project'] = request.project
+        host_map = {}
+        host_map['project'] = project
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            host_map=host_map,
+            headers=headers
         )
         params = open_api_models.Params(
             action='GetProject',
@@ -3408,19 +3500,19 @@ class Client(OpenApiClient):
 
     def get_project(
         self,
-        request: sls_20201230_models.GetProjectRequest,
+        project: str,
     ) -> sls_20201230_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_with_options(request, headers, runtime)
+        return self.get_project_with_options(project, headers, runtime)
 
     async def get_project_async(
         self,
-        request: sls_20201230_models.GetProjectRequest,
+        project: str,
     ) -> sls_20201230_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_with_options_async(request, headers, runtime)
+        return await self.get_project_with_options_async(project, headers, runtime)
 
     def get_project_logs_with_options(
         self,
@@ -4326,6 +4418,7 @@ class Client(OpenApiClient):
 
     def list_project_with_options(
         self,
+        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -4360,6 +4453,7 @@ class Client(OpenApiClient):
 
     async def list_project_with_options_async(
         self,
+        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -4394,19 +4488,21 @@ class Client(OpenApiClient):
 
     def list_project(
         self,
+        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
     ) -> sls_20201230_models.ListProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_project_with_options(request, headers, runtime)
+        return self.list_project_with_options(resource_group_id, request, headers, runtime)
 
     async def list_project_async(
         self,
+        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
     ) -> sls_20201230_models.ListProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_project_with_options_async(request, headers, runtime)
+        return await self.list_project_with_options_async(resource_group_id, request, headers, runtime)
 
     def list_saved_search_with_options(
         self,
