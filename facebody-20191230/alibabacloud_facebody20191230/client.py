@@ -7619,8 +7619,14 @@ class Client(OpenApiClient):
     ) -> facebody_20191230_models.MergeImageFaceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.add_watermark):
+            body['AddWatermark'] = request.add_watermark
         if not UtilClient.is_unset(request.image_url):
             body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.merge_infos):
+            body['MergeInfos'] = request.merge_infos
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
@@ -7649,8 +7655,14 @@ class Client(OpenApiClient):
     ) -> facebody_20191230_models.MergeImageFaceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.add_watermark):
+            body['AddWatermark'] = request.add_watermark
         if not UtilClient.is_unset(request.image_url):
             body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.merge_infos):
+            body['MergeInfos'] = request.merge_infos
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(

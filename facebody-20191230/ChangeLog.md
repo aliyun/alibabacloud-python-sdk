@@ -1,3 +1,6 @@
+2023-04-21 Version: 4.0.9
+- Release MergeImageFace.
+
 2023-02-08 Version: 4.0.8
 - Generated python 2019-12-30 for facebody.
 
