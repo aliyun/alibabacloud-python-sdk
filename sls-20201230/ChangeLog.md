@@ -1,3 +1,6 @@
+2023-04-21 Version: 2.0.0
+- Update project structure.
+
 2023-04-21 Version: 1.5.16
 - Incompatible changes update. 
 
