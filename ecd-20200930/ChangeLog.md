@@ -1,3 +1,6 @@
+2023-04-21 Version: 2.0.15
+- Support desktop group auto scale.
+
 2022-10-28 Version: 2.0.14
 - Support desktop group auto scale.
 
