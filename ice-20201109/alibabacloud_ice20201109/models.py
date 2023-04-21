@@ -10583,6 +10583,124 @@ class GetCategoriesResponse(TeaModel):
         return self
 
 
+class GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig(TeaModel):
+    def __init__(
+        self,
+        auto: bool = None,
+        save_type: str = None,
+        template_id: str = None,
+    ):
+        self.auto = auto
+        self.save_type = save_type
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto is not None:
+            result['Auto'] = self.auto
+        if self.save_type is not None:
+            result['SaveType'] = self.save_type
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Auto') is not None:
+            self.auto = m.get('Auto')
+        if m.get('SaveType') is not None:
+            self.save_type = m.get('SaveType')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class GetContentAnalyzeConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        content_analyze_config: GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig = None,
+        request_id: str = None,
+    ):
+        self.content_analyze_config = content_analyze_config
+        self.request_id = request_id
+
+    def validate(self):
+        if self.content_analyze_config:
+            self.content_analyze_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content_analyze_config is not None:
+            result['ContentAnalyzeConfig'] = self.content_analyze_config.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContentAnalyzeConfig') is not None:
+            temp_model = GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig()
+            self.content_analyze_config = temp_model.from_map(m['ContentAnalyzeConfig'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetContentAnalyzeConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetContentAnalyzeConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetContentAnalyzeConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetCustomTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -29021,6 +29139,175 @@ class ListSmartJobsResponse(TeaModel):
         return self
 
 
+class ListSmartSysAvatarModelsRequest(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList(TeaModel):
+    def __init__(
+        self,
+        avatar_id: str = None,
+        avatar_name: str = None,
+        cover_url: str = None,
+        video_url: str = None,
+    ):
+        self.avatar_id = avatar_id
+        self.avatar_name = avatar_name
+        self.cover_url = cover_url
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_id is not None:
+            result['AvatarId'] = self.avatar_id
+        if self.avatar_name is not None:
+            result['AvatarName'] = self.avatar_name
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvatarId') is not None:
+            self.avatar_id = m.get('AvatarId')
+        if m.get('AvatarName') is not None:
+            self.avatar_name = m.get('AvatarName')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class ListSmartSysAvatarModelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        smart_sys_avatar_model_list: List[ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.smart_sys_avatar_model_list = smart_sys_avatar_model_list
+        self.total_count = total_count
+
+    def validate(self):
+        if self.smart_sys_avatar_model_list:
+            for k in self.smart_sys_avatar_model_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SmartSysAvatarModelList'] = []
+        if self.smart_sys_avatar_model_list is not None:
+            for k in self.smart_sys_avatar_model_list:
+                result['SmartSysAvatarModelList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.smart_sys_avatar_model_list = []
+        if m.get('SmartSysAvatarModelList') is not None:
+            for k in m.get('SmartSysAvatarModelList'):
+                temp_model = ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList()
+                self.smart_sys_avatar_model_list.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListSmartSysAvatarModelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSmartSysAvatarModelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSmartSysAvatarModelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListSnapshotJobsRequest(TeaModel):
     def __init__(
         self,
@@ -35719,6 +36006,527 @@ class SearchMediaResponse(TeaModel):
         return self
 
 
+class SearchMediaByFaceRequest(TeaModel):
+    def __init__(
+        self,
+        entity_id: str = None,
+        face_search_token: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        person_image_url: str = None,
+    ):
+        self.entity_id = entity_id
+        self.face_search_token = face_search_token
+        self.page_no = page_no
+        self.page_size = page_size
+        self.person_image_url = person_image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.face_search_token is not None:
+            result['FaceSearchToken'] = self.face_search_token
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.person_image_url is not None:
+            result['PersonImageUrl'] = self.person_image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('FaceSearchToken') is not None:
+            self.face_search_token = m.get('FaceSearchToken')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PersonImageUrl') is not None:
+            self.person_image_url = m.get('PersonImageUrl')
+        return self
+
+
+class SearchMediaByFaceResponseBodyMediaInfoList(TeaModel):
+    def __init__(
+        self,
+        media_id: str = None,
+    ):
+        self.media_id = media_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        return self
+
+
+class SearchMediaByFaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        media_info_list: List[SearchMediaByFaceResponseBodyMediaInfoList] = None,
+        request_id: str = None,
+        success: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.media_info_list = media_info_list
+        self.request_id = request_id
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.media_info_list:
+            for k in self.media_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['MediaInfoList'] = []
+        if self.media_info_list is not None:
+            for k in self.media_info_list:
+                result['MediaInfoList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.media_info_list = []
+        if m.get('MediaInfoList') is not None:
+            for k in m.get('MediaInfoList'):
+                temp_model = SearchMediaByFaceResponseBodyMediaInfoList()
+                self.media_info_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class SearchMediaByFaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchMediaByFaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchMediaByFaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SearchMediaClipByFaceRequest(TeaModel):
+    def __init__(
+        self,
+        entity_id: str = None,
+        face_search_token: str = None,
+        media_id: str = None,
+        page_no: int = None,
+        page_size: int = None,
+    ):
+        self.entity_id = entity_id
+        self.face_search_token = face_search_token
+        self.media_id = media_id
+        self.page_no = page_no
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.face_search_token is not None:
+            result['FaceSearchToken'] = self.face_search_token
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('FaceSearchToken') is not None:
+            self.face_search_token = m.get('FaceSearchToken')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition(TeaModel):
+    def __init__(
+        self,
+        h: int = None,
+        w: int = None,
+        x: int = None,
+        y: int = None,
+    ):
+        self.h = h
+        self.w = w
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.h is not None:
+            result['H'] = self.h
+        if self.w is not None:
+            result['W'] = self.w
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('H') is not None:
+            self.h = m.get('H')
+        if m.get('W') is not None:
+            self.w = m.get('W')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData(TeaModel):
+    def __init__(
+        self,
+        box_position: SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition = None,
+        timestamp: float = None,
+    ):
+        self.box_position = box_position
+        self.timestamp = timestamp
+
+    def validate(self):
+        if self.box_position:
+            self.box_position.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.box_position is not None:
+            result['BoxPosition'] = self.box_position.to_map()
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BoxPosition') is not None:
+            temp_model = SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition()
+            self.box_position = temp_model.from_map(m['BoxPosition'])
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos(TeaModel):
+    def __init__(
+        self,
+        end_time: float = None,
+        start_time: float = None,
+        track_data: List[SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData] = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+        self.track_data = track_data
+
+    def validate(self):
+        if self.track_data:
+            for k in self.track_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        result['TrackData'] = []
+        if self.track_data is not None:
+            for k in self.track_data:
+                result['TrackData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        self.track_data = []
+        if m.get('TrackData') is not None:
+            for k in m.get('TrackData'):
+                temp_model = SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData()
+                self.track_data.append(temp_model.from_map(k))
+        return self
+
+
+class SearchMediaClipByFaceResponseBodyMediaClipList(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        entity_id: str = None,
+        label_name: str = None,
+        occurrences_infos: List[SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos] = None,
+        score: float = None,
+    ):
+        self.category = category
+        self.entity_id = entity_id
+        self.label_name = label_name
+        self.occurrences_infos = occurrences_infos
+        self.score = score
+
+    def validate(self):
+        if self.occurrences_infos:
+            for k in self.occurrences_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.label_name is not None:
+            result['LabelName'] = self.label_name
+        result['OccurrencesInfos'] = []
+        if self.occurrences_infos is not None:
+            for k in self.occurrences_infos:
+                result['OccurrencesInfos'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('LabelName') is not None:
+            self.label_name = m.get('LabelName')
+        self.occurrences_infos = []
+        if m.get('OccurrencesInfos') is not None:
+            for k in m.get('OccurrencesInfos'):
+                temp_model = SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos()
+                self.occurrences_infos.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        return self
+
+
+class SearchMediaClipByFaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        media_clip_list: List[SearchMediaClipByFaceResponseBodyMediaClipList] = None,
+        request_id: str = None,
+        success: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.media_clip_list = media_clip_list
+        self.request_id = request_id
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.media_clip_list:
+            for k in self.media_clip_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['MediaClipList'] = []
+        if self.media_clip_list is not None:
+            for k in self.media_clip_list:
+                result['MediaClipList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.media_clip_list = []
+        if m.get('MediaClipList') is not None:
+            for k in m.get('MediaClipList'):
+                temp_model = SearchMediaClipByFaceResponseBodyMediaClipList()
+                self.media_clip_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class SearchMediaClipByFaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchMediaClipByFaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchMediaClipByFaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SearchPublicMediaInfoRequest(TeaModel):
     def __init__(
         self,
@@ -36320,6 +37128,122 @@ class SendLiveTranscodeJobCommandResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendLiveTranscodeJobCommandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetContentAnalyzeConfigRequest(TeaModel):
+    def __init__(
+        self,
+        auto: bool = None,
+        save_type: str = None,
+        template_id: str = None,
+    ):
+        self.auto = auto
+        self.save_type = save_type
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto is not None:
+            result['Auto'] = self.auto
+        if self.save_type is not None:
+            result['SaveType'] = self.save_type
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Auto') is not None:
+            self.auto = m.get('Auto')
+        if m.get('SaveType') is not None:
+            self.save_type = m.get('SaveType')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class SetContentAnalyzeConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SetContentAnalyzeConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetContentAnalyzeConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetContentAnalyzeConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -37076,6 +38000,147 @@ class SubmitAudioProduceJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitAudioProduceJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitAvatarVideoJobRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        editing_config: str = None,
+        input_config: str = None,
+        output_config: str = None,
+        title: str = None,
+        user_data: str = None,
+    ):
+        self.description = description
+        self.editing_config = editing_config
+        self.input_config = input_config
+        self.output_config = output_config
+        self.title = title
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.editing_config is not None:
+            result['EditingConfig'] = self.editing_config
+        if self.input_config is not None:
+            result['InputConfig'] = self.input_config
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EditingConfig') is not None:
+            self.editing_config = m.get('EditingConfig')
+        if m.get('InputConfig') is not None:
+            self.input_config = m.get('InputConfig')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitAvatarVideoJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        media_id: str = None,
+        request_id: str = None,
+    ):
+        self.job_id = job_id
+        self.media_id = media_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SubmitAvatarVideoJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitAvatarVideoJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitAvatarVideoJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

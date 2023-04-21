@@ -1,3 +1,6 @@
+2023-04-21 Version: 1.3.9
+- Add api called SubmitAvatarVideoJob, which render avatar videos.
+
 2023-03-14 Version: 1.3.8
 - Add templateType params in CreateEditingProject API.
 

@@ -4996,6 +4996,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_categories_with_options_async(request, runtime)
 
+    def get_content_analyze_config_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetContentAnalyzeConfigResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetContentAnalyzeConfig',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetContentAnalyzeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_content_analyze_config_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetContentAnalyzeConfigResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetContentAnalyzeConfig',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetContentAnalyzeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_content_analyze_config(self) -> ice20201109_models.GetContentAnalyzeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_content_analyze_config_with_options(runtime)
+
+    async def get_content_analyze_config_async(self) -> ice20201109_models.GetContentAnalyzeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_content_analyze_config_with_options_async(runtime)
+
     def get_custom_template_with_options(
         self,
         request: ice20201109_models.GetCustomTemplateRequest,
@@ -8860,6 +8910,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_smart_jobs_with_options_async(request, runtime)
 
+    def list_smart_sys_avatar_models_with_options(
+        self,
+        request: ice20201109_models.ListSmartSysAvatarModelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListSmartSysAvatarModelsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSmartSysAvatarModels',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListSmartSysAvatarModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_smart_sys_avatar_models_with_options_async(
+        self,
+        request: ice20201109_models.ListSmartSysAvatarModelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListSmartSysAvatarModelsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSmartSysAvatarModels',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListSmartSysAvatarModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_smart_sys_avatar_models(
+        self,
+        request: ice20201109_models.ListSmartSysAvatarModelsRequest,
+    ) -> ice20201109_models.ListSmartSysAvatarModelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_smart_sys_avatar_models_with_options(request, runtime)
+
+    async def list_smart_sys_avatar_models_async(
+        self,
+        request: ice20201109_models.ListSmartSysAvatarModelsRequest,
+    ) -> ice20201109_models.ListSmartSysAvatarModelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_smart_sys_avatar_models_with_options_async(request, runtime)
+
     def list_snapshot_jobs_with_options(
         self,
         request: ice20201109_models.ListSnapshotJobsRequest,
@@ -10132,6 +10248,178 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.search_media_with_options_async(request, runtime)
 
+    def search_media_by_face_with_options(
+        self,
+        request: ice20201109_models.SearchMediaByFaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SearchMediaByFaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.face_search_token):
+            query['FaceSearchToken'] = request.face_search_token
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.person_image_url):
+            query['PersonImageUrl'] = request.person_image_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchMediaByFace',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SearchMediaByFaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_media_by_face_with_options_async(
+        self,
+        request: ice20201109_models.SearchMediaByFaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SearchMediaByFaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.face_search_token):
+            query['FaceSearchToken'] = request.face_search_token
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.person_image_url):
+            query['PersonImageUrl'] = request.person_image_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchMediaByFace',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SearchMediaByFaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_media_by_face(
+        self,
+        request: ice20201109_models.SearchMediaByFaceRequest,
+    ) -> ice20201109_models.SearchMediaByFaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.search_media_by_face_with_options(request, runtime)
+
+    async def search_media_by_face_async(
+        self,
+        request: ice20201109_models.SearchMediaByFaceRequest,
+    ) -> ice20201109_models.SearchMediaByFaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.search_media_by_face_with_options_async(request, runtime)
+
+    def search_media_clip_by_face_with_options(
+        self,
+        request: ice20201109_models.SearchMediaClipByFaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SearchMediaClipByFaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.face_search_token):
+            query['FaceSearchToken'] = request.face_search_token
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchMediaClipByFace',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SearchMediaClipByFaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_media_clip_by_face_with_options_async(
+        self,
+        request: ice20201109_models.SearchMediaClipByFaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SearchMediaClipByFaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.face_search_token):
+            query['FaceSearchToken'] = request.face_search_token
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchMediaClipByFace',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SearchMediaClipByFaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_media_clip_by_face(
+        self,
+        request: ice20201109_models.SearchMediaClipByFaceRequest,
+    ) -> ice20201109_models.SearchMediaClipByFaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.search_media_clip_by_face_with_options(request, runtime)
+
+    async def search_media_clip_by_face_async(
+        self,
+        request: ice20201109_models.SearchMediaClipByFaceRequest,
+    ) -> ice20201109_models.SearchMediaClipByFaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.search_media_clip_by_face_with_options_async(request, runtime)
+
     def search_public_media_info_with_options(
         self,
         request: ice20201109_models.SearchPublicMediaInfoRequest,
@@ -10377,6 +10665,84 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SendLiveTranscodeJobCommandResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_live_transcode_job_command_with_options_async(request, runtime)
+
+    def set_content_analyze_config_with_options(
+        self,
+        request: ice20201109_models.SetContentAnalyzeConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetContentAnalyzeConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto):
+            query['Auto'] = request.auto
+        if not UtilClient.is_unset(request.save_type):
+            query['SaveType'] = request.save_type
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetContentAnalyzeConfig',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetContentAnalyzeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_content_analyze_config_with_options_async(
+        self,
+        request: ice20201109_models.SetContentAnalyzeConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetContentAnalyzeConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto):
+            query['Auto'] = request.auto
+        if not UtilClient.is_unset(request.save_type):
+            query['SaveType'] = request.save_type
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetContentAnalyzeConfig',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetContentAnalyzeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_content_analyze_config(
+        self,
+        request: ice20201109_models.SetContentAnalyzeConfigRequest,
+    ) -> ice20201109_models.SetContentAnalyzeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_content_analyze_config_with_options(request, runtime)
+
+    async def set_content_analyze_config_async(
+        self,
+        request: ice20201109_models.SetContentAnalyzeConfigRequest,
+    ) -> ice20201109_models.SetContentAnalyzeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_content_analyze_config_with_options_async(request, runtime)
 
     def set_default_custom_template_with_options(
         self,
@@ -10877,6 +11243,96 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitAudioProduceJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_audio_produce_job_with_options_async(request, runtime)
+
+    def submit_avatar_video_job_with_options(
+        self,
+        request: ice20201109_models.SubmitAvatarVideoJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.editing_config):
+            query['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            query['InputConfig'] = request.input_config
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitAvatarVideoJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitAvatarVideoJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_avatar_video_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitAvatarVideoJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.editing_config):
+            query['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            query['InputConfig'] = request.input_config
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitAvatarVideoJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitAvatarVideoJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_avatar_video_job(
+        self,
+        request: ice20201109_models.SubmitAvatarVideoJobRequest,
+    ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_avatar_video_job_with_options(request, runtime)
+
+    async def submit_avatar_video_job_async(
+        self,
+        request: ice20201109_models.SubmitAvatarVideoJobRequest,
+    ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_avatar_video_job_with_options_async(request, runtime)
 
     def submit_dnajob_with_options(
         self,
