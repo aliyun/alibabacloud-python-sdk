@@ -309,6 +309,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.source_http_event_parameters):
             request.source_http_event_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_http_event_parameters, 'SourceHttpEventParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_kafka_parameters):
+            request.source_kafka_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_kafka_parameters, 'SourceKafkaParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_mnsparameters):
             request.source_mnsparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_mnsparameters, 'SourceMNSParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_rabbit_mqparameters):
@@ -317,6 +319,8 @@ class Client(OpenApiClient):
             request.source_rocket_mqparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_rocket_mqparameters, 'SourceRocketMQParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_slsparameters):
             request.source_slsparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_slsparameters, 'SourceSLSParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_scheduled_event_parameters):
+            request.source_scheduled_event_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_scheduled_event_parameters, 'SourceScheduledEventParameters', 'json')
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -326,6 +330,8 @@ class Client(OpenApiClient):
             body['EventSourceName'] = request.event_source_name
         if not UtilClient.is_unset(request.source_http_event_parameters_shrink):
             body['SourceHttpEventParameters'] = request.source_http_event_parameters_shrink
+        if not UtilClient.is_unset(request.source_kafka_parameters_shrink):
+            body['SourceKafkaParameters'] = request.source_kafka_parameters_shrink
         if not UtilClient.is_unset(request.source_mnsparameters_shrink):
             body['SourceMNSParameters'] = request.source_mnsparameters_shrink
         if not UtilClient.is_unset(request.source_rabbit_mqparameters_shrink):
@@ -334,6 +340,8 @@ class Client(OpenApiClient):
             body['SourceRocketMQParameters'] = request.source_rocket_mqparameters_shrink
         if not UtilClient.is_unset(request.source_slsparameters_shrink):
             body['SourceSLSParameters'] = request.source_slsparameters_shrink
+        if not UtilClient.is_unset(request.source_scheduled_event_parameters_shrink):
+            body['SourceScheduledEventParameters'] = request.source_scheduled_event_parameters_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -363,6 +371,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.source_http_event_parameters):
             request.source_http_event_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_http_event_parameters, 'SourceHttpEventParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_kafka_parameters):
+            request.source_kafka_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_kafka_parameters, 'SourceKafkaParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_mnsparameters):
             request.source_mnsparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_mnsparameters, 'SourceMNSParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_rabbit_mqparameters):
@@ -371,6 +381,8 @@ class Client(OpenApiClient):
             request.source_rocket_mqparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_rocket_mqparameters, 'SourceRocketMQParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_slsparameters):
             request.source_slsparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_slsparameters, 'SourceSLSParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_scheduled_event_parameters):
+            request.source_scheduled_event_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_scheduled_event_parameters, 'SourceScheduledEventParameters', 'json')
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -380,6 +392,8 @@ class Client(OpenApiClient):
             body['EventSourceName'] = request.event_source_name
         if not UtilClient.is_unset(request.source_http_event_parameters_shrink):
             body['SourceHttpEventParameters'] = request.source_http_event_parameters_shrink
+        if not UtilClient.is_unset(request.source_kafka_parameters_shrink):
+            body['SourceKafkaParameters'] = request.source_kafka_parameters_shrink
         if not UtilClient.is_unset(request.source_mnsparameters_shrink):
             body['SourceMNSParameters'] = request.source_mnsparameters_shrink
         if not UtilClient.is_unset(request.source_rabbit_mqparameters_shrink):
@@ -388,6 +402,8 @@ class Client(OpenApiClient):
             body['SourceRocketMQParameters'] = request.source_rocket_mqparameters_shrink
         if not UtilClient.is_unset(request.source_slsparameters_shrink):
             body['SourceSLSParameters'] = request.source_slsparameters_shrink
+        if not UtilClient.is_unset(request.source_scheduled_event_parameters_shrink):
+            body['SourceScheduledEventParameters'] = request.source_scheduled_event_parameters_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3183,6 +3199,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.source_http_event_parameters):
             request.source_http_event_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_http_event_parameters, 'SourceHttpEventParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_kafka_parameters):
+            request.source_kafka_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_kafka_parameters, 'SourceKafkaParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_mnsparameters):
             request.source_mnsparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_mnsparameters, 'SourceMNSParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_rabbit_mqparameters):
@@ -3191,6 +3209,8 @@ class Client(OpenApiClient):
             request.source_rocket_mqparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_rocket_mqparameters, 'SourceRocketMQParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_slsparameters):
             request.source_slsparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_slsparameters, 'SourceSLSParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_scheduled_event_parameters):
+            request.source_scheduled_event_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_scheduled_event_parameters, 'SourceScheduledEventParameters', 'json')
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -3200,6 +3220,8 @@ class Client(OpenApiClient):
             body['EventSourceName'] = request.event_source_name
         if not UtilClient.is_unset(request.source_http_event_parameters_shrink):
             body['SourceHttpEventParameters'] = request.source_http_event_parameters_shrink
+        if not UtilClient.is_unset(request.source_kafka_parameters_shrink):
+            body['SourceKafkaParameters'] = request.source_kafka_parameters_shrink
         if not UtilClient.is_unset(request.source_mnsparameters_shrink):
             body['SourceMNSParameters'] = request.source_mnsparameters_shrink
         if not UtilClient.is_unset(request.source_rabbit_mqparameters_shrink):
@@ -3208,6 +3230,8 @@ class Client(OpenApiClient):
             body['SourceRocketMQParameters'] = request.source_rocket_mqparameters_shrink
         if not UtilClient.is_unset(request.source_slsparameters_shrink):
             body['SourceSLSParameters'] = request.source_slsparameters_shrink
+        if not UtilClient.is_unset(request.source_scheduled_event_parameters_shrink):
+            body['SourceScheduledEventParameters'] = request.source_scheduled_event_parameters_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3237,6 +3261,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.source_http_event_parameters):
             request.source_http_event_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_http_event_parameters, 'SourceHttpEventParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_kafka_parameters):
+            request.source_kafka_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_kafka_parameters, 'SourceKafkaParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_mnsparameters):
             request.source_mnsparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_mnsparameters, 'SourceMNSParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_rabbit_mqparameters):
@@ -3245,6 +3271,8 @@ class Client(OpenApiClient):
             request.source_rocket_mqparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_rocket_mqparameters, 'SourceRocketMQParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_slsparameters):
             request.source_slsparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_slsparameters, 'SourceSLSParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_scheduled_event_parameters):
+            request.source_scheduled_event_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_scheduled_event_parameters, 'SourceScheduledEventParameters', 'json')
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -3254,6 +3282,8 @@ class Client(OpenApiClient):
             body['EventSourceName'] = request.event_source_name
         if not UtilClient.is_unset(request.source_http_event_parameters_shrink):
             body['SourceHttpEventParameters'] = request.source_http_event_parameters_shrink
+        if not UtilClient.is_unset(request.source_kafka_parameters_shrink):
+            body['SourceKafkaParameters'] = request.source_kafka_parameters_shrink
         if not UtilClient.is_unset(request.source_mnsparameters_shrink):
             body['SourceMNSParameters'] = request.source_mnsparameters_shrink
         if not UtilClient.is_unset(request.source_rabbit_mqparameters_shrink):
@@ -3262,6 +3292,8 @@ class Client(OpenApiClient):
             body['SourceRocketMQParameters'] = request.source_rocket_mqparameters_shrink
         if not UtilClient.is_unset(request.source_slsparameters_shrink):
             body['SourceSLSParameters'] = request.source_slsparameters_shrink
+        if not UtilClient.is_unset(request.source_scheduled_event_parameters_shrink):
+            body['SourceScheduledEventParameters'] = request.source_scheduled_event_parameters_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )

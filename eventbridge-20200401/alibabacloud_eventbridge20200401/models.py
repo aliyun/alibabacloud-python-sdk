@@ -1097,6 +1097,87 @@ class CreateEventSourceRequestSourceHttpEventParameters(TeaModel):
         return self
 
 
+class CreateEventSourceRequestSourceKafkaParameters(TeaModel):
+    def __init__(
+        self,
+        consumer_group: str = None,
+        instance_id: str = None,
+        maximum_tasks: int = None,
+        network: str = None,
+        offset_reset: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        topic: str = None,
+        v_switch_ids: str = None,
+        vpc_id: str = None,
+    ):
+        self.consumer_group = consumer_group
+        self.instance_id = instance_id
+        self.maximum_tasks = maximum_tasks
+        self.network = network
+        self.offset_reset = offset_reset
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.topic = topic
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_group is not None:
+            result['ConsumerGroup'] = self.consumer_group
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.maximum_tasks is not None:
+            result['MaximumTasks'] = self.maximum_tasks
+        if self.network is not None:
+            result['Network'] = self.network
+        if self.offset_reset is not None:
+            result['OffsetReset'] = self.offset_reset
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsumerGroup') is not None:
+            self.consumer_group = m.get('ConsumerGroup')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaximumTasks') is not None:
+            self.maximum_tasks = m.get('MaximumTasks')
+        if m.get('Network') is not None:
+            self.network = m.get('Network')
+        if m.get('OffsetReset') is not None:
+            self.offset_reset = m.get('OffsetReset')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class CreateEventSourceRequestSourceMNSParameters(TeaModel):
     def __init__(
         self,
@@ -1319,17 +1400,52 @@ class CreateEventSourceRequestSourceSLSParameters(TeaModel):
         return self
 
 
+class CreateEventSourceRequestSourceScheduledEventParameters(TeaModel):
+    def __init__(
+        self,
+        schedule: str = None,
+        time_zone: str = None,
+    ):
+        self.schedule = schedule
+        self.time_zone = time_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.schedule is not None:
+            result['Schedule'] = self.schedule
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Schedule') is not None:
+            self.schedule = m.get('Schedule')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        return self
+
+
 class CreateEventSourceRequest(TeaModel):
     def __init__(
         self,
-        description: bytes = None,
-        event_bus_name: bytes = None,
-        event_source_name: bytes = None,
+        description: str = None,
+        event_bus_name: str = None,
+        event_source_name: str = None,
         source_http_event_parameters: CreateEventSourceRequestSourceHttpEventParameters = None,
+        source_kafka_parameters: CreateEventSourceRequestSourceKafkaParameters = None,
         source_mnsparameters: CreateEventSourceRequestSourceMNSParameters = None,
         source_rabbit_mqparameters: CreateEventSourceRequestSourceRabbitMQParameters = None,
         source_rocket_mqparameters: CreateEventSourceRequestSourceRocketMQParameters = None,
         source_slsparameters: CreateEventSourceRequestSourceSLSParameters = None,
+        source_scheduled_event_parameters: CreateEventSourceRequestSourceScheduledEventParameters = None,
     ):
         # 事件源描述详情
         self.description = description
@@ -1337,15 +1453,19 @@ class CreateEventSourceRequest(TeaModel):
         # 事件源英文Code
         self.event_source_name = event_source_name
         self.source_http_event_parameters = source_http_event_parameters
+        self.source_kafka_parameters = source_kafka_parameters
         self.source_mnsparameters = source_mnsparameters
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
         self.source_rocket_mqparameters = source_rocket_mqparameters
         # SourceSLSParameters
         self.source_slsparameters = source_slsparameters
+        self.source_scheduled_event_parameters = source_scheduled_event_parameters
 
     def validate(self):
         if self.source_http_event_parameters:
             self.source_http_event_parameters.validate()
+        if self.source_kafka_parameters:
+            self.source_kafka_parameters.validate()
         if self.source_mnsparameters:
             self.source_mnsparameters.validate()
         if self.source_rabbit_mqparameters:
@@ -1354,6 +1474,8 @@ class CreateEventSourceRequest(TeaModel):
             self.source_rocket_mqparameters.validate()
         if self.source_slsparameters:
             self.source_slsparameters.validate()
+        if self.source_scheduled_event_parameters:
+            self.source_scheduled_event_parameters.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1369,6 +1491,8 @@ class CreateEventSourceRequest(TeaModel):
             result['EventSourceName'] = self.event_source_name
         if self.source_http_event_parameters is not None:
             result['SourceHttpEventParameters'] = self.source_http_event_parameters.to_map()
+        if self.source_kafka_parameters is not None:
+            result['SourceKafkaParameters'] = self.source_kafka_parameters.to_map()
         if self.source_mnsparameters is not None:
             result['SourceMNSParameters'] = self.source_mnsparameters.to_map()
         if self.source_rabbit_mqparameters is not None:
@@ -1377,6 +1501,8 @@ class CreateEventSourceRequest(TeaModel):
             result['SourceRocketMQParameters'] = self.source_rocket_mqparameters.to_map()
         if self.source_slsparameters is not None:
             result['SourceSLSParameters'] = self.source_slsparameters.to_map()
+        if self.source_scheduled_event_parameters is not None:
+            result['SourceScheduledEventParameters'] = self.source_scheduled_event_parameters.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1390,6 +1516,9 @@ class CreateEventSourceRequest(TeaModel):
         if m.get('SourceHttpEventParameters') is not None:
             temp_model = CreateEventSourceRequestSourceHttpEventParameters()
             self.source_http_event_parameters = temp_model.from_map(m['SourceHttpEventParameters'])
+        if m.get('SourceKafkaParameters') is not None:
+            temp_model = CreateEventSourceRequestSourceKafkaParameters()
+            self.source_kafka_parameters = temp_model.from_map(m['SourceKafkaParameters'])
         if m.get('SourceMNSParameters') is not None:
             temp_model = CreateEventSourceRequestSourceMNSParameters()
             self.source_mnsparameters = temp_model.from_map(m['SourceMNSParameters'])
@@ -1402,20 +1531,25 @@ class CreateEventSourceRequest(TeaModel):
         if m.get('SourceSLSParameters') is not None:
             temp_model = CreateEventSourceRequestSourceSLSParameters()
             self.source_slsparameters = temp_model.from_map(m['SourceSLSParameters'])
+        if m.get('SourceScheduledEventParameters') is not None:
+            temp_model = CreateEventSourceRequestSourceScheduledEventParameters()
+            self.source_scheduled_event_parameters = temp_model.from_map(m['SourceScheduledEventParameters'])
         return self
 
 
 class CreateEventSourceShrinkRequest(TeaModel):
     def __init__(
         self,
-        description: bytes = None,
-        event_bus_name: bytes = None,
-        event_source_name: bytes = None,
+        description: str = None,
+        event_bus_name: str = None,
+        event_source_name: str = None,
         source_http_event_parameters_shrink: str = None,
+        source_kafka_parameters_shrink: str = None,
         source_mnsparameters_shrink: str = None,
         source_rabbit_mqparameters_shrink: str = None,
         source_rocket_mqparameters_shrink: str = None,
         source_slsparameters_shrink: str = None,
+        source_scheduled_event_parameters_shrink: str = None,
     ):
         # 事件源描述详情
         self.description = description
@@ -1423,11 +1557,13 @@ class CreateEventSourceShrinkRequest(TeaModel):
         # 事件源英文Code
         self.event_source_name = event_source_name
         self.source_http_event_parameters_shrink = source_http_event_parameters_shrink
+        self.source_kafka_parameters_shrink = source_kafka_parameters_shrink
         self.source_mnsparameters_shrink = source_mnsparameters_shrink
         self.source_rabbit_mqparameters_shrink = source_rabbit_mqparameters_shrink
         self.source_rocket_mqparameters_shrink = source_rocket_mqparameters_shrink
         # SourceSLSParameters
         self.source_slsparameters_shrink = source_slsparameters_shrink
+        self.source_scheduled_event_parameters_shrink = source_scheduled_event_parameters_shrink
 
     def validate(self):
         pass
@@ -1446,6 +1582,8 @@ class CreateEventSourceShrinkRequest(TeaModel):
             result['EventSourceName'] = self.event_source_name
         if self.source_http_event_parameters_shrink is not None:
             result['SourceHttpEventParameters'] = self.source_http_event_parameters_shrink
+        if self.source_kafka_parameters_shrink is not None:
+            result['SourceKafkaParameters'] = self.source_kafka_parameters_shrink
         if self.source_mnsparameters_shrink is not None:
             result['SourceMNSParameters'] = self.source_mnsparameters_shrink
         if self.source_rabbit_mqparameters_shrink is not None:
@@ -1454,6 +1592,8 @@ class CreateEventSourceShrinkRequest(TeaModel):
             result['SourceRocketMQParameters'] = self.source_rocket_mqparameters_shrink
         if self.source_slsparameters_shrink is not None:
             result['SourceSLSParameters'] = self.source_slsparameters_shrink
+        if self.source_scheduled_event_parameters_shrink is not None:
+            result['SourceScheduledEventParameters'] = self.source_scheduled_event_parameters_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -1466,6 +1606,8 @@ class CreateEventSourceShrinkRequest(TeaModel):
             self.event_source_name = m.get('EventSourceName')
         if m.get('SourceHttpEventParameters') is not None:
             self.source_http_event_parameters_shrink = m.get('SourceHttpEventParameters')
+        if m.get('SourceKafkaParameters') is not None:
+            self.source_kafka_parameters_shrink = m.get('SourceKafkaParameters')
         if m.get('SourceMNSParameters') is not None:
             self.source_mnsparameters_shrink = m.get('SourceMNSParameters')
         if m.get('SourceRabbitMQParameters') is not None:
@@ -1474,6 +1616,8 @@ class CreateEventSourceShrinkRequest(TeaModel):
             self.source_rocket_mqparameters_shrink = m.get('SourceRocketMQParameters')
         if m.get('SourceSLSParameters') is not None:
             self.source_slsparameters_shrink = m.get('SourceSLSParameters')
+        if m.get('SourceScheduledEventParameters') is not None:
+            self.source_scheduled_event_parameters_shrink = m.get('SourceScheduledEventParameters')
         return self
 
 
@@ -2106,6 +2250,45 @@ class CreateEventStreamingRequestSinkSinkFcParametersBody(TeaModel):
         return self
 
 
+class CreateEventStreamingRequestSinkSinkFcParametersConcurrency(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateEventStreamingRequestSinkSinkFcParametersFunctionName(TeaModel):
     def __init__(
         self,
@@ -2266,12 +2449,14 @@ class CreateEventStreamingRequestSinkSinkFcParameters(TeaModel):
     def __init__(
         self,
         body: CreateEventStreamingRequestSinkSinkFcParametersBody = None,
+        concurrency: CreateEventStreamingRequestSinkSinkFcParametersConcurrency = None,
         function_name: CreateEventStreamingRequestSinkSinkFcParametersFunctionName = None,
         invocation_type: CreateEventStreamingRequestSinkSinkFcParametersInvocationType = None,
         qualifier: CreateEventStreamingRequestSinkSinkFcParametersQualifier = None,
         service_name: CreateEventStreamingRequestSinkSinkFcParametersServiceName = None,
     ):
         self.body = body
+        self.concurrency = concurrency
         self.function_name = function_name
         self.invocation_type = invocation_type
         self.qualifier = qualifier
@@ -2280,6 +2465,8 @@ class CreateEventStreamingRequestSinkSinkFcParameters(TeaModel):
     def validate(self):
         if self.body:
             self.body.validate()
+        if self.concurrency:
+            self.concurrency.validate()
         if self.function_name:
             self.function_name.validate()
         if self.invocation_type:
@@ -2297,6 +2484,8 @@ class CreateEventStreamingRequestSinkSinkFcParameters(TeaModel):
         result = dict()
         if self.body is not None:
             result['Body'] = self.body.to_map()
+        if self.concurrency is not None:
+            result['Concurrency'] = self.concurrency.to_map()
         if self.function_name is not None:
             result['FunctionName'] = self.function_name.to_map()
         if self.invocation_type is not None:
@@ -2312,6 +2501,9 @@ class CreateEventStreamingRequestSinkSinkFcParameters(TeaModel):
         if m.get('Body') is not None:
             temp_model = CreateEventStreamingRequestSinkSinkFcParametersBody()
             self.body = temp_model.from_map(m['Body'])
+        if m.get('Concurrency') is not None:
+            temp_model = CreateEventStreamingRequestSinkSinkFcParametersConcurrency()
+            self.concurrency = temp_model.from_map(m['Concurrency'])
         if m.get('FunctionName') is not None:
             temp_model = CreateEventStreamingRequestSinkSinkFcParametersFunctionName()
             self.function_name = temp_model.from_map(m['FunctionName'])
@@ -8550,6 +8742,45 @@ class GetEventStreamingResponseBodyDataSinkSinkFcParametersBody(TeaModel):
         return self
 
 
+class GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetEventStreamingResponseBodyDataSinkSinkFcParametersFunctionName(TeaModel):
     def __init__(
         self,
@@ -8710,12 +8941,14 @@ class GetEventStreamingResponseBodyDataSinkSinkFcParameters(TeaModel):
     def __init__(
         self,
         body: GetEventStreamingResponseBodyDataSinkSinkFcParametersBody = None,
+        concurrency: GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency = None,
         function_name: GetEventStreamingResponseBodyDataSinkSinkFcParametersFunctionName = None,
         invocation_type: GetEventStreamingResponseBodyDataSinkSinkFcParametersInvocationType = None,
         qualifier: GetEventStreamingResponseBodyDataSinkSinkFcParametersQualifier = None,
         service_name: GetEventStreamingResponseBodyDataSinkSinkFcParametersServiceName = None,
     ):
         self.body = body
+        self.concurrency = concurrency
         self.function_name = function_name
         self.invocation_type = invocation_type
         self.qualifier = qualifier
@@ -8724,6 +8957,8 @@ class GetEventStreamingResponseBodyDataSinkSinkFcParameters(TeaModel):
     def validate(self):
         if self.body:
             self.body.validate()
+        if self.concurrency:
+            self.concurrency.validate()
         if self.function_name:
             self.function_name.validate()
         if self.invocation_type:
@@ -8741,6 +8976,8 @@ class GetEventStreamingResponseBodyDataSinkSinkFcParameters(TeaModel):
         result = dict()
         if self.body is not None:
             result['Body'] = self.body.to_map()
+        if self.concurrency is not None:
+            result['Concurrency'] = self.concurrency.to_map()
         if self.function_name is not None:
             result['FunctionName'] = self.function_name.to_map()
         if self.invocation_type is not None:
@@ -8756,6 +8993,9 @@ class GetEventStreamingResponseBodyDataSinkSinkFcParameters(TeaModel):
         if m.get('Body') is not None:
             temp_model = GetEventStreamingResponseBodyDataSinkSinkFcParametersBody()
             self.body = temp_model.from_map(m['Body'])
+        if m.get('Concurrency') is not None:
+            temp_model = GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency()
+            self.concurrency = temp_model.from_map(m['Concurrency'])
         if m.get('FunctionName') is not None:
             temp_model = GetEventStreamingResponseBodyDataSinkSinkFcParametersFunctionName()
             self.function_name = temp_model.from_map(m['FunctionName'])
@@ -13128,6 +13368,45 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersBody
         return self
 
 
+class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersFunctionName(TeaModel):
     def __init__(
         self,
@@ -13288,12 +13567,14 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters(Tea
     def __init__(
         self,
         body: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersBody = None,
+        concurrency: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency = None,
         function_name: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersFunctionName = None,
         invocation_type: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersInvocationType = None,
         qualifier: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersQualifier = None,
         service_name: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersServiceName = None,
     ):
         self.body = body
+        self.concurrency = concurrency
         self.function_name = function_name
         self.invocation_type = invocation_type
         self.qualifier = qualifier
@@ -13302,6 +13583,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters(Tea
     def validate(self):
         if self.body:
             self.body.validate()
+        if self.concurrency:
+            self.concurrency.validate()
         if self.function_name:
             self.function_name.validate()
         if self.invocation_type:
@@ -13319,6 +13602,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters(Tea
         result = dict()
         if self.body is not None:
             result['Body'] = self.body.to_map()
+        if self.concurrency is not None:
+            result['Concurrency'] = self.concurrency.to_map()
         if self.function_name is not None:
             result['FunctionName'] = self.function_name.to_map()
         if self.invocation_type is not None:
@@ -13334,6 +13619,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters(Tea
         if m.get('Body') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersBody()
             self.body = temp_model.from_map(m['Body'])
+        if m.get('Concurrency') is not None:
+            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency()
+            self.concurrency = temp_model.from_map(m['Concurrency'])
         if m.get('FunctionName') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersFunctionName()
             self.function_name = temp_model.from_map(m['FunctionName'])
@@ -19000,6 +19288,87 @@ class UpdateEventSourceRequestSourceHttpEventParameters(TeaModel):
         return self
 
 
+class UpdateEventSourceRequestSourceKafkaParameters(TeaModel):
+    def __init__(
+        self,
+        consumer_group: str = None,
+        instance_id: str = None,
+        maximum_tasks: int = None,
+        network: str = None,
+        offset_reset: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        topic: str = None,
+        v_switch_ids: str = None,
+        vpc_id: str = None,
+    ):
+        self.consumer_group = consumer_group
+        self.instance_id = instance_id
+        self.maximum_tasks = maximum_tasks
+        self.network = network
+        self.offset_reset = offset_reset
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.topic = topic
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_group is not None:
+            result['ConsumerGroup'] = self.consumer_group
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.maximum_tasks is not None:
+            result['MaximumTasks'] = self.maximum_tasks
+        if self.network is not None:
+            result['Network'] = self.network
+        if self.offset_reset is not None:
+            result['OffsetReset'] = self.offset_reset
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsumerGroup') is not None:
+            self.consumer_group = m.get('ConsumerGroup')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaximumTasks') is not None:
+            self.maximum_tasks = m.get('MaximumTasks')
+        if m.get('Network') is not None:
+            self.network = m.get('Network')
+        if m.get('OffsetReset') is not None:
+            self.offset_reset = m.get('OffsetReset')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class UpdateEventSourceRequestSourceMNSParameters(TeaModel):
     def __init__(
         self,
@@ -19222,17 +19591,52 @@ class UpdateEventSourceRequestSourceSLSParameters(TeaModel):
         return self
 
 
+class UpdateEventSourceRequestSourceScheduledEventParameters(TeaModel):
+    def __init__(
+        self,
+        schedule: str = None,
+        time_zone: str = None,
+    ):
+        self.schedule = schedule
+        self.time_zone = time_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.schedule is not None:
+            result['Schedule'] = self.schedule
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Schedule') is not None:
+            self.schedule = m.get('Schedule')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        return self
+
+
 class UpdateEventSourceRequest(TeaModel):
     def __init__(
         self,
-        description: bytes = None,
+        description: str = None,
         event_bus_name: bytes = None,
-        event_source_name: bytes = None,
+        event_source_name: str = None,
         source_http_event_parameters: UpdateEventSourceRequestSourceHttpEventParameters = None,
+        source_kafka_parameters: UpdateEventSourceRequestSourceKafkaParameters = None,
         source_mnsparameters: UpdateEventSourceRequestSourceMNSParameters = None,
         source_rabbit_mqparameters: UpdateEventSourceRequestSourceRabbitMQParameters = None,
         source_rocket_mqparameters: UpdateEventSourceRequestSourceRocketMQParameters = None,
         source_slsparameters: UpdateEventSourceRequestSourceSLSParameters = None,
+        source_scheduled_event_parameters: UpdateEventSourceRequestSourceScheduledEventParameters = None,
     ):
         # 事件源描述详情
         self.description = description
@@ -19240,15 +19644,19 @@ class UpdateEventSourceRequest(TeaModel):
         # 事件源英文Code
         self.event_source_name = event_source_name
         self.source_http_event_parameters = source_http_event_parameters
+        self.source_kafka_parameters = source_kafka_parameters
         self.source_mnsparameters = source_mnsparameters
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
         self.source_rocket_mqparameters = source_rocket_mqparameters
         # SourceSLSParameters
         self.source_slsparameters = source_slsparameters
+        self.source_scheduled_event_parameters = source_scheduled_event_parameters
 
     def validate(self):
         if self.source_http_event_parameters:
             self.source_http_event_parameters.validate()
+        if self.source_kafka_parameters:
+            self.source_kafka_parameters.validate()
         if self.source_mnsparameters:
             self.source_mnsparameters.validate()
         if self.source_rabbit_mqparameters:
@@ -19257,6 +19665,8 @@ class UpdateEventSourceRequest(TeaModel):
             self.source_rocket_mqparameters.validate()
         if self.source_slsparameters:
             self.source_slsparameters.validate()
+        if self.source_scheduled_event_parameters:
+            self.source_scheduled_event_parameters.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -19272,6 +19682,8 @@ class UpdateEventSourceRequest(TeaModel):
             result['EventSourceName'] = self.event_source_name
         if self.source_http_event_parameters is not None:
             result['SourceHttpEventParameters'] = self.source_http_event_parameters.to_map()
+        if self.source_kafka_parameters is not None:
+            result['SourceKafkaParameters'] = self.source_kafka_parameters.to_map()
         if self.source_mnsparameters is not None:
             result['SourceMNSParameters'] = self.source_mnsparameters.to_map()
         if self.source_rabbit_mqparameters is not None:
@@ -19280,6 +19692,8 @@ class UpdateEventSourceRequest(TeaModel):
             result['SourceRocketMQParameters'] = self.source_rocket_mqparameters.to_map()
         if self.source_slsparameters is not None:
             result['SourceSLSParameters'] = self.source_slsparameters.to_map()
+        if self.source_scheduled_event_parameters is not None:
+            result['SourceScheduledEventParameters'] = self.source_scheduled_event_parameters.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -19293,6 +19707,9 @@ class UpdateEventSourceRequest(TeaModel):
         if m.get('SourceHttpEventParameters') is not None:
             temp_model = UpdateEventSourceRequestSourceHttpEventParameters()
             self.source_http_event_parameters = temp_model.from_map(m['SourceHttpEventParameters'])
+        if m.get('SourceKafkaParameters') is not None:
+            temp_model = UpdateEventSourceRequestSourceKafkaParameters()
+            self.source_kafka_parameters = temp_model.from_map(m['SourceKafkaParameters'])
         if m.get('SourceMNSParameters') is not None:
             temp_model = UpdateEventSourceRequestSourceMNSParameters()
             self.source_mnsparameters = temp_model.from_map(m['SourceMNSParameters'])
@@ -19305,20 +19722,25 @@ class UpdateEventSourceRequest(TeaModel):
         if m.get('SourceSLSParameters') is not None:
             temp_model = UpdateEventSourceRequestSourceSLSParameters()
             self.source_slsparameters = temp_model.from_map(m['SourceSLSParameters'])
+        if m.get('SourceScheduledEventParameters') is not None:
+            temp_model = UpdateEventSourceRequestSourceScheduledEventParameters()
+            self.source_scheduled_event_parameters = temp_model.from_map(m['SourceScheduledEventParameters'])
         return self
 
 
 class UpdateEventSourceShrinkRequest(TeaModel):
     def __init__(
         self,
-        description: bytes = None,
+        description: str = None,
         event_bus_name: bytes = None,
-        event_source_name: bytes = None,
+        event_source_name: str = None,
         source_http_event_parameters_shrink: str = None,
+        source_kafka_parameters_shrink: str = None,
         source_mnsparameters_shrink: str = None,
         source_rabbit_mqparameters_shrink: str = None,
         source_rocket_mqparameters_shrink: str = None,
         source_slsparameters_shrink: str = None,
+        source_scheduled_event_parameters_shrink: str = None,
     ):
         # 事件源描述详情
         self.description = description
@@ -19326,11 +19748,13 @@ class UpdateEventSourceShrinkRequest(TeaModel):
         # 事件源英文Code
         self.event_source_name = event_source_name
         self.source_http_event_parameters_shrink = source_http_event_parameters_shrink
+        self.source_kafka_parameters_shrink = source_kafka_parameters_shrink
         self.source_mnsparameters_shrink = source_mnsparameters_shrink
         self.source_rabbit_mqparameters_shrink = source_rabbit_mqparameters_shrink
         self.source_rocket_mqparameters_shrink = source_rocket_mqparameters_shrink
         # SourceSLSParameters
         self.source_slsparameters_shrink = source_slsparameters_shrink
+        self.source_scheduled_event_parameters_shrink = source_scheduled_event_parameters_shrink
 
     def validate(self):
         pass
@@ -19349,6 +19773,8 @@ class UpdateEventSourceShrinkRequest(TeaModel):
             result['EventSourceName'] = self.event_source_name
         if self.source_http_event_parameters_shrink is not None:
             result['SourceHttpEventParameters'] = self.source_http_event_parameters_shrink
+        if self.source_kafka_parameters_shrink is not None:
+            result['SourceKafkaParameters'] = self.source_kafka_parameters_shrink
         if self.source_mnsparameters_shrink is not None:
             result['SourceMNSParameters'] = self.source_mnsparameters_shrink
         if self.source_rabbit_mqparameters_shrink is not None:
@@ -19357,6 +19783,8 @@ class UpdateEventSourceShrinkRequest(TeaModel):
             result['SourceRocketMQParameters'] = self.source_rocket_mqparameters_shrink
         if self.source_slsparameters_shrink is not None:
             result['SourceSLSParameters'] = self.source_slsparameters_shrink
+        if self.source_scheduled_event_parameters_shrink is not None:
+            result['SourceScheduledEventParameters'] = self.source_scheduled_event_parameters_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -19369,6 +19797,8 @@ class UpdateEventSourceShrinkRequest(TeaModel):
             self.event_source_name = m.get('EventSourceName')
         if m.get('SourceHttpEventParameters') is not None:
             self.source_http_event_parameters_shrink = m.get('SourceHttpEventParameters')
+        if m.get('SourceKafkaParameters') is not None:
+            self.source_kafka_parameters_shrink = m.get('SourceKafkaParameters')
         if m.get('SourceMNSParameters') is not None:
             self.source_mnsparameters_shrink = m.get('SourceMNSParameters')
         if m.get('SourceRabbitMQParameters') is not None:
@@ -19377,6 +19807,8 @@ class UpdateEventSourceShrinkRequest(TeaModel):
             self.source_rocket_mqparameters_shrink = m.get('SourceRocketMQParameters')
         if m.get('SourceSLSParameters') is not None:
             self.source_slsparameters_shrink = m.get('SourceSLSParameters')
+        if m.get('SourceScheduledEventParameters') is not None:
+            self.source_scheduled_event_parameters_shrink = m.get('SourceScheduledEventParameters')
         return self
 
 
@@ -19672,6 +20104,45 @@ class UpdateEventStreamingRequestSinkSinkFcParametersBody(TeaModel):
         return self
 
 
+class UpdateEventStreamingRequestSinkSinkFcParametersConcurrency(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class UpdateEventStreamingRequestSinkSinkFcParametersFunctionName(TeaModel):
     def __init__(
         self,
@@ -19832,12 +20303,14 @@ class UpdateEventStreamingRequestSinkSinkFcParameters(TeaModel):
     def __init__(
         self,
         body: UpdateEventStreamingRequestSinkSinkFcParametersBody = None,
+        concurrency: UpdateEventStreamingRequestSinkSinkFcParametersConcurrency = None,
         function_name: UpdateEventStreamingRequestSinkSinkFcParametersFunctionName = None,
         invocation_type: UpdateEventStreamingRequestSinkSinkFcParametersInvocationType = None,
         qualifier: UpdateEventStreamingRequestSinkSinkFcParametersQualifier = None,
         service_name: UpdateEventStreamingRequestSinkSinkFcParametersServiceName = None,
     ):
         self.body = body
+        self.concurrency = concurrency
         self.function_name = function_name
         self.invocation_type = invocation_type
         self.qualifier = qualifier
@@ -19846,6 +20319,8 @@ class UpdateEventStreamingRequestSinkSinkFcParameters(TeaModel):
     def validate(self):
         if self.body:
             self.body.validate()
+        if self.concurrency:
+            self.concurrency.validate()
         if self.function_name:
             self.function_name.validate()
         if self.invocation_type:
@@ -19863,6 +20338,8 @@ class UpdateEventStreamingRequestSinkSinkFcParameters(TeaModel):
         result = dict()
         if self.body is not None:
             result['Body'] = self.body.to_map()
+        if self.concurrency is not None:
+            result['Concurrency'] = self.concurrency.to_map()
         if self.function_name is not None:
             result['FunctionName'] = self.function_name.to_map()
         if self.invocation_type is not None:
@@ -19878,6 +20355,9 @@ class UpdateEventStreamingRequestSinkSinkFcParameters(TeaModel):
         if m.get('Body') is not None:
             temp_model = UpdateEventStreamingRequestSinkSinkFcParametersBody()
             self.body = temp_model.from_map(m['Body'])
+        if m.get('Concurrency') is not None:
+            temp_model = UpdateEventStreamingRequestSinkSinkFcParametersConcurrency()
+            self.concurrency = temp_model.from_map(m['Concurrency'])
         if m.get('FunctionName') is not None:
             temp_model = UpdateEventStreamingRequestSinkSinkFcParametersFunctionName()
             self.function_name = temp_model.from_map(m['FunctionName'])
