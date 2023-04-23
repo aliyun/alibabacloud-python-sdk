@@ -2161,6 +2161,74 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.CarOrderQueryHeaders()
         return await self.car_order_query_with_options_async(request, headers, runtime)
 
+    def car_scene_query_with_options(
+        self,
+        headers: btrip_open_20220520_models.CarSceneQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CarSceneQueryResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='CarSceneQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/car/v1/scenes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CarSceneQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def car_scene_query_with_options_async(
+        self,
+        headers: btrip_open_20220520_models.CarSceneQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CarSceneQueryResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='CarSceneQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/car/v1/scenes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CarSceneQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def car_scene_query(self) -> btrip_open_20220520_models.CarSceneQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.CarSceneQueryHeaders()
+        return self.car_scene_query_with_options(headers, runtime)
+
+    async def car_scene_query_async(self) -> btrip_open_20220520_models.CarSceneQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.CarSceneQueryHeaders()
+        return await self.car_scene_query_with_options_async(headers, runtime)
+
     def city_search_with_options(
         self,
         request: btrip_open_20220520_models.CitySearchRequest,

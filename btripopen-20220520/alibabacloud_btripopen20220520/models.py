@@ -8992,6 +8992,188 @@ class CarOrderQueryResponse(TeaModel):
         return self
 
 
+class CarSceneQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class CarSceneQueryResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        scenario_template_id: str = None,
+        scenario_template_name: str = None,
+        state: str = None,
+    ):
+        self.scenario_template_id = scenario_template_id
+        self.scenario_template_name = scenario_template_name
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scenario_template_id is not None:
+            result['scenarioTemplateId'] = self.scenario_template_id
+        if self.scenario_template_name is not None:
+            result['scenarioTemplateName'] = self.scenario_template_name
+        if self.state is not None:
+            result['state'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scenarioTemplateId') is not None:
+            self.scenario_template_id = m.get('scenarioTemplateId')
+        if m.get('scenarioTemplateName') is not None:
+            self.scenario_template_name = m.get('scenarioTemplateName')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        return self
+
+
+class CarSceneQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: List[CarSceneQueryResponseBodyModule] = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            for k in self.module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        result['module'] = []
+        if self.module is not None:
+            for k in self.module:
+                result['module'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        self.module = []
+        if m.get('module') is not None:
+            for k in m.get('module'):
+                temp_model = CarSceneQueryResponseBodyModule()
+                self.module.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class CarSceneQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CarSceneQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CarSceneQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CitySearchHeaders(TeaModel):
     def __init__(
         self,
@@ -34772,6 +34954,7 @@ class HotelOrderListQueryResponseBodyModule(TeaModel):
         cost_center: HotelOrderListQueryResponseBodyModuleCostCenter = None,
         depart_id: str = None,
         depart_name: str = None,
+        extend_field: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         guest: str = None,
@@ -34808,6 +34991,7 @@ class HotelOrderListQueryResponseBodyModule(TeaModel):
         self.cost_center = cost_center
         self.depart_id = depart_id
         self.depart_name = depart_name
+        self.extend_field = extend_field
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.guest = guest
@@ -34875,6 +35059,8 @@ class HotelOrderListQueryResponseBodyModule(TeaModel):
             result['depart_id'] = self.depart_id
         if self.depart_name is not None:
             result['depart_name'] = self.depart_name
+        if self.extend_field is not None:
+            result['extend_field'] = self.extend_field
         if self.gmt_create is not None:
             result['gmt_create'] = self.gmt_create
         if self.gmt_modified is not None:
@@ -34954,6 +35140,8 @@ class HotelOrderListQueryResponseBodyModule(TeaModel):
             self.depart_id = m.get('depart_id')
         if m.get('depart_name') is not None:
             self.depart_name = m.get('depart_name')
+        if m.get('extend_field') is not None:
+            self.extend_field = m.get('extend_field')
         if m.get('gmt_create') is not None:
             self.gmt_create = m.get('gmt_create')
         if m.get('gmt_modified') is not None:
@@ -36381,6 +36569,7 @@ class HotelOrderQueryResponseBodyModuleOrderBaseInfo(TeaModel):
         corp_name: str = None,
         depart_id: str = None,
         depart_name: str = None,
+        extend_field: str = None,
         gmt_create: int = None,
         gmt_modified: int = None,
         id: int = None,
@@ -36399,6 +36588,7 @@ class HotelOrderQueryResponseBodyModuleOrderBaseInfo(TeaModel):
         self.corp_name = corp_name
         self.depart_id = depart_id
         self.depart_name = depart_name
+        self.extend_field = extend_field
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.id = id
@@ -36432,6 +36622,8 @@ class HotelOrderQueryResponseBodyModuleOrderBaseInfo(TeaModel):
             result['depart_id'] = self.depart_id
         if self.depart_name is not None:
             result['depart_name'] = self.depart_name
+        if self.extend_field is not None:
+            result['extend_field'] = self.extend_field
         if self.gmt_create is not None:
             result['gmt_create'] = self.gmt_create
         if self.gmt_modified is not None:
@@ -36470,6 +36662,8 @@ class HotelOrderQueryResponseBodyModuleOrderBaseInfo(TeaModel):
             self.depart_id = m.get('depart_id')
         if m.get('depart_name') is not None:
             self.depart_name = m.get('depart_name')
+        if m.get('extend_field') is not None:
+            self.extend_field = m.get('extend_field')
         if m.get('gmt_create') is not None:
             self.gmt_create = m.get('gmt_create')
         if m.get('gmt_modified') is not None:
