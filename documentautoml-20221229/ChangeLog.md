@@ -1,3 +1,6 @@
+2023-04-24 Version: 1.0.12
+- DocumentInit.
+
 2023-04-24 Version: 1.0.11
 - DocumentInit.
 
