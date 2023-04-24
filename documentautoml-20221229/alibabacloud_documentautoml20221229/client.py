@@ -385,6 +385,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.predict_model_with_options_async(request, runtime)
 
+    def predict_pre_train_model_with_options(
+        self,
+        request: document_automl_20221229_models.PredictPreTrainModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> document_automl_20221229_models.PredictPreTrainModelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.binary_to_text):
+            query['BinaryToText'] = request.binary_to_text
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PredictPreTrainModel',
+            version='2022-12-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            document_automl_20221229_models.PredictPreTrainModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def predict_pre_train_model_with_options_async(
+        self,
+        request: document_automl_20221229_models.PredictPreTrainModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> document_automl_20221229_models.PredictPreTrainModelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.binary_to_text):
+            query['BinaryToText'] = request.binary_to_text
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PredictPreTrainModel',
+            version='2022-12-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            document_automl_20221229_models.PredictPreTrainModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def predict_pre_train_model(
+        self,
+        request: document_automl_20221229_models.PredictPreTrainModelRequest,
+    ) -> document_automl_20221229_models.PredictPreTrainModelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.predict_pre_train_model_with_options(request, runtime)
+
+    async def predict_pre_train_model_async(
+        self,
+        request: document_automl_20221229_models.PredictPreTrainModelRequest,
+    ) -> document_automl_20221229_models.PredictPreTrainModelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.predict_pre_train_model_with_options_async(request, runtime)
+
     def predict_template_model_with_options(
         self,
         request: document_automl_20221229_models.PredictTemplateModelRequest,

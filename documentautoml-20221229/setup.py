@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_documentautoml20221229.
 
-Created on 10/04/2023
+Created on 24/04/2023
 
 @author: Alibaba Cloud SDK
 """
