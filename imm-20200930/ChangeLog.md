@@ -1,3 +1,6 @@
+2023-04-24 Version: 2.1.12
+- Remove deprecated structs.
+
 2023-04-04 Version: 2.1.11
 - Update GenerateVideoPlaylist.
 - Support car detection, text extraction APIs.

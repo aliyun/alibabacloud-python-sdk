@@ -2797,122 +2797,6 @@ class FigureClusterForReq(TeaModel):
         return self
 
 
-class FileForReqFigures(TeaModel):
-    def __init__(
-        self,
-        figure_cluster_id: str = None,
-        figure_id: str = None,
-        figure_type: str = None,
-    ):
-        self.figure_cluster_id = figure_cluster_id
-        self.figure_id = figure_id
-        self.figure_type = figure_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.figure_cluster_id is not None:
-            result['FigureClusterId'] = self.figure_cluster_id
-        if self.figure_id is not None:
-            result['FigureId'] = self.figure_id
-        if self.figure_type is not None:
-            result['FigureType'] = self.figure_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FigureClusterId') is not None:
-            self.figure_cluster_id = m.get('FigureClusterId')
-        if m.get('FigureId') is not None:
-            self.figure_id = m.get('FigureId')
-        if m.get('FigureType') is not None:
-            self.figure_type = m.get('FigureType')
-        return self
-
-
-class FileForReq(TeaModel):
-    def __init__(
-        self,
-        content_type: str = None,
-        custom_id: str = None,
-        custom_labels: Dict[str, Any] = None,
-        figures: List[FileForReqFigures] = None,
-        file_hash: str = None,
-        media_type: str = None,
-        ossuri: str = None,
-        uri: str = None,
-    ):
-        self.content_type = content_type
-        self.custom_id = custom_id
-        self.custom_labels = custom_labels
-        self.figures = figures
-        self.file_hash = file_hash
-        self.media_type = media_type
-        self.ossuri = ossuri
-        self.uri = uri
-
-    def validate(self):
-        if self.figures:
-            for k in self.figures:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content_type is not None:
-            result['ContentType'] = self.content_type
-        if self.custom_id is not None:
-            result['CustomId'] = self.custom_id
-        if self.custom_labels is not None:
-            result['CustomLabels'] = self.custom_labels
-        result['Figures'] = []
-        if self.figures is not None:
-            for k in self.figures:
-                result['Figures'].append(k.to_map() if k else None)
-        if self.file_hash is not None:
-            result['FileHash'] = self.file_hash
-        if self.media_type is not None:
-            result['MediaType'] = self.media_type
-        if self.ossuri is not None:
-            result['OSSURI'] = self.ossuri
-        if self.uri is not None:
-            result['URI'] = self.uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ContentType') is not None:
-            self.content_type = m.get('ContentType')
-        if m.get('CustomId') is not None:
-            self.custom_id = m.get('CustomId')
-        if m.get('CustomLabels') is not None:
-            self.custom_labels = m.get('CustomLabels')
-        self.figures = []
-        if m.get('Figures') is not None:
-            for k in m.get('Figures'):
-                temp_model = FileForReqFigures()
-                self.figures.append(temp_model.from_map(k))
-        if m.get('FileHash') is not None:
-            self.file_hash = m.get('FileHash')
-        if m.get('MediaType') is not None:
-            self.media_type = m.get('MediaType')
-        if m.get('OSSURI') is not None:
-            self.ossuri = m.get('OSSURI')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        return self
-
-
 class InputFileFigures(TeaModel):
     def __init__(
         self,
@@ -6428,7 +6312,7 @@ class BatchUpdateFileMetaRequest(TeaModel):
     def __init__(
         self,
         dataset_name: str = None,
-        files: List[FileForReq] = None,
+        files: List[InputFile] = None,
         project_name: str = None,
     ):
         self.dataset_name = dataset_name
@@ -6464,7 +6348,7 @@ class BatchUpdateFileMetaRequest(TeaModel):
         self.files = []
         if m.get('Files') is not None:
             for k in m.get('Files'):
-                temp_model = FileForReq()
+                temp_model = InputFile()
                 self.files.append(temp_model.from_map(k))
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
@@ -23753,7 +23637,7 @@ class UpdateFileMetaRequest(TeaModel):
     def __init__(
         self,
         dataset_name: str = None,
-        file: FileForReq = None,
+        file: InputFile = None,
         project_name: str = None,
     ):
         self.dataset_name = dataset_name
@@ -23783,7 +23667,7 @@ class UpdateFileMetaRequest(TeaModel):
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
         if m.get('File') is not None:
-            temp_model = FileForReq()
+            temp_model = InputFile()
             self.file = temp_model.from_map(m['File'])
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
