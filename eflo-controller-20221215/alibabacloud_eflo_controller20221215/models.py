@@ -1532,6 +1532,7 @@ class DescribeNodeResponseBody(TeaModel):
         expired_time: str = None,
         hostname: str = None,
         image_id: str = None,
+        image_name: str = None,
         machine_type: str = None,
         networks: List[DescribeNodeResponseBodyNetworks] = None,
         node_group_id: str = None,
@@ -1548,6 +1549,7 @@ class DescribeNodeResponseBody(TeaModel):
         self.expired_time = expired_time
         self.hostname = hostname
         self.image_id = image_id
+        self.image_name = image_name
         self.machine_type = machine_type
         self.networks = networks
         self.node_group_id = node_group_id
@@ -1582,6 +1584,8 @@ class DescribeNodeResponseBody(TeaModel):
             result['Hostname'] = self.hostname
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
         if self.machine_type is not None:
             result['MachineType'] = self.machine_type
         result['Networks'] = []
@@ -1618,6 +1622,8 @@ class DescribeNodeResponseBody(TeaModel):
             self.hostname = m.get('Hostname')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
         if m.get('MachineType') is not None:
             self.machine_type = m.get('MachineType')
         self.networks = []
