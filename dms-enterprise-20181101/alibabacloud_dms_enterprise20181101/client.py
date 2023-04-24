@@ -1419,6 +1419,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_data_cron_clear_order_with_options_async(request, runtime)
 
+    def create_data_export_order_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataExportOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.plugin_param):
+            request.plugin_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.plugin_param, 'PluginParam', 'json')
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.plugin_param_shrink):
+            query['PluginParam'] = request.plugin_param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataExportOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataExportOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_export_order_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataExportOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.plugin_param):
+            request.plugin_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.plugin_param, 'PluginParam', 'json')
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.plugin_param_shrink):
+            query['PluginParam'] = request.plugin_param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataExportOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataExportOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_export_order(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_export_order_with_options(request, runtime)
+
+    async def create_data_export_order_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_export_order_with_options_async(request, runtime)
+
     def create_data_import_order_with_options(
         self,
         tmp_req: dms_enterprise_20181101_models.CreateDataImportOrderRequest,
@@ -1542,6 +1644,202 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_import_order_with_options_async(request, runtime)
+
+    def create_data_track_order_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataTrackOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataTrackOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataTrackOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataTrackOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataTrackOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_track_order_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataTrackOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataTrackOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataTrackOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataTrackOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataTrackOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_track_order(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataTrackOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataTrackOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_track_order_with_options(request, runtime)
+
+    async def create_data_track_order_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataTrackOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataTrackOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_track_order_with_options_async(request, runtime)
+
+    def create_database_export_order_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDatabaseExportOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDatabaseExportOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDatabaseExportOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.plugin_param):
+            request.plugin_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.plugin_param, 'PluginParam', 'json')
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.plugin_param_shrink):
+            query['PluginParam'] = request.plugin_param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDatabaseExportOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDatabaseExportOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_database_export_order_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDatabaseExportOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDatabaseExportOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDatabaseExportOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.plugin_param):
+            request.plugin_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.plugin_param, 'PluginParam', 'json')
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.plugin_param_shrink):
+            query['PluginParam'] = request.plugin_param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDatabaseExportOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDatabaseExportOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_database_export_order(
+        self,
+        request: dms_enterprise_20181101_models.CreateDatabaseExportOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDatabaseExportOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_database_export_order_with_options(request, runtime)
+
+    async def create_database_export_order_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateDatabaseExportOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDatabaseExportOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_database_export_order_with_options_async(request, runtime)
 
     def create_free_lock_correct_order_with_options(
         self,
@@ -4277,6 +4575,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_user_with_options_async(request, runtime)
 
+    def download_data_track_result_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.DownloadDataTrackResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DownloadDataTrackResultResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.DownloadDataTrackResultShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.column_filter):
+            request.column_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.column_filter, 'ColumnFilter', 'json')
+        if not UtilClient.is_unset(tmp_req.event_id_list):
+            request.event_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_id_list, 'EventIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.filter_table_list):
+            request.filter_table_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_table_list, 'FilterTableList', 'json')
+        if not UtilClient.is_unset(tmp_req.filter_type_list):
+            request.filter_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_type_list, 'FilterTypeList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.column_filter_shrink):
+            query['ColumnFilter'] = request.column_filter_shrink
+        if not UtilClient.is_unset(request.event_id_list_shrink):
+            query['EventIdList'] = request.event_id_list_shrink
+        if not UtilClient.is_unset(request.filter_end_time):
+            query['FilterEndTime'] = request.filter_end_time
+        if not UtilClient.is_unset(request.filter_start_time):
+            query['FilterStartTime'] = request.filter_start_time
+        if not UtilClient.is_unset(request.filter_table_list_shrink):
+            query['FilterTableList'] = request.filter_table_list_shrink
+        if not UtilClient.is_unset(request.filter_type_list_shrink):
+            query['FilterTypeList'] = request.filter_type_list_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.rollback_sqltype):
+            query['RollbackSQLType'] = request.rollback_sqltype
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadDataTrackResult',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DownloadDataTrackResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_data_track_result_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.DownloadDataTrackResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DownloadDataTrackResultResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.DownloadDataTrackResultShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.column_filter):
+            request.column_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.column_filter, 'ColumnFilter', 'json')
+        if not UtilClient.is_unset(tmp_req.event_id_list):
+            request.event_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_id_list, 'EventIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.filter_table_list):
+            request.filter_table_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_table_list, 'FilterTableList', 'json')
+        if not UtilClient.is_unset(tmp_req.filter_type_list):
+            request.filter_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_type_list, 'FilterTypeList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.column_filter_shrink):
+            query['ColumnFilter'] = request.column_filter_shrink
+        if not UtilClient.is_unset(request.event_id_list_shrink):
+            query['EventIdList'] = request.event_id_list_shrink
+        if not UtilClient.is_unset(request.filter_end_time):
+            query['FilterEndTime'] = request.filter_end_time
+        if not UtilClient.is_unset(request.filter_start_time):
+            query['FilterStartTime'] = request.filter_start_time
+        if not UtilClient.is_unset(request.filter_table_list_shrink):
+            query['FilterTableList'] = request.filter_table_list_shrink
+        if not UtilClient.is_unset(request.filter_type_list_shrink):
+            query['FilterTypeList'] = request.filter_type_list_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.rollback_sqltype):
+            query['RollbackSQLType'] = request.rollback_sqltype
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadDataTrackResult',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DownloadDataTrackResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_data_track_result(
+        self,
+        request: dms_enterprise_20181101_models.DownloadDataTrackResultRequest,
+    ) -> dms_enterprise_20181101_models.DownloadDataTrackResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.download_data_track_result_with_options(request, runtime)
+
+    async def download_data_track_result_async(
+        self,
+        request: dms_enterprise_20181101_models.DownloadDataTrackResultRequest,
+    ) -> dms_enterprise_20181101_models.DownloadDataTrackResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.download_data_track_result_with_options_async(request, runtime)
+
     def edit_logic_database_with_options(
         self,
         tmp_req: dms_enterprise_20181101_models.EditLogicDatabaseRequest,
@@ -6071,6 +6491,228 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_data_import_sqlwith_options_async(request, runtime)
 
+    def get_data_track_job_degree_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataTrackJobDegreeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataTrackJobDegreeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataTrackJobDegree',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataTrackJobDegreeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_track_job_degree_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataTrackJobDegreeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataTrackJobDegreeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataTrackJobDegree',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataTrackJobDegreeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_track_job_degree(
+        self,
+        request: dms_enterprise_20181101_models.GetDataTrackJobDegreeRequest,
+    ) -> dms_enterprise_20181101_models.GetDataTrackJobDegreeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_track_job_degree_with_options(request, runtime)
+
+    async def get_data_track_job_degree_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataTrackJobDegreeRequest,
+    ) -> dms_enterprise_20181101_models.GetDataTrackJobDegreeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_track_job_degree_with_options_async(request, runtime)
+
+    def get_data_track_job_table_meta_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataTrackJobTableMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataTrackJobTableMetaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataTrackJobTableMeta',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataTrackJobTableMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_track_job_table_meta_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataTrackJobTableMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataTrackJobTableMetaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataTrackJobTableMeta',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataTrackJobTableMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_track_job_table_meta(
+        self,
+        request: dms_enterprise_20181101_models.GetDataTrackJobTableMetaRequest,
+    ) -> dms_enterprise_20181101_models.GetDataTrackJobTableMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_track_job_table_meta_with_options(request, runtime)
+
+    async def get_data_track_job_table_meta_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataTrackJobTableMetaRequest,
+    ) -> dms_enterprise_20181101_models.GetDataTrackJobTableMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_track_job_table_meta_with_options_async(request, runtime)
+
+    def get_data_track_order_detail_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataTrackOrderDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataTrackOrderDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataTrackOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataTrackOrderDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_track_order_detail_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataTrackOrderDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataTrackOrderDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataTrackOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataTrackOrderDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_track_order_detail(
+        self,
+        request: dms_enterprise_20181101_models.GetDataTrackOrderDetailRequest,
+    ) -> dms_enterprise_20181101_models.GetDataTrackOrderDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_track_order_detail_with_options(request, runtime)
+
+    async def get_data_track_order_detail_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataTrackOrderDetailRequest,
+    ) -> dms_enterprise_20181101_models.GetDataTrackOrderDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_track_order_detail_with_options_async(request, runtime)
+
     def get_database_with_options(
         self,
         request: dms_enterprise_20181101_models.GetDatabaseRequest,
@@ -6156,6 +6798,84 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDatabaseResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_database_with_options_async(request, runtime)
+
+    def get_database_export_order_detail_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDatabaseExportOrderDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDatabaseExportOrderDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['OrderId'] = request.order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDatabaseExportOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDatabaseExportOrderDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_database_export_order_detail_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDatabaseExportOrderDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDatabaseExportOrderDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['OrderId'] = request.order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDatabaseExportOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDatabaseExportOrderDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_database_export_order_detail(
+        self,
+        request: dms_enterprise_20181101_models.GetDatabaseExportOrderDetailRequest,
+    ) -> dms_enterprise_20181101_models.GetDatabaseExportOrderDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_database_export_order_detail_with_options(request, runtime)
+
+    async def get_database_export_order_detail_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDatabaseExportOrderDetailRequest,
+    ) -> dms_enterprise_20181101_models.GetDatabaseExportOrderDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_database_export_order_detail_with_options_async(request, runtime)
 
     def get_instance_with_options(
         self,
@@ -13829,6 +14549,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.publish_and_deploy_task_flow_with_options_async(request, runtime)
 
+    def query_data_track_result_download_status_with_options(
+        self,
+        request: dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.download_key_id):
+            query['DownloadKeyId'] = request.download_key_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDataTrackResultDownloadStatus',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_data_track_result_download_status_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.download_key_id):
+            query['DownloadKeyId'] = request.download_key_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDataTrackResultDownloadStatus',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_data_track_result_download_status(
+        self,
+        request: dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusRequest,
+    ) -> dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_data_track_result_download_status_with_options(request, runtime)
+
+    async def query_data_track_result_download_status_async(
+        self,
+        request: dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusRequest,
+    ) -> dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_data_track_result_download_status_with_options_async(request, runtime)
+
     def re_deploy_lh_dag_version_with_options(
         self,
         request: dms_enterprise_20181101_models.ReDeployLhDagVersionRequest,
@@ -14840,6 +15638,116 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.revoke_user_permission_with_options_async(request, runtime)
+
+    def search_data_track_result_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.SearchDataTrackResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SearchDataTrackResultResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.SearchDataTrackResultShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.column_filter):
+            request.column_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.column_filter, 'ColumnFilter', 'json')
+        if not UtilClient.is_unset(tmp_req.filter_table_list):
+            request.filter_table_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_table_list, 'FilterTableList', 'json')
+        if not UtilClient.is_unset(tmp_req.filter_type_list):
+            request.filter_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_type_list, 'FilterTypeList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.column_filter_shrink):
+            query['ColumnFilter'] = request.column_filter_shrink
+        if not UtilClient.is_unset(request.filter_end_time):
+            query['FilterEndTime'] = request.filter_end_time
+        if not UtilClient.is_unset(request.filter_start_time):
+            query['FilterStartTime'] = request.filter_start_time
+        if not UtilClient.is_unset(request.filter_table_list_shrink):
+            query['FilterTableList'] = request.filter_table_list_shrink
+        if not UtilClient.is_unset(request.filter_type_list_shrink):
+            query['FilterTypeList'] = request.filter_type_list_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchDataTrackResult',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SearchDataTrackResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_data_track_result_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.SearchDataTrackResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SearchDataTrackResultResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.SearchDataTrackResultShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.column_filter):
+            request.column_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.column_filter, 'ColumnFilter', 'json')
+        if not UtilClient.is_unset(tmp_req.filter_table_list):
+            request.filter_table_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_table_list, 'FilterTableList', 'json')
+        if not UtilClient.is_unset(tmp_req.filter_type_list):
+            request.filter_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_type_list, 'FilterTypeList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.column_filter_shrink):
+            query['ColumnFilter'] = request.column_filter_shrink
+        if not UtilClient.is_unset(request.filter_end_time):
+            query['FilterEndTime'] = request.filter_end_time
+        if not UtilClient.is_unset(request.filter_start_time):
+            query['FilterStartTime'] = request.filter_start_time
+        if not UtilClient.is_unset(request.filter_table_list_shrink):
+            query['FilterTableList'] = request.filter_table_list_shrink
+        if not UtilClient.is_unset(request.filter_type_list_shrink):
+            query['FilterTypeList'] = request.filter_type_list_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchDataTrackResult',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SearchDataTrackResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_data_track_result(
+        self,
+        request: dms_enterprise_20181101_models.SearchDataTrackResultRequest,
+    ) -> dms_enterprise_20181101_models.SearchDataTrackResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.search_data_track_result_with_options(request, runtime)
+
+    async def search_data_track_result_async(
+        self,
+        request: dms_enterprise_20181101_models.SearchDataTrackResultRequest,
+    ) -> dms_enterprise_20181101_models.SearchDataTrackResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.search_data_track_result_with_options_async(request, runtime)
 
     def search_database_with_options(
         self,
