@@ -783,6 +783,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.answer_call_with_options_async(request, runtime)
 
+    def append_cases_with_options(
+        self,
+        tmp_req: ccc20200701_models.AppendCasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.AppendCasesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.AppendCasesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body):
+            request.body_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not UtilClient.is_unset(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AppendCases',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.AppendCasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def append_cases_with_options_async(
+        self,
+        tmp_req: ccc20200701_models.AppendCasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.AppendCasesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.AppendCasesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body):
+            request.body_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not UtilClient.is_unset(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AppendCases',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.AppendCasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def append_cases(
+        self,
+        request: ccc20200701_models.AppendCasesRequest,
+    ) -> ccc20200701_models.AppendCasesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.append_cases_with_options(request, runtime)
+
+    async def append_cases_async(
+        self,
+        request: ccc20200701_models.AppendCasesRequest,
+    ) -> ccc20200701_models.AppendCasesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.append_cases_with_options_async(request, runtime)
+
     def assign_users_with_options(
         self,
         request: ccc20200701_models.AssignUsersRequest,
@@ -966,12 +1056,18 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.BlindTransferResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.call_priority):
+            query['CallPriority'] = request.call_priority
         if not UtilClient.is_unset(request.device_id):
             query['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
+        if not UtilClient.is_unset(request.strategy_params):
+            query['StrategyParams'] = request.strategy_params
         if not UtilClient.is_unset(request.timeout_seconds):
             query['TimeoutSeconds'] = request.timeout_seconds
         if not UtilClient.is_unset(request.transferee):
@@ -1006,12 +1102,18 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.BlindTransferResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.call_priority):
+            query['CallPriority'] = request.call_priority
         if not UtilClient.is_unset(request.device_id):
             query['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
+        if not UtilClient.is_unset(request.strategy_params):
+            query['StrategyParams'] = request.strategy_params
         if not UtilClient.is_unset(request.timeout_seconds):
             query['TimeoutSeconds'] = request.timeout_seconds
         if not UtilClient.is_unset(request.transferee):
@@ -1052,6 +1154,108 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.BlindTransferResponse:
         runtime = util_models.RuntimeOptions()
         return await self.blind_transfer_with_options_async(request, runtime)
+
+    def bridge_rtc_call_with_options(
+        self,
+        request: ccc20200701_models.BridgeRtcCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.BridgeRtcCallResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.callee):
+            query['Callee'] = request.callee
+        if not UtilClient.is_unset(request.caller):
+            query['Caller'] = request.caller
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.service_provider):
+            query['ServiceProvider'] = request.service_provider
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.video_enabled):
+            query['VideoEnabled'] = request.video_enabled
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BridgeRtcCall',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.BridgeRtcCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bridge_rtc_call_with_options_async(
+        self,
+        request: ccc20200701_models.BridgeRtcCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.BridgeRtcCallResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.callee):
+            query['Callee'] = request.callee
+        if not UtilClient.is_unset(request.caller):
+            query['Caller'] = request.caller
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.service_provider):
+            query['ServiceProvider'] = request.service_provider
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.video_enabled):
+            query['VideoEnabled'] = request.video_enabled
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BridgeRtcCall',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.BridgeRtcCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bridge_rtc_call(
+        self,
+        request: ccc20200701_models.BridgeRtcCallRequest,
+    ) -> ccc20200701_models.BridgeRtcCallResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.bridge_rtc_call_with_options(request, runtime)
+
+    async def bridge_rtc_call_async(
+        self,
+        request: ccc20200701_models.BridgeRtcCallRequest,
+    ) -> ccc20200701_models.BridgeRtcCallResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.bridge_rtc_call_with_options_async(request, runtime)
 
     def cancel_attended_transfer_with_options(
         self,
@@ -1146,6 +1350,10 @@ class Client(OpenApiClient):
             query['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.signed_skill_group_id_list):
+            query['SignedSkillGroupIdList'] = request.signed_skill_group_id_list
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.work_mode):
@@ -1180,6 +1388,10 @@ class Client(OpenApiClient):
             query['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.signed_skill_group_id_list):
+            query['SignedSkillGroupIdList'] = request.signed_skill_group_id_list
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.work_mode):
@@ -1306,6 +1518,92 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.CoachCallResponse:
         runtime = util_models.RuntimeOptions()
         return await self.coach_call_with_options_async(request, runtime)
+
+    def commit_contact_flow_with_options(
+        self,
+        request: ccc20200701_models.CommitContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.CommitContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.definition):
+            query['Definition'] = request.definition
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.draft_id):
+            query['DraftId'] = request.draft_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CommitContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.CommitContactFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def commit_contact_flow_with_options_async(
+        self,
+        request: ccc20200701_models.CommitContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.CommitContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.definition):
+            query['Definition'] = request.definition
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.draft_id):
+            query['DraftId'] = request.draft_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CommitContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.CommitContactFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def commit_contact_flow(
+        self,
+        request: ccc20200701_models.CommitContactFlowRequest,
+    ) -> ccc20200701_models.CommitContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.commit_contact_flow_with_options(request, runtime)
+
+    async def commit_contact_flow_async(
+        self,
+        request: ccc20200701_models.CommitContactFlowRequest,
+    ) -> ccc20200701_models.CommitContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.commit_contact_flow_with_options_async(request, runtime)
 
     def complete_attended_transfer_with_options(
         self,
@@ -1566,6 +1864,8 @@ class Client(OpenApiClient):
             query['ContactFlowId'] = request.contact_flow_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.executing_until_timeout):
+            query['ExecutingUntilTimeout'] = request.executing_until_timeout
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.max_attempt_count):
@@ -1626,6 +1926,8 @@ class Client(OpenApiClient):
             query['ContactFlowId'] = request.contact_flow_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.executing_until_timeout):
+            query['ExecutingUntilTimeout'] = request.executing_until_timeout
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.max_attempt_count):
@@ -1678,6 +1980,92 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.CreateCampaignResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_campaign_with_options_async(request, runtime)
+
+    def create_contact_flow_with_options(
+        self,
+        request: ccc20200701_models.CreateContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.CreateContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.definition):
+            query['Definition'] = request.definition
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.CreateContactFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_contact_flow_with_options_async(
+        self,
+        request: ccc20200701_models.CreateContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.CreateContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.definition):
+            query['Definition'] = request.definition
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.CreateContactFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_contact_flow(
+        self,
+        request: ccc20200701_models.CreateContactFlowRequest,
+    ) -> ccc20200701_models.CreateContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_contact_flow_with_options(request, runtime)
+
+    async def create_contact_flow_async(
+        self,
+        request: ccc20200701_models.CreateContactFlowRequest,
+    ) -> ccc20200701_models.CreateContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_contact_flow_with_options_async(request, runtime)
 
     def create_custom_call_tagging_with_options(
         self,
@@ -2175,6 +2563,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_call_tag_with_options_async(request, runtime)
 
+    def delete_contact_flow_with_options(
+        self,
+        request: ccc20200701_models.DeleteContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteContactFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_contact_flow_with_options_async(
+        self,
+        request: ccc20200701_models.DeleteContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteContactFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_contact_flow(
+        self,
+        request: ccc20200701_models.DeleteContactFlowRequest,
+    ) -> ccc20200701_models.DeleteContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_contact_flow_with_options(request, runtime)
+
+    async def delete_contact_flow_async(
+        self,
+        request: ccc20200701_models.DeleteContactFlowRequest,
+    ) -> ccc20200701_models.DeleteContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_contact_flow_with_options_async(request, runtime)
+
     def delete_custom_call_tagging_with_options(
         self,
         request: ccc20200701_models.DeleteCustomCallTaggingRequest,
@@ -2326,6 +2788,84 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.DeleteSkillGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_skill_group_with_options_async(request, runtime)
+
+    def discard_editing_contact_flow_with_options(
+        self,
+        request: ccc20200701_models.DiscardEditingContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DiscardEditingContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.draft_id):
+            query['DraftId'] = request.draft_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DiscardEditingContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DiscardEditingContactFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def discard_editing_contact_flow_with_options_async(
+        self,
+        request: ccc20200701_models.DiscardEditingContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DiscardEditingContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.draft_id):
+            query['DraftId'] = request.draft_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DiscardEditingContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DiscardEditingContactFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def discard_editing_contact_flow(
+        self,
+        request: ccc20200701_models.DiscardEditingContactFlowRequest,
+    ) -> ccc20200701_models.DiscardEditingContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.discard_editing_contact_flow_with_options(request, runtime)
+
+    async def discard_editing_contact_flow_async(
+        self,
+        request: ccc20200701_models.DiscardEditingContactFlowRequest,
+    ) -> ccc20200701_models.DiscardEditingContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.discard_editing_contact_flow_with_options_async(request, runtime)
 
     def end_conference_with_options(
         self,
@@ -2997,6 +3537,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_case_file_upload_url_with_options_async(request, runtime)
 
+    def get_contact_flow_with_options(
+        self,
+        request: ccc20200701_models.GetContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.draft_id):
+            query['DraftId'] = request.draft_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetContactFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_contact_flow_with_options_async(
+        self,
+        request: ccc20200701_models.GetContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.draft_id):
+            query['DraftId'] = request.draft_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetContactFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_contact_flow(
+        self,
+        request: ccc20200701_models.GetContactFlowRequest,
+    ) -> ccc20200701_models.GetContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_contact_flow_with_options(request, runtime)
+
+    async def get_contact_flow_async(
+        self,
+        request: ccc20200701_models.GetContactFlowRequest,
+    ) -> ccc20200701_models.GetContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_contact_flow_with_options_async(request, runtime)
+
     def get_conversation_detail_with_options(
         self,
         request: ccc20200701_models.GetConversationDetailRequest,
@@ -3071,6 +3689,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_conversation_detail_with_options_async(request, runtime)
 
+    def get_data_channel_credentials_with_options(
+        self,
+        request: ccc20200701_models.GetDataChannelCredentialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetDataChannelCredentialsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataChannelCredentials',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetDataChannelCredentialsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_channel_credentials_with_options_async(
+        self,
+        request: ccc20200701_models.GetDataChannelCredentialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetDataChannelCredentialsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataChannelCredentials',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetDataChannelCredentialsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_channel_credentials(
+        self,
+        request: ccc20200701_models.GetDataChannelCredentialsRequest,
+    ) -> ccc20200701_models.GetDataChannelCredentialsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_channel_credentials_with_options(request, runtime)
+
+    async def get_data_channel_credentials_async(
+        self,
+        request: ccc20200701_models.GetDataChannelCredentialsRequest,
+    ) -> ccc20200701_models.GetDataChannelCredentialsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_channel_credentials_with_options_async(request, runtime)
+
     def get_do_not_call_file_upload_parameters_with_options(
         self,
         request: ccc20200701_models.GetDoNotCallFileUploadParametersRequest,
@@ -3144,6 +3836,80 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.GetDoNotCallFileUploadParametersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_do_not_call_file_upload_parameters_with_options_async(request, runtime)
+
+    def get_early_media_recording_with_options(
+        self,
+        request: ccc20200701_models.GetEarlyMediaRecordingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetEarlyMediaRecordingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEarlyMediaRecording',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetEarlyMediaRecordingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_early_media_recording_with_options_async(
+        self,
+        request: ccc20200701_models.GetEarlyMediaRecordingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetEarlyMediaRecordingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEarlyMediaRecording',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetEarlyMediaRecordingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_early_media_recording(
+        self,
+        request: ccc20200701_models.GetEarlyMediaRecordingRequest,
+    ) -> ccc20200701_models.GetEarlyMediaRecordingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_early_media_recording_with_options(request, runtime)
+
+    async def get_early_media_recording_async(
+        self,
+        request: ccc20200701_models.GetEarlyMediaRecordingRequest,
+    ) -> ccc20200701_models.GetEarlyMediaRecordingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_early_media_recording_with_options_async(request, runtime)
 
     def get_historical_caller_report_with_options(
         self,
@@ -4714,12 +5480,18 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.InitiateAttendedTransferResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.call_priority):
+            query['CallPriority'] = request.call_priority
         if not UtilClient.is_unset(request.device_id):
             query['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
+        if not UtilClient.is_unset(request.strategy_params):
+            query['StrategyParams'] = request.strategy_params
         if not UtilClient.is_unset(request.timeout_seconds):
             query['TimeoutSeconds'] = request.timeout_seconds
         if not UtilClient.is_unset(request.transferee):
@@ -4754,12 +5526,18 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.InitiateAttendedTransferResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.call_priority):
+            query['CallPriority'] = request.call_priority
         if not UtilClient.is_unset(request.device_id):
             query['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
+        if not UtilClient.is_unset(request.strategy_params):
+            query['StrategyParams'] = request.strategy_params
         if not UtilClient.is_unset(request.timeout_seconds):
             query['TimeoutSeconds'] = request.timeout_seconds
         if not UtilClient.is_unset(request.transferee):
@@ -5964,6 +6742,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.phone_number):
             query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6000,6 +6780,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.phone_number):
             query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7290,6 +8072,92 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_legacy_agent_status_logs_with_options_async(request, runtime)
+
+    def list_legacy_appraise_logs_with_options(
+        self,
+        request: ccc20200701_models.ListLegacyAppraiseLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListLegacyAppraiseLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLegacyAppraiseLogs',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListLegacyAppraiseLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_legacy_appraise_logs_with_options_async(
+        self,
+        request: ccc20200701_models.ListLegacyAppraiseLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListLegacyAppraiseLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLegacyAppraiseLogs',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListLegacyAppraiseLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_legacy_appraise_logs(
+        self,
+        request: ccc20200701_models.ListLegacyAppraiseLogsRequest,
+    ) -> ccc20200701_models.ListLegacyAppraiseLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_legacy_appraise_logs_with_options(request, runtime)
+
+    async def list_legacy_appraise_logs_async(
+        self,
+        request: ccc20200701_models.ListLegacyAppraiseLogsRequest,
+    ) -> ccc20200701_models.ListLegacyAppraiseLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_legacy_appraise_logs_with_options_async(request, runtime)
 
     def list_legacy_queue_event_logs_with_options(
         self,
@@ -9550,6 +10418,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.display_id):
             query['DisplayId'] = request.display_id
+        if not UtilClient.is_unset(request.display_name):
+            query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.mobile):
@@ -9588,6 +10460,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.display_id):
             query['DisplayId'] = request.display_id
+        if not UtilClient.is_unset(request.display_name):
+            query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.mobile):
@@ -10115,6 +10991,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.poll_user_status_with_options_async(request, runtime)
 
+    def publish_contact_flow_with_options(
+        self,
+        request: ccc20200701_models.PublishContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.PublishContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.draft_id):
+            query['DraftId'] = request.draft_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.PublishContactFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_contact_flow_with_options_async(
+        self,
+        request: ccc20200701_models.PublishContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.PublishContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.draft_id):
+            query['DraftId'] = request.draft_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.PublishContactFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_contact_flow(
+        self,
+        request: ccc20200701_models.PublishContactFlowRequest,
+    ) -> ccc20200701_models.PublishContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.publish_contact_flow_with_options(request, runtime)
+
+    async def publish_contact_flow_async(
+        self,
+        request: ccc20200701_models.PublishContactFlowRequest,
+    ) -> ccc20200701_models.PublishContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_contact_flow_with_options_async(request, runtime)
+
     def ready_for_service_with_options(
         self,
         request: ccc20200701_models.ReadyForServiceRequest,
@@ -10196,6 +11150,104 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.ReadyForServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.ready_for_service_with_options_async(request, runtime)
+
+    def redial_call_with_options(
+        self,
+        request: ccc20200701_models.RedialCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.RedialCallResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.callee):
+            query['Callee'] = request.callee
+        if not UtilClient.is_unset(request.caller):
+            query['Caller'] = request.caller
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RedialCall',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.RedialCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def redial_call_with_options_async(
+        self,
+        request: ccc20200701_models.RedialCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.RedialCallResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.callee):
+            query['Callee'] = request.callee
+        if not UtilClient.is_unset(request.caller):
+            query['Caller'] = request.caller
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RedialCall',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.RedialCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def redial_call(
+        self,
+        request: ccc20200701_models.RedialCallRequest,
+    ) -> ccc20200701_models.RedialCallResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.redial_call_with_options(request, runtime)
+
+    async def redial_call_async(
+        self,
+        request: ccc20200701_models.RedialCallRequest,
+    ) -> ccc20200701_models.RedialCallResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.redial_call_with_options_async(request, runtime)
 
     def register_device_with_options(
         self,
@@ -10918,6 +11970,8 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.RemoveUsersResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.user_id_list):
@@ -10948,6 +12002,8 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.RemoveUsersResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.user_id_list):
@@ -12250,6 +13306,80 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.StartConferenceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.start_conference_with_options_async(request, runtime)
+
+    def start_edit_contact_flow_with_options(
+        self,
+        request: ccc20200701_models.StartEditContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.StartEditContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartEditContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.StartEditContactFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_edit_contact_flow_with_options_async(
+        self,
+        request: ccc20200701_models.StartEditContactFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.StartEditContactFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartEditContactFlow',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.StartEditContactFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_edit_contact_flow(
+        self,
+        request: ccc20200701_models.StartEditContactFlowRequest,
+    ) -> ccc20200701_models.StartEditContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_edit_contact_flow_with_options(request, runtime)
+
+    async def start_edit_contact_flow_async(
+        self,
+        request: ccc20200701_models.StartEditContactFlowRequest,
+    ) -> ccc20200701_models.StartEditContactFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_edit_contact_flow_with_options_async(request, runtime)
 
     def start_predictive_call_with_options(
         self,

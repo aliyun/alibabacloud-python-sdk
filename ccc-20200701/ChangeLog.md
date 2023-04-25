@@ -1,3 +1,6 @@
+2023-04-25 Version: 2.10.0
+- Iteration v2-10-0.
+
 2022-11-23 Version: 2.7.0
 - Supported ListRealtimeAgentStates outboundScenario filed.
 
