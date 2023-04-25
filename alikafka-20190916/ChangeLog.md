@@ -1,3 +1,6 @@
+2023-04-25 Version: 2.0.11
+- Add UpdateConsumerOffset api.
+
 2022-12-07 Version: 2.0.10
 - Update Endpoint .
 
