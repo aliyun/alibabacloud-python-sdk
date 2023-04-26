@@ -75,13 +75,9 @@ class ActiveAggregateConfigRulesRequest(TeaModel):
         aggregator_id: str = None,
         config_rule_ids: str = None,
     ):
-        # The ID of the account group.
-        # 
-        # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+        # The result of the operation to enable the rule.
         self.aggregator_id = aggregator_id
-        # The ID of the rule. Separate multiple rule IDs with commas (,).
-        # 
-        # For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+        # The results of the operations to enable the specified rules.
         self.config_rule_ids = config_rule_ids
 
     def validate(self):
@@ -115,17 +111,8 @@ class ActiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList
         error_code: str = None,
         success: bool = None,
     ):
-        # The ID of the rule.
         self.config_rule_id = config_rule_id
-        # The error code returned.
-        # 
-        # *   If the rule is enabled, no error code is returned.
-        # *   If the rule fails to be enabled, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
         self.error_code = error_code
-        # Indicates whether the operation is successful. Valid values:
-        # 
-        # *   true: The operation is successful.
-        # *   false: The operation fails.
         self.success = success
 
     def validate(self):
@@ -161,7 +148,7 @@ class ActiveAggregateConfigRulesResponseBodyOperateRuleResult(TeaModel):
         self,
         operate_rule_item_list: List[ActiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList] = None,
     ):
-        # The result of the operation to enable the rule.
+        # The ID of the rule.
         self.operate_rule_item_list = operate_rule_item_list
 
     def validate(self):
@@ -198,9 +185,15 @@ class ActiveAggregateConfigRulesResponseBody(TeaModel):
         operate_rule_result: ActiveAggregateConfigRulesResponseBodyOperateRuleResult = None,
         request_id: str = None,
     ):
-        # The results of the operations to enable the specified rules.
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true: The operation is successful.
+        # *   false: The operation fails.
         self.operate_rule_result = operate_rule_result
-        # The ID of the request.
+        # The error code returned.
+        # 
+        # *   If the rule is enabled, no error code is returned.
+        # *   If the rule fails to be enabled, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
         self.request_id = request_id
 
     def validate(self):
@@ -1664,43 +1657,15 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         tag_key_scope: str = None,
         tag_value_scope: str = None,
     ):
-        # The ID of the account group.
+        # The way in which the rule is to be created. Valid values:
         # 
-        # For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
+        # *   ALIYUN: The rule is to be created based on a managed rule of Alibaba Cloud.
+        # *   CUSTOM_FC: The rule is a custom rule.
         self.aggregator_id = aggregator_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+        # 
+        # >  This parameter applies only to a managed rule.
         self.client_token = client_token
-        # The name of the rule.
-        self.config_rule_name = config_rule_name
-        # The trigger type of the rule. Valid values:
-        # 
-        # *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
-        # *   ScheduledNotification: The rule is periodically triggered.
-        self.config_rule_trigger_types = config_rule_trigger_types
-        # The description of the rule.
-        self.description = description
-        # The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
-        # 
-        # >  This parameter applies only to a managed rule.
-        self.exclude_account_ids_scope = exclude_account_ids_scope
-        # The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
-        # 
-        # > 
-        # *   This parameter applies only to a rule of a global account group.
-        # *   This parameter applies only to a managed rule.
-        self.exclude_folder_ids_scope = exclude_folder_ids_scope
-        # The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
-        # 
-        # >  This parameter applies only to a managed rule.
-        self.exclude_resource_ids_scope = exclude_resource_ids_scope
-        # The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
-        # 
-        # > 
-        # *   This parameter applies only to a rule of a global account group.
-        # *   This parameter applies only to a managed rule.
-        self.folder_ids_scope = folder_ids_scope
-        # The input parameters of the rule.
-        self.input_parameters = input_parameters
         # The intervals at which the rule is triggered. Valid values:
         # 
         # *   One_Hour: 1 hour.
@@ -1710,47 +1675,70 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         # *   TwentyFour_Hours: 24 hours. This is the default value.
         # 
         # >  This parameter is required if the `ConfigRuleTriggerTypes` parameter is set to `ScheduledNotification`.
-        self.maximum_execution_frequency = maximum_execution_frequency
-        # The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
-        # 
-        # >  This parameter applies only to a managed rule.
-        self.region_ids_scope = region_ids_scope
-        # The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
-        # 
-        # >  This parameter applies only to a managed rule.
-        self.resource_group_ids_scope = resource_group_ids_scope
+        self.config_rule_name = config_rule_name
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.config_rule_trigger_types = config_rule_trigger_types
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
-        self.resource_types_scope = resource_types_scope
+        self.description = description
+        self.exclude_account_ids_scope = exclude_account_ids_scope
+        self.exclude_folder_ids_scope = exclude_folder_ids_scope
+        # The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+        # 
+        # >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+        self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        # The ID of the request.
+        self.folder_ids_scope = folder_ids_scope
         # The risk level of the resources that are not compliant with the rule. Valid values:
         # 
         # *   1: high risk level
         # *   2: medium risk level
         # *   3: low risk level
-        self.risk_level = risk_level
+        self.input_parameters = input_parameters
+        # The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+        # 
+        # >  This parameter applies only to a managed rule.
+        self.maximum_execution_frequency = maximum_execution_frequency
+        # The tag key used to filter resources. The rule applies only to the resources with the specified tag key. Separate multiple parameter values with commas (,).
+        # 
+        # >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+        self.region_ids_scope = region_ids_scope
         # The identifier of the rule.
         # 
         # *   If the SourceOwner parameter is set to ALIYUN, set this parameter to the name of the managed rule.
         # *   If the SourceOwner parameter is set to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
         # 
         # For more information about how to query the name of a managed rule, see [Managed rules](~~127404~~).
-        self.source_identifier = source_identifier
-        # The way in which the rule is to be created. Valid values:
+        self.resource_group_ids_scope = resource_group_ids_scope
+        # The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
         # 
-        # *   ALIYUN: The rule is to be created based on a managed rule of Alibaba Cloud.
-        # *   CUSTOM_FC: The rule is a custom rule.
+        # >  This parameter applies only to a managed rule.
+        self.resource_types_scope = resource_types_scope
+        # The ID of the account group.
+        # 
+        # For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
+        self.risk_level = risk_level
+        # The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
+        # 
+        # >  This parameter applies only to a managed rule.
+        self.source_identifier = source_identifier
+        # The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
+        # 
+        # > 
+        # *   This parameter applies only to a rule of a global account group.
+        # *   This parameter applies only to a managed rule.
         self.source_owner = source_owner
+        # The ID of the rule.
+        self.tag_key_logic_scope = tag_key_logic_scope
         # The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
         # *   AND: the logical relationship of AND
         # *   OR: the logical relationship of OR
-        self.tag_key_logic_scope = tag_key_logic_scope
-        # The tag key used to filter resources. The rule applies only to the resources with the specified tag key. Separate multiple parameter values with commas (,).
-        # 
-        # >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
         self.tag_key_scope = tag_key_scope
-        # The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+        # The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
         # 
-        # >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+        # > 
+        # *   This parameter applies only to a rule of a global account group.
+        # *   This parameter applies only to a managed rule.
         self.tag_value_scope = tag_value_scope
 
     def validate(self):
@@ -1873,43 +1861,15 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         tag_key_scope: str = None,
         tag_value_scope: str = None,
     ):
-        # The ID of the account group.
+        # The way in which the rule is to be created. Valid values:
         # 
-        # For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
+        # *   ALIYUN: The rule is to be created based on a managed rule of Alibaba Cloud.
+        # *   CUSTOM_FC: The rule is a custom rule.
         self.aggregator_id = aggregator_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+        # 
+        # >  This parameter applies only to a managed rule.
         self.client_token = client_token
-        # The name of the rule.
-        self.config_rule_name = config_rule_name
-        # The trigger type of the rule. Valid values:
-        # 
-        # *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
-        # *   ScheduledNotification: The rule is periodically triggered.
-        self.config_rule_trigger_types = config_rule_trigger_types
-        # The description of the rule.
-        self.description = description
-        # The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
-        # 
-        # >  This parameter applies only to a managed rule.
-        self.exclude_account_ids_scope = exclude_account_ids_scope
-        # The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
-        # 
-        # > 
-        # *   This parameter applies only to a rule of a global account group.
-        # *   This parameter applies only to a managed rule.
-        self.exclude_folder_ids_scope = exclude_folder_ids_scope
-        # The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
-        # 
-        # >  This parameter applies only to a managed rule.
-        self.exclude_resource_ids_scope = exclude_resource_ids_scope
-        # The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
-        # 
-        # > 
-        # *   This parameter applies only to a rule of a global account group.
-        # *   This parameter applies only to a managed rule.
-        self.folder_ids_scope = folder_ids_scope
-        # The input parameters of the rule.
-        self.input_parameters_shrink = input_parameters_shrink
         # The intervals at which the rule is triggered. Valid values:
         # 
         # *   One_Hour: 1 hour.
@@ -1919,47 +1879,70 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         # *   TwentyFour_Hours: 24 hours. This is the default value.
         # 
         # >  This parameter is required if the `ConfigRuleTriggerTypes` parameter is set to `ScheduledNotification`.
-        self.maximum_execution_frequency = maximum_execution_frequency
-        # The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
-        # 
-        # >  This parameter applies only to a managed rule.
-        self.region_ids_scope = region_ids_scope
-        # The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
-        # 
-        # >  This parameter applies only to a managed rule.
-        self.resource_group_ids_scope = resource_group_ids_scope
+        self.config_rule_name = config_rule_name
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.config_rule_trigger_types = config_rule_trigger_types
         # The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
-        self.resource_types_scope_shrink = resource_types_scope_shrink
+        self.description = description
+        self.exclude_account_ids_scope = exclude_account_ids_scope
+        self.exclude_folder_ids_scope = exclude_folder_ids_scope
+        # The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+        # 
+        # >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+        self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        # The ID of the request.
+        self.folder_ids_scope = folder_ids_scope
         # The risk level of the resources that are not compliant with the rule. Valid values:
         # 
         # *   1: high risk level
         # *   2: medium risk level
         # *   3: low risk level
-        self.risk_level = risk_level
+        self.input_parameters_shrink = input_parameters_shrink
+        # The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+        # 
+        # >  This parameter applies only to a managed rule.
+        self.maximum_execution_frequency = maximum_execution_frequency
+        # The tag key used to filter resources. The rule applies only to the resources with the specified tag key. Separate multiple parameter values with commas (,).
+        # 
+        # >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+        self.region_ids_scope = region_ids_scope
         # The identifier of the rule.
         # 
         # *   If the SourceOwner parameter is set to ALIYUN, set this parameter to the name of the managed rule.
         # *   If the SourceOwner parameter is set to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
         # 
         # For more information about how to query the name of a managed rule, see [Managed rules](~~127404~~).
-        self.source_identifier = source_identifier
-        # The way in which the rule is to be created. Valid values:
+        self.resource_group_ids_scope = resource_group_ids_scope
+        # The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
         # 
-        # *   ALIYUN: The rule is to be created based on a managed rule of Alibaba Cloud.
-        # *   CUSTOM_FC: The rule is a custom rule.
+        # >  This parameter applies only to a managed rule.
+        self.resource_types_scope_shrink = resource_types_scope_shrink
+        # The ID of the account group.
+        # 
+        # For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
+        self.risk_level = risk_level
+        # The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
+        # 
+        # >  This parameter applies only to a managed rule.
+        self.source_identifier = source_identifier
+        # The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
+        # 
+        # > 
+        # *   This parameter applies only to a rule of a global account group.
+        # *   This parameter applies only to a managed rule.
         self.source_owner = source_owner
+        # The ID of the rule.
+        self.tag_key_logic_scope = tag_key_logic_scope
         # The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
         # *   AND: the logical relationship of AND
         # *   OR: the logical relationship of OR
-        self.tag_key_logic_scope = tag_key_logic_scope
-        # The tag key used to filter resources. The rule applies only to the resources with the specified tag key. Separate multiple parameter values with commas (,).
-        # 
-        # >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
         self.tag_key_scope = tag_key_scope
-        # The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+        # The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
         # 
-        # >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+        # > 
+        # *   This parameter applies only to a rule of a global account group.
+        # *   This parameter applies only to a managed rule.
         self.tag_value_scope = tag_value_scope
 
     def validate(self):
@@ -2064,9 +2047,7 @@ class CreateAggregateConfigRuleResponseBody(TeaModel):
         config_rule_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the rule.
         self.config_rule_id = config_rule_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4065,13 +4046,9 @@ class DeactiveAggregateConfigRulesRequest(TeaModel):
         aggregator_id: str = None,
         config_rule_ids: str = None,
     ):
-        # The ID of the account group.
-        # 
-        # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+        # The result of the operation to disable the rule.
         self.aggregator_id = aggregator_id
-        # The ID of the rule. Separate multiple rule IDs with commas (,).
-        # 
-        # For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+        # The results of the operations to disable the specified rules.
         self.config_rule_ids = config_rule_ids
 
     def validate(self):
@@ -4105,17 +4082,8 @@ class DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemLi
         error_code: str = None,
         success: bool = None,
     ):
-        # The ID of the rule.
         self.config_rule_id = config_rule_id
-        # The error code returned.
-        # 
-        # *   If the rule is disabled, no error code is returned.
-        # *   If the rule fails to be disabled, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
         self.error_code = error_code
-        # Indicates whether the operation is successful. Valid values:
-        # 
-        # *   true: The operation is successful.
-        # *   false: The operation fails.
         self.success = success
 
     def validate(self):
@@ -4151,7 +4119,7 @@ class DeactiveAggregateConfigRulesResponseBodyOperateRuleResult(TeaModel):
         self,
         operate_rule_item_list: List[DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList] = None,
     ):
-        # The result of the operation to disable the rule.
+        # The ID of the rule.
         self.operate_rule_item_list = operate_rule_item_list
 
     def validate(self):
@@ -4188,9 +4156,15 @@ class DeactiveAggregateConfigRulesResponseBody(TeaModel):
         operate_rule_result: DeactiveAggregateConfigRulesResponseBodyOperateRuleResult = None,
         request_id: str = None,
     ):
-        # The results of the operations to disable the specified rules.
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true: The operation is successful.
+        # *   false: The operation fails.
         self.operate_rule_result = operate_rule_result
-        # The ID of the request.
+        # The error code returned.
+        # 
+        # *   If the rule is disabled, no error code is returned.
+        # *   If the rule fails to be disabled, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
         self.request_id = request_id
 
     def validate(self):
@@ -5185,9 +5159,9 @@ class DeleteAggregatorsRequest(TeaModel):
         aggregator_ids: str = None,
         client_token: str = None,
     ):
-        # The ID of the account group. Separate multiple IDs with commas (,).
-        self.aggregator_ids = aggregator_ids
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. ClientToken can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.aggregator_ids = aggregator_ids
+        # The ID of the request.
         self.client_token = client_token
 
     def validate(self):
@@ -5221,16 +5195,13 @@ class DeleteAggregatorsResponseBodyOperateAggregatorsResultOperateAggregators(Te
         error_code: str = None,
         success: bool = None,
     ):
-        # The ID of the account group.
         self.aggregator_id = aggregator_id
-        # The error code.
-        # 
-        # >  No error code is returned for the account group if the account group is deleted.
-        self.error_code = error_code
         # Indicates whether the delete operation is successful. Valid values:
         # 
         # *   true: The account group is deleted.
         # *   false: The account group fails to be deleted.
+        self.error_code = error_code
+        # The ID of the account group.
         self.success = success
 
     def validate(self):
@@ -5266,7 +5237,9 @@ class DeleteAggregatorsResponseBodyOperateAggregatorsResult(TeaModel):
         self,
         operate_aggregators: List[DeleteAggregatorsResponseBodyOperateAggregatorsResultOperateAggregators] = None,
     ):
-        # The result for the account group.
+        # The error code.
+        # 
+        # >  No error code is returned for the account group if the account group is deleted.
         self.operate_aggregators = operate_aggregators
 
     def validate(self):
@@ -5303,9 +5276,9 @@ class DeleteAggregatorsResponseBody(TeaModel):
         operate_aggregators_result: DeleteAggregatorsResponseBodyOperateAggregatorsResult = None,
         request_id: str = None,
     ):
-        # The results of the delete operations.
+        # The result for the account group.
         self.operate_aggregators_result = operate_aggregators_result
-        # The ID of the request.
+        # The results of the delete operations.
         self.request_id = request_id
 
     def validate(self):
@@ -9633,23 +9606,15 @@ class GetAggregateDiscoveredResourceRequest(TeaModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The ID of the account group.
-        # 
-        # For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
+        # The type of the resource.
         self.aggregator_id = aggregator_id
-        # The ID of the region in which the resource resides.
-        # 
-        # For more information about how to query the region ID of a resource, see [ListAggregateDiscoveredResources](~~411691~~).
+        # The ID of the zone in which the resource resides.
         self.region = region
         self.resource_account_id = resource_account_id
-        # The ID of the resource.
-        # 
-        # For more information about how to query the ID of a resource, see [ListAggregateDiscoveredResources](~~411691~~).
+        # The ID of the request.
         self.resource_id = resource_id
         self.resource_owner_id = resource_owner_id
-        # The type of the resource.
-        # 
-        # For more information about how to query the type of a resource, see [ListAggregateDiscoveredResources](~~411691~~).
+        # The information about the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -9707,33 +9672,29 @@ class GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail(TeaMode
         resource_type: str = None,
         tags: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource belongs.
-        self.account_id = account_id
-        # The ID of the zone in which the resource resides.
-        self.availability_zone = availability_zone
-        # The configuration of the resource.
-        self.configuration = configuration
-        # The ID of the region in which the resource resides.
-        self.region = region
-        # The timestamp when the resource was created.
-        self.resource_creation_time = resource_creation_time
-        # Indicates whether the resource is deleted. Valid values:
-        # 
-        # *   1: The resource is retained.
-        # *   0: The resource is deleted.
-        self.resource_deleted = resource_deleted
-        # The ID of the resource.
-        self.resource_id = resource_id
-        # The name of the resource.
-        self.resource_name = resource_name
         # The status of the resource. The parameter value varies based on the resource type and may be left empty. Examples:
         # 
         # *   If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
         # *   If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that does not have a specific state. In this case, this parameter is left empty.
+        self.account_id = account_id
+        # The timestamp when the resource was created.
+        self.availability_zone = availability_zone
+        # The ID of the Alibaba Cloud account to which the resource belongs.
+        self.configuration = configuration
+        # The ID of the resource.
+        self.region = region
+        # Indicates whether the resource is deleted. Valid values:
+        # 
+        # *   1: The resource is retained.
+        # *   0: The resource is deleted.
+        self.resource_creation_time = resource_creation_time
+        self.resource_deleted = resource_deleted
+        self.resource_id = resource_id
+        self.resource_name = resource_name
         self.resource_status = resource_status
-        # The type of the resource.
-        self.resource_type = resource_type
         # The tags of the resource.
+        self.resource_type = resource_type
+        # The name of the resource.
         self.tags = tags
 
     def validate(self):
@@ -9802,9 +9763,9 @@ class GetAggregateDiscoveredResourceResponseBody(TeaModel):
         discovered_resource_detail: GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail = None,
         request_id: str = None,
     ):
-        # The information about the resource.
+        # The ID of the region in which the resource resides.
         self.discovered_resource_detail = discovered_resource_detail
-        # The ID of the request.
+        # The configuration of the resource.
         self.request_id = request_id
 
     def validate(self):
@@ -9886,20 +9847,16 @@ class GetAggregateResourceComplianceByConfigRuleRequest(TeaModel):
         resource_account_id: int = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the account group.
-        # 
-        # For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
-        self.aggregator_id = aggregator_id
         # The compliance evaluation result of the resources. Valid values:
         # 
         # *   COMPLIANT: The resources are evaluated as compliant.
         # *   NON_COMPLIANT: The resources are evaluated as non-compliant.
         # *   NOT_APPLICABLE: The rule does not apply to your resources.
         # *   INSUFFICIENT_DATA: No resource data is available.
+        self.aggregator_id = aggregator_id
+        # The total number of evaluated resources.
         self.compliance_type = compliance_type
-        # The ID of the rule.
-        # 
-        # For more information about how to query the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+        # The compliance evaluation results returned.
         self.config_rule_id = config_rule_id
         self.resource_account_id = resource_account_id
         self.resource_owner_id = resource_owner_id
@@ -9946,14 +9903,7 @@ class GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResultComp
         compliance_type: str = None,
         count: int = None,
     ):
-        # The compliance evaluation result of the resources. Valid values:
-        # 
-        # *   COMPLIANT: The resources are evaluated as compliant.
-        # *   NON_COMPLIANT: The resources are evaluated as non-compliant.
-        # *   NOT_APPLICABLE: The rule does not apply to your resources.
-        # *   INSUFFICIENT_DATA: No resource data is available.
         self.compliance_type = compliance_type
-        # The number of resources that have the compliance evaluation result. For example, if the value of the `ComplianceType` parameter is `COMPLIANT`, this parameter value indicates the number of compliant resources.
         self.count = count
 
     def validate(self):
@@ -9986,9 +9936,8 @@ class GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResult(Tea
         compliances: List[GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances] = None,
         total_count: int = None,
     ):
-        # The compliance evaluation results returned.
         self.compliances = compliances
-        # The total number of evaluated resources.
+        # The ID of the request.
         self.total_count = total_count
 
     def validate(self):
@@ -10029,9 +9978,8 @@ class GetAggregateResourceComplianceByConfigRuleResponseBody(TeaModel):
         compliance_result: GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResult = None,
         request_id: str = None,
     ):
-        # The return result of the request.
+        # The number of resources that have the compliance evaluation result. For example, if the value of the `ComplianceType` parameter is `COMPLIANT`, this parameter value indicates the number of compliant resources.
         self.compliance_result = compliance_result
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10272,7 +10220,9 @@ class GetAggregateResourceComplianceGroupByRegionRequest(TeaModel):
         aggregator_id: str = None,
         config_rule_ids: str = None,
     ):
+        # The ID of the account group.
         self.aggregator_id = aggregator_id
+        # The rule IDs. Separate multiple rule IDs with commas (,).
         self.config_rule_ids = config_rule_ids
 
     def validate(self):
@@ -10305,7 +10255,14 @@ class GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultCom
         compliance_type: str = None,
         count: int = None,
     ):
+        # The evaluation result. Valid values:
+        # 
+        # *   COMPLIANT: The resource is evaluated as compliant.
+        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resource.
+        # *   INSUFFICIENT_DATA: No data is available.
         self.compliance_type = compliance_type
+        # The total number of evaluation results.
         self.count = count
 
     def validate(self):
@@ -10338,7 +10295,9 @@ class GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultCom
         compliances: List[GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances] = None,
         region_id: str = None,
     ):
+        # The queried evaluation results.
         self.compliances = compliances
+        # The region ID of the evaluated resource.
         self.region_id = region_id
 
     def validate(self):
@@ -10378,6 +10337,7 @@ class GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult(Te
         self,
         compliance_result_list: List[GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList] = None,
     ):
+        # The evaluation results grouped by region.
         self.compliance_result_list = compliance_result_list
 
     def validate(self):
@@ -10414,7 +10374,9 @@ class GetAggregateResourceComplianceGroupByRegionResponseBody(TeaModel):
         compliance_result: GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult = None,
         request_id: str = None,
     ):
+        # The queried evaluation results.
         self.compliance_result = compliance_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10493,7 +10455,9 @@ class GetAggregateResourceComplianceGroupByResourceTypeRequest(TeaModel):
         aggregator_id: str = None,
         config_rule_ids: str = None,
     ):
+        # The ID of the account group.
         self.aggregator_id = aggregator_id
+        # The ID of the rule. Separate multiple rule IDs with commas (,).
         self.config_rule_ids = config_rule_ids
 
     def validate(self):
@@ -10526,7 +10490,14 @@ class GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceRes
         compliance_type: str = None,
         count: int = None,
     ):
+        # The evaluation result. Valid values:
+        # 
+        # *   COMPLIANT: The resource is evaluated as compliant.
+        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resource.
+        # *   INSUFFICIENT_DATA: No data is available.
         self.compliance_type = compliance_type
+        # The number of statistical results.
         self.count = count
 
     def validate(self):
@@ -10559,7 +10530,9 @@ class GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceRes
         compliances: List[GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances] = None,
         resource_type: str = None,
     ):
+        # The queried evaluation results.
         self.compliances = compliances
+        # The type of the evaluated resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -10599,6 +10572,7 @@ class GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceRes
         self,
         compliance_result_list: List[GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList] = None,
     ):
+        # The evaluation results grouped by resource type.
         self.compliance_result_list = compliance_result_list
 
     def validate(self):
@@ -10635,7 +10609,9 @@ class GetAggregateResourceComplianceGroupByResourceTypeResponseBody(TeaModel):
         compliance_result: GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResult = None,
         request_id: str = None,
     ):
+        # The queried evaluation results.
         self.compliance_result = compliance_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10722,31 +10698,23 @@ class GetAggregateResourceComplianceTimelineRequest(TeaModel):
         resource_type: str = None,
         start_time: int = None,
     ):
-        # The ID of the account group.
-        # 
-        # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+        # The tags of the resource.
         self.aggregator_id = aggregator_id
-        # The timestamp that specifies the end of the time range to query. The default value indicates the time when the GetAggregateResourceComplianceTimeline operation is called. Unit: milliseconds.
+        # The maximum number of entries returned for a single request.
         self.end_time = end_time
-        # The maximum number of entries to return for a single request. Valid values: 1 to 100.
+        # The compliance evaluation records on the compliance timeline.
         self.max_results = max_results
-        # The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
+        # The ID of the zone in which the resource resides.
         self.next_token = next_token
-        # The ID of the region in which the resource resides.
-        # 
-        # For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](~~265983~~).
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.region = region
         self.resource_account_id = resource_account_id
-        # The ID of the resource.
-        # 
-        # For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+        # The information about the compliance timeline.
         self.resource_id = resource_id
         self.resource_owner_id = resource_owner_id
-        # The type of the resource.
-        # 
-        # For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+        # The ID of the request.
         self.resource_type = resource_type
-        # The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the compliance evaluations in the last 30 days for the specified resource. Unit: milliseconds.
+        # The token that is used to initiate the next request.
         self.start_time = start_time
 
     def validate(self):
@@ -10821,32 +10789,24 @@ class GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimeli
         resource_type: str = None,
         tags: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource belongs.
-        self.account_id = account_id
-        # The ID of the zone in which the resource resides.
-        self.availability_zone = availability_zone
-        # The timestamp when the compliance evaluation was recorded. Unit: milliseconds.
-        self.capture_time = capture_time
-        # The information about the rules that evaluated the resource and the compliance evaluation result.
-        self.configuration = configuration
-        # The details of the resource change that triggered the compliance evaluation.
-        self.configuration_diff = configuration_diff
-        # The ID of the region in which the resource resides.
-        self.region = region
-        # The timestamp when the resource was created. Unit: milliseconds.
-        self.resource_create_time = resource_create_time
         # The ID of the resource.
-        self.resource_id = resource_id
+        self.account_id = account_id
         # The name of the resource.
+        self.availability_zone = availability_zone
+        self.capture_time = capture_time
+        self.configuration = configuration
+        self.configuration_diff = configuration_diff
+        self.region = region
+        self.resource_create_time = resource_create_time
+        self.resource_id = resource_id
         self.resource_name = resource_name
+        self.resource_status = resource_status
         # The status of the resource. The parameter value varies based on the resource type and may be left empty. Examples:
         # 
         # *   If the ResourceType parameter is set to ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
         # *   If the ResourceType parameter is set to ACS::OSS::Bucket, the resource is an OSS bucket that does not have a specific state. In this case, this parameter is left empty.
-        self.resource_status = resource_status
-        # The type of the resource.
         self.resource_type = resource_type
-        # The tags of the resource.
+        # The details of the resource change that triggered the compliance evaluation.
         self.tags = tags
 
     def validate(self):
@@ -10920,11 +10880,11 @@ class GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimeli
         max_results: int = None,
         next_token: str = None,
     ):
-        # The compliance evaluation records on the compliance timeline.
+        # The timestamp when the compliance evaluation was recorded. Unit: milliseconds.
         self.compliance_list = compliance_list
-        # The maximum number of entries returned for a single request.
+        # The information about the rules that evaluated the resource and the compliance evaluation result.
         self.max_results = max_results
-        # The token that is used to initiate the next request.
+        # The ID of the region in which the resource resides.
         self.next_token = next_token
 
     def validate(self):
@@ -10969,9 +10929,9 @@ class GetAggregateResourceComplianceTimelineResponseBody(TeaModel):
         request_id: str = None,
         resource_compliance_timeline: GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimeline = None,
     ):
-        # The ID of the request.
+        # The type of the resource.
         self.request_id = request_id
-        # The information about the compliance timeline.
+        # The timestamp when the resource was created. Unit: milliseconds.
         self.resource_compliance_timeline = resource_compliance_timeline
 
     def validate(self):
@@ -11058,31 +11018,25 @@ class GetAggregateResourceConfigurationTimelineRequest(TeaModel):
         resource_type: str = None,
         start_time: int = None,
     ):
+        # The configuration changes on the configuration timeline.
+        self.aggregator_id = aggregator_id
+        # The ID of the request.
+        self.end_time = end_time
+        # The information about the configuration timeline.
+        self.max_results = max_results
+        # The tags of the resource.
+        self.next_token = next_token
+        # The maximum number of entries returned for a single request.
+        self.region = region
+        self.resource_account_id = resource_account_id
         # The ID of the account group.
         # 
         # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
-        self.aggregator_id = aggregator_id
-        # The timestamp that specifies the end of the time range to query. The default value indicates the time when the GetAggregateResourceConfigurationTimeline operation is called. Unit: milliseconds.
-        self.end_time = end_time
-        # The maximum number of entries to return for a single request. Valid values: 1 to 100.
-        self.max_results = max_results
-        # The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
-        self.next_token = next_token
-        # The ID of the region in which the resource resides.
-        # 
-        # For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](~~265983~~).
-        self.region = region
-        self.resource_account_id = resource_account_id
-        # The ID of the resource.
-        # 
-        # For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
         self.resource_id = resource_id
         self.resource_owner_id = resource_owner_id
-        # The type of the resource.
-        # 
-        # For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+        # The token that is used to initiate the next request.
         self.resource_type = resource_type
-        # The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
+        # The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
         self.start_time = start_time
 
     def validate(self):
@@ -11156,37 +11110,21 @@ class GetAggregateResourceConfigurationTimelineResponseBodyResourceConfiguration
         resource_type: str = None,
         tags: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource belongs.
-        self.account_id = account_id
-        # The ID of the zone in which the resource resides.
-        self.availability_zone = availability_zone
         # The timestamp when the resource change snapshot was recorded. Unit: milliseconds.
-        self.capture_time = capture_time
-        # The details of the resource change that triggered the compliance evaluation.
-        self.configuration_diff = configuration_diff
-        # The ID of the region in which the resource resides.
-        self.region = region
-        # The timestamp when the resource was created. Unit: milliseconds.
-        self.resource_create_time = resource_create_time
-        # The type of the resource change event involved. Valid values:
-        # 
-        # *   DISCOVERED: A resource is created.
-        # *   DISCOVERED_REVISED: A resource is created by periodic remediation tasks.
-        # *   MODIFY: A resource is modified.
-        # *   MODIFY_REVISED: A resource is modified by periodic remediation tasks.
-        # *   REMOVE: A resource is deleted.
-        # 
-        # > 
-        # *   To ensure the integrity of resources, periodic remediation tasks are run to check data and generate events that indicate the creation of new resources. Such events are infrequent.
-        # *   The time when a resource change event is generated by a periodic remediation task is considered as the detection time of Cloud Config. The detection time is later than the time when the resource is modified.
-        self.resource_event_type = resource_event_type
+        self.account_id = account_id
         # The ID of the resource.
+        self.availability_zone = availability_zone
+        self.capture_time = capture_time
+        self.configuration_diff = configuration_diff
+        self.region = region
+        self.resource_create_time = resource_create_time
+        # The details of the resource change that triggered the compliance evaluation.
+        self.resource_event_type = resource_event_type
         self.resource_id = resource_id
-        # The name of the resource.
         self.resource_name = resource_name
-        # The type of the resource.
+        # The name of the resource.
         self.resource_type = resource_type
-        # The tags of the resource.
+        # The ID of the region in which the resource resides.
         self.tags = tags
 
     def validate(self):
@@ -11256,11 +11194,11 @@ class GetAggregateResourceConfigurationTimelineResponseBodyResourceConfiguration
         max_results: int = None,
         next_token: str = None,
     ):
-        # The configuration changes on the configuration timeline.
+        # The timestamp when the resource was created. Unit: milliseconds.
         self.configuration_list = configuration_list
-        # The maximum number of entries returned for a single request.
+        # The type of the resource.
         self.max_results = max_results
-        # The token that is used to initiate the next request.
+        # The ID of the zone in which the resource resides.
         self.next_token = next_token
 
     def validate(self):
@@ -11305,9 +11243,19 @@ class GetAggregateResourceConfigurationTimelineResponseBody(TeaModel):
         request_id: str = None,
         resource_configuration_timeline: GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline = None,
     ):
-        # The ID of the request.
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.request_id = request_id
-        # The information about the configuration timeline.
+        # The type of the resource change event involved. Valid values:
+        # 
+        # *   DISCOVERED: A resource is created.
+        # *   DISCOVERED_REVISED: A resource is created by periodic remediation tasks.
+        # *   MODIFY: A resource is modified.
+        # *   MODIFY_REVISED: A resource is modified by periodic remediation tasks.
+        # *   REMOVE: A resource is deleted.
+        # 
+        # > 
+        # *   To ensure the integrity of resources, periodic remediation tasks are run to check data and generate events that indicate the creation of new resources. Such events are infrequent.
+        # *   The time when a resource change event is generated by a periodic remediation task is considered as the detection time of Cloud Config. The detection time is later than the time when the resource is modified.
         self.resource_configuration_timeline = resource_configuration_timeline
 
     def validate(self):
@@ -11389,17 +11337,15 @@ class GetAggregateResourceCountsGroupByRegionRequest(TeaModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The ID of the account group.
-        # 
-        # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+        # The total number of resources in the region.
         self.aggregator_id = aggregator_id
-        # The ID of the folder in the resource directory. For more information about how to obtain the ID of a folder, see [View the basic information of a folder](~~111223~~).
+        # The dimension by which statistics are collected.
+        # 
+        # >  In most cases, the `Region` parameter is returned instead of the GroupName parameter.
         self.folder_id = folder_id
         self.resource_account_id = resource_account_id
         self.resource_owner_id = resource_owner_id
-        # The type of the resource.
-        # 
-        # For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+        # The statistics on resources.
         self.resource_type = resource_type
 
     def validate(self):
@@ -11445,13 +11391,8 @@ class GetAggregateResourceCountsGroupByRegionResponseBodyDiscoveredResourceCount
         region: str = None,
         resource_count: int = None,
     ):
-        # The dimension by which statistics are collected.
-        # 
-        # >  In most cases, the `Region` parameter is returned instead of the GroupName parameter.
         self.group_name = group_name
-        # The ID of the region by which statistics are collected.
         self.region = region
-        # The total number of resources in the region.
         self.resource_count = resource_count
 
     def validate(self):
@@ -11488,9 +11429,8 @@ class GetAggregateResourceCountsGroupByRegionResponseBody(TeaModel):
         discovered_resource_counts_summary: List[GetAggregateResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary] = None,
         request_id: str = None,
     ):
-        # The statistics on resources.
         self.discovered_resource_counts_summary = discovered_resource_counts_summary
-        # The ID of the request.
+        # The ID of the region by which statistics are collected.
         self.request_id = request_id
 
     def validate(self):
@@ -13180,6 +13120,33 @@ class GetConfigRuleResponseBodyConfigRuleManagedRule(TeaModel):
         return self
 
 
+class GetConfigRuleResponseBodyConfigRuleScope(TeaModel):
+    def __init__(
+        self,
+        compliance_resource_types: List[str] = None,
+    ):
+        self.compliance_resource_types = compliance_resource_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_resource_types is not None:
+            result['ComplianceResourceTypes'] = self.compliance_resource_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComplianceResourceTypes') is not None:
+            self.compliance_resource_types = m.get('ComplianceResourceTypes')
+        return self
+
+
 class GetConfigRuleResponseBodyConfigRuleSourceSourceDetails(TeaModel):
     def __init__(
         self,
@@ -13314,6 +13281,7 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
         resource_group_ids_scope: str = None,
         resource_types_scope: str = None,
         risk_level: int = None,
+        scope: GetConfigRuleResponseBodyConfigRuleScope = None,
         source: GetConfigRuleResponseBodyConfigRuleSource = None,
         tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
@@ -13379,6 +13347,7 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
         # *   2: medium risk level
         # *   3: low risk level
         self.risk_level = risk_level
+        self.scope = scope
         # The information about how the rule was created.
         self.source = source
         # The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule.
@@ -13403,6 +13372,8 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
             self.create_by.validate()
         if self.managed_rule:
             self.managed_rule.validate()
+        if self.scope:
+            self.scope.validate()
         if self.source:
             self.source.validate()
 
@@ -13452,6 +13423,8 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
             result['ResourceTypesScope'] = self.resource_types_scope
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        if self.scope is not None:
+            result['Scope'] = self.scope.to_map()
         if self.source is not None:
             result['Source'] = self.source.to_map()
         if self.tag_key_logic_scope is not None:
@@ -13508,6 +13481,9 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
             self.resource_types_scope = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        if m.get('Scope') is not None:
+            temp_model = GetConfigRuleResponseBodyConfigRuleScope()
+            self.scope = temp_model.from_map(m['Scope'])
         if m.get('Source') is not None:
             temp_model = GetConfigRuleResponseBodyConfigRuleSource()
             self.source = temp_model.from_map(m['Source'])
@@ -14712,7 +14688,7 @@ class GetIntegratedServiceStatusResponseBody(TeaModel):
         # *   true
         # *   false
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15436,6 +15412,7 @@ class GetResourceComplianceGroupByRegionRequest(TeaModel):
         self,
         config_rule_ids: str = None,
     ):
+        # The rule IDs. Separate multiple rule IDs with commas (,).
         self.config_rule_ids = config_rule_ids
 
     def validate(self):
@@ -15464,7 +15441,14 @@ class GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceRe
         compliance_type: str = None,
         count: int = None,
     ):
+        # The evaluation result. Valid values:
+        # 
+        # *   COMPLIANT: The resource is evaluated as compliant.
+        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resource.
+        # *   INSUFFICIENT_DATA: No data is available.
         self.compliance_type = compliance_type
+        # The total number of evaluation results.
         self.count = count
 
     def validate(self):
@@ -15497,7 +15481,9 @@ class GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceRe
         compliances: List[GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances] = None,
         region_id: str = None,
     ):
+        # The queried evaluation results.
         self.compliances = compliances
+        # The region ID of the evaluated resource.
         self.region_id = region_id
 
     def validate(self):
@@ -15537,6 +15523,7 @@ class GetResourceComplianceGroupByRegionResponseBodyComplianceResult(TeaModel):
         self,
         compliance_result_list: List[GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList] = None,
     ):
+        # The evaluation results grouped by region.
         self.compliance_result_list = compliance_result_list
 
     def validate(self):
@@ -15573,7 +15560,9 @@ class GetResourceComplianceGroupByRegionResponseBody(TeaModel):
         compliance_result: GetResourceComplianceGroupByRegionResponseBodyComplianceResult = None,
         request_id: str = None,
     ):
+        # The queried evaluation results.
         self.compliance_result = compliance_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15651,6 +15640,7 @@ class GetResourceComplianceGroupByResourceTypeRequest(TeaModel):
         self,
         config_rule_ids: str = None,
     ):
+        # The rule IDs. Separate multiple rule IDs with commas (,).
         self.config_rule_ids = config_rule_ids
 
     def validate(self):
@@ -15679,7 +15669,14 @@ class GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultCompli
         compliance_type: str = None,
         count: int = None,
     ):
+        # The evaluation result. Valid values:
+        # 
+        # *   COMPLIANT: The resource is evaluated as compliant.
+        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resource.
+        # *   INSUFFICIENT_DATA: No data is available.
         self.compliance_type = compliance_type
+        # The total number of evaluation results.
         self.count = count
 
     def validate(self):
@@ -15712,7 +15709,9 @@ class GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultCompli
         compliances: List[GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances] = None,
         resource_type: str = None,
     ):
+        # The queried evaluation results.
         self.compliances = compliances
+        # The type of the evaluated resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -15752,6 +15751,7 @@ class GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult(TeaMo
         self,
         compliance_result_list: List[GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList] = None,
     ):
+        # The evaluation results grouped by resource type.
         self.compliance_result_list = compliance_result_list
 
     def validate(self):
@@ -15788,7 +15788,9 @@ class GetResourceComplianceGroupByResourceTypeResponseBody(TeaModel):
         compliance_result: GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult = None,
         request_id: str = None,
     ):
+        # The queried evaluation results.
         self.compliance_result = compliance_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16185,23 +16187,21 @@ class GetResourceConfigurationTimelineRequest(TeaModel):
         resource_type: str = None,
         start_time: int = None,
     ):
-        # The timestamp that specifies the end of the time range to query. The default value is the time when the GetResourceConfigurationTimeline operation is called. Unit: milliseconds.
-        self.end_time = end_time
-        # The maximum number of entries to return for a single request. Valid values: 1 to 100.
-        self.max_results = max_results
         # The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
+        self.end_time = end_time
+        # The ID of the request.
+        self.max_results = max_results
+        # The maximum number of entries returned for a single request.
         self.next_token = next_token
-        # The ID of the region in which the resource resides.
+        # The token that is used to initiate the next request.
         self.region = region
-        # The ID of the resource.
-        # 
-        # For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](~~169620~~).
-        self.resource_id = resource_id
         # The type of the resource.
         # 
         # For more information about how to obtain the type of a resource, see [ListDiscoveredResources](~~169620~~).
+        self.resource_id = resource_id
+        # The information about the configuration timeline.
         self.resource_type = resource_type
-        # The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
+        # The ID of the region in which the resource resides.
         self.start_time = start_time
 
     def validate(self):
@@ -16265,41 +16265,27 @@ class GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineC
         resource_type: str = None,
         tags: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource belongs.
-        self.account_id = account_id
-        # The ID of the zone.
-        self.availability_zone = availability_zone
-        # The timestamp when the resource change snapshot was recorded. Unit: milliseconds.
-        self.capture_time = capture_time
-        # The details of the resource change that triggered the compliance evaluation.
-        self.configuration_diff = configuration_diff
-        # The ID of the region in which the resource resides.
-        self.region = region
-        # The details of each resource that is associated with the current resource, including the region ID, resource relationship, resource ID, and resource type.
-        self.relationship = relationship
-        # The change records of the resource relationship.
-        self.relationship_diff = relationship_diff
         # The timestamp when the resource was created. Unit: milliseconds.
-        self.resource_create_time = resource_create_time
-        # The type of the resource change event involved. Valid values:
-        # 
-        # *   DISCOVERED: A resource is created.
-        # *   DISCOVERED_REVISED: A resource is created by periodic remediation tasks.
-        # *   MODIFY: A resource is modified.
-        # *   MODIFY_REVISED: A resource is modified by periodic remediation tasks.
-        # *   REMOVE: A resource is deleted.
-        # 
-        # > 
-        # *   To ensure the integrity of resources, periodic remediation tasks are executed to check data and generate events that indicate the creation of new resources. Such events are infrequent.
-        # *   The time when a resource change event is generated by a periodic remediation task is considered as the detection time of Cloud Config. The detection time is later than the time when the resource is modified.
-        self.resource_event_type = resource_event_type
-        # The ID of the resource.
-        self.resource_id = resource_id
+        self.account_id = account_id
+        # The timestamp when the resource change snapshot was recorded. Unit: milliseconds.
+        self.availability_zone = availability_zone
+        # The details of each resource that is associated with the current resource, including the region ID, resource relationship, resource ID, and resource type.
+        self.capture_time = capture_time
+        # The change records of the resource relationship.
+        self.configuration_diff = configuration_diff
         # The name of the resource.
+        self.region = region
+        self.relationship = relationship
+        self.relationship_diff = relationship_diff
+        # The ID of the resource.
+        self.resource_create_time = resource_create_time
+        # The ID of the region in which the resource resides.
+        self.resource_event_type = resource_event_type
+        self.resource_id = resource_id
         self.resource_name = resource_name
-        # The type of the resource.
+        # The details of the resource change that triggered the compliance evaluation.
         self.resource_type = resource_type
-        # The tags of the resource.
+        # The type of the resource.
         self.tags = tags
 
     def validate(self):
@@ -16377,11 +16363,21 @@ class GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline(
         max_results: int = None,
         next_token: str = None,
     ):
-        # The configuration changes on the configuration timeline.
+        # The ID of the zone.
         self.configuration_list = configuration_list
-        # The maximum number of entries returned for a single request.
+        # The type of the resource change event involved. Valid values:
+        # 
+        # *   DISCOVERED: A resource is created.
+        # *   DISCOVERED_REVISED: A resource is created by periodic remediation tasks.
+        # *   MODIFY: A resource is modified.
+        # *   MODIFY_REVISED: A resource is modified by periodic remediation tasks.
+        # *   REMOVE: A resource is deleted.
+        # 
+        # > 
+        # *   To ensure the integrity of resources, periodic remediation tasks are executed to check data and generate events that indicate the creation of new resources. Such events are infrequent.
+        # *   The time when a resource change event is generated by a periodic remediation task is considered as the detection time of Cloud Config. The detection time is later than the time when the resource is modified.
         self.max_results = max_results
-        # The token that is used to initiate the next request.
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.next_token = next_token
 
     def validate(self):
@@ -16426,9 +16422,9 @@ class GetResourceConfigurationTimelineResponseBody(TeaModel):
         request_id: str = None,
         resource_configuration_timeline: GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline = None,
     ):
-        # The ID of the request.
+        # The configuration changes on the configuration timeline.
         self.request_id = request_id
-        # The information about the configuration timeline.
+        # The tags of the resource.
         self.resource_configuration_timeline = resource_configuration_timeline
 
     def validate(self):
@@ -18588,26 +18584,23 @@ class ListAggregateDiscoveredResourcesRequest(TeaModel):
         resource_owner_id: int = None,
         resource_types: str = None,
     ):
+        # The tags of the resource.
+        self.aggregator_id = aggregator_id
+        # The information about resources.
+        self.max_results = max_results
+        # The type of the resource.
+        self.next_token = next_token
+        # The timestamp when the resource was created. Unit: milliseconds.
+        self.regions = regions
+        self.resource_account_id = resource_account_id
+        # The return result of the request.
+        self.resource_deleted = resource_deleted
         # The ID of the account group.
         # 
         # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
-        self.aggregator_id = aggregator_id
-        # The maximum number of entries to return for a single request. Valid values: 1 to 100.
-        self.max_results = max_results
-        # The token that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.``
-        self.next_token = next_token
-        # The ID of the region where the resource resides. Separate multiple region IDs with commas (,).
-        self.regions = regions
-        self.resource_account_id = resource_account_id
-        # Indicates whether the resource is deleted. Valid values:
-        # 
-        # *   0: The resource is deleted.
-        # *   1: The resource is retained. This is the default value.
-        self.resource_deleted = resource_deleted
-        # The ID of the resource.
         self.resource_id = resource_id
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Separate multiple resource types with commas (,).
+        # The region ID.
         self.resource_types = resource_types
 
     def validate(self):
@@ -18678,35 +18671,33 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
         tags: str = None,
         version: int = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource belongs.
+        # The build version of the resource.
         self.account_id = account_id
-        # The ID of the zone where the resource resides.
         self.availability_zone = availability_zone
-        # The region ID.
-        self.region = region
-        # The timestamp when the resource was created. Unit: milliseconds.
-        self.resource_creation_time = resource_creation_time
         # Indicates whether the resource is deleted. Valid values:
         # 
         # *   0: The resource is deleted.
         # *   1: The resource is retained.
-        self.resource_deleted = resource_deleted
-        # The ID of the resource.
-        self.resource_id = resource_id
-        # The name of the resource.
-        self.resource_name = resource_name
-        # The ID of the Alibaba Cloud account to which the resources belong.
-        self.resource_owner_id = resource_owner_id
+        self.region = region
         # Indicates whether the resource is deleted. The value of this parameter varies based on the resource type and may be left empty. Example:
         # 
         # *   If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that is in a specific state. In this case, the valid values of this parameter are Running and Stopped.
         # *   If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is left empty.
+        self.resource_creation_time = resource_creation_time
+        # The maximum number of entries returned on each page.
+        self.resource_deleted = resource_deleted
+        # The ID of the zone where the resource resides.
+        self.resource_id = resource_id
+        # The token that was used to initiate the next request.
+        self.resource_name = resource_name
+        # The ID of the request.
+        self.resource_owner_id = resource_owner_id
+        # The total number of resources.
         self.resource_status = resource_status
-        # The type of the resource.
+        # The name of the resource.
         self.resource_type = resource_type
-        # The tags of the resource.
+        # The ID of the Alibaba Cloud account to which the resources belong.
         self.tags = tags
-        # The build version of the resource.
         self.version = version
 
     def validate(self):
@@ -18781,13 +18772,10 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles(Tea
         next_token: str = None,
         total_count: int = None,
     ):
-        # The information about resources.
+        # The ID of the resource.
         self.discovered_resource_profile_list = discovered_resource_profile_list
-        # The maximum number of entries returned on each page.
         self.max_results = max_results
-        # The token that was used to initiate the next request.
         self.next_token = next_token
-        # The total number of resources.
         self.total_count = total_count
 
     def validate(self):
@@ -18836,9 +18824,8 @@ class ListAggregateDiscoveredResourcesResponseBody(TeaModel):
         discovered_resource_profiles: ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles = None,
         request_id: str = None,
     ):
-        # The return result of the request.
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.discovered_resource_profiles = discovered_resource_profiles
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19581,6 +19568,276 @@ class ListAggregateResourceEvaluationResultsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAggregateResourceEvaluationResultsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAggregateResourceRelationsRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        region: str = None,
+        relation_type: str = None,
+        resource_account_id: int = None,
+        resource_id: str = None,
+        resource_type: str = None,
+        target_resource_id: str = None,
+        target_resource_type: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.region = region
+        self.relation_type = relation_type
+        self.resource_account_id = resource_account_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.target_resource_id = target_resource_id
+        self.target_resource_type = target_resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.relation_type is not None:
+            result['RelationType'] = self.relation_type
+        if self.resource_account_id is not None:
+            result['ResourceAccountId'] = self.resource_account_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.target_resource_id is not None:
+            result['TargetResourceId'] = self.target_resource_id
+        if self.target_resource_type is not None:
+            result['TargetResourceType'] = self.target_resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RelationType') is not None:
+            self.relation_type = m.get('RelationType')
+        if m.get('ResourceAccountId') is not None:
+            self.resource_account_id = m.get('ResourceAccountId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TargetResourceId') is not None:
+            self.target_resource_id = m.get('TargetResourceId')
+        if m.get('TargetResourceType') is not None:
+            self.target_resource_type = m.get('TargetResourceType')
+        return self
+
+
+class ListAggregateResourceRelationsResponseBodyResourceRelationsResourceRelationList(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        relation_type: str = None,
+        source_resource_id: str = None,
+        source_resource_region_id: str = None,
+        source_resource_type: str = None,
+        target_resource_id: str = None,
+        target_resource_type: str = None,
+    ):
+        self.account_id = account_id
+        self.relation_type = relation_type
+        self.source_resource_id = source_resource_id
+        self.source_resource_region_id = source_resource_region_id
+        self.source_resource_type = source_resource_type
+        self.target_resource_id = target_resource_id
+        self.target_resource_type = target_resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.relation_type is not None:
+            result['RelationType'] = self.relation_type
+        if self.source_resource_id is not None:
+            result['SourceResourceId'] = self.source_resource_id
+        if self.source_resource_region_id is not None:
+            result['SourceResourceRegionId'] = self.source_resource_region_id
+        if self.source_resource_type is not None:
+            result['SourceResourceType'] = self.source_resource_type
+        if self.target_resource_id is not None:
+            result['TargetResourceId'] = self.target_resource_id
+        if self.target_resource_type is not None:
+            result['TargetResourceType'] = self.target_resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('RelationType') is not None:
+            self.relation_type = m.get('RelationType')
+        if m.get('SourceResourceId') is not None:
+            self.source_resource_id = m.get('SourceResourceId')
+        if m.get('SourceResourceRegionId') is not None:
+            self.source_resource_region_id = m.get('SourceResourceRegionId')
+        if m.get('SourceResourceType') is not None:
+            self.source_resource_type = m.get('SourceResourceType')
+        if m.get('TargetResourceId') is not None:
+            self.target_resource_id = m.get('TargetResourceId')
+        if m.get('TargetResourceType') is not None:
+            self.target_resource_type = m.get('TargetResourceType')
+        return self
+
+
+class ListAggregateResourceRelationsResponseBodyResourceRelations(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        resource_relation_list: List[ListAggregateResourceRelationsResponseBodyResourceRelationsResourceRelationList] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.resource_relation_list = resource_relation_list
+
+    def validate(self):
+        if self.resource_relation_list:
+            for k in self.resource_relation_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['ResourceRelationList'] = []
+        if self.resource_relation_list is not None:
+            for k in self.resource_relation_list:
+                result['ResourceRelationList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.resource_relation_list = []
+        if m.get('ResourceRelationList') is not None:
+            for k in m.get('ResourceRelationList'):
+                temp_model = ListAggregateResourceRelationsResponseBodyResourceRelationsResourceRelationList()
+                self.resource_relation_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListAggregateResourceRelationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_relations: ListAggregateResourceRelationsResponseBodyResourceRelations = None,
+    ):
+        self.request_id = request_id
+        self.resource_relations = resource_relations
+
+    def validate(self):
+        if self.resource_relations:
+            self.resource_relations.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_relations is not None:
+            result['ResourceRelations'] = self.resource_relations.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceRelations') is not None:
+            temp_model = ListAggregateResourceRelationsResponseBodyResourceRelations()
+            self.resource_relations = temp_model.from_map(m['ResourceRelations'])
+        return self
+
+
+class ListAggregateResourceRelationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAggregateResourceRelationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAggregateResourceRelationsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22047,8 +22304,11 @@ class ListManagedRulesResponseBodyManagedRulesManagedRuleList(TeaModel):
         help_urls: str = None,
         identifier: str = None,
         labels: List[str] = None,
+        remediation_template_identifier: str = None,
+        remediation_template_name: str = None,
         risk_level: int = None,
         scope: ListManagedRulesResponseBodyManagedRulesManagedRuleListScope = None,
+        support_preview_managed_rule: bool = None,
     ):
         # The name of the managed rule.
         self.config_rule_name = config_rule_name
@@ -22060,6 +22320,8 @@ class ListManagedRulesResponseBodyManagedRulesManagedRuleList(TeaModel):
         self.identifier = identifier
         # The tags of the managed rule.
         self.labels = labels
+        self.remediation_template_identifier = remediation_template_identifier
+        self.remediation_template_name = remediation_template_name
         # The risk level of the resources that do not comply with the managed rule. Valid values:
         # 
         # *   1: high risk level
@@ -22067,6 +22329,7 @@ class ListManagedRulesResponseBodyManagedRulesManagedRuleList(TeaModel):
         # *   3: low risk level
         self.risk_level = risk_level
         self.scope = scope
+        self.support_preview_managed_rule = support_preview_managed_rule
 
     def validate(self):
         if self.scope:
@@ -22088,10 +22351,16 @@ class ListManagedRulesResponseBodyManagedRulesManagedRuleList(TeaModel):
             result['Identifier'] = self.identifier
         if self.labels is not None:
             result['Labels'] = self.labels
+        if self.remediation_template_identifier is not None:
+            result['RemediationTemplateIdentifier'] = self.remediation_template_identifier
+        if self.remediation_template_name is not None:
+            result['RemediationTemplateName'] = self.remediation_template_name
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
         if self.scope is not None:
             result['Scope'] = self.scope.to_map()
+        if self.support_preview_managed_rule is not None:
+            result['SupportPreviewManagedRule'] = self.support_preview_managed_rule
         return result
 
     def from_map(self, m: dict = None):
@@ -22106,11 +22375,17 @@ class ListManagedRulesResponseBodyManagedRulesManagedRuleList(TeaModel):
             self.identifier = m.get('Identifier')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+        if m.get('RemediationTemplateIdentifier') is not None:
+            self.remediation_template_identifier = m.get('RemediationTemplateIdentifier')
+        if m.get('RemediationTemplateName') is not None:
+            self.remediation_template_name = m.get('RemediationTemplateName')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
         if m.get('Scope') is not None:
             temp_model = ListManagedRulesResponseBodyManagedRulesManagedRuleListScope()
             self.scope = temp_model.from_map(m['Scope'])
+        if m.get('SupportPreviewManagedRule') is not None:
+            self.support_preview_managed_rule = m.get('SupportPreviewManagedRule')
         return self
 
 
@@ -22519,12 +22794,16 @@ class ListRemediationTemplatesRequest(TeaModel):
     def __init__(
         self,
         managed_rule_identifier: str = None,
+        page_number: int = None,
+        page_size: int = None,
         remediation_type: str = None,
     ):
         # The identifier of the managed rule.
         # 
         # You can call the [ListCompliancePackTemplates](~~261176~~) operation to obtain the managed rule identifier.
         self.managed_rule_identifier = managed_rule_identifier
+        self.page_number = page_number
+        self.page_size = page_size
         # The type of the remediation template. Valid value: OOS, which stands for Operation Orchestration Service.
         self.remediation_type = remediation_type
 
@@ -22539,6 +22818,10 @@ class ListRemediationTemplatesRequest(TeaModel):
         result = dict()
         if self.managed_rule_identifier is not None:
             result['ManagedRuleIdentifier'] = self.managed_rule_identifier
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.remediation_type is not None:
             result['RemediationType'] = self.remediation_type
         return result
@@ -22547,6 +22830,10 @@ class ListRemediationTemplatesRequest(TeaModel):
         m = m or dict()
         if m.get('ManagedRuleIdentifier') is not None:
             self.managed_rule_identifier = m.get('ManagedRuleIdentifier')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RemediationType') is not None:
             self.remediation_type = m.get('RemediationType')
         return self
@@ -22557,6 +22844,7 @@ class ListRemediationTemplatesResponseBodyRemediationTemplates(TeaModel):
         self,
         remediation_type: str = None,
         template_definition: str = None,
+        template_description: str = None,
         template_identifier: str = None,
         template_name: str = None,
     ):
@@ -22564,6 +22852,7 @@ class ListRemediationTemplatesResponseBodyRemediationTemplates(TeaModel):
         self.remediation_type = remediation_type
         # The configuration of the remediation template.
         self.template_definition = template_definition
+        self.template_description = template_description
         # The identifier of the remediation template.
         self.template_identifier = template_identifier
         # The name of the remediation template.
@@ -22582,6 +22871,8 @@ class ListRemediationTemplatesResponseBodyRemediationTemplates(TeaModel):
             result['RemediationType'] = self.remediation_type
         if self.template_definition is not None:
             result['TemplateDefinition'] = self.template_definition
+        if self.template_description is not None:
+            result['TemplateDescription'] = self.template_description
         if self.template_identifier is not None:
             result['TemplateIdentifier'] = self.template_identifier
         if self.template_name is not None:
@@ -22594,6 +22885,8 @@ class ListRemediationTemplatesResponseBodyRemediationTemplates(TeaModel):
             self.remediation_type = m.get('RemediationType')
         if m.get('TemplateDefinition') is not None:
             self.template_definition = m.get('TemplateDefinition')
+        if m.get('TemplateDescription') is not None:
+            self.template_description = m.get('TemplateDescription')
         if m.get('TemplateIdentifier') is not None:
             self.template_identifier = m.get('TemplateIdentifier')
         if m.get('TemplateName') is not None:
@@ -22604,13 +22897,19 @@ class ListRemediationTemplatesResponseBodyRemediationTemplates(TeaModel):
 class ListRemediationTemplatesResponseBody(TeaModel):
     def __init__(
         self,
+        page_number: int = None,
+        page_size: int = None,
         remediation_templates: List[ListRemediationTemplatesResponseBodyRemediationTemplates] = None,
         request_id: str = None,
+        total_count: str = None,
     ):
+        self.page_number = page_number
+        self.page_size = page_size
         # The details of the remediation template.
         self.remediation_templates = remediation_templates
         # The ID of the request.
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.remediation_templates:
@@ -22624,16 +22923,26 @@ class ListRemediationTemplatesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         result['RemediationTemplates'] = []
         if self.remediation_templates is not None:
             for k in self.remediation_templates:
                 result['RemediationTemplates'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         self.remediation_templates = []
         if m.get('RemediationTemplates') is not None:
             for k in m.get('RemediationTemplates'):
@@ -22641,6 +22950,8 @@ class ListRemediationTemplatesResponseBody(TeaModel):
                 self.remediation_templates.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -22692,11 +23003,15 @@ class ListRemediationsRequest(TeaModel):
     def __init__(
         self,
         config_rule_ids: str = None,
+        page_number: int = None,
+        page_size: int = None,
     ):
         # The ID of the rule. If you want to specify multiple IDs, separate them with commas (,).
         # 
         # You can call the [ListConfigRules](~~169607~~) operation to obtain the rule ID.
         self.config_rule_ids = config_rule_ids
+        self.page_number = page_number
+        self.page_size = page_size
 
     def validate(self):
         pass
@@ -22709,12 +23024,20 @@ class ListRemediationsRequest(TeaModel):
         result = dict()
         if self.config_rule_ids is not None:
             result['ConfigRuleIds'] = self.config_rule_ids
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ConfigRuleIds') is not None:
             self.config_rule_ids = m.get('ConfigRuleIds')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
@@ -22836,13 +23159,19 @@ class ListRemediationsResponseBodyRemediations(TeaModel):
 class ListRemediationsResponseBody(TeaModel):
     def __init__(
         self,
+        page_number: int = None,
+        page_size: int = None,
         remediations: List[ListRemediationsResponseBodyRemediations] = None,
         request_id: str = None,
+        total_count: str = None,
     ):
+        self.page_number = page_number
+        self.page_size = page_size
         # The remediation settings returned.
         self.remediations = remediations
         # The ID of the request.
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.remediations:
@@ -22856,16 +23185,26 @@ class ListRemediationsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         result['Remediations'] = []
         if self.remediations is not None:
             for k in self.remediations:
                 result['Remediations'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         self.remediations = []
         if m.get('Remediations') is not None:
             for k in m.get('Remediations'):
@@ -22873,6 +23212,8 @@ class ListRemediationsResponseBody(TeaModel):
                 self.remediations.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -23339,6 +23680,264 @@ class ListResourceEvaluationResultsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListResourceEvaluationResultsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListResourceRelationsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        region: str = None,
+        relation_type: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+        target_resource_id: str = None,
+        target_resource_type: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.region = region
+        self.relation_type = relation_type
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.target_resource_id = target_resource_id
+        self.target_resource_type = target_resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.relation_type is not None:
+            result['RelationType'] = self.relation_type
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.target_resource_id is not None:
+            result['TargetResourceId'] = self.target_resource_id
+        if self.target_resource_type is not None:
+            result['TargetResourceType'] = self.target_resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RelationType') is not None:
+            self.relation_type = m.get('RelationType')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TargetResourceId') is not None:
+            self.target_resource_id = m.get('TargetResourceId')
+        if m.get('TargetResourceType') is not None:
+            self.target_resource_type = m.get('TargetResourceType')
+        return self
+
+
+class ListResourceRelationsResponseBodyResourceRelationsResourceRelationList(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        relation_type: str = None,
+        source_resource_id: str = None,
+        source_resource_region_id: str = None,
+        source_resource_type: str = None,
+        target_resource_id: str = None,
+        target_resource_type: str = None,
+    ):
+        self.account_id = account_id
+        self.relation_type = relation_type
+        self.source_resource_id = source_resource_id
+        self.source_resource_region_id = source_resource_region_id
+        self.source_resource_type = source_resource_type
+        self.target_resource_id = target_resource_id
+        self.target_resource_type = target_resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.relation_type is not None:
+            result['RelationType'] = self.relation_type
+        if self.source_resource_id is not None:
+            result['SourceResourceId'] = self.source_resource_id
+        if self.source_resource_region_id is not None:
+            result['SourceResourceRegionId'] = self.source_resource_region_id
+        if self.source_resource_type is not None:
+            result['SourceResourceType'] = self.source_resource_type
+        if self.target_resource_id is not None:
+            result['TargetResourceId'] = self.target_resource_id
+        if self.target_resource_type is not None:
+            result['TargetResourceType'] = self.target_resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('RelationType') is not None:
+            self.relation_type = m.get('RelationType')
+        if m.get('SourceResourceId') is not None:
+            self.source_resource_id = m.get('SourceResourceId')
+        if m.get('SourceResourceRegionId') is not None:
+            self.source_resource_region_id = m.get('SourceResourceRegionId')
+        if m.get('SourceResourceType') is not None:
+            self.source_resource_type = m.get('SourceResourceType')
+        if m.get('TargetResourceId') is not None:
+            self.target_resource_id = m.get('TargetResourceId')
+        if m.get('TargetResourceType') is not None:
+            self.target_resource_type = m.get('TargetResourceType')
+        return self
+
+
+class ListResourceRelationsResponseBodyResourceRelations(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        resource_relation_list: List[ListResourceRelationsResponseBodyResourceRelationsResourceRelationList] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.resource_relation_list = resource_relation_list
+
+    def validate(self):
+        if self.resource_relation_list:
+            for k in self.resource_relation_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['ResourceRelationList'] = []
+        if self.resource_relation_list is not None:
+            for k in self.resource_relation_list:
+                result['ResourceRelationList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.resource_relation_list = []
+        if m.get('ResourceRelationList') is not None:
+            for k in m.get('ResourceRelationList'):
+                temp_model = ListResourceRelationsResponseBodyResourceRelationsResourceRelationList()
+                self.resource_relation_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListResourceRelationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_relations: ListResourceRelationsResponseBodyResourceRelations = None,
+    ):
+        self.request_id = request_id
+        self.resource_relations = resource_relations
+
+    def validate(self):
+        if self.resource_relations:
+            self.resource_relations.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_relations is not None:
+            result['ResourceRelations'] = self.resource_relations.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceRelations') is not None:
+            temp_model = ListResourceRelationsResponseBodyResourceRelations()
+            self.resource_relations = temp_model.from_map(m['ResourceRelations'])
+        return self
+
+
+class ListResourceRelationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListResourceRelationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListResourceRelationsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24398,9 +24997,7 @@ class StartRemediationRequest(TeaModel):
         self,
         config_rule_id: str = None,
     ):
-        # The ID of the rule.
-        # 
-        # You can call the [ListConfigRules](~~169607~~) operation to obtain the rule ID.
+        # The ID of the request.
         self.config_rule_id = config_rule_id
 
     def validate(self):
@@ -24429,12 +25026,11 @@ class StartRemediationResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        self.data = data
         # Indicates whether the call is successful. Valid values:
         # 
         # *   true: The call is successful.
         # *   false: The call fails.
-        self.data = data
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -27628,26 +28224,36 @@ class UpdateDeliveryChannelRequest(TeaModel):
         oversized_data_osstarget_arn: str = None,
         status: int = None,
     ):
-        # The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
-        # 
-        # The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25693~~).
-        self.client_token = client_token
         # Specifies whether to deliver resource change logs to the specified destination. If you set this parameter to true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
         # 
         # *   true
         # *   false. This is the default value.
         # 
         # >  This parameter is applicable to delivery channels of the OSS, SLS, or MNS type.
+        self.client_token = client_token
+        # The ARN of the OSS bucket to which you want to transfer the delivery data when the size of the data exceeds the specified upper limit of the delivery channel. Format: `acs:oss:{RegionId}:{accountId}:{bucketName}`.
+        # 
+        # If you do not configure this parameter, Cloud Config delivers only summary data.
+        # 
+        # >  This parameter is available only for delivery channels of the SLS type or MNS type. The upper limit on the storage size of delivery channels of the SLS type is 1 MB, and the upper limit on the storage size of delivery channels of the MNS type is 64 KB.
         self.configuration_item_change_notification = configuration_item_change_notification
-        # Specifies whether to deliver scheduled resource snapshots to the OSS bucket. If the value of this parameter is true, the scheduled resource snapshots are delivered to the specified OSS bucket at 00:00:00 and 12:00:00 on a daily basis. Valid values:
+        # Specifies whether to deliver resource non-compliance events to the specified destination. If you set this parameter to true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are considered incompliant. Valid values:
         # 
         # *   true
         # *   false. This is the default value.
         # 
-        # >  This parameter is applicable only to delivery channels of the OSS type.
+        # >  This parameter is applicable only to delivery channels of the SLS or MNS type.
         self.configuration_snapshot = configuration_snapshot
-        # The ARN of the role that you want to assign to the delivery channel. Specify the ARN in the following format: `acs:ram::{accountId}:role/aliyunserviceroleforconfig`.
+        # The description of the delivery channel.
         self.delivery_channel_assume_role_arn = delivery_channel_assume_role_arn
+        # The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25693~~).
+        self.delivery_channel_condition = delivery_channel_condition
+        # The ID of the request.
+        self.delivery_channel_id = delivery_channel_id
+        # The ARN of the role that you want to assign to the delivery channel. Specify the ARN in the following format: `acs:ram::{accountId}:role/aliyunserviceroleforconfig`.
+        self.delivery_channel_name = delivery_channel_name
         # The rule that you want to attach to the delivery channel. This parameter is available only for delivery channels of the MNS type.
         # 
         # This parameter specifies the lowest risk level and the resource types for the events to which you want to subscribe.
@@ -27657,40 +28263,24 @@ class UpdateDeliveryChannelRequest(TeaModel):
         # *   The setting of the resource types for the events to which you want to subscribe is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field specifies the resource types for which you want to subscribe to events. The value of the field is a JSON array.
         # 
         #     Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
-        self.delivery_channel_condition = delivery_channel_condition
-        # The ID of the delivery channel.
-        # 
-        # For more information about how to obtain the ID of the delivery channel, see [DescribeDeliveryChannels](~~174466~~).
-        self.delivery_channel_id = delivery_channel_id
-        # The name of the delivery channel.
-        # 
-        # >  If you do not configure this parameter, this parameter is left empty.
-        self.delivery_channel_name = delivery_channel_name
-        # The ARN of the delivery destination. Valid values:
-        # 
-        # *   `acs:oss:{RegionId}:{accountId}:{bucketName}` if your delivery destination is an OSS bucket. Example: `acs:oss:cn-shanghai:100931896542****:new-bucket`.
-        # *   `acs:mns:{RegionId}:{accountId}:/topics/{topicName}` if your delivery destination is an MNS topic. Example: `acs:mns:cn-shanghai:100931896542****:/topics/topic1`.
-        # *   `acs:log:{RegionId}:{accountId}:project/{projectName}/logstore/{logstoreName}` if your delivery destination is a Log Service Logstore. Example: `acs:log:cn-shanghai:100931896542****:project/project1/logstore/logstore1`.
         self.delivery_channel_target_arn = delivery_channel_target_arn
-        # The description of the delivery channel.
-        self.description = description
-        # Specifies whether to deliver resource non-compliance events to the specified destination. If you set this parameter to true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are considered incompliant. Valid values:
+        # Specifies whether to deliver scheduled resource snapshots to the OSS bucket. If the value of this parameter is true, the scheduled resource snapshots are delivered to the specified OSS bucket at 00:00:00 and 12:00:00 on a daily basis. Valid values:
         # 
         # *   true
         # *   false. This is the default value.
         # 
-        # >  This parameter is applicable only to delivery channels of the SLS or MNS type.
+        # >  This parameter is applicable only to delivery channels of the OSS type.
+        self.description = description
+        # The ID of the delivery channel.
+        # 
+        # For more information about how to obtain the ID of the delivery channel, see [DescribeDeliveryChannels](~~174466~~).
         self.non_compliant_notification = non_compliant_notification
-        # The ARN of the OSS bucket to which you want to transfer the delivery data when the size of the data exceeds the specified upper limit of the delivery channel. Format: `acs:oss:{RegionId}:{accountId}:{bucketName}`.
-        # 
-        # If you do not configure this parameter, Cloud Config delivers only summary data.
-        # 
-        # >  This parameter is available only for delivery channels of the SLS type or MNS type. The upper limit on the storage size of delivery channels of the SLS type is 1 MB, and the upper limit on the storage size of delivery channels of the MNS type is 64 KB.
-        self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
         # Specifies whether to disable the delivery channel. Valid values:
         # 
         # *   0: Cloud Config disables the delivery channel. Cloud Config retains the most recent delivery configuration and stops resource data delivery.
         # *   1: Cloud Config enables the delivery channel. This is the default value.
+        self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
+        # The ID of the delivery channel.
         self.status = status
 
     def validate(self):
@@ -27763,9 +28353,7 @@ class UpdateDeliveryChannelResponseBody(TeaModel):
         delivery_channel_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

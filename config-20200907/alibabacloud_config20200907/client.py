@@ -51,7 +51,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ActiveAggregateConfigRulesResponse:
         """
-        The sample request in this topic shows you how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
+        The ID of the rule. Separate multiple rule IDs with commas (,).
+        For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         
         @param request: ActiveAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -88,7 +89,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ActiveAggregateConfigRulesResponse:
         """
-        The sample request in this topic shows you how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
+        The ID of the rule. Separate multiple rule IDs with commas (,).
+        For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         
         @param request: ActiveAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -124,7 +126,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.ActiveAggregateConfigRulesRequest,
     ) -> config_20200907_models.ActiveAggregateConfigRulesResponse:
         """
-        The sample request in this topic shows you how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
+        The ID of the rule. Separate multiple rule IDs with commas (,).
+        For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         
         @param request: ActiveAggregateConfigRulesRequest
         @return: ActiveAggregateConfigRulesResponse
@@ -137,7 +140,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.ActiveAggregateConfigRulesRequest,
     ) -> config_20200907_models.ActiveAggregateConfigRulesResponse:
         """
-        The sample request in this topic shows you how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
+        The ID of the rule. Separate multiple rule IDs with commas (,).
+        For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         
         @param request: ActiveAggregateConfigRulesRequest
         @return: ActiveAggregateConfigRulesResponse
@@ -807,9 +811,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateConfigRuleResponse:
         """
-        The sample request in this topic shows you how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079***` account group. The return result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
-        ## Limits
-        A management account can contain up to 200 rules.
+        The description of the rule.
         
         @param tmp_req: CreateAggregateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -888,9 +890,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateConfigRuleResponse:
         """
-        The sample request in this topic shows you how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079***` account group. The return result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
-        ## Limits
-        A management account can contain up to 200 rules.
+        The description of the rule.
         
         @param tmp_req: CreateAggregateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -968,9 +968,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateConfigRuleRequest,
     ) -> config_20200907_models.CreateAggregateConfigRuleResponse:
         """
-        The sample request in this topic shows you how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079***` account group. The return result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
-        ## Limits
-        A management account can contain up to 200 rules.
+        The description of the rule.
         
         @param request: CreateAggregateConfigRuleRequest
         @return: CreateAggregateConfigRuleResponse
@@ -983,9 +981,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateConfigRuleRequest,
     ) -> config_20200907_models.CreateAggregateConfigRuleResponse:
         """
-        The sample request in this topic shows you how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079***` account group. The return result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
-        ## Limits
-        A management account can contain up to 200 rules.
+        The description of the rule.
         
         @param request: CreateAggregateConfigRuleRequest
         @return: CreateAggregateConfigRuleResponse
@@ -1995,7 +1991,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeactiveAggregateConfigRulesResponse:
         """
-        The sample request in this topic shows you how to disable the `cr-5772ba41209e007b***` rule in the `ca-04b3fd170e340007****` account group.
+        The ID of the rule. Separate multiple rule IDs with commas (,).
+        For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         
         @param request: DeactiveAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2032,7 +2029,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeactiveAggregateConfigRulesResponse:
         """
-        The sample request in this topic shows you how to disable the `cr-5772ba41209e007b***` rule in the `ca-04b3fd170e340007****` account group.
+        The ID of the rule. Separate multiple rule IDs with commas (,).
+        For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         
         @param request: DeactiveAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2068,7 +2066,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeactiveAggregateConfigRulesRequest,
     ) -> config_20200907_models.DeactiveAggregateConfigRulesResponse:
         """
-        The sample request in this topic shows you how to disable the `cr-5772ba41209e007b***` rule in the `ca-04b3fd170e340007****` account group.
+        The ID of the rule. Separate multiple rule IDs with commas (,).
+        For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         
         @param request: DeactiveAggregateConfigRulesRequest
         @return: DeactiveAggregateConfigRulesResponse
@@ -2081,7 +2080,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeactiveAggregateConfigRulesRequest,
     ) -> config_20200907_models.DeactiveAggregateConfigRulesResponse:
         """
-        The sample request in this topic shows you how to disable the `cr-5772ba41209e007b***` rule in the `ca-04b3fd170e340007****` account group.
+        The ID of the rule. Separate multiple rule IDs with commas (,).
+        For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         
         @param request: DeactiveAggregateConfigRulesRequest
         @return: DeactiveAggregateConfigRulesResponse
@@ -2607,7 +2607,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregatorsResponse:
         """
-        In the example of this topic, a request is sent to delete the account group whose ID is `ca-9190626622af00a9***`.
+        The operation that you want to perform. Set the value to *DeleteAggregators**.
         
         @param request: DeleteAggregatorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2644,7 +2644,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregatorsResponse:
         """
-        In the example of this topic, a request is sent to delete the account group whose ID is `ca-9190626622af00a9***`.
+        The operation that you want to perform. Set the value to *DeleteAggregators**.
         
         @param request: DeleteAggregatorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2680,7 +2680,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteAggregatorsRequest,
     ) -> config_20200907_models.DeleteAggregatorsResponse:
         """
-        In the example of this topic, a request is sent to delete the account group whose ID is `ca-9190626622af00a9***`.
+        The operation that you want to perform. Set the value to *DeleteAggregators**.
         
         @param request: DeleteAggregatorsRequest
         @return: DeleteAggregatorsResponse
@@ -2693,7 +2693,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteAggregatorsRequest,
     ) -> config_20200907_models.DeleteAggregatorsResponse:
         """
-        In the example of this topic, a request is sent to delete the account group whose ID is `ca-9190626622af00a9***`.
+        The operation that you want to perform. Set the value to *DeleteAggregators**.
         
         @param request: DeleteAggregatorsRequest
         @return: DeleteAggregatorsResponse
@@ -4471,7 +4471,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateDiscoveredResourceResponse:
         """
-        The sample request in this topic shows you how to query the `new-bucket` resource in the `ca-5885626622af0008***` account group.
+        The type of the resource.
+        For more information about how to query the type of a resource, see [ListAggregateDiscoveredResources](~~411691~~).
         
         @param request: GetAggregateDiscoveredResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4504,7 +4505,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateDiscoveredResourceResponse:
         """
-        The sample request in this topic shows you how to query the `new-bucket` resource in the `ca-5885626622af0008***` account group.
+        The type of the resource.
+        For more information about how to query the type of a resource, see [ListAggregateDiscoveredResources](~~411691~~).
         
         @param request: GetAggregateDiscoveredResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4536,7 +4538,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateDiscoveredResourceRequest,
     ) -> config_20200907_models.GetAggregateDiscoveredResourceResponse:
         """
-        The sample request in this topic shows you how to query the `new-bucket` resource in the `ca-5885626622af0008***` account group.
+        The type of the resource.
+        For more information about how to query the type of a resource, see [ListAggregateDiscoveredResources](~~411691~~).
         
         @param request: GetAggregateDiscoveredResourceRequest
         @return: GetAggregateDiscoveredResourceResponse
@@ -4549,7 +4552,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateDiscoveredResourceRequest,
     ) -> config_20200907_models.GetAggregateDiscoveredResourceResponse:
         """
-        The sample request in this topic shows you how to query the `new-bucket` resource in the `ca-5885626622af0008***` account group.
+        The type of the resource.
+        For more information about how to query the type of a resource, see [ListAggregateDiscoveredResources](~~411691~~).
         
         @param request: GetAggregateDiscoveredResourceRequest
         @return: GetAggregateDiscoveredResourceResponse
@@ -4563,7 +4567,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceByConfigRuleResponse:
         """
-        The sample request in this topic shows you how to query the compliance evaluation results based on the `cr-d369626622af008e***` rule in the `ca-a4e5626622af0079****` account group. The return result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
+        The ID of the rule.
+        For more information about how to query the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         
         @param request: GetAggregateResourceComplianceByConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4606,7 +4611,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceByConfigRuleResponse:
         """
-        The sample request in this topic shows you how to query the compliance evaluation results based on the `cr-d369626622af008e***` rule in the `ca-a4e5626622af0079****` account group. The return result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
+        The ID of the rule.
+        For more information about how to query the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         
         @param request: GetAggregateResourceComplianceByConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4648,7 +4654,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceByConfigRuleRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceByConfigRuleResponse:
         """
-        The sample request in this topic shows you how to query the compliance evaluation results based on the `cr-d369626622af008e***` rule in the `ca-a4e5626622af0079****` account group. The return result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
+        The ID of the rule.
+        For more information about how to query the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         
         @param request: GetAggregateResourceComplianceByConfigRuleRequest
         @return: GetAggregateResourceComplianceByConfigRuleResponse
@@ -4661,7 +4668,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceByConfigRuleRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceByConfigRuleResponse:
         """
-        The sample request in this topic shows you how to query the compliance evaluation results based on the `cr-d369626622af008e***` rule in the `ca-a4e5626622af0079****` account group. The return result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
+        The ID of the rule.
+        For more information about how to query the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         
         @param request: GetAggregateResourceComplianceByConfigRuleRequest
         @return: GetAggregateResourceComplianceByConfigRuleResponse
@@ -4915,7 +4923,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceTimelineResponse:
         """
-        The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+        The operation that you want to perform. Set the value to *GetAggregateResourceComplianceTimeline**.
         
         @param request: GetAggregateResourceComplianceTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4948,7 +4956,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceTimelineResponse:
         """
-        The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+        The operation that you want to perform. Set the value to *GetAggregateResourceComplianceTimeline**.
         
         @param request: GetAggregateResourceComplianceTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4980,7 +4988,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceTimelineRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceTimelineResponse:
         """
-        The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+        The operation that you want to perform. Set the value to *GetAggregateResourceComplianceTimeline**.
         
         @param request: GetAggregateResourceComplianceTimelineRequest
         @return: GetAggregateResourceComplianceTimelineResponse
@@ -4993,7 +5001,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceTimelineRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceTimelineResponse:
         """
-        The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+        The operation that you want to perform. Set the value to *GetAggregateResourceComplianceTimeline**.
         
         @param request: GetAggregateResourceComplianceTimelineRequest
         @return: GetAggregateResourceComplianceTimelineResponse
@@ -5007,7 +5015,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        The ID of the resource.
+        For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
         
         @param request: GetAggregateResourceConfigurationTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5040,7 +5049,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        The ID of the resource.
+        For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
         
         @param request: GetAggregateResourceConfigurationTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5072,7 +5082,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceConfigurationTimelineRequest,
     ) -> config_20200907_models.GetAggregateResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        The ID of the resource.
+        For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
         
         @param request: GetAggregateResourceConfigurationTimelineRequest
         @return: GetAggregateResourceConfigurationTimelineResponse
@@ -5085,7 +5096,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceConfigurationTimelineRequest,
     ) -> config_20200907_models.GetAggregateResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        The ID of the resource.
+        For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
         
         @param request: GetAggregateResourceConfigurationTimelineRequest
         @return: GetAggregateResourceConfigurationTimelineResponse
@@ -5099,7 +5111,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005***` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
+        The ID of the account group.
+        For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
         
         @param request: GetAggregateResourceCountsGroupByRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5142,7 +5155,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005***` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
+        The ID of the account group.
+        For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
         
         @param request: GetAggregateResourceCountsGroupByRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5184,7 +5198,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceCountsGroupByRegionRequest,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005***` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
+        The ID of the account group.
+        For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
         
         @param request: GetAggregateResourceCountsGroupByRegionRequest
         @return: GetAggregateResourceCountsGroupByRegionResponse
@@ -5197,7 +5212,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceCountsGroupByRegionRequest,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005***` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
+        The ID of the account group.
+        For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
         
         @param request: GetAggregateResourceCountsGroupByRegionRequest
         @return: GetAggregateResourceCountsGroupByRegionResponse
@@ -6901,7 +6917,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
         
         @param request: GetResourceConfigurationTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6934,7 +6950,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
         
         @param request: GetResourceConfigurationTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6966,7 +6982,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceConfigurationTimelineRequest,
     ) -> config_20200907_models.GetResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
         
         @param request: GetResourceConfigurationTimelineRequest
         @return: GetResourceConfigurationTimelineResponse
@@ -6979,7 +6995,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceConfigurationTimelineRequest,
     ) -> config_20200907_models.GetResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
         
         @param request: GetResourceConfigurationTimelineRequest
         @return: GetResourceConfigurationTimelineResponse
@@ -7683,7 +7699,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateDiscoveredResourcesResponse:
         """
-        This example shows how to query the resources in the `ca-c560626622af0005***` account group. The response shows that the account group contains eight resources.
+        The token that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.``
         
         @param request: ListAggregateDiscoveredResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7734,7 +7750,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateDiscoveredResourcesResponse:
         """
-        This example shows how to query the resources in the `ca-c560626622af0005***` account group. The response shows that the account group contains eight resources.
+        The token that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.``
         
         @param request: ListAggregateDiscoveredResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7784,7 +7800,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateDiscoveredResourcesRequest,
     ) -> config_20200907_models.ListAggregateDiscoveredResourcesResponse:
         """
-        This example shows how to query the resources in the `ca-c560626622af0005***` account group. The response shows that the account group contains eight resources.
+        The token that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.``
         
         @param request: ListAggregateDiscoveredResourcesRequest
         @return: ListAggregateDiscoveredResourcesResponse
@@ -7797,7 +7813,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateDiscoveredResourcesRequest,
     ) -> config_20200907_models.ListAggregateDiscoveredResourcesResponse:
         """
-        This example shows how to query the resources in the `ca-c560626622af0005***` account group. The response shows that the account group contains eight resources.
+        The token that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.``
         
         @param request: ListAggregateDiscoveredResourcesRequest
         @return: ListAggregateDiscoveredResourcesResponse
@@ -8024,6 +8040,112 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_aggregate_resource_evaluation_results_with_options_async(request, runtime)
+
+    def list_aggregate_resource_relations_with_options(
+        self,
+        request: config_20200907_models.ListAggregateResourceRelationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateResourceRelationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.relation_type):
+            query['RelationType'] = request.relation_type
+        if not UtilClient.is_unset(request.resource_account_id):
+            query['ResourceAccountId'] = request.resource_account_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.target_resource_id):
+            query['TargetResourceId'] = request.target_resource_id
+        if not UtilClient.is_unset(request.target_resource_type):
+            query['TargetResourceType'] = request.target_resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateResourceRelations',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateResourceRelationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aggregate_resource_relations_with_options_async(
+        self,
+        request: config_20200907_models.ListAggregateResourceRelationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateResourceRelationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.relation_type):
+            query['RelationType'] = request.relation_type
+        if not UtilClient.is_unset(request.resource_account_id):
+            query['ResourceAccountId'] = request.resource_account_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.target_resource_id):
+            query['TargetResourceId'] = request.target_resource_id
+        if not UtilClient.is_unset(request.target_resource_type):
+            query['TargetResourceType'] = request.target_resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateResourceRelations',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateResourceRelationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aggregate_resource_relations(
+        self,
+        request: config_20200907_models.ListAggregateResourceRelationsRequest,
+    ) -> config_20200907_models.ListAggregateResourceRelationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_aggregate_resource_relations_with_options(request, runtime)
+
+    async def list_aggregate_resource_relations_async(
+        self,
+        request: config_20200907_models.ListAggregateResourceRelationsRequest,
+    ) -> config_20200907_models.ListAggregateResourceRelationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aggregate_resource_relations_with_options_async(request, runtime)
 
     def list_aggregators_with_options(
         self,
@@ -8927,6 +9049,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.managed_rule_identifier):
             query['ManagedRuleIdentifier'] = request.managed_rule_identifier
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remediation_type):
             query['RemediationType'] = request.remediation_type
         req = open_api_models.OpenApiRequest(
@@ -8964,6 +9090,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.managed_rule_identifier):
             query['ManagedRuleIdentifier'] = request.managed_rule_identifier
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remediation_type):
             query['RemediationType'] = request.remediation_type
         req = open_api_models.OpenApiRequest(
@@ -9027,6 +9157,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.config_rule_ids):
             query['ConfigRuleIds'] = request.config_rule_ids
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9062,6 +9196,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.config_rule_ids):
             query['ConfigRuleIds'] = request.config_rule_ids
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9222,6 +9360,104 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_evaluation_results_with_options_async(request, runtime)
+
+    def list_resource_relations_with_options(
+        self,
+        request: config_20200907_models.ListResourceRelationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListResourceRelationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.relation_type):
+            query['RelationType'] = request.relation_type
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.target_resource_id):
+            query['TargetResourceId'] = request.target_resource_id
+        if not UtilClient.is_unset(request.target_resource_type):
+            query['TargetResourceType'] = request.target_resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceRelations',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListResourceRelationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resource_relations_with_options_async(
+        self,
+        request: config_20200907_models.ListResourceRelationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListResourceRelationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.relation_type):
+            query['RelationType'] = request.relation_type
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.target_resource_id):
+            query['TargetResourceId'] = request.target_resource_id
+        if not UtilClient.is_unset(request.target_resource_type):
+            query['TargetResourceType'] = request.target_resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceRelations',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListResourceRelationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resource_relations(
+        self,
+        request: config_20200907_models.ListResourceRelationsRequest,
+    ) -> config_20200907_models.ListResourceRelationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_resource_relations_with_options(request, runtime)
+
+    async def list_resource_relations_async(
+        self,
+        request: config_20200907_models.ListResourceRelationsRequest,
+    ) -> config_20200907_models.ListResourceRelationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_resource_relations_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -11254,7 +11490,7 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.UpdateDeliveryChannelResponse:
         """
         @deprecated : UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
-        In this example, the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8****` is changed to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
+        The operation that you want to perform. Set the value to **UpdateDeliveryChannel**.
         
         @param request: UpdateDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11313,7 +11549,7 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.UpdateDeliveryChannelResponse:
         """
         @deprecated : UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
-        In this example, the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8****` is changed to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
+        The operation that you want to perform. Set the value to **UpdateDeliveryChannel**.
         
         @param request: UpdateDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11371,7 +11607,7 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.UpdateDeliveryChannelResponse:
         """
         @deprecated : UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
-        In this example, the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8****` is changed to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
+        The operation that you want to perform. Set the value to **UpdateDeliveryChannel**.
         
         @param request: UpdateDeliveryChannelRequest
         @return: UpdateDeliveryChannelResponse
@@ -11386,7 +11622,7 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.UpdateDeliveryChannelResponse:
         """
         @deprecated : UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
-        In this example, the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8****` is changed to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
+        The operation that you want to perform. Set the value to **UpdateDeliveryChannel**.
         
         @param request: UpdateDeliveryChannelRequest
         @return: UpdateDeliveryChannelResponse
