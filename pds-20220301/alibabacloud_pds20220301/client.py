@@ -1091,6 +1091,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_group_with_options_async(request, headers, runtime)
 
+    def create_identity_to_benefit_pkg_mapping_with_options(
+        self,
+        request: pds_20220301_models.CreateIdentityToBenefitPkgMappingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.amount):
+            body['amount'] = request.amount
+        if not UtilClient.is_unset(request.benefit_pkg_id):
+            body['benefit_pkg_id'] = request.benefit_pkg_id
+        if not UtilClient.is_unset(request.expire_time):
+            body['expire_time'] = request.expire_time
+        if not UtilClient.is_unset(request.identity_id):
+            body['identity_id'] = request.identity_id
+        if not UtilClient.is_unset(request.identity_type):
+            body['identity_type'] = request.identity_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateIdentityToBenefitPkgMapping',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/benefit/identity_to_benefit_pkg_mapping/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_identity_to_benefit_pkg_mapping_with_options_async(
+        self,
+        request: pds_20220301_models.CreateIdentityToBenefitPkgMappingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.amount):
+            body['amount'] = request.amount
+        if not UtilClient.is_unset(request.benefit_pkg_id):
+            body['benefit_pkg_id'] = request.benefit_pkg_id
+        if not UtilClient.is_unset(request.expire_time):
+            body['expire_time'] = request.expire_time
+        if not UtilClient.is_unset(request.identity_id):
+            body['identity_id'] = request.identity_id
+        if not UtilClient.is_unset(request.identity_type):
+            body['identity_type'] = request.identity_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateIdentityToBenefitPkgMapping',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/benefit/identity_to_benefit_pkg_mapping/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_identity_to_benefit_pkg_mapping(
+        self,
+        request: pds_20220301_models.CreateIdentityToBenefitPkgMappingRequest,
+    ) -> pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_identity_to_benefit_pkg_mapping_with_options(request, headers, runtime)
+
+    async def create_identity_to_benefit_pkg_mapping_async(
+        self,
+        request: pds_20220301_models.CreateIdentityToBenefitPkgMappingRequest,
+    ) -> pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_identity_to_benefit_pkg_mapping_with_options_async(request, headers, runtime)
+
     def create_share_link_with_options(
         self,
         request: pds_20220301_models.CreateShareLinkRequest,
@@ -3047,6 +3139,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_group_with_options_async(request, headers, runtime)
 
+    def get_identity_to_benefit_pkg_mapping_with_options(
+        self,
+        request: pds_20220301_models.GetIdentityToBenefitPkgMappingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GetIdentityToBenefitPkgMappingResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.benefit_pkg_id):
+            body['benefit_pkg_id'] = request.benefit_pkg_id
+        if not UtilClient.is_unset(request.identity_id):
+            body['identity_id'] = request.identity_id
+        if not UtilClient.is_unset(request.identity_type):
+            body['identity_type'] = request.identity_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetIdentityToBenefitPkgMapping',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/benefit/identity_to_benefit_pkg_mapping/get',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GetIdentityToBenefitPkgMappingResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_identity_to_benefit_pkg_mapping_with_options_async(
+        self,
+        request: pds_20220301_models.GetIdentityToBenefitPkgMappingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GetIdentityToBenefitPkgMappingResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.benefit_pkg_id):
+            body['benefit_pkg_id'] = request.benefit_pkg_id
+        if not UtilClient.is_unset(request.identity_id):
+            body['identity_id'] = request.identity_id
+        if not UtilClient.is_unset(request.identity_type):
+            body['identity_type'] = request.identity_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetIdentityToBenefitPkgMapping',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/benefit/identity_to_benefit_pkg_mapping/get',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GetIdentityToBenefitPkgMappingResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_identity_to_benefit_pkg_mapping(
+        self,
+        request: pds_20220301_models.GetIdentityToBenefitPkgMappingRequest,
+    ) -> pds_20220301_models.GetIdentityToBenefitPkgMappingResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_identity_to_benefit_pkg_mapping_with_options(request, headers, runtime)
+
+    async def get_identity_to_benefit_pkg_mapping_async(
+        self,
+        request: pds_20220301_models.GetIdentityToBenefitPkgMappingRequest,
+    ) -> pds_20220301_models.GetIdentityToBenefitPkgMappingResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_identity_to_benefit_pkg_mapping_with_options_async(request, headers, runtime)
+
     def get_link_info_with_options(
         self,
         request: pds_20220301_models.GetLinkInfoRequest,
@@ -4892,6 +5068,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_group_member_with_options_async(domain_id, request, headers, runtime)
+
+    def list_identity_to_benefit_pkg_mapping_with_options(
+        self,
+        request: pds_20220301_models.ListIdentityToBenefitPkgMappingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListIdentityToBenefitPkgMappingResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identity_id):
+            body['identity_id'] = request.identity_id
+        if not UtilClient.is_unset(request.identity_type):
+            body['identity_type'] = request.identity_type
+        if not UtilClient.is_unset(request.include_expired):
+            body['include_expired'] = request.include_expired
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListIdentityToBenefitPkgMapping',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/benefit/identity_to_benefit_pkg_mapping/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListIdentityToBenefitPkgMappingResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_identity_to_benefit_pkg_mapping_with_options_async(
+        self,
+        request: pds_20220301_models.ListIdentityToBenefitPkgMappingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListIdentityToBenefitPkgMappingResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identity_id):
+            body['identity_id'] = request.identity_id
+        if not UtilClient.is_unset(request.identity_type):
+            body['identity_type'] = request.identity_type
+        if not UtilClient.is_unset(request.include_expired):
+            body['include_expired'] = request.include_expired
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListIdentityToBenefitPkgMapping',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/benefit/identity_to_benefit_pkg_mapping/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListIdentityToBenefitPkgMappingResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_identity_to_benefit_pkg_mapping(
+        self,
+        request: pds_20220301_models.ListIdentityToBenefitPkgMappingRequest,
+    ) -> pds_20220301_models.ListIdentityToBenefitPkgMappingResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_identity_to_benefit_pkg_mapping_with_options(request, headers, runtime)
+
+    async def list_identity_to_benefit_pkg_mapping_async(
+        self,
+        request: pds_20220301_models.ListIdentityToBenefitPkgMappingRequest,
+    ) -> pds_20220301_models.ListIdentityToBenefitPkgMappingResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_identity_to_benefit_pkg_mapping_with_options_async(request, headers, runtime)
 
     def list_my_drives_with_options(
         self,
@@ -7516,6 +7776,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_group_with_options_async(request, headers, runtime)
+
+    def update_identity_to_benefit_pkg_mapping_with_options(
+        self,
+        request: pds_20220301_models.UpdateIdentityToBenefitPkgMappingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.UpdateIdentityToBenefitPkgMappingResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.amount):
+            body['amount'] = request.amount
+        if not UtilClient.is_unset(request.benefit_pkg_id):
+            body['benefit_pkg_id'] = request.benefit_pkg_id
+        if not UtilClient.is_unset(request.expire_time):
+            body['expire_time'] = request.expire_time
+        if not UtilClient.is_unset(request.identity_id):
+            body['identity_id'] = request.identity_id
+        if not UtilClient.is_unset(request.identity_type):
+            body['identity_type'] = request.identity_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateIdentityToBenefitPkgMapping',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/benefit/identity_to_benefit_pkg_mapping/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.UpdateIdentityToBenefitPkgMappingResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_identity_to_benefit_pkg_mapping_with_options_async(
+        self,
+        request: pds_20220301_models.UpdateIdentityToBenefitPkgMappingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.UpdateIdentityToBenefitPkgMappingResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.amount):
+            body['amount'] = request.amount
+        if not UtilClient.is_unset(request.benefit_pkg_id):
+            body['benefit_pkg_id'] = request.benefit_pkg_id
+        if not UtilClient.is_unset(request.expire_time):
+            body['expire_time'] = request.expire_time
+        if not UtilClient.is_unset(request.identity_id):
+            body['identity_id'] = request.identity_id
+        if not UtilClient.is_unset(request.identity_type):
+            body['identity_type'] = request.identity_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateIdentityToBenefitPkgMapping',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/benefit/identity_to_benefit_pkg_mapping/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.UpdateIdentityToBenefitPkgMappingResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_identity_to_benefit_pkg_mapping(
+        self,
+        request: pds_20220301_models.UpdateIdentityToBenefitPkgMappingRequest,
+    ) -> pds_20220301_models.UpdateIdentityToBenefitPkgMappingResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_identity_to_benefit_pkg_mapping_with_options(request, headers, runtime)
+
+    async def update_identity_to_benefit_pkg_mapping_async(
+        self,
+        request: pds_20220301_models.UpdateIdentityToBenefitPkgMappingRequest,
+    ) -> pds_20220301_models.UpdateIdentityToBenefitPkgMappingResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_identity_to_benefit_pkg_mapping_with_options_async(request, headers, runtime)
 
     def update_revision_with_options(
         self,

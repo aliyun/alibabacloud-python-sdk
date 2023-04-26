@@ -252,6 +252,51 @@ class AddressGroup(TeaModel):
         return self
 
 
+class BenefitPkgDeliveryInfo(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        created_at: str = None,
+        expire_time: str = None,
+        is_permanent: bool = None,
+    ):
+        self.amount = amount
+        self.created_at = created_at
+        self.expire_time = expire_time
+        self.is_permanent = is_permanent
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['amount'] = self.amount
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.expire_time is not None:
+            result['expire_time'] = self.expire_time
+        if self.is_permanent is not None:
+            result['is_permanent'] = self.is_permanent
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('amount') is not None:
+            self.amount = m.get('amount')
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('expire_time') is not None:
+            self.expire_time = m.get('expire_time')
+        if m.get('is_permanent') is not None:
+            self.is_permanent = m.get('is_permanent')
+        return self
+
+
 class Domain(TeaModel):
     def __init__(
         self,
@@ -1109,6 +1154,101 @@ class Group(TeaModel):
             self.group_id = m.get('group_id')
         if m.get('group_name') is not None:
             self.group_name = m.get('group_name')
+        if m.get('updated_at') is not None:
+            self.updated_at = m.get('updated_at')
+        return self
+
+
+class IdentityToBenefitPkgMapping(TeaModel):
+    def __init__(
+        self,
+        benefit_pkg_computation_rule: str = None,
+        benefit_pkg_id: str = None,
+        benefit_pkg_name: str = None,
+        benefit_pkg_owner_id: str = None,
+        benefit_pkg_priority: int = None,
+        benefit_pkg_type: str = None,
+        created_at: str = None,
+        delivery_info_list: List[BenefitPkgDeliveryInfo] = None,
+        identity_id: str = None,
+        identity_type: str = None,
+        updated_at: str = None,
+    ):
+        self.benefit_pkg_computation_rule = benefit_pkg_computation_rule
+        self.benefit_pkg_id = benefit_pkg_id
+        self.benefit_pkg_name = benefit_pkg_name
+        self.benefit_pkg_owner_id = benefit_pkg_owner_id
+        self.benefit_pkg_priority = benefit_pkg_priority
+        self.benefit_pkg_type = benefit_pkg_type
+        self.created_at = created_at
+        self.delivery_info_list = delivery_info_list
+        self.identity_id = identity_id
+        self.identity_type = identity_type
+        self.updated_at = updated_at
+
+    def validate(self):
+        if self.delivery_info_list:
+            for k in self.delivery_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.benefit_pkg_computation_rule is not None:
+            result['benefit_pkg_computation_rule'] = self.benefit_pkg_computation_rule
+        if self.benefit_pkg_id is not None:
+            result['benefit_pkg_id'] = self.benefit_pkg_id
+        if self.benefit_pkg_name is not None:
+            result['benefit_pkg_name'] = self.benefit_pkg_name
+        if self.benefit_pkg_owner_id is not None:
+            result['benefit_pkg_owner_id'] = self.benefit_pkg_owner_id
+        if self.benefit_pkg_priority is not None:
+            result['benefit_pkg_priority'] = self.benefit_pkg_priority
+        if self.benefit_pkg_type is not None:
+            result['benefit_pkg_type'] = self.benefit_pkg_type
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        result['delivery_info_list'] = []
+        if self.delivery_info_list is not None:
+            for k in self.delivery_info_list:
+                result['delivery_info_list'].append(k.to_map() if k else None)
+        if self.identity_id is not None:
+            result['identity_id'] = self.identity_id
+        if self.identity_type is not None:
+            result['identity_type'] = self.identity_type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('benefit_pkg_computation_rule') is not None:
+            self.benefit_pkg_computation_rule = m.get('benefit_pkg_computation_rule')
+        if m.get('benefit_pkg_id') is not None:
+            self.benefit_pkg_id = m.get('benefit_pkg_id')
+        if m.get('benefit_pkg_name') is not None:
+            self.benefit_pkg_name = m.get('benefit_pkg_name')
+        if m.get('benefit_pkg_owner_id') is not None:
+            self.benefit_pkg_owner_id = m.get('benefit_pkg_owner_id')
+        if m.get('benefit_pkg_priority') is not None:
+            self.benefit_pkg_priority = m.get('benefit_pkg_priority')
+        if m.get('benefit_pkg_type') is not None:
+            self.benefit_pkg_type = m.get('benefit_pkg_type')
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        self.delivery_info_list = []
+        if m.get('delivery_info_list') is not None:
+            for k in m.get('delivery_info_list'):
+                temp_model = BenefitPkgDeliveryInfo()
+                self.delivery_info_list.append(temp_model.from_map(k))
+        if m.get('identity_id') is not None:
+            self.identity_id = m.get('identity_id')
+        if m.get('identity_type') is not None:
+            self.identity_type = m.get('identity_type')
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
         return self
@@ -3840,6 +3980,91 @@ class CreateGroupResponse(TeaModel):
         return self
 
 
+class CreateIdentityToBenefitPkgMappingRequest(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        benefit_pkg_id: str = None,
+        expire_time: int = None,
+        identity_id: str = None,
+        identity_type: str = None,
+    ):
+        self.amount = amount
+        self.benefit_pkg_id = benefit_pkg_id
+        self.expire_time = expire_time
+        self.identity_id = identity_id
+        self.identity_type = identity_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['amount'] = self.amount
+        if self.benefit_pkg_id is not None:
+            result['benefit_pkg_id'] = self.benefit_pkg_id
+        if self.expire_time is not None:
+            result['expire_time'] = self.expire_time
+        if self.identity_id is not None:
+            result['identity_id'] = self.identity_id
+        if self.identity_type is not None:
+            result['identity_type'] = self.identity_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('amount') is not None:
+            self.amount = m.get('amount')
+        if m.get('benefit_pkg_id') is not None:
+            self.benefit_pkg_id = m.get('benefit_pkg_id')
+        if m.get('expire_time') is not None:
+            self.expire_time = m.get('expire_time')
+        if m.get('identity_id') is not None:
+            self.identity_id = m.get('identity_id')
+        if m.get('identity_type') is not None:
+            self.identity_type = m.get('identity_type')
+        return self
+
+
+class CreateIdentityToBenefitPkgMappingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class CreateShareLinkRequest(TeaModel):
     def __init__(
         self,
@@ -5341,7 +5566,6 @@ class FilePutUserTagsResponseBody(TeaModel):
         self,
         file_id: str = None,
     ):
-        # file id
         self.file_id = file_id
 
     def validate(self):
@@ -5414,7 +5638,35 @@ class FileRemovePermissionRequestMemberList(TeaModel):
         identity: Identity = None,
         role_id: str = None,
     ):
+        # 可授权对象，表示一个用户或者一个群组
         self.identity = identity
+        # 目前支持两种方式设置权限，一种是通过指定角色设置权限，另一种是自定义操作权限，此字段用于指定角色设置权限，与action\_list互斥，当两个字段同时设置时，以此字段为准
+        # 
+        # 目前支持：
+        # 
+        # SystemFileOwner（文件协同）
+        # 
+        # SystemFileDownloader（下载者）
+        # 
+        # SystemFileEditor（编辑者）
+        # 
+        # SystemFileEditorWithoutDelete（无删除编辑者）
+        # 
+        # SystemFileEditorWithoutShareLink（无分享编辑者）
+        # 
+        # SystemFileMetaViewer（可见列表）
+        # 
+        # SystemFileUploader（上传者）、SystemFileUploaderAndDownloader（上传/下载者）
+        # 
+        # SystemFileDownloaderWithShareLink（下载/分享者）
+        # 
+        # SystemFileUploaderAndDownloaderWithShareLink（上传/下载/分享者）
+        # 
+        # SystemFileUploaderAndViewer（预览/上传者）
+        # 
+        # SystemFileUploaderWithShareLink（上传/分享者）
+        # 
+        # SystemFileViewer（预览者）
         self.role_id = role_id
 
     def validate(self):
@@ -5450,8 +5702,11 @@ class FileRemovePermissionRequest(TeaModel):
         file_id: str = None,
         member_list: List[FileRemovePermissionRequestMemberList] = None,
     ):
+        # 空间id
         self.drive_id = drive_id
+        # 文件id
         self.file_id = file_id
+        # 共享的用户对象集合
         self.member_list = member_list
 
     def validate(self):
@@ -6204,6 +6459,89 @@ class GetGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Group()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIdentityToBenefitPkgMappingRequest(TeaModel):
+    def __init__(
+        self,
+        benefit_pkg_id: str = None,
+        identity_id: str = None,
+        identity_type: str = None,
+    ):
+        self.benefit_pkg_id = benefit_pkg_id
+        self.identity_id = identity_id
+        self.identity_type = identity_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.benefit_pkg_id is not None:
+            result['benefit_pkg_id'] = self.benefit_pkg_id
+        if self.identity_id is not None:
+            result['identity_id'] = self.identity_id
+        if self.identity_type is not None:
+            result['identity_type'] = self.identity_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('benefit_pkg_id') is not None:
+            self.benefit_pkg_id = m.get('benefit_pkg_id')
+        if m.get('identity_id') is not None:
+            self.identity_id = m.get('identity_id')
+        if m.get('identity_type') is not None:
+            self.identity_type = m.get('identity_type')
+        return self
+
+
+class GetIdentityToBenefitPkgMappingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: IdentityToBenefitPkgMapping = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = IdentityToBenefitPkgMapping()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7215,6 +7553,8 @@ class GetVideoPreviewPlayInfoRequest(TeaModel):
         self.get_without_url = get_without_url
         self.share_id = share_id
         self.template_id = template_id
+        # url超时时间，单位：秒。
+        # 默认15分钟，最大4小时。
         self.url_expire_sec = url_expire_sec
 
     def validate(self):
@@ -8932,6 +9272,124 @@ class ListGroupMemberResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListGroupMemberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIdentityToBenefitPkgMappingRequest(TeaModel):
+    def __init__(
+        self,
+        identity_id: str = None,
+        identity_type: str = None,
+        include_expired: bool = None,
+    ):
+        self.identity_id = identity_id
+        self.identity_type = identity_type
+        self.include_expired = include_expired
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_id is not None:
+            result['identity_id'] = self.identity_id
+        if self.identity_type is not None:
+            result['identity_type'] = self.identity_type
+        if self.include_expired is not None:
+            result['include_expired'] = self.include_expired
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('identity_id') is not None:
+            self.identity_id = m.get('identity_id')
+        if m.get('identity_type') is not None:
+            self.identity_type = m.get('identity_type')
+        if m.get('include_expired') is not None:
+            self.include_expired = m.get('include_expired')
+        return self
+
+
+class ListIdentityToBenefitPkgMappingResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[IdentityToBenefitPkgMapping] = None,
+    ):
+        self.items = items
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = IdentityToBenefitPkgMapping()
+                self.items.append(temp_model.from_map(k))
+        return self
+
+
+class ListIdentityToBenefitPkgMappingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIdentityToBenefitPkgMappingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIdentityToBenefitPkgMappingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12089,6 +12547,8 @@ class UpdateDriveRequest(TeaModel):
         self.description = description
         self.drive_id = drive_id
         self.drive_name = drive_name
+        # 归属者
+        # 注意，当前只允许通过 ak 来修改个人 drive 的所有者。
         self.owner = owner
         self.status = status
         self.total_size = total_size
@@ -12504,6 +12964,91 @@ class UpdateGroupResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = Group()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateIdentityToBenefitPkgMappingRequest(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        benefit_pkg_id: str = None,
+        expire_time: int = None,
+        identity_id: str = None,
+        identity_type: str = None,
+    ):
+        self.amount = amount
+        self.benefit_pkg_id = benefit_pkg_id
+        self.expire_time = expire_time
+        self.identity_id = identity_id
+        self.identity_type = identity_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['amount'] = self.amount
+        if self.benefit_pkg_id is not None:
+            result['benefit_pkg_id'] = self.benefit_pkg_id
+        if self.expire_time is not None:
+            result['expire_time'] = self.expire_time
+        if self.identity_id is not None:
+            result['identity_id'] = self.identity_id
+        if self.identity_type is not None:
+            result['identity_type'] = self.identity_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('amount') is not None:
+            self.amount = m.get('amount')
+        if m.get('benefit_pkg_id') is not None:
+            self.benefit_pkg_id = m.get('benefit_pkg_id')
+        if m.get('expire_time') is not None:
+            self.expire_time = m.get('expire_time')
+        if m.get('identity_id') is not None:
+            self.identity_id = m.get('identity_id')
+        if m.get('identity_type') is not None:
+            self.identity_type = m.get('identity_type')
+        return self
+
+
+class UpdateIdentityToBenefitPkgMappingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         return self
 
 
