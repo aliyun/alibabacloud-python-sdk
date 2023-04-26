@@ -1307,13 +1307,8 @@ class BatchSetVodDomainConfigsRequest(TeaModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The domain name for CDN. Separate multiple domain names with commas (,).
+        # Configures one or more domain names for CDN.
         self.domain_names = domain_names
-        # The features to configure.
-        # 
-        # *   Set this parameter in the following format: `[{"functionArgs":[{"argName":"domain_name","argValue":"www.example.com"}],"functionName":"set_req_host_header"}]`.
-        # *   Specific features, such as filetype_based_ttl_set, support more than one configuration record. To update one of the configuration records, use the configId field to specify the record. `[{"functionArgs":[{"argName":"file_type","argValue":"jpg"},{"argName":"ttl","argValue":"18"},{"argName":"weight","argValue":"30"}],"functionName":"filetype_based_ttl_set","configId":5068995}]`
-        # *   For more information, see the **Feature description** section.
         self.functions = functions
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1360,7 +1355,6 @@ class BatchSetVodDomainConfigsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1544,7 +1538,6 @@ class BatchStopVodDomainRequest(TeaModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The domain name for CDN. Separate multiple domain names with commas (,).
         self.domain_names = domain_names
         self.owner_id = owner_id
         self.security_token = security_token
@@ -1582,7 +1575,6 @@ class BatchStopVodDomainResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1655,14 +1647,9 @@ class CancelUrlUploadJobsRequest(TeaModel):
         job_ids: str = None,
         upload_urls: str = None,
     ):
-        # The IDs of the upload jobs. You can obtain the job IDs in the response parameter PlayInfo of the [GetPlayInfo](~~56124~~) operation.
-        # *   You can specify a maximum of 10 IDs.
-        # *   Separate multiple IDs with commas (,).
-        # > You must set one of the JobIds and the UploadUrls parameters. If you set both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
+        # The ID of the request.
         self.job_ids = job_ids
-        # The upload URLs of source files. Separate multiple URLs with commas (,). You can specify a maximum of 10 URLs.
-        # > *   You must encode the URLs before you use the URLs.
-        # > *   You must set one of the JobIds and the UploadUrls parameters. If you set both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
+        # The operation that you want to perform. Set the value to **CancelUrlUploadJobs**.
         self.upload_urls = upload_urls
 
     def validate(self):
@@ -1696,13 +1683,8 @@ class CancelUrlUploadJobsResponseBody(TeaModel):
         non_exists: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of canceled jobs.
         self.canceled_jobs = canceled_jobs
-        # The job IDs or upload URLs that do not exist.
-        # 
-        # If you set the request parameter JobIds, the job IDs that do not exist are returned. If you set the request parameter UploadUrls, the upload URLs that do not exist are returned.
         self.non_exists = non_exists
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3132,7 +3114,6 @@ class DeleteCategoryRequest(TeaModel):
         self,
         cate_id: int = None,
     ):
-        # The ID of the category.
         self.cate_id = cate_id
 
     def validate(self):
@@ -3160,7 +3141,6 @@ class DeleteCategoryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3591,7 +3571,6 @@ class DeleteMessageCallbackRequest(TeaModel):
         app_id: str = None,
         owner_account: str = None,
     ):
-        # The ID of the application. If you do not set this parameter, the default value **app-1000000** is used.
         self.app_id = app_id
         self.owner_account = owner_account
 
@@ -3624,7 +3603,6 @@ class DeleteMessageCallbackResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3816,12 +3794,8 @@ class DeleteMultipartUploadRequest(TeaModel):
         media_type: str = None,
         owner_account: str = None,
     ):
-        # The ID of the media file, namely, the audio or video ID. You can use one of the following methods to obtain the audio or video ID:
-        # * Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, you can view the audio or video ID. Use this method if the audio or video file is uploaded by using the ApsaraVideo VOD console.
-        # * View the value of the VideoId parameter returned by the [CreateUploadVideo](~~55407~~) operation that you called to obtain an upload URL and credential.
-        # * View the value of the VideoId parameter returned by the [SearchMedia](~~86044~~) operation that you called to query an audio or video ID after the audio or video file is uploaded.
+        # Deletes the fragments generated during an upload.
         self.media_id = media_id
-        # The type of the media file. Set the value to **video**, which indicates audio and video files.
         self.media_type = media_type
         self.owner_account = owner_account
 
@@ -3858,7 +3832,6 @@ class DeleteMultipartUploadResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4037,17 +4010,9 @@ class DeleteTranscodeTemplateGroupRequest(TeaModel):
         transcode_template_group_id: str = None,
         transcode_template_ids: str = None,
     ):
-        # Specifies whether to forcibly delete the entire transcoding template group. Valid values:
-        # 
-        # *   **true**: deletes the entire transcoding template group and its transcoding templates.
-        # *   **false**: removes the specified transcoding templates from the transcoding template group. This is the default value.
         self.force_del_group = force_del_group
-        # The ID of the transcoding template group.
+        # Removes one or more transcoding templates from a transcoding template group or forcibly deletes the entire transcoding template group.
         self.transcode_template_group_id = transcode_template_group_id
-        # The IDs of the transcoding templates that you want to remove.
-        # 
-        # *   Separate multiple IDs with commas (,).
-        # *   You can specify a maximum of 10 IDs.
         self.transcode_template_ids = transcode_template_ids
 
     def validate(self):
@@ -4084,9 +4049,7 @@ class DeleteTranscodeTemplateGroupResponseBody(TeaModel):
         non_exist_transcode_template_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of transcoding templates that were not found when the system removed transcoding templates based on the IDs.
         self.non_exist_transcode_template_ids = non_exist_transcode_template_ids
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4162,11 +4125,7 @@ class DeleteVideoRequest(TeaModel):
         self,
         video_ids: str = None,
     ):
-        # The list of video IDs. Separate multiple IDs with commas (,). A maximum of 20 IDs can be specified. You can obtain a video ID in one of the following ways:
-        # 
-        # *   If the video is uploaded by using the [ApsaraVideo VOD console](https://vod.console.aliyun.com), log on to the console and choose **Media Files** > **Audio/Video** to view the ID of the video.
-        # *   If the video is uploaded by calling the [CreateUploadVideo](~~55407~~) operation, the video ID is the VideoId value in the response.
-        # *   You can also call the [SearchMedia](~~86044~~) operation to obtain the video ID, which is the VideoId value in the response.
+        # The operation that you want to perform. Set the value to **DeleteVideo**.
         self.video_ids = video_ids
 
     def validate(self):
@@ -4196,13 +4155,8 @@ class DeleteVideoResponseBody(TeaModel):
         non_exist_video_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of the videos that cannot be deleted.
-        # > Generally, videos cannot be deleted if you do not have the required [permissions](~~113600~~).
         self.forbidden_video_ids = forbidden_video_ids
-        # The IDs of the videos that do not exist.
-        # > If the list of videos to be deleted contains one or more videos that do not exist, the IDs of these non-existing videos are returned. If none of the videos in the list exists, a 404 error is returned.
         self.non_exist_video_ids = non_exist_video_ids
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5158,7 +5112,7 @@ class DescribePlayUserTotalRequest(TeaModel):
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.end_time = end_time
         self.owner_id = owner_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The total number of unique visitors who use ApsaraVideo Player SDK for iOS.
         self.start_time = start_time
 
     def validate(self):
@@ -5197,13 +5151,11 @@ class DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV
         html5: str = None,
         i_os: str = None,
     ):
-        # The total number of unique visitors who use ApsaraVideo Player SDK for Android.
         self.android = android
-        # The total number of unique visitors who use ApsaraVideo Player SDK for Flash.
+        # The distribution of the playback duration.
         self.flash = flash
-        # The total number of unique visitors who use ApsaraVideo Player SDK for HTML5.
         self.html5 = html5
-        # The total number of unique visitors who use ApsaraVideo Player SDK for iOS.
+        # Queries the statistics on total playback each day in a specified time range.
         self.i_os = i_os
 
     def validate(self):
@@ -5246,13 +5198,13 @@ class DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalVV
         html5: str = None,
         i_os: str = None,
     ):
-        # The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for Android.
+        # The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for iOS.
         self.android = android
         # The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for Flash.
         self.flash = flash
         # The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for HTML5.
         self.html5 = html5
-        # The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for iOS.
+        # The total number of unique visitors who use ApsaraVideo Player SDK for Android.
         self.i_os = i_os
 
     def validate(self):
@@ -5296,15 +5248,15 @@ class DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotal(T
         uv: DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV = None,
         vv: DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalVV = None,
     ):
-        # The date when the statistics were generated. The date follows the *yyyy-MM-dd* format.
+        # The total number of unique visitors who use ApsaraVideo Player SDK for HTML5.
         self.date = date
-        # The total playback duration. Unit: milliseconds.
+        # The operation that you want to perform. Set the value to **DescribePlayUserTotal**.
         self.play_duration = play_duration
-        # The distribution of the playback duration.
+        # The date when the statistics were generated. The date follows the *yyyy-MM-dd* format.
         self.play_range = play_range
-        # The total number of unique visitors.
+        # The ID of the request.
         self.uv = uv
-        # The total number of video views.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.vv = vv
 
     def validate(self):
@@ -5389,7 +5341,7 @@ class DescribePlayUserTotalResponseBody(TeaModel):
         request_id: str = None,
         user_play_statis_totals: DescribePlayUserTotalResponseBodyUserPlayStatisTotals = None,
     ):
-        # The ID of the request.
+        # The total playback duration. Unit: milliseconds.
         self.request_id = request_id
         # The statistics on total playback each day.
         self.user_play_statis_totals = user_play_statis_totals
@@ -6255,24 +6207,18 @@ class DescribeVodDomainBpsDataRequest(TeaModel):
         owner_id: int = None,
         start_time: str = None,
     ):
-        # The domain name to be queried. If you do not specify this parameter, the merged data of all your domain names for CDN is returned. You can specify multiple domain names. Separate them with commas (,).
-        self.domain_name = domain_name
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        self.end_time = end_time
-        # The query interval. Unit: seconds. Valid values: **300**, **3600**, and **86400**.
-        # 
-        # *   If the time range to query is less than 3 days, valid values are **300**, **3600**, and **86400**. The default value is 300.
-        # *   If the time range to query is from 3 to less than 31 days, valid values are **3600** and **86400**. The default value is 3600.
-        # *   If the time range to query is from 31 to 90 days, the valid value is **86400**.
-        self.interval = interval
+        self.domain_name = domain_name
         # The name of the Internet service provider (ISP). If you do not specify this parameter, the data of all ISPs is returned.
+        self.end_time = end_time
+        # The bandwidth in mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
+        self.interval = interval
+        # The end of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.isp_name_en = isp_name_en
         # The name of the region. If you do not specify this parameter, the data in all regions is returned. Only data in the China (Shanghai) region can be queried.
         self.location_name_en = location_name_en
         self.owner_id = owner_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # > The minimum query interval is 5 minutes. If you do not specify this parameter, the data in the last 24 hours is queried.
+        # The operation that you want to perform. Set the value to **DescribeVodDomainBpsData**.
         self.start_time = start_time
 
     def validate(self):
@@ -6330,19 +6276,14 @@ class DescribeVodDomainBpsDataResponseBodyBpsDataPerIntervalDataModule(TeaModel)
         time_stamp: str = None,
         value: str = None,
     ):
-        # The bandwidth in mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
         self.domestic_value = domestic_value
-        # The HTTPS bandwidth on L1 nodes in mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
+        # The ID of the request.
         self.https_domestic_value = https_domestic_value
-        # The HTTPS bandwidth on L1 nodes outside mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
         self.https_overseas_value = https_overseas_value
-        # The total HTTPS bandwidth on L1 nodes. Unit: bit/s.
         self.https_value = https_value
-        # The bandwidth outside mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
         self.overseas_value = overseas_value
-        # The timestamp of the returned data. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The bandwidth. Unit: bit/s.
+        # Queries the bandwidth for one or more specified domain names for CDN.
         self.value = value
 
     def validate(self):
@@ -6436,21 +6377,25 @@ class DescribeVodDomainBpsDataResponseBody(TeaModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The bandwidth data that is collected for each interval.
-        self.bps_data_per_interval = bps_data_per_interval
-        # The time interval between the returned entries. Unit: seconds.
-        self.data_interval = data_interval
-        # The domain name for CDN.
-        self.domain_name = domain_name
-        # The end of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        self.end_time = end_time
         # The name of the ISP. By default, the data of all ISPs is returned.
-        self.isp_name_en = isp_name_en
-        # The name of the region. By default, the data in all regions is returned.
-        self.location_name_en = location_name_en
-        # The ID of the request.
-        self.request_id = request_id
+        self.bps_data_per_interval = bps_data_per_interval
+        # The HTTPS bandwidth on L1 nodes in mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
+        self.data_interval = data_interval
+        # The time interval between the returned entries. Unit: seconds.
+        self.domain_name = domain_name
+        # The bandwidth. Unit: bit/s.
+        self.end_time = end_time
         # The beginning of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        self.isp_name_en = isp_name_en
+        # The query interval. Unit: seconds. Valid values: **300**, **3600**, and **86400**.
+        # 
+        # *   If the time range to query is less than 3 days, valid values are **300**, **3600**, and **86400**. The default value is 300.
+        # *   If the time range to query is from 3 to less than 31 days, valid values are **3600** and **86400**. The default value is 3600.
+        # *   If the time range to query is from 31 to 90 days, the valid value is **86400**.
+        self.location_name_en = location_name_en
+        # The name of the region. By default, the data in all regions is returned.
+        self.request_id = request_id
+        # The domain name to be queried. If you do not specify this parameter, the merged data of all your domain names for CDN is returned. You can specify multiple domain names. Separate them with commas (,).
         self.start_time = start_time
 
     def validate(self):
@@ -8009,24 +7954,10 @@ class DescribeVodDomainSrcTrafficDataRequest(TeaModel):
         owner_id: int = None,
         start_time: str = None,
     ):
-        # The accelerated domain name. You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
-        # 
-        # If you leave this parameter empty, the origin traffic data for all accelerated domain names is queried by default.
         self.domain_name = domain_name
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
-        # The time interval between the data entries to return. Unit: seconds. Valid values:
-        # 
-        # *   **300**: 5 minutes
-        # *   **3600**: 1 hour
-        # *   **86400**: 1 day
-        # 
-        # > The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. For more information, see the **Time granularity** section of this topic.
         self.interval = interval
         self.owner_id = owner_id
-        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        # 
-        # If you leave this parameter empty, the origin traffic data that is generated in the last 24 hours is queried by default.
         self.start_time = start_time
 
     def validate(self):
@@ -8072,11 +8003,8 @@ class DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataMo
         time_stamp: str = None,
         value: str = None,
     ):
-        # The amount of traffic generated by origin HTTPS requests.
         self.https_value = https_value
-        # The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The traffic value at each time interval.
         self.value = value
 
     def validate(self):
@@ -8153,19 +8081,12 @@ class DescribeVodDomainSrcTrafficDataResponseBody(TeaModel):
         start_time: str = None,
         total_traffic: str = None,
     ):
-        # The time interval between the entries returned. Unit: seconds.
         self.data_interval = data_interval
-        # The accelerated domain name.
         self.domain_name = domain_name
-        # The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_time = end_time
-        # The ID of the request.
         self.request_id = request_id
-        # Details about the origin traffic returned at each time interval. Unit: bytes.
         self.src_traffic_data_per_interval = src_traffic_data_per_interval
-        # The start of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.start_time = start_time
-        # The total traffic. Unit: bytes.
         self.total_traffic = total_traffic
 
     def validate(self):
@@ -8580,6 +8501,11 @@ class DescribeVodDomainUsageDataRequest(TeaModel):
         # *   **bps**: bandwidth
         # *   **traf**: traffic
         self.field = field
+        # The time interval between the data entries to return. Unit: seconds. Valid values: **300** (5 minutes), **3600** (1 hour), and **86400** (1 day).
+        # 
+        # *   If **Interval** is set to **300**, you can query usage data in the last six months. The maximum time range per query that can be specified is three days.
+        # *   If **Interval** is set to **3600** or **86400**, you can query usage data of the previous year.
+        # *   If you do not set the **Interval** parameter, the maximum time range that you can query is one month. If you specify a time range of 1 to 3 days, the time interval between the entries that are returned is 1 hour. If you specify a time range of at least 4 days, the time interval between the entries that are returned is 1 day.
         self.interval = interval
         self.owner_id = owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
@@ -8587,7 +8513,7 @@ class DescribeVodDomainUsageDataRequest(TeaModel):
         # The type of content that you want to query. Valid values:
         # 
         # *   **static**: static content
-        # *   **dynamic**: dynamic content
+        # *   **dynamic**: dynamic requests
         # *   **all**: all content
         self.type = type
 
@@ -8645,7 +8571,7 @@ class DescribeVodDomainUsageDataResponseBodyUsageDataPerIntervalDataModule(TeaMo
         time_stamp: str = None,
         value: str = None,
     ):
-        # The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The timestamp of the data returned. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.time_stamp = time_stamp
         # The traffic or bandwidth data. Unit: bit/s.
         self.value = value
@@ -8731,12 +8657,12 @@ class DescribeVodDomainUsageDataResponseBody(TeaModel):
         self.end_time = end_time
         # The ID of the request.
         self.request_id = request_id
-        # The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.start_time = start_time
         # The type of content returned. Valid values:
         # 
         # *   **static**: static content
-        # *   **dynamic**: dynamic content
+        # *   **dynamic**: dynamic requests
         # *   **all**: all content
         self.type = type
         # The traffic or bandwidth data returned at each interval.
@@ -8882,23 +8808,21 @@ class DescribeVodRefreshQuotaResponseBody(TeaModel):
         url_remain: str = None,
         block_remain: str = None,
     ):
-        # The maximum number of Object Storage Service (OSS) buckets that can be refreshed each day.
-        self.block_quota = block_quota
-        # The maximum number of directories of files that can be refreshed each day.
-        self.dir_quota = dir_quota
         # The remaining number of directories of files that can be refreshed on the current day.
-        self.dir_remain = dir_remain
-        # The maximum number of URLs of files that can be prefetched each day.
-        self.preload_quota = preload_quota
-        # The remaining number of URLs of files that can be prefetched on the current day.
-        self.preload_remain = preload_remain
+        self.block_quota = block_quota
+        # Queries the maximum number and remaining number of requests to refresh or prefetch files on the current day. You can prefetch files based on URLs and refresh files based on URLs or directories.
+        self.dir_quota = dir_quota
         # The ID of the request.
-        self.request_id = request_id
-        # The maximum number of URLs of files that can be refreshed each day.
-        self.url_quota = url_quota
-        # The remaining number of URLs of files that can be refreshed on the current day.
-        self.url_remain = url_remain
+        self.dir_remain = dir_remain
+        self.preload_quota = preload_quota
         # The remaining number of OSS buckets that can be refreshed on the current day.
+        self.preload_remain = preload_remain
+        # The maximum number of directories of files that can be refreshed each day.
+        self.request_id = request_id
+        self.url_quota = url_quota
+        # The operation that you want to perform. Set the value to **DescribeVodRefreshQuota**.
+        self.url_remain = url_remain
+        # The maximum number of URLs of files that can be prefetched each day.
         self.block_remain = block_remain
 
     def validate(self):
@@ -9884,13 +9808,16 @@ class DescribeVodUserDomainsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N. Valid values of N: **1** to **20**.
+        # The status of the domain name for CDN. Valid values:
         # 
-        # If you do not specify this parameter, all tag keys are queried.
+        # *   **online**: indicates that the domain name is enabled.
+        # *   **offline**: indicates that the domain name is disabled.
+        # *   **configuring**: indicates that the domain name is being configured.
+        # *   **configure_failed**: indicates that the domain name failed to be configured.
+        # *   **checking**: indicates that the domain name is under review.
+        # *   **check_failed**: indicates that the domain name failed the review.
         self.key = key
-        # The value of tag N. Valid values of N: **1** to **20**.
-        # 
-        # If you do not specify this parameter, all tag values are queried.
+        # The canonical domain name that is assigned to the domain name for CDN.
         self.value = value
 
     def validate(self):
@@ -9929,29 +9856,26 @@ class DescribeVodUserDomainsRequest(TeaModel):
         security_token: str = None,
         tag: List[DescribeVodUserDomainsRequestTag] = None,
     ):
-        # The domain name. The value of this parameter is used as a filter condition for a fuzzy match.
-        self.domain_name = domain_name
         # The search method. Valid values:
+        # 
         # *   **fuzzy_match**: fuzzy match. This is the default value.
         # *   **pre_match**: prefix match.
         # *   **suf_match**: suffix match.
         # *   **full_match**: exact match.
+        self.domain_name = domain_name
+        # The remarks.
         self.domain_search_type = domain_search_type
-        # The status of the domain name. The value of this parameter is used as a condition to filter domain names. Value values:
-        # *   **online**: indicates that the domain name is enabled.
-        # *   **offline**: indicates that the domain name is disabled.
-        # *   **configuring**: indicates that the domain name is being configured.
-        # *   **configure_failed**: indicates that the domain name failed to be configured.
-        # *   **checking**: indicates that the domain name is under review.
-        # *   **check_failed**: indicates that the domain name failed the review.
+        # The value of tag N. Valid values of N: **1** to **20**.
+        # 
+        # If you do not specify this parameter, all tag values are queried.
         self.domain_status = domain_status
         self.owner_id = owner_id
-        # The number of the page to return.
+        # The detailed information about each domain name for CDN. The returned information is displayed in the format that is specified by the PageData parameter.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **20**. Maximum value: **50**. Valid values: integers in the range of **1** to **50**.
+        # The operation that you want to perform. Set the value to **DescribeVodUserDomains**.
         self.page_size = page_size
         self.security_token = security_token
-        # Tag.
+        # The number of entries to return on each page. Default value: **20**. Maximum value: **50**. Valid values: integers in the range of **1** to **50**.
         self.tag = tag
 
     def validate(self):
@@ -10018,17 +9942,9 @@ class DescribeVodUserDomainsResponseBodyDomainsPageDataSourcesSource(TeaModel):
         priority: str = None,
         type: str = None,
     ):
-        # The address of the origin server.
         self.content = content
-        # The port number. Valid values: **443** and **80**.
         self.port = port
-        # The priority of the origin server.
         self.priority = priority
-        # The type of the origin server. Valid values:
-        # 
-        # *   **ipaddr**: a server that you can access by using an IP address.
-        # *   **domain**: a server that you can access by using a domain name.
-        # *   **oss**: an Object Storage Service (OSS) bucket.
         self.type = type
 
     def validate(self):
@@ -10111,33 +10027,21 @@ class DescribeVodUserDomainsResponseBodyDomainsPageData(TeaModel):
         sources: DescribeVodUserDomainsResponseBodyDomainsPageDataSources = None,
         ssl_protocol: str = None,
     ):
-        # The canonical domain name that is assigned to the domain name for CDN.
+        # Queries the domain names for CDN within your Alibaba Cloud account. You can filter domain names by name or by state. When you filter domain names by name, a fuzzy match is supported.
         self.cname = cname
-        # The remarks.
+        # The number of entries returned per page.
         self.description = description
-        # The domain name for CDN.
         self.domain_name = domain_name
-        # The status of the domain name for CDN. Valid values:
-        # 
-        # *   **online**: indicates that the domain name is enabled.
-        # *   **offline**: indicates that the domain name is disabled.
-        # *   **configuring**: indicates that the domain name is being configured.
-        # *   **configure_failed**: indicates that the domain name failed to be configured.
-        # *   **checking**: indicates that the domain name is under review.
-        # *   **check_failed**: indicates that the domain name failed the review.
         self.domain_status = domain_status
-        # The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The page number of the returned page.
         self.gmt_created = gmt_created
-        # The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.gmt_modified = gmt_modified
-        # Indicates whether the domain name for CDN is in a sandbox environment.
+        # The ID of the request.
         self.sandbox = sandbox
-        # The information about the origin server.
         self.sources = sources
-        # Indicates whether HTTPS is enabled.
+        # The key of tag N. Valid values of N: **1** to **20**.
         # 
-        # - **on**: indicates that HTTPS is enabled.
-        # - **off**: indicates that HTTPS is disabled.
+        # If you do not specify this parameter, all tag keys are queried.
         self.ssl_protocol = ssl_protocol
 
     def validate(self):
@@ -10238,15 +10142,25 @@ class DescribeVodUserDomainsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The detailed information about each domain name for CDN. The returned information is displayed in the format that is specified by the PageData parameter.
+        # The status of the domain name. The value of this parameter is used as a condition to filter domain names. Value values:
+        # 
+        # *   **online**: indicates that the domain name is enabled.
+        # *   **offline**: indicates that the domain name is disabled.
+        # *   **configuring**: indicates that the domain name is being configured.
+        # *   **configure_failed**: indicates that the domain name failed to be configured.
+        # *   **checking**: indicates that the domain name is under review.
+        # *   **check_failed**: indicates that the domain name failed the review.
         self.domains = domains
-        # The page number of the returned page.
+        # The domain name. The value of this parameter is used as a filter condition for a fuzzy match.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.page_size = page_size
-        # The ID of the request.
+        # The number of the page to return.
         self.request_id = request_id
-        # The total number of entries returned.
+        # Indicates whether HTTPS is enabled.
+        # 
+        # - **on**: indicates that HTTPS is enabled.
+        # - **off**: indicates that HTTPS is disabled.
         self.total_count = total_count
 
     def validate(self):
@@ -18624,7 +18538,10 @@ class GetMessageCallbackRequest(TeaModel):
         app_id: str = None,
         owner_account: str = None,
     ):
-        # The ID of the application. If you do not set this parameter, the default value **app-1000000** is used.
+        # The callback method. Valid values:
+        # 
+        # *   **HTTP**\
+        # *   **MNS**\
         self.app_id = app_id
         self.owner_account = owner_account
 
@@ -18664,27 +18581,22 @@ class GetMessageCallbackResponseBodyMessageCallback(TeaModel):
         mns_endpoint: str = None,
         mns_queue_name: str = None,
     ):
-        # The ID of the application.
+        # The operation that you want to perform. Set the value to **GetMessageCallback**.
         self.app_id = app_id
-        # The cryptographic key. This parameter is returned only for HTTP callbacks.
+        # Queries the callback method, callback URL, and event type of an event notification.
         self.auth_key = auth_key
+        self.auth_switch = auth_switch
         # Indicates whether callback authentication is enabled. This parameter is returned only for HTTP callbacks. Valid values:
         # 
         # *   **on**: indicates that authentication is enabled.
         # *   **off**: indicates that authentication is disabled.
-        self.auth_switch = auth_switch
-        # The callback method. Valid values:
-        # 
-        # *   **HTTP**\
-        # *   **MNS**\
         self.callback_type = callback_type
-        # The callback URL. This parameter is returned only for HTTP callbacks.
+        # The ID of the application.
         self.callback_url = callback_url
-        # The type of the callback event.
+        # The ID of the request.
         self.event_type_list = event_type_list
-        # The public endpoint of Message Service (MNS). This parameter is returned only for MNS callbacks.
         self.mns_endpoint = mns_endpoint
-        # The name of the MNS queue. This parameter is returned only for MNS callbacks.
+        # The callback URL. This parameter is returned only for HTTP callbacks.
         self.mns_queue_name = mns_queue_name
 
     def validate(self):
@@ -18741,9 +18653,9 @@ class GetMessageCallbackResponseBody(TeaModel):
         message_callback: GetMessageCallbackResponseBodyMessageCallback = None,
         request_id: str = None,
     ):
-        # The configuration of the event notification.
+        # The cryptographic key. This parameter is returned only for HTTP callbacks.
         self.message_callback = message_callback
-        # The ID of the request.
+        # The name of the MNS queue. This parameter is returned only for MNS callbacks.
         self.request_id = request_id
 
     def validate(self):
@@ -22129,32 +22041,40 @@ class GetVideoListRequest(TeaModel):
         status: str = None,
         storage_location: str = None,
     ):
-        # The ID of the video category.
+        # The category ID. You can use one of the following methods to obtain the category ID:
+        # 
+        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Categories** to view the category ID.
+        # *   Obtain the value of CateId from the response to the [AddCategory](~~56401~~) operation.
+        # *   Obtain the value of CateId from the response to the [GetCategories](~~56406~~) operation.
         self.cate_id = cate_id
-        # The end of the time range for querying videos based on their creation time. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.end_time = end_time
         # The number of the page to return. Default value: **1**.
         self.page_no = page_no
-        # Optional. The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
+        # The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
         self.page_size = page_size
-        # The method for sorting the results. Valid values:
+        # The sorting method of the results. Valid values:
         # 
         # *   **CreationTime:Desc** (default): The results are sorted in reverse chronological order based on the creation time.
         # *   **CreationTime:Asc**: The results are sorted in chronological order based on the creation time.
         self.sort_by = sort_by
-        # The beginning of the time range for querying videos based on their creation time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.start_time = start_time
-        # The status of the video. By default, you can obtain videos in all states. Separate multiple states with commas (,). Valid values:
+        # The video status. You can specify multiple video statuses and separate them with commas (,). Valid values:
         # 
         # *   **Uploading**: The video is being uploaded.
-        # *   **UploadFail**: The video fails to be uploaded.
-        # *   **UploadSucc**: The video is uploaded.
+        # *   **UploadFail**: The video failed to be uploaded.
+        # *   **UploadSucc**: The video has been uploaded.
         # *   **Transcoding**: The video is being transcoded.
-        # *   **TranscodeFail**: The video fails to be transcoded.
+        # *   **TranscodeFail**: The video failed to be transcoded.
+        # *   **checking**: The video is being reviewed.
         # *   **Blocked**: The video is blocked.
-        # *   **Normal**: The video can be played.
+        # *   **Normal**: The video is normal.
+        # *   **ProduceFail**: The video failed to be produced.
+        # 
+        # For more information about each video status, see the "Status: the status of a video" section of the [Basic data types](~~52839#section-p7c-jgy-070~~) topic.
         self.status = status
-        # The Object Storage Service (OSS) bucket where the video file is stored.
+        # The storage address of the media file.
         self.storage_location = storage_location
 
     def validate(self):
@@ -22254,46 +22174,50 @@ class GetVideoListResponseBodyVideoListVideo(TeaModel):
         title: str = None,
         video_id: str = None,
     ):
-        # The ID of the application. Default value: **app-1000000**.
+        # The application ID. Default value: **app-1000000**.
         self.app_id = app_id
-        # The ID of the video category.
+        # The category ID.
         self.cate_id = cate_id
-        # The name of the video category.
+        # The category name.
         self.cate_name = cate_name
-        # The URL of the video thumbnail.
+        # The thumbnail URL of the media file.
         self.cover_url = cover_url
-        # The time when the video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the media file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the video.
+        # The description of the media file.
         self.description = description
-        # The duration of the video. Unit: seconds.
+        # The duration of the media file. Unit: seconds.
         self.duration = duration
-        # The time when the video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
         self.restore_expiration = restore_expiration
         self.restore_status = restore_status
-        # The size of the video mezzanine file. Unit: byte.
+        # The size of the source file. Unit: bytes.
         self.size = size
-        # The URL array of video snapshots.
+        # The video snapshot URLs.
         self.snapshots = snapshots
-        # The status of the video. By default, videos in all states are returned. Multiple states are separated by commas (,). Valid values:
+        # The video status. Valid values:
         # 
         # *   **Uploading**: The video is being uploaded.
-        # *   **UploadFail**: The video fails to be uploaded.
-        # *   **UploadSucc**: The video is uploaded.
+        # *   **UploadFail**: The video failed to be uploaded.
+        # *   **UploadSucc**: The video has been uploaded.
         # *   **Transcoding**: The video is being transcoded.
-        # *   **TranscodeFail**: The video fails to be transcoded.
+        # *   **TranscodeFail**: The video failed to be transcoded.
+        # *   **checking**: The video is being reviewed.
         # *   **Blocked**: The video is blocked.
-        # *   **Normal**: The video can be played.
+        # *   **Normal**: The video is normal.
+        # *   **ProduceFail**: The video failed to be produced.
+        # 
+        # For more information about each video status, see the "Status: the status of a video" section of the [Basic data types](~~52839#section-p7c-jgy-070~~) topic.
         self.status = status
         self.storage_class = storage_class
-        # The OSS bucket where the video file is stored.
+        # The storage address of the media file.
         self.storage_location = storage_location
-        # The tags of the video. Multiple tags are separated by commas (,).
+        # The tags of the media file. Multiple tags are separated by commas (,).
         self.tags = tags
-        # The title of the video.
+        # The title of the media file.
         self.title = title
-        # The ID of the video.
+        # The ID of the media file.
         self.video_id = video_id
 
     def validate(self):
@@ -22430,9 +22354,9 @@ class GetVideoListResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The total number of videos.
+        # The total number of media files returned.
         self.total = total
-        # The information about the video. The information about a maximum of first 5,000 video records can be obtained in a single request.
+        # The information about the media file. Information about a maximum of 5,000 media files can be returned.
         self.video_list = video_list
 
     def validate(self):
@@ -22516,16 +22440,11 @@ class GetVideoPlayAuthRequest(TeaModel):
         auth_info_timeout: int = None,
         video_id: str = None,
     ):
-        # The API version number. Set the value to **1.0.0**.
+        # The duration of the audio or video file. Unit: seconds.
         self.api_version = api_version
-        # The time when the playback credential expires. Unit: **seconds**. You cannot obtain the playback URL of a video by using a credential that has expired. A new credential is required.
-        # *   Default value: **100**.
-        # *   Valid values: `100 to 3000`.
+        # The title of the audio or video file.
         self.auth_info_timeout = auth_info_timeout
-        # The ID of the audio or video file. You can use one of the following methods to obtain the ID of the file:
-        # *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
-        # *   Obtain the value of the VideoId parameter when you call the [CreateUploadVideo](~~55407~~) operation to upload files.
-        # *   Obtain the value of the VideoId parameter by calling the [SearchMedia](~~86044~~) operation. This method is applicable to files that have been uploaded.
+        # The API version number. Set the value to **1.0.0**.
         self.video_id = video_id
 
     def validate(self):
@@ -22565,15 +22484,10 @@ class GetVideoPlayAuthResponseBodyVideoMeta(TeaModel):
         title: str = None,
         video_id: str = None,
     ):
-        # The thumbnail URL of the audio or video file.
         self.cover_url = cover_url
-        # The duration of the audio or video file. Unit: seconds.
         self.duration = duration
-        # The status of the audio or video file. For more information about the value range and description, see the [Status](~~52839~~) table.
         self.status = status
-        # The title of the audio or video file.
         self.title = title
-        # The ID of the audio or video file.
         self.video_id = video_id
 
     def validate(self):
@@ -22619,11 +22533,11 @@ class GetVideoPlayAuthResponseBody(TeaModel):
         request_id: str = None,
         video_meta: GetVideoPlayAuthResponseBodyVideoMeta = None,
     ):
-        # The credential for video or audio playback.
-        self.play_auth = play_auth
         # The ID of the request.
+        self.play_auth = play_auth
+        # The operation that you want to perform. Set the value to **GetVideoPlayAuth**.
         self.request_id = request_id
-        # The metadata of the audio or video file.
+        # Queries the credential required for media playback.
         self.video_meta = video_meta
 
     def validate(self):
@@ -24558,23 +24472,32 @@ class ListLiveRecordVideoRequest(TeaModel):
         start_time: str = None,
         stream_name: str = None,
     ):
-        # The name of the application that was used to record the live stream.
-        self.app_name = app_name
-        # The domain name of the recorded live stream.
-        self.domain_name = domain_name
-        # The end of the time range to query. The query is performed based on the time range during which the required live streams were recorded. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        self.end_time = end_time
-        # The number of the page to return. Default value: **1**.
-        self.page_no = page_no
-        # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
-        self.page_size = page_size
         # The sorting rule of results. Valid values:
+        # 
         # *   **CreationTime:Desc**: sorts the results based on the creation time in descending order. This is the default value.
         # *   **CreationTime:Asc**: sorts the results based on the creation time in ascending order.
-        self.sort_by = sort_by
-        # The beginning of the time range to query. The query is performed based on the time range during which the required live streams were recorded. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        self.start_time = start_time
+        self.app_name = app_name
+        # The operation that you want to perform. Set the value to **ListLiveRecordVideo**.
+        self.domain_name = domain_name
+        # CreationTime:Desc
+        self.end_time = end_time
         # The name of the recorded live stream.
+        self.page_no = page_no
+        # The ID of the transcoding template group.
+        self.page_size = page_size
+        # The duration of the video. Unit: seconds.
+        self.sort_by = sort_by
+        # The name of the video category.
+        self.start_time = start_time
+        # The status of the video. Valid values:
+        # 
+        # *   **Uploading:**: indicates that the video is being uploaded.
+        # *   **UploadFail**: indicates that the video failed to be uploaded.
+        # *   **UploadSucces**: indicates that the video was uploaded.
+        # *   **Transcoding**: indicates that the video is being transcoded.
+        # *   **TranscodeFail**: indicates that the video failed to be transcoded.
+        # *   **Blocked**: indicates that the video is blocked.
+        # *   **Normal**: indicates that the video is in a normal state.
         self.stream_name = stream_name
 
     def validate(self):
@@ -24670,40 +24593,27 @@ class ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo(Tea
         title: str = None,
         video_id: str = None,
     ):
-        # The ID of the video category.
-        self.cate_id = cate_id
-        # The name of the video category.
-        self.cate_name = cate_name
-        # The thumbnail URL of the video.
-        self.cover_url = cover_url
         # The time when the video was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        self.cate_id = cate_id
+        # The name of the application.
+        self.cate_name = cate_name
+        self.cover_url = cover_url
+        # The beginning of the time range to query. The query is performed based on the time range during which the required live streams were recorded. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.creation_time = creation_time
-        # The description of the video.
+        # The name of the live stream.
         self.description = description
-        # The duration of the video. Unit: seconds.
         self.duration = duration
-        # The last time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modify_time = modify_time
-        # The size of the mezzanine file. Unit: byte.
+        # Queries live-to-VOD videos.
         self.size = size
-        # The array of video snapshot URLs.
         self.snapshots = snapshots
-        # The status of the video. Valid values:
-        # *   **Uploading:**: indicates that the video is being uploaded.
-        # *   **UploadFail**: indicates that the video failed to be uploaded.
-        # *   **UploadSucces**: indicates that the video was uploaded.
-        # *   **Transcoding**: indicates that the video is being transcoded.
-        # *   **TranscodeFail**: indicates that the video failed to be transcoded.
-        # *   **Blocked**: indicates that the video is blocked.
-        # *   **Normal**: indicates that the video is in a normal state.
+        # The ID of the playlist.
         self.status = status
-        # The tags of the video. Separate multiple tags with commas (,).
+        # 2017-01-11T13:00:00Z
         self.tags = tags
-        # The ID of the transcoding template group.
         self.template_group_id = template_group_id
-        # The title of the video.
         self.title = title
-        # The ID of the video.
+        # 10
         self.video_id = video_id
 
     def validate(self):
@@ -24791,19 +24701,19 @@ class ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo(TeaModel
         stream_name: str = None,
         video: ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo = None,
     ):
-        # The name of the application.
-        self.app_name = app_name
-        # The domain name.
-        self.domain_name = domain_name
-        # The ID of the playlist.
-        self.playlist_id = playlist_id
-        # The end of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        self.record_end_time = record_end_time
-        # The beginning of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        self.record_start_time = record_start_time
-        # The name of the live stream.
-        self.stream_name = stream_name
         # The information about the video.
+        self.app_name = app_name
+        # The tags of the video. Separate multiple tags with commas (,).
+        self.domain_name = domain_name
+        # The last time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        self.playlist_id = playlist_id
+        # The domain name of the recorded live stream.
+        self.record_end_time = record_end_time
+        # The array of video snapshot URLs.
+        self.record_start_time = record_start_time
+        # The end of the time range to query. The query is performed based on the time range during which the required live streams were recorded. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        self.stream_name = stream_name
+        # The name of the application that was used to record the live stream.
         self.video = video
 
     def validate(self):
@@ -24894,11 +24804,11 @@ class ListLiveRecordVideoResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of videos.
-        self.live_record_video_list = live_record_video_list
-        # The ID of the request.
-        self.request_id = request_id
         # The total number of videos returned.
+        self.live_record_video_list = live_record_video_list
+        # The description of the video.
+        self.request_id = request_id
+        # The title of the video.
         self.total = total
 
     def validate(self):
@@ -24984,25 +24894,15 @@ class ListSnapshotsRequest(TeaModel):
         snapshot_type: str = None,
         video_id: str = None,
     ):
-        # The validity period of the snapshot URL. Unit: seconds. Default value: **3600**. Minimum value: **3600**.
-        # 
-        # *   This parameter only takes effect when [URL authentication](~~57007~~) is enabled.
-        # *   If the specified validity period is less than **3600** seconds, the default value is **3600**.
-        # *   If an Object Storage Service (OSS) URL is returned, the maximum validity period is limited to **2592000** seconds (30 days) to reduce security risks of the origin.
+        # The index of the snapshot.
         self.auth_timeout = auth_timeout
-        # The number of the page to turn. Default value: **1**.
-        self.page_no = page_no
         # The number of entries to return on each page. Default value: **20**. Maximum value: **100**.
-        self.page_size = page_size
-        # The type of snapshots that are returned. Valid values:
-        # 
-        # *   **CoverSnapshot**: thumbnail snapshot
-        # *   **NormalSnapshot**: normal snapshot
-        # *   **SpriteSnapshot**: sprite snapshot
-        # *   **SpriteOriginSnapshot**: sprite source snapshot
-        # *   **WebVttSnapshot**: WebVTT snapshot
-        self.snapshot_type = snapshot_type
+        self.page_no = page_no
         # The ID of the video.
+        self.page_size = page_size
+        # The number of the page to turn. Default value: **1**.
+        self.snapshot_type = snapshot_type
+        # The operation that you want to perform. Set the value to **ListSnapshots**.
         self.video_id = video_id
 
     def validate(self):
@@ -25047,9 +24947,7 @@ class ListSnapshotsResponseBodyMediaSnapshotSnapshotsSnapshot(TeaModel):
         index: int = None,
         url: str = None,
     ):
-        # The index of the snapshot.
         self.index = index
-        # The URL of the snapshot.
         self.url = url
 
     def validate(self):
@@ -25120,13 +25018,12 @@ class ListSnapshotsResponseBodyMediaSnapshot(TeaModel):
         snapshots: ListSnapshotsResponseBodyMediaSnapshotSnapshots = None,
         total: int = None,
     ):
-        # The time when the snapshot job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        self.creation_time = creation_time
         # The ID of the snapshot job.
+        self.creation_time = creation_time
+        # Queries the snapshots that are captured from the specified media.
         self.job_id = job_id
-        # The rule for generating snapshot URLs.
+        # The ID of the request.
         self.regular = regular
-        # The snapshot data.
         self.snapshots = snapshots
         # The total number of snapshots.
         self.total = total
@@ -25175,9 +25072,9 @@ class ListSnapshotsResponseBody(TeaModel):
         media_snapshot: ListSnapshotsResponseBodyMediaSnapshot = None,
         request_id: str = None,
     ):
-        # The snapshot data of the media.
+        # The URL of the snapshot.
         self.media_snapshot = media_snapshot
-        # The ID of the request.
+        # The snapshot data of the media.
         self.request_id = request_id
 
     def validate(self):
@@ -26923,19 +26820,14 @@ class RegisterMediaRequest(TeaModel):
         user_data: str = None,
         workflow_id: str = None,
     ):
-        # The metadata of the media file that you want to register. The value is a JSON string. You can specify the metadata for a maximum of 10 media files at a time. For more information about the metadata of media files, see the **RegisterMetadata** section of this topic.
+        # The URLs of the media files that failed to be registered.
         self.register_metadatas = register_metadatas
-        # The ID of the transcoding template group. You can use one of the following methods to obtain the ID of the transcoding template group:
-        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Transcoding Template Groups**. On the Transcoding Template Groups page, you can view the ID of the transcoding template group.
-        # *   View the value of the TranscodeTemplateGroupId parameter returned by the [AddTranscodeTemplateGroup](~~102665~~) operation that you called to create a transcoding template group.
-        # *   View the value of the TranscodeTemplateGroupId parameter returned by the [ListTranscodeTemplateGroup](~~102669~~) operation that you called to query a transcoding template group.
-        # > *   If you do not need to transcode the media file, set the TemplateGroupId parameter to VOD_NO_TRANSCODE. Otherwise, an exception occurs during video playback. If you need to transcode the media file, specify the ID of the transcoding template group.
-        # > *   If both the WorkflowId and TemplateGroupId parameters are set, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
-        self.template_group_id = template_group_id
-        # The custom configurations such as callback configurations. The value is a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](~~86952#section\_6fg_qll_v3w~~) topic.
-        self.user_data = user_data
         # The ID of the workflow. To view the ID of the workflow, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Workflows**.
         # > If both the WorkflowId and TemplateGroupId parameters are set, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
+        self.template_group_id = template_group_id
+        # The ID of the media file that is registered with ApsaraVideo VOD. If the registered media file is an audio or video file, the value of the VideoId parameter returned by ApsaraVideo VOD takes effect.
+        self.user_data = user_data
+        # The ID of the request.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -26977,13 +26869,8 @@ class RegisterMediaResponseBodyRegisteredMediaList(TeaModel):
         media_id: str = None,
         new_register: bool = None,
     ):
-        # The OSS URL of the media file.
         self.file_url = file_url
-        # The ID of the media file that is registered with ApsaraVideo VOD. If the registered media file is an audio or video file, the value of the VideoId parameter returned by ApsaraVideo VOD takes effect.
         self.media_id = media_id
-        # Indicates whether the media file is newly registered or repeatedly registered. Valid values:  
-        # - **true**: The media file is newly registered.
-        # - **false**: The media file is repeatedly registered.
         self.new_register = new_register
 
     def validate(self):
@@ -27021,11 +26908,21 @@ class RegisterMediaResponseBody(TeaModel):
         registered_media_list: List[RegisterMediaResponseBodyRegisteredMediaList] = None,
         request_id: str = None,
     ):
-        # The URLs of the media files that failed to be registered.
+        # ## RegisterMetadata
+        # 
+        # The following table describes the metadata of the media file that you want to register. 
+        # 
+        # | Parameter | Type | Required | Description |
+        # | --------- | ---- | -------- | ----------- |
+        # | FileURL | String | Yes | The OSS URL of the source file. You can call the [GetMezzanineInfo](~~GetMezzanineInfo~~) operation to obtain the OSS URL of the source file.  <br>The URL can be up to 1,024 bytes in length. The file name must be globally unique. If the media file that you want to register is registered before, the unique media ID that is associated with the media file is returned. |
+        # | Title | String | Yes | The title of the media file. The title can be up to 128 bytes in length. The value must be encoded in UTF-8. |
+        # | Description | String | No | The description of the media file. The description can be up to 1,024 bytes in length. The value must be encoded in UTF-8. |
+        # | Tags | String | No | The one or more tags of the media file. Each tag can be up to 32 bytes in length. You can specify a maximum of 16 tags. Separate multiple tags with commas (,). The value must be encoded in UTF-8. |
+        # | CoverURL | String | No | The URL of the thumbnail. The URL can be up to 1,024 bytes in length. |
+        # | CateId | Long | No | The category ID of the media file. You can use one of the following methods to obtain the category ID: <br>Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Categories**. On the Categories page, you can view the category ID of the media file.  <br>View the value of the CateId parameter returned by the [AddCategory](~~AddCategory~~) operation that you called to create a category.  <br>View the value of the CateId parameter returned by the [GetCategories](~~GetCategories~~) operation that you called to query a category. |
         self.failed_file_urls = failed_file_urls
-        # The media files that are registered, including newly registered and repeatedly registered media files.
         self.registered_media_list = registered_media_list
-        # The ID of the request.
+        # The OSS URL of the media file.
         self.request_id = request_id
 
     def validate(self):
@@ -27104,6 +27001,240 @@ class RegisterMediaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RegisterMediaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RestoreMediaRequest(TeaModel):
+    def __init__(
+        self,
+        media_ids: str = None,
+        restore_days: str = None,
+        restore_tier: str = None,
+        scope: str = None,
+    ):
+        self.media_ids = media_ids
+        self.restore_days = restore_days
+        self.restore_tier = restore_tier
+        self.scope = scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_ids is not None:
+            result['MediaIds'] = self.media_ids
+        if self.restore_days is not None:
+            result['RestoreDays'] = self.restore_days
+        if self.restore_tier is not None:
+            result['RestoreTier'] = self.restore_tier
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaIds') is not None:
+            self.media_ids = m.get('MediaIds')
+        if m.get('RestoreDays') is not None:
+            self.restore_days = m.get('RestoreDays')
+        if m.get('RestoreTier') is not None:
+            self.restore_tier = m.get('RestoreTier')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO(TeaModel):
+    def __init__(
+        self,
+        media_id: str = None,
+        reason: str = None,
+    ):
+        self.media_id = media_id
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        return self
+
+
+class RestoreMediaResponseBodyForbiddenList(TeaModel):
+    def __init__(
+        self,
+        media_forbidden_reason_dto: List[RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO] = None,
+    ):
+        self.media_forbidden_reason_dto = media_forbidden_reason_dto
+
+    def validate(self):
+        if self.media_forbidden_reason_dto:
+            for k in self.media_forbidden_reason_dto:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MediaForbiddenReasonDTO'] = []
+        if self.media_forbidden_reason_dto is not None:
+            for k in self.media_forbidden_reason_dto:
+                result['MediaForbiddenReasonDTO'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.media_forbidden_reason_dto = []
+        if m.get('MediaForbiddenReasonDTO') is not None:
+            for k in m.get('MediaForbiddenReasonDTO'):
+                temp_model = RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO()
+                self.media_forbidden_reason_dto.append(temp_model.from_map(k))
+        return self
+
+
+class RestoreMediaResponseBodyIgnoredList(TeaModel):
+    def __init__(
+        self,
+        media_id: List[str] = None,
+    ):
+        self.media_id = media_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        return self
+
+
+class RestoreMediaResponseBody(TeaModel):
+    def __init__(
+        self,
+        forbidden_list: RestoreMediaResponseBodyForbiddenList = None,
+        ignored_list: RestoreMediaResponseBodyIgnoredList = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.forbidden_list = forbidden_list
+        self.ignored_list = ignored_list
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.forbidden_list:
+            self.forbidden_list.validate()
+        if self.ignored_list:
+            self.ignored_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.forbidden_list is not None:
+            result['ForbiddenList'] = self.forbidden_list.to_map()
+        if self.ignored_list is not None:
+            result['IgnoredList'] = self.ignored_list.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ForbiddenList') is not None:
+            temp_model = RestoreMediaResponseBodyForbiddenList()
+            self.forbidden_list = temp_model.from_map(m['ForbiddenList'])
+        if m.get('IgnoredList') is not None:
+            temp_model = RestoreMediaResponseBodyIgnoredList()
+            self.ignored_list = temp_model.from_map(m['IgnoredList'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RestoreMediaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RestoreMediaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RestoreMediaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27438,24 +27569,31 @@ class SearchMediaRequest(TeaModel):
         search_type: str = None,
         sort_by: str = None,
     ):
-        # The level of the category.
-        self.fields = fields
-        # The operation that you want to perform. Set the value to **SearchMedia**.
-        self.match = match
         # Details about media assets.
-        self.page_no = page_no
+        self.fields = fields
         # The preprocessing status. Only preprocessed videos can be used for live streaming in the production studio. Valid values:
         # 
         # *   **UnPreprocess**\
         # *   **Preprocessing**\
         # *   **PreprocessSucceed**\
         # *   **PreprocessFailed**\
+        self.match = match
+        # The ID of the media asset.
+        self.page_no = page_no
+        # The type of the media asset that you want to query. Default value: video. Valid values:
+        # 
+        # *   **video**\
+        # *   **audio**\
+        # *   **image**\
+        # *   **attached**\
+        # 
+        # > If this parameter is set to **video** or **audio** and you want to traverse all data that meets the filter criteria, you must set the ScrollToken parameter.
         self.page_size = page_size
-        # The size of the video file.
+        # The tags of the image file.
         self.scroll_token = scroll_token
-        # The ID of the parent category.
-        self.search_type = search_type
         # The list of sprite snapshots.
+        self.search_type = search_type
+        # The size of the video file.
         self.sort_by = sort_by
 
     def validate(self):
@@ -27808,14 +27946,11 @@ class SearchMediaResponseBodyMediaListAttachedMedia(TeaModel):
         self.app_id = app_id
         self.business_type = business_type
         self.categories = categories
-        # The ID of the request.
         self.creation_time = creation_time
         self.description = description
         self.media_id = media_id
         self.modification_time = modification_time
-        # The endpoint of the OSS bucket in which the audio file is stored.
         self.status = status
-        # Queries the information about media assets such as video, audio, and image files, and auxiliary media assets.
         self.storage_location = storage_location
         self.tags = tags
         self.title = title
@@ -27920,70 +28055,71 @@ class SearchMediaResponseBodyMediaListAudio(TeaModel):
         title: str = None,
         transcode_mode: str = None,
     ):
-        # The number of the page to return. Default value: **1**.
-        # 
-        # > If the value of this parameter exceeds **200**, we recommend that you set the ScrollToken parameter as well.
+        # The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
         self.app_id = app_id
-        # The name of the category.
+        # The time when the auxiliary media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.audio_id = audio_id
-        # The size of the audio file.
+        # The URL of the auxiliary media asset.
         self.cate_id = cate_id
+        # The name of the category.
+        self.cate_name = cate_name
         # The status of the auxiliary media asset. Valid values:
         # 
         # *   **Uploading**: The auxiliary media asset is being uploaded. This is the initial status.
         # *   **Normal**: The auxiliary media asset is uploaded.
         # *   **UploadFail**: The auxiliary media asset fails to be uploaded.
-        self.cate_name = cate_name
-        # The type of the auxiliary media asset. Valid values:
-        # 
-        # *   **watermark**\
-        # *   **subtitle**\
-        # *   **material**\
         self.cover_url = cover_url
-        # The sort field and order. Separate multiple values with commas (,). Default value: CreationTime:Desc. Valid values:
-        # 
-        # *   **CreationTime:Desc**: The results are sorted in reverse chronological order based on the creation time.
-        # *   **CreationTime:Asc**: The results are sorted in chronological order based on the creation time.
-        # 
-        # > * For more information about the sort field, see "Sort field" in the [Search for media asset information](~~99179~~) topic.
-        # > * To obtain the first 5,000 data records that meet the specified filter criteria, you can specify a maximum of three sort fields.
-        # > * To obtain all the data records that meet the specified filter criteria, you can specify only one sort field.
-        self.creation_time = creation_time
-        # The tags of the video file.
-        self.description = description
-        # The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
-        self.download_switch = download_switch
-        # The time when the audio file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        self.duration = duration
-        # The URL of the auxiliary media asset.
-        self.media_source = media_source
-        # The duration of the audio file.
-        self.modification_time = modification_time
-        # The ID of the auxiliary media asset.
-        self.preprocess_status = preprocess_status
-        self.restore_expiration = restore_expiration
-        self.restore_status = restore_status
-        # The name of the category.
-        self.size = size
-        # [Details about audio files](~~86991~~).
-        self.snapshots = snapshots
-        # The time when the image file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        self.sprite_snapshots = sprite_snapshots
-        # The endpoint of the OSS bucket in which the auxiliary media asset is stored.
-        self.status = status
-        self.storage_class = storage_class
-        # The name of the category.
-        self.storage_location = storage_location
         # The source. Valid values:
         # 
         # *   **general**: The video file is uploaded by using ApsaraVideo VOD.
         # *   **short_video**: The video file is uploaded by using the short video SDK.
         # *   **editing**: The video file is produced after online editing.
         # *   **live**: The video stream is recorded and uploaded as a file.
-        self.tags = tags
+        self.creation_time = creation_time
+        # The type of the auxiliary media asset. Valid values:
+        # 
+        # *   **watermark**\
+        # *   **subtitle**\
+        # *   **material**\
+        self.description = description
+        # The ID of the auxiliary media asset.
+        self.download_switch = download_switch
+        # The time when the image file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        self.duration = duration
+        # The number of the page to return. Default value: **1**.
+        # 
+        # > If the value of this parameter exceeds **200**, we recommend that you set the ScrollToken parameter as well.
+        self.media_source = media_source
+        # The pagination identifier.
+        self.modification_time = modification_time
         # The total number of data records that meet the specified filter criteria.
+        self.preprocess_status = preprocess_status
+        self.restore_expiration = restore_expiration
+        self.restore_status = restore_status
+        # The title of the video file.
+        self.size = size
+        # The ID of the video file.
+        self.snapshots = snapshots
+        # The status of the image file.
+        # 
+        # *   **Uploading**: The image file is being uploaded. This is the initial status.
+        # *   **Normal**: The image file is uploaded.
+        # *   **UploadFail**: The image file fails to be uploaded.
+        self.sprite_snapshots = sprite_snapshots
+        # The size of the audio file.
+        self.status = status
+        self.storage_class = storage_class
+        # The duration of the audio file.
+        self.storage_location = storage_location
+        # The tags of the video file.
+        self.tags = tags
+        # The transcoding mode. Default value: FastTranscode. Valid values:
+        # 
+        # *   **FastTranscode**: The audio file is immediately transcoded after it is uploaded. You cannot play the file before it is transcoded.
+        # *   **NoTranscode**: The audio file can be played without being transcoded. You can immediately play the file after it is uploaded.
+        # *   **AsyncTranscode**: The audio file can be immediately played and asynchronously transcoded after it is uploaded.
         self.title = title
-        # The time when the auxiliary media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the audio file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.transcode_mode = transcode_mode
 
     def validate(self):
@@ -28110,34 +28246,34 @@ class SearchMediaResponseBodyMediaListImage(TeaModel):
         title: str = None,
         url: str = None,
     ):
-        # The ID of the image file.
-        self.app_id = app_id
-        # The ID of the application.
-        self.cate_id = cate_id
-        # The duration of the video file. Unit: seconds.
-        self.cate_name = cate_name
-        # The category ID of the image file.
-        self.creation_time = creation_time
-        # The URL of the thumbnail.
-        self.description = description
         # The ID of the audio file.
+        self.app_id = app_id
+        # The duration of the video file. Unit: seconds.
+        self.cate_id = cate_id
+        # The tags of the auxiliary media asset.
+        self.cate_name = cate_name
+        # [Details about auxiliary media assets](~~86991~~).
+        self.creation_time = creation_time
+        # The ID of the application.
+        self.description = description
+        # The endpoint of the OSS bucket in which the audio file is stored.
         self.image_id = image_id
+        # The URL of the thumbnail.
+        self.modification_time = modification_time
         # The type of the media asset. Valid values:
         # 
         # *   **video**\
         # *   **audio**\
         # *   **image**\
         # *   **attached**\
-        self.modification_time = modification_time
-        # The time when the video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.status = status
-        # The ID of the video file.
-        self.storage_location = storage_location
-        # [Details about auxiliary media assets](~~86991~~).
-        self.tags = tags
-        # The category ID of the video file.
-        self.title = title
         # The ID of the application.
+        self.storage_location = storage_location
+        # The list of automatic snapshots.
+        self.tags = tags
+        # The ID of the request.
+        self.title = title
+        # The URL of the thumbnail.
         self.url = url
 
     def validate(self):
@@ -28231,25 +28367,11 @@ class SearchMediaResponseBodyMediaListVideo(TeaModel):
         transcode_mode: str = None,
         video_id: str = None,
     ):
-        # [Details about video files](~~86991~~).
-        self.app_id = app_id
-        # The ID of the application.
-        self.cate_id = cate_id
-        # The filter condition. For more information about the syntax, see [Protocol for media asset search](~~86991~~).
-        self.cate_name = cate_name
-        # The endpoint of the OSS bucket in which the image file is stored.
-        self.cover_url = cover_url
-        # The time when the media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        self.creation_time = creation_time
-        # The title of the image file.
-        self.description = description
         # The download switch. The audio file can be downloaded offline only when the download switch is turned on. Valid values:
         # 
         # *   **on**\
         # *   **off**\
-        self.download_switch = download_switch
-        # The category ID of the audio file.
-        self.duration = duration
+        self.app_id = app_id
         # The status of the video file. Valid values:
         # 
         # *   **Uploading**\
@@ -28259,36 +28381,45 @@ class SearchMediaResponseBodyMediaListVideo(TeaModel):
         # *   **TranscodeFail**\
         # *   **Blocked**\
         # *   **Normal**\
-        self.media_source = media_source
-        # The time when the audio file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        self.modification_time = modification_time
+        self.cate_id = cate_id
+        # The name of the category.
+        self.cate_name = cate_name
+        # The filter condition. For more information about the syntax, see [Protocol for media asset search](~~86991~~).
+        self.cover_url = cover_url
+        # The category ID of the auxiliary media asset.
+        self.creation_time = creation_time
+        # The endpoint of the OSS bucket in which the image file is stored.
+        self.description = description
         # The ID of the application.
+        self.download_switch = download_switch
+        # The description of the auxiliary media asset.
+        self.duration = duration
+        # [Details about video files](~~86991~~).
+        self.media_source = media_source
+        # The description of the audio file.
+        self.modification_time = modification_time
+        # The URL of the image file.
         self.preprocess_status = preprocess_status
         self.restore_expiration = restore_expiration
         self.restore_status = restore_status
-        # The name of the category.
-        self.size = size
-        # The title of the audio file.
-        self.snapshots = snapshots
         # The time when the image file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        self.size = size
+        # The endpoint of the OSS bucket in which the auxiliary media asset is stored.
+        self.snapshots = snapshots
+        # The list of automatic snapshots.
         self.sprite_snapshots = sprite_snapshots
-        # The description of the image file.
+        # The ID of the application.
         self.status = status
         self.storage_class = storage_class
-        # The download switch. The video file can be downloaded offline only when the download switch is turned on. Valid values:
-        # 
-        # *   **on**\
-        # *   **off**\
+        # The time when the audio file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.storage_location = storage_location
-        # The category ID of the auxiliary media asset.
+        # The title of the image file.
         self.tags = tags
-        # The URL of the image file.
+        # The title of the audio file.
         self.title = title
-        # The time when the video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The category ID of the audio file.
         self.transcode_mode = transcode_mode
-        # The media asset fields to return in the query results.
-        # 
-        # By default, only the basic media asset fields are returned. You can specify additional media asset fields that need to be returned in the request. For more information, see the "API examples" section of the [Search for media asset information](~~99179~~) topic.
+        # The time when the video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.video_id = video_id
 
     def validate(self):
@@ -28416,29 +28547,22 @@ class SearchMediaResponseBodyMediaList(TeaModel):
         self.ai_data = ai_data
         # AI简介数据
         self.ai_rough_data = ai_rough_data
-        # The URL of the thumbnail.
+        # Queries the information about media assets such as video, audio, and image files, and auxiliary media assets.
         self.attached_media = attached_media
-        # The time when the auxiliary media asset was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The name of the category.
         self.audio = audio
-        # The title of the auxiliary media asset.
-        self.creation_time = creation_time
-        # The pagination identifier. The identifier can be up to 32 characters in length.
-        # 
-        # The first time you call this operation for each new search, you do not need to specify this parameter. The value of this parameter is returned each time data records that meet the specified filter criteria are found. The value is used to record the current position of queried data. Record the returned parameter value and set this parameter according to the following requirements during the next search:
-        # 
-        # *   If SearchType is set to **video** or **audio** and you need to traverse all data that meets the filter criteria, you must set the ScrollToken parameter.
-        # *   If the value of the PageNo parameter exceeds **200**, we recommend that you set this parameter to optimize search performance.
-        self.image = image
-        # The description of the video file.
-        self.media_id = media_id
-        # The status of the audio file. Valid values:
-        # 
-        # *   **Uploading**\
-        # *   **Normal**\
-        # *   **UploadFail**\
-        # *   **Deleted**\
-        self.media_type = media_type
         # The list of category IDs.
+        self.creation_time = creation_time
+        # The time when the video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        self.image = image
+        # The time when the media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        self.media_id = media_id
+        # The description of the image file.
+        self.media_type = media_type
+        # The download switch. The video file can be downloaded offline only when the download switch is turned on. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.video = video
 
     def validate(self):
@@ -28518,24 +28642,18 @@ class SearchMediaResponseBody(TeaModel):
         scroll_token: str = None,
         total: int = None,
     ):
-        # The tags of the audio file.
+        # The status of the audio file. Valid values:
+        # 
+        # *   **Uploading**\
+        # *   **Normal**\
+        # *   **UploadFail**\
+        # *   **Deleted**\
         self.media_list = media_list
-        # The type of the media asset that you want to query. Default value: video. Valid values:
-        # 
-        # *   **video**\
-        # *   **audio**\
-        # *   **image**\
-        # *   **attached**\
-        # 
-        # > If this parameter is set to **video** or **audio** and you want to traverse all data that meets the filter criteria, you must set the ScrollToken parameter.
+        # The tags of the audio file.
         self.request_id = request_id
-        # The transcoding mode. Default value: FastTranscode. Valid values:
-        # 
-        # *   **FastTranscode**: The video file is immediately transcoded after it is uploaded. You cannot play the file before it is transcoded.
-        # *   **NoTranscode**: The video file can be played without being transcoded. You can immediately play the file after it is uploaded.
-        # *   **AsyncTranscode**: The video file can be immediately played and asynchronously transcoded after it is uploaded.
+        # The title of the auxiliary media asset.
         self.scroll_token = scroll_token
-        # The tags of the image file.
+        # [Details about image files](~~86991~~).
         self.total = total
 
     def validate(self):
@@ -29316,27 +29434,23 @@ class SetMessageCallbackRequest(TeaModel):
         mns_queue_name: str = None,
         owner_account: str = None,
     ):
-        # The ID of the application. If you do not set this parameter, the default value **app-1000000** is used.
         self.app_id = app_id
-        # The cryptographic key. This parameter only takes effect when the CallbackType parameter is set to HTTP. The key can be up to 32 characters in length and must contain uppercase letters, lowercase letters, and digits.
+        # The operation that you want to perform. Set the value to **SetMessageCallback**.
         self.auth_key = auth_key
+        # The ID of the request.
+        self.auth_switch = auth_switch
+        # The type of the callback event. If you do not set this parameter, notifications for all types of events are disabled. If you set this parameter to ALL, notifications for all types of events are enabled. You can specify the event types for which notifications are enabled. Separate multiple event types with commas (,). For more information about the valid values of this parameter, see [Event type](~~55627~~).
+        self.callback_type = callback_type
+        # The name of the MNS queue. This parameter only takes effect when the CallbackType parameter is set to MNS.
+        self.callback_url = callback_url
         # Specifies whether to enable callback authentication. This parameter only takes effect when the CallbackType parameter is set to HTTP. Valid values:
         # 
         # *   **on**: enables authentication.
         # *   **off**: disables authentication.
-        self.auth_switch = auth_switch
-        # The callback method. Valid values:
-        # 
-        # *   **HTTP**\
-        # *   **MNS**\
-        self.callback_type = callback_type
-        # The callback URL. This parameter only takes effect when the CallbackType parameter is set to HTTP.
-        self.callback_url = callback_url
-        # The type of the callback event. If you do not set this parameter, notifications for all types of events are disabled. If you set this parameter to ALL, notifications for all types of events are enabled. You can specify the event types for which notifications are enabled. Separate multiple event types with commas (,). For more information about the valid values of this parameter, see [Event type](~~55627~~).
         self.event_type_list = event_type_list
-        # The public endpoint of Message Service (MNS). This parameter only takes effect when the CallbackType parameter is set to MNS. For more information, see [Endpoint](~~27480#concept-2028913~~ "An endpoint is the address that you specify for a subscription to receive messages. When messages are published to a topic, Message Service (MNS) pushes the messages to the specified endpoints. You can specify the same endpoint for multiple subscriptions.").
+        # The cryptographic key. This parameter only takes effect when the CallbackType parameter is set to HTTP. The key can be up to 32 characters in length and must contain uppercase letters, lowercase letters, and digits.
         self.mns_endpoint = mns_endpoint
-        # The name of the MNS queue. This parameter only takes effect when the CallbackType parameter is set to MNS.
+        # Sets the callback method, callback URL, and event type of an event notification.
         self.mns_queue_name = mns_queue_name
         self.owner_account = owner_account
 
@@ -29397,7 +29511,6 @@ class SetMessageCallbackResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -31997,6 +32110,240 @@ class UpdateImageInfosResponse(TeaModel):
         return self
 
 
+class UpdateMediaStorageClassRequest(TeaModel):
+    def __init__(
+        self,
+        media_ids: str = None,
+        restore_tier: str = None,
+        scope: str = None,
+        storage_class: str = None,
+    ):
+        self.media_ids = media_ids
+        self.restore_tier = restore_tier
+        self.scope = scope
+        self.storage_class = storage_class
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_ids is not None:
+            result['MediaIds'] = self.media_ids
+        if self.restore_tier is not None:
+            result['RestoreTier'] = self.restore_tier
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        if self.storage_class is not None:
+            result['StorageClass'] = self.storage_class
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaIds') is not None:
+            self.media_ids = m.get('MediaIds')
+        if m.get('RestoreTier') is not None:
+            self.restore_tier = m.get('RestoreTier')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        if m.get('StorageClass') is not None:
+            self.storage_class = m.get('StorageClass')
+        return self
+
+
+class UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO(TeaModel):
+    def __init__(
+        self,
+        media_id: str = None,
+        reason: str = None,
+    ):
+        self.media_id = media_id
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        return self
+
+
+class UpdateMediaStorageClassResponseBodyForbiddenList(TeaModel):
+    def __init__(
+        self,
+        media_forbidden_reason_dto: List[UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO] = None,
+    ):
+        self.media_forbidden_reason_dto = media_forbidden_reason_dto
+
+    def validate(self):
+        if self.media_forbidden_reason_dto:
+            for k in self.media_forbidden_reason_dto:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MediaForbiddenReasonDTO'] = []
+        if self.media_forbidden_reason_dto is not None:
+            for k in self.media_forbidden_reason_dto:
+                result['MediaForbiddenReasonDTO'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.media_forbidden_reason_dto = []
+        if m.get('MediaForbiddenReasonDTO') is not None:
+            for k in m.get('MediaForbiddenReasonDTO'):
+                temp_model = UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO()
+                self.media_forbidden_reason_dto.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateMediaStorageClassResponseBodyIgnoredList(TeaModel):
+    def __init__(
+        self,
+        media_id: List[str] = None,
+    ):
+        self.media_id = media_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        return self
+
+
+class UpdateMediaStorageClassResponseBody(TeaModel):
+    def __init__(
+        self,
+        forbidden_list: UpdateMediaStorageClassResponseBodyForbiddenList = None,
+        ignored_list: UpdateMediaStorageClassResponseBodyIgnoredList = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.forbidden_list = forbidden_list
+        self.ignored_list = ignored_list
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.forbidden_list:
+            self.forbidden_list.validate()
+        if self.ignored_list:
+            self.ignored_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.forbidden_list is not None:
+            result['ForbiddenList'] = self.forbidden_list.to_map()
+        if self.ignored_list is not None:
+            result['IgnoredList'] = self.ignored_list.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ForbiddenList') is not None:
+            temp_model = UpdateMediaStorageClassResponseBodyForbiddenList()
+            self.forbidden_list = temp_model.from_map(m['ForbiddenList'])
+        if m.get('IgnoredList') is not None:
+            temp_model = UpdateMediaStorageClassResponseBodyIgnoredList()
+            self.ignored_list = temp_model.from_map(m['IgnoredList'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateMediaStorageClassResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateMediaStorageClassResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateMediaStorageClassResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateTranscodeTemplateGroupRequest(TeaModel):
     def __init__(
         self,
@@ -32260,9 +32607,18 @@ class UpdateVideoInfosRequest(TeaModel):
         self,
         update_content: str = None,
     ):
-        # The new information about audios or videos. You can modify the information about up to 20 audios or videos at a time. Separate multiple audios or videos with commas (,). When you modify the information exceed 20 audios or videos at a time, the update will fail with an error code **CountExceededMax**.
+        # ## UpdateContent
         # 
-        # The value is a JSON string. For more information, see the **UpdateContent** section of this topic.
+        # >  You must convert the UpdateContent[] parameter to a string before you pass it in.
+        # 
+        # | Parameter | Type | Required | Description |
+        # | --------- | ---- | -------- | ----------- |
+        # | VideoId | String | Yes | The ID of the video. |
+        # | Title | String | No | The title of the video. |
+        # | Description | String | No | The description of the video. |
+        # | Tags | String | No | The tag of the video. |
+        # | CoverURL | String | No | The URL of the video thumbnail. |
+        # | CateId | Long | No | The ID of the category. |
         self.update_content = update_content
 
     def validate(self):
@@ -32292,11 +32648,8 @@ class UpdateVideoInfosResponseBody(TeaModel):
         non_exist_video_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of the videos that cannot be modified. Generally, videos cannot be modified if you do not have required [permissions](~~113600~~).
         self.forbidden_video_ids = forbidden_video_ids
-        # The IDs of the videos that do not exist.
         self.non_exist_video_ids = non_exist_video_ids
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -32626,14 +32979,13 @@ class UpdateWatermarkRequest(TeaModel):
         watermark_config: str = None,
         watermark_id: str = None,
     ):
-        # The name of the watermark. Only letters and digits are supported.
-        # *   The name can be up to 128 bytes in length.
-        # *   The value must be encoded in UTF-8.
-        self.name = name
-        # The configurations such as the position and effect of the text watermark or image watermark. The value is a JSON-formatted string.
-        # > The value of this parameter varies with the watermark type. For more information about the data structure, see the "WatermarkConfig" section of the [Media processing parameters](~~98618~~) topic.
-        self.watermark_config = watermark_config
         # The ID of the watermark.
+        self.name = name
+        # The name of the watermark.
+        self.watermark_config = watermark_config
+        # The configurations such as the position and effect of the text watermark or image watermark. The value is a JSON-formatted string.
+        # 
+        # > The value of this parameter varies with the watermark type. For more information about the data structure, see the "WatermarkConfig" section of the [Media processing parameters](~~98618~~) topic.
         self.watermark_id = watermark_id
 
     def validate(self):
@@ -32675,24 +33027,20 @@ class UpdateWatermarkResponseBodyWatermarkInfo(TeaModel):
         watermark_config: str = None,
         watermark_id: str = None,
     ):
-        # The time when the watermark was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The name of the watermark. Only letters and digits are supported.
+        # 
+        # *   The name can be up to 128 bytes in length.
+        # *   The value must be encoded in UTF-8.
         self.creation_time = creation_time
-        # The Object Storage Service (OSS) URL or Content Delivery Network (CDN) URL of the watermark file. A text watermark does not have a file URL.
+        # The ID of the request.
         self.file_url = file_url
-        # Indicates whether the watermark is the default one. Valid values:
-        # *   **Default**: The watermark is the default one.
-        # *   **NotDefault**: The watermark is not the default one.
+        # The Object Storage Service (OSS) URL or Content Delivery Network (CDN) URL of the watermark file. A text watermark does not have a file URL.
         self.is_default = is_default
-        # The name of the watermark.
         self.name = name
-        # The type of the watermark. Valid values:
-        # *   **Image**: This is the default value.
-        # *   **Text**\
+        # The time when the watermark was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.type = type
-        # The configurations such as the position and effect of the text watermark or image watermark. The value is a JSON-formatted string.
-        # > The value of this parameter varies with the watermark type. For more information about the data structure, see the "WatermarkConfig" section of the [Media processing parameters](~~98618~~) topic.
+        # Modifies a watermark.
         self.watermark_config = watermark_config
-        # The ID of the watermark.
         self.watermark_id = watermark_id
 
     def validate(self):
@@ -32745,9 +33093,9 @@ class UpdateWatermarkResponseBody(TeaModel):
         request_id: str = None,
         watermark_info: UpdateWatermarkResponseBodyWatermarkInfo = None,
     ):
-        # The ID of the request.
+        # The operation that you want to perform. Set the value to **UpdateWatermark**.
         self.request_id = request_id
-        # The information about the watermark.
+        # The ID of the watermark.
         self.watermark_info = watermark_info
 
     def validate(self):
