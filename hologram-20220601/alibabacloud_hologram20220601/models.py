@@ -444,11 +444,9 @@ class ListInstancesRequestTag(TeaModel):
 class ListInstancesRequest(TeaModel):
     def __init__(
         self,
-        region_id: str = None,
         resource_group_id: str = None,
         tag: List[ListInstancesRequestTag] = None,
     ):
-        self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.tag = tag
 
@@ -464,8 +462,6 @@ class ListInstancesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
         result['tag'] = []
@@ -476,8 +472,6 @@ class ListInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
         self.tag = []
@@ -817,33 +811,6 @@ class ListInstancesResponse(TeaModel):
         return self
 
 
-class RestartInstanceRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-    ):
-        self.region_id = region_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        return self
-
-
 class RestartInstanceResponseBody(TeaModel):
     def __init__(
         self,
@@ -946,33 +913,6 @@ class RestartInstanceResponse(TeaModel):
         return self
 
 
-class ResumeInstanceRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-    ):
-        self.region_id = region_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        return self
-
-
 class ResumeInstanceResponseBody(TeaModel):
     def __init__(
         self,
@@ -1072,33 +1012,6 @@ class ResumeInstanceResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ResumeInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class StopInstanceRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-    ):
-        self.region_id = region_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1207,10 +1120,8 @@ class StopInstanceResponse(TeaModel):
 class UpdateInstanceNameRequest(TeaModel):
     def __init__(
         self,
-        region_id: str = None,
         instance_name: str = None,
     ):
-        self.region_id = region_id
         self.instance_name = instance_name
 
     def validate(self):
@@ -1222,16 +1133,12 @@ class UpdateInstanceNameRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.instance_name is not None:
             result['instanceName'] = self.instance_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('instanceName') is not None:
             self.instance_name = m.get('instanceName')
         return self
@@ -1342,7 +1249,6 @@ class UpdateInstanceNameResponse(TeaModel):
 class UpdateInstanceNetworkTypeRequest(TeaModel):
     def __init__(
         self,
-        region_id: str = None,
         any_tunnel_to_single_tunnel: str = None,
         network_types: str = None,
         v_switch_id: str = None,
@@ -1350,7 +1256,6 @@ class UpdateInstanceNetworkTypeRequest(TeaModel):
         vpc_owner_id: str = None,
         vpc_region_id: str = None,
     ):
-        self.region_id = region_id
         self.any_tunnel_to_single_tunnel = any_tunnel_to_single_tunnel
         self.network_types = network_types
         self.v_switch_id = v_switch_id
@@ -1369,8 +1274,6 @@ class UpdateInstanceNetworkTypeRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.any_tunnel_to_single_tunnel is not None:
             result['anyTunnelToSingleTunnel'] = self.any_tunnel_to_single_tunnel
         if self.network_types is not None:
@@ -1387,8 +1290,6 @@ class UpdateInstanceNetworkTypeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('anyTunnelToSingleTunnel') is not None:
             self.any_tunnel_to_single_tunnel = m.get('anyTunnelToSingleTunnel')
         if m.get('networkTypes') is not None:

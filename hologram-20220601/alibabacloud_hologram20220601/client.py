@@ -128,9 +128,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.ListInstancesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
@@ -138,7 +135,6 @@ class Client(OpenApiClient):
             body['tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -164,9 +160,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.ListInstancesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
@@ -174,7 +167,6 @@ class Client(OpenApiClient):
             body['tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -212,17 +204,11 @@ class Client(OpenApiClient):
     def restart_instance_with_options(
         self,
         instance_id: str,
-        request: hologram_20220601_models.RestartInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.RestartInstanceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
             action='RestartInstance',
@@ -243,17 +229,11 @@ class Client(OpenApiClient):
     async def restart_instance_with_options_async(
         self,
         instance_id: str,
-        request: hologram_20220601_models.RestartInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.RestartInstanceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
             action='RestartInstance',
@@ -274,35 +254,27 @@ class Client(OpenApiClient):
     def restart_instance(
         self,
         instance_id: str,
-        request: hologram_20220601_models.RestartInstanceRequest,
     ) -> hologram_20220601_models.RestartInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.restart_instance_with_options(instance_id, request, headers, runtime)
+        return self.restart_instance_with_options(instance_id, headers, runtime)
 
     async def restart_instance_async(
         self,
         instance_id: str,
-        request: hologram_20220601_models.RestartInstanceRequest,
     ) -> hologram_20220601_models.RestartInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.restart_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.restart_instance_with_options_async(instance_id, headers, runtime)
 
     def resume_instance_with_options(
         self,
         instance_id: str,
-        request: hologram_20220601_models.ResumeInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.ResumeInstanceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
             action='ResumeInstance',
@@ -323,17 +295,11 @@ class Client(OpenApiClient):
     async def resume_instance_with_options_async(
         self,
         instance_id: str,
-        request: hologram_20220601_models.ResumeInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.ResumeInstanceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
             action='ResumeInstance',
@@ -354,35 +320,27 @@ class Client(OpenApiClient):
     def resume_instance(
         self,
         instance_id: str,
-        request: hologram_20220601_models.ResumeInstanceRequest,
     ) -> hologram_20220601_models.ResumeInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.resume_instance_with_options(instance_id, request, headers, runtime)
+        return self.resume_instance_with_options(instance_id, headers, runtime)
 
     async def resume_instance_async(
         self,
         instance_id: str,
-        request: hologram_20220601_models.ResumeInstanceRequest,
     ) -> hologram_20220601_models.ResumeInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.resume_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.resume_instance_with_options_async(instance_id, headers, runtime)
 
     def stop_instance_with_options(
         self,
         instance_id: str,
-        request: hologram_20220601_models.StopInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.StopInstanceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
             action='StopInstance',
@@ -403,17 +361,11 @@ class Client(OpenApiClient):
     async def stop_instance_with_options_async(
         self,
         instance_id: str,
-        request: hologram_20220601_models.StopInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.StopInstanceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
             action='StopInstance',
@@ -434,20 +386,18 @@ class Client(OpenApiClient):
     def stop_instance(
         self,
         instance_id: str,
-        request: hologram_20220601_models.StopInstanceRequest,
     ) -> hologram_20220601_models.StopInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_instance_with_options(instance_id, request, headers, runtime)
+        return self.stop_instance_with_options(instance_id, headers, runtime)
 
     async def stop_instance_async(
         self,
         instance_id: str,
-        request: hologram_20220601_models.StopInstanceRequest,
     ) -> hologram_20220601_models.StopInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.stop_instance_with_options_async(instance_id, headers, runtime)
 
     def update_instance_name_with_options(
         self,
@@ -457,15 +407,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.UpdateInstanceNameResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.instance_name):
             body['instanceName'] = request.instance_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -492,15 +438,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.UpdateInstanceNameResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.instance_name):
             body['instanceName'] = request.instance_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -545,9 +487,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.UpdateInstanceNetworkTypeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.any_tunnel_to_single_tunnel):
             body['anyTunnelToSingleTunnel'] = request.any_tunnel_to_single_tunnel
@@ -563,7 +502,6 @@ class Client(OpenApiClient):
             body['vpcRegionId'] = request.vpc_region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -590,9 +528,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.UpdateInstanceNetworkTypeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.any_tunnel_to_single_tunnel):
             body['anyTunnelToSingleTunnel'] = request.any_tunnel_to_single_tunnel
@@ -608,7 +543,6 @@ class Client(OpenApiClient):
             body['vpcRegionId'] = request.vpc_region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
