@@ -98,7 +98,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddAITemplateResponse:
         """
-        Before you add an AI template for automated review and smart thumbnail tasks, make sure that [automated review](https://ai.aliyun.com/vi/censor) and [smart thumbnail](https://ai.aliyun.com/vi/cover) are enabled.
+        The type of the AI template. Valid values:
+        *   **AIMediaAudit**: automated review
+        *   **AIImage**: smart thumbnail
         
         @param request: AddAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -137,7 +139,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddAITemplateResponse:
         """
-        Before you add an AI template for automated review and smart thumbnail tasks, make sure that [automated review](https://ai.aliyun.com/vi/censor) and [smart thumbnail](https://ai.aliyun.com/vi/cover) are enabled.
+        The type of the AI template. Valid values:
+        *   **AIMediaAudit**: automated review
+        *   **AIImage**: smart thumbnail
         
         @param request: AddAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -175,7 +179,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AddAITemplateRequest,
     ) -> vod_20170321_models.AddAITemplateResponse:
         """
-        Before you add an AI template for automated review and smart thumbnail tasks, make sure that [automated review](https://ai.aliyun.com/vi/censor) and [smart thumbnail](https://ai.aliyun.com/vi/cover) are enabled.
+        The type of the AI template. Valid values:
+        *   **AIMediaAudit**: automated review
+        *   **AIImage**: smart thumbnail
         
         @param request: AddAITemplateRequest
         @return: AddAITemplateResponse
@@ -188,7 +194,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AddAITemplateRequest,
     ) -> vod_20170321_models.AddAITemplateResponse:
         """
-        Before you add an AI template for automated review and smart thumbnail tasks, make sure that [automated review](https://ai.aliyun.com/vi/censor) and [smart thumbnail](https://ai.aliyun.com/vi/cover) are enabled.
+        The type of the AI template. Valid values:
+        *   **AIMediaAudit**: automated review
+        *   **AIImage**: smart thumbnail
         
         @param request: AddAITemplateRequest
         @return: AddAITemplateResponse
@@ -202,7 +210,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddCategoryResponse:
         """
-        A maximum of three category levels can be created. Each category can contain up to 100 subcategories.
+        The level of the category. A value of *0** indicates a level 1 category.
         
         @param request: AddCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -241,7 +249,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddCategoryResponse:
         """
-        A maximum of three category levels can be created. Each category can contain up to 100 subcategories.
+        The level of the category. A value of *0** indicates a level 1 category.
         
         @param request: AddCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -279,7 +287,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AddCategoryRequest,
     ) -> vod_20170321_models.AddCategoryResponse:
         """
-        A maximum of three category levels can be created. Each category can contain up to 100 subcategories.
+        The level of the category. A value of *0** indicates a level 1 category.
         
         @param request: AddCategoryRequest
         @return: AddCategoryResponse
@@ -292,7 +300,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AddCategoryRequest,
     ) -> vod_20170321_models.AddCategoryResponse:
         """
-        A maximum of three category levels can be created. Each category can contain up to 100 subcategories.
+        The level of the category. A value of *0** indicates a level 1 category.
         
         @param request: AddCategoryRequest
         @return: AddCategoryResponse
@@ -408,12 +416,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddTranscodeTemplateGroupResponse:
         """
-        - You cannot perform custom operations on transcoding template groups that are *locked** in the ApsaraVideo VOD console. To manage these transcoding template groups, submit a ticket to contact Alibaba Cloud technical support.
-        - An Object Storage Service (OSS) bucket is required to store files that are used for transcoding. You can create a transcoding template group only after ApsaraVideo VOD has allocated a bucket to you. You can activate the bucket on the Storage page in the ApsaraVideo VOD console.
-        - You cannot add transcoding templates to the **No Transcoding** template group.
-        - You can create a maximum of 20 transcoding template groups.
-        - You can add a maximum of 20 transcoding templates to a transcoding template group.
-        - If you need to generate an URL for adaptive bitrate streaming, you can add a maximum of 10 video packaging templates to a transcoding template group. If you add more than 10 video packaging templates, URLs of the video transcoded based on the video packaging templates are generated but the URL for adaptive bitrate streaming is not generated.
+        The ID of the transcoding template group.
         
         @param request: AddTranscodeTemplateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -454,12 +457,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddTranscodeTemplateGroupResponse:
         """
-        - You cannot perform custom operations on transcoding template groups that are *locked** in the ApsaraVideo VOD console. To manage these transcoding template groups, submit a ticket to contact Alibaba Cloud technical support.
-        - An Object Storage Service (OSS) bucket is required to store files that are used for transcoding. You can create a transcoding template group only after ApsaraVideo VOD has allocated a bucket to you. You can activate the bucket on the Storage page in the ApsaraVideo VOD console.
-        - You cannot add transcoding templates to the **No Transcoding** template group.
-        - You can create a maximum of 20 transcoding template groups.
-        - You can add a maximum of 20 transcoding templates to a transcoding template group.
-        - If you need to generate an URL for adaptive bitrate streaming, you can add a maximum of 10 video packaging templates to a transcoding template group. If you add more than 10 video packaging templates, URLs of the video transcoded based on the video packaging templates are generated but the URL for adaptive bitrate streaming is not generated.
+        The ID of the transcoding template group.
         
         @param request: AddTranscodeTemplateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -499,12 +497,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AddTranscodeTemplateGroupRequest,
     ) -> vod_20170321_models.AddTranscodeTemplateGroupResponse:
         """
-        - You cannot perform custom operations on transcoding template groups that are *locked** in the ApsaraVideo VOD console. To manage these transcoding template groups, submit a ticket to contact Alibaba Cloud technical support.
-        - An Object Storage Service (OSS) bucket is required to store files that are used for transcoding. You can create a transcoding template group only after ApsaraVideo VOD has allocated a bucket to you. You can activate the bucket on the Storage page in the ApsaraVideo VOD console.
-        - You cannot add transcoding templates to the **No Transcoding** template group.
-        - You can create a maximum of 20 transcoding template groups.
-        - You can add a maximum of 20 transcoding templates to a transcoding template group.
-        - If you need to generate an URL for adaptive bitrate streaming, you can add a maximum of 10 video packaging templates to a transcoding template group. If you add more than 10 video packaging templates, URLs of the video transcoded based on the video packaging templates are generated but the URL for adaptive bitrate streaming is not generated.
+        The ID of the transcoding template group.
         
         @param request: AddTranscodeTemplateGroupRequest
         @return: AddTranscodeTemplateGroupResponse
@@ -517,12 +510,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AddTranscodeTemplateGroupRequest,
     ) -> vod_20170321_models.AddTranscodeTemplateGroupResponse:
         """
-        - You cannot perform custom operations on transcoding template groups that are *locked** in the ApsaraVideo VOD console. To manage these transcoding template groups, submit a ticket to contact Alibaba Cloud technical support.
-        - An Object Storage Service (OSS) bucket is required to store files that are used for transcoding. You can create a transcoding template group only after ApsaraVideo VOD has allocated a bucket to you. You can activate the bucket on the Storage page in the ApsaraVideo VOD console.
-        - You cannot add transcoding templates to the **No Transcoding** template group.
-        - You can create a maximum of 20 transcoding template groups.
-        - You can add a maximum of 20 transcoding templates to a transcoding template group.
-        - If you need to generate an URL for adaptive bitrate streaming, you can add a maximum of 10 video packaging templates to a transcoding template group. If you add more than 10 video packaging templates, URLs of the video transcoded based on the video packaging templates are generated but the URL for adaptive bitrate streaming is not generated.
+        The ID of the transcoding template group.
         
         @param request: AddTranscodeTemplateGroupRequest
         @return: AddTranscodeTemplateGroupResponse
@@ -536,9 +524,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddVodDomainResponse:
         """
-        This operation is available only in the **China (Shanghai)** region.
-        *   Before you add a domain name for CDN, you must activate [ApsaraVideo VOD](~~51512~~) and apply for an Internet content provider (ICP) filing for domain name.
-        *   If the content on the origin server is not stored on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be complete by the end of the next business day after you submit an application.
+        The ID of the request.
         
         @param request: AddVodDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -587,9 +573,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddVodDomainResponse:
         """
-        This operation is available only in the **China (Shanghai)** region.
-        *   Before you add a domain name for CDN, you must activate [ApsaraVideo VOD](~~51512~~) and apply for an Internet content provider (ICP) filing for domain name.
-        *   If the content on the origin server is not stored on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be complete by the end of the next business day after you submit an application.
+        The ID of the request.
         
         @param request: AddVodDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -637,9 +621,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AddVodDomainRequest,
     ) -> vod_20170321_models.AddVodDomainResponse:
         """
-        This operation is available only in the **China (Shanghai)** region.
-        *   Before you add a domain name for CDN, you must activate [ApsaraVideo VOD](~~51512~~) and apply for an Internet content provider (ICP) filing for domain name.
-        *   If the content on the origin server is not stored on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be complete by the end of the next business day after you submit an application.
+        The ID of the request.
         
         @param request: AddVodDomainRequest
         @return: AddVodDomainResponse
@@ -652,9 +634,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AddVodDomainRequest,
     ) -> vod_20170321_models.AddVodDomainResponse:
         """
-        This operation is available only in the **China (Shanghai)** region.
-        *   Before you add a domain name for CDN, you must activate [ApsaraVideo VOD](~~51512~~) and apply for an Internet content provider (ICP) filing for domain name.
-        *   If the content on the origin server is not stored on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be complete by the end of the next business day after you submit an application.
+        The ID of the request.
         
         @param request: AddVodDomainRequest
         @return: AddVodDomainResponse
@@ -668,8 +648,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddVodTemplateResponse:
         """
-        >    After you create a snapshot template, you can specify the ID of the snapshot template in the request of the [SubmitSnapshotJob](~~72213~~) operation to take snapshots.
-        > *   You can receive the [SnapshotComplete](~~57337~~) event notification by using an HTTP or HTTPS URL or in Message Service (MNS). For more information, see [Overview](~~55627~~).
+        The type of the template. Set the value to *Snapshot**.
         
         @param request: AddVodTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -710,8 +689,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddVodTemplateResponse:
         """
-        >    After you create a snapshot template, you can specify the ID of the snapshot template in the request of the [SubmitSnapshotJob](~~72213~~) operation to take snapshots.
-        > *   You can receive the [SnapshotComplete](~~57337~~) event notification by using an HTTP or HTTPS URL or in Message Service (MNS). For more information, see [Overview](~~55627~~).
+        The type of the template. Set the value to *Snapshot**.
         
         @param request: AddVodTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -751,8 +729,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AddVodTemplateRequest,
     ) -> vod_20170321_models.AddVodTemplateResponse:
         """
-        >    After you create a snapshot template, you can specify the ID of the snapshot template in the request of the [SubmitSnapshotJob](~~72213~~) operation to take snapshots.
-        > *   You can receive the [SnapshotComplete](~~57337~~) event notification by using an HTTP or HTTPS URL or in Message Service (MNS). For more information, see [Overview](~~55627~~).
+        The type of the template. Set the value to *Snapshot**.
         
         @param request: AddVodTemplateRequest
         @return: AddVodTemplateResponse
@@ -765,8 +742,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AddVodTemplateRequest,
     ) -> vod_20170321_models.AddVodTemplateResponse:
         """
-        >    After you create a snapshot template, you can specify the ID of the snapshot template in the request of the [SubmitSnapshotJob](~~72213~~) operation to take snapshots.
-        > *   You can receive the [SnapshotComplete](~~57337~~) event notification by using an HTTP or HTTPS URL or in Message Service (MNS). For more information, see [Overview](~~55627~~).
+        The type of the template. Set the value to *Snapshot**.
         
         @param request: AddVodTemplateRequest
         @return: AddVodTemplateResponse
@@ -780,7 +756,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddWatermarkResponse:
         """
-        ApsaraVideo VOD supports static image watermarks such as PNG files and dynamic image watermarks such as GIF, APNG, and MOV files.
+        The name of the watermark. Only letters and digits are supported.
+        *   The name can be up to 128 bytes in length.
+        *   The value must be encoded in UTF-8.
         
         @param request: AddWatermarkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -823,7 +801,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddWatermarkResponse:
         """
-        ApsaraVideo VOD supports static image watermarks such as PNG files and dynamic image watermarks such as GIF, APNG, and MOV files.
+        The name of the watermark. Only letters and digits are supported.
+        *   The name can be up to 128 bytes in length.
+        *   The value must be encoded in UTF-8.
         
         @param request: AddWatermarkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -865,7 +845,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AddWatermarkRequest,
     ) -> vod_20170321_models.AddWatermarkResponse:
         """
-        ApsaraVideo VOD supports static image watermarks such as PNG files and dynamic image watermarks such as GIF, APNG, and MOV files.
+        The name of the watermark. Only letters and digits are supported.
+        *   The name can be up to 128 bytes in length.
+        *   The value must be encoded in UTF-8.
         
         @param request: AddWatermarkRequest
         @return: AddWatermarkResponse
@@ -878,7 +860,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AddWatermarkRequest,
     ) -> vod_20170321_models.AddWatermarkResponse:
         """
-        ApsaraVideo VOD supports static image watermarks such as PNG files and dynamic image watermarks such as GIF, APNG, and MOV files.
+        The name of the watermark. Only letters and digits are supported.
+        *   The name can be up to 128 bytes in length.
+        *   The value must be encoded in UTF-8.
         
         @param request: AddWatermarkRequest
         @return: AddWatermarkResponse
@@ -892,7 +876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AttachAppPolicyToIdentityResponse:
         """
-        > You can grant a maximum of 10 application permissions to a RAM user or RAM role.
+        The name of the policy that was not found.
         
         @param request: AttachAppPolicyToIdentityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -933,7 +917,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AttachAppPolicyToIdentityResponse:
         """
-        > You can grant a maximum of 10 application permissions to a RAM user or RAM role.
+        The name of the policy that was not found.
         
         @param request: AttachAppPolicyToIdentityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -973,7 +957,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AttachAppPolicyToIdentityRequest,
     ) -> vod_20170321_models.AttachAppPolicyToIdentityResponse:
         """
-        > You can grant a maximum of 10 application permissions to a RAM user or RAM role.
+        The name of the policy that was not found.
         
         @param request: AttachAppPolicyToIdentityRequest
         @return: AttachAppPolicyToIdentityResponse
@@ -986,7 +970,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.AttachAppPolicyToIdentityRequest,
     ) -> vod_20170321_models.AttachAppPolicyToIdentityResponse:
         """
-        > You can grant a maximum of 10 application permissions to a RAM user or RAM role.
+        The name of the policy that was not found.
         
         @param request: AttachAppPolicyToIdentityRequest
         @return: AttachAppPolicyToIdentityResponse
@@ -1112,8 +1096,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.BatchStartVodDomainResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the domain name that you want to enable is invalid or your Alibaba Cloud account has overdue payments, you cannot call this operation to enable the domain name.
+        The operation that you want to perform. Set the value to *BatchStartVodDomain**.
         
         @param request: BatchStartVodDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1152,8 +1135,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.BatchStartVodDomainResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the domain name that you want to enable is invalid or your Alibaba Cloud account has overdue payments, you cannot call this operation to enable the domain name.
+        The operation that you want to perform. Set the value to *BatchStartVodDomain**.
         
         @param request: BatchStartVodDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1191,8 +1173,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.BatchStartVodDomainRequest,
     ) -> vod_20170321_models.BatchStartVodDomainResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the domain name that you want to enable is invalid or your Alibaba Cloud account has overdue payments, you cannot call this operation to enable the domain name.
+        The operation that you want to perform. Set the value to *BatchStartVodDomain**.
         
         @param request: BatchStartVodDomainRequest
         @return: BatchStartVodDomainResponse
@@ -1205,8 +1186,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.BatchStartVodDomainRequest,
     ) -> vod_20170321_models.BatchStartVodDomainResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the domain name that you want to enable is invalid or your Alibaba Cloud account has overdue payments, you cannot call this operation to enable the domain name.
+        The operation that you want to perform. Set the value to *BatchStartVodDomain**.
         
         @param request: BatchStartVodDomainRequest
         @return: BatchStartVodDomainResponse
@@ -1432,7 +1412,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateAppInfoResponse:
         """
-        You can create a maximum of 10 applications within an Alibaba Cloud account. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/overview-1).
+        The description of the application.
+        - The description can contain up to 512 characters in length.
+        - The description can contain only UTF-8 characters.
         
         @param request: CreateAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1469,7 +1451,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateAppInfoResponse:
         """
-        You can create a maximum of 10 applications within an Alibaba Cloud account. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/overview-1).
+        The description of the application.
+        - The description can contain up to 512 characters in length.
+        - The description can contain only UTF-8 characters.
         
         @param request: CreateAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1505,7 +1489,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.CreateAppInfoRequest,
     ) -> vod_20170321_models.CreateAppInfoResponse:
         """
-        You can create a maximum of 10 applications within an Alibaba Cloud account. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/overview-1).
+        The description of the application.
+        - The description can contain up to 512 characters in length.
+        - The description can contain only UTF-8 characters.
         
         @param request: CreateAppInfoRequest
         @return: CreateAppInfoResponse
@@ -1518,7 +1504,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.CreateAppInfoRequest,
     ) -> vod_20170321_models.CreateAppInfoResponse:
         """
-        You can create a maximum of 10 applications within an Alibaba Cloud account. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/overview-1).
+        The description of the application.
+        - The description can contain up to 512 characters in length.
+        - The description can contain only UTF-8 characters.
         
         @param request: CreateAppInfoRequest
         @return: CreateAppInfoResponse
@@ -1602,9 +1590,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateUploadAttachedMediaResponse:
         """
-        - The process of obtaining upload URLs and credentials is a core process in ApsaraVideo VOD and is required for each upload operation. ApsaraVideo VOD provides multiple upload methods. You can upload auxiliary media assets by using server upload SDKs, client upload SDKs, URLs of auxiliary media assets, Object Storage Service (OSS) API, or native OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
-        - If the upload credential expires, you can call this operation to obtain a new upload URL and credential. The default validity period of an upload credential is 3,000 seconds.
-        - You can configure a callback to receive an [AttachedMediaUploadComplete](~~103250~~) event notification to determine whether the upload is successful.
+        The type of the media asset. Valid values:
+        *   **watermark**\
+        *   **subtitle**\
+        *   **material**\
         
         @param request: CreateUploadAttachedMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1659,9 +1648,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateUploadAttachedMediaResponse:
         """
-        - The process of obtaining upload URLs and credentials is a core process in ApsaraVideo VOD and is required for each upload operation. ApsaraVideo VOD provides multiple upload methods. You can upload auxiliary media assets by using server upload SDKs, client upload SDKs, URLs of auxiliary media assets, Object Storage Service (OSS) API, or native OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
-        - If the upload credential expires, you can call this operation to obtain a new upload URL and credential. The default validity period of an upload credential is 3,000 seconds.
-        - You can configure a callback to receive an [AttachedMediaUploadComplete](~~103250~~) event notification to determine whether the upload is successful.
+        The type of the media asset. Valid values:
+        *   **watermark**\
+        *   **subtitle**\
+        *   **material**\
         
         @param request: CreateUploadAttachedMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1715,9 +1705,10 @@ class Client(OpenApiClient):
         request: vod_20170321_models.CreateUploadAttachedMediaRequest,
     ) -> vod_20170321_models.CreateUploadAttachedMediaResponse:
         """
-        - The process of obtaining upload URLs and credentials is a core process in ApsaraVideo VOD and is required for each upload operation. ApsaraVideo VOD provides multiple upload methods. You can upload auxiliary media assets by using server upload SDKs, client upload SDKs, URLs of auxiliary media assets, Object Storage Service (OSS) API, or native OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
-        - If the upload credential expires, you can call this operation to obtain a new upload URL and credential. The default validity period of an upload credential is 3,000 seconds.
-        - You can configure a callback to receive an [AttachedMediaUploadComplete](~~103250~~) event notification to determine whether the upload is successful.
+        The type of the media asset. Valid values:
+        *   **watermark**\
+        *   **subtitle**\
+        *   **material**\
         
         @param request: CreateUploadAttachedMediaRequest
         @return: CreateUploadAttachedMediaResponse
@@ -1730,9 +1721,10 @@ class Client(OpenApiClient):
         request: vod_20170321_models.CreateUploadAttachedMediaRequest,
     ) -> vod_20170321_models.CreateUploadAttachedMediaResponse:
         """
-        - The process of obtaining upload URLs and credentials is a core process in ApsaraVideo VOD and is required for each upload operation. ApsaraVideo VOD provides multiple upload methods. You can upload auxiliary media assets by using server upload SDKs, client upload SDKs, URLs of auxiliary media assets, Object Storage Service (OSS) API, or native OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
-        - If the upload credential expires, you can call this operation to obtain a new upload URL and credential. The default validity period of an upload credential is 3,000 seconds.
-        - You can configure a callback to receive an [AttachedMediaUploadComplete](~~103250~~) event notification to determine whether the upload is successful.
+        The type of the media asset. Valid values:
+        *   **watermark**\
+        *   **subtitle**\
+        *   **material**\
         
         @param request: CreateUploadAttachedMediaRequest
         @return: CreateUploadAttachedMediaResponse
@@ -1746,11 +1738,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateUploadImageResponse:
         """
-        ## Description
-        *   You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload files by using server upload SDKs, client upload SDKs, URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
-        *   The upload credential is not automatically updated when you upload an image. By default, an upload credential is valid for 3,000 seconds before it expires. If your credential expires, call this operation again to obtain the credential.
-        *   You can call the [CreateUploadAttachedMedia](~~98467~~) operation to upload image watermarks.
-        *   You can configure a callback for [ImageUploadComplete](~~91968~~) to receive notifications about the image upload status.
+        The custom configurations. For example, you can specify callback configurations and upload acceleration configurations. The value is a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](~~86952~~) topic.
+        > *   The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](~~86071~~).
+        > *   To use the upload acceleration feature, submit a [ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex) to enable this feature. For more information, see [Overview](~~55396~~).
         
         @param request: CreateUploadImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1803,11 +1793,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateUploadImageResponse:
         """
-        ## Description
-        *   You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload files by using server upload SDKs, client upload SDKs, URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
-        *   The upload credential is not automatically updated when you upload an image. By default, an upload credential is valid for 3,000 seconds before it expires. If your credential expires, call this operation again to obtain the credential.
-        *   You can call the [CreateUploadAttachedMedia](~~98467~~) operation to upload image watermarks.
-        *   You can configure a callback for [ImageUploadComplete](~~91968~~) to receive notifications about the image upload status.
+        The custom configurations. For example, you can specify callback configurations and upload acceleration configurations. The value is a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](~~86952~~) topic.
+        > *   The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](~~86071~~).
+        > *   To use the upload acceleration feature, submit a [ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex) to enable this feature. For more information, see [Overview](~~55396~~).
         
         @param request: CreateUploadImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1859,11 +1847,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.CreateUploadImageRequest,
     ) -> vod_20170321_models.CreateUploadImageResponse:
         """
-        ## Description
-        *   You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload files by using server upload SDKs, client upload SDKs, URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
-        *   The upload credential is not automatically updated when you upload an image. By default, an upload credential is valid for 3,000 seconds before it expires. If your credential expires, call this operation again to obtain the credential.
-        *   You can call the [CreateUploadAttachedMedia](~~98467~~) operation to upload image watermarks.
-        *   You can configure a callback for [ImageUploadComplete](~~91968~~) to receive notifications about the image upload status.
+        The custom configurations. For example, you can specify callback configurations and upload acceleration configurations. The value is a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](~~86952~~) topic.
+        > *   The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](~~86071~~).
+        > *   To use the upload acceleration feature, submit a [ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex) to enable this feature. For more information, see [Overview](~~55396~~).
         
         @param request: CreateUploadImageRequest
         @return: CreateUploadImageResponse
@@ -1876,11 +1862,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.CreateUploadImageRequest,
     ) -> vod_20170321_models.CreateUploadImageResponse:
         """
-        ## Description
-        *   You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload files by using server upload SDKs, client upload SDKs, URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
-        *   The upload credential is not automatically updated when you upload an image. By default, an upload credential is valid for 3,000 seconds before it expires. If your credential expires, call this operation again to obtain the credential.
-        *   You can call the [CreateUploadAttachedMedia](~~98467~~) operation to upload image watermarks.
-        *   You can configure a callback for [ImageUploadComplete](~~91968~~) to receive notifications about the image upload status.
+        The custom configurations. For example, you can specify callback configurations and upload acceleration configurations. The value is a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](~~86952~~) topic.
+        > *   The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](~~86071~~).
+        > *   To use the upload acceleration feature, submit a [ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex) to enable this feature. For more information, see [Overview](~~55396~~).
         
         @param request: CreateUploadImageRequest
         @return: CreateUploadImageResponse
@@ -1894,13 +1878,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateUploadVideoResponse:
         """
-        You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](~~55397~~).
-        *   You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](~~476208~~).
-        *   If the upload credential expires, call the [RefreshUploadVideo](~~55408~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
-        *   You can configure a callback to receive an [event notification](~~55396~~) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](~~59624~~) operation to determine whether the upload is successful based on the file status in the response.
-        *   The VideoId parameter that is returned after you call this operation can be used for media processing or lifecycle management of media assets.
-        *   You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](~~55397~~).
-        > If you have more questions about the ApsaraVideo VOD API, join the DingTalk group 2720012141 for consultation.
+        Obtains the upload URLs and credentials for media files and creates media assets in ApsaraVideo VOD.
         
         @param request: CreateUploadVideoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1957,13 +1935,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateUploadVideoResponse:
         """
-        You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](~~55397~~).
-        *   You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](~~476208~~).
-        *   If the upload credential expires, call the [RefreshUploadVideo](~~55408~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
-        *   You can configure a callback to receive an [event notification](~~55396~~) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](~~59624~~) operation to determine whether the upload is successful based on the file status in the response.
-        *   The VideoId parameter that is returned after you call this operation can be used for media processing or lifecycle management of media assets.
-        *   You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](~~55397~~).
-        > If you have more questions about the ApsaraVideo VOD API, join the DingTalk group 2720012141 for consultation.
+        Obtains the upload URLs and credentials for media files and creates media assets in ApsaraVideo VOD.
         
         @param request: CreateUploadVideoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2019,13 +1991,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.CreateUploadVideoRequest,
     ) -> vod_20170321_models.CreateUploadVideoResponse:
         """
-        You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](~~55397~~).
-        *   You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](~~476208~~).
-        *   If the upload credential expires, call the [RefreshUploadVideo](~~55408~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
-        *   You can configure a callback to receive an [event notification](~~55396~~) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](~~59624~~) operation to determine whether the upload is successful based on the file status in the response.
-        *   The VideoId parameter that is returned after you call this operation can be used for media processing or lifecycle management of media assets.
-        *   You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](~~55397~~).
-        > If you have more questions about the ApsaraVideo VOD API, join the DingTalk group 2720012141 for consultation.
+        Obtains the upload URLs and credentials for media files and creates media assets in ApsaraVideo VOD.
         
         @param request: CreateUploadVideoRequest
         @return: CreateUploadVideoResponse
@@ -2038,13 +2004,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.CreateUploadVideoRequest,
     ) -> vod_20170321_models.CreateUploadVideoResponse:
         """
-        You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](~~55397~~).
-        *   You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](~~476208~~).
-        *   If the upload credential expires, call the [RefreshUploadVideo](~~55408~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
-        *   You can configure a callback to receive an [event notification](~~55396~~) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](~~59624~~) operation to determine whether the upload is successful based on the file status in the response.
-        *   The VideoId parameter that is returned after you call this operation can be used for media processing or lifecycle management of media assets.
-        *   You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](~~55397~~).
-        > If you have more questions about the ApsaraVideo VOD API, join the DingTalk group 2720012141 for consultation.
+        Obtains the upload URLs and credentials for media files and creates media assets in ApsaraVideo VOD.
         
         @param request: CreateUploadVideoRequest
         @return: CreateUploadVideoResponse
@@ -2256,7 +2216,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAITemplateResponse:
         """
-        You cannot delete an AI template that is set as the default template.
+        The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
+        *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId from the response is the ID of the AI template.
+        *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId from the response is the ID of the AI template.
         
         @param request: DeleteAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2291,7 +2253,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAITemplateResponse:
         """
-        You cannot delete an AI template that is set as the default template.
+        The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
+        *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId from the response is the ID of the AI template.
+        *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId from the response is the ID of the AI template.
         
         @param request: DeleteAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2325,7 +2289,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteAITemplateRequest,
     ) -> vod_20170321_models.DeleteAITemplateResponse:
         """
-        You cannot delete an AI template that is set as the default template.
+        The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
+        *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId from the response is the ID of the AI template.
+        *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId from the response is the ID of the AI template.
         
         @param request: DeleteAITemplateRequest
         @return: DeleteAITemplateResponse
@@ -2338,7 +2304,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteAITemplateRequest,
     ) -> vod_20170321_models.DeleteAITemplateResponse:
         """
-        You cannot delete an AI template that is set as the default template.
+        The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
+        *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId from the response is the ID of the AI template.
+        *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId from the response is the ID of the AI template.
         
         @param request: DeleteAITemplateRequest
         @return: DeleteAITemplateResponse
@@ -2352,8 +2320,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAppInfoResponse:
         """
-        ## Usage note
-        Application with resources can not be deleted.
+        The ID of the request.
         
         @param request: DeleteAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2388,8 +2355,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAppInfoResponse:
         """
-        ## Usage note
-        Application with resources can not be deleted.
+        The ID of the request.
         
         @param request: DeleteAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2423,8 +2389,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteAppInfoRequest,
     ) -> vod_20170321_models.DeleteAppInfoResponse:
         """
-        ## Usage note
-        Application with resources can not be deleted.
+        The ID of the request.
         
         @param request: DeleteAppInfoRequest
         @return: DeleteAppInfoResponse
@@ -2437,8 +2402,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteAppInfoRequest,
     ) -> vod_20170321_models.DeleteAppInfoResponse:
         """
-        ## Usage note
-        Application with resources can not be deleted.
+        The ID of the request.
         
         @param request: DeleteAppInfoRequest
         @return: DeleteAppInfoResponse
@@ -2452,7 +2416,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAttachedMediaResponse:
         """
-        This operation physically deletes auxiliary media assets. Deleted auxiliary media assets cannot be recovered. Exercise caution when you call this operation.
+        The ID of the request.
         
         @param request: DeleteAttachedMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2487,7 +2451,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAttachedMediaResponse:
         """
-        This operation physically deletes auxiliary media assets. Deleted auxiliary media assets cannot be recovered. Exercise caution when you call this operation.
+        The ID of the request.
         
         @param request: DeleteAttachedMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2521,7 +2485,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteAttachedMediaRequest,
     ) -> vod_20170321_models.DeleteAttachedMediaResponse:
         """
-        This operation physically deletes auxiliary media assets. Deleted auxiliary media assets cannot be recovered. Exercise caution when you call this operation.
+        The ID of the request.
         
         @param request: DeleteAttachedMediaRequest
         @return: DeleteAttachedMediaResponse
@@ -2534,7 +2498,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteAttachedMediaRequest,
     ) -> vod_20170321_models.DeleteAttachedMediaResponse:
         """
-        This operation physically deletes auxiliary media assets. Deleted auxiliary media assets cannot be recovered. Exercise caution when you call this operation.
+        The ID of the request.
         
         @param request: DeleteAttachedMediaRequest
         @return: DeleteAttachedMediaResponse
@@ -2643,13 +2607,6 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteDynamicImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteDynamicImageResponse:
-        """
-        > This operation deletes only the information about animated stickers, but not the animated stickers themselves.
-        
-        @param request: DeleteDynamicImageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteDynamicImageResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dynamic_image_ids):
@@ -2680,13 +2637,6 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteDynamicImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteDynamicImageResponse:
-        """
-        > This operation deletes only the information about animated stickers, but not the animated stickers themselves.
-        
-        @param request: DeleteDynamicImageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteDynamicImageResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dynamic_image_ids):
@@ -2716,12 +2666,6 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.DeleteDynamicImageRequest,
     ) -> vod_20170321_models.DeleteDynamicImageResponse:
-        """
-        > This operation deletes only the information about animated stickers, but not the animated stickers themselves.
-        
-        @param request: DeleteDynamicImageRequest
-        @return: DeleteDynamicImageResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dynamic_image_with_options(request, runtime)
 
@@ -2729,12 +2673,6 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.DeleteDynamicImageRequest,
     ) -> vod_20170321_models.DeleteDynamicImageResponse:
-        """
-        > This operation deletes only the information about animated stickers, but not the animated stickers themselves.
-        
-        @param request: DeleteDynamicImageRequest
-        @return: DeleteDynamicImageResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dynamic_image_with_options_async(request, runtime)
 
@@ -2830,7 +2768,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteImageResponse:
         """
-        > This operation irreversibly deletes image mezzanine files. Deleted images cannot be recovered. If some images are cached in Content Delivery Network (CDN), the image URLs do not immediately become invalid.
+        The URL of the image.
+        *   This parameter only takes effect when the **DeleteImageType** parameter is set to **ImageURL**. In this case, you must set this parameter.
+        *   Encode multiple image URLs and separate them with commas (,).
+        *   The use of special characters in image URLs may lead to the failure to delete the images. To prevent such failure, you must encode the image URLs before you concatenate them into a string with commas (,).
         
         @param request: DeleteImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2873,7 +2814,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteImageResponse:
         """
-        > This operation irreversibly deletes image mezzanine files. Deleted images cannot be recovered. If some images are cached in Content Delivery Network (CDN), the image URLs do not immediately become invalid.
+        The URL of the image.
+        *   This parameter only takes effect when the **DeleteImageType** parameter is set to **ImageURL**. In this case, you must set this parameter.
+        *   Encode multiple image URLs and separate them with commas (,).
+        *   The use of special characters in image URLs may lead to the failure to delete the images. To prevent such failure, you must encode the image URLs before you concatenate them into a string with commas (,).
         
         @param request: DeleteImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2915,7 +2859,10 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteImageRequest,
     ) -> vod_20170321_models.DeleteImageResponse:
         """
-        > This operation irreversibly deletes image mezzanine files. Deleted images cannot be recovered. If some images are cached in Content Delivery Network (CDN), the image URLs do not immediately become invalid.
+        The URL of the image.
+        *   This parameter only takes effect when the **DeleteImageType** parameter is set to **ImageURL**. In this case, you must set this parameter.
+        *   Encode multiple image URLs and separate them with commas (,).
+        *   The use of special characters in image URLs may lead to the failure to delete the images. To prevent such failure, you must encode the image URLs before you concatenate them into a string with commas (,).
         
         @param request: DeleteImageRequest
         @return: DeleteImageResponse
@@ -2928,7 +2875,10 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteImageRequest,
     ) -> vod_20170321_models.DeleteImageResponse:
         """
-        > This operation irreversibly deletes image mezzanine files. Deleted images cannot be recovered. If some images are cached in Content Delivery Network (CDN), the image URLs do not immediately become invalid.
+        The URL of the image.
+        *   This parameter only takes effect when the **DeleteImageType** parameter is set to **ImageURL**. In this case, you must set this parameter.
+        *   Encode multiple image URLs and separate them with commas (,).
+        *   The use of special characters in image URLs may lead to the failure to delete the images. To prevent such failure, you must encode the image URLs before you concatenate them into a string with commas (,).
         
         @param request: DeleteImageRequest
         @return: DeleteImageResponse
@@ -3042,7 +2992,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteMezzaninesResponse:
         """
-        All media processing operations in ApsaraVideo VOD, such as transcoding, snapshot capture, and content moderation, are performed on mezzanine files. If you delete the mezzanine files, you cannot perform follow-up media processing operations. Exercise caution when you call this operation.
+        The IDs of the videos that do not exist.
         
         @param request: DeleteMezzaninesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3079,7 +3029,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteMezzaninesResponse:
         """
-        All media processing operations in ApsaraVideo VOD, such as transcoding, snapshot capture, and content moderation, are performed on mezzanine files. If you delete the mezzanine files, you cannot perform follow-up media processing operations. Exercise caution when you call this operation.
+        The IDs of the videos that do not exist.
         
         @param request: DeleteMezzaninesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3115,7 +3065,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteMezzaninesRequest,
     ) -> vod_20170321_models.DeleteMezzaninesResponse:
         """
-        All media processing operations in ApsaraVideo VOD, such as transcoding, snapshot capture, and content moderation, are performed on mezzanine files. If you delete the mezzanine files, you cannot perform follow-up media processing operations. Exercise caution when you call this operation.
+        The IDs of the videos that do not exist.
         
         @param request: DeleteMezzaninesRequest
         @return: DeleteMezzaninesResponse
@@ -3128,7 +3078,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteMezzaninesRequest,
     ) -> vod_20170321_models.DeleteMezzaninesResponse:
         """
-        All media processing operations in ApsaraVideo VOD, such as transcoding, snapshot capture, and content moderation, are performed on mezzanine files. If you delete the mezzanine files, you cannot perform follow-up media processing operations. Exercise caution when you call this operation.
+        The IDs of the videos that do not exist.
         
         @param request: DeleteMezzaninesRequest
         @return: DeleteMezzaninesResponse
@@ -3544,9 +3494,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteVodDomainResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   After a domain name for CDN is removed from ApsaraVideo VOD, the domain name becomes unavailable. Proceed with caution. We recommend that you restore the A record at your DNS service provider before you remove the domain name for CDN.
-        > *   After you call this operation to remove a domain name for CDN from ApsaraVideo VOD, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](~~120208~~) operation.
+        The ID of the request.
         
         @param request: DeleteVodDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3587,9 +3535,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteVodDomainResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   After a domain name for CDN is removed from ApsaraVideo VOD, the domain name becomes unavailable. Proceed with caution. We recommend that you restore the A record at your DNS service provider before you remove the domain name for CDN.
-        > *   After you call this operation to remove a domain name for CDN from ApsaraVideo VOD, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](~~120208~~) operation.
+        The ID of the request.
         
         @param request: DeleteVodDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3629,9 +3575,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteVodDomainRequest,
     ) -> vod_20170321_models.DeleteVodDomainResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   After a domain name for CDN is removed from ApsaraVideo VOD, the domain name becomes unavailable. Proceed with caution. We recommend that you restore the A record at your DNS service provider before you remove the domain name for CDN.
-        > *   After you call this operation to remove a domain name for CDN from ApsaraVideo VOD, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](~~120208~~) operation.
+        The ID of the request.
         
         @param request: DeleteVodDomainRequest
         @return: DeleteVodDomainResponse
@@ -3644,9 +3588,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteVodDomainRequest,
     ) -> vod_20170321_models.DeleteVodDomainResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   After a domain name for CDN is removed from ApsaraVideo VOD, the domain name becomes unavailable. Proceed with caution. We recommend that you restore the A record at your DNS service provider before you remove the domain name for CDN.
-        > *   After you call this operation to remove a domain name for CDN from ApsaraVideo VOD, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](~~120208~~) operation.
+        The ID of the request.
         
         @param request: DeleteVodDomainRequest
         @return: DeleteVodDomainResponse
@@ -3660,9 +3602,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteVodSpecificConfigResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   After the configurations of a domain name for CDN are deleted, the domain name becomes unavailable. We recommend that you restore the A record at your DNS service provider before you delete the configurations of the domain name for CDN.
-        > *   After you call this operation to delete the configurations of a domain name for CDN, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](~~120208~~) operation.
+        The ID of the request.
         
         @param request: DeleteVodSpecificConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3703,9 +3643,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteVodSpecificConfigResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   After the configurations of a domain name for CDN are deleted, the domain name becomes unavailable. We recommend that you restore the A record at your DNS service provider before you delete the configurations of the domain name for CDN.
-        > *   After you call this operation to delete the configurations of a domain name for CDN, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](~~120208~~) operation.
+        The ID of the request.
         
         @param request: DeleteVodSpecificConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3745,9 +3683,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteVodSpecificConfigRequest,
     ) -> vod_20170321_models.DeleteVodSpecificConfigResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   After the configurations of a domain name for CDN are deleted, the domain name becomes unavailable. We recommend that you restore the A record at your DNS service provider before you delete the configurations of the domain name for CDN.
-        > *   After you call this operation to delete the configurations of a domain name for CDN, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](~~120208~~) operation.
+        The ID of the request.
         
         @param request: DeleteVodSpecificConfigRequest
         @return: DeleteVodSpecificConfigResponse
@@ -3760,9 +3696,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteVodSpecificConfigRequest,
     ) -> vod_20170321_models.DeleteVodSpecificConfigResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   After the configurations of a domain name for CDN are deleted, the domain name becomes unavailable. We recommend that you restore the A record at your DNS service provider before you delete the configurations of the domain name for CDN.
-        > *   After you call this operation to delete the configurations of a domain name for CDN, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](~~120208~~) operation.
+        The ID of the request.
         
         @param request: DeleteVodSpecificConfigRequest
         @return: DeleteVodSpecificConfigResponse
@@ -3846,8 +3780,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteWatermarkResponse:
         """
-        >    The default watermark cannot be deleted.
-        > *   If you delete a watermark, its mezzanine file is also physically deleted and cannot be recovered.
+        The ID of the request.
         
         @param request: DeleteWatermarkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3882,8 +3815,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteWatermarkResponse:
         """
-        >    The default watermark cannot be deleted.
-        > *   If you delete a watermark, its mezzanine file is also physically deleted and cannot be recovered.
+        The ID of the request.
         
         @param request: DeleteWatermarkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3917,8 +3849,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteWatermarkRequest,
     ) -> vod_20170321_models.DeleteWatermarkResponse:
         """
-        >    The default watermark cannot be deleted.
-        > *   If you delete a watermark, its mezzanine file is also physically deleted and cannot be recovered.
+        The ID of the request.
         
         @param request: DeleteWatermarkRequest
         @return: DeleteWatermarkResponse
@@ -3931,8 +3862,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DeleteWatermarkRequest,
     ) -> vod_20170321_models.DeleteWatermarkResponse:
         """
-        >    The default watermark cannot be deleted.
-        > *   If you delete a watermark, its mezzanine file is also physically deleted and cannot be recovered.
+        The ID of the request.
         
         @param request: DeleteWatermarkRequest
         @return: DeleteWatermarkResponse
@@ -3946,11 +3876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayTopVideosResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can query playback statistics on top 1,000 videos at most on a specified day. By default, top videos are sorted in descending order based on video views.
-        > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
-        > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
-        > *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+        The number of entries to return on each page. Default value: *100**. Maximum value: **1000**.
         
         @param request: DescribePlayTopVideosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3991,11 +3917,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayTopVideosResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can query playback statistics on top 1,000 videos at most on a specified day. By default, top videos are sorted in descending order based on video views.
-        > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
-        > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
-        > *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+        The number of entries to return on each page. Default value: *100**. Maximum value: **1000**.
         
         @param request: DescribePlayTopVideosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4035,11 +3957,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribePlayTopVideosRequest,
     ) -> vod_20170321_models.DescribePlayTopVideosResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can query playback statistics on top 1,000 videos at most on a specified day. By default, top videos are sorted in descending order based on video views.
-        > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
-        > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
-        > *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+        The number of entries to return on each page. Default value: *100**. Maximum value: **1000**.
         
         @param request: DescribePlayTopVideosRequest
         @return: DescribePlayTopVideosResponse
@@ -4052,11 +3970,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribePlayTopVideosRequest,
     ) -> vod_20170321_models.DescribePlayTopVideosResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can query playback statistics on top 1,000 videos at most on a specified day. By default, top videos are sorted in descending order based on video views.
-        > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
-        > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
-        > *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+        The number of entries to return on each page. Default value: *100**. Maximum value: **1000**.
         
         @param request: DescribePlayTopVideosRequest
         @return: DescribePlayTopVideosResponse
@@ -4070,10 +3984,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayUserAvgResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
-        > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
-        > *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+        The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         
         @param request: DescribePlayUserAvgRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4112,10 +4023,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayUserAvgResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
-        > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
-        > *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+        The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         
         @param request: DescribePlayUserAvgRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4153,10 +4061,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribePlayUserAvgRequest,
     ) -> vod_20170321_models.DescribePlayUserAvgResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
-        > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
-        > *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+        The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         
         @param request: DescribePlayUserAvgRequest
         @return: DescribePlayUserAvgResponse
@@ -4169,10 +4074,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribePlayUserAvgRequest,
     ) -> vod_20170321_models.DescribePlayUserAvgResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
-        > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
-        > *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+        The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         
         @param request: DescribePlayUserAvgRequest
         @return: DescribePlayUserAvgResponse
@@ -4302,10 +4204,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayVideoStatisResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
-        > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
-        > *   You can query only data in the last 730 days. The maximum time range to query is 180 days.
+        The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         
         @param request: DescribePlayVideoStatisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4346,10 +4245,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayVideoStatisResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
-        > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
-        > *   You can query only data in the last 730 days. The maximum time range to query is 180 days.
+        The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         
         @param request: DescribePlayVideoStatisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4389,10 +4285,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribePlayVideoStatisRequest,
     ) -> vod_20170321_models.DescribePlayVideoStatisResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
-        > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
-        > *   You can query only data in the last 730 days. The maximum time range to query is 180 days.
+        The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         
         @param request: DescribePlayVideoStatisRequest
         @return: DescribePlayVideoStatisResponse
@@ -4405,10 +4298,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribePlayVideoStatisRequest,
     ) -> vod_20170321_models.DescribePlayVideoStatisResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
-        > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
-        > *   You can query only data in the last 730 days. The maximum time range to query is 180 days.
+        The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         
         @param request: DescribePlayVideoStatisRequest
         @return: DescribePlayVideoStatisResponse
@@ -4423,7 +4313,7 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodAIDataResponse:
         """
         >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+        >*   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
         
         @param request: DescribeVodAIDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4467,7 +4357,7 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodAIDataResponse:
         """
         >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+        >*   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
         
         @param request: DescribeVodAIDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4510,7 +4400,7 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodAIDataResponse:
         """
         >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+        >*   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
         
         @param request: DescribeVodAIDataRequest
         @return: DescribeVodAIDataResponse
@@ -4524,7 +4414,7 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodAIDataResponse:
         """
         >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+        >*   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
         
         @param request: DescribeVodAIDataRequest
         @return: DescribeVodAIDataResponse
@@ -4538,7 +4428,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodCertificateListResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        The domain name for CDN.
         
         @param request: DescribeVodCertificateListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4577,7 +4467,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodCertificateListResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        The domain name for CDN.
         
         @param request: DescribeVodCertificateListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4615,7 +4505,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodCertificateListRequest,
     ) -> vod_20170321_models.DescribeVodCertificateListResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        The domain name for CDN.
         
         @param request: DescribeVodCertificateListRequest
         @return: DescribeVodCertificateListResponse
@@ -4628,7 +4518,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodCertificateListRequest,
     ) -> vod_20170321_models.DescribeVodCertificateListResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        The domain name for CDN.
         
         @param request: DescribeVodCertificateListRequest
         @return: DescribeVodCertificateListResponse
@@ -4761,13 +4651,6 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainCertificateInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainCertificateInfoResponse:
-        """
-        > This operation is available only in the *China (Shanghai)** region.
-        
-        @param request: DescribeVodDomainCertificateInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVodDomainCertificateInfoResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -4798,13 +4681,6 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainCertificateInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainCertificateInfoResponse:
-        """
-        > This operation is available only in the *China (Shanghai)** region.
-        
-        @param request: DescribeVodDomainCertificateInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVodDomainCertificateInfoResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -4834,12 +4710,6 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.DescribeVodDomainCertificateInfoRequest,
     ) -> vod_20170321_models.DescribeVodDomainCertificateInfoResponse:
-        """
-        > This operation is available only in the *China (Shanghai)** region.
-        
-        @param request: DescribeVodDomainCertificateInfoRequest
-        @return: DescribeVodDomainCertificateInfoResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vod_domain_certificate_info_with_options(request, runtime)
 
@@ -4847,12 +4717,6 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.DescribeVodDomainCertificateInfoRequest,
     ) -> vod_20170321_models.DescribeVodDomainCertificateInfoResponse:
-        """
-        > This operation is available only in the *China (Shanghai)** region.
-        
-        @param request: DescribeVodDomainCertificateInfoRequest
-        @return: DescribeVodDomainCertificateInfoResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_domain_certificate_info_with_options_async(request, runtime)
 
@@ -4862,7 +4726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainConfigsResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        The name of the function.
         
         @param request: DescribeVodDomainConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4903,7 +4767,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainConfigsResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        The name of the function.
         
         @param request: DescribeVodDomainConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4943,7 +4807,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainConfigsRequest,
     ) -> vod_20170321_models.DescribeVodDomainConfigsResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        The name of the function.
         
         @param request: DescribeVodDomainConfigsRequest
         @return: DescribeVodDomainConfigsResponse
@@ -4956,7 +4820,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainConfigsRequest,
     ) -> vod_20170321_models.DescribeVodDomainConfigsResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        The name of the function.
         
         @param request: DescribeVodDomainConfigsRequest
         @return: DescribeVodDomainConfigsResponse
@@ -4970,7 +4834,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainDetailResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        The description of the domain name for CDN.
         
         @param request: DescribeVodDomainDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5009,7 +4873,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainDetailResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        The description of the domain name for CDN.
         
         @param request: DescribeVodDomainDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5047,7 +4911,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainDetailRequest,
     ) -> vod_20170321_models.DescribeVodDomainDetailResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        The description of the domain name for CDN.
         
         @param request: DescribeVodDomainDetailRequest
         @return: DescribeVodDomainDetailResponse
@@ -5060,7 +4924,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainDetailRequest,
     ) -> vod_20170321_models.DescribeVodDomainDetailResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        The description of the domain name for CDN.
         
         @param request: DescribeVodDomainDetailRequest
         @return: DescribeVodDomainDetailResponse
@@ -5074,11 +4938,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainLogResponse:
         """
-        ## Usage note
-        *   This operation is available only in the **China (Shanghai)** region.
-        *   For more information about the log format and latency, see [Download logs](~~86099~~).
-        *   If you specify neither the StartTime parameter nor the EndTime parameter, the log data in the last 24 hours is queried.
-        *   You can specify both the StartTime and EndTime parameters to query the log data that is generated in the specified duration.
+        The total number of entries returned on the current page.
         
         @param request: DescribeVodDomainLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5123,11 +4983,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainLogResponse:
         """
-        ## Usage note
-        *   This operation is available only in the **China (Shanghai)** region.
-        *   For more information about the log format and latency, see [Download logs](~~86099~~).
-        *   If you specify neither the StartTime parameter nor the EndTime parameter, the log data in the last 24 hours is queried.
-        *   You can specify both the StartTime and EndTime parameters to query the log data that is generated in the specified duration.
+        The total number of entries returned on the current page.
         
         @param request: DescribeVodDomainLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5171,11 +5027,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainLogRequest,
     ) -> vod_20170321_models.DescribeVodDomainLogResponse:
         """
-        ## Usage note
-        *   This operation is available only in the **China (Shanghai)** region.
-        *   For more information about the log format and latency, see [Download logs](~~86099~~).
-        *   If you specify neither the StartTime parameter nor the EndTime parameter, the log data in the last 24 hours is queried.
-        *   You can specify both the StartTime and EndTime parameters to query the log data that is generated in the specified duration.
+        The total number of entries returned on the current page.
         
         @param request: DescribeVodDomainLogRequest
         @return: DescribeVodDomainLogResponse
@@ -5188,11 +5040,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainLogRequest,
     ) -> vod_20170321_models.DescribeVodDomainLogResponse:
         """
-        ## Usage note
-        *   This operation is available only in the **China (Shanghai)** region.
-        *   For more information about the log format and latency, see [Download logs](~~86099~~).
-        *   If you specify neither the StartTime parameter nor the EndTime parameter, the log data in the last 24 hours is queried.
-        *   You can specify both the StartTime and EndTime parameters to query the log data that is generated in the specified duration.
+        The total number of entries returned on the current page.
         
         @param request: DescribeVodDomainLogRequest
         @return: DescribeVodDomainLogResponse
@@ -5205,23 +5053,6 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainSrcBpsDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainSrcBpsDataResponse:
-        """
-        This operation is available only in the **China (Shanghai)** region.
-        * ApsaraVideo VOD stores the origin bandwidth data for 90 days before the data is deleted.
-        * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
-        * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
-        ### Time granularity
-        The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
-        |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
-        |---|---|---|---|
-        |5 minutes|(0, 3\\]|93|15 minutes|
-        |1 hour|(3, 31\\]|186|4 hours|
-        |1 day|(31, 366\\]|366|04:00 on the next day|
-        
-        @param request: DescribeVodDomainSrcBpsDataRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVodDomainSrcBpsDataResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -5258,23 +5089,6 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainSrcBpsDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainSrcBpsDataResponse:
-        """
-        This operation is available only in the **China (Shanghai)** region.
-        * ApsaraVideo VOD stores the origin bandwidth data for 90 days before the data is deleted.
-        * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
-        * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
-        ### Time granularity
-        The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
-        |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
-        |---|---|---|---|
-        |5 minutes|(0, 3\\]|93|15 minutes|
-        |1 hour|(3, 31\\]|186|4 hours|
-        |1 day|(31, 366\\]|366|04:00 on the next day|
-        
-        @param request: DescribeVodDomainSrcBpsDataRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVodDomainSrcBpsDataResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -5310,22 +5124,6 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.DescribeVodDomainSrcBpsDataRequest,
     ) -> vod_20170321_models.DescribeVodDomainSrcBpsDataResponse:
-        """
-        This operation is available only in the **China (Shanghai)** region.
-        * ApsaraVideo VOD stores the origin bandwidth data for 90 days before the data is deleted.
-        * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
-        * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
-        ### Time granularity
-        The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
-        |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
-        |---|---|---|---|
-        |5 minutes|(0, 3\\]|93|15 minutes|
-        |1 hour|(3, 31\\]|186|4 hours|
-        |1 day|(31, 366\\]|366|04:00 on the next day|
-        
-        @param request: DescribeVodDomainSrcBpsDataRequest
-        @return: DescribeVodDomainSrcBpsDataResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vod_domain_src_bps_data_with_options(request, runtime)
 
@@ -5333,22 +5131,6 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.DescribeVodDomainSrcBpsDataRequest,
     ) -> vod_20170321_models.DescribeVodDomainSrcBpsDataResponse:
-        """
-        This operation is available only in the **China (Shanghai)** region.
-        * ApsaraVideo VOD stores the origin bandwidth data for 90 days before the data is deleted.
-        * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
-        * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
-        ### Time granularity
-        The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
-        |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
-        |---|---|---|---|
-        |5 minutes|(0, 3\\]|93|15 minutes|
-        |1 hour|(3, 31\\]|186|4 hours|
-        |1 day|(31, 366\\]|366|04:00 on the next day|
-        
-        @param request: DescribeVodDomainSrcBpsDataRequest
-        @return: DescribeVodDomainSrcBpsDataResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_domain_src_bps_data_with_options_async(request, runtime)
 
@@ -5510,7 +5292,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainTrafficDataResponse:
         """
-        If you specify neither the StartTime parameter nor the EndTime parameter, the data in the last 24 hours is queried. Alternatively, you can specify both the StartTime and EndTime parameters to query data that is generated in the specified duration. You can query data for the last 90 days at most.
+        This operation is available only in the **China (Shanghai)** region.
+        *   You can specify multiple accelerated domain names in a request.
+        *   If you do not specify the StartTime or EndTime parameter, data of the last 24 hours is returned. You can specify the StartTime and EndTime parameters to query data that is generated in the specified time range. You can query data of the last 90 days.
+        ### QPS limit
+        You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
         
         @param request: DescribeVodDomainTrafficDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5557,7 +5343,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainTrafficDataResponse:
         """
-        If you specify neither the StartTime parameter nor the EndTime parameter, the data in the last 24 hours is queried. Alternatively, you can specify both the StartTime and EndTime parameters to query data that is generated in the specified duration. You can query data for the last 90 days at most.
+        This operation is available only in the **China (Shanghai)** region.
+        *   You can specify multiple accelerated domain names in a request.
+        *   If you do not specify the StartTime or EndTime parameter, data of the last 24 hours is returned. You can specify the StartTime and EndTime parameters to query data that is generated in the specified time range. You can query data of the last 90 days.
+        ### QPS limit
+        You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
         
         @param request: DescribeVodDomainTrafficDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5603,7 +5393,11 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainTrafficDataRequest,
     ) -> vod_20170321_models.DescribeVodDomainTrafficDataResponse:
         """
-        If you specify neither the StartTime parameter nor the EndTime parameter, the data in the last 24 hours is queried. Alternatively, you can specify both the StartTime and EndTime parameters to query data that is generated in the specified duration. You can query data for the last 90 days at most.
+        This operation is available only in the **China (Shanghai)** region.
+        *   You can specify multiple accelerated domain names in a request.
+        *   If you do not specify the StartTime or EndTime parameter, data of the last 24 hours is returned. You can specify the StartTime and EndTime parameters to query data that is generated in the specified time range. You can query data of the last 90 days.
+        ### QPS limit
+        You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
         
         @param request: DescribeVodDomainTrafficDataRequest
         @return: DescribeVodDomainTrafficDataResponse
@@ -5616,7 +5410,11 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainTrafficDataRequest,
     ) -> vod_20170321_models.DescribeVodDomainTrafficDataResponse:
         """
-        If you specify neither the StartTime parameter nor the EndTime parameter, the data in the last 24 hours is queried. Alternatively, you can specify both the StartTime and EndTime parameters to query data that is generated in the specified duration. You can query data for the last 90 days at most.
+        This operation is available only in the **China (Shanghai)** region.
+        *   You can specify multiple accelerated domain names in a request.
+        *   If you do not specify the StartTime or EndTime parameter, data of the last 24 hours is returned. You can specify the StartTime and EndTime parameters to query data that is generated in the specified time range. You can query data of the last 90 days.
+        ### QPS limit
+        You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
         
         @param request: DescribeVodDomainTrafficDataRequest
         @return: DescribeVodDomainTrafficDataResponse
@@ -5630,9 +5428,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainUsageDataResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can specify a maximum of 100 domain names for CDN at a time. Separate them with commas (,). If you do not specify a domain name for CDN, the data of all domain names for CDN within your Alibaba Cloud account is returned.
-        > *   You can query data for the past one year at most and query data for a maximum of three months per request. If you query data for one to three days, the system returns the statistics collected on an hourly basis. If you query data for four days or more, the system returns the statistics collected on a daily basis.
+        > -   This operation is available only in the *China (Shanghai)** region.
+        >-  You can specify a maximum of 100 accelerated domain names in a request. Separate multiple domain names with commas (,). If you do not specify an accelerated domain name, the data of all accelerated domain names within your Alibaba Cloud account is returned.
+        >-  You can query data in the last year. The maximum time range that can be queried is three months. If you specify a time range of one to three days, the system returns data on an hourly basis. If you specify a time range of four days or more, the system returns data on a daily basis.
         
         @param request: DescribeVodDomainUsageDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5681,9 +5479,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainUsageDataResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can specify a maximum of 100 domain names for CDN at a time. Separate them with commas (,). If you do not specify a domain name for CDN, the data of all domain names for CDN within your Alibaba Cloud account is returned.
-        > *   You can query data for the past one year at most and query data for a maximum of three months per request. If you query data for one to three days, the system returns the statistics collected on an hourly basis. If you query data for four days or more, the system returns the statistics collected on a daily basis.
+        > -   This operation is available only in the *China (Shanghai)** region.
+        >-  You can specify a maximum of 100 accelerated domain names in a request. Separate multiple domain names with commas (,). If you do not specify an accelerated domain name, the data of all accelerated domain names within your Alibaba Cloud account is returned.
+        >-  You can query data in the last year. The maximum time range that can be queried is three months. If you specify a time range of one to three days, the system returns data on an hourly basis. If you specify a time range of four days or more, the system returns data on a daily basis.
         
         @param request: DescribeVodDomainUsageDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5731,9 +5529,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainUsageDataRequest,
     ) -> vod_20170321_models.DescribeVodDomainUsageDataResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can specify a maximum of 100 domain names for CDN at a time. Separate them with commas (,). If you do not specify a domain name for CDN, the data of all domain names for CDN within your Alibaba Cloud account is returned.
-        > *   You can query data for the past one year at most and query data for a maximum of three months per request. If you query data for one to three days, the system returns the statistics collected on an hourly basis. If you query data for four days or more, the system returns the statistics collected on a daily basis.
+        > -   This operation is available only in the *China (Shanghai)** region.
+        >-  You can specify a maximum of 100 accelerated domain names in a request. Separate multiple domain names with commas (,). If you do not specify an accelerated domain name, the data of all accelerated domain names within your Alibaba Cloud account is returned.
+        >-  You can query data in the last year. The maximum time range that can be queried is three months. If you specify a time range of one to three days, the system returns data on an hourly basis. If you specify a time range of four days or more, the system returns data on a daily basis.
         
         @param request: DescribeVodDomainUsageDataRequest
         @return: DescribeVodDomainUsageDataResponse
@@ -5746,9 +5544,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainUsageDataRequest,
     ) -> vod_20170321_models.DescribeVodDomainUsageDataResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can specify a maximum of 100 domain names for CDN at a time. Separate them with commas (,). If you do not specify a domain name for CDN, the data of all domain names for CDN within your Alibaba Cloud account is returned.
-        > *   You can query data for the past one year at most and query data for a maximum of three months per request. If you query data for one to three days, the system returns the statistics collected on an hourly basis. If you query data for four days or more, the system returns the statistics collected on a daily basis.
+        > -   This operation is available only in the *China (Shanghai)** region.
+        >-  You can specify a maximum of 100 accelerated domain names in a request. Separate multiple domain names with commas (,). If you do not specify an accelerated domain name, the data of all accelerated domain names within your Alibaba Cloud account is returned.
+        >-  You can query data in the last year. The maximum time range that can be queried is three months. If you specify a time range of one to three days, the system returns data on an hourly basis. If you specify a time range of four days or more, the system returns data on a daily basis.
         
         @param request: DescribeVodDomainUsageDataRequest
         @return: DescribeVodDomainUsageDataResponse
@@ -5867,7 +5665,7 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodRefreshTasksResponse:
         """
         >    This operation is available only in the **China (Shanghai)** region.
-        > *   If you specify neither the TaskId parameter nor the ObjectPath parameter, the data in the last three days on the first page is returned. By default, one page displays a maximum of 20 entries. You can specify the Taskid and Objectpath parameters at the same time.
+        >*   If you do not specify the TaskId or ObjectPath parameter, the data in the last three days is returned on the first page. By default, one page displays a maximum of 20 entries. You can specify the TaskId and ObjectPath parameters at the same time.
         
         @param request: DescribeVodRefreshTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5923,7 +5721,7 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodRefreshTasksResponse:
         """
         >    This operation is available only in the **China (Shanghai)** region.
-        > *   If you specify neither the TaskId parameter nor the ObjectPath parameter, the data in the last three days on the first page is returned. By default, one page displays a maximum of 20 entries. You can specify the Taskid and Objectpath parameters at the same time.
+        >*   If you do not specify the TaskId or ObjectPath parameter, the data in the last three days is returned on the first page. By default, one page displays a maximum of 20 entries. You can specify the TaskId and ObjectPath parameters at the same time.
         
         @param request: DescribeVodRefreshTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5978,7 +5776,7 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodRefreshTasksResponse:
         """
         >    This operation is available only in the **China (Shanghai)** region.
-        > *   If you specify neither the TaskId parameter nor the ObjectPath parameter, the data in the last three days on the first page is returned. By default, one page displays a maximum of 20 entries. You can specify the Taskid and Objectpath parameters at the same time.
+        >*   If you do not specify the TaskId or ObjectPath parameter, the data in the last three days is returned on the first page. By default, one page displays a maximum of 20 entries. You can specify the TaskId and ObjectPath parameters at the same time.
         
         @param request: DescribeVodRefreshTasksRequest
         @return: DescribeVodRefreshTasksResponse
@@ -5992,7 +5790,7 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodRefreshTasksResponse:
         """
         >    This operation is available only in the **China (Shanghai)** region.
-        > *   If you specify neither the TaskId parameter nor the ObjectPath parameter, the data in the last three days on the first page is returned. By default, one page displays a maximum of 20 entries. You can specify the Taskid and Objectpath parameters at the same time.
+        >*   If you do not specify the TaskId or ObjectPath parameter, the data in the last three days is returned on the first page. By default, one page displays a maximum of 20 entries. You can specify the TaskId and ObjectPath parameters at the same time.
         
         @param request: DescribeVodRefreshTasksRequest
         @return: DescribeVodRefreshTasksResponse
@@ -6007,7 +5805,7 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodStorageDataResponse:
         """
         >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+        >*   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
         
         @param request: DescribeVodStorageDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6053,7 +5851,7 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodStorageDataResponse:
         """
         >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+        >*   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
         
         @param request: DescribeVodStorageDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6098,7 +5896,7 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodStorageDataResponse:
         """
         >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+        >*   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
         
         @param request: DescribeVodStorageDataRequest
         @return: DescribeVodStorageDataResponse
@@ -6112,7 +5910,7 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodStorageDataResponse:
         """
         >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+        >*   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
         
         @param request: DescribeVodStorageDataRequest
         @return: DescribeVodStorageDataResponse
@@ -6126,8 +5924,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodTranscodeDataResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+        This operation is available only in the **China (Shanghai)** region.
+        *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
         
         @param request: DescribeVodTranscodeDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6174,8 +5972,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodTranscodeDataResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+        This operation is available only in the **China (Shanghai)** region.
+        *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
         
         @param request: DescribeVodTranscodeDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6221,8 +6019,8 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodTranscodeDataRequest,
     ) -> vod_20170321_models.DescribeVodTranscodeDataResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+        This operation is available only in the **China (Shanghai)** region.
+        *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
         
         @param request: DescribeVodTranscodeDataRequest
         @return: DescribeVodTranscodeDataResponse
@@ -6235,8 +6033,8 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodTranscodeDataRequest,
     ) -> vod_20170321_models.DescribeVodTranscodeDataResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+        This operation is available only in the **China (Shanghai)** region.
+        *   If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
         
         @param request: DescribeVodTranscodeDataRequest
         @return: DescribeVodTranscodeDataResponse
@@ -6422,7 +6220,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DetachAppPolicyFromIdentityResponse:
         """
-        You can grant a maximum of 10 application permissions to a RAM user or RAM role.
+        The name of the policy that was not found.
         
         @param request: DetachAppPolicyFromIdentityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6463,7 +6261,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DetachAppPolicyFromIdentityResponse:
         """
-        You can grant a maximum of 10 application permissions to a RAM user or RAM role.
+        The name of the policy that was not found.
         
         @param request: DetachAppPolicyFromIdentityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6503,7 +6301,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DetachAppPolicyFromIdentityRequest,
     ) -> vod_20170321_models.DetachAppPolicyFromIdentityResponse:
         """
-        You can grant a maximum of 10 application permissions to a RAM user or RAM role.
+        The name of the policy that was not found.
         
         @param request: DetachAppPolicyFromIdentityRequest
         @return: DetachAppPolicyFromIdentityResponse
@@ -6516,7 +6314,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DetachAppPolicyFromIdentityRequest,
     ) -> vod_20170321_models.DetachAppPolicyFromIdentityResponse:
         """
-        You can grant a maximum of 10 application permissions to a RAM user or RAM role.
+        The name of the policy that was not found.
         
         @param request: DetachAppPolicyFromIdentityRequest
         @return: DetachAppPolicyFromIdentityResponse
@@ -6612,11 +6410,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAIImageJobsResponse:
         """
-        Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs. You can query a maximum of 10 jobs of image AI processing in one request.
-        - The smart thumbnail feature is not supported. You cannot call this operation.
-        - Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs. You can query a maximum of 10 jobs of image AI processing in one request.
-        ### QPS limit
-        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The image AI processing jobs.
         
         @param request: GetAIImageJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6659,11 +6453,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAIImageJobsResponse:
         """
-        Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs. You can query a maximum of 10 jobs of image AI processing in one request.
-        - The smart thumbnail feature is not supported. You cannot call this operation.
-        - Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs. You can query a maximum of 10 jobs of image AI processing in one request.
-        ### QPS limit
-        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The image AI processing jobs.
         
         @param request: GetAIImageJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6705,11 +6495,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetAIImageJobsRequest,
     ) -> vod_20170321_models.GetAIImageJobsResponse:
         """
-        Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs. You can query a maximum of 10 jobs of image AI processing in one request.
-        - The smart thumbnail feature is not supported. You cannot call this operation.
-        - Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs. You can query a maximum of 10 jobs of image AI processing in one request.
-        ### QPS limit
-        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The image AI processing jobs.
         
         @param request: GetAIImageJobsRequest
         @return: GetAIImageJobsResponse
@@ -6722,11 +6508,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetAIImageJobsRequest,
     ) -> vod_20170321_models.GetAIImageJobsResponse:
         """
-        Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs. You can query a maximum of 10 jobs of image AI processing in one request.
-        - The smart thumbnail feature is not supported. You cannot call this operation.
-        - Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs. You can query a maximum of 10 jobs of image AI processing in one request.
-        ### QPS limit
-        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The image AI processing jobs.
         
         @param request: GetAIImageJobsRequest
         @return: GetAIImageJobsResponse
@@ -6740,7 +6522,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAIMediaAuditJobResponse:
         """
-        ApsaraVideo VOD stores the snapshots of the intelligent review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+        The recommendation for review results. Valid values:
+        *   **block**: The content violates the regulations.
+        *   **review**: The content may violate the regulations.
+        *   **pass**: The content passes the review.
         
         @param request: GetAIMediaAuditJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6775,7 +6560,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAIMediaAuditJobResponse:
         """
-        ApsaraVideo VOD stores the snapshots of the intelligent review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+        The recommendation for review results. Valid values:
+        *   **block**: The content violates the regulations.
+        *   **review**: The content may violate the regulations.
+        *   **pass**: The content passes the review.
         
         @param request: GetAIMediaAuditJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6809,7 +6597,10 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetAIMediaAuditJobRequest,
     ) -> vod_20170321_models.GetAIMediaAuditJobResponse:
         """
-        ApsaraVideo VOD stores the snapshots of the intelligent review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+        The recommendation for review results. Valid values:
+        *   **block**: The content violates the regulations.
+        *   **review**: The content may violate the regulations.
+        *   **pass**: The content passes the review.
         
         @param request: GetAIMediaAuditJobRequest
         @return: GetAIMediaAuditJobResponse
@@ -6822,7 +6613,10 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetAIMediaAuditJobRequest,
     ) -> vod_20170321_models.GetAIMediaAuditJobResponse:
         """
-        ApsaraVideo VOD stores the snapshots of the intelligent review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+        The recommendation for review results. Valid values:
+        *   **block**: The content violates the regulations.
+        *   **review**: The content may violate the regulations.
+        *   **pass**: The content passes the review.
         
         @param request: GetAIMediaAuditJobRequest
         @return: GetAIMediaAuditJobResponse
@@ -6836,9 +6630,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAITemplateResponse:
         """
-        Before you call this operation to query the details of an AI template, you must obtain the ID of the AI template.
-        ### QPS limit
-        You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](https://help.aliyun.com/document_detail/89863.html#title-vd3-499-o36).
         
         @param request: GetAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6873,9 +6665,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAITemplateResponse:
         """
-        Before you call this operation to query the details of an AI template, you must obtain the ID of the AI template.
-        ### QPS limit
-        You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](https://help.aliyun.com/document_detail/89863.html#title-vd3-499-o36).
         
         @param request: GetAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6909,9 +6699,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetAITemplateRequest,
     ) -> vod_20170321_models.GetAITemplateResponse:
         """
-        Before you call this operation to query the details of an AI template, you must obtain the ID of the AI template.
-        ### QPS limit
-        You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](https://help.aliyun.com/document_detail/89863.html#title-vd3-499-o36).
         
         @param request: GetAITemplateRequest
         @return: GetAITemplateResponse
@@ -6924,9 +6712,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetAITemplateRequest,
     ) -> vod_20170321_models.GetAITemplateResponse:
         """
-        Before you call this operation to query the details of an AI template, you must obtain the ID of the AI template.
-        ### QPS limit
-        You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](https://help.aliyun.com/document_detail/89863.html#title-vd3-499-o36).
         
         @param request: GetAITemplateRequest
         @return: GetAITemplateResponse
@@ -6940,10 +6726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAIVideoTagResultResponse:
         """
-        - The smart tagging feature is not supported. You cannot call this operation.
-        - You can obtain the smart tagging results by using the video ID.
-        ### QPS limit
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        Milliseconds
         
         @param request: GetAIVideoTagResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6986,10 +6769,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAIVideoTagResultResponse:
         """
-        - The smart tagging feature is not supported. You cannot call this operation.
-        - You can obtain the smart tagging results by using the video ID.
-        ### QPS limit
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        Milliseconds
         
         @param request: GetAIVideoTagResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7031,10 +6811,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetAIVideoTagResultRequest,
     ) -> vod_20170321_models.GetAIVideoTagResultResponse:
         """
-        - The smart tagging feature is not supported. You cannot call this operation.
-        - You can obtain the smart tagging results by using the video ID.
-        ### QPS limit
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        Milliseconds
         
         @param request: GetAIVideoTagResultRequest
         @return: GetAIVideoTagResultResponse
@@ -7047,10 +6824,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetAIVideoTagResultRequest,
     ) -> vod_20170321_models.GetAIVideoTagResultResponse:
         """
-        - The smart tagging feature is not supported. You cannot call this operation.
-        - You can obtain the smart tagging results by using the video ID.
-        ### QPS limit
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        Milliseconds
         
         @param request: GetAIVideoTagResultRequest
         @return: GetAIVideoTagResultResponse
@@ -7064,7 +6838,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAppInfosResponse:
         """
-        Supports batch query.
+        The description of the application.
         
         @param request: GetAppInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7099,7 +6873,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAppInfosResponse:
         """
-        Supports batch query.
+        The description of the application.
         
         @param request: GetAppInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7133,7 +6907,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetAppInfosRequest,
     ) -> vod_20170321_models.GetAppInfosResponse:
         """
-        Supports batch query.
+        The description of the application.
         
         @param request: GetAppInfosRequest
         @return: GetAppInfosResponse
@@ -7146,7 +6920,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetAppInfosRequest,
     ) -> vod_20170321_models.GetAppInfosResponse:
         """
-        Supports batch query.
+        The description of the application.
         
         @param request: GetAppInfosRequest
         @return: GetAppInfosResponse
@@ -7406,9 +7180,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetDefaultAITemplateResponse:
         """
-        You can query information only about the default AI template for automated review.
-        ### QPS limit
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](https://help.aliyun.com/document_detail/89863.html#title-vd3-499-o36).
         
         @param request: GetDefaultAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7443,9 +7215,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetDefaultAITemplateResponse:
         """
-        You can query information only about the default AI template for automated review.
-        ### QPS limit
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](https://help.aliyun.com/document_detail/89863.html#title-vd3-499-o36).
         
         @param request: GetDefaultAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7479,9 +7249,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetDefaultAITemplateRequest,
     ) -> vod_20170321_models.GetDefaultAITemplateResponse:
         """
-        You can query information only about the default AI template for automated review.
-        ### QPS limit
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](https://help.aliyun.com/document_detail/89863.html#title-vd3-499-o36).
         
         @param request: GetDefaultAITemplateRequest
         @return: GetDefaultAITemplateResponse
@@ -7494,9 +7262,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetDefaultAITemplateRequest,
     ) -> vod_20170321_models.GetDefaultAITemplateResponse:
         """
-        You can query information only about the default AI template for automated review.
-        ### QPS limit
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](https://help.aliyun.com/document_detail/89863.html#title-vd3-499-o36).
         
         @param request: GetDefaultAITemplateRequest
         @return: GetDefaultAITemplateResponse
@@ -7596,7 +7362,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetEditingProjectMaterialsResponse:
         """
-        During editing, you can add materials to the timeline, but some of them may not be used.
+        The time when the material was last updated. The time follows the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         
         @param request: GetEditingProjectMaterialsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7643,7 +7409,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetEditingProjectMaterialsResponse:
         """
-        During editing, you can add materials to the timeline, but some of them may not be used.
+        The time when the material was last updated. The time follows the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         
         @param request: GetEditingProjectMaterialsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7689,7 +7455,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetEditingProjectMaterialsRequest,
     ) -> vod_20170321_models.GetEditingProjectMaterialsResponse:
         """
-        During editing, you can add materials to the timeline, but some of them may not be used.
+        The time when the material was last updated. The time follows the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         
         @param request: GetEditingProjectMaterialsRequest
         @return: GetEditingProjectMaterialsResponse
@@ -7702,7 +7468,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetEditingProjectMaterialsRequest,
     ) -> vod_20170321_models.GetEditingProjectMaterialsResponse:
         """
-        During editing, you can add materials to the timeline, but some of them may not be used.
+        The time when the material was last updated. The time follows the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         
         @param request: GetEditingProjectMaterialsRequest
         @return: GetEditingProjectMaterialsResponse
@@ -7906,7 +7672,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaAuditAudioResultDetailResponse:
         """
-        If notifications for the [CreateAuditComplete](~~89576~~) event are configured, event notifications are sent to the callback URL after automated review is complete. You can call this operation to query the details of audio review results.
+        The start time of the audio that failed the review. Unit: seconds.
         
         @param request: GetMediaAuditAudioResultDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7951,7 +7717,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaAuditAudioResultDetailResponse:
         """
-        If notifications for the [CreateAuditComplete](~~89576~~) event are configured, event notifications are sent to the callback URL after automated review is complete. You can call this operation to query the details of audio review results.
+        The start time of the audio that failed the review. Unit: seconds.
         
         @param request: GetMediaAuditAudioResultDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7995,7 +7761,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetMediaAuditAudioResultDetailRequest,
     ) -> vod_20170321_models.GetMediaAuditAudioResultDetailResponse:
         """
-        If notifications for the [CreateAuditComplete](~~89576~~) event are configured, event notifications are sent to the callback URL after automated review is complete. You can call this operation to query the details of audio review results.
+        The start time of the audio that failed the review. Unit: seconds.
         
         @param request: GetMediaAuditAudioResultDetailRequest
         @return: GetMediaAuditAudioResultDetailResponse
@@ -8008,7 +7774,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetMediaAuditAudioResultDetailRequest,
     ) -> vod_20170321_models.GetMediaAuditAudioResultDetailResponse:
         """
-        If notifications for the [CreateAuditComplete](~~89576~~) event are configured, event notifications are sent to the callback URL after automated review is complete. You can call this operation to query the details of audio review results.
+        The start time of the audio that failed the review. Unit: seconds.
         
         @param request: GetMediaAuditAudioResultDetailRequest
         @return: GetMediaAuditAudioResultDetailResponse
@@ -8092,8 +7858,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaAuditResultDetailResponse:
         """
-        - By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
-        - ApsaraVideo VOD stores the snapshots in the automated review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+        Details about review results.
         
         @param request: GetMediaAuditResultDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8130,8 +7895,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaAuditResultDetailResponse:
         """
-        - By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
-        - ApsaraVideo VOD stores the snapshots in the automated review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+        Details about review results.
         
         @param request: GetMediaAuditResultDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8167,8 +7931,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetMediaAuditResultDetailRequest,
     ) -> vod_20170321_models.GetMediaAuditResultDetailResponse:
         """
-        - By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
-        - ApsaraVideo VOD stores the snapshots in the automated review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+        Details about review results.
         
         @param request: GetMediaAuditResultDetailRequest
         @return: GetMediaAuditResultDetailResponse
@@ -8181,8 +7944,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetMediaAuditResultDetailRequest,
     ) -> vod_20170321_models.GetMediaAuditResultDetailResponse:
         """
-        - By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
-        - ApsaraVideo VOD stores the snapshots in the automated review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+        Details about review results.
         
         @param request: GetMediaAuditResultDetailRequest
         @return: GetMediaAuditResultDetailResponse
@@ -8266,9 +8028,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaDNAResultResponse:
         """
-        This operation is available only in the Singapore (Singapore) region.
-        ### QPS limit
-        You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](~~342790~~).
+        The details of the matched video. Information such as the location and duration of the video is returned.
         
         @param request: GetMediaDNAResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8311,9 +8071,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaDNAResultResponse:
         """
-        This operation is available only in the Singapore (Singapore) region.
-        ### QPS limit
-        You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](~~342790~~).
+        The details of the matched video. Information such as the location and duration of the video is returned.
         
         @param request: GetMediaDNAResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8355,9 +8113,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetMediaDNAResultRequest,
     ) -> vod_20170321_models.GetMediaDNAResultResponse:
         """
-        This operation is available only in the Singapore (Singapore) region.
-        ### QPS limit
-        You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](~~342790~~).
+        The details of the matched video. Information such as the location and duration of the video is returned.
         
         @param request: GetMediaDNAResultRequest
         @return: GetMediaDNAResultResponse
@@ -8370,9 +8126,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetMediaDNAResultRequest,
     ) -> vod_20170321_models.GetMediaDNAResultResponse:
         """
-        This operation is available only in the Singapore (Singapore) region.
-        ### QPS limit
-        You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](~~342790~~).
+        The details of the matched video. Information such as the location and duration of the video is returned.
         
         @param request: GetMediaDNAResultRequest
         @return: GetMediaDNAResultResponse
@@ -8586,7 +8340,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMezzanineInfoResponse:
         """
-        > You can obtain the complete mezzanine file information only after a stream is transcoded.
+        The sampling format.
         
         @param request: GetMezzanineInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8627,7 +8381,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMezzanineInfoResponse:
         """
-        > You can obtain the complete mezzanine file information only after a stream is transcoded.
+        The sampling format.
         
         @param request: GetMezzanineInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8667,7 +8421,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetMezzanineInfoRequest,
     ) -> vod_20170321_models.GetMezzanineInfoResponse:
         """
-        > You can obtain the complete mezzanine file information only after a stream is transcoded.
+        The sampling format.
         
         @param request: GetMezzanineInfoRequest
         @return: GetMezzanineInfoResponse
@@ -8680,7 +8434,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetMezzanineInfoRequest,
     ) -> vod_20170321_models.GetMezzanineInfoResponse:
         """
-        > You can obtain the complete mezzanine file information only after a stream is transcoded.
+        The sampling format.
         
         @param request: GetMezzanineInfoRequest
         @return: GetMezzanineInfoResponse
@@ -8694,11 +8448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetPlayInfoResponse:
         """
-        You can use the ID of a media file to query the playback URL of the file. After you integrate ApsaraVideo Player SDK for URL-based playback or a third-party player, you can use the obtained playback URLs to play audio and video files.
-        *   Only videos in the Normal state can be played. The Status parameter in the response indicates the status of the video. For more information, see [Overview](~~57290~~).
-        *   If video playback fails, you can call the [GetMezzanineInfo](~~GetMezzanineInfo~~) operation to check whether the video source information is correct.
-        ### QPS limits
-        You can call this operation up to 360 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The ID of the media file.
         
         @param request: GetPlayInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8751,11 +8501,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetPlayInfoResponse:
         """
-        You can use the ID of a media file to query the playback URL of the file. After you integrate ApsaraVideo Player SDK for URL-based playback or a third-party player, you can use the obtained playback URLs to play audio and video files.
-        *   Only videos in the Normal state can be played. The Status parameter in the response indicates the status of the video. For more information, see [Overview](~~57290~~).
-        *   If video playback fails, you can call the [GetMezzanineInfo](~~GetMezzanineInfo~~) operation to check whether the video source information is correct.
-        ### QPS limits
-        You can call this operation up to 360 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The ID of the media file.
         
         @param request: GetPlayInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8807,11 +8553,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetPlayInfoRequest,
     ) -> vod_20170321_models.GetPlayInfoResponse:
         """
-        You can use the ID of a media file to query the playback URL of the file. After you integrate ApsaraVideo Player SDK for URL-based playback or a third-party player, you can use the obtained playback URLs to play audio and video files.
-        *   Only videos in the Normal state can be played. The Status parameter in the response indicates the status of the video. For more information, see [Overview](~~57290~~).
-        *   If video playback fails, you can call the [GetMezzanineInfo](~~GetMezzanineInfo~~) operation to check whether the video source information is correct.
-        ### QPS limits
-        You can call this operation up to 360 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The ID of the media file.
         
         @param request: GetPlayInfoRequest
         @return: GetPlayInfoResponse
@@ -8824,11 +8566,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetPlayInfoRequest,
     ) -> vod_20170321_models.GetPlayInfoResponse:
         """
-        You can use the ID of a media file to query the playback URL of the file. After you integrate ApsaraVideo Player SDK for URL-based playback or a third-party player, you can use the obtained playback URLs to play audio and video files.
-        *   Only videos in the Normal state can be played. The Status parameter in the response indicates the status of the video. For more information, see [Overview](~~57290~~).
-        *   If video playback fails, you can call the [GetMezzanineInfo](~~GetMezzanineInfo~~) operation to check whether the video source information is correct.
-        ### QPS limits
-        You can call this operation up to 360 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The ID of the media file.
         
         @param request: GetPlayInfoRequest
         @return: GetPlayInfoResponse
@@ -8950,7 +8688,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeTaskResponse:
         """
-        You can call this operation to query only transcoding tasks created within the past year.
+        The video resolution. Valid values:
+        *   **LD**: low definition
+        *   **SD**: standard definition
+        *   **HD**: high definition
+        *   **FHD**: ultra high definition
+        *   **OD**: original definition
+        *   **2K**: 2K
+        *   **4K**: 4K
+        *   **SQ**: standard sound quality
+        *   **HQ**: high sound quality
+        *   **AUTO**: adaptive bitrate Adaptive bitrate streams are returned only if PackageSetting is set in the transcoding template. For more information, see [Basic structures](~~52839~~).
+        > This parameter indicates the definition that is configured in the transcoding template and does not indicate the actual resolution of the output video.
         
         @param request: GetTranscodeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8985,7 +8734,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeTaskResponse:
         """
-        You can call this operation to query only transcoding tasks created within the past year.
+        The video resolution. Valid values:
+        *   **LD**: low definition
+        *   **SD**: standard definition
+        *   **HD**: high definition
+        *   **FHD**: ultra high definition
+        *   **OD**: original definition
+        *   **2K**: 2K
+        *   **4K**: 4K
+        *   **SQ**: standard sound quality
+        *   **HQ**: high sound quality
+        *   **AUTO**: adaptive bitrate Adaptive bitrate streams are returned only if PackageSetting is set in the transcoding template. For more information, see [Basic structures](~~52839~~).
+        > This parameter indicates the definition that is configured in the transcoding template and does not indicate the actual resolution of the output video.
         
         @param request: GetTranscodeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9019,7 +8779,18 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetTranscodeTaskRequest,
     ) -> vod_20170321_models.GetTranscodeTaskResponse:
         """
-        You can call this operation to query only transcoding tasks created within the past year.
+        The video resolution. Valid values:
+        *   **LD**: low definition
+        *   **SD**: standard definition
+        *   **HD**: high definition
+        *   **FHD**: ultra high definition
+        *   **OD**: original definition
+        *   **2K**: 2K
+        *   **4K**: 4K
+        *   **SQ**: standard sound quality
+        *   **HQ**: high sound quality
+        *   **AUTO**: adaptive bitrate Adaptive bitrate streams are returned only if PackageSetting is set in the transcoding template. For more information, see [Basic structures](~~52839~~).
+        > This parameter indicates the definition that is configured in the transcoding template and does not indicate the actual resolution of the output video.
         
         @param request: GetTranscodeTaskRequest
         @return: GetTranscodeTaskResponse
@@ -9032,7 +8803,18 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetTranscodeTaskRequest,
     ) -> vod_20170321_models.GetTranscodeTaskResponse:
         """
-        You can call this operation to query only transcoding tasks created within the past year.
+        The video resolution. Valid values:
+        *   **LD**: low definition
+        *   **SD**: standard definition
+        *   **HD**: high definition
+        *   **FHD**: ultra high definition
+        *   **OD**: original definition
+        *   **2K**: 2K
+        *   **4K**: 4K
+        *   **SQ**: standard sound quality
+        *   **HQ**: high sound quality
+        *   **AUTO**: adaptive bitrate Adaptive bitrate streams are returned only if PackageSetting is set in the transcoding template. For more information, see [Basic structures](~~52839~~).
+        > This parameter indicates the definition that is configured in the transcoding template and does not indicate the actual resolution of the output video.
         
         @param request: GetTranscodeTaskRequest
         @return: GetTranscodeTaskResponse
@@ -9046,7 +8828,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeTemplateGroupResponse:
         """
-        This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
+        Valid values for the definition of a common transcoding template:
+        *   **LD**: low definition.
+        *   **SD**: standard definition.
+        *   **HD**: high definition.
+        *   **FHD**: ultra high definition.
+        *   **OD**: original quality.
+        *   **2K**\
+        *   **4K**\
+        *   **SQ**: standard sound quality.
+        *   **HQ**: high sound quality.
+        Valid values for the definition of a Narrowband HD™ 1.0 transcoding template:
+        *   **LD-NBV1**: low definition.
+        *   **SD-NBV1**: standard definition.
+        *   **HD-NBV1**: high definition.
+        *   **FHD-NBV1**: ultra high definition.
+        *   **2K-NBV1**\
+        *   **4K-NBV1**\
+        >*   You cannot modify the definition of transcoding templates.
+        >*   You cannot modify the system parameters, such as the video resolution, audio resolution, and bitrate, of Narrowband HD™ 1.0 transcoding templates.
+        >*   You can create only Narrowband HD™ 1.0 transcoding templates that support the FLV, M3U8 (HLS), and MP4 output formats.
         
         @param request: GetTranscodeTemplateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9081,7 +8882,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeTemplateGroupResponse:
         """
-        This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
+        Valid values for the definition of a common transcoding template:
+        *   **LD**: low definition.
+        *   **SD**: standard definition.
+        *   **HD**: high definition.
+        *   **FHD**: ultra high definition.
+        *   **OD**: original quality.
+        *   **2K**\
+        *   **4K**\
+        *   **SQ**: standard sound quality.
+        *   **HQ**: high sound quality.
+        Valid values for the definition of a Narrowband HD™ 1.0 transcoding template:
+        *   **LD-NBV1**: low definition.
+        *   **SD-NBV1**: standard definition.
+        *   **HD-NBV1**: high definition.
+        *   **FHD-NBV1**: ultra high definition.
+        *   **2K-NBV1**\
+        *   **4K-NBV1**\
+        >*   You cannot modify the definition of transcoding templates.
+        >*   You cannot modify the system parameters, such as the video resolution, audio resolution, and bitrate, of Narrowband HD™ 1.0 transcoding templates.
+        >*   You can create only Narrowband HD™ 1.0 transcoding templates that support the FLV, M3U8 (HLS), and MP4 output formats.
         
         @param request: GetTranscodeTemplateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9115,7 +8935,26 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetTranscodeTemplateGroupRequest,
     ) -> vod_20170321_models.GetTranscodeTemplateGroupResponse:
         """
-        This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
+        Valid values for the definition of a common transcoding template:
+        *   **LD**: low definition.
+        *   **SD**: standard definition.
+        *   **HD**: high definition.
+        *   **FHD**: ultra high definition.
+        *   **OD**: original quality.
+        *   **2K**\
+        *   **4K**\
+        *   **SQ**: standard sound quality.
+        *   **HQ**: high sound quality.
+        Valid values for the definition of a Narrowband HD™ 1.0 transcoding template:
+        *   **LD-NBV1**: low definition.
+        *   **SD-NBV1**: standard definition.
+        *   **HD-NBV1**: high definition.
+        *   **FHD-NBV1**: ultra high definition.
+        *   **2K-NBV1**\
+        *   **4K-NBV1**\
+        >*   You cannot modify the definition of transcoding templates.
+        >*   You cannot modify the system parameters, such as the video resolution, audio resolution, and bitrate, of Narrowband HD™ 1.0 transcoding templates.
+        >*   You can create only Narrowband HD™ 1.0 transcoding templates that support the FLV, M3U8 (HLS), and MP4 output formats.
         
         @param request: GetTranscodeTemplateGroupRequest
         @return: GetTranscodeTemplateGroupResponse
@@ -9128,7 +8967,26 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetTranscodeTemplateGroupRequest,
     ) -> vod_20170321_models.GetTranscodeTemplateGroupResponse:
         """
-        This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
+        Valid values for the definition of a common transcoding template:
+        *   **LD**: low definition.
+        *   **SD**: standard definition.
+        *   **HD**: high definition.
+        *   **FHD**: ultra high definition.
+        *   **OD**: original quality.
+        *   **2K**\
+        *   **4K**\
+        *   **SQ**: standard sound quality.
+        *   **HQ**: high sound quality.
+        Valid values for the definition of a Narrowband HD™ 1.0 transcoding template:
+        *   **LD-NBV1**: low definition.
+        *   **SD-NBV1**: standard definition.
+        *   **HD-NBV1**: high definition.
+        *   **FHD-NBV1**: ultra high definition.
+        *   **2K-NBV1**\
+        *   **4K-NBV1**\
+        >*   You cannot modify the definition of transcoding templates.
+        >*   You cannot modify the system parameters, such as the video resolution, audio resolution, and bitrate, of Narrowband HD™ 1.0 transcoding templates.
+        >*   You can create only Narrowband HD™ 1.0 transcoding templates that support the FLV, M3U8 (HLS), and MP4 output formats.
         
         @param request: GetTranscodeTemplateGroupRequest
         @return: GetTranscodeTemplateGroupResponse
@@ -9142,8 +9000,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetURLUploadInfosResponse:
         """
-        You can query the information about a URL-based upload job by specifying the upload URL or using the job ID returned when you upload media files. The information includes the status of the upload job, custom configurations, the time when the job was created, and the time when the job was complete.
-        If the upload fails, you can view the error code and error message. If the upload is successful, you can obtain the video ID.
+        The size of the uploaded media file. Unit: byte.
         
         @param request: GetURLUploadInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9180,8 +9037,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetURLUploadInfosResponse:
         """
-        You can query the information about a URL-based upload job by specifying the upload URL or using the job ID returned when you upload media files. The information includes the status of the upload job, custom configurations, the time when the job was created, and the time when the job was complete.
-        If the upload fails, you can view the error code and error message. If the upload is successful, you can obtain the video ID.
+        The size of the uploaded media file. Unit: byte.
         
         @param request: GetURLUploadInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9217,8 +9073,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetURLUploadInfosRequest,
     ) -> vod_20170321_models.GetURLUploadInfosResponse:
         """
-        You can query the information about a URL-based upload job by specifying the upload URL or using the job ID returned when you upload media files. The information includes the status of the upload job, custom configurations, the time when the job was created, and the time when the job was complete.
-        If the upload fails, you can view the error code and error message. If the upload is successful, you can obtain the video ID.
+        The size of the uploaded media file. Unit: byte.
         
         @param request: GetURLUploadInfosRequest
         @return: GetURLUploadInfosResponse
@@ -9231,8 +9086,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetURLUploadInfosRequest,
     ) -> vod_20170321_models.GetURLUploadInfosResponse:
         """
-        You can query the information about a URL-based upload job by specifying the upload URL or using the job ID returned when you upload media files. The information includes the status of the upload job, custom configurations, the time when the job was created, and the time when the job was complete.
-        If the upload fails, you can view the error code and error message. If the upload is successful, you can obtain the video ID.
+        The size of the uploaded media file. Unit: byte.
         
         @param request: GetURLUploadInfosRequest
         @return: GetURLUploadInfosResponse
@@ -9246,15 +9100,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetUploadDetailsResponse:
         """
-        You can call this operation to obtain the upload details only about audio and video files.
-        *   If you use the ApsaraVideo VOD console to upload audio and video files, you can call this operation to query information such as the upload ratio. If you use an upload SDK to upload audio and video files, make sure that the version of the [upload SDK](~~52200~~) meets one of the following requirements:
-        *   The version of the upload SDK for Java is 1.4.4 or later.
-        *   The version of the upload SDK for C++ is 1.0.0 or later.
-        *   The version of the upload SDK for PHP is 1.0.2 or later.
-        *   The version of the upload SDK for Python is 1.3.0 or later.
-        *   The version of the upload SDK for JavaScript is 1.4.0 or later.
-        *   The version of the upload SDK for Android is 1.5.0 or later.
-        *   The version of the upload SDK for iOS is 1.5.0 or later.
+        The type of the media file. Set the value to *video**, which indicates audio and video files.
         
         @param request: GetUploadDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9291,15 +9137,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetUploadDetailsResponse:
         """
-        You can call this operation to obtain the upload details only about audio and video files.
-        *   If you use the ApsaraVideo VOD console to upload audio and video files, you can call this operation to query information such as the upload ratio. If you use an upload SDK to upload audio and video files, make sure that the version of the [upload SDK](~~52200~~) meets one of the following requirements:
-        *   The version of the upload SDK for Java is 1.4.4 or later.
-        *   The version of the upload SDK for C++ is 1.0.0 or later.
-        *   The version of the upload SDK for PHP is 1.0.2 or later.
-        *   The version of the upload SDK for Python is 1.3.0 or later.
-        *   The version of the upload SDK for JavaScript is 1.4.0 or later.
-        *   The version of the upload SDK for Android is 1.5.0 or later.
-        *   The version of the upload SDK for iOS is 1.5.0 or later.
+        The type of the media file. Set the value to *video**, which indicates audio and video files.
         
         @param request: GetUploadDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9335,15 +9173,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetUploadDetailsRequest,
     ) -> vod_20170321_models.GetUploadDetailsResponse:
         """
-        You can call this operation to obtain the upload details only about audio and video files.
-        *   If you use the ApsaraVideo VOD console to upload audio and video files, you can call this operation to query information such as the upload ratio. If you use an upload SDK to upload audio and video files, make sure that the version of the [upload SDK](~~52200~~) meets one of the following requirements:
-        *   The version of the upload SDK for Java is 1.4.4 or later.
-        *   The version of the upload SDK for C++ is 1.0.0 or later.
-        *   The version of the upload SDK for PHP is 1.0.2 or later.
-        *   The version of the upload SDK for Python is 1.3.0 or later.
-        *   The version of the upload SDK for JavaScript is 1.4.0 or later.
-        *   The version of the upload SDK for Android is 1.5.0 or later.
-        *   The version of the upload SDK for iOS is 1.5.0 or later.
+        The type of the media file. Set the value to *video**, which indicates audio and video files.
         
         @param request: GetUploadDetailsRequest
         @return: GetUploadDetailsResponse
@@ -9356,15 +9186,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetUploadDetailsRequest,
     ) -> vod_20170321_models.GetUploadDetailsResponse:
         """
-        You can call this operation to obtain the upload details only about audio and video files.
-        *   If you use the ApsaraVideo VOD console to upload audio and video files, you can call this operation to query information such as the upload ratio. If you use an upload SDK to upload audio and video files, make sure that the version of the [upload SDK](~~52200~~) meets one of the following requirements:
-        *   The version of the upload SDK for Java is 1.4.4 or later.
-        *   The version of the upload SDK for C++ is 1.0.0 or later.
-        *   The version of the upload SDK for PHP is 1.0.2 or later.
-        *   The version of the upload SDK for Python is 1.3.0 or later.
-        *   The version of the upload SDK for JavaScript is 1.4.0 or later.
-        *   The version of the upload SDK for Android is 1.5.0 or later.
-        *   The version of the upload SDK for iOS is 1.5.0 or later.
+        The type of the media file. Set the value to *video**, which indicates audio and video files.
         
         @param request: GetUploadDetailsRequest
         @return: GetUploadDetailsResponse
@@ -9378,10 +9200,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVideoInfoResponse:
         """
-        You can call this operation to obtain the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of a media file based on the file ID.
-        *   After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the **VideoAnalysisComplete** event and call this operation to query information about a media file after you receive the **VideoAnalysisComplete** callback. For more information, see [Overview](~~55627~~).
-        ### QPS limits
-        You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The video snapshot URLs.
         
         @param request: GetVideoInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9416,10 +9235,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVideoInfoResponse:
         """
-        You can call this operation to obtain the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of a media file based on the file ID.
-        *   After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the **VideoAnalysisComplete** event and call this operation to query information about a media file after you receive the **VideoAnalysisComplete** callback. For more information, see [Overview](~~55627~~).
-        ### QPS limits
-        You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The video snapshot URLs.
         
         @param request: GetVideoInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9453,10 +9269,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetVideoInfoRequest,
     ) -> vod_20170321_models.GetVideoInfoResponse:
         """
-        You can call this operation to obtain the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of a media file based on the file ID.
-        *   After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the **VideoAnalysisComplete** event and call this operation to query information about a media file after you receive the **VideoAnalysisComplete** callback. For more information, see [Overview](~~55627~~).
-        ### QPS limits
-        You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The video snapshot URLs.
         
         @param request: GetVideoInfoRequest
         @return: GetVideoInfoResponse
@@ -9469,10 +9282,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetVideoInfoRequest,
     ) -> vod_20170321_models.GetVideoInfoResponse:
         """
-        You can call this operation to obtain the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of a media file based on the file ID.
-        *   After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the **VideoAnalysisComplete** event and call this operation to query information about a media file after you receive the **VideoAnalysisComplete** callback. For more information, see [Overview](~~55627~~).
-        ### QPS limits
-        You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The video snapshot URLs.
         
         @param request: GetVideoInfoRequest
         @return: GetVideoInfoResponse
@@ -9486,7 +9296,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVideoInfosResponse:
         """
-        You can call this operation to obtain the basic information about multiple videos at a time based on video IDs. The basic information includes the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of each video.
+        The duration of the video. Unit: seconds.
         
         @param request: GetVideoInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9521,7 +9331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVideoInfosResponse:
         """
-        You can call this operation to obtain the basic information about multiple videos at a time based on video IDs. The basic information includes the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of each video.
+        The duration of the video. Unit: seconds.
         
         @param request: GetVideoInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9555,7 +9365,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetVideoInfosRequest,
     ) -> vod_20170321_models.GetVideoInfosResponse:
         """
-        You can call this operation to obtain the basic information about multiple videos at a time based on video IDs. The basic information includes the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of each video.
+        The duration of the video. Unit: seconds.
         
         @param request: GetVideoInfosRequest
         @return: GetVideoInfosResponse
@@ -9568,7 +9378,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetVideoInfosRequest,
     ) -> vod_20170321_models.GetVideoInfosResponse:
         """
-        You can call this operation to obtain the basic information about multiple videos at a time based on video IDs. The basic information includes the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of each video.
+        The duration of the video. Unit: seconds.
         
         @param request: GetVideoInfosRequest
         @return: GetVideoInfosResponse
@@ -10066,7 +9876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAIJobResponse:
         """
-        You can call this operation to query video fingerprinting jobs and smart tagging jobs.
+        The IDs of the jobs that do not exist.
         
         @param request: ListAIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10109,7 +9919,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAIJobResponse:
         """
-        You can call this operation to query video fingerprinting jobs and smart tagging jobs.
+        The IDs of the jobs that do not exist.
         
         @param request: ListAIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10151,7 +9961,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListAIJobRequest,
     ) -> vod_20170321_models.ListAIJobResponse:
         """
-        You can call this operation to query video fingerprinting jobs and smart tagging jobs.
+        The IDs of the jobs that do not exist.
         
         @param request: ListAIJobRequest
         @return: ListAIJobResponse
@@ -10164,7 +9974,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListAIJobRequest,
     ) -> vod_20170321_models.ListAIJobResponse:
         """
-        You can call this operation to query video fingerprinting jobs and smart tagging jobs.
+        The IDs of the jobs that do not exist.
         
         @param request: ListAIJobRequest
         @return: ListAIJobResponse
@@ -10178,9 +9988,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAITemplateResponse:
         """
-        You can call this operation to query AI templates of a specified type.
-        ### QPS limit
-        You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The returned result.
         
         @param request: ListAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10215,9 +10023,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAITemplateResponse:
         """
-        You can call this operation to query AI templates of a specified type.
-        ### QPS limit
-        You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The returned result.
         
         @param request: ListAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10251,9 +10057,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListAITemplateRequest,
     ) -> vod_20170321_models.ListAITemplateResponse:
         """
-        You can call this operation to query AI templates of a specified type.
-        ### QPS limit
-        You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The returned result.
         
         @param request: ListAITemplateRequest
         @return: ListAITemplateResponse
@@ -10266,9 +10070,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListAITemplateRequest,
     ) -> vod_20170321_models.ListAITemplateResponse:
         """
-        You can call this operation to query AI templates of a specified type.
-        ### QPS limit
-        You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The returned result.
         
         @param request: ListAITemplateRequest
         @return: ListAITemplateResponse
@@ -10282,7 +10084,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAppInfoResponse:
         """
-        Supports filtering queries by application status.
+        The description of the application.
         
         @param request: ListAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10321,7 +10123,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAppInfoResponse:
         """
-        Supports filtering queries by application status.
+        The description of the application.
         
         @param request: ListAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10359,7 +10161,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListAppInfoRequest,
     ) -> vod_20170321_models.ListAppInfoResponse:
         """
-        Supports filtering queries by application status.
+        The description of the application.
         
         @param request: ListAppInfoRequest
         @return: ListAppInfoResponse
@@ -10372,7 +10174,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListAppInfoRequest,
     ) -> vod_20170321_models.ListAppInfoResponse:
         """
-        Supports filtering queries by application status.
+        The description of the application.
         
         @param request: ListAppInfoRequest
         @return: ListAppInfoResponse
@@ -10386,7 +10188,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAppPoliciesForIdentityResponse:
         """
-        > The IdentityType and IdentityName parameters take effect only when an identity assumes the application administrator role to call this operation. Otherwise, only application policies that are attached to the current identity are returned.
+        The name of the identity.
+        *   Specifies the ID of the RAM user when the IdentityType parameter is set to RamUser.
+        *   Specifies the name of the RAM role when the IdentityType parameter is set to RamRole.
         
         @param request: ListAppPoliciesForIdentityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10425,7 +10229,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAppPoliciesForIdentityResponse:
         """
-        > The IdentityType and IdentityName parameters take effect only when an identity assumes the application administrator role to call this operation. Otherwise, only application policies that are attached to the current identity are returned.
+        The name of the identity.
+        *   Specifies the ID of the RAM user when the IdentityType parameter is set to RamUser.
+        *   Specifies the name of the RAM role when the IdentityType parameter is set to RamRole.
         
         @param request: ListAppPoliciesForIdentityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10463,7 +10269,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListAppPoliciesForIdentityRequest,
     ) -> vod_20170321_models.ListAppPoliciesForIdentityResponse:
         """
-        > The IdentityType and IdentityName parameters take effect only when an identity assumes the application administrator role to call this operation. Otherwise, only application policies that are attached to the current identity are returned.
+        The name of the identity.
+        *   Specifies the ID of the RAM user when the IdentityType parameter is set to RamUser.
+        *   Specifies the name of the RAM role when the IdentityType parameter is set to RamRole.
         
         @param request: ListAppPoliciesForIdentityRequest
         @return: ListAppPoliciesForIdentityResponse
@@ -10476,7 +10284,9 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListAppPoliciesForIdentityRequest,
     ) -> vod_20170321_models.ListAppPoliciesForIdentityResponse:
         """
-        > The IdentityType and IdentityName parameters take effect only when an identity assumes the application administrator role to call this operation. Otherwise, only application policies that are attached to the current identity are returned.
+        The name of the identity.
+        *   Specifies the ID of the RAM user when the IdentityType parameter is set to RamUser.
+        *   Specifies the name of the RAM role when the IdentityType parameter is set to RamRole.
         
         @param request: ListAppPoliciesForIdentityRequest
         @return: ListAppPoliciesForIdentityResponse
@@ -10866,8 +10676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListTranscodeTaskResponse:
         """
-        You can call the [GetTranscodeTask](~~109121~~) operation to query details about transcoding jobs.
-        *   **You can call this operation to query only transcoding tasks created within the past year.**\
+        The time when the transcoding task was created. The time follows the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         
         @param request: ListTranscodeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10910,8 +10719,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListTranscodeTaskResponse:
         """
-        You can call the [GetTranscodeTask](~~109121~~) operation to query details about transcoding jobs.
-        *   **You can call this operation to query only transcoding tasks created within the past year.**\
+        The time when the transcoding task was created. The time follows the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         
         @param request: ListTranscodeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10953,8 +10761,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListTranscodeTaskRequest,
     ) -> vod_20170321_models.ListTranscodeTaskResponse:
         """
-        You can call the [GetTranscodeTask](~~109121~~) operation to query details about transcoding jobs.
-        *   **You can call this operation to query only transcoding tasks created within the past year.**\
+        The time when the transcoding task was created. The time follows the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         
         @param request: ListTranscodeTaskRequest
         @return: ListTranscodeTaskResponse
@@ -10967,8 +10774,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListTranscodeTaskRequest,
     ) -> vod_20170321_models.ListTranscodeTaskResponse:
         """
-        You can call the [GetTranscodeTask](~~109121~~) operation to query details about transcoding jobs.
-        *   **You can call this operation to query only transcoding tasks created within the past year.**\
+        The time when the transcoding task was created. The time follows the ISO 8601 standard in the yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         
         @param request: ListTranscodeTaskRequest
         @return: ListTranscodeTaskResponse
@@ -10982,7 +10788,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListTranscodeTemplateGroupResponse:
         """
-        > This operation does not return the configurations of transcoding templates in each transcoding template group. To query the configurations of transcoding templates in a specific transcoding template group, call the [GetTranscodeTemplateGroup](~~102670~~) operation.
+        The ID of the application. Default value: *app-1000000**. For more information, see [Overview](~~113600~~).
         
         @param request: ListTranscodeTemplateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11017,7 +10823,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListTranscodeTemplateGroupResponse:
         """
-        > This operation does not return the configurations of transcoding templates in each transcoding template group. To query the configurations of transcoding templates in a specific transcoding template group, call the [GetTranscodeTemplateGroup](~~102670~~) operation.
+        The ID of the application. Default value: *app-1000000**. For more information, see [Overview](~~113600~~).
         
         @param request: ListTranscodeTemplateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11051,7 +10857,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListTranscodeTemplateGroupRequest,
     ) -> vod_20170321_models.ListTranscodeTemplateGroupResponse:
         """
-        > This operation does not return the configurations of transcoding templates in each transcoding template group. To query the configurations of transcoding templates in a specific transcoding template group, call the [GetTranscodeTemplateGroup](~~102670~~) operation.
+        The ID of the application. Default value: *app-1000000**. For more information, see [Overview](~~113600~~).
         
         @param request: ListTranscodeTemplateGroupRequest
         @return: ListTranscodeTemplateGroupResponse
@@ -11064,7 +10870,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListTranscodeTemplateGroupRequest,
     ) -> vod_20170321_models.ListTranscodeTemplateGroupResponse:
         """
-        > This operation does not return the configurations of transcoding templates in each transcoding template group. To query the configurations of transcoding templates in a specific transcoding template group, call the [GetTranscodeTemplateGroup](~~102670~~) operation.
+        The ID of the application. Default value: *app-1000000**. For more information, see [Overview](~~113600~~).
         
         @param request: ListTranscodeTemplateGroupRequest
         @return: ListTranscodeTemplateGroupResponse
@@ -11300,9 +11106,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.PreloadVodObjectCachesResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can submit a maximum of 500 requests to prefetch resources based on URLs each day by using an Alibaba Cloud account. You cannot prefetch resources based on directories.
-        > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~l) operation to prefetch content.
+        The operation that you want to perform. Set the value to *PreloadVodObjectCaches**.
         
         @param request: PreloadVodObjectCachesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11341,9 +11145,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.PreloadVodObjectCachesResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can submit a maximum of 500 requests to prefetch resources based on URLs each day by using an Alibaba Cloud account. You cannot prefetch resources based on directories.
-        > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~l) operation to prefetch content.
+        The operation that you want to perform. Set the value to *PreloadVodObjectCaches**.
         
         @param request: PreloadVodObjectCachesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11381,9 +11183,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.PreloadVodObjectCachesRequest,
     ) -> vod_20170321_models.PreloadVodObjectCachesResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can submit a maximum of 500 requests to prefetch resources based on URLs each day by using an Alibaba Cloud account. You cannot prefetch resources based on directories.
-        > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~l) operation to prefetch content.
+        The operation that you want to perform. Set the value to *PreloadVodObjectCaches**.
         
         @param request: PreloadVodObjectCachesRequest
         @return: PreloadVodObjectCachesResponse
@@ -11396,9 +11196,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.PreloadVodObjectCachesRequest,
     ) -> vod_20170321_models.PreloadVodObjectCachesResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can submit a maximum of 500 requests to prefetch resources based on URLs each day by using an Alibaba Cloud account. You cannot prefetch resources based on directories.
-        > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~l) operation to prefetch content.
+        The operation that you want to perform. Set the value to *PreloadVodObjectCaches**.
         
         @param request: PreloadVodObjectCachesRequest
         @return: PreloadVodObjectCachesResponse
@@ -11412,14 +11210,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ProduceEditingProjectVideoResponse:
         """
-        This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
-        *   The mezzanine files that are referenced in the timeline of an online editing project can be materials from media assets or videos in the media library.
-        *   Videos are produced based on the ProjectId and Timeline parameters. Take note of the following items when you specify the parameters:
-        *   You must specify at least one of the ProjectId and Timeline parameters. Otherwise, video production fails.
-        *   If you specify only the Timeline parameter, the system automatically creates an online editing project with the specified timeline. Then, the system obtains the mezzanine files that are referenced in the timeline and produces a video from the mezzanine files.
-        *   If you specify only the ProjectId parameter, the system obtains the latest timeline of the specified project and produces a video based on the timeline.
-        *   If you specify both the ProjectId and Timeline parameters, the system produces a video based on the specified timeline and updates the timeline and mezzanine files for the specified online editing project. If you specify other parameters, the system also updates related settings for the online editing project.
-        *   You can apply effects to the video to be produced. For more information, see [Special effects](~~69082~~).
+        The title of the online editing project.
         
         @param request: ProduceEditingProjectVideoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11474,14 +11265,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ProduceEditingProjectVideoResponse:
         """
-        This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
-        *   The mezzanine files that are referenced in the timeline of an online editing project can be materials from media assets or videos in the media library.
-        *   Videos are produced based on the ProjectId and Timeline parameters. Take note of the following items when you specify the parameters:
-        *   You must specify at least one of the ProjectId and Timeline parameters. Otherwise, video production fails.
-        *   If you specify only the Timeline parameter, the system automatically creates an online editing project with the specified timeline. Then, the system obtains the mezzanine files that are referenced in the timeline and produces a video from the mezzanine files.
-        *   If you specify only the ProjectId parameter, the system obtains the latest timeline of the specified project and produces a video based on the timeline.
-        *   If you specify both the ProjectId and Timeline parameters, the system produces a video based on the specified timeline and updates the timeline and mezzanine files for the specified online editing project. If you specify other parameters, the system also updates related settings for the online editing project.
-        *   You can apply effects to the video to be produced. For more information, see [Special effects](~~69082~~).
+        The title of the online editing project.
         
         @param request: ProduceEditingProjectVideoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11535,14 +11319,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ProduceEditingProjectVideoRequest,
     ) -> vod_20170321_models.ProduceEditingProjectVideoResponse:
         """
-        This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
-        *   The mezzanine files that are referenced in the timeline of an online editing project can be materials from media assets or videos in the media library.
-        *   Videos are produced based on the ProjectId and Timeline parameters. Take note of the following items when you specify the parameters:
-        *   You must specify at least one of the ProjectId and Timeline parameters. Otherwise, video production fails.
-        *   If you specify only the Timeline parameter, the system automatically creates an online editing project with the specified timeline. Then, the system obtains the mezzanine files that are referenced in the timeline and produces a video from the mezzanine files.
-        *   If you specify only the ProjectId parameter, the system obtains the latest timeline of the specified project and produces a video based on the timeline.
-        *   If you specify both the ProjectId and Timeline parameters, the system produces a video based on the specified timeline and updates the timeline and mezzanine files for the specified online editing project. If you specify other parameters, the system also updates related settings for the online editing project.
-        *   You can apply effects to the video to be produced. For more information, see [Special effects](~~69082~~).
+        The title of the online editing project.
         
         @param request: ProduceEditingProjectVideoRequest
         @return: ProduceEditingProjectVideoResponse
@@ -11555,14 +11332,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ProduceEditingProjectVideoRequest,
     ) -> vod_20170321_models.ProduceEditingProjectVideoResponse:
         """
-        This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
-        *   The mezzanine files that are referenced in the timeline of an online editing project can be materials from media assets or videos in the media library.
-        *   Videos are produced based on the ProjectId and Timeline parameters. Take note of the following items when you specify the parameters:
-        *   You must specify at least one of the ProjectId and Timeline parameters. Otherwise, video production fails.
-        *   If you specify only the Timeline parameter, the system automatically creates an online editing project with the specified timeline. Then, the system obtains the mezzanine files that are referenced in the timeline and produces a video from the mezzanine files.
-        *   If you specify only the ProjectId parameter, the system obtains the latest timeline of the specified project and produces a video based on the timeline.
-        *   If you specify both the ProjectId and Timeline parameters, the system produces a video based on the specified timeline and updates the timeline and mezzanine files for the specified online editing project. If you specify other parameters, the system also updates related settings for the online editing project.
-        *   You can apply effects to the video to be produced. For more information, see [Special effects](~~69082~~).
+        The title of the online editing project.
         
         @param request: ProduceEditingProjectVideoRequest
         @return: ProduceEditingProjectVideoResponse
@@ -11576,11 +11346,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.RefreshMediaPlayUrlsResponse:
         """
-        - ApsaraVideo VOD allows you to refresh and prefetch resources. The refresh feature forces the point of presence (POP) to clear cached resources and retrieve the latest resources from origin servers. The prefetch feature allows the POP to retrieve frequently accessed resources from origin servers during off-peak hours. This increases the cache hit ratio.
-        - You can call this operation to submit refresh or prefetch tasks based on the media ID. You can also specify the format and resolution of the media streams to refresh or prefetch based on your business requirements.
-        - You can submit a maximum of 20 refresh or prefetch tasks at a time.
-        ### QPS limits
-        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The formats of the media streams you want to refresh or prefetch. You can specify multiple formats. Separate multiple formats with commas (,). If you leave this parameter empty, media streams in all formats are refreshed or prefetched by default. Valid values:
+        *   **mp4**\
+        *   **m3u8**\
+        *   **mp3**\
+        *   **flv**\
+        *   **webm**\
+        *   **ts**\
         
         @param request: RefreshMediaPlayUrlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11631,11 +11403,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.RefreshMediaPlayUrlsResponse:
         """
-        - ApsaraVideo VOD allows you to refresh and prefetch resources. The refresh feature forces the point of presence (POP) to clear cached resources and retrieve the latest resources from origin servers. The prefetch feature allows the POP to retrieve frequently accessed resources from origin servers during off-peak hours. This increases the cache hit ratio.
-        - You can call this operation to submit refresh or prefetch tasks based on the media ID. You can also specify the format and resolution of the media streams to refresh or prefetch based on your business requirements.
-        - You can submit a maximum of 20 refresh or prefetch tasks at a time.
-        ### QPS limits
-        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The formats of the media streams you want to refresh or prefetch. You can specify multiple formats. Separate multiple formats with commas (,). If you leave this parameter empty, media streams in all formats are refreshed or prefetched by default. Valid values:
+        *   **mp4**\
+        *   **m3u8**\
+        *   **mp3**\
+        *   **flv**\
+        *   **webm**\
+        *   **ts**\
         
         @param request: RefreshMediaPlayUrlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11685,11 +11459,13 @@ class Client(OpenApiClient):
         request: vod_20170321_models.RefreshMediaPlayUrlsRequest,
     ) -> vod_20170321_models.RefreshMediaPlayUrlsResponse:
         """
-        - ApsaraVideo VOD allows you to refresh and prefetch resources. The refresh feature forces the point of presence (POP) to clear cached resources and retrieve the latest resources from origin servers. The prefetch feature allows the POP to retrieve frequently accessed resources from origin servers during off-peak hours. This increases the cache hit ratio.
-        - You can call this operation to submit refresh or prefetch tasks based on the media ID. You can also specify the format and resolution of the media streams to refresh or prefetch based on your business requirements.
-        - You can submit a maximum of 20 refresh or prefetch tasks at a time.
-        ### QPS limits
-        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The formats of the media streams you want to refresh or prefetch. You can specify multiple formats. Separate multiple formats with commas (,). If you leave this parameter empty, media streams in all formats are refreshed or prefetched by default. Valid values:
+        *   **mp4**\
+        *   **m3u8**\
+        *   **mp3**\
+        *   **flv**\
+        *   **webm**\
+        *   **ts**\
         
         @param request: RefreshMediaPlayUrlsRequest
         @return: RefreshMediaPlayUrlsResponse
@@ -11702,11 +11478,13 @@ class Client(OpenApiClient):
         request: vod_20170321_models.RefreshMediaPlayUrlsRequest,
     ) -> vod_20170321_models.RefreshMediaPlayUrlsResponse:
         """
-        - ApsaraVideo VOD allows you to refresh and prefetch resources. The refresh feature forces the point of presence (POP) to clear cached resources and retrieve the latest resources from origin servers. The prefetch feature allows the POP to retrieve frequently accessed resources from origin servers during off-peak hours. This increases the cache hit ratio.
-        - You can call this operation to submit refresh or prefetch tasks based on the media ID. You can also specify the format and resolution of the media streams to refresh or prefetch based on your business requirements.
-        - You can submit a maximum of 20 refresh or prefetch tasks at a time.
-        ### QPS limits
-        You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The formats of the media streams you want to refresh or prefetch. You can specify multiple formats. Separate multiple formats with commas (,). If you leave this parameter empty, media streams in all formats are refreshed or prefetched by default. Valid values:
+        *   **mp4**\
+        *   **m3u8**\
+        *   **mp3**\
+        *   **flv**\
+        *   **webm**\
+        *   **ts**\
         
         @param request: RefreshMediaPlayUrlsRequest
         @return: RefreshMediaPlayUrlsResponse
@@ -11720,7 +11498,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.RefreshUploadVideoResponse:
         """
-        If you want to overwrite a video or audio source file, you can obtain the upload URL of the source file by calling this operation. Then, you can upload a new source file without changing the video or audio ID. However, the file overwriting may automatically trigger transcoding and snapshot jobs if these jobs are configured. For more information, see [Upload URLs and credentials](~~55397~~).
+        The upload credential.
+        > The upload credential returned by this operation is Base64-encoded. Before you can use an SDK or an API operation to upload a media asset based on the upload credential, you must decode the upload credential by using the Base64 algorithm. You must parse the upload credential only if you use native OSS SDKs or OSS API for uploads.
         
         @param request: RefreshUploadVideoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11761,7 +11540,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.RefreshUploadVideoResponse:
         """
-        If you want to overwrite a video or audio source file, you can obtain the upload URL of the source file by calling this operation. Then, you can upload a new source file without changing the video or audio ID. However, the file overwriting may automatically trigger transcoding and snapshot jobs if these jobs are configured. For more information, see [Upload URLs and credentials](~~55397~~).
+        The upload credential.
+        > The upload credential returned by this operation is Base64-encoded. Before you can use an SDK or an API operation to upload a media asset based on the upload credential, you must decode the upload credential by using the Base64 algorithm. You must parse the upload credential only if you use native OSS SDKs or OSS API for uploads.
         
         @param request: RefreshUploadVideoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11801,7 +11581,8 @@ class Client(OpenApiClient):
         request: vod_20170321_models.RefreshUploadVideoRequest,
     ) -> vod_20170321_models.RefreshUploadVideoResponse:
         """
-        If you want to overwrite a video or audio source file, you can obtain the upload URL of the source file by calling this operation. Then, you can upload a new source file without changing the video or audio ID. However, the file overwriting may automatically trigger transcoding and snapshot jobs if these jobs are configured. For more information, see [Upload URLs and credentials](~~55397~~).
+        The upload credential.
+        > The upload credential returned by this operation is Base64-encoded. Before you can use an SDK or an API operation to upload a media asset based on the upload credential, you must decode the upload credential by using the Base64 algorithm. You must parse the upload credential only if you use native OSS SDKs or OSS API for uploads.
         
         @param request: RefreshUploadVideoRequest
         @return: RefreshUploadVideoResponse
@@ -11814,7 +11595,8 @@ class Client(OpenApiClient):
         request: vod_20170321_models.RefreshUploadVideoRequest,
     ) -> vod_20170321_models.RefreshUploadVideoResponse:
         """
-        If you want to overwrite a video or audio source file, you can obtain the upload URL of the source file by calling this operation. Then, you can upload a new source file without changing the video or audio ID. However, the file overwriting may automatically trigger transcoding and snapshot jobs if these jobs are configured. For more information, see [Upload URLs and credentials](~~55397~~).
+        The upload credential.
+        > The upload credential returned by this operation is Base64-encoded. Before you can use an SDK or an API operation to upload a media asset based on the upload credential, you must decode the upload credential by using the Base64 algorithm. You must parse the upload credential only if you use native OSS SDKs or OSS API for uploads.
         
         @param request: RefreshUploadVideoRequest
         @return: RefreshUploadVideoResponse
@@ -11828,9 +11610,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.RefreshVodObjectCachesResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can submit a maximum of 2,000 requests to refresh resources based on URLs and 100 requests to refresh resources based on directories each day by using an Alibaba Cloud account.
-        > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~) operation to prefetch content.
+        The ID of the refresh task. Separate multiple task IDs with commas (,).
         
         @param request: RefreshVodObjectCachesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11871,9 +11651,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.RefreshVodObjectCachesResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can submit a maximum of 2,000 requests to refresh resources based on URLs and 100 requests to refresh resources based on directories each day by using an Alibaba Cloud account.
-        > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~) operation to prefetch content.
+        The ID of the refresh task. Separate multiple task IDs with commas (,).
         
         @param request: RefreshVodObjectCachesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11913,9 +11691,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.RefreshVodObjectCachesRequest,
     ) -> vod_20170321_models.RefreshVodObjectCachesResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can submit a maximum of 2,000 requests to refresh resources based on URLs and 100 requests to refresh resources based on directories each day by using an Alibaba Cloud account.
-        > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~) operation to prefetch content.
+        The ID of the refresh task. Separate multiple task IDs with commas (,).
         
         @param request: RefreshVodObjectCachesRequest
         @return: RefreshVodObjectCachesResponse
@@ -11928,9 +11704,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.RefreshVodObjectCachesRequest,
     ) -> vod_20170321_models.RefreshVodObjectCachesResponse:
         """
-        >    This operation is available only in the **China (Shanghai)** region.
-        > *   You can submit a maximum of 2,000 requests to refresh resources based on URLs and 100 requests to refresh resources based on directories each day by using an Alibaba Cloud account.
-        > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~) operation to prefetch content.
+        The ID of the refresh task. Separate multiple task IDs with commas (,).
         
         @param request: RefreshVodObjectCachesRequest
         @return: RefreshVodObjectCachesResponse
@@ -12174,12 +11948,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SearchMediaResponse:
         """
-        The maximum number of data records that you can query is limited based on the method used to query the data. You can use the following methods to query data:
-        *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter criteria. This allows you to traverse data page by page. If the number of data records that meet the specified filter criteria exceeds 5,000, use Method 2.
-        *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter criteria, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the desired page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
-        *   When the PageNo parameter is set to **1**, you can scroll forward to traverse data records from page 1 to page **60** at most.
-        *   When the PageNo parameter is set to **2**, you can scroll forward to traverse data records from page 2 to page **61** at most.
-        *   When the PageNo parameter is set to **61**, you can scroll backward to traverse data records from page 61 to page **2** at most or scroll forward to traverse data records from page 61 to page **120** at most.
+        The preprocessing status. Valid values:
+        *   **UnPreprocess**\
+        *   **Preprocessing**\
+        *   **PreprocessSucceed**\
+        *   **PreprocessFailed**\
         
         @param request: SearchMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12226,12 +11999,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SearchMediaResponse:
         """
-        The maximum number of data records that you can query is limited based on the method used to query the data. You can use the following methods to query data:
-        *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter criteria. This allows you to traverse data page by page. If the number of data records that meet the specified filter criteria exceeds 5,000, use Method 2.
-        *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter criteria, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the desired page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
-        *   When the PageNo parameter is set to **1**, you can scroll forward to traverse data records from page 1 to page **60** at most.
-        *   When the PageNo parameter is set to **2**, you can scroll forward to traverse data records from page 2 to page **61** at most.
-        *   When the PageNo parameter is set to **61**, you can scroll backward to traverse data records from page 61 to page **2** at most or scroll forward to traverse data records from page 61 to page **120** at most.
+        The preprocessing status. Valid values:
+        *   **UnPreprocess**\
+        *   **Preprocessing**\
+        *   **PreprocessSucceed**\
+        *   **PreprocessFailed**\
         
         @param request: SearchMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12277,12 +12049,11 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SearchMediaRequest,
     ) -> vod_20170321_models.SearchMediaResponse:
         """
-        The maximum number of data records that you can query is limited based on the method used to query the data. You can use the following methods to query data:
-        *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter criteria. This allows you to traverse data page by page. If the number of data records that meet the specified filter criteria exceeds 5,000, use Method 2.
-        *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter criteria, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the desired page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
-        *   When the PageNo parameter is set to **1**, you can scroll forward to traverse data records from page 1 to page **60** at most.
-        *   When the PageNo parameter is set to **2**, you can scroll forward to traverse data records from page 2 to page **61** at most.
-        *   When the PageNo parameter is set to **61**, you can scroll backward to traverse data records from page 61 to page **2** at most or scroll forward to traverse data records from page 61 to page **120** at most.
+        The preprocessing status. Valid values:
+        *   **UnPreprocess**\
+        *   **Preprocessing**\
+        *   **PreprocessSucceed**\
+        *   **PreprocessFailed**\
         
         @param request: SearchMediaRequest
         @return: SearchMediaResponse
@@ -12295,12 +12066,11 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SearchMediaRequest,
     ) -> vod_20170321_models.SearchMediaResponse:
         """
-        The maximum number of data records that you can query is limited based on the method used to query the data. You can use the following methods to query data:
-        *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter criteria. This allows you to traverse data page by page. If the number of data records that meet the specified filter criteria exceeds 5,000, use Method 2.
-        *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter criteria, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the desired page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
-        *   When the PageNo parameter is set to **1**, you can scroll forward to traverse data records from page 1 to page **60** at most.
-        *   When the PageNo parameter is set to **2**, you can scroll forward to traverse data records from page 2 to page **61** at most.
-        *   When the PageNo parameter is set to **61**, you can scroll backward to traverse data records from page 61 to page **2** at most or scroll forward to traverse data records from page 61 to page **120** at most.
+        The preprocessing status. Valid values:
+        *   **UnPreprocess**\
+        *   **Preprocessing**\
+        *   **PreprocessSucceed**\
+        *   **PreprocessFailed**\
         
         @param request: SearchMediaRequest
         @return: SearchMediaResponse
@@ -12314,7 +12084,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetAuditSecurityIpResponse:
         """
-        > You can play videos in the Checking or Blocked state only from the IP addresses that are added to review security groups.
+        The name of the review security group. Default value: *Default**. You can specify a maximum of 10 review security groups.
         
         @param request: SetAuditSecurityIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12353,7 +12123,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetAuditSecurityIpResponse:
         """
-        > You can play videos in the Checking or Blocked state only from the IP addresses that are added to review security groups.
+        The name of the review security group. Default value: *Default**. You can specify a maximum of 10 review security groups.
         
         @param request: SetAuditSecurityIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12391,7 +12161,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SetAuditSecurityIpRequest,
     ) -> vod_20170321_models.SetAuditSecurityIpResponse:
         """
-        > You can play videos in the Checking or Blocked state only from the IP addresses that are added to review security groups.
+        The name of the review security group. Default value: *Default**. You can specify a maximum of 10 review security groups.
         
         @param request: SetAuditSecurityIpRequest
         @return: SetAuditSecurityIpResponse
@@ -12404,7 +12174,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SetAuditSecurityIpRequest,
     ) -> vod_20170321_models.SetAuditSecurityIpResponse:
         """
-        > You can play videos in the Checking or Blocked state only from the IP addresses that are added to review security groups.
+        The name of the review security group. Default value: *Default**. You can specify a maximum of 10 review security groups.
         
         @param request: SetAuditSecurityIpRequest
         @return: SetAuditSecurityIpResponse
@@ -12418,7 +12188,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetCrossdomainContentResponse:
         """
-        > After you use the cross-domain policy file to update the resources on the origin server, you must refresh the resources that are cached on Alibaba Cloud CDN nodes. You can use the ApsaraVideo VOD console to refresh resources. For more information, see [Refresh and prefetch](~~86098~~). Alternatively, you can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh resources.
+        The ID of the request.
         
         @param request: SetCrossdomainContentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12465,7 +12235,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetCrossdomainContentResponse:
         """
-        > After you use the cross-domain policy file to update the resources on the origin server, you must refresh the resources that are cached on Alibaba Cloud CDN nodes. You can use the ApsaraVideo VOD console to refresh resources. For more information, see [Refresh and prefetch](~~86098~~). Alternatively, you can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh resources.
+        The ID of the request.
         
         @param request: SetCrossdomainContentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12511,7 +12281,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SetCrossdomainContentRequest,
     ) -> vod_20170321_models.SetCrossdomainContentResponse:
         """
-        > After you use the cross-domain policy file to update the resources on the origin server, you must refresh the resources that are cached on Alibaba Cloud CDN nodes. You can use the ApsaraVideo VOD console to refresh resources. For more information, see [Refresh and prefetch](~~86098~~). Alternatively, you can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh resources.
+        The ID of the request.
         
         @param request: SetCrossdomainContentRequest
         @return: SetCrossdomainContentResponse
@@ -12524,7 +12294,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SetCrossdomainContentRequest,
     ) -> vod_20170321_models.SetCrossdomainContentResponse:
         """
-        > After you use the cross-domain policy file to update the resources on the origin server, you must refresh the resources that are cached on Alibaba Cloud CDN nodes. You can use the ApsaraVideo VOD console to refresh resources. For more information, see [Refresh and prefetch](~~86098~~). Alternatively, you can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh resources.
+        The ID of the request.
         
         @param request: SetCrossdomainContentRequest
         @return: SetCrossdomainContentResponse
@@ -12538,7 +12308,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetDefaultAITemplateResponse:
         """
-        Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template after you specify it as the default template.
+        The ID of the request.
         
         @param request: SetDefaultAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12573,7 +12343,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetDefaultAITemplateResponse:
         """
-        Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template after you specify it as the default template.
+        The ID of the request.
         
         @param request: SetDefaultAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12607,7 +12377,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SetDefaultAITemplateRequest,
     ) -> vod_20170321_models.SetDefaultAITemplateResponse:
         """
-        Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template after you specify it as the default template.
+        The ID of the request.
         
         @param request: SetDefaultAITemplateRequest
         @return: SetDefaultAITemplateResponse
@@ -12620,7 +12390,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SetDefaultAITemplateRequest,
     ) -> vod_20170321_models.SetDefaultAITemplateResponse:
         """
-        Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template after you specify it as the default template.
+        The ID of the request.
         
         @param request: SetDefaultAITemplateRequest
         @return: SetDefaultAITemplateResponse
@@ -13210,11 +12980,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIImageJobResponse:
         """
-        After you call this operation, you can call the [GetAIImageJobs](~~GetAIImageJobs~~) operation to query the AI processing result of the job.
-        - The smart thumbnail feature is not supported. You cannot call this operation.
-        - After you call this operation, you can call the [GetAIImageJobs](~~GetAIImageJobs~~) operation to query the job execution result.
-        ### QPS limit
-        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The returned data.
         
         @param request: SubmitAIImageJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13263,11 +13029,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIImageJobResponse:
         """
-        After you call this operation, you can call the [GetAIImageJobs](~~GetAIImageJobs~~) operation to query the AI processing result of the job.
-        - The smart thumbnail feature is not supported. You cannot call this operation.
-        - After you call this operation, you can call the [GetAIImageJobs](~~GetAIImageJobs~~) operation to query the job execution result.
-        ### QPS limit
-        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The returned data.
         
         @param request: SubmitAIImageJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13315,11 +13077,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitAIImageJobRequest,
     ) -> vod_20170321_models.SubmitAIImageJobResponse:
         """
-        After you call this operation, you can call the [GetAIImageJobs](~~GetAIImageJobs~~) operation to query the AI processing result of the job.
-        - The smart thumbnail feature is not supported. You cannot call this operation.
-        - After you call this operation, you can call the [GetAIImageJobs](~~GetAIImageJobs~~) operation to query the job execution result.
-        ### QPS limit
-        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The returned data.
         
         @param request: SubmitAIImageJobRequest
         @return: SubmitAIImageJobResponse
@@ -13332,11 +13090,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitAIImageJobRequest,
     ) -> vod_20170321_models.SubmitAIImageJobResponse:
         """
-        After you call this operation, you can call the [GetAIImageJobs](~~GetAIImageJobs~~) operation to query the AI processing result of the job.
-        - The smart thumbnail feature is not supported. You cannot call this operation.
-        - After you call this operation, you can call the [GetAIImageJobs](~~GetAIImageJobs~~) operation to query the job execution result.
-        ### QPS limit
-        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The returned data.
         
         @param request: SubmitAIImageJobRequest
         @return: SubmitAIImageJobResponse
@@ -13350,11 +13104,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIJobResponse:
         """
-        AI jobs include smart tagging jobs and video fingerprinting jobs. You must activate the AI service before you call this operation to submit AI jobs.
-        *   If this is the first time you use the video fingerprinting feature, you must submit a ticket to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected.
-        *   After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete.
-        ### QPS limits
-        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The returned data.
         
         @param request: SubmitAIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13403,11 +13153,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIJobResponse:
         """
-        AI jobs include smart tagging jobs and video fingerprinting jobs. You must activate the AI service before you call this operation to submit AI jobs.
-        *   If this is the first time you use the video fingerprinting feature, you must submit a ticket to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected.
-        *   After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete.
-        ### QPS limits
-        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The returned data.
         
         @param request: SubmitAIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13455,11 +13201,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitAIJobRequest,
     ) -> vod_20170321_models.SubmitAIJobResponse:
         """
-        AI jobs include smart tagging jobs and video fingerprinting jobs. You must activate the AI service before you call this operation to submit AI jobs.
-        *   If this is the first time you use the video fingerprinting feature, you must submit a ticket to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected.
-        *   After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete.
-        ### QPS limits
-        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The returned data.
         
         @param request: SubmitAIJobRequest
         @return: SubmitAIJobResponse
@@ -13472,11 +13214,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitAIJobRequest,
     ) -> vod_20170321_models.SubmitAIJobResponse:
         """
-        AI jobs include smart tagging jobs and video fingerprinting jobs. You must activate the AI service before you call this operation to submit AI jobs.
-        *   If this is the first time you use the video fingerprinting feature, you must submit a ticket to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected.
-        *   After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete.
-        ### QPS limits
-        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+        The returned data.
         
         @param request: SubmitAIJobRequest
         @return: SubmitAIJobResponse
@@ -13576,8 +13314,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitDynamicImageJobResponse:
         """
-        You can capture a part of a video and generate animated images only when the video is in the **UploadSucces**, **Transcoding**, **Normal**, **Checking**, or **Blocked** state.
-        *   The fee for generating animated images is included in the video transcoding fees. Both the services are charged by resolution and duration.
+        The ID of the video.
         
         @param request: SubmitDynamicImageJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13616,8 +13353,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitDynamicImageJobResponse:
         """
-        You can capture a part of a video and generate animated images only when the video is in the **UploadSucces**, **Transcoding**, **Normal**, **Checking**, or **Blocked** state.
-        *   The fee for generating animated images is included in the video transcoding fees. Both the services are charged by resolution and duration.
+        The ID of the video.
         
         @param request: SubmitDynamicImageJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13655,8 +13391,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitDynamicImageJobRequest,
     ) -> vod_20170321_models.SubmitDynamicImageJobResponse:
         """
-        You can capture a part of a video and generate animated images only when the video is in the **UploadSucces**, **Transcoding**, **Normal**, **Checking**, or **Blocked** state.
-        *   The fee for generating animated images is included in the video transcoding fees. Both the services are charged by resolution and duration.
+        The ID of the video.
         
         @param request: SubmitDynamicImageJobRequest
         @return: SubmitDynamicImageJobResponse
@@ -13669,8 +13404,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitDynamicImageJobRequest,
     ) -> vod_20170321_models.SubmitDynamicImageJobResponse:
         """
-        You can capture a part of a video and generate animated images only when the video is in the **UploadSucces**, **Transcoding**, **Normal**, **Checking**, or **Blocked** state.
-        *   The fee for generating animated images is included in the video transcoding fees. Both the services are charged by resolution and duration.
+        The ID of the video.
         
         @param request: SubmitDynamicImageJobRequest
         @return: SubmitDynamicImageJobResponse
@@ -13684,9 +13418,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitMediaDNADeleteJobResponse:
         """
-        This operation is available only in the Singapore (Singapore) region.
-        ### QPS limit
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
+        The ID of the request.
         
         @param request: SubmitMediaDNADeleteJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13729,9 +13461,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitMediaDNADeleteJobResponse:
         """
-        This operation is available only in the Singapore (Singapore) region.
-        ### QPS limit
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
+        The ID of the request.
         
         @param request: SubmitMediaDNADeleteJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13773,9 +13503,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitMediaDNADeleteJobRequest,
     ) -> vod_20170321_models.SubmitMediaDNADeleteJobResponse:
         """
-        This operation is available only in the Singapore (Singapore) region.
-        ### QPS limit
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
+        The ID of the request.
         
         @param request: SubmitMediaDNADeleteJobRequest
         @return: SubmitMediaDNADeleteJobResponse
@@ -13788,9 +13516,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitMediaDNADeleteJobRequest,
     ) -> vod_20170321_models.SubmitMediaDNADeleteJobResponse:
         """
-        This operation is available only in the Singapore (Singapore) region.
-        ### QPS limit
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
+        The ID of the request.
         
         @param request: SubmitMediaDNADeleteJobRequest
         @return: SubmitMediaDNADeleteJobResponse
@@ -13804,8 +13530,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitPreprocessJobsResponse:
         """
-        During video preprocessing, videos are transcoded to meet the playback requirements of the production studio. Therefore, you are **charged** for video preprocessing. You can submit a ticket for information about the **production studio** service.
-        *   You can obtain the preprocessing result in the [TranscodeComplete](~~55638~~) event notification. If the value of the **Preprocess** parameter is true in the event notification, the video is preprocessed.
+        The ID of the job.
         
         @param request: SubmitPreprocessJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13842,8 +13567,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitPreprocessJobsResponse:
         """
-        During video preprocessing, videos are transcoded to meet the playback requirements of the production studio. Therefore, you are **charged** for video preprocessing. You can submit a ticket for information about the **production studio** service.
-        *   You can obtain the preprocessing result in the [TranscodeComplete](~~55638~~) event notification. If the value of the **Preprocess** parameter is true in the event notification, the video is preprocessed.
+        The ID of the job.
         
         @param request: SubmitPreprocessJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13879,8 +13603,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitPreprocessJobsRequest,
     ) -> vod_20170321_models.SubmitPreprocessJobsResponse:
         """
-        During video preprocessing, videos are transcoded to meet the playback requirements of the production studio. Therefore, you are **charged** for video preprocessing. You can submit a ticket for information about the **production studio** service.
-        *   You can obtain the preprocessing result in the [TranscodeComplete](~~55638~~) event notification. If the value of the **Preprocess** parameter is true in the event notification, the video is preprocessed.
+        The ID of the job.
         
         @param request: SubmitPreprocessJobsRequest
         @return: SubmitPreprocessJobsResponse
@@ -13893,8 +13616,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitPreprocessJobsRequest,
     ) -> vod_20170321_models.SubmitPreprocessJobsResponse:
         """
-        During video preprocessing, videos are transcoded to meet the playback requirements of the production studio. Therefore, you are **charged** for video preprocessing. You can submit a ticket for information about the **production studio** service.
-        *   You can obtain the preprocessing result in the [TranscodeComplete](~~55638~~) event notification. If the value of the **Preprocess** parameter is true in the event notification, the video is preprocessed.
+        The ID of the job.
         
         @param request: SubmitPreprocessJobsRequest
         @return: SubmitPreprocessJobsResponse
@@ -13908,8 +13630,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitSnapshotJobResponse:
         """
-        >    Only snapshots in the JPG format are generated.
-        > *   After a snapshot job is complete, ApsaraVideo VOD sends a [SnapshotComplete](~~57337~~) event notification that contains EventType=SnapshotComplete and SubType=SpecifiedTime.
+        The ID of the snapshot template.
+        *   We recommend that you create a snapshot template before you specify the ID of the snapshot template.
+        *   If you set the SnapshotTemplateId parameter, all the other request parameters except the Action and VideoId parameters are ignored.
+        *   For more information about how to create a snapshot template, see [AddVodTemplate](~~99406~~).
         
         @param request: SubmitSnapshotJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13960,8 +13684,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitSnapshotJobResponse:
         """
-        >    Only snapshots in the JPG format are generated.
-        > *   After a snapshot job is complete, ApsaraVideo VOD sends a [SnapshotComplete](~~57337~~) event notification that contains EventType=SnapshotComplete and SubType=SpecifiedTime.
+        The ID of the snapshot template.
+        *   We recommend that you create a snapshot template before you specify the ID of the snapshot template.
+        *   If you set the SnapshotTemplateId parameter, all the other request parameters except the Action and VideoId parameters are ignored.
+        *   For more information about how to create a snapshot template, see [AddVodTemplate](~~99406~~).
         
         @param request: SubmitSnapshotJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14011,8 +13737,10 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitSnapshotJobRequest,
     ) -> vod_20170321_models.SubmitSnapshotJobResponse:
         """
-        >    Only snapshots in the JPG format are generated.
-        > *   After a snapshot job is complete, ApsaraVideo VOD sends a [SnapshotComplete](~~57337~~) event notification that contains EventType=SnapshotComplete and SubType=SpecifiedTime.
+        The ID of the snapshot template.
+        *   We recommend that you create a snapshot template before you specify the ID of the snapshot template.
+        *   If you set the SnapshotTemplateId parameter, all the other request parameters except the Action and VideoId parameters are ignored.
+        *   For more information about how to create a snapshot template, see [AddVodTemplate](~~99406~~).
         
         @param request: SubmitSnapshotJobRequest
         @return: SubmitSnapshotJobResponse
@@ -14025,8 +13753,10 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitSnapshotJobRequest,
     ) -> vod_20170321_models.SubmitSnapshotJobResponse:
         """
-        >    Only snapshots in the JPG format are generated.
-        > *   After a snapshot job is complete, ApsaraVideo VOD sends a [SnapshotComplete](~~57337~~) event notification that contains EventType=SnapshotComplete and SubType=SpecifiedTime.
+        The ID of the snapshot template.
+        *   We recommend that you create a snapshot template before you specify the ID of the snapshot template.
+        *   If you set the SnapshotTemplateId parameter, all the other request parameters except the Action and VideoId parameters are ignored.
+        *   For more information about how to create a snapshot template, see [AddVodTemplate](~~99406~~).
         
         @param request: SubmitSnapshotJobRequest
         @return: SubmitSnapshotJobResponse
@@ -14040,9 +13770,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitTranscodeJobsResponse:
         """
-        You can transcode a video only in the UploadSucc, Normal, or Checking state.
-        *   You can obtain the transcoding result in the [StreamTranscodeComplete](~~55636~~) or [TranscodeComplete](~~55638~~) event notification.
-        *   If you initiate an HTTP Live Streaming (HLS) packaging task, you can call this operation to dynamically override the subtitle. If the packaging task does not contain subtitles, we recommend that you do not call this operation to initiate the packaging task. Instead, you can specify the ID of the specific template group when you upload the video. The packaging process is automatically initiated.
+        The ID of the transcoding template group used when the video is transcoded. To specify a transcoding template group, you can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/?spm=a2c4g.11186623.2.18.2f1a2267jCybwh#/vod/settings/transcode/vod) and view the ID of the transcoding template group on the Transcode page.
         
         @param request: SubmitTranscodeJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14089,9 +13817,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitTranscodeJobsResponse:
         """
-        You can transcode a video only in the UploadSucc, Normal, or Checking state.
-        *   You can obtain the transcoding result in the [StreamTranscodeComplete](~~55636~~) or [TranscodeComplete](~~55638~~) event notification.
-        *   If you initiate an HTTP Live Streaming (HLS) packaging task, you can call this operation to dynamically override the subtitle. If the packaging task does not contain subtitles, we recommend that you do not call this operation to initiate the packaging task. Instead, you can specify the ID of the specific template group when you upload the video. The packaging process is automatically initiated.
+        The ID of the transcoding template group used when the video is transcoded. To specify a transcoding template group, you can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/?spm=a2c4g.11186623.2.18.2f1a2267jCybwh#/vod/settings/transcode/vod) and view the ID of the transcoding template group on the Transcode page.
         
         @param request: SubmitTranscodeJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14137,9 +13863,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitTranscodeJobsRequest,
     ) -> vod_20170321_models.SubmitTranscodeJobsResponse:
         """
-        You can transcode a video only in the UploadSucc, Normal, or Checking state.
-        *   You can obtain the transcoding result in the [StreamTranscodeComplete](~~55636~~) or [TranscodeComplete](~~55638~~) event notification.
-        *   If you initiate an HTTP Live Streaming (HLS) packaging task, you can call this operation to dynamically override the subtitle. If the packaging task does not contain subtitles, we recommend that you do not call this operation to initiate the packaging task. Instead, you can specify the ID of the specific template group when you upload the video. The packaging process is automatically initiated.
+        The ID of the transcoding template group used when the video is transcoded. To specify a transcoding template group, you can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/?spm=a2c4g.11186623.2.18.2f1a2267jCybwh#/vod/settings/transcode/vod) and view the ID of the transcoding template group on the Transcode page.
         
         @param request: SubmitTranscodeJobsRequest
         @return: SubmitTranscodeJobsResponse
@@ -14152,9 +13876,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitTranscodeJobsRequest,
     ) -> vod_20170321_models.SubmitTranscodeJobsResponse:
         """
-        You can transcode a video only in the UploadSucc, Normal, or Checking state.
-        *   You can obtain the transcoding result in the [StreamTranscodeComplete](~~55636~~) or [TranscodeComplete](~~55638~~) event notification.
-        *   If you initiate an HTTP Live Streaming (HLS) packaging task, you can call this operation to dynamically override the subtitle. If the packaging task does not contain subtitles, we recommend that you do not call this operation to initiate the packaging task. Instead, you can specify the ID of the specific template group when you upload the video. The packaging process is automatically initiated.
+        The ID of the transcoding template group used when the video is transcoded. To specify a transcoding template group, you can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/?spm=a2c4g.11186623.2.18.2f1a2267jCybwh#/vod/settings/transcode/vod) and view the ID of the transcoding template group on the Transcode page.
         
         @param request: SubmitTranscodeJobsRequest
         @return: SubmitTranscodeJobsResponse
@@ -14167,15 +13889,6 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitWorkflowJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitWorkflowJobResponse:
-        """
-        You can call this operation to initiate a VOD workflow to process media files. For more information, see [Workflows](~~115347~~).
-        ### QPS limits
-        You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
-        
-        @param request: SubmitWorkflowJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitWorkflowJobResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -14206,15 +13919,6 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitWorkflowJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitWorkflowJobResponse:
-        """
-        You can call this operation to initiate a VOD workflow to process media files. For more information, see [Workflows](~~115347~~).
-        ### QPS limits
-        You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
-        
-        @param request: SubmitWorkflowJobRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitWorkflowJobResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -14244,14 +13948,6 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.SubmitWorkflowJobRequest,
     ) -> vod_20170321_models.SubmitWorkflowJobResponse:
-        """
-        You can call this operation to initiate a VOD workflow to process media files. For more information, see [Workflows](~~115347~~).
-        ### QPS limits
-        You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
-        
-        @param request: SubmitWorkflowJobRequest
-        @return: SubmitWorkflowJobResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.submit_workflow_job_with_options(request, runtime)
 
@@ -14259,14 +13955,6 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.SubmitWorkflowJobRequest,
     ) -> vod_20170321_models.SubmitWorkflowJobResponse:
-        """
-        You can call this operation to initiate a VOD workflow to process media files. For more information, see [Workflows](~~115347~~).
-        ### QPS limits
-        You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
-        
-        @param request: SubmitWorkflowJobRequest
-        @return: SubmitWorkflowJobResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_workflow_job_with_options_async(request, runtime)
 
@@ -14276,9 +13964,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateAITemplateResponse:
         """
-        After you call the [AddAITemplate](~~102930~~) to add an AI template, you can call this operation to modify the AI template.
-        ### QPS limit
-        You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The returned result.
         
         @param request: UpdateAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14317,9 +14003,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateAITemplateResponse:
         """
-        After you call the [AddAITemplate](~~102930~~) to add an AI template, you can call this operation to modify the AI template.
-        ### QPS limit
-        You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The returned result.
         
         @param request: UpdateAITemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14357,9 +14041,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UpdateAITemplateRequest,
     ) -> vod_20170321_models.UpdateAITemplateResponse:
         """
-        After you call the [AddAITemplate](~~102930~~) to add an AI template, you can call this operation to modify the AI template.
-        ### QPS limit
-        You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The returned result.
         
         @param request: UpdateAITemplateRequest
         @return: UpdateAITemplateResponse
@@ -14372,9 +14054,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UpdateAITemplateRequest,
     ) -> vod_20170321_models.UpdateAITemplateResponse:
         """
-        After you call the [AddAITemplate](~~102930~~) to add an AI template, you can call this operation to modify the AI template.
-        ### QPS limit
-        You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+        The returned result.
         
         @param request: UpdateAITemplateRequest
         @return: UpdateAITemplateResponse
@@ -14388,8 +14068,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateAppInfoResponse:
         """
-        ## QPS limit
-        A single user can perform a maximum of 30 queries per second (QPS). Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation.
+        The ID of the request.
         
         @param request: UpdateAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14430,8 +14109,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateAppInfoResponse:
         """
-        ## QPS limit
-        A single user can perform a maximum of 30 queries per second (QPS). Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation.
+        The ID of the request.
         
         @param request: UpdateAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14471,8 +14149,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UpdateAppInfoRequest,
     ) -> vod_20170321_models.UpdateAppInfoResponse:
         """
-        ## QPS limit
-        A single user can perform a maximum of 30 queries per second (QPS). Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation.
+        The ID of the request.
         
         @param request: UpdateAppInfoRequest
         @return: UpdateAppInfoResponse
@@ -14485,8 +14162,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UpdateAppInfoRequest,
     ) -> vod_20170321_models.UpdateAppInfoResponse:
         """
-        ## QPS limit
-        A single user can perform a maximum of 30 queries per second (QPS). Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation.
+        The ID of the request.
         
         @param request: UpdateAppInfoRequest
         @return: UpdateAppInfoResponse
@@ -14500,7 +14176,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateAttachedMediaInfosResponse:
         """
-        The specific parameter of an auxiliary media asset is updated only when a new value is passed in the parameter.
+        The ID of the request.
         
         @param request: UpdateAttachedMediaInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14535,7 +14211,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateAttachedMediaInfosResponse:
         """
-        The specific parameter of an auxiliary media asset is updated only when a new value is passed in the parameter.
+        The ID of the request.
         
         @param request: UpdateAttachedMediaInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14569,7 +14245,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UpdateAttachedMediaInfosRequest,
     ) -> vod_20170321_models.UpdateAttachedMediaInfosResponse:
         """
-        The specific parameter of an auxiliary media asset is updated only when a new value is passed in the parameter.
+        The ID of the request.
         
         @param request: UpdateAttachedMediaInfosRequest
         @return: UpdateAttachedMediaInfosResponse
@@ -14582,7 +14258,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UpdateAttachedMediaInfosRequest,
     ) -> vod_20170321_models.UpdateAttachedMediaInfosResponse:
         """
-        The specific parameter of an auxiliary media asset is updated only when a new value is passed in the parameter.
+        The ID of the request.
         
         @param request: UpdateAttachedMediaInfosRequest
         @return: UpdateAttachedMediaInfosResponse
@@ -14842,8 +14518,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateTranscodeTemplateGroupResponse:
         """
-        >    You cannot add, modify, or remove transcoding templates in a transcoding template group that is locked in the ApsaraVideo VOD console. To manage such transcoding template groups, contact the ApsaraVideo VOD technical support.
-        > *   You can call the GetTranscodeTemplateGroup operation to query the configurations of a transcoding template group and check whether the transcoding template group is locked by using the response parameter Locked.
+        The ID of the transcoding template group.
         
         @param request: UpdateTranscodeTemplateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14884,8 +14559,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateTranscodeTemplateGroupResponse:
         """
-        >    You cannot add, modify, or remove transcoding templates in a transcoding template group that is locked in the ApsaraVideo VOD console. To manage such transcoding template groups, contact the ApsaraVideo VOD technical support.
-        > *   You can call the GetTranscodeTemplateGroup operation to query the configurations of a transcoding template group and check whether the transcoding template group is locked by using the response parameter Locked.
+        The ID of the transcoding template group.
         
         @param request: UpdateTranscodeTemplateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14925,8 +14599,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UpdateTranscodeTemplateGroupRequest,
     ) -> vod_20170321_models.UpdateTranscodeTemplateGroupResponse:
         """
-        >    You cannot add, modify, or remove transcoding templates in a transcoding template group that is locked in the ApsaraVideo VOD console. To manage such transcoding template groups, contact the ApsaraVideo VOD technical support.
-        > *   You can call the GetTranscodeTemplateGroup operation to query the configurations of a transcoding template group and check whether the transcoding template group is locked by using the response parameter Locked.
+        The ID of the transcoding template group.
         
         @param request: UpdateTranscodeTemplateGroupRequest
         @return: UpdateTranscodeTemplateGroupResponse
@@ -14939,8 +14612,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UpdateTranscodeTemplateGroupRequest,
     ) -> vod_20170321_models.UpdateTranscodeTemplateGroupResponse:
         """
-        >    You cannot add, modify, or remove transcoding templates in a transcoding template group that is locked in the ApsaraVideo VOD console. To manage such transcoding template groups, contact the ApsaraVideo VOD technical support.
-        > *   You can call the GetTranscodeTemplateGroup operation to query the configurations of a transcoding template group and check whether the transcoding template group is locked by using the response parameter Locked.
+        The ID of the transcoding template group.
         
         @param request: UpdateTranscodeTemplateGroupRequest
         @return: UpdateTranscodeTemplateGroupResponse
@@ -14954,7 +14626,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateVideoInfoResponse:
         """
-        The specific parameter of a video is updated only when a new value is passed in the parameter.
+        The ID of the video.
         
         @param request: UpdateVideoInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14999,7 +14671,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateVideoInfoResponse:
         """
-        The specific parameter of a video is updated only when a new value is passed in the parameter.
+        The ID of the video.
         
         @param request: UpdateVideoInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15043,7 +14715,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UpdateVideoInfoRequest,
     ) -> vod_20170321_models.UpdateVideoInfoResponse:
         """
-        The specific parameter of a video is updated only when a new value is passed in the parameter.
+        The ID of the video.
         
         @param request: UpdateVideoInfoRequest
         @return: UpdateVideoInfoResponse
@@ -15056,7 +14728,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UpdateVideoInfoRequest,
     ) -> vod_20170321_models.UpdateVideoInfoResponse:
         """
-        The specific parameter of a video is updated only when a new value is passed in the parameter.
+        The ID of the video.
         
         @param request: UpdateVideoInfoRequest
         @return: UpdateVideoInfoResponse
@@ -15460,10 +15132,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UploadMediaByURLResponse:
         """
-        - If a callback is configured, you can receive an [UploadByURLComplete](~~86326~~) event notification after the media file is uploaded. You can query the upload status by calling the [GetURLUploadInfos](~~106830~~) operation.
-        - After an upload job is submitted, the job is asynchronously executed on the cloud. All submitted upload jobs are queued for execution. You can check the job status based on the URL and media file ID that are returned in the event notification.
-        - You can call the UploadMediaByURL operation if the media file is not stored on a local server or terminal and needs to be uploaded by using a URL that can be accessed from the Internet.
-        - You can call the UploadMediaByURL operation only in the **China (Shanghai)** region.
+        The ID of the workflow. To view the ID of the workflow, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose *Configuration Management** > **Media Processing** > **Workflows**.
+        > If both the WorkflowId and TemplateGroupId parameters are set, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
         
         @param request: UploadMediaByURLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15510,10 +15180,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UploadMediaByURLResponse:
         """
-        - If a callback is configured, you can receive an [UploadByURLComplete](~~86326~~) event notification after the media file is uploaded. You can query the upload status by calling the [GetURLUploadInfos](~~106830~~) operation.
-        - After an upload job is submitted, the job is asynchronously executed on the cloud. All submitted upload jobs are queued for execution. You can check the job status based on the URL and media file ID that are returned in the event notification.
-        - You can call the UploadMediaByURL operation if the media file is not stored on a local server or terminal and needs to be uploaded by using a URL that can be accessed from the Internet.
-        - You can call the UploadMediaByURL operation only in the **China (Shanghai)** region.
+        The ID of the workflow. To view the ID of the workflow, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose *Configuration Management** > **Media Processing** > **Workflows**.
+        > If both the WorkflowId and TemplateGroupId parameters are set, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
         
         @param request: UploadMediaByURLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15559,10 +15227,8 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UploadMediaByURLRequest,
     ) -> vod_20170321_models.UploadMediaByURLResponse:
         """
-        - If a callback is configured, you can receive an [UploadByURLComplete](~~86326~~) event notification after the media file is uploaded. You can query the upload status by calling the [GetURLUploadInfos](~~106830~~) operation.
-        - After an upload job is submitted, the job is asynchronously executed on the cloud. All submitted upload jobs are queued for execution. You can check the job status based on the URL and media file ID that are returned in the event notification.
-        - You can call the UploadMediaByURL operation if the media file is not stored on a local server or terminal and needs to be uploaded by using a URL that can be accessed from the Internet.
-        - You can call the UploadMediaByURL operation only in the **China (Shanghai)** region.
+        The ID of the workflow. To view the ID of the workflow, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose *Configuration Management** > **Media Processing** > **Workflows**.
+        > If both the WorkflowId and TemplateGroupId parameters are set, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
         
         @param request: UploadMediaByURLRequest
         @return: UploadMediaByURLResponse
@@ -15575,10 +15241,8 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UploadMediaByURLRequest,
     ) -> vod_20170321_models.UploadMediaByURLResponse:
         """
-        - If a callback is configured, you can receive an [UploadByURLComplete](~~86326~~) event notification after the media file is uploaded. You can query the upload status by calling the [GetURLUploadInfos](~~106830~~) operation.
-        - After an upload job is submitted, the job is asynchronously executed on the cloud. All submitted upload jobs are queued for execution. You can check the job status based on the URL and media file ID that are returned in the event notification.
-        - You can call the UploadMediaByURL operation if the media file is not stored on a local server or terminal and needs to be uploaded by using a URL that can be accessed from the Internet.
-        - You can call the UploadMediaByURL operation only in the **China (Shanghai)** region.
+        The ID of the workflow. To view the ID of the workflow, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose *Configuration Management** > **Media Processing** > **Workflows**.
+        > If both the WorkflowId and TemplateGroupId parameters are set, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
         
         @param request: UploadMediaByURLRequest
         @return: UploadMediaByURLResponse
@@ -15592,8 +15256,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UploadStreamByURLResponse:
         """
-        You can call this operation to upload transcoded streams to ApsaraVideo VOD from external storage. The following HDR types of transcoded streams are supported: HDR, HDR 10, HLG, Dolby Vision, HDR Vivid, and SDR+. You can call the [GetURLUploadInfos](~~106830~~) operation to query the upload status. After the upload is complete, the callback of the UploadByURLComplete event is returned.
-        >  This operation is available only in the Singapore (Singapore) region.
+        The URL of the transcoded stream.
+        If URL authentication is required, you must pass authentication information in this parameter and make sure that the URL can be accessed over the Internet.
         
         @param request: UploadStreamByURLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15638,8 +15302,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UploadStreamByURLResponse:
         """
-        You can call this operation to upload transcoded streams to ApsaraVideo VOD from external storage. The following HDR types of transcoded streams are supported: HDR, HDR 10, HLG, Dolby Vision, HDR Vivid, and SDR+. You can call the [GetURLUploadInfos](~~106830~~) operation to query the upload status. After the upload is complete, the callback of the UploadByURLComplete event is returned.
-        >  This operation is available only in the Singapore (Singapore) region.
+        The URL of the transcoded stream.
+        If URL authentication is required, you must pass authentication information in this parameter and make sure that the URL can be accessed over the Internet.
         
         @param request: UploadStreamByURLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15683,8 +15347,8 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UploadStreamByURLRequest,
     ) -> vod_20170321_models.UploadStreamByURLResponse:
         """
-        You can call this operation to upload transcoded streams to ApsaraVideo VOD from external storage. The following HDR types of transcoded streams are supported: HDR, HDR 10, HLG, Dolby Vision, HDR Vivid, and SDR+. You can call the [GetURLUploadInfos](~~106830~~) operation to query the upload status. After the upload is complete, the callback of the UploadByURLComplete event is returned.
-        >  This operation is available only in the Singapore (Singapore) region.
+        The URL of the transcoded stream.
+        If URL authentication is required, you must pass authentication information in this parameter and make sure that the URL can be accessed over the Internet.
         
         @param request: UploadStreamByURLRequest
         @return: UploadStreamByURLResponse
@@ -15697,8 +15361,8 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UploadStreamByURLRequest,
     ) -> vod_20170321_models.UploadStreamByURLResponse:
         """
-        You can call this operation to upload transcoded streams to ApsaraVideo VOD from external storage. The following HDR types of transcoded streams are supported: HDR, HDR 10, HLG, Dolby Vision, HDR Vivid, and SDR+. You can call the [GetURLUploadInfos](~~106830~~) operation to query the upload status. After the upload is complete, the callback of the UploadByURLComplete event is returned.
-        >  This operation is available only in the Singapore (Singapore) region.
+        The URL of the transcoded stream.
+        If URL authentication is required, you must pass authentication information in this parameter and make sure that the URL can be accessed over the Internet.
         
         @param request: UploadStreamByURLRequest
         @return: UploadStreamByURLResponse
