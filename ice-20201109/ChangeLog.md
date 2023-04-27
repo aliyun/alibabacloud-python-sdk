@@ -1,3 +1,6 @@
+2023-04-27 Version: 1.3.10
+- Add field MediaMetadata for api SubmitMediaProducingJob, which indicates the meta data of the output media produced by the editing job.
+
 2023-04-21 Version: 1.3.9
 - Add api called SubmitAvatarVideoJob, which render avatar videos.
 

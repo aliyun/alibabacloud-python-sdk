@@ -17909,7 +17909,9 @@ class GetSmartHandleJobResponseBodyJobResult(TeaModel):
         ai_result: str = None,
         media_id: str = None,
     ):
+        # 智能分析结果
         self.ai_result = ai_result
+        # 媒资Id
         self.media_id = media_id
 
     def validate(self):
@@ -35505,6 +35507,7 @@ class SearchMediaResponseBodyMediaInfoListAiRoughData(TeaModel):
         save_type: str = None,
         status: str = None,
     ):
+        # 电视剧
         self.ai_category = ai_category
         self.ai_job_id = ai_job_id
         self.result = result
@@ -41501,6 +41504,7 @@ class SubmitMediaProducingJobRequest(TeaModel):
         client_token: str = None,
         clips_param: str = None,
         editing_produce_config: str = None,
+        media_metadata: str = None,
         output_media_config: str = None,
         output_media_target: str = None,
         project_id: str = None,
@@ -41513,6 +41517,7 @@ class SubmitMediaProducingJobRequest(TeaModel):
         self.client_token = client_token
         self.clips_param = clips_param
         self.editing_produce_config = editing_produce_config
+        self.media_metadata = media_metadata
         self.output_media_config = output_media_config
         self.output_media_target = output_media_target
         self.project_id = project_id
@@ -41537,6 +41542,8 @@ class SubmitMediaProducingJobRequest(TeaModel):
             result['ClipsParam'] = self.clips_param
         if self.editing_produce_config is not None:
             result['EditingProduceConfig'] = self.editing_produce_config
+        if self.media_metadata is not None:
+            result['MediaMetadata'] = self.media_metadata
         if self.output_media_config is not None:
             result['OutputMediaConfig'] = self.output_media_config
         if self.output_media_target is not None:
@@ -41563,6 +41570,8 @@ class SubmitMediaProducingJobRequest(TeaModel):
             self.clips_param = m.get('ClipsParam')
         if m.get('EditingProduceConfig') is not None:
             self.editing_produce_config = m.get('EditingProduceConfig')
+        if m.get('MediaMetadata') is not None:
+            self.media_metadata = m.get('MediaMetadata')
         if m.get('OutputMediaConfig') is not None:
             self.output_media_config = m.get('OutputMediaConfig')
         if m.get('OutputMediaTarget') is not None:

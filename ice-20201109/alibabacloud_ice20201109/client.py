@@ -12415,6 +12415,8 @@ class Client(OpenApiClient):
             query['ClipsParam'] = request.clips_param
         if not UtilClient.is_unset(request.editing_produce_config):
             query['EditingProduceConfig'] = request.editing_produce_config
+        if not UtilClient.is_unset(request.media_metadata):
+            query['MediaMetadata'] = request.media_metadata
         if not UtilClient.is_unset(request.output_media_config):
             query['OutputMediaConfig'] = request.output_media_config
         if not UtilClient.is_unset(request.output_media_target):
@@ -12463,6 +12465,8 @@ class Client(OpenApiClient):
             query['ClipsParam'] = request.clips_param
         if not UtilClient.is_unset(request.editing_produce_config):
             query['EditingProduceConfig'] = request.editing_produce_config
+        if not UtilClient.is_unset(request.media_metadata):
+            query['MediaMetadata'] = request.media_metadata
         if not UtilClient.is_unset(request.output_media_config):
             query['OutputMediaConfig'] = request.output_media_config
         if not UtilClient.is_unset(request.output_media_target):
