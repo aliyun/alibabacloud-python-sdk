@@ -1,3 +1,6 @@
+2023-04-27 Version: 1.0.28
+- Update API DescribeCenAttachedChildInstanceAttribute support returning VPC Cidrs.
+
 2023-03-17 Version: 1.0.27
 - Update API CreateTransitRouteTableAggregation update request parameter TransitRouteTableAggregationScop to TransitRouteTableAggregationScope.
 - Update API DescribeTransitRouteTableAggregation update response parameter Scop to Scope.
