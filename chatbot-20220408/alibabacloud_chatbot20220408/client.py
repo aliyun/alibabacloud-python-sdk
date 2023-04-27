@@ -386,6 +386,8 @@ class Client(OpenApiClient):
             query['KnowledgeId'] = request.knowledge_id
         if not UtilClient.is_unset(request.perspective_shrink):
             query['Perspective'] = request.perspective_shrink
+        if not UtilClient.is_unset(request.sand_box):
+            query['SandBox'] = request.sand_box
         if not UtilClient.is_unset(request.sender_id):
             query['SenderId'] = request.sender_id
         if not UtilClient.is_unset(request.sender_nick):
@@ -436,6 +438,8 @@ class Client(OpenApiClient):
             query['KnowledgeId'] = request.knowledge_id
         if not UtilClient.is_unset(request.perspective_shrink):
             query['Perspective'] = request.perspective_shrink
+        if not UtilClient.is_unset(request.sand_box):
+            query['SandBox'] = request.sand_box
         if not UtilClient.is_unset(request.sender_id):
             query['SenderId'] = request.sender_id
         if not UtilClient.is_unset(request.sender_nick):

@@ -1,3 +1,6 @@
+2023-04-27 Version: 1.0.9
+- Chat API support Sandbox parameter.
+
 2023-04-18 Version: 1.0.8
 - Add SilenceReplyTimeout in BeginSession to get the silence timeout.
 
