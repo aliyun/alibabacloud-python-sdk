@@ -345,6 +345,264 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_hub_cluster_with_options_async(request, runtime)
 
+    def delete_policy_instance_with_options(
+        self,
+        tmp_req: adcp_20220101_models.DeletePolicyInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DeletePolicyInstanceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = adcp_20220101_models.DeletePolicyInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cluster_ids):
+            request.cluster_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cluster_ids, 'ClusterIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_ids_shrink):
+            query['ClusterIds'] = request.cluster_ids_shrink
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePolicyInstance',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DeletePolicyInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_policy_instance_with_options_async(
+        self,
+        tmp_req: adcp_20220101_models.DeletePolicyInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DeletePolicyInstanceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = adcp_20220101_models.DeletePolicyInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cluster_ids):
+            request.cluster_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cluster_ids, 'ClusterIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_ids_shrink):
+            query['ClusterIds'] = request.cluster_ids_shrink
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePolicyInstance',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DeletePolicyInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_policy_instance(
+        self,
+        request: adcp_20220101_models.DeletePolicyInstanceRequest,
+    ) -> adcp_20220101_models.DeletePolicyInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_policy_instance_with_options(request, runtime)
+
+    async def delete_policy_instance_async(
+        self,
+        request: adcp_20220101_models.DeletePolicyInstanceRequest,
+    ) -> adcp_20220101_models.DeletePolicyInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_policy_instance_with_options_async(request, runtime)
+
+    def delete_user_permission_with_options(
+        self,
+        request: adcp_20220101_models.DeleteUserPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DeleteUserPermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserPermission',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DeleteUserPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_user_permission_with_options_async(
+        self,
+        request: adcp_20220101_models.DeleteUserPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DeleteUserPermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserPermission',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DeleteUserPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_user_permission(
+        self,
+        request: adcp_20220101_models.DeleteUserPermissionRequest,
+    ) -> adcp_20220101_models.DeleteUserPermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_user_permission_with_options(request, runtime)
+
+    async def delete_user_permission_async(
+        self,
+        request: adcp_20220101_models.DeleteUserPermissionRequest,
+    ) -> adcp_20220101_models.DeleteUserPermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_user_permission_with_options_async(request, runtime)
+
+    def deploy_policy_instance_with_options(
+        self,
+        tmp_req: adcp_20220101_models.DeployPolicyInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DeployPolicyInstanceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = adcp_20220101_models.DeployPolicyInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cluster_ids):
+            request.cluster_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cluster_ids, 'ClusterIds', 'json')
+        if not UtilClient.is_unset(tmp_req.namespaces):
+            request.namespaces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_ids_shrink):
+            query['ClusterIds'] = request.cluster_ids_shrink
+        if not UtilClient.is_unset(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not UtilClient.is_unset(request.policy_action):
+            query['PolicyAction'] = request.policy_action
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeployPolicyInstance',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DeployPolicyInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deploy_policy_instance_with_options_async(
+        self,
+        tmp_req: adcp_20220101_models.DeployPolicyInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DeployPolicyInstanceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = adcp_20220101_models.DeployPolicyInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cluster_ids):
+            request.cluster_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cluster_ids, 'ClusterIds', 'json')
+        if not UtilClient.is_unset(tmp_req.namespaces):
+            request.namespaces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_ids_shrink):
+            query['ClusterIds'] = request.cluster_ids_shrink
+        if not UtilClient.is_unset(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not UtilClient.is_unset(request.policy_action):
+            query['PolicyAction'] = request.policy_action
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeployPolicyInstance',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DeployPolicyInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deploy_policy_instance(
+        self,
+        request: adcp_20220101_models.DeployPolicyInstanceRequest,
+    ) -> adcp_20220101_models.DeployPolicyInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.deploy_policy_instance_with_options(request, runtime)
+
+    async def deploy_policy_instance_async(
+        self,
+        request: adcp_20220101_models.DeployPolicyInstanceRequest,
+    ) -> adcp_20220101_models.DeployPolicyInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.deploy_policy_instance_with_options_async(request, runtime)
+
     def describe_hub_cluster_details_with_options(
         self,
         request: adcp_20220101_models.DescribeHubClusterDetailsRequest,
@@ -699,6 +957,340 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_managed_clusters_with_options_async(request, runtime)
 
+    def describe_policies_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DescribePoliciesResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribePolicies',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DescribePoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_policies_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DescribePoliciesResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribePolicies',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DescribePoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_policies(self) -> adcp_20220101_models.DescribePoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_policies_with_options(runtime)
+
+    async def describe_policies_async(self) -> adcp_20220101_models.DescribePoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_policies_with_options_async(runtime)
+
+    def describe_policy_details_with_options(
+        self,
+        request: adcp_20220101_models.DescribePolicyDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DescribePolicyDetailsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicyDetails',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DescribePolicyDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_policy_details_with_options_async(
+        self,
+        request: adcp_20220101_models.DescribePolicyDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DescribePolicyDetailsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicyDetails',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DescribePolicyDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_policy_details(
+        self,
+        request: adcp_20220101_models.DescribePolicyDetailsRequest,
+    ) -> adcp_20220101_models.DescribePolicyDetailsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_policy_details_with_options(request, runtime)
+
+    async def describe_policy_details_async(
+        self,
+        request: adcp_20220101_models.DescribePolicyDetailsRequest,
+    ) -> adcp_20220101_models.DescribePolicyDetailsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_policy_details_with_options_async(request, runtime)
+
+    def describe_policy_governance_in_cluster_with_options(
+        self,
+        request: adcp_20220101_models.DescribePolicyGovernanceInClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DescribePolicyGovernanceInClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicyGovernanceInCluster',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DescribePolicyGovernanceInClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_policy_governance_in_cluster_with_options_async(
+        self,
+        request: adcp_20220101_models.DescribePolicyGovernanceInClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DescribePolicyGovernanceInClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicyGovernanceInCluster',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DescribePolicyGovernanceInClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_policy_governance_in_cluster(
+        self,
+        request: adcp_20220101_models.DescribePolicyGovernanceInClusterRequest,
+    ) -> adcp_20220101_models.DescribePolicyGovernanceInClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_policy_governance_in_cluster_with_options(request, runtime)
+
+    async def describe_policy_governance_in_cluster_async(
+        self,
+        request: adcp_20220101_models.DescribePolicyGovernanceInClusterRequest,
+    ) -> adcp_20220101_models.DescribePolicyGovernanceInClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_policy_governance_in_cluster_with_options_async(request, runtime)
+
+    def describe_policy_instances_with_options(
+        self,
+        request: adcp_20220101_models.DescribePolicyInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DescribePolicyInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicyInstances',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DescribePolicyInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_policy_instances_with_options_async(
+        self,
+        request: adcp_20220101_models.DescribePolicyInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DescribePolicyInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicyInstances',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DescribePolicyInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_policy_instances(
+        self,
+        request: adcp_20220101_models.DescribePolicyInstancesRequest,
+    ) -> adcp_20220101_models.DescribePolicyInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_policy_instances_with_options(request, runtime)
+
+    async def describe_policy_instances_async(
+        self,
+        request: adcp_20220101_models.DescribePolicyInstancesRequest,
+    ) -> adcp_20220101_models.DescribePolicyInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_policy_instances_with_options_async(request, runtime)
+
+    def describe_policy_instances_status_with_options(
+        self,
+        request: adcp_20220101_models.DescribePolicyInstancesStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DescribePolicyInstancesStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicyInstancesStatus',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DescribePolicyInstancesStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_policy_instances_status_with_options_async(
+        self,
+        request: adcp_20220101_models.DescribePolicyInstancesStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DescribePolicyInstancesStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicyInstancesStatus',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DescribePolicyInstancesStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_policy_instances_status(
+        self,
+        request: adcp_20220101_models.DescribePolicyInstancesStatusRequest,
+    ) -> adcp_20220101_models.DescribePolicyInstancesStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_policy_instances_status_with_options(request, runtime)
+
+    async def describe_policy_instances_status_async(
+        self,
+        request: adcp_20220101_models.DescribePolicyInstancesStatusRequest,
+    ) -> adcp_20220101_models.DescribePolicyInstancesStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_policy_instances_status_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: adcp_20220101_models.DescribeRegionsRequest,
@@ -917,6 +1509,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_cluster_from_hub_with_options_async(request, runtime)
 
+    def grant_user_permission_with_options(
+        self,
+        request: adcp_20220101_models.GrantUserPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.GrantUserPermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.role_type):
+            query['RoleType'] = request.role_type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantUserPermission',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.GrantUserPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grant_user_permission_with_options_async(
+        self,
+        request: adcp_20220101_models.GrantUserPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.GrantUserPermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.role_type):
+            query['RoleType'] = request.role_type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantUserPermission',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.GrantUserPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def grant_user_permission(
+        self,
+        request: adcp_20220101_models.GrantUserPermissionRequest,
+    ) -> adcp_20220101_models.GrantUserPermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.grant_user_permission_with_options(request, runtime)
+
+    async def grant_user_permission_async(
+        self,
+        request: adcp_20220101_models.GrantUserPermissionRequest,
+    ) -> adcp_20220101_models.GrantUserPermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.grant_user_permission_with_options_async(request, runtime)
+
     def grant_user_permissions_with_options(
         self,
         tmp_req: adcp_20220101_models.GrantUserPermissionsRequest,
@@ -1120,3 +1798,89 @@ class Client(OpenApiClient):
     ) -> adcp_20220101_models.UpdateHubClusterFeatureResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_hub_cluster_feature_with_options_async(request, runtime)
+
+    def update_user_permission_with_options(
+        self,
+        request: adcp_20220101_models.UpdateUserPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.UpdateUserPermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.role_type):
+            query['RoleType'] = request.role_type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateUserPermission',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.UpdateUserPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_user_permission_with_options_async(
+        self,
+        request: adcp_20220101_models.UpdateUserPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.UpdateUserPermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.role_type):
+            query['RoleType'] = request.role_type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateUserPermission',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.UpdateUserPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_user_permission(
+        self,
+        request: adcp_20220101_models.UpdateUserPermissionRequest,
+    ) -> adcp_20220101_models.UpdateUserPermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_user_permission_with_options(request, runtime)
+
+    async def update_user_permission_async(
+        self,
+        request: adcp_20220101_models.UpdateUserPermissionRequest,
+    ) -> adcp_20220101_models.UpdateUserPermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_user_permission_with_options_async(request, runtime)
