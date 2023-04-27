@@ -289,6 +289,7 @@ class BeginSessionResponseBody(TeaModel):
         welcome_message: str = None,
     ):
         self.request_id = request_id
+        # 静默超时时间
         self.silence_reply_timeout = silence_reply_timeout
         self.welcome_message = welcome_message
 
