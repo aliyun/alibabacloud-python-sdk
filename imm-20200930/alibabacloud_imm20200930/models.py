@@ -9244,6 +9244,7 @@ class CreateImageModerationTaskRequest(TeaModel):
         self.credential_config = credential_config
         self.interval = interval
         self.max_frames = max_frames
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
         self.project_name = project_name
         self.reviewer = reviewer
@@ -9330,6 +9331,7 @@ class CreateImageModerationTaskShrinkRequest(TeaModel):
         self.credential_config_shrink = credential_config_shrink
         self.interval = interval
         self.max_frames = max_frames
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
         self.project_name = project_name
         self.reviewer = reviewer
@@ -9535,6 +9537,7 @@ class CreateImageSplicingTaskRequest(TeaModel):
         self.direction = direction
         self.image_format = image_format
         self.margin = margin
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
         self.padding = padding
         self.project_name = project_name
@@ -9660,6 +9663,7 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
         self.direction = direction
         self.image_format = image_format
         self.margin = margin
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
         self.padding = padding
         self.project_name = project_name
@@ -9874,6 +9878,7 @@ class CreateImageToPDFTaskRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config = credential_config
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
         self.project_name = project_name
         self.sources = sources
@@ -9951,6 +9956,7 @@ class CreateImageToPDFTaskShrinkRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
         self.project_name = project_name
         self.sources_shrink = sources_shrink
@@ -10600,6 +10606,7 @@ class CreateMediaConvertTaskRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config = credential_config
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
         self.project_name = project_name
         self.sources = sources
@@ -10686,6 +10693,7 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
         self.project_name = project_name
         self.sources_shrink = sources_shrink
@@ -11699,6 +11707,7 @@ class CreateStoryRequest(TeaModel):
         self.dataset_name = dataset_name
         self.max_file_count = max_file_count
         self.min_file_count = min_file_count
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
         self.notify_topic_name = notify_topic_name
         self.object_id = object_id
@@ -11827,6 +11836,7 @@ class CreateStoryShrinkRequest(TeaModel):
         self.dataset_name = dataset_name
         self.max_file_count = max_file_count
         self.min_file_count = min_file_count
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
         self.notify_topic_name = notify_topic_name
         self.object_id = object_id
@@ -12288,6 +12298,7 @@ class CreateVideoLabelClassificationTaskRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config = credential_config
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
         self.project_name = project_name
         self.source_uri = source_uri
@@ -12350,6 +12361,7 @@ class CreateVideoLabelClassificationTaskShrinkRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
         self.project_name = project_name
         self.source_uri = source_uri
@@ -12496,6 +12508,7 @@ class CreateVideoModerationTaskRequest(TeaModel):
         self.credential_config = credential_config
         self.interval = interval
         self.max_frames = max_frames
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
         self.project_name = project_name
         self.reviewer = reviewer
@@ -12582,6 +12595,7 @@ class CreateVideoModerationTaskShrinkRequest(TeaModel):
         self.credential_config_shrink = credential_config_shrink
         self.interval = interval
         self.max_frames = max_frames
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
         self.project_name = project_name
         self.reviewer = reviewer
@@ -16072,7 +16086,9 @@ class GenerateVideoPlaylistResponseBodyAudioPlaylist(TeaModel):
         token: str = None,
         uri: str = None,
     ):
+        # 转码生成的Token。用于LiveTranscoding访问的参数。
         self.token = token
+        # 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
         self.uri = uri
 
     def validate(self):
@@ -16107,9 +16123,13 @@ class GenerateVideoPlaylistResponseBodySubtitlePlaylist(TeaModel):
         token: str = None,
         uri: str = None,
     ):
+        # 字幕流编号，从0开始。
         self.index = index
+        # 视频源中字幕流的语言。
         self.language = language
+        # 转码生成的Token。用于LiveTranscoding访问的参数。
         self.token = token
+        # 输出m3u8的OSS地址。地址规则为 Target.URI + “_” + Index + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
         self.uri = uri
 
     def validate(self):
@@ -16150,7 +16170,9 @@ class GenerateVideoPlaylistResponseBodyVideoPlaylist(TeaModel):
         token: str = None,
         uri: str = None,
     ):
+        # 转码生成的Token。用于LiveTranscoding访问的参数。
         self.token = token
+        # 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
         self.uri = uri
 
     def validate(self):
@@ -16187,11 +16209,14 @@ class GenerateVideoPlaylistResponseBody(TeaModel):
         uri: str = None,
         video_playlist: List[GenerateVideoPlaylistResponseBodyVideoPlaylist] = None,
     ):
+        # 转码文件列表。
         self.audio_playlist = audio_playlist
         self.request_id = request_id
+        # 转码文件列表。
         self.subtitle_playlist = subtitle_playlist
         self.token = token
         self.uri = uri
+        # 转码文件列表。
         self.video_playlist = video_playlist
 
     def validate(self):
@@ -16329,6 +16354,7 @@ class GenerateWebofficeTokenRequest(TeaModel):
         self.external_uploaded = external_uploaded
         self.filename = filename
         self.hidecmb = hidecmb
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
         self.notify_topic_name = notify_topic_name
         self.password = password
@@ -16460,6 +16486,7 @@ class GenerateWebofficeTokenShrinkRequest(TeaModel):
         self.external_uploaded = external_uploaded
         self.filename = filename
         self.hidecmb = hidecmb
+        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
         self.notify_topic_name = notify_topic_name
         self.password = password
@@ -20244,6 +20271,7 @@ class QueryFigureClustersRequest(TeaModel):
         project_name: str = None,
         sort: str = None,
         update_time_range: TimeRange = None,
+        with_total_count: bool = None,
     ):
         self.create_time_range = create_time_range
         self.custom_labels = custom_labels
@@ -20254,6 +20282,7 @@ class QueryFigureClustersRequest(TeaModel):
         self.project_name = project_name
         self.sort = sort
         self.update_time_range = update_time_range
+        self.with_total_count = with_total_count
 
     def validate(self):
         if self.create_time_range:
@@ -20285,6 +20314,8 @@ class QueryFigureClustersRequest(TeaModel):
             result['Sort'] = self.sort
         if self.update_time_range is not None:
             result['UpdateTimeRange'] = self.update_time_range.to_map()
+        if self.with_total_count is not None:
+            result['WithTotalCount'] = self.with_total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -20309,6 +20340,8 @@ class QueryFigureClustersRequest(TeaModel):
         if m.get('UpdateTimeRange') is not None:
             temp_model = TimeRange()
             self.update_time_range = temp_model.from_map(m['UpdateTimeRange'])
+        if m.get('WithTotalCount') is not None:
+            self.with_total_count = m.get('WithTotalCount')
         return self
 
 
@@ -20324,6 +20357,7 @@ class QueryFigureClustersShrinkRequest(TeaModel):
         project_name: str = None,
         sort: str = None,
         update_time_range_shrink: str = None,
+        with_total_count: bool = None,
     ):
         self.create_time_range_shrink = create_time_range_shrink
         self.custom_labels = custom_labels
@@ -20334,6 +20368,7 @@ class QueryFigureClustersShrinkRequest(TeaModel):
         self.project_name = project_name
         self.sort = sort
         self.update_time_range_shrink = update_time_range_shrink
+        self.with_total_count = with_total_count
 
     def validate(self):
         pass
@@ -20362,6 +20397,8 @@ class QueryFigureClustersShrinkRequest(TeaModel):
             result['Sort'] = self.sort
         if self.update_time_range_shrink is not None:
             result['UpdateTimeRange'] = self.update_time_range_shrink
+        if self.with_total_count is not None:
+            result['WithTotalCount'] = self.with_total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -20384,6 +20421,8 @@ class QueryFigureClustersShrinkRequest(TeaModel):
             self.sort = m.get('Sort')
         if m.get('UpdateTimeRange') is not None:
             self.update_time_range_shrink = m.get('UpdateTimeRange')
+        if m.get('WithTotalCount') is not None:
+            self.with_total_count = m.get('WithTotalCount')
         return self
 
 
@@ -20393,10 +20432,12 @@ class QueryFigureClustersResponseBody(TeaModel):
         figure_clusters: List[FigureCluster] = None,
         next_token: str = None,
         request_id: str = None,
+        total_count: int = None,
     ):
         self.figure_clusters = figure_clusters
         self.next_token = next_token
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.figure_clusters:
@@ -20418,6 +20459,8 @@ class QueryFigureClustersResponseBody(TeaModel):
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -20431,6 +20474,8 @@ class QueryFigureClustersResponseBody(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 

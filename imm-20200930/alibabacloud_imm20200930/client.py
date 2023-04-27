@@ -7525,6 +7525,8 @@ class Client(OpenApiClient):
             query['Sort'] = request.sort
         if not UtilClient.is_unset(request.update_time_range_shrink):
             query['UpdateTimeRange'] = request.update_time_range_shrink
+        if not UtilClient.is_unset(request.with_total_count):
+            query['WithTotalCount'] = request.with_total_count
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7575,6 +7577,8 @@ class Client(OpenApiClient):
             query['Sort'] = request.sort
         if not UtilClient.is_unset(request.update_time_range_shrink):
             query['UpdateTimeRange'] = request.update_time_range_shrink
+        if not UtilClient.is_unset(request.with_total_count):
+            query['WithTotalCount'] = request.with_total_count
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
