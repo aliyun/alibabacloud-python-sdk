@@ -2799,7 +2799,9 @@ class DetectLungNoduleResponseBodyDataSeriesElements(TeaModel):
         self.major_axis = major_axis
         self.mean_value = mean_value
         self.minor_axis = minor_axis
+        # 结节最大径位置所在帧的ID标识。
         self.recist_sopinstance_uid = recist_sopinstance_uid
+        # 结节为恶性的置信度。取值范围0~1。
         self.risk = risk
         self.sopinstance_uid = sopinstance_uid
         self.volume = volume
@@ -6217,6 +6219,110 @@ class ScreenChestCTResponseBodyDataCACS(TeaModel):
         return self
 
 
+class ScreenChestCTResponseBodyDataCalcBMDDetections(TeaModel):
+    def __init__(
+        self,
+        vert_bmd: float = None,
+        vert_category: float = None,
+        vert_id: str = None,
+        vert_tscore: float = None,
+        vert_zscore: float = None,
+    ):
+        self.vert_bmd = vert_bmd
+        self.vert_category = vert_category
+        self.vert_id = vert_id
+        self.vert_tscore = vert_tscore
+        self.vert_zscore = vert_zscore
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vert_bmd is not None:
+            result['VertBMD'] = self.vert_bmd
+        if self.vert_category is not None:
+            result['VertCategory'] = self.vert_category
+        if self.vert_id is not None:
+            result['VertId'] = self.vert_id
+        if self.vert_tscore is not None:
+            result['VertTScore'] = self.vert_tscore
+        if self.vert_zscore is not None:
+            result['VertZScore'] = self.vert_zscore
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VertBMD') is not None:
+            self.vert_bmd = m.get('VertBMD')
+        if m.get('VertCategory') is not None:
+            self.vert_category = m.get('VertCategory')
+        if m.get('VertId') is not None:
+            self.vert_id = m.get('VertId')
+        if m.get('VertTScore') is not None:
+            self.vert_tscore = m.get('VertTScore')
+        if m.get('VertZScore') is not None:
+            self.vert_zscore = m.get('VertZScore')
+        return self
+
+
+class ScreenChestCTResponseBodyDataCalcBMD(TeaModel):
+    def __init__(
+        self,
+        detections: List[ScreenChestCTResponseBodyDataCalcBMDDetections] = None,
+        origin: List[float] = None,
+        result_url: str = None,
+        spacing: List[float] = None,
+    ):
+        self.detections = detections
+        self.origin = origin
+        self.result_url = result_url
+        self.spacing = spacing
+
+    def validate(self):
+        if self.detections:
+            for k in self.detections:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Detections'] = []
+        if self.detections is not None:
+            for k in self.detections:
+                result['Detections'].append(k.to_map() if k else None)
+        if self.origin is not None:
+            result['Origin'] = self.origin
+        if self.result_url is not None:
+            result['ResultURL'] = self.result_url
+        if self.spacing is not None:
+            result['Spacing'] = self.spacing
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detections = []
+        if m.get('Detections') is not None:
+            for k in m.get('Detections'):
+                temp_model = ScreenChestCTResponseBodyDataCalcBMDDetections()
+                self.detections.append(temp_model.from_map(k))
+        if m.get('Origin') is not None:
+            self.origin = m.get('Origin')
+        if m.get('ResultURL') is not None:
+            self.result_url = m.get('ResultURL')
+        if m.get('Spacing') is not None:
+            self.spacing = m.get('Spacing')
+        return self
+
+
 class ScreenChestCTResponseBodyDataCovid(TeaModel):
     def __init__(
         self,
@@ -6271,6 +6377,188 @@ class ScreenChestCTResponseBodyDataCovid(TeaModel):
             self.other_probability = m.get('OtherProbability')
         if m.get('SeriesInstanceUID') is not None:
             self.series_instance_uid = m.get('SeriesInstanceUID')
+        return self
+
+
+class ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections(TeaModel):
+    def __init__(
+        self,
+        liver_hu: float = None,
+        liver_roi1: float = None,
+        liver_roi2: float = None,
+        liver_roi3: float = None,
+        liver_slice: float = None,
+        liver_spleen_difference: float = None,
+        liver_spleen_ratio: float = None,
+        liver_volume: float = None,
+        prediction: str = None,
+        probability: float = None,
+        roi1center: List[int] = None,
+        roi2center: List[int] = None,
+        roi3center: List[int] = None,
+        radius: int = None,
+        spleen_center: List[int] = None,
+        spleen_hu: float = None,
+        spleen_roi: float = None,
+        spleen_slice: float = None,
+        spleen_volume: float = None,
+    ):
+        self.liver_hu = liver_hu
+        self.liver_roi1 = liver_roi1
+        self.liver_roi2 = liver_roi2
+        self.liver_roi3 = liver_roi3
+        self.liver_slice = liver_slice
+        self.liver_spleen_difference = liver_spleen_difference
+        self.liver_spleen_ratio = liver_spleen_ratio
+        self.liver_volume = liver_volume
+        self.prediction = prediction
+        self.probability = probability
+        self.roi1center = roi1center
+        self.roi2center = roi2center
+        self.roi3center = roi3center
+        self.radius = radius
+        self.spleen_center = spleen_center
+        self.spleen_hu = spleen_hu
+        self.spleen_roi = spleen_roi
+        self.spleen_slice = spleen_slice
+        self.spleen_volume = spleen_volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.liver_hu is not None:
+            result['LiverHU'] = self.liver_hu
+        if self.liver_roi1 is not None:
+            result['LiverROI1'] = self.liver_roi1
+        if self.liver_roi2 is not None:
+            result['LiverROI2'] = self.liver_roi2
+        if self.liver_roi3 is not None:
+            result['LiverROI3'] = self.liver_roi3
+        if self.liver_slice is not None:
+            result['LiverSlice'] = self.liver_slice
+        if self.liver_spleen_difference is not None:
+            result['LiverSpleenDifference'] = self.liver_spleen_difference
+        if self.liver_spleen_ratio is not None:
+            result['LiverSpleenRatio'] = self.liver_spleen_ratio
+        if self.liver_volume is not None:
+            result['LiverVolume'] = self.liver_volume
+        if self.prediction is not None:
+            result['Prediction'] = self.prediction
+        if self.probability is not None:
+            result['Probability'] = self.probability
+        if self.roi1center is not None:
+            result['ROI1Center'] = self.roi1center
+        if self.roi2center is not None:
+            result['ROI2Center'] = self.roi2center
+        if self.roi3center is not None:
+            result['ROI3Center'] = self.roi3center
+        if self.radius is not None:
+            result['Radius'] = self.radius
+        if self.spleen_center is not None:
+            result['SpleenCenter'] = self.spleen_center
+        if self.spleen_hu is not None:
+            result['SpleenHU'] = self.spleen_hu
+        if self.spleen_roi is not None:
+            result['SpleenROI'] = self.spleen_roi
+        if self.spleen_slice is not None:
+            result['SpleenSlice'] = self.spleen_slice
+        if self.spleen_volume is not None:
+            result['SpleenVolume'] = self.spleen_volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LiverHU') is not None:
+            self.liver_hu = m.get('LiverHU')
+        if m.get('LiverROI1') is not None:
+            self.liver_roi1 = m.get('LiverROI1')
+        if m.get('LiverROI2') is not None:
+            self.liver_roi2 = m.get('LiverROI2')
+        if m.get('LiverROI3') is not None:
+            self.liver_roi3 = m.get('LiverROI3')
+        if m.get('LiverSlice') is not None:
+            self.liver_slice = m.get('LiverSlice')
+        if m.get('LiverSpleenDifference') is not None:
+            self.liver_spleen_difference = m.get('LiverSpleenDifference')
+        if m.get('LiverSpleenRatio') is not None:
+            self.liver_spleen_ratio = m.get('LiverSpleenRatio')
+        if m.get('LiverVolume') is not None:
+            self.liver_volume = m.get('LiverVolume')
+        if m.get('Prediction') is not None:
+            self.prediction = m.get('Prediction')
+        if m.get('Probability') is not None:
+            self.probability = m.get('Probability')
+        if m.get('ROI1Center') is not None:
+            self.roi1center = m.get('ROI1Center')
+        if m.get('ROI2Center') is not None:
+            self.roi2center = m.get('ROI2Center')
+        if m.get('ROI3Center') is not None:
+            self.roi3center = m.get('ROI3Center')
+        if m.get('Radius') is not None:
+            self.radius = m.get('Radius')
+        if m.get('SpleenCenter') is not None:
+            self.spleen_center = m.get('SpleenCenter')
+        if m.get('SpleenHU') is not None:
+            self.spleen_hu = m.get('SpleenHU')
+        if m.get('SpleenROI') is not None:
+            self.spleen_roi = m.get('SpleenROI')
+        if m.get('SpleenSlice') is not None:
+            self.spleen_slice = m.get('SpleenSlice')
+        if m.get('SpleenVolume') is not None:
+            self.spleen_volume = m.get('SpleenVolume')
+        return self
+
+
+class ScreenChestCTResponseBodyDataDetectLiverSteatosis(TeaModel):
+    def __init__(
+        self,
+        detections: List[ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections] = None,
+        origin: List[float] = None,
+        spacing: List[float] = None,
+    ):
+        self.detections = detections
+        self.origin = origin
+        self.spacing = spacing
+
+    def validate(self):
+        if self.detections:
+            for k in self.detections:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Detections'] = []
+        if self.detections is not None:
+            for k in self.detections:
+                result['Detections'].append(k.to_map() if k else None)
+        if self.origin is not None:
+            result['Origin'] = self.origin
+        if self.spacing is not None:
+            result['Spacing'] = self.spacing
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detections = []
+        if m.get('Detections') is not None:
+            for k in m.get('Detections'):
+                temp_model = ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections()
+                self.detections.append(temp_model.from_map(k))
+        if m.get('Origin') is not None:
+            self.origin = m.get('Origin')
+        if m.get('Spacing') is not None:
+            self.spacing = m.get('Spacing')
         return self
 
 
@@ -6906,7 +7194,9 @@ class ScreenChestCTResponseBodyData(TeaModel):
         self,
         analyze_chest_vessel: ScreenChestCTResponseBodyDataAnalyzeChestVessel = None,
         cacs: ScreenChestCTResponseBodyDataCACS = None,
+        calc_bmd: ScreenChestCTResponseBodyDataCalcBMD = None,
         covid: ScreenChestCTResponseBodyDataCovid = None,
+        detect_liver_steatosis: ScreenChestCTResponseBodyDataDetectLiverSteatosis = None,
         detect_lymph: ScreenChestCTResponseBodyDataDetectLymph = None,
         detect_pdac: ScreenChestCTResponseBodyDataDetectPdac = None,
         detect_rib_fracture: ScreenChestCTResponseBodyDataDetectRibFracture = None,
@@ -6918,7 +7208,9 @@ class ScreenChestCTResponseBodyData(TeaModel):
     ):
         self.analyze_chest_vessel = analyze_chest_vessel
         self.cacs = cacs
+        self.calc_bmd = calc_bmd
         self.covid = covid
+        self.detect_liver_steatosis = detect_liver_steatosis
         self.detect_lymph = detect_lymph
         self.detect_pdac = detect_pdac
         self.detect_rib_fracture = detect_rib_fracture
@@ -6933,8 +7225,12 @@ class ScreenChestCTResponseBodyData(TeaModel):
             self.analyze_chest_vessel.validate()
         if self.cacs:
             self.cacs.validate()
+        if self.calc_bmd:
+            self.calc_bmd.validate()
         if self.covid:
             self.covid.validate()
+        if self.detect_liver_steatosis:
+            self.detect_liver_steatosis.validate()
         if self.detect_lymph:
             self.detect_lymph.validate()
         if self.detect_pdac:
@@ -6956,8 +7252,12 @@ class ScreenChestCTResponseBodyData(TeaModel):
             result['AnalyzeChestVessel'] = self.analyze_chest_vessel.to_map()
         if self.cacs is not None:
             result['CACS'] = self.cacs.to_map()
+        if self.calc_bmd is not None:
+            result['CalcBMD'] = self.calc_bmd.to_map()
         if self.covid is not None:
             result['Covid'] = self.covid.to_map()
+        if self.detect_liver_steatosis is not None:
+            result['DetectLiverSteatosis'] = self.detect_liver_steatosis.to_map()
         if self.detect_lymph is not None:
             result['DetectLymph'] = self.detect_lymph.to_map()
         if self.detect_pdac is not None:
@@ -6984,9 +7284,15 @@ class ScreenChestCTResponseBodyData(TeaModel):
         if m.get('CACS') is not None:
             temp_model = ScreenChestCTResponseBodyDataCACS()
             self.cacs = temp_model.from_map(m['CACS'])
+        if m.get('CalcBMD') is not None:
+            temp_model = ScreenChestCTResponseBodyDataCalcBMD()
+            self.calc_bmd = temp_model.from_map(m['CalcBMD'])
         if m.get('Covid') is not None:
             temp_model = ScreenChestCTResponseBodyDataCovid()
             self.covid = temp_model.from_map(m['Covid'])
+        if m.get('DetectLiverSteatosis') is not None:
+            temp_model = ScreenChestCTResponseBodyDataDetectLiverSteatosis()
+            self.detect_liver_steatosis = temp_model.from_map(m['DetectLiverSteatosis'])
         if m.get('DetectLymph') is not None:
             temp_model = ScreenChestCTResponseBodyDataDetectLymph()
             self.detect_lymph = temp_model.from_map(m['DetectLymph'])

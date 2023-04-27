@@ -1,3 +1,6 @@
+2023-04-27 Version: 2.0.28
+- Release ChestCT.
+
 2023-04-03 Version: 2.0.27
 - Release CalcBMD.
 
