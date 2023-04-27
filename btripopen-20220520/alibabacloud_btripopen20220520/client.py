@@ -6653,12 +6653,12 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.HotelOrderPayResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.btrip_order_id):
+            body['btrip_order_id'] = request.btrip_order_id
         if not UtilClient.is_unset(request.btrip_user_id):
             body['btrip_user_id'] = request.btrip_user_id
         if not UtilClient.is_unset(request.company_pay_fee):
             body['company_pay_fee'] = request.company_pay_fee
-        if not UtilClient.is_unset(request.dis_order_id):
-            body['dis_order_id'] = request.dis_order_id
         if not UtilClient.is_unset(request.person_pay_fee):
             body['person_pay_fee'] = request.person_pay_fee
         if not UtilClient.is_unset(request.third_pay_account):
@@ -6700,12 +6700,12 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.HotelOrderPayResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.btrip_order_id):
+            body['btrip_order_id'] = request.btrip_order_id
         if not UtilClient.is_unset(request.btrip_user_id):
             body['btrip_user_id'] = request.btrip_user_id
         if not UtilClient.is_unset(request.company_pay_fee):
             body['company_pay_fee'] = request.company_pay_fee
-        if not UtilClient.is_unset(request.dis_order_id):
-            body['dis_order_id'] = request.dis_order_id
         if not UtilClient.is_unset(request.person_pay_fee):
             body['person_pay_fee'] = request.person_pay_fee
         if not UtilClient.is_unset(request.third_pay_account):
