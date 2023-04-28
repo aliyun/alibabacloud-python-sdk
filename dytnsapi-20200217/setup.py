@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_dytnsapi20200217.
 
-Created on 24/02/2023
+Created on 28/04/2023
 
 @author: Alibaba Cloud SDK
 """
