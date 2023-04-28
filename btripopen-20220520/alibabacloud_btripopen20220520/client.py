@@ -542,6 +542,8 @@ class Client(OpenApiClient):
             body['limit_traveler'] = request.limit_traveler
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
+        if not UtilClient.is_unset(request.sub_corp_id):
+            body['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.thirdpart_apply_id):
             body['thirdpart_apply_id'] = request.thirdpart_apply_id
         if not UtilClient.is_unset(request.thirdpart_business_id):
@@ -657,6 +659,8 @@ class Client(OpenApiClient):
             body['limit_traveler'] = request.limit_traveler
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
+        if not UtilClient.is_unset(request.sub_corp_id):
+            body['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.thirdpart_apply_id):
             body['thirdpart_apply_id'] = request.thirdpart_apply_id
         if not UtilClient.is_unset(request.thirdpart_business_id):
@@ -745,6 +749,8 @@ class Client(OpenApiClient):
             body['operate_time'] = request.operate_time
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
+        if not UtilClient.is_unset(request.sub_corp_id):
+            body['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.user_id):
             body['user_id'] = request.user_id
         if not UtilClient.is_unset(request.user_name):
@@ -790,6 +796,8 @@ class Client(OpenApiClient):
             body['operate_time'] = request.operate_time
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
+        if not UtilClient.is_unset(request.sub_corp_id):
+            body['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.user_id):
             body['user_id'] = request.user_id
         if not UtilClient.is_unset(request.user_name):
@@ -957,6 +965,8 @@ class Client(OpenApiClient):
             query['page_size'] = request.page_size
         if not UtilClient.is_unset(request.start_time):
             query['start_time'] = request.start_time
+        if not UtilClient.is_unset(request.sub_corp_id):
+            query['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         if not UtilClient.is_unset(request.union_no):
@@ -1012,6 +1022,8 @@ class Client(OpenApiClient):
             query['page_size'] = request.page_size
         if not UtilClient.is_unset(request.start_time):
             query['start_time'] = request.start_time
+        if not UtilClient.is_unset(request.sub_corp_id):
+            query['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         if not UtilClient.is_unset(request.union_no):
@@ -1115,6 +1127,8 @@ class Client(OpenApiClient):
             body['limit_traveler'] = request.limit_traveler
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
+        if not UtilClient.is_unset(request.sub_corp_id):
+            body['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.thirdpart_apply_id):
             body['thirdpart_apply_id'] = request.thirdpart_apply_id
         if not UtilClient.is_unset(request.thirdpart_business_id):
@@ -1224,6 +1238,8 @@ class Client(OpenApiClient):
             body['limit_traveler'] = request.limit_traveler
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
+        if not UtilClient.is_unset(request.sub_corp_id):
+            body['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.thirdpart_apply_id):
             body['thirdpart_apply_id'] = request.thirdpart_apply_id
         if not UtilClient.is_unset(request.thirdpart_business_id):
@@ -1305,6 +1321,8 @@ class Client(OpenApiClient):
             query['apply_id'] = request.apply_id
         if not UtilClient.is_unset(request.apply_show_id):
             query['apply_show_id'] = request.apply_show_id
+        if not UtilClient.is_unset(request.sub_corp_id):
+            query['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.thirdpart_apply_id):
             query['thirdpart_apply_id'] = request.thirdpart_apply_id
         if not UtilClient.is_unset(request.type):
@@ -1346,6 +1364,8 @@ class Client(OpenApiClient):
             query['apply_id'] = request.apply_id
         if not UtilClient.is_unset(request.apply_show_id):
             query['apply_show_id'] = request.apply_show_id
+        if not UtilClient.is_unset(request.sub_corp_id):
+            query['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.thirdpart_apply_id):
             query['thirdpart_apply_id'] = request.thirdpart_apply_id
         if not UtilClient.is_unset(request.type):
