@@ -1,3 +1,6 @@
+2023-04-28 Version: 1.2.0
+- Add API ListServices and CreateService.
+
 2023-02-06 Version: 1.1.2
 - Public ListServiceUsages  OpenApi.
 
