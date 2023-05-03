@@ -1,3 +1,11 @@
+2023-05-03 Version: 2.0.26
+- Supported Zone for AllocateEipAddress.
+- Support HA-VPN.
+- CreateFullNatEntry, ModifyFullNatEntryAttribute, DeleteFullNatEntry support idempotent.
+- Support VBR allow prefixes.
+- Support adDetailLocation.
+- Fix ErrorCode.
+
 2023-04-15 Version: 2.0.25
 - CreateForwardEntry add error code.
 - Fix description error.

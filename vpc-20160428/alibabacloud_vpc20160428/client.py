@@ -1231,8 +1231,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipAddressResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
-        After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only ICMP, TCP, and UDP at the transport layer. IGMP and SCTP are not supported.
+        The maximum bandwidth of the EIP. Unit: Mbit/s.
+        *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**, valid values for **Bandwidth** are **1** to **500**.
+        *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**, valid values for **Bandwidth** are **1** to **200**.
+        *   When **InstanceChargeType** is set to **PrePaid**, valid values for **Bandwidth** are **1** to **1000**.
+        Default value: **5**. Unit: Mbit/s.
         
         @param request: AllocateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1280,6 +1283,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_protection_types):
             query['SecurityProtectionTypes'] = request.security_protection_types
+        if not UtilClient.is_unset(request.zone):
+            query['Zone'] = request.zone
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1305,8 +1310,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipAddressResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
-        After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only ICMP, TCP, and UDP at the transport layer. IGMP and SCTP are not supported.
+        The maximum bandwidth of the EIP. Unit: Mbit/s.
+        *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**, valid values for **Bandwidth** are **1** to **500**.
+        *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**, valid values for **Bandwidth** are **1** to **200**.
+        *   When **InstanceChargeType** is set to **PrePaid**, valid values for **Bandwidth** are **1** to **1000**.
+        Default value: **5**. Unit: Mbit/s.
         
         @param request: AllocateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1354,6 +1362,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_protection_types):
             query['SecurityProtectionTypes'] = request.security_protection_types
+        if not UtilClient.is_unset(request.zone):
+            query['Zone'] = request.zone
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1378,8 +1388,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AllocateEipAddressRequest,
     ) -> vpc_20160428_models.AllocateEipAddressResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
-        After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only ICMP, TCP, and UDP at the transport layer. IGMP and SCTP are not supported.
+        The maximum bandwidth of the EIP. Unit: Mbit/s.
+        *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**, valid values for **Bandwidth** are **1** to **500**.
+        *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**, valid values for **Bandwidth** are **1** to **200**.
+        *   When **InstanceChargeType** is set to **PrePaid**, valid values for **Bandwidth** are **1** to **1000**.
+        Default value: **5**. Unit: Mbit/s.
         
         @param request: AllocateEipAddressRequest
         @return: AllocateEipAddressResponse
@@ -1392,8 +1405,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AllocateEipAddressRequest,
     ) -> vpc_20160428_models.AllocateEipAddressResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
-        After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only ICMP, TCP, and UDP at the transport layer. IGMP and SCTP are not supported.
+        The maximum bandwidth of the EIP. Unit: Mbit/s.
+        *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**, valid values for **Bandwidth** are **1** to **500**.
+        *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**, valid values for **Bandwidth** are **1** to **200**.
+        *   When **InstanceChargeType** is set to **PrePaid**, valid values for **Bandwidth** are **1** to **1000**.
+        Default value: **5**. Unit: Mbit/s.
         
         @param request: AllocateEipAddressRequest
         @return: AllocateEipAddressResponse
@@ -7867,10 +7883,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatIpResponse:
         """
-        *CreateNatIp** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT IP address is not created. The system creates the NAT IP address in the background. You can call the [ListNatIps](~~287000~~) operation to query the status of a NAT IP address.
-        *   If a NAT IP address is in the **Creating** state, the NAT IP address is being created. In this case, you can only query the NAT IP address but cannot perform other operations.
-        *   If a NAT IP address is in the **Available** state, the NAT IP address is created.
-        You cannot repeatedly call the **CreateNatIp** operation to create a NAT IP address within the specified period of time.
+        The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         
         @param request: CreateNatIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7931,10 +7944,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatIpResponse:
         """
-        *CreateNatIp** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT IP address is not created. The system creates the NAT IP address in the background. You can call the [ListNatIps](~~287000~~) operation to query the status of a NAT IP address.
-        *   If a NAT IP address is in the **Creating** state, the NAT IP address is being created. In this case, you can only query the NAT IP address but cannot perform other operations.
-        *   If a NAT IP address is in the **Available** state, the NAT IP address is created.
-        You cannot repeatedly call the **CreateNatIp** operation to create a NAT IP address within the specified period of time.
+        The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         
         @param request: CreateNatIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7994,10 +8004,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateNatIpRequest,
     ) -> vpc_20160428_models.CreateNatIpResponse:
         """
-        *CreateNatIp** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT IP address is not created. The system creates the NAT IP address in the background. You can call the [ListNatIps](~~287000~~) operation to query the status of a NAT IP address.
-        *   If a NAT IP address is in the **Creating** state, the NAT IP address is being created. In this case, you can only query the NAT IP address but cannot perform other operations.
-        *   If a NAT IP address is in the **Available** state, the NAT IP address is created.
-        You cannot repeatedly call the **CreateNatIp** operation to create a NAT IP address within the specified period of time.
+        The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         
         @param request: CreateNatIpRequest
         @return: CreateNatIpResponse
@@ -8010,10 +8017,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateNatIpRequest,
     ) -> vpc_20160428_models.CreateNatIpResponse:
         """
-        *CreateNatIp** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT IP address is not created. The system creates the NAT IP address in the background. You can call the [ListNatIps](~~287000~~) operation to query the status of a NAT IP address.
-        *   If a NAT IP address is in the **Creating** state, the NAT IP address is being created. In this case, you can only query the NAT IP address but cannot perform other operations.
-        *   If a NAT IP address is in the **Available** state, the NAT IP address is created.
-        You cannot repeatedly call the **CreateNatIp** operation to create a NAT IP address within the specified period of time.
+        The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         
         @param request: CreateNatIpRequest
         @return: CreateNatIpResponse
@@ -10349,9 +10353,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorSessionResponse:
         """
-        *CreateTrafficMirrorSession** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
-        *   If the traffic mirror session is in the **Creating** state, the traffic mirror session is being created.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror session is created.
+        The description of the traffic mirror session.
+        The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         
         @param request: CreateTrafficMirrorSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10420,9 +10423,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorSessionResponse:
         """
-        *CreateTrafficMirrorSession** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
-        *   If the traffic mirror session is in the **Creating** state, the traffic mirror session is being created.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror session is created.
+        The description of the traffic mirror session.
+        The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         
         @param request: CreateTrafficMirrorSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10490,9 +10492,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateTrafficMirrorSessionRequest,
     ) -> vpc_20160428_models.CreateTrafficMirrorSessionResponse:
         """
-        *CreateTrafficMirrorSession** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
-        *   If the traffic mirror session is in the **Creating** state, the traffic mirror session is being created.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror session is created.
+        The description of the traffic mirror session.
+        The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         
         @param request: CreateTrafficMirrorSessionRequest
         @return: CreateTrafficMirrorSessionResponse
@@ -10505,9 +10506,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateTrafficMirrorSessionRequest,
     ) -> vpc_20160428_models.CreateTrafficMirrorSessionResponse:
         """
-        *CreateTrafficMirrorSession** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
-        *   If the traffic mirror session is in the **Creating** state, the traffic mirror session is being created.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror session is created.
+        The description of the traffic mirror session.
+        The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         
         @param request: CreateTrafficMirrorSessionRequest
         @return: CreateTrafficMirrorSessionResponse
@@ -10521,17 +10521,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVSwitchResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   You can create at most 150 vSwitches in a virtual private cloud (VPC).
-        *   The first IP address and last three IP addresses of each vSwitch CIDR block are reserved. For example, if the CIDR block of a vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved.
-        *   The number of instances in a vSwitch cannot exceed the remaining capacity of the VPC. The remaining capacity is the difference between 15,000 and the current number of instances.
-        *   Each instance can belong to only one vSwitch.
-        *   vSwitches do not support multicast or broadcast.
-        *   After you create a vSwitch, you cannot modify its CIDR block.
-        *   The **CreateVSwitch** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a vSwitch:
-        *   If the vSwitch is in the **Pending** state, the vSwitch is being configured.
-        *   If the vSwitch is in the **Available** state, the vSwitch is available.
-        *   You cannot repeatedly call the **CreateVSwitch** operation to create a vSwitch in a VPC within the specified period of time.
+        The zone ID of the vSwitch.
+        You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
         
         @param request: CreateVSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10590,17 +10581,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVSwitchResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   You can create at most 150 vSwitches in a virtual private cloud (VPC).
-        *   The first IP address and last three IP addresses of each vSwitch CIDR block are reserved. For example, if the CIDR block of a vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved.
-        *   The number of instances in a vSwitch cannot exceed the remaining capacity of the VPC. The remaining capacity is the difference between 15,000 and the current number of instances.
-        *   Each instance can belong to only one vSwitch.
-        *   vSwitches do not support multicast or broadcast.
-        *   After you create a vSwitch, you cannot modify its CIDR block.
-        *   The **CreateVSwitch** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a vSwitch:
-        *   If the vSwitch is in the **Pending** state, the vSwitch is being configured.
-        *   If the vSwitch is in the **Available** state, the vSwitch is available.
-        *   You cannot repeatedly call the **CreateVSwitch** operation to create a vSwitch in a VPC within the specified period of time.
+        The zone ID of the vSwitch.
+        You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
         
         @param request: CreateVSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10658,17 +10640,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVSwitchRequest,
     ) -> vpc_20160428_models.CreateVSwitchResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   You can create at most 150 vSwitches in a virtual private cloud (VPC).
-        *   The first IP address and last three IP addresses of each vSwitch CIDR block are reserved. For example, if the CIDR block of a vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved.
-        *   The number of instances in a vSwitch cannot exceed the remaining capacity of the VPC. The remaining capacity is the difference between 15,000 and the current number of instances.
-        *   Each instance can belong to only one vSwitch.
-        *   vSwitches do not support multicast or broadcast.
-        *   After you create a vSwitch, you cannot modify its CIDR block.
-        *   The **CreateVSwitch** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a vSwitch:
-        *   If the vSwitch is in the **Pending** state, the vSwitch is being configured.
-        *   If the vSwitch is in the **Available** state, the vSwitch is available.
-        *   You cannot repeatedly call the **CreateVSwitch** operation to create a vSwitch in a VPC within the specified period of time.
+        The zone ID of the vSwitch.
+        You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
         
         @param request: CreateVSwitchRequest
         @return: CreateVSwitchResponse
@@ -10681,17 +10654,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVSwitchRequest,
     ) -> vpc_20160428_models.CreateVSwitchResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   You can create at most 150 vSwitches in a virtual private cloud (VPC).
-        *   The first IP address and last three IP addresses of each vSwitch CIDR block are reserved. For example, if the CIDR block of a vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved.
-        *   The number of instances in a vSwitch cannot exceed the remaining capacity of the VPC. The remaining capacity is the difference between 15,000 and the current number of instances.
-        *   Each instance can belong to only one vSwitch.
-        *   vSwitches do not support multicast or broadcast.
-        *   After you create a vSwitch, you cannot modify its CIDR block.
-        *   The **CreateVSwitch** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a vSwitch:
-        *   If the vSwitch is in the **Pending** state, the vSwitch is being configured.
-        *   If the vSwitch is in the **Available** state, the vSwitch is available.
-        *   You cannot repeatedly call the **CreateVSwitch** operation to create a vSwitch in a VPC within the specified period of time.
+        The zone ID of the vSwitch.
+        You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
         
         @param request: CreateVSwitchRequest
         @return: CreateVSwitchResponse
@@ -12283,10 +12247,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         """
-        Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
-        *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
-        *   If the VPN gateway is in the **active** state, the VPN gateway is created.
+        The region ID of the VPN gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: CreateVpnGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12355,10 +12316,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         """
-        Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
-        *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
-        *   If the VPN gateway is in the **active** state, the VPN gateway is created.
+        The region ID of the VPN gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: CreateVpnGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12426,10 +12384,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnGatewayRequest,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         """
-        Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
-        *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
-        *   If the VPN gateway is in the **active** state, the VPN gateway is created.
+        The region ID of the VPN gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: CreateVpnGatewayRequest
         @return: CreateVpnGatewayResponse
@@ -12442,10 +12397,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnGatewayRequest,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         """
-        Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
-        *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
-        *   If the VPN gateway is in the **active** state, the VPN gateway is created.
+        The region ID of the VPN gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: CreateVpnGatewayRequest
         @return: CreateVpnGatewayResponse
@@ -13765,11 +13717,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteForwardEntryResponse:
         """
-        **DeleteForwardEntry** is an asynchronous operation. After you make a request, the ID of the request is returned but the specified DNAT entry is not deleted. The system deletes the entry in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the status of a DNAT entry.
-        *   If the DNAT entry is in the **Deleting** state, the system is deleting the DNAT entry. In this case, you can only query the status of the DNAT entry, but cannot perform other operations.
-        *   If the DNAT entry cannot be found, it is deleted.
-        >  If a DNAT table has DNAT entries in the **Pending** state, you cannot delete the DNAT entries.
-        *   You cannot repeatedly call the **DeleteForwardEntry** operation to delete a DNAT entry within the specified period of time.
+        The region ID of the NAT gateway.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: DeleteForwardEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13818,11 +13767,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteForwardEntryResponse:
         """
-        **DeleteForwardEntry** is an asynchronous operation. After you make a request, the ID of the request is returned but the specified DNAT entry is not deleted. The system deletes the entry in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the status of a DNAT entry.
-        *   If the DNAT entry is in the **Deleting** state, the system is deleting the DNAT entry. In this case, you can only query the status of the DNAT entry, but cannot perform other operations.
-        *   If the DNAT entry cannot be found, it is deleted.
-        >  If a DNAT table has DNAT entries in the **Pending** state, you cannot delete the DNAT entries.
-        *   You cannot repeatedly call the **DeleteForwardEntry** operation to delete a DNAT entry within the specified period of time.
+        The region ID of the NAT gateway.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: DeleteForwardEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13870,11 +13816,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteForwardEntryRequest,
     ) -> vpc_20160428_models.DeleteForwardEntryResponse:
         """
-        **DeleteForwardEntry** is an asynchronous operation. After you make a request, the ID of the request is returned but the specified DNAT entry is not deleted. The system deletes the entry in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the status of a DNAT entry.
-        *   If the DNAT entry is in the **Deleting** state, the system is deleting the DNAT entry. In this case, you can only query the status of the DNAT entry, but cannot perform other operations.
-        *   If the DNAT entry cannot be found, it is deleted.
-        >  If a DNAT table has DNAT entries in the **Pending** state, you cannot delete the DNAT entries.
-        *   You cannot repeatedly call the **DeleteForwardEntry** operation to delete a DNAT entry within the specified period of time.
+        The region ID of the NAT gateway.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: DeleteForwardEntryRequest
         @return: DeleteForwardEntryResponse
@@ -13887,11 +13830,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteForwardEntryRequest,
     ) -> vpc_20160428_models.DeleteForwardEntryResponse:
         """
-        **DeleteForwardEntry** is an asynchronous operation. After you make a request, the ID of the request is returned but the specified DNAT entry is not deleted. The system deletes the entry in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the status of a DNAT entry.
-        *   If the DNAT entry is in the **Deleting** state, the system is deleting the DNAT entry. In this case, you can only query the status of the DNAT entry, but cannot perform other operations.
-        *   If the DNAT entry cannot be found, it is deleted.
-        >  If a DNAT table has DNAT entries in the **Pending** state, you cannot delete the DNAT entries.
-        *   You cannot repeatedly call the **DeleteForwardEntry** operation to delete a DNAT entry within the specified period of time.
+        The region ID of the NAT gateway.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: DeleteForwardEntryRequest
         @return: DeleteForwardEntryResponse
@@ -17273,10 +17213,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse:
         """
-        The **DeleteTrafficMirrorFilterRules** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of an inbound or outbound rule:
-        *   If the rule is in the **Deleting** state, the rule is being deleted.
-        *   If you cannot query the rule, the rule is deleted.
-        *   You cannot repeatedly call the **DeleteTrafficMirrorFilterRules** operation to delete an inbound or outbound rule within the specified period of time.
+        The ID of the filter.
         
         @param request: DeleteTrafficMirrorFilterRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17327,10 +17264,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse:
         """
-        The **DeleteTrafficMirrorFilterRules** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of an inbound or outbound rule:
-        *   If the rule is in the **Deleting** state, the rule is being deleted.
-        *   If you cannot query the rule, the rule is deleted.
-        *   You cannot repeatedly call the **DeleteTrafficMirrorFilterRules** operation to delete an inbound or outbound rule within the specified period of time.
+        The ID of the filter.
         
         @param request: DeleteTrafficMirrorFilterRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17380,10 +17314,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteTrafficMirrorFilterRulesRequest,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse:
         """
-        The **DeleteTrafficMirrorFilterRules** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of an inbound or outbound rule:
-        *   If the rule is in the **Deleting** state, the rule is being deleted.
-        *   If you cannot query the rule, the rule is deleted.
-        *   You cannot repeatedly call the **DeleteTrafficMirrorFilterRules** operation to delete an inbound or outbound rule within the specified period of time.
+        The ID of the filter.
         
         @param request: DeleteTrafficMirrorFilterRulesRequest
         @return: DeleteTrafficMirrorFilterRulesResponse
@@ -17396,10 +17327,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteTrafficMirrorFilterRulesRequest,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse:
         """
-        The **DeleteTrafficMirrorFilterRules** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of an inbound or outbound rule:
-        *   If the rule is in the **Deleting** state, the rule is being deleted.
-        *   If you cannot query the rule, the rule is deleted.
-        *   You cannot repeatedly call the **DeleteTrafficMirrorFilterRules** operation to delete an inbound or outbound rule within the specified period of time.
+        The ID of the filter.
         
         @param request: DeleteTrafficMirrorFilterRulesRequest
         @return: DeleteTrafficMirrorFilterRulesResponse
@@ -17413,10 +17341,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorSessionResponse:
         """
-        **DeleteTrafficMirrorSession** is an asynchronous operation. After you send the request, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
-        *   If the traffic mirror session is in the **Deleting** state, the traffic mirror session is being deleted.
-        *   If you cannot query the traffic mirror session, the traffic mirror session is deleted.
-        *   You cannot repeatedly call the **DeleteTrafficMirrorSession** operation to delete a traffic mirror session within the specified period of time.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
         
         @param request: DeleteTrafficMirrorSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17465,10 +17392,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorSessionResponse:
         """
-        **DeleteTrafficMirrorSession** is an asynchronous operation. After you send the request, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
-        *   If the traffic mirror session is in the **Deleting** state, the traffic mirror session is being deleted.
-        *   If you cannot query the traffic mirror session, the traffic mirror session is deleted.
-        *   You cannot repeatedly call the **DeleteTrafficMirrorSession** operation to delete a traffic mirror session within the specified period of time.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
         
         @param request: DeleteTrafficMirrorSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17516,10 +17442,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteTrafficMirrorSessionRequest,
     ) -> vpc_20160428_models.DeleteTrafficMirrorSessionResponse:
         """
-        **DeleteTrafficMirrorSession** is an asynchronous operation. After you send the request, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
-        *   If the traffic mirror session is in the **Deleting** state, the traffic mirror session is being deleted.
-        *   If you cannot query the traffic mirror session, the traffic mirror session is deleted.
-        *   You cannot repeatedly call the **DeleteTrafficMirrorSession** operation to delete a traffic mirror session within the specified period of time.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
         
         @param request: DeleteTrafficMirrorSessionRequest
         @return: DeleteTrafficMirrorSessionResponse
@@ -17532,10 +17457,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteTrafficMirrorSessionRequest,
     ) -> vpc_20160428_models.DeleteTrafficMirrorSessionResponse:
         """
-        **DeleteTrafficMirrorSession** is an asynchronous operation. After you send the request, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
-        *   If the traffic mirror session is in the **Deleting** state, the traffic mirror session is being deleted.
-        *   If you cannot query the traffic mirror session, the traffic mirror session is deleted.
-        *   You cannot repeatedly call the **DeleteTrafficMirrorSession** operation to delete a traffic mirror session within the specified period of time.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
         
         @param request: DeleteTrafficMirrorSessionRequest
         @return: DeleteTrafficMirrorSessionResponse
@@ -22219,7 +22143,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNatGatewaysResponse:
         """
-        You can call this operation to query both Virtual Private Cloud (VPC) NAT gateways and Internet NAT gateways. NAT gateways in this topic refer to both VPC NAT gateways and Internet NAT gateways.
+        The operation that you want to perform. Set the value to *DescribeNatGateways**.
         
         @param request: DescribeNatGatewaysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22290,7 +22214,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNatGatewaysResponse:
         """
-        You can call this operation to query both Virtual Private Cloud (VPC) NAT gateways and Internet NAT gateways. NAT gateways in this topic refer to both VPC NAT gateways and Internet NAT gateways.
+        The operation that you want to perform. Set the value to *DescribeNatGateways**.
         
         @param request: DescribeNatGatewaysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22360,7 +22284,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeNatGatewaysRequest,
     ) -> vpc_20160428_models.DescribeNatGatewaysResponse:
         """
-        You can call this operation to query both Virtual Private Cloud (VPC) NAT gateways and Internet NAT gateways. NAT gateways in this topic refer to both VPC NAT gateways and Internet NAT gateways.
+        The operation that you want to perform. Set the value to *DescribeNatGateways**.
         
         @param request: DescribeNatGatewaysRequest
         @return: DescribeNatGatewaysResponse
@@ -22373,7 +22297,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeNatGatewaysRequest,
     ) -> vpc_20160428_models.DescribeNatGatewaysResponse:
         """
-        You can call this operation to query both Virtual Private Cloud (VPC) NAT gateways and Internet NAT gateways. NAT gateways in this topic refer to both VPC NAT gateways and Internet NAT gateways.
+        The operation that you want to perform. Set the value to *DescribeNatGateways**.
         
         @param request: DescribeNatGatewaysRequest
         @return: DescribeNatGatewaysResponse
@@ -27709,10 +27633,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnableVpcIpv4GatewayResponse:
         """
-        The **EnableVpcIpv4Gateway** operation is asynchronous. After you send the request, the system returns **RequestId**. However, the operation is still being performed in the system background. You can call the [GetIpv4GatewayAttribute](~~407670~~) operation to query the status of an IPv4 gateway:
-        *   If the IPv4 gateway is in the **Activating** state, the IPv4 gateway is being activated.
-        *   If the IPv4 gateway is in the **Created** state, the IPv4 gateway is activated.
-        *   You cannot repeatedly call the **EnableVpcIpv4Gateway** operation to activate an IPv4 gateway within the specified period of time.
+        The ID of the IPv4 gateway that you want to activate.
         
         @param request: EnableVpcIpv4GatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27765,10 +27686,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnableVpcIpv4GatewayResponse:
         """
-        The **EnableVpcIpv4Gateway** operation is asynchronous. After you send the request, the system returns **RequestId**. However, the operation is still being performed in the system background. You can call the [GetIpv4GatewayAttribute](~~407670~~) operation to query the status of an IPv4 gateway:
-        *   If the IPv4 gateway is in the **Activating** state, the IPv4 gateway is being activated.
-        *   If the IPv4 gateway is in the **Created** state, the IPv4 gateway is activated.
-        *   You cannot repeatedly call the **EnableVpcIpv4Gateway** operation to activate an IPv4 gateway within the specified period of time.
+        The ID of the IPv4 gateway that you want to activate.
         
         @param request: EnableVpcIpv4GatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27820,10 +27738,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.EnableVpcIpv4GatewayRequest,
     ) -> vpc_20160428_models.EnableVpcIpv4GatewayResponse:
         """
-        The **EnableVpcIpv4Gateway** operation is asynchronous. After you send the request, the system returns **RequestId**. However, the operation is still being performed in the system background. You can call the [GetIpv4GatewayAttribute](~~407670~~) operation to query the status of an IPv4 gateway:
-        *   If the IPv4 gateway is in the **Activating** state, the IPv4 gateway is being activated.
-        *   If the IPv4 gateway is in the **Created** state, the IPv4 gateway is activated.
-        *   You cannot repeatedly call the **EnableVpcIpv4Gateway** operation to activate an IPv4 gateway within the specified period of time.
+        The ID of the IPv4 gateway that you want to activate.
         
         @param request: EnableVpcIpv4GatewayRequest
         @return: EnableVpcIpv4GatewayResponse
@@ -27836,10 +27751,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.EnableVpcIpv4GatewayRequest,
     ) -> vpc_20160428_models.EnableVpcIpv4GatewayResponse:
         """
-        The **EnableVpcIpv4Gateway** operation is asynchronous. After you send the request, the system returns **RequestId**. However, the operation is still being performed in the system background. You can call the [GetIpv4GatewayAttribute](~~407670~~) operation to query the status of an IPv4 gateway:
-        *   If the IPv4 gateway is in the **Activating** state, the IPv4 gateway is being activated.
-        *   If the IPv4 gateway is in the **Created** state, the IPv4 gateway is activated.
-        *   You cannot repeatedly call the **EnableVpcIpv4Gateway** operation to activate an IPv4 gateway within the specified period of time.
+        The ID of the IPv4 gateway that you want to activate.
         
         @param request: EnableVpcIpv4GatewayRequest
         @return: EnableVpcIpv4GatewayResponse
@@ -32161,10 +32073,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse:
         """
-        The **ModifyCommonBandwidthPackageSpec** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **Modifying** state, the maximum bandwidth of the EIP bandwidth plan is being modified. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **Available** state, the maximum bandwidth of the EIP bandwidth plan is modified.
-        *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an EIP bandwidth plan within the specified period of time.
+        The region ID of the EIP bandwidth plan.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: ModifyCommonBandwidthPackageSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32211,10 +32121,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse:
         """
-        The **ModifyCommonBandwidthPackageSpec** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **Modifying** state, the maximum bandwidth of the EIP bandwidth plan is being modified. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **Available** state, the maximum bandwidth of the EIP bandwidth plan is modified.
-        *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an EIP bandwidth plan within the specified period of time.
+        The region ID of the EIP bandwidth plan.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: ModifyCommonBandwidthPackageSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32260,10 +32168,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyCommonBandwidthPackageSpecRequest,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse:
         """
-        The **ModifyCommonBandwidthPackageSpec** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **Modifying** state, the maximum bandwidth of the EIP bandwidth plan is being modified. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **Available** state, the maximum bandwidth of the EIP bandwidth plan is modified.
-        *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an EIP bandwidth plan within the specified period of time.
+        The region ID of the EIP bandwidth plan.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: ModifyCommonBandwidthPackageSpecRequest
         @return: ModifyCommonBandwidthPackageSpecResponse
@@ -32276,10 +32182,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyCommonBandwidthPackageSpecRequest,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse:
         """
-        The **ModifyCommonBandwidthPackageSpec** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **Modifying** state, the maximum bandwidth of the EIP bandwidth plan is being modified. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **Available** state, the maximum bandwidth of the EIP bandwidth plan is modified.
-        *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an EIP bandwidth plan within the specified period of time.
+        The region ID of the EIP bandwidth plan.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: ModifyCommonBandwidthPackageSpecRequest
         @return: ModifyCommonBandwidthPackageSpecResponse
@@ -37053,11 +36957,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpcPrefixListResponse:
         """
-        The **ModifyVpcPrefixList** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPrefixLists](~~311535~~) to query the status of a prefix list.
-        *   If the prefix list is in the **Modifying** state, the configuration of the prefix list is being modified.
-        *   If the prefix list is in the **Created** state, the configuration of the prefix list is modified.
-        *   After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](~~445478~~) operation to query information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status** of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
-        *   You cannot repeatedly call **ModifyVpcPrefixList** to modify the configuration of a prefix list within the specified period of time.
+        The ID of the prefix list.
         
         @param request: ModifyVpcPrefixListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37116,11 +37016,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpcPrefixListResponse:
         """
-        The **ModifyVpcPrefixList** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPrefixLists](~~311535~~) to query the status of a prefix list.
-        *   If the prefix list is in the **Modifying** state, the configuration of the prefix list is being modified.
-        *   If the prefix list is in the **Created** state, the configuration of the prefix list is modified.
-        *   After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](~~445478~~) operation to query information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status** of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
-        *   You cannot repeatedly call **ModifyVpcPrefixList** to modify the configuration of a prefix list within the specified period of time.
+        The ID of the prefix list.
         
         @param request: ModifyVpcPrefixListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37178,11 +37074,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpcPrefixListRequest,
     ) -> vpc_20160428_models.ModifyVpcPrefixListResponse:
         """
-        The **ModifyVpcPrefixList** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPrefixLists](~~311535~~) to query the status of a prefix list.
-        *   If the prefix list is in the **Modifying** state, the configuration of the prefix list is being modified.
-        *   If the prefix list is in the **Created** state, the configuration of the prefix list is modified.
-        *   After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](~~445478~~) operation to query information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status** of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
-        *   You cannot repeatedly call **ModifyVpcPrefixList** to modify the configuration of a prefix list within the specified period of time.
+        The ID of the prefix list.
         
         @param request: ModifyVpcPrefixListRequest
         @return: ModifyVpcPrefixListResponse
@@ -37195,11 +37087,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpcPrefixListRequest,
     ) -> vpc_20160428_models.ModifyVpcPrefixListResponse:
         """
-        The **ModifyVpcPrefixList** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPrefixLists](~~311535~~) to query the status of a prefix list.
-        *   If the prefix list is in the **Modifying** state, the configuration of the prefix list is being modified.
-        *   If the prefix list is in the **Created** state, the configuration of the prefix list is modified.
-        *   After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](~~445478~~) operation to query information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status** of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
-        *   You cannot repeatedly call **ModifyVpcPrefixList** to modify the configuration of a prefix list within the specified period of time.
+        The ID of the prefix list.
         
         @param request: ModifyVpcPrefixListRequest
         @return: ModifyVpcPrefixListResponse
@@ -38891,7 +38779,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RecoverPhysicalConnectionResponse:
         """
-        You can call this API operation to resume a suspended Express Connect circuit. You can resume only shared Express Connect circuits by calling this API operation.
+        The ID of the Express Connect circuit.
+        >  You can resume only shared Express Connect circuits.
         
         @param request: RecoverPhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38932,7 +38821,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RecoverPhysicalConnectionResponse:
         """
-        You can call this API operation to resume a suspended Express Connect circuit. You can resume only shared Express Connect circuits by calling this API operation.
+        The ID of the Express Connect circuit.
+        >  You can resume only shared Express Connect circuits.
         
         @param request: RecoverPhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38972,7 +38862,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.RecoverPhysicalConnectionRequest,
     ) -> vpc_20160428_models.RecoverPhysicalConnectionResponse:
         """
-        You can call this API operation to resume a suspended Express Connect circuit. You can resume only shared Express Connect circuits by calling this API operation.
+        The ID of the Express Connect circuit.
+        >  You can resume only shared Express Connect circuits.
         
         @param request: RecoverPhysicalConnectionRequest
         @return: RecoverPhysicalConnectionResponse
@@ -38985,7 +38876,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.RecoverPhysicalConnectionRequest,
     ) -> vpc_20160428_models.RecoverPhysicalConnectionResponse:
         """
-        You can call this API operation to resume a suspended Express Connect circuit. You can resume only shared Express Connect circuits by calling this API operation.
+        The ID of the Express Connect circuit.
+        >  You can resume only shared Express Connect circuits.
         
         @param request: RecoverPhysicalConnectionRequest
         @return: RecoverPhysicalConnectionResponse
@@ -42567,7 +42459,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateIpv4GatewayAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateIpv4GatewayAttribute** operation to modify the name or description of an IPv4 gateway within the specified period of time.
+        The ID of the IPv4 gateway whose name or description you want to modify.
         
         @param request: UpdateIpv4GatewayAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -42622,7 +42514,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateIpv4GatewayAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateIpv4GatewayAttribute** operation to modify the name or description of an IPv4 gateway within the specified period of time.
+        The ID of the IPv4 gateway whose name or description you want to modify.
         
         @param request: UpdateIpv4GatewayAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -42676,7 +42568,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateIpv4GatewayAttributeRequest,
     ) -> vpc_20160428_models.UpdateIpv4GatewayAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateIpv4GatewayAttribute** operation to modify the name or description of an IPv4 gateway within the specified period of time.
+        The ID of the IPv4 gateway whose name or description you want to modify.
         
         @param request: UpdateIpv4GatewayAttributeRequest
         @return: UpdateIpv4GatewayAttributeResponse
@@ -42689,7 +42581,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateIpv4GatewayAttributeRequest,
     ) -> vpc_20160428_models.UpdateIpv4GatewayAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateIpv4GatewayAttribute** operation to modify the name or description of an IPv4 gateway within the specified period of time.
+        The ID of the IPv4 gateway whose name or description you want to modify.
         
         @param request: UpdateIpv4GatewayAttributeRequest
         @return: UpdateIpv4GatewayAttributeResponse
@@ -43151,7 +43043,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateTrafficMirrorFilterAttribute** operation to modify the configuration of a filter for traffic mirroring within the specified period of time.
+        The ID of the filter.
         
         @param request: UpdateTrafficMirrorFilterAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43204,7 +43096,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateTrafficMirrorFilterAttribute** operation to modify the configuration of a filter for traffic mirroring within the specified period of time.
+        The ID of the filter.
         
         @param request: UpdateTrafficMirrorFilterAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43256,7 +43148,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateTrafficMirrorFilterAttributeRequest,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateTrafficMirrorFilterAttribute** operation to modify the configuration of a filter for traffic mirroring within the specified period of time.
+        The ID of the filter.
         
         @param request: UpdateTrafficMirrorFilterAttributeRequest
         @return: UpdateTrafficMirrorFilterAttributeResponse
@@ -43269,7 +43161,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateTrafficMirrorFilterAttributeRequest,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateTrafficMirrorFilterAttribute** operation to modify the configuration of a filter for traffic mirroring within the specified period of time.
+        The ID of the filter.
         
         @param request: UpdateTrafficMirrorFilterAttributeRequest
         @return: UpdateTrafficMirrorFilterAttributeResponse
@@ -43283,10 +43175,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse:
         """
-        The **UpdateTrafficMirrorFilterRuleAttribute** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of an inbound or outbound rule:
-        *   If the rule is in the **Modifying** state, the rule is being modified.
-        *   If the rule is in the **Created** state, the rule is modified.
-        *   You cannot repeatedly call the **UpdateTrafficMirrorFilterRuleAttribute** operation to modify an inbound or outbound rule within the specified period of time.
+        The ID of the inbound or outbound rule.
         
         @param request: UpdateTrafficMirrorFilterRuleAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43349,10 +43238,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse:
         """
-        The **UpdateTrafficMirrorFilterRuleAttribute** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of an inbound or outbound rule:
-        *   If the rule is in the **Modifying** state, the rule is being modified.
-        *   If the rule is in the **Created** state, the rule is modified.
-        *   You cannot repeatedly call the **UpdateTrafficMirrorFilterRuleAttribute** operation to modify an inbound or outbound rule within the specified period of time.
+        The ID of the inbound or outbound rule.
         
         @param request: UpdateTrafficMirrorFilterRuleAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43414,10 +43300,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeRequest,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse:
         """
-        The **UpdateTrafficMirrorFilterRuleAttribute** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of an inbound or outbound rule:
-        *   If the rule is in the **Modifying** state, the rule is being modified.
-        *   If the rule is in the **Created** state, the rule is modified.
-        *   You cannot repeatedly call the **UpdateTrafficMirrorFilterRuleAttribute** operation to modify an inbound or outbound rule within the specified period of time.
+        The ID of the inbound or outbound rule.
         
         @param request: UpdateTrafficMirrorFilterRuleAttributeRequest
         @return: UpdateTrafficMirrorFilterRuleAttributeResponse
@@ -43430,10 +43313,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeRequest,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse:
         """
-        The **UpdateTrafficMirrorFilterRuleAttribute** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of an inbound or outbound rule:
-        *   If the rule is in the **Modifying** state, the rule is being modified.
-        *   If the rule is in the **Created** state, the rule is modified.
-        *   You cannot repeatedly call the **UpdateTrafficMirrorFilterRuleAttribute** operation to modify an inbound or outbound rule within the specified period of time.
+        The ID of the inbound or outbound rule.
         
         @param request: UpdateTrafficMirrorFilterRuleAttributeRequest
         @return: UpdateTrafficMirrorFilterRuleAttributeResponse
