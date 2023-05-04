@@ -1,3 +1,6 @@
+2023-05-04 Version: 1.0.7
+- Add new API.
+
 2023-02-24 Version: 1.0.6
 - Add Dtmf Config for BindAxb.
 
