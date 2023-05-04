@@ -1,3 +1,6 @@
+2023-05-04 Version: 1.2.8
+- Add SetCdnDomainSSLCertificate.
+
 2023-04-25 Version: 1.2.7
 - Add CheckCdnDomainExist.
 
