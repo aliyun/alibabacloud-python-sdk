@@ -97,6 +97,7 @@ class GetProductInfoByIdsResponseBodyDataAuctionsResult(TeaModel):
         coupon_total_count: str = None,
         deeplink_coupon_share_url: str = None,
         deeplink_url: str = None,
+        input_item_id: str = None,
         item_id: str = None,
         level_one_category_name: str = None,
         max_commission: GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission = None,
@@ -127,6 +128,7 @@ class GetProductInfoByIdsResponseBodyDataAuctionsResult(TeaModel):
         self.coupon_total_count = coupon_total_count
         self.deeplink_coupon_share_url = deeplink_coupon_share_url
         self.deeplink_url = deeplink_url
+        self.input_item_id = input_item_id
         self.item_id = item_id
         self.level_one_category_name = level_one_category_name
         self.max_commission = max_commission
@@ -179,6 +181,8 @@ class GetProductInfoByIdsResponseBodyDataAuctionsResult(TeaModel):
             result['DeeplinkCouponShareUrl'] = self.deeplink_coupon_share_url
         if self.deeplink_url is not None:
             result['DeeplinkUrl'] = self.deeplink_url
+        if self.input_item_id is not None:
+            result['InputItemId'] = self.input_item_id
         if self.item_id is not None:
             result['ItemId'] = self.item_id
         if self.level_one_category_name is not None:
@@ -241,6 +245,8 @@ class GetProductInfoByIdsResponseBodyDataAuctionsResult(TeaModel):
             self.deeplink_coupon_share_url = m.get('DeeplinkCouponShareUrl')
         if m.get('DeeplinkUrl') is not None:
             self.deeplink_url = m.get('DeeplinkUrl')
+        if m.get('InputItemId') is not None:
+            self.input_item_id = m.get('InputItemId')
         if m.get('ItemId') is not None:
             self.item_id = m.get('ItemId')
         if m.get('LevelOneCategoryName') is not None:
