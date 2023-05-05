@@ -127,6 +127,416 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_result_with_options_async(request, runtime)
 
+    def describe_address_labels_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeAddressLabelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeAddressLabelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.coin):
+            query['Coin'] = request.coin
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAddressLabels',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeAddressLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_address_labels_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeAddressLabelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeAddressLabelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.coin):
+            query['Coin'] = request.coin
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAddressLabels',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeAddressLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_address_labels(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeAddressLabelsRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeAddressLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_address_labels_with_options(request, runtime)
+
+    async def describe_address_labels_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeAddressLabelsRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeAddressLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_address_labels_with_options_async(request, runtime)
+
+    def describe_address_overview_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeAddressOverviewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeAddressOverviewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.coin):
+            query['Coin'] = request.coin
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAddressOverview',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeAddressOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_address_overview_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeAddressOverviewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeAddressOverviewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.coin):
+            query['Coin'] = request.coin
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAddressOverview',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeAddressOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_address_overview(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeAddressOverviewRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeAddressOverviewResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_address_overview_with_options(request, runtime)
+
+    async def describe_address_overview_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeAddressOverviewRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeAddressOverviewResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_address_overview_with_options_async(request, runtime)
+
+    def describe_malicious_address_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeMaliciousAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeMaliciousAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.coin):
+            query['Coin'] = request.coin
+        if not UtilClient.is_unset(request.end):
+            query['End'] = request.end
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMaliciousAddress',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeMaliciousAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_malicious_address_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeMaliciousAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeMaliciousAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.coin):
+            query['Coin'] = request.coin
+        if not UtilClient.is_unset(request.end):
+            query['End'] = request.end
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMaliciousAddress',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeMaliciousAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_malicious_address(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeMaliciousAddressRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeMaliciousAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_malicious_address_with_options(request, runtime)
+
+    async def describe_malicious_address_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeMaliciousAddressRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeMaliciousAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_malicious_address_with_options_async(request, runtime)
+
+    def describe_risk_score_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeRiskScoreRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeRiskScoreResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.coin):
+            query['Coin'] = request.coin
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRiskScore',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeRiskScoreResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_risk_score_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeRiskScoreRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeRiskScoreResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.coin):
+            query['Coin'] = request.coin
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRiskScore',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeRiskScoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_risk_score(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeRiskScoreRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeRiskScoreResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_risk_score_with_options(request, runtime)
+
+    async def describe_risk_score_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeRiskScoreRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeRiskScoreResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_risk_score_with_options_async(request, runtime)
+
+    def describe_transactions_list_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeTransactionsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeTransactionsListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.coin):
+            query['Coin'] = request.coin
+        if not UtilClient.is_unset(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTransactionsList',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeTransactionsListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_transactions_list_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeTransactionsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeTransactionsListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.coin):
+            query['Coin'] = request.coin
+        if not UtilClient.is_unset(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTransactionsList',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeTransactionsListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_transactions_list(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeTransactionsListRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeTransactionsListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_transactions_list_with_options(request, runtime)
+
+    async def describe_transactions_list_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeTransactionsListRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeTransactionsListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_transactions_list_with_options_async(request, runtime)
+
     def face_compare_with_options(
         self,
         request: cloudauth_intl_20220809_models.FaceCompareRequest,
