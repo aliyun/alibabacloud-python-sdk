@@ -9263,6 +9263,158 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.SyncThirdUserMappingHeaders()
         return await self.sync_third_user_mapping_with_options_async(request, headers, runtime)
 
+    def t_baccount_info_query_with_options(
+        self,
+        user_id: str,
+        headers: btrip_open_20220520_models.TBAccountInfoQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TBAccountInfoQueryResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='TBAccountInfoQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/account/v1/tb-accounts/{OpenApiUtilClient.get_encode_param(user_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TBAccountInfoQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def t_baccount_info_query_with_options_async(
+        self,
+        user_id: str,
+        headers: btrip_open_20220520_models.TBAccountInfoQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TBAccountInfoQueryResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='TBAccountInfoQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/account/v1/tb-accounts/{OpenApiUtilClient.get_encode_param(user_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TBAccountInfoQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def t_baccount_info_query(
+        self,
+        user_id: str,
+    ) -> btrip_open_20220520_models.TBAccountInfoQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TBAccountInfoQueryHeaders()
+        return self.t_baccount_info_query_with_options(user_id, headers, runtime)
+
+    async def t_baccount_info_query_async(
+        self,
+        user_id: str,
+    ) -> btrip_open_20220520_models.TBAccountInfoQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TBAccountInfoQueryHeaders()
+        return await self.t_baccount_info_query_with_options_async(user_id, headers, runtime)
+
+    def t_baccount_unbind_with_options(
+        self,
+        user_id: str,
+        headers: btrip_open_20220520_models.TBAccountUnbindHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TBAccountUnbindResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='TBAccountUnbind',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/account/v1/tb-accounts/{OpenApiUtilClient.get_encode_param(user_id)}/action/unbind',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TBAccountUnbindResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def t_baccount_unbind_with_options_async(
+        self,
+        user_id: str,
+        headers: btrip_open_20220520_models.TBAccountUnbindHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TBAccountUnbindResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='TBAccountUnbind',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/account/v1/tb-accounts/{OpenApiUtilClient.get_encode_param(user_id)}/action/unbind',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TBAccountUnbindResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def t_baccount_unbind(
+        self,
+        user_id: str,
+    ) -> btrip_open_20220520_models.TBAccountUnbindResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TBAccountUnbindHeaders()
+        return self.t_baccount_unbind_with_options(user_id, headers, runtime)
+
+    async def t_baccount_unbind_async(
+        self,
+        user_id: str,
+    ) -> btrip_open_20220520_models.TBAccountUnbindResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TBAccountUnbindHeaders()
+        return await self.t_baccount_unbind_with_options_async(user_id, headers, runtime)
+
     def ticket_changing_apply_with_options(
         self,
         tmp_req: btrip_open_20220520_models.TicketChangingApplyRequest,
