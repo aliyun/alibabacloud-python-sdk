@@ -541,6 +541,7 @@ class AddressGetRequest(TeaModel):
         itinerary_id: str = None,
         phone: str = None,
         sub_corp_id: str = None,
+        taobao_callback_url: str = None,
         type: int = None,
         user_id: str = None,
     ):
@@ -549,6 +550,7 @@ class AddressGetRequest(TeaModel):
         self.itinerary_id = itinerary_id
         self.phone = phone
         self.sub_corp_id = sub_corp_id
+        self.taobao_callback_url = taobao_callback_url
         self.type = type
         self.user_id = user_id
 
@@ -571,6 +573,8 @@ class AddressGetRequest(TeaModel):
             result['phone'] = self.phone
         if self.sub_corp_id is not None:
             result['sub_corp_id'] = self.sub_corp_id
+        if self.taobao_callback_url is not None:
+            result['taobao_callback_url'] = self.taobao_callback_url
         if self.type is not None:
             result['type'] = self.type
         if self.user_id is not None:
@@ -589,6 +593,8 @@ class AddressGetRequest(TeaModel):
             self.phone = m.get('phone')
         if m.get('sub_corp_id') is not None:
             self.sub_corp_id = m.get('sub_corp_id')
+        if m.get('taobao_callback_url') is not None:
+            self.taobao_callback_url = m.get('taobao_callback_url')
         if m.get('type') is not None:
             self.type = m.get('type')
         if m.get('user_id') is not None:
@@ -2478,6 +2484,7 @@ class ApplyApproveRequest(TeaModel):
         self.note = note
         self.operate_time = operate_time
         self.status = status
+        # 子企业Id
         self.sub_corp_id = sub_corp_id
         self.user_id = user_id
         self.user_name = user_name
@@ -3018,6 +3025,7 @@ class ApplyListQueryRequest(TeaModel):
         self.page = page
         self.page_size = page_size
         self.start_time = start_time
+        # 子企业Id
         self.sub_corp_id = sub_corp_id
         self.type = type
         self.union_no = union_no
@@ -4342,6 +4350,7 @@ class ApplyModifyRequest(TeaModel):
         self.itinerary_set_list = itinerary_set_list
         self.limit_traveler = limit_traveler
         self.status = status
+        # 子企业Id
         self.sub_corp_id = sub_corp_id
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_business_id = thirdpart_business_id
@@ -4600,6 +4609,7 @@ class ApplyModifyShrinkRequest(TeaModel):
         self.itinerary_set_list_shrink = itinerary_set_list_shrink
         self.limit_traveler = limit_traveler
         self.status = status
+        # 子企业Id
         self.sub_corp_id = sub_corp_id
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_business_id = thirdpart_business_id
@@ -4943,6 +4953,7 @@ class ApplyQueryRequest(TeaModel):
     ):
         self.apply_id = apply_id
         self.apply_show_id = apply_show_id
+        # 子企业Id
         self.sub_corp_id = sub_corp_id
         self.thirdpart_apply_id = thirdpart_apply_id
         self.type = type
@@ -7078,6 +7089,7 @@ class CarBillSettlementQueryResponseBodyModuleDataList(TeaModel):
     def __init__(
         self,
         alipay_trade_no: str = None,
+        apply_extend_field: str = None,
         apply_id: str = None,
         arr_city: str = None,
         arr_date: str = None,
@@ -7136,6 +7148,8 @@ class CarBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         voucher_type: int = None,
     ):
         self.alipay_trade_no = alipay_trade_no
+        # 审批扩展自定义字段
+        self.apply_extend_field = apply_extend_field
         self.apply_id = apply_id
         self.arr_city = arr_city
         self.arr_date = arr_date
@@ -7204,6 +7218,8 @@ class CarBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         result = dict()
         if self.alipay_trade_no is not None:
             result['alipay_trade_no'] = self.alipay_trade_no
+        if self.apply_extend_field is not None:
+            result['apply_extend_field'] = self.apply_extend_field
         if self.apply_id is not None:
             result['apply_id'] = self.apply_id
         if self.arr_city is not None:
@@ -7322,6 +7338,8 @@ class CarBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         m = m or dict()
         if m.get('alipay_trade_no') is not None:
             self.alipay_trade_no = m.get('alipay_trade_no')
+        if m.get('apply_extend_field') is not None:
+            self.apply_extend_field = m.get('apply_extend_field')
         if m.get('apply_id') is not None:
             self.apply_id = m.get('apply_id')
         if m.get('arr_city') is not None:
@@ -13710,6 +13728,7 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         airline_corp_code: str = None,
         airline_corp_name: str = None,
         alipay_trade_no: str = None,
+        apply_extend_field: str = None,
         apply_id: str = None,
         arr_airport_code: str = None,
         arr_city: str = None,
@@ -13782,6 +13801,8 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.airline_corp_code = airline_corp_code
         self.airline_corp_name = airline_corp_name
         self.alipay_trade_no = alipay_trade_no
+        # 审批扩展自定义字段
+        self.apply_extend_field = apply_extend_field
         self.apply_id = apply_id
         self.arr_airport_code = arr_airport_code
         self.arr_city = arr_city
@@ -13867,6 +13888,8 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['airline_corp_name'] = self.airline_corp_name
         if self.alipay_trade_no is not None:
             result['alipay_trade_no'] = self.alipay_trade_no
+        if self.apply_extend_field is not None:
+            result['apply_extend_field'] = self.apply_extend_field
         if self.apply_id is not None:
             result['apply_id'] = self.apply_id
         if self.arr_airport_code is not None:
@@ -14013,6 +14036,8 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.airline_corp_name = m.get('airline_corp_name')
         if m.get('alipay_trade_no') is not None:
             self.alipay_trade_no = m.get('alipay_trade_no')
+        if m.get('apply_extend_field') is not None:
+            self.apply_extend_field = m.get('apply_extend_field')
         if m.get('apply_id') is not None:
             self.apply_id = m.get('apply_id')
         if m.get('arr_airport_code') is not None:
@@ -30611,6 +30636,7 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
     def __init__(
         self,
         alipay_trade_no: str = None,
+        apply_extend_field: str = None,
         apply_id: str = None,
         bill_record_time: str = None,
         book_time: str = None,
@@ -30665,6 +30691,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         voucher_type: int = None,
     ):
         self.alipay_trade_no = alipay_trade_no
+        # 审批扩展自定义字段
+        self.apply_extend_field = apply_extend_field
         self.apply_id = apply_id
         self.bill_record_time = bill_record_time
         self.book_time = book_time
@@ -30729,6 +30757,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         result = dict()
         if self.alipay_trade_no is not None:
             result['alipay_trade_no'] = self.alipay_trade_no
+        if self.apply_extend_field is not None:
+            result['apply_extend_field'] = self.apply_extend_field
         if self.apply_id is not None:
             result['apply_id'] = self.apply_id
         if self.bill_record_time is not None:
@@ -30839,6 +30869,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         m = m or dict()
         if m.get('alipay_trade_no') is not None:
             self.alipay_trade_no = m.get('alipay_trade_no')
+        if m.get('apply_extend_field') is not None:
+            self.apply_extend_field = m.get('apply_extend_field')
         if m.get('apply_id') is not None:
             self.apply_id = m.get('apply_id')
         if m.get('bill_record_time') is not None:
@@ -38986,6 +39018,7 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         airline_corp_code: str = None,
         airline_corp_name: str = None,
         alipay_trade_no: str = None,
+        apply_extend_field: str = None,
         apply_id: str = None,
         arr_airport_code: str = None,
         arr_city: str = None,
@@ -39059,6 +39092,8 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.airline_corp_code = airline_corp_code
         self.airline_corp_name = airline_corp_name
         self.alipay_trade_no = alipay_trade_no
+        # 审批扩展自定义字段
+        self.apply_extend_field = apply_extend_field
         self.apply_id = apply_id
         self.arr_airport_code = arr_airport_code
         self.arr_city = arr_city
@@ -39145,6 +39180,8 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['airline_corp_name'] = self.airline_corp_name
         if self.alipay_trade_no is not None:
             result['alipay_trade_no'] = self.alipay_trade_no
+        if self.apply_extend_field is not None:
+            result['apply_extend_field'] = self.apply_extend_field
         if self.apply_id is not None:
             result['apply_id'] = self.apply_id
         if self.arr_airport_code is not None:
@@ -39293,6 +39330,8 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.airline_corp_name = m.get('airline_corp_name')
         if m.get('alipay_trade_no') is not None:
             self.alipay_trade_no = m.get('alipay_trade_no')
+        if m.get('apply_extend_field') is not None:
+            self.apply_extend_field = m.get('apply_extend_field')
         if m.get('apply_id') is not None:
             self.apply_id = m.get('apply_id')
         if m.get('arr_airport_code') is not None:
@@ -48400,6 +48439,7 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
     def __init__(
         self,
         alipay_trade_no: str = None,
+        apply_extend_field: str = None,
         apply_id: str = None,
         arr_date: str = None,
         arr_station: str = None,
@@ -48450,6 +48490,7 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         voucher_type: int = None,
     ):
         self.alipay_trade_no = alipay_trade_no
+        self.apply_extend_field = apply_extend_field
         self.apply_id = apply_id
         self.arr_date = arr_date
         self.arr_station = arr_station
@@ -48510,6 +48551,8 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         result = dict()
         if self.alipay_trade_no is not None:
             result['alipay_trade_no'] = self.alipay_trade_no
+        if self.apply_extend_field is not None:
+            result['apply_extend_field'] = self.apply_extend_field
         if self.apply_id is not None:
             result['apply_id'] = self.apply_id
         if self.arr_date is not None:
@@ -48612,6 +48655,8 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         m = m or dict()
         if m.get('alipay_trade_no') is not None:
             self.alipay_trade_no = m.get('alipay_trade_no')
+        if m.get('apply_extend_field') is not None:
+            self.apply_extend_field = m.get('apply_extend_field')
         if m.get('apply_id') is not None:
             self.apply_id = m.get('apply_id')
         if m.get('arr_date') is not None:
