@@ -218,6 +218,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_prediction):
             query['AutoPrediction'] = request.auto_prediction
+        if not UtilClient.is_unset(request.binary_to_text):
+            query['BinaryToText'] = request.binary_to_text
         if not UtilClient.is_unset(request.classifier_id):
             query['ClassifierId'] = request.classifier_id
         if not UtilClient.is_unset(request.content):
@@ -254,6 +256,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_prediction):
             query['AutoPrediction'] = request.auto_prediction
+        if not UtilClient.is_unset(request.binary_to_text):
+            query['BinaryToText'] = request.binary_to_text
         if not UtilClient.is_unset(request.classifier_id):
             query['ClassifierId'] = request.classifier_id
         if not UtilClient.is_unset(request.content):
