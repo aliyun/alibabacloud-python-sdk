@@ -1,3 +1,6 @@
+2023-05-08 Version: 2.1.3
+- Change DescribeSoarStrategyTaskDetail Request.
+
 2023-03-21 Version: 2.1.2
 - Change DescribeLogstoreStorage Response.
 
