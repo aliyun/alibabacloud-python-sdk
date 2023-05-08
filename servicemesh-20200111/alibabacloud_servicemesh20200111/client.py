@@ -643,8 +643,6 @@ class Client(OpenApiClient):
             body['FilterGatewayClusterConfig'] = request.filter_gateway_cluster_config
         if not UtilClient.is_unset(request.gateway_apienabled):
             body['GatewayAPIEnabled'] = request.gateway_apienabled
-        if not UtilClient.is_unset(request.global_rate_limit_enabled):
-            body['GlobalRateLimitEnabled'] = request.global_rate_limit_enabled
         if not UtilClient.is_unset(request.include_ipranges):
             body['IncludeIPRanges'] = request.include_ipranges
         if not UtilClient.is_unset(request.istio_version):
@@ -813,8 +811,6 @@ class Client(OpenApiClient):
             body['FilterGatewayClusterConfig'] = request.filter_gateway_cluster_config
         if not UtilClient.is_unset(request.gateway_apienabled):
             body['GatewayAPIEnabled'] = request.gateway_apienabled
-        if not UtilClient.is_unset(request.global_rate_limit_enabled):
-            body['GlobalRateLimitEnabled'] = request.global_rate_limit_enabled
         if not UtilClient.is_unset(request.include_ipranges):
             body['IncludeIPRanges'] = request.include_ipranges
         if not UtilClient.is_unset(request.istio_version):
@@ -1645,76 +1641,6 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.DescribeASMGatewayImportedServicesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_asmgateway_imported_services_with_options_async(request, runtime)
-
-    def describe_ahas_pro_with_options(
-        self,
-        request: servicemesh_20200111_models.DescribeAhasProRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeAhasProResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeAhasPro',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeAhasProResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_ahas_pro_with_options_async(
-        self,
-        request: servicemesh_20200111_models.DescribeAhasProRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeAhasProResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeAhasPro',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeAhasProResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_ahas_pro(
-        self,
-        request: servicemesh_20200111_models.DescribeAhasProRequest,
-    ) -> servicemesh_20200111_models.DescribeAhasProResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_ahas_pro_with_options(request, runtime)
-
-    async def describe_ahas_pro_async(
-        self,
-        request: servicemesh_20200111_models.DescribeAhasProRequest,
-    ) -> servicemesh_20200111_models.DescribeAhasProResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_ahas_pro_with_options_async(request, runtime)
 
     def describe_ccmversion_with_options(
         self,
@@ -5279,6 +5205,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ReActivateAuditRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ReActivateAuditResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods of Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+        
+        @param request: ReActivateAuditRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReActivateAuditResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.enable_audit):
@@ -5309,6 +5242,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ReActivateAuditRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ReActivateAuditResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods of Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+        
+        @param request: ReActivateAuditRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReActivateAuditResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.enable_audit):
@@ -5338,6 +5278,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.ReActivateAuditRequest,
     ) -> servicemesh_20200111_models.ReActivateAuditResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods of Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+        
+        @param request: ReActivateAuditRequest
+        @return: ReActivateAuditResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.re_activate_audit_with_options(request, runtime)
 
@@ -5345,6 +5291,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.ReActivateAuditRequest,
     ) -> servicemesh_20200111_models.ReActivateAuditResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods of Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+        
+        @param request: ReActivateAuditRequest
+        @return: ReActivateAuditResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.re_activate_audit_with_options_async(request, runtime)
 
@@ -6225,6 +6177,8 @@ class Client(OpenApiClient):
             body['CustomizedZipkin'] = request.customized_zipkin
         if not UtilClient.is_unset(request.dnsproxying_enabled):
             body['DNSProxyingEnabled'] = request.dnsproxying_enabled
+        if not UtilClient.is_unset(request.default_components_schedule_config):
+            body['DefaultComponentsScheduleConfig'] = request.default_components_schedule_config
         if not UtilClient.is_unset(request.discovery_selectors):
             body['DiscoverySelectors'] = request.discovery_selectors
         if not UtilClient.is_unset(request.dubbo_filter_enabled):
@@ -6233,6 +6187,8 @@ class Client(OpenApiClient):
             body['EnableAudit'] = request.enable_audit
         if not UtilClient.is_unset(request.enable_auto_diagnosis):
             body['EnableAutoDiagnosis'] = request.enable_auto_diagnosis
+        if not UtilClient.is_unset(request.enable_bootstrap_xds_agent):
+            body['EnableBootstrapXdsAgent'] = request.enable_bootstrap_xds_agent
         if not UtilClient.is_unset(request.enable_crhistory):
             body['EnableCRHistory'] = request.enable_crhistory
         if not UtilClient.is_unset(request.enable_namespaces_by_default):
@@ -6249,8 +6205,6 @@ class Client(OpenApiClient):
             body['FilterGatewayClusterConfig'] = request.filter_gateway_cluster_config
         if not UtilClient.is_unset(request.gateway_apienabled):
             body['GatewayAPIEnabled'] = request.gateway_apienabled
-        if not UtilClient.is_unset(request.global_rate_limit_enabled):
-            body['GlobalRateLimitEnabled'] = request.global_rate_limit_enabled
         if not UtilClient.is_unset(request.hold_application_until_proxy_starts):
             body['HoldApplicationUntilProxyStarts'] = request.hold_application_until_proxy_starts
         if not UtilClient.is_unset(request.http_10enabled):
@@ -6265,6 +6219,8 @@ class Client(OpenApiClient):
             body['IntegrateKiali'] = request.integrate_kiali
         if not UtilClient.is_unset(request.interception_mode):
             body['InterceptionMode'] = request.interception_mode
+        if not UtilClient.is_unset(request.kiali_arms_auth_tokens):
+            body['KialiArmsAuthTokens'] = request.kiali_arms_auth_tokens
         if not UtilClient.is_unset(request.kiali_enabled):
             body['KialiEnabled'] = request.kiali_enabled
         if not UtilClient.is_unset(request.lifecycle):
@@ -6439,6 +6395,8 @@ class Client(OpenApiClient):
             body['CustomizedZipkin'] = request.customized_zipkin
         if not UtilClient.is_unset(request.dnsproxying_enabled):
             body['DNSProxyingEnabled'] = request.dnsproxying_enabled
+        if not UtilClient.is_unset(request.default_components_schedule_config):
+            body['DefaultComponentsScheduleConfig'] = request.default_components_schedule_config
         if not UtilClient.is_unset(request.discovery_selectors):
             body['DiscoverySelectors'] = request.discovery_selectors
         if not UtilClient.is_unset(request.dubbo_filter_enabled):
@@ -6447,6 +6405,8 @@ class Client(OpenApiClient):
             body['EnableAudit'] = request.enable_audit
         if not UtilClient.is_unset(request.enable_auto_diagnosis):
             body['EnableAutoDiagnosis'] = request.enable_auto_diagnosis
+        if not UtilClient.is_unset(request.enable_bootstrap_xds_agent):
+            body['EnableBootstrapXdsAgent'] = request.enable_bootstrap_xds_agent
         if not UtilClient.is_unset(request.enable_crhistory):
             body['EnableCRHistory'] = request.enable_crhistory
         if not UtilClient.is_unset(request.enable_namespaces_by_default):
@@ -6463,8 +6423,6 @@ class Client(OpenApiClient):
             body['FilterGatewayClusterConfig'] = request.filter_gateway_cluster_config
         if not UtilClient.is_unset(request.gateway_apienabled):
             body['GatewayAPIEnabled'] = request.gateway_apienabled
-        if not UtilClient.is_unset(request.global_rate_limit_enabled):
-            body['GlobalRateLimitEnabled'] = request.global_rate_limit_enabled
         if not UtilClient.is_unset(request.hold_application_until_proxy_starts):
             body['HoldApplicationUntilProxyStarts'] = request.hold_application_until_proxy_starts
         if not UtilClient.is_unset(request.http_10enabled):
@@ -6479,6 +6437,8 @@ class Client(OpenApiClient):
             body['IntegrateKiali'] = request.integrate_kiali
         if not UtilClient.is_unset(request.interception_mode):
             body['InterceptionMode'] = request.interception_mode
+        if not UtilClient.is_unset(request.kiali_arms_auth_tokens):
+            body['KialiArmsAuthTokens'] = request.kiali_arms_auth_tokens
         if not UtilClient.is_unset(request.kiali_enabled):
             body['KialiEnabled'] = request.kiali_enabled
         if not UtilClient.is_unset(request.lifecycle):
@@ -6655,6 +6615,14 @@ class Client(OpenApiClient):
             body['PostStart'] = request.post_start
         if not UtilClient.is_unset(request.pre_stop):
             body['PreStop'] = request.pre_stop
+        if not UtilClient.is_unset(request.proxy_init_ack_slo_cpuresource_limit):
+            body['ProxyInitAckSloCPUResourceLimit'] = request.proxy_init_ack_slo_cpuresource_limit
+        if not UtilClient.is_unset(request.proxy_init_ack_slo_cpuresource_request):
+            body['ProxyInitAckSloCPUResourceRequest'] = request.proxy_init_ack_slo_cpuresource_request
+        if not UtilClient.is_unset(request.proxy_init_ack_slo_memory_resource_limit):
+            body['ProxyInitAckSloMemoryResourceLimit'] = request.proxy_init_ack_slo_memory_resource_limit
+        if not UtilClient.is_unset(request.proxy_init_ack_slo_memory_resource_request):
+            body['ProxyInitAckSloMemoryResourceRequest'] = request.proxy_init_ack_slo_memory_resource_request
         if not UtilClient.is_unset(request.proxy_init_cpuresource_limit):
             body['ProxyInitCPUResourceLimit'] = request.proxy_init_cpuresource_limit
         if not UtilClient.is_unset(request.proxy_init_cpuresource_request):
@@ -6663,10 +6631,20 @@ class Client(OpenApiClient):
             body['ProxyInitMemoryResourceLimit'] = request.proxy_init_memory_resource_limit
         if not UtilClient.is_unset(request.proxy_init_memory_resource_request):
             body['ProxyInitMemoryResourceRequest'] = request.proxy_init_memory_resource_request
+        if not UtilClient.is_unset(request.proxy_metadata):
+            body['ProxyMetadata'] = request.proxy_metadata
         if not UtilClient.is_unset(request.proxy_stats_matcher):
             body['ProxyStatsMatcher'] = request.proxy_stats_matcher
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.sidecar_proxy_ack_slo_cpuresource_limit):
+            body['SidecarProxyAckSloCPUResourceLimit'] = request.sidecar_proxy_ack_slo_cpuresource_limit
+        if not UtilClient.is_unset(request.sidecar_proxy_ack_slo_cpuresource_request):
+            body['SidecarProxyAckSloCPUResourceRequest'] = request.sidecar_proxy_ack_slo_cpuresource_request
+        if not UtilClient.is_unset(request.sidecar_proxy_ack_slo_memory_resource_limit):
+            body['SidecarProxyAckSloMemoryResourceLimit'] = request.sidecar_proxy_ack_slo_memory_resource_limit
+        if not UtilClient.is_unset(request.sidecar_proxy_ack_slo_memory_resource_request):
+            body['SidecarProxyAckSloMemoryResourceRequest'] = request.sidecar_proxy_ack_slo_memory_resource_request
         if not UtilClient.is_unset(request.sidecar_proxy_cpuresource_limit):
             body['SidecarProxyCPUResourceLimit'] = request.sidecar_proxy_cpuresource_limit
         if not UtilClient.is_unset(request.sidecar_proxy_cpuresource_request):
@@ -6735,6 +6713,14 @@ class Client(OpenApiClient):
             body['PostStart'] = request.post_start
         if not UtilClient.is_unset(request.pre_stop):
             body['PreStop'] = request.pre_stop
+        if not UtilClient.is_unset(request.proxy_init_ack_slo_cpuresource_limit):
+            body['ProxyInitAckSloCPUResourceLimit'] = request.proxy_init_ack_slo_cpuresource_limit
+        if not UtilClient.is_unset(request.proxy_init_ack_slo_cpuresource_request):
+            body['ProxyInitAckSloCPUResourceRequest'] = request.proxy_init_ack_slo_cpuresource_request
+        if not UtilClient.is_unset(request.proxy_init_ack_slo_memory_resource_limit):
+            body['ProxyInitAckSloMemoryResourceLimit'] = request.proxy_init_ack_slo_memory_resource_limit
+        if not UtilClient.is_unset(request.proxy_init_ack_slo_memory_resource_request):
+            body['ProxyInitAckSloMemoryResourceRequest'] = request.proxy_init_ack_slo_memory_resource_request
         if not UtilClient.is_unset(request.proxy_init_cpuresource_limit):
             body['ProxyInitCPUResourceLimit'] = request.proxy_init_cpuresource_limit
         if not UtilClient.is_unset(request.proxy_init_cpuresource_request):
@@ -6743,10 +6729,20 @@ class Client(OpenApiClient):
             body['ProxyInitMemoryResourceLimit'] = request.proxy_init_memory_resource_limit
         if not UtilClient.is_unset(request.proxy_init_memory_resource_request):
             body['ProxyInitMemoryResourceRequest'] = request.proxy_init_memory_resource_request
+        if not UtilClient.is_unset(request.proxy_metadata):
+            body['ProxyMetadata'] = request.proxy_metadata
         if not UtilClient.is_unset(request.proxy_stats_matcher):
             body['ProxyStatsMatcher'] = request.proxy_stats_matcher
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.sidecar_proxy_ack_slo_cpuresource_limit):
+            body['SidecarProxyAckSloCPUResourceLimit'] = request.sidecar_proxy_ack_slo_cpuresource_limit
+        if not UtilClient.is_unset(request.sidecar_proxy_ack_slo_cpuresource_request):
+            body['SidecarProxyAckSloCPUResourceRequest'] = request.sidecar_proxy_ack_slo_cpuresource_request
+        if not UtilClient.is_unset(request.sidecar_proxy_ack_slo_memory_resource_limit):
+            body['SidecarProxyAckSloMemoryResourceLimit'] = request.sidecar_proxy_ack_slo_memory_resource_limit
+        if not UtilClient.is_unset(request.sidecar_proxy_ack_slo_memory_resource_request):
+            body['SidecarProxyAckSloMemoryResourceRequest'] = request.sidecar_proxy_ack_slo_memory_resource_request
         if not UtilClient.is_unset(request.sidecar_proxy_cpuresource_limit):
             body['SidecarProxyCPUResourceLimit'] = request.sidecar_proxy_cpuresource_limit
         if not UtilClient.is_unset(request.sidecar_proxy_cpuresource_request):

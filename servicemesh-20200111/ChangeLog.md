@@ -1,3 +1,6 @@
+2023-05-08 Version: 2.0.27
+- Support setting TPROXY mode.
+
 2022-12-01 Version: 2.0.26
 - Support setting TPROXY mode.
 
