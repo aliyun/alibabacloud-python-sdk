@@ -30290,11 +30290,15 @@ class GroupUserSaveRequestSubCorpIdList(TeaModel):
     def __init__(
         self,
         depart_ids: List[str] = None,
+        leave_status: int = None,
         manager_user_id: str = None,
+        position_level: str = None,
         sub_corp_id: str = None,
     ):
         self.depart_ids = depart_ids
+        self.leave_status = leave_status
         self.manager_user_id = manager_user_id
+        self.position_level = position_level
         self.sub_corp_id = sub_corp_id
 
     def validate(self):
@@ -30308,8 +30312,12 @@ class GroupUserSaveRequestSubCorpIdList(TeaModel):
         result = dict()
         if self.depart_ids is not None:
             result['depart_ids'] = self.depart_ids
+        if self.leave_status is not None:
+            result['leave_status'] = self.leave_status
         if self.manager_user_id is not None:
             result['manager_user_id'] = self.manager_user_id
+        if self.position_level is not None:
+            result['position_level'] = self.position_level
         if self.sub_corp_id is not None:
             result['sub_corp_id'] = self.sub_corp_id
         return result
@@ -30318,8 +30326,12 @@ class GroupUserSaveRequestSubCorpIdList(TeaModel):
         m = m or dict()
         if m.get('depart_ids') is not None:
             self.depart_ids = m.get('depart_ids')
+        if m.get('leave_status') is not None:
+            self.leave_status = m.get('leave_status')
         if m.get('manager_user_id') is not None:
             self.manager_user_id = m.get('manager_user_id')
+        if m.get('position_level') is not None:
+            self.position_level = m.get('position_level')
         if m.get('sub_corp_id') is not None:
             self.sub_corp_id = m.get('sub_corp_id')
         return self
@@ -30329,7 +30341,6 @@ class GroupUserSaveRequest(TeaModel):
     def __init__(
         self,
         job_no: str = None,
-        leave_status: int = None,
         phone: str = None,
         real_name_en: str = None,
         sub_corp_id_list: List[GroupUserSaveRequestSubCorpIdList] = None,
@@ -30337,7 +30348,6 @@ class GroupUserSaveRequest(TeaModel):
         user_name: str = None,
     ):
         self.job_no = job_no
-        self.leave_status = leave_status
         self.phone = phone
         self.real_name_en = real_name_en
         self.sub_corp_id_list = sub_corp_id_list
@@ -30358,8 +30368,6 @@ class GroupUserSaveRequest(TeaModel):
         result = dict()
         if self.job_no is not None:
             result['job_no'] = self.job_no
-        if self.leave_status is not None:
-            result['leave_status'] = self.leave_status
         if self.phone is not None:
             result['phone'] = self.phone
         if self.real_name_en is not None:
@@ -30378,8 +30386,6 @@ class GroupUserSaveRequest(TeaModel):
         m = m or dict()
         if m.get('job_no') is not None:
             self.job_no = m.get('job_no')
-        if m.get('leave_status') is not None:
-            self.leave_status = m.get('leave_status')
         if m.get('phone') is not None:
             self.phone = m.get('phone')
         if m.get('real_name_en') is not None:
@@ -30400,7 +30406,6 @@ class GroupUserSaveShrinkRequest(TeaModel):
     def __init__(
         self,
         job_no: str = None,
-        leave_status: int = None,
         phone: str = None,
         real_name_en: str = None,
         sub_corp_id_list_shrink: str = None,
@@ -30408,7 +30413,6 @@ class GroupUserSaveShrinkRequest(TeaModel):
         user_name: str = None,
     ):
         self.job_no = job_no
-        self.leave_status = leave_status
         self.phone = phone
         self.real_name_en = real_name_en
         self.sub_corp_id_list_shrink = sub_corp_id_list_shrink
@@ -30426,8 +30430,6 @@ class GroupUserSaveShrinkRequest(TeaModel):
         result = dict()
         if self.job_no is not None:
             result['job_no'] = self.job_no
-        if self.leave_status is not None:
-            result['leave_status'] = self.leave_status
         if self.phone is not None:
             result['phone'] = self.phone
         if self.real_name_en is not None:
@@ -30444,8 +30446,6 @@ class GroupUserSaveShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('job_no') is not None:
             self.job_no = m.get('job_no')
-        if m.get('leave_status') is not None:
-            self.leave_status = m.get('leave_status')
         if m.get('phone') is not None:
             self.phone = m.get('phone')
         if m.get('real_name_en') is not None:

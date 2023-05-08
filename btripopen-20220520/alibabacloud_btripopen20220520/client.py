@@ -5673,8 +5673,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.job_no):
             body['job_no'] = request.job_no
-        if not UtilClient.is_unset(request.leave_status):
-            body['leave_status'] = request.leave_status
         if not UtilClient.is_unset(request.phone):
             body['phone'] = request.phone
         if not UtilClient.is_unset(request.real_name_en):
@@ -5724,8 +5722,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.job_no):
             body['job_no'] = request.job_no
-        if not UtilClient.is_unset(request.leave_status):
-            body['leave_status'] = request.leave_status
         if not UtilClient.is_unset(request.phone):
             body['phone'] = request.phone
         if not UtilClient.is_unset(request.real_name_en):
