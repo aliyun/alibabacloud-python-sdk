@@ -2216,11 +2216,8 @@ class CreateChatappMigrationInitiateRequest(TeaModel):
         cust_space_id: str = None,
         mobile_number: str = None,
     ):
-        # The country code of a phone number.
         self.country_code = country_code
-        # The space ID of the user under the ISV account.
         self.cust_space_id = cust_space_id
-        # The phone number without the country code.
         self.mobile_number = mobile_number
 
     def validate(self):
@@ -2258,11 +2255,8 @@ class CreateChatappMigrationInitiateResponseBodyData(TeaModel):
         phone_number: str = None,
         status: str = None,
     ):
-        # The ID of the number.
         self.id = id
-        # The phone number.
         self.phone_number = phone_number
-        # The status of the phone number.
         self.status = status
 
     def validate(self):
@@ -2301,16 +2295,9 @@ class CreateChatappMigrationInitiateResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code returned.
-        # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
         self.code = code
-        # The data returned.
         self.data = data
-        # The error message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2394,36 +2381,24 @@ class CreateChatappMigrationInitiateResponse(TeaModel):
 class CreateChatappTemplateRequestComponentsButtons(TeaModel):
     def __init__(
         self,
+        autofill_text: str = None,
+        is_opt_out: bool = None,
+        package_name: str = None,
         phone_number: str = None,
+        signature_hash: str = None,
         text: str = None,
         type: str = None,
         url: str = None,
         url_type: str = None,
     ):
-        # The phone number. This parameter is valid only if the Type parameter is set to **PHONE_NUMBER**.
+        self.autofill_text = autofill_text
+        self.is_opt_out = is_opt_out
+        self.package_name = package_name
         self.phone_number = phone_number
-        # The display name of the button.
+        self.signature_hash = signature_hash
         self.text = text
-        # The type of the button. Valid values:
-        # 
-        # *   **PHONE_NUMBER**: a phone number button
-        # *   **URL**: a URL button
-        # *   **QUICK_REPLY**: a quick reply button
-        # 
-        # > 
-        # 
-        # *   When the TemplateType parameter is set to WHATSAPP, if you have created a website link or a phone number link, you cannot create an quick reply button.
-        # 
-        # *   When the TemplateType parameter is set to WHATSAPP, you can add a combination of two URL buttons or a combination of a URL button and a phone number button to a message template.
-        # 
-        # *   When the TemplateType parameter is set to VIBER, you can add only one button and the button must be of the URL type.
         self.type = type
-        # The URL to be accessed when users click the URL button.
         self.url = url
-        # The type of the URL. Valid values:
-        # 
-        # *   **static**: a static URL
-        # *   **dynamic**: a dynamic URL
         self.url_type = url_type
 
     def validate(self):
@@ -2435,8 +2410,16 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
             return _map
 
         result = dict()
+        if self.autofill_text is not None:
+            result['AutofillText'] = self.autofill_text
+        if self.is_opt_out is not None:
+            result['IsOptOut'] = self.is_opt_out
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.signature_hash is not None:
+            result['SignatureHash'] = self.signature_hash
         if self.text is not None:
             result['Text'] = self.text
         if self.type is not None:
@@ -2449,8 +2432,16 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutofillText') is not None:
+            self.autofill_text = m.get('AutofillText')
+        if m.get('IsOptOut') is not None:
+            self.is_opt_out = m.get('IsOptOut')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('SignatureHash') is not None:
+            self.signature_hash = m.get('SignatureHash')
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('Type') is not None:
@@ -2465,8 +2456,10 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
 class CreateChatappTemplateRequestComponents(TeaModel):
     def __init__(
         self,
+        add_secret_recommendation: bool = None,
         buttons: List[CreateChatappTemplateRequestComponentsButtons] = None,
         caption: str = None,
+        code_expiration_minutes: int = None,
         duration: int = None,
         file_name: str = None,
         file_type: str = None,
@@ -2476,41 +2469,17 @@ class CreateChatappTemplateRequestComponents(TeaModel):
         type: str = None,
         url: str = None,
     ):
-        # The list of buttons, which applies only to the **BUTTONS** component.
+        self.add_secret_recommendation = add_secret_recommendation
         self.buttons = buttons
-        # The description of the file.
         self.caption = caption
-        # The duration of the video message when the TemplateType parameter is set to VIBER. Valid values: 0 to 600. Unit: seconds.
+        self.code_expiration_minutes = code_expiration_minutes
         self.duration = duration
-        # The name of the file.
         self.file_name = file_name
-        # The type of the file when the TemplateType parameter is set to VIBER.
         self.file_type = file_type
-        # The type of the media resources that are included in the message.
-        # 
-        # *   **TEXT**: text
-        # *   **IMAGE**: image
-        # *   **DOCUMENT**: document
-        # *   **VIDEO**: video
         self.format = format
-        # The text of the message that is sent.
         self.text = text
-        # The thumbnail URL of the video message when the TemplateType parameter is set to VIBER.
         self.thumb_url = thumb_url
-        # The type of the component. Valid values:
-        # 
-        # *   **BODY**\
-        # *   **HEADER**\
-        # *   **FOOTER**\
-        # *   **BUTTONS**\
-        # 
-        # > When the TemplateType parameter is set to WHATSAPP, the component of the **BODY** type cannot exceed 1,024 characters in length. The component of the **HEADER** or **FOOTER** type cannot exceed 60 characters in length.
-        # 
-        # > When the TemplateType parameter is set to VIBER, the **FOOTER** parameter is invalid.
-        # 
-        # > When the TemplateType parameter is set to VIBER, media objects including image, video, and text are placed in the **HEADER** component. A device displays that the image is placed below the text.
         self.type = type
-        # The URL of the material.
         self.url = url
 
     def validate(self):
@@ -2525,12 +2494,16 @@ class CreateChatappTemplateRequestComponents(TeaModel):
             return _map
 
         result = dict()
+        if self.add_secret_recommendation is not None:
+            result['AddSecretRecommendation'] = self.add_secret_recommendation
         result['Buttons'] = []
         if self.buttons is not None:
             for k in self.buttons:
                 result['Buttons'].append(k.to_map() if k else None)
         if self.caption is not None:
             result['Caption'] = self.caption
+        if self.code_expiration_minutes is not None:
+            result['CodeExpirationMinutes'] = self.code_expiration_minutes
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.file_name is not None:
@@ -2551,6 +2524,8 @@ class CreateChatappTemplateRequestComponents(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddSecretRecommendation') is not None:
+            self.add_secret_recommendation = m.get('AddSecretRecommendation')
         self.buttons = []
         if m.get('Buttons') is not None:
             for k in m.get('Buttons'):
@@ -2558,6 +2533,8 @@ class CreateChatappTemplateRequestComponents(TeaModel):
                 self.buttons.append(temp_model.from_map(k))
         if m.get('Caption') is not None:
             self.caption = m.get('Caption')
+        if m.get('CodeExpirationMinutes') is not None:
+            self.code_expiration_minutes = m.get('CodeExpirationMinutes')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('FileName') is not None:
@@ -2591,43 +2568,18 @@ class CreateChatappTemplateRequest(TeaModel):
         name: str = None,
         template_type: str = None,
     ):
+        # 是否允许facebook自动变更模板的目录（这样能提高模板的审核通过率）此属性只对TemplateType=WHATSAPP有效
         self.allow_category_change = allow_category_change
-        # The category of the template when the TemplateType parameter is set to WHATSAPP. Valid values:
-        # 
-        # *   **TRANSACTIONAL**: a transactional template
-        # *   **MARKETING**: a marketing template
-        # *   **OTP**: a one-time password template
-        # 
-        # The category of the template when the TemplateType parameter is set to VIBER. Valid values:
-        # 
-        # *   **text**: a text message template
-        # *   **image**: an image message template
-        # *   **text_image_button**: a template that contains multiple media objects, including text, image, and button
-        # *   **text_button**: a template that contains the text and button media objects
-        # *   **document**: a document message template
-        # *   **video**: a video message template
-        # *   **text_video**: a template that contains the text and video media objects
-        # *   **text_video_button**: a template that contains multiple media objects, including text, video, and button
-        # *   **text_image**: a template that contains the text and image media objects
+        # The returned data.
         self.category = category
-        # The list of components of the message template.
+        # The name of the message template.
         self.components = components
         self.cust_space_id = cust_space_id
-        # The ID of the WhatsApp account that you register.
         self.cust_waba_id = cust_waba_id
-        # The examples of variables that are used when you create the message template.
         self.example = example
-        # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
-        # The name of the message template.
         self.name = name
-        # The type of the message template.
-        # 
-        # *   **WHATSAPP**\
-        # *   **VIBER**\
-        # *   LINE: the LINE message template. The LINE message template is under development.
         self.template_type = template_type
 
     def validate(self):
@@ -2708,43 +2660,18 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
         name: str = None,
         template_type: str = None,
     ):
+        # 是否允许facebook自动变更模板的目录（这样能提高模板的审核通过率）此属性只对TemplateType=WHATSAPP有效
         self.allow_category_change = allow_category_change
-        # The category of the template when the TemplateType parameter is set to WHATSAPP. Valid values:
-        # 
-        # *   **TRANSACTIONAL**: a transactional template
-        # *   **MARKETING**: a marketing template
-        # *   **OTP**: a one-time password template
-        # 
-        # The category of the template when the TemplateType parameter is set to VIBER. Valid values:
-        # 
-        # *   **text**: a text message template
-        # *   **image**: an image message template
-        # *   **text_image_button**: a template that contains multiple media objects, including text, image, and button
-        # *   **text_button**: a template that contains the text and button media objects
-        # *   **document**: a document message template
-        # *   **video**: a video message template
-        # *   **text_video**: a template that contains the text and video media objects
-        # *   **text_video_button**: a template that contains multiple media objects, including text, video, and button
-        # *   **text_image**: a template that contains the text and image media objects
+        # The returned data.
         self.category = category
-        # The list of components of the message template.
+        # The name of the message template.
         self.components_shrink = components_shrink
         self.cust_space_id = cust_space_id
-        # The ID of the WhatsApp account that you register.
         self.cust_waba_id = cust_waba_id
-        # The examples of variables that are used when you create the message template.
         self.example_shrink = example_shrink
-        # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
-        # The name of the message template.
         self.name = name
-        # The type of the message template.
-        # 
-        # *   **WHATSAPP**\
-        # *   **VIBER**\
-        # *   LINE: the LINE message template. The LINE message template is under development.
         self.template_type = template_type
 
     def validate(self):
@@ -2809,9 +2736,7 @@ class CreateChatappTemplateResponseBodyData(TeaModel):
         template_code: str = None,
         template_name: str = None,
     ):
-        # The code of the message template.
         self.template_code = template_code
-        # The name of the message template.
         self.template_name = template_name
 
     def validate(self):
@@ -2846,16 +2771,9 @@ class CreateChatappTemplateResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code returned.
-        # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
         self.code = code
-        # The data returned.
         self.data = data
-        # The error message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3084,21 +3002,16 @@ class GetChatappTemplateDetailRequest(TeaModel):
         template_code: str = None,
         template_type: str = None,
     ):
-        # The space ID of the user under the ISV account.
         self.cust_space_id = cust_space_id
-        # The ID of the WhatsApp account that you register.
         self.cust_waba_id = cust_waba_id
-        # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
-        # The code of the message template.
-        self.template_code = template_code
-        # The type of the message template.
+        # The type of the message template. Valid values:
         # 
         # *   **WHATSAPP**\
         # *   **VIBER**\
-        # *   LINE: the LINE message template. This type of message template will be released later.
+        # *   LINE (developing)
+        self.template_code = template_code
         self.template_type = template_type
 
     def validate(self):
@@ -3141,40 +3054,25 @@ class GetChatappTemplateDetailRequest(TeaModel):
         return self
 
 
-class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
+class GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs(TeaModel):
     def __init__(
         self,
-        phone_number: str = None,
-        text: str = None,
-        type: str = None,
-        url: str = None,
-        url_type: str = None,
+        action: str = None,
+        intent_code: str = None,
+        next_language_code: str = None,
+        next_template_code: str = None,
+        next_template_name: str = None,
     ):
-        # The phone number. This parameter is valid only if the return value of the Type parameter is **PHONE_NUMBER**.
-        self.phone_number = phone_number
-        # The display name of the button.
-        self.text = text
-        # The type of the button. Valid values:
-        # 
-        # *   **PHONE_NUMBER**: a phone number button
-        # *   **URL**: a URL button
-        # *   **QUICK_REPLY**: a quick reply button
-        # 
-        # > 
-        # 
-        # *   If you have created a URL button or a phone number button, you cannot create a quick reply button.
-        # 
-        # *   You can add a combination of two URL buttons or a combination of a URL button and a phone number button to a message template.
-        # 
-        # *   You can add only one button to a Viber message template, and the button must be a URL button.
-        self.type = type
-        # The URL to be accessed when users click the URL button.
-        self.url = url
-        # The type of the URL. Valid values:
-        # 
-        # *   **static**: a static URL
-        # *   **dynamic**: a dynamic URL
-        self.url_type = url_type
+        # 事件类型
+        self.action = action
+        # 意图编码
+        self.intent_code = intent_code
+        # 下一个模板语言
+        self.next_language_code = next_language_code
+        # 下一个模板编码
+        self.next_template_code = next_template_code
+        # 下一个模板名称
+        self.next_template_name = next_template_name
 
     def validate(self):
         pass
@@ -3185,8 +3083,85 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
             return _map
 
         result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.intent_code is not None:
+            result['IntentCode'] = self.intent_code
+        if self.next_language_code is not None:
+            result['NextLanguageCode'] = self.next_language_code
+        if self.next_template_code is not None:
+            result['NextTemplateCode'] = self.next_template_code
+        if self.next_template_name is not None:
+            result['NextTemplateName'] = self.next_template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('IntentCode') is not None:
+            self.intent_code = m.get('IntentCode')
+        if m.get('NextLanguageCode') is not None:
+            self.next_language_code = m.get('NextLanguageCode')
+        if m.get('NextTemplateCode') is not None:
+            self.next_template_code = m.get('NextTemplateCode')
+        if m.get('NextTemplateName') is not None:
+            self.next_template_name = m.get('NextTemplateName')
+        return self
+
+
+class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
+    def __init__(
+        self,
+        autofill_text: str = None,
+        extend_attrs: GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs = None,
+        is_opt_out: bool = None,
+        package_name: str = None,
+        phone_number: str = None,
+        signature_hash: str = None,
+        text: str = None,
+        type: str = None,
+        url: str = None,
+        url_type: str = None,
+    ):
+        # Whatsapp模板，Category为Authentication，并且Button Type为ONE_TAP时必填，Whatsap Autofill操作的按钮文本
+        self.autofill_text = autofill_text
+        # 扩展字段
+        self.extend_attrs = extend_attrs
+        # Whatsapp模板，在Category为Marketing,并且Button type为QUICK_REPLY时有效，表示按钮为营销退订按钮，客户如果点击了此按钮，并且在chatapp平台上配置了发送控制操作，则后续Marketing消息则不会发送到客户
+        self.is_opt_out = is_opt_out
+        # Whatsapp模板，Category为Authentication，并且Button Type为ONE_TAP时必填，表示Whatsapp调起应用的包名
+        self.package_name = package_name
+        self.phone_number = phone_number
+        # Whatsapp模板，Category为Authentication，并且Button Type为ONE_TAP时必填，表示Whatsapp调起应用的签名Hash值
+        self.signature_hash = signature_hash
+        self.text = text
+        self.type = type
+        self.url = url
+        self.url_type = url_type
+
+    def validate(self):
+        if self.extend_attrs:
+            self.extend_attrs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.autofill_text is not None:
+            result['AutofillText'] = self.autofill_text
+        if self.extend_attrs is not None:
+            result['ExtendAttrs'] = self.extend_attrs.to_map()
+        if self.is_opt_out is not None:
+            result['IsOptOut'] = self.is_opt_out
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.signature_hash is not None:
+            result['SignatureHash'] = self.signature_hash
         if self.text is not None:
             result['Text'] = self.text
         if self.type is not None:
@@ -3199,8 +3174,19 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutofillText') is not None:
+            self.autofill_text = m.get('AutofillText')
+        if m.get('ExtendAttrs') is not None:
+            temp_model = GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs()
+            self.extend_attrs = temp_model.from_map(m['ExtendAttrs'])
+        if m.get('IsOptOut') is not None:
+            self.is_opt_out = m.get('IsOptOut')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('SignatureHash') is not None:
+            self.signature_hash = m.get('SignatureHash')
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('Type') is not None:
@@ -3215,8 +3201,10 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
 class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
     def __init__(
         self,
+        add_secret_recommendation: bool = None,
         buttons: List[GetChatappTemplateDetailResponseBodyDataComponentsButtons] = None,
         caption: str = None,
+        code_expiration_minutes: int = None,
         duration: int = None,
         file_name: str = None,
         file_type: str = None,
@@ -3230,46 +3218,27 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
         type: str = None,
         url: str = None,
     ):
-        # This parameter is applicable only to components of the **BUTTONS** type.
+        # Whatsapp类型模板，Category为Authentication，并且Component Type为Body时有效，表示在Body上面显示不要将验证码信息提供给其它人的提示信息
+        self.add_secret_recommendation = add_secret_recommendation
         self.buttons = buttons
-        # The description of the file.
         self.caption = caption
-        # The duration of the video used in the Viber message template. Valid values: 0 to 600. Unit: seconds.
+        # Whatsapp Authentication模板验证码有效期（分钟），只在Whatsapp类型消息，Category为Authentication并且Component Type为Footer时有效（此信息显示在Footer位置）
+        self.code_expiration_minutes = code_expiration_minutes
         self.duration = duration
-        # The name of the file.
         self.file_name = file_name
-        # The type of the file attached in the Viber message template.
         self.file_type = file_type
-        # The format.
         self.format = format
+        # 位置纬度属性
         self.latitude = latitude
+        # 位置地址
         self.location_address = location_address
+        # 位置名称
         self.location_name = location_name
+        # 位置经度属性
         self.longitude = longitude
-        # The text of the message to be sent.
         self.text = text
-        # The thumbnail URL of the video used in the Viber message template.
         self.thumb_url = thumb_url
-        # The type of the component. Valid values:
-        # 
-        # *   **BODY**\
-        # *   **HEADER**\
-        # *   **FOOTER**\
-        # *   **BUTTONS**\
-        # 
-        # > 
-        # 
-        # *   The following limits apply to components in WhatsApp message templates: A component of the **BODY** type cannot exceed 1,024 characters. A component of the **HEADER** or **FOOTER** type cannot exceed 60 characters in length.
-        # 
-        # > 
-        # 
-        # *   **FOOTER** components are not supported in Viber message templates.
-        # 
-        # > 
-        # 
-        # *   In a Viber message template, a media object, such as an image, a video, or a document, is placed in the **HEADER** component. If a Viber message contains text and an image, the image is placed under the text in the message received on a device.
         self.type = type
-        # The URL of the material.
         self.url = url
 
     def validate(self):
@@ -3284,12 +3253,16 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
             return _map
 
         result = dict()
+        if self.add_secret_recommendation is not None:
+            result['AddSecretRecommendation'] = self.add_secret_recommendation
         result['Buttons'] = []
         if self.buttons is not None:
             for k in self.buttons:
                 result['Buttons'].append(k.to_map() if k else None)
         if self.caption is not None:
             result['Caption'] = self.caption
+        if self.code_expiration_minutes is not None:
+            result['CodeExpirationMinutes'] = self.code_expiration_minutes
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.file_name is not None:
@@ -3318,6 +3291,8 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddSecretRecommendation') is not None:
+            self.add_secret_recommendation = m.get('AddSecretRecommendation')
         self.buttons = []
         if m.get('Buttons') is not None:
             for k in m.get('Buttons'):
@@ -3325,6 +3300,8 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
                 self.buttons.append(temp_model.from_map(k))
         if m.get('Caption') is not None:
             self.caption = m.get('Caption')
+        if m.get('CodeExpirationMinutes') is not None:
+            self.code_expiration_minutes = m.get('CodeExpirationMinutes')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('FileName') is not None:
@@ -3364,48 +3341,13 @@ class GetChatappTemplateDetailResponseBodyData(TeaModel):
         template_code: str = None,
         template_type: str = None,
     ):
-        # The review status of the message template. Valid values:
-        # 
-        # *   **pass**: The message template is approved.
-        # *   **fail**: The message template is rejected.
-        # *   **auditing**: The message template is being reviewed.
-        # *   **unaudit**: The review is suspended.
         self.audit_status = audit_status
-        # The category of the template when the return value of the TemplateType parameter is WHATSAPP. Valid values:
-        # 
-        # *   **TRANSACTIONAL**: a transactional template
-        # *   **MARKETING**: a marketing template
-        # *   **OTP**: a one-time password template
-        # 
-        # The category of the template when the return value of the TemplateType parameter is VIBER. Valid values:
-        # 
-        # *   **text**: a text message template
-        # *   **image**: an image message template
-        # *   **text_image_button**: a template that contains multiple media objects, including text, image, and button
-        # *   **text_button**: a template that contains the text and button media objects
-        # *   **document**: a template that contains a document attachment
-        # *   **video**: a video message template
-        # *   **text_video**: a template that contains the text and video media objects
-        # *   **text_video_button**: a template that contains multiple media objects, including text, video, and button
-        # *   **text_image**: a template that contains the text and image media objects
-        # 
-        # > When the category of a Viber message template is text_video_button, users cannot open a web page by clicking the button. Users can open only the video in the message. In this case, you do not need to specify the Url parameter for the URL button in the template.
         self.category = category
-        # The components of the message template.
         self.components = components
-        # The examples of variables.
         self.example = example
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
-        # The name of the message template.
         self.name = name
-        # The code of the message template.
         self.template_code = template_code
-        # The type of the message template.
-        # 
-        # *   **WHATSAPP**\
-        # *   **VIBER**\
-        # *   LINE: the LINE message template. This type of message template will be released later.
         self.template_type = template_type
 
     def validate(self):
@@ -3472,16 +3414,9 @@ class GetChatappTemplateDetailResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code returned.
-        # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
         self.code = code
-        # The data returned.
         self.data = data
-        # The error message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3567,7 +3502,7 @@ class GetChatappUploadAuthorizationRequest(TeaModel):
         self,
         cust_space_id: str = None,
     ):
-        # The space ID of the user under the ISV account.
+        # The space ID of the user under the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
 
     def validate(self):
@@ -3609,7 +3544,7 @@ class GetChatappUploadAuthorizationResponseBodyData(TeaModel):
         self.bucket_name = bucket_name
         # The directory to which a file is uploaded in OSS.
         self.dir = dir
-        # The address of the server to which a file is uploaded in OSS.
+        # The address of the OSS server to which a file is uploaded.
         self.end_point = end_point
         # The timeout period.
         self.expire = expire
@@ -3904,13 +3839,9 @@ class GetMigrationVerifyCodeRequest(TeaModel):
         method: str = None,
         phone_number: str = None,
     ):
-        # The space ID of the user under the ISV account.
         self.cust_space_id = cust_space_id
-        # The language.
         self.locale = locale
-        # The method to obtain the verification code. Valid values: sms and voice.
         self.method = method
-        # The phone number.
         self.phone_number = phone_number
 
     def validate(self):
@@ -3951,9 +3882,7 @@ class GetMigrationVerifyCodeResponseBodyData(TeaModel):
         id: str = None,
         phone_number: str = None,
     ):
-        # The ID of the phone number.
         self.id = id
-        # The phone number.
         self.phone_number = phone_number
 
     def validate(self):
@@ -3988,16 +3917,9 @@ class GetMigrationVerifyCodeResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code returned.
-        # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
         self.code = code
-        # The data returned.
         self.data = data
-        # The message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4258,7 +4180,6 @@ class IsvGetAppIdRequest(TeaModel):
         self,
         type: str = None,
     ):
-        # The type of the application. Set the value to WHATSAPP.
         self.type = type
 
     def validate(self):
@@ -4289,16 +4210,9 @@ class IsvGetAppIdResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The message ID.
         self.app_id = app_id
-        # The HTTP status code returned.
-        # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
         self.code = code
-        # The error message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4439,7 +4353,7 @@ class ListChatappTemplateRequest(TeaModel):
         self.isv_code = isv_code
         # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
-        # The name of the image template.
+        # The name of the message template.
         self.name = name
         # The paging settings.
         self.page = page
@@ -4447,7 +4361,7 @@ class ListChatappTemplateRequest(TeaModel):
         # 
         # *   **WHATSAPP**\
         # *   **VIBER**\
-        # *   LINE: the LINE message template. This type of message template will be released later.
+        # *   LINE: the Line message template. This type of message template will be released later.
         self.template_type = template_type
 
     def validate(self):
@@ -4527,7 +4441,7 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         self.isv_code = isv_code
         # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
-        # The name of the image template.
+        # The name of the message template.
         self.name = name
         # The paging settings.
         self.page_shrink = page_shrink
@@ -4535,7 +4449,7 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         # 
         # *   **WHATSAPP**\
         # *   **VIBER**\
-        # *   LINE: the LINE message template. This type of message template will be released later.
+        # *   LINE: the Line message template. This type of message template will be released later.
         self.template_type = template_type
 
     def validate(self):
@@ -4772,28 +4686,24 @@ class ListChatappTemplateResponse(TeaModel):
 class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
     def __init__(
         self,
+        autofill_text: str = None,
+        is_opt_out: bool = None,
+        package_name: str = None,
         phone_number: str = None,
+        signature_hash: str = None,
         text: str = None,
         type: str = None,
         url: str = None,
         url_type: str = None,
     ):
-        # The phone number.
+        self.autofill_text = autofill_text
+        self.is_opt_out = is_opt_out
+        self.package_name = package_name
         self.phone_number = phone_number
-        # The text of the message to be sent.
+        self.signature_hash = signature_hash
         self.text = text
-        # The type of the button.
-        # 
-        # *   **PHONE_NUMBER**: a phone number button
-        # *   **URL**: a URL button
-        # *   **QUICK_REPLY**: a quick reply button
         self.type = type
-        # The URL to be visited after users click the button.
         self.url = url
-        # The type of the URL. Valid values:
-        # 
-        # *   **static**: a static URL
-        # *   **dynamic**: a dynamic URL
         self.url_type = url_type
 
     def validate(self):
@@ -4805,8 +4715,16 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
             return _map
 
         result = dict()
+        if self.autofill_text is not None:
+            result['AutofillText'] = self.autofill_text
+        if self.is_opt_out is not None:
+            result['IsOptOut'] = self.is_opt_out
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.signature_hash is not None:
+            result['SignatureHash'] = self.signature_hash
         if self.text is not None:
             result['Text'] = self.text
         if self.type is not None:
@@ -4819,8 +4737,16 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutofillText') is not None:
+            self.autofill_text = m.get('AutofillText')
+        if m.get('IsOptOut') is not None:
+            self.is_opt_out = m.get('IsOptOut')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('SignatureHash') is not None:
+            self.signature_hash = m.get('SignatureHash')
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('Type') is not None:
@@ -4835,8 +4761,10 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
 class ModifyChatappTemplateRequestComponents(TeaModel):
     def __init__(
         self,
+        add_secret_recommendation: bool = None,
         buttons: List[ModifyChatappTemplateRequestComponentsButtons] = None,
         caption: str = None,
+        code_expiration_minutes: int = None,
         duration: int = None,
         file_name: str = None,
         file_type: str = None,
@@ -4846,36 +4774,17 @@ class ModifyChatappTemplateRequestComponents(TeaModel):
         type: str = None,
         url: str = None,
     ):
-        # The buttons. This parameter is applicable only to components of the **BUTTONS** type.
+        self.add_secret_recommendation = add_secret_recommendation
         self.buttons = buttons
-        # The description.
-        # 
-        # > When the Type parameter is set to **HEADER** and the Format parameter is set to **IMAGE, DOCUMENT, or VIDEO**, you can specify a description.
         self.caption = caption
+        self.code_expiration_minutes = code_expiration_minutes
         self.duration = duration
-        # The name of the file.
-        # 
-        # > When the Type parameter is set to **HEADER** and the Format parameter is set to **DOCUMENT**, you can specify a name for the file.
         self.file_name = file_name
         self.file_type = file_type
-        # The type of the media resources that are included in the message.
-        # 
-        # *   **TEXT**: text
-        # *   **IMAGE**: image
-        # *   **DOCUMENT**: document
-        # *   **VIDEO**: video
         self.format = format
-        # The text of the message to be sent.
         self.text = text
         self.thumb_url = thumb_url
-        # The type of the component. Valid values:
-        # 
-        # *   **BODY**\
-        # *   **HEADER**\
-        # *   **FOOTER**\
-        # *   **BUTTONS**\
         self.type = type
-        # The URL of the material.
         self.url = url
 
     def validate(self):
@@ -4890,12 +4799,16 @@ class ModifyChatappTemplateRequestComponents(TeaModel):
             return _map
 
         result = dict()
+        if self.add_secret_recommendation is not None:
+            result['AddSecretRecommendation'] = self.add_secret_recommendation
         result['Buttons'] = []
         if self.buttons is not None:
             for k in self.buttons:
                 result['Buttons'].append(k.to_map() if k else None)
         if self.caption is not None:
             result['Caption'] = self.caption
+        if self.code_expiration_minutes is not None:
+            result['CodeExpirationMinutes'] = self.code_expiration_minutes
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.file_name is not None:
@@ -4916,6 +4829,8 @@ class ModifyChatappTemplateRequestComponents(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddSecretRecommendation') is not None:
+            self.add_secret_recommendation = m.get('AddSecretRecommendation')
         self.buttons = []
         if m.get('Buttons') is not None:
             for k in m.get('Buttons'):
@@ -4923,6 +4838,8 @@ class ModifyChatappTemplateRequestComponents(TeaModel):
                 self.buttons.append(temp_model.from_map(k))
         if m.get('Caption') is not None:
             self.caption = m.get('Caption')
+        if m.get('CodeExpirationMinutes') is not None:
+            self.code_expiration_minutes = m.get('CodeExpirationMinutes')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('FileName') is not None:
@@ -4956,19 +4873,12 @@ class ModifyChatappTemplateRequest(TeaModel):
         template_type: str = None,
     ):
         self.category = category
-        # The components of the message template.
         self.components = components
-        # The space ID of the user under the ISV account.
         self.cust_space_id = cust_space_id
-        # The ID of the WhatsApp Business account under the independent software vendor (ISV) account.
         self.cust_waba_id = cust_waba_id
-        # The examples of variables that are used when you create the message template.
         self.example = example
-        # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
-        # The code of the message template.
         self.template_code = template_code
         self.template_type = template_type
 
@@ -5046,19 +4956,12 @@ class ModifyChatappTemplateShrinkRequest(TeaModel):
         template_type: str = None,
     ):
         self.category = category
-        # The components of the message template.
         self.components_shrink = components_shrink
-        # The space ID of the user under the ISV account.
         self.cust_space_id = cust_space_id
-        # The ID of the WhatsApp Business account under the independent software vendor (ISV) account.
         self.cust_waba_id = cust_waba_id
-        # The examples of variables that are used when you create the message template.
         self.example_shrink = example_shrink
-        # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
-        # The code of the message template.
         self.template_code = template_code
         self.template_type = template_type
 
@@ -5120,9 +5023,7 @@ class ModifyChatappTemplateResponseBodyData(TeaModel):
         template_code: str = None,
         template_name: str = None,
     ):
-        # The code of the message template.
         self.template_code = template_code
-        # The name of the message template.
         self.template_name = template_name
 
     def validate(self):
@@ -5157,16 +5058,9 @@ class ModifyChatappTemplateResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code returned.
-        # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
         self.code = code
-        # The data returned.
         self.data = data
-        # The error message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6387,6 +6281,7 @@ class SendChatappMassMessageRequest(TeaModel):
         self.cust_waba_id = cust_waba_id
         # The fallback content.
         self.fall_back_content = fall_back_content
+        # 消息在指定时间内没有返回已到达回执时回落, 不填代表不根据此时间判断回落，只有发送失败和有失败的状态报告时才会回落。时间单位为秒 最小值为60，最大值43200
         self.fall_back_duration = fall_back_duration
         # The ID of the fallback strategy.
         self.fall_back_id = fall_back_id
@@ -6520,6 +6415,7 @@ class SendChatappMassMessageShrinkRequest(TeaModel):
         self.cust_waba_id = cust_waba_id
         # The fallback content.
         self.fall_back_content = fall_back_content
+        # 消息在指定时间内没有返回已到达回执时回落, 不填代表不根据此时间判断回落，只有发送失败和有失败的状态报告时才会回落。时间单位为秒 最小值为60，最大值43200
         self.fall_back_duration = fall_back_duration
         # The ID of the fallback strategy.
         self.fall_back_id = fall_back_id
@@ -6748,31 +6644,31 @@ class SendChatappMessageRequest(TeaModel):
         self.channel_type = channel_type
         # The content of the message.
         # 
-        # **Usage notes when you set the ChannelType parameter to whatsapp**\
+        # **Usage notes when you set the ChannelType parameter to whatsapp:**\
         # 
         # *   When you set the **MessageType** parameter to **text**, the **text** parameter is required and the **caption** parameter cannot be specified.
         # *   When you set the **MessageType** parameter to **image**, the **link** parameter is required.
         # *   When you set the **MessageType** parameter to **video**, the **link** parameter is required.
-        # *   When you set the **MessageType** parameter to **audio**, the **link** parameter is required and **caption** parameter is invalid.
-        # *   When you set the **MessageType** parameter to **document**, the **link** and **fileName** parameters are required and **caption** parameter is invalid.
+        # *   When you set the **MessageType** parameter to **audio**, the **link** parameter is required and the **caption** parameter is invalid.
+        # *   When you set the **MessageType** parameter to **document**, the **link** and **fileName** parameters are required and the **caption** parameter is invalid.
         # *   When you set the **MessageType** parameter to **interactive**, the **type** and **action** parameters are required.
         # *   When you set the **MessageType** parameter to **contacts**, the **name** parameter is required.
         # *   When you set the **MessageType** parameter to **location**, the **longitude** and **latitude** parameters are required.
         # *   When you set the **MessageType** parameter to **sticker**, the **link** parameter is required, and the **caption** and **fileName** parameters are invalid.
         # *   When you set the **MessageType** parameter to **reaction**, the **messageId** and **emoji** parameters are required.
         # 
-        # **Usage notes when you set the ChannelType parameter to viber**\
+        # **Usage notes when you set the ChannelType parameter to viber:**\
         # 
         # *   When you set the **MessageType** parameter to **text**, the **text** parameter is required.
         # *   When you set the **MessageType** parameter to **image**, the **link** parameter is required.
         # *   When you set the **MessageType** parameter to **video**, the **link**, **thumbnail**, **fileSize**, and **duration** parameters are required.
-        # *   When you set the **MessageType** parameter to  **document**, the **link**, **fileName**, and **fileType** parameters are required.
+        # *   When you set the **MessageType** parameter to **document**, the **link**, **fileName**, and **fileType** parameters are required.
         # *   When you set the **MessageType** parameter to **text_button**, the **text**, **caption**, and **action** parameters are required.
         # *   When you set the **MessageType** parameter to **text_image_button**, the **text**, **link**, **caption**, and **action** parameters are required.
         # *   When you set the **MessageType** parameter to **text_video**, the **text**, **link**, **thumbnail**, **fileSize**, and **duration** parameters are required.
         # *   When you set the **MessageType** parameter to **text_video_button**, the **text**, **link**, **thumbnail**, **fileSize**, **duration**, and **caption** parameters are required. The **action** parameter is invalid.
         self.content = content
-        # The ID of the reply message.
+        # The ID of the message to reply to.
         self.context_message_id = context_message_id
         # The space ID of the user.
         self.cust_space_id = cust_space_id
@@ -6780,51 +6676,52 @@ class SendChatappMessageRequest(TeaModel):
         self.cust_waba_id = cust_waba_id
         # The content of the fallback message.
         self.fall_back_content = fall_back_content
+        # 消息在指定时间内未返回回执回落
         self.fall_back_duration = fall_back_duration
         # The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
         self.fall_back_id = fall_back_id
         # The phone number of the message sender.
         # 
-        # > You can specify a phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
+        # > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
         self.from_ = from_
-        # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
+        # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The message type when the ChannelType parameter is set to viber. Valid values: promotion and transaction.
+        # The type of the Viber message. This parameter is required if you set the ChannelType parameter to viber. Valid values: promotion and transaction.
         self.label = label
         # The language that is used in the message template. This parameter is required only if you set the Type parameter to **template**. For more information about language codes, see [Language codes](~~463420~~).
         self.language = language
-        # The specific type of the message. This parameter is required only if you set the Type parameter to **message**. Valid values:
+        # The specific type of the message. This parameter is required only if you set the Type parameter to **message**.
         # 
-        # **When you set the ChannelType parameter to whatsapp**\
+        # **Valid values of MessageType when you set the ChannelType parameter to whatsapp:**\
         # 
-        # *   **text**: the text message.
-        # *   **image**: the image message.
-        # *   **video**: the video message.
-        # *   **audio**: the audio message.
-        # *   **document**: the document message.
-        # *   **interactive**: the interactive message.
-        # *   **contacts**: the contact message.
-        # *   **location**: the location message.
-        # *   **sticker**: the sticker message.
-        # *   **reaction**: the reaction message.
+        # *   **text**: a text message.
+        # *   **image**: an image message.
+        # *   **video**: a video message.
+        # *   **audio**: an audio message.
+        # *   **document**: a document message.
+        # *   **interactive**: an interactive message.
+        # *   **contacts**: a contact message.
+        # *   **location**: a location message.
+        # *   **sticker**: a sticker message.
+        # *   **reaction**: a reaction message.
         # 
-        # **When you set the ChannelType parameter to viber**\
+        # **Valid values of MessageType when you set the ChannelType parameter to viber:**\
         # 
-        # *   **text**: the text message.
-        # *   **image**: the image message.
-        # *   **video**: the video message.
-        # *   **document**: the document message.
-        # *   **text_button**: messages that contain the text and button media objects.
-        # *   **text_image_button**: messages that contain multiple media objects, including the text, image, and button media objects.
-        # *   **text_video**: messages that contain the text and video media objects.
-        # *   **text_video_button**: messages that contain multiple media objects, including text, video, and button media objects.
-        # *   **text_image**: messages that contain the text and image media objects..
+        # *   **text**: a text message.
+        # *   **image**: an image message.
+        # *   **video**: a video message.
+        # *   **document**: a document message.
+        # *   **text_button**: a message that contains the text and button media objects.
+        # *   **text_image_button**: a message that contains multiple media objects, including the text, image, and button.
+        # *   **text_video**: a message that contains the text and video media objects.
+        # *   **text_video_button**: a message that contains multiple media objects, including text, video, and button.
+        # *   **text_image**: a message that contains the text and image media objects.
         # 
         # > For more information, see [Parameters of a message template](~~454530~~).
         self.message_type = message_type
         # The payload of the button.
         self.payload = payload
-        # The tag information when the ChannelType parameter is set to viber.
+        # The tag information of the Viber message.
         self.tag = tag
         # The ID of the task.
         self.task_id = task_id
@@ -6832,11 +6729,11 @@ class SendChatappMessageRequest(TeaModel):
         self.template_code = template_code
         # The variables of the message template.
         self.template_params = template_params
-        # The phone number of the message receiver.
+        # The phone number that receives the message.
         self.to = to
-        # The tracking ID when the ChannelType parameter is set to viber.
+        # The tracking ID of the Viber message.
         self.tracking_data = tracking_data
-        # The timeout period for sending messages when the ChannelType parameter is set to viber. Valid values: 30 to 1209600. Unit: seconds.
+        # The timeout period for sending the Viber message. Valid values: 30 to 1209600. Unit: seconds.
         self.ttl = ttl
         # The type of the message. Valid values:
         # 
@@ -6982,31 +6879,31 @@ class SendChatappMessageShrinkRequest(TeaModel):
         self.channel_type = channel_type
         # The content of the message.
         # 
-        # **Usage notes when you set the ChannelType parameter to whatsapp**\
+        # **Usage notes when you set the ChannelType parameter to whatsapp:**\
         # 
         # *   When you set the **MessageType** parameter to **text**, the **text** parameter is required and the **caption** parameter cannot be specified.
         # *   When you set the **MessageType** parameter to **image**, the **link** parameter is required.
         # *   When you set the **MessageType** parameter to **video**, the **link** parameter is required.
-        # *   When you set the **MessageType** parameter to **audio**, the **link** parameter is required and **caption** parameter is invalid.
-        # *   When you set the **MessageType** parameter to **document**, the **link** and **fileName** parameters are required and **caption** parameter is invalid.
+        # *   When you set the **MessageType** parameter to **audio**, the **link** parameter is required and the **caption** parameter is invalid.
+        # *   When you set the **MessageType** parameter to **document**, the **link** and **fileName** parameters are required and the **caption** parameter is invalid.
         # *   When you set the **MessageType** parameter to **interactive**, the **type** and **action** parameters are required.
         # *   When you set the **MessageType** parameter to **contacts**, the **name** parameter is required.
         # *   When you set the **MessageType** parameter to **location**, the **longitude** and **latitude** parameters are required.
         # *   When you set the **MessageType** parameter to **sticker**, the **link** parameter is required, and the **caption** and **fileName** parameters are invalid.
         # *   When you set the **MessageType** parameter to **reaction**, the **messageId** and **emoji** parameters are required.
         # 
-        # **Usage notes when you set the ChannelType parameter to viber**\
+        # **Usage notes when you set the ChannelType parameter to viber:**\
         # 
         # *   When you set the **MessageType** parameter to **text**, the **text** parameter is required.
         # *   When you set the **MessageType** parameter to **image**, the **link** parameter is required.
         # *   When you set the **MessageType** parameter to **video**, the **link**, **thumbnail**, **fileSize**, and **duration** parameters are required.
-        # *   When you set the **MessageType** parameter to  **document**, the **link**, **fileName**, and **fileType** parameters are required.
+        # *   When you set the **MessageType** parameter to **document**, the **link**, **fileName**, and **fileType** parameters are required.
         # *   When you set the **MessageType** parameter to **text_button**, the **text**, **caption**, and **action** parameters are required.
         # *   When you set the **MessageType** parameter to **text_image_button**, the **text**, **link**, **caption**, and **action** parameters are required.
         # *   When you set the **MessageType** parameter to **text_video**, the **text**, **link**, **thumbnail**, **fileSize**, and **duration** parameters are required.
         # *   When you set the **MessageType** parameter to **text_video_button**, the **text**, **link**, **thumbnail**, **fileSize**, **duration**, and **caption** parameters are required. The **action** parameter is invalid.
         self.content = content
-        # The ID of the reply message.
+        # The ID of the message to reply to.
         self.context_message_id = context_message_id
         # The space ID of the user.
         self.cust_space_id = cust_space_id
@@ -7014,51 +6911,52 @@ class SendChatappMessageShrinkRequest(TeaModel):
         self.cust_waba_id = cust_waba_id
         # The content of the fallback message.
         self.fall_back_content = fall_back_content
+        # 消息在指定时间内未返回回执回落
         self.fall_back_duration = fall_back_duration
         # The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
         self.fall_back_id = fall_back_id
         # The phone number of the message sender.
         # 
-        # > You can specify a phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
+        # > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
         self.from_ = from_
-        # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
+        # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The message type when the ChannelType parameter is set to viber. Valid values: promotion and transaction.
+        # The type of the Viber message. This parameter is required if you set the ChannelType parameter to viber. Valid values: promotion and transaction.
         self.label = label
         # The language that is used in the message template. This parameter is required only if you set the Type parameter to **template**. For more information about language codes, see [Language codes](~~463420~~).
         self.language = language
-        # The specific type of the message. This parameter is required only if you set the Type parameter to **message**. Valid values:
+        # The specific type of the message. This parameter is required only if you set the Type parameter to **message**.
         # 
-        # **When you set the ChannelType parameter to whatsapp**\
+        # **Valid values of MessageType when you set the ChannelType parameter to whatsapp:**\
         # 
-        # *   **text**: the text message.
-        # *   **image**: the image message.
-        # *   **video**: the video message.
-        # *   **audio**: the audio message.
-        # *   **document**: the document message.
-        # *   **interactive**: the interactive message.
-        # *   **contacts**: the contact message.
-        # *   **location**: the location message.
-        # *   **sticker**: the sticker message.
-        # *   **reaction**: the reaction message.
+        # *   **text**: a text message.
+        # *   **image**: an image message.
+        # *   **video**: a video message.
+        # *   **audio**: an audio message.
+        # *   **document**: a document message.
+        # *   **interactive**: an interactive message.
+        # *   **contacts**: a contact message.
+        # *   **location**: a location message.
+        # *   **sticker**: a sticker message.
+        # *   **reaction**: a reaction message.
         # 
-        # **When you set the ChannelType parameter to viber**\
+        # **Valid values of MessageType when you set the ChannelType parameter to viber:**\
         # 
-        # *   **text**: the text message.
-        # *   **image**: the image message.
-        # *   **video**: the video message.
-        # *   **document**: the document message.
-        # *   **text_button**: messages that contain the text and button media objects.
-        # *   **text_image_button**: messages that contain multiple media objects, including the text, image, and button media objects.
-        # *   **text_video**: messages that contain the text and video media objects.
-        # *   **text_video_button**: messages that contain multiple media objects, including text, video, and button media objects.
-        # *   **text_image**: messages that contain the text and image media objects..
+        # *   **text**: a text message.
+        # *   **image**: an image message.
+        # *   **video**: a video message.
+        # *   **document**: a document message.
+        # *   **text_button**: a message that contains the text and button media objects.
+        # *   **text_image_button**: a message that contains multiple media objects, including the text, image, and button.
+        # *   **text_video**: a message that contains the text and video media objects.
+        # *   **text_video_button**: a message that contains multiple media objects, including text, video, and button.
+        # *   **text_image**: a message that contains the text and image media objects.
         # 
         # > For more information, see [Parameters of a message template](~~454530~~).
         self.message_type = message_type
         # The payload of the button.
         self.payload_shrink = payload_shrink
-        # The tag information when the ChannelType parameter is set to viber.
+        # The tag information of the Viber message.
         self.tag = tag
         # The ID of the task.
         self.task_id = task_id
@@ -7066,11 +6964,11 @@ class SendChatappMessageShrinkRequest(TeaModel):
         self.template_code = template_code
         # The variables of the message template.
         self.template_params_shrink = template_params_shrink
-        # The phone number of the message receiver.
+        # The phone number that receives the message.
         self.to = to
-        # The tracking ID when the ChannelType parameter is set to viber.
+        # The tracking ID of the Viber message.
         self.tracking_data = tracking_data
-        # The timeout period for sending messages when the ChannelType parameter is set to viber. Valid values: 30 to 1209600. Unit: seconds.
+        # The timeout period for sending the Viber message. Valid values: 30 to 1209600. Unit: seconds.
         self.ttl = ttl
         # The type of the message. Valid values:
         # 
@@ -7197,7 +7095,7 @@ class SendChatappMessageResponseBody(TeaModel):
         self.code = code
         # The error message returned.
         self.message = message
-        # The ID of the message.
+        # The ID of the message that was sent.
         self.message_id = message_id
         # The ID of the request.
         self.request_id = request_id
@@ -7289,7 +7187,7 @@ class SubmitIsvCustomerTermsRequest(TeaModel):
         isv_terms: str = None,
         office_address: str = None,
     ):
-        # The usage scenario.
+        # The use scenario.
         self.business_desc = business_desc
         # The email address of your business.
         self.contact_mail = contact_mail
@@ -7299,9 +7197,9 @@ class SubmitIsvCustomerTermsRequest(TeaModel):
         self.cust_name = cust_name
         # The space ID of the user under the ISV account.
         self.cust_space_id = cust_space_id
-        # The ISV or Client agreement.
+        # The ISV or Client Agreement.
         # 
-        # > After you call the GetChatappUploadAuthorization operation to obtain the authentication information, you must use this authentication information to upload files to OSS servers. You can use the SDK provided by OSS to upload files. When you upload a file, you must set the key parameter value. To set the value for the key parameter, concatenate the value of the Dir parameter and the file name by using a forward slash (/). You can obtain the value of the Dir parameter by calling the GetChatappUploadAuthorization operation.
+        # > Before you upload files to Object Storage Service (OSS) servers, you must call the GetChatappUploadAuthorization operation to obtain the authentication information required to upload files. You can use the SDK provided by OSS to upload files. When you upload a file, you must set the key parameter value. To set the value for the key parameter, concatenate the value of the Dir parameter and the file name by using a forward slash (/). You can obtain the value of the Dir parameter by calling the GetChatappUploadAuthorization operation.
         # 
         # > The value of this parameter is the name of the uploaded file.
         self.isv_terms = isv_terms
@@ -7595,23 +7493,11 @@ class UpdatePhoneWebhookRequest(TeaModel):
         status_callback_url: str = None,
         up_callback_url: str = None,
     ):
-        # The space ID of the user under the ISV account.
         self.cust_space_id = cust_space_id
-        # Specifies whether to use HTTP callbacks to receive message receipts. Valid values:
-        # 
-        # *   Y: indicates that HTTP callbacks are used to receive message receipts.
-        # *   N: indicates that HTTP callbacks are not used to receive message receipts.
         self.http_flag = http_flag
-        # The phone number.
         self.phone_number = phone_number
-        # Specifies whether to use Message Service (MNS) queues to receive receipts. Valid values:
-        # 
-        # *   Y: indicates that MNS queues are used to receive receipts.
-        # *   N: indicates that MNS queues are not used to receive receipts.
         self.queue_flag = queue_flag
-        # The callback URL to which status reports are sent by using HTTP callbacks.
         self.status_callback_url = status_callback_url
-        # The callback URL to which mobile originated (MO) messages are sent by using HTTP callbacks.
         self.up_callback_url = up_callback_url
 
     def validate(self):
@@ -7661,14 +7547,8 @@ class UpdatePhoneWebhookResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code returned.
-        # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
         self.code = code
-        # The error message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
