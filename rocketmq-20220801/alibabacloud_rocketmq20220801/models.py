@@ -1634,7 +1634,7 @@ class GetInstanceResponseBodyDataNetworkInfoEndpoints(TeaModel):
         self,
         endpoint_type: str = None,
         endpoint_url: str = None,
-        ip_whitelist: str = None,
+        ip_whitelist: List[str] = None,
     ):
         self.endpoint_type = endpoint_type
         self.endpoint_url = endpoint_url
@@ -1850,6 +1850,45 @@ class GetInstanceResponseBodyDataProductInfo(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyDataSoftware(TeaModel):
+    def __init__(
+        self,
+        maintain_time: str = None,
+        software_version: str = None,
+        upgrade_method: str = None,
+    ):
+        self.maintain_time = maintain_time
+        self.software_version = software_version
+        self.upgrade_method = upgrade_method
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.maintain_time is not None:
+            result['maintainTime'] = self.maintain_time
+        if self.software_version is not None:
+            result['softwareVersion'] = self.software_version
+        if self.upgrade_method is not None:
+            result['upgradeMethod'] = self.upgrade_method
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maintainTime') is not None:
+            self.maintain_time = m.get('maintainTime')
+        if m.get('softwareVersion') is not None:
+            self.software_version = m.get('softwareVersion')
+        if m.get('upgradeMethod') is not None:
+            self.upgrade_method = m.get('upgradeMethod')
+        return self
+
+
 class GetInstanceResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -1860,6 +1899,7 @@ class GetInstanceResponseBodyData(TeaModel):
         create_time: str = None,
         expire_time: str = None,
         ext_config: GetInstanceResponseBodyDataExtConfig = None,
+        group_count: int = None,
         instance_id: str = None,
         instance_name: str = None,
         instance_quotas: List[GetInstanceResponseBodyDataInstanceQuotas] = None,
@@ -1872,9 +1912,11 @@ class GetInstanceResponseBodyData(TeaModel):
         resource_group_id: str = None,
         series_code: str = None,
         service_code: str = None,
+        software: GetInstanceResponseBodyDataSoftware = None,
         start_time: str = None,
         status: str = None,
         sub_series_code: str = None,
+        topic_count: int = None,
         update_time: str = None,
         user_id: str = None,
     ):
@@ -1886,6 +1928,7 @@ class GetInstanceResponseBodyData(TeaModel):
         self.create_time = create_time
         self.expire_time = expire_time
         self.ext_config = ext_config
+        self.group_count = group_count
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.instance_quotas = instance_quotas
@@ -1898,9 +1941,11 @@ class GetInstanceResponseBodyData(TeaModel):
         self.resource_group_id = resource_group_id
         self.series_code = series_code
         self.service_code = service_code
+        self.software = software
         self.start_time = start_time
         self.status = status
         self.sub_series_code = sub_series_code
+        self.topic_count = topic_count
         self.update_time = update_time
         self.user_id = user_id
 
@@ -1919,6 +1964,8 @@ class GetInstanceResponseBodyData(TeaModel):
             self.network_info.validate()
         if self.product_info:
             self.product_info.validate()
+        if self.software:
+            self.software.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1940,6 +1987,8 @@ class GetInstanceResponseBodyData(TeaModel):
             result['expireTime'] = self.expire_time
         if self.ext_config is not None:
             result['extConfig'] = self.ext_config.to_map()
+        if self.group_count is not None:
+            result['groupCount'] = self.group_count
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
         if self.instance_name is not None:
@@ -1966,12 +2015,16 @@ class GetInstanceResponseBodyData(TeaModel):
             result['seriesCode'] = self.series_code
         if self.service_code is not None:
             result['serviceCode'] = self.service_code
+        if self.software is not None:
+            result['software'] = self.software.to_map()
         if self.start_time is not None:
             result['startTime'] = self.start_time
         if self.status is not None:
             result['status'] = self.status
         if self.sub_series_code is not None:
             result['subSeriesCode'] = self.sub_series_code
+        if self.topic_count is not None:
+            result['topicCount'] = self.topic_count
         if self.update_time is not None:
             result['updateTime'] = self.update_time
         if self.user_id is not None:
@@ -1997,6 +2050,8 @@ class GetInstanceResponseBodyData(TeaModel):
         if m.get('extConfig') is not None:
             temp_model = GetInstanceResponseBodyDataExtConfig()
             self.ext_config = temp_model.from_map(m['extConfig'])
+        if m.get('groupCount') is not None:
+            self.group_count = m.get('groupCount')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
         if m.get('instanceName') is not None:
@@ -2026,12 +2081,17 @@ class GetInstanceResponseBodyData(TeaModel):
             self.series_code = m.get('seriesCode')
         if m.get('serviceCode') is not None:
             self.service_code = m.get('serviceCode')
+        if m.get('software') is not None:
+            temp_model = GetInstanceResponseBodyDataSoftware()
+            self.software = temp_model.from_map(m['software'])
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
         if m.get('status') is not None:
             self.status = m.get('status')
         if m.get('subSeriesCode') is not None:
             self.sub_series_code = m.get('subSeriesCode')
+        if m.get('topicCount') is not None:
+            self.topic_count = m.get('topicCount')
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')
         if m.get('userId') is not None:

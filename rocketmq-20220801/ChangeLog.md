@@ -1,3 +1,6 @@
+2023-05-08 Version: 1.0.5
+- Optimize some APIs.
+
 2023-02-08 Version: 1.0.4
 - Support Dead Letter.
 - Support ResourceGroup.
