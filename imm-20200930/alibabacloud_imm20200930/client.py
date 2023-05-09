@@ -2567,6 +2567,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.targets):
             request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
         query = {}
+        if not UtilClient.is_unset(request.alignment_index):
+            query['AlignmentIndex'] = request.alignment_index
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
@@ -2619,6 +2621,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.targets):
             request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
         query = {}
+        if not UtilClient.is_unset(request.alignment_index):
+            query['AlignmentIndex'] = request.alignment_index
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
@@ -7421,8 +7425,6 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
             query['SourceURI'] = request.source_uri
-        if not UtilClient.is_unset(request.token):
-            query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7459,8 +7461,6 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
             query['SourceURI'] = request.source_uri
-        if not UtilClient.is_unset(request.token):
-            query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

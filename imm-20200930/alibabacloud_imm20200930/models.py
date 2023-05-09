@@ -10597,6 +10597,7 @@ class CreateMediaConvertTaskRequestTargets(TeaModel):
 class CreateMediaConvertTaskRequest(TeaModel):
     def __init__(
         self,
+        alignment_index: int = None,
         credential_config: CredentialConfig = None,
         notification: Notification = None,
         project_name: str = None,
@@ -10605,6 +10606,7 @@ class CreateMediaConvertTaskRequest(TeaModel):
         targets: List[CreateMediaConvertTaskRequestTargets] = None,
         user_data: str = None,
     ):
+        self.alignment_index = alignment_index
         self.credential_config = credential_config
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
@@ -10634,6 +10636,8 @@ class CreateMediaConvertTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.alignment_index is not None:
+            result['AlignmentIndex'] = self.alignment_index
         if self.credential_config is not None:
             result['CredentialConfig'] = self.credential_config.to_map()
         if self.notification is not None:
@@ -10656,6 +10660,8 @@ class CreateMediaConvertTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlignmentIndex') is not None:
+            self.alignment_index = m.get('AlignmentIndex')
         if m.get('CredentialConfig') is not None:
             temp_model = CredentialConfig()
             self.credential_config = temp_model.from_map(m['CredentialConfig'])
@@ -10684,6 +10690,7 @@ class CreateMediaConvertTaskRequest(TeaModel):
 class CreateMediaConvertTaskShrinkRequest(TeaModel):
     def __init__(
         self,
+        alignment_index: int = None,
         credential_config_shrink: str = None,
         notification_shrink: str = None,
         project_name: str = None,
@@ -10692,6 +10699,7 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
         targets_shrink: str = None,
         user_data: str = None,
     ):
+        self.alignment_index = alignment_index
         self.credential_config_shrink = credential_config_shrink
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
@@ -10710,6 +10718,8 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.alignment_index is not None:
+            result['AlignmentIndex'] = self.alignment_index
         if self.credential_config_shrink is not None:
             result['CredentialConfig'] = self.credential_config_shrink
         if self.notification_shrink is not None:
@@ -10728,6 +10738,8 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlignmentIndex') is not None:
+            self.alignment_index = m.get('AlignmentIndex')
         if m.get('CredentialConfig') is not None:
             self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('Notification') is not None:
@@ -20096,12 +20108,10 @@ class LiveTranscodingRequest(TeaModel):
         credential_config: CredentialConfig = None,
         project_name: str = None,
         source_uri: str = None,
-        token: str = None,
     ):
         self.credential_config = credential_config
         self.project_name = project_name
         self.source_uri = source_uri
-        self.token = token
 
     def validate(self):
         if self.credential_config:
@@ -20119,8 +20129,6 @@ class LiveTranscodingRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.source_uri is not None:
             result['SourceURI'] = self.source_uri
-        if self.token is not None:
-            result['Token'] = self.token
         return result
 
     def from_map(self, m: dict = None):
@@ -20132,8 +20140,6 @@ class LiveTranscodingRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('SourceURI') is not None:
             self.source_uri = m.get('SourceURI')
-        if m.get('Token') is not None:
-            self.token = m.get('Token')
         return self
 
 
@@ -20143,12 +20149,10 @@ class LiveTranscodingShrinkRequest(TeaModel):
         credential_config_shrink: str = None,
         project_name: str = None,
         source_uri: str = None,
-        token: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
         self.project_name = project_name
         self.source_uri = source_uri
-        self.token = token
 
     def validate(self):
         pass
@@ -20165,8 +20169,6 @@ class LiveTranscodingShrinkRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.source_uri is not None:
             result['SourceURI'] = self.source_uri
-        if self.token is not None:
-            result['Token'] = self.token
         return result
 
     def from_map(self, m: dict = None):
@@ -20177,8 +20179,6 @@ class LiveTranscodingShrinkRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('SourceURI') is not None:
             self.source_uri = m.get('SourceURI')
-        if m.get('Token') is not None:
-            self.token = m.get('Token')
         return self
 
 
