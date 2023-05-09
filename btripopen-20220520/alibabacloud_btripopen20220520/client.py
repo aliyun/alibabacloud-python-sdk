@@ -5871,6 +5871,92 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.HotelBillSettlementQueryHeaders()
         return await self.hotel_bill_settlement_query_with_options_async(request, headers, runtime)
 
+    def hotel_city_code_list_with_options(
+        self,
+        request: btrip_open_20220520_models.HotelCityCodeListRequest,
+        headers: btrip_open_20220520_models.HotelCityCodeListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.HotelCityCodeListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.country_code):
+            query['country_code'] = request.country_code
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='HotelCityCodeList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-hotel/v1/city-codes/action/search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.HotelCityCodeListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def hotel_city_code_list_with_options_async(
+        self,
+        request: btrip_open_20220520_models.HotelCityCodeListRequest,
+        headers: btrip_open_20220520_models.HotelCityCodeListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.HotelCityCodeListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.country_code):
+            query['country_code'] = request.country_code
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='HotelCityCodeList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-hotel/v1/city-codes/action/search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.HotelCityCodeListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def hotel_city_code_list(
+        self,
+        request: btrip_open_20220520_models.HotelCityCodeListRequest,
+    ) -> btrip_open_20220520_models.HotelCityCodeListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.HotelCityCodeListHeaders()
+        return self.hotel_city_code_list_with_options(request, headers, runtime)
+
+    async def hotel_city_code_list_async(
+        self,
+        request: btrip_open_20220520_models.HotelCityCodeListRequest,
+    ) -> btrip_open_20220520_models.HotelCityCodeListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.HotelCityCodeListHeaders()
+        return await self.hotel_city_code_list_with_options_async(request, headers, runtime)
+
     def hotel_exceed_apply_query_with_options(
         self,
         request: btrip_open_20220520_models.HotelExceedApplyQueryRequest,
