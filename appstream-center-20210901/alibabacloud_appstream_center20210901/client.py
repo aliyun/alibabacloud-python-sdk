@@ -297,6 +297,10 @@ class Client(OpenApiClient):
             request.node_pool_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_pool, 'NodePool', 'json')
         if not UtilClient.is_unset(tmp_req.runtime_policy):
             request.runtime_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_policy, 'RuntimePolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.security_policy):
+            request.security_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_policy, 'SecurityPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.storage_policy):
+            request.storage_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.storage_policy, 'StoragePolicy', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
             request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
@@ -330,8 +334,12 @@ class Client(OpenApiClient):
             body['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.runtime_policy_shrink):
             body['RuntimePolicy'] = request.runtime_policy_shrink
+        if not UtilClient.is_unset(request.security_policy_shrink):
+            body['SecurityPolicy'] = request.security_policy_shrink
         if not UtilClient.is_unset(request.session_timeout):
             body['SessionTimeout'] = request.session_timeout
+        if not UtilClient.is_unset(request.storage_policy_shrink):
+            body['StoragePolicy'] = request.storage_policy_shrink
         if not UtilClient.is_unset(request.user_info_shrink):
             body['UserInfo'] = request.user_info_shrink
         if not UtilClient.is_unset(request.users):
@@ -369,6 +377,10 @@ class Client(OpenApiClient):
             request.node_pool_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_pool, 'NodePool', 'json')
         if not UtilClient.is_unset(tmp_req.runtime_policy):
             request.runtime_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_policy, 'RuntimePolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.security_policy):
+            request.security_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_policy, 'SecurityPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.storage_policy):
+            request.storage_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.storage_policy, 'StoragePolicy', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
             request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
@@ -402,8 +414,12 @@ class Client(OpenApiClient):
             body['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.runtime_policy_shrink):
             body['RuntimePolicy'] = request.runtime_policy_shrink
+        if not UtilClient.is_unset(request.security_policy_shrink):
+            body['SecurityPolicy'] = request.security_policy_shrink
         if not UtilClient.is_unset(request.session_timeout):
             body['SessionTimeout'] = request.session_timeout
+        if not UtilClient.is_unset(request.storage_policy_shrink):
+            body['StoragePolicy'] = request.storage_policy_shrink
         if not UtilClient.is_unset(request.user_info_shrink):
             body['UserInfo'] = request.user_info_shrink
         if not UtilClient.is_unset(request.users):
@@ -440,6 +456,84 @@ class Client(OpenApiClient):
     ) -> appstream_center_20210901_models.CreateAppInstanceGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_app_instance_group_with_options_async(request, runtime)
+
+    def create_image_from_app_instance_group_with_options(
+        self,
+        request: appstream_center_20210901_models.CreateImageFromAppInstanceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_center_image_name):
+            body['AppCenterImageName'] = request.app_center_image_name
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateImageFromAppInstanceGroup',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_image_from_app_instance_group_with_options_async(
+        self,
+        request: appstream_center_20210901_models.CreateImageFromAppInstanceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_center_image_name):
+            body['AppCenterImageName'] = request.app_center_image_name
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateImageFromAppInstanceGroup',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_image_from_app_instance_group(
+        self,
+        request: appstream_center_20210901_models.CreateImageFromAppInstanceGroupRequest,
+    ) -> appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_image_from_app_instance_group_with_options(request, runtime)
+
+    async def create_image_from_app_instance_group_async(
+        self,
+        request: appstream_center_20210901_models.CreateImageFromAppInstanceGroupRequest,
+    ) -> appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_image_from_app_instance_group_with_options_async(request, runtime)
 
     def delete_app_instance_group_with_options(
         self,
@@ -768,6 +862,80 @@ class Client(OpenApiClient):
     ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_connection_ticket_with_options_async(request, runtime)
+
+    def get_debug_app_instance_with_options(
+        self,
+        request: appstream_center_20210901_models.GetDebugAppInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.GetDebugAppInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDebugAppInstance',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.GetDebugAppInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_debug_app_instance_with_options_async(
+        self,
+        request: appstream_center_20210901_models.GetDebugAppInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.GetDebugAppInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDebugAppInstance',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.GetDebugAppInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_debug_app_instance(
+        self,
+        request: appstream_center_20210901_models.GetDebugAppInstanceRequest,
+    ) -> appstream_center_20210901_models.GetDebugAppInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_debug_app_instance_with_options(request, runtime)
+
+    async def get_debug_app_instance_async(
+        self,
+        request: appstream_center_20210901_models.GetDebugAppInstanceRequest,
+    ) -> appstream_center_20210901_models.GetDebugAppInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_debug_app_instance_with_options_async(request, runtime)
 
     def get_ota_task_by_task_id_with_options(
         self,
@@ -1132,11 +1300,15 @@ class Client(OpenApiClient):
             query['AppInstanceGroupId'] = request.app_instance_group_id
         if not UtilClient.is_unset(request.app_instance_id):
             query['AppInstanceId'] = request.app_instance_id
+        if not UtilClient.is_unset(request.include_deleted):
+            query['IncludeDeleted'] = request.include_deleted
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         body = {}
+        if not UtilClient.is_unset(request.app_instance_id_list):
+            body['AppInstanceIdList'] = request.app_instance_id_list
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
@@ -1170,11 +1342,15 @@ class Client(OpenApiClient):
             query['AppInstanceGroupId'] = request.app_instance_group_id
         if not UtilClient.is_unset(request.app_instance_id):
             query['AppInstanceId'] = request.app_instance_id
+        if not UtilClient.is_unset(request.include_deleted):
+            query['IncludeDeleted'] = request.include_deleted
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         body = {}
+        if not UtilClient.is_unset(request.app_instance_id_list):
+            body['AppInstanceIdList'] = request.app_instance_id_list
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
@@ -1571,6 +1747,10 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.node_pool):
             request.node_pool_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_pool, 'NodePool', 'json')
+        if not UtilClient.is_unset(tmp_req.security_policy):
+            request.security_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_policy, 'SecurityPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.storage_policy):
+            request.storage_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.storage_policy, 'StoragePolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
             query['AppInstanceGroupId'] = request.app_instance_group_id
@@ -1582,8 +1762,14 @@ class Client(OpenApiClient):
             query['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.session_timeout):
             query['SessionTimeout'] = request.session_timeout
+        body = {}
+        if not UtilClient.is_unset(request.security_policy_shrink):
+            body['SecurityPolicy'] = request.security_policy_shrink
+        if not UtilClient.is_unset(request.storage_policy_shrink):
+            body['StoragePolicy'] = request.storage_policy_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyAppInstanceGroupAttribute',
@@ -1611,6 +1797,10 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.node_pool):
             request.node_pool_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_pool, 'NodePool', 'json')
+        if not UtilClient.is_unset(tmp_req.security_policy):
+            request.security_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_policy, 'SecurityPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.storage_policy):
+            request.storage_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.storage_policy, 'StoragePolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
             query['AppInstanceGroupId'] = request.app_instance_group_id
@@ -1622,8 +1812,14 @@ class Client(OpenApiClient):
             query['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.session_timeout):
             query['SessionTimeout'] = request.session_timeout
+        body = {}
+        if not UtilClient.is_unset(request.security_policy_shrink):
+            body['SecurityPolicy'] = request.security_policy_shrink
+        if not UtilClient.is_unset(request.storage_policy_shrink):
+            body['StoragePolicy'] = request.storage_policy_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyAppInstanceGroupAttribute',
