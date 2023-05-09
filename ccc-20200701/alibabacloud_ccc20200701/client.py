@@ -5079,6 +5079,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_user_with_options_async(request, runtime)
 
+    def get_video_with_options(
+        self,
+        request: ccc20200701_models.GetVideoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetVideoResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideo',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetVideoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_with_options_async(
+        self,
+        request: ccc20200701_models.GetVideoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetVideoResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideo',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetVideoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video(
+        self,
+        request: ccc20200701_models.GetVideoRequest,
+    ) -> ccc20200701_models.GetVideoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_video_with_options(request, runtime)
+
+    async def get_video_async(
+        self,
+        request: ccc20200701_models.GetVideoRequest,
+    ) -> ccc20200701_models.GetVideoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_video_with_options_async(request, runtime)
+
     def get_voicemail_recording_with_options(
         self,
         request: ccc20200701_models.GetVoicemailRecordingRequest,
