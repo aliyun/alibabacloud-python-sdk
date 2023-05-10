@@ -644,6 +644,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.vamlrequest):
             request.vamlrequest_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vamlrequest, 'VAMLRequest', 'json')
         query = {}
+        if not UtilClient.is_unset(request.feedback):
+            query['Feedback'] = request.feedback
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.tenant_id):
@@ -684,6 +686,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.vamlrequest):
             request.vamlrequest_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vamlrequest, 'VAMLRequest', 'json')
         query = {}
+        if not UtilClient.is_unset(request.feedback):
+            query['Feedback'] = request.feedback
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.tenant_id):

@@ -1875,11 +1875,13 @@ class SendMessageRequestVAMLRequest(TeaModel):
 class SendMessageRequest(TeaModel):
     def __init__(
         self,
+        feedback: bool = None,
         session_id: str = None,
         tenant_id: int = None,
         text_request: SendMessageRequestTextRequest = None,
         vamlrequest: SendMessageRequestVAMLRequest = None,
     ):
+        self.feedback = feedback
         self.session_id = session_id
         self.tenant_id = tenant_id
         self.text_request = text_request
@@ -1897,6 +1899,8 @@ class SendMessageRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feedback is not None:
+            result['Feedback'] = self.feedback
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         if self.tenant_id is not None:
@@ -1909,6 +1913,8 @@ class SendMessageRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Feedback') is not None:
+            self.feedback = m.get('Feedback')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         if m.get('TenantId') is not None:
@@ -1925,11 +1931,13 @@ class SendMessageRequest(TeaModel):
 class SendMessageShrinkRequest(TeaModel):
     def __init__(
         self,
+        feedback: bool = None,
         session_id: str = None,
         tenant_id: int = None,
         text_request_shrink: str = None,
         vamlrequest_shrink: str = None,
     ):
+        self.feedback = feedback
         self.session_id = session_id
         self.tenant_id = tenant_id
         self.text_request_shrink = text_request_shrink
@@ -1944,6 +1952,8 @@ class SendMessageShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feedback is not None:
+            result['Feedback'] = self.feedback
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         if self.tenant_id is not None:
@@ -1956,6 +1966,8 @@ class SendMessageShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Feedback') is not None:
+            self.feedback = m.get('Feedback')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         if m.get('TenantId') is not None:
@@ -2616,7 +2628,6 @@ class StartTimedResetOperateResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -2776,7 +2787,6 @@ class StopInstanceResponseBody(TeaModel):
         message: str = None,
         success: bool = None,
     ):
-        # Id of the request
         self.code = code
         self.data = data
         self.message = message
