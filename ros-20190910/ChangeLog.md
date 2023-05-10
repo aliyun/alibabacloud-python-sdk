@@ -1,3 +1,6 @@
+2023-05-10 Version: 3.2.25
+- Support resource type registration and module.
+
 2023-04-13 Version: 3.2.24
 - Added StartTime and EndTime to ListStacks to filter Stacks based on time range.
 - CreateStack adds CreateOptions for specifying multiple creation options.
