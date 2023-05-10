@@ -587,6 +587,7 @@ class DescribePhoneNumberOperatorAttributeRequest(TeaModel):
     def __init__(
         self,
         auth_code: str = None,
+        extend_function: str = None,
         input_number: str = None,
         mask: str = None,
         owner_id: int = None,
@@ -594,6 +595,7 @@ class DescribePhoneNumberOperatorAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.auth_code = auth_code
+        self.extend_function = extend_function
         self.input_number = input_number
         self.mask = mask
         self.owner_id = owner_id
@@ -611,6 +613,8 @@ class DescribePhoneNumberOperatorAttributeRequest(TeaModel):
         result = dict()
         if self.auth_code is not None:
             result['AuthCode'] = self.auth_code
+        if self.extend_function is not None:
+            result['ExtendFunction'] = self.extend_function
         if self.input_number is not None:
             result['InputNumber'] = self.input_number
         if self.mask is not None:
@@ -627,6 +631,8 @@ class DescribePhoneNumberOperatorAttributeRequest(TeaModel):
         m = m or dict()
         if m.get('AuthCode') is not None:
             self.auth_code = m.get('AuthCode')
+        if m.get('ExtendFunction') is not None:
+            self.extend_function = m.get('ExtendFunction')
         if m.get('InputNumber') is not None:
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
