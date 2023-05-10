@@ -623,6 +623,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.face_compare_with_options_async(request, runtime)
 
+    def face_liveness_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.FaceLivenessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.FaceLivenessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.crop):
+            query['Crop'] = request.crop
+        if not UtilClient.is_unset(request.face_picture_base_64):
+            query['FacePictureBase64'] = request.face_picture_base_64
+        if not UtilClient.is_unset(request.face_picture_url):
+            query['FacePictureUrl'] = request.face_picture_url
+        if not UtilClient.is_unset(request.face_quality):
+            query['FaceQuality'] = request.face_quality
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.occlusion):
+            query['Occlusion'] = request.occlusion
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FaceLiveness',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.FaceLivenessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def face_liveness_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.FaceLivenessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.FaceLivenessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.crop):
+            query['Crop'] = request.crop
+        if not UtilClient.is_unset(request.face_picture_base_64):
+            query['FacePictureBase64'] = request.face_picture_base_64
+        if not UtilClient.is_unset(request.face_picture_url):
+            query['FacePictureUrl'] = request.face_picture_url
+        if not UtilClient.is_unset(request.face_quality):
+            query['FaceQuality'] = request.face_quality
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.occlusion):
+            query['Occlusion'] = request.occlusion
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FaceLiveness',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.FaceLivenessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def face_liveness(
+        self,
+        request: cloudauth_intl_20220809_models.FaceLivenessRequest,
+    ) -> cloudauth_intl_20220809_models.FaceLivenessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.face_liveness_with_options(request, runtime)
+
+    async def face_liveness_async(
+        self,
+        request: cloudauth_intl_20220809_models.FaceLivenessRequest,
+    ) -> cloudauth_intl_20220809_models.FaceLivenessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.face_liveness_with_options_async(request, runtime)
+
     def initialize_with_options(
         self,
         request: cloudauth_intl_20220809_models.InitializeRequest,

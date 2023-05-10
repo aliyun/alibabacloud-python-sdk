@@ -1475,6 +1475,252 @@ class FaceCompareResponse(TeaModel):
         return self
 
 
+class FaceLivenessRequest(TeaModel):
+    def __init__(
+        self,
+        crop: str = None,
+        face_picture_base_64: str = None,
+        face_picture_url: str = None,
+        face_quality: str = None,
+        merchant_biz_id: str = None,
+        merchant_user_id: str = None,
+        occlusion: str = None,
+        product_code: str = None,
+    ):
+        self.crop = crop
+        self.face_picture_base_64 = face_picture_base_64
+        self.face_picture_url = face_picture_url
+        self.face_quality = face_quality
+        self.merchant_biz_id = merchant_biz_id
+        self.merchant_user_id = merchant_user_id
+        self.occlusion = occlusion
+        self.product_code = product_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.crop is not None:
+            result['Crop'] = self.crop
+        if self.face_picture_base_64 is not None:
+            result['FacePictureBase64'] = self.face_picture_base_64
+        if self.face_picture_url is not None:
+            result['FacePictureUrl'] = self.face_picture_url
+        if self.face_quality is not None:
+            result['FaceQuality'] = self.face_quality
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.merchant_user_id is not None:
+            result['MerchantUserId'] = self.merchant_user_id
+        if self.occlusion is not None:
+            result['Occlusion'] = self.occlusion
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Crop') is not None:
+            self.crop = m.get('Crop')
+        if m.get('FacePictureBase64') is not None:
+            self.face_picture_base_64 = m.get('FacePictureBase64')
+        if m.get('FacePictureUrl') is not None:
+            self.face_picture_url = m.get('FacePictureUrl')
+        if m.get('FaceQuality') is not None:
+            self.face_quality = m.get('FaceQuality')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('MerchantUserId') is not None:
+            self.merchant_user_id = m.get('MerchantUserId')
+        if m.get('Occlusion') is not None:
+            self.occlusion = m.get('Occlusion')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        return self
+
+
+class FaceLivenessResponseBodyResultExtFaceInfo(TeaModel):
+    def __init__(
+        self,
+        face_attack: str = None,
+        face_quality_score: float = None,
+        occlusion_result: str = None,
+    ):
+        self.face_attack = face_attack
+        self.face_quality_score = face_quality_score
+        self.occlusion_result = occlusion_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_attack is not None:
+            result['FaceAttack'] = self.face_attack
+        if self.face_quality_score is not None:
+            result['FaceQualityScore'] = self.face_quality_score
+        if self.occlusion_result is not None:
+            result['OcclusionResult'] = self.occlusion_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceAttack') is not None:
+            self.face_attack = m.get('FaceAttack')
+        if m.get('FaceQualityScore') is not None:
+            self.face_quality_score = m.get('FaceQualityScore')
+        if m.get('OcclusionResult') is not None:
+            self.occlusion_result = m.get('OcclusionResult')
+        return self
+
+
+class FaceLivenessResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        ext_face_info: FaceLivenessResponseBodyResultExtFaceInfo = None,
+        passed: str = None,
+        sub_code: str = None,
+        transaction_id: str = None,
+    ):
+        self.ext_face_info = ext_face_info
+        self.passed = passed
+        self.sub_code = sub_code
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        if self.ext_face_info:
+            self.ext_face_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_face_info is not None:
+            result['ExtFaceInfo'] = self.ext_face_info.to_map()
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtFaceInfo') is not None:
+            temp_model = FaceLivenessResponseBodyResultExtFaceInfo()
+            self.ext_face_info = temp_model.from_map(m['ExtFaceInfo'])
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class FaceLivenessResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: FaceLivenessResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = FaceLivenessResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class FaceLivenessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FaceLivenessResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FaceLivenessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InitializeRequest(TeaModel):
     def __init__(
         self,
