@@ -1,3 +1,7 @@
+2023-05-11 Version: 1.1.5
+- Add AllotDatasetAccelerationTask API.
+- Update error code description.
+
 2022-09-08 Version: 1.1.4
 - Add API BatchAddFeishuUsers.
 

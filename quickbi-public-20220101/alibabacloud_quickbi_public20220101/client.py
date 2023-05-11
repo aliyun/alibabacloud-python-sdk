@@ -46,6 +46,15 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse:
+        """
+        Indicates whether the request is successful. Valid values:
+        *   true: The request was successful.
+        *   false: The request failed.
+        
+        @param request: AddDataLevelPermissionRuleUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDataLevelPermissionRuleUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.add_user_model):
@@ -74,6 +83,15 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse:
+        """
+        Indicates whether the request is successful. Valid values:
+        *   true: The request was successful.
+        *   false: The request failed.
+        
+        @param request: AddDataLevelPermissionRuleUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDataLevelPermissionRuleUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.add_user_model):
@@ -101,6 +119,14 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersRequest,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse:
+        """
+        Indicates whether the request is successful. Valid values:
+        *   true: The request was successful.
+        *   false: The request failed.
+        
+        @param request: AddDataLevelPermissionRuleUsersRequest
+        @return: AddDataLevelPermissionRuleUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_data_level_permission_rule_users_with_options(request, runtime)
 
@@ -108,6 +134,14 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersRequest,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse:
+        """
+        Indicates whether the request is successful. Valid values:
+        *   true: The request was successful.
+        *   false: The request failed.
+        
+        @param request: AddDataLevelPermissionRuleUsersRequest
+        @return: AddDataLevelPermissionRuleUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_data_level_permission_rule_users_with_options_async(request, runtime)
 
@@ -116,6 +150,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddDataLevelPermissionWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse:
+        """
+        ROW_LEVEL
+        
+        @param request: AddDataLevelPermissionWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDataLevelPermissionWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -152,6 +193,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddDataLevelPermissionWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse:
+        """
+        ROW_LEVEL
+        
+        @param request: AddDataLevelPermissionWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDataLevelPermissionWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -187,6 +235,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddDataLevelPermissionWhiteListRequest,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse:
+        """
+        ROW_LEVEL
+        
+        @param request: AddDataLevelPermissionWhiteListRequest
+        @return: AddDataLevelPermissionWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_data_level_permission_white_list_with_options(request, runtime)
 
@@ -194,6 +248,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddDataLevelPermissionWhiteListRequest,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse:
+        """
+        ROW_LEVEL
+        
+        @param request: AddDataLevelPermissionWhiteListRequest
+        @return: AddDataLevelPermissionWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_data_level_permission_white_list_with_options_async(request, runtime)
 
@@ -746,6 +806,76 @@ class Client(OpenApiClient):
     ) -> quickbi_public_20220101_models.AddWorkspaceUsersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.add_workspace_users_with_options_async(request, runtime)
+
+    def allot_dataset_acceleration_task_with_options(
+        self,
+        request: quickbi_public_20220101_models.AllotDatasetAccelerationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AllotDatasetAccelerationTask',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def allot_dataset_acceleration_task_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.AllotDatasetAccelerationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AllotDatasetAccelerationTask',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def allot_dataset_acceleration_task(
+        self,
+        request: quickbi_public_20220101_models.AllotDatasetAccelerationTaskRequest,
+    ) -> quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.allot_dataset_acceleration_task_with_options(request, runtime)
+
+    async def allot_dataset_acceleration_task_async(
+        self,
+        request: quickbi_public_20220101_models.AllotDatasetAccelerationTaskRequest,
+    ) -> quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.allot_dataset_acceleration_task_with_options_async(request, runtime)
 
     def authorize_menu_with_options(
         self,
@@ -1568,6 +1698,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse:
+        """
+        {"ruleId":"a5bb24da-**-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+        
+        @param request: DeleteDataLevelPermissionRuleUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataLevelPermissionRuleUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_user_model):
@@ -1596,6 +1733,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse:
+        """
+        {"ruleId":"a5bb24da-**-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+        
+        @param request: DeleteDataLevelPermissionRuleUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataLevelPermissionRuleUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_user_model):
@@ -1623,6 +1767,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersRequest,
     ) -> quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse:
+        """
+        {"ruleId":"a5bb24da-**-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+        
+        @param request: DeleteDataLevelPermissionRuleUsersRequest
+        @return: DeleteDataLevelPermissionRuleUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_data_level_permission_rule_users_with_options(request, runtime)
 
@@ -1630,6 +1780,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersRequest,
     ) -> quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse:
+        """
+        {"ruleId":"a5bb24da-**-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+        
+        @param request: DeleteDataLevelPermissionRuleUsersRequest
+        @return: DeleteDataLevelPermissionRuleUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_level_permission_rule_users_with_options_async(request, runtime)
 
@@ -1638,6 +1794,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteDataLevelRuleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse:
+        """
+        The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        
+        @param request: DeleteDataLevelRuleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataLevelRuleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -1668,6 +1831,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteDataLevelRuleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse:
+        """
+        The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        
+        @param request: DeleteDataLevelRuleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataLevelRuleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -1697,6 +1867,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteDataLevelRuleConfigRequest,
     ) -> quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse:
+        """
+        The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        
+        @param request: DeleteDataLevelRuleConfigRequest
+        @return: DeleteDataLevelRuleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_data_level_rule_config_with_options(request, runtime)
 
@@ -1704,6 +1880,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteDataLevelRuleConfigRequest,
     ) -> quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse:
+        """
+        The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        
+        @param request: DeleteDataLevelRuleConfigRequest
+        @return: DeleteDataLevelRuleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_level_rule_config_with_options_async(request, runtime)
 
@@ -2283,6 +2465,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_user_group_info_with_options_async(request, runtime)
 
+    def list_api_datasource_with_options(
+        self,
+        request: quickbi_public_20220101_models.ListApiDatasourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApiDatasource',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListApiDatasourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_api_datasource_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.ListApiDatasourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApiDatasource',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListApiDatasourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_api_datasource(
+        self,
+        request: quickbi_public_20220101_models.ListApiDatasourceRequest,
+    ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_api_datasource_with_options(request, runtime)
+
+    async def list_api_datasource_async(
+        self,
+        request: quickbi_public_20220101_models.ListApiDatasourceRequest,
+    ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_api_datasource_with_options_async(request, runtime)
+
     def list_by_user_group_id_with_options(
         self,
         request: quickbi_public_20220101_models.ListByUserGroupIdRequest,
@@ -2428,6 +2692,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse:
+        """
+        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        
+        @param request: ListCubeDataLevelPermissionConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCubeDataLevelPermissionConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -2458,6 +2729,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse:
+        """
+        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        
+        @param request: ListCubeDataLevelPermissionConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCubeDataLevelPermissionConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -2487,6 +2765,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigRequest,
     ) -> quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse:
+        """
+        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        
+        @param request: ListCubeDataLevelPermissionConfigRequest
+        @return: ListCubeDataLevelPermissionConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cube_data_level_permission_config_with_options(request, runtime)
 
@@ -2494,6 +2778,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigRequest,
     ) -> quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse:
+        """
+        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        
+        @param request: ListCubeDataLevelPermissionConfigRequest
+        @return: ListCubeDataLevelPermissionConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cube_data_level_permission_config_with_options_async(request, runtime)
 
@@ -3039,11 +3329,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_user_groups_by_user_id_with_options_async(request, runtime)
 
+    def modify_api_datasource_parameters_with_options(
+        self,
+        request: quickbi_public_20220101_models.ModifyApiDatasourceParametersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApiDatasourceParameters',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_api_datasource_parameters_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.ModifyApiDatasourceParametersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApiDatasourceParameters',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_api_datasource_parameters(
+        self,
+        request: quickbi_public_20220101_models.ModifyApiDatasourceParametersRequest,
+    ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_api_datasource_parameters_with_options(request, runtime)
+
+    async def modify_api_datasource_parameters_async(
+        self,
+        request: quickbi_public_20220101_models.ModifyApiDatasourceParametersRequest,
+    ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_api_datasource_parameters_with_options_async(request, runtime)
+
     def query_data_service_with_options(
         self,
         request: quickbi_public_20220101_models.QueryDataServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
+        """
+        f4cc43bc3**\
+        
+        @param request: QueryDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDataServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -3076,6 +3451,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
+        """
+        f4cc43bc3**\
+        
+        @param request: QueryDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDataServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -3107,6 +3489,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryDataServiceRequest,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
+        """
+        f4cc43bc3**\
+        
+        @param request: QueryDataServiceRequest
+        @return: QueryDataServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_data_service_with_options(request, runtime)
 
@@ -3114,6 +3502,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryDataServiceRequest,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
+        """
+        f4cc43bc3**\
+        
+        @param request: QueryDataServiceRequest
+        @return: QueryDataServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_data_service_with_options_async(request, runtime)
 
@@ -3122,6 +3516,15 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetDetailInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetDetailInfoResponse:
+        """
+        The execution result of the interface is returned. Valid values:
+        *   true: The request was successful.
+        *   false: The request fails.
+        
+        @param request: QueryDatasetDetailInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDatasetDetailInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -3150,6 +3553,15 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetDetailInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetDetailInfoResponse:
+        """
+        The execution result of the interface is returned. Valid values:
+        *   true: The request was successful.
+        *   false: The request fails.
+        
+        @param request: QueryDatasetDetailInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDatasetDetailInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -3177,6 +3589,14 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryDatasetDetailInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetDetailInfoResponse:
+        """
+        The execution result of the interface is returned. Valid values:
+        *   true: The request was successful.
+        *   false: The request fails.
+        
+        @param request: QueryDatasetDetailInfoRequest
+        @return: QueryDatasetDetailInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_dataset_detail_info_with_options(request, runtime)
 
@@ -3184,6 +3604,14 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryDatasetDetailInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetDetailInfoResponse:
+        """
+        The execution result of the interface is returned. Valid values:
+        *   true: The request was successful.
+        *   false: The request fails.
+        
+        @param request: QueryDatasetDetailInfoRequest
+        @return: QueryDatasetDetailInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_dataset_detail_info_with_options_async(request, runtime)
 
@@ -5072,6 +5500,15 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
+        """
+        Indicates whether the request is successful. Valid values:
+        *   true: The request was successful.
+        *   false: The request failed.
+        
+        @param request: SetDataLevelPermissionRuleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDataLevelPermissionRuleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_model):
@@ -5100,6 +5537,15 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
+        """
+        Indicates whether the request is successful. Valid values:
+        *   true: The request was successful.
+        *   false: The request failed.
+        
+        @param request: SetDataLevelPermissionRuleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDataLevelPermissionRuleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_model):
@@ -5127,6 +5573,14 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
+        """
+        Indicates whether the request is successful. Valid values:
+        *   true: The request was successful.
+        *   false: The request failed.
+        
+        @param request: SetDataLevelPermissionRuleConfigRequest
+        @return: SetDataLevelPermissionRuleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_data_level_permission_rule_config_with_options(request, runtime)
 
@@ -5134,6 +5588,14 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
+        """
+        Indicates whether the request is successful. Valid values:
+        *   true: The request was successful.
+        *   false: The request failed.
+        
+        @param request: SetDataLevelPermissionRuleConfigRequest
+        @return: SetDataLevelPermissionRuleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_data_level_permission_rule_config_with_options_async(request, runtime)
 
@@ -5142,6 +5604,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse:
+        """
+        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        
+        @param request: SetDataLevelPermissionWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDataLevelPermissionWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.white_list_model):
@@ -5170,6 +5639,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse:
+        """
+        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        
+        @param request: SetDataLevelPermissionWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDataLevelPermissionWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.white_list_model):
@@ -5197,6 +5673,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.SetDataLevelPermissionWhiteListRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse:
+        """
+        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        
+        @param request: SetDataLevelPermissionWhiteListRequest
+        @return: SetDataLevelPermissionWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_data_level_permission_white_list_with_options(request, runtime)
 
@@ -5204,6 +5686,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.SetDataLevelPermissionWhiteListRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse:
+        """
+        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        
+        @param request: SetDataLevelPermissionWhiteListRequest
+        @return: SetDataLevelPermissionWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_data_level_permission_white_list_with_options_async(request, runtime)
 
@@ -5212,6 +5700,15 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateDataLevelPermissionStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse:
+        """
+        The execution result of the interface. Valid values:
+        *   true: The request was successful.
+        *   false: The request failed.
+        
+        @param request: UpdateDataLevelPermissionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataLevelPermissionStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -5244,6 +5741,15 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateDataLevelPermissionStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse:
+        """
+        The execution result of the interface. Valid values:
+        *   true: The request was successful.
+        *   false: The request failed.
+        
+        @param request: UpdateDataLevelPermissionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataLevelPermissionStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -5275,6 +5781,14 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateDataLevelPermissionStatusRequest,
     ) -> quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse:
+        """
+        The execution result of the interface. Valid values:
+        *   true: The request was successful.
+        *   false: The request failed.
+        
+        @param request: UpdateDataLevelPermissionStatusRequest
+        @return: UpdateDataLevelPermissionStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_data_level_permission_status_with_options(request, runtime)
 
@@ -5282,6 +5796,14 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateDataLevelPermissionStatusRequest,
     ) -> quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse:
+        """
+        The execution result of the interface. Valid values:
+        *   true: The request was successful.
+        *   false: The request failed.
+        
+        @param request: UpdateDataLevelPermissionStatusRequest
+        @return: UpdateDataLevelPermissionStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_data_level_permission_status_with_options_async(request, runtime)
 
