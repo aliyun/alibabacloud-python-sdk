@@ -1,3 +1,6 @@
+2023-05-11 Version: 3.1.2
+- Pub Support MessageExpiryInterval and Retained.
+
 2023-03-06 Version: 3.1.1
 - Iot_20180120 TeaDSL SDK.
 

@@ -250,6 +250,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_share_task_device_with_options_async(request, runtime)
 
+    def async_rrpc_with_options(
+        self,
+        request: iot_20180120_models.AsyncRRpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.AsyncRRpcResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.ext_info):
+            query['ExtInfo'] = request.ext_info
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.topic_full_name):
+            query['TopicFullName'] = request.topic_full_name
+        body = {}
+        if not UtilClient.is_unset(request.message_content):
+            body['MessageContent'] = request.message_content
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncRRpc',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.AsyncRRpcResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def async_rrpc_with_options_async(
+        self,
+        request: iot_20180120_models.AsyncRRpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.AsyncRRpcResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.ext_info):
+            query['ExtInfo'] = request.ext_info
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.topic_full_name):
+            query['TopicFullName'] = request.topic_full_name
+        body = {}
+        if not UtilClient.is_unset(request.message_content):
+            body['MessageContent'] = request.message_content
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncRRpc',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.AsyncRRpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def async_rrpc(
+        self,
+        request: iot_20180120_models.AsyncRRpcRequest,
+    ) -> iot_20180120_models.AsyncRRpcResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.async_rrpc_with_options(request, runtime)
+
+    async def async_rrpc_async(
+        self,
+        request: iot_20180120_models.AsyncRRpcRequest,
+    ) -> iot_20180120_models.AsyncRRpcResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.async_rrpc_with_options_async(request, runtime)
+
     def attach_destination_with_options(
         self,
         request: iot_20180120_models.AttachDestinationRequest,
@@ -501,6 +595,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchAddDeviceGroupRelationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchAddDeviceGroupRelationsResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: BatchAddDeviceGroupRelationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAddDeviceGroupRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device):
@@ -533,6 +634,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchAddDeviceGroupRelationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchAddDeviceGroupRelationsResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: BatchAddDeviceGroupRelationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAddDeviceGroupRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device):
@@ -564,6 +672,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchAddDeviceGroupRelationsRequest,
     ) -> iot_20180120_models.BatchAddDeviceGroupRelationsResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: BatchAddDeviceGroupRelationsRequest
+        @return: BatchAddDeviceGroupRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_add_device_group_relations_with_options(request, runtime)
 
@@ -571,6 +685,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchAddDeviceGroupRelationsRequest,
     ) -> iot_20180120_models.BatchAddDeviceGroupRelationsResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: BatchAddDeviceGroupRelationsRequest
+        @return: BatchAddDeviceGroupRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_add_device_group_relations_with_options_async(request, runtime)
 
@@ -579,6 +699,20 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchAddThingTopoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchAddThingTopoResponse:
+        """
+        You can attach up to 10 sub-devices to a gateway in a single call.
+        *   The API operation caller must be the gateway owner.
+        *   If you specify a sub-device that is already attached to a gateway, the original gateway is replaced with the specified gateway.
+        *   If one of the specified sub-devices fails to establish a topological relationship with the gateway, the system rolls back, and all specified sub-devices fail to establish topological relationships with the gateway.
+        *   After you call this operation to establish topological relationships between sub-devices and the gateway, IoT Platform uses the `/sys/${productKey}/${deviceName}/thing/topo/change` topic to push information that includes the result of this operation to the gateway. For more information, see [Notify gateways of changes of topological relationships](~~89299~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per Alibaba Cloud account.
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchAddThingTopoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAddThingTopoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.gw_device_name):
@@ -613,6 +747,20 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchAddThingTopoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchAddThingTopoResponse:
+        """
+        You can attach up to 10 sub-devices to a gateway in a single call.
+        *   The API operation caller must be the gateway owner.
+        *   If you specify a sub-device that is already attached to a gateway, the original gateway is replaced with the specified gateway.
+        *   If one of the specified sub-devices fails to establish a topological relationship with the gateway, the system rolls back, and all specified sub-devices fail to establish topological relationships with the gateway.
+        *   After you call this operation to establish topological relationships between sub-devices and the gateway, IoT Platform uses the `/sys/${productKey}/${deviceName}/thing/topo/change` topic to push information that includes the result of this operation to the gateway. For more information, see [Notify gateways of changes of topological relationships](~~89299~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per Alibaba Cloud account.
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchAddThingTopoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAddThingTopoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.gw_device_name):
@@ -646,6 +794,19 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchAddThingTopoRequest,
     ) -> iot_20180120_models.BatchAddThingTopoResponse:
+        """
+        You can attach up to 10 sub-devices to a gateway in a single call.
+        *   The API operation caller must be the gateway owner.
+        *   If you specify a sub-device that is already attached to a gateway, the original gateway is replaced with the specified gateway.
+        *   If one of the specified sub-devices fails to establish a topological relationship with the gateway, the system rolls back, and all specified sub-devices fail to establish topological relationships with the gateway.
+        *   After you call this operation to establish topological relationships between sub-devices and the gateway, IoT Platform uses the `/sys/${productKey}/${deviceName}/thing/topo/change` topic to push information that includes the result of this operation to the gateway. For more information, see [Notify gateways of changes of topological relationships](~~89299~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per Alibaba Cloud account.
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchAddThingTopoRequest
+        @return: BatchAddThingTopoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_add_thing_topo_with_options(request, runtime)
 
@@ -653,6 +814,19 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchAddThingTopoRequest,
     ) -> iot_20180120_models.BatchAddThingTopoResponse:
+        """
+        You can attach up to 10 sub-devices to a gateway in a single call.
+        *   The API operation caller must be the gateway owner.
+        *   If you specify a sub-device that is already attached to a gateway, the original gateway is replaced with the specified gateway.
+        *   If one of the specified sub-devices fails to establish a topological relationship with the gateway, the system rolls back, and all specified sub-devices fail to establish topological relationships with the gateway.
+        *   After you call this operation to establish topological relationships between sub-devices and the gateway, IoT Platform uses the `/sys/${productKey}/${deviceName}/thing/topo/change` topic to push information that includes the result of this operation to the gateway. For more information, see [Notify gateways of changes of topological relationships](~~89299~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per Alibaba Cloud account.
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchAddThingTopoRequest
+        @return: BatchAddThingTopoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_add_thing_topo_with_options_async(request, runtime)
 
@@ -661,6 +835,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information about common request parameters, see [Common parameters](~~30561~~).
+        
+        @param request: BatchBindDeviceToEdgeInstanceWithDriverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchBindDeviceToEdgeInstanceWithDriverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -695,6 +876,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information about common request parameters, see [Common parameters](~~30561~~).
+        
+        @param request: BatchBindDeviceToEdgeInstanceWithDriverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchBindDeviceToEdgeInstanceWithDriverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -728,6 +916,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverRequest,
     ) -> iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information about common request parameters, see [Common parameters](~~30561~~).
+        
+        @param request: BatchBindDeviceToEdgeInstanceWithDriverRequest
+        @return: BatchBindDeviceToEdgeInstanceWithDriverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_bind_device_to_edge_instance_with_driver_with_options(request, runtime)
 
@@ -735,6 +929,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverRequest,
     ) -> iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information about common request parameters, see [Common parameters](~~30561~~).
+        
+        @param request: BatchBindDeviceToEdgeInstanceWithDriverRequest
+        @return: BatchBindDeviceToEdgeInstanceWithDriverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_bind_device_to_edge_instance_with_driver_with_options_async(request, runtime)
 
@@ -899,18 +1099,36 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchCheckDeviceNamesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchCheckDeviceNamesResponse:
+        """
+        You can call this operation with the *BatchRegisterDeviceWithApplyId** operation to register multiple devices under a product. Each device carries a unique DeviceName.
+        Procedure:
+        1\\. Call this operation to specify the DeviceNames of the devices to be registered. IoT Platform returns an application ID (**ApplyId**). A successful response indicates that the request to verify the DeviceNames is submitted. The actual registration process is asynchronously implemented and takes some minutes.
+        2\\. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the name setting result.
+        3\\. Call the [BatchRegisterDeviceWithApplyId](~~69514~~) operation to register multiple devices.
+        4\\. Optional. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to view the registration result.
+        5\\. Call the [QueryPageByApplyId](~~69518~~) operation to query the information about the registered devices.
+        ## Limits
+        - You can specify a maximum of 10,000 DeviceNames in a single call.
+        - Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).  >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchCheckDeviceNamesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCheckDeviceNamesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.device_name):
-            query['DeviceName'] = request.device_name
-        if not UtilClient.is_unset(request.device_name_list):
-            query['DeviceNameList'] = request.device_name_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.device_name_list):
+            body['DeviceNameList'] = request.device_name_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchCheckDeviceNames',
@@ -933,18 +1151,36 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchCheckDeviceNamesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchCheckDeviceNamesResponse:
+        """
+        You can call this operation with the *BatchRegisterDeviceWithApplyId** operation to register multiple devices under a product. Each device carries a unique DeviceName.
+        Procedure:
+        1\\. Call this operation to specify the DeviceNames of the devices to be registered. IoT Platform returns an application ID (**ApplyId**). A successful response indicates that the request to verify the DeviceNames is submitted. The actual registration process is asynchronously implemented and takes some minutes.
+        2\\. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the name setting result.
+        3\\. Call the [BatchRegisterDeviceWithApplyId](~~69514~~) operation to register multiple devices.
+        4\\. Optional. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to view the registration result.
+        5\\. Call the [QueryPageByApplyId](~~69518~~) operation to query the information about the registered devices.
+        ## Limits
+        - You can specify a maximum of 10,000 DeviceNames in a single call.
+        - Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).  >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchCheckDeviceNamesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCheckDeviceNamesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.device_name):
-            query['DeviceName'] = request.device_name
-        if not UtilClient.is_unset(request.device_name_list):
-            query['DeviceNameList'] = request.device_name_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.device_name_list):
+            body['DeviceNameList'] = request.device_name_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchCheckDeviceNames',
@@ -966,6 +1202,21 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchCheckDeviceNamesRequest,
     ) -> iot_20180120_models.BatchCheckDeviceNamesResponse:
+        """
+        You can call this operation with the *BatchRegisterDeviceWithApplyId** operation to register multiple devices under a product. Each device carries a unique DeviceName.
+        Procedure:
+        1\\. Call this operation to specify the DeviceNames of the devices to be registered. IoT Platform returns an application ID (**ApplyId**). A successful response indicates that the request to verify the DeviceNames is submitted. The actual registration process is asynchronously implemented and takes some minutes.
+        2\\. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the name setting result.
+        3\\. Call the [BatchRegisterDeviceWithApplyId](~~69514~~) operation to register multiple devices.
+        4\\. Optional. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to view the registration result.
+        5\\. Call the [QueryPageByApplyId](~~69518~~) operation to query the information about the registered devices.
+        ## Limits
+        - You can specify a maximum of 10,000 DeviceNames in a single call.
+        - Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).  >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchCheckDeviceNamesRequest
+        @return: BatchCheckDeviceNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_check_device_names_with_options(request, runtime)
 
@@ -973,6 +1224,21 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchCheckDeviceNamesRequest,
     ) -> iot_20180120_models.BatchCheckDeviceNamesResponse:
+        """
+        You can call this operation with the *BatchRegisterDeviceWithApplyId** operation to register multiple devices under a product. Each device carries a unique DeviceName.
+        Procedure:
+        1\\. Call this operation to specify the DeviceNames of the devices to be registered. IoT Platform returns an application ID (**ApplyId**). A successful response indicates that the request to verify the DeviceNames is submitted. The actual registration process is asynchronously implemented and takes some minutes.
+        2\\. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the name setting result.
+        3\\. Call the [BatchRegisterDeviceWithApplyId](~~69514~~) operation to register multiple devices.
+        4\\. Optional. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to view the registration result.
+        5\\. Call the [QueryPageByApplyId](~~69518~~) operation to query the information about the registered devices.
+        ## Limits
+        - You can specify a maximum of 10,000 DeviceNames in a single call.
+        - Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).  >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchCheckDeviceNamesRequest
+        @return: BatchCheckDeviceNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_check_device_names_with_options_async(request, runtime)
 
@@ -983,14 +1249,16 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BatchCheckImportDeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.device_list):
-            query['DeviceList'] = request.device_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_list):
+            body['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchCheckImportDevice',
@@ -1015,14 +1283,16 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BatchCheckImportDeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.device_list):
-            query['DeviceList'] = request.device_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_list):
+            body['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchCheckImportDevice',
@@ -1059,16 +1329,25 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchCheckVehicleDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchCheckVehicleDeviceResponse:
+        """
+        The invalid device models returned if the call fails.
+        
+        @param request: BatchCheckVehicleDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCheckVehicleDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.device_list):
-            query['DeviceList'] = request.device_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_list):
+            body['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchCheckVehicleDevice',
@@ -1091,16 +1370,25 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchCheckVehicleDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchCheckVehicleDeviceResponse:
+        """
+        The invalid device models returned if the call fails.
+        
+        @param request: BatchCheckVehicleDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCheckVehicleDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.device_list):
-            query['DeviceList'] = request.device_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_list):
+            body['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchCheckVehicleDevice',
@@ -1122,6 +1410,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchCheckVehicleDeviceRequest,
     ) -> iot_20180120_models.BatchCheckVehicleDeviceResponse:
+        """
+        The invalid device models returned if the call fails.
+        
+        @param request: BatchCheckVehicleDeviceRequest
+        @return: BatchCheckVehicleDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_check_vehicle_device_with_options(request, runtime)
 
@@ -1129,6 +1423,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchCheckVehicleDeviceRequest,
     ) -> iot_20180120_models.BatchCheckVehicleDeviceResponse:
+        """
+        The invalid device models returned if the call fails.
+        
+        @param request: BatchCheckVehicleDeviceRequest
+        @return: BatchCheckVehicleDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_check_vehicle_device_with_options_async(request, runtime)
 
@@ -1137,6 +1437,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchClearEdgeInstanceDeviceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchClearEdgeInstanceDeviceConfigResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchClearEdgeInstanceDeviceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchClearEdgeInstanceDeviceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1169,6 +1478,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchClearEdgeInstanceDeviceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchClearEdgeInstanceDeviceConfigResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchClearEdgeInstanceDeviceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchClearEdgeInstanceDeviceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1200,6 +1518,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchClearEdgeInstanceDeviceConfigRequest,
     ) -> iot_20180120_models.BatchClearEdgeInstanceDeviceConfigResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchClearEdgeInstanceDeviceConfigRequest
+        @return: BatchClearEdgeInstanceDeviceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_clear_edge_instance_device_config_with_options(request, runtime)
 
@@ -1207,6 +1533,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchClearEdgeInstanceDeviceConfigRequest,
     ) -> iot_20180120_models.BatchClearEdgeInstanceDeviceConfigResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchClearEdgeInstanceDeviceConfigRequest
+        @return: BatchClearEdgeInstanceDeviceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_clear_edge_instance_device_config_with_options_async(request, runtime)
 
@@ -1379,6 +1713,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchDeleteDeviceGroupRelationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchDeleteDeviceGroupRelationsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchDeleteDeviceGroupRelationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteDeviceGroupRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device):
@@ -1411,6 +1754,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchDeleteDeviceGroupRelationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchDeleteDeviceGroupRelationsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchDeleteDeviceGroupRelationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteDeviceGroupRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device):
@@ -1442,6 +1794,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchDeleteDeviceGroupRelationsRequest,
     ) -> iot_20180120_models.BatchDeleteDeviceGroupRelationsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchDeleteDeviceGroupRelationsRequest
+        @return: BatchDeleteDeviceGroupRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_delete_device_group_relations_with_options(request, runtime)
 
@@ -1449,6 +1809,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchDeleteDeviceGroupRelationsRequest,
     ) -> iot_20180120_models.BatchDeleteDeviceGroupRelationsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchDeleteDeviceGroupRelationsRequest
+        @return: BatchDeleteDeviceGroupRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_device_group_relations_with_options_async(request, runtime)
 
@@ -1613,6 +1981,19 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchGetDeviceStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetDeviceStateResponse:
+        """
+        When you call this operation, you can perform the following operations:
+        *   You can specify a value for the **ProductKey** parameter and multiple values for the **DeviceName** parameter to query the status of devices that belong to a product.
+        *   You can specify multiple values for the **IotId** parameter to query the status of devices that belong to different products.****\
+        >You can query the status of up to 50 devices in a call.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchGetDeviceStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetDeviceStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -1647,6 +2028,19 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchGetDeviceStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetDeviceStateResponse:
+        """
+        When you call this operation, you can perform the following operations:
+        *   You can specify a value for the **ProductKey** parameter and multiple values for the **DeviceName** parameter to query the status of devices that belong to a product.
+        *   You can specify multiple values for the **IotId** parameter to query the status of devices that belong to different products.****\
+        >You can query the status of up to 50 devices in a call.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchGetDeviceStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetDeviceStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -1680,6 +2074,18 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchGetDeviceStateRequest,
     ) -> iot_20180120_models.BatchGetDeviceStateResponse:
+        """
+        When you call this operation, you can perform the following operations:
+        *   You can specify a value for the **ProductKey** parameter and multiple values for the **DeviceName** parameter to query the status of devices that belong to a product.
+        *   You can specify multiple values for the **IotId** parameter to query the status of devices that belong to different products.****\
+        >You can query the status of up to 50 devices in a call.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchGetDeviceStateRequest
+        @return: BatchGetDeviceStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_get_device_state_with_options(request, runtime)
 
@@ -1687,6 +2093,18 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchGetDeviceStateRequest,
     ) -> iot_20180120_models.BatchGetDeviceStateResponse:
+        """
+        When you call this operation, you can perform the following operations:
+        *   You can specify a value for the **ProductKey** parameter and multiple values for the **DeviceName** parameter to query the status of devices that belong to a product.
+        *   You can specify multiple values for the **IotId** parameter to query the status of devices that belong to different products.****\
+        >You can query the status of up to 50 devices in a call.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchGetDeviceStateRequest
+        @return: BatchGetDeviceStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_get_device_state_with_options_async(request, runtime)
 
@@ -1695,6 +2113,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchGetEdgeDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeDriverResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: BatchGetEdgeDriverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetEdgeDriverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_ids):
@@ -1725,6 +2152,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchGetEdgeDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeDriverResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: BatchGetEdgeDriverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetEdgeDriverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_ids):
@@ -1754,6 +2190,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchGetEdgeDriverRequest,
     ) -> iot_20180120_models.BatchGetEdgeDriverResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: BatchGetEdgeDriverRequest
+        @return: BatchGetEdgeDriverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_get_edge_driver_with_options(request, runtime)
 
@@ -1761,6 +2205,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchGetEdgeDriverRequest,
     ) -> iot_20180120_models.BatchGetEdgeDriverResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: BatchGetEdgeDriverRequest
+        @return: BatchGetEdgeDriverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_get_edge_driver_with_options_async(request, runtime)
 
@@ -1933,6 +2385,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchGetEdgeInstanceDeviceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDeviceConfigResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchGetEdgeInstanceDeviceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetEdgeInstanceDeviceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1965,6 +2426,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchGetEdgeInstanceDeviceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDeviceConfigResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchGetEdgeInstanceDeviceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetEdgeInstanceDeviceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1996,6 +2466,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchGetEdgeInstanceDeviceConfigRequest,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDeviceConfigResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchGetEdgeInstanceDeviceConfigRequest
+        @return: BatchGetEdgeInstanceDeviceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_get_edge_instance_device_config_with_options(request, runtime)
 
@@ -2003,6 +2481,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchGetEdgeInstanceDeviceConfigRequest,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDeviceConfigResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchGetEdgeInstanceDeviceConfigRequest
+        @return: BatchGetEdgeInstanceDeviceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_get_edge_instance_device_config_with_options_async(request, runtime)
 
@@ -2089,6 +2575,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchGetEdgeInstanceDriverConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDriverConfigsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchGetEdgeInstanceDriverConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetEdgeInstanceDriverConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_ids):
@@ -2121,6 +2616,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchGetEdgeInstanceDriverConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDriverConfigsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchGetEdgeInstanceDriverConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetEdgeInstanceDriverConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_ids):
@@ -2152,6 +2656,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchGetEdgeInstanceDriverConfigsRequest,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDriverConfigsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchGetEdgeInstanceDriverConfigsRequest
+        @return: BatchGetEdgeInstanceDriverConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_get_edge_instance_driver_configs_with_options(request, runtime)
 
@@ -2159,8 +2671,94 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchGetEdgeInstanceDriverConfigsRequest,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDriverConfigsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchGetEdgeInstanceDriverConfigsRequest
+        @return: BatchGetEdgeInstanceDriverConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_get_edge_instance_driver_configs_with_options_async(request, runtime)
+
+    def batch_gray_migration_device_with_options(
+        self,
+        request: iot_20180120_models.BatchGrayMigrationDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchGrayMigrationDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_names):
+            body['DeviceNames'] = request.device_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchGrayMigrationDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchGrayMigrationDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_gray_migration_device_with_options_async(
+        self,
+        request: iot_20180120_models.BatchGrayMigrationDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchGrayMigrationDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_names):
+            body['DeviceNames'] = request.device_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchGrayMigrationDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchGrayMigrationDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_gray_migration_device(
+        self,
+        request: iot_20180120_models.BatchGrayMigrationDeviceRequest,
+    ) -> iot_20180120_models.BatchGrayMigrationDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_gray_migration_device_with_options(request, runtime)
+
+    async def batch_gray_migration_device_async(
+        self,
+        request: iot_20180120_models.BatchGrayMigrationDeviceRequest,
+    ) -> iot_20180120_models.BatchGrayMigrationDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_gray_migration_device_with_options_async(request, runtime)
 
     def batch_import_device_with_options(
         self,
@@ -2169,14 +2767,16 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BatchImportDeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.device_list):
-            query['DeviceList'] = request.device_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_list):
+            body['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchImportDevice',
@@ -2201,14 +2801,16 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BatchImportDeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.device_list):
-            query['DeviceList'] = request.device_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_list):
+            body['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchImportDevice',
@@ -2245,16 +2847,27 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchImportVehicleDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchImportVehicleDeviceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        - **true**: The call was successful.
+        - **false**: The call failed.
+        
+        @param request: BatchImportVehicleDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchImportVehicleDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.device_list):
-            query['DeviceList'] = request.device_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_list):
+            body['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchImportVehicleDevice',
@@ -2277,16 +2890,27 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchImportVehicleDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchImportVehicleDeviceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        - **true**: The call was successful.
+        - **false**: The call failed.
+        
+        @param request: BatchImportVehicleDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchImportVehicleDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.device_list):
-            query['DeviceList'] = request.device_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_list):
+            body['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchImportVehicleDevice',
@@ -2308,6 +2932,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchImportVehicleDeviceRequest,
     ) -> iot_20180120_models.BatchImportVehicleDeviceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        - **true**: The call was successful.
+        - **false**: The call failed.
+        
+        @param request: BatchImportVehicleDeviceRequest
+        @return: BatchImportVehicleDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_import_vehicle_device_with_options(request, runtime)
 
@@ -2315,6 +2947,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchImportVehicleDeviceRequest,
     ) -> iot_20180120_models.BatchImportVehicleDeviceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        - **true**: The call was successful.
+        - **false**: The call failed.
+        
+        @param request: BatchImportVehicleDeviceRequest
+        @return: BatchImportVehicleDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_import_vehicle_device_with_options_async(request, runtime)
 
@@ -2323,6 +2963,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchPubRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchPubResponse:
+        """
+        You can call this operation to publish a message to a maximum of 100 devices of a product at a time.
+        *   The BatchPub operation cannot be used to send commands of setting properties or calling services. If you need to set properties, use the [SetDeviceProperty](~~69579~~) or [SetDevicesProperty](~~96243~~) operation. If you need to call services, use the [InvokeThingService](~~69584~~) or [InvokeThingsService](~~96242~~) operation.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchPubRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchPubResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -2361,6 +3011,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchPubRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchPubResponse:
+        """
+        You can call this operation to publish a message to a maximum of 100 devices of a product at a time.
+        *   The BatchPub operation cannot be used to send commands of setting properties or calling services. If you need to set properties, use the [SetDeviceProperty](~~69579~~) or [SetDevicesProperty](~~96243~~) operation. If you need to call services, use the [InvokeThingService](~~69584~~) or [InvokeThingsService](~~96242~~) operation.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchPubRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchPubResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -2398,6 +3058,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchPubRequest,
     ) -> iot_20180120_models.BatchPubResponse:
+        """
+        You can call this operation to publish a message to a maximum of 100 devices of a product at a time.
+        *   The BatchPub operation cannot be used to send commands of setting properties or calling services. If you need to set properties, use the [SetDeviceProperty](~~69579~~) or [SetDevicesProperty](~~96243~~) operation. If you need to call services, use the [InvokeThingService](~~69584~~) or [InvokeThingsService](~~96242~~) operation.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchPubRequest
+        @return: BatchPubResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_pub_with_options(request, runtime)
 
@@ -2405,6 +3074,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchPubRequest,
     ) -> iot_20180120_models.BatchPubResponse:
+        """
+        You can call this operation to publish a message to a maximum of 100 devices of a product at a time.
+        *   The BatchPub operation cannot be used to send commands of setting properties or calling services. If you need to set properties, use the [SetDeviceProperty](~~69579~~) or [SetDevicesProperty](~~96243~~) operation. If you need to call services, use the [InvokeThingService](~~69584~~) or [InvokeThingsService](~~96242~~) operation.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchPubRequest
+        @return: BatchPubResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_pub_with_options_async(request, runtime)
 
@@ -2413,6 +3091,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchQueryDeviceDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchQueryDeviceDetailResponse:
+        """
+        ## Limits
+        *   You can query a maximum of 100 devices in a single call.
+        *   You can query the details of devices that belong only to the current Alibaba Cloud account. If you specify a device that does not belong to the current account, an error message is returned.
+        *   If you specify multiple devices and some devices do not exist, only the details of existing devices are returned.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchQueryDeviceDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchQueryDeviceDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -2445,6 +3135,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchQueryDeviceDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchQueryDeviceDetailResponse:
+        """
+        ## Limits
+        *   You can query a maximum of 100 devices in a single call.
+        *   You can query the details of devices that belong only to the current Alibaba Cloud account. If you specify a device that does not belong to the current account, an error message is returned.
+        *   If you specify multiple devices and some devices do not exist, only the details of existing devices are returned.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchQueryDeviceDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchQueryDeviceDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -2476,6 +3178,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchQueryDeviceDetailRequest,
     ) -> iot_20180120_models.BatchQueryDeviceDetailResponse:
+        """
+        ## Limits
+        *   You can query a maximum of 100 devices in a single call.
+        *   You can query the details of devices that belong only to the current Alibaba Cloud account. If you specify a device that does not belong to the current account, an error message is returned.
+        *   If you specify multiple devices and some devices do not exist, only the details of existing devices are returned.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchQueryDeviceDetailRequest
+        @return: BatchQueryDeviceDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_query_device_detail_with_options(request, runtime)
 
@@ -2483,6 +3196,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchQueryDeviceDetailRequest,
     ) -> iot_20180120_models.BatchQueryDeviceDetailResponse:
+        """
+        ## Limits
+        *   You can query a maximum of 100 devices in a single call.
+        *   You can query the details of devices that belong only to the current Alibaba Cloud account. If you specify a device that does not belong to the current account, an error message is returned.
+        *   If you specify multiple devices and some devices do not exist, only the details of existing devices are returned.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchQueryDeviceDetailRequest
+        @return: BatchQueryDeviceDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_query_device_detail_with_options_async(request, runtime)
 
@@ -2491,6 +3215,22 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchRegisterDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchRegisterDeviceResponse:
+        """
+        You can use one of the following methods to register multiple devices:
+        *   If you want to generate random DeviceNames, call the BatchRegisterDevice operation.
+        Perform the following steps to register devices and view the result:
+        1\\. Call the BatchRegisterDevice operation to register multiple devices. A successful response indicates that the registration request is submitted. The actual registration process is asynchronously implemented and takes some minutes.
+        2\\. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the device registration result.
+        3\\. Call the [QueryPageByApplyId](~~69518~~) operation to view the details of registered devices. The details include the DeviceName, DeviceSecret, and IotId parameters.
+        *   If you want to specify custom DeviceNames, call the BatchRegisterDeviceWithApplyId operation. For more information, see [BatchRegisterDeviceWithApplyId](~~69514~~).
+        ## Limits
+        - You can create a maximum of 10,000 devices in a single call.
+        - Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).  >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchRegisterDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchRegisterDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.count):
@@ -2523,6 +3263,22 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchRegisterDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchRegisterDeviceResponse:
+        """
+        You can use one of the following methods to register multiple devices:
+        *   If you want to generate random DeviceNames, call the BatchRegisterDevice operation.
+        Perform the following steps to register devices and view the result:
+        1\\. Call the BatchRegisterDevice operation to register multiple devices. A successful response indicates that the registration request is submitted. The actual registration process is asynchronously implemented and takes some minutes.
+        2\\. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the device registration result.
+        3\\. Call the [QueryPageByApplyId](~~69518~~) operation to view the details of registered devices. The details include the DeviceName, DeviceSecret, and IotId parameters.
+        *   If you want to specify custom DeviceNames, call the BatchRegisterDeviceWithApplyId operation. For more information, see [BatchRegisterDeviceWithApplyId](~~69514~~).
+        ## Limits
+        - You can create a maximum of 10,000 devices in a single call.
+        - Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).  >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchRegisterDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchRegisterDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.count):
@@ -2554,6 +3310,21 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchRegisterDeviceRequest,
     ) -> iot_20180120_models.BatchRegisterDeviceResponse:
+        """
+        You can use one of the following methods to register multiple devices:
+        *   If you want to generate random DeviceNames, call the BatchRegisterDevice operation.
+        Perform the following steps to register devices and view the result:
+        1\\. Call the BatchRegisterDevice operation to register multiple devices. A successful response indicates that the registration request is submitted. The actual registration process is asynchronously implemented and takes some minutes.
+        2\\. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the device registration result.
+        3\\. Call the [QueryPageByApplyId](~~69518~~) operation to view the details of registered devices. The details include the DeviceName, DeviceSecret, and IotId parameters.
+        *   If you want to specify custom DeviceNames, call the BatchRegisterDeviceWithApplyId operation. For more information, see [BatchRegisterDeviceWithApplyId](~~69514~~).
+        ## Limits
+        - You can create a maximum of 10,000 devices in a single call.
+        - Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).  >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchRegisterDeviceRequest
+        @return: BatchRegisterDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_register_device_with_options(request, runtime)
 
@@ -2561,6 +3332,21 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchRegisterDeviceRequest,
     ) -> iot_20180120_models.BatchRegisterDeviceResponse:
+        """
+        You can use one of the following methods to register multiple devices:
+        *   If you want to generate random DeviceNames, call the BatchRegisterDevice operation.
+        Perform the following steps to register devices and view the result:
+        1\\. Call the BatchRegisterDevice operation to register multiple devices. A successful response indicates that the registration request is submitted. The actual registration process is asynchronously implemented and takes some minutes.
+        2\\. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the device registration result.
+        3\\. Call the [QueryPageByApplyId](~~69518~~) operation to view the details of registered devices. The details include the DeviceName, DeviceSecret, and IotId parameters.
+        *   If you want to specify custom DeviceNames, call the BatchRegisterDeviceWithApplyId operation. For more information, see [BatchRegisterDeviceWithApplyId](~~69514~~).
+        ## Limits
+        - You can create a maximum of 10,000 devices in a single call.
+        - Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).  >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchRegisterDeviceRequest
+        @return: BatchRegisterDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_register_device_with_options_async(request, runtime)
 
@@ -2569,6 +3355,23 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchRegisterDeviceWithApplyIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchRegisterDeviceWithApplyIdResponse:
+        """
+        You can use one of the following methods to register multiple devices at a time:
+        *   Call the [BatchRegisterDevice](~~69473~~) operation to generate random DeviceNames.
+        *   Call the BatchRegisterDeviceWithApplyId and **BatchCheckDeviceNames** operations to specify custom DeviceNames. Procedure:
+        Call the [BatchCheckDeviceNames](~~69482~~) operation and specify the names of devices that you want to register. If the DeviceNames are valid, IoT Platform returns an application ID that is specified by the **ApplyId** parameter. You can query the DeviceName setting results, device registration results, and device details by **ApplyId**.
+        Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the name setting result.
+        Call the BatchRegisterDeviceWithApplyId operation to register multiple devices. The successful result that is returned by this operation indicates that only the batch registration request is submitted. In actual scenarios, the registration process takes a few minutes.
+        Optional. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the device registration result.
+        Call the [QueryPageByApplyId](~~69518~~) operation to view the details of devices that are registered in batches.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: BatchRegisterDeviceWithApplyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchRegisterDeviceWithApplyIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -2601,6 +3404,23 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchRegisterDeviceWithApplyIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchRegisterDeviceWithApplyIdResponse:
+        """
+        You can use one of the following methods to register multiple devices at a time:
+        *   Call the [BatchRegisterDevice](~~69473~~) operation to generate random DeviceNames.
+        *   Call the BatchRegisterDeviceWithApplyId and **BatchCheckDeviceNames** operations to specify custom DeviceNames. Procedure:
+        Call the [BatchCheckDeviceNames](~~69482~~) operation and specify the names of devices that you want to register. If the DeviceNames are valid, IoT Platform returns an application ID that is specified by the **ApplyId** parameter. You can query the DeviceName setting results, device registration results, and device details by **ApplyId**.
+        Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the name setting result.
+        Call the BatchRegisterDeviceWithApplyId operation to register multiple devices. The successful result that is returned by this operation indicates that only the batch registration request is submitted. In actual scenarios, the registration process takes a few minutes.
+        Optional. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the device registration result.
+        Call the [QueryPageByApplyId](~~69518~~) operation to view the details of devices that are registered in batches.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: BatchRegisterDeviceWithApplyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchRegisterDeviceWithApplyIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -2632,6 +3452,22 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchRegisterDeviceWithApplyIdRequest,
     ) -> iot_20180120_models.BatchRegisterDeviceWithApplyIdResponse:
+        """
+        You can use one of the following methods to register multiple devices at a time:
+        *   Call the [BatchRegisterDevice](~~69473~~) operation to generate random DeviceNames.
+        *   Call the BatchRegisterDeviceWithApplyId and **BatchCheckDeviceNames** operations to specify custom DeviceNames. Procedure:
+        Call the [BatchCheckDeviceNames](~~69482~~) operation and specify the names of devices that you want to register. If the DeviceNames are valid, IoT Platform returns an application ID that is specified by the **ApplyId** parameter. You can query the DeviceName setting results, device registration results, and device details by **ApplyId**.
+        Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the name setting result.
+        Call the BatchRegisterDeviceWithApplyId operation to register multiple devices. The successful result that is returned by this operation indicates that only the batch registration request is submitted. In actual scenarios, the registration process takes a few minutes.
+        Optional. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the device registration result.
+        Call the [QueryPageByApplyId](~~69518~~) operation to view the details of devices that are registered in batches.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: BatchRegisterDeviceWithApplyIdRequest
+        @return: BatchRegisterDeviceWithApplyIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_register_device_with_apply_id_with_options(request, runtime)
 
@@ -2639,6 +3475,22 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchRegisterDeviceWithApplyIdRequest,
     ) -> iot_20180120_models.BatchRegisterDeviceWithApplyIdResponse:
+        """
+        You can use one of the following methods to register multiple devices at a time:
+        *   Call the [BatchRegisterDevice](~~69473~~) operation to generate random DeviceNames.
+        *   Call the BatchRegisterDeviceWithApplyId and **BatchCheckDeviceNames** operations to specify custom DeviceNames. Procedure:
+        Call the [BatchCheckDeviceNames](~~69482~~) operation and specify the names of devices that you want to register. If the DeviceNames are valid, IoT Platform returns an application ID that is specified by the **ApplyId** parameter. You can query the DeviceName setting results, device registration results, and device details by **ApplyId**.
+        Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the name setting result.
+        Call the BatchRegisterDeviceWithApplyId operation to register multiple devices. The successful result that is returned by this operation indicates that only the batch registration request is submitted. In actual scenarios, the registration process takes a few minutes.
+        Optional. Call the [QueryBatchRegisterDeviceStatus](~~69483~~) operation to query the device registration result.
+        Call the [QueryPageByApplyId](~~69518~~) operation to view the details of devices that are registered in batches.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: BatchRegisterDeviceWithApplyIdRequest
+        @return: BatchRegisterDeviceWithApplyIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_register_device_with_apply_id_with_options_async(request, runtime)
 
@@ -2811,6 +3663,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchUnbindDeviceFromEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchUnbindDeviceFromEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchUnbindDeviceFromEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUnbindDeviceFromEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2843,6 +3704,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchUnbindDeviceFromEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchUnbindDeviceFromEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchUnbindDeviceFromEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUnbindDeviceFromEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2874,6 +3744,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchUnbindDeviceFromEdgeInstanceRequest,
     ) -> iot_20180120_models.BatchUnbindDeviceFromEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchUnbindDeviceFromEdgeInstanceRequest
+        @return: BatchUnbindDeviceFromEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_unbind_device_from_edge_instance_with_options(request, runtime)
 
@@ -2881,6 +3759,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchUnbindDeviceFromEdgeInstanceRequest,
     ) -> iot_20180120_models.BatchUnbindDeviceFromEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchUnbindDeviceFromEdgeInstanceRequest
+        @return: BatchUnbindDeviceFromEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_unbind_device_from_edge_instance_with_options_async(request, runtime)
 
@@ -3045,6 +3931,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchUpdateDeviceNicknameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchUpdateDeviceNicknameResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchUpdateDeviceNicknameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateDeviceNicknameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_nickname_info):
@@ -3075,6 +3970,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchUpdateDeviceNicknameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchUpdateDeviceNicknameResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchUpdateDeviceNicknameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateDeviceNicknameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_nickname_info):
@@ -3104,6 +4008,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchUpdateDeviceNicknameRequest,
     ) -> iot_20180120_models.BatchUpdateDeviceNicknameResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchUpdateDeviceNicknameRequest
+        @return: BatchUpdateDeviceNicknameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_update_device_nickname_with_options(request, runtime)
 
@@ -3111,6 +4023,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchUpdateDeviceNicknameRequest,
     ) -> iot_20180120_models.BatchUpdateDeviceNicknameResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchUpdateDeviceNicknameRequest
+        @return: BatchUpdateDeviceNicknameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_update_device_nickname_with_options_async(request, runtime)
 
@@ -3201,6 +4121,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BindDriverToEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindDriverToEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BindDriverToEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindDriverToEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -3237,6 +4166,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BindDriverToEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindDriverToEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BindDriverToEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindDriverToEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -3272,6 +4210,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BindDriverToEdgeInstanceRequest,
     ) -> iot_20180120_models.BindDriverToEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BindDriverToEdgeInstanceRequest
+        @return: BindDriverToEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_driver_to_edge_instance_with_options(request, runtime)
 
@@ -3279,6 +4225,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BindDriverToEdgeInstanceRequest,
     ) -> iot_20180120_models.BindDriverToEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BindDriverToEdgeInstanceRequest
+        @return: BindDriverToEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_driver_to_edge_instance_with_options_async(request, runtime)
 
@@ -3287,6 +4241,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BindGatewayToEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindGatewayToEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BindGatewayToEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindGatewayToEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -3323,6 +4286,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BindGatewayToEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindGatewayToEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BindGatewayToEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindGatewayToEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -3358,6 +4330,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BindGatewayToEdgeInstanceRequest,
     ) -> iot_20180120_models.BindGatewayToEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BindGatewayToEdgeInstanceRequest
+        @return: BindGatewayToEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_gateway_to_edge_instance_with_options(request, runtime)
 
@@ -3365,6 +4345,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BindGatewayToEdgeInstanceRequest,
     ) -> iot_20180120_models.BindGatewayToEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BindGatewayToEdgeInstanceRequest
+        @return: BindGatewayToEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_gateway_to_edge_instance_with_options_async(request, runtime)
 
@@ -3775,6 +4763,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CancelOTAStrategyByJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelOTAStrategyByJobResponse:
+        """
+        ## Limits
+        *   You can cancel only the dynamic update policy that is attached to a dynamic update batch. This operation is not applicable to static update batches.
+        After the operation is successful, the **JobStatus** parameter is set to CANCELED.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CancelOTAStrategyByJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelOTAStrategyByJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -3805,6 +4804,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CancelOTAStrategyByJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelOTAStrategyByJobResponse:
+        """
+        ## Limits
+        *   You can cancel only the dynamic update policy that is attached to a dynamic update batch. This operation is not applicable to static update batches.
+        After the operation is successful, the **JobStatus** parameter is set to CANCELED.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CancelOTAStrategyByJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelOTAStrategyByJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -3834,6 +4844,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CancelOTAStrategyByJobRequest,
     ) -> iot_20180120_models.CancelOTAStrategyByJobResponse:
+        """
+        ## Limits
+        *   You can cancel only the dynamic update policy that is attached to a dynamic update batch. This operation is not applicable to static update batches.
+        After the operation is successful, the **JobStatus** parameter is set to CANCELED.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CancelOTAStrategyByJobRequest
+        @return: CancelOTAStrategyByJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_otastrategy_by_job_with_options(request, runtime)
 
@@ -3841,6 +4861,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CancelOTAStrategyByJobRequest,
     ) -> iot_20180120_models.CancelOTAStrategyByJobResponse:
+        """
+        ## Limits
+        *   You can cancel only the dynamic update policy that is attached to a dynamic update batch. This operation is not applicable to static update batches.
+        After the operation is successful, the **JobStatus** parameter is set to CANCELED.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CancelOTAStrategyByJobRequest
+        @return: CancelOTAStrategyByJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_otastrategy_by_job_with_options_async(request, runtime)
 
@@ -3849,6 +4879,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CancelOTATaskByDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelOTATaskByDeviceResponse:
+        """
+        This operation can cancel device update tasks only when the tasks are in the to be pushed, pushed, or in upgrade state.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: CancelOTATaskByDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelOTATaskByDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -3885,6 +4925,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CancelOTATaskByDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelOTATaskByDeviceResponse:
+        """
+        This operation can cancel device update tasks only when the tasks are in the to be pushed, pushed, or in upgrade state.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: CancelOTATaskByDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelOTATaskByDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -3920,6 +4970,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CancelOTATaskByDeviceRequest,
     ) -> iot_20180120_models.CancelOTATaskByDeviceResponse:
+        """
+        This operation can cancel device update tasks only when the tasks are in the to be pushed, pushed, or in upgrade state.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: CancelOTATaskByDeviceRequest
+        @return: CancelOTATaskByDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_otatask_by_device_with_options(request, runtime)
 
@@ -3927,6 +4986,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CancelOTATaskByDeviceRequest,
     ) -> iot_20180120_models.CancelOTATaskByDeviceResponse:
+        """
+        This operation can cancel device update tasks only when the tasks are in the to be pushed, pushed, or in upgrade state.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: CancelOTATaskByDeviceRequest
+        @return: CancelOTATaskByDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_otatask_by_device_with_options_async(request, runtime)
 
@@ -3935,6 +5003,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CancelOTATaskByJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelOTATaskByJobResponse:
+        """
+        When you call this operation, make sure that you specify at least one of the CancelScheduledTask, CancelQueuedTask, CancelInProgressTask, CancelNotifiedTask, and CancelUnconfirmedTask parameters. Otherwise, the request will fail.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CancelOTATaskByJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelOTATaskByJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cancel_in_progress_task):
@@ -3975,6 +5053,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CancelOTATaskByJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelOTATaskByJobResponse:
+        """
+        When you call this operation, make sure that you specify at least one of the CancelScheduledTask, CancelQueuedTask, CancelInProgressTask, CancelNotifiedTask, and CancelUnconfirmedTask parameters. Otherwise, the request will fail.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CancelOTATaskByJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelOTATaskByJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cancel_in_progress_task):
@@ -4014,6 +5102,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CancelOTATaskByJobRequest,
     ) -> iot_20180120_models.CancelOTATaskByJobResponse:
+        """
+        When you call this operation, make sure that you specify at least one of the CancelScheduledTask, CancelQueuedTask, CancelInProgressTask, CancelNotifiedTask, and CancelUnconfirmedTask parameters. Otherwise, the request will fail.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CancelOTATaskByJobRequest
+        @return: CancelOTATaskByJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_otatask_by_job_with_options(request, runtime)
 
@@ -4021,6 +5118,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CancelOTATaskByJobRequest,
     ) -> iot_20180120_models.CancelOTATaskByJobResponse:
+        """
+        When you call this operation, make sure that you specify at least one of the CancelScheduledTask, CancelQueuedTask, CancelInProgressTask, CancelNotifiedTask, and CancelUnconfirmedTask parameters. Otherwise, the request will fail.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CancelOTATaskByJobRequest
+        @return: CancelOTATaskByJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_otatask_by_job_with_options_async(request, runtime)
 
@@ -4029,6 +5135,14 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CancelReleaseProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelReleaseProductResponse:
+        """
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CancelReleaseProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelReleaseProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -4059,6 +5173,14 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CancelReleaseProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelReleaseProductResponse:
+        """
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CancelReleaseProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelReleaseProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -4088,6 +5210,13 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CancelReleaseProductRequest,
     ) -> iot_20180120_models.CancelReleaseProductResponse:
+        """
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CancelReleaseProductRequest
+        @return: CancelReleaseProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_release_product_with_options(request, runtime)
 
@@ -4095,6 +5224,13 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CancelReleaseProductRequest,
     ) -> iot_20180120_models.CancelReleaseProductResponse:
+        """
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CancelReleaseProductRequest
+        @return: CancelReleaseProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_release_product_with_options_async(request, runtime)
 
@@ -4185,6 +5321,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ClearDeviceDesiredPropertyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ClearDeviceDesiredPropertyResponse:
+        """
+        Each time you call this operation, you must specify the identifiers of properties whose desired values you want to delete for the **Identifies** parameter. If you do not configure the **Identifies** parameter, the call fails.
+        *   You can specify up to 10 property identifiers for the **Identifies** parameter in a single call.
+        *   After you call this operation to deletes the desired values of properties of a device, you can call the [QueryDeviceDesiredProperty](~~107566~~) operation to query the desired values of properties of the device. In this case, the QueryDeviceDesiredProperty operation returns the **Identifier** parameter instead of the **Value** parameter.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ClearDeviceDesiredPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearDeviceDesiredPropertyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -4223,6 +5371,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ClearDeviceDesiredPropertyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ClearDeviceDesiredPropertyResponse:
+        """
+        Each time you call this operation, you must specify the identifiers of properties whose desired values you want to delete for the **Identifies** parameter. If you do not configure the **Identifies** parameter, the call fails.
+        *   You can specify up to 10 property identifiers for the **Identifies** parameter in a single call.
+        *   After you call this operation to deletes the desired values of properties of a device, you can call the [QueryDeviceDesiredProperty](~~107566~~) operation to query the desired values of properties of the device. In this case, the QueryDeviceDesiredProperty operation returns the **Identifier** parameter instead of the **Value** parameter.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ClearDeviceDesiredPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearDeviceDesiredPropertyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -4260,6 +5420,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ClearDeviceDesiredPropertyRequest,
     ) -> iot_20180120_models.ClearDeviceDesiredPropertyResponse:
+        """
+        Each time you call this operation, you must specify the identifiers of properties whose desired values you want to delete for the **Identifies** parameter. If you do not configure the **Identifies** parameter, the call fails.
+        *   You can specify up to 10 property identifiers for the **Identifies** parameter in a single call.
+        *   After you call this operation to deletes the desired values of properties of a device, you can call the [QueryDeviceDesiredProperty](~~107566~~) operation to query the desired values of properties of the device. In this case, the QueryDeviceDesiredProperty operation returns the **Identifier** parameter instead of the **Value** parameter.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ClearDeviceDesiredPropertyRequest
+        @return: ClearDeviceDesiredPropertyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.clear_device_desired_property_with_options(request, runtime)
 
@@ -4267,6 +5438,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ClearDeviceDesiredPropertyRequest,
     ) -> iot_20180120_models.ClearDeviceDesiredPropertyResponse:
+        """
+        Each time you call this operation, you must specify the identifiers of properties whose desired values you want to delete for the **Identifies** parameter. If you do not configure the **Identifies** parameter, the call fails.
+        *   You can specify up to 10 property identifiers for the **Identifies** parameter in a single call.
+        *   After you call this operation to deletes the desired values of properties of a device, you can call the [QueryDeviceDesiredProperty](~~107566~~) operation to query the desired values of properties of the device. In this case, the QueryDeviceDesiredProperty operation returns the **Identifier** parameter instead of the **Value** parameter.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ClearDeviceDesiredPropertyRequest
+        @return: ClearDeviceDesiredPropertyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.clear_device_desired_property_with_options_async(request, runtime)
 
@@ -4275,6 +5457,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ClearEdgeInstanceDriverConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ClearEdgeInstanceDriverConfigsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ClearEdgeInstanceDriverConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearEdgeInstanceDriverConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -4307,6 +5498,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ClearEdgeInstanceDriverConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ClearEdgeInstanceDriverConfigsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ClearEdgeInstanceDriverConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearEdgeInstanceDriverConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -4338,6 +5538,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ClearEdgeInstanceDriverConfigsRequest,
     ) -> iot_20180120_models.ClearEdgeInstanceDriverConfigsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ClearEdgeInstanceDriverConfigsRequest
+        @return: ClearEdgeInstanceDriverConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.clear_edge_instance_driver_configs_with_options(request, runtime)
 
@@ -4345,6 +5553,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ClearEdgeInstanceDriverConfigsRequest,
     ) -> iot_20180120_models.ClearEdgeInstanceDriverConfigsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ClearEdgeInstanceDriverConfigsRequest
+        @return: ClearEdgeInstanceDriverConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.clear_edge_instance_driver_configs_with_options_async(request, runtime)
 
@@ -4427,6 +5643,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CloseEdgeInstanceDeploymentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CloseEdgeInstanceDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CloseEdgeInstanceDeploymentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseEdgeInstanceDeploymentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4457,6 +5682,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CloseEdgeInstanceDeploymentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CloseEdgeInstanceDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CloseEdgeInstanceDeploymentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseEdgeInstanceDeploymentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4486,6 +5720,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CloseEdgeInstanceDeploymentRequest,
     ) -> iot_20180120_models.CloseEdgeInstanceDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CloseEdgeInstanceDeploymentRequest
+        @return: CloseEdgeInstanceDeploymentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.close_edge_instance_deployment_with_options(request, runtime)
 
@@ -4493,6 +5735,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CloseEdgeInstanceDeploymentRequest,
     ) -> iot_20180120_models.CloseEdgeInstanceDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CloseEdgeInstanceDeploymentRequest
+        @return: CloseEdgeInstanceDeploymentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.close_edge_instance_deployment_with_options_async(request, runtime)
 
@@ -4501,6 +5751,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ConfirmOTATaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ConfirmOTATaskResponse:
+        """
+        To confirm update tasks in a scheduled update batch, you must call this operation within the specified time range.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ConfirmOTATaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmOTATaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -4531,6 +5791,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ConfirmOTATaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ConfirmOTATaskResponse:
+        """
+        To confirm update tasks in a scheduled update batch, you must call this operation within the specified time range.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ConfirmOTATaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmOTATaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -4560,6 +5830,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ConfirmOTATaskRequest,
     ) -> iot_20180120_models.ConfirmOTATaskResponse:
+        """
+        To confirm update tasks in a scheduled update batch, you must call this operation within the specified time range.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ConfirmOTATaskRequest
+        @return: ConfirmOTATaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.confirm_otatask_with_options(request, runtime)
 
@@ -4567,6 +5846,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ConfirmOTATaskRequest,
     ) -> iot_20180120_models.ConfirmOTATaskResponse:
+        """
+        To confirm update tasks in a scheduled update batch, you must call this operation within the specified time range.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ConfirmOTATaskRequest
+        @return: ConfirmOTATaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.confirm_otatask_with_options_async(request, runtime)
 
@@ -4575,6 +5863,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CopyThingModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CopyThingModelResponse:
+        """
+        If a destination product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you can copy a TSL model.
+        *   The categories of the source product and destination product must be the same. The product category is indicated by the **CategoryKey** parameter. You can call the [QueryProduct](~~69272~~) operation and view the **CategoryKey** parameter of a product in the returned result.
+        *   You must specify the version of the TSL model that you want to copy by using the **SourceModelVersion** parameter in the request. Otherwise, the CopyThingModel operation fails.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to five queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CopyThingModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyThingModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -4611,6 +5911,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CopyThingModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CopyThingModelResponse:
+        """
+        If a destination product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you can copy a TSL model.
+        *   The categories of the source product and destination product must be the same. The product category is indicated by the **CategoryKey** parameter. You can call the [QueryProduct](~~69272~~) operation and view the **CategoryKey** parameter of a product in the returned result.
+        *   You must specify the version of the TSL model that you want to copy by using the **SourceModelVersion** parameter in the request. Otherwise, the CopyThingModel operation fails.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to five queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CopyThingModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyThingModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -4646,6 +5958,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CopyThingModelRequest,
     ) -> iot_20180120_models.CopyThingModelResponse:
+        """
+        If a destination product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you can copy a TSL model.
+        *   The categories of the source product and destination product must be the same. The product category is indicated by the **CategoryKey** parameter. You can call the [QueryProduct](~~69272~~) operation and view the **CategoryKey** parameter of a product in the returned result.
+        *   You must specify the version of the TSL model that you want to copy by using the **SourceModelVersion** parameter in the request. Otherwise, the CopyThingModel operation fails.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to five queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CopyThingModelRequest
+        @return: CopyThingModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.copy_thing_model_with_options(request, runtime)
 
@@ -4653,6 +5976,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CopyThingModelRequest,
     ) -> iot_20180120_models.CopyThingModelResponse:
+        """
+        If a destination product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you can copy a TSL model.
+        *   The categories of the source product and destination product must be the same. The product category is indicated by the **CategoryKey** parameter. You can call the [QueryProduct](~~69272~~) operation and view the **CategoryKey** parameter of a product in the returned result.
+        *   You must specify the version of the TSL model that you want to copy by using the **SourceModelVersion** parameter in the request. Otherwise, the CopyThingModel operation fails.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to five queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CopyThingModelRequest
+        @return: CopyThingModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.copy_thing_model_with_options_async(request, runtime)
 
@@ -4743,12 +6077,25 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateConsumerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateConsumerGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateConsumerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.sub_biz_code):
+            query['SubBizCode'] = request.sub_biz_code
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4773,12 +6120,25 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateConsumerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateConsumerGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateConsumerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.sub_biz_code):
+            query['SubBizCode'] = request.sub_biz_code
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4802,6 +6162,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateConsumerGroupRequest,
     ) -> iot_20180120_models.CreateConsumerGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateConsumerGroupRequest
+        @return: CreateConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_consumer_group_with_options(request, runtime)
 
@@ -4809,6 +6177,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateConsumerGroupRequest,
     ) -> iot_20180120_models.CreateConsumerGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateConsumerGroupRequest
+        @return: CreateConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_consumer_group_with_options_async(request, runtime)
 
@@ -4817,6 +6193,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateConsumerGroupSubscribeRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateConsumerGroupSubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateConsumerGroupSubscribeRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerGroupSubscribeRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_group_id):
@@ -4849,6 +6234,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateConsumerGroupSubscribeRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateConsumerGroupSubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateConsumerGroupSubscribeRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerGroupSubscribeRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_group_id):
@@ -4880,6 +6274,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateConsumerGroupSubscribeRelationRequest,
     ) -> iot_20180120_models.CreateConsumerGroupSubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateConsumerGroupSubscribeRelationRequest
+        @return: CreateConsumerGroupSubscribeRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_consumer_group_subscribe_relation_with_options(request, runtime)
 
@@ -4887,6 +6289,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateConsumerGroupSubscribeRelationRequest,
     ) -> iot_20180120_models.CreateConsumerGroupSubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateConsumerGroupSubscribeRelationRequest
+        @return: CreateConsumerGroupSubscribeRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_consumer_group_subscribe_relation_with_options_async(request, runtime)
 
@@ -5169,6 +6579,28 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateDeviceDistributeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateDeviceDistributeJobResponse:
+        """
+        To distribute devices, perform the following steps:
+        1\\. Asynchronously call this operation to create a device distribution task and obtain the **JobId** parameter.
+        2\\. Use **JobId** as a request parameter and repeatedly call the [QueryDeviceDistributeJob](~~199536~~) operation to obtain the **Status** parameter.
+        >  You must control the frequency of calls based on the QPS limit of the QueryDeviceDistributeJob operation.
+        If either of the following values is returned for the **Status** parameter, the distribution task ends:
+        *   **2**: The device distribution task is completed. This return value does not indicate that the devices are distributed. To obtain the distribution result of each device, perform the next step.
+        *   **3**: The distribution is unexpectedly interrupted. After you process the error, you can initiate a device distribution task again.
+        3\\. Use **JobId** that is returned in Step 1 as a request parameter and call the [QueryDeviceDistributeDetail](~~199533~~) operation to obtain the **File** parameter. The File parameter indicates the file URL of the distribution result.
+        >  The file URL is valid for 10 minutes.
+        4\\. Obtain the distribution result by using the file URL. The **Code** parameter indicates whether a device is distributed. If the value of the **Code** parameter is 200, the device is distributed.
+        If the distribution fails, you can perform the preceding steps to distribute devices again.
+        ## Limits
+        - This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        - You cannot call this operation to distribute devices across accounts.
+        - Each Alibaba Cloud account can create a maximum of 10 tasks to distribute products or devices. For more information about how to create a product distribution task, see [CreateProductDistributeJob](/help/en/iot-platform/latest/createproductdistributejob).
+        - Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).  >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateDeviceDistributeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeviceDistributeJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_name):
@@ -5209,6 +6641,28 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateDeviceDistributeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateDeviceDistributeJobResponse:
+        """
+        To distribute devices, perform the following steps:
+        1\\. Asynchronously call this operation to create a device distribution task and obtain the **JobId** parameter.
+        2\\. Use **JobId** as a request parameter and repeatedly call the [QueryDeviceDistributeJob](~~199536~~) operation to obtain the **Status** parameter.
+        >  You must control the frequency of calls based on the QPS limit of the QueryDeviceDistributeJob operation.
+        If either of the following values is returned for the **Status** parameter, the distribution task ends:
+        *   **2**: The device distribution task is completed. This return value does not indicate that the devices are distributed. To obtain the distribution result of each device, perform the next step.
+        *   **3**: The distribution is unexpectedly interrupted. After you process the error, you can initiate a device distribution task again.
+        3\\. Use **JobId** that is returned in Step 1 as a request parameter and call the [QueryDeviceDistributeDetail](~~199533~~) operation to obtain the **File** parameter. The File parameter indicates the file URL of the distribution result.
+        >  The file URL is valid for 10 minutes.
+        4\\. Obtain the distribution result by using the file URL. The **Code** parameter indicates whether a device is distributed. If the value of the **Code** parameter is 200, the device is distributed.
+        If the distribution fails, you can perform the preceding steps to distribute devices again.
+        ## Limits
+        - This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        - You cannot call this operation to distribute devices across accounts.
+        - Each Alibaba Cloud account can create a maximum of 10 tasks to distribute products or devices. For more information about how to create a product distribution task, see [CreateProductDistributeJob](/help/en/iot-platform/latest/createproductdistributejob).
+        - Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).  >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateDeviceDistributeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeviceDistributeJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_name):
@@ -5248,6 +6702,27 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateDeviceDistributeJobRequest,
     ) -> iot_20180120_models.CreateDeviceDistributeJobResponse:
+        """
+        To distribute devices, perform the following steps:
+        1\\. Asynchronously call this operation to create a device distribution task and obtain the **JobId** parameter.
+        2\\. Use **JobId** as a request parameter and repeatedly call the [QueryDeviceDistributeJob](~~199536~~) operation to obtain the **Status** parameter.
+        >  You must control the frequency of calls based on the QPS limit of the QueryDeviceDistributeJob operation.
+        If either of the following values is returned for the **Status** parameter, the distribution task ends:
+        *   **2**: The device distribution task is completed. This return value does not indicate that the devices are distributed. To obtain the distribution result of each device, perform the next step.
+        *   **3**: The distribution is unexpectedly interrupted. After you process the error, you can initiate a device distribution task again.
+        3\\. Use **JobId** that is returned in Step 1 as a request parameter and call the [QueryDeviceDistributeDetail](~~199533~~) operation to obtain the **File** parameter. The File parameter indicates the file URL of the distribution result.
+        >  The file URL is valid for 10 minutes.
+        4\\. Obtain the distribution result by using the file URL. The **Code** parameter indicates whether a device is distributed. If the value of the **Code** parameter is 200, the device is distributed.
+        If the distribution fails, you can perform the preceding steps to distribute devices again.
+        ## Limits
+        - This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        - You cannot call this operation to distribute devices across accounts.
+        - Each Alibaba Cloud account can create a maximum of 10 tasks to distribute products or devices. For more information about how to create a product distribution task, see [CreateProductDistributeJob](/help/en/iot-platform/latest/createproductdistributejob).
+        - Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).  >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateDeviceDistributeJobRequest
+        @return: CreateDeviceDistributeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_device_distribute_job_with_options(request, runtime)
 
@@ -5255,6 +6730,27 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateDeviceDistributeJobRequest,
     ) -> iot_20180120_models.CreateDeviceDistributeJobResponse:
+        """
+        To distribute devices, perform the following steps:
+        1\\. Asynchronously call this operation to create a device distribution task and obtain the **JobId** parameter.
+        2\\. Use **JobId** as a request parameter and repeatedly call the [QueryDeviceDistributeJob](~~199536~~) operation to obtain the **Status** parameter.
+        >  You must control the frequency of calls based on the QPS limit of the QueryDeviceDistributeJob operation.
+        If either of the following values is returned for the **Status** parameter, the distribution task ends:
+        *   **2**: The device distribution task is completed. This return value does not indicate that the devices are distributed. To obtain the distribution result of each device, perform the next step.
+        *   **3**: The distribution is unexpectedly interrupted. After you process the error, you can initiate a device distribution task again.
+        3\\. Use **JobId** that is returned in Step 1 as a request parameter and call the [QueryDeviceDistributeDetail](~~199533~~) operation to obtain the **File** parameter. The File parameter indicates the file URL of the distribution result.
+        >  The file URL is valid for 10 minutes.
+        4\\. Obtain the distribution result by using the file URL. The **Code** parameter indicates whether a device is distributed. If the value of the **Code** parameter is 200, the device is distributed.
+        If the distribution fails, you can perform the preceding steps to distribute devices again.
+        ## Limits
+        - This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        - You cannot call this operation to distribute devices across accounts.
+        - Each Alibaba Cloud account can create a maximum of 10 tasks to distribute products or devices. For more information about how to create a product distribution task, see [CreateProductDistributeJob](/help/en/iot-platform/latest/createproductdistributejob).
+        - Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).  >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateDeviceDistributeJobRequest
+        @return: CreateDeviceDistributeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_device_distribute_job_with_options_async(request, runtime)
 
@@ -5345,6 +6841,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateDeviceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateDeviceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeviceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_desc):
@@ -5379,6 +6884,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateDeviceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateDeviceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeviceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_desc):
@@ -5412,6 +6926,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateDeviceGroupRequest,
     ) -> iot_20180120_models.CreateDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateDeviceGroupRequest
+        @return: CreateDeviceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_device_group_with_options(request, runtime)
 
@@ -5419,6 +6941,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateDeviceGroupRequest,
     ) -> iot_20180120_models.CreateDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateDeviceGroupRequest
+        @return: CreateDeviceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_device_group_with_options_async(request, runtime)
 
@@ -5619,6 +7149,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateEdgeDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeDriverResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: CreateEdgeDriverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeDriverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cpu_arch):
@@ -5657,6 +7196,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateEdgeDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeDriverResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: CreateEdgeDriverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeDriverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cpu_arch):
@@ -5694,6 +7242,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateEdgeDriverRequest,
     ) -> iot_20180120_models.CreateEdgeDriverResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: CreateEdgeDriverRequest
+        @return: CreateEdgeDriverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_edge_driver_with_options(request, runtime)
 
@@ -5701,6 +7257,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateEdgeDriverRequest,
     ) -> iot_20180120_models.CreateEdgeDriverResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: CreateEdgeDriverRequest
+        @return: CreateEdgeDriverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_edge_driver_with_options_async(request, runtime)
 
@@ -5709,6 +7273,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateEdgeDriverVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeDriverVersionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateEdgeDriverVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeDriverVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.argument):
@@ -5755,6 +7328,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateEdgeDriverVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeDriverVersionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateEdgeDriverVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeDriverVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.argument):
@@ -5800,6 +7382,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateEdgeDriverVersionRequest,
     ) -> iot_20180120_models.CreateEdgeDriverVersionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateEdgeDriverVersionRequest
+        @return: CreateEdgeDriverVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_edge_driver_version_with_options(request, runtime)
 
@@ -5807,6 +7397,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateEdgeDriverVersionRequest,
     ) -> iot_20180120_models.CreateEdgeDriverVersionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateEdgeDriverVersionRequest
+        @return: CreateEdgeDriverVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_edge_driver_version_with_options_async(request, runtime)
 
@@ -5815,6 +7413,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeInstanceResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: CreateEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -5849,6 +7456,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeInstanceResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: CreateEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -5882,6 +7498,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateEdgeInstanceRequest,
     ) -> iot_20180120_models.CreateEdgeInstanceResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: CreateEdgeInstanceRequest
+        @return: CreateEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_edge_instance_with_options(request, runtime)
 
@@ -5889,6 +7513,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateEdgeInstanceRequest,
     ) -> iot_20180120_models.CreateEdgeInstanceResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: CreateEdgeInstanceRequest
+        @return: CreateEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_edge_instance_with_options_async(request, runtime)
 
@@ -5983,6 +7615,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateEdgeInstanceDeploymentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeInstanceDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateEdgeInstanceDeploymentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeInstanceDeploymentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6015,6 +7656,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateEdgeInstanceDeploymentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeInstanceDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateEdgeInstanceDeploymentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeInstanceDeploymentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6046,6 +7696,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateEdgeInstanceDeploymentRequest,
     ) -> iot_20180120_models.CreateEdgeInstanceDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateEdgeInstanceDeploymentRequest
+        @return: CreateEdgeInstanceDeploymentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_edge_instance_deployment_with_options(request, runtime)
 
@@ -6053,6 +7711,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateEdgeInstanceDeploymentRequest,
     ) -> iot_20180120_models.CreateEdgeInstanceDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateEdgeInstanceDeploymentRequest
+        @return: CreateEdgeInstanceDeploymentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_edge_instance_deployment_with_options_async(request, runtime)
 
@@ -6163,6 +7829,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateEdgeOssPreSignedAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeOssPreSignedAddressResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateEdgeOssPreSignedAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeOssPreSignedAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -6201,6 +7876,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateEdgeOssPreSignedAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeOssPreSignedAddressResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateEdgeOssPreSignedAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeOssPreSignedAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -6238,6 +7922,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateEdgeOssPreSignedAddressRequest,
     ) -> iot_20180120_models.CreateEdgeOssPreSignedAddressResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateEdgeOssPreSignedAddressRequest
+        @return: CreateEdgeOssPreSignedAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_edge_oss_pre_signed_address_with_options(request, runtime)
 
@@ -6245,6 +7937,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateEdgeOssPreSignedAddressRequest,
     ) -> iot_20180120_models.CreateEdgeOssPreSignedAddressResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateEdgeOssPreSignedAddressRequest
+        @return: CreateEdgeOssPreSignedAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_edge_oss_pre_signed_address_with_options_async(request, runtime)
 
@@ -6457,6 +8157,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateOTADynamicUpgradeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTADynamicUpgradeJobResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common parameters](~~30561~~).
+        
+        @param request: CreateOTADynamicUpgradeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOTADynamicUpgradeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.download_protocol):
@@ -6517,6 +8224,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateOTADynamicUpgradeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTADynamicUpgradeJobResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common parameters](~~30561~~).
+        
+        @param request: CreateOTADynamicUpgradeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOTADynamicUpgradeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.download_protocol):
@@ -6576,6 +8290,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateOTADynamicUpgradeJobRequest,
     ) -> iot_20180120_models.CreateOTADynamicUpgradeJobResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common parameters](~~30561~~).
+        
+        @param request: CreateOTADynamicUpgradeJobRequest
+        @return: CreateOTADynamicUpgradeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_otadynamic_upgrade_job_with_options(request, runtime)
 
@@ -6583,6 +8303,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateOTADynamicUpgradeJobRequest,
     ) -> iot_20180120_models.CreateOTADynamicUpgradeJobResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common parameters](~~30561~~).
+        
+        @param request: CreateOTADynamicUpgradeJobRequest
+        @return: CreateOTADynamicUpgradeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_otadynamic_upgrade_job_with_options_async(request, runtime)
 
@@ -6591,6 +8317,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateOTAFirmwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAFirmwareResponse:
+        """
+        Before you call this operation to create an OTA update package, you must call the [GenerateOTAUploadURL](~~147310~~) operation to generate the information about the files that you want to add to the OTA update package and call the Object Storage Service (OSS) [PostObject](~~31988~~) operation to upload the files.
+        ## Limits
+        Each Alibaba Cloud account can have up to 500 update packages.
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAFirmwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOTAFirmwareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dest_version):
@@ -6647,6 +8385,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateOTAFirmwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAFirmwareResponse:
+        """
+        Before you call this operation to create an OTA update package, you must call the [GenerateOTAUploadURL](~~147310~~) operation to generate the information about the files that you want to add to the OTA update package and call the Object Storage Service (OSS) [PostObject](~~31988~~) operation to upload the files.
+        ## Limits
+        Each Alibaba Cloud account can have up to 500 update packages.
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAFirmwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOTAFirmwareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dest_version):
@@ -6702,6 +8452,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateOTAFirmwareRequest,
     ) -> iot_20180120_models.CreateOTAFirmwareResponse:
+        """
+        Before you call this operation to create an OTA update package, you must call the [GenerateOTAUploadURL](~~147310~~) operation to generate the information about the files that you want to add to the OTA update package and call the Object Storage Service (OSS) [PostObject](~~31988~~) operation to upload the files.
+        ## Limits
+        Each Alibaba Cloud account can have up to 500 update packages.
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAFirmwareRequest
+        @return: CreateOTAFirmwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_otafirmware_with_options(request, runtime)
 
@@ -6709,6 +8470,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateOTAFirmwareRequest,
     ) -> iot_20180120_models.CreateOTAFirmwareResponse:
+        """
+        Before you call this operation to create an OTA update package, you must call the [GenerateOTAUploadURL](~~147310~~) operation to generate the information about the files that you want to add to the OTA update package and call the Object Storage Service (OSS) [PostObject](~~31988~~) operation to upload the files.
+        ## Limits
+        Each Alibaba Cloud account can have up to 500 update packages.
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAFirmwareRequest
+        @return: CreateOTAFirmwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_otafirmware_with_options_async(request, runtime)
 
@@ -6717,6 +8489,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateOTAModuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAModuleResponse:
+        """
+        ## Limits
+        OTA modules are the updatable units of the devices that belong to the same product. The default module indicates the entire firmware of a device. You can call this operation to create a custom OTA module.
+        *   You can create a maximum of 10 custom OTA modules for each product.
+        *   After an OTA module is created, you cannot modify its name. You can call the [UpdateOTAModule](~~186061~~) operation to modify the module alias and description.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAModuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOTAModuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alias_name):
@@ -6753,6 +8537,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateOTAModuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAModuleResponse:
+        """
+        ## Limits
+        OTA modules are the updatable units of the devices that belong to the same product. The default module indicates the entire firmware of a device. You can call this operation to create a custom OTA module.
+        *   You can create a maximum of 10 custom OTA modules for each product.
+        *   After an OTA module is created, you cannot modify its name. You can call the [UpdateOTAModule](~~186061~~) operation to modify the module alias and description.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAModuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOTAModuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alias_name):
@@ -6788,6 +8584,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateOTAModuleRequest,
     ) -> iot_20180120_models.CreateOTAModuleResponse:
+        """
+        ## Limits
+        OTA modules are the updatable units of the devices that belong to the same product. The default module indicates the entire firmware of a device. You can call this operation to create a custom OTA module.
+        *   You can create a maximum of 10 custom OTA modules for each product.
+        *   After an OTA module is created, you cannot modify its name. You can call the [UpdateOTAModule](~~186061~~) operation to modify the module alias and description.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAModuleRequest
+        @return: CreateOTAModuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_otamodule_with_options(request, runtime)
 
@@ -6795,6 +8602,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateOTAModuleRequest,
     ) -> iot_20180120_models.CreateOTAModuleResponse:
+        """
+        ## Limits
+        OTA modules are the updatable units of the devices that belong to the same product. The default module indicates the entire firmware of a device. You can call this operation to create a custom OTA module.
+        *   You can create a maximum of 10 custom OTA modules for each product.
+        *   After an OTA module is created, you cannot modify its name. You can call the [UpdateOTAModule](~~186061~~) operation to modify the module alias and description.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAModuleRequest
+        @return: CreateOTAModuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_otamodule_with_options_async(request, runtime)
 
@@ -6803,6 +8621,21 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateOTAStaticUpgradeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAStaticUpgradeJobResponse:
+        """
+        If you specify that an update package does not need to be verified when you call the [CreateOTAFirmware](~~147311~~) operation, you must make sure that the update package is verified before you call the CreateOTAStaticUpgradeJob operation to create an update batch. For more information about how to create a task to verify an update package, see [CreateOTAVerifyJob](~~147480~~).
+        *   You can initiate update tasks for a maximum of 200 devices in each call. If you use a device list file, you can initiate update tasks for a maximum of 1,000,000 devices. However, you must call the [GenerateDeviceNameListURL](~~186062~~) operation to generate a URL for the device list file. Then, you can perform the operations as prompted to upload the device list file.
+        *   When you initiate update tasks for multiple devices, the devices that already have the destination firmware versions are skipped.
+        *   Each device can be in the pending or updating status only in one update task. If you initiate another update task for a device that is in the pending or updating status, the update task fails.
+        *   You can create multiple static update batches by using a single update package.
+        *   Downloading update packages through the MQTT protocol is supported only in the China (Shanghai) region.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAStaticUpgradeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOTAStaticUpgradeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dn_list_file_url):
@@ -6873,6 +8706,21 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateOTAStaticUpgradeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAStaticUpgradeJobResponse:
+        """
+        If you specify that an update package does not need to be verified when you call the [CreateOTAFirmware](~~147311~~) operation, you must make sure that the update package is verified before you call the CreateOTAStaticUpgradeJob operation to create an update batch. For more information about how to create a task to verify an update package, see [CreateOTAVerifyJob](~~147480~~).
+        *   You can initiate update tasks for a maximum of 200 devices in each call. If you use a device list file, you can initiate update tasks for a maximum of 1,000,000 devices. However, you must call the [GenerateDeviceNameListURL](~~186062~~) operation to generate a URL for the device list file. Then, you can perform the operations as prompted to upload the device list file.
+        *   When you initiate update tasks for multiple devices, the devices that already have the destination firmware versions are skipped.
+        *   Each device can be in the pending or updating status only in one update task. If you initiate another update task for a device that is in the pending or updating status, the update task fails.
+        *   You can create multiple static update batches by using a single update package.
+        *   Downloading update packages through the MQTT protocol is supported only in the China (Shanghai) region.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAStaticUpgradeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOTAStaticUpgradeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dn_list_file_url):
@@ -6942,6 +8790,20 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateOTAStaticUpgradeJobRequest,
     ) -> iot_20180120_models.CreateOTAStaticUpgradeJobResponse:
+        """
+        If you specify that an update package does not need to be verified when you call the [CreateOTAFirmware](~~147311~~) operation, you must make sure that the update package is verified before you call the CreateOTAStaticUpgradeJob operation to create an update batch. For more information about how to create a task to verify an update package, see [CreateOTAVerifyJob](~~147480~~).
+        *   You can initiate update tasks for a maximum of 200 devices in each call. If you use a device list file, you can initiate update tasks for a maximum of 1,000,000 devices. However, you must call the [GenerateDeviceNameListURL](~~186062~~) operation to generate a URL for the device list file. Then, you can perform the operations as prompted to upload the device list file.
+        *   When you initiate update tasks for multiple devices, the devices that already have the destination firmware versions are skipped.
+        *   Each device can be in the pending or updating status only in one update task. If you initiate another update task for a device that is in the pending or updating status, the update task fails.
+        *   You can create multiple static update batches by using a single update package.
+        *   Downloading update packages through the MQTT protocol is supported only in the China (Shanghai) region.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAStaticUpgradeJobRequest
+        @return: CreateOTAStaticUpgradeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_otastatic_upgrade_job_with_options(request, runtime)
 
@@ -6949,6 +8811,20 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateOTAStaticUpgradeJobRequest,
     ) -> iot_20180120_models.CreateOTAStaticUpgradeJobResponse:
+        """
+        If you specify that an update package does not need to be verified when you call the [CreateOTAFirmware](~~147311~~) operation, you must make sure that the update package is verified before you call the CreateOTAStaticUpgradeJob operation to create an update batch. For more information about how to create a task to verify an update package, see [CreateOTAVerifyJob](~~147480~~).
+        *   You can initiate update tasks for a maximum of 200 devices in each call. If you use a device list file, you can initiate update tasks for a maximum of 1,000,000 devices. However, you must call the [GenerateDeviceNameListURL](~~186062~~) operation to generate a URL for the device list file. Then, you can perform the operations as prompted to upload the device list file.
+        *   When you initiate update tasks for multiple devices, the devices that already have the destination firmware versions are skipped.
+        *   Each device can be in the pending or updating status only in one update task. If you initiate another update task for a device that is in the pending or updating status, the update task fails.
+        *   You can create multiple static update batches by using a single update package.
+        *   Downloading update packages through the MQTT protocol is supported only in the China (Shanghai) region.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAStaticUpgradeJobRequest
+        @return: CreateOTAStaticUpgradeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_otastatic_upgrade_job_with_options_async(request, runtime)
 
@@ -6957,6 +8833,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateOTAVerifyJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAVerifyJobResponse:
+        """
+        You must verify an update package before you push the package to devices for a batch update. Only verified update packages can be used to update devices in batches. You can call the [QueryOTAFirmware](~~147461~~) operation to view the status of a verification task.
+        *   You cannot initiate a verification task for an update package that is being verified or has been verified.
+        *   You can specify a maximum of 10 devices for a verification task.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAVerifyJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOTAVerifyJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.download_protocol):
@@ -7001,6 +8889,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateOTAVerifyJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAVerifyJobResponse:
+        """
+        You must verify an update package before you push the package to devices for a batch update. Only verified update packages can be used to update devices in batches. You can call the [QueryOTAFirmware](~~147461~~) operation to view the status of a verification task.
+        *   You cannot initiate a verification task for an update package that is being verified or has been verified.
+        *   You can specify a maximum of 10 devices for a verification task.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAVerifyJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOTAVerifyJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.download_protocol):
@@ -7044,6 +8944,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateOTAVerifyJobRequest,
     ) -> iot_20180120_models.CreateOTAVerifyJobResponse:
+        """
+        You must verify an update package before you push the package to devices for a batch update. Only verified update packages can be used to update devices in batches. You can call the [QueryOTAFirmware](~~147461~~) operation to view the status of a verification task.
+        *   You cannot initiate a verification task for an update package that is being verified or has been verified.
+        *   You can specify a maximum of 10 devices for a verification task.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAVerifyJobRequest
+        @return: CreateOTAVerifyJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_otaverify_job_with_options(request, runtime)
 
@@ -7051,6 +8962,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateOTAVerifyJobRequest,
     ) -> iot_20180120_models.CreateOTAVerifyJobResponse:
+        """
+        You must verify an update package before you push the package to devices for a batch update. Only verified update packages can be used to update devices in batches. You can call the [QueryOTAFirmware](~~147461~~) operation to view the status of a verification task.
+        *   You cannot initiate a verification task for an update package that is being verified or has been verified.
+        *   You can specify a maximum of 10 devices for a verification task.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateOTAVerifyJobRequest
+        @return: CreateOTAVerifyJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_otaverify_job_with_options_async(request, runtime)
 
@@ -7215,6 +9137,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductResponse:
+        """
+        If a Thing Specification Language (TSL) model is required to create a product, you must set the *AliyunCommodityCode** parameter to iothub_senior and configure the **DataFormat** parameter.******** For more information, see the "**Request parameters**" section of this topic.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aliyun_commodity_code):
@@ -7271,6 +9203,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductResponse:
+        """
+        If a Thing Specification Language (TSL) model is required to create a product, you must set the *AliyunCommodityCode** parameter to iothub_senior and configure the **DataFormat** parameter.******** For more information, see the "**Request parameters**" section of this topic.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aliyun_commodity_code):
@@ -7326,6 +9268,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateProductRequest,
     ) -> iot_20180120_models.CreateProductResponse:
+        """
+        If a Thing Specification Language (TSL) model is required to create a product, you must set the *AliyunCommodityCode** parameter to iothub_senior and configure the **DataFormat** parameter.******** For more information, see the "**Request parameters**" section of this topic.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductRequest
+        @return: CreateProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_product_with_options(request, runtime)
 
@@ -7333,6 +9284,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateProductRequest,
     ) -> iot_20180120_models.CreateProductResponse:
+        """
+        If a Thing Specification Language (TSL) model is required to create a product, you must set the *AliyunCommodityCode** parameter to iothub_senior and configure the **DataFormat** parameter.******** For more information, see the "**Request parameters**" section of this topic.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductRequest
+        @return: CreateProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_product_with_options_async(request, runtime)
 
@@ -7341,6 +9301,20 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateProductDistributeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductDistributeJobResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   You cannot call this operation to distribute a product across accounts.
+        *   A product distribution task does not distribute the devices under the product.
+        *   After a product is distributed, you cannot modify its TSL model and scripts.
+        *   Each Alibaba Cloud account can create a maximum of 10 tasks to distribute products or devices. For more information about how to create a device distribution task, see [CreateDeviceDistributeJob](~~199390~~).
+        *   Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).
+        **\
+        **Note** RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductDistributeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProductDistributeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.product_key):
@@ -7377,6 +9351,20 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateProductDistributeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductDistributeJobResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   You cannot call this operation to distribute a product across accounts.
+        *   A product distribution task does not distribute the devices under the product.
+        *   After a product is distributed, you cannot modify its TSL model and scripts.
+        *   Each Alibaba Cloud account can create a maximum of 10 tasks to distribute products or devices. For more information about how to create a device distribution task, see [CreateDeviceDistributeJob](~~199390~~).
+        *   Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).
+        **\
+        **Note** RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductDistributeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProductDistributeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.product_key):
@@ -7412,6 +9400,19 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateProductDistributeJobRequest,
     ) -> iot_20180120_models.CreateProductDistributeJobResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   You cannot call this operation to distribute a product across accounts.
+        *   A product distribution task does not distribute the devices under the product.
+        *   After a product is distributed, you cannot modify its TSL model and scripts.
+        *   Each Alibaba Cloud account can create a maximum of 10 tasks to distribute products or devices. For more information about how to create a device distribution task, see [CreateDeviceDistributeJob](~~199390~~).
+        *   Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).
+        **\
+        **Note** RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductDistributeJobRequest
+        @return: CreateProductDistributeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_product_distribute_job_with_options(request, runtime)
 
@@ -7419,6 +9420,19 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateProductDistributeJobRequest,
     ) -> iot_20180120_models.CreateProductDistributeJobResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   You cannot call this operation to distribute a product across accounts.
+        *   A product distribution task does not distribute the devices under the product.
+        *   After a product is distributed, you cannot modify its TSL model and scripts.
+        *   Each Alibaba Cloud account can create a maximum of 10 tasks to distribute products or devices. For more information about how to create a device distribution task, see [CreateDeviceDistributeJob](~~199390~~).
+        *   Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).
+        **\
+        **Note** RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductDistributeJobRequest
+        @return: CreateProductDistributeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_product_distribute_job_with_options_async(request, runtime)
 
@@ -7427,6 +9441,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateProductTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductTagsResponse:
+        """
+        You can create a maximum of 10 tags for a product in a single call.
+        *   Each product can have a maximum of 100 tags.
+        > You must specify the tag keys and tag values. Otherwise, the call fails. For description about the tag values, see the "**Request parameters**" section of this topic.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProductTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -7459,6 +9485,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateProductTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductTagsResponse:
+        """
+        You can create a maximum of 10 tags for a product in a single call.
+        *   Each product can have a maximum of 100 tags.
+        > You must specify the tag keys and tag values. Otherwise, the call fails. For description about the tag values, see the "**Request parameters**" section of this topic.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProductTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -7490,6 +9528,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateProductTagsRequest,
     ) -> iot_20180120_models.CreateProductTagsResponse:
+        """
+        You can create a maximum of 10 tags for a product in a single call.
+        *   Each product can have a maximum of 100 tags.
+        > You must specify the tag keys and tag values. Otherwise, the call fails. For description about the tag values, see the "**Request parameters**" section of this topic.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductTagsRequest
+        @return: CreateProductTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_product_tags_with_options(request, runtime)
 
@@ -7497,6 +9546,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateProductTagsRequest,
     ) -> iot_20180120_models.CreateProductTagsResponse:
+        """
+        You can create a maximum of 10 tags for a product in a single call.
+        *   Each product can have a maximum of 100 tags.
+        > You must specify the tag keys and tag values. Otherwise, the call fails. For description about the tag values, see the "**Request parameters**" section of this topic.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductTagsRequest
+        @return: CreateProductTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_product_tags_with_options_async(request, runtime)
 
@@ -7505,10 +9565,23 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateProductTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 1 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProductTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.codec):
+            query['Codec'] = request.codec
         if not UtilClient.is_unset(request.desc):
             query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.enable_proxy_subscribe):
+            query['EnableProxySubscribe'] = request.enable_proxy_subscribe
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.operation):
@@ -7541,10 +9614,23 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateProductTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 1 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProductTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.codec):
+            query['Codec'] = request.codec
         if not UtilClient.is_unset(request.desc):
             query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.enable_proxy_subscribe):
+            query['EnableProxySubscribe'] = request.enable_proxy_subscribe
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.operation):
@@ -7576,6 +9662,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateProductTopicRequest,
     ) -> iot_20180120_models.CreateProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 1 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductTopicRequest
+        @return: CreateProductTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_product_topic_with_options(request, runtime)
 
@@ -7583,6 +9677,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateProductTopicRequest,
     ) -> iot_20180120_models.CreateProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 1 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateProductTopicRequest
+        @return: CreateProductTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_product_topic_with_options_async(request, runtime)
 
@@ -7591,6 +9693,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateRuleResponse:
+        """
+        When you call this operation, you must specify the *ProductKey** parameter in the request.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_type):
@@ -7639,6 +9751,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateRuleResponse:
+        """
+        When you call this operation, you must specify the *ProductKey** parameter in the request.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_type):
@@ -7686,6 +9808,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateRuleRequest,
     ) -> iot_20180120_models.CreateRuleResponse:
+        """
+        When you call this operation, you must specify the *ProductKey** parameter in the request.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateRuleRequest
+        @return: CreateRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_rule_with_options(request, runtime)
 
@@ -7693,6 +9824,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateRuleRequest,
     ) -> iot_20180120_models.CreateRuleResponse:
+        """
+        When you call this operation, you must specify the *ProductKey** parameter in the request.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateRuleRequest
+        @return: CreateRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_rule_with_options_async(request, runtime)
 
@@ -7701,6 +9841,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateRuleActionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateRuleActionResponse:
+        """
+        ## Limits
+        *   Destination Alibaba Cloud services that are supported by the rules engine vary based on regions. For more information about the regions and destination cloud services that are supported by the rules engine, see [Regions and zones](~~85669~~).
+        *   You can create a maximum of 10 rule actions for each rule.
+        *   You can call this API operation to define rule actions to forward data to an IoT Platform topic, AMQP consumer group, or Alibaba Cloud service. The supported Alibaba Cloud services include Message Service (MNS), Function Compute, and Tablestore. If you need to forward data to ApsaraDB RDS, you must use the [IoT Platform console](https://iot.console.aliyun.com).
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateRuleActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRuleActionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.configuration):
@@ -7737,6 +9889,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateRuleActionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateRuleActionResponse:
+        """
+        ## Limits
+        *   Destination Alibaba Cloud services that are supported by the rules engine vary based on regions. For more information about the regions and destination cloud services that are supported by the rules engine, see [Regions and zones](~~85669~~).
+        *   You can create a maximum of 10 rule actions for each rule.
+        *   You can call this API operation to define rule actions to forward data to an IoT Platform topic, AMQP consumer group, or Alibaba Cloud service. The supported Alibaba Cloud services include Message Service (MNS), Function Compute, and Tablestore. If you need to forward data to ApsaraDB RDS, you must use the [IoT Platform console](https://iot.console.aliyun.com).
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateRuleActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRuleActionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.configuration):
@@ -7772,6 +9936,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateRuleActionRequest,
     ) -> iot_20180120_models.CreateRuleActionResponse:
+        """
+        ## Limits
+        *   Destination Alibaba Cloud services that are supported by the rules engine vary based on regions. For more information about the regions and destination cloud services that are supported by the rules engine, see [Regions and zones](~~85669~~).
+        *   You can create a maximum of 10 rule actions for each rule.
+        *   You can call this API operation to define rule actions to forward data to an IoT Platform topic, AMQP consumer group, or Alibaba Cloud service. The supported Alibaba Cloud services include Message Service (MNS), Function Compute, and Tablestore. If you need to forward data to ApsaraDB RDS, you must use the [IoT Platform console](https://iot.console.aliyun.com).
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateRuleActionRequest
+        @return: CreateRuleActionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_rule_action_with_options(request, runtime)
 
@@ -7779,6 +9954,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateRuleActionRequest,
     ) -> iot_20180120_models.CreateRuleActionResponse:
+        """
+        ## Limits
+        *   Destination Alibaba Cloud services that are supported by the rules engine vary based on regions. For more information about the regions and destination cloud services that are supported by the rules engine, see [Regions and zones](~~85669~~).
+        *   You can create a maximum of 10 rule actions for each rule.
+        *   You can call this API operation to define rule actions to forward data to an IoT Platform topic, AMQP consumer group, or Alibaba Cloud service. The supported Alibaba Cloud services include Message Service (MNS), Function Compute, and Tablestore. If you need to forward data to ApsaraDB RDS, you must use the [IoT Platform console](https://iot.console.aliyun.com).
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateRuleActionRequest
+        @return: CreateRuleActionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_rule_action_with_options_async(request, runtime)
 
@@ -8417,6 +10603,22 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateSubscribeRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateSubscribeRelationResponse:
+        """
+        Server-side subscriptions are categorized into the following two types:
+        *   MNS subscription: pushes subscribed messages to MNS queues. Your server applications listen to MNS queues to receive device messages. For more information, see [Configure MNS server-side subscriptions](~~68948~~). You can call this operation to create an MNS subscription.
+        *   AMQP subscription: pushes subscribed messages to your server by using the AMQP channel. For more information, see [Configure AMQP server-side subscriptions](~~142376~~). To configure an AMQP subscription, perform the following steps:
+        1\\. Call the [CreateConsumerGroup](~~170388~~) operation to create a consumer group and obtain the returned consumer group ID. Messages are pushed to the consumer group. The AMQP client carries the consumer group ID when the client connected to IoT Platform. For more information, see [Connect an AMQP client to IoT Platform](~~142489~~).
+        2\\. Call the CreateSubscribeRelation operation to create an AMQP subscription.
+        3\\. Optional. Call the [CreateConsumerGroupSubscribeRelation](~~170354~~) operation to add a consumer group to the AMQP subscription. You can also call the [DeleteConsumerGroupSubscribeRelation](~~170357~~) operation to remove a consumer group from an AMQP subscription.
+        4\\. Optional. Call the [QueryConsumerGroupStatus](~~170358~~) operation to query the status of a consumer group, including online client information, message consumption rate, number of accumulated messages, and last message consumption time. You can also call the [ResetConsumerGroupPosition](~~170355~~) operation to clear the accumulated messages of the consumer group.
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateSubscribeRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSubscribeRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_group_ids):
@@ -8475,6 +10677,22 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateSubscribeRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateSubscribeRelationResponse:
+        """
+        Server-side subscriptions are categorized into the following two types:
+        *   MNS subscription: pushes subscribed messages to MNS queues. Your server applications listen to MNS queues to receive device messages. For more information, see [Configure MNS server-side subscriptions](~~68948~~). You can call this operation to create an MNS subscription.
+        *   AMQP subscription: pushes subscribed messages to your server by using the AMQP channel. For more information, see [Configure AMQP server-side subscriptions](~~142376~~). To configure an AMQP subscription, perform the following steps:
+        1\\. Call the [CreateConsumerGroup](~~170388~~) operation to create a consumer group and obtain the returned consumer group ID. Messages are pushed to the consumer group. The AMQP client carries the consumer group ID when the client connected to IoT Platform. For more information, see [Connect an AMQP client to IoT Platform](~~142489~~).
+        2\\. Call the CreateSubscribeRelation operation to create an AMQP subscription.
+        3\\. Optional. Call the [CreateConsumerGroupSubscribeRelation](~~170354~~) operation to add a consumer group to the AMQP subscription. You can also call the [DeleteConsumerGroupSubscribeRelation](~~170357~~) operation to remove a consumer group from an AMQP subscription.
+        4\\. Optional. Call the [QueryConsumerGroupStatus](~~170358~~) operation to query the status of a consumer group, including online client information, message consumption rate, number of accumulated messages, and last message consumption time. You can also call the [ResetConsumerGroupPosition](~~170355~~) operation to clear the accumulated messages of the consumer group.
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateSubscribeRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSubscribeRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_group_ids):
@@ -8532,6 +10750,21 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateSubscribeRelationRequest,
     ) -> iot_20180120_models.CreateSubscribeRelationResponse:
+        """
+        Server-side subscriptions are categorized into the following two types:
+        *   MNS subscription: pushes subscribed messages to MNS queues. Your server applications listen to MNS queues to receive device messages. For more information, see [Configure MNS server-side subscriptions](~~68948~~). You can call this operation to create an MNS subscription.
+        *   AMQP subscription: pushes subscribed messages to your server by using the AMQP channel. For more information, see [Configure AMQP server-side subscriptions](~~142376~~). To configure an AMQP subscription, perform the following steps:
+        1\\. Call the [CreateConsumerGroup](~~170388~~) operation to create a consumer group and obtain the returned consumer group ID. Messages are pushed to the consumer group. The AMQP client carries the consumer group ID when the client connected to IoT Platform. For more information, see [Connect an AMQP client to IoT Platform](~~142489~~).
+        2\\. Call the CreateSubscribeRelation operation to create an AMQP subscription.
+        3\\. Optional. Call the [CreateConsumerGroupSubscribeRelation](~~170354~~) operation to add a consumer group to the AMQP subscription. You can also call the [DeleteConsumerGroupSubscribeRelation](~~170357~~) operation to remove a consumer group from an AMQP subscription.
+        4\\. Optional. Call the [QueryConsumerGroupStatus](~~170358~~) operation to query the status of a consumer group, including online client information, message consumption rate, number of accumulated messages, and last message consumption time. You can also call the [ResetConsumerGroupPosition](~~170355~~) operation to clear the accumulated messages of the consumer group.
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateSubscribeRelationRequest
+        @return: CreateSubscribeRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_subscribe_relation_with_options(request, runtime)
 
@@ -8539,6 +10772,21 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateSubscribeRelationRequest,
     ) -> iot_20180120_models.CreateSubscribeRelationResponse:
+        """
+        Server-side subscriptions are categorized into the following two types:
+        *   MNS subscription: pushes subscribed messages to MNS queues. Your server applications listen to MNS queues to receive device messages. For more information, see [Configure MNS server-side subscriptions](~~68948~~). You can call this operation to create an MNS subscription.
+        *   AMQP subscription: pushes subscribed messages to your server by using the AMQP channel. For more information, see [Configure AMQP server-side subscriptions](~~142376~~). To configure an AMQP subscription, perform the following steps:
+        1\\. Call the [CreateConsumerGroup](~~170388~~) operation to create a consumer group and obtain the returned consumer group ID. Messages are pushed to the consumer group. The AMQP client carries the consumer group ID when the client connected to IoT Platform. For more information, see [Connect an AMQP client to IoT Platform](~~142489~~).
+        2\\. Call the CreateSubscribeRelation operation to create an AMQP subscription.
+        3\\. Optional. Call the [CreateConsumerGroupSubscribeRelation](~~170354~~) operation to add a consumer group to the AMQP subscription. You can also call the [DeleteConsumerGroupSubscribeRelation](~~170357~~) operation to remove a consumer group from an AMQP subscription.
+        4\\. Optional. Call the [QueryConsumerGroupStatus](~~170358~~) operation to query the status of a consumer group, including online client information, message consumption rate, number of accumulated messages, and last message consumption time. You can also call the [ResetConsumerGroupPosition](~~170355~~) operation to clear the accumulated messages of the consumer group.
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateSubscribeRelationRequest
+        @return: CreateSubscribeRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_subscribe_relation_with_options_async(request, runtime)
 
@@ -8547,6 +10795,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateThingModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateThingModelResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   Before you call the operation, you can use the [json-schema](https://github.com/everit-org/json-schema?spm=a2c4g.11186623.2.23.575832d9zD7fZb) library to verify the input parameters in **ThingModelJson**. For more information, see [Data structure of ThingModelJson](~~150457~~).
+        *   You can call this operation to add a maximum of 10 TSL features. TSL features include properties, services, and events.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateThingModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateThingModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -8583,6 +10843,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateThingModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateThingModelResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   Before you call the operation, you can use the [json-schema](https://github.com/everit-org/json-schema?spm=a2c4g.11186623.2.23.575832d9zD7fZb) library to verify the input parameters in **ThingModelJson**. For more information, see [Data structure of ThingModelJson](~~150457~~).
+        *   You can call this operation to add a maximum of 10 TSL features. TSL features include properties, services, and events.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateThingModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateThingModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -8618,6 +10890,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateThingModelRequest,
     ) -> iot_20180120_models.CreateThingModelResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   Before you call the operation, you can use the [json-schema](https://github.com/everit-org/json-schema?spm=a2c4g.11186623.2.23.575832d9zD7fZb) library to verify the input parameters in **ThingModelJson**. For more information, see [Data structure of ThingModelJson](~~150457~~).
+        *   You can call this operation to add a maximum of 10 TSL features. TSL features include properties, services, and events.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateThingModelRequest
+        @return: CreateThingModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_thing_model_with_options(request, runtime)
 
@@ -8625,6 +10908,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateThingModelRequest,
     ) -> iot_20180120_models.CreateThingModelResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   Before you call the operation, you can use the [json-schema](https://github.com/everit-org/json-schema?spm=a2c4g.11186623.2.23.575832d9zD7fZb) library to verify the input parameters in **ThingModelJson**. For more information, see [Data structure of ThingModelJson](~~150457~~).
+        *   You can call this operation to add a maximum of 10 TSL features. TSL features include properties, services, and events.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateThingModelRequest
+        @return: CreateThingModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_thing_model_with_options_async(request, runtime)
 
@@ -8633,6 +10927,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateThingScriptRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateThingScriptResponse:
+        """
+        A data parsing script is used to convert data submitted by devices into the JSON format. The data submitted by devices is in a custom format. You can write a script in JavaScript, Python 2.7, and PHP 7.2. For more information, see [Submit scripts for data parsing](~~149963~~).
+        > If the data format is **Alink JSON**, the CreateThingScript operation is not supported. Alink JSON is a standard data format that is defined by IoT Connectivity Alliance (ICA).
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateThingScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateThingScriptResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -8667,6 +10972,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateThingScriptRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateThingScriptResponse:
+        """
+        A data parsing script is used to convert data submitted by devices into the JSON format. The data submitted by devices is in a custom format. You can write a script in JavaScript, Python 2.7, and PHP 7.2. For more information, see [Submit scripts for data parsing](~~149963~~).
+        > If the data format is **Alink JSON**, the CreateThingScript operation is not supported. Alink JSON is a standard data format that is defined by IoT Connectivity Alliance (ICA).
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateThingScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateThingScriptResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -8700,6 +11016,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateThingScriptRequest,
     ) -> iot_20180120_models.CreateThingScriptResponse:
+        """
+        A data parsing script is used to convert data submitted by devices into the JSON format. The data submitted by devices is in a custom format. You can write a script in JavaScript, Python 2.7, and PHP 7.2. For more information, see [Submit scripts for data parsing](~~149963~~).
+        > If the data format is **Alink JSON**, the CreateThingScript operation is not supported. Alink JSON is a standard data format that is defined by IoT Connectivity Alliance (ICA).
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateThingScriptRequest
+        @return: CreateThingScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_thing_script_with_options(request, runtime)
 
@@ -8707,14 +11033,134 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateThingScriptRequest,
     ) -> iot_20180120_models.CreateThingScriptResponse:
+        """
+        A data parsing script is used to convert data submitted by devices into the JSON format. The data submitted by devices is in a custom format. You can write a script in JavaScript, Python 2.7, and PHP 7.2. For more information, see [Submit scripts for data parsing](~~149963~~).
+        > If the data format is **Alink JSON**, the CreateThingScript operation is not supported. Alink JSON is a standard data format that is defined by IoT Connectivity Alliance (ICA).
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateThingScriptRequest
+        @return: CreateThingScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_thing_script_with_options_async(request, runtime)
+
+    def create_topic_config_with_options(
+        self,
+        request: iot_20180120_models.CreateTopicConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateTopicConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.codec):
+            query['Codec'] = request.codec
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_broadcast):
+            query['EnableBroadcast'] = request.enable_broadcast
+        if not UtilClient.is_unset(request.enable_proxy_subscribe):
+            query['EnableProxySubscribe'] = request.enable_proxy_subscribe
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.topic_full_name):
+            query['TopicFullName'] = request.topic_full_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTopicConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateTopicConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_topic_config_with_options_async(
+        self,
+        request: iot_20180120_models.CreateTopicConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateTopicConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.codec):
+            query['Codec'] = request.codec
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_broadcast):
+            query['EnableBroadcast'] = request.enable_broadcast
+        if not UtilClient.is_unset(request.enable_proxy_subscribe):
+            query['EnableProxySubscribe'] = request.enable_proxy_subscribe
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.topic_full_name):
+            query['TopicFullName'] = request.topic_full_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTopicConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateTopicConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_topic_config(
+        self,
+        request: iot_20180120_models.CreateTopicConfigRequest,
+    ) -> iot_20180120_models.CreateTopicConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_topic_config_with_options(request, runtime)
+
+    async def create_topic_config_async(
+        self,
+        request: iot_20180120_models.CreateTopicConfigRequest,
+    ) -> iot_20180120_models.CreateTopicConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_topic_config_with_options_async(request, runtime)
 
     def create_topic_route_table_with_options(
         self,
         request: iot_20180120_models.CreateTopicRouteTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateTopicRouteTableResponse:
+        """
+        ## Limits
+        *   You can specify a maximum of 100 destination topics for a source topic.
+        *   The device to which the source topic belongs must be activated.
+        *   The source and destination topics support only custom topics.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateTopicRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTopicRouteTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dst_topic):
@@ -8747,6 +11193,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateTopicRouteTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateTopicRouteTableResponse:
+        """
+        ## Limits
+        *   You can specify a maximum of 100 destination topics for a source topic.
+        *   The device to which the source topic belongs must be activated.
+        *   The source and destination topics support only custom topics.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateTopicRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTopicRouteTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dst_topic):
@@ -8778,6 +11236,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateTopicRouteTableRequest,
     ) -> iot_20180120_models.CreateTopicRouteTableResponse:
+        """
+        ## Limits
+        *   You can specify a maximum of 100 destination topics for a source topic.
+        *   The device to which the source topic belongs must be activated.
+        *   The source and destination topics support only custom topics.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateTopicRouteTableRequest
+        @return: CreateTopicRouteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_topic_route_table_with_options(request, runtime)
 
@@ -8785,6 +11254,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateTopicRouteTableRequest,
     ) -> iot_20180120_models.CreateTopicRouteTableResponse:
+        """
+        ## Limits
+        *   You can specify a maximum of 100 destination topics for a source topic.
+        *   The device to which the source topic belongs must be activated.
+        *   The source and destination topics support only custom topics.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateTopicRouteTableRequest
+        @return: CreateTopicRouteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_topic_route_table_with_options_async(request, runtime)
 
@@ -8793,6 +11273,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteClientIdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteClientIdsResponse:
+        """
+        You can call the [QueryClientIds](~~371985~~) operation to view the ClientIDs of a device and obtain the number of ClientIDs.
+        *   After you call the DeleteClientIds operation, all ClientIDs of the device are deleted and cannot be resumed. To obtain a new ClientID, you can register the device again.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteClientIdsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClientIdsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_id):
@@ -8823,6 +11314,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteClientIdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteClientIdsResponse:
+        """
+        You can call the [QueryClientIds](~~371985~~) operation to view the ClientIDs of a device and obtain the number of ClientIDs.
+        *   After you call the DeleteClientIds operation, all ClientIDs of the device are deleted and cannot be resumed. To obtain a new ClientID, you can register the device again.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteClientIdsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClientIdsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_id):
@@ -8852,6 +11354,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteClientIdsRequest,
     ) -> iot_20180120_models.DeleteClientIdsResponse:
+        """
+        You can call the [QueryClientIds](~~371985~~) operation to view the ClientIDs of a device and obtain the number of ClientIDs.
+        *   After you call the DeleteClientIds operation, all ClientIDs of the device are deleted and cannot be resumed. To obtain a new ClientID, you can register the device again.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteClientIdsRequest
+        @return: DeleteClientIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_client_ids_with_options(request, runtime)
 
@@ -8859,6 +11371,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteClientIdsRequest,
     ) -> iot_20180120_models.DeleteClientIdsResponse:
+        """
+        You can call the [QueryClientIds](~~371985~~) operation to view the ClientIDs of a device and obtain the number of ClientIDs.
+        *   After you call the DeleteClientIds operation, all ClientIDs of the device are deleted and cannot be resumed. To obtain a new ClientID, you can register the device again.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteClientIdsRequest
+        @return: DeleteClientIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_client_ids_with_options_async(request, runtime)
 
@@ -8867,6 +11389,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteConsumerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteConsumerGroupResponse:
+        """
+        ## Limits
+        *   You cannot delete the default consumer group provided by IoT Platform.
+        *   If the consumer group is associated with an AMQP subscription, you must disassociate the consumer group from the subscription. If the subscription has multiple consumer groups, you can call the [DeleteConsumerGroupSubscribeRelation](~~170357~~) operation to remove the consumer group from the subscription. If the subscription has only one consumer group, you can call the [UpdateSubscribeRelation](~~170351~~) operation to change the consumer group or call the [DeleteSubscribeRelation](~~170353~~) operation to delete the subscription.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteConsumerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -8897,6 +11430,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteConsumerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteConsumerGroupResponse:
+        """
+        ## Limits
+        *   You cannot delete the default consumer group provided by IoT Platform.
+        *   If the consumer group is associated with an AMQP subscription, you must disassociate the consumer group from the subscription. If the subscription has multiple consumer groups, you can call the [DeleteConsumerGroupSubscribeRelation](~~170357~~) operation to remove the consumer group from the subscription. If the subscription has only one consumer group, you can call the [UpdateSubscribeRelation](~~170351~~) operation to change the consumer group or call the [DeleteSubscribeRelation](~~170353~~) operation to delete the subscription.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteConsumerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -8926,6 +11470,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteConsumerGroupRequest,
     ) -> iot_20180120_models.DeleteConsumerGroupResponse:
+        """
+        ## Limits
+        *   You cannot delete the default consumer group provided by IoT Platform.
+        *   If the consumer group is associated with an AMQP subscription, you must disassociate the consumer group from the subscription. If the subscription has multiple consumer groups, you can call the [DeleteConsumerGroupSubscribeRelation](~~170357~~) operation to remove the consumer group from the subscription. If the subscription has only one consumer group, you can call the [UpdateSubscribeRelation](~~170351~~) operation to change the consumer group or call the [DeleteSubscribeRelation](~~170353~~) operation to delete the subscription.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteConsumerGroupRequest
+        @return: DeleteConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_consumer_group_with_options(request, runtime)
 
@@ -8933,6 +11487,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteConsumerGroupRequest,
     ) -> iot_20180120_models.DeleteConsumerGroupResponse:
+        """
+        ## Limits
+        *   You cannot delete the default consumer group provided by IoT Platform.
+        *   If the consumer group is associated with an AMQP subscription, you must disassociate the consumer group from the subscription. If the subscription has multiple consumer groups, you can call the [DeleteConsumerGroupSubscribeRelation](~~170357~~) operation to remove the consumer group from the subscription. If the subscription has only one consumer group, you can call the [UpdateSubscribeRelation](~~170351~~) operation to change the consumer group or call the [DeleteSubscribeRelation](~~170353~~) operation to delete the subscription.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteConsumerGroupRequest
+        @return: DeleteConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_consumer_group_with_options_async(request, runtime)
 
@@ -8941,6 +11505,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteConsumerGroupSubscribeRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteConsumerGroupSubscribeRelationResponse:
+        """
+        ## Limits
+        *   If the AMQP subscription has only one consumer group, you cannot call this operation to remove the consumer group.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteConsumerGroupSubscribeRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerGroupSubscribeRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_group_id):
@@ -8973,6 +11547,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteConsumerGroupSubscribeRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteConsumerGroupSubscribeRelationResponse:
+        """
+        ## Limits
+        *   If the AMQP subscription has only one consumer group, you cannot call this operation to remove the consumer group.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteConsumerGroupSubscribeRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerGroupSubscribeRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_group_id):
@@ -9004,6 +11588,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteConsumerGroupSubscribeRelationRequest,
     ) -> iot_20180120_models.DeleteConsumerGroupSubscribeRelationResponse:
+        """
+        ## Limits
+        *   If the AMQP subscription has only one consumer group, you cannot call this operation to remove the consumer group.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteConsumerGroupSubscribeRelationRequest
+        @return: DeleteConsumerGroupSubscribeRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_consumer_group_subscribe_relation_with_options(request, runtime)
 
@@ -9011,6 +11604,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteConsumerGroupSubscribeRelationRequest,
     ) -> iot_20180120_models.DeleteConsumerGroupSubscribeRelationResponse:
+        """
+        ## Limits
+        *   If the AMQP subscription has only one consumer group, you cannot call this operation to remove the consumer group.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteConsumerGroupSubscribeRelationRequest
+        @return: DeleteConsumerGroupSubscribeRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_consumer_group_subscribe_relation_with_options_async(request, runtime)
 
@@ -9171,6 +11773,24 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceResponse:
+        """
+        When you call this operation with an Alibaba Cloud account, IoT Platform sends a verification code by text message to confirm your identity.
+        *   When you call this operation with a RAM user, IoT Platform does not send a verification code. To ensure device security, you can create custom permission policies to perform fine-grained permission management. For more information, see [Mapping of IoT Platform operations and RAM policies](~~47485~~) and [Custom permissions](~~47495~~).
+        **Warning**\
+        *   After a device is deleted, the device ID (**IotId**) becomes invalid, and all other information associated with the device is deleted. In addition, you can no longer perform an operation on the device.
+        *   Before you delete a device in the IoT Platform console, make sure that the corresponding actual device is offline. Otherwise, after the device is deleted from IoT Platform, the actual device continues to initiate connection requests to IoT Platform. If the number of requests exceeds the upper limit, IoT Platform starts request throttling. In this case, access of other devices within your Alibaba Cloud account is affected.
+        *   After you delete a device, the certificate of the device becomes invalid and cannot be restored. Proceed with caution.
+        ****\
+        *   You must specify a value for the **IotId** parameter or values for the **ProductKey** and **DeviceName** parameters to identify a device.
+        *   If you specify a gateway and the number of sub-devices that belong to the gateway exceeds 2,000, you can call this operation to create a device job to delete the topological relationships in an asynchronous manner. The operation returns the **JobId** parameter.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -9205,6 +11825,24 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceResponse:
+        """
+        When you call this operation with an Alibaba Cloud account, IoT Platform sends a verification code by text message to confirm your identity.
+        *   When you call this operation with a RAM user, IoT Platform does not send a verification code. To ensure device security, you can create custom permission policies to perform fine-grained permission management. For more information, see [Mapping of IoT Platform operations and RAM policies](~~47485~~) and [Custom permissions](~~47495~~).
+        **Warning**\
+        *   After a device is deleted, the device ID (**IotId**) becomes invalid, and all other information associated with the device is deleted. In addition, you can no longer perform an operation on the device.
+        *   Before you delete a device in the IoT Platform console, make sure that the corresponding actual device is offline. Otherwise, after the device is deleted from IoT Platform, the actual device continues to initiate connection requests to IoT Platform. If the number of requests exceeds the upper limit, IoT Platform starts request throttling. In this case, access of other devices within your Alibaba Cloud account is affected.
+        *   After you delete a device, the certificate of the device becomes invalid and cannot be restored. Proceed with caution.
+        ****\
+        *   You must specify a value for the **IotId** parameter or values for the **ProductKey** and **DeviceName** parameters to identify a device.
+        *   If you specify a gateway and the number of sub-devices that belong to the gateway exceeds 2,000, you can call this operation to create a device job to delete the topological relationships in an asynchronous manner. The operation returns the **JobId** parameter.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -9238,6 +11876,23 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteDeviceRequest,
     ) -> iot_20180120_models.DeleteDeviceResponse:
+        """
+        When you call this operation with an Alibaba Cloud account, IoT Platform sends a verification code by text message to confirm your identity.
+        *   When you call this operation with a RAM user, IoT Platform does not send a verification code. To ensure device security, you can create custom permission policies to perform fine-grained permission management. For more information, see [Mapping of IoT Platform operations and RAM policies](~~47485~~) and [Custom permissions](~~47495~~).
+        **Warning**\
+        *   After a device is deleted, the device ID (**IotId**) becomes invalid, and all other information associated with the device is deleted. In addition, you can no longer perform an operation on the device.
+        *   Before you delete a device in the IoT Platform console, make sure that the corresponding actual device is offline. Otherwise, after the device is deleted from IoT Platform, the actual device continues to initiate connection requests to IoT Platform. If the number of requests exceeds the upper limit, IoT Platform starts request throttling. In this case, access of other devices within your Alibaba Cloud account is affected.
+        *   After you delete a device, the certificate of the device becomes invalid and cannot be restored. Proceed with caution.
+        ****\
+        *   You must specify a value for the **IotId** parameter or values for the **ProductKey** and **DeviceName** parameters to identify a device.
+        *   If you specify a gateway and the number of sub-devices that belong to the gateway exceeds 2,000, you can call this operation to create a device job to delete the topological relationships in an asynchronous manner. The operation returns the **JobId** parameter.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceRequest
+        @return: DeleteDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_device_with_options(request, runtime)
 
@@ -9245,6 +11900,23 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteDeviceRequest,
     ) -> iot_20180120_models.DeleteDeviceResponse:
+        """
+        When you call this operation with an Alibaba Cloud account, IoT Platform sends a verification code by text message to confirm your identity.
+        *   When you call this operation with a RAM user, IoT Platform does not send a verification code. To ensure device security, you can create custom permission policies to perform fine-grained permission management. For more information, see [Mapping of IoT Platform operations and RAM policies](~~47485~~) and [Custom permissions](~~47495~~).
+        **Warning**\
+        *   After a device is deleted, the device ID (**IotId**) becomes invalid, and all other information associated with the device is deleted. In addition, you can no longer perform an operation on the device.
+        *   Before you delete a device in the IoT Platform console, make sure that the corresponding actual device is offline. Otherwise, after the device is deleted from IoT Platform, the actual device continues to initiate connection requests to IoT Platform. If the number of requests exceeds the upper limit, IoT Platform starts request throttling. In this case, access of other devices within your Alibaba Cloud account is affected.
+        *   After you delete a device, the certificate of the device becomes invalid and cannot be restored. Proceed with caution.
+        ****\
+        *   You must specify a value for the **IotId** parameter or values for the **ProductKey** and **DeviceName** parameters to identify a device.
+        *   If you specify a gateway and the number of sub-devices that belong to the gateway exceeds 2,000, you can call this operation to create a device job to delete the topological relationships in an asynchronous manner. The operation returns the **JobId** parameter.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceRequest
+        @return: DeleteDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_device_with_options_async(request, runtime)
 
@@ -9253,6 +11925,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteDeviceDistributeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceDistributeJobResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceDistributeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeviceDistributeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -9281,6 +11962,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteDeviceDistributeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceDistributeJobResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceDistributeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeviceDistributeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -9308,6 +11998,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteDeviceDistributeJobRequest,
     ) -> iot_20180120_models.DeleteDeviceDistributeJobResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceDistributeJobRequest
+        @return: DeleteDeviceDistributeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_device_distribute_job_with_options(request, runtime)
 
@@ -9315,6 +12013,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteDeviceDistributeJobRequest,
     ) -> iot_20180120_models.DeleteDeviceDistributeJobResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceDistributeJobRequest
+        @return: DeleteDeviceDistributeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_device_distribute_job_with_options_async(request, runtime)
 
@@ -9397,6 +12103,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteDeviceFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceFileResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeviceFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -9433,6 +12148,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteDeviceFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceFileResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeviceFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -9468,6 +12192,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteDeviceFileRequest,
     ) -> iot_20180120_models.DeleteDeviceFileResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceFileRequest
+        @return: DeleteDeviceFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_device_file_with_options(request, runtime)
 
@@ -9475,6 +12207,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteDeviceFileRequest,
     ) -> iot_20180120_models.DeleteDeviceFileResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceFileRequest
+        @return: DeleteDeviceFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_device_file_with_options_async(request, runtime)
 
@@ -9483,6 +12223,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteDeviceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeviceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -9513,6 +12262,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteDeviceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeviceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -9542,6 +12300,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteDeviceGroupRequest,
     ) -> iot_20180120_models.DeleteDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceGroupRequest
+        @return: DeleteDeviceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_device_group_with_options(request, runtime)
 
@@ -9549,6 +12315,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteDeviceGroupRequest,
     ) -> iot_20180120_models.DeleteDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDeviceGroupRequest
+        @return: DeleteDeviceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_device_group_with_options_async(request, runtime)
 
@@ -9557,6 +12331,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteDevicePropRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDevicePropResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDevicePropRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDevicePropResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -9593,6 +12376,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteDevicePropRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDevicePropResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDevicePropRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDevicePropResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -9628,6 +12420,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteDevicePropRequest,
     ) -> iot_20180120_models.DeleteDevicePropResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDevicePropRequest
+        @return: DeleteDevicePropResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_device_prop_with_options(request, runtime)
 
@@ -9635,6 +12435,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteDevicePropRequest,
     ) -> iot_20180120_models.DeleteDevicePropResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteDevicePropRequest
+        @return: DeleteDevicePropResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_device_prop_with_options_async(request, runtime)
 
@@ -9795,6 +12603,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteEdgeDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeDriverResponse:
+        """
+        ## Limits
+        *   You are not allowed to delete a driver that has a published version.
+        *   Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteEdgeDriverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeDriverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -9825,6 +12643,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteEdgeDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeDriverResponse:
+        """
+        ## Limits
+        *   You are not allowed to delete a driver that has a published version.
+        *   Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteEdgeDriverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeDriverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -9854,6 +12682,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteEdgeDriverRequest,
     ) -> iot_20180120_models.DeleteEdgeDriverResponse:
+        """
+        ## Limits
+        *   You are not allowed to delete a driver that has a published version.
+        *   Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteEdgeDriverRequest
+        @return: DeleteEdgeDriverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_edge_driver_with_options(request, runtime)
 
@@ -9861,6 +12698,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteEdgeDriverRequest,
     ) -> iot_20180120_models.DeleteEdgeDriverResponse:
+        """
+        ## Limits
+        *   You are not allowed to delete a driver that has a published version.
+        *   Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteEdgeDriverRequest
+        @return: DeleteEdgeDriverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_edge_driver_with_options_async(request, runtime)
 
@@ -9869,6 +12715,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteEdgeDriverVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeDriverVersionResponse:
+        """
+        ## Limits
+        *   You are not allowed to delete a published driver version.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteEdgeDriverVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeDriverVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -9901,6 +12757,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteEdgeDriverVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeDriverVersionResponse:
+        """
+        ## Limits
+        *   You are not allowed to delete a published driver version.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteEdgeDriverVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeDriverVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -9932,6 +12798,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteEdgeDriverVersionRequest,
     ) -> iot_20180120_models.DeleteEdgeDriverVersionResponse:
+        """
+        ## Limits
+        *   You are not allowed to delete a published driver version.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteEdgeDriverVersionRequest
+        @return: DeleteEdgeDriverVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_edge_driver_version_with_options(request, runtime)
 
@@ -9939,6 +12814,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteEdgeDriverVersionRequest,
     ) -> iot_20180120_models.DeleteEdgeDriverVersionResponse:
+        """
+        ## Limits
+        *   You are not allowed to delete a published driver version.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteEdgeDriverVersionRequest
+        @return: DeleteEdgeDriverVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_edge_driver_version_with_options_async(request, runtime)
 
@@ -9947,6 +12831,14 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeInstanceResponse:
+        """
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9977,6 +12869,14 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeInstanceResponse:
+        """
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10006,6 +12906,13 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteEdgeInstanceRequest,
     ) -> iot_20180120_models.DeleteEdgeInstanceResponse:
+        """
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteEdgeInstanceRequest
+        @return: DeleteEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_edge_instance_with_options(request, runtime)
 
@@ -10013,6 +12920,13 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteEdgeInstanceRequest,
     ) -> iot_20180120_models.DeleteEdgeInstanceResponse:
+        """
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteEdgeInstanceRequest
+        @return: DeleteEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_edge_instance_with_options_async(request, runtime)
 
@@ -10173,6 +13087,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteOTAFirmwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteOTAFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteOTAFirmwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOTAFirmwareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firmware_id):
@@ -10203,6 +13126,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteOTAFirmwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteOTAFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteOTAFirmwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOTAFirmwareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firmware_id):
@@ -10232,6 +13164,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteOTAFirmwareRequest,
     ) -> iot_20180120_models.DeleteOTAFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteOTAFirmwareRequest
+        @return: DeleteOTAFirmwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_otafirmware_with_options(request, runtime)
 
@@ -10239,6 +13179,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteOTAFirmwareRequest,
     ) -> iot_20180120_models.DeleteOTAFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteOTAFirmwareRequest
+        @return: DeleteOTAFirmwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_otafirmware_with_options_async(request, runtime)
 
@@ -10247,6 +13195,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteOTAModuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteOTAModuleResponse:
+        """
+        ## Limits
+        *   The default module cannot be deleted.
+        *   If an update package exists in an OTA module, you cannot delete the OTA module.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteOTAModuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOTAModuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -10279,6 +13238,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteOTAModuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteOTAModuleResponse:
+        """
+        ## Limits
+        *   The default module cannot be deleted.
+        *   If an update package exists in an OTA module, you cannot delete the OTA module.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteOTAModuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOTAModuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -10310,6 +13280,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteOTAModuleRequest,
     ) -> iot_20180120_models.DeleteOTAModuleResponse:
+        """
+        ## Limits
+        *   The default module cannot be deleted.
+        *   If an update package exists in an OTA module, you cannot delete the OTA module.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteOTAModuleRequest
+        @return: DeleteOTAModuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_otamodule_with_options(request, runtime)
 
@@ -10317,6 +13297,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteOTAModuleRequest,
     ) -> iot_20180120_models.DeleteOTAModuleResponse:
+        """
+        ## Limits
+        *   The default module cannot be deleted.
+        *   If an update package exists in an OTA module, you cannot delete the OTA module.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteOTAModuleRequest
+        @return: DeleteOTAModuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_otamodule_with_options_async(request, runtime)
 
@@ -10473,6 +13463,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteProductResponse:
+        """
+        ## Limits
+        *   After a product is deleted, the ProductKey of the product is invalid. The related information about the product is also deleted. You cannot perform the required operations on the product.
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -10503,6 +13503,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteProductResponse:
+        """
+        ## Limits
+        *   After a product is deleted, the ProductKey of the product is invalid. The related information about the product is also deleted. You cannot perform the required operations on the product.
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -10532,6 +13542,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteProductRequest,
     ) -> iot_20180120_models.DeleteProductResponse:
+        """
+        ## Limits
+        *   After a product is deleted, the ProductKey of the product is invalid. The related information about the product is also deleted. You cannot perform the required operations on the product.
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteProductRequest
+        @return: DeleteProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_product_with_options(request, runtime)
 
@@ -10539,6 +13558,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteProductRequest,
     ) -> iot_20180120_models.DeleteProductResponse:
+        """
+        ## Limits
+        *   After a product is deleted, the ProductKey of the product is invalid. The related information about the product is also deleted. You cannot perform the required operations on the product.
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteProductRequest
+        @return: DeleteProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_product_with_options_async(request, runtime)
 
@@ -10547,6 +13575,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteProductTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteProductTagsResponse:
+        """
+        ## Limits
+        *   You can delete a maximum of 10 tags in a single call.
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteProductTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProductTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -10579,6 +13617,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteProductTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteProductTagsResponse:
+        """
+        ## Limits
+        *   You can delete a maximum of 10 tags in a single call.
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteProductTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProductTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -10610,6 +13658,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteProductTagsRequest,
     ) -> iot_20180120_models.DeleteProductTagsResponse:
+        """
+        ## Limits
+        *   You can delete a maximum of 10 tags in a single call.
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteProductTagsRequest
+        @return: DeleteProductTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_product_tags_with_options(request, runtime)
 
@@ -10617,6 +13674,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteProductTagsRequest,
     ) -> iot_20180120_models.DeleteProductTagsResponse:
+        """
+        ## Limits
+        *   You can delete a maximum of 10 tags in a single call.
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteProductTagsRequest
+        @return: DeleteProductTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_product_tags_with_options_async(request, runtime)
 
@@ -10625,6 +13691,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteProductTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteProductTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProductTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -10655,6 +13730,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteProductTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteProductTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProductTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -10684,6 +13768,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteProductTopicRequest,
     ) -> iot_20180120_models.DeleteProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteProductTopicRequest
+        @return: DeleteProductTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_product_topic_with_options(request, runtime)
 
@@ -10691,6 +13783,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteProductTopicRequest,
     ) -> iot_20180120_models.DeleteProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteProductTopicRequest
+        @return: DeleteProductTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_product_topic_with_options_async(request, runtime)
 
@@ -10699,6 +13799,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -10729,6 +13838,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -10758,6 +13876,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteRuleRequest,
     ) -> iot_20180120_models.DeleteRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteRuleRequest
+        @return: DeleteRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_rule_with_options(request, runtime)
 
@@ -10765,6 +13891,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteRuleRequest,
     ) -> iot_20180120_models.DeleteRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteRuleRequest
+        @return: DeleteRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_rule_with_options_async(request, runtime)
 
@@ -10773,6 +13907,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteRuleActionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteRuleActionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteRuleActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRuleActionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_id):
@@ -10803,6 +13946,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteRuleActionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteRuleActionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteRuleActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRuleActionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_id):
@@ -10832,6 +13984,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteRuleActionRequest,
     ) -> iot_20180120_models.DeleteRuleActionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteRuleActionRequest
+        @return: DeleteRuleActionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_rule_action_with_options(request, runtime)
 
@@ -10839,6 +13999,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteRuleActionRequest,
     ) -> iot_20180120_models.DeleteRuleActionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteRuleActionRequest
+        @return: DeleteRuleActionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_rule_action_with_options_async(request, runtime)
 
@@ -11451,6 +14619,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteSubscribeRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteSubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteSubscribeRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSubscribeRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -11483,6 +14660,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteSubscribeRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteSubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteSubscribeRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSubscribeRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -11514,6 +14700,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteSubscribeRelationRequest,
     ) -> iot_20180120_models.DeleteSubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteSubscribeRelationRequest
+        @return: DeleteSubscribeRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_subscribe_relation_with_options(request, runtime)
 
@@ -11521,6 +14715,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteSubscribeRelationRequest,
     ) -> iot_20180120_models.DeleteSubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteSubscribeRelationRequest
+        @return: DeleteSubscribeRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_subscribe_relation_with_options_async(request, runtime)
 
@@ -11529,6 +14731,24 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteThingModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteThingModelResponse:
+        """
+        If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call the DeleteThingModel operation.
+        *   If an existing feature or custom TSL module in a product is not published, you can call the DeleteThingModel operation to remove the feature or delete the custom TSL module.
+        *   When you call the DeleteThingModel operation, you must specify a value for the **ProductKey** parameter. The following list describes how the DeleteThingModel operation works:
+        *   If you specify a value only for the **ProductKey** parameter, the operation deletes all custom TSL modules and removes all features in the default TSL module from the specified product.
+        *   If you specify values only for the **ProductKey** and **FunctionBlockId** parameters, the operation deletes the specified custom TSL module from the specified product.
+        *   If you specify a value for the **ProductKey** parameter and a value for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter, the operation removes one or more specified features from the default TSL module of the specified product. The operation removes the specified features only if the features exist. If the value that you specified for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter does not exist in the default TSL module, the operation returns the same result as when you specify a value only for the **ProductKey** parameter.
+        *   If you specify values for the **ProductKey** and **FunctionBlockId** parameters and a value for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter, the operation removes one or more specified features from a specified custom TSL module in a specified product. The operation removes the specified features only if the features exist. If the value that you specified for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter does not exist, the operation returns the same result as when you specify values only for the **ProductKey** and **FunctionBlockId** parameters.
+        > You must specify up to 10 identifiers for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter.
+        *   After you call the DeleteThingModel operation to remove one or more features from a product, you must call the [PublishThingModel](~~150311~~) operation to re-publish the TSL model of the product. This way, the change takes effect.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 5 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: DeleteThingModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteThingModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.event_identifier):
@@ -11569,6 +14789,24 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteThingModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteThingModelResponse:
+        """
+        If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call the DeleteThingModel operation.
+        *   If an existing feature or custom TSL module in a product is not published, you can call the DeleteThingModel operation to remove the feature or delete the custom TSL module.
+        *   When you call the DeleteThingModel operation, you must specify a value for the **ProductKey** parameter. The following list describes how the DeleteThingModel operation works:
+        *   If you specify a value only for the **ProductKey** parameter, the operation deletes all custom TSL modules and removes all features in the default TSL module from the specified product.
+        *   If you specify values only for the **ProductKey** and **FunctionBlockId** parameters, the operation deletes the specified custom TSL module from the specified product.
+        *   If you specify a value for the **ProductKey** parameter and a value for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter, the operation removes one or more specified features from the default TSL module of the specified product. The operation removes the specified features only if the features exist. If the value that you specified for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter does not exist in the default TSL module, the operation returns the same result as when you specify a value only for the **ProductKey** parameter.
+        *   If you specify values for the **ProductKey** and **FunctionBlockId** parameters and a value for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter, the operation removes one or more specified features from a specified custom TSL module in a specified product. The operation removes the specified features only if the features exist. If the value that you specified for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter does not exist, the operation returns the same result as when you specify values only for the **ProductKey** and **FunctionBlockId** parameters.
+        > You must specify up to 10 identifiers for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter.
+        *   After you call the DeleteThingModel operation to remove one or more features from a product, you must call the [PublishThingModel](~~150311~~) operation to re-publish the TSL model of the product. This way, the change takes effect.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 5 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: DeleteThingModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteThingModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.event_identifier):
@@ -11608,6 +14846,23 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteThingModelRequest,
     ) -> iot_20180120_models.DeleteThingModelResponse:
+        """
+        If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call the DeleteThingModel operation.
+        *   If an existing feature or custom TSL module in a product is not published, you can call the DeleteThingModel operation to remove the feature or delete the custom TSL module.
+        *   When you call the DeleteThingModel operation, you must specify a value for the **ProductKey** parameter. The following list describes how the DeleteThingModel operation works:
+        *   If you specify a value only for the **ProductKey** parameter, the operation deletes all custom TSL modules and removes all features in the default TSL module from the specified product.
+        *   If you specify values only for the **ProductKey** and **FunctionBlockId** parameters, the operation deletes the specified custom TSL module from the specified product.
+        *   If you specify a value for the **ProductKey** parameter and a value for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter, the operation removes one or more specified features from the default TSL module of the specified product. The operation removes the specified features only if the features exist. If the value that you specified for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter does not exist in the default TSL module, the operation returns the same result as when you specify a value only for the **ProductKey** parameter.
+        *   If you specify values for the **ProductKey** and **FunctionBlockId** parameters and a value for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter, the operation removes one or more specified features from a specified custom TSL module in a specified product. The operation removes the specified features only if the features exist. If the value that you specified for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter does not exist, the operation returns the same result as when you specify values only for the **ProductKey** and **FunctionBlockId** parameters.
+        > You must specify up to 10 identifiers for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter.
+        *   After you call the DeleteThingModel operation to remove one or more features from a product, you must call the [PublishThingModel](~~150311~~) operation to re-publish the TSL model of the product. This way, the change takes effect.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 5 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: DeleteThingModelRequest
+        @return: DeleteThingModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_thing_model_with_options(request, runtime)
 
@@ -11615,14 +14870,118 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteThingModelRequest,
     ) -> iot_20180120_models.DeleteThingModelResponse:
+        """
+        If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call the DeleteThingModel operation.
+        *   If an existing feature or custom TSL module in a product is not published, you can call the DeleteThingModel operation to remove the feature or delete the custom TSL module.
+        *   When you call the DeleteThingModel operation, you must specify a value for the **ProductKey** parameter. The following list describes how the DeleteThingModel operation works:
+        *   If you specify a value only for the **ProductKey** parameter, the operation deletes all custom TSL modules and removes all features in the default TSL module from the specified product.
+        *   If you specify values only for the **ProductKey** and **FunctionBlockId** parameters, the operation deletes the specified custom TSL module from the specified product.
+        *   If you specify a value for the **ProductKey** parameter and a value for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter, the operation removes one or more specified features from the default TSL module of the specified product. The operation removes the specified features only if the features exist. If the value that you specified for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter does not exist in the default TSL module, the operation returns the same result as when you specify a value only for the **ProductKey** parameter.
+        *   If you specify values for the **ProductKey** and **FunctionBlockId** parameters and a value for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter, the operation removes one or more specified features from a specified custom TSL module in a specified product. The operation removes the specified features only if the features exist. If the value that you specified for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter does not exist, the operation returns the same result as when you specify values only for the **ProductKey** and **FunctionBlockId** parameters.
+        > You must specify up to 10 identifiers for the **PropertyIdentifier.N**, **ServiceIdentifier.N**, or **EventIdentifier.N** parameter.
+        *   After you call the DeleteThingModel operation to remove one or more features from a product, you must call the [PublishThingModel](~~150311~~) operation to re-publish the TSL model of the product. This way, the change takes effect.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 5 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: DeleteThingModelRequest
+        @return: DeleteThingModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_thing_model_with_options_async(request, runtime)
+
+    def delete_topic_config_with_options(
+        self,
+        request: iot_20180120_models.DeleteTopicConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.DeleteTopicConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.topic_full_name):
+            query['TopicFullName'] = request.topic_full_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTopicConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.DeleteTopicConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_topic_config_with_options_async(
+        self,
+        request: iot_20180120_models.DeleteTopicConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.DeleteTopicConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.topic_full_name):
+            query['TopicFullName'] = request.topic_full_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTopicConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.DeleteTopicConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_topic_config(
+        self,
+        request: iot_20180120_models.DeleteTopicConfigRequest,
+    ) -> iot_20180120_models.DeleteTopicConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_topic_config_with_options(request, runtime)
+
+    async def delete_topic_config_async(
+        self,
+        request: iot_20180120_models.DeleteTopicConfigRequest,
+    ) -> iot_20180120_models.DeleteTopicConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_topic_config_with_options_async(request, runtime)
 
     def delete_topic_route_table_with_options(
         self,
         request: iot_20180120_models.DeleteTopicRouteTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteTopicRouteTableResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteTopicRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTopicRouteTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dst_topic):
@@ -11655,6 +15014,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DeleteTopicRouteTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteTopicRouteTableResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteTopicRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTopicRouteTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dst_topic):
@@ -11686,6 +15054,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteTopicRouteTableRequest,
     ) -> iot_20180120_models.DeleteTopicRouteTableResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteTopicRouteTableRequest
+        @return: DeleteTopicRouteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_topic_route_table_with_options(request, runtime)
 
@@ -11693,6 +15069,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DeleteTopicRouteTableRequest,
     ) -> iot_20180120_models.DeleteTopicRouteTableResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DeleteTopicRouteTableRequest
+        @return: DeleteTopicRouteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_topic_route_table_with_options_async(request, runtime)
 
@@ -11701,6 +15085,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DetachDestinationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DetachDestinationResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: DetachDestinationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachDestinationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_id):
@@ -11733,6 +15126,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DetachDestinationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DetachDestinationResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: DetachDestinationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachDestinationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_id):
@@ -11764,6 +15166,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DetachDestinationRequest,
     ) -> iot_20180120_models.DetachDestinationResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: DetachDestinationRequest
+        @return: DetachDestinationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_destination_with_options(request, runtime)
 
@@ -11771,6 +15181,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DetachDestinationRequest,
     ) -> iot_20180120_models.DetachDestinationResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: DetachDestinationRequest
+        @return: DetachDestinationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_destination_with_options_async(request, runtime)
 
@@ -12087,6 +15505,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DisableThingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DisableThingResponse:
+        """
+        ## Limits
+        *   After a device is disabled, you cannot connect the device to IoT Platform. You can perform device-specific operations on the device. However, the information about the device is still retained in IoT Platform. You can use the [EnableThing](~~69603~~) API operation to connect the disabled device to IoT Platform again.
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DisableThingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableThingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -12121,6 +15549,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.DisableThingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DisableThingResponse:
+        """
+        ## Limits
+        *   After a device is disabled, you cannot connect the device to IoT Platform. You can perform device-specific operations on the device. However, the information about the device is still retained in IoT Platform. You can use the [EnableThing](~~69603~~) API operation to connect the disabled device to IoT Platform again.
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DisableThingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableThingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -12154,6 +15592,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DisableThingRequest,
     ) -> iot_20180120_models.DisableThingResponse:
+        """
+        ## Limits
+        *   After a device is disabled, you cannot connect the device to IoT Platform. You can perform device-specific operations on the device. However, the information about the device is still retained in IoT Platform. You can use the [EnableThing](~~69603~~) API operation to connect the disabled device to IoT Platform again.
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DisableThingRequest
+        @return: DisableThingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_thing_with_options(request, runtime)
 
@@ -12161,6 +15608,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.DisableThingRequest,
     ) -> iot_20180120_models.DisableThingResponse:
+        """
+        ## Limits
+        *   After a device is disabled, you cannot connect the device to IoT Platform. You can perform device-specific operations on the device. However, the information about the device is still retained in IoT Platform. You can use the [EnableThing](~~69603~~) API operation to connect the disabled device to IoT Platform again.
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: DisableThingRequest
+        @return: DisableThingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_thing_with_options_async(request, runtime)
 
@@ -12399,6 +15855,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.EnableThingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.EnableThingResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: EnableThingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableThingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -12433,6 +15898,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.EnableThingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.EnableThingResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: EnableThingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableThingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -12466,6 +15940,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.EnableThingRequest,
     ) -> iot_20180120_models.EnableThingResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: EnableThingRequest
+        @return: EnableThingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_thing_with_options(request, runtime)
 
@@ -12473,6 +15955,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.EnableThingRequest,
     ) -> iot_20180120_models.EnableThingResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: EnableThingRequest
+        @return: EnableThingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_thing_with_options_async(request, runtime)
 
@@ -12481,6 +15971,25 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GenerateDeviceNameListURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GenerateDeviceNameListURLResponse:
+        """
+        This operation can be used with other operations to upload a device list file. Procedure:
+        1. Call this operation to generate the information of a device list file that you want to upload to OSS.
+        The response parameters of this API operation include:
+        The following request parameters of the OSS [PostObject](/help/en/object-storage-service/latest/postobject) operation that is used to upload the device list file: **Key**, **AccessKeyId**, **Signature**, and **Policy**.
+        2. Use an [OSS SDK](/help/en/object-storage-service/latest/sdk-code-samples-overview) to call the [PostObject](/help/en/object-storage-service/latest/postobject) operation to upload the device list file within 1 minute after a response is returned. For more information about sample code, see the "Usage of response parameters" section in this topic.
+        >  The parameter information that is returned by this operation is valid for 1 minute. You must upload the device list file within 1 minute.  3. After you upload the device list file, call the [CreateOTAStaticUpgradeJob](/help/en/iot-platform/latest/e1qtmo) operation of IoT Platform to create a static update batch within 60 minutes.
+        If you upload device list files but you do not call the CreateOTAStaticUpgradeJob operation to create a static update batch, the system automatically deletes the uploaded files. The system deletes files on a regular basis.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        ## Requirements
+        *   A device list file contains the names of devices. Separate multiple device names with line feeds. Each line contains only one device name. A device list file must be in the CSV format. The maximum size of a device list file is 5 MB.
+        *   Each device list file can contain up to 10,000 names for the devices in a product that is related to an update package. If the number of device names in a device list file exceeds the limit, an error occurs when you use the file to create a static update batch.
+        
+        @param request: GenerateDeviceNameListURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateDeviceNameListURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -12509,6 +16018,25 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GenerateDeviceNameListURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GenerateDeviceNameListURLResponse:
+        """
+        This operation can be used with other operations to upload a device list file. Procedure:
+        1. Call this operation to generate the information of a device list file that you want to upload to OSS.
+        The response parameters of this API operation include:
+        The following request parameters of the OSS [PostObject](/help/en/object-storage-service/latest/postobject) operation that is used to upload the device list file: **Key**, **AccessKeyId**, **Signature**, and **Policy**.
+        2. Use an [OSS SDK](/help/en/object-storage-service/latest/sdk-code-samples-overview) to call the [PostObject](/help/en/object-storage-service/latest/postobject) operation to upload the device list file within 1 minute after a response is returned. For more information about sample code, see the "Usage of response parameters" section in this topic.
+        >  The parameter information that is returned by this operation is valid for 1 minute. You must upload the device list file within 1 minute.  3. After you upload the device list file, call the [CreateOTAStaticUpgradeJob](/help/en/iot-platform/latest/e1qtmo) operation of IoT Platform to create a static update batch within 60 minutes.
+        If you upload device list files but you do not call the CreateOTAStaticUpgradeJob operation to create a static update batch, the system automatically deletes the uploaded files. The system deletes files on a regular basis.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        ## Requirements
+        *   A device list file contains the names of devices. Separate multiple device names with line feeds. Each line contains only one device name. A device list file must be in the CSV format. The maximum size of a device list file is 5 MB.
+        *   Each device list file can contain up to 10,000 names for the devices in a product that is related to an update package. If the number of device names in a device list file exceeds the limit, an error occurs when you use the file to create a static update batch.
+        
+        @param request: GenerateDeviceNameListURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateDeviceNameListURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -12536,6 +16064,24 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GenerateDeviceNameListURLRequest,
     ) -> iot_20180120_models.GenerateDeviceNameListURLResponse:
+        """
+        This operation can be used with other operations to upload a device list file. Procedure:
+        1. Call this operation to generate the information of a device list file that you want to upload to OSS.
+        The response parameters of this API operation include:
+        The following request parameters of the OSS [PostObject](/help/en/object-storage-service/latest/postobject) operation that is used to upload the device list file: **Key**, **AccessKeyId**, **Signature**, and **Policy**.
+        2. Use an [OSS SDK](/help/en/object-storage-service/latest/sdk-code-samples-overview) to call the [PostObject](/help/en/object-storage-service/latest/postobject) operation to upload the device list file within 1 minute after a response is returned. For more information about sample code, see the "Usage of response parameters" section in this topic.
+        >  The parameter information that is returned by this operation is valid for 1 minute. You must upload the device list file within 1 minute.  3. After you upload the device list file, call the [CreateOTAStaticUpgradeJob](/help/en/iot-platform/latest/e1qtmo) operation of IoT Platform to create a static update batch within 60 minutes.
+        If you upload device list files but you do not call the CreateOTAStaticUpgradeJob operation to create a static update batch, the system automatically deletes the uploaded files. The system deletes files on a regular basis.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        ## Requirements
+        *   A device list file contains the names of devices. Separate multiple device names with line feeds. Each line contains only one device name. A device list file must be in the CSV format. The maximum size of a device list file is 5 MB.
+        *   Each device list file can contain up to 10,000 names for the devices in a product that is related to an update package. If the number of device names in a device list file exceeds the limit, an error occurs when you use the file to create a static update batch.
+        
+        @param request: GenerateDeviceNameListURLRequest
+        @return: GenerateDeviceNameListURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_device_name_list_urlwith_options(request, runtime)
 
@@ -12543,6 +16089,24 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GenerateDeviceNameListURLRequest,
     ) -> iot_20180120_models.GenerateDeviceNameListURLResponse:
+        """
+        This operation can be used with other operations to upload a device list file. Procedure:
+        1. Call this operation to generate the information of a device list file that you want to upload to OSS.
+        The response parameters of this API operation include:
+        The following request parameters of the OSS [PostObject](/help/en/object-storage-service/latest/postobject) operation that is used to upload the device list file: **Key**, **AccessKeyId**, **Signature**, and **Policy**.
+        2. Use an [OSS SDK](/help/en/object-storage-service/latest/sdk-code-samples-overview) to call the [PostObject](/help/en/object-storage-service/latest/postobject) operation to upload the device list file within 1 minute after a response is returned. For more information about sample code, see the "Usage of response parameters" section in this topic.
+        >  The parameter information that is returned by this operation is valid for 1 minute. You must upload the device list file within 1 minute.  3. After you upload the device list file, call the [CreateOTAStaticUpgradeJob](/help/en/iot-platform/latest/e1qtmo) operation of IoT Platform to create a static update batch within 60 minutes.
+        If you upload device list files but you do not call the CreateOTAStaticUpgradeJob operation to create a static update batch, the system automatically deletes the uploaded files. The system deletes files on a regular basis.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        ## Requirements
+        *   A device list file contains the names of devices. Separate multiple device names with line feeds. Each line contains only one device name. A device list file must be in the CSV format. The maximum size of a device list file is 5 MB.
+        *   Each device list file can contain up to 10,000 names for the devices in a product that is related to an update package. If the number of device names in a device list file exceeds the limit, an error occurs when you use the file to create a static update batch.
+        
+        @param request: GenerateDeviceNameListURLRequest
+        @return: GenerateDeviceNameListURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_device_name_list_urlwith_options_async(request, runtime)
 
@@ -12633,6 +16197,24 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GenerateOTAUploadURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GenerateOTAUploadURLResponse:
+        """
+        This operation can be used together with other operations to create an update package. Procedure:
+        1\\. Call this API operation to generate the details of an update package file that you want to upload to OSS.
+        The following section describes the response parameters of this API operation:
+        *   The following request parameters of the OSS [PostObject](~~31988~~) operation that is used to upload the update package file: **Key**, **OSSAccessKeyId**, **Signature**, and **Policy**.
+        *   The following request parameter of the [CreateOTAFirmware](~~147311~~) operation that is used to create the update package: **FirmwareUrl**.
+        2\\. Use an [OSS SDK](~~52834~~) to call the [PostObject](~~31988~~) operation to upload the update package file. For more information about sample code, see the "Usage of response parameters" section.
+        > The parameter information that is returned by this operation is valid for 1 minute. You must upload the update package file within 1 minute. The maximum size of the uploaded update package file is 1,000 MB.
+        3\\. After the update package file is uploaded, call the [CreateOTAFirmware](~~147311~~) operation to create an update package within 60 minutes.
+        If update package files are uploaded but you do not call the CreateOTAFirmware operation to create update packages for the files, the uploaded files are automatically deleted by the system on a regular basis.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: GenerateOTAUploadURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateOTAUploadURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_suffix):
@@ -12663,6 +16245,24 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GenerateOTAUploadURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GenerateOTAUploadURLResponse:
+        """
+        This operation can be used together with other operations to create an update package. Procedure:
+        1\\. Call this API operation to generate the details of an update package file that you want to upload to OSS.
+        The following section describes the response parameters of this API operation:
+        *   The following request parameters of the OSS [PostObject](~~31988~~) operation that is used to upload the update package file: **Key**, **OSSAccessKeyId**, **Signature**, and **Policy**.
+        *   The following request parameter of the [CreateOTAFirmware](~~147311~~) operation that is used to create the update package: **FirmwareUrl**.
+        2\\. Use an [OSS SDK](~~52834~~) to call the [PostObject](~~31988~~) operation to upload the update package file. For more information about sample code, see the "Usage of response parameters" section.
+        > The parameter information that is returned by this operation is valid for 1 minute. You must upload the update package file within 1 minute. The maximum size of the uploaded update package file is 1,000 MB.
+        3\\. After the update package file is uploaded, call the [CreateOTAFirmware](~~147311~~) operation to create an update package within 60 minutes.
+        If update package files are uploaded but you do not call the CreateOTAFirmware operation to create update packages for the files, the uploaded files are automatically deleted by the system on a regular basis.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: GenerateOTAUploadURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateOTAUploadURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_suffix):
@@ -12692,6 +16292,23 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GenerateOTAUploadURLRequest,
     ) -> iot_20180120_models.GenerateOTAUploadURLResponse:
+        """
+        This operation can be used together with other operations to create an update package. Procedure:
+        1\\. Call this API operation to generate the details of an update package file that you want to upload to OSS.
+        The following section describes the response parameters of this API operation:
+        *   The following request parameters of the OSS [PostObject](~~31988~~) operation that is used to upload the update package file: **Key**, **OSSAccessKeyId**, **Signature**, and **Policy**.
+        *   The following request parameter of the [CreateOTAFirmware](~~147311~~) operation that is used to create the update package: **FirmwareUrl**.
+        2\\. Use an [OSS SDK](~~52834~~) to call the [PostObject](~~31988~~) operation to upload the update package file. For more information about sample code, see the "Usage of response parameters" section.
+        > The parameter information that is returned by this operation is valid for 1 minute. You must upload the update package file within 1 minute. The maximum size of the uploaded update package file is 1,000 MB.
+        3\\. After the update package file is uploaded, call the [CreateOTAFirmware](~~147311~~) operation to create an update package within 60 minutes.
+        If update package files are uploaded but you do not call the CreateOTAFirmware operation to create update packages for the files, the uploaded files are automatically deleted by the system on a regular basis.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: GenerateOTAUploadURLRequest
+        @return: GenerateOTAUploadURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_otaupload_urlwith_options(request, runtime)
 
@@ -12699,6 +16316,23 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GenerateOTAUploadURLRequest,
     ) -> iot_20180120_models.GenerateOTAUploadURLResponse:
+        """
+        This operation can be used together with other operations to create an update package. Procedure:
+        1\\. Call this API operation to generate the details of an update package file that you want to upload to OSS.
+        The following section describes the response parameters of this API operation:
+        *   The following request parameters of the OSS [PostObject](~~31988~~) operation that is used to upload the update package file: **Key**, **OSSAccessKeyId**, **Signature**, and **Policy**.
+        *   The following request parameter of the [CreateOTAFirmware](~~147311~~) operation that is used to create the update package: **FirmwareUrl**.
+        2\\. Use an [OSS SDK](~~52834~~) to call the [PostObject](~~31988~~) operation to upload the update package file. For more information about sample code, see the "Usage of response parameters" section.
+        > The parameter information that is returned by this operation is valid for 1 minute. You must upload the update package file within 1 minute. The maximum size of the uploaded update package file is 1,000 MB.
+        3\\. After the update package file is uploaded, call the [CreateOTAFirmware](~~147311~~) operation to create an update package within 60 minutes.
+        If update package files are uploaded but you do not call the CreateOTAFirmware operation to create update packages for the files, the uploaded files are automatically deleted by the system on a regular basis.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: GenerateOTAUploadURLRequest
+        @return: GenerateOTAUploadURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_otaupload_urlwith_options_async(request, runtime)
 
@@ -12855,6 +16489,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetDeviceShadowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetDeviceShadowResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 500 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetDeviceShadowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeviceShadowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -12887,6 +16530,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetDeviceShadowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetDeviceShadowResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 500 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetDeviceShadowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeviceShadowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -12918,6 +16570,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetDeviceShadowRequest,
     ) -> iot_20180120_models.GetDeviceShadowResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 500 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetDeviceShadowRequest
+        @return: GetDeviceShadowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_device_shadow_with_options(request, runtime)
 
@@ -12925,6 +16585,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetDeviceShadowRequest,
     ) -> iot_20180120_models.GetDeviceShadowResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 500 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetDeviceShadowRequest
+        @return: GetDeviceShadowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_device_shadow_with_options_async(request, runtime)
 
@@ -12933,6 +16601,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetDeviceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetDeviceStatusResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetDeviceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeviceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -12967,6 +16644,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetDeviceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetDeviceStatusResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetDeviceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeviceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -13000,6 +16686,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetDeviceStatusRequest,
     ) -> iot_20180120_models.GetDeviceStatusResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetDeviceStatusRequest
+        @return: GetDeviceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_device_status_with_options(request, runtime)
 
@@ -13007,6 +16701,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetDeviceStatusRequest,
     ) -> iot_20180120_models.GetDeviceStatusResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetDeviceStatusRequest
+        @return: GetDeviceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_device_status_with_options_async(request, runtime)
 
@@ -13261,6 +16963,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetEdgeDriverVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeDriverVersionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetEdgeDriverVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeDriverVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -13293,6 +17004,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetEdgeDriverVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeDriverVersionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetEdgeDriverVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeDriverVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -13324,6 +17044,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetEdgeDriverVersionRequest,
     ) -> iot_20180120_models.GetEdgeDriverVersionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetEdgeDriverVersionRequest
+        @return: GetEdgeDriverVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_edge_driver_version_with_options(request, runtime)
 
@@ -13331,6 +17059,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetEdgeDriverVersionRequest,
     ) -> iot_20180120_models.GetEdgeDriverVersionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetEdgeDriverVersionRequest
+        @return: GetEdgeDriverVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_edge_driver_version_with_options_async(request, runtime)
 
@@ -13339,6 +17075,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13369,6 +17114,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13398,6 +17152,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetEdgeInstanceRequest,
     ) -> iot_20180120_models.GetEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetEdgeInstanceRequest
+        @return: GetEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_edge_instance_with_options(request, runtime)
 
@@ -13405,6 +17167,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetEdgeInstanceRequest,
     ) -> iot_20180120_models.GetEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetEdgeInstanceRequest
+        @return: GetEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_edge_instance_with_options_async(request, runtime)
 
@@ -13413,6 +17183,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetEdgeInstanceDeploymentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeInstanceDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetEdgeInstanceDeploymentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeInstanceDeploymentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.deployment_id):
@@ -13445,6 +17224,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetEdgeInstanceDeploymentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeInstanceDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetEdgeInstanceDeploymentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeInstanceDeploymentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.deployment_id):
@@ -13476,6 +17264,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetEdgeInstanceDeploymentRequest,
     ) -> iot_20180120_models.GetEdgeInstanceDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetEdgeInstanceDeploymentRequest
+        @return: GetEdgeInstanceDeploymentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_edge_instance_deployment_with_options(request, runtime)
 
@@ -13483,6 +17279,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetEdgeInstanceDeploymentRequest,
     ) -> iot_20180120_models.GetEdgeInstanceDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetEdgeInstanceDeploymentRequest
+        @return: GetEdgeInstanceDeploymentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_edge_instance_deployment_with_options_async(request, runtime)
 
@@ -13569,6 +17373,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetGatewayBySubDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetGatewayBySubDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetGatewayBySubDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayBySubDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -13603,6 +17416,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetGatewayBySubDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetGatewayBySubDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetGatewayBySubDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayBySubDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -13636,6 +17458,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetGatewayBySubDeviceRequest,
     ) -> iot_20180120_models.GetGatewayBySubDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetGatewayBySubDeviceRequest
+        @return: GetGatewayBySubDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_gateway_by_sub_device_with_options(request, runtime)
 
@@ -13643,6 +17473,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetGatewayBySubDeviceRequest,
     ) -> iot_20180120_models.GetGatewayBySubDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetGatewayBySubDeviceRequest
+        @return: GetGatewayBySubDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_gateway_by_sub_device_with_options_async(request, runtime)
 
@@ -13873,6 +17711,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -13903,6 +17750,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -13932,6 +17788,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetRuleRequest,
     ) -> iot_20180120_models.GetRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetRuleRequest
+        @return: GetRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_rule_with_options(request, runtime)
 
@@ -13939,6 +17803,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetRuleRequest,
     ) -> iot_20180120_models.GetRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetRuleRequest
+        @return: GetRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_rule_with_options_async(request, runtime)
 
@@ -13947,6 +17819,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetRuleActionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetRuleActionResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: GetRuleActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRuleActionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_id):
@@ -13977,6 +17856,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetRuleActionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetRuleActionResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: GetRuleActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRuleActionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_id):
@@ -14006,6 +17892,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetRuleActionRequest,
     ) -> iot_20180120_models.GetRuleActionResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: GetRuleActionRequest
+        @return: GetRuleActionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_rule_action_with_options(request, runtime)
 
@@ -14013,6 +17905,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetRuleActionRequest,
     ) -> iot_20180120_models.GetRuleActionResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: GetRuleActionRequest
+        @return: GetRuleActionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_rule_action_with_options_async(request, runtime)
 
@@ -14675,6 +18573,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetThingModelTslRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingModelTslResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: GetThingModelTslRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetThingModelTslResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -14711,6 +18616,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetThingModelTslRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingModelTslResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: GetThingModelTslRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetThingModelTslResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -14746,6 +18658,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetThingModelTslRequest,
     ) -> iot_20180120_models.GetThingModelTslResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: GetThingModelTslRequest
+        @return: GetThingModelTslResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_thing_model_tsl_with_options(request, runtime)
 
@@ -14753,6 +18671,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetThingModelTslRequest,
     ) -> iot_20180120_models.GetThingModelTslResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: GetThingModelTslRequest
+        @return: GetThingModelTslResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_thing_model_tsl_with_options_async(request, runtime)
 
@@ -14761,6 +18685,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetThingModelTslPublishedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingModelTslPublishedResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingModelTslPublishedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetThingModelTslPublishedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -14799,6 +18732,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetThingModelTslPublishedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingModelTslPublishedResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingModelTslPublishedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetThingModelTslPublishedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -14836,6 +18778,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetThingModelTslPublishedRequest,
     ) -> iot_20180120_models.GetThingModelTslPublishedResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingModelTslPublishedRequest
+        @return: GetThingModelTslPublishedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_thing_model_tsl_published_with_options(request, runtime)
 
@@ -14843,6 +18793,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetThingModelTslPublishedRequest,
     ) -> iot_20180120_models.GetThingModelTslPublishedResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingModelTslPublishedRequest
+        @return: GetThingModelTslPublishedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_thing_model_tsl_published_with_options_async(request, runtime)
 
@@ -14851,6 +18809,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetThingScriptRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingScriptResponse:
+        """
+        A data parsing script is used to convert the custom-formatted data to JSON data after the data is submitted by a device. You can write a script in JavaScript, Python 2.7, and PHP 7.2. For more information, see [Submit scripts for data parsing](~~149963~~).
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetThingScriptResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -14881,6 +18848,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetThingScriptRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingScriptResponse:
+        """
+        A data parsing script is used to convert the custom-formatted data to JSON data after the data is submitted by a device. You can write a script in JavaScript, Python 2.7, and PHP 7.2. For more information, see [Submit scripts for data parsing](~~149963~~).
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetThingScriptResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -14910,6 +18886,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetThingScriptRequest,
     ) -> iot_20180120_models.GetThingScriptResponse:
+        """
+        A data parsing script is used to convert the custom-formatted data to JSON data after the data is submitted by a device. You can write a script in JavaScript, Python 2.7, and PHP 7.2. For more information, see [Submit scripts for data parsing](~~149963~~).
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingScriptRequest
+        @return: GetThingScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_thing_script_with_options(request, runtime)
 
@@ -14917,6 +18901,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetThingScriptRequest,
     ) -> iot_20180120_models.GetThingScriptResponse:
+        """
+        A data parsing script is used to convert the custom-formatted data to JSON data after the data is submitted by a device. You can write a script in JavaScript, Python 2.7, and PHP 7.2. For more information, see [Submit scripts for data parsing](~~149963~~).
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingScriptRequest
+        @return: GetThingScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_thing_script_with_options_async(request, runtime)
 
@@ -14925,6 +18917,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetThingTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingTemplateResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetThingTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category_key):
@@ -14957,6 +18958,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetThingTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingTemplateResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetThingTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category_key):
@@ -14988,6 +18998,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetThingTemplateRequest,
     ) -> iot_20180120_models.GetThingTemplateResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingTemplateRequest
+        @return: GetThingTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_thing_template_with_options(request, runtime)
 
@@ -14995,6 +19013,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetThingTemplateRequest,
     ) -> iot_20180120_models.GetThingTemplateResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 2 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingTemplateRequest
+        @return: GetThingTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_thing_template_with_options_async(request, runtime)
 
@@ -15003,6 +19029,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetThingTopoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingTopoResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can initiate a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingTopoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetThingTopoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -15041,6 +19076,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetThingTopoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingTopoResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can initiate a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingTopoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetThingTopoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -15078,6 +19122,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetThingTopoRequest,
     ) -> iot_20180120_models.GetThingTopoResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can initiate a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingTopoRequest
+        @return: GetThingTopoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_thing_topo_with_options(request, runtime)
 
@@ -15085,6 +19137,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetThingTopoRequest,
     ) -> iot_20180120_models.GetThingTopoResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can initiate a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetThingTopoRequest
+        @return: GetThingTopoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_thing_topo_with_options_async(request, runtime)
 
@@ -15258,6 +19318,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ImportDTDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dtinstance_id):
+            query['DTInstanceId'] = request.dtinstance_id
         body = {}
         if not UtilClient.is_unset(request.iot_instance_id):
             body['IotInstanceId'] = request.iot_instance_id
@@ -15266,6 +19329,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.product_key):
             body['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -15290,6 +19354,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ImportDTDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dtinstance_id):
+            query['DTInstanceId'] = request.dtinstance_id
         body = {}
         if not UtilClient.is_unset(request.iot_instance_id):
             body['IotInstanceId'] = request.iot_instance_id
@@ -15298,6 +19365,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.product_key):
             body['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -15425,6 +19493,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ImportThingModelTslRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ImportThingModelTslResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ImportThingModelTslRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportThingModelTslResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -15465,6 +19543,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ImportThingModelTslRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ImportThingModelTslResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ImportThingModelTslRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportThingModelTslResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -15504,6 +19592,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ImportThingModelTslRequest,
     ) -> iot_20180120_models.ImportThingModelTslResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ImportThingModelTslRequest
+        @return: ImportThingModelTslResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_thing_model_tsl_with_options(request, runtime)
 
@@ -15511,6 +19608,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ImportThingModelTslRequest,
     ) -> iot_20180120_models.ImportThingModelTslResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ImportThingModelTslRequest
+        @return: ImportThingModelTslResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_thing_model_tsl_with_options_async(request, runtime)
 
@@ -15597,6 +19703,36 @@ class Client(OpenApiClient):
         request: iot_20180120_models.InvokeThingServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.InvokeThingServiceResponse:
+        """
+        When you define a service in a Thing Specification Language (TSL) model, the mode in which the service is called is specified. When you call a service by using this operation, IoT Platform uses a call mode based on the value of the *Identifier** parameter.
+        *   Synchronous mode: IoT Platform sends a revert-remote procedure call (RRPC) request to a device. Then, the device synchronously returns an RRPC response. For more information about how to use an RRPC, see [What is RRPC?](~~90567~~)
+        *   Asynchronous mode: IoT Platform sends an RRPC request to a device. Then, the device asynchronously returns an RRPC response. For more information about topics, see [Device properties, events, and services](~~89301~~).
+        > If you set the Checksum Type parameter to **Verification-free** when you create a product, the asynchronous mode is used.
+        When the device receives the service call, the device returns a response to the service caller. When you configure the device, you must specify the response logic and response parameters. The data formats of response parameters must comply with the Alink protocol. Example:
+        ```
+        {
+        "id": "58***89",
+        "code": 200,
+        "data": {},
+        "message": "success",
+        "localizedMsg": "localizedMsg"
+        }
+        ```
+        > *   The **id** parameter specifies the unique identifier of the request. The ID is generated by IoT Platform. The device can obtain the ID from the request parameters and then return the ID.
+        >*   The **code** parameter specifies the result of the service call. The value of the parameter is an integer.
+        >*   The **data** parameter specifies the result of the service call. This parameter is returned to the service caller. You can configure the parameters that you want to include in the returned result. The data must be in the JSON format.
+        >*   The **message** and **localizedMsg** parameters are optional.
+        >*   Link SDK for C of IoT Platform provides an example on how to use a TSL model. For more information, see [Call device services](~~258239~~).
+        ## Limits
+        If you synchronously call a service, the timeout period is 8 seconds. If a server does not receive a response within 8 seconds, a timeout error occurs. No limit is imposed on the timeout period of asynchronous calls.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: InvokeThingServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvokeThingServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.args):
@@ -15635,6 +19771,36 @@ class Client(OpenApiClient):
         request: iot_20180120_models.InvokeThingServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.InvokeThingServiceResponse:
+        """
+        When you define a service in a Thing Specification Language (TSL) model, the mode in which the service is called is specified. When you call a service by using this operation, IoT Platform uses a call mode based on the value of the *Identifier** parameter.
+        *   Synchronous mode: IoT Platform sends a revert-remote procedure call (RRPC) request to a device. Then, the device synchronously returns an RRPC response. For more information about how to use an RRPC, see [What is RRPC?](~~90567~~)
+        *   Asynchronous mode: IoT Platform sends an RRPC request to a device. Then, the device asynchronously returns an RRPC response. For more information about topics, see [Device properties, events, and services](~~89301~~).
+        > If you set the Checksum Type parameter to **Verification-free** when you create a product, the asynchronous mode is used.
+        When the device receives the service call, the device returns a response to the service caller. When you configure the device, you must specify the response logic and response parameters. The data formats of response parameters must comply with the Alink protocol. Example:
+        ```
+        {
+        "id": "58***89",
+        "code": 200,
+        "data": {},
+        "message": "success",
+        "localizedMsg": "localizedMsg"
+        }
+        ```
+        > *   The **id** parameter specifies the unique identifier of the request. The ID is generated by IoT Platform. The device can obtain the ID from the request parameters and then return the ID.
+        >*   The **code** parameter specifies the result of the service call. The value of the parameter is an integer.
+        >*   The **data** parameter specifies the result of the service call. This parameter is returned to the service caller. You can configure the parameters that you want to include in the returned result. The data must be in the JSON format.
+        >*   The **message** and **localizedMsg** parameters are optional.
+        >*   Link SDK for C of IoT Platform provides an example on how to use a TSL model. For more information, see [Call device services](~~258239~~).
+        ## Limits
+        If you synchronously call a service, the timeout period is 8 seconds. If a server does not receive a response within 8 seconds, a timeout error occurs. No limit is imposed on the timeout period of asynchronous calls.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: InvokeThingServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvokeThingServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.args):
@@ -15672,6 +19838,35 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.InvokeThingServiceRequest,
     ) -> iot_20180120_models.InvokeThingServiceResponse:
+        """
+        When you define a service in a Thing Specification Language (TSL) model, the mode in which the service is called is specified. When you call a service by using this operation, IoT Platform uses a call mode based on the value of the *Identifier** parameter.
+        *   Synchronous mode: IoT Platform sends a revert-remote procedure call (RRPC) request to a device. Then, the device synchronously returns an RRPC response. For more information about how to use an RRPC, see [What is RRPC?](~~90567~~)
+        *   Asynchronous mode: IoT Platform sends an RRPC request to a device. Then, the device asynchronously returns an RRPC response. For more information about topics, see [Device properties, events, and services](~~89301~~).
+        > If you set the Checksum Type parameter to **Verification-free** when you create a product, the asynchronous mode is used.
+        When the device receives the service call, the device returns a response to the service caller. When you configure the device, you must specify the response logic and response parameters. The data formats of response parameters must comply with the Alink protocol. Example:
+        ```
+        {
+        "id": "58***89",
+        "code": 200,
+        "data": {},
+        "message": "success",
+        "localizedMsg": "localizedMsg"
+        }
+        ```
+        > *   The **id** parameter specifies the unique identifier of the request. The ID is generated by IoT Platform. The device can obtain the ID from the request parameters and then return the ID.
+        >*   The **code** parameter specifies the result of the service call. The value of the parameter is an integer.
+        >*   The **data** parameter specifies the result of the service call. This parameter is returned to the service caller. You can configure the parameters that you want to include in the returned result. The data must be in the JSON format.
+        >*   The **message** and **localizedMsg** parameters are optional.
+        >*   Link SDK for C of IoT Platform provides an example on how to use a TSL model. For more information, see [Call device services](~~258239~~).
+        ## Limits
+        If you synchronously call a service, the timeout period is 8 seconds. If a server does not receive a response within 8 seconds, a timeout error occurs. No limit is imposed on the timeout period of asynchronous calls.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: InvokeThingServiceRequest
+        @return: InvokeThingServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.invoke_thing_service_with_options(request, runtime)
 
@@ -15679,6 +19874,35 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.InvokeThingServiceRequest,
     ) -> iot_20180120_models.InvokeThingServiceResponse:
+        """
+        When you define a service in a Thing Specification Language (TSL) model, the mode in which the service is called is specified. When you call a service by using this operation, IoT Platform uses a call mode based on the value of the *Identifier** parameter.
+        *   Synchronous mode: IoT Platform sends a revert-remote procedure call (RRPC) request to a device. Then, the device synchronously returns an RRPC response. For more information about how to use an RRPC, see [What is RRPC?](~~90567~~)
+        *   Asynchronous mode: IoT Platform sends an RRPC request to a device. Then, the device asynchronously returns an RRPC response. For more information about topics, see [Device properties, events, and services](~~89301~~).
+        > If you set the Checksum Type parameter to **Verification-free** when you create a product, the asynchronous mode is used.
+        When the device receives the service call, the device returns a response to the service caller. When you configure the device, you must specify the response logic and response parameters. The data formats of response parameters must comply with the Alink protocol. Example:
+        ```
+        {
+        "id": "58***89",
+        "code": 200,
+        "data": {},
+        "message": "success",
+        "localizedMsg": "localizedMsg"
+        }
+        ```
+        > *   The **id** parameter specifies the unique identifier of the request. The ID is generated by IoT Platform. The device can obtain the ID from the request parameters and then return the ID.
+        >*   The **code** parameter specifies the result of the service call. The value of the parameter is an integer.
+        >*   The **data** parameter specifies the result of the service call. This parameter is returned to the service caller. You can configure the parameters that you want to include in the returned result. The data must be in the JSON format.
+        >*   The **message** and **localizedMsg** parameters are optional.
+        >*   Link SDK for C of IoT Platform provides an example on how to use a TSL model. For more information, see [Call device services](~~258239~~).
+        ## Limits
+        If you synchronously call a service, the timeout period is 8 seconds. If a server does not receive a response within 8 seconds, a timeout error occurs. No limit is imposed on the timeout period of asynchronous calls.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: InvokeThingServiceRequest
+        @return: InvokeThingServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.invoke_thing_service_with_options_async(request, runtime)
 
@@ -15687,6 +19911,31 @@ class Client(OpenApiClient):
         request: iot_20180120_models.InvokeThingsServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.InvokeThingsServiceResponse:
+        """
+        You can only asynchronously call this operation.
+        When the device receives the service call, the device returns a response to the service caller. When you configure the device, you must specify the response logic and response parameters. The data formats of response parameters must comply with the Alink protocol. Example:
+        ```
+        {
+        "id": "58***89",
+        "code": 200,
+        "data": {},
+        "message": "success",
+        "localizedMsg": "localizedMsg"
+        }
+        ```
+        > *   The **id** parameter specifies the unique identifier of the request. The ID is generated by IoT Platform. The device can obtain the ID from the request parameters and return the ID.
+        >*   The **code** parameter specifies the result of the service call. The value of the parameter is an integer.
+        >*   The **data** parameter specifies the result of the service call. This parameter is returned to the service caller. You can specify the parameters included in the returned result. The data must be in JSON format.
+        >*   The **message** and **localizedMsg** parameters are optional.
+        >*    Link SDK for C of IoT Platform provides an example on how to use a TSL model. For more information, see [Call device services](~~258239~~).
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: InvokeThingsServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvokeThingsServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.args):
@@ -15723,6 +19972,31 @@ class Client(OpenApiClient):
         request: iot_20180120_models.InvokeThingsServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.InvokeThingsServiceResponse:
+        """
+        You can only asynchronously call this operation.
+        When the device receives the service call, the device returns a response to the service caller. When you configure the device, you must specify the response logic and response parameters. The data formats of response parameters must comply with the Alink protocol. Example:
+        ```
+        {
+        "id": "58***89",
+        "code": 200,
+        "data": {},
+        "message": "success",
+        "localizedMsg": "localizedMsg"
+        }
+        ```
+        > *   The **id** parameter specifies the unique identifier of the request. The ID is generated by IoT Platform. The device can obtain the ID from the request parameters and return the ID.
+        >*   The **code** parameter specifies the result of the service call. The value of the parameter is an integer.
+        >*   The **data** parameter specifies the result of the service call. This parameter is returned to the service caller. You can specify the parameters included in the returned result. The data must be in JSON format.
+        >*   The **message** and **localizedMsg** parameters are optional.
+        >*    Link SDK for C of IoT Platform provides an example on how to use a TSL model. For more information, see [Call device services](~~258239~~).
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: InvokeThingsServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvokeThingsServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.args):
@@ -15758,6 +20032,30 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.InvokeThingsServiceRequest,
     ) -> iot_20180120_models.InvokeThingsServiceResponse:
+        """
+        You can only asynchronously call this operation.
+        When the device receives the service call, the device returns a response to the service caller. When you configure the device, you must specify the response logic and response parameters. The data formats of response parameters must comply with the Alink protocol. Example:
+        ```
+        {
+        "id": "58***89",
+        "code": 200,
+        "data": {},
+        "message": "success",
+        "localizedMsg": "localizedMsg"
+        }
+        ```
+        > *   The **id** parameter specifies the unique identifier of the request. The ID is generated by IoT Platform. The device can obtain the ID from the request parameters and return the ID.
+        >*   The **code** parameter specifies the result of the service call. The value of the parameter is an integer.
+        >*   The **data** parameter specifies the result of the service call. This parameter is returned to the service caller. You can specify the parameters included in the returned result. The data must be in JSON format.
+        >*   The **message** and **localizedMsg** parameters are optional.
+        >*    Link SDK for C of IoT Platform provides an example on how to use a TSL model. For more information, see [Call device services](~~258239~~).
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: InvokeThingsServiceRequest
+        @return: InvokeThingsServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.invoke_things_service_with_options(request, runtime)
 
@@ -15765,6 +20063,30 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.InvokeThingsServiceRequest,
     ) -> iot_20180120_models.InvokeThingsServiceResponse:
+        """
+        You can only asynchronously call this operation.
+        When the device receives the service call, the device returns a response to the service caller. When you configure the device, you must specify the response logic and response parameters. The data formats of response parameters must comply with the Alink protocol. Example:
+        ```
+        {
+        "id": "58***89",
+        "code": 200,
+        "data": {},
+        "message": "success",
+        "localizedMsg": "localizedMsg"
+        }
+        ```
+        > *   The **id** parameter specifies the unique identifier of the request. The ID is generated by IoT Platform. The device can obtain the ID from the request parameters and return the ID.
+        >*   The **code** parameter specifies the result of the service call. The value of the parameter is an integer.
+        >*   The **data** parameter specifies the result of the service call. This parameter is returned to the service caller. You can specify the parameters included in the returned result. The data must be in JSON format.
+        >*   The **message** and **localizedMsg** parameters are optional.
+        >*    Link SDK for C of IoT Platform provides an example on how to use a TSL model. For more information, see [Call device services](~~258239~~).
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: InvokeThingsServiceRequest
+        @return: InvokeThingsServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.invoke_things_service_with_options_async(request, runtime)
 
@@ -16035,6 +20357,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListDeviceDistributeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDeviceDistributeJobResponse:
+        """
+        If you use an Enterprise Edition instance, you must specify the *IotInstanceId** parameter when you call this operation. Otherwise, the call fails.
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListDeviceDistributeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeviceDistributeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16077,6 +20409,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListDeviceDistributeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDeviceDistributeJobResponse:
+        """
+        If you use an Enterprise Edition instance, you must specify the *IotInstanceId** parameter when you call this operation. Otherwise, the call fails.
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListDeviceDistributeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeviceDistributeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16118,6 +20460,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListDeviceDistributeJobRequest,
     ) -> iot_20180120_models.ListDeviceDistributeJobResponse:
+        """
+        If you use an Enterprise Edition instance, you must specify the *IotInstanceId** parameter when you call this operation. Otherwise, the call fails.
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListDeviceDistributeJobRequest
+        @return: ListDeviceDistributeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_device_distribute_job_with_options(request, runtime)
 
@@ -16125,6 +20476,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListDeviceDistributeJobRequest,
     ) -> iot_20180120_models.ListDeviceDistributeJobResponse:
+        """
+        If you use an Enterprise Edition instance, you must specify the *IotInstanceId** parameter when you call this operation. Otherwise, the call fails.
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListDeviceDistributeJobRequest
+        @return: ListDeviceDistributeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_device_distribute_job_with_options_async(request, runtime)
 
@@ -16133,6 +20493,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListDistributedDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDistributedDeviceResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        *   Multiple Alibaba Cloud accounts can run a maximum of 200 QPS at the same time.
+        
+        @param request: ListDistributedDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDistributedDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16171,6 +20541,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListDistributedDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDistributedDeviceResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        *   Multiple Alibaba Cloud accounts can run a maximum of 200 QPS at the same time.
+        
+        @param request: ListDistributedDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDistributedDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16208,6 +20588,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListDistributedDeviceRequest,
     ) -> iot_20180120_models.ListDistributedDeviceResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        *   Multiple Alibaba Cloud accounts can run a maximum of 200 QPS at the same time.
+        
+        @param request: ListDistributedDeviceRequest
+        @return: ListDistributedDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_distributed_device_with_options(request, runtime)
 
@@ -16215,6 +20604,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListDistributedDeviceRequest,
     ) -> iot_20180120_models.ListDistributedDeviceResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        *   Multiple Alibaba Cloud accounts can run a maximum of 200 QPS at the same time.
+        
+        @param request: ListDistributedDeviceRequest
+        @return: ListDistributedDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_distributed_device_with_options_async(request, runtime)
 
@@ -16223,6 +20621,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListDistributedProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDistributedProductResponse:
+        """
+        You can call this operation only by using the following *endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListDistributedProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDistributedProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16261,6 +20669,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListDistributedProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDistributedProductResponse:
+        """
+        You can call this operation only by using the following *endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListDistributedProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDistributedProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16298,6 +20716,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListDistributedProductRequest,
     ) -> iot_20180120_models.ListDistributedProductResponse:
+        """
+        You can call this operation only by using the following *endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListDistributedProductRequest
+        @return: ListDistributedProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_distributed_product_with_options(request, runtime)
 
@@ -16305,6 +20732,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListDistributedProductRequest,
     ) -> iot_20180120_models.ListDistributedProductResponse:
+        """
+        You can call this operation only by using the following *endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListDistributedProductRequest
+        @return: ListDistributedProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_distributed_product_with_options_async(request, runtime)
 
@@ -16395,6 +20831,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTAFirmwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAFirmwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTAFirmwareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16431,6 +20876,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTAFirmwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAFirmwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTAFirmwareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16466,6 +20920,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTAFirmwareRequest,
     ) -> iot_20180120_models.ListOTAFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAFirmwareRequest
+        @return: ListOTAFirmwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_otafirmware_with_options(request, runtime)
 
@@ -16473,6 +20935,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTAFirmwareRequest,
     ) -> iot_20180120_models.ListOTAFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAFirmwareRequest
+        @return: ListOTAFirmwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_otafirmware_with_options_async(request, runtime)
 
@@ -16481,6 +20951,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTAJobByDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAJobByDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAJobByDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTAJobByDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16519,6 +20998,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTAJobByDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAJobByDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAJobByDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTAJobByDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16556,6 +21044,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTAJobByDeviceRequest,
     ) -> iot_20180120_models.ListOTAJobByDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAJobByDeviceRequest
+        @return: ListOTAJobByDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_otajob_by_device_with_options(request, runtime)
 
@@ -16563,6 +21059,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTAJobByDeviceRequest,
     ) -> iot_20180120_models.ListOTAJobByDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAJobByDeviceRequest
+        @return: ListOTAJobByDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_otajob_by_device_with_options_async(request, runtime)
 
@@ -16571,6 +21075,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTAJobByFirmwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAJobByFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAJobByFirmwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTAJobByFirmwareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16605,6 +21118,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTAJobByFirmwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAJobByFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAJobByFirmwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTAJobByFirmwareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16638,6 +21160,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTAJobByFirmwareRequest,
     ) -> iot_20180120_models.ListOTAJobByFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAJobByFirmwareRequest
+        @return: ListOTAJobByFirmwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_otajob_by_firmware_with_options(request, runtime)
 
@@ -16645,6 +21175,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTAJobByFirmwareRequest,
     ) -> iot_20180120_models.ListOTAJobByFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAJobByFirmwareRequest
+        @return: ListOTAJobByFirmwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_otajob_by_firmware_with_options_async(request, runtime)
 
@@ -16653,6 +21191,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTAModuleByProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAModuleByProductResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAModuleByProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTAModuleByProductResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -16679,6 +21226,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTAModuleByProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAModuleByProductResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAModuleByProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTAModuleByProductResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -16704,6 +21260,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTAModuleByProductRequest,
     ) -> iot_20180120_models.ListOTAModuleByProductResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAModuleByProductRequest
+        @return: ListOTAModuleByProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_otamodule_by_product_with_options(request, runtime)
 
@@ -16711,6 +21275,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTAModuleByProductRequest,
     ) -> iot_20180120_models.ListOTAModuleByProductResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAModuleByProductRequest
+        @return: ListOTAModuleByProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_otamodule_by_product_with_options_async(request, runtime)
 
@@ -16719,6 +21291,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTAModuleVersionsByDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAModuleVersionsByDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAModuleVersionsByDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTAModuleVersionsByDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16757,6 +21338,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTAModuleVersionsByDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAModuleVersionsByDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAModuleVersionsByDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTAModuleVersionsByDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16794,6 +21384,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTAModuleVersionsByDeviceRequest,
     ) -> iot_20180120_models.ListOTAModuleVersionsByDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAModuleVersionsByDeviceRequest
+        @return: ListOTAModuleVersionsByDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_otamodule_versions_by_device_with_options(request, runtime)
 
@@ -16801,6 +21399,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTAModuleVersionsByDeviceRequest,
     ) -> iot_20180120_models.ListOTAModuleVersionsByDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAModuleVersionsByDeviceRequest
+        @return: ListOTAModuleVersionsByDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_otamodule_versions_by_device_with_options_async(request, runtime)
 
@@ -16809,6 +21415,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTATaskByJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTATaskByJobResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: ListOTATaskByJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTATaskByJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16847,6 +21462,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTATaskByJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTATaskByJobResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: ListOTATaskByJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTATaskByJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -16884,6 +21508,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTATaskByJobRequest,
     ) -> iot_20180120_models.ListOTATaskByJobResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: ListOTATaskByJobRequest
+        @return: ListOTATaskByJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_otatask_by_job_with_options(request, runtime)
 
@@ -16891,6 +21523,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTATaskByJobRequest,
     ) -> iot_20180120_models.ListOTATaskByJobResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: ListOTATaskByJobRequest
+        @return: ListOTATaskByJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_otatask_by_job_with_options_async(request, runtime)
 
@@ -16899,6 +21539,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTAUnfinishedTaskByDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAUnfinishedTaskByDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAUnfinishedTaskByDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTAUnfinishedTaskByDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -16937,6 +21586,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListOTAUnfinishedTaskByDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAUnfinishedTaskByDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAUnfinishedTaskByDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOTAUnfinishedTaskByDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -16974,6 +21632,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTAUnfinishedTaskByDeviceRequest,
     ) -> iot_20180120_models.ListOTAUnfinishedTaskByDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAUnfinishedTaskByDeviceRequest
+        @return: ListOTAUnfinishedTaskByDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_otaunfinished_task_by_device_with_options(request, runtime)
 
@@ -16981,6 +21647,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListOTAUnfinishedTaskByDeviceRequest,
     ) -> iot_20180120_models.ListOTAUnfinishedTaskByDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListOTAUnfinishedTaskByDeviceRequest
+        @return: ListOTAUnfinishedTaskByDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_otaunfinished_task_by_device_with_options_async(request, runtime)
 
@@ -17231,6 +21905,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListProductByTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListProductByTagsResponse:
+        """
+        ## Limits
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        *   You can specify a tag key or a tag key-value pair for search.
+        *   If you specify multiple tags, the logical relationship among these tags is **OR**.
+        
+        @param request: ListProductByTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductByTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -17265,6 +21950,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListProductByTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListProductByTagsResponse:
+        """
+        ## Limits
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        *   You can specify a tag key or a tag key-value pair for search.
+        *   If you specify multiple tags, the logical relationship among these tags is **OR**.
+        
+        @param request: ListProductByTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductByTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -17298,6 +21994,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListProductByTagsRequest,
     ) -> iot_20180120_models.ListProductByTagsResponse:
+        """
+        ## Limits
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        *   You can specify a tag key or a tag key-value pair for search.
+        *   If you specify multiple tags, the logical relationship among these tags is **OR**.
+        
+        @param request: ListProductByTagsRequest
+        @return: ListProductByTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_product_by_tags_with_options(request, runtime)
 
@@ -17305,6 +22011,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListProductByTagsRequest,
     ) -> iot_20180120_models.ListProductByTagsResponse:
+        """
+        ## Limits
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        *   You can specify a tag key or a tag key-value pair for search.
+        *   If you specify multiple tags, the logical relationship among these tags is **OR**.
+        
+        @param request: ListProductByTagsRequest
+        @return: ListProductByTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_product_by_tags_with_options_async(request, runtime)
 
@@ -17313,6 +22029,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListProductTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListProductTagsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListProductTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -17343,6 +22068,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListProductTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListProductTagsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListProductTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -17372,6 +22106,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListProductTagsRequest,
     ) -> iot_20180120_models.ListProductTagsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListProductTagsRequest
+        @return: ListProductTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_product_tags_with_options(request, runtime)
 
@@ -17379,6 +22121,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListProductTagsRequest,
     ) -> iot_20180120_models.ListProductTagsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListProductTagsRequest
+        @return: ListProductTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_product_tags_with_options_async(request, runtime)
 
@@ -17387,6 +22137,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListRuleResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 20 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -17421,6 +22180,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListRuleResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 20 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -17454,6 +22222,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListRuleRequest,
     ) -> iot_20180120_models.ListRuleResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 20 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListRuleRequest
+        @return: ListRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_rule_with_options(request, runtime)
 
@@ -17461,6 +22237,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListRuleRequest,
     ) -> iot_20180120_models.ListRuleResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 20 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListRuleRequest
+        @return: ListRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_rule_with_options_async(request, runtime)
 
@@ -17469,6 +22253,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListRuleActionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListRuleActionsResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListRuleActionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRuleActionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -17499,6 +22292,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListRuleActionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListRuleActionsResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListRuleActionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRuleActionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -17528,6 +22330,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListRuleActionsRequest,
     ) -> iot_20180120_models.ListRuleActionsResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListRuleActionsRequest
+        @return: ListRuleActionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_rule_actions_with_options(request, runtime)
 
@@ -17535,6 +22345,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListRuleActionsRequest,
     ) -> iot_20180120_models.ListRuleActionsResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListRuleActionsRequest
+        @return: ListRuleActionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_rule_actions_with_options_async(request, runtime)
 
@@ -17641,6 +22459,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListThingModelVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListThingModelVersionResponse:
+        """
+        You can manage TSL models by version. After you import a TSL model by calling the [ImportThingModelTsl](~~150320~~) operation, copy a TSL model by calling the [CopyThingModel](~~150322~~) operation, or edit a TSL model, you must publish the TSL model by calling the [PublishThingModel](~~150311~~) operation. Then, the TSL model can be used. Each time a TSL model of a product is published, a new version is generated.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListThingModelVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListThingModelVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -17671,6 +22499,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListThingModelVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListThingModelVersionResponse:
+        """
+        You can manage TSL models by version. After you import a TSL model by calling the [ImportThingModelTsl](~~150320~~) operation, copy a TSL model by calling the [CopyThingModel](~~150322~~) operation, or edit a TSL model, you must publish the TSL model by calling the [PublishThingModel](~~150311~~) operation. Then, the TSL model can be used. Each time a TSL model of a product is published, a new version is generated.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListThingModelVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListThingModelVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -17700,6 +22538,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListThingModelVersionRequest,
     ) -> iot_20180120_models.ListThingModelVersionResponse:
+        """
+        You can manage TSL models by version. After you import a TSL model by calling the [ImportThingModelTsl](~~150320~~) operation, copy a TSL model by calling the [CopyThingModel](~~150322~~) operation, or edit a TSL model, you must publish the TSL model by calling the [PublishThingModel](~~150311~~) operation. Then, the TSL model can be used. Each time a TSL model of a product is published, a new version is generated.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListThingModelVersionRequest
+        @return: ListThingModelVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_thing_model_version_with_options(request, runtime)
 
@@ -17707,6 +22554,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListThingModelVersionRequest,
     ) -> iot_20180120_models.ListThingModelVersionResponse:
+        """
+        You can manage TSL models by version. After you import a TSL model by calling the [ImportThingModelTsl](~~150320~~) operation, copy a TSL model by calling the [CopyThingModel](~~150322~~) operation, or edit a TSL model, you must publish the TSL model by calling the [PublishThingModel](~~150311~~) operation. Then, the TSL model can be used. Each time a TSL model of a product is published, a new version is generated.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListThingModelVersionRequest
+        @return: ListThingModelVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_thing_model_version_with_options_async(request, runtime)
 
@@ -17715,6 +22571,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListThingTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListThingTemplatesResponse:
+        """
+        IoT Platform provides product categories that have defined TSL models, such as street lamps, vehicle location cards, and water immersion detectors.
+        When you call the [CreateProduct](~~69123~~) operation to create a product, you can set the CategoryKey parameter to specify a product category. The product that you create references the standardized TSL model of the specified category.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListThingTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListThingTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -17743,6 +22610,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListThingTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListThingTemplatesResponse:
+        """
+        IoT Platform provides product categories that have defined TSL models, such as street lamps, vehicle location cards, and water immersion detectors.
+        When you call the [CreateProduct](~~69123~~) operation to create a product, you can set the CategoryKey parameter to specify a product category. The product that you create references the standardized TSL model of the specified category.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListThingTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListThingTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -17770,6 +22648,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListThingTemplatesRequest,
     ) -> iot_20180120_models.ListThingTemplatesResponse:
+        """
+        IoT Platform provides product categories that have defined TSL models, such as street lamps, vehicle location cards, and water immersion detectors.
+        When you call the [CreateProduct](~~69123~~) operation to create a product, you can set the CategoryKey parameter to specify a product category. The product that you create references the standardized TSL model of the specified category.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListThingTemplatesRequest
+        @return: ListThingTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_thing_templates_with_options(request, runtime)
 
@@ -17777,6 +22665,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListThingTemplatesRequest,
     ) -> iot_20180120_models.ListThingTemplatesResponse:
+        """
+        IoT Platform provides product categories that have defined TSL models, such as street lamps, vehicle location cards, and water immersion detectors.
+        When you call the [CreateProduct](~~69123~~) operation to create a product, you can set the CategoryKey parameter to specify a product category. The product that you create references the standardized TSL model of the specified category.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListThingTemplatesRequest
+        @return: ListThingTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_thing_templates_with_options_async(request, runtime)
 
@@ -17785,6 +22683,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.NotifyAddThingTopoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.NotifyAddThingTopoResponse:
+        """
+        A successful response indicates that the command to add topological relationships is sent to the gateway. It does not indicate that the topological relationships are added.
+        When you develop the gateway, you must subscribe to the topic that is used to send notifications when you add topological relationships. For more information about the topic and message format, see [Manage topological relationships](~~89299~~).
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: NotifyAddThingTopoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: NotifyAddThingTopoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_list_str):
@@ -17821,6 +22730,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.NotifyAddThingTopoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.NotifyAddThingTopoResponse:
+        """
+        A successful response indicates that the command to add topological relationships is sent to the gateway. It does not indicate that the topological relationships are added.
+        When you develop the gateway, you must subscribe to the topic that is used to send notifications when you add topological relationships. For more information about the topic and message format, see [Manage topological relationships](~~89299~~).
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: NotifyAddThingTopoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: NotifyAddThingTopoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_list_str):
@@ -17856,6 +22776,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.NotifyAddThingTopoRequest,
     ) -> iot_20180120_models.NotifyAddThingTopoResponse:
+        """
+        A successful response indicates that the command to add topological relationships is sent to the gateway. It does not indicate that the topological relationships are added.
+        When you develop the gateway, you must subscribe to the topic that is used to send notifications when you add topological relationships. For more information about the topic and message format, see [Manage topological relationships](~~89299~~).
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: NotifyAddThingTopoRequest
+        @return: NotifyAddThingTopoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.notify_add_thing_topo_with_options(request, runtime)
 
@@ -17863,6 +22793,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.NotifyAddThingTopoRequest,
     ) -> iot_20180120_models.NotifyAddThingTopoResponse:
+        """
+        A successful response indicates that the command to add topological relationships is sent to the gateway. It does not indicate that the topological relationships are added.
+        When you develop the gateway, you must subscribe to the topic that is used to send notifications when you add topological relationships. For more information about the topic and message format, see [Manage topological relationships](~~89299~~).
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: NotifyAddThingTopoRequest
+        @return: NotifyAddThingTopoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.notify_add_thing_topo_with_options_async(request, runtime)
 
@@ -18297,6 +23237,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.PubRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PubResponse:
+        """
+        This operation does not support device property settings and service invocations.
+        *   To set properties, call the [SetDeviceProperty](~~69579~~) or [SetDevicesProperty](~~96243~~) operation.
+        *   To invoke a service, call the [InvokeThingService](~~69584~~) or [InvokeThingsService](~~96242~~) operation.
+        ## QPS limit
+        You can call this API operation up to 1,600 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PubRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PubResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content_type):
@@ -18347,6 +23299,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.PubRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PubResponse:
+        """
+        This operation does not support device property settings and service invocations.
+        *   To set properties, call the [SetDeviceProperty](~~69579~~) or [SetDevicesProperty](~~96243~~) operation.
+        *   To invoke a service, call the [InvokeThingService](~~69584~~) or [InvokeThingsService](~~96242~~) operation.
+        ## QPS limit
+        You can call this API operation up to 1,600 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PubRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PubResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content_type):
@@ -18396,6 +23360,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.PubRequest,
     ) -> iot_20180120_models.PubResponse:
+        """
+        This operation does not support device property settings and service invocations.
+        *   To set properties, call the [SetDeviceProperty](~~69579~~) or [SetDevicesProperty](~~96243~~) operation.
+        *   To invoke a service, call the [InvokeThingService](~~69584~~) or [InvokeThingsService](~~96242~~) operation.
+        ## QPS limit
+        You can call this API operation up to 1,600 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PubRequest
+        @return: PubResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.pub_with_options(request, runtime)
 
@@ -18403,6 +23378,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.PubRequest,
     ) -> iot_20180120_models.PubResponse:
+        """
+        This operation does not support device property settings and service invocations.
+        *   To set properties, call the [SetDeviceProperty](~~69579~~) or [SetDevicesProperty](~~96243~~) operation.
+        *   To invoke a service, call the [InvokeThingService](~~69584~~) or [InvokeThingsService](~~96242~~) operation.
+        ## QPS limit
+        You can call this API operation up to 1,600 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PubRequest
+        @return: PubResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.pub_with_options_async(request, runtime)
 
@@ -18411,6 +23397,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.PubBroadcastRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PubBroadcastResponse:
+        """
+        You can use the *TopicFullName** parameter in the **request** to specify the devices to which you want to broadcast messages. For more information, see the description about the **TopicFullName** parameter in this topic.
+        ## QPS limits
+        - Each Alibaba Cloud account can run only one query per second (QPS) to broadcast a message to devices that subscribe to a topic.
+        - Each Alibaba Cloud account can run only one query per minute (QPM) to broadcast a message to all online devices of a product.      >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PubBroadcastRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PubBroadcastResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -18445,6 +23441,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.PubBroadcastRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PubBroadcastResponse:
+        """
+        You can use the *TopicFullName** parameter in the **request** to specify the devices to which you want to broadcast messages. For more information, see the description about the **TopicFullName** parameter in this topic.
+        ## QPS limits
+        - Each Alibaba Cloud account can run only one query per second (QPS) to broadcast a message to devices that subscribe to a topic.
+        - Each Alibaba Cloud account can run only one query per minute (QPM) to broadcast a message to all online devices of a product.      >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PubBroadcastRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PubBroadcastResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -18478,6 +23484,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.PubBroadcastRequest,
     ) -> iot_20180120_models.PubBroadcastResponse:
+        """
+        You can use the *TopicFullName** parameter in the **request** to specify the devices to which you want to broadcast messages. For more information, see the description about the **TopicFullName** parameter in this topic.
+        ## QPS limits
+        - Each Alibaba Cloud account can run only one query per second (QPS) to broadcast a message to devices that subscribe to a topic.
+        - Each Alibaba Cloud account can run only one query per minute (QPM) to broadcast a message to all online devices of a product.      >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PubBroadcastRequest
+        @return: PubBroadcastResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.pub_broadcast_with_options(request, runtime)
 
@@ -18485,6 +23500,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.PubBroadcastRequest,
     ) -> iot_20180120_models.PubBroadcastResponse:
+        """
+        You can use the *TopicFullName** parameter in the **request** to specify the devices to which you want to broadcast messages. For more information, see the description about the **TopicFullName** parameter in this topic.
+        ## QPS limits
+        - Each Alibaba Cloud account can run only one query per second (QPS) to broadcast a message to devices that subscribe to a topic.
+        - Each Alibaba Cloud account can run only one query per minute (QPM) to broadcast a message to all online devices of a product.      >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PubBroadcastRequest
+        @return: PubBroadcastResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.pub_broadcast_with_options_async(request, runtime)
 
@@ -18649,6 +23673,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.PublishThingModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PublishThingModelResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PublishThingModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishThingModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -18685,6 +23719,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.PublishThingModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PublishThingModelResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PublishThingModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishThingModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -18720,6 +23764,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.PublishThingModelRequest,
     ) -> iot_20180120_models.PublishThingModelResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PublishThingModelRequest
+        @return: PublishThingModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.publish_thing_model_with_options(request, runtime)
 
@@ -18727,6 +23780,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.PublishThingModelRequest,
     ) -> iot_20180120_models.PublishThingModelResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PublishThingModelRequest
+        @return: PublishThingModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.publish_thing_model_with_options_async(request, runtime)
 
@@ -18837,6 +23899,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryBatchRegisterDeviceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryBatchRegisterDeviceStatusResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 30 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryBatchRegisterDeviceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBatchRegisterDeviceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -18869,6 +23940,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryBatchRegisterDeviceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryBatchRegisterDeviceStatusResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 30 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryBatchRegisterDeviceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBatchRegisterDeviceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -18900,6 +23980,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryBatchRegisterDeviceStatusRequest,
     ) -> iot_20180120_models.QueryBatchRegisterDeviceStatusResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 30 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryBatchRegisterDeviceStatusRequest
+        @return: QueryBatchRegisterDeviceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_batch_register_device_status_with_options(request, runtime)
 
@@ -18907,6 +23995,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryBatchRegisterDeviceStatusRequest,
     ) -> iot_20180120_models.QueryBatchRegisterDeviceStatusResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 30 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryBatchRegisterDeviceStatusRequest
+        @return: QueryBatchRegisterDeviceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_batch_register_device_status_with_options_async(request, runtime)
 
@@ -18989,6 +24085,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryClientIdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryClientIdsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryClientIdsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryClientIdsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_id):
@@ -19019,6 +24124,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryClientIdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryClientIdsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryClientIdsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryClientIdsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_id):
@@ -19048,6 +24162,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryClientIdsRequest,
     ) -> iot_20180120_models.QueryClientIdsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryClientIdsRequest
+        @return: QueryClientIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_client_ids_with_options(request, runtime)
 
@@ -19055,6 +24177,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryClientIdsRequest,
     ) -> iot_20180120_models.QueryClientIdsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryClientIdsRequest
+        @return: QueryClientIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_client_ids_with_options_async(request, runtime)
 
@@ -19063,6 +24193,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryConsumerGroupByGroupIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryConsumerGroupByGroupIdResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryConsumerGroupByGroupIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConsumerGroupByGroupIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -19093,6 +24232,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryConsumerGroupByGroupIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryConsumerGroupByGroupIdResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryConsumerGroupByGroupIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConsumerGroupByGroupIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -19122,6 +24270,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryConsumerGroupByGroupIdRequest,
     ) -> iot_20180120_models.QueryConsumerGroupByGroupIdResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryConsumerGroupByGroupIdRequest
+        @return: QueryConsumerGroupByGroupIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_consumer_group_by_group_id_with_options(request, runtime)
 
@@ -19129,6 +24285,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryConsumerGroupByGroupIdRequest,
     ) -> iot_20180120_models.QueryConsumerGroupByGroupIdResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryConsumerGroupByGroupIdRequest
+        @return: QueryConsumerGroupByGroupIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_consumer_group_by_group_id_with_options_async(request, runtime)
 
@@ -19137,6 +24301,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryConsumerGroupListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryConsumerGroupListResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryConsumerGroupListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConsumerGroupListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -19149,6 +24322,10 @@ class Client(OpenApiClient):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sub_biz_code):
+            query['SubBizCode'] = request.sub_biz_code
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -19173,6 +24350,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryConsumerGroupListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryConsumerGroupListResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryConsumerGroupListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConsumerGroupListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -19185,6 +24371,10 @@ class Client(OpenApiClient):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sub_biz_code):
+            query['SubBizCode'] = request.sub_biz_code
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -19208,6 +24398,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryConsumerGroupListRequest,
     ) -> iot_20180120_models.QueryConsumerGroupListResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryConsumerGroupListRequest
+        @return: QueryConsumerGroupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_consumer_group_list_with_options(request, runtime)
 
@@ -19215,6 +24413,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryConsumerGroupListRequest,
     ) -> iot_20180120_models.QueryConsumerGroupListResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryConsumerGroupListRequest
+        @return: QueryConsumerGroupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_consumer_group_list_with_options_async(request, runtime)
 
@@ -19223,6 +24429,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryConsumerGroupStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryConsumerGroupStatusResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryConsumerGroupStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConsumerGroupStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -19253,6 +24468,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryConsumerGroupStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryConsumerGroupStatusResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryConsumerGroupStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConsumerGroupStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -19282,6 +24506,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryConsumerGroupStatusRequest,
     ) -> iot_20180120_models.QueryConsumerGroupStatusResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryConsumerGroupStatusRequest
+        @return: QueryConsumerGroupStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_consumer_group_status_with_options(request, runtime)
 
@@ -19289,6 +24521,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryConsumerGroupStatusRequest,
     ) -> iot_20180120_models.QueryConsumerGroupStatusResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryConsumerGroupStatusRequest
+        @return: QueryConsumerGroupStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_consumer_group_status_with_options_async(request, runtime)
 
@@ -19391,6 +24631,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceResponse:
+        """
+        The QueryDevice operation can return up to one million devices each time you call the operation.
+        ## QPS limits
+        - You can call this API operation up to 50 times per second per account. >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        - If the product of the value of the **CurrentPage** parameter and the value of the **PageSize** parameter is greater than or equal to 100,000, the queries per second (QPS) of this operation decreases.
+        In this case, you can call this API operation up to two times per second per account.
+        
+        @param request: QueryDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -19427,6 +24678,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceResponse:
+        """
+        The QueryDevice operation can return up to one million devices each time you call the operation.
+        ## QPS limits
+        - You can call this API operation up to 50 times per second per account. >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        - If the product of the value of the **CurrentPage** parameter and the value of the **PageSize** parameter is greater than or equal to 100,000, the queries per second (QPS) of this operation decreases.
+        In this case, you can call this API operation up to two times per second per account.
+        
+        @param request: QueryDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -19462,6 +24724,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceRequest,
     ) -> iot_20180120_models.QueryDeviceResponse:
+        """
+        The QueryDevice operation can return up to one million devices each time you call the operation.
+        ## QPS limits
+        - You can call this API operation up to 50 times per second per account. >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        - If the product of the value of the **CurrentPage** parameter and the value of the **PageSize** parameter is greater than or equal to 100,000, the queries per second (QPS) of this operation decreases.
+        In this case, you can call this API operation up to two times per second per account.
+        
+        @param request: QueryDeviceRequest
+        @return: QueryDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_with_options(request, runtime)
 
@@ -19469,6 +24741,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceRequest,
     ) -> iot_20180120_models.QueryDeviceResponse:
+        """
+        The QueryDevice operation can return up to one million devices each time you call the operation.
+        ## QPS limits
+        - You can call this API operation up to 50 times per second per account. >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        - If the product of the value of the **CurrentPage** parameter and the value of the **PageSize** parameter is greater than or equal to 100,000, the queries per second (QPS) of this operation decreases.
+        In this case, you can call this API operation up to two times per second per account.
+        
+        @param request: QueryDeviceRequest
+        @return: QueryDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_with_options_async(request, runtime)
 
@@ -19477,6 +24759,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceBySQLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceBySQLResponse:
+        """
+        You can query devices on Enterprise Edition instances only in the China (Shanghai) and Japan (Tokyo) regions.
+        *   The QueryDeviceBySQL operation can return up to 10,000 devices each time you call the operation. For more information, see the "`Syntax of LIMIT clauses`" section of this topic.
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceBySQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceBySQLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -19507,6 +24800,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceBySQLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceBySQLResponse:
+        """
+        You can query devices on Enterprise Edition instances only in the China (Shanghai) and Japan (Tokyo) regions.
+        *   The QueryDeviceBySQL operation can return up to 10,000 devices each time you call the operation. For more information, see the "`Syntax of LIMIT clauses`" section of this topic.
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceBySQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceBySQLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -19536,6 +24840,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceBySQLRequest,
     ) -> iot_20180120_models.QueryDeviceBySQLResponse:
+        """
+        You can query devices on Enterprise Edition instances only in the China (Shanghai) and Japan (Tokyo) regions.
+        *   The QueryDeviceBySQL operation can return up to 10,000 devices each time you call the operation. For more information, see the "`Syntax of LIMIT clauses`" section of this topic.
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceBySQLRequest
+        @return: QueryDeviceBySQLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_by_sqlwith_options(request, runtime)
 
@@ -19543,6 +24857,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceBySQLRequest,
     ) -> iot_20180120_models.QueryDeviceBySQLResponse:
+        """
+        You can query devices on Enterprise Edition instances only in the China (Shanghai) and Japan (Tokyo) regions.
+        *   The QueryDeviceBySQL operation can return up to 10,000 devices each time you call the operation. For more information, see the "`Syntax of LIMIT clauses`" section of this topic.
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceBySQLRequest
+        @return: QueryDeviceBySQLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_by_sqlwith_options_async(request, runtime)
 
@@ -19551,6 +24875,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceByStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceByStatusResponse:
+        """
+        ## Limits
+        *   After the status of a device changes, the new status is applied within 10 seconds. After the new status is applied, you can search for the device by using the new status. Before the new status is applied, you can search for the device by using the previous status.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceByStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceByStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -19589,6 +24923,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceByStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceByStatusResponse:
+        """
+        ## Limits
+        *   After the status of a device changes, the new status is applied within 10 seconds. After the new status is applied, you can search for the device by using the new status. Before the new status is applied, you can search for the device by using the previous status.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceByStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceByStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -19626,6 +24970,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceByStatusRequest,
     ) -> iot_20180120_models.QueryDeviceByStatusResponse:
+        """
+        ## Limits
+        *   After the status of a device changes, the new status is applied within 10 seconds. After the new status is applied, you can search for the device by using the new status. Before the new status is applied, you can search for the device by using the previous status.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceByStatusRequest
+        @return: QueryDeviceByStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_by_status_with_options(request, runtime)
 
@@ -19633,6 +24986,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceByStatusRequest,
     ) -> iot_20180120_models.QueryDeviceByStatusResponse:
+        """
+        ## Limits
+        *   After the status of a device changes, the new status is applied within 10 seconds. After the new status is applied, you can search for the device by using the new status. Before the new status is applied, you can search for the device by using the previous status.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceByStatusRequest
+        @return: QueryDeviceByStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_by_status_with_options_async(request, runtime)
 
@@ -19641,6 +25003,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceByTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceByTagsResponse:
+        """
+        ## Limits
+        *   You can specify a maximum of 10 tags in a single call.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceByTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceByTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -19675,6 +25047,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceByTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceByTagsResponse:
+        """
+        ## Limits
+        *   You can specify a maximum of 10 tags in a single call.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceByTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceByTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -19708,6 +25090,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceByTagsRequest,
     ) -> iot_20180120_models.QueryDeviceByTagsResponse:
+        """
+        ## Limits
+        *   You can specify a maximum of 10 tags in a single call.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceByTagsRequest
+        @return: QueryDeviceByTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_by_tags_with_options(request, runtime)
 
@@ -19715,6 +25106,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceByTagsRequest,
     ) -> iot_20180120_models.QueryDeviceByTagsResponse:
+        """
+        ## Limits
+        *   You can specify a maximum of 10 tags in a single call.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceByTagsRequest
+        @return: QueryDeviceByTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_by_tags_with_options_async(request, runtime)
 
@@ -19801,6 +25201,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceDesiredPropertyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDesiredPropertyResponse:
+        """
+        The desired values of read-only properties cannot be queried.
+        *   You can query the desired values of up to 10 properties in a single call.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDesiredPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceDesiredPropertyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -19839,6 +25250,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceDesiredPropertyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDesiredPropertyResponse:
+        """
+        The desired values of read-only properties cannot be queried.
+        *   You can query the desired values of up to 10 properties in a single call.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDesiredPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceDesiredPropertyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -19876,6 +25298,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceDesiredPropertyRequest,
     ) -> iot_20180120_models.QueryDeviceDesiredPropertyResponse:
+        """
+        The desired values of read-only properties cannot be queried.
+        *   You can query the desired values of up to 10 properties in a single call.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDesiredPropertyRequest
+        @return: QueryDeviceDesiredPropertyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_desired_property_with_options(request, runtime)
 
@@ -19883,6 +25315,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceDesiredPropertyRequest,
     ) -> iot_20180120_models.QueryDeviceDesiredPropertyResponse:
+        """
+        The desired values of read-only properties cannot be queried.
+        *   You can query the desired values of up to 10 properties in a single call.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDesiredPropertyRequest
+        @return: QueryDeviceDesiredPropertyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_desired_property_with_options_async(request, runtime)
 
@@ -19891,6 +25333,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDetailResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -19925,6 +25376,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDetailResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -19958,6 +25418,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceDetailRequest,
     ) -> iot_20180120_models.QueryDeviceDetailResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDetailRequest
+        @return: QueryDeviceDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_detail_with_options(request, runtime)
 
@@ -19965,6 +25433,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceDetailRequest,
     ) -> iot_20180120_models.QueryDeviceDetailResponse:
+        """
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDetailRequest
+        @return: QueryDeviceDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_detail_with_options_async(request, runtime)
 
@@ -19973,6 +25449,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceDistributeDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDistributeDetailResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDistributeDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceDistributeDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -20001,6 +25486,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceDistributeDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDistributeDetailResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDistributeDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceDistributeDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -20028,6 +25522,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceDistributeDetailRequest,
     ) -> iot_20180120_models.QueryDeviceDistributeDetailResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDistributeDetailRequest
+        @return: QueryDeviceDistributeDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_distribute_detail_with_options(request, runtime)
 
@@ -20035,6 +25537,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceDistributeDetailRequest,
     ) -> iot_20180120_models.QueryDeviceDistributeDetailResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDistributeDetailRequest
+        @return: QueryDeviceDistributeDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_distribute_detail_with_options_async(request, runtime)
 
@@ -20043,6 +25553,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceDistributeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDistributeJobResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDistributeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceDistributeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -20071,6 +25590,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceDistributeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDistributeJobResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDistributeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceDistributeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -20098,6 +25626,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceDistributeJobRequest,
     ) -> iot_20180120_models.QueryDeviceDistributeJobResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDistributeJobRequest
+        @return: QueryDeviceDistributeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_distribute_job_with_options(request, runtime)
 
@@ -20105,6 +25641,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceDistributeJobRequest,
     ) -> iot_20180120_models.QueryDeviceDistributeJobResponse:
+        """
+        This operation can be called only by using the following **endpoint**: `iot.cn-shanghai.aliyuncs.com`.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceDistributeJobRequest
+        @return: QueryDeviceDistributeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_distribute_job_with_options_async(request, runtime)
 
@@ -20113,6 +25657,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceEventDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceEventDataResponse:
+        """
+        You can query only the event records that are generated in the previous 30 days.
+        >  The storage period of an event record is calculated from the day when the record is generated.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryDeviceEventDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceEventDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -20159,6 +25714,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceEventDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceEventDataResponse:
+        """
+        You can query only the event records that are generated in the previous 30 days.
+        >  The storage period of an event record is calculated from the day when the record is generated.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryDeviceEventDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceEventDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -20204,6 +25770,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceEventDataRequest,
     ) -> iot_20180120_models.QueryDeviceEventDataResponse:
+        """
+        You can query only the event records that are generated in the previous 30 days.
+        >  The storage period of an event record is calculated from the day when the record is generated.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryDeviceEventDataRequest
+        @return: QueryDeviceEventDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_event_data_with_options(request, runtime)
 
@@ -20211,6 +25787,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceEventDataRequest,
     ) -> iot_20180120_models.QueryDeviceEventDataResponse:
+        """
+        You can query only the event records that are generated in the previous 30 days.
+        >  The storage period of an event record is calculated from the day when the record is generated.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryDeviceEventDataRequest
+        @return: QueryDeviceEventDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_event_data_with_options_async(request, runtime)
 
@@ -20219,6 +25805,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceFileResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -20255,6 +25850,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceFileResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -20290,6 +25894,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceFileRequest,
     ) -> iot_20180120_models.QueryDeviceFileResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceFileRequest
+        @return: QueryDeviceFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_file_with_options(request, runtime)
 
@@ -20297,6 +25909,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceFileRequest,
     ) -> iot_20180120_models.QueryDeviceFileResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceFileRequest
+        @return: QueryDeviceFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_file_with_options_async(request, runtime)
 
@@ -20305,6 +25925,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceFileListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceFileListResponse:
+        """
+        ## Limits
+        *   The returned file information for this operation call does not contain download URLs. To obtain the download URL of a file, call [QueryDeviceFile](~~112002~~).
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceFileListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceFileListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -20343,6 +25973,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceFileListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceFileListResponse:
+        """
+        ## Limits
+        *   The returned file information for this operation call does not contain download URLs. To obtain the download URL of a file, call [QueryDeviceFile](~~112002~~).
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceFileListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceFileListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -20380,6 +26020,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceFileListRequest,
     ) -> iot_20180120_models.QueryDeviceFileListResponse:
+        """
+        ## Limits
+        *   The returned file information for this operation call does not contain download URLs. To obtain the download URL of a file, call [QueryDeviceFile](~~112002~~).
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceFileListRequest
+        @return: QueryDeviceFileListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_file_list_with_options(request, runtime)
 
@@ -20387,6 +26036,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceFileListRequest,
     ) -> iot_20180120_models.QueryDeviceFileListResponse:
+        """
+        ## Limits
+        *   The returned file information for this operation call does not contain download URLs. To obtain the download URL of a file, call [QueryDeviceFile](~~112002~~).
+        *   Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceFileListRequest
+        @return: QueryDeviceFileListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_file_list_with_options_async(request, runtime)
 
@@ -20395,6 +26053,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceGroupByDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupByDeviceResponse:
+        """
+        ## Limits
+        *   You can add a device to a maximum of 10 groups.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupByDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceGroupByDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -20427,6 +26095,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceGroupByDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupByDeviceResponse:
+        """
+        ## Limits
+        *   You can add a device to a maximum of 10 groups.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupByDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceGroupByDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -20458,6 +26136,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceGroupByDeviceRequest,
     ) -> iot_20180120_models.QueryDeviceGroupByDeviceResponse:
+        """
+        ## Limits
+        *   You can add a device to a maximum of 10 groups.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupByDeviceRequest
+        @return: QueryDeviceGroupByDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_group_by_device_with_options(request, runtime)
 
@@ -20465,6 +26152,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceGroupByDeviceRequest,
     ) -> iot_20180120_models.QueryDeviceGroupByDeviceResponse:
+        """
+        ## Limits
+        *   You can add a device to a maximum of 10 groups.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupByDeviceRequest
+        @return: QueryDeviceGroupByDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_group_by_device_with_options_async(request, runtime)
 
@@ -20473,6 +26169,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceGroupByTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupByTagsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupByTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceGroupByTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -20507,6 +26212,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceGroupByTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupByTagsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupByTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceGroupByTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -20540,6 +26254,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceGroupByTagsRequest,
     ) -> iot_20180120_models.QueryDeviceGroupByTagsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupByTagsRequest
+        @return: QueryDeviceGroupByTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_group_by_tags_with_options(request, runtime)
 
@@ -20547,6 +26269,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceGroupByTagsRequest,
     ) -> iot_20180120_models.QueryDeviceGroupByTagsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupByTagsRequest
+        @return: QueryDeviceGroupByTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_group_by_tags_with_options_async(request, runtime)
 
@@ -20555,6 +26285,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceGroupInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupInfoResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 30 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceGroupInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -20587,6 +26326,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceGroupInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupInfoResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 30 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceGroupInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -20618,6 +26366,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceGroupInfoRequest,
     ) -> iot_20180120_models.QueryDeviceGroupInfoResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 30 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupInfoRequest
+        @return: QueryDeviceGroupInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_group_info_with_options(request, runtime)
 
@@ -20625,6 +26381,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceGroupInfoRequest,
     ) -> iot_20180120_models.QueryDeviceGroupInfoResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 30 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupInfoRequest
+        @return: QueryDeviceGroupInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_group_info_with_options_async(request, runtime)
 
@@ -20633,6 +26397,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceGroupListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupListResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 100 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceGroupListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -20671,6 +26444,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceGroupListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupListResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 100 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceGroupListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -20708,6 +26490,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceGroupListRequest,
     ) -> iot_20180120_models.QueryDeviceGroupListResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 100 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupListRequest
+        @return: QueryDeviceGroupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_group_list_with_options(request, runtime)
 
@@ -20715,6 +26505,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceGroupListRequest,
     ) -> iot_20180120_models.QueryDeviceGroupListResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 100 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupListRequest
+        @return: QueryDeviceGroupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_group_list_with_options_async(request, runtime)
 
@@ -20723,6 +26521,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceGroupTagListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupTagListResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupTagListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceGroupTagListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -20755,6 +26562,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceGroupTagListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupTagListResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupTagListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceGroupTagListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -20786,6 +26602,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceGroupTagListRequest,
     ) -> iot_20180120_models.QueryDeviceGroupTagListResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupTagListRequest
+        @return: QueryDeviceGroupTagListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_group_tag_list_with_options(request, runtime)
 
@@ -20793,6 +26617,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceGroupTagListRequest,
     ) -> iot_20180120_models.QueryDeviceGroupTagListResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceGroupTagListRequest
+        @return: QueryDeviceGroupTagListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_group_tag_list_with_options_async(request, runtime)
 
@@ -20801,6 +26633,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceInfoResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: QueryDeviceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -20835,6 +26674,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceInfoResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: QueryDeviceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -20868,6 +26714,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceInfoRequest,
     ) -> iot_20180120_models.QueryDeviceInfoResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: QueryDeviceInfoRequest
+        @return: QueryDeviceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_info_with_options(request, runtime)
 
@@ -20875,6 +26727,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceInfoRequest,
     ) -> iot_20180120_models.QueryDeviceInfoResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: QueryDeviceInfoRequest
+        @return: QueryDeviceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_info_with_options_async(request, runtime)
 
@@ -20883,6 +26741,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceListByDeviceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceListByDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceListByDeviceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceListByDeviceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -20917,6 +26784,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceListByDeviceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceListByDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceListByDeviceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceListByDeviceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -20950,6 +26826,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceListByDeviceGroupRequest,
     ) -> iot_20180120_models.QueryDeviceListByDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceListByDeviceGroupRequest
+        @return: QueryDeviceListByDeviceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_list_by_device_group_with_options(request, runtime)
 
@@ -20957,6 +26841,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceListByDeviceGroupRequest,
     ) -> iot_20180120_models.QueryDeviceListByDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceListByDeviceGroupRequest
+        @return: QueryDeviceListByDeviceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_list_by_device_group_with_options_async(request, runtime)
 
@@ -20965,6 +26857,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceOriginalEventDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalEventDataResponse:
+        """
+        ## Limits
+        *   You can query only the event records that are generated in the last 30 days.
+        >  The storage period of an event record is calculated from the day when the record is generated.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalEventDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceOriginalEventDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21011,6 +26914,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceOriginalEventDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalEventDataResponse:
+        """
+        ## Limits
+        *   You can query only the event records that are generated in the last 30 days.
+        >  The storage period of an event record is calculated from the day when the record is generated.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalEventDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceOriginalEventDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21056,6 +26970,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceOriginalEventDataRequest,
     ) -> iot_20180120_models.QueryDeviceOriginalEventDataResponse:
+        """
+        ## Limits
+        *   You can query only the event records that are generated in the last 30 days.
+        >  The storage period of an event record is calculated from the day when the record is generated.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalEventDataRequest
+        @return: QueryDeviceOriginalEventDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_original_event_data_with_options(request, runtime)
 
@@ -21063,6 +26987,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceOriginalEventDataRequest,
     ) -> iot_20180120_models.QueryDeviceOriginalEventDataResponse:
+        """
+        ## Limits
+        *   You can query only the event records that are generated in the last 30 days.
+        >  The storage period of an event record is calculated from the day when the record is generated.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalEventDataRequest
+        @return: QueryDeviceOriginalEventDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_original_event_data_with_options_async(request, runtime)
 
@@ -21071,6 +27005,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceOriginalPropertyDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalPropertyDataResponse:
+        """
+        You can query only the property records that are generated within the previous 30 days.
+        >  The data of a property is stored from the day when the data is generated.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalPropertyDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceOriginalPropertyDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21117,6 +27062,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceOriginalPropertyDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalPropertyDataResponse:
+        """
+        You can query only the property records that are generated within the previous 30 days.
+        >  The data of a property is stored from the day when the data is generated.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalPropertyDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceOriginalPropertyDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21162,6 +27118,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceOriginalPropertyDataRequest,
     ) -> iot_20180120_models.QueryDeviceOriginalPropertyDataResponse:
+        """
+        You can query only the property records that are generated within the previous 30 days.
+        >  The data of a property is stored from the day when the data is generated.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalPropertyDataRequest
+        @return: QueryDeviceOriginalPropertyDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_original_property_data_with_options(request, runtime)
 
@@ -21169,6 +27135,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceOriginalPropertyDataRequest,
     ) -> iot_20180120_models.QueryDeviceOriginalPropertyDataResponse:
+        """
+        You can query only the property records that are generated within the previous 30 days.
+        >  The data of a property is stored from the day when the data is generated.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalPropertyDataRequest
+        @return: QueryDeviceOriginalPropertyDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_original_property_data_with_options_async(request, runtime)
 
@@ -21177,6 +27153,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceOriginalPropertyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalPropertyStatusResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalPropertyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceOriginalPropertyStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21217,6 +27202,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceOriginalPropertyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalPropertyStatusResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalPropertyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceOriginalPropertyStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21256,6 +27250,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceOriginalPropertyStatusRequest,
     ) -> iot_20180120_models.QueryDeviceOriginalPropertyStatusResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalPropertyStatusRequest
+        @return: QueryDeviceOriginalPropertyStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_original_property_status_with_options(request, runtime)
 
@@ -21263,6 +27265,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceOriginalPropertyStatusRequest,
     ) -> iot_20180120_models.QueryDeviceOriginalPropertyStatusResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalPropertyStatusRequest
+        @return: QueryDeviceOriginalPropertyStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_original_property_status_with_options_async(request, runtime)
 
@@ -21271,6 +27281,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceOriginalServiceDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalServiceDataResponse:
+        """
+        ## Limits
+        *   You can query only the service call records that are generated in the last 30 days.
+        >  The storage period of a service call record is calculated from the day when the service is called.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalServiceDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceOriginalServiceDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21317,6 +27338,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceOriginalServiceDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalServiceDataResponse:
+        """
+        ## Limits
+        *   You can query only the service call records that are generated in the last 30 days.
+        >  The storage period of a service call record is calculated from the day when the service is called.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalServiceDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceOriginalServiceDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21362,6 +27394,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceOriginalServiceDataRequest,
     ) -> iot_20180120_models.QueryDeviceOriginalServiceDataResponse:
+        """
+        ## Limits
+        *   You can query only the service call records that are generated in the last 30 days.
+        >  The storage period of a service call record is calculated from the day when the service is called.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalServiceDataRequest
+        @return: QueryDeviceOriginalServiceDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_original_service_data_with_options(request, runtime)
 
@@ -21369,6 +27411,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceOriginalServiceDataRequest,
     ) -> iot_20180120_models.QueryDeviceOriginalServiceDataResponse:
+        """
+        ## Limits
+        *   You can query only the service call records that are generated in the last 30 days.
+        >  The storage period of a service call record is calculated from the day when the service is called.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceOriginalServiceDataRequest
+        @return: QueryDeviceOriginalServiceDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_original_service_data_with_options_async(request, runtime)
 
@@ -21377,6 +27429,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDevicePropRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDevicePropRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDevicePropResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -21411,6 +27472,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDevicePropRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDevicePropRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDevicePropResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -21444,6 +27514,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDevicePropRequest,
     ) -> iot_20180120_models.QueryDevicePropResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDevicePropRequest
+        @return: QueryDevicePropResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_prop_with_options(request, runtime)
 
@@ -21451,6 +27529,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDevicePropRequest,
     ) -> iot_20180120_models.QueryDevicePropResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDevicePropRequest
+        @return: QueryDevicePropResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_prop_with_options_async(request, runtime)
 
@@ -21459,6 +27545,22 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDevicePropertiesDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropertiesDataResponse:
+        """
+        When you call this operation to query property records within a specified period, the number of records for a property at a point in time may reach the limit.*** The limit is specified by the **PageSize** parameter. In this case, the query stops. Some records of other properties may be not returned.**** You can check whether all records of a property are returned based on the NextValid repsonse parameter:
+        - If the value of the **NextValid** parameter is true, unretrieved records exist in the period that is indicated by the **NextTime** and **EndTime** parameter.
+        You can use the value of the **NextTime** response parameter as the value of the StartTime request parameter and call this operation again to query the rest records. You can call this operation multiple times until the value of the **NextValid** parameter is false.  >  To retrieve all property records within a specified period, you can set the **PageSize** parameter to the maximum value. Then, call this operation multiple times until the value of the **NextValid** parameter is false.
+        - If the value of the **NextValid** parameter is false, all property records are returned.
+        ## Limits
+        *   A maximum of 10 properties can be queried at a time. A maximum of 100 records can be queried for each property.
+        *   You can query property data that is generated within the last 30 days.
+        > The storage period of a property record is calculated from the day when the property record was generated.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDevicePropertiesDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDevicePropertiesDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21503,6 +27605,22 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDevicePropertiesDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropertiesDataResponse:
+        """
+        When you call this operation to query property records within a specified period, the number of records for a property at a point in time may reach the limit.*** The limit is specified by the **PageSize** parameter. In this case, the query stops. Some records of other properties may be not returned.**** You can check whether all records of a property are returned based on the NextValid repsonse parameter:
+        - If the value of the **NextValid** parameter is true, unretrieved records exist in the period that is indicated by the **NextTime** and **EndTime** parameter.
+        You can use the value of the **NextTime** response parameter as the value of the StartTime request parameter and call this operation again to query the rest records. You can call this operation multiple times until the value of the **NextValid** parameter is false.  >  To retrieve all property records within a specified period, you can set the **PageSize** parameter to the maximum value. Then, call this operation multiple times until the value of the **NextValid** parameter is false.
+        - If the value of the **NextValid** parameter is false, all property records are returned.
+        ## Limits
+        *   A maximum of 10 properties can be queried at a time. A maximum of 100 records can be queried for each property.
+        *   You can query property data that is generated within the last 30 days.
+        > The storage period of a property record is calculated from the day when the property record was generated.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDevicePropertiesDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDevicePropertiesDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21546,6 +27664,21 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDevicePropertiesDataRequest,
     ) -> iot_20180120_models.QueryDevicePropertiesDataResponse:
+        """
+        When you call this operation to query property records within a specified period, the number of records for a property at a point in time may reach the limit.*** The limit is specified by the **PageSize** parameter. In this case, the query stops. Some records of other properties may be not returned.**** You can check whether all records of a property are returned based on the NextValid repsonse parameter:
+        - If the value of the **NextValid** parameter is true, unretrieved records exist in the period that is indicated by the **NextTime** and **EndTime** parameter.
+        You can use the value of the **NextTime** response parameter as the value of the StartTime request parameter and call this operation again to query the rest records. You can call this operation multiple times until the value of the **NextValid** parameter is false.  >  To retrieve all property records within a specified period, you can set the **PageSize** parameter to the maximum value. Then, call this operation multiple times until the value of the **NextValid** parameter is false.
+        - If the value of the **NextValid** parameter is false, all property records are returned.
+        ## Limits
+        *   A maximum of 10 properties can be queried at a time. A maximum of 100 records can be queried for each property.
+        *   You can query property data that is generated within the last 30 days.
+        > The storage period of a property record is calculated from the day when the property record was generated.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDevicePropertiesDataRequest
+        @return: QueryDevicePropertiesDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_properties_data_with_options(request, runtime)
 
@@ -21553,6 +27686,21 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDevicePropertiesDataRequest,
     ) -> iot_20180120_models.QueryDevicePropertiesDataResponse:
+        """
+        When you call this operation to query property records within a specified period, the number of records for a property at a point in time may reach the limit.*** The limit is specified by the **PageSize** parameter. In this case, the query stops. Some records of other properties may be not returned.**** You can check whether all records of a property are returned based on the NextValid repsonse parameter:
+        - If the value of the **NextValid** parameter is true, unretrieved records exist in the period that is indicated by the **NextTime** and **EndTime** parameter.
+        You can use the value of the **NextTime** response parameter as the value of the StartTime request parameter and call this operation again to query the rest records. You can call this operation multiple times until the value of the **NextValid** parameter is false.  >  To retrieve all property records within a specified period, you can set the **PageSize** parameter to the maximum value. Then, call this operation multiple times until the value of the **NextValid** parameter is false.
+        - If the value of the **NextValid** parameter is false, all property records are returned.
+        ## Limits
+        *   A maximum of 10 properties can be queried at a time. A maximum of 100 records can be queried for each property.
+        *   You can query property data that is generated within the last 30 days.
+        > The storage period of a property record is calculated from the day when the property record was generated.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDevicePropertiesDataRequest
+        @return: QueryDevicePropertiesDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_properties_data_with_options_async(request, runtime)
 
@@ -21561,6 +27709,20 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDevicePropertyDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropertyDataResponse:
+        """
+        If a device or a digital twin node has multiple properties, you can call this operation to query the data of the properties multiple times. You must specify a value for the *Identifier** parameter each time you call the operation. You can also call the [QueryDevicePropertiesData](~~99237~~) operation and specify multiple values for the **Identifier** parameter to query the data of the properties.
+        ## Limits
+        You can query only property data that is generated within the previous 30 days.
+        >  The data of a property is stored from the day when the data is generated.
+        
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryDevicePropertyDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDevicePropertyDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21605,6 +27767,20 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDevicePropertyDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropertyDataResponse:
+        """
+        If a device or a digital twin node has multiple properties, you can call this operation to query the data of the properties multiple times. You must specify a value for the *Identifier** parameter each time you call the operation. You can also call the [QueryDevicePropertiesData](~~99237~~) operation and specify multiple values for the **Identifier** parameter to query the data of the properties.
+        ## Limits
+        You can query only property data that is generated within the previous 30 days.
+        >  The data of a property is stored from the day when the data is generated.
+        
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryDevicePropertyDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDevicePropertyDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21648,6 +27824,19 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDevicePropertyDataRequest,
     ) -> iot_20180120_models.QueryDevicePropertyDataResponse:
+        """
+        If a device or a digital twin node has multiple properties, you can call this operation to query the data of the properties multiple times. You must specify a value for the *Identifier** parameter each time you call the operation. You can also call the [QueryDevicePropertiesData](~~99237~~) operation and specify multiple values for the **Identifier** parameter to query the data of the properties.
+        ## Limits
+        You can query only property data that is generated within the previous 30 days.
+        >  The data of a property is stored from the day when the data is generated.
+        
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryDevicePropertyDataRequest
+        @return: QueryDevicePropertyDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_property_data_with_options(request, runtime)
 
@@ -21655,6 +27844,19 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDevicePropertyDataRequest,
     ) -> iot_20180120_models.QueryDevicePropertyDataResponse:
+        """
+        If a device or a digital twin node has multiple properties, you can call this operation to query the data of the properties multiple times. You must specify a value for the *Identifier** parameter each time you call the operation. You can also call the [QueryDevicePropertiesData](~~99237~~) operation and specify multiple values for the **Identifier** parameter to query the data of the properties.
+        ## Limits
+        You can query only property data that is generated within the previous 30 days.
+        >  The data of a property is stored from the day when the data is generated.
+        
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryDevicePropertyDataRequest
+        @return: QueryDevicePropertyDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_property_data_with_options_async(request, runtime)
 
@@ -21663,6 +27865,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDevicePropertyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropertyStatusResponse:
+        """
+        To query the property data of a digital twin node, you must set the *IotId** parameter to the ID of the digital twin node.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 200 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryDevicePropertyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDevicePropertyStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -21699,6 +27911,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDevicePropertyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropertyStatusResponse:
+        """
+        To query the property data of a digital twin node, you must set the *IotId** parameter to the ID of the digital twin node.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 200 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryDevicePropertyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDevicePropertyStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -21734,6 +27956,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDevicePropertyStatusRequest,
     ) -> iot_20180120_models.QueryDevicePropertyStatusResponse:
+        """
+        To query the property data of a digital twin node, you must set the *IotId** parameter to the ID of the digital twin node.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 200 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryDevicePropertyStatusRequest
+        @return: QueryDevicePropertyStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_property_status_with_options(request, runtime)
 
@@ -21741,6 +27972,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDevicePropertyStatusRequest,
     ) -> iot_20180120_models.QueryDevicePropertyStatusResponse:
+        """
+        To query the property data of a digital twin node, you must set the *IotId** parameter to the ID of the digital twin node.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 200 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryDevicePropertyStatusRequest
+        @return: QueryDevicePropertyStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_property_status_with_options_async(request, runtime)
 
@@ -21827,6 +28067,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceServiceDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceServiceDataResponse:
+        """
+        You can query only the service call records of the previous 30 days.
+        >  The storage period of a service call record is calculated from the day when the service is called.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceServiceDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceServiceDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21871,6 +28122,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceServiceDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceServiceDataResponse:
+        """
+        You can query only the service call records of the previous 30 days.
+        >  The storage period of a service call record is calculated from the day when the service is called.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceServiceDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceServiceDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc):
@@ -21914,6 +28176,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceServiceDataRequest,
     ) -> iot_20180120_models.QueryDeviceServiceDataResponse:
+        """
+        You can query only the service call records of the previous 30 days.
+        >  The storage period of a service call record is calculated from the day when the service is called.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceServiceDataRequest
+        @return: QueryDeviceServiceDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_service_data_with_options(request, runtime)
 
@@ -21921,6 +28193,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceServiceDataRequest,
     ) -> iot_20180120_models.QueryDeviceServiceDataResponse:
+        """
+        You can query only the service call records of the previous 30 days.
+        >  The storage period of a service call record is calculated from the day when the service is called.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceServiceDataRequest
+        @return: QueryDeviceServiceDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_service_data_with_options_async(request, runtime)
 
@@ -22011,6 +28293,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceStatisticsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -22043,6 +28334,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceStatisticsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -22074,6 +28374,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceStatisticsRequest,
     ) -> iot_20180120_models.QueryDeviceStatisticsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceStatisticsRequest
+        @return: QueryDeviceStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_statistics_with_options(request, runtime)
 
@@ -22081,6 +28389,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceStatisticsRequest,
     ) -> iot_20180120_models.QueryDeviceStatisticsResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceStatisticsRequest
+        @return: QueryDeviceStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_statistics_with_options_async(request, runtime)
 
@@ -22089,6 +28405,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceSubTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceSubTopicResponse:
+        """
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceSubTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceSubTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -22121,6 +28446,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDeviceSubTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceSubTopicResponse:
+        """
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceSubTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceSubTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -22152,6 +28486,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceSubTopicRequest,
     ) -> iot_20180120_models.QueryDeviceSubTopicResponse:
+        """
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceSubTopicRequest
+        @return: QueryDeviceSubTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_sub_topic_with_options(request, runtime)
 
@@ -22159,6 +28501,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDeviceSubTopicRequest,
     ) -> iot_20180120_models.QueryDeviceSubTopicResponse:
+        """
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDeviceSubTopicRequest
+        @return: QueryDeviceSubTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_sub_topic_with_options_async(request, runtime)
 
@@ -22551,6 +28901,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeDriverResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryEdgeDriverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeDriverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -22587,6 +28946,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeDriverResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryEdgeDriverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeDriverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -22622,6 +28990,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeDriverRequest,
     ) -> iot_20180120_models.QueryEdgeDriverResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryEdgeDriverRequest
+        @return: QueryEdgeDriverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_edge_driver_with_options(request, runtime)
 
@@ -22629,6 +29005,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeDriverRequest,
     ) -> iot_20180120_models.QueryEdgeDriverResponse:
+        """
+        ## Limits
+        A single Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryEdgeDriverRequest
+        @return: QueryEdgeDriverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_edge_driver_with_options_async(request, runtime)
 
@@ -22637,6 +29021,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeDriverVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeDriverVersionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeDriverVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeDriverVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -22675,6 +29068,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeDriverVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeDriverVersionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeDriverVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeDriverVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -22712,6 +29114,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeDriverVersionRequest,
     ) -> iot_20180120_models.QueryEdgeDriverVersionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeDriverVersionRequest
+        @return: QueryEdgeDriverVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_edge_driver_version_with_options(request, runtime)
 
@@ -22719,6 +29129,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeDriverVersionRequest,
     ) -> iot_20180120_models.QueryEdgeDriverVersionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeDriverVersionRequest
+        @return: QueryEdgeDriverVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_edge_driver_version_with_options_async(request, runtime)
 
@@ -22727,6 +29145,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceResponse:
+        """
+        In addition to the preceding exclusive request parameters, you must specify common request parameters when calling this API operation. For more information about common request parameters, see [Common parameters](~~30561~~).
+        
+        @param request: QueryEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -22761,6 +29186,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceResponse:
+        """
+        In addition to the preceding exclusive request parameters, you must specify common request parameters when calling this API operation. For more information about common request parameters, see [Common parameters](~~30561~~).
+        
+        @param request: QueryEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -22794,6 +29226,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeInstanceRequest,
     ) -> iot_20180120_models.QueryEdgeInstanceResponse:
+        """
+        In addition to the preceding exclusive request parameters, you must specify common request parameters when calling this API operation. For more information about common request parameters, see [Common parameters](~~30561~~).
+        
+        @param request: QueryEdgeInstanceRequest
+        @return: QueryEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_edge_instance_with_options(request, runtime)
 
@@ -22801,6 +29239,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeInstanceRequest,
     ) -> iot_20180120_models.QueryEdgeInstanceResponse:
+        """
+        In addition to the preceding exclusive request parameters, you must specify common request parameters when calling this API operation. For more information about common request parameters, see [Common parameters](~~30561~~).
+        
+        @param request: QueryEdgeInstanceRequest
+        @return: QueryEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_edge_instance_with_options_async(request, runtime)
 
@@ -22899,6 +29343,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeInstanceDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeInstanceDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -22933,6 +29386,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeInstanceDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeInstanceDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -22966,6 +29428,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeInstanceDeviceRequest,
     ) -> iot_20180120_models.QueryEdgeInstanceDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceDeviceRequest
+        @return: QueryEdgeInstanceDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_edge_instance_device_with_options(request, runtime)
 
@@ -22973,6 +29443,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeInstanceDeviceRequest,
     ) -> iot_20180120_models.QueryEdgeInstanceDeviceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceDeviceRequest
+        @return: QueryEdgeInstanceDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_edge_instance_device_with_options_async(request, runtime)
 
@@ -23071,6 +29549,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeInstanceDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceDriverResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceDriverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeInstanceDriverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -23105,6 +29592,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeInstanceDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceDriverResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceDriverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeInstanceDriverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -23138,6 +29634,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeInstanceDriverRequest,
     ) -> iot_20180120_models.QueryEdgeInstanceDriverResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceDriverRequest
+        @return: QueryEdgeInstanceDriverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_edge_instance_driver_with_options(request, runtime)
 
@@ -23145,6 +29649,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeInstanceDriverRequest,
     ) -> iot_20180120_models.QueryEdgeInstanceDriverResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceDriverRequest
+        @return: QueryEdgeInstanceDriverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_edge_instance_driver_with_options_async(request, runtime)
 
@@ -23153,6 +29665,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeInstanceGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceGatewayResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeInstanceGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -23183,6 +29704,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeInstanceGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceGatewayResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeInstanceGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -23212,6 +29742,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeInstanceGatewayRequest,
     ) -> iot_20180120_models.QueryEdgeInstanceGatewayResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceGatewayRequest
+        @return: QueryEdgeInstanceGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_edge_instance_gateway_with_options(request, runtime)
 
@@ -23219,6 +29757,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeInstanceGatewayRequest,
     ) -> iot_20180120_models.QueryEdgeInstanceGatewayResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceGatewayRequest
+        @return: QueryEdgeInstanceGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_edge_instance_gateway_with_options_async(request, runtime)
 
@@ -23227,6 +29773,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeInstanceHistoricDeploymentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceHistoricDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceHistoricDeploymentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeInstanceHistoricDeploymentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -23265,6 +29820,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryEdgeInstanceHistoricDeploymentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceHistoricDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceHistoricDeploymentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdgeInstanceHistoricDeploymentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -23302,6 +29866,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeInstanceHistoricDeploymentRequest,
     ) -> iot_20180120_models.QueryEdgeInstanceHistoricDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceHistoricDeploymentRequest
+        @return: QueryEdgeInstanceHistoricDeploymentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_edge_instance_historic_deployment_with_options(request, runtime)
 
@@ -23309,6 +29881,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryEdgeInstanceHistoricDeploymentRequest,
     ) -> iot_20180120_models.QueryEdgeInstanceHistoricDeploymentResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryEdgeInstanceHistoricDeploymentRequest
+        @return: QueryEdgeInstanceHistoricDeploymentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_edge_instance_historic_deployment_with_options_async(request, runtime)
 
@@ -23945,6 +30525,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryOTAFirmwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryOTAFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryOTAFirmwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOTAFirmwareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firmware_id):
@@ -23975,6 +30564,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryOTAFirmwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryOTAFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryOTAFirmwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOTAFirmwareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firmware_id):
@@ -24004,6 +30602,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryOTAFirmwareRequest,
     ) -> iot_20180120_models.QueryOTAFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryOTAFirmwareRequest
+        @return: QueryOTAFirmwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_otafirmware_with_options(request, runtime)
 
@@ -24011,6 +30617,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryOTAFirmwareRequest,
     ) -> iot_20180120_models.QueryOTAFirmwareResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryOTAFirmwareRequest
+        @return: QueryOTAFirmwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_otafirmware_with_options_async(request, runtime)
 
@@ -24019,6 +30633,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryOTAJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryOTAJobResponse:
+        """
+        After you call the [CreateOTAVerifyJob](~~147480~~), [CreateOTAStaticUpgradeJob](~~147496~~), or [CreateOTADynamicUpgradeJob](~~147887~~) API operation to create an update batch, the *JobId** parameter is returned. You can use this parameter to query the details of the update batch.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryOTAJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOTAJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -24049,6 +30673,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryOTAJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryOTAJobResponse:
+        """
+        After you call the [CreateOTAVerifyJob](~~147480~~), [CreateOTAStaticUpgradeJob](~~147496~~), or [CreateOTADynamicUpgradeJob](~~147887~~) API operation to create an update batch, the *JobId** parameter is returned. You can use this parameter to query the details of the update batch.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryOTAJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOTAJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -24078,6 +30712,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryOTAJobRequest,
     ) -> iot_20180120_models.QueryOTAJobResponse:
+        """
+        After you call the [CreateOTAVerifyJob](~~147480~~), [CreateOTAStaticUpgradeJob](~~147496~~), or [CreateOTADynamicUpgradeJob](~~147887~~) API operation to create an update batch, the *JobId** parameter is returned. You can use this parameter to query the details of the update batch.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryOTAJobRequest
+        @return: QueryOTAJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_otajob_with_options(request, runtime)
 
@@ -24085,6 +30728,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryOTAJobRequest,
     ) -> iot_20180120_models.QueryOTAJobResponse:
+        """
+        After you call the [CreateOTAVerifyJob](~~147480~~), [CreateOTAStaticUpgradeJob](~~147496~~), or [CreateOTADynamicUpgradeJob](~~147887~~) API operation to create an update batch, the *JobId** parameter is returned. You can use this parameter to query the details of the update batch.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryOTAJobRequest
+        @return: QueryOTAJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_otajob_with_options_async(request, runtime)
 
@@ -24093,6 +30745,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryPageByApplyIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryPageByApplyIdResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryPageByApplyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPageByApplyIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -24127,6 +30788,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryPageByApplyIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryPageByApplyIdResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryPageByApplyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPageByApplyIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -24160,6 +30830,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryPageByApplyIdRequest,
     ) -> iot_20180120_models.QueryPageByApplyIdResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryPageByApplyIdRequest
+        @return: QueryPageByApplyIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_page_by_apply_id_with_options(request, runtime)
 
@@ -24167,6 +30845,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryPageByApplyIdRequest,
     ) -> iot_20180120_models.QueryPageByApplyIdResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryPageByApplyIdRequest
+        @return: QueryPageByApplyIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_page_by_apply_id_with_options_async(request, runtime)
 
@@ -24175,6 +30861,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -24205,6 +30900,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -24234,6 +30938,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryProductRequest,
     ) -> iot_20180120_models.QueryProductResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProductRequest
+        @return: QueryProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_product_with_options(request, runtime)
 
@@ -24241,6 +30953,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryProductRequest,
     ) -> iot_20180120_models.QueryProductResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProductRequest
+        @return: QueryProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_product_with_options_async(request, runtime)
 
@@ -24323,6 +31043,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryProductListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductListResponse:
+        """
+        ## QPS limits
+        *   Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        > The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        *   If the product of the value of the **CurrentPage** parameter and the value of the **PageSize** parameter is greater than or equal to 100,000, the QPS of this operation decreases.
+        In this case, each Alibaba Cloud account can run up to 2 QPS.
+        
+        @param request: QueryProductListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProductListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aliyun_commodity_code):
@@ -24359,6 +31090,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryProductListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductListResponse:
+        """
+        ## QPS limits
+        *   Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        > The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        *   If the product of the value of the **CurrentPage** parameter and the value of the **PageSize** parameter is greater than or equal to 100,000, the QPS of this operation decreases.
+        In this case, each Alibaba Cloud account can run up to 2 QPS.
+        
+        @param request: QueryProductListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProductListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aliyun_commodity_code):
@@ -24394,6 +31136,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryProductListRequest,
     ) -> iot_20180120_models.QueryProductListResponse:
+        """
+        ## QPS limits
+        *   Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        > The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        *   If the product of the value of the **CurrentPage** parameter and the value of the **PageSize** parameter is greater than or equal to 100,000, the QPS of this operation decreases.
+        In this case, each Alibaba Cloud account can run up to 2 QPS.
+        
+        @param request: QueryProductListRequest
+        @return: QueryProductListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_product_list_with_options(request, runtime)
 
@@ -24401,6 +31153,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryProductListRequest,
     ) -> iot_20180120_models.QueryProductListResponse:
+        """
+        ## QPS limits
+        *   Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        > The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        *   If the product of the value of the **CurrentPage** parameter and the value of the **PageSize** parameter is greater than or equal to 100,000, the QPS of this operation decreases.
+        In this case, each Alibaba Cloud account can run up to 2 QPS.
+        
+        @param request: QueryProductListRequest
+        @return: QueryProductListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_product_list_with_options_async(request, runtime)
 
@@ -24409,6 +31171,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryProductTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 3 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProductTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProductTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -24439,6 +31210,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryProductTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 3 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProductTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProductTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -24468,6 +31248,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryProductTopicRequest,
     ) -> iot_20180120_models.QueryProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 3 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProductTopicRequest
+        @return: QueryProductTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_product_topic_with_options(request, runtime)
 
@@ -24475,6 +31263,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryProductTopicRequest,
     ) -> iot_20180120_models.QueryProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 3 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProductTopicRequest
+        @return: QueryProductTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_product_topic_with_options_async(request, runtime)
 
@@ -26331,6 +33127,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QuerySubscribeRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QuerySubscribeRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySubscribeRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -26363,6 +33168,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QuerySubscribeRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QuerySubscribeRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySubscribeRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -26394,6 +33208,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QuerySubscribeRelationRequest,
     ) -> iot_20180120_models.QuerySubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QuerySubscribeRelationRequest
+        @return: QuerySubscribeRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_subscribe_relation_with_options(request, runtime)
 
@@ -26401,6 +33223,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QuerySubscribeRelationRequest,
     ) -> iot_20180120_models.QuerySubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QuerySubscribeRelationRequest
+        @return: QuerySubscribeRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_subscribe_relation_with_options_async(request, runtime)
 
@@ -26503,6 +33333,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QuerySuperDeviceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySuperDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QuerySuperDeviceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySuperDeviceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -26533,6 +33372,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QuerySuperDeviceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySuperDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QuerySuperDeviceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySuperDeviceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -26562,6 +33410,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QuerySuperDeviceGroupRequest,
     ) -> iot_20180120_models.QuerySuperDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QuerySuperDeviceGroupRequest
+        @return: QuerySuperDeviceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_super_device_group_with_options(request, runtime)
 
@@ -26569,6 +33425,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QuerySuperDeviceGroupRequest,
     ) -> iot_20180120_models.QuerySuperDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QuerySuperDeviceGroupRequest
+        @return: QuerySuperDeviceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_super_device_group_with_options_async(request, runtime)
 
@@ -26651,6 +33515,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryThingModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelResponse:
+        """
+        TSL features include properties, services, and events.
+        If you add custom modules to a TSL model and the value of the **FunctionBlockId** parameter is empty, you can obtain the TSL features of each custom module. If the value of the FunctionBlockId parameter is not empty, you can obtain the TSL features of a specified custom module.
+        For more information about the data format of the **ThingModelJson** parameter, see [Data structure of ThingModelJson](~~150457~~).
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryThingModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -26687,6 +33563,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryThingModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelResponse:
+        """
+        TSL features include properties, services, and events.
+        If you add custom modules to a TSL model and the value of the **FunctionBlockId** parameter is empty, you can obtain the TSL features of each custom module. If the value of the FunctionBlockId parameter is not empty, you can obtain the TSL features of a specified custom module.
+        For more information about the data format of the **ThingModelJson** parameter, see [Data structure of ThingModelJson](~~150457~~).
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryThingModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -26722,6 +33610,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryThingModelRequest,
     ) -> iot_20180120_models.QueryThingModelResponse:
+        """
+        TSL features include properties, services, and events.
+        If you add custom modules to a TSL model and the value of the **FunctionBlockId** parameter is empty, you can obtain the TSL features of each custom module. If the value of the FunctionBlockId parameter is not empty, you can obtain the TSL features of a specified custom module.
+        For more information about the data format of the **ThingModelJson** parameter, see [Data structure of ThingModelJson](~~150457~~).
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelRequest
+        @return: QueryThingModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_thing_model_with_options(request, runtime)
 
@@ -26729,6 +33628,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryThingModelRequest,
     ) -> iot_20180120_models.QueryThingModelResponse:
+        """
+        TSL features include properties, services, and events.
+        If you add custom modules to a TSL model and the value of the **FunctionBlockId** parameter is empty, you can obtain the TSL features of each custom module. If the value of the FunctionBlockId parameter is not empty, you can obtain the TSL features of a specified custom module.
+        For more information about the data format of the **ThingModelJson** parameter, see [Data structure of ThingModelJson](~~150457~~).
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelRequest
+        @return: QueryThingModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_thing_model_with_options_async(request, runtime)
 
@@ -26737,6 +33647,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryThingModelExtendConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelExtendConfigResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelExtendConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryThingModelExtendConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -26773,6 +33692,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryThingModelExtendConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelExtendConfigResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelExtendConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryThingModelExtendConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -26808,6 +33736,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryThingModelExtendConfigRequest,
     ) -> iot_20180120_models.QueryThingModelExtendConfigResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelExtendConfigRequest
+        @return: QueryThingModelExtendConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_thing_model_extend_config_with_options(request, runtime)
 
@@ -26815,6 +33751,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryThingModelExtendConfigRequest,
     ) -> iot_20180120_models.QueryThingModelExtendConfigResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelExtendConfigRequest
+        @return: QueryThingModelExtendConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_thing_model_extend_config_with_options_async(request, runtime)
 
@@ -26823,6 +33767,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryThingModelExtendConfigPublishedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelExtendConfigPublishedResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelExtendConfigPublishedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryThingModelExtendConfigPublishedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -26857,6 +33810,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryThingModelExtendConfigPublishedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelExtendConfigPublishedResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelExtendConfigPublishedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryThingModelExtendConfigPublishedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -26890,6 +33852,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryThingModelExtendConfigPublishedRequest,
     ) -> iot_20180120_models.QueryThingModelExtendConfigPublishedResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelExtendConfigPublishedRequest
+        @return: QueryThingModelExtendConfigPublishedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_thing_model_extend_config_published_with_options(request, runtime)
 
@@ -26897,6 +33867,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryThingModelExtendConfigPublishedRequest,
     ) -> iot_20180120_models.QueryThingModelExtendConfigPublishedResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelExtendConfigPublishedRequest
+        @return: QueryThingModelExtendConfigPublishedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_thing_model_extend_config_published_with_options_async(request, runtime)
 
@@ -26905,6 +33883,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryThingModelPublishedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelPublishedResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelPublishedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryThingModelPublishedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -26941,6 +33928,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryThingModelPublishedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelPublishedResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelPublishedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryThingModelPublishedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -26976,6 +33972,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryThingModelPublishedRequest,
     ) -> iot_20180120_models.QueryThingModelPublishedResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelPublishedRequest
+        @return: QueryThingModelPublishedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_thing_model_published_with_options(request, runtime)
 
@@ -26983,14 +33987,103 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryThingModelPublishedRequest,
     ) -> iot_20180120_models.QueryThingModelPublishedResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryThingModelPublishedRequest
+        @return: QueryThingModelPublishedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_thing_model_published_with_options_async(request, runtime)
+
+    def query_topic_config_with_options(
+        self,
+        request: iot_20180120_models.QueryTopicConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryTopicConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTopicConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryTopicConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_topic_config_with_options_async(
+        self,
+        request: iot_20180120_models.QueryTopicConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryTopicConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTopicConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryTopicConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_topic_config(
+        self,
+        request: iot_20180120_models.QueryTopicConfigRequest,
+    ) -> iot_20180120_models.QueryTopicConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_topic_config_with_options(request, runtime)
+
+    async def query_topic_config_async(
+        self,
+        request: iot_20180120_models.QueryTopicConfigRequest,
+    ) -> iot_20180120_models.QueryTopicConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_topic_config_with_options_async(request, runtime)
 
     def query_topic_reverse_route_table_with_options(
         self,
         request: iot_20180120_models.QueryTopicReverseRouteTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryTopicReverseRouteTableResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: QueryTopicReverseRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTopicReverseRouteTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -27023,6 +34116,13 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryTopicReverseRouteTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryTopicReverseRouteTableResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: QueryTopicReverseRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTopicReverseRouteTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -27054,6 +34154,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryTopicReverseRouteTableRequest,
     ) -> iot_20180120_models.QueryTopicReverseRouteTableResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: QueryTopicReverseRouteTableRequest
+        @return: QueryTopicReverseRouteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_topic_reverse_route_table_with_options(request, runtime)
 
@@ -27061,6 +34167,12 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryTopicReverseRouteTableRequest,
     ) -> iot_20180120_models.QueryTopicReverseRouteTableResponse:
+        """
+        In addition to the preceding operation-specific request parameters, you must specify common request parameters when you call this operation. For more information, see [Common request parameters](~~30561~~).
+        
+        @param request: QueryTopicReverseRouteTableRequest
+        @return: QueryTopicReverseRouteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_topic_reverse_route_table_with_options_async(request, runtime)
 
@@ -27069,6 +34181,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryTopicRouteTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryTopicRouteTableResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryTopicRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTopicRouteTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -27099,6 +34220,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryTopicRouteTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryTopicRouteTableResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryTopicRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTopicRouteTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -27128,6 +34258,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryTopicRouteTableRequest,
     ) -> iot_20180120_models.QueryTopicRouteTableResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryTopicRouteTableRequest
+        @return: QueryTopicRouteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_topic_route_table_with_options(request, runtime)
 
@@ -27135,6 +34273,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryTopicRouteTableRequest,
     ) -> iot_20180120_models.QueryTopicRouteTableResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryTopicRouteTableRequest
+        @return: QueryTopicRouteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_topic_route_table_with_options_async(request, runtime)
 
@@ -27143,6 +34289,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryVehicleDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryVehicleDeviceResponse:
+        """
+        You can call this operation to query the information about a device of a JT/T 808 gateway product.
+        *   When you call this operation, you must specify a **ProductKey** and a **DeviceName**. Otherwise, the call fails.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryVehicleDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVehicleDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -27175,6 +34332,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryVehicleDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryVehicleDeviceResponse:
+        """
+        You can call this operation to query the information about a device of a JT/T 808 gateway product.
+        *   When you call this operation, you must specify a **ProductKey** and a **DeviceName**. Otherwise, the call fails.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryVehicleDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVehicleDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -27206,6 +34374,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryVehicleDeviceRequest,
     ) -> iot_20180120_models.QueryVehicleDeviceResponse:
+        """
+        You can call this operation to query the information about a device of a JT/T 808 gateway product.
+        *   When you call this operation, you must specify a **ProductKey** and a **DeviceName**. Otherwise, the call fails.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryVehicleDeviceRequest
+        @return: QueryVehicleDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_vehicle_device_with_options(request, runtime)
 
@@ -27213,6 +34391,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryVehicleDeviceRequest,
     ) -> iot_20180120_models.QueryVehicleDeviceResponse:
+        """
+        You can call this operation to query the information about a device of a JT/T 808 gateway product.
+        *   When you call this operation, you must specify a **ProductKey** and a **DeviceName**. Otherwise, the call fails.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: QueryVehicleDeviceRequest
+        @return: QueryVehicleDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_vehicle_device_with_options_async(request, runtime)
 
@@ -27221,6 +34409,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.RRpcRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RRpcResponse:
+        """
+        If the device fails to send a response within the timeout period after you call the operation, IoT Platform considers that the call fails even if the device receives the message. The timeout period is specified by the *Timeout** parameter.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 1000 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: RRpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RRpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content_type):
@@ -27261,6 +34459,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.RRpcRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RRpcResponse:
+        """
+        If the device fails to send a response within the timeout period after you call the operation, IoT Platform considers that the call fails even if the device receives the message. The timeout period is specified by the *Timeout** parameter.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 1000 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: RRpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RRpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content_type):
@@ -27300,6 +34508,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.RRpcRequest,
     ) -> iot_20180120_models.RRpcResponse:
+        """
+        If the device fails to send a response within the timeout period after you call the operation, IoT Platform considers that the call fails even if the device receives the message. The timeout period is specified by the *Timeout** parameter.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 1000 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: RRpcRequest
+        @return: RRpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.r_rpc_with_options(request, runtime)
 
@@ -27307,6 +34524,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.RRpcRequest,
     ) -> iot_20180120_models.RRpcResponse:
+        """
+        If the device fails to send a response within the timeout period after you call the operation, IoT Platform considers that the call fails even if the device receives the message. The timeout period is specified by the *Timeout** parameter.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 1000 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: RRpcRequest
+        @return: RRpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.r_rpc_with_options_async(request, runtime)
 
@@ -27697,6 +34923,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.RegisterDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RegisterDeviceResponse:
+        """
+        If you call this operation to register a device under a product, the device is added to the product in the IoT Platform console. After the device is registered, IoT Platform issues the IotId parameter to the device. This parameter is a globally unique identifier (GUID) of the device. To perform operations on a device, you must use the IotId parameter to identify the device.
+        You can also use a combination of the ProductKey and DeviceName parameters to identify a device. A ProductKey is issued by IoT Platform to a product when you create the product. A DeviceName is specified or randomly generated when you create a device. The IotId parameter has a higher priority than a combination of the ProductKey and DeviceName parameters.
+        For information about how to register multiple devices under a product at the same time, see [BatchRegisterDeviceWithApplyId](~~69514~~).
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 30 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: RegisterDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -27741,6 +34979,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.RegisterDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RegisterDeviceResponse:
+        """
+        If you call this operation to register a device under a product, the device is added to the product in the IoT Platform console. After the device is registered, IoT Platform issues the IotId parameter to the device. This parameter is a globally unique identifier (GUID) of the device. To perform operations on a device, you must use the IotId parameter to identify the device.
+        You can also use a combination of the ProductKey and DeviceName parameters to identify a device. A ProductKey is issued by IoT Platform to a product when you create the product. A DeviceName is specified or randomly generated when you create a device. The IotId parameter has a higher priority than a combination of the ProductKey and DeviceName parameters.
+        For information about how to register multiple devices under a product at the same time, see [BatchRegisterDeviceWithApplyId](~~69514~~).
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 30 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: RegisterDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -27784,6 +35034,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.RegisterDeviceRequest,
     ) -> iot_20180120_models.RegisterDeviceResponse:
+        """
+        If you call this operation to register a device under a product, the device is added to the product in the IoT Platform console. After the device is registered, IoT Platform issues the IotId parameter to the device. This parameter is a globally unique identifier (GUID) of the device. To perform operations on a device, you must use the IotId parameter to identify the device.
+        You can also use a combination of the ProductKey and DeviceName parameters to identify a device. A ProductKey is issued by IoT Platform to a product when you create the product. A DeviceName is specified or randomly generated when you create a device. The IotId parameter has a higher priority than a combination of the ProductKey and DeviceName parameters.
+        For information about how to register multiple devices under a product at the same time, see [BatchRegisterDeviceWithApplyId](~~69514~~).
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 30 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: RegisterDeviceRequest
+        @return: RegisterDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.register_device_with_options(request, runtime)
 
@@ -27791,6 +35052,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.RegisterDeviceRequest,
     ) -> iot_20180120_models.RegisterDeviceResponse:
+        """
+        If you call this operation to register a device under a product, the device is added to the product in the IoT Platform console. After the device is registered, IoT Platform issues the IotId parameter to the device. This parameter is a globally unique identifier (GUID) of the device. To perform operations on a device, you must use the IotId parameter to identify the device.
+        You can also use a combination of the ProductKey and DeviceName parameters to identify a device. A ProductKey is issued by IoT Platform to a product when you create the product. A DeviceName is specified or randomly generated when you create a device. The IotId parameter has a higher priority than a combination of the ProductKey and DeviceName parameters.
+        For information about how to register multiple devices under a product at the same time, see [BatchRegisterDeviceWithApplyId](~~69514~~).
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 30 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: RegisterDeviceRequest
+        @return: RegisterDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.register_device_with_options_async(request, runtime)
 
@@ -27877,6 +35149,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ReleaseProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ReleaseProductResponse:
+        """
+        After a product is published, you cannot call the [CreateThingModel](~~150323~~), [UpdateThingModel](~~151240~~), [ImportThingModelTSL](~~150320~~), [PublishThingModel](~~150311~~), [DeleteThingModel](~~150312~~), or [CopyThingModel](~~150322~~) operation to edit the Thing Specification Language (TSL) model of the product. To edit the TSL model, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ReleaseProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -27907,6 +35188,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ReleaseProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ReleaseProductResponse:
+        """
+        After a product is published, you cannot call the [CreateThingModel](~~150323~~), [UpdateThingModel](~~151240~~), [ImportThingModelTSL](~~150320~~), [PublishThingModel](~~150311~~), [DeleteThingModel](~~150312~~), or [CopyThingModel](~~150322~~) operation to edit the Thing Specification Language (TSL) model of the product. To edit the TSL model, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ReleaseProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -27936,6 +35226,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ReleaseProductRequest,
     ) -> iot_20180120_models.ReleaseProductResponse:
+        """
+        After a product is published, you cannot call the [CreateThingModel](~~150323~~), [UpdateThingModel](~~151240~~), [ImportThingModelTSL](~~150320~~), [PublishThingModel](~~150311~~), [DeleteThingModel](~~150312~~), or [CopyThingModel](~~150322~~) operation to edit the Thing Specification Language (TSL) model of the product. To edit the TSL model, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ReleaseProductRequest
+        @return: ReleaseProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_product_with_options(request, runtime)
 
@@ -27943,6 +35241,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ReleaseProductRequest,
     ) -> iot_20180120_models.ReleaseProductResponse:
+        """
+        After a product is published, you cannot call the [CreateThingModel](~~150323~~), [UpdateThingModel](~~151240~~), [ImportThingModelTSL](~~150320~~), [PublishThingModel](~~150311~~), [DeleteThingModel](~~150312~~), or [CopyThingModel](~~150322~~) operation to edit the Thing Specification Language (TSL) model of the product. To edit the TSL model, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ReleaseProductRequest
+        @return: ReleaseProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_product_with_options_async(request, runtime)
 
@@ -27951,6 +35257,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.RemoveThingTopoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RemoveThingTopoResponse:
+        """
+        If you specify a gateway, this operation removes the topological relationships between the gateway and all attached sub-devices.
+        *   If you specify a sub-device, this operation removes the topological relationship between the sub-device and the gateway to which the sub-device is attached.
+        # QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: RemoveThingTopoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveThingTopoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -27985,6 +35302,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.RemoveThingTopoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RemoveThingTopoResponse:
+        """
+        If you specify a gateway, this operation removes the topological relationships between the gateway and all attached sub-devices.
+        *   If you specify a sub-device, this operation removes the topological relationship between the sub-device and the gateway to which the sub-device is attached.
+        # QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: RemoveThingTopoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveThingTopoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -28018,6 +35346,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.RemoveThingTopoRequest,
     ) -> iot_20180120_models.RemoveThingTopoResponse:
+        """
+        If you specify a gateway, this operation removes the topological relationships between the gateway and all attached sub-devices.
+        *   If you specify a sub-device, this operation removes the topological relationship between the sub-device and the gateway to which the sub-device is attached.
+        # QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: RemoveThingTopoRequest
+        @return: RemoveThingTopoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_thing_topo_with_options(request, runtime)
 
@@ -28025,6 +35363,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.RemoveThingTopoRequest,
     ) -> iot_20180120_models.RemoveThingTopoResponse:
+        """
+        If you specify a gateway, this operation removes the topological relationships between the gateway and all attached sub-devices.
+        *   If you specify a sub-device, this operation removes the topological relationship between the sub-device and the gateway to which the sub-device is attached.
+        # QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: RemoveThingTopoRequest
+        @return: RemoveThingTopoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_thing_topo_with_options_async(request, runtime)
 
@@ -28189,6 +35537,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ResetConsumerGroupPositionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ResetConsumerGroupPositionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ResetConsumerGroupPositionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetConsumerGroupPositionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -28219,6 +35576,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ResetConsumerGroupPositionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ResetConsumerGroupPositionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ResetConsumerGroupPositionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetConsumerGroupPositionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -28248,6 +35614,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ResetConsumerGroupPositionRequest,
     ) -> iot_20180120_models.ResetConsumerGroupPositionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ResetConsumerGroupPositionRequest
+        @return: ResetConsumerGroupPositionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_consumer_group_position_with_options(request, runtime)
 
@@ -28255,6 +35629,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ResetConsumerGroupPositionRequest,
     ) -> iot_20180120_models.ResetConsumerGroupPositionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ResetConsumerGroupPositionRequest
+        @return: ResetConsumerGroupPositionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_consumer_group_position_with_options_async(request, runtime)
 
@@ -28263,6 +35645,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ResetThingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ResetThingResponse:
+        """
+        After you use dynamic registration to obtain the device certificate information of a directly connected device and activate the device, you can call this operation to reset the dynamic registration status of the status to unregistered in the IoT Platform console. Then, you can use dynamic registration again to obtain the device certificate information. The device certificate information includes ProductKey, DeviceName, and DeviceSecret.
+        > This operation is called to reset the dynamic registration status instead of activation status of a device. After you call the operation to reset the dynamic registration status of a device, the status of the device in the IoT Platform console is not reset to inactive.
+        *   If you specify a gateway and the number of sub-devices that belong to the gateway exceeds 2,000, you can call this operation to create a device job to delete the topological relationships in an asynchronous manner. The operation returns the **JobId** parameter.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: ResetThingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetThingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -28297,6 +35691,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ResetThingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ResetThingResponse:
+        """
+        After you use dynamic registration to obtain the device certificate information of a directly connected device and activate the device, you can call this operation to reset the dynamic registration status of the status to unregistered in the IoT Platform console. Then, you can use dynamic registration again to obtain the device certificate information. The device certificate information includes ProductKey, DeviceName, and DeviceSecret.
+        > This operation is called to reset the dynamic registration status instead of activation status of a device. After you call the operation to reset the dynamic registration status of a device, the status of the device in the IoT Platform console is not reset to inactive.
+        *   If you specify a gateway and the number of sub-devices that belong to the gateway exceeds 2,000, you can call this operation to create a device job to delete the topological relationships in an asynchronous manner. The operation returns the **JobId** parameter.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: ResetThingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetThingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -28330,6 +35736,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ResetThingRequest,
     ) -> iot_20180120_models.ResetThingResponse:
+        """
+        After you use dynamic registration to obtain the device certificate information of a directly connected device and activate the device, you can call this operation to reset the dynamic registration status of the status to unregistered in the IoT Platform console. Then, you can use dynamic registration again to obtain the device certificate information. The device certificate information includes ProductKey, DeviceName, and DeviceSecret.
+        > This operation is called to reset the dynamic registration status instead of activation status of a device. After you call the operation to reset the dynamic registration status of a device, the status of the device in the IoT Platform console is not reset to inactive.
+        *   If you specify a gateway and the number of sub-devices that belong to the gateway exceeds 2,000, you can call this operation to create a device job to delete the topological relationships in an asynchronous manner. The operation returns the **JobId** parameter.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: ResetThingRequest
+        @return: ResetThingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_thing_with_options(request, runtime)
 
@@ -28337,6 +35754,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ResetThingRequest,
     ) -> iot_20180120_models.ResetThingResponse:
+        """
+        After you use dynamic registration to obtain the device certificate information of a directly connected device and activate the device, you can call this operation to reset the dynamic registration status of the status to unregistered in the IoT Platform console. Then, you can use dynamic registration again to obtain the device certificate information. The device certificate information includes ProductKey, DeviceName, and DeviceSecret.
+        > This operation is called to reset the dynamic registration status instead of activation status of a device. After you call the operation to reset the dynamic registration status of a device, the status of the device in the IoT Platform console is not reset to inactive.
+        *   If you specify a gateway and the number of sub-devices that belong to the gateway exceeds 2,000, you can call this operation to create a device job to delete the topological relationships in an asynchronous manner. The operation returns the **JobId** parameter.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: ResetThingRequest
+        @return: ResetThingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_thing_with_options_async(request, runtime)
 
@@ -28419,6 +35847,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ReupgradeOTATaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ReupgradeOTATaskResponse:
+        """
+        If the update task requires confirmation, you must make sure that it has been confirmed before you call this operation. You can call the [ConfirmOTATask](~~254666~~) operation to confirm update tasks.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ReupgradeOTATaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReupgradeOTATaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -28451,6 +35889,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ReupgradeOTATaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ReupgradeOTATaskResponse:
+        """
+        If the update task requires confirmation, you must make sure that it has been confirmed before you call this operation. You can call the [ConfirmOTATask](~~254666~~) operation to confirm update tasks.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ReupgradeOTATaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReupgradeOTATaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -28482,6 +35930,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ReupgradeOTATaskRequest,
     ) -> iot_20180120_models.ReupgradeOTATaskResponse:
+        """
+        If the update task requires confirmation, you must make sure that it has been confirmed before you call this operation. You can call the [ConfirmOTATask](~~254666~~) operation to confirm update tasks.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ReupgradeOTATaskRequest
+        @return: ReupgradeOTATaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reupgrade_otatask_with_options(request, runtime)
 
@@ -28489,6 +35946,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ReupgradeOTATaskRequest,
     ) -> iot_20180120_models.ReupgradeOTATaskResponse:
+        """
+        If the update task requires confirmation, you must make sure that it has been confirmed before you call this operation. You can call the [ConfirmOTATask](~~254666~~) operation to confirm update tasks.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 20 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ReupgradeOTATaskRequest
+        @return: ReupgradeOTATaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reupgrade_otatask_with_options_async(request, runtime)
 
@@ -28497,6 +35963,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SaveDevicePropRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SaveDevicePropResponse:
+        """
+        A device can have a maximum of 100 tags.
+        *   You can modify or add a maximum of 100 tags at a time.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SaveDevicePropRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveDevicePropResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -28533,6 +36010,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SaveDevicePropRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SaveDevicePropResponse:
+        """
+        A device can have a maximum of 100 tags.
+        *   You can modify or add a maximum of 100 tags at a time.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SaveDevicePropRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveDevicePropResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -28568,6 +36056,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SaveDevicePropRequest,
     ) -> iot_20180120_models.SaveDevicePropResponse:
+        """
+        A device can have a maximum of 100 tags.
+        *   You can modify or add a maximum of 100 tags at a time.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SaveDevicePropRequest
+        @return: SaveDevicePropResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_device_prop_with_options(request, runtime)
 
@@ -28575,6 +36073,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SaveDevicePropRequest,
     ) -> iot_20180120_models.SaveDevicePropResponse:
+        """
+        A device can have a maximum of 100 tags.
+        *   You can modify or add a maximum of 100 tags at a time.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SaveDevicePropRequest
+        @return: SaveDevicePropResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_device_prop_with_options_async(request, runtime)
 
@@ -28661,6 +36169,19 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SetDeviceDesiredPropertyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDeviceDesiredPropertyResponse:
+        """
+        You cannot query the desired values of read-only properties.
+        *   You can specify up to 10 desired property values in a call.
+        *   After a device is created, the value of the **Version** parameter is 0. If you want to configure the **Version** parameter the first time you specify a desired property value, set the **Version** parameter to 0.
+        > If the Thing Specification Language (TSL) data is of the float or double type, the parameter values that correspond to the TSL data contain at least one decimal place. Examples: 10.0 and 11.1.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDeviceDesiredPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDeviceDesiredPropertyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -28699,6 +36220,19 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SetDeviceDesiredPropertyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDeviceDesiredPropertyResponse:
+        """
+        You cannot query the desired values of read-only properties.
+        *   You can specify up to 10 desired property values in a call.
+        *   After a device is created, the value of the **Version** parameter is 0. If you want to configure the **Version** parameter the first time you specify a desired property value, set the **Version** parameter to 0.
+        > If the Thing Specification Language (TSL) data is of the float or double type, the parameter values that correspond to the TSL data contain at least one decimal place. Examples: 10.0 and 11.1.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDeviceDesiredPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDeviceDesiredPropertyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -28736,6 +36270,18 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SetDeviceDesiredPropertyRequest,
     ) -> iot_20180120_models.SetDeviceDesiredPropertyResponse:
+        """
+        You cannot query the desired values of read-only properties.
+        *   You can specify up to 10 desired property values in a call.
+        *   After a device is created, the value of the **Version** parameter is 0. If you want to configure the **Version** parameter the first time you specify a desired property value, set the **Version** parameter to 0.
+        > If the Thing Specification Language (TSL) data is of the float or double type, the parameter values that correspond to the TSL data contain at least one decimal place. Examples: 10.0 and 11.1.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDeviceDesiredPropertyRequest
+        @return: SetDeviceDesiredPropertyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_device_desired_property_with_options(request, runtime)
 
@@ -28743,6 +36289,18 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SetDeviceDesiredPropertyRequest,
     ) -> iot_20180120_models.SetDeviceDesiredPropertyResponse:
+        """
+        You cannot query the desired values of read-only properties.
+        *   You can specify up to 10 desired property values in a call.
+        *   After a device is created, the value of the **Version** parameter is 0. If you want to configure the **Version** parameter the first time you specify a desired property value, set the **Version** parameter to 0.
+        > If the Thing Specification Language (TSL) data is of the float or double type, the parameter values that correspond to the TSL data contain at least one decimal place. Examples: 10.0 and 11.1.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDeviceDesiredPropertyRequest
+        @return: SetDeviceDesiredPropertyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_device_desired_property_with_options_async(request, runtime)
 
@@ -28751,6 +36309,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SetDeviceGroupTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDeviceGroupTagsResponse:
+        """
+        A device group can have a maximum of 100 tags.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDeviceGroupTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDeviceGroupTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -28785,6 +36353,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SetDeviceGroupTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDeviceGroupTagsResponse:
+        """
+        A device group can have a maximum of 100 tags.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDeviceGroupTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDeviceGroupTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -28818,6 +36396,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SetDeviceGroupTagsRequest,
     ) -> iot_20180120_models.SetDeviceGroupTagsResponse:
+        """
+        A device group can have a maximum of 100 tags.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDeviceGroupTagsRequest
+        @return: SetDeviceGroupTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_device_group_tags_with_options(request, runtime)
 
@@ -28825,6 +36412,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SetDeviceGroupTagsRequest,
     ) -> iot_20180120_models.SetDeviceGroupTagsResponse:
+        """
+        A device group can have a maximum of 100 tags.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDeviceGroupTagsRequest
+        @return: SetDeviceGroupTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_device_group_tags_with_options_async(request, runtime)
 
@@ -28833,6 +36429,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SetDevicePropertyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDevicePropertyResponse:
+        """
+        After IoT Platform sends a request to configure device properties, the device receives and processes the request in an asynchronous manner. When you call this operation, a successful response indicates that IoT Platform sent a request. The response does not indicate that the device received and processed the request. After the device SDK responds to the request, the device properties are configured.
+        > If the Thing Specification Language (TSL) data is of the float or double type, the parameter values that correspond to the TSL data contain at least one decimal place. Examples: 10.0 and 11.1.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDevicePropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDevicePropertyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -28869,6 +36476,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SetDevicePropertyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDevicePropertyResponse:
+        """
+        After IoT Platform sends a request to configure device properties, the device receives and processes the request in an asynchronous manner. When you call this operation, a successful response indicates that IoT Platform sent a request. The response does not indicate that the device received and processed the request. After the device SDK responds to the request, the device properties are configured.
+        > If the Thing Specification Language (TSL) data is of the float or double type, the parameter values that correspond to the TSL data contain at least one decimal place. Examples: 10.0 and 11.1.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDevicePropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDevicePropertyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -28904,6 +36522,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SetDevicePropertyRequest,
     ) -> iot_20180120_models.SetDevicePropertyResponse:
+        """
+        After IoT Platform sends a request to configure device properties, the device receives and processes the request in an asynchronous manner. When you call this operation, a successful response indicates that IoT Platform sent a request. The response does not indicate that the device received and processed the request. After the device SDK responds to the request, the device properties are configured.
+        > If the Thing Specification Language (TSL) data is of the float or double type, the parameter values that correspond to the TSL data contain at least one decimal place. Examples: 10.0 and 11.1.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDevicePropertyRequest
+        @return: SetDevicePropertyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_device_property_with_options(request, runtime)
 
@@ -28911,6 +36539,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SetDevicePropertyRequest,
     ) -> iot_20180120_models.SetDevicePropertyResponse:
+        """
+        After IoT Platform sends a request to configure device properties, the device receives and processes the request in an asynchronous manner. When you call this operation, a successful response indicates that IoT Platform sent a request. The response does not indicate that the device received and processed the request. After the device SDK responds to the request, the device properties are configured.
+        > If the Thing Specification Language (TSL) data is of the float or double type, the parameter values that correspond to the TSL data contain at least one decimal place. Examples: 10.0 and 11.1.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 500 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDevicePropertyRequest
+        @return: SetDevicePropertyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_device_property_with_options_async(request, runtime)
 
@@ -28919,6 +36557,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SetDevicesPropertyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDevicesPropertyResponse:
+        """
+        If the Thing Specification Language (TSL) data is of the float or double type, the parameter values that correspond to the TSL data contain at least one decimal place. Examples: 10.0 and 11.1.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDevicesPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDevicesPropertyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -28953,6 +36601,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SetDevicesPropertyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDevicesPropertyResponse:
+        """
+        If the Thing Specification Language (TSL) data is of the float or double type, the parameter values that correspond to the TSL data contain at least one decimal place. Examples: 10.0 and 11.1.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDevicesPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDevicesPropertyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -28986,6 +36644,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SetDevicesPropertyRequest,
     ) -> iot_20180120_models.SetDevicesPropertyResponse:
+        """
+        If the Thing Specification Language (TSL) data is of the float or double type, the parameter values that correspond to the TSL data contain at least one decimal place. Examples: 10.0 and 11.1.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDevicesPropertyRequest
+        @return: SetDevicesPropertyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_devices_property_with_options(request, runtime)
 
@@ -28993,6 +36660,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SetDevicesPropertyRequest,
     ) -> iot_20180120_models.SetDevicesPropertyResponse:
+        """
+        If the Thing Specification Language (TSL) data is of the float or double type, the parameter values that correspond to the TSL data contain at least one decimal place. Examples: 10.0 and 11.1.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetDevicesPropertyRequest
+        @return: SetDevicesPropertyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_devices_property_with_options_async(request, runtime)
 
@@ -29689,6 +37365,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.StartRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.StartRuleResponse:
+        """
+        ## Limits
+        *   You must verify that the rule has SQL statements configured before you start the rule. If you do not set an SQL statement when you create the rule, call the [UpdateRule](~~69513~~) operation to add an SQL statement and update the rule.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: StartRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -29719,6 +37405,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.StartRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.StartRuleResponse:
+        """
+        ## Limits
+        *   You must verify that the rule has SQL statements configured before you start the rule. If you do not set an SQL statement when you create the rule, call the [UpdateRule](~~69513~~) operation to add an SQL statement and update the rule.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: StartRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -29748,6 +37444,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.StartRuleRequest,
     ) -> iot_20180120_models.StartRuleResponse:
+        """
+        ## Limits
+        *   You must verify that the rule has SQL statements configured before you start the rule. If you do not set an SQL statement when you create the rule, call the [UpdateRule](~~69513~~) operation to add an SQL statement and update the rule.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: StartRuleRequest
+        @return: StartRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_rule_with_options(request, runtime)
 
@@ -29755,6 +37460,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.StartRuleRequest,
     ) -> iot_20180120_models.StartRuleResponse:
+        """
+        ## Limits
+        *   You must verify that the rule has SQL statements configured before you start the rule. If you do not set an SQL statement when you create the rule, call the [UpdateRule](~~69513~~) operation to add an SQL statement and update the rule.
+        *   Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: StartRuleRequest
+        @return: StartRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_rule_with_options_async(request, runtime)
 
@@ -29837,6 +37551,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.StopRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.StopRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: StopRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -29867,6 +37590,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.StopRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.StopRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: StopRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -29896,6 +37628,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.StopRuleRequest,
     ) -> iot_20180120_models.StopRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: StopRuleRequest
+        @return: StopRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_rule_with_options(request, runtime)
 
@@ -29903,6 +37643,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.StopRuleRequest,
     ) -> iot_20180120_models.StopRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: StopRuleRequest
+        @return: StopRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_rule_with_options_async(request, runtime)
 
@@ -29911,6 +37659,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SubscribeTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SubscribeTopicResponse:
+        """
+        The device that needs to subscribe to topics must be connected to IoT Platform and online.
+        *   You can call this operation to subscribe to the topics of a specified device. You can specify a maximum of 10 topics in a single call.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: SubscribeTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubscribeTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -29945,6 +37704,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SubscribeTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SubscribeTopicResponse:
+        """
+        The device that needs to subscribe to topics must be connected to IoT Platform and online.
+        *   You can call this operation to subscribe to the topics of a specified device. You can specify a maximum of 10 topics in a single call.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: SubscribeTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubscribeTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -29978,6 +37748,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SubscribeTopicRequest,
     ) -> iot_20180120_models.SubscribeTopicResponse:
+        """
+        The device that needs to subscribe to topics must be connected to IoT Platform and online.
+        *   You can call this operation to subscribe to the topics of a specified device. You can specify a maximum of 10 topics in a single call.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: SubscribeTopicRequest
+        @return: SubscribeTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.subscribe_topic_with_options(request, runtime)
 
@@ -29985,6 +37765,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SubscribeTopicRequest,
     ) -> iot_20180120_models.SubscribeTopicResponse:
+        """
+        The device that needs to subscribe to topics must be connected to IoT Platform and online.
+        *   You can call this operation to subscribe to the topics of a specified device. You can specify a maximum of 10 topics in a single call.
+        ## QPS limits
+        Each Alibaba Cloud account can run up to 10 queries per second (QPS).
+        >  The RAM users of an Alibaba Cloud account share the quota of the Alibaba Cloud account.
+        
+        @param request: SubscribeTopicRequest
+        @return: SubscribeTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.subscribe_topic_with_options_async(request, runtime)
 
@@ -30200,11 +37990,99 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.test_speech_with_options_async(request, runtime)
 
+    def test_switch_with_options(
+        self,
+        request: iot_20180120_models.TestSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.TestSwitchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TestSwitch',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.TestSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def test_switch_with_options_async(
+        self,
+        request: iot_20180120_models.TestSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.TestSwitchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TestSwitch',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.TestSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def test_switch(
+        self,
+        request: iot_20180120_models.TestSwitchRequest,
+    ) -> iot_20180120_models.TestSwitchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.test_switch_with_options(request, runtime)
+
+    async def test_switch_async(
+        self,
+        request: iot_20180120_models.TestSwitchRequest,
+    ) -> iot_20180120_models.TestSwitchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.test_switch_with_options_async(request, runtime)
+
     def transform_client_id_with_options(
         self,
         request: iot_20180120_models.TransformClientIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.TransformClientIdResponse:
+        """
+        You can call the [QueryClientIds](~~371985~~) operation to view the ClientIDs of a device.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: TransformClientIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransformClientIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -30237,6 +38115,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.TransformClientIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.TransformClientIdResponse:
+        """
+        You can call the [QueryClientIds](~~371985~~) operation to view the ClientIDs of a device.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: TransformClientIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransformClientIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -30268,6 +38156,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.TransformClientIdRequest,
     ) -> iot_20180120_models.TransformClientIdResponse:
+        """
+        You can call the [QueryClientIds](~~371985~~) operation to view the ClientIDs of a device.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: TransformClientIdRequest
+        @return: TransformClientIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.transform_client_id_with_options(request, runtime)
 
@@ -30275,6 +38172,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.TransformClientIdRequest,
     ) -> iot_20180120_models.TransformClientIdResponse:
+        """
+        You can call the [QueryClientIds](~~371985~~) operation to view the ClientIDs of a device.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: TransformClientIdRequest
+        @return: TransformClientIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.transform_client_id_with_options_async(request, runtime)
 
@@ -30439,6 +38345,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UnbindDriverFromEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UnbindDriverFromEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UnbindDriverFromEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindDriverFromEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -30471,6 +38386,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UnbindDriverFromEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UnbindDriverFromEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UnbindDriverFromEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindDriverFromEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.driver_id):
@@ -30502,6 +38426,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UnbindDriverFromEdgeInstanceRequest,
     ) -> iot_20180120_models.UnbindDriverFromEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UnbindDriverFromEdgeInstanceRequest
+        @return: UnbindDriverFromEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_driver_from_edge_instance_with_options(request, runtime)
 
@@ -30509,6 +38441,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UnbindDriverFromEdgeInstanceRequest,
     ) -> iot_20180120_models.UnbindDriverFromEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UnbindDriverFromEdgeInstanceRequest
+        @return: UnbindDriverFromEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_driver_from_edge_instance_with_options_async(request, runtime)
 
@@ -30747,6 +38687,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateConsumerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateConsumerGroupResponse:
+        """
+        ## Limits
+        *   You cannot modify the default consumer group provided by IoT Platform.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateConsumerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -30779,6 +38729,16 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateConsumerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateConsumerGroupResponse:
+        """
+        ## Limits
+        *   You cannot modify the default consumer group provided by IoT Platform.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateConsumerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -30810,6 +38770,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateConsumerGroupRequest,
     ) -> iot_20180120_models.UpdateConsumerGroupResponse:
+        """
+        ## Limits
+        *   You cannot modify the default consumer group provided by IoT Platform.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateConsumerGroupRequest
+        @return: UpdateConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_consumer_group_with_options(request, runtime)
 
@@ -30817,6 +38786,15 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateConsumerGroupRequest,
     ) -> iot_20180120_models.UpdateConsumerGroupResponse:
+        """
+        ## Limits
+        *   You cannot modify the default consumer group provided by IoT Platform.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateConsumerGroupRequest
+        @return: UpdateConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_consumer_group_with_options_async(request, runtime)
 
@@ -30915,6 +38893,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateDeviceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateDeviceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDeviceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_desc):
@@ -30949,6 +38936,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateDeviceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateDeviceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDeviceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_desc):
@@ -30982,6 +38978,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateDeviceGroupRequest,
     ) -> iot_20180120_models.UpdateDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateDeviceGroupRequest
+        @return: UpdateDeviceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_device_group_with_options(request, runtime)
 
@@ -30989,6 +38993,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateDeviceGroupRequest,
     ) -> iot_20180120_models.UpdateDeviceGroupResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateDeviceGroupRequest
+        @return: UpdateDeviceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_device_group_with_options_async(request, runtime)
 
@@ -30997,6 +39009,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateDeviceShadowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateDeviceShadowResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 500 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateDeviceShadowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDeviceShadowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delta_update):
@@ -31033,6 +39054,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateDeviceShadowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateDeviceShadowResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 500 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateDeviceShadowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDeviceShadowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delta_update):
@@ -31068,6 +39098,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateDeviceShadowRequest,
     ) -> iot_20180120_models.UpdateDeviceShadowResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 500 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateDeviceShadowRequest
+        @return: UpdateDeviceShadowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_device_shadow_with_options(request, runtime)
 
@@ -31075,6 +39113,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateDeviceShadowRequest,
     ) -> iot_20180120_models.UpdateDeviceShadowResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 500 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateDeviceShadowRequest
+        @return: UpdateDeviceShadowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_device_shadow_with_options_async(request, runtime)
 
@@ -31083,6 +39129,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateEdgeDriverVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateEdgeDriverVersionResponse:
+        """
+        ## Limits
+        *   If a request parameter is not specified, the original value of the parameter will be cleared for the driver version.
+        *   You are not allowed to update a published driver version.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateEdgeDriverVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEdgeDriverVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.argument):
@@ -31129,6 +39186,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateEdgeDriverVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateEdgeDriverVersionResponse:
+        """
+        ## Limits
+        *   If a request parameter is not specified, the original value of the parameter will be cleared for the driver version.
+        *   You are not allowed to update a published driver version.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateEdgeDriverVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEdgeDriverVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.argument):
@@ -31174,6 +39242,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateEdgeDriverVersionRequest,
     ) -> iot_20180120_models.UpdateEdgeDriverVersionResponse:
+        """
+        ## Limits
+        *   If a request parameter is not specified, the original value of the parameter will be cleared for the driver version.
+        *   You are not allowed to update a published driver version.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateEdgeDriverVersionRequest
+        @return: UpdateEdgeDriverVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_edge_driver_version_with_options(request, runtime)
 
@@ -31181,6 +39259,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateEdgeDriverVersionRequest,
     ) -> iot_20180120_models.UpdateEdgeDriverVersionResponse:
+        """
+        ## Limits
+        *   If a request parameter is not specified, the original value of the parameter will be cleared for the driver version.
+        *   You are not allowed to update a published driver version.
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateEdgeDriverVersionRequest
+        @return: UpdateEdgeDriverVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_edge_driver_version_with_options_async(request, runtime)
 
@@ -31189,6 +39277,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_enable):
@@ -31227,6 +39324,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateEdgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateEdgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEdgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_enable):
@@ -31264,6 +39370,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateEdgeInstanceRequest,
     ) -> iot_20180120_models.UpdateEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateEdgeInstanceRequest
+        @return: UpdateEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_edge_instance_with_options(request, runtime)
 
@@ -31271,6 +39385,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateEdgeInstanceRequest,
     ) -> iot_20180120_models.UpdateEdgeInstanceResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of five queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateEdgeInstanceRequest
+        @return: UpdateEdgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_edge_instance_with_options_async(request, runtime)
 
@@ -31573,6 +39695,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateOTAModuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateOTAModuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateOTAModuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOTAModuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alias_name):
@@ -31609,6 +39740,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateOTAModuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateOTAModuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateOTAModuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOTAModuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alias_name):
@@ -31644,6 +39784,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateOTAModuleRequest,
     ) -> iot_20180120_models.UpdateOTAModuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateOTAModuleRequest
+        @return: UpdateOTAModuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_otamodule_with_options(request, runtime)
 
@@ -31651,6 +39799,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateOTAModuleRequest,
     ) -> iot_20180120_models.UpdateOTAModuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateOTAModuleRequest
+        @return: UpdateOTAModuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_otamodule_with_options_async(request, runtime)
 
@@ -31823,6 +39979,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -31857,6 +40022,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -31890,6 +40064,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateProductRequest,
     ) -> iot_20180120_models.UpdateProductResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductRequest
+        @return: UpdateProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_product_with_options(request, runtime)
 
@@ -31897,6 +40079,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateProductRequest,
     ) -> iot_20180120_models.UpdateProductResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        >  The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductRequest
+        @return: UpdateProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_product_with_options_async(request, runtime)
 
@@ -31905,6 +40095,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateProductFilterConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductFilterConfigResponse:
+        """
+        ## Message deduplication rules
+        Based on the rules that you set, IoT Platform determines whether to use the rules engine or server-side subscriptions to forward property data that is submitted by devices to a specified destination.
+        The triggering conditions of rules are related by the logic AND relation. For example, if you set the PropertyValueFilter=true and PropertyTimestampFilter=true conditions, the rule to remove duplicate messages is triggered only when both of the conditions are met.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductFilterConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProductFilterConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -31939,6 +40141,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateProductFilterConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductFilterConfigResponse:
+        """
+        ## Message deduplication rules
+        Based on the rules that you set, IoT Platform determines whether to use the rules engine or server-side subscriptions to forward property data that is submitted by devices to a specified destination.
+        The triggering conditions of rules are related by the logic AND relation. For example, if you set the PropertyValueFilter=true and PropertyTimestampFilter=true conditions, the rule to remove duplicate messages is triggered only when both of the conditions are met.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductFilterConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProductFilterConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -31972,6 +40186,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateProductFilterConfigRequest,
     ) -> iot_20180120_models.UpdateProductFilterConfigResponse:
+        """
+        ## Message deduplication rules
+        Based on the rules that you set, IoT Platform determines whether to use the rules engine or server-side subscriptions to forward property data that is submitted by devices to a specified destination.
+        The triggering conditions of rules are related by the logic AND relation. For example, if you set the PropertyValueFilter=true and PropertyTimestampFilter=true conditions, the rule to remove duplicate messages is triggered only when both of the conditions are met.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductFilterConfigRequest
+        @return: UpdateProductFilterConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_product_filter_config_with_options(request, runtime)
 
@@ -31979,6 +40204,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateProductFilterConfigRequest,
     ) -> iot_20180120_models.UpdateProductFilterConfigResponse:
+        """
+        ## Message deduplication rules
+        Based on the rules that you set, IoT Platform determines whether to use the rules engine or server-side subscriptions to forward property data that is submitted by devices to a specified destination.
+        The triggering conditions of rules are related by the logic AND relation. For example, if you set the PropertyValueFilter=true and PropertyTimestampFilter=true conditions, the rule to remove duplicate messages is triggered only when both of the conditions are met.
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductFilterConfigRequest
+        @return: UpdateProductFilterConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_product_filter_config_with_options_async(request, runtime)
 
@@ -31987,6 +40223,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateProductTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductTagsResponse:
+        """
+        You can update a maximum of 10 tags in a single call.
+        > You must specify the tag keys and tag values. Otherwise, the call fails. For description about the tag values, see the "**Request parameters**" section of this topic.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProductTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -32019,6 +40266,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateProductTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductTagsResponse:
+        """
+        You can update a maximum of 10 tags in a single call.
+        > You must specify the tag keys and tag values. Otherwise, the call fails. For description about the tag values, see the "**Request parameters**" section of this topic.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProductTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -32050,6 +40308,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateProductTagsRequest,
     ) -> iot_20180120_models.UpdateProductTagsResponse:
+        """
+        You can update a maximum of 10 tags in a single call.
+        > You must specify the tag keys and tag values. Otherwise, the call fails. For description about the tag values, see the "**Request parameters**" section of this topic.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductTagsRequest
+        @return: UpdateProductTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_product_tags_with_options(request, runtime)
 
@@ -32057,6 +40325,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateProductTagsRequest,
     ) -> iot_20180120_models.UpdateProductTagsResponse:
+        """
+        You can update a maximum of 10 tags in a single call.
+        > You must specify the tag keys and tag values. Otherwise, the call fails. For description about the tag values, see the "**Request parameters**" section of this topic.
+        ## QPS limits
+        Each Alibaba Cloud account can run a maximum of 500 queries per second (QPS).
+        >  The Resource Access Management (RAM) users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductTagsRequest
+        @return: UpdateProductTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_product_tags_with_options_async(request, runtime)
 
@@ -32065,10 +40343,23 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateProductTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProductTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.codec):
+            query['Codec'] = request.codec
         if not UtilClient.is_unset(request.desc):
             query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.enable_proxy_subscribe):
+            query['EnableProxySubscribe'] = request.enable_proxy_subscribe
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.operation):
@@ -32101,10 +40392,23 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateProductTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProductTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.codec):
+            query['Codec'] = request.codec
         if not UtilClient.is_unset(request.desc):
             query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.enable_proxy_subscribe):
+            query['EnableProxySubscribe'] = request.enable_proxy_subscribe
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.operation):
@@ -32136,6 +40440,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateProductTopicRequest,
     ) -> iot_20180120_models.UpdateProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductTopicRequest
+        @return: UpdateProductTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_product_topic_with_options(request, runtime)
 
@@ -32143,6 +40455,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateProductTopicRequest,
     ) -> iot_20180120_models.UpdateProductTopicResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateProductTopicRequest
+        @return: UpdateProductTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_product_topic_with_options_async(request, runtime)
 
@@ -32151,6 +40471,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -32197,6 +40526,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -32242,6 +40580,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateRuleRequest,
     ) -> iot_20180120_models.UpdateRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateRuleRequest
+        @return: UpdateRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_rule_with_options(request, runtime)
 
@@ -32249,6 +40595,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateRuleRequest,
     ) -> iot_20180120_models.UpdateRuleResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateRuleRequest
+        @return: UpdateRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_rule_with_options_async(request, runtime)
 
@@ -32257,6 +40611,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateRuleActionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateRuleActionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateRuleActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRuleActionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_id):
@@ -32291,6 +40654,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateRuleActionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateRuleActionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateRuleActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRuleActionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_id):
@@ -32324,6 +40696,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateRuleActionRequest,
     ) -> iot_20180120_models.UpdateRuleActionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateRuleActionRequest
+        @return: UpdateRuleActionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_rule_action_with_options(request, runtime)
 
@@ -32331,6 +40711,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateRuleActionRequest,
     ) -> iot_20180120_models.UpdateRuleActionResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 50 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateRuleActionRequest
+        @return: UpdateRuleActionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_rule_action_with_options_async(request, runtime)
 
@@ -32887,6 +41275,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateSubscribeRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateSubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateSubscribeRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSubscribeRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_group_ids):
@@ -32945,6 +41342,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateSubscribeRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateSubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateSubscribeRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSubscribeRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consumer_group_ids):
@@ -33002,6 +41408,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateSubscribeRelationRequest,
     ) -> iot_20180120_models.UpdateSubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateSubscribeRelationRequest
+        @return: UpdateSubscribeRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_subscribe_relation_with_options(request, runtime)
 
@@ -33009,6 +41423,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateSubscribeRelationRequest,
     ) -> iot_20180120_models.UpdateSubscribeRelationResponse:
+        """
+        ## Limits
+        Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        >  RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateSubscribeRelationRequest
+        @return: UpdateSubscribeRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_subscribe_relation_with_options_async(request, runtime)
 
@@ -33017,6 +41439,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateThingModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateThingModelResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   When you call this operation, you can use the [json-schema](https://github.com/everit-org/json-schema?spm=a2c4g.11186623.2.23.575832d9zD7fZb) library to verify the input parameters in **ThingModelJson**. For more information, see [Data structure of ThingModelJson](~~150457~~).
+        *   You can call this operation to update only one feature. TSL features include properties, services, and events.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateThingModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateThingModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -33055,6 +41489,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateThingModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateThingModelResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   When you call this operation, you can use the [json-schema](https://github.com/everit-org/json-schema?spm=a2c4g.11186623.2.23.575832d9zD7fZb) library to verify the input parameters in **ThingModelJson**. For more information, see [Data structure of ThingModelJson](~~150457~~).
+        *   You can call this operation to update only one feature. TSL features include properties, services, and events.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateThingModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateThingModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_block_id):
@@ -33092,6 +41538,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateThingModelRequest,
     ) -> iot_20180120_models.UpdateThingModelResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   When you call this operation, you can use the [json-schema](https://github.com/everit-org/json-schema?spm=a2c4g.11186623.2.23.575832d9zD7fZb) library to verify the input parameters in **ThingModelJson**. For more information, see [Data structure of ThingModelJson](~~150457~~).
+        *   You can call this operation to update only one feature. TSL features include properties, services, and events.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateThingModelRequest
+        @return: UpdateThingModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_thing_model_with_options(request, runtime)
 
@@ -33099,6 +41556,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateThingModelRequest,
     ) -> iot_20180120_models.UpdateThingModelResponse:
+        """
+        ## Limits
+        *   If a product is published, you must call the [CancelReleaseProduct](~~213875~~) operation to unpublish the product before you call this operation.
+        *   When you call this operation, you can use the [json-schema](https://github.com/everit-org/json-schema?spm=a2c4g.11186623.2.23.575832d9zD7fZb) library to verify the input parameters in **ThingModelJson**. For more information, see [Data structure of ThingModelJson](~~150457~~).
+        *   You can call this operation to update only one feature. TSL features include properties, services, and events.
+        *   Each Alibaba Cloud account can run a maximum of 5 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateThingModelRequest
+        @return: UpdateThingModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_thing_model_with_options_async(request, runtime)
 
@@ -33107,6 +41575,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateThingScriptRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateThingScriptResponse:
+        """
+        A data parsing script is used to convert the custom-formatted data to JSON data after the data is submitted by a device. You can write a script in JavaScript, Python 2.7, and PHP 7.2. For more information, see [Submit scripts for data parsing](~~149963~~).
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateThingScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateThingScriptResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -33141,6 +41618,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateThingScriptRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateThingScriptResponse:
+        """
+        A data parsing script is used to convert the custom-formatted data to JSON data after the data is submitted by a device. You can write a script in JavaScript, Python 2.7, and PHP 7.2. For more information, see [Submit scripts for data parsing](~~149963~~).
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateThingScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateThingScriptResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -33174,6 +41660,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateThingScriptRequest,
     ) -> iot_20180120_models.UpdateThingScriptResponse:
+        """
+        A data parsing script is used to convert the custom-formatted data to JSON data after the data is submitted by a device. You can write a script in JavaScript, Python 2.7, and PHP 7.2. For more information, see [Submit scripts for data parsing](~~149963~~).
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateThingScriptRequest
+        @return: UpdateThingScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_thing_script_with_options(request, runtime)
 
@@ -33181,6 +41675,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateThingScriptRequest,
     ) -> iot_20180120_models.UpdateThingScriptResponse:
+        """
+        A data parsing script is used to convert the custom-formatted data to JSON data after the data is submitted by a device. You can write a script in JavaScript, Python 2.7, and PHP 7.2. For more information, see [Submit scripts for data parsing](~~149963~~).
+        *   Each Alibaba Cloud account can run a maximum of 10 queries per second (QPS).
+        > RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UpdateThingScriptRequest
+        @return: UpdateThingScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_thing_script_with_options_async(request, runtime)
 
@@ -33191,10 +41693,18 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.UpdateTopicConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.codec):
+            query['Codec'] = request.codec
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.enable_broadcast):
             query['EnableBroadcast'] = request.enable_broadcast
+        if not UtilClient.is_unset(request.enable_proxy_subscribe):
+            query['EnableProxySubscribe'] = request.enable_proxy_subscribe
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
         if not UtilClient.is_unset(request.topic_full_name):
@@ -33225,10 +41735,18 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.UpdateTopicConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.codec):
+            query['Codec'] = request.codec
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.enable_broadcast):
             query['EnableBroadcast'] = request.enable_broadcast
+        if not UtilClient.is_unset(request.enable_proxy_subscribe):
+            query['EnableProxySubscribe'] = request.enable_proxy_subscribe
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
         if not UtilClient.is_unset(request.topic_full_name):
