@@ -3077,10 +3077,8 @@ class LocationDateCluster(TeaModel):
 class MNS(TeaModel):
     def __init__(
         self,
-        endpoint: str = None,
         topic_name: str = None,
     ):
-        self.endpoint = endpoint
         self.topic_name = topic_name
 
     def validate(self):
@@ -3092,16 +3090,12 @@ class MNS(TeaModel):
             return _map
 
         result = dict()
-        if self.endpoint is not None:
-            result['Endpoint'] = self.endpoint
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Endpoint') is not None:
-            self.endpoint = m.get('Endpoint')
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
         return self
@@ -3110,11 +3104,9 @@ class MNS(TeaModel):
 class RocketMQ(TeaModel):
     def __init__(
         self,
-        endpoint: str = None,
         instance_id: str = None,
         topic_name: str = None,
     ):
-        self.endpoint = endpoint
         self.instance_id = instance_id
         self.topic_name = topic_name
 
@@ -3127,8 +3119,6 @@ class RocketMQ(TeaModel):
             return _map
 
         result = dict()
-        if self.endpoint is not None:
-            result['Endpoint'] = self.endpoint
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.topic_name is not None:
@@ -3137,8 +3127,6 @@ class RocketMQ(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Endpoint') is not None:
-            self.endpoint = m.get('Endpoint')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('TopicName') is not None:
@@ -3898,13 +3886,13 @@ class TargetImageAnimations(TeaModel):
         self,
         format: str = None,
         frame_rate: float = None,
-        height: int = None,
+        height: float = None,
         interval: float = None,
         number: int = None,
         scale_type: str = None,
         start_time: float = None,
         uri: str = None,
-        width: int = None,
+        width: float = None,
     ):
         self.format = format
         self.frame_rate = frame_rate
@@ -3972,13 +3960,13 @@ class TargetImageSnapshots(TeaModel):
     def __init__(
         self,
         format: str = None,
-        height: int = None,
+        height: float = None,
         interval: float = None,
         number: int = None,
         scale_type: str = None,
         start_time: float = None,
         uri: str = None,
-        width: int = None,
+        width: float = None,
     ):
         self.format = format
         self.height = height
@@ -4678,20 +4666,24 @@ class TaskInfo(TeaModel):
         code: str = None,
         end_time: str = None,
         message: str = None,
+        progress: int = None,
         start_time: str = None,
         status: str = None,
         tags: Dict[str, Any] = None,
         task_id: str = None,
+        task_request_definition: str = None,
         task_type: str = None,
         user_data: str = None,
     ):
         self.code = code
         self.end_time = end_time
         self.message = message
+        self.progress = progress
         self.start_time = start_time
         self.status = status
         self.tags = tags
         self.task_id = task_id
+        self.task_request_definition = task_request_definition
         self.task_type = task_type
         self.user_data = user_data
 
@@ -4710,6 +4702,8 @@ class TaskInfo(TeaModel):
             result['EndTime'] = self.end_time
         if self.message is not None:
             result['Message'] = self.message
+        if self.progress is not None:
+            result['Progress'] = self.progress
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status is not None:
@@ -4718,6 +4712,8 @@ class TaskInfo(TeaModel):
             result['Tags'] = self.tags
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.task_request_definition is not None:
+            result['TaskRequestDefinition'] = self.task_request_definition
         if self.task_type is not None:
             result['TaskType'] = self.task_type
         if self.user_data is not None:
@@ -4732,6 +4728,8 @@ class TaskInfo(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
@@ -4740,6 +4738,8 @@ class TaskInfo(TeaModel):
             self.tags = m.get('Tags')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('TaskRequestDefinition') is not None:
+            self.task_request_definition = m.get('TaskRequestDefinition')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
         if m.get('UserData') is not None:
@@ -18065,10 +18065,12 @@ class GetTaskRequest(TeaModel):
     def __init__(
         self,
         project_name: str = None,
+        request_definition: bool = None,
         task_id: str = None,
         task_type: str = None,
     ):
         self.project_name = project_name
+        self.request_definition = request_definition
         self.task_id = task_id
         self.task_type = task_type
 
@@ -18083,6 +18085,8 @@ class GetTaskRequest(TeaModel):
         result = dict()
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.request_definition is not None:
+            result['RequestDefinition'] = self.request_definition
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.task_type is not None:
@@ -18093,6 +18097,8 @@ class GetTaskRequest(TeaModel):
         m = m or dict()
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('RequestDefinition') is not None:
+            self.request_definition = m.get('RequestDefinition')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TaskType') is not None:
@@ -18107,12 +18113,14 @@ class GetTaskResponseBody(TeaModel):
         end_time: str = None,
         event_id: str = None,
         message: str = None,
+        progress: int = None,
         project_name: str = None,
         request_id: str = None,
         start_time: str = None,
         status: str = None,
         tags: Dict[str, Any] = None,
         task_id: str = None,
+        task_request_definition: str = None,
         task_type: str = None,
         user_data: str = None,
     ):
@@ -18120,12 +18128,14 @@ class GetTaskResponseBody(TeaModel):
         self.end_time = end_time
         self.event_id = event_id
         self.message = message
+        self.progress = progress
         self.project_name = project_name
         self.request_id = request_id
         self.start_time = start_time
         self.status = status
         self.tags = tags
         self.task_id = task_id
+        self.task_request_definition = task_request_definition
         self.task_type = task_type
         self.user_data = user_data
 
@@ -18146,6 +18156,8 @@ class GetTaskResponseBody(TeaModel):
             result['EventId'] = self.event_id
         if self.message is not None:
             result['Message'] = self.message
+        if self.progress is not None:
+            result['Progress'] = self.progress
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.request_id is not None:
@@ -18158,6 +18170,8 @@ class GetTaskResponseBody(TeaModel):
             result['Tags'] = self.tags
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.task_request_definition is not None:
+            result['TaskRequestDefinition'] = self.task_request_definition
         if self.task_type is not None:
             result['TaskType'] = self.task_type
         if self.user_data is not None:
@@ -18174,6 +18188,8 @@ class GetTaskResponseBody(TeaModel):
             self.event_id = m.get('EventId')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('RequestId') is not None:
@@ -18186,6 +18202,8 @@ class GetTaskResponseBody(TeaModel):
             self.tags = m.get('Tags')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('TaskRequestDefinition') is not None:
+            self.task_request_definition = m.get('TaskRequestDefinition')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
         if m.get('UserData') is not None:
@@ -19686,6 +19704,7 @@ class ListTasksRequest(TeaModel):
         next_token: str = None,
         order: str = None,
         project_name: str = None,
+        request_definition: bool = None,
         sort: str = None,
         start_time_range: TimeRange = None,
         status: str = None,
@@ -19697,6 +19716,7 @@ class ListTasksRequest(TeaModel):
         self.next_token = next_token
         self.order = order
         self.project_name = project_name
+        self.request_definition = request_definition
         self.sort = sort
         self.start_time_range = start_time_range
         self.status = status
@@ -19725,6 +19745,8 @@ class ListTasksRequest(TeaModel):
             result['Order'] = self.order
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.request_definition is not None:
+            result['RequestDefinition'] = self.request_definition
         if self.sort is not None:
             result['Sort'] = self.sort
         if self.start_time_range is not None:
@@ -19750,6 +19772,8 @@ class ListTasksRequest(TeaModel):
             self.order = m.get('Order')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('RequestDefinition') is not None:
+            self.request_definition = m.get('RequestDefinition')
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
         if m.get('StartTimeRange') is not None:
@@ -19772,6 +19796,7 @@ class ListTasksShrinkRequest(TeaModel):
         next_token: str = None,
         order: str = None,
         project_name: str = None,
+        request_definition: bool = None,
         sort: str = None,
         start_time_range_shrink: str = None,
         status: str = None,
@@ -19783,6 +19808,7 @@ class ListTasksShrinkRequest(TeaModel):
         self.next_token = next_token
         self.order = order
         self.project_name = project_name
+        self.request_definition = request_definition
         self.sort = sort
         self.start_time_range_shrink = start_time_range_shrink
         self.status = status
@@ -19808,6 +19834,8 @@ class ListTasksShrinkRequest(TeaModel):
             result['Order'] = self.order
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.request_definition is not None:
+            result['RequestDefinition'] = self.request_definition
         if self.sort is not None:
             result['Sort'] = self.sort
         if self.start_time_range_shrink is not None:
@@ -19832,6 +19860,8 @@ class ListTasksShrinkRequest(TeaModel):
             self.order = m.get('Order')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('RequestDefinition') is not None:
+            self.request_definition = m.get('RequestDefinition')
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
         if m.get('StartTimeRange') is not None:

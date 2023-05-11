@@ -6393,6 +6393,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.request_definition):
+            query['RequestDefinition'] = request.request_definition
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.task_type):
@@ -6425,6 +6427,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.request_definition):
+            query['RequestDefinition'] = request.request_definition
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.task_type):
@@ -7217,6 +7221,8 @@ class Client(OpenApiClient):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.request_definition):
+            query['RequestDefinition'] = request.request_definition
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
         if not UtilClient.is_unset(request.start_time_range_shrink):
@@ -7271,6 +7277,8 @@ class Client(OpenApiClient):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.request_definition):
+            query['RequestDefinition'] = request.request_definition
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
         if not UtilClient.is_unset(request.start_time_range_shrink):
