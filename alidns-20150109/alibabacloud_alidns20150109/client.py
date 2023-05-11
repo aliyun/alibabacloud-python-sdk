@@ -47,8 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddCustomLineResponse:
         """
-        In each CIDR block, the end IP address must be greater than or equal to the start IP address.
-        The CIDR blocks that are specified for all custom lines of a domain name cannot intersect.
+        The operation that you want to perform. Set the value to AddCustomLine.
         
         @param request: AddCustomLineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -89,8 +88,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddCustomLineResponse:
         """
-        In each CIDR block, the end IP address must be greater than or equal to the start IP address.
-        The CIDR blocks that are specified for all custom lines of a domain name cannot intersect.
+        The operation that you want to perform. Set the value to AddCustomLine.
         
         @param request: AddCustomLineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -130,8 +128,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddCustomLineRequest,
     ) -> alidns_20150109_models.AddCustomLineResponse:
         """
-        In each CIDR block, the end IP address must be greater than or equal to the start IP address.
-        The CIDR blocks that are specified for all custom lines of a domain name cannot intersect.
+        The operation that you want to perform. Set the value to AddCustomLine.
         
         @param request: AddCustomLineRequest
         @return: AddCustomLineResponse
@@ -144,8 +141,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddCustomLineRequest,
     ) -> alidns_20150109_models.AddCustomLineResponse:
         """
-        In each CIDR block, the end IP address must be greater than or equal to the start IP address.
-        The CIDR blocks that are specified for all custom lines of a domain name cannot intersect.
+        The operation that you want to perform. Set the value to AddCustomLine.
         
         @param request: AddCustomLineRequest
         @return: AddCustomLineResponse
@@ -4563,7 +4559,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsProductInstancesResponse:
         """
-        >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+        The operation that you want to perform. Set the value to *DescribeDnsProductInstances**.
         
         @param request: DescribeDnsProductInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4571,10 +4567,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
         if not UtilClient.is_unset(request.domain_type):
             query['DomainType'] = request.domain_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4608,7 +4608,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsProductInstancesResponse:
         """
-        >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+        The operation that you want to perform. Set the value to *DescribeDnsProductInstances**.
         
         @param request: DescribeDnsProductInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4616,10 +4616,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
         if not UtilClient.is_unset(request.domain_type):
             query['DomainType'] = request.domain_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4652,7 +4656,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsProductInstancesRequest,
     ) -> alidns_20150109_models.DescribeDnsProductInstancesResponse:
         """
-        >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+        The operation that you want to perform. Set the value to *DescribeDnsProductInstances**.
         
         @param request: DescribeDnsProductInstancesRequest
         @return: DescribeDnsProductInstancesResponse
@@ -4665,7 +4669,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsProductInstancesRequest,
     ) -> alidns_20150109_models.DescribeDnsProductInstancesResponse:
         """
-        >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+        The operation that you want to perform. Set the value to *DescribeDnsProductInstances**.
         
         @param request: DescribeDnsProductInstancesRequest
         @return: DescribeDnsProductInstancesResponse
@@ -5540,13 +5544,6 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainNsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
-        """
-        >  This operation queries the authoritative server of the registry to obtain the name servers of a domain name. If the domain name is in the serverHold or clientHold state, an exception may occur.
-        
-        @param request: DescribeDomainNsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDomainNsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -5577,13 +5574,6 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainNsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
-        """
-        >  This operation queries the authoritative server of the registry to obtain the name servers of a domain name. If the domain name is in the serverHold or clientHold state, an exception may occur.
-        
-        @param request: DescribeDomainNsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDomainNsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -5613,12 +5603,6 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainNsRequest,
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
-        """
-        >  This operation queries the authoritative server of the registry to obtain the name servers of a domain name. If the domain name is in the serverHold or clientHold state, an exception may occur.
-        
-        @param request: DescribeDomainNsRequest
-        @return: DescribeDomainNsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_domain_ns_with_options(request, runtime)
 
@@ -5626,12 +5610,6 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainNsRequest,
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
-        """
-        >  This operation queries the authoritative server of the registry to obtain the name servers of a domain name. If the domain name is in the serverHold or clientHold state, an exception may occur.
-        
-        @param request: DescribeDomainNsRequest
-        @return: DescribeDomainNsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_ns_with_options_async(request, runtime)
 
@@ -9943,9 +9921,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListTagResourcesResponse:
         """
-        You can specify ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
-        *   Tag.N is a resource tag that consists of a key-value pair. If you specify only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you specify only Tag.N.Value, an error message is returned.
-        *   If you specify Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+        Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+        *   Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
+        *   If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
         *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
@@ -9989,9 +9967,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListTagResourcesResponse:
         """
-        You can specify ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
-        *   Tag.N is a resource tag that consists of a key-value pair. If you specify only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you specify only Tag.N.Value, an error message is returned.
-        *   If you specify Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+        Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+        *   Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
+        *   If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
         *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
@@ -10034,9 +10012,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListTagResourcesRequest,
     ) -> alidns_20150109_models.ListTagResourcesResponse:
         """
-        You can specify ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
-        *   Tag.N is a resource tag that consists of a key-value pair. If you specify only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you specify only Tag.N.Value, an error message is returned.
-        *   If you specify Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+        Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+        *   Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
+        *   If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
         *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
@@ -10050,9 +10028,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListTagResourcesRequest,
     ) -> alidns_20150109_models.ListTagResourcesResponse:
         """
-        You can specify ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
-        *   Tag.N is a resource tag that consists of a key-value pair. If you specify only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you specify only Tag.N.Value, an error message is returned.
-        *   If you specify Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+        Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+        *   Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
+        *   If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
         *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
