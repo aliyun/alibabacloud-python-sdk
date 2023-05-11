@@ -2069,6 +2069,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_open_jmeter_scenes_with_options_async(request, runtime)
 
+    def list_pts_reports_with_options(
+        self,
+        request: pts20201020_models.ListPtsReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.ListPtsReportsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.report_id):
+            body['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListPtsReports',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.ListPtsReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pts_reports_with_options_async(
+        self,
+        request: pts20201020_models.ListPtsReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.ListPtsReportsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.report_id):
+            body['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListPtsReports',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.ListPtsReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pts_reports(
+        self,
+        request: pts20201020_models.ListPtsReportsRequest,
+    ) -> pts20201020_models.ListPtsReportsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_pts_reports_with_options(request, runtime)
+
+    async def list_pts_reports_async(
+        self,
+        request: pts20201020_models.ListPtsReportsRequest,
+    ) -> pts20201020_models.ListPtsReportsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_pts_reports_with_options_async(request, runtime)
+
     def list_pts_scene_with_options(
         self,
         request: pts20201020_models.ListPtsSceneRequest,
