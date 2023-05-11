@@ -6247,20 +6247,22 @@ class Client(OpenApiClient):
         headers = ali_genieip__1__0_models.QueryDeviceStatusHeaders()
         return await self.query_device_status_with_options_async(request, headers, runtime)
 
-    def query_hotel_product_with_options(
+    def query_hotel_room_detail_with_options(
         self,
-        tmp_req: ali_genieip__1__0_models.QueryHotelProductRequest,
-        headers: ali_genieip__1__0_models.QueryHotelProductHeaders,
+        request: ali_genieip__1__0_models.QueryHotelRoomDetailRequest,
+        headers: ali_genieip__1__0_models.QueryHotelRoomDetailHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieip__1__0_models.QueryHotelProductResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ali_genieip__1__0_models.QueryHotelProductShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.user_info_shrink):
-            query['UserInfo'] = request.user_info_shrink
+    ) -> ali_genieip__1__0_models.QueryHotelRoomDetailResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.mac):
+            body['Mac'] = request.mac
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -6270,38 +6272,40 @@ class Client(OpenApiClient):
             real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='QueryHotelProduct',
+            action='QueryHotelRoomDetail',
             version='ip_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/ip/queryHotelProduct',
+            pathname=f'/v1.0/ip/queryHotelRoomDetail',
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            ali_genieip__1__0_models.QueryHotelProductResponse(),
+            ali_genieip__1__0_models.QueryHotelRoomDetailResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def query_hotel_product_with_options_async(
+    async def query_hotel_room_detail_with_options_async(
         self,
-        tmp_req: ali_genieip__1__0_models.QueryHotelProductRequest,
-        headers: ali_genieip__1__0_models.QueryHotelProductHeaders,
+        request: ali_genieip__1__0_models.QueryHotelRoomDetailRequest,
+        headers: ali_genieip__1__0_models.QueryHotelRoomDetailHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_genieip__1__0_models.QueryHotelProductResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ali_genieip__1__0_models.QueryHotelProductShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.user_info_shrink):
-            query['UserInfo'] = request.user_info_shrink
+    ) -> ali_genieip__1__0_models.QueryHotelRoomDetailResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.mac):
+            body['Mac'] = request.mac
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -6311,39 +6315,39 @@ class Client(OpenApiClient):
             real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='QueryHotelProduct',
+            action='QueryHotelRoomDetail',
             version='ip_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/ip/queryHotelProduct',
+            pathname=f'/v1.0/ip/queryHotelRoomDetail',
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            ali_genieip__1__0_models.QueryHotelProductResponse(),
+            ali_genieip__1__0_models.QueryHotelRoomDetailResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_hotel_product(
+    def query_hotel_room_detail(
         self,
-        request: ali_genieip__1__0_models.QueryHotelProductRequest,
-    ) -> ali_genieip__1__0_models.QueryHotelProductResponse:
+        request: ali_genieip__1__0_models.QueryHotelRoomDetailRequest,
+    ) -> ali_genieip__1__0_models.QueryHotelRoomDetailResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_genieip__1__0_models.QueryHotelProductHeaders()
-        return self.query_hotel_product_with_options(request, headers, runtime)
+        headers = ali_genieip__1__0_models.QueryHotelRoomDetailHeaders()
+        return self.query_hotel_room_detail_with_options(request, headers, runtime)
 
-    async def query_hotel_product_async(
+    async def query_hotel_room_detail_async(
         self,
-        request: ali_genieip__1__0_models.QueryHotelProductRequest,
-    ) -> ali_genieip__1__0_models.QueryHotelProductResponse:
+        request: ali_genieip__1__0_models.QueryHotelRoomDetailRequest,
+    ) -> ali_genieip__1__0_models.QueryHotelRoomDetailResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_genieip__1__0_models.QueryHotelProductHeaders()
-        return await self.query_hotel_product_with_options_async(request, headers, runtime)
+        headers = ali_genieip__1__0_models.QueryHotelRoomDetailHeaders()
+        return await self.query_hotel_room_detail_with_options_async(request, headers, runtime)
 
     def query_room_control_devices_with_options(
         self,
