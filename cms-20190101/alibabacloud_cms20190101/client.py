@@ -46,6 +46,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.AddTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.AddTagsResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: AddTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_ids):
@@ -76,6 +85,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.AddTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.AddTagsResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: AddTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_ids):
@@ -105,6 +123,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.AddTagsRequest,
     ) -> cms_20190101_models.AddTagsResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: AddTagsRequest
+        @return: AddTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_tags_with_options(request, runtime)
 
@@ -112,6 +138,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.AddTagsRequest,
     ) -> cms_20190101_models.AddTagsResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: AddTagsRequest
+        @return: AddTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_tags_with_options_async(request, runtime)
 
@@ -120,6 +154,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ApplyMetricRuleTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ApplyMetricRuleTemplateResponse:
+        """
+        The ID of the application group to which the alert template is applied.
+        For more information about how to query the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
+        
+        @param request: ApplyMetricRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyMetricRuleTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_mode):
@@ -162,6 +204,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ApplyMetricRuleTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ApplyMetricRuleTemplateResponse:
+        """
+        The ID of the application group to which the alert template is applied.
+        For more information about how to query the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
+        
+        @param request: ApplyMetricRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyMetricRuleTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_mode):
@@ -203,6 +253,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ApplyMetricRuleTemplateRequest,
     ) -> cms_20190101_models.ApplyMetricRuleTemplateResponse:
+        """
+        The ID of the application group to which the alert template is applied.
+        For more information about how to query the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
+        
+        @param request: ApplyMetricRuleTemplateRequest
+        @return: ApplyMetricRuleTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.apply_metric_rule_template_with_options(request, runtime)
 
@@ -210,14 +267,125 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ApplyMetricRuleTemplateRequest,
     ) -> cms_20190101_models.ApplyMetricRuleTemplateResponse:
+        """
+        The ID of the application group to which the alert template is applied.
+        For more information about how to query the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
+        
+        @param request: ApplyMetricRuleTemplateRequest
+        @return: ApplyMetricRuleTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.apply_metric_rule_template_with_options_async(request, runtime)
+
+    def batch_create_instant_site_monitor_with_options(
+        self,
+        request: cms_20190101_models.BatchCreateInstantSiteMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.BatchCreateInstantSiteMonitorResponse:
+        """
+        The extended options of the protocol that is used by the site monitoring task. The options vary based on the protocol.
+        
+        @param request: BatchCreateInstantSiteMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCreateInstantSiteMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_list):
+            query['TaskList'] = request.task_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateInstantSiteMonitor',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.BatchCreateInstantSiteMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_create_instant_site_monitor_with_options_async(
+        self,
+        request: cms_20190101_models.BatchCreateInstantSiteMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.BatchCreateInstantSiteMonitorResponse:
+        """
+        The extended options of the protocol that is used by the site monitoring task. The options vary based on the protocol.
+        
+        @param request: BatchCreateInstantSiteMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCreateInstantSiteMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_list):
+            query['TaskList'] = request.task_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateInstantSiteMonitor',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.BatchCreateInstantSiteMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_create_instant_site_monitor(
+        self,
+        request: cms_20190101_models.BatchCreateInstantSiteMonitorRequest,
+    ) -> cms_20190101_models.BatchCreateInstantSiteMonitorResponse:
+        """
+        The extended options of the protocol that is used by the site monitoring task. The options vary based on the protocol.
+        
+        @param request: BatchCreateInstantSiteMonitorRequest
+        @return: BatchCreateInstantSiteMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_create_instant_site_monitor_with_options(request, runtime)
+
+    async def batch_create_instant_site_monitor_async(
+        self,
+        request: cms_20190101_models.BatchCreateInstantSiteMonitorRequest,
+    ) -> cms_20190101_models.BatchCreateInstantSiteMonitorResponse:
+        """
+        The extended options of the protocol that is used by the site monitoring task. The options vary based on the protocol.
+        
+        @param request: BatchCreateInstantSiteMonitorRequest
+        @return: BatchCreateInstantSiteMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_create_instant_site_monitor_with_options_async(request, runtime)
 
     def batch_create_intant_site_monitor_with_options(
         self,
         request: cms_20190101_models.BatchCreateIntantSiteMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.BatchCreateIntantSiteMonitorResponse:
+        """
+        @deprecated : BatchCreateIntantSiteMonitor is deprecated, please use Cms::2019-01-01::BatchCreateInstantSiteMonitor instead.
+        
+        @param request: BatchCreateIntantSiteMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCreateIntantSiteMonitorResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.task_list):
@@ -246,6 +414,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.BatchCreateIntantSiteMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.BatchCreateIntantSiteMonitorResponse:
+        """
+        @deprecated : BatchCreateIntantSiteMonitor is deprecated, please use Cms::2019-01-01::BatchCreateInstantSiteMonitor instead.
+        
+        @param request: BatchCreateIntantSiteMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCreateIntantSiteMonitorResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.task_list):
@@ -273,6 +449,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.BatchCreateIntantSiteMonitorRequest,
     ) -> cms_20190101_models.BatchCreateIntantSiteMonitorResponse:
+        """
+        @deprecated : BatchCreateIntantSiteMonitor is deprecated, please use Cms::2019-01-01::BatchCreateInstantSiteMonitor instead.
+        
+        @param request: BatchCreateIntantSiteMonitorRequest
+        @return: BatchCreateIntantSiteMonitorResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_create_intant_site_monitor_with_options(request, runtime)
 
@@ -280,8 +463,109 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.BatchCreateIntantSiteMonitorRequest,
     ) -> cms_20190101_models.BatchCreateIntantSiteMonitorResponse:
+        """
+        @deprecated : BatchCreateIntantSiteMonitor is deprecated, please use Cms::2019-01-01::BatchCreateInstantSiteMonitor instead.
+        
+        @param request: BatchCreateIntantSiteMonitorRequest
+        @return: BatchCreateIntantSiteMonitorResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_create_intant_site_monitor_with_options_async(request, runtime)
+
+    def batch_export_with_options(
+        self,
+        tmp_req: cms_20190101_models.BatchExportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.BatchExportResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cms_20190101_models.BatchExportShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.measurements):
+            request.measurements_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.measurements, 'Measurements', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cursor):
+            body['Cursor'] = request.cursor
+        if not UtilClient.is_unset(request.length):
+            body['Length'] = request.length
+        if not UtilClient.is_unset(request.measurements_shrink):
+            body['Measurements'] = request.measurements_shrink
+        if not UtilClient.is_unset(request.metric):
+            body['Metric'] = request.metric
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchExport',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.BatchExportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_export_with_options_async(
+        self,
+        tmp_req: cms_20190101_models.BatchExportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.BatchExportResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cms_20190101_models.BatchExportShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.measurements):
+            request.measurements_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.measurements, 'Measurements', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cursor):
+            body['Cursor'] = request.cursor
+        if not UtilClient.is_unset(request.length):
+            body['Length'] = request.length
+        if not UtilClient.is_unset(request.measurements_shrink):
+            body['Measurements'] = request.measurements_shrink
+        if not UtilClient.is_unset(request.metric):
+            body['Metric'] = request.metric
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchExport',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.BatchExportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_export(
+        self,
+        request: cms_20190101_models.BatchExportRequest,
+    ) -> cms_20190101_models.BatchExportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_export_with_options(request, runtime)
+
+    async def batch_export_async(
+        self,
+        request: cms_20190101_models.BatchExportRequest,
+    ) -> cms_20190101_models.BatchExportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_export_with_options_async(request, runtime)
 
     def create_cms_call_num_order_with_options(
         self,
@@ -602,6 +886,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateDynamicTagGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateDynamicTagGroupResponse:
+        """
+        Specifies whether the application group automatically subscribes to event notifications. If events whose severity level is critical or warning occur on resources in an application group, CloudMonitor sends alert notifications. Valid values:
+        *   true: The application group automatically subscribes to event notifications.
+        *   false (default value): The application group does not automatically subscribe to event notifications.
+        
+        @param request: CreateDynamicTagGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDynamicTagGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_group_list):
@@ -644,6 +937,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateDynamicTagGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateDynamicTagGroupResponse:
+        """
+        Specifies whether the application group automatically subscribes to event notifications. If events whose severity level is critical or warning occur on resources in an application group, CloudMonitor sends alert notifications. Valid values:
+        *   true: The application group automatically subscribes to event notifications.
+        *   false (default value): The application group does not automatically subscribe to event notifications.
+        
+        @param request: CreateDynamicTagGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDynamicTagGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_group_list):
@@ -685,6 +987,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateDynamicTagGroupRequest,
     ) -> cms_20190101_models.CreateDynamicTagGroupResponse:
+        """
+        Specifies whether the application group automatically subscribes to event notifications. If events whose severity level is critical or warning occur on resources in an application group, CloudMonitor sends alert notifications. Valid values:
+        *   true: The application group automatically subscribes to event notifications.
+        *   false (default value): The application group does not automatically subscribe to event notifications.
+        
+        @param request: CreateDynamicTagGroupRequest
+        @return: CreateDynamicTagGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dynamic_tag_group_with_options(request, runtime)
 
@@ -692,6 +1002,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateDynamicTagGroupRequest,
     ) -> cms_20190101_models.CreateDynamicTagGroupResponse:
+        """
+        Specifies whether the application group automatically subscribes to event notifications. If events whose severity level is critical or warning occur on resources in an application group, CloudMonitor sends alert notifications. Valid values:
+        *   true: The application group automatically subscribes to event notifications.
+        *   false (default value): The application group does not automatically subscribe to event notifications.
+        
+        @param request: CreateDynamicTagGroupRequest
+        @return: CreateDynamicTagGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dynamic_tag_group_with_options_async(request, runtime)
 
@@ -700,6 +1018,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateGroupMetricRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateGroupMetricRulesResponse:
+        """
+        The details of the alert rules.
+        
+        @param request: CreateGroupMetricRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGroupMetricRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -730,6 +1055,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateGroupMetricRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateGroupMetricRulesResponse:
+        """
+        The details of the alert rules.
+        
+        @param request: CreateGroupMetricRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGroupMetricRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -759,6 +1091,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateGroupMetricRulesRequest,
     ) -> cms_20190101_models.CreateGroupMetricRulesResponse:
+        """
+        The details of the alert rules.
+        
+        @param request: CreateGroupMetricRulesRequest
+        @return: CreateGroupMetricRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_group_metric_rules_with_options(request, runtime)
 
@@ -766,6 +1104,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateGroupMetricRulesRequest,
     ) -> cms_20190101_models.CreateGroupMetricRulesResponse:
+        """
+        The details of the alert rules.
+        
+        @param request: CreateGroupMetricRulesRequest
+        @return: CreateGroupMetricRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_group_metric_rules_with_options_async(request, runtime)
 
@@ -860,10 +1204,19 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHostAvailabilityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHostAvailabilityResponse:
+        """
+        The ID of the resource for which alerts are triggered.
+        
+        @param request: CreateHostAvailabilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHostAvailabilityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_config_escalation_list):
             query['AlertConfigEscalationList'] = request.alert_config_escalation_list
+        if not UtilClient.is_unset(request.alert_config_target_list):
+            query['AlertConfigTargetList'] = request.alert_config_target_list
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.instance_list):
@@ -902,10 +1255,19 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHostAvailabilityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHostAvailabilityResponse:
+        """
+        The ID of the resource for which alerts are triggered.
+        
+        @param request: CreateHostAvailabilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHostAvailabilityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_config_escalation_list):
             query['AlertConfigEscalationList'] = request.alert_config_escalation_list
+        if not UtilClient.is_unset(request.alert_config_target_list):
+            query['AlertConfigTargetList'] = request.alert_config_target_list
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.instance_list):
@@ -943,6 +1305,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateHostAvailabilityRequest,
     ) -> cms_20190101_models.CreateHostAvailabilityResponse:
+        """
+        The ID of the resource for which alerts are triggered.
+        
+        @param request: CreateHostAvailabilityRequest
+        @return: CreateHostAvailabilityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_host_availability_with_options(request, runtime)
 
@@ -950,6 +1318,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateHostAvailabilityRequest,
     ) -> cms_20190101_models.CreateHostAvailabilityResponse:
+        """
+        The ID of the resource for which alerts are triggered.
+        
+        @param request: CreateHostAvailabilityRequest
+        @return: CreateHostAvailabilityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_host_availability_with_options_async(request, runtime)
 
@@ -958,6 +1332,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHybridMonitorNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHybridMonitorNamespaceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: CreateHybridMonitorNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridMonitorNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -990,6 +1373,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHybridMonitorNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHybridMonitorNamespaceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: CreateHybridMonitorNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridMonitorNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -1021,6 +1413,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateHybridMonitorNamespaceRequest,
     ) -> cms_20190101_models.CreateHybridMonitorNamespaceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: CreateHybridMonitorNamespaceRequest
+        @return: CreateHybridMonitorNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_hybrid_monitor_namespace_with_options(request, runtime)
 
@@ -1028,6 +1428,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateHybridMonitorNamespaceRequest,
     ) -> cms_20190101_models.CreateHybridMonitorNamespaceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: CreateHybridMonitorNamespaceRequest
+        @return: CreateHybridMonitorNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_hybrid_monitor_namespace_with_options_async(request, runtime)
 
@@ -1036,6 +1444,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHybridMonitorSLSGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHybridMonitorSLSGroupResponse:
+        """
+        The Log Service projects.
+        Valid values of N: 1 to 25.
+        
+        @param request: CreateHybridMonitorSLSGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridMonitorSLSGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.slsgroup_config):
@@ -1068,6 +1484,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHybridMonitorSLSGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHybridMonitorSLSGroupResponse:
+        """
+        The Log Service projects.
+        Valid values of N: 1 to 25.
+        
+        @param request: CreateHybridMonitorSLSGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridMonitorSLSGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.slsgroup_config):
@@ -1099,6 +1523,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateHybridMonitorSLSGroupRequest,
     ) -> cms_20190101_models.CreateHybridMonitorSLSGroupResponse:
+        """
+        The Log Service projects.
+        Valid values of N: 1 to 25.
+        
+        @param request: CreateHybridMonitorSLSGroupRequest
+        @return: CreateHybridMonitorSLSGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_hybrid_monitor_slsgroup_with_options(request, runtime)
 
@@ -1106,6 +1537,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateHybridMonitorSLSGroupRequest,
     ) -> cms_20190101_models.CreateHybridMonitorSLSGroupResponse:
+        """
+        The Log Service projects.
+        Valid values of N: 1 to 25.
+        
+        @param request: CreateHybridMonitorSLSGroupRequest
+        @return: CreateHybridMonitorSLSGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_hybrid_monitor_slsgroup_with_options_async(request, runtime)
 
@@ -1114,6 +1552,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHybridMonitorTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHybridMonitorTaskResponse:
+        """
+        The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
+        
+        @param request: CreateHybridMonitorTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridMonitorTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.attach_labels):
@@ -1164,6 +1609,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHybridMonitorTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHybridMonitorTaskResponse:
+        """
+        The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
+        
+        @param request: CreateHybridMonitorTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridMonitorTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.attach_labels):
@@ -1213,6 +1665,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateHybridMonitorTaskRequest,
     ) -> cms_20190101_models.CreateHybridMonitorTaskResponse:
+        """
+        The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
+        
+        @param request: CreateHybridMonitorTaskRequest
+        @return: CreateHybridMonitorTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_hybrid_monitor_task_with_options(request, runtime)
 
@@ -1220,6 +1678,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateHybridMonitorTaskRequest,
     ) -> cms_20190101_models.CreateHybridMonitorTaskResponse:
+        """
+        The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
+        
+        @param request: CreateHybridMonitorTaskRequest
+        @return: CreateHybridMonitorTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_hybrid_monitor_task_with_options_async(request, runtime)
 
@@ -1228,6 +1692,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateInstantSiteMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateInstantSiteMonitorResponse:
+        """
+        You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring. For more information, see [Billing of Network Analysis and Monitoring](~~341649~~).
+        This topic provides an example to show how to create an instant test task. The name of the task is `task1`. The tested address is `http://www.aliyun.com`. The test type is `HTTP`. The number of detection points is `1`.
+        
+        @param request: CreateInstantSiteMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstantSiteMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -1266,6 +1738,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateInstantSiteMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateInstantSiteMonitorResponse:
+        """
+        You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring. For more information, see [Billing of Network Analysis and Monitoring](~~341649~~).
+        This topic provides an example to show how to create an instant test task. The name of the task is `task1`. The tested address is `http://www.aliyun.com`. The test type is `HTTP`. The number of detection points is `1`.
+        
+        @param request: CreateInstantSiteMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstantSiteMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -1303,6 +1783,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateInstantSiteMonitorRequest,
     ) -> cms_20190101_models.CreateInstantSiteMonitorResponse:
+        """
+        You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring. For more information, see [Billing of Network Analysis and Monitoring](~~341649~~).
+        This topic provides an example to show how to create an instant test task. The name of the task is `task1`. The tested address is `http://www.aliyun.com`. The test type is `HTTP`. The number of detection points is `1`.
+        
+        @param request: CreateInstantSiteMonitorRequest
+        @return: CreateInstantSiteMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instant_site_monitor_with_options(request, runtime)
 
@@ -1310,8 +1797,151 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateInstantSiteMonitorRequest,
     ) -> cms_20190101_models.CreateInstantSiteMonitorResponse:
+        """
+        You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring. For more information, see [Billing of Network Analysis and Monitoring](~~341649~~).
+        This topic provides an example to show how to create an instant test task. The name of the task is `task1`. The tested address is `http://www.aliyun.com`. The test type is `HTTP`. The number of detection points is `1`.
+        
+        @param request: CreateInstantSiteMonitorRequest
+        @return: CreateInstantSiteMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instant_site_monitor_with_options_async(request, runtime)
+
+    def create_metric_rule_black_list_with_options(
+        self,
+        request: cms_20190101_models.CreateMetricRuleBlackListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.CreateMetricRuleBlackListResponse:
+        """
+        The name of the metric.
+        Valid values of N: 1 to 10
+        
+        @param request: CreateMetricRuleBlackListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMetricRuleBlackListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
+        if not UtilClient.is_unset(request.enable_end_time):
+            query['EnableEndTime'] = request.enable_end_time
+        if not UtilClient.is_unset(request.enable_start_time):
+            query['EnableStartTime'] = request.enable_start_time
+        if not UtilClient.is_unset(request.instances):
+            query['Instances'] = request.instances
+        if not UtilClient.is_unset(request.metrics):
+            query['Metrics'] = request.metrics
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        if not UtilClient.is_unset(request.scope_value):
+            query['ScopeValue'] = request.scope_value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMetricRuleBlackList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMetricRuleBlackListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_metric_rule_black_list_with_options_async(
+        self,
+        request: cms_20190101_models.CreateMetricRuleBlackListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.CreateMetricRuleBlackListResponse:
+        """
+        The name of the metric.
+        Valid values of N: 1 to 10
+        
+        @param request: CreateMetricRuleBlackListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMetricRuleBlackListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
+        if not UtilClient.is_unset(request.enable_end_time):
+            query['EnableEndTime'] = request.enable_end_time
+        if not UtilClient.is_unset(request.enable_start_time):
+            query['EnableStartTime'] = request.enable_start_time
+        if not UtilClient.is_unset(request.instances):
+            query['Instances'] = request.instances
+        if not UtilClient.is_unset(request.metrics):
+            query['Metrics'] = request.metrics
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        if not UtilClient.is_unset(request.scope_value):
+            query['ScopeValue'] = request.scope_value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMetricRuleBlackList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMetricRuleBlackListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_metric_rule_black_list(
+        self,
+        request: cms_20190101_models.CreateMetricRuleBlackListRequest,
+    ) -> cms_20190101_models.CreateMetricRuleBlackListResponse:
+        """
+        The name of the metric.
+        Valid values of N: 1 to 10
+        
+        @param request: CreateMetricRuleBlackListRequest
+        @return: CreateMetricRuleBlackListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_metric_rule_black_list_with_options(request, runtime)
+
+    async def create_metric_rule_black_list_async(
+        self,
+        request: cms_20190101_models.CreateMetricRuleBlackListRequest,
+    ) -> cms_20190101_models.CreateMetricRuleBlackListResponse:
+        """
+        The name of the metric.
+        Valid values of N: 1 to 10
+        
+        @param request: CreateMetricRuleBlackListRequest
+        @return: CreateMetricRuleBlackListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_metric_rule_black_list_with_options_async(request, runtime)
 
     def create_metric_rule_resources_with_options(
         self,
@@ -1552,6 +2182,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateMonitorGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateMonitorGroupResponse:
+        """
+        The name of the application group.
+        
+        @param request: CreateMonitorGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMonitorGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_groups):
@@ -1582,6 +2219,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateMonitorGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateMonitorGroupResponse:
+        """
+        The name of the application group.
+        
+        @param request: CreateMonitorGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMonitorGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_groups):
@@ -1611,6 +2255,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateMonitorGroupRequest,
     ) -> cms_20190101_models.CreateMonitorGroupResponse:
+        """
+        The name of the application group.
+        
+        @param request: CreateMonitorGroupRequest
+        @return: CreateMonitorGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_monitor_group_with_options(request, runtime)
 
@@ -1618,6 +2268,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateMonitorGroupRequest,
     ) -> cms_20190101_models.CreateMonitorGroupResponse:
+        """
+        The name of the application group.
+        
+        @param request: CreateMonitorGroupRequest
+        @return: CreateMonitorGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_monitor_group_with_options_async(request, runtime)
 
@@ -1626,6 +2282,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateMonitorGroupByResourceGroupIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateMonitorGroupByResourceGroupIdResponse:
+        """
+        The ID of the region where the resource group resides.
+        For information about how to obtain the ID of the region where a resource group resides, see [GetResourceGroup](~~158866~~).
+        
+        @param request: CreateMonitorGroupByResourceGroupIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMonitorGroupByResourceGroupIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_group_list):
@@ -1664,6 +2328,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateMonitorGroupByResourceGroupIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateMonitorGroupByResourceGroupIdResponse:
+        """
+        The ID of the region where the resource group resides.
+        For information about how to obtain the ID of the region where a resource group resides, see [GetResourceGroup](~~158866~~).
+        
+        @param request: CreateMonitorGroupByResourceGroupIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMonitorGroupByResourceGroupIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_group_list):
@@ -1701,6 +2373,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateMonitorGroupByResourceGroupIdRequest,
     ) -> cms_20190101_models.CreateMonitorGroupByResourceGroupIdResponse:
+        """
+        The ID of the region where the resource group resides.
+        For information about how to obtain the ID of the region where a resource group resides, see [GetResourceGroup](~~158866~~).
+        
+        @param request: CreateMonitorGroupByResourceGroupIdRequest
+        @return: CreateMonitorGroupByResourceGroupIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_monitor_group_by_resource_group_id_with_options(request, runtime)
 
@@ -1708,6 +2387,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateMonitorGroupByResourceGroupIdRequest,
     ) -> cms_20190101_models.CreateMonitorGroupByResourceGroupIdResponse:
+        """
+        The ID of the region where the resource group resides.
+        For information about how to obtain the ID of the region where a resource group resides, see [GetResourceGroup](~~158866~~).
+        
+        @param request: CreateMonitorGroupByResourceGroupIdRequest
+        @return: CreateMonitorGroupByResourceGroupIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_monitor_group_by_resource_group_id_with_options_async(request, runtime)
 
@@ -1716,6 +2402,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateMonitorGroupInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateMonitorGroupInstancesResponse:
+        """
+        The abbreviation of the Alibaba Cloud service name.
+        To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](~~114916~~) operation. The `metricCategory` tag in the `Labels` response parameter indicates the abbreviation of the Alibaba Cloud service name.
+        
+        @param request: CreateMonitorGroupInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMonitorGroupInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -1746,6 +2440,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateMonitorGroupInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateMonitorGroupInstancesResponse:
+        """
+        The abbreviation of the Alibaba Cloud service name.
+        To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](~~114916~~) operation. The `metricCategory` tag in the `Labels` response parameter indicates the abbreviation of the Alibaba Cloud service name.
+        
+        @param request: CreateMonitorGroupInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMonitorGroupInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -1775,6 +2477,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateMonitorGroupInstancesRequest,
     ) -> cms_20190101_models.CreateMonitorGroupInstancesResponse:
+        """
+        The abbreviation of the Alibaba Cloud service name.
+        To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](~~114916~~) operation. The `metricCategory` tag in the `Labels` response parameter indicates the abbreviation of the Alibaba Cloud service name.
+        
+        @param request: CreateMonitorGroupInstancesRequest
+        @return: CreateMonitorGroupInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_monitor_group_instances_with_options(request, runtime)
 
@@ -1782,6 +2491,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateMonitorGroupInstancesRequest,
     ) -> cms_20190101_models.CreateMonitorGroupInstancesResponse:
+        """
+        The abbreviation of the Alibaba Cloud service name.
+        To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](~~114916~~) operation. The `metricCategory` tag in the `Labels` response parameter indicates the abbreviation of the Alibaba Cloud service name.
+        
+        @param request: CreateMonitorGroupInstancesRequest
+        @return: CreateMonitorGroupInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_monitor_group_instances_with_options_async(request, runtime)
 
@@ -1790,6 +2506,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateMonitorGroupNotifyPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateMonitorGroupNotifyPolicyResponse:
+        """
+        The type of the policy. Valid value: PauseNotify.
+        
+        @param request: CreateMonitorGroupNotifyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMonitorGroupNotifyPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1824,6 +2547,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateMonitorGroupNotifyPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateMonitorGroupNotifyPolicyResponse:
+        """
+        The type of the policy. Valid value: PauseNotify.
+        
+        @param request: CreateMonitorGroupNotifyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMonitorGroupNotifyPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1857,6 +2587,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateMonitorGroupNotifyPolicyRequest,
     ) -> cms_20190101_models.CreateMonitorGroupNotifyPolicyResponse:
+        """
+        The type of the policy. Valid value: PauseNotify.
+        
+        @param request: CreateMonitorGroupNotifyPolicyRequest
+        @return: CreateMonitorGroupNotifyPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_monitor_group_notify_policy_with_options(request, runtime)
 
@@ -1864,6 +2600,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateMonitorGroupNotifyPolicyRequest,
     ) -> cms_20190101_models.CreateMonitorGroupNotifyPolicyResponse:
+        """
+        The type of the policy. Valid value: PauseNotify.
+        
+        @param request: CreateMonitorGroupNotifyPolicyRequest
+        @return: CreateMonitorGroupNotifyPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_monitor_group_notify_policy_with_options_async(request, runtime)
 
@@ -1950,6 +2692,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateSiteMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateSiteMonitorResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: CreateSiteMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSiteMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -1990,6 +2741,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateSiteMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateSiteMonitorResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: CreateSiteMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSiteMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -2029,6 +2789,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateSiteMonitorRequest,
     ) -> cms_20190101_models.CreateSiteMonitorResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: CreateSiteMonitorRequest
+        @return: CreateSiteMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_site_monitor_with_options(request, runtime)
 
@@ -2036,8 +2804,114 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.CreateSiteMonitorRequest,
     ) -> cms_20190101_models.CreateSiteMonitorResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: CreateSiteMonitorRequest
+        @return: CreateSiteMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_site_monitor_with_options_async(request, runtime)
+
+    def cursor_with_options(
+        self,
+        tmp_req: cms_20190101_models.CursorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.CursorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cms_20190101_models.CursorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.matchers):
+            request.matchers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.matchers, 'Matchers', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.matchers_shrink):
+            body['Matchers'] = request.matchers_shrink
+        if not UtilClient.is_unset(request.metric):
+            body['Metric'] = request.metric
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Cursor',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.CursorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cursor_with_options_async(
+        self,
+        tmp_req: cms_20190101_models.CursorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.CursorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cms_20190101_models.CursorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.matchers):
+            request.matchers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.matchers, 'Matchers', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.matchers_shrink):
+            body['Matchers'] = request.matchers_shrink
+        if not UtilClient.is_unset(request.metric):
+            body['Metric'] = request.metric
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Cursor',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.CursorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cursor(
+        self,
+        request: cms_20190101_models.CursorRequest,
+    ) -> cms_20190101_models.CursorResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cursor_with_options(request, runtime)
+
+    async def cursor_async(
+        self,
+        request: cms_20190101_models.CursorRequest,
+    ) -> cms_20190101_models.CursorResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cursor_with_options_async(request, runtime)
 
     def delete_contact_with_options(
         self,
@@ -2764,6 +3638,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteHybridMonitorNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteHybridMonitorNamespaceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DeleteHybridMonitorNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHybridMonitorNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.namespace):
@@ -2792,6 +3675,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteHybridMonitorNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteHybridMonitorNamespaceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DeleteHybridMonitorNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHybridMonitorNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.namespace):
@@ -2819,6 +3711,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DeleteHybridMonitorNamespaceRequest,
     ) -> cms_20190101_models.DeleteHybridMonitorNamespaceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DeleteHybridMonitorNamespaceRequest
+        @return: DeleteHybridMonitorNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_hybrid_monitor_namespace_with_options(request, runtime)
 
@@ -2826,6 +3726,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DeleteHybridMonitorNamespaceRequest,
     ) -> cms_20190101_models.DeleteHybridMonitorNamespaceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DeleteHybridMonitorNamespaceRequest
+        @return: DeleteHybridMonitorNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_hybrid_monitor_namespace_with_options_async(request, runtime)
 
@@ -2834,6 +3742,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteHybridMonitorSLSGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteHybridMonitorSLSGroupResponse:
+        """
+        Indicates whether the call is successful. Valid values:
+        *   true: The call is successful.
+        *   false: The call fails.
+        
+        @param request: DeleteHybridMonitorSLSGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHybridMonitorSLSGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.slsgroup_name):
@@ -2862,6 +3779,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteHybridMonitorSLSGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteHybridMonitorSLSGroupResponse:
+        """
+        Indicates whether the call is successful. Valid values:
+        *   true: The call is successful.
+        *   false: The call fails.
+        
+        @param request: DeleteHybridMonitorSLSGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHybridMonitorSLSGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.slsgroup_name):
@@ -2889,6 +3815,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DeleteHybridMonitorSLSGroupRequest,
     ) -> cms_20190101_models.DeleteHybridMonitorSLSGroupResponse:
+        """
+        Indicates whether the call is successful. Valid values:
+        *   true: The call is successful.
+        *   false: The call fails.
+        
+        @param request: DeleteHybridMonitorSLSGroupRequest
+        @return: DeleteHybridMonitorSLSGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_hybrid_monitor_slsgroup_with_options(request, runtime)
 
@@ -2896,6 +3830,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DeleteHybridMonitorSLSGroupRequest,
     ) -> cms_20190101_models.DeleteHybridMonitorSLSGroupResponse:
+        """
+        Indicates whether the call is successful. Valid values:
+        *   true: The call is successful.
+        *   false: The call fails.
+        
+        @param request: DeleteHybridMonitorSLSGroupRequest
+        @return: DeleteHybridMonitorSLSGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_hybrid_monitor_slsgroup_with_options_async(request, runtime)
 
@@ -2904,6 +3846,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteHybridMonitorTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteHybridMonitorTaskResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DeleteHybridMonitorTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHybridMonitorTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.namespace):
@@ -2936,6 +3887,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteHybridMonitorTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteHybridMonitorTaskResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DeleteHybridMonitorTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHybridMonitorTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.namespace):
@@ -2967,6 +3927,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DeleteHybridMonitorTaskRequest,
     ) -> cms_20190101_models.DeleteHybridMonitorTaskResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DeleteHybridMonitorTaskRequest
+        @return: DeleteHybridMonitorTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_hybrid_monitor_task_with_options(request, runtime)
 
@@ -2974,6 +3942,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DeleteHybridMonitorTaskRequest,
     ) -> cms_20190101_models.DeleteHybridMonitorTaskResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DeleteHybridMonitorTaskRequest
+        @return: DeleteHybridMonitorTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_hybrid_monitor_task_with_options_async(request, runtime)
 
@@ -3046,6 +4022,76 @@ class Client(OpenApiClient):
     ) -> cms_20190101_models.DeleteLogMonitorResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_log_monitor_with_options_async(request, runtime)
+
+    def delete_metric_rule_black_list_with_options(
+        self,
+        request: cms_20190101_models.DeleteMetricRuleBlackListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DeleteMetricRuleBlackListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMetricRuleBlackList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMetricRuleBlackListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_metric_rule_black_list_with_options_async(
+        self,
+        request: cms_20190101_models.DeleteMetricRuleBlackListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DeleteMetricRuleBlackListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMetricRuleBlackList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMetricRuleBlackListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_metric_rule_black_list(
+        self,
+        request: cms_20190101_models.DeleteMetricRuleBlackListRequest,
+    ) -> cms_20190101_models.DeleteMetricRuleBlackListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_metric_rule_black_list_with_options(request, runtime)
+
+    async def delete_metric_rule_black_list_async(
+        self,
+        request: cms_20190101_models.DeleteMetricRuleBlackListRequest,
+    ) -> cms_20190101_models.DeleteMetricRuleBlackListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_metric_rule_black_list_with_options_async(request, runtime)
 
     def delete_metric_rule_resources_with_options(
         self,
@@ -3789,7 +4835,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeActiveMetricRuleListResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3798,7 +4846,7 @@ class Client(OpenApiClient):
             version='2019-01-01',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -3815,7 +4863,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeActiveMetricRuleListResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3824,7 +4874,7 @@ class Client(OpenApiClient):
             version='2019-01-01',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -3854,6 +4904,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeAlertHistoryListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeAlertHistoryListResponse:
+        """
+        @deprecated : DescribeAlertHistoryList is deprecated, please use Cms::2019-01-01::DescribeAlertLogList instead.
+        
+        @param request: DescribeAlertHistoryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertHistoryListResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ascending):
@@ -3904,6 +4962,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeAlertHistoryListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeAlertHistoryListResponse:
+        """
+        @deprecated : DescribeAlertHistoryList is deprecated, please use Cms::2019-01-01::DescribeAlertLogList instead.
+        
+        @param request: DescribeAlertHistoryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertHistoryListResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ascending):
@@ -3953,6 +5019,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeAlertHistoryListRequest,
     ) -> cms_20190101_models.DescribeAlertHistoryListResponse:
+        """
+        @deprecated : DescribeAlertHistoryList is deprecated, please use Cms::2019-01-01::DescribeAlertLogList instead.
+        
+        @param request: DescribeAlertHistoryListRequest
+        @return: DescribeAlertHistoryListResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alert_history_list_with_options(request, runtime)
 
@@ -3960,6 +5033,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeAlertHistoryListRequest,
     ) -> cms_20190101_models.DescribeAlertHistoryListResponse:
+        """
+        @deprecated : DescribeAlertHistoryList is deprecated, please use Cms::2019-01-01::DescribeAlertLogList instead.
+        
+        @param request: DescribeAlertHistoryListRequest
+        @return: DescribeAlertHistoryListResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_history_list_with_options_async(request, runtime)
 
@@ -3968,6 +5048,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeAlertLogCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeAlertLogCountResponse:
+        """
+        This topic provides an example to show how to query the statistics of alert logs for Elastic Compute Service (ECS) based on the `product` dimension.
+        
+        @param request: DescribeAlertLogCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertLogCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_group):
@@ -4024,6 +5111,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeAlertLogCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeAlertLogCountResponse:
+        """
+        This topic provides an example to show how to query the statistics of alert logs for Elastic Compute Service (ECS) based on the `product` dimension.
+        
+        @param request: DescribeAlertLogCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertLogCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_group):
@@ -4079,6 +5173,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeAlertLogCountRequest,
     ) -> cms_20190101_models.DescribeAlertLogCountResponse:
+        """
+        This topic provides an example to show how to query the statistics of alert logs for Elastic Compute Service (ECS) based on the `product` dimension.
+        
+        @param request: DescribeAlertLogCountRequest
+        @return: DescribeAlertLogCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alert_log_count_with_options(request, runtime)
 
@@ -4086,6 +5186,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeAlertLogCountRequest,
     ) -> cms_20190101_models.DescribeAlertLogCountResponse:
+        """
+        This topic provides an example to show how to query the statistics of alert logs for Elastic Compute Service (ECS) based on the `product` dimension.
+        
+        @param request: DescribeAlertLogCountRequest
+        @return: DescribeAlertLogCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_log_count_with_options_async(request, runtime)
 
@@ -4094,6 +5200,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeAlertLogHistogramRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeAlertLogHistogramResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeAlertLogHistogram.
+        
+        @param request: DescribeAlertLogHistogramRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertLogHistogramResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_group):
@@ -4150,6 +5263,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeAlertLogHistogramRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeAlertLogHistogramResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeAlertLogHistogram.
+        
+        @param request: DescribeAlertLogHistogramRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertLogHistogramResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_group):
@@ -4205,6 +5325,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeAlertLogHistogramRequest,
     ) -> cms_20190101_models.DescribeAlertLogHistogramResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeAlertLogHistogram.
+        
+        @param request: DescribeAlertLogHistogramRequest
+        @return: DescribeAlertLogHistogramResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alert_log_histogram_with_options(request, runtime)
 
@@ -4212,6 +5338,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeAlertLogHistogramRequest,
     ) -> cms_20190101_models.DescribeAlertLogHistogramResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeAlertLogHistogram.
+        
+        @param request: DescribeAlertLogHistogramRequest
+        @return: DescribeAlertLogHistogramResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_log_histogram_with_options_async(request, runtime)
 
@@ -4220,6 +5352,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeAlertLogListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeAlertLogListResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DescribeAlertLogListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertLogListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_group):
@@ -4278,6 +5419,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeAlertLogListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeAlertLogListResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DescribeAlertLogListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertLogListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_group):
@@ -4335,6 +5485,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeAlertLogListRequest,
     ) -> cms_20190101_models.DescribeAlertLogListResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DescribeAlertLogListRequest
+        @return: DescribeAlertLogListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alert_log_list_with_options(request, runtime)
 
@@ -4342,6 +5500,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeAlertLogListRequest,
     ) -> cms_20190101_models.DescribeAlertLogListResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DescribeAlertLogListRequest
+        @return: DescribeAlertLogListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_log_list_with_options_async(request, runtime)
 
@@ -4744,6 +5910,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeCustomEventCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeCustomEventCountResponse:
+        """
+        The name of the custom event.
+        
+        @param request: DescribeCustomEventCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomEventCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -4782,6 +5955,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeCustomEventCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeCustomEventCountResponse:
+        """
+        The name of the custom event.
+        
+        @param request: DescribeCustomEventCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomEventCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -4819,6 +5999,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeCustomEventCountRequest,
     ) -> cms_20190101_models.DescribeCustomEventCountResponse:
+        """
+        The name of the custom event.
+        
+        @param request: DescribeCustomEventCountRequest
+        @return: DescribeCustomEventCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_custom_event_count_with_options(request, runtime)
 
@@ -4826,6 +6012,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeCustomEventCountRequest,
     ) -> cms_20190101_models.DescribeCustomEventCountResponse:
+        """
+        The name of the custom event.
+        
+        @param request: DescribeCustomEventCountRequest
+        @return: DescribeCustomEventCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_custom_event_count_with_options_async(request, runtime)
 
@@ -4928,6 +6120,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeCustomMetricListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeCustomMetricListResponse:
+        """
+        The ID of the application group.
+        For more information, see [DescribeMonitorGroups](~~115032~~).
+        
+        @param request: DescribeCustomMetricListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomMetricListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dimension):
@@ -4966,6 +6166,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeCustomMetricListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeCustomMetricListResponse:
+        """
+        The ID of the application group.
+        For more information, see [DescribeMonitorGroups](~~115032~~).
+        
+        @param request: DescribeCustomMetricListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomMetricListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dimension):
@@ -5003,6 +6211,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeCustomMetricListRequest,
     ) -> cms_20190101_models.DescribeCustomMetricListResponse:
+        """
+        The ID of the application group.
+        For more information, see [DescribeMonitorGroups](~~115032~~).
+        
+        @param request: DescribeCustomMetricListRequest
+        @return: DescribeCustomMetricListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_custom_metric_list_with_options(request, runtime)
 
@@ -5010,6 +6225,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeCustomMetricListRequest,
     ) -> cms_20190101_models.DescribeCustomMetricListResponse:
+        """
+        The ID of the application group.
+        For more information, see [DescribeMonitorGroups](~~115032~~).
+        
+        @param request: DescribeCustomMetricListRequest
+        @return: DescribeCustomMetricListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_custom_metric_list_with_options_async(request, runtime)
 
@@ -5018,8 +6240,18 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeDynamicTagRuleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeDynamicTagRuleListResponse:
+        """
+        The HTTP status code.
+        >  The status code 200 indicates that the call was successful.
+        
+        @param request: DescribeDynamicTagRuleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDynamicTagRuleListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dynamic_tag_rule_id):
+            query['DynamicTagRuleId'] = request.dynamic_tag_rule_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -5054,8 +6286,18 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeDynamicTagRuleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeDynamicTagRuleListResponse:
+        """
+        The HTTP status code.
+        >  The status code 200 indicates that the call was successful.
+        
+        @param request: DescribeDynamicTagRuleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDynamicTagRuleListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dynamic_tag_rule_id):
+            query['DynamicTagRuleId'] = request.dynamic_tag_rule_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -5089,6 +6331,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeDynamicTagRuleListRequest,
     ) -> cms_20190101_models.DescribeDynamicTagRuleListResponse:
+        """
+        The HTTP status code.
+        >  The status code 200 indicates that the call was successful.
+        
+        @param request: DescribeDynamicTagRuleListRequest
+        @return: DescribeDynamicTagRuleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dynamic_tag_rule_list_with_options(request, runtime)
 
@@ -5096,6 +6345,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeDynamicTagRuleListRequest,
     ) -> cms_20190101_models.DescribeDynamicTagRuleListResponse:
+        """
+        The HTTP status code.
+        >  The status code 200 indicates that the call was successful.
+        
+        @param request: DescribeDynamicTagRuleListRequest
+        @return: DescribeDynamicTagRuleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dynamic_tag_rule_list_with_options_async(request, runtime)
 
@@ -5104,6 +6360,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeEventRuleAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeEventRuleAttributeResponse:
+        """
+        The name of the event-triggered alert rule.
+        For information about how to obtain the name of an event-triggered alert rule, see [DescribeEventRuleList](~~114996~~).
+        
+        @param request: DescribeEventRuleAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventRuleAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_name):
@@ -5134,6 +6398,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeEventRuleAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeEventRuleAttributeResponse:
+        """
+        The name of the event-triggered alert rule.
+        For information about how to obtain the name of an event-triggered alert rule, see [DescribeEventRuleList](~~114996~~).
+        
+        @param request: DescribeEventRuleAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventRuleAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_name):
@@ -5163,6 +6435,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeEventRuleAttributeRequest,
     ) -> cms_20190101_models.DescribeEventRuleAttributeResponse:
+        """
+        The name of the event-triggered alert rule.
+        For information about how to obtain the name of an event-triggered alert rule, see [DescribeEventRuleList](~~114996~~).
+        
+        @param request: DescribeEventRuleAttributeRequest
+        @return: DescribeEventRuleAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_event_rule_attribute_with_options(request, runtime)
 
@@ -5170,6 +6449,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeEventRuleAttributeRequest,
     ) -> cms_20190101_models.DescribeEventRuleAttributeResponse:
+        """
+        The name of the event-triggered alert rule.
+        For information about how to obtain the name of an event-triggered alert rule, see [DescribeEventRuleList](~~114996~~).
+        
+        @param request: DescribeEventRuleAttributeRequest
+        @return: DescribeEventRuleAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_event_rule_attribute_with_options_async(request, runtime)
 
@@ -5260,6 +6546,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeEventRuleTargetListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeEventRuleTargetListResponse:
+        """
+        The error message.
+        
+        @param request: DescribeEventRuleTargetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventRuleTargetListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_name):
@@ -5288,6 +6581,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeEventRuleTargetListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeEventRuleTargetListResponse:
+        """
+        The error message.
+        
+        @param request: DescribeEventRuleTargetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventRuleTargetListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_name):
@@ -5315,6 +6615,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeEventRuleTargetListRequest,
     ) -> cms_20190101_models.DescribeEventRuleTargetListResponse:
+        """
+        The error message.
+        
+        @param request: DescribeEventRuleTargetListRequest
+        @return: DescribeEventRuleTargetListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_event_rule_target_list_with_options(request, runtime)
 
@@ -5322,6 +6628,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeEventRuleTargetListRequest,
     ) -> cms_20190101_models.DescribeEventRuleTargetListResponse:
+        """
+        The error message.
+        
+        @param request: DescribeEventRuleTargetListRequest
+        @return: DescribeEventRuleTargetListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_event_rule_target_list_with_options_async(request, runtime)
 
@@ -5478,6 +6790,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeGroupMonitoringAgentProcessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeGroupMonitoringAgentProcessResponse:
+        """
+        The ID of the application group.
+        
+        @param request: DescribeGroupMonitoringAgentProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupMonitoringAgentProcessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5512,6 +6831,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeGroupMonitoringAgentProcessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeGroupMonitoringAgentProcessResponse:
+        """
+        The ID of the application group.
+        
+        @param request: DescribeGroupMonitoringAgentProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupMonitoringAgentProcessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5545,6 +6871,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeGroupMonitoringAgentProcessRequest,
     ) -> cms_20190101_models.DescribeGroupMonitoringAgentProcessResponse:
+        """
+        The ID of the application group.
+        
+        @param request: DescribeGroupMonitoringAgentProcessRequest
+        @return: DescribeGroupMonitoringAgentProcessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_group_monitoring_agent_process_with_options(request, runtime)
 
@@ -5552,6 +6884,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeGroupMonitoringAgentProcessRequest,
     ) -> cms_20190101_models.DescribeGroupMonitoringAgentProcessResponse:
+        """
+        The ID of the application group.
+        
+        @param request: DescribeGroupMonitoringAgentProcessRequest
+        @return: DescribeGroupMonitoringAgentProcessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_group_monitoring_agent_process_with_options_async(request, runtime)
 
@@ -5560,6 +6898,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeHostAvailabilityListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeHostAvailabilityListResponse:
+        """
+        The ID of the availability monitoring task.
+        
+        @param request: DescribeHostAvailabilityListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHostAvailabilityListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5598,6 +6943,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeHostAvailabilityListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeHostAvailabilityListResponse:
+        """
+        The ID of the availability monitoring task.
+        
+        @param request: DescribeHostAvailabilityListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHostAvailabilityListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5635,6 +6987,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeHostAvailabilityListRequest,
     ) -> cms_20190101_models.DescribeHostAvailabilityListResponse:
+        """
+        The ID of the availability monitoring task.
+        
+        @param request: DescribeHostAvailabilityListRequest
+        @return: DescribeHostAvailabilityListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_host_availability_list_with_options(request, runtime)
 
@@ -5642,6 +7000,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeHostAvailabilityListRequest,
     ) -> cms_20190101_models.DescribeHostAvailabilityListResponse:
+        """
+        The ID of the availability monitoring task.
+        
+        @param request: DescribeHostAvailabilityListRequest
+        @return: DescribeHostAvailabilityListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_host_availability_list_with_options_async(request, runtime)
 
@@ -5650,6 +7014,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeHybridMonitorDataListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeHybridMonitorDataListResponse:
+        """
+        The tag key.
+        
+        @param request: DescribeHybridMonitorDataListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridMonitorDataListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end):
@@ -5686,6 +7057,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeHybridMonitorDataListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeHybridMonitorDataListResponse:
+        """
+        The tag key.
+        
+        @param request: DescribeHybridMonitorDataListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridMonitorDataListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end):
@@ -5721,6 +7099,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeHybridMonitorDataListRequest,
     ) -> cms_20190101_models.DescribeHybridMonitorDataListResponse:
+        """
+        The tag key.
+        
+        @param request: DescribeHybridMonitorDataListRequest
+        @return: DescribeHybridMonitorDataListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_hybrid_monitor_data_list_with_options(request, runtime)
 
@@ -5728,6 +7112,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeHybridMonitorDataListRequest,
     ) -> cms_20190101_models.DescribeHybridMonitorDataListResponse:
+        """
+        The tag key.
+        
+        @param request: DescribeHybridMonitorDataListRequest
+        @return: DescribeHybridMonitorDataListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_hybrid_monitor_data_list_with_options_async(request, runtime)
 
@@ -5736,6 +7126,19 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeHybridMonitorNamespaceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeHybridMonitorNamespaceListResponse:
+        """
+        The data retention period. Valid values:
+        *   cms.s1.large: Data is stored for 15 days.
+        *   cms.s1.xlarge: Data is stored for 32 days.
+        *   cms.s1.2xlarge: Data is stored for 63 days.
+        *   cms.s1.3xlarge: Data is stored for 93 days.
+        *   cms.s1.6xlarge: Data is stored for 185 days.
+        *   cms.s1.12xlarge: Data is stored for 376 days.
+        
+        @param request: DescribeHybridMonitorNamespaceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridMonitorNamespaceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -5772,6 +7175,19 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeHybridMonitorNamespaceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeHybridMonitorNamespaceListResponse:
+        """
+        The data retention period. Valid values:
+        *   cms.s1.large: Data is stored for 15 days.
+        *   cms.s1.xlarge: Data is stored for 32 days.
+        *   cms.s1.2xlarge: Data is stored for 63 days.
+        *   cms.s1.3xlarge: Data is stored for 93 days.
+        *   cms.s1.6xlarge: Data is stored for 185 days.
+        *   cms.s1.12xlarge: Data is stored for 376 days.
+        
+        @param request: DescribeHybridMonitorNamespaceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridMonitorNamespaceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -5807,6 +7223,18 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeHybridMonitorNamespaceListRequest,
     ) -> cms_20190101_models.DescribeHybridMonitorNamespaceListResponse:
+        """
+        The data retention period. Valid values:
+        *   cms.s1.large: Data is stored for 15 days.
+        *   cms.s1.xlarge: Data is stored for 32 days.
+        *   cms.s1.2xlarge: Data is stored for 63 days.
+        *   cms.s1.3xlarge: Data is stored for 93 days.
+        *   cms.s1.6xlarge: Data is stored for 185 days.
+        *   cms.s1.12xlarge: Data is stored for 376 days.
+        
+        @param request: DescribeHybridMonitorNamespaceListRequest
+        @return: DescribeHybridMonitorNamespaceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_hybrid_monitor_namespace_list_with_options(request, runtime)
 
@@ -5814,6 +7242,18 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeHybridMonitorNamespaceListRequest,
     ) -> cms_20190101_models.DescribeHybridMonitorNamespaceListResponse:
+        """
+        The data retention period. Valid values:
+        *   cms.s1.large: Data is stored for 15 days.
+        *   cms.s1.xlarge: Data is stored for 32 days.
+        *   cms.s1.2xlarge: Data is stored for 63 days.
+        *   cms.s1.3xlarge: Data is stored for 93 days.
+        *   cms.s1.6xlarge: Data is stored for 185 days.
+        *   cms.s1.12xlarge: Data is stored for 376 days.
+        
+        @param request: DescribeHybridMonitorNamespaceListRequest
+        @return: DescribeHybridMonitorNamespaceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_hybrid_monitor_namespace_list_with_options_async(request, runtime)
 
@@ -5822,6 +7262,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeHybridMonitorSLSGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeHybridMonitorSLSGroupResponse:
+        """
+        Indicates whether the call is successful. Valid values:
+        *   true: The call is successful.
+        *   false: The call fails.
+        
+        @param request: DescribeHybridMonitorSLSGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridMonitorSLSGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -5856,6 +7305,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeHybridMonitorSLSGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeHybridMonitorSLSGroupResponse:
+        """
+        Indicates whether the call is successful. Valid values:
+        *   true: The call is successful.
+        *   false: The call fails.
+        
+        @param request: DescribeHybridMonitorSLSGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridMonitorSLSGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -5889,6 +7347,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeHybridMonitorSLSGroupRequest,
     ) -> cms_20190101_models.DescribeHybridMonitorSLSGroupResponse:
+        """
+        Indicates whether the call is successful. Valid values:
+        *   true: The call is successful.
+        *   false: The call fails.
+        
+        @param request: DescribeHybridMonitorSLSGroupRequest
+        @return: DescribeHybridMonitorSLSGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_hybrid_monitor_slsgroup_with_options(request, runtime)
 
@@ -5896,6 +7362,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeHybridMonitorSLSGroupRequest,
     ) -> cms_20190101_models.DescribeHybridMonitorSLSGroupResponse:
+        """
+        Indicates whether the call is successful. Valid values:
+        *   true: The call is successful.
+        *   false: The call fails.
+        
+        @param request: DescribeHybridMonitorSLSGroupRequest
+        @return: DescribeHybridMonitorSLSGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_hybrid_monitor_slsgroup_with_options_async(request, runtime)
 
@@ -5904,6 +7378,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeHybridMonitorTaskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeHybridMonitorTaskListResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DescribeHybridMonitorTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridMonitorTaskListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5918,6 +7401,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.task_type):
@@ -5946,6 +7431,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeHybridMonitorTaskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeHybridMonitorTaskListResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DescribeHybridMonitorTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridMonitorTaskListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5960,6 +7454,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.task_type):
@@ -5987,6 +7483,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeHybridMonitorTaskListRequest,
     ) -> cms_20190101_models.DescribeHybridMonitorTaskListResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DescribeHybridMonitorTaskListRequest
+        @return: DescribeHybridMonitorTaskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_hybrid_monitor_task_list_with_options(request, runtime)
 
@@ -5994,6 +7498,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeHybridMonitorTaskListRequest,
     ) -> cms_20190101_models.DescribeHybridMonitorTaskListResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: DescribeHybridMonitorTaskListRequest
+        @return: DescribeHybridMonitorTaskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_hybrid_monitor_task_list_with_options_async(request, runtime)
 
@@ -6150,6 +7662,18 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricDataResponse:
+        """
+        The statistical period of the metric.
+        Valid values: 15, 60, 900, and 3600.
+        Unit: seconds.
+        >
+        *   If this parameter is not specified, monitoring data is queried based on the period in which metric values are reported.
+        *   For more information about the statistical period of a metric that is specified by the `MetricName` parameter, see [Appendix 1: Metrics](~~163515~~).
+        
+        @param request: DescribeMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -6192,6 +7716,18 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricDataResponse:
+        """
+        The statistical period of the metric.
+        Valid values: 15, 60, 900, and 3600.
+        Unit: seconds.
+        >
+        *   If this parameter is not specified, monitoring data is queried based on the period in which metric values are reported.
+        *   For more information about the statistical period of a metric that is specified by the `MetricName` parameter, see [Appendix 1: Metrics](~~163515~~).
+        
+        @param request: DescribeMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -6233,6 +7769,17 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricDataRequest,
     ) -> cms_20190101_models.DescribeMetricDataResponse:
+        """
+        The statistical period of the metric.
+        Valid values: 15, 60, 900, and 3600.
+        Unit: seconds.
+        >
+        *   If this parameter is not specified, monitoring data is queried based on the period in which metric values are reported.
+        *   For more information about the statistical period of a metric that is specified by the `MetricName` parameter, see [Appendix 1: Metrics](~~163515~~).
+        
+        @param request: DescribeMetricDataRequest
+        @return: DescribeMetricDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_metric_data_with_options(request, runtime)
 
@@ -6240,6 +7787,17 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricDataRequest,
     ) -> cms_20190101_models.DescribeMetricDataResponse:
+        """
+        The statistical period of the metric.
+        Valid values: 15, 60, 900, and 3600.
+        Unit: seconds.
+        >
+        *   If this parameter is not specified, monitoring data is queried based on the period in which metric values are reported.
+        *   For more information about the statistical period of a metric that is specified by the `MetricName` parameter, see [Appendix 1: Metrics](~~163515~~).
+        
+        @param request: DescribeMetricDataRequest
+        @return: DescribeMetricDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_metric_data_with_options_async(request, runtime)
 
@@ -6248,6 +7806,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricLastRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricLastResponse:
+        """
+        The number of entries to return on each page.
+        Default value: 1000. This value indicates that a maximum of 1,000 entries of monitoring data can be returned on each page.
+        >  The maximum value of the Length parameter in a request is 1440.
+        
+        @param request: DescribeMetricLastRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricLastResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -6292,6 +7859,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricLastRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricLastResponse:
+        """
+        The number of entries to return on each page.
+        Default value: 1000. This value indicates that a maximum of 1,000 entries of monitoring data can be returned on each page.
+        >  The maximum value of the Length parameter in a request is 1440.
+        
+        @param request: DescribeMetricLastRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricLastResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -6335,6 +7911,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricLastRequest,
     ) -> cms_20190101_models.DescribeMetricLastResponse:
+        """
+        The number of entries to return on each page.
+        Default value: 1000. This value indicates that a maximum of 1,000 entries of monitoring data can be returned on each page.
+        >  The maximum value of the Length parameter in a request is 1440.
+        
+        @param request: DescribeMetricLastRequest
+        @return: DescribeMetricLastResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_metric_last_with_options(request, runtime)
 
@@ -6342,6 +7926,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricLastRequest,
     ) -> cms_20190101_models.DescribeMetricLastResponse:
+        """
+        The number of entries to return on each page.
+        Default value: 1000. This value indicates that a maximum of 1,000 entries of monitoring data can be returned on each page.
+        >  The maximum value of the Length parameter in a request is 1440.
+        
+        @param request: DescribeMetricLastRequest
+        @return: DescribeMetricLastResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_metric_last_with_options_async(request, runtime)
 
@@ -6350,6 +7942,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricListResponse:
+        """
+        The name of the metric.
+        For more information about metric names, see [Appendix 1: Metrics](~~163515~~).
+        
+        @param request: DescribeMetricListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -6394,6 +7994,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricListResponse:
+        """
+        The name of the metric.
+        For more information about metric names, see [Appendix 1: Metrics](~~163515~~).
+        
+        @param request: DescribeMetricListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -6437,6 +8045,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricListRequest,
     ) -> cms_20190101_models.DescribeMetricListResponse:
+        """
+        The name of the metric.
+        For more information about metric names, see [Appendix 1: Metrics](~~163515~~).
+        
+        @param request: DescribeMetricListRequest
+        @return: DescribeMetricListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_metric_list_with_options(request, runtime)
 
@@ -6444,6 +8059,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricListRequest,
     ) -> cms_20190101_models.DescribeMetricListResponse:
+        """
+        The name of the metric.
+        For more information about metric names, see [Appendix 1: Metrics](~~163515~~).
+        
+        @param request: DescribeMetricListRequest
+        @return: DescribeMetricListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_metric_list_with_options_async(request, runtime)
 
@@ -6452,6 +8074,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricMetaListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricMetaListResponse:
+        """
+        The namespace of the service.
+        For more information, see [Appendix 1: Metrics](~~163515~~).
+        
+        @param request: DescribeMetricMetaListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricMetaListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.labels):
@@ -6488,6 +8118,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricMetaListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricMetaListResponse:
+        """
+        The namespace of the service.
+        For more information, see [Appendix 1: Metrics](~~163515~~).
+        
+        @param request: DescribeMetricMetaListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricMetaListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.labels):
@@ -6523,6 +8161,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricMetaListRequest,
     ) -> cms_20190101_models.DescribeMetricMetaListResponse:
+        """
+        The namespace of the service.
+        For more information, see [Appendix 1: Metrics](~~163515~~).
+        
+        @param request: DescribeMetricMetaListRequest
+        @return: DescribeMetricMetaListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_metric_meta_list_with_options(request, runtime)
 
@@ -6530,8 +8175,105 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricMetaListRequest,
     ) -> cms_20190101_models.DescribeMetricMetaListResponse:
+        """
+        The namespace of the service.
+        For more information, see [Appendix 1: Metrics](~~163515~~).
+        
+        @param request: DescribeMetricMetaListRequest
+        @return: DescribeMetricMetaListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_metric_meta_list_with_options_async(request, runtime)
+
+    def describe_metric_rule_black_list_with_options(
+        self,
+        request: cms_20190101_models.DescribeMetricRuleBlackListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeMetricRuleBlackListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricRuleBlackList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricRuleBlackListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_metric_rule_black_list_with_options_async(
+        self,
+        request: cms_20190101_models.DescribeMetricRuleBlackListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeMetricRuleBlackListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricRuleBlackList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricRuleBlackListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_metric_rule_black_list(
+        self,
+        request: cms_20190101_models.DescribeMetricRuleBlackListRequest,
+    ) -> cms_20190101_models.DescribeMetricRuleBlackListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_metric_rule_black_list_with_options(request, runtime)
+
+    async def describe_metric_rule_black_list_async(
+        self,
+        request: cms_20190101_models.DescribeMetricRuleBlackListRequest,
+    ) -> cms_20190101_models.DescribeMetricRuleBlackListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_metric_rule_black_list_with_options_async(request, runtime)
 
     def describe_metric_rule_count_with_options(
         self,
@@ -6604,6 +8346,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricRuleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricRuleListResponse:
+        """
+        This topic provides an example on how to query all alert rules within your Alibaba Cloud account. The returned result shows that only one alert rule is found. The name of the alert rule is `Rule_01` and the ID is `applyTemplate344cfd42-0f32-4fd6-805a-88d7908a***`.
+        
+        @param request: DescribeMetricRuleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricRuleListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_state):
@@ -6650,6 +8399,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricRuleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricRuleListResponse:
+        """
+        This topic provides an example on how to query all alert rules within your Alibaba Cloud account. The returned result shows that only one alert rule is found. The name of the alert rule is `Rule_01` and the ID is `applyTemplate344cfd42-0f32-4fd6-805a-88d7908a***`.
+        
+        @param request: DescribeMetricRuleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricRuleListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_state):
@@ -6695,6 +8451,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricRuleListRequest,
     ) -> cms_20190101_models.DescribeMetricRuleListResponse:
+        """
+        This topic provides an example on how to query all alert rules within your Alibaba Cloud account. The returned result shows that only one alert rule is found. The name of the alert rule is `Rule_01` and the ID is `applyTemplate344cfd42-0f32-4fd6-805a-88d7908a***`.
+        
+        @param request: DescribeMetricRuleListRequest
+        @return: DescribeMetricRuleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_metric_rule_list_with_options(request, runtime)
 
@@ -6702,6 +8464,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricRuleListRequest,
     ) -> cms_20190101_models.DescribeMetricRuleListResponse:
+        """
+        This topic provides an example on how to query all alert rules within your Alibaba Cloud account. The returned result shows that only one alert rule is found. The name of the alert rule is `Rule_01` and the ID is `applyTemplate344cfd42-0f32-4fd6-805a-88d7908a***`.
+        
+        @param request: DescribeMetricRuleListRequest
+        @return: DescribeMetricRuleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_metric_rule_list_with_options_async(request, runtime)
 
@@ -6710,6 +8478,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricRuleTargetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricRuleTargetsResponse:
+        """
+        The parameters of the alert callback. The parameters are in the JSON format.
+        
+        @param request: DescribeMetricRuleTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricRuleTargetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_id):
@@ -6738,6 +8513,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricRuleTargetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricRuleTargetsResponse:
+        """
+        The parameters of the alert callback. The parameters are in the JSON format.
+        
+        @param request: DescribeMetricRuleTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricRuleTargetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_id):
@@ -6765,6 +8547,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricRuleTargetsRequest,
     ) -> cms_20190101_models.DescribeMetricRuleTargetsResponse:
+        """
+        The parameters of the alert callback. The parameters are in the JSON format.
+        
+        @param request: DescribeMetricRuleTargetsRequest
+        @return: DescribeMetricRuleTargetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_metric_rule_targets_with_options(request, runtime)
 
@@ -6772,6 +8560,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricRuleTargetsRequest,
     ) -> cms_20190101_models.DescribeMetricRuleTargetsResponse:
+        """
+        The parameters of the alert callback. The parameters are in the JSON format.
+        
+        @param request: DescribeMetricRuleTargetsRequest
+        @return: DescribeMetricRuleTargetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_metric_rule_targets_with_options_async(request, runtime)
 
@@ -6780,6 +8574,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricRuleTemplateAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricRuleTemplateAttributeResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeMetricRuleTemplateAttribute.
+        
+        @param request: DescribeMetricRuleTemplateAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricRuleTemplateAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -6810,6 +8611,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricRuleTemplateAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricRuleTemplateAttributeResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeMetricRuleTemplateAttribute.
+        
+        @param request: DescribeMetricRuleTemplateAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricRuleTemplateAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -6839,6 +8647,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricRuleTemplateAttributeRequest,
     ) -> cms_20190101_models.DescribeMetricRuleTemplateAttributeResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeMetricRuleTemplateAttribute.
+        
+        @param request: DescribeMetricRuleTemplateAttributeRequest
+        @return: DescribeMetricRuleTemplateAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_metric_rule_template_attribute_with_options(request, runtime)
 
@@ -6846,6 +8660,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricRuleTemplateAttributeRequest,
     ) -> cms_20190101_models.DescribeMetricRuleTemplateAttributeResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeMetricRuleTemplateAttribute.
+        
+        @param request: DescribeMetricRuleTemplateAttributeRequest
+        @return: DescribeMetricRuleTemplateAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_metric_rule_template_attribute_with_options_async(request, runtime)
 
@@ -6854,6 +8674,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricRuleTemplateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricRuleTemplateListResponse:
+        """
+        The HTTP status code.
+        >  The status code 200 indicates that the call was successful.
+        
+        @param request: DescribeMetricRuleTemplateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricRuleTemplateListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.history):
@@ -6896,6 +8724,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricRuleTemplateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricRuleTemplateListResponse:
+        """
+        The HTTP status code.
+        >  The status code 200 indicates that the call was successful.
+        
+        @param request: DescribeMetricRuleTemplateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricRuleTemplateListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.history):
@@ -6937,6 +8773,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricRuleTemplateListRequest,
     ) -> cms_20190101_models.DescribeMetricRuleTemplateListResponse:
+        """
+        The HTTP status code.
+        >  The status code 200 indicates that the call was successful.
+        
+        @param request: DescribeMetricRuleTemplateListRequest
+        @return: DescribeMetricRuleTemplateListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_metric_rule_template_list_with_options(request, runtime)
 
@@ -6944,6 +8787,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricRuleTemplateListRequest,
     ) -> cms_20190101_models.DescribeMetricRuleTemplateListResponse:
+        """
+        The HTTP status code.
+        >  The status code 200 indicates that the call was successful.
+        
+        @param request: DescribeMetricRuleTemplateListRequest
+        @return: DescribeMetricRuleTemplateListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_metric_rule_template_list_with_options_async(request, runtime)
 
@@ -6952,6 +8802,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricTopRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricTopResponse:
+        """
+        The order in which data is sorted. Valid values:
+        *   True: sorts data in ascending order.
+        *   False (default value): sorts data in descending order.
+        
+        @param request: DescribeMetricTopRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricTopResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -6998,6 +8857,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricTopRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricTopResponse:
+        """
+        The order in which data is sorted. Valid values:
+        *   True: sorts data in ascending order.
+        *   False (default value): sorts data in descending order.
+        
+        @param request: DescribeMetricTopRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricTopResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -7043,6 +8911,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricTopRequest,
     ) -> cms_20190101_models.DescribeMetricTopResponse:
+        """
+        The order in which data is sorted. Valid values:
+        *   True: sorts data in ascending order.
+        *   False (default value): sorts data in descending order.
+        
+        @param request: DescribeMetricTopRequest
+        @return: DescribeMetricTopResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_metric_top_with_options(request, runtime)
 
@@ -7050,6 +8926,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMetricTopRequest,
     ) -> cms_20190101_models.DescribeMetricTopResponse:
+        """
+        The order in which data is sorted. Valid values:
+        *   True: sorts data in ascending order.
+        *   False (default value): sorts data in descending order.
+        
+        @param request: DescribeMetricTopRequest
+        @return: DescribeMetricTopResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_metric_top_with_options_async(request, runtime)
 
@@ -7464,6 +9348,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMonitorGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitorGroupsResponse:
+        """
+        This topic provides an example of how to query the application groups of the current account. The response shows that the current account has two application groups: `testGroup124` and `test123`.
+        
+        @param request: DescribeMonitorGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMonitorGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dynamic_tag_rule_id):
@@ -7492,6 +9383,8 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7516,6 +9409,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMonitorGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitorGroupsResponse:
+        """
+        This topic provides an example of how to query the application groups of the current account. The response shows that the current account has two application groups: `testGroup124` and `test123`.
+        
+        @param request: DescribeMonitorGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMonitorGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dynamic_tag_rule_id):
@@ -7544,6 +9444,8 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7567,6 +9469,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMonitorGroupsRequest,
     ) -> cms_20190101_models.DescribeMonitorGroupsResponse:
+        """
+        This topic provides an example of how to query the application groups of the current account. The response shows that the current account has two application groups: `testGroup124` and `test123`.
+        
+        @param request: DescribeMonitorGroupsRequest
+        @return: DescribeMonitorGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_monitor_groups_with_options(request, runtime)
 
@@ -7574,6 +9482,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMonitorGroupsRequest,
     ) -> cms_20190101_models.DescribeMonitorGroupsResponse:
+        """
+        This topic provides an example of how to query the application groups of the current account. The response shows that the current account has two application groups: `testGroup124` and `test123`.
+        
+        @param request: DescribeMonitorGroupsRequest
+        @return: DescribeMonitorGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_monitor_groups_with_options_async(request, runtime)
 
@@ -7792,6 +9706,8 @@ class Client(OpenApiClient):
             query['SerialNumbers'] = request.serial_numbers
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.sysom_status):
+            query['SysomStatus'] = request.sysom_status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7836,6 +9752,8 @@ class Client(OpenApiClient):
             query['SerialNumbers'] = request.serial_numbers
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.sysom_status):
+            query['SysomStatus'] = request.sysom_status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7874,6 +9792,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMonitoringAgentProcessesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentProcessesResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeMonitoringAgentProcesses.
+        
+        @param request: DescribeMonitoringAgentProcessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMonitoringAgentProcessesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7902,6 +9827,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMonitoringAgentProcessesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentProcessesResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeMonitoringAgentProcesses.
+        
+        @param request: DescribeMonitoringAgentProcessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMonitoringAgentProcessesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7929,6 +9861,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMonitoringAgentProcessesRequest,
     ) -> cms_20190101_models.DescribeMonitoringAgentProcessesResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeMonitoringAgentProcesses.
+        
+        @param request: DescribeMonitoringAgentProcessesRequest
+        @return: DescribeMonitoringAgentProcessesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_monitoring_agent_processes_with_options(request, runtime)
 
@@ -7936,6 +9874,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMonitoringAgentProcessesRequest,
     ) -> cms_20190101_models.DescribeMonitoringAgentProcessesResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeMonitoringAgentProcesses.
+        
+        @param request: DescribeMonitoringAgentProcessesRequest
+        @return: DescribeMonitoringAgentProcessesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_monitoring_agent_processes_with_options_async(request, runtime)
 
@@ -7944,8 +9888,22 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMonitoringAgentStatusesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentStatusesResponse:
+        """
+        The details of the execution error. Valid values:
+        *   `Command.ErrorCode.Fail.Downlaod.REGIN_ID`: Failed to obtain the region ID.
+        *   `Command.ErrorCode.Fail.Downlaod.SYSAK`: Failed to download the .rpm package of System Analyse Kit (SysAK).
+        *   `Command.ErrorCode.Fail.Downlaod.CMON_FILE`: Failed to download the CMON file.
+        *   `Command.ErrorCode.Fail.Downlaod.BTF`: Failed to start SysAK because the BTF file is not found.
+        *   `Command.ErrorCode.Fail.Start.SYSAK`: Failed to start SysAK due to an unknown error.
+        
+        @param request: DescribeMonitoringAgentStatusesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMonitoringAgentStatusesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.host_availability_task_id):
+            query['HostAvailabilityTaskId'] = request.host_availability_task_id
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
@@ -7972,8 +9930,22 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMonitoringAgentStatusesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentStatusesResponse:
+        """
+        The details of the execution error. Valid values:
+        *   `Command.ErrorCode.Fail.Downlaod.REGIN_ID`: Failed to obtain the region ID.
+        *   `Command.ErrorCode.Fail.Downlaod.SYSAK`: Failed to download the .rpm package of System Analyse Kit (SysAK).
+        *   `Command.ErrorCode.Fail.Downlaod.CMON_FILE`: Failed to download the CMON file.
+        *   `Command.ErrorCode.Fail.Downlaod.BTF`: Failed to start SysAK because the BTF file is not found.
+        *   `Command.ErrorCode.Fail.Start.SYSAK`: Failed to start SysAK due to an unknown error.
+        
+        @param request: DescribeMonitoringAgentStatusesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMonitoringAgentStatusesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.host_availability_task_id):
+            query['HostAvailabilityTaskId'] = request.host_availability_task_id
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
@@ -7999,6 +9971,17 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMonitoringAgentStatusesRequest,
     ) -> cms_20190101_models.DescribeMonitoringAgentStatusesResponse:
+        """
+        The details of the execution error. Valid values:
+        *   `Command.ErrorCode.Fail.Downlaod.REGIN_ID`: Failed to obtain the region ID.
+        *   `Command.ErrorCode.Fail.Downlaod.SYSAK`: Failed to download the .rpm package of System Analyse Kit (SysAK).
+        *   `Command.ErrorCode.Fail.Downlaod.CMON_FILE`: Failed to download the CMON file.
+        *   `Command.ErrorCode.Fail.Downlaod.BTF`: Failed to start SysAK because the BTF file is not found.
+        *   `Command.ErrorCode.Fail.Start.SYSAK`: Failed to start SysAK due to an unknown error.
+        
+        @param request: DescribeMonitoringAgentStatusesRequest
+        @return: DescribeMonitoringAgentStatusesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_monitoring_agent_statuses_with_options(request, runtime)
 
@@ -8006,6 +9989,17 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeMonitoringAgentStatusesRequest,
     ) -> cms_20190101_models.DescribeMonitoringAgentStatusesResponse:
+        """
+        The details of the execution error. Valid values:
+        *   `Command.ErrorCode.Fail.Downlaod.REGIN_ID`: Failed to obtain the region ID.
+        *   `Command.ErrorCode.Fail.Downlaod.SYSAK`: Failed to download the .rpm package of System Analyse Kit (SysAK).
+        *   `Command.ErrorCode.Fail.Downlaod.CMON_FILE`: Failed to download the CMON file.
+        *   `Command.ErrorCode.Fail.Downlaod.BTF`: Failed to start SysAK because the BTF file is not found.
+        *   `Command.ErrorCode.Fail.Start.SYSAK`: Failed to start SysAK due to an unknown error.
+        
+        @param request: DescribeMonitoringAgentStatusesRequest
+        @return: DescribeMonitoringAgentStatusesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_monitoring_agent_statuses_with_options_async(request, runtime)
 
@@ -8074,6 +10068,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeProductResourceTagKeyListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeProductResourceTagKeyListResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeProductResourceTagKeyList.
+        
+        @param request: DescribeProductResourceTagKeyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProductResourceTagKeyListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -8102,6 +10103,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeProductResourceTagKeyListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeProductResourceTagKeyListResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeProductResourceTagKeyList.
+        
+        @param request: DescribeProductResourceTagKeyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProductResourceTagKeyListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -8129,6 +10137,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeProductResourceTagKeyListRequest,
     ) -> cms_20190101_models.DescribeProductResourceTagKeyListResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeProductResourceTagKeyList.
+        
+        @param request: DescribeProductResourceTagKeyListRequest
+        @return: DescribeProductResourceTagKeyListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_product_resource_tag_key_list_with_options(request, runtime)
 
@@ -8136,6 +10150,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeProductResourceTagKeyListRequest,
     ) -> cms_20190101_models.DescribeProductResourceTagKeyListResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeProductResourceTagKeyList.
+        
+        @param request: DescribeProductResourceTagKeyListRequest
+        @return: DescribeProductResourceTagKeyListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_product_resource_tag_key_list_with_options_async(request, runtime)
 
@@ -8204,6 +10224,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeProjectMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeProjectMetaResponse:
+        """
+        The description of the cloud service.
+        
+        @param request: DescribeProjectMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.labels):
@@ -8236,6 +10263,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeProjectMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeProjectMetaResponse:
+        """
+        The description of the cloud service.
+        
+        @param request: DescribeProjectMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.labels):
@@ -8267,6 +10301,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeProjectMetaRequest,
     ) -> cms_20190101_models.DescribeProjectMetaResponse:
+        """
+        The description of the cloud service.
+        
+        @param request: DescribeProjectMetaRequest
+        @return: DescribeProjectMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_project_meta_with_options(request, runtime)
 
@@ -8274,6 +10314,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeProjectMetaRequest,
     ) -> cms_20190101_models.DescribeProjectMetaResponse:
+        """
+        The description of the cloud service.
+        
+        @param request: DescribeProjectMetaRequest
+        @return: DescribeProjectMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_project_meta_with_options_async(request, runtime)
 
@@ -8282,6 +10328,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorAttributeResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeSiteMonitorAttribute.
+        
+        @param request: DescribeSiteMonitorAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteMonitorAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_alert):
@@ -8312,6 +10365,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorAttributeResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeSiteMonitorAttribute.
+        
+        @param request: DescribeSiteMonitorAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteMonitorAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_alert):
@@ -8341,6 +10401,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeSiteMonitorAttributeRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorAttributeResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeSiteMonitorAttribute.
+        
+        @param request: DescribeSiteMonitorAttributeRequest
+        @return: DescribeSiteMonitorAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_site_monitor_attribute_with_options(request, runtime)
 
@@ -8348,6 +10414,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeSiteMonitorAttributeRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorAttributeResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeSiteMonitorAttribute.
+        
+        @param request: DescribeSiteMonitorAttributeRequest
+        @return: DescribeSiteMonitorAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_site_monitor_attribute_with_options_async(request, runtime)
 
@@ -8454,6 +10526,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorISPCityListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorISPCityListResponse:
+        """
+        The code of the province.
+        
+        @param request: DescribeSiteMonitorISPCityListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteMonitorISPCityListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.city):
@@ -8464,6 +10543,8 @@ class Client(OpenApiClient):
             query['IPV6'] = request.ipv6
         if not UtilClient.is_unset(request.isp):
             query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.view_all):
+            query['ViewAll'] = request.view_all
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8488,6 +10569,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorISPCityListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorISPCityListResponse:
+        """
+        The code of the province.
+        
+        @param request: DescribeSiteMonitorISPCityListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteMonitorISPCityListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.city):
@@ -8498,6 +10586,8 @@ class Client(OpenApiClient):
             query['IPV6'] = request.ipv6
         if not UtilClient.is_unset(request.isp):
             query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.view_all):
+            query['ViewAll'] = request.view_all
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8521,6 +10611,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeSiteMonitorISPCityListRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorISPCityListResponse:
+        """
+        The code of the province.
+        
+        @param request: DescribeSiteMonitorISPCityListRequest
+        @return: DescribeSiteMonitorISPCityListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_site_monitor_ispcity_list_with_options(request, runtime)
 
@@ -8528,6 +10624,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeSiteMonitorISPCityListRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorISPCityListResponse:
+        """
+        The code of the province.
+        
+        @param request: DescribeSiteMonitorISPCityListRequest
+        @return: DescribeSiteMonitorISPCityListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_site_monitor_ispcity_list_with_options_async(request, runtime)
 
@@ -8536,6 +10638,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorListResponse:
+        """
+        The content of the HTTP request.
+        
+        @param request: DescribeSiteMonitorListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteMonitorListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -8546,6 +10655,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_state):
+            query['TaskState'] = request.task_state
         if not UtilClient.is_unset(request.task_type):
             query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
@@ -8572,6 +10683,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorListResponse:
+        """
+        The content of the HTTP request.
+        
+        @param request: DescribeSiteMonitorListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteMonitorListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -8582,6 +10700,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_state):
+            query['TaskState'] = request.task_state
         if not UtilClient.is_unset(request.task_type):
             query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
@@ -8607,6 +10727,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeSiteMonitorListRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorListResponse:
+        """
+        The content of the HTTP request.
+        
+        @param request: DescribeSiteMonitorListRequest
+        @return: DescribeSiteMonitorListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_site_monitor_list_with_options(request, runtime)
 
@@ -8614,6 +10740,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeSiteMonitorListRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorListResponse:
+        """
+        The content of the HTTP request.
+        
+        @param request: DescribeSiteMonitorListRequest
+        @return: DescribeSiteMonitorListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_site_monitor_list_with_options_async(request, runtime)
 
@@ -8622,6 +10754,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorLogResponse:
+        """
+        You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring. For more information, see [Billing of Network Analysis and Monitoring](~~341649~~).
+        This topic provides an example to show how to query the logs of an instant test task whose ID is `afa5c3ce-f944-4363-9edb-ce919a29****`.
+        
+        @param request: DescribeSiteMonitorLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteMonitorLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.city):
@@ -8666,6 +10806,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorLogResponse:
+        """
+        You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring. For more information, see [Billing of Network Analysis and Monitoring](~~341649~~).
+        This topic provides an example to show how to query the logs of an instant test task whose ID is `afa5c3ce-f944-4363-9edb-ce919a29****`.
+        
+        @param request: DescribeSiteMonitorLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSiteMonitorLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.city):
@@ -8709,6 +10857,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeSiteMonitorLogRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorLogResponse:
+        """
+        You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring. For more information, see [Billing of Network Analysis and Monitoring](~~341649~~).
+        This topic provides an example to show how to query the logs of an instant test task whose ID is `afa5c3ce-f944-4363-9edb-ce919a29****`.
+        
+        @param request: DescribeSiteMonitorLogRequest
+        @return: DescribeSiteMonitorLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_site_monitor_log_with_options(request, runtime)
 
@@ -8716,6 +10871,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeSiteMonitorLogRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorLogResponse:
+        """
+        You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring. For more information, see [Billing of Network Analysis and Monitoring](~~341649~~).
+        This topic provides an example to show how to query the logs of an instant test task whose ID is `afa5c3ce-f944-4363-9edb-ce919a29****`.
+        
+        @param request: DescribeSiteMonitorLogRequest
+        @return: DescribeSiteMonitorLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_site_monitor_log_with_options_async(request, runtime)
 
@@ -8976,6 +11138,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSystemEventCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSystemEventCountResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeSystemEventCount.
+        
+        @param request: DescribeSystemEventCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSystemEventCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9020,6 +11189,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSystemEventCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSystemEventCountResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeSystemEventCount.
+        
+        @param request: DescribeSystemEventCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSystemEventCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9063,6 +11239,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeSystemEventCountRequest,
     ) -> cms_20190101_models.DescribeSystemEventCountResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeSystemEventCount.
+        
+        @param request: DescribeSystemEventCountRequest
+        @return: DescribeSystemEventCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_system_event_count_with_options(request, runtime)
 
@@ -9070,6 +11252,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeSystemEventCountRequest,
     ) -> cms_20190101_models.DescribeSystemEventCountResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeSystemEventCount.
+        
+        @param request: DescribeSystemEventCountRequest
+        @return: DescribeSystemEventCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_system_event_count_with_options_async(request, runtime)
 
@@ -9314,6 +11502,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeTagValueListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeTagValueListResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeTagValueList.
+        
+        @param request: DescribeTagValueListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagValueListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -9346,6 +11541,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeTagValueListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeTagValueListResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeTagValueList.
+        
+        @param request: DescribeTagValueListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagValueListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -9377,6 +11579,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeTagValueListRequest,
     ) -> cms_20190101_models.DescribeTagValueListResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeTagValueList.
+        
+        @param request: DescribeTagValueListRequest
+        @return: DescribeTagValueListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tag_value_list_with_options(request, runtime)
 
@@ -9384,6 +11592,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.DescribeTagValueListRequest,
     ) -> cms_20190101_models.DescribeTagValueListResponse:
+        """
+        The operation that you want to perform. Set the value to DescribeTagValueList.
+        
+        @param request: DescribeTagValueListRequest
+        @return: DescribeTagValueListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tag_value_list_with_options_async(request, runtime)
 
@@ -10017,6 +12231,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_host_availability_with_options_async(request, runtime)
 
+    def enable_metric_rule_black_list_with_options(
+        self,
+        request: cms_20190101_models.EnableMetricRuleBlackListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.EnableMetricRuleBlackListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.is_enable):
+            query['IsEnable'] = request.is_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableMetricRuleBlackList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.EnableMetricRuleBlackListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_metric_rule_black_list_with_options_async(
+        self,
+        request: cms_20190101_models.EnableMetricRuleBlackListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.EnableMetricRuleBlackListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.is_enable):
+            query['IsEnable'] = request.is_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableMetricRuleBlackList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.EnableMetricRuleBlackListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_metric_rule_black_list(
+        self,
+        request: cms_20190101_models.EnableMetricRuleBlackListRequest,
+    ) -> cms_20190101_models.EnableMetricRuleBlackListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_metric_rule_black_list_with_options(request, runtime)
+
+    async def enable_metric_rule_black_list_async(
+        self,
+        request: cms_20190101_models.EnableMetricRuleBlackListRequest,
+    ) -> cms_20190101_models.EnableMetricRuleBlackListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_metric_rule_black_list_with_options_async(request, runtime)
+
     def enable_metric_rules_with_options(
         self,
         request: cms_20190101_models.EnableMetricRulesRequest,
@@ -10162,6 +12450,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.InstallMonitoringAgentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.InstallMonitoringAgentResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: InstallMonitoringAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallMonitoringAgentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -10194,6 +12491,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.InstallMonitoringAgentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.InstallMonitoringAgentResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: InstallMonitoringAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallMonitoringAgentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -10225,6 +12531,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.InstallMonitoringAgentRequest,
     ) -> cms_20190101_models.InstallMonitoringAgentResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: InstallMonitoringAgentRequest
+        @return: InstallMonitoringAgentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.install_monitoring_agent_with_options(request, runtime)
 
@@ -10232,6 +12546,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.InstallMonitoringAgentRequest,
     ) -> cms_20190101_models.InstallMonitoringAgentResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: InstallMonitoringAgentRequest
+        @return: InstallMonitoringAgentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.install_monitoring_agent_with_options_async(request, runtime)
 
@@ -10322,10 +12644,21 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyHostAvailabilityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyHostAvailabilityResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: ModifyHostAvailabilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHostAvailabilityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_config_escalation_list):
             query['AlertConfigEscalationList'] = request.alert_config_escalation_list
+        if not UtilClient.is_unset(request.alert_config_target_list):
+            query['AlertConfigTargetList'] = request.alert_config_target_list
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.id):
@@ -10364,10 +12697,21 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyHostAvailabilityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyHostAvailabilityResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: ModifyHostAvailabilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHostAvailabilityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_config_escalation_list):
             query['AlertConfigEscalationList'] = request.alert_config_escalation_list
+        if not UtilClient.is_unset(request.alert_config_target_list):
+            query['AlertConfigTargetList'] = request.alert_config_target_list
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.id):
@@ -10405,6 +12749,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifyHostAvailabilityRequest,
     ) -> cms_20190101_models.ModifyHostAvailabilityResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: ModifyHostAvailabilityRequest
+        @return: ModifyHostAvailabilityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_host_availability_with_options(request, runtime)
 
@@ -10412,6 +12764,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifyHostAvailabilityRequest,
     ) -> cms_20190101_models.ModifyHostAvailabilityResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: ModifyHostAvailabilityRequest
+        @return: ModifyHostAvailabilityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_host_availability_with_options_async(request, runtime)
 
@@ -10420,6 +12780,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyHostInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyHostInfoResponse:
+        """
+        ***\
+        
+        @param request: ModifyHostInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHostInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.host_name):
@@ -10450,6 +12817,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyHostInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyHostInfoResponse:
+        """
+        ***\
+        
+        @param request: ModifyHostInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHostInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.host_name):
@@ -10479,6 +12853,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifyHostInfoRequest,
     ) -> cms_20190101_models.ModifyHostInfoResponse:
+        """
+        ***\
+        
+        @param request: ModifyHostInfoRequest
+        @return: ModifyHostInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_host_info_with_options(request, runtime)
 
@@ -10486,6 +12866,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifyHostInfoRequest,
     ) -> cms_20190101_models.ModifyHostInfoResponse:
+        """
+        ***\
+        
+        @param request: ModifyHostInfoRequest
+        @return: ModifyHostInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_host_info_with_options_async(request, runtime)
 
@@ -10494,6 +12880,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyHybridMonitorNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyHybridMonitorNamespaceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: ModifyHybridMonitorNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHybridMonitorNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -10526,6 +12921,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyHybridMonitorNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyHybridMonitorNamespaceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: ModifyHybridMonitorNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHybridMonitorNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -10557,6 +12961,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifyHybridMonitorNamespaceRequest,
     ) -> cms_20190101_models.ModifyHybridMonitorNamespaceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: ModifyHybridMonitorNamespaceRequest
+        @return: ModifyHybridMonitorNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_hybrid_monitor_namespace_with_options(request, runtime)
 
@@ -10564,6 +12976,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifyHybridMonitorNamespaceRequest,
     ) -> cms_20190101_models.ModifyHybridMonitorNamespaceResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: ModifyHybridMonitorNamespaceRequest
+        @return: ModifyHybridMonitorNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_hybrid_monitor_namespace_with_options_async(request, runtime)
 
@@ -10572,6 +12992,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyHybridMonitorSLSGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyHybridMonitorSLSGroupResponse:
+        """
+        The Log Service projects.
+        Valid values of N: 1 to 25.
+        
+        @param request: ModifyHybridMonitorSLSGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHybridMonitorSLSGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.slsgroup_config):
@@ -10604,6 +13032,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyHybridMonitorSLSGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyHybridMonitorSLSGroupResponse:
+        """
+        The Log Service projects.
+        Valid values of N: 1 to 25.
+        
+        @param request: ModifyHybridMonitorSLSGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHybridMonitorSLSGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.slsgroup_config):
@@ -10635,6 +13071,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifyHybridMonitorSLSGroupRequest,
     ) -> cms_20190101_models.ModifyHybridMonitorSLSGroupResponse:
+        """
+        The Log Service projects.
+        Valid values of N: 1 to 25.
+        
+        @param request: ModifyHybridMonitorSLSGroupRequest
+        @return: ModifyHybridMonitorSLSGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_hybrid_monitor_slsgroup_with_options(request, runtime)
 
@@ -10642,6 +13085,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifyHybridMonitorSLSGroupRequest,
     ) -> cms_20190101_models.ModifyHybridMonitorSLSGroupResponse:
+        """
+        The Log Service projects.
+        Valid values of N: 1 to 25.
+        
+        @param request: ModifyHybridMonitorSLSGroupRequest
+        @return: ModifyHybridMonitorSLSGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_hybrid_monitor_slsgroup_with_options_async(request, runtime)
 
@@ -10650,6 +13100,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyHybridMonitorTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyHybridMonitorTaskResponse:
+        """
+        The alias of the extended field that specifies the result of basic operations performed on aggregation results.
+        
+        @param request: ModifyHybridMonitorTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHybridMonitorTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.attach_labels):
@@ -10688,6 +13145,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyHybridMonitorTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyHybridMonitorTaskResponse:
+        """
+        The alias of the extended field that specifies the result of basic operations performed on aggregation results.
+        
+        @param request: ModifyHybridMonitorTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHybridMonitorTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.attach_labels):
@@ -10725,6 +13189,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifyHybridMonitorTaskRequest,
     ) -> cms_20190101_models.ModifyHybridMonitorTaskResponse:
+        """
+        The alias of the extended field that specifies the result of basic operations performed on aggregation results.
+        
+        @param request: ModifyHybridMonitorTaskRequest
+        @return: ModifyHybridMonitorTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_hybrid_monitor_task_with_options(request, runtime)
 
@@ -10732,14 +13202,139 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifyHybridMonitorTaskRequest,
     ) -> cms_20190101_models.ModifyHybridMonitorTaskResponse:
+        """
+        The alias of the extended field that specifies the result of basic operations performed on aggregation results.
+        
+        @param request: ModifyHybridMonitorTaskRequest
+        @return: ModifyHybridMonitorTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_hybrid_monitor_task_with_options_async(request, runtime)
+
+    def modify_metric_rule_black_list_with_options(
+        self,
+        request: cms_20190101_models.ModifyMetricRuleBlackListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.ModifyMetricRuleBlackListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
+        if not UtilClient.is_unset(request.enable_end_time):
+            query['EnableEndTime'] = request.enable_end_time
+        if not UtilClient.is_unset(request.enable_start_time):
+            query['EnableStartTime'] = request.enable_start_time
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.instances):
+            query['Instances'] = request.instances
+        if not UtilClient.is_unset(request.metrics):
+            query['Metrics'] = request.metrics
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        if not UtilClient.is_unset(request.scope_value):
+            query['ScopeValue'] = request.scope_value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMetricRuleBlackList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyMetricRuleBlackListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_metric_rule_black_list_with_options_async(
+        self,
+        request: cms_20190101_models.ModifyMetricRuleBlackListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.ModifyMetricRuleBlackListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
+        if not UtilClient.is_unset(request.enable_end_time):
+            query['EnableEndTime'] = request.enable_end_time
+        if not UtilClient.is_unset(request.enable_start_time):
+            query['EnableStartTime'] = request.enable_start_time
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.instances):
+            query['Instances'] = request.instances
+        if not UtilClient.is_unset(request.metrics):
+            query['Metrics'] = request.metrics
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        if not UtilClient.is_unset(request.scope_value):
+            query['ScopeValue'] = request.scope_value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMetricRuleBlackList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyMetricRuleBlackListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_metric_rule_black_list(
+        self,
+        request: cms_20190101_models.ModifyMetricRuleBlackListRequest,
+    ) -> cms_20190101_models.ModifyMetricRuleBlackListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_metric_rule_black_list_with_options(request, runtime)
+
+    async def modify_metric_rule_black_list_async(
+        self,
+        request: cms_20190101_models.ModifyMetricRuleBlackListRequest,
+    ) -> cms_20190101_models.ModifyMetricRuleBlackListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_metric_rule_black_list_with_options_async(request, runtime)
 
     def modify_metric_rule_template_with_options(
         self,
         request: cms_20190101_models.ModifyMetricRuleTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyMetricRuleTemplateResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: ModifyMetricRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMetricRuleTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_templates):
@@ -10776,6 +13371,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyMetricRuleTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyMetricRuleTemplateResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: ModifyMetricRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMetricRuleTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_templates):
@@ -10811,6 +13415,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifyMetricRuleTemplateRequest,
     ) -> cms_20190101_models.ModifyMetricRuleTemplateResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: ModifyMetricRuleTemplateRequest
+        @return: ModifyMetricRuleTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_metric_rule_template_with_options(request, runtime)
 
@@ -10818,6 +13430,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifyMetricRuleTemplateRequest,
     ) -> cms_20190101_models.ModifyMetricRuleTemplateResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: ModifyMetricRuleTemplateRequest
+        @return: ModifyMetricRuleTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_metric_rule_template_with_options_async(request, runtime)
 
@@ -10978,6 +13598,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifySiteMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifySiteMonitorResponse:
+        """
+        The number of site monitoring tasks.
+        
+        @param request: ModifySiteMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySiteMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -11020,6 +13647,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifySiteMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifySiteMonitorResponse:
+        """
+        The number of site monitoring tasks.
+        
+        @param request: ModifySiteMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySiteMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -11061,6 +13695,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifySiteMonitorRequest,
     ) -> cms_20190101_models.ModifySiteMonitorResponse:
+        """
+        The number of site monitoring tasks.
+        
+        @param request: ModifySiteMonitorRequest
+        @return: ModifySiteMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_site_monitor_with_options(request, runtime)
 
@@ -11068,6 +13708,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.ModifySiteMonitorRequest,
     ) -> cms_20190101_models.ModifySiteMonitorResponse:
+        """
+        The number of site monitoring tasks.
+        
+        @param request: ModifySiteMonitorRequest
+        @return: ModifySiteMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_site_monitor_with_options_async(request, runtime)
 
@@ -11208,6 +13854,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutContactGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutContactGroupResponse:
+        """
+        The operation that you want to perform. Set the value to PutContactGroup.
+        
+        @param request: PutContactGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutContactGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_group_name):
@@ -11242,6 +13895,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutContactGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutContactGroupResponse:
+        """
+        The operation that you want to perform. Set the value to PutContactGroup.
+        
+        @param request: PutContactGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutContactGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_group_name):
@@ -11275,6 +13935,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutContactGroupRequest,
     ) -> cms_20190101_models.PutContactGroupResponse:
+        """
+        The operation that you want to perform. Set the value to PutContactGroup.
+        
+        @param request: PutContactGroupRequest
+        @return: PutContactGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_contact_group_with_options(request, runtime)
 
@@ -11282,6 +13948,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutContactGroupRequest,
     ) -> cms_20190101_models.PutContactGroupResponse:
+        """
+        The operation that you want to perform. Set the value to PutContactGroup.
+        
+        @param request: PutContactGroupRequest
+        @return: PutContactGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_contact_group_with_options_async(request, runtime)
 
@@ -11360,6 +14032,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutCustomEventRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutCustomEventRuleResponse:
+        """
+        The operation that you want to perform. Set the value to PutCustomEventRule.
+        
+        @param request: PutCustomEventRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutCustomEventRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_groups):
@@ -11408,6 +14087,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutCustomEventRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutCustomEventRuleResponse:
+        """
+        The operation that you want to perform. Set the value to PutCustomEventRule.
+        
+        @param request: PutCustomEventRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutCustomEventRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_groups):
@@ -11455,6 +14141,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutCustomEventRuleRequest,
     ) -> cms_20190101_models.PutCustomEventRuleResponse:
+        """
+        The operation that you want to perform. Set the value to PutCustomEventRule.
+        
+        @param request: PutCustomEventRuleRequest
+        @return: PutCustomEventRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_custom_event_rule_with_options(request, runtime)
 
@@ -11462,6 +14154,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutCustomEventRuleRequest,
     ) -> cms_20190101_models.PutCustomEventRuleResponse:
+        """
+        The operation that you want to perform. Set the value to PutCustomEventRule.
+        
+        @param request: PutCustomEventRuleRequest
+        @return: PutCustomEventRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_custom_event_rule_with_options_async(request, runtime)
 
@@ -11470,6 +14168,17 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutCustomMetricRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutCustomMetricResponse:
+        """
+        The dimensions that specify the resources whose monitoring data you want to query. Valid values of N: 1 to 21.
+        Set the value to a collection of key-value pairs. Format:`{"Key":"Value"}`.
+        The key or value must be 1 to 64 bytes in length. Excessive characters are truncated.
+        The key or value can contain letters, digits, periods (.), hyphens (-), underscores (\\_), forward slashes (/), and backslashes (\\\\).
+        >  Dimensions must be formatted as a JSON string in a specified order.
+        
+        @param request: PutCustomMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutCustomMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.metric_list):
@@ -11498,6 +14207,17 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutCustomMetricRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutCustomMetricResponse:
+        """
+        The dimensions that specify the resources whose monitoring data you want to query. Valid values of N: 1 to 21.
+        Set the value to a collection of key-value pairs. Format:`{"Key":"Value"}`.
+        The key or value must be 1 to 64 bytes in length. Excessive characters are truncated.
+        The key or value can contain letters, digits, periods (.), hyphens (-), underscores (\\_), forward slashes (/), and backslashes (\\\\).
+        >  Dimensions must be formatted as a JSON string in a specified order.
+        
+        @param request: PutCustomMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutCustomMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.metric_list):
@@ -11525,6 +14245,16 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutCustomMetricRequest,
     ) -> cms_20190101_models.PutCustomMetricResponse:
+        """
+        The dimensions that specify the resources whose monitoring data you want to query. Valid values of N: 1 to 21.
+        Set the value to a collection of key-value pairs. Format:`{"Key":"Value"}`.
+        The key or value must be 1 to 64 bytes in length. Excessive characters are truncated.
+        The key or value can contain letters, digits, periods (.), hyphens (-), underscores (\\_), forward slashes (/), and backslashes (\\\\).
+        >  Dimensions must be formatted as a JSON string in a specified order.
+        
+        @param request: PutCustomMetricRequest
+        @return: PutCustomMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_custom_metric_with_options(request, runtime)
 
@@ -11532,6 +14262,16 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutCustomMetricRequest,
     ) -> cms_20190101_models.PutCustomMetricResponse:
+        """
+        The dimensions that specify the resources whose monitoring data you want to query. Valid values of N: 1 to 21.
+        Set the value to a collection of key-value pairs. Format:`{"Key":"Value"}`.
+        The key or value must be 1 to 64 bytes in length. Excessive characters are truncated.
+        The key or value can contain letters, digits, periods (.), hyphens (-), underscores (\\_), forward slashes (/), and backslashes (\\\\).
+        >  Dimensions must be formatted as a JSON string in a specified order.
+        
+        @param request: PutCustomMetricRequest
+        @return: PutCustomMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_custom_metric_with_options_async(request, runtime)
 
@@ -11540,6 +14280,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutCustomMetricRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutCustomMetricRuleResponse:
+        """
+        The operation that you want to perform. Set the value to PutCustomMetricRule.
+        
+        @param request: PutCustomMetricRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutCustomMetricRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.comparison_operator):
@@ -11598,6 +14345,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutCustomMetricRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutCustomMetricRuleResponse:
+        """
+        The operation that you want to perform. Set the value to PutCustomMetricRule.
+        
+        @param request: PutCustomMetricRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutCustomMetricRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.comparison_operator):
@@ -11655,6 +14409,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutCustomMetricRuleRequest,
     ) -> cms_20190101_models.PutCustomMetricRuleResponse:
+        """
+        The operation that you want to perform. Set the value to PutCustomMetricRule.
+        
+        @param request: PutCustomMetricRuleRequest
+        @return: PutCustomMetricRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_custom_metric_rule_with_options(request, runtime)
 
@@ -11662,6 +14422,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutCustomMetricRuleRequest,
     ) -> cms_20190101_models.PutCustomMetricRuleResponse:
+        """
+        The operation that you want to perform. Set the value to PutCustomMetricRule.
+        
+        @param request: PutCustomMetricRuleRequest
+        @return: PutCustomMetricRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_custom_metric_rule_with_options_async(request, runtime)
 
@@ -11670,6 +14436,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutEventRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutEventRuleResponse:
+        """
+        The ID of the application group to which the event-triggered alert rule belongs.
+        
+        @param request: PutEventRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutEventRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -11710,6 +14483,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutEventRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutEventRuleResponse:
+        """
+        The ID of the application group to which the event-triggered alert rule belongs.
+        
+        @param request: PutEventRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutEventRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -11749,6 +14529,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutEventRuleRequest,
     ) -> cms_20190101_models.PutEventRuleResponse:
+        """
+        The ID of the application group to which the event-triggered alert rule belongs.
+        
+        @param request: PutEventRuleRequest
+        @return: PutEventRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_event_rule_with_options(request, runtime)
 
@@ -11756,6 +14542,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutEventRuleRequest,
     ) -> cms_20190101_models.PutEventRuleResponse:
+        """
+        The ID of the application group to which the event-triggered alert rule belongs.
+        
+        @param request: PutEventRuleRequest
+        @return: PutEventRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_event_rule_with_options_async(request, runtime)
 
@@ -11858,6 +14650,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutExporterOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutExporterOutputResponse:
+        """
+        > The monitoring data can be exported only to Log Service. More services will be supported in the future.
+        
+        @param request: PutExporterOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutExporterOutputResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_json):
@@ -11892,6 +14691,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutExporterOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutExporterOutputResponse:
+        """
+        > The monitoring data can be exported only to Log Service. More services will be supported in the future.
+        
+        @param request: PutExporterOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutExporterOutputResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_json):
@@ -11925,6 +14731,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutExporterOutputRequest,
     ) -> cms_20190101_models.PutExporterOutputResponse:
+        """
+        > The monitoring data can be exported only to Log Service. More services will be supported in the future.
+        
+        @param request: PutExporterOutputRequest
+        @return: PutExporterOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_exporter_output_with_options(request, runtime)
 
@@ -11932,6 +14744,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutExporterOutputRequest,
     ) -> cms_20190101_models.PutExporterOutputResponse:
+        """
+        > The monitoring data can be exported only to Log Service. More services will be supported in the future.
+        
+        @param request: PutExporterOutputRequest
+        @return: PutExporterOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_exporter_output_with_options_async(request, runtime)
 
@@ -12030,6 +14848,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutGroupMetricRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutGroupMetricRuleResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: PutGroupMetricRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutGroupMetricRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -12094,6 +14921,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutGroupMetricRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutGroupMetricRuleResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: PutGroupMetricRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutGroupMetricRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -12157,6 +14993,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutGroupMetricRuleRequest,
     ) -> cms_20190101_models.PutGroupMetricRuleResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: PutGroupMetricRuleRequest
+        @return: PutGroupMetricRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_group_metric_rule_with_options(request, runtime)
 
@@ -12164,6 +15008,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutGroupMetricRuleRequest,
     ) -> cms_20190101_models.PutGroupMetricRuleResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: PutGroupMetricRuleRequest
+        @return: PutGroupMetricRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_group_metric_rule_with_options_async(request, runtime)
 
@@ -12172,6 +15024,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutHybridMonitorMetricDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutHybridMonitorMetricDataResponse:
+        """
+        The tag value of the metric.
+        Valid values of N: 1 to 100.
+        >  You must specify a key and a value for a tag at the same time.
+        
+        @param request: PutHybridMonitorMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutHybridMonitorMetricDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.metric_list):
@@ -12202,6 +15063,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutHybridMonitorMetricDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutHybridMonitorMetricDataResponse:
+        """
+        The tag value of the metric.
+        Valid values of N: 1 to 100.
+        >  You must specify a key and a value for a tag at the same time.
+        
+        @param request: PutHybridMonitorMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutHybridMonitorMetricDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.metric_list):
@@ -12231,6 +15101,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutHybridMonitorMetricDataRequest,
     ) -> cms_20190101_models.PutHybridMonitorMetricDataResponse:
+        """
+        The tag value of the metric.
+        Valid values of N: 1 to 100.
+        >  You must specify a key and a value for a tag at the same time.
+        
+        @param request: PutHybridMonitorMetricDataRequest
+        @return: PutHybridMonitorMetricDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_hybrid_monitor_metric_data_with_options(request, runtime)
 
@@ -12238,6 +15116,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutHybridMonitorMetricDataRequest,
     ) -> cms_20190101_models.PutHybridMonitorMetricDataResponse:
+        """
+        The tag value of the metric.
+        Valid values of N: 1 to 100.
+        >  You must specify a key and a value for a tag at the same time.
+        
+        @param request: PutHybridMonitorMetricDataRequest
+        @return: PutHybridMonitorMetricDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_hybrid_monitor_metric_data_with_options_async(request, runtime)
 
@@ -12246,6 +15132,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutLogMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutLogMonitorResponse:
+        """
+        The name of the log field that is used for matching in the filter condition. Valid values of N: 1 to 10.
+        
+        @param request: PutLogMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutLogMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregates):
@@ -12298,6 +15191,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutLogMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutLogMonitorResponse:
+        """
+        The name of the log field that is used for matching in the filter condition. Valid values of N: 1 to 10.
+        
+        @param request: PutLogMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutLogMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregates):
@@ -12349,6 +15249,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutLogMonitorRequest,
     ) -> cms_20190101_models.PutLogMonitorResponse:
+        """
+        The name of the log field that is used for matching in the filter condition. Valid values of N: 1 to 10.
+        
+        @param request: PutLogMonitorRequest
+        @return: PutLogMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_log_monitor_with_options(request, runtime)
 
@@ -12356,6 +15262,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutLogMonitorRequest,
     ) -> cms_20190101_models.PutLogMonitorResponse:
+        """
+        The name of the log field that is used for matching in the filter condition. Valid values of N: 1 to 10.
+        
+        @param request: PutLogMonitorRequest
+        @return: PutLogMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_log_monitor_with_options_async(request, runtime)
 
@@ -12364,6 +15276,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutMetricRuleTargetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutMetricRuleTargetsResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: PutMetricRuleTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutMetricRuleTargetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_id):
@@ -12394,6 +15315,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutMetricRuleTargetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutMetricRuleTargetsResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: PutMetricRuleTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutMetricRuleTargetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_id):
@@ -12423,6 +15353,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutMetricRuleTargetsRequest,
     ) -> cms_20190101_models.PutMetricRuleTargetsResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: PutMetricRuleTargetsRequest
+        @return: PutMetricRuleTargetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_metric_rule_targets_with_options(request, runtime)
 
@@ -12430,6 +15368,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutMetricRuleTargetsRequest,
     ) -> cms_20190101_models.PutMetricRuleTargetsResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: PutMetricRuleTargetsRequest
+        @return: PutMetricRuleTargetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_metric_rule_targets_with_options_async(request, runtime)
 
@@ -12590,13 +15536,21 @@ class Client(OpenApiClient):
         tmp_req: cms_20190101_models.PutResourceMetricRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutResourceMetricRuleResponse:
+        """
+        The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
+        >  If an alert is not cleared within the mute period, a new alert notification is sent when the mute period ends.
+        
+        @param tmp_req: PutResourceMetricRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutResourceMetricRuleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cms_20190101_models.PutResourceMetricRuleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.composite_expression):
-            request.composite_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.composite_expression), 'CompositeExpression', 'json')
+            request.composite_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.composite_expression, 'CompositeExpression', 'json')
         if not UtilClient.is_unset(tmp_req.prometheus):
-            request.prometheus_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.prometheus), 'Prometheus', 'json')
+            request.prometheus_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.prometheus, 'Prometheus', 'json')
         query = {}
         if not UtilClient.is_unset(request.composite_expression_shrink):
             query['CompositeExpression'] = request.composite_expression_shrink
@@ -12658,13 +15612,21 @@ class Client(OpenApiClient):
         tmp_req: cms_20190101_models.PutResourceMetricRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutResourceMetricRuleResponse:
+        """
+        The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
+        >  If an alert is not cleared within the mute period, a new alert notification is sent when the mute period ends.
+        
+        @param tmp_req: PutResourceMetricRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutResourceMetricRuleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cms_20190101_models.PutResourceMetricRuleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.composite_expression):
-            request.composite_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.composite_expression), 'CompositeExpression', 'json')
+            request.composite_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.composite_expression, 'CompositeExpression', 'json')
         if not UtilClient.is_unset(tmp_req.prometheus):
-            request.prometheus_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.prometheus), 'Prometheus', 'json')
+            request.prometheus_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.prometheus, 'Prometheus', 'json')
         query = {}
         if not UtilClient.is_unset(request.composite_expression_shrink):
             query['CompositeExpression'] = request.composite_expression_shrink
@@ -12725,6 +15687,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutResourceMetricRuleRequest,
     ) -> cms_20190101_models.PutResourceMetricRuleResponse:
+        """
+        The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
+        >  If an alert is not cleared within the mute period, a new alert notification is sent when the mute period ends.
+        
+        @param request: PutResourceMetricRuleRequest
+        @return: PutResourceMetricRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_resource_metric_rule_with_options(request, runtime)
 
@@ -12732,6 +15701,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutResourceMetricRuleRequest,
     ) -> cms_20190101_models.PutResourceMetricRuleResponse:
+        """
+        The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
+        >  If an alert is not cleared within the mute period, a new alert notification is sent when the mute period ends.
+        
+        @param request: PutResourceMetricRuleRequest
+        @return: PutResourceMetricRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_resource_metric_rule_with_options_async(request, runtime)
 
@@ -12740,6 +15716,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutResourceMetricRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutResourceMetricRulesResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: PutResourceMetricRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutResourceMetricRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rules):
@@ -12768,6 +15753,15 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutResourceMetricRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutResourceMetricRulesResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: PutResourceMetricRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutResourceMetricRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rules):
@@ -12795,6 +15789,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutResourceMetricRulesRequest,
     ) -> cms_20190101_models.PutResourceMetricRulesResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: PutResourceMetricRulesRequest
+        @return: PutResourceMetricRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_resource_metric_rules_with_options(request, runtime)
 
@@ -12802,6 +15804,14 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.PutResourceMetricRulesRequest,
     ) -> cms_20190101_models.PutResourceMetricRulesResponse:
+        """
+        Indicates whether the call was successful. Valid values:
+        *   true: The call was successful.
+        *   false: The call failed.
+        
+        @param request: PutResourceMetricRulesRequest
+        @return: PutResourceMetricRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_resource_metric_rules_with_options_async(request, runtime)
 
@@ -12884,6 +15894,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.SendDryRunSystemEventRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.SendDryRunSystemEventResponse:
+        """
+        The name of the cloud service.
+        >  For information about the system events supported by Cloud Monitor for Alibaba Cloud services, see [System events](~~167388~~).
+        
+        @param request: SendDryRunSystemEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendDryRunSystemEventResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.event_content):
@@ -12918,6 +15936,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.SendDryRunSystemEventRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.SendDryRunSystemEventResponse:
+        """
+        The name of the cloud service.
+        >  For information about the system events supported by Cloud Monitor for Alibaba Cloud services, see [System events](~~167388~~).
+        
+        @param request: SendDryRunSystemEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendDryRunSystemEventResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.event_content):
@@ -12951,6 +15977,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.SendDryRunSystemEventRequest,
     ) -> cms_20190101_models.SendDryRunSystemEventResponse:
+        """
+        The name of the cloud service.
+        >  For information about the system events supported by Cloud Monitor for Alibaba Cloud services, see [System events](~~167388~~).
+        
+        @param request: SendDryRunSystemEventRequest
+        @return: SendDryRunSystemEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_dry_run_system_event_with_options(request, runtime)
 
@@ -12958,6 +15991,13 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.SendDryRunSystemEventRequest,
     ) -> cms_20190101_models.SendDryRunSystemEventResponse:
+        """
+        The name of the cloud service.
+        >  For information about the system events supported by Cloud Monitor for Alibaba Cloud services, see [System events](~~167388~~).
+        
+        @param request: SendDryRunSystemEventRequest
+        @return: SendDryRunSystemEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_dry_run_system_event_with_options_async(request, runtime)
 
@@ -12966,6 +16006,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.UninstallMonitoringAgentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.UninstallMonitoringAgentResponse:
+        """
+        The operation that you want to perform. Set the value to UninstallMonitoringAgent.
+        
+        @param request: UninstallMonitoringAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallMonitoringAgentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12994,6 +16041,13 @@ class Client(OpenApiClient):
         request: cms_20190101_models.UninstallMonitoringAgentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.UninstallMonitoringAgentResponse:
+        """
+        The operation that you want to perform. Set the value to UninstallMonitoringAgent.
+        
+        @param request: UninstallMonitoringAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallMonitoringAgentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13021,6 +16075,12 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.UninstallMonitoringAgentRequest,
     ) -> cms_20190101_models.UninstallMonitoringAgentResponse:
+        """
+        The operation that you want to perform. Set the value to UninstallMonitoringAgent.
+        
+        @param request: UninstallMonitoringAgentRequest
+        @return: UninstallMonitoringAgentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.uninstall_monitoring_agent_with_options(request, runtime)
 
@@ -13028,5 +16088,11 @@ class Client(OpenApiClient):
         self,
         request: cms_20190101_models.UninstallMonitoringAgentRequest,
     ) -> cms_20190101_models.UninstallMonitoringAgentResponse:
+        """
+        The operation that you want to perform. Set the value to UninstallMonitoringAgent.
+        
+        @param request: UninstallMonitoringAgentRequest
+        @return: UninstallMonitoringAgentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.uninstall_monitoring_agent_with_options_async(request, runtime)

@@ -1,3 +1,6 @@
+2023-05-11 Version: 2.0.6
+- Add batch create once task.
+
 2022-05-26 Version: 2.0.5
 - Release python api.
 
