@@ -1,3 +1,6 @@
+2023-05-11 Version: 3.1.3
+- Pub Support MessageExpiryInterval and Retained.
+
 2023-05-11 Version: 3.1.2
 - Pub Support MessageExpiryInterval and Retained.
 

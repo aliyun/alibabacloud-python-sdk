@@ -23259,6 +23259,8 @@ class Client(OpenApiClient):
             query['DeviceName'] = request.device_name
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.message_expiry_interval):
+            query['MessageExpiryInterval'] = request.message_expiry_interval
         if not UtilClient.is_unset(request.payload_format_indicator):
             query['PayloadFormatIndicator'] = request.payload_format_indicator
         if not UtilClient.is_unset(request.product_key):
@@ -23267,6 +23269,8 @@ class Client(OpenApiClient):
             query['Qos'] = request.qos
         if not UtilClient.is_unset(request.response_topic):
             query['ResponseTopic'] = request.response_topic
+        if not UtilClient.is_unset(request.retained):
+            query['Retained'] = request.retained
         if not UtilClient.is_unset(request.topic_full_name):
             query['TopicFullName'] = request.topic_full_name
         if not UtilClient.is_unset(request.user_prop):
@@ -23321,6 +23325,8 @@ class Client(OpenApiClient):
             query['DeviceName'] = request.device_name
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.message_expiry_interval):
+            query['MessageExpiryInterval'] = request.message_expiry_interval
         if not UtilClient.is_unset(request.payload_format_indicator):
             query['PayloadFormatIndicator'] = request.payload_format_indicator
         if not UtilClient.is_unset(request.product_key):
@@ -23329,6 +23335,8 @@ class Client(OpenApiClient):
             query['Qos'] = request.qos
         if not UtilClient.is_unset(request.response_topic):
             query['ResponseTopic'] = request.response_topic
+        if not UtilClient.is_unset(request.retained):
+            query['Retained'] = request.retained
         if not UtilClient.is_unset(request.topic_full_name):
             query['TopicFullName'] = request.topic_full_name
         if not UtilClient.is_unset(request.user_prop):

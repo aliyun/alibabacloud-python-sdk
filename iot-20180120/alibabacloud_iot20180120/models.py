@@ -45937,10 +45937,12 @@ class PubRequest(TeaModel):
         device_name: str = None,
         iot_instance_id: str = None,
         message_content: str = None,
+        message_expiry_interval: int = None,
         payload_format_indicator: int = None,
         product_key: str = None,
         qos: int = None,
         response_topic: str = None,
+        retained: bool = None,
         topic_full_name: str = None,
         user_prop: List[PubRequestUserProp] = None,
     ):
@@ -45969,6 +45971,7 @@ class PubRequest(TeaModel):
         # 
         # To generate a message body, you must convert the raw message into binary data and perform Base64 encoding.
         self.message_content = message_content
+        self.message_expiry_interval = message_expiry_interval
         # The payload identifier of the message when you use MQTT 5.0 for communication. Valid values:
         # 
         # *   **0**: The message is unknown byte data.
@@ -45987,6 +45990,7 @@ class PubRequest(TeaModel):
         self.qos = qos
         # The response topic in the request/response communication mode when you use MQTT 5.0. For more information, see [MQTT 5.0](~~30540~~).
         self.response_topic = response_topic
+        self.retained = retained
         # The custom topic for the device that receives the message.
         # 
         # *   Topic format: `/${productKey}/${deviceName}/user/${TopicShortName}`.
@@ -46020,6 +46024,8 @@ class PubRequest(TeaModel):
             result['IotInstanceId'] = self.iot_instance_id
         if self.message_content is not None:
             result['MessageContent'] = self.message_content
+        if self.message_expiry_interval is not None:
+            result['MessageExpiryInterval'] = self.message_expiry_interval
         if self.payload_format_indicator is not None:
             result['PayloadFormatIndicator'] = self.payload_format_indicator
         if self.product_key is not None:
@@ -46028,6 +46034,8 @@ class PubRequest(TeaModel):
             result['Qos'] = self.qos
         if self.response_topic is not None:
             result['ResponseTopic'] = self.response_topic
+        if self.retained is not None:
+            result['Retained'] = self.retained
         if self.topic_full_name is not None:
             result['TopicFullName'] = self.topic_full_name
         result['UserProp'] = []
@@ -46048,6 +46056,8 @@ class PubRequest(TeaModel):
             self.iot_instance_id = m.get('IotInstanceId')
         if m.get('MessageContent') is not None:
             self.message_content = m.get('MessageContent')
+        if m.get('MessageExpiryInterval') is not None:
+            self.message_expiry_interval = m.get('MessageExpiryInterval')
         if m.get('PayloadFormatIndicator') is not None:
             self.payload_format_indicator = m.get('PayloadFormatIndicator')
         if m.get('ProductKey') is not None:
@@ -46056,6 +46066,8 @@ class PubRequest(TeaModel):
             self.qos = m.get('Qos')
         if m.get('ResponseTopic') is not None:
             self.response_topic = m.get('ResponseTopic')
+        if m.get('Retained') is not None:
+            self.retained = m.get('Retained')
         if m.get('TopicFullName') is not None:
             self.topic_full_name = m.get('TopicFullName')
         self.user_prop = []
