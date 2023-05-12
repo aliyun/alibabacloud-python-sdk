@@ -1,3 +1,6 @@
+2023-05-12 Version: 1.0.2
+- Update python sdk.
+
 2021-03-30 Version: 1.0.1
 - Generated python 2018-01-01 for pvtz.
 
