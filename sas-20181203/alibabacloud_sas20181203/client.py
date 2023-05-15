@@ -2242,6 +2242,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.download_url):
+            query['DownloadUrl'] = request.download_url
         if not UtilClient.is_unset(request.hash_key):
             query['HashKey'] = request.hash_key
         if not UtilClient.is_unset(request.oss_key):
@@ -2283,6 +2285,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.download_url):
+            query['DownloadUrl'] = request.download_url
         if not UtilClient.is_unset(request.hash_key):
             query['HashKey'] = request.hash_key
         if not UtilClient.is_unset(request.oss_key):
@@ -3261,6 +3265,100 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_or_update_asset_group_with_options_async(request, runtime)
+
+    def create_or_update_ding_talk_with_options(
+        self,
+        request: sas_20181203_models.CreateOrUpdateDingTalkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateOrUpdateDingTalkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_list):
+            query['ConfigList'] = request.config_list
+        if not UtilClient.is_unset(request.ding_talk_lang):
+            query['DingTalkLang'] = request.ding_talk_lang
+        if not UtilClient.is_unset(request.group_id_list):
+            query['GroupIdList'] = request.group_id_list
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.interval_time):
+            query['IntervalTime'] = request.interval_time
+        if not UtilClient.is_unset(request.rule_action_name):
+            query['RuleActionName'] = request.rule_action_name
+        if not UtilClient.is_unset(request.send_url):
+            query['SendUrl'] = request.send_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateDingTalk',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateOrUpdateDingTalkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_or_update_ding_talk_with_options_async(
+        self,
+        request: sas_20181203_models.CreateOrUpdateDingTalkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateOrUpdateDingTalkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_list):
+            query['ConfigList'] = request.config_list
+        if not UtilClient.is_unset(request.ding_talk_lang):
+            query['DingTalkLang'] = request.ding_talk_lang
+        if not UtilClient.is_unset(request.group_id_list):
+            query['GroupIdList'] = request.group_id_list
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.interval_time):
+            query['IntervalTime'] = request.interval_time
+        if not UtilClient.is_unset(request.rule_action_name):
+            query['RuleActionName'] = request.rule_action_name
+        if not UtilClient.is_unset(request.send_url):
+            query['SendUrl'] = request.send_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateDingTalk',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateOrUpdateDingTalkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_or_update_ding_talk(
+        self,
+        request: sas_20181203_models.CreateOrUpdateDingTalkRequest,
+    ) -> sas_20181203_models.CreateOrUpdateDingTalkResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_or_update_ding_talk_with_options(request, runtime)
+
+    async def create_or_update_ding_talk_async(
+        self,
+        request: sas_20181203_models.CreateOrUpdateDingTalkRequest,
+    ) -> sas_20181203_models.CreateOrUpdateDingTalkResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_or_update_ding_talk_with_options_async(request, runtime)
 
     def create_restore_job_with_options(
         self,

@@ -3975,11 +3975,13 @@ class CreateCycleTaskResponse(TeaModel):
 class CreateFileDetectRequest(TeaModel):
     def __init__(
         self,
+        download_url: str = None,
         hash_key: str = None,
         oss_key: str = None,
         source_ip: str = None,
         type: int = None,
     ):
+        self.download_url = download_url
         self.hash_key = hash_key
         self.oss_key = oss_key
         self.source_ip = source_ip
@@ -3994,6 +3996,8 @@ class CreateFileDetectRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
         if self.hash_key is not None:
             result['HashKey'] = self.hash_key
         if self.oss_key is not None:
@@ -4006,6 +4010,8 @@ class CreateFileDetectRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
         if m.get('HashKey') is not None:
             self.hash_key = m.get('HashKey')
         if m.get('OssKey') is not None:
@@ -6299,6 +6305,140 @@ class CreateOrUpdateAssetGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateOrUpdateAssetGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateOrUpdateDingTalkRequest(TeaModel):
+    def __init__(
+        self,
+        config_list: str = None,
+        ding_talk_lang: str = None,
+        group_id_list: str = None,
+        id: int = None,
+        interval_time: int = None,
+        rule_action_name: str = None,
+        send_url: str = None,
+    ):
+        self.config_list = config_list
+        self.ding_talk_lang = ding_talk_lang
+        self.group_id_list = group_id_list
+        self.id = id
+        self.interval_time = interval_time
+        self.rule_action_name = rule_action_name
+        self.send_url = send_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_list is not None:
+            result['ConfigList'] = self.config_list
+        if self.ding_talk_lang is not None:
+            result['DingTalkLang'] = self.ding_talk_lang
+        if self.group_id_list is not None:
+            result['GroupIdList'] = self.group_id_list
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.interval_time is not None:
+            result['IntervalTime'] = self.interval_time
+        if self.rule_action_name is not None:
+            result['RuleActionName'] = self.rule_action_name
+        if self.send_url is not None:
+            result['SendUrl'] = self.send_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigList') is not None:
+            self.config_list = m.get('ConfigList')
+        if m.get('DingTalkLang') is not None:
+            self.ding_talk_lang = m.get('DingTalkLang')
+        if m.get('GroupIdList') is not None:
+            self.group_id_list = m.get('GroupIdList')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IntervalTime') is not None:
+            self.interval_time = m.get('IntervalTime')
+        if m.get('RuleActionName') is not None:
+            self.rule_action_name = m.get('RuleActionName')
+        if m.get('SendUrl') is not None:
+            self.send_url = m.get('SendUrl')
+        return self
+
+
+class CreateOrUpdateDingTalkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateOrUpdateDingTalkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOrUpdateDingTalkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOrUpdateDingTalkResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27881,22 +28021,49 @@ class DescribeGroupedVulRequest(TeaModel):
         type: str = None,
         uuids: str = None,
     ):
+        # $.parameters[10].schema.example
         self.alias_name = alias_name
+        # Specifies whether the vulnerability is handled. Valid values:
+        # 
+        # **y**: handled **n**: The vulnerability is not handled.
         self.asset_type = asset_type
+        # The priorities to fix the vulnerabilities. Separate multiple priorities with commas (,). Valid values:
+        # 
+        # *   **asap**: high
+        # *   **later**: medium
+        # *   **nntf**: low
         self.attach_types = attach_types
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **app**: application vulnerability
+        # *   **emg**: urgent vulnerability
+        # *   **sca**: vulnerability that is detected based on software component analysis
         self.container_field_name = container_field_name
+        # $.parameters[11].schema.example
         self.current_page = current_page
+        # $.parameters[11].schema.description
         self.dealed = dealed
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.group_id = group_id
-        # The name of the vulnerability.
+        # Code Execution
         self.lang = lang
+        # $.parameters[10].schema.enumValueTitles
         self.necessity = necessity
+        # $.parameters[11].schema.enumValueTitles
         self.page_size = page_size
+        # The alias of the vulnerability.
         self.search_tags = search_tags
+        # The UUID of the server. Separate multiple UUIDs with commas (,).
         self.target_type = target_type
-        # The total number of fixed vulnerabilities.
+        # Queries vulnerabilities by group.
         self.type = type
-        # The number of vulnerabilities that have the **high** priority.
+        # $.parameters[10].schema.description
         self.uuids = uuids
 
     def validate(self):
@@ -27986,20 +28153,41 @@ class DescribeGroupedVulResponseBodyGroupedVulItems(TeaModel):
         total_fix_count: int = None,
         type: str = None,
     ):
+        # The number of handled vulnerabilities.
         self.alias_name = alias_name
+        # The tag that is added to the vulnerability. Valid values:
+        # 
+        # *   Restart required
+        # *   Remote exploitation
+        # *   Exploit exists
+        # *   Exploitable
+        # *   Privilege escalation
+        # *   Code execution
         self.asap_count = asap_count
+        # An array that consists of the details about the vulnerability.
         self.gmt_last = gmt_last
+        # The total number of entries returned.
         self.handled_count = handled_count
+        # The number of vulnerabilities that have the **low** priority.
         self.later_count = later_count
+        # The timestamp when the vulnerability was last detected. Unit: milliseconds.
         self.name = name
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.nntf_count = nntf_count
-        # 支持RASP实时防护，取值：
-        # - **0**：不支持
-        # - **1**：支持
-        # > 无该属性也表示不支持。
+        # The number of entries returned per page. Default value: 10.
         self.rasp_defend = rasp_defend
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **app**: application vulnerability
+        # *   **emg**: urgent vulnerability
+        # *   **sca**: vulnerability that is detected based on software component analysis
         self.tags = tags
+        # gmtLast
         self.total_fix_count = total_fix_count
+        # The page number of the returned page.
         self.type = type
 
     def validate(self):
@@ -28071,10 +28259,24 @@ class DescribeGroupedVulResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries to return on each page. Default value: 10.
         self.current_page = current_page
+        # The data returned.
         self.grouped_vul_items = grouped_vul_items
+        # The tag that is used to search for the vulnerabilities. Valid values:
+        # 
+        # *   Restart required
+        # *   Remote exploitation
+        # *   Exploit exists
+        # *   Exploitable
+        # *   Privilege escalation
+        # *   Code execution
         self.page_size = page_size
+        # The ID of the asset group.
         self.request_id = request_id
+        # The types of the vulnerabilities.
+        # 
+        # > This parameter is valid only for application vulnerabilities and vulnerabilities that are detected based on software component analysis.
         self.total_count = total_count
 
     def validate(self):
@@ -34254,193 +34456,22 @@ class DescribeImageSensitiveFileByKeyRequest(TeaModel):
         scan_range: List[str] = None,
         sensitive_file_key: str = None,
     ):
-        # The key of the last data entry.
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
-        # The error message returned.
-        self.image_uuid = image_uuid
-        # The timestamp when the last scan was performed. Unit: milliseconds.
-        self.lang = lang
-        # The HTTP status code returned.
-        self.page_size = page_size
-        # The number of entries to return on each page. Default value: **20**.
-        self.scan_range = scan_range
-        # The digest of the image layer.
-        self.sensitive_file_key = sensitive_file_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.current_page is not None:
-            result['CurrentPage'] = self.current_page
-        if self.image_uuid is not None:
-            result['ImageUuid'] = self.image_uuid
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.scan_range is not None:
-            result['ScanRange'] = self.scan_range
-        if self.sensitive_file_key is not None:
-            result['SensitiveFileKey'] = self.sensitive_file_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CurrentPage') is not None:
-            self.current_page = m.get('CurrentPage')
-        if m.get('ImageUuid') is not None:
-            self.image_uuid = m.get('ImageUuid')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('ScanRange') is not None:
-            self.scan_range = m.get('ScanRange')
-        if m.get('SensitiveFileKey') is not None:
-            self.sensitive_file_key = m.get('SensitiveFileKey')
-        return self
-
-
-class DescribeImageSensitiveFileByKeyShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        current_page: int = None,
-        image_uuid: str = None,
-        lang: str = None,
-        page_size: int = None,
-        scan_range_shrink: str = None,
-        sensitive_file_key: str = None,
-    ):
-        # The key of the last data entry.
-        self.current_page = current_page
-        # The error message returned.
-        self.image_uuid = image_uuid
-        # The timestamp when the last scan was performed. Unit: milliseconds.
-        self.lang = lang
-        # The HTTP status code returned.
-        self.page_size = page_size
-        # The number of entries to return on each page. Default value: **20**.
-        self.scan_range_shrink = scan_range_shrink
-        # The digest of the image layer.
-        self.sensitive_file_key = sensitive_file_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.current_page is not None:
-            result['CurrentPage'] = self.current_page
-        if self.image_uuid is not None:
-            result['ImageUuid'] = self.image_uuid
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.scan_range_shrink is not None:
-            result['ScanRange'] = self.scan_range_shrink
-        if self.sensitive_file_key is not None:
-            result['SensitiveFileKey'] = self.sensitive_file_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CurrentPage') is not None:
-            self.current_page = m.get('CurrentPage')
-        if m.get('ImageUuid') is not None:
-            self.image_uuid = m.get('ImageUuid')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('ScanRange') is not None:
-            self.scan_range_shrink = m.get('ScanRange')
-        if m.get('SensitiveFileKey') is not None:
-            self.sensitive_file_key = m.get('SensitiveFileKey')
-        return self
-
-
-class DescribeImageSensitiveFileByKeyResponseBodyPageInfo(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        current_page: int = None,
-        last_row_key: str = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.count = count
-        # The ID of the request, which is used to locate and troubleshoot issues.
-        self.current_page = current_page
-        self.last_row_key = last_row_key
-        # Queries the sensitive files in an image.
-        self.page_size = page_size
-        # DescribeImageSensitiveFileByKey
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['Count'] = self.count
-        if self.current_page is not None:
-            result['CurrentPage'] = self.current_page
-        if self.last_row_key is not None:
-            result['LastRowKey'] = self.last_row_key
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
-        if m.get('CurrentPage') is not None:
-            self.current_page = m.get('CurrentPage')
-        if m.get('LastRowKey') is not None:
-            self.last_row_key = m.get('LastRowKey')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList(TeaModel):
-    def __init__(
-        self,
-        advice: str = None,
-        file_path: str = None,
-        first_scan_time: int = None,
-        last_scan_time: int = None,
-        layer_digest: str = None,
-        promt: str = None,
-        risk_level: str = None,
-        sensitive_file_key: str = None,
-        sensitive_file_name: str = None,
-    ):
-        # The timestamp when the first scan was performed. Unit: milliseconds.
-        self.advice = advice
         # The UUID of the image.
-        self.file_path = file_path
+        self.image_uuid = image_uuid
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
+        self.lang = lang
+        # The number of entries to return on each page. Default value: **20**.
+        self.page_size = page_size
+        # The type of the asset that you want to scan. Valid values:
+        # 
+        # *   **image**\
+        # *   **container**\
+        self.scan_range = scan_range
         # The alert type of the sensitive file. Valid values:
         # 
         # *   **npm_token**: NPM Token
@@ -34498,7 +34529,7 @@ class DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList(TeaModel):
         # *   **github_oauth_token**: Github OAuth Token
         # *   **pulumi_token**: Pulumi Token
         # *   **ventrilo_voip**: Ventrilo VoIP Server Config
-        # *   **macos_keychain**: MacOS Keychain
+        # *   **macos_keychain**: macOS Keychain
         # *   **amazon_mws_token**: Amazon MWS Token
         # *   **dynatrace_token**: Dynatrace Token
         # *   **java_keystore**: Java Keystore
@@ -34555,22 +34586,431 @@ class DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList(TeaModel):
         # *   **newrelic_api_key**: New Relic User API Key
         # *   **github_hub**: Github Token
         # *   **rubygem**: Rubygem Token
-        self.first_scan_time = first_scan_time
+        self.sensitive_file_key = sensitive_file_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.image_uuid is not None:
+            result['ImageUuid'] = self.image_uuid
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.scan_range is not None:
+            result['ScanRange'] = self.scan_range
+        if self.sensitive_file_key is not None:
+            result['SensitiveFileKey'] = self.sensitive_file_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('ImageUuid') is not None:
+            self.image_uuid = m.get('ImageUuid')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ScanRange') is not None:
+            self.scan_range = m.get('ScanRange')
+        if m.get('SensitiveFileKey') is not None:
+            self.sensitive_file_key = m.get('SensitiveFileKey')
+        return self
+
+
+class DescribeImageSensitiveFileByKeyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        image_uuid: str = None,
+        lang: str = None,
+        page_size: int = None,
+        scan_range_shrink: str = None,
+        sensitive_file_key: str = None,
+    ):
+        # The number of the page to return. Default value: **1**.
+        self.current_page = current_page
+        # The UUID of the image.
+        self.image_uuid = image_uuid
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
         # *   **zh**: Chinese
         # *   **en**: English
-        self.last_scan_time = last_scan_time
+        self.lang = lang
+        # The number of entries to return on each page. Default value: **20**.
+        self.page_size = page_size
         # The type of the asset that you want to scan. Valid values:
         # 
         # *   **image**\
         # *   **container**\
-        self.layer_digest = layer_digest
+        self.scan_range_shrink = scan_range_shrink
+        # The alert type of the sensitive file. Valid values:
+        # 
+        # *   **npm_token**: NPM Token
+        # *   **ftp_cfg**: FTP Config
+        # *   **google_oauth_key**: Google OAuth Key
+        # *   **planetscale_passwd**: Planetscale password
+        # *   **github_ssh_key**: Github SSH Key
+        # *   **msbuild_publish_profile**: MSBuild publish profile
+        # *   **fastly_cdn_token**: Fastly CDN Token
+        # *   **ssh_private_key**: SSH Private Key
+        # *   **aws_cli**: AWS CLI Credentials
+        # *   **cpanel_proftpd**: cPanel ProFTPd Credential
+        # *   **postgresql_passwd**: PostgreSQl Passwd
+        # *   **discord_client_cred**: Discord Client Credential
+        # *   **rails_database**: Rails Database Config
+        # *   **aws_access_key**: AWS Access Key
+        # *   **esmtp_cfg**: ESMTP Config
+        # *   **docker_registry_cfg**: Docker Registry Config
+        # *   **pem**: PEM
+        # *   **common_cred**: Common Credential
+        # *   **sftp_cfg**: SFTP Config
+        # *   **grafana_token**: Grafana Token
+        # *   **slack_token**: Slack Token
+        # *   **ec_private_key**: EC Private Key
+        # *   **pypi_token**: PyPI Token
+        # *   **finicity_token**: Finicity Token
+        # *   **k8s_client_key**: Kubernetes Client Key
+        # *   **git_cfg**: Git Config
+        # *   **django_key**: Django Key
+        # *   **jenkins_ssh**: Jenkins SSH Config
+        # *   **openssh_private_key**: OPENSSH Private Key
+        # *   **square_oauth**: Square OAuth Token
+        # *   **typeform_token**: Typeform Token
+        # *   **common_database_cfg**: Common Database Config
+        # *   **wordpress_database_cfg**: Wordpress Database Config
+        # *   **googlecloud_api_key**: Google Cloud API Key
+        # *   **vscode_sftp**: VSCode SFTP Config
+        # *   **apache_htpasswd**: Apache htpasswd
+        # *   **planetscale_token**: Planetscale Token
+        # *   **contentful_preview_token**: Contentful Preview Token
+        # *   **php_database_cfg**: PHP Database Config
+        # *   **atom_remote_sync**: Atom Remote Sync Config
+        # *   **aws_session_token**: AWS Session Token
+        # *   **atom_sftp_cfg**: Atom SFTP Config
+        # *   **asana_client_private_key**: Asana Client Private Key
+        # *   **tencentcloud_ak**: Tencent Cloud SecretId
+        # *   **rsa_private_key**: RSA Private Key
+        # *   **github_personal_token**: Github Personal Token
+        # *   **pgp**: PGP
+        # *   **stripe_skpk**: Stripe Secret Key
+        # *   **square_token**: Square Token
+        # *   **rails_carrierwave**: Rails Carrierwave Credential
+        # *   **dbeaver_database_cfg**: DBeaver Database Config
+        # *   **robomongo_cred**: Robomongo Credential
+        # *   **github_oauth_token**: Github OAuth Token
+        # *   **pulumi_token**: Pulumi Token
+        # *   **ventrilo_voip**: Ventrilo VoIP Server Config
+        # *   **macos_keychain**: macOS Keychain
+        # *   **amazon_mws_token**: Amazon MWS Token
+        # *   **dynatrace_token**: Dynatrace Token
+        # *   **java_keystore**: Java Keystore
+        # *   **microsoft_sdf**: Microsoft SDF
+        # *   **kubernetes_dashboard_cred**: Kubernetes Dashboard User Credential
+        # *   **atlassian_token**: Atlassian Token
+        # *   **rdp**: RDP
+        # *   **mailgun_key**: Mailgun Webhook Signing Key
+        # *   **mailchimp_api_key**: Mailchimp API Key
+        # *   **netrc_cfg**: .netrc config
+        # *   **openvpn_cfg**: OpenVPN Config
+        # *   **github_refresh_token**: Github Refresh Token
+        # *   **salesforce**: Salesforce Credential
+        # *   **sendinblue**: Sendinblue Token
+        # *   **pkcs_private_key**: PKCS Private Key
+        # *   **rubyonrails_passwd**: Ruby on Rails Passwd
+        # *   **filezilla_ftp**: FileZilla FTP Config
+        # *   **databricks_token**: Databricks Token
+        # *   **gitLab_personal_token**: GitLab Personal Token
+        # *   **rails_master_key**: Rails Master Key
+        # *   **sqlite**: SQLite3/SQLite Database
+        # *   **firefox_logins**: Firefox Login Config
+        # *   **mailgun_private_token**: Mailgun Private Token
+        # *   **joomla_cfg**: Joomla Config
+        # *   **hashicorp_terraform_token**: Hashicorp Terraform Token
+        # *   **jetbrains_ides**: Jetbrains IDEs Config
+        # *   **heroku_api_key**: Heroku API key
+        # *   **messagebird_token**: MessageBird Token
+        # *   **github_app_token**: Github App Token
+        # *   **hashicorp_vault_token**: Hashicorp Vault Token
+        # *   **pgp_private_key**: PGP Private Key
+        # *   **sshpasswd**: SSH password
+        # *   **huaweicloud_ak**: Huaei Cloud Access Key
+        # *   **aws_s3cmd**: AWS S3cmd Config
+        # *   **php_config**: php Config
+        # *   **common_private_key**: Common Private Key Type
+        # *   **microsoft_mdf**: Microsoft MDF
+        # *   **mediawiki_cfg**: MediaWiki Config
+        # *   **jenkins_cred**: Jenkins Credential
+        # *   **rubygems_cred**: Rubygems Credential
+        # *   **clojars_token**: Clojars Token
+        # *   **phoenix_web_passwd**: Phoenix Web Credential
+        # *   **puttygen_private_key**: PuTTYgen Private Key
+        # *   **google_oauth_token**: Google Oauth Token
+        # *   **rubyonrails_cfg**: Ruby On Rails Database Config
+        # *   **lob_api_key**: Lob API Key
+        # *   **pkcs_cred**: PKCS#12
+        # *   **otr_private_key**: OTR Private Key
+        # *   **contentful_delivery_token**: Contentful Delivery Token
+        # *   **digital_ocean_tugboat**: Digital Ocean Tugboat Config
+        # *   **dsa_private_key**: DSA Private Key
+        # *   **rails_app_token**: Rails App Token
+        # *   **git_cred**: Git User Credential
+        # *   **newrelic_api_key**: New Relic User API Key
+        # *   **github_hub**: Github Token
+        # *   **rubygem**: Rubygem Token
+        self.sensitive_file_key = sensitive_file_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.image_uuid is not None:
+            result['ImageUuid'] = self.image_uuid
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.scan_range_shrink is not None:
+            result['ScanRange'] = self.scan_range_shrink
+        if self.sensitive_file_key is not None:
+            result['SensitiveFileKey'] = self.sensitive_file_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('ImageUuid') is not None:
+            self.image_uuid = m.get('ImageUuid')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ScanRange') is not None:
+            self.scan_range_shrink = m.get('ScanRange')
+        if m.get('SensitiveFileKey') is not None:
+            self.sensitive_file_key = m.get('SensitiveFileKey')
+        return self
+
+
+class DescribeImageSensitiveFileByKeyResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        current_page: int = None,
+        last_row_key: str = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
         # The number of entries returned on the current page.
-        self.promt = promt
+        self.count = count
+        # The page number of the returned page.
+        self.current_page = current_page
+        # The key of the last data entry.
+        self.last_row_key = last_row_key
+        # The number of entries returned per page.
+        self.page_size = page_size
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.last_row_key is not None:
+            result['LastRowKey'] = self.last_row_key
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('LastRowKey') is not None:
+            self.last_row_key = m.get('LastRowKey')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        file_path: str = None,
+        first_scan_time: int = None,
+        last_scan_time: int = None,
+        layer_digest: str = None,
+        promt: str = None,
+        risk_level: str = None,
+        sensitive_file_key: str = None,
+        sensitive_file_name: str = None,
+    ):
         # The suggestion.
+        self.advice = advice
+        # The file path.
+        self.file_path = file_path
+        # The timestamp when the first scan was performed. Unit: milliseconds.
+        self.first_scan_time = first_scan_time
+        # The timestamp when the last scan was performed. Unit: milliseconds.
+        self.last_scan_time = last_scan_time
+        # The digest of the image layer.
+        self.layer_digest = layer_digest
+        # The sensitive content.
+        self.promt = promt
+        # The risk level of the sensitive file. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.risk_level = risk_level
-        # The pagination information.
+        # The alert type of the sensitive file. Valid values:
+        # 
+        # *   **npm_token**: NPM Token
+        # *   **ftp_cfg**: FTP Config
+        # *   **google_oauth_key**: Google OAuth Key
+        # *   **planetscale_passwd**: Planetscale password
+        # *   **github_ssh_key**: Github SSH Key
+        # *   **msbuild_publish_profile**: MSBuild publish profile
+        # *   **fastly_cdn_token**: Fastly CDN Token
+        # *   **ssh_private_key**: SSH Private Key
+        # *   **aws_cli**: AWS CLI Credentials
+        # *   **cpanel_proftpd**: cPanel ProFTPd Credential
+        # *   **postgresql_passwd**: PostgreSQl Passwd
+        # *   **discord_client_cred**: Discord Client Credential
+        # *   **rails_database**: Rails Database Config
+        # *   **aws_access_key**: AWS Access Key
+        # *   **esmtp_cfg**: ESMTP Config
+        # *   **docker_registry_cfg**: Docker Registry Config
+        # *   **pem**: PEM
+        # *   **common_cred**: Common Credential
+        # *   **sftp_cfg**: SFTP Config
+        # *   **grafana_token**: Grafana Token
+        # *   **slack_token**: Slack Token
+        # *   **ec_private_key**: EC Private Key
+        # *   **pypi_token**: PyPI Token
+        # *   **finicity_token**: Finicity Token
+        # *   **k8s_client_key**: Kubernetes Client Key
+        # *   **git_cfg**: Git Config
+        # *   **django_key**: Django Key
+        # *   **jenkins_ssh**: Jenkins SSH Config
+        # *   **openssh_private_key**: OPENSSH Private Key
+        # *   **square_oauth**: Square OAuth Token
+        # *   **typeform_token**: Typeform Token
+        # *   **common_database_cfg**: Common Database Config
+        # *   **wordpress_database_cfg**: Wordpress Database Config
+        # *   **googlecloud_api_key**: Google Cloud API Key
+        # *   **vscode_sftp**: VSCode SFTP Config
+        # *   **apache_htpasswd**: Apache htpasswd
+        # *   **planetscale_token**: Planetscale Token
+        # *   **contentful_preview_token**: Contentful Preview Token
+        # *   **php_database_cfg**: PHP Database Config
+        # *   **atom_remote_sync**: Atom Remote Sync Config
+        # *   **aws_session_token**: AWS Session Token
+        # *   **atom_sftp_cfg**: Atom SFTP Config
+        # *   **asana_client_private_key**: Asana Client Private Key
+        # *   **tencentcloud_ak**: Tencent Cloud SecretId
+        # *   **rsa_private_key**: RSA Private Key
+        # *   **github_personal_token**: Github Personal Token
+        # *   **pgp**: PGP
+        # *   **stripe_skpk**: Stripe Secret Key
+        # *   **square_token**: Square Token
+        # *   **rails_carrierwave**: Rails Carrierwave Credential
+        # *   **dbeaver_database_cfg**: DBeaver Database Config
+        # *   **robomongo_cred**: Robomongo Credential
+        # *   **github_oauth_token**: Github OAuth Token
+        # *   **pulumi_token**: Pulumi Token
+        # *   **ventrilo_voip**: Ventrilo VoIP Server Config
+        # *   **macos_keychain**: macOS Keychain
+        # *   **amazon_mws_token**: Amazon MWS Token
+        # *   **dynatrace_token**: Dynatrace Token
+        # *   **java_keystore**: Java Keystore
+        # *   **microsoft_sdf**: Microsoft SDF
+        # *   **kubernetes_dashboard_cred**: Kubernetes Dashboard User Credential
+        # *   **atlassian_token**: Atlassian Token
+        # *   **rdp**: RDP
+        # *   **mailgun_key**: Mailgun Webhook Signing Key
+        # *   **mailchimp_api_key**: Mailchimp API Key
+        # *   **netrc_cfg**: .netrc config
+        # *   **openvpn_cfg**: OpenVPN Config
+        # *   **github_refresh_token**: Github Refresh Token
+        # *   **salesforce**: Salesforce Credential
+        # *   **sendinblue**: Sendinblue Token
+        # *   **pkcs_private_key**: PKCS Private Key
+        # *   **rubyonrails_passwd**: Ruby on Rails Passwd
+        # *   **filezilla_ftp**: FileZilla FTP Config
+        # *   **databricks_token**: Databricks Token
+        # *   **gitLab_personal_token**: GitLab Personal Token
+        # *   **rails_master_key**: Rails Master Key
+        # *   **sqlite**: SQLite3/SQLite Database
+        # *   **firefox_logins**: Firefox Login Config
+        # *   **mailgun_private_token**: Mailgun Private Token
+        # *   **joomla_cfg**: Joomla Config
+        # *   **hashicorp_terraform_token**: Hashicorp Terraform Token
+        # *   **jetbrains_ides**: Jetbrains IDEs Config
+        # *   **heroku_api_key**: Heroku API key
+        # *   **messagebird_token**: MessageBird Token
+        # *   **github_app_token**: Github App Token
+        # *   **hashicorp_vault_token**: Hashicorp Vault Token
+        # *   **pgp_private_key**: PGP Private Key
+        # *   **sshpasswd**: SSH password
+        # *   **huaweicloud_ak**: Huaei Cloud Access Key
+        # *   **aws_s3cmd**: AWS S3cmd Config
+        # *   **php_config**: php Config
+        # *   **common_private_key**: Common Private Key Type
+        # *   **microsoft_mdf**: Microsoft MDF
+        # *   **mediawiki_cfg**: MediaWiki Config
+        # *   **jenkins_cred**: Jenkins Credential
+        # *   **rubygems_cred**: Rubygems Credential
+        # *   **clojars_token**: Clojars Token
+        # *   **phoenix_web_passwd**: Phoenix Web Credential
+        # *   **puttygen_private_key**: PuTTYgen Private Key
+        # *   **google_oauth_token**: Google Oauth Token
+        # *   **rubyonrails_cfg**: Ruby On Rails Database Config
+        # *   **lob_api_key**: Lob API Key
+        # *   **pkcs_cred**: PKCS#12
+        # *   **otr_private_key**: OTR Private Key
+        # *   **contentful_delivery_token**: Contentful Delivery Token
+        # *   **digital_ocean_tugboat**: Digital Ocean Tugboat Config
+        # *   **dsa_private_key**: DSA Private Key
+        # *   **rails_app_token**: Rails App Token
+        # *   **git_cred**: Git User Credential
+        # *   **newrelic_api_key**: New Relic User API Key
+        # *   **github_hub**: Github Token
+        # *   **rubygem**: Rubygem Token
         self.sensitive_file_key = sensitive_file_key
         # The alert type name of the sensitive file.
         self.sensitive_file_name = sensitive_file_name
@@ -34638,18 +35078,22 @@ class DescribeImageSensitiveFileByKeyResponseBody(TeaModel):
         sensitive_file_list: List[DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList] = None,
         success: bool = None,
     ):
+        # The status code returned. If the 200 status code is returned, the request was successful.
         self.code = code
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
-        # The risk level of the sensitive file. Valid values:
-        # 
-        # *   **high**\
-        # *   **medium**\
-        # *   **low**\
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
         # An array that consists of the sensitive files.
         self.sensitive_file_list = sensitive_file_list
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -60156,29 +60600,13 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity(TeaModel):
         time_factor: str = None,
         total_score: str = None,
     ):
-        # The asset importance score. Valid values:
-        # 
-        # *   **2**: an important asset
-        # *   **1**: a common asset
-        # *   **0**: a test asset
+        # The name of the operating system for your asset.
         self.assets_factor = assets_factor
-        # The Common Vulnerability Scoring System (CVSS) score.
+        # Indicates whether Security Center is authorized to protect the asset. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.cvss_factor = cvss_factor
-        # The environment score.
-        self.enviroment_factor = enviroment_factor
-        # Indicates whether the score of urgency to fix a vulnerability is calculated. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
-        self.is_calc = is_calc
-        # The status of the score of urgency to fix a vulnerability. Valid values:
-        # 
-        # *   **none**: No score is generated.
-        # *   **pending**: The score is pending calculation.
-        # *   **normal**: The calculation is normal.
-        self.status = status
-        # The time score.
-        self.time_factor = time_factor
         # The score of urgency to fix a vulnerability.
         # 
         # The following list describes scores and related fixing suggestions:
@@ -60186,6 +60614,21 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity(TeaModel):
         # *   If the score is from **13.5 to 15**, the vulnerability is a high-risk vulnerability. You must fix the vulnerability at the earliest opportunity.
         # *   If the score is **greater than or equal to 7 but less than 13.5**, the vulnerability is a medium-risk vulnerability. You can fix the vulnerability at your convenience.
         # *   If the score is **less than 7**, the vulnerability is a low-risk vulnerability. You can ignore the vulnerability.
+        self.enviroment_factor = enviroment_factor
+        # The Common Vulnerability Scoring System (CVSS) score.
+        self.is_calc = is_calc
+        # The environment score.
+        self.status = status
+        # Indicates whether the score of urgency to fix a vulnerability is calculated. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
+        self.time_factor = time_factor
+        # The asset importance score. Valid values:
+        # 
+        # *   **2**: an important asset
+        # *   **1**: a common asset
+        # *   **0**: a test asset
         self.total_score = total_score
 
     def validate(self):
@@ -60246,25 +60689,25 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList(TeaMod
         update_cmd: str = None,
         version: str = None,
     ):
-        # The name of the container.
-        self.container_name = container_name
-        # The complete version number.
-        self.full_version = full_version
-        # The name of the image.
-        self.image_name = image_name
-        # The reason why the vulnerability is detected.
-        self.match_detail = match_detail
-        # The rule that is used to detect the vulnerability.
-        self.match_list = match_list
-        # The name of the RPM package.
-        self.name = name
-        # The path of the software that has the vulnerability.
-        self.path = path
-        # The process ID.
-        self.pid = pid
         # The command that is used to fix the vulnerability.
+        self.container_name = container_name
+        # The reason why the vulnerability is detected.
+        self.full_version = full_version
+        # The name of the container.
+        self.image_name = image_name
+        # The path of the software that has the vulnerability.
+        self.match_detail = match_detail
+        # The process ID.
+        self.match_list = match_list
+        # The rule that is used to detect the vulnerability.
+        self.name = name
+        # The name of the RPM package.
+        self.path = path
+        # The CVE list.
+        self.pid = pid
+        # The rule that is used to detect the vulnerability.
         self.update_cmd = update_cmd
-        # The package version number of the software that has the vulnerability.
+        # The name of the image.
         self.version = version
 
     def validate(self):
@@ -60340,45 +60783,31 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJson(TeaModel):
         tag: str = None,
         cve_list: List[str] = None,
     ):
-        # The package path of the software that has the vulnerability.
+        # The complete version number.
         self.absolute_path = absolute_path
-        # The alias of the vulnerability.
-        self.alias_name = alias_name
-        # The description of the vulnerability.
-        self.description = description
-        # The public IP address of the asset that is associated with the vulnerability.
-        self.ip = ip
-        # The timestamp when the vulnerability was last detected. Unit: milliseconds.
-        self.last_ts = last_ts
-        # Indicates whether the vulnerability needs to be fixed.
-        self.necessity = necessity
-        # The name of the operating system.
-        self.os = os
-        # The release of the operating system.
-        self.os_release = os_release
-        # The ID of the vulnerability.
-        self.primary_id = primary_id
         # The RPM Package Manager (RPM) packages.
-        self.rpm_entity_list = rpm_entity_list
-        # The status of the vulnerability. Valid values:
-        # 
-        # *   **1**: unfixed
-        # *   **2**: fix failed
-        # *   3: rollback failed
-        # *   **4**: fixing
-        # *   **5**: being rolled back
-        # *   **6**: being verified
-        # *   **7**: fixed
-        # *   **8**: fixed and to be restarted
-        # *   **9**: rolled back
-        # *   **10**: ignored
-        # *   **11**: rolled back and to be restarted
-        # *   **12**: not found
-        # *   **20**: expired
-        self.status = status
+        self.alias_name = alias_name
+        # The alias of the vulnerability.
+        self.description = description
+        # The name of the operating system.
+        self.ip = ip
+        # The release of the operating system.
+        self.last_ts = last_ts
+        # The time score.
+        self.necessity = necessity
+        # The timestamp when the vulnerability was last detected. Unit: milliseconds.
+        self.os = os
+        # The package path of the software that has the vulnerability.
+        self.os_release = os_release
         # The tag that is added to the vulnerability.
+        self.primary_id = primary_id
+        # The package version number of the software that has the vulnerability.
+        self.rpm_entity_list = rpm_entity_list
+        # The ID of the vulnerability.
+        self.status = status
+        # The description of the vulnerability.
         self.tag = tag
-        # The CVE list.
+        # Indicates whether the vulnerability needs to be fixed.
         self.cve_list = cve_list
 
     def validate(self):
@@ -60493,8 +60922,55 @@ class DescribeVulListResponseBodyVulRecords(TeaModel):
         type: str = None,
         uuid: str = None,
     ):
-        # The name of the vulnerability.
+        # The status of the vulnerability. Valid values:
+        # 
+        # *   **1**: unfixed
+        # *   **2**: fix failed
+        # *   3: rollback failed
+        # *   **4**: fixing
+        # *   **5**: being rolled back
+        # *   **6**: being verified
+        # *   **7**: fixed
+        # *   **8**: fixed and to be restarted
+        # *   **9**: rolled back
+        # *   **10**: ignored
+        # *   **11**: rolled back and to be restarted
+        # *   **12**: not found
+        # *   **20**: expired
         self.alias_name = alias_name
+        self.auth_version = auth_version
+        # CentOS 7.2 64-bit
+        self.bind = bind
+        # The public IP address of the asset that is associated with the vulnerability.
+        self.extend_content_json = extend_content_json
+        # The priority to fix the vulnerability. Valid values:
+        # 
+        # *   **asap**: high
+        # *   **later**: medium
+        # *   **nntf**: low
+        # 
+        # > We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
+        self.first_ts = first_ts
+        # The name of the vulnerability.
+        self.group_id = group_id
+        # The private IP address of the asset.
+        self.instance_id = instance_id
+        # The name of the operating system for your asset.
+        self.instance_name = instance_name
+        # The tag that is added to the vulnerability.
+        self.internet_ip = internet_ip
+        # The timestamp when the vulnerability was first detected. Unit: milliseconds.
+        self.intranet_ip = intranet_ip
+        # The ID of the region in which the server resides.
+        self.last_ts = last_ts
+        # The ID of the vulnerability.
+        self.modify_ts = modify_ts
+        # The instance ID of the asset.
+        self.name = name
+        # The UUID of the asset.
+        self.necessity = necessity
+        # The name of the vulnerability.
+        self.online = online
         # The edition of Security Center that is authorized to protect the asset. Valid values:
         # 
         # *   **1**: Basic edition
@@ -60503,62 +60979,31 @@ class DescribeVulListResponseBodyVulRecords(TeaModel):
         # *   **3**: Enterprise edition
         # *   **7**: Ultimate edition
         # *   **10**: Value-added Plan edition
-        self.auth_version = auth_version
-        # Indicates whether Security Center is authorized to protect the asset. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        self.bind = bind
-        # The extended information about the vulnerability.
-        self.extend_content_json = extend_content_json
-        # The timestamp when the vulnerability was first detected. Unit: milliseconds.
-        self.first_ts = first_ts
-        # The ID of the asset group.
-        self.group_id = group_id
-        # The instance ID of the asset.
-        self.instance_id = instance_id
-        # The name of the asset.
-        self.instance_name = instance_name
-        # The public IP address of the asset.
-        self.internet_ip = internet_ip
-        # The private IP address of the asset.
-        self.intranet_ip = intranet_ip
-        # The timestamp when the vulnerability was last detected. Unit: milliseconds.
-        self.last_ts = last_ts
-        # The timestamp when the vulnerability status was modified. Unit: milliseconds.
-        self.modify_ts = modify_ts
-        # The name of the vulnerability.
-        self.name = name
-        # The priority to fix the vulnerability. Valid values:
-        # 
-        # *   **asap**: high
-        # *   **later**: medium
-        # *   **nntf**: low
-        # 
-        # > We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
-        self.necessity = necessity
-        # Indicates whether the Security Center agent on the asset is online. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        self.online = online
-        # The name of the operating system for your asset.
         self.os_name = os_name
-        # The name of the operating system for your asset.
-        self.os_version = os_version
-        # The ID of the vulnerability.
-        self.primary_id = primary_id
-        self.rasp_defend = rasp_defend
-        self.rasp_status = rasp_status
-        # The ID of the region in which the server resides.
-        self.region_id = region_id
-        # The Common Vulnerabilities and Exposures (CVE) IDs related to the vulnerability. Multiple CVE IDs are separated by commas (,).
-        self.related = related
-        # The timestamp when the vulnerability was fixed. Unit: milliseconds.
-        self.repair_ts = repair_ts
         # The code that indicates the vulnerability fixing result.
+        self.os_version = os_version
+        # The name of the asset.
+        self.primary_id = primary_id
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **emg**: urgent vulnerability
+        # *   **app**: application vulnerability
+        # *   **sca**: application vulnerability that is detected by using software component analysis
+        self.rasp_defend = rasp_defend
+        # The timestamp when the vulnerability status was modified. Unit: milliseconds.
+        self.rasp_status = rasp_status
+        # The timestamp when the vulnerability was fixed. Unit: milliseconds.
+        self.region_id = region_id
+        # The timestamp when the vulnerability was last detected. Unit: milliseconds.
+        self.related = related
+        # The ID of the asset group.
+        self.repair_ts = repair_ts
+        # The Common Vulnerabilities and Exposures (CVE) IDs related to the vulnerability. Multiple CVE IDs are separated by commas (,).
         self.result_code = result_code
-        # The message that indicates the vulnerability fixing result.
+        # The extended information about the vulnerability.
         self.result_message = result_message
         # The status of the vulnerability. Valid values:
         # 
@@ -60576,18 +61021,14 @@ class DescribeVulListResponseBodyVulRecords(TeaModel):
         # *   **12**: not found
         # *   **20**: expired
         self.status = status
-        # The tag that is added to the vulnerability.
-        self.tag = tag
-        # The type of the vulnerability. Valid values:
+        # Indicates whether the Security Center agent on the asset is online. Valid values:
         # 
-        # *   **cve**: Linux software vulnerability
-        # *   **sys**: Windows system vulnerability
-        # *   **cms**: Web-CMS vulnerability
-        # *   **emg**: urgent vulnerability
-        # *   **app**: application vulnerability
-        # *   **sca**: application vulnerability that is detected by using software component analysis
+        # *   **true**: yes
+        # *   **false**: no
+        self.tag = tag
+        # The public IP address of the asset.
         self.type = type
-        # The UUID of the asset.
+        # The message that indicates the vulnerability fixing result.
         self.uuid = uuid
 
     def validate(self):
@@ -61396,12 +61837,7 @@ class DescribeVulTargetStatisticsRequest(TeaModel):
         self,
         type: str = None,
     ):
-        # The type of the vulnerabilities. Valid values:
-        # 
-        # *   **cve**: Linux software vulnerabilities
-        # *   **sys**: Windows system vulnerabilities
-        # *   **cms**: Web-CMS vulnerabilities
-        # *   **emg**: urgent vulnerabilities
+        # The data returned.
         self.type = type
 
     def validate(self):
@@ -61431,17 +61867,13 @@ class DescribeVulTargetStatisticsResponseBodyTargetStatsTargets(TeaModel):
         target: str = None,
         target_type: str = None,
     ):
-        # Indicates whether the configurations are applied to the server. Valid values:
-        # 
-        # *   **add**: yes
-        # *   **del**: no
-        self.flag = flag
         # The group ID or UUID of the server to which the configurations are applied.
-        self.target = target
+        self.flag = flag
         # The condition by which the configurations are applied to the server. Valid values:
         # 
         # *   **uuid**: the UUID of the server
         # *   **groupId**: the ID of the server group
+        self.target = target
         self.target_type = target_type
 
     def validate(self):
@@ -61480,18 +61912,13 @@ class DescribeVulTargetStatisticsResponseBodyTargetStats(TeaModel):
         uuid_count: int = None,
         vul_type: str = None,
     ):
-        # An array that consists of available servers.
+        # The information about the server.
         self.targets = targets
-        # The total number of servers.
-        self.total_count = total_count
         # The number of servers to which the configurations are applied.
+        self.total_count = total_count
+        # An array that consists of available servers.
         self.uuid_count = uuid_count
-        # The type of the vulnerabilities. Valid values:
-        # 
-        # *   cve: Linux software vulnerabilities
-        # *   sys: Windows system vulnerabilities
-        # *   cms: Web-CMS vulnerabilities
-        # *   emg: urgent vulnerabilities
+        # The total number of servers.
         self.vul_type = vul_type
 
     def validate(self):
@@ -61543,15 +61970,15 @@ class DescribeVulTargetStatisticsResponseBody(TeaModel):
         target_stats: List[DescribeVulTargetStatisticsResponseBodyTargetStats] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
-        self.current_page = current_page
-        # The number of entries returned per page.
-        self.page_size = page_size
         # The ID of the request.
-        self.request_id = request_id
-        # An array that consists of the configurations of the vulnerability scan feature.
-        self.target_stats = target_stats
+        self.current_page = current_page
         # The total number of entries returned.
+        self.page_size = page_size
+        # The number of entries returned per page.
+        self.request_id = request_id
+        # The configurations of the vulnerability scan feature.
+        self.target_stats = target_stats
+        # An array that consists of the configurations of the vulnerability scan feature.
         self.total_count = total_count
 
     def validate(self):
