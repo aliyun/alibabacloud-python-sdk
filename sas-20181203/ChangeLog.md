@@ -1,3 +1,6 @@
+2023-05-15 Version: 2.1.5
+- Change ListAssetSelectionTarget Request.
+
 2023-05-15 Version: 2.1.4
 - Change DescribeSoarStrategyTaskDetail Request.
 
