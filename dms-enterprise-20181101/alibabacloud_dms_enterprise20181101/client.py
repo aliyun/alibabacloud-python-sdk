@@ -4992,6 +4992,14 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ExecuteStructSyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
+        """
+        If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+        >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
+        
+        @param request: ExecuteStructSyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteStructSyncResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -5022,6 +5030,14 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ExecuteStructSyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
+        """
+        If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+        >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
+        
+        @param request: ExecuteStructSyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteStructSyncResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -5051,6 +5067,13 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ExecuteStructSyncRequest,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
+        """
+        If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+        >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
+        
+        @param request: ExecuteStructSyncRequest
+        @return: ExecuteStructSyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.execute_struct_sync_with_options(request, runtime)
 
@@ -5058,6 +5081,13 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ExecuteStructSyncRequest,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
+        """
+        If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+        >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
+        
+        @param request: ExecuteStructSyncRequest
+        @return: ExecuteStructSyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.execute_struct_sync_with_options_async(request, runtime)
 
@@ -15847,6 +15877,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_owners_with_options_async(request, runtime)
 
+    def skip_data_correct_row_check_with_options(
+        self,
+        request: dms_enterprise_20181101_models.SkipDataCorrectRowCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SkipDataCorrectRowCheckResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SkipDataCorrectRowCheck',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SkipDataCorrectRowCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def skip_data_correct_row_check_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.SkipDataCorrectRowCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SkipDataCorrectRowCheckResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SkipDataCorrectRowCheck',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SkipDataCorrectRowCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def skip_data_correct_row_check(
+        self,
+        request: dms_enterprise_20181101_models.SkipDataCorrectRowCheckRequest,
+    ) -> dms_enterprise_20181101_models.SkipDataCorrectRowCheckResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.skip_data_correct_row_check_with_options(request, runtime)
+
+    async def skip_data_correct_row_check_async(
+        self,
+        request: dms_enterprise_20181101_models.SkipDataCorrectRowCheckRequest,
+    ) -> dms_enterprise_20181101_models.SkipDataCorrectRowCheckResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.skip_data_correct_row_check_with_options_async(request, runtime)
+
     def stop_task_flow_instance_with_options(
         self,
         request: dms_enterprise_20181101_models.StopTaskFlowInstanceRequest,
@@ -17135,9 +17243,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
         """
-        Indicates whether the request was successful. Valid values:
-        *   **true**: The request was successful.
-        *   **false**: The request failed.
+        ###
+        The edges can be updated only when the following conditions are met:
+        1.  The specified edge exists in the directed acyclic graph (DAG) of the task flow specified by DagId.
+        2.  The specified edge nodes exist in the DAG of the task flow specified by DagId.
+        3.  After the update, rings do not exist in the DAG.
         
         @param tmp_req: UpdateTaskFlowEdgesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17180,9 +17290,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
         """
-        Indicates whether the request was successful. Valid values:
-        *   **true**: The request was successful.
-        *   **false**: The request failed.
+        ###
+        The edges can be updated only when the following conditions are met:
+        1.  The specified edge exists in the directed acyclic graph (DAG) of the task flow specified by DagId.
+        2.  The specified edge nodes exist in the DAG of the task flow specified by DagId.
+        3.  After the update, rings do not exist in the DAG.
         
         @param tmp_req: UpdateTaskFlowEdgesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17224,9 +17336,11 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowEdgesRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
         """
-        Indicates whether the request was successful. Valid values:
-        *   **true**: The request was successful.
-        *   **false**: The request failed.
+        ###
+        The edges can be updated only when the following conditions are met:
+        1.  The specified edge exists in the directed acyclic graph (DAG) of the task flow specified by DagId.
+        2.  The specified edge nodes exist in the DAG of the task flow specified by DagId.
+        3.  After the update, rings do not exist in the DAG.
         
         @param request: UpdateTaskFlowEdgesRequest
         @return: UpdateTaskFlowEdgesResponse
@@ -17239,9 +17353,11 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowEdgesRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
         """
-        Indicates whether the request was successful. Valid values:
-        *   **true**: The request was successful.
-        *   **false**: The request failed.
+        ###
+        The edges can be updated only when the following conditions are met:
+        1.  The specified edge exists in the directed acyclic graph (DAG) of the task flow specified by DagId.
+        2.  The specified edge nodes exist in the DAG of the task flow specified by DagId.
+        3.  After the update, rings do not exist in the DAG.
         
         @param request: UpdateTaskFlowEdgesRequest
         @return: UpdateTaskFlowEdgesResponse

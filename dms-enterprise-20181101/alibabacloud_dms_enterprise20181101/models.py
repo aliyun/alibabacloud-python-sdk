@@ -10884,7 +10884,11 @@ class ExecuteStructSyncRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the ticket.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -10919,9 +10923,13 @@ class ExecuteStructSyncResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -21803,9 +21811,11 @@ class GetStructSyncJobDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The total number of tables.
+        # The ticket ID.
         self.order_id = order_id
-        # The error message that is returned.
+        # The tenant ID.
+        # 
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -21844,22 +21854,35 @@ class GetStructSyncJobDetailResponseBodyStructSyncJobDetail(TeaModel):
         table_analyzed: int = None,
         table_count: int = None,
     ):
+        # The ID of the SQL task group.
         self.dbtask_group_id = dbtask_group_id
-        self.execute_count = execute_count
         # The number of SQL statements that have been executed.
+        self.execute_count = execute_count
+        # The status of the task. Valid values:
+        # 
+        # *   **NEW**: The task was created.
+        # *   **COMPARING**: The schemas of tables were being compared.
+        # *   **COMPARE_BREAK**: The schema comparison was interrupted.
+        # *   **COMPARE_FINISH**: The comparison was finished.
+        # *   **NOT_SCRIPTS**: The comparison was finished but no executable script was available.
+        # *   **SUBMITED_DBTASK**: The task was submitted.
+        # *   **DBTASK_SUCCESS**: The task was complete.
+        # *   **SUBMITED_WORKFLOW**: The ticket was submitted.
+        # *   **WORKFLOW_SUCCESS**: The ticket was approved.
         self.job_status = job_status
-        # The details of the schema synchronization task.
+        # The description of the task.
         self.message = message
-        self.security_rule = security_rule
-        # The number of tables that have been analyzed.
-        self.sql_count = sql_count
         # The type of security rule. Valid values:
         # 
-        # *   **CANNOT_SYNC**: The schema synchronization is not allowed.
+        # *   **CANNOT_SYNC**: Synchronization cannot be performed.
         # *   **WITH_APPROVE**: The schema synchronization can be performed after the ticket is approved. You can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
         # *   **WITHOUT_APPROVE**: The schema synchronization can be performed without approval.
+        self.security_rule = security_rule
+        # The total number of SQL statements.
+        self.sql_count = sql_count
+        # The number of tables that have been analyzed.
         self.table_analyzed = table_analyzed
-        # The ID of the request.
+        # The total number of tables.
         self.table_count = table_count
 
     def validate(self):
@@ -21919,25 +21942,15 @@ class GetStructSyncJobDetailResponseBody(TeaModel):
         struct_sync_job_detail: GetStructSyncJobDetailResponseBodyStructSyncJobDetail = None,
         success: bool = None,
     ):
-        # The description of the task.
+        # The error code.
         self.error_code = error_code
-        # The ID of the ticket.
+        # The error message.
         self.error_message = error_message
-        # The status of the task. Valid values:
-        # 
-        # *   **NEW**: The task was created.
-        # *   **COMPARING**: The schemas of tables were being compared.
-        # *   **COMPARE_BREAK**: The schema comparison was interrupted.
-        # *   **COMPARE_FINISH**: The schema comparison was complete.
-        # *   **NOT_SCRIPTS**: The schema comparison was complete. No scripts were available.
-        # *   **SUBMITED_DBTASK**: The task was submitted.
-        # *   **DBTASK_SUCCESS**: The task was complete.
-        # *   **SUBMITED_WORKFLOW**: The ticket was submitted for approval.
-        # *   **WORKFLOW_SUCCESS**: The ticket was approved.
+        # The request ID.
         self.request_id = request_id
-        # 1
+        # The details of the schema synchronization task.
         self.struct_sync_job_detail = struct_sync_job_detail
-        # The total number of SQL statements.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -44326,6 +44339,134 @@ class SetOwnersResponse(TeaModel):
         return self
 
 
+class SkipDataCorrectRowCheckRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        reason: str = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.reason = reason
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class SkipDataCorrectRowCheckResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SkipDataCorrectRowCheckResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SkipDataCorrectRowCheckResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SkipDataCorrectRowCheckResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopTaskFlowInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -46617,11 +46758,11 @@ class UpdateTaskFlowEdgesRequestEdges(TeaModel):
         node_end: int = None,
         node_from: int = None,
     ):
-        # $.parameters[2].schema.description
+        # The ID of the task flow edge.
         self.id = id
-        # $.parameters[2].schema.example
+        # The ID of the end node of the edge.
         self.node_end = node_end
-        # $.parameters[2].schema.enumValueTitles
+        # The ID of the start node of the edge.
         self.node_from = node_from
 
     def validate(self):
@@ -46659,11 +46800,13 @@ class UpdateTaskFlowEdgesRequest(TeaModel):
         edges: List[UpdateTaskFlowEdgesRequestEdges] = None,
         tid: int = None,
     ):
-        # $.parameters[3].schema.example
+        # The task flow ID. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
-        # $.parameters[3].schema.enumValueTitles
+        # The list of updated task flow edges.
         self.edges = edges
-        # $.parameters[3].schema.description
+        # The tenant ID.
+        # 
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -46709,11 +46852,13 @@ class UpdateTaskFlowEdgesShrinkRequest(TeaModel):
         edges_shrink: str = None,
         tid: int = None,
     ):
-        # $.parameters[3].schema.example
+        # The task flow ID. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
-        # $.parameters[3].schema.enumValueTitles
+        # The list of updated task flow edges.
         self.edges_shrink = edges_shrink
-        # $.parameters[3].schema.description
+        # The tenant ID.
+        # 
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -46752,12 +46897,16 @@ class UpdateTaskFlowEdgesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # UpdateTaskFlowEdges
+        # The error code.
         self.error_code = error_code
-        # WB01220505
+        # The error message returned if the request failed.
         self.error_message = error_message
-        # Updates the start and end nodes of specified edges of a specified task flow at a time.
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
