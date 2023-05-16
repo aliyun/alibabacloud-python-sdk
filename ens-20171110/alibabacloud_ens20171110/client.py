@@ -1463,6 +1463,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_ens_route_entry_with_options_async(request, runtime)
 
+    def create_ens_sale_control_with_options(
+        self,
+        tmp_req: ens_20171110_models.CreateEnsSaleControlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateEnsSaleControlResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateEnsSaleControlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sale_controls):
+            request.sale_controls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sale_controls, 'SaleControls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid_account):
+            query['AliUidAccount'] = request.ali_uid_account
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.sale_controls_shrink):
+            query['SaleControls'] = request.sale_controls_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEnsSaleControl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateEnsSaleControlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ens_sale_control_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.CreateEnsSaleControlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateEnsSaleControlResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateEnsSaleControlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sale_controls):
+            request.sale_controls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sale_controls, 'SaleControls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid_account):
+            query['AliUidAccount'] = request.ali_uid_account
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.sale_controls_shrink):
+            query['SaleControls'] = request.sale_controls_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEnsSaleControl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateEnsSaleControlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ens_sale_control(
+        self,
+        request: ens_20171110_models.CreateEnsSaleControlRequest,
+    ) -> ens_20171110_models.CreateEnsSaleControlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_ens_sale_control_with_options(request, runtime)
+
+    async def create_ens_sale_control_async(
+        self,
+        request: ens_20171110_models.CreateEnsSaleControlRequest,
+    ) -> ens_20171110_models.CreateEnsSaleControlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ens_sale_control_with_options_async(request, runtime)
+
     def create_ens_service_with_options(
         self,
         request: ens_20171110_models.CreateEnsServiceRequest,
@@ -3789,6 +3875,178 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_ens_route_entry_with_options_async(request, runtime)
 
+    def delete_ens_sale_condition_control_with_options(
+        self,
+        tmp_req: ens_20171110_models.DeleteEnsSaleConditionControlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteEnsSaleConditionControlResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeleteEnsSaleConditionControlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sale_controls):
+            request.sale_controls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sale_controls, 'SaleControls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid_account):
+            query['AliUidAccount'] = request.ali_uid_account
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.sale_controls_shrink):
+            query['SaleControls'] = request.sale_controls_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEnsSaleConditionControl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteEnsSaleConditionControlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ens_sale_condition_control_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.DeleteEnsSaleConditionControlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteEnsSaleConditionControlResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeleteEnsSaleConditionControlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sale_controls):
+            request.sale_controls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sale_controls, 'SaleControls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid_account):
+            query['AliUidAccount'] = request.ali_uid_account
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.sale_controls_shrink):
+            query['SaleControls'] = request.sale_controls_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEnsSaleConditionControl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteEnsSaleConditionControlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ens_sale_condition_control(
+        self,
+        request: ens_20171110_models.DeleteEnsSaleConditionControlRequest,
+    ) -> ens_20171110_models.DeleteEnsSaleConditionControlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ens_sale_condition_control_with_options(request, runtime)
+
+    async def delete_ens_sale_condition_control_async(
+        self,
+        request: ens_20171110_models.DeleteEnsSaleConditionControlRequest,
+    ) -> ens_20171110_models.DeleteEnsSaleConditionControlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ens_sale_condition_control_with_options_async(request, runtime)
+
+    def delete_ens_sale_control_with_options(
+        self,
+        tmp_req: ens_20171110_models.DeleteEnsSaleControlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteEnsSaleControlResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeleteEnsSaleControlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sale_controls):
+            request.sale_controls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sale_controls, 'SaleControls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid_account):
+            query['AliUidAccount'] = request.ali_uid_account
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.sale_controls_shrink):
+            query['SaleControls'] = request.sale_controls_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEnsSaleControl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteEnsSaleControlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ens_sale_control_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.DeleteEnsSaleControlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteEnsSaleControlResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeleteEnsSaleControlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sale_controls):
+            request.sale_controls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sale_controls, 'SaleControls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid_account):
+            query['AliUidAccount'] = request.ali_uid_account
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.sale_controls_shrink):
+            query['SaleControls'] = request.sale_controls_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEnsSaleControl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteEnsSaleControlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ens_sale_control(
+        self,
+        request: ens_20171110_models.DeleteEnsSaleControlRequest,
+    ) -> ens_20171110_models.DeleteEnsSaleControlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ens_sale_control_with_options(request, runtime)
+
+    async def delete_ens_sale_control_async(
+        self,
+        request: ens_20171110_models.DeleteEnsSaleControlRequest,
+    ) -> ens_20171110_models.DeleteEnsSaleControlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ens_sale_control_with_options_async(request, runtime)
+
     def delete_epn_instance_with_options(
         self,
         request: ens_20171110_models.DeleteEpnInstanceRequest,
@@ -4800,14 +5058,24 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribeAICImagesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
         if not UtilClient.is_unset(request.image_url):
             query['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.max_date):
+            query['MaxDate'] = request.max_date
+        if not UtilClient.is_unset(request.min_date):
+            query['MinDate'] = request.min_date
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4834,14 +5102,24 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribeAICImagesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
         if not UtilClient.is_unset(request.image_url):
             query['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.max_date):
+            query['MaxDate'] = request.max_date
+        if not UtilClient.is_unset(request.min_date):
+            query['MinDate'] = request.min_date
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4883,10 +5161,16 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribeARMServerInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.aicspecs):
+            request.aicspecs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aicspecs, 'AICSpecs', 'json')
         if not UtilClient.is_unset(tmp_req.ens_region_ids):
             request.ens_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ens_region_ids, 'EnsRegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.server_ids):
             request.server_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.server_ids, 'ServerIds', 'json')
+        if not UtilClient.is_unset(tmp_req.server_specs):
+            request.server_specs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.server_specs, 'ServerSpecs', 'json')
+        if not UtilClient.is_unset(tmp_req.states):
+            request.states_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.states, 'States', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -4915,10 +5199,16 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribeARMServerInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.aicspecs):
+            request.aicspecs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aicspecs, 'AICSpecs', 'json')
         if not UtilClient.is_unset(tmp_req.ens_region_ids):
             request.ens_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ens_region_ids, 'EnsRegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.server_ids):
             request.server_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.server_ids, 'ServerIds', 'json')
+        if not UtilClient.is_unset(tmp_req.server_specs):
+            request.server_specs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.server_specs, 'ServerSpecs', 'json')
+        if not UtilClient.is_unset(tmp_req.states):
+            request.states_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.states, 'States', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -6169,6 +6459,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_elb_available_resource_info_with_options_async(runtime)
 
+    def describe_ens_commodity_code_with_options(
+        self,
+        request: ens_20171110_models.DescribeEnsCommodityCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsCommodityCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsCommodityCode',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsCommodityCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ens_commodity_code_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeEnsCommodityCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsCommodityCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsCommodityCode',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsCommodityCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ens_commodity_code(
+        self,
+        request: ens_20171110_models.DescribeEnsCommodityCodeRequest,
+    ) -> ens_20171110_models.DescribeEnsCommodityCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ens_commodity_code_with_options(request, runtime)
+
+    async def describe_ens_commodity_code_async(
+        self,
+        request: ens_20171110_models.DescribeEnsCommodityCodeRequest,
+    ) -> ens_20171110_models.DescribeEnsCommodityCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ens_commodity_code_with_options_async(request, runtime)
+
+    def describe_ens_commodity_module_code_with_options(
+        self,
+        request: ens_20171110_models.DescribeEnsCommodityModuleCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsCommodityModuleCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.module_code):
+            query['ModuleCode'] = request.module_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsCommodityModuleCode',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsCommodityModuleCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ens_commodity_module_code_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeEnsCommodityModuleCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsCommodityModuleCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.module_code):
+            query['ModuleCode'] = request.module_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsCommodityModuleCode',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsCommodityModuleCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ens_commodity_module_code(
+        self,
+        request: ens_20171110_models.DescribeEnsCommodityModuleCodeRequest,
+    ) -> ens_20171110_models.DescribeEnsCommodityModuleCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ens_commodity_module_code_with_options(request, runtime)
+
+    async def describe_ens_commodity_module_code_async(
+        self,
+        request: ens_20171110_models.DescribeEnsCommodityModuleCodeRequest,
+    ) -> ens_20171110_models.DescribeEnsCommodityModuleCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ens_commodity_module_code_with_options_async(request, runtime)
+
     def describe_ens_eip_addresses_with_options(
         self,
         request: ens_20171110_models.DescribeEnsEipAddressesRequest,
@@ -6920,6 +7354,244 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribeEnsRouteEntryListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_route_entry_list_with_options_async(request, runtime)
+
+    def describe_ens_sale_control_with_options(
+        self,
+        request: ens_20171110_models.DescribeEnsSaleControlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsSaleControlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid_account):
+            query['AliUidAccount'] = request.ali_uid_account
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.module_code):
+            query['ModuleCode'] = request.module_code
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsSaleControl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsSaleControlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ens_sale_control_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeEnsSaleControlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsSaleControlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid_account):
+            query['AliUidAccount'] = request.ali_uid_account
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.module_code):
+            query['ModuleCode'] = request.module_code
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsSaleControl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsSaleControlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ens_sale_control(
+        self,
+        request: ens_20171110_models.DescribeEnsSaleControlRequest,
+    ) -> ens_20171110_models.DescribeEnsSaleControlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ens_sale_control_with_options(request, runtime)
+
+    async def describe_ens_sale_control_async(
+        self,
+        request: ens_20171110_models.DescribeEnsSaleControlRequest,
+    ) -> ens_20171110_models.DescribeEnsSaleControlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ens_sale_control_with_options_async(request, runtime)
+
+    def describe_ens_sale_control_available_resource_with_options(
+        self,
+        request: ens_20171110_models.DescribeEnsSaleControlAvailableResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsSaleControlAvailableResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsSaleControlAvailableResource',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsSaleControlAvailableResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ens_sale_control_available_resource_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeEnsSaleControlAvailableResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsSaleControlAvailableResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsSaleControlAvailableResource',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsSaleControlAvailableResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ens_sale_control_available_resource(
+        self,
+        request: ens_20171110_models.DescribeEnsSaleControlAvailableResourceRequest,
+    ) -> ens_20171110_models.DescribeEnsSaleControlAvailableResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ens_sale_control_available_resource_with_options(request, runtime)
+
+    async def describe_ens_sale_control_available_resource_async(
+        self,
+        request: ens_20171110_models.DescribeEnsSaleControlAvailableResourceRequest,
+    ) -> ens_20171110_models.DescribeEnsSaleControlAvailableResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ens_sale_control_available_resource_with_options_async(request, runtime)
+
+    def describe_ens_sale_control_stock_with_options(
+        self,
+        request: ens_20171110_models.DescribeEnsSaleControlStockRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsSaleControlStockResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid_account):
+            query['AliUidAccount'] = request.ali_uid_account
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.module_code):
+            query['ModuleCode'] = request.module_code
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsSaleControlStock',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsSaleControlStockResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ens_sale_control_stock_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeEnsSaleControlStockRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsSaleControlStockResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid_account):
+            query['AliUidAccount'] = request.ali_uid_account
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.module_code):
+            query['ModuleCode'] = request.module_code
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsSaleControlStock',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsSaleControlStockResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ens_sale_control_stock(
+        self,
+        request: ens_20171110_models.DescribeEnsSaleControlStockRequest,
+    ) -> ens_20171110_models.DescribeEnsSaleControlStockResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ens_sale_control_stock_with_options(request, runtime)
+
+    async def describe_ens_sale_control_stock_async(
+        self,
+        request: ens_20171110_models.DescribeEnsSaleControlStockRequest,
+    ) -> ens_20171110_models.DescribeEnsSaleControlStockResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ens_sale_control_stock_with_options_async(request, runtime)
 
     def describe_epn_band_width_data_with_options(
         self,
@@ -9796,6 +10468,72 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribePriceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_with_options_async(request, runtime)
+
+    def describe_region_bandwidth_quota_with_options(
+        self,
+        request: ens_20171110_models.DescribeRegionBandwidthQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeRegionBandwidthQuotaResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegionBandwidthQuota',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeRegionBandwidthQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_region_bandwidth_quota_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeRegionBandwidthQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeRegionBandwidthQuotaResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegionBandwidthQuota',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeRegionBandwidthQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_region_bandwidth_quota(
+        self,
+        request: ens_20171110_models.DescribeRegionBandwidthQuotaRequest,
+    ) -> ens_20171110_models.DescribeRegionBandwidthQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_region_bandwidth_quota_with_options(request, runtime)
+
+    async def describe_region_bandwidth_quota_async(
+        self,
+        request: ens_20171110_models.DescribeRegionBandwidthQuotaRequest,
+    ) -> ens_20171110_models.DescribeRegionBandwidthQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_region_bandwidth_quota_with_options_async(request, runtime)
 
     def describe_region_isps_with_options(
         self,
@@ -12895,10 +13633,14 @@ class Client(OpenApiClient):
 
     def reboot_aicinstance_with_options(
         self,
-        request: ens_20171110_models.RebootAICInstanceRequest,
+        tmp_req: ens_20171110_models.RebootAICInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootAICInstanceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RebootAICInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -12921,10 +13663,14 @@ class Client(OpenApiClient):
 
     async def reboot_aicinstance_with_options_async(
         self,
-        request: ens_20171110_models.RebootAICInstanceRequest,
+        tmp_req: ens_20171110_models.RebootAICInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootAICInstanceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RebootAICInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -12961,10 +13707,14 @@ class Client(OpenApiClient):
 
     def reboot_armserver_instance_with_options(
         self,
-        request: ens_20171110_models.RebootARMServerInstanceRequest,
+        tmp_req: ens_20171110_models.RebootARMServerInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootARMServerInstanceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RebootARMServerInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.server_ids):
+            request.server_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.server_ids, 'ServerIds', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -12987,10 +13737,14 @@ class Client(OpenApiClient):
 
     async def reboot_armserver_instance_with_options_async(
         self,
-        request: ens_20171110_models.RebootARMServerInstanceRequest,
+        tmp_req: ens_20171110_models.RebootARMServerInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootARMServerInstanceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RebootARMServerInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.server_ids):
+            request.server_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.server_ids, 'ServerIds', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -14333,10 +15087,14 @@ class Client(OpenApiClient):
 
     def reset_aicinstance_with_options(
         self,
-        request: ens_20171110_models.ResetAICInstanceRequest,
+        tmp_req: ens_20171110_models.ResetAICInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ResetAICInstanceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.ResetAICInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -14359,10 +15117,14 @@ class Client(OpenApiClient):
 
     async def reset_aicinstance_with_options_async(
         self,
-        request: ens_20171110_models.ResetAICInstanceRequest,
+        tmp_req: ens_20171110_models.ResetAICInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ResetAICInstanceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.ResetAICInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -14982,6 +15744,8 @@ class Client(OpenApiClient):
             query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_charge_strategy):
+            query['InstanceChargeStrategy'] = request.instance_charge_strategy
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.instance_name):
@@ -15072,6 +15836,8 @@ class Client(OpenApiClient):
             query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_charge_strategy):
+            query['InstanceChargeStrategy'] = request.instance_charge_strategy
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.instance_name):
@@ -16762,6 +17528,92 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.UnassociateNetworkAclResponse:
         runtime = util_models.RuntimeOptions()
         return await self.unassociate_network_acl_with_options_async(request, runtime)
+
+    def update_ens_sale_control_with_options(
+        self,
+        tmp_req: ens_20171110_models.UpdateEnsSaleControlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UpdateEnsSaleControlResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.UpdateEnsSaleControlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sale_controls):
+            request.sale_controls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sale_controls, 'SaleControls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid_account):
+            query['AliUidAccount'] = request.ali_uid_account
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.sale_controls_shrink):
+            query['SaleControls'] = request.sale_controls_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnsSaleControl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UpdateEnsSaleControlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ens_sale_control_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.UpdateEnsSaleControlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UpdateEnsSaleControlResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.UpdateEnsSaleControlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sale_controls):
+            request.sale_controls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sale_controls, 'SaleControls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid_account):
+            query['AliUidAccount'] = request.ali_uid_account
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.sale_controls_shrink):
+            query['SaleControls'] = request.sale_controls_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnsSaleControl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UpdateEnsSaleControlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ens_sale_control(
+        self,
+        request: ens_20171110_models.UpdateEnsSaleControlRequest,
+    ) -> ens_20171110_models.UpdateEnsSaleControlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_ens_sale_control_with_options(request, runtime)
+
+    async def update_ens_sale_control_async(
+        self,
+        request: ens_20171110_models.UpdateEnsSaleControlRequest,
+    ) -> ens_20171110_models.UpdateEnsSaleControlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_ens_sale_control_with_options_async(request, runtime)
 
     def upgrade_aicinstance_image_with_options(
         self,
