@@ -4,6 +4,100 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
+class AddUserToOrganizationalUnitsHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class AddUserToOrganizationalUnitsRequest(TeaModel):
+    def __init__(
+        self,
+        organizational_unit_ids: List[str] = None,
+    ):
+        self.organizational_unit_ids = organizational_unit_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.organizational_unit_ids is not None:
+            result['organizationalUnitIds'] = self.organizational_unit_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('organizationalUnitIds') is not None:
+            self.organizational_unit_ids = m.get('organizationalUnitIds')
+        return self
+
+
+class AddUserToOrganizationalUnitsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class CreateOrganizationalUnitHeaders(TeaModel):
     def __init__(
         self,
@@ -950,10 +1044,13 @@ class GenerateTokenResponseBody(TeaModel):
         refresh_token: str = None,
         token_type: str = None,
     ):
+        # access_token。
         self.access_token = access_token
         self.expires_at = expires_at
         self.expires_in = expires_in
+        # id_token。
         self.id_token = id_token
+        # refresh_token。
         self.refresh_token = refresh_token
         self.token_type = token_type
 
@@ -1512,6 +1609,45 @@ class GetUserResponseBodyCustomFields(TeaModel):
         return self
 
 
+class GetUserResponseBodyGroups(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        group_id: str = None,
+        group_name: str = None,
+    ):
+        self.description = description
+        self.group_id = group_id
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+        if self.group_name is not None:
+            result['groupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+        if m.get('groupName') is not None:
+            self.group_name = m.get('groupName')
+        return self
+
+
 class GetUserResponseBodyOrganizationalUnits(TeaModel):
     def __init__(
         self,
@@ -1561,6 +1697,7 @@ class GetUserResponseBody(TeaModel):
         display_name: str = None,
         email: str = None,
         email_verified: bool = None,
+        groups: List[GetUserResponseBodyGroups] = None,
         instance_id: str = None,
         lock_expire_time: int = None,
         organizational_units: List[GetUserResponseBodyOrganizationalUnits] = None,
@@ -1585,6 +1722,7 @@ class GetUserResponseBody(TeaModel):
         self.display_name = display_name
         self.email = email
         self.email_verified = email_verified
+        self.groups = groups
         self.instance_id = instance_id
         self.lock_expire_time = lock_expire_time
         self.organizational_units = organizational_units
@@ -1605,6 +1743,10 @@ class GetUserResponseBody(TeaModel):
     def validate(self):
         if self.custom_fields:
             for k in self.custom_fields:
+                if k:
+                    k.validate()
+        if self.groups:
+            for k in self.groups:
                 if k:
                     k.validate()
         if self.organizational_units:
@@ -1634,6 +1776,10 @@ class GetUserResponseBody(TeaModel):
             result['email'] = self.email
         if self.email_verified is not None:
             result['emailVerified'] = self.email_verified
+        result['groups'] = []
+        if self.groups is not None:
+            for k in self.groups:
+                result['groups'].append(k.to_map() if k else None)
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
         if self.lock_expire_time is not None:
@@ -1689,6 +1835,11 @@ class GetUserResponseBody(TeaModel):
             self.email = m.get('email')
         if m.get('emailVerified') is not None:
             self.email_verified = m.get('emailVerified')
+        self.groups = []
+        if m.get('groups') is not None:
+            for k in m.get('groups'):
+                temp_model = GetUserResponseBodyGroups()
+                self.groups.append(temp_model.from_map(k))
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
         if m.get('lockExpireTime') is not None:
@@ -2827,6 +2978,7 @@ class ListUsersResponseBodyData(TeaModel):
         self.email_verified = email_verified
         self.instance_id = instance_id
         self.lock_expire_time = lock_expire_time
+        # 密码是否已设置
         self.password_set = password_set
         self.phone_number = phone_number
         self.phone_number_verified = phone_number_verified
@@ -3159,10 +3311,16 @@ class PatchUserRequestCustomFields(TeaModel):
         self,
         field_name: str = None,
         field_value: str = None,
+        operation: str = None,
         operator: str = None,
     ):
         self.field_name = field_name
         self.field_value = field_value
+        # 字段操作类型，取值可选范围：
+        # - add：添加。
+        # - replace：替换。若对应扩展字段无设置值，会转换为add操作。
+        # - remove：移除。
+        self.operation = operation
         self.operator = operator
 
     def validate(self):
@@ -3178,6 +3336,8 @@ class PatchUserRequestCustomFields(TeaModel):
             result['fieldName'] = self.field_name
         if self.field_value is not None:
             result['fieldValue'] = self.field_value
+        if self.operation is not None:
+            result['operation'] = self.operation
         if self.operator is not None:
             result['operator'] = self.operator
         return result
@@ -3188,6 +3348,8 @@ class PatchUserRequestCustomFields(TeaModel):
             self.field_name = m.get('fieldName')
         if m.get('fieldValue') is not None:
             self.field_value = m.get('fieldValue')
+        if m.get('operation') is not None:
+            self.operation = m.get('operation')
         if m.get('operator') is not None:
             self.operator = m.get('operator')
         return self
@@ -3304,6 +3466,100 @@ class PatchUserResponse(TeaModel):
         return self
 
 
+class RemoveUserFromOrganizationalUnitsHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class RemoveUserFromOrganizationalUnitsRequest(TeaModel):
+    def __init__(
+        self,
+        organizational_unit_ids: List[str] = None,
+    ):
+        self.organizational_unit_ids = organizational_unit_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.organizational_unit_ids is not None:
+            result['organizationalUnitIds'] = self.organizational_unit_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('organizationalUnitIds') is not None:
+            self.organizational_unit_ids = m.get('organizationalUnitIds')
+        return self
+
+
+class RemoveUserFromOrganizationalUnitsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class RevokeTokenRequest(TeaModel):
     def __init__(
         self,
@@ -3387,6 +3643,194 @@ class RevokeTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             self.body = m.get('body')
+        return self
+
+
+class SetUserPrimaryOrganizationalUnitHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class SetUserPrimaryOrganizationalUnitRequest(TeaModel):
+    def __init__(
+        self,
+        organizational_unit_id: str = None,
+    ):
+        self.organizational_unit_id = organizational_unit_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.organizational_unit_id is not None:
+            result['organizationalUnitId'] = self.organizational_unit_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('organizationalUnitId') is not None:
+            self.organizational_unit_id = m.get('organizationalUnitId')
+        return self
+
+
+class SetUserPrimaryOrganizationalUnitResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class UpdateUserPasswordHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class UpdateUserPasswordRequest(TeaModel):
+    def __init__(
+        self,
+        password: str = None,
+    ):
+        self.password = password
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.password is not None:
+            result['password'] = self.password
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        return self
+
+
+class UpdateUserPasswordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         return self
 
 

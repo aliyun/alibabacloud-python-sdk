@@ -1,3 +1,6 @@
+2023-05-16 Version: 1.0.6
+- Ceshi.
+
 2022-11-28 Version: 1.0.5
 - Ceshi.
 
