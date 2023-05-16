@@ -424,6 +424,7 @@ class CreateServiceRequest(TeaModel):
         operation_metadata: str = None,
         policy_names: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         service_id: str = None,
         service_info: List[CreateServiceRequestServiceInfo] = None,
         service_type: str = None,
@@ -445,6 +446,7 @@ class CreateServiceRequest(TeaModel):
         self.operation_metadata = operation_metadata
         self.policy_names = policy_names
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.service_id = service_id
         self.service_info = service_info
         self.service_type = service_type
@@ -493,6 +495,8 @@ class CreateServiceRequest(TeaModel):
             result['PolicyNames'] = self.policy_names
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         result['ServiceInfo'] = []
@@ -541,6 +545,8 @@ class CreateServiceRequest(TeaModel):
             self.policy_names = m.get('PolicyNames')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         self.service_info = []
@@ -1399,6 +1405,7 @@ class GetServiceInstanceRequest(TeaModel):
 class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs(TeaModel):
     def __init__(
         self,
+        connect_bandwidth: int = None,
         domain_name: str = None,
         endpoint_ips: List[str] = None,
         ingress_endpoint_status: str = None,
@@ -1407,6 +1414,7 @@ class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnection
         v_switches: List[str] = None,
         vpc_id: str = None,
     ):
+        self.connect_bandwidth = connect_bandwidth
         self.domain_name = domain_name
         self.endpoint_ips = endpoint_ips
         self.ingress_endpoint_status = ingress_endpoint_status
@@ -1424,6 +1432,8 @@ class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnection
             return _map
 
         result = dict()
+        if self.connect_bandwidth is not None:
+            result['ConnectBandwidth'] = self.connect_bandwidth
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.endpoint_ips is not None:
@@ -1442,6 +1452,8 @@ class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnection
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectBandwidth') is not None:
+            self.connect_bandwidth = m.get('ConnectBandwidth')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('EndpointIps') is not None:
@@ -3521,6 +3533,7 @@ class ListServicesRequest(TeaModel):
         max_results: str = None,
         next_token: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         tag: List[ListServicesRequestTag] = None,
     ):
         self.all_versions = all_versions
@@ -3528,6 +3541,7 @@ class ListServicesRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.tag = tag
 
     def validate(self):
@@ -3558,6 +3572,8 @@ class ListServicesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -3579,6 +3595,8 @@ class ListServicesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -3677,6 +3695,7 @@ class ListServicesResponseBodyServices(TeaModel):
         deploy_type: str = None,
         publish_time: str = None,
         relation_type: str = None,
+        resource_group_id: str = None,
         service_id: str = None,
         service_infos: List[ListServicesResponseBodyServicesServiceInfos] = None,
         service_type: str = None,
@@ -3701,6 +3720,7 @@ class ListServicesResponseBodyServices(TeaModel):
         self.deploy_type = deploy_type
         self.publish_time = publish_time
         self.relation_type = relation_type
+        self.resource_group_id = resource_group_id
         self.service_id = service_id
         self.service_infos = service_infos
         self.service_type = service_type
@@ -3750,6 +3770,8 @@ class ListServicesResponseBodyServices(TeaModel):
             result['PublishTime'] = self.publish_time
         if self.relation_type is not None:
             result['RelationType'] = self.relation_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         result['ServiceInfos'] = []
@@ -3804,6 +3826,8 @@ class ListServicesResponseBodyServices(TeaModel):
             self.publish_time = m.get('PublishTime')
         if m.get('RelationType') is not None:
             self.relation_type = m.get('RelationType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         self.service_infos = []

@@ -1,3 +1,6 @@
+2023-05-16 Version: 1.2.1
+- Add response Permission.
+
 2023-04-28 Version: 1.2.0
 - Add API ListServices and CreateService.
 
