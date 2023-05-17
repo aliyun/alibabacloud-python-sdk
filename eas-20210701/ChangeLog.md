@@ -1,3 +1,6 @@
+2023-05-17 Version: 2.0.4
+- Update autoscaler api.
+
 2023-02-10 Version: 2.0.3
 - Add service label api.
 
