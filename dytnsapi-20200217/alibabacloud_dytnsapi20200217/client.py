@@ -50,8 +50,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -90,8 +88,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -244,8 +240,6 @@ class Client(OpenApiClient):
             query['AuthCode'] = request.auth_code
         if not UtilClient.is_unset(request.carrier):
             query['Carrier'] = request.carrier
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -286,8 +280,6 @@ class Client(OpenApiClient):
             query['AuthCode'] = request.auth_code
         if not UtilClient.is_unset(request.carrier):
             query['Carrier'] = request.carrier
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -340,8 +332,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -380,8 +370,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -434,8 +422,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -476,8 +462,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -712,8 +696,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -752,8 +734,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -896,8 +876,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -936,8 +914,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -990,8 +966,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -1030,8 +1004,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -1084,8 +1056,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -1124,8 +1094,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -1178,8 +1146,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -1218,8 +1184,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -1274,8 +1238,6 @@ class Client(OpenApiClient):
             query['AuthCode'] = request.auth_code
         if not UtilClient.is_unset(request.cert_code):
             query['CertCode'] = request.cert_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -1318,8 +1280,6 @@ class Client(OpenApiClient):
             query['AuthCode'] = request.auth_code
         if not UtilClient.is_unset(request.cert_code):
             query['CertCode'] = request.cert_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -1374,8 +1334,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -1416,8 +1374,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.extend_function):
-            query['ExtendFunction'] = request.extend_function
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):

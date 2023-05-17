@@ -8,7 +8,6 @@ class DescribeEmptyNumberRequest(TeaModel):
     def __init__(
         self,
         auth_code: str = None,
-        extend_function: str = None,
         input_number: str = None,
         mask: str = None,
         owner_id: int = None,
@@ -16,7 +15,6 @@ class DescribeEmptyNumberRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.auth_code = auth_code
-        self.extend_function = extend_function
         self.input_number = input_number
         self.mask = mask
         self.owner_id = owner_id
@@ -34,8 +32,6 @@ class DescribeEmptyNumberRequest(TeaModel):
         result = dict()
         if self.auth_code is not None:
             result['AuthCode'] = self.auth_code
-        if self.extend_function is not None:
-            result['ExtendFunction'] = self.extend_function
         if self.input_number is not None:
             result['InputNumber'] = self.input_number
         if self.mask is not None:
@@ -52,8 +48,6 @@ class DescribeEmptyNumberRequest(TeaModel):
         m = m or dict()
         if m.get('AuthCode') is not None:
             self.auth_code = m.get('AuthCode')
-        if m.get('ExtendFunction') is not None:
-            self.extend_function = m.get('ExtendFunction')
         if m.get('InputNumber') is not None:
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
@@ -395,7 +389,6 @@ class DescribePhoneNumberOnlineTimeRequest(TeaModel):
         self,
         auth_code: str = None,
         carrier: str = None,
-        extend_function: str = None,
         input_number: str = None,
         mask: str = None,
         owner_id: int = None,
@@ -404,7 +397,6 @@ class DescribePhoneNumberOnlineTimeRequest(TeaModel):
     ):
         self.auth_code = auth_code
         self.carrier = carrier
-        self.extend_function = extend_function
         self.input_number = input_number
         self.mask = mask
         self.owner_id = owner_id
@@ -424,8 +416,6 @@ class DescribePhoneNumberOnlineTimeRequest(TeaModel):
             result['AuthCode'] = self.auth_code
         if self.carrier is not None:
             result['Carrier'] = self.carrier
-        if self.extend_function is not None:
-            result['ExtendFunction'] = self.extend_function
         if self.input_number is not None:
             result['InputNumber'] = self.input_number
         if self.mask is not None:
@@ -444,8 +434,6 @@ class DescribePhoneNumberOnlineTimeRequest(TeaModel):
             self.auth_code = m.get('AuthCode')
         if m.get('Carrier') is not None:
             self.carrier = m.get('Carrier')
-        if m.get('ExtendFunction') is not None:
-            self.extend_function = m.get('ExtendFunction')
         if m.get('InputNumber') is not None:
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
@@ -587,7 +575,6 @@ class DescribePhoneNumberOperatorAttributeRequest(TeaModel):
     def __init__(
         self,
         auth_code: str = None,
-        extend_function: str = None,
         input_number: str = None,
         mask: str = None,
         owner_id: int = None,
@@ -595,7 +582,6 @@ class DescribePhoneNumberOperatorAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.auth_code = auth_code
-        self.extend_function = extend_function
         self.input_number = input_number
         self.mask = mask
         self.owner_id = owner_id
@@ -613,8 +599,6 @@ class DescribePhoneNumberOperatorAttributeRequest(TeaModel):
         result = dict()
         if self.auth_code is not None:
             result['AuthCode'] = self.auth_code
-        if self.extend_function is not None:
-            result['ExtendFunction'] = self.extend_function
         if self.input_number is not None:
             result['InputNumber'] = self.input_number
         if self.mask is not None:
@@ -631,8 +615,6 @@ class DescribePhoneNumberOperatorAttributeRequest(TeaModel):
         m = m or dict()
         if m.get('AuthCode') is not None:
             self.auth_code = m.get('AuthCode')
-        if m.get('ExtendFunction') is not None:
-            self.extend_function = m.get('ExtendFunction')
         if m.get('InputNumber') is not None:
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
@@ -798,7 +780,6 @@ class DescribePhoneTwiceTelVerifyRequest(TeaModel):
     def __init__(
         self,
         auth_code: str = None,
-        extend_function: str = None,
         input_number: str = None,
         mask: str = None,
         owner_id: int = None,
@@ -807,7 +788,6 @@ class DescribePhoneTwiceTelVerifyRequest(TeaModel):
         start_time: str = None,
     ):
         self.auth_code = auth_code
-        self.extend_function = extend_function
         self.input_number = input_number
         self.mask = mask
         self.owner_id = owner_id
@@ -826,8 +806,6 @@ class DescribePhoneTwiceTelVerifyRequest(TeaModel):
         result = dict()
         if self.auth_code is not None:
             result['AuthCode'] = self.auth_code
-        if self.extend_function is not None:
-            result['ExtendFunction'] = self.extend_function
         if self.input_number is not None:
             result['InputNumber'] = self.input_number
         if self.mask is not None:
@@ -846,8 +824,6 @@ class DescribePhoneTwiceTelVerifyRequest(TeaModel):
         m = m or dict()
         if m.get('AuthCode') is not None:
             self.auth_code = m.get('AuthCode')
-        if m.get('ExtendFunction') is not None:
-            self.extend_function = m.get('ExtendFunction')
         if m.get('InputNumber') is not None:
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
@@ -1383,7 +1359,6 @@ class PhoneNumberStatusForAccountRequest(TeaModel):
     def __init__(
         self,
         auth_code: str = None,
-        extend_function: str = None,
         input_number: str = None,
         mask: str = None,
         owner_id: int = None,
@@ -1391,7 +1366,6 @@ class PhoneNumberStatusForAccountRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.auth_code = auth_code
-        self.extend_function = extend_function
         self.input_number = input_number
         self.mask = mask
         self.owner_id = owner_id
@@ -1409,8 +1383,6 @@ class PhoneNumberStatusForAccountRequest(TeaModel):
         result = dict()
         if self.auth_code is not None:
             result['AuthCode'] = self.auth_code
-        if self.extend_function is not None:
-            result['ExtendFunction'] = self.extend_function
         if self.input_number is not None:
             result['InputNumber'] = self.input_number
         if self.mask is not None:
@@ -1427,8 +1399,6 @@ class PhoneNumberStatusForAccountRequest(TeaModel):
         m = m or dict()
         if m.get('AuthCode') is not None:
             self.auth_code = m.get('AuthCode')
-        if m.get('ExtendFunction') is not None:
-            self.extend_function = m.get('ExtendFunction')
         if m.get('InputNumber') is not None:
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
@@ -1751,7 +1721,6 @@ class PhoneNumberStatusForRealRequest(TeaModel):
     def __init__(
         self,
         auth_code: str = None,
-        extend_function: str = None,
         input_number: str = None,
         mask: str = None,
         owner_id: int = None,
@@ -1759,7 +1728,6 @@ class PhoneNumberStatusForRealRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.auth_code = auth_code
-        self.extend_function = extend_function
         self.input_number = input_number
         self.mask = mask
         self.owner_id = owner_id
@@ -1777,8 +1745,6 @@ class PhoneNumberStatusForRealRequest(TeaModel):
         result = dict()
         if self.auth_code is not None:
             result['AuthCode'] = self.auth_code
-        if self.extend_function is not None:
-            result['ExtendFunction'] = self.extend_function
         if self.input_number is not None:
             result['InputNumber'] = self.input_number
         if self.mask is not None:
@@ -1795,8 +1761,6 @@ class PhoneNumberStatusForRealRequest(TeaModel):
         m = m or dict()
         if m.get('AuthCode') is not None:
             self.auth_code = m.get('AuthCode')
-        if m.get('ExtendFunction') is not None:
-            self.extend_function = m.get('ExtendFunction')
         if m.get('InputNumber') is not None:
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
@@ -1938,7 +1902,6 @@ class PhoneNumberStatusForSmsRequest(TeaModel):
     def __init__(
         self,
         auth_code: str = None,
-        extend_function: str = None,
         input_number: str = None,
         mask: str = None,
         owner_id: int = None,
@@ -1946,7 +1909,6 @@ class PhoneNumberStatusForSmsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.auth_code = auth_code
-        self.extend_function = extend_function
         self.input_number = input_number
         self.mask = mask
         self.owner_id = owner_id
@@ -1964,8 +1926,6 @@ class PhoneNumberStatusForSmsRequest(TeaModel):
         result = dict()
         if self.auth_code is not None:
             result['AuthCode'] = self.auth_code
-        if self.extend_function is not None:
-            result['ExtendFunction'] = self.extend_function
         if self.input_number is not None:
             result['InputNumber'] = self.input_number
         if self.mask is not None:
@@ -1982,8 +1942,6 @@ class PhoneNumberStatusForSmsRequest(TeaModel):
         m = m or dict()
         if m.get('AuthCode') is not None:
             self.auth_code = m.get('AuthCode')
-        if m.get('ExtendFunction') is not None:
-            self.extend_function = m.get('ExtendFunction')
         if m.get('InputNumber') is not None:
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
@@ -2125,7 +2083,6 @@ class PhoneNumberStatusForVirtualRequest(TeaModel):
     def __init__(
         self,
         auth_code: str = None,
-        extend_function: str = None,
         input_number: str = None,
         mask: str = None,
         owner_id: int = None,
@@ -2133,7 +2090,6 @@ class PhoneNumberStatusForVirtualRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.auth_code = auth_code
-        self.extend_function = extend_function
         self.input_number = input_number
         self.mask = mask
         self.owner_id = owner_id
@@ -2151,8 +2107,6 @@ class PhoneNumberStatusForVirtualRequest(TeaModel):
         result = dict()
         if self.auth_code is not None:
             result['AuthCode'] = self.auth_code
-        if self.extend_function is not None:
-            result['ExtendFunction'] = self.extend_function
         if self.input_number is not None:
             result['InputNumber'] = self.input_number
         if self.mask is not None:
@@ -2169,8 +2123,6 @@ class PhoneNumberStatusForVirtualRequest(TeaModel):
         m = m or dict()
         if m.get('AuthCode') is not None:
             self.auth_code = m.get('AuthCode')
-        if m.get('ExtendFunction') is not None:
-            self.extend_function = m.get('ExtendFunction')
         if m.get('InputNumber') is not None:
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
@@ -2306,7 +2258,6 @@ class PhoneNumberStatusForVoiceRequest(TeaModel):
     def __init__(
         self,
         auth_code: str = None,
-        extend_function: str = None,
         input_number: str = None,
         mask: str = None,
         owner_id: int = None,
@@ -2314,7 +2265,6 @@ class PhoneNumberStatusForVoiceRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.auth_code = auth_code
-        self.extend_function = extend_function
         self.input_number = input_number
         self.mask = mask
         self.owner_id = owner_id
@@ -2332,8 +2282,6 @@ class PhoneNumberStatusForVoiceRequest(TeaModel):
         result = dict()
         if self.auth_code is not None:
             result['AuthCode'] = self.auth_code
-        if self.extend_function is not None:
-            result['ExtendFunction'] = self.extend_function
         if self.input_number is not None:
             result['InputNumber'] = self.input_number
         if self.mask is not None:
@@ -2350,8 +2298,6 @@ class PhoneNumberStatusForVoiceRequest(TeaModel):
         m = m or dict()
         if m.get('AuthCode') is not None:
             self.auth_code = m.get('AuthCode')
-        if m.get('ExtendFunction') is not None:
-            self.extend_function = m.get('ExtendFunction')
         if m.get('InputNumber') is not None:
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
@@ -2494,7 +2440,6 @@ class ThreeElementsVerificationRequest(TeaModel):
         self,
         auth_code: str = None,
         cert_code: str = None,
-        extend_function: str = None,
         input_number: str = None,
         mask: str = None,
         name: str = None,
@@ -2504,7 +2449,6 @@ class ThreeElementsVerificationRequest(TeaModel):
     ):
         self.auth_code = auth_code
         self.cert_code = cert_code
-        self.extend_function = extend_function
         self.input_number = input_number
         self.mask = mask
         self.name = name
@@ -2525,8 +2469,6 @@ class ThreeElementsVerificationRequest(TeaModel):
             result['AuthCode'] = self.auth_code
         if self.cert_code is not None:
             result['CertCode'] = self.cert_code
-        if self.extend_function is not None:
-            result['ExtendFunction'] = self.extend_function
         if self.input_number is not None:
             result['InputNumber'] = self.input_number
         if self.mask is not None:
@@ -2547,8 +2489,6 @@ class ThreeElementsVerificationRequest(TeaModel):
             self.auth_code = m.get('AuthCode')
         if m.get('CertCode') is not None:
             self.cert_code = m.get('CertCode')
-        if m.get('ExtendFunction') is not None:
-            self.extend_function = m.get('ExtendFunction')
         if m.get('InputNumber') is not None:
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
@@ -2692,7 +2632,6 @@ class TwoElementsVerificationRequest(TeaModel):
     def __init__(
         self,
         auth_code: str = None,
-        extend_function: str = None,
         input_number: str = None,
         mask: str = None,
         name: str = None,
@@ -2701,7 +2640,6 @@ class TwoElementsVerificationRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.auth_code = auth_code
-        self.extend_function = extend_function
         self.input_number = input_number
         self.mask = mask
         self.name = name
@@ -2720,8 +2658,6 @@ class TwoElementsVerificationRequest(TeaModel):
         result = dict()
         if self.auth_code is not None:
             result['AuthCode'] = self.auth_code
-        if self.extend_function is not None:
-            result['ExtendFunction'] = self.extend_function
         if self.input_number is not None:
             result['InputNumber'] = self.input_number
         if self.mask is not None:
@@ -2740,8 +2676,6 @@ class TwoElementsVerificationRequest(TeaModel):
         m = m or dict()
         if m.get('AuthCode') is not None:
             self.auth_code = m.get('AuthCode')
-        if m.get('ExtendFunction') is not None:
-            self.extend_function = m.get('ExtendFunction')
         if m.get('InputNumber') is not None:
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
