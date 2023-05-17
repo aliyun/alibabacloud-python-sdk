@@ -4,33 +4,6 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
-class GetInstanceRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-    ):
-        self.region_id = region_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        return self
-
-
 class GetInstanceResponseBodyInstanceEndpoints(TeaModel):
     def __init__(
         self,
@@ -141,6 +114,9 @@ class GetInstanceResponseBodyInstance(TeaModel):
         enable_hive_access: str = None,
         endpoints: List[GetInstanceResponseBodyInstanceEndpoints] = None,
         expiration_time: str = None,
+        gateway_count: int = None,
+        gateway_cpu: int = None,
+        gateway_memory: int = None,
         instance_charge_type: str = None,
         instance_id: str = None,
         instance_name: str = None,
@@ -165,6 +141,9 @@ class GetInstanceResponseBodyInstance(TeaModel):
         self.enable_hive_access = enable_hive_access
         self.endpoints = endpoints
         self.expiration_time = expiration_time
+        self.gateway_count = gateway_count
+        self.gateway_cpu = gateway_cpu
+        self.gateway_memory = gateway_memory
         self.instance_charge_type = instance_charge_type
         self.instance_id = instance_id
         self.instance_name = instance_name
@@ -217,6 +196,12 @@ class GetInstanceResponseBodyInstance(TeaModel):
                 result['Endpoints'].append(k.to_map() if k else None)
         if self.expiration_time is not None:
             result['ExpirationTime'] = self.expiration_time
+        if self.gateway_count is not None:
+            result['GatewayCount'] = self.gateway_count
+        if self.gateway_cpu is not None:
+            result['GatewayCpu'] = self.gateway_cpu
+        if self.gateway_memory is not None:
+            result['GatewayMemory'] = self.gateway_memory
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
         if self.instance_id is not None:
@@ -272,6 +257,12 @@ class GetInstanceResponseBodyInstance(TeaModel):
                 self.endpoints.append(temp_model.from_map(k))
         if m.get('ExpirationTime') is not None:
             self.expiration_time = m.get('ExpirationTime')
+        if m.get('GatewayCount') is not None:
+            self.gateway_count = m.get('GatewayCount')
+        if m.get('GatewayCpu') is not None:
+            self.gateway_cpu = m.get('GatewayCpu')
+        if m.get('GatewayMemory') is not None:
+            self.gateway_memory = m.get('GatewayMemory')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
         if m.get('InstanceId') is not None:

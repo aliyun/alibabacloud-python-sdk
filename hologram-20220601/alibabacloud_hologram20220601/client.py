@@ -7,8 +7,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_hologram20220601 import models as hologram_20220601_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_hologram20220601 import models as hologram_20220601_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
@@ -44,17 +44,11 @@ class Client(OpenApiClient):
     def get_instance_with_options(
         self,
         instance_id: str,
-        request: hologram_20220601_models.GetInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.GetInstanceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
             action='GetInstance',
@@ -75,17 +69,11 @@ class Client(OpenApiClient):
     async def get_instance_with_options_async(
         self,
         instance_id: str,
-        request: hologram_20220601_models.GetInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.GetInstanceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
             action='GetInstance',
@@ -106,20 +94,18 @@ class Client(OpenApiClient):
     def get_instance(
         self,
         instance_id: str,
-        request: hologram_20220601_models.GetInstanceRequest,
     ) -> hologram_20220601_models.GetInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_instance_with_options(instance_id, request, headers, runtime)
+        return self.get_instance_with_options(instance_id, headers, runtime)
 
     async def get_instance_async(
         self,
         instance_id: str,
-        request: hologram_20220601_models.GetInstanceRequest,
     ) -> hologram_20220601_models.GetInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.get_instance_with_options_async(instance_id, headers, runtime)
 
     def list_instances_with_options(
         self,
