@@ -2783,9 +2783,11 @@ class InitFaceVerifyRequest(TeaModel):
         oss_bucket_name: str = None,
         oss_object_name: str = None,
         outer_order_no: str = None,
+        procedure_priority: str = None,
         product_code: str = None,
         return_url: str = None,
         scene_id: int = None,
+        suitable_type: str = None,
         user_id: str = None,
         voluntary_customized_content: str = None,
     ):
@@ -2808,9 +2810,11 @@ class InitFaceVerifyRequest(TeaModel):
         self.oss_bucket_name = oss_bucket_name
         self.oss_object_name = oss_object_name
         self.outer_order_no = outer_order_no
+        self.procedure_priority = procedure_priority
         self.product_code = product_code
         self.return_url = return_url
         self.scene_id = scene_id
+        self.suitable_type = suitable_type
         self.user_id = user_id
         self.voluntary_customized_content = voluntary_customized_content
 
@@ -2861,12 +2865,16 @@ class InitFaceVerifyRequest(TeaModel):
             result['OssObjectName'] = self.oss_object_name
         if self.outer_order_no is not None:
             result['OuterOrderNo'] = self.outer_order_no
+        if self.procedure_priority is not None:
+            result['ProcedurePriority'] = self.procedure_priority
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
         if self.return_url is not None:
             result['ReturnUrl'] = self.return_url
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
+        if self.suitable_type is not None:
+            result['SuitableType'] = self.suitable_type
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.voluntary_customized_content is not None:
@@ -2913,12 +2921,16 @@ class InitFaceVerifyRequest(TeaModel):
             self.oss_object_name = m.get('OssObjectName')
         if m.get('OuterOrderNo') is not None:
             self.outer_order_no = m.get('OuterOrderNo')
+        if m.get('ProcedurePriority') is not None:
+            self.procedure_priority = m.get('ProcedurePriority')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
         if m.get('ReturnUrl') is not None:
             self.return_url = m.get('ReturnUrl')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
+        if m.get('SuitableType') is not None:
+            self.suitable_type = m.get('SuitableType')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('VoluntaryCustomizedContent') is not None:

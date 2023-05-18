@@ -1314,12 +1314,16 @@ class Client(OpenApiClient):
             query['OssObjectName'] = request.oss_object_name
         if not UtilClient.is_unset(request.outer_order_no):
             query['OuterOrderNo'] = request.outer_order_no
+        if not UtilClient.is_unset(request.procedure_priority):
+            query['ProcedurePriority'] = request.procedure_priority
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.return_url):
             query['ReturnUrl'] = request.return_url
         if not UtilClient.is_unset(request.scene_id):
             query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.suitable_type):
+            query['SuitableType'] = request.suitable_type
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.voluntary_customized_content):
@@ -1390,12 +1394,16 @@ class Client(OpenApiClient):
             query['OssObjectName'] = request.oss_object_name
         if not UtilClient.is_unset(request.outer_order_no):
             query['OuterOrderNo'] = request.outer_order_no
+        if not UtilClient.is_unset(request.procedure_priority):
+            query['ProcedurePriority'] = request.procedure_priority
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.return_url):
             query['ReturnUrl'] = request.return_url
         if not UtilClient.is_unset(request.scene_id):
             query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.suitable_type):
+            query['SuitableType'] = request.suitable_type
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.voluntary_customized_content):
