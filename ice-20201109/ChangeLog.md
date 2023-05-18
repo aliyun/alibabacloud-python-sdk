@@ -1,3 +1,6 @@
+2023-05-18 Version: 1.3.11
+- Add conditional transcoding parameters.
+
 2023-04-27 Version: 1.3.10
 - Add field MediaMetadata for api SubmitMediaProducingJob, which indicates the meta data of the output media produced by the editing job.
 

@@ -20188,6 +20188,75 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
         return self
 
 
+class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig(TeaModel):
+    def __init__(
+        self,
+        adj_dar_method: str = None,
+        is_check_audio_bitrate: str = None,
+        is_check_audio_bitrate_fail: str = None,
+        is_check_reso: str = None,
+        is_check_reso_fail: str = None,
+        is_check_video_bitrate: str = None,
+        is_check_video_bitrate_fail: str = None,
+        trans_mode: str = None,
+    ):
+        self.adj_dar_method = adj_dar_method
+        self.is_check_audio_bitrate = is_check_audio_bitrate
+        self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        self.is_check_reso = is_check_reso
+        self.is_check_reso_fail = is_check_reso_fail
+        self.is_check_video_bitrate = is_check_video_bitrate
+        self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        self.trans_mode = trans_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adj_dar_method is not None:
+            result['AdjDarMethod'] = self.adj_dar_method
+        if self.is_check_audio_bitrate is not None:
+            result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
+        if self.is_check_audio_bitrate_fail is not None:
+            result['IsCheckAudioBitrateFail'] = self.is_check_audio_bitrate_fail
+        if self.is_check_reso is not None:
+            result['IsCheckReso'] = self.is_check_reso
+        if self.is_check_reso_fail is not None:
+            result['IsCheckResoFail'] = self.is_check_reso_fail
+        if self.is_check_video_bitrate is not None:
+            result['IsCheckVideoBitrate'] = self.is_check_video_bitrate
+        if self.is_check_video_bitrate_fail is not None:
+            result['IsCheckVideoBitrateFail'] = self.is_check_video_bitrate_fail
+        if self.trans_mode is not None:
+            result['TransMode'] = self.trans_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdjDarMethod') is not None:
+            self.adj_dar_method = m.get('AdjDarMethod')
+        if m.get('IsCheckAudioBitrate') is not None:
+            self.is_check_audio_bitrate = m.get('IsCheckAudioBitrate')
+        if m.get('IsCheckAudioBitrateFail') is not None:
+            self.is_check_audio_bitrate_fail = m.get('IsCheckAudioBitrateFail')
+        if m.get('IsCheckReso') is not None:
+            self.is_check_reso = m.get('IsCheckReso')
+        if m.get('IsCheckResoFail') is not None:
+            self.is_check_reso_fail = m.get('IsCheckResoFail')
+        if m.get('IsCheckVideoBitrate') is not None:
+            self.is_check_video_bitrate = m.get('IsCheckVideoBitrate')
+        if m.get('IsCheckVideoBitrateFail') is not None:
+            self.is_check_video_bitrate_fail = m.get('IsCheckVideoBitrateFail')
+        if m.get('TransMode') is not None:
+            self.trans_mode = m.get('TransMode')
+        return self
+
+
 class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo(TeaModel):
     def __init__(
         self,
@@ -20323,11 +20392,13 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
         audio: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio = None,
         container: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer = None,
         mux_config: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig = None,
+        trans_config: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig = None,
         video: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo = None,
     ):
         self.audio = audio
         self.container = container
         self.mux_config = mux_config
+        self.trans_config = trans_config
         self.video = video
 
     def validate(self):
@@ -20337,6 +20408,8 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
             self.container.validate()
         if self.mux_config:
             self.mux_config.validate()
+        if self.trans_config:
+            self.trans_config.validate()
         if self.video:
             self.video.validate()
 
@@ -20352,6 +20425,8 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
             result['Container'] = self.container.to_map()
         if self.mux_config is not None:
             result['MuxConfig'] = self.mux_config.to_map()
+        if self.trans_config is not None:
+            result['TransConfig'] = self.trans_config.to_map()
         if self.video is not None:
             result['Video'] = self.video.to_map()
         return result
@@ -20367,6 +20442,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
         if m.get('MuxConfig') is not None:
             temp_model = GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig()
             self.mux_config = temp_model.from_map(m['MuxConfig'])
+        if m.get('TransConfig') is not None:
+            temp_model = GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig()
+            self.trans_config = temp_model.from_map(m['TransConfig'])
         if m.get('Video') is not None:
             temp_model = GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo()
             self.video = temp_model.from_map(m['Video'])
@@ -21754,6 +21832,75 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         return self
 
 
+class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig(TeaModel):
+    def __init__(
+        self,
+        adj_dar_method: str = None,
+        is_check_audio_bitrate: str = None,
+        is_check_audio_bitrate_fail: str = None,
+        is_check_reso: str = None,
+        is_check_reso_fail: str = None,
+        is_check_video_bitrate: str = None,
+        is_check_video_bitrate_fail: str = None,
+        trans_mode: str = None,
+    ):
+        self.adj_dar_method = adj_dar_method
+        self.is_check_audio_bitrate = is_check_audio_bitrate
+        self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        self.is_check_reso = is_check_reso
+        self.is_check_reso_fail = is_check_reso_fail
+        self.is_check_video_bitrate = is_check_video_bitrate
+        self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        self.trans_mode = trans_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adj_dar_method is not None:
+            result['AdjDarMethod'] = self.adj_dar_method
+        if self.is_check_audio_bitrate is not None:
+            result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
+        if self.is_check_audio_bitrate_fail is not None:
+            result['IsCheckAudioBitrateFail'] = self.is_check_audio_bitrate_fail
+        if self.is_check_reso is not None:
+            result['IsCheckReso'] = self.is_check_reso
+        if self.is_check_reso_fail is not None:
+            result['IsCheckResoFail'] = self.is_check_reso_fail
+        if self.is_check_video_bitrate is not None:
+            result['IsCheckVideoBitrate'] = self.is_check_video_bitrate
+        if self.is_check_video_bitrate_fail is not None:
+            result['IsCheckVideoBitrateFail'] = self.is_check_video_bitrate_fail
+        if self.trans_mode is not None:
+            result['TransMode'] = self.trans_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdjDarMethod') is not None:
+            self.adj_dar_method = m.get('AdjDarMethod')
+        if m.get('IsCheckAudioBitrate') is not None:
+            self.is_check_audio_bitrate = m.get('IsCheckAudioBitrate')
+        if m.get('IsCheckAudioBitrateFail') is not None:
+            self.is_check_audio_bitrate_fail = m.get('IsCheckAudioBitrateFail')
+        if m.get('IsCheckReso') is not None:
+            self.is_check_reso = m.get('IsCheckReso')
+        if m.get('IsCheckResoFail') is not None:
+            self.is_check_reso_fail = m.get('IsCheckResoFail')
+        if m.get('IsCheckVideoBitrate') is not None:
+            self.is_check_video_bitrate = m.get('IsCheckVideoBitrate')
+        if m.get('IsCheckVideoBitrateFail') is not None:
+            self.is_check_video_bitrate_fail = m.get('IsCheckVideoBitrateFail')
+        if m.get('TransMode') is not None:
+            self.trans_mode = m.get('TransMode')
+        return self
+
+
 class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo(TeaModel):
     def __init__(
         self,
@@ -21890,12 +22037,14 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         container: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer = None,
         mux_config: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig = None,
         tags: Dict[str, str] = None,
+        trans_config: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig = None,
         video: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo = None,
     ):
         self.audio = audio
         self.container = container
         self.mux_config = mux_config
         self.tags = tags
+        self.trans_config = trans_config
         self.video = video
 
     def validate(self):
@@ -21905,6 +22054,8 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
             self.container.validate()
         if self.mux_config:
             self.mux_config.validate()
+        if self.trans_config:
+            self.trans_config.validate()
         if self.video:
             self.video.validate()
 
@@ -21922,6 +22073,8 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
             result['MuxConfig'] = self.mux_config.to_map()
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.trans_config is not None:
+            result['TransConfig'] = self.trans_config.to_map()
         if self.video is not None:
             result['Video'] = self.video.to_map()
         return result
@@ -21939,6 +22092,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
             self.mux_config = temp_model.from_map(m['MuxConfig'])
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('TransConfig') is not None:
+            temp_model = GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig()
+            self.trans_config = temp_model.from_map(m['TransConfig'])
         if m.get('Video') is not None:
             temp_model = GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo()
             self.video = temp_model.from_map(m['Video'])
@@ -44540,6 +44696,75 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsM
         return self
 
 
+class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig(TeaModel):
+    def __init__(
+        self,
+        adj_dar_method: str = None,
+        is_check_audio_bitrate: str = None,
+        is_check_audio_bitrate_fail: str = None,
+        is_check_reso: str = None,
+        is_check_reso_fail: str = None,
+        is_check_video_bitrate: str = None,
+        is_check_video_bitrate_fail: str = None,
+        trans_mode: str = None,
+    ):
+        self.adj_dar_method = adj_dar_method
+        self.is_check_audio_bitrate = is_check_audio_bitrate
+        self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        self.is_check_reso = is_check_reso
+        self.is_check_reso_fail = is_check_reso_fail
+        self.is_check_video_bitrate = is_check_video_bitrate
+        self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        self.trans_mode = trans_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adj_dar_method is not None:
+            result['AdjDarMethod'] = self.adj_dar_method
+        if self.is_check_audio_bitrate is not None:
+            result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
+        if self.is_check_audio_bitrate_fail is not None:
+            result['IsCheckAudioBitrateFail'] = self.is_check_audio_bitrate_fail
+        if self.is_check_reso is not None:
+            result['IsCheckReso'] = self.is_check_reso
+        if self.is_check_reso_fail is not None:
+            result['IsCheckResoFail'] = self.is_check_reso_fail
+        if self.is_check_video_bitrate is not None:
+            result['IsCheckVideoBitrate'] = self.is_check_video_bitrate
+        if self.is_check_video_bitrate_fail is not None:
+            result['IsCheckVideoBitrateFail'] = self.is_check_video_bitrate_fail
+        if self.trans_mode is not None:
+            result['TransMode'] = self.trans_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdjDarMethod') is not None:
+            self.adj_dar_method = m.get('AdjDarMethod')
+        if m.get('IsCheckAudioBitrate') is not None:
+            self.is_check_audio_bitrate = m.get('IsCheckAudioBitrate')
+        if m.get('IsCheckAudioBitrateFail') is not None:
+            self.is_check_audio_bitrate_fail = m.get('IsCheckAudioBitrateFail')
+        if m.get('IsCheckReso') is not None:
+            self.is_check_reso = m.get('IsCheckReso')
+        if m.get('IsCheckResoFail') is not None:
+            self.is_check_reso_fail = m.get('IsCheckResoFail')
+        if m.get('IsCheckVideoBitrate') is not None:
+            self.is_check_video_bitrate = m.get('IsCheckVideoBitrate')
+        if m.get('IsCheckVideoBitrateFail') is not None:
+            self.is_check_video_bitrate_fail = m.get('IsCheckVideoBitrateFail')
+        if m.get('TransMode') is not None:
+            self.trans_mode = m.get('TransMode')
+        return self
+
+
 class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo(TeaModel):
     def __init__(
         self,
@@ -44676,12 +44901,14 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams(
         container: SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsContainer = None,
         mux_config: SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig = None,
         tags: Dict[str, str] = None,
+        trans_config: SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig = None,
         video: SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo = None,
     ):
         self.audio = audio
         self.container = container
         self.mux_config = mux_config
         self.tags = tags
+        self.trans_config = trans_config
         self.video = video
 
     def validate(self):
@@ -44691,6 +44918,8 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams(
             self.container.validate()
         if self.mux_config:
             self.mux_config.validate()
+        if self.trans_config:
+            self.trans_config.validate()
         if self.video:
             self.video.validate()
 
@@ -44708,6 +44937,8 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams(
             result['MuxConfig'] = self.mux_config.to_map()
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.trans_config is not None:
+            result['TransConfig'] = self.trans_config.to_map()
         if self.video is not None:
             result['Video'] = self.video.to_map()
         return result
@@ -44725,6 +44956,9 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams(
             self.mux_config = temp_model.from_map(m['MuxConfig'])
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('TransConfig') is not None:
+            temp_model = SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig()
+            self.trans_config = temp_model.from_map(m['TransConfig'])
         if m.get('Video') is not None:
             temp_model = SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo()
             self.video = temp_model.from_map(m['Video'])
@@ -45806,6 +46040,75 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
         return self
 
 
+class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig(TeaModel):
+    def __init__(
+        self,
+        adj_dar_method: str = None,
+        is_check_audio_bitrate: str = None,
+        is_check_audio_bitrate_fail: str = None,
+        is_check_reso: str = None,
+        is_check_reso_fail: str = None,
+        is_check_video_bitrate: str = None,
+        is_check_video_bitrate_fail: str = None,
+        trans_mode: str = None,
+    ):
+        self.adj_dar_method = adj_dar_method
+        self.is_check_audio_bitrate = is_check_audio_bitrate
+        self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        self.is_check_reso = is_check_reso
+        self.is_check_reso_fail = is_check_reso_fail
+        self.is_check_video_bitrate = is_check_video_bitrate
+        self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        self.trans_mode = trans_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adj_dar_method is not None:
+            result['AdjDarMethod'] = self.adj_dar_method
+        if self.is_check_audio_bitrate is not None:
+            result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
+        if self.is_check_audio_bitrate_fail is not None:
+            result['IsCheckAudioBitrateFail'] = self.is_check_audio_bitrate_fail
+        if self.is_check_reso is not None:
+            result['IsCheckReso'] = self.is_check_reso
+        if self.is_check_reso_fail is not None:
+            result['IsCheckResoFail'] = self.is_check_reso_fail
+        if self.is_check_video_bitrate is not None:
+            result['IsCheckVideoBitrate'] = self.is_check_video_bitrate
+        if self.is_check_video_bitrate_fail is not None:
+            result['IsCheckVideoBitrateFail'] = self.is_check_video_bitrate_fail
+        if self.trans_mode is not None:
+            result['TransMode'] = self.trans_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdjDarMethod') is not None:
+            self.adj_dar_method = m.get('AdjDarMethod')
+        if m.get('IsCheckAudioBitrate') is not None:
+            self.is_check_audio_bitrate = m.get('IsCheckAudioBitrate')
+        if m.get('IsCheckAudioBitrateFail') is not None:
+            self.is_check_audio_bitrate_fail = m.get('IsCheckAudioBitrateFail')
+        if m.get('IsCheckReso') is not None:
+            self.is_check_reso = m.get('IsCheckReso')
+        if m.get('IsCheckResoFail') is not None:
+            self.is_check_reso_fail = m.get('IsCheckResoFail')
+        if m.get('IsCheckVideoBitrate') is not None:
+            self.is_check_video_bitrate = m.get('IsCheckVideoBitrate')
+        if m.get('IsCheckVideoBitrateFail') is not None:
+            self.is_check_video_bitrate_fail = m.get('IsCheckVideoBitrateFail')
+        if m.get('TransMode') is not None:
+            self.trans_mode = m.get('TransMode')
+        return self
+
+
 class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo(TeaModel):
     def __init__(
         self,
@@ -45941,11 +46244,13 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
         audio: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio = None,
         container: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer = None,
         mux_config: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig = None,
+        trans_config: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig = None,
         video: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo = None,
     ):
         self.audio = audio
         self.container = container
         self.mux_config = mux_config
+        self.trans_config = trans_config
         self.video = video
 
     def validate(self):
@@ -45955,6 +46260,8 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
             self.container.validate()
         if self.mux_config:
             self.mux_config.validate()
+        if self.trans_config:
+            self.trans_config.validate()
         if self.video:
             self.video.validate()
 
@@ -45970,6 +46277,8 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
             result['Container'] = self.container.to_map()
         if self.mux_config is not None:
             result['MuxConfig'] = self.mux_config.to_map()
+        if self.trans_config is not None:
+            result['TransConfig'] = self.trans_config.to_map()
         if self.video is not None:
             result['Video'] = self.video.to_map()
         return result
@@ -45985,6 +46294,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
         if m.get('MuxConfig') is not None:
             temp_model = SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig()
             self.mux_config = temp_model.from_map(m['MuxConfig'])
+        if m.get('TransConfig') is not None:
+            temp_model = SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig()
+            self.trans_config = temp_model.from_map(m['TransConfig'])
         if m.get('Video') is not None:
             temp_model = SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo()
             self.video = temp_model.from_map(m['Video'])
@@ -47372,6 +47684,75 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         return self
 
 
+class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig(TeaModel):
+    def __init__(
+        self,
+        adj_dar_method: str = None,
+        is_check_audio_bitrate: str = None,
+        is_check_audio_bitrate_fail: str = None,
+        is_check_reso: str = None,
+        is_check_reso_fail: str = None,
+        is_check_video_bitrate: str = None,
+        is_check_video_bitrate_fail: str = None,
+        trans_mode: str = None,
+    ):
+        self.adj_dar_method = adj_dar_method
+        self.is_check_audio_bitrate = is_check_audio_bitrate
+        self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        self.is_check_reso = is_check_reso
+        self.is_check_reso_fail = is_check_reso_fail
+        self.is_check_video_bitrate = is_check_video_bitrate
+        self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        self.trans_mode = trans_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adj_dar_method is not None:
+            result['AdjDarMethod'] = self.adj_dar_method
+        if self.is_check_audio_bitrate is not None:
+            result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
+        if self.is_check_audio_bitrate_fail is not None:
+            result['IsCheckAudioBitrateFail'] = self.is_check_audio_bitrate_fail
+        if self.is_check_reso is not None:
+            result['IsCheckReso'] = self.is_check_reso
+        if self.is_check_reso_fail is not None:
+            result['IsCheckResoFail'] = self.is_check_reso_fail
+        if self.is_check_video_bitrate is not None:
+            result['IsCheckVideoBitrate'] = self.is_check_video_bitrate
+        if self.is_check_video_bitrate_fail is not None:
+            result['IsCheckVideoBitrateFail'] = self.is_check_video_bitrate_fail
+        if self.trans_mode is not None:
+            result['TransMode'] = self.trans_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdjDarMethod') is not None:
+            self.adj_dar_method = m.get('AdjDarMethod')
+        if m.get('IsCheckAudioBitrate') is not None:
+            self.is_check_audio_bitrate = m.get('IsCheckAudioBitrate')
+        if m.get('IsCheckAudioBitrateFail') is not None:
+            self.is_check_audio_bitrate_fail = m.get('IsCheckAudioBitrateFail')
+        if m.get('IsCheckReso') is not None:
+            self.is_check_reso = m.get('IsCheckReso')
+        if m.get('IsCheckResoFail') is not None:
+            self.is_check_reso_fail = m.get('IsCheckResoFail')
+        if m.get('IsCheckVideoBitrate') is not None:
+            self.is_check_video_bitrate = m.get('IsCheckVideoBitrate')
+        if m.get('IsCheckVideoBitrateFail') is not None:
+            self.is_check_video_bitrate_fail = m.get('IsCheckVideoBitrateFail')
+        if m.get('TransMode') is not None:
+            self.trans_mode = m.get('TransMode')
+        return self
+
+
 class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo(TeaModel):
     def __init__(
         self,
@@ -47508,12 +47889,14 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         container: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer = None,
         mux_config: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig = None,
         tags: Dict[str, Any] = None,
+        trans_config: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig = None,
         video: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo = None,
     ):
         self.audio = audio
         self.container = container
         self.mux_config = mux_config
         self.tags = tags
+        self.trans_config = trans_config
         self.video = video
 
     def validate(self):
@@ -47523,6 +47906,8 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
             self.container.validate()
         if self.mux_config:
             self.mux_config.validate()
+        if self.trans_config:
+            self.trans_config.validate()
         if self.video:
             self.video.validate()
 
@@ -47540,6 +47925,8 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
             result['MuxConfig'] = self.mux_config.to_map()
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.trans_config is not None:
+            result['TransConfig'] = self.trans_config.to_map()
         if self.video is not None:
             result['Video'] = self.video.to_map()
         return result
@@ -47557,6 +47944,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
             self.mux_config = temp_model.from_map(m['MuxConfig'])
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('TransConfig') is not None:
+            temp_model = SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig()
+            self.trans_config = temp_model.from_map(m['TransConfig'])
         if m.get('Video') is not None:
             temp_model = SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo()
             self.video = temp_model.from_map(m['Video'])
