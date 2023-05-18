@@ -14223,7 +14223,11 @@ class GetDataExportOrderDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ticket ID. You can call the [ListOrders](~~465867~~) operation to query the ticket ID.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -14256,7 +14260,20 @@ class GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo(TeaModel)
         job_status: str = None,
         pre_check_id: int = None,
     ):
+        # The state of the data export ticket. Valid values:
+        # 
+        # *   **PRE_CHECKING**: The ticket was being prechecked.
+        # *   **PRE_CHECK_SUCCESS**: The ticket passed the precheck.
+        # *   **PRE_CHECK_FAIL**: The ticket failed to pass the prechecked.
+        # *   **WAITING_APPLY_AUDIT**: The ticket was to be submitted for approval.
+        # *   **APPLY_AUDIT_SUCCESS**: The ticket was submitted for approval.
+        # *   **ENABLE_EXPORT**: The ticket was approved. Data can be exported.
+        # *   **WAITING_EXPORT**: Data was to be scheduled for export.
+        # *   **DOING_EXPORT**: Data was being exported.
+        # *   **EXPORT_FAIL**: Data failed to be exported.
+        # *   **EXPORT_SUCCESS**: Data was exported.
         self.job_status = job_status
+        # The precheck ID.
         self.pre_check_id = pre_check_id
 
     def validate(self):
@@ -14296,14 +14313,23 @@ class GetDataExportOrderDetailResponseBodyDataExportOrderDetailOrderDetail(TeaMo
         ignore_affect_rows_reason: str = None,
         logic: bool = None,
     ):
+        # The number of rows that were affected by the SQL statement.
         self.actual_affect_rows = actual_affect_rows
+        # The category of the reason for the data export.
         self.classify = classify
+        # The name of the database from which data was exported.
         self.database = database
+        # The ID of the database from which data was exported.
         self.db_id = db_id
+        # The type of the environment to which the database belongs.
         self.env_type = env_type
+        # The SQL statement that was executed to export data.
         self.exe_sql = exe_sql
+        # Indicates whether the affected rows are skipped.
         self.ignore_affect_rows = ignore_affect_rows
+        # The reason why the affected rows are skipped.
         self.ignore_affect_rows_reason = ignore_affect_rows_reason
+        # Indicates whether the database is a logical database.
         self.logic = logic
 
     def validate(self):
@@ -14364,7 +14390,9 @@ class GetDataExportOrderDetailResponseBodyDataExportOrderDetail(TeaModel):
         key_info: GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo = None,
         order_detail: GetDataExportOrderDetailResponseBodyDataExportOrderDetailOrderDetail = None,
     ):
+        # The information about the ticket.
         self.key_info = key_info
+        # The details of the ticket.
         self.order_detail = order_detail
 
     def validate(self):
@@ -14405,10 +14433,18 @@ class GetDataExportOrderDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The information about the data export ticket.
         self.data_export_order_detail = data_export_order_detail
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -15636,6 +15672,7 @@ class GetDatabaseResponseBodyDatabase(TeaModel):
         encoding: str = None,
         env_type: str = None,
         host: str = None,
+        instance_alias: str = None,
         instance_id: str = None,
         owner_id_list: GetDatabaseResponseBodyDatabaseOwnerIdList = None,
         owner_name_list: GetDatabaseResponseBodyDatabaseOwnerNameList = None,
@@ -15663,6 +15700,7 @@ class GetDatabaseResponseBodyDatabase(TeaModel):
         self.env_type = env_type
         # The IDs of the owners of the database.
         self.host = host
+        self.instance_alias = instance_alias
         # The status of the database. Valid values:
         # 
         # *   **NORMAL**: The database is running as expected.
@@ -15713,6 +15751,8 @@ class GetDatabaseResponseBodyDatabase(TeaModel):
             result['EnvType'] = self.env_type
         if self.host is not None:
             result['Host'] = self.host
+        if self.instance_alias is not None:
+            result['InstanceAlias'] = self.instance_alias
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.owner_id_list is not None:
@@ -15749,6 +15789,8 @@ class GetDatabaseResponseBodyDatabase(TeaModel):
             self.env_type = m.get('EnvType')
         if m.get('Host') is not None:
             self.host = m.get('Host')
+        if m.get('InstanceAlias') is not None:
+            self.instance_alias = m.get('InstanceAlias')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OwnerIdList') is not None:
@@ -19331,7 +19373,11 @@ class GetPermApplyOrderDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the ticket.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -19364,7 +19410,9 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo
         column_name: str = None,
         table_name: str = None,
     ):
+        # The name of the column.
         self.column_name = column_name
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -19402,12 +19450,22 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseIn
         owner_nick_names: List[str] = None,
         search_name: str = None,
     ):
+        # The ID of the database.
         self.db_id = db_id
+        # The type of the database engine.
         self.db_type = db_type
+        # The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
         self.env_type = env_type
+        # Indicates whether the database is a logical database. Valid values:
+        # 
+        # *   **true**: The database is a logical database.
+        # *   **false**: The database is not a logical database.
         self.logic = logic
+        # The IDs of the owners of the database.
         self.owner_ids = owner_ids
+        # The nicknames of the owners of the database.
         self.owner_nick_names = owner_nick_names
+        # The name that is used to search for the database.
         self.search_name = search_name
 
     def validate(self):
@@ -19468,15 +19526,25 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceIn
         port: int = None,
         search_name: str = None,
     ):
+        # The type of the database engine.
         self.db_type = db_type
+        # The ID of the database administrator (DBA) of the instance.
         self.dba_id = dba_id
+        # The nickname of the DBA of the instance.
         self.dba_nick_name = dba_nick_name
+        # The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
         self.env_type = env_type
+        # The endpoint of the instance.
         self.host = host
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The IDs of the owners of the instance.
         self.owner_ids = owner_ids
+        # The nicknames of the owners of the instance.
         self.owner_nick_name = owner_nick_name
+        # The port that is used to connect to the instance.
         self.port = port
+        # The name that is used to search for the instance.
         self.search_name = search_name
 
     def validate(self):
@@ -19540,6 +19608,7 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo(
         self,
         table_name: str = None,
     ):
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -19570,9 +19639,13 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources(TeaModel)
         instance_info: GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo = None,
         table_info: GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo = None,
     ):
+        # The information about the column.
         self.column_info = column_info
+        # The information about the database.
         self.database_info = database_info
+        # The information about the instance.
         self.instance_info = instance_info
+        # The information about the table.
         self.table_info = table_info
 
     def validate(self):
@@ -19626,9 +19699,26 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail(TeaModel):
         resources: List[GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources] = None,
         seconds: int = None,
     ):
+        # The type of objects on which you apply for permissions. Valid values:
+        # 
+        # *   **DB**: database
+        # *   **TAB**: table
+        # *   **COL**: column
+        # *   **INSTANT**: instance
         self.apply_type = apply_type
+        # The type of permissions that you apply for. Valid values:
+        # 
+        # *   **1**: the permissions to query information
+        # *   **2**: the permissions to export information
+        # *   **3**: the permissions to query and export information
+        # *   **4**: the permissions to modify information
+        # *   **5**: the permissions to query and modify information
+        # *   **6**: the permissions to export and modify information
+        # *   **7**: the permissions to query, export, and modify information
         self.perm_type = perm_type
+        # The list of resources.
         self.resources = resources
+        # The validity duration of the permissions. Unit: seconds.
         self.seconds = seconds
 
     def validate(self):
@@ -19680,10 +19770,15 @@ class GetPermApplyOrderDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The details of the permission application ticket.
         self.perm_apply_order_detail = perm_apply_order_detail
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -19774,9 +19869,7 @@ class GetPhysicalDatabaseRequest(TeaModel):
         db_id: int = None,
         tid: int = None,
     ):
-        # The ID of the physical database. You can call the [SearchDatabase](~~141876~~) operation to obtain the ID.
         self.db_id = db_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -19868,6 +19961,7 @@ class GetPhysicalDatabaseResponseBodyDatabase(TeaModel):
         encoding: str = None,
         env_type: str = None,
         host: str = None,
+        instance_alias: str = None,
         instance_id: str = None,
         owner_id_list: GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList = None,
         owner_name_list: GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList = None,
@@ -19877,48 +19971,22 @@ class GetPhysicalDatabaseResponseBodyDatabase(TeaModel):
         sid: str = None,
         state: str = None,
     ):
-        # The name of the catalog to which the database belongs.
-        # 
-        # > : If the database is a PostgreSQL database, the name of the database is displayed.
         self.catalog_name = catalog_name
-        # The ID of the physical database.
         self.database_id = database_id
-        # The type of the database engine.
         self.db_type = db_type
-        # The user ID of the DBA in the destination database.
         self.dba_id = dba_id
-        # The nickname of the database administrator (DBA) in the destination database.
         self.dba_name = dba_name
-        # The encoding format of the database.
         self.encoding = encoding
-        # The type of the environment to which the database belongs. For more information, see [Change the environment type of an instance](~~163309~~).
         self.env_type = env_type
-        # The endpoint that is used to connect to the database.
         self.host = host
-        # The instance ID of the destination database.
+        self.instance_alias = instance_alias
         self.instance_id = instance_id
-        # The user IDs of the database owners.
         self.owner_id_list = owner_id_list
-        # The nicknames of the database owners.
         self.owner_name_list = owner_name_list
-        # The port that is used to connect to the database.
         self.port = port
-        # The name of the database.
-        # 
-        # > : If the database is a PostgreSQL database, the name of the mode is displayed.
         self.schema_name = schema_name
-        # The name that is used for searching the database.
         self.search_name = search_name
-        # The system ID (SID) of the database.
-        # 
-        # > : The value of the parameter is returned only for Oracle databases.
         self.sid = sid
-        # The state of the database. Valid values:
-        # 
-        # *   **NORMAL**: The database is normal.
-        # *   **DISABLE**: The database is disabled.
-        # *   **OFFLINE**: The database is unpublished.
-        # *   **NOT_EXIST**: The database does not exist.
         self.state = state
 
     def validate(self):
@@ -19949,6 +20017,8 @@ class GetPhysicalDatabaseResponseBodyDatabase(TeaModel):
             result['EnvType'] = self.env_type
         if self.host is not None:
             result['Host'] = self.host
+        if self.instance_alias is not None:
+            result['InstanceAlias'] = self.instance_alias
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.owner_id_list is not None:
@@ -19985,6 +20055,8 @@ class GetPhysicalDatabaseResponseBodyDatabase(TeaModel):
             self.env_type = m.get('EnvType')
         if m.get('Host') is not None:
             self.host = m.get('Host')
+        if m.get('InstanceAlias') is not None:
+            self.instance_alias = m.get('InstanceAlias')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OwnerIdList') is not None:
@@ -20015,15 +20087,10 @@ class GetPhysicalDatabaseResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the physical database.
         self.database = database
-        # The error code returned if the request failed.
         self.error_code = error_code
-        # The error message returned if the request failed.
         self.error_message = error_message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -29892,21 +29959,25 @@ class ListInstanceLoginAuditLogRequest(TeaModel):
         start_time: str = None,
         tid: int = None,
     ):
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The end of the time range to query.
+        # 
+        # >  The end time supports fuzzy match. Specify the time in the YYYY-MM-DD hh:mm:ss format. We recommend that you use the StartTime and EndTime parameters to specify a time range that does not exceed one day. This way, the returned entries can be displayed by page to increase query efficiency.
         self.end_time = end_time
-        # The error code returned.
-        self.op_user_name = op_user_name
-        # The logon records of the instance.
-        self.page_number = page_number
         # The alias of the user.
+        self.op_user_name = op_user_name
+        # The number of the page to return.
+        self.page_number = page_number
+        # The number of entries to return on each page. Maximum value: 100.
         self.page_size = page_size
-        # The ID of the instance.
-        self.search_name = search_name
         # The name of the database or instance whose logon records you want to query.
         # 
         # >  If SQL statements are executed at the instance level, you can set this parameter to an instance name. If SQL statements are executed at the database level, you can set this parameter to a database name.
+        self.search_name = search_name
+        # The beginning of the time range to query.
+        # 
+        # >  The start time supports fuzzy match. Specify the time in the YYYY-MM-DD hh:mm:ss format.
         self.start_time = start_time
-        # The operation that you want to perform. Set the value to **ListInstanceLoginAuditLog**.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -29964,14 +30035,17 @@ class ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLogi
         user_id: int = None,
         user_name: str = None,
     ):
+        # The database account that is used to log on to the instance.
         self.db_user = db_user
+        # The ID of the instance.
         self.instance_id = instance_id
-        # The ID of the request.
-        self.instance_name = instance_name
         # The name of the instance.
+        self.instance_name = instance_name
+        # The time when the user performed an operation on the instance.
         self.op_time = op_time
-        self.request_ip = request_ip
         # The source IP address of the request.
+        self.request_ip = request_ip
+        # The ID of the user.
         self.user_id = user_id
         # The alias of the user.
         self.user_name = user_name
@@ -30065,19 +30139,20 @@ class ListInstanceLoginAuditLogResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The ID of the user.
+        # The error code returned.
         self.error_code = error_code
-        # The number of the page to return.
-        self.error_message = error_message
-        # The database account that is used to log on to the instance.
-        self.instance_login_audit_log_list = instance_login_audit_log_list
         # The error message returned.
+        self.error_message = error_message
+        # The logon records of the instance.
+        self.instance_login_audit_log_list = instance_login_audit_log_list
+        # The ID of the request.
         self.request_id = request_id
-        # The beginning of the time range to query.
+        # Indicates whether the request was successful. Valid values:
         # 
-        # >  The start time supports fuzzy match. Specify the time in the YYYY-MM-DD hh:mm:ss format.
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
-        # The number of entries to return on each page. Maximum value: 100.
+        # The number of entries returned.
         self.total_count = total_count
 
     def validate(self):

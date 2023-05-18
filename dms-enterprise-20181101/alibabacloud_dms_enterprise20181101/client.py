@@ -7748,6 +7748,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetPermApplyOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
+        """
+        You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
+        
+        @param request: GetPermApplyOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPermApplyOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7778,6 +7785,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetPermApplyOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
+        """
+        You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
+        
+        @param request: GetPermApplyOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPermApplyOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7807,6 +7821,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetPermApplyOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
+        """
+        You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
+        
+        @param request: GetPermApplyOrderDetailRequest
+        @return: GetPermApplyOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_perm_apply_order_detail_with_options(request, runtime)
 
@@ -7814,6 +7834,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetPermApplyOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
+        """
+        You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
+        
+        @param request: GetPermApplyOrderDetailRequest
+        @return: GetPermApplyOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_perm_apply_order_detail_with_options_async(request, runtime)
 
