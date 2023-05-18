@@ -1,3 +1,6 @@
+2023-05-18 Version: 1.1.14
+- RecognizePurchaseRecord.
+
 2023-03-22 Version: 1.1.13
 - RecognizeTableOcr.
 

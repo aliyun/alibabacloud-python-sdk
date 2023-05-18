@@ -6500,9 +6500,11 @@ class RecognizePaymentRecordResponse(TeaModel):
 class RecognizePurchaseRecordRequest(TeaModel):
     def __init__(
         self,
+        output_multi_orders: bool = None,
         url: str = None,
         body: BinaryIO = None,
     ):
+        self.output_multi_orders = output_multi_orders
         self.url = url
         self.body = body
 
@@ -6515,6 +6517,8 @@ class RecognizePurchaseRecordRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.output_multi_orders is not None:
+            result['OutputMultiOrders'] = self.output_multi_orders
         if self.url is not None:
             result['Url'] = self.url
         if self.body is not None:
@@ -6523,6 +6527,8 @@ class RecognizePurchaseRecordRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OutputMultiOrders') is not None:
+            self.output_multi_orders = m.get('OutputMultiOrders')
         if m.get('Url') is not None:
             self.url = m.get('Url')
         if m.get('body') is not None:

@@ -3976,6 +3976,8 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizePurchaseRecordResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.output_multi_orders):
+            query['OutputMultiOrders'] = request.output_multi_orders
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
@@ -4006,6 +4008,8 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizePurchaseRecordResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.output_multi_orders):
+            query['OutputMultiOrders'] = request.output_multi_orders
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
