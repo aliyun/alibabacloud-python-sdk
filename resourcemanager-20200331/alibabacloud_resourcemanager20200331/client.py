@@ -71,6 +71,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.AcceptHandshakeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.AcceptHandshakeResponse:
+        """
+        After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
+        This topic provides an example on how to call the API operation to accept the invitation `h-Ih8IuPfvV0t0****` that is initiated to invite the Alibaba Cloud account `177242285274****` to join the resource directory `rd-3G****`.
+        
+        @param request: AcceptHandshakeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptHandshakeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.handshake_id):
@@ -99,6 +107,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.AcceptHandshakeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.AcceptHandshakeResponse:
+        """
+        After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
+        This topic provides an example on how to call the API operation to accept the invitation `h-Ih8IuPfvV0t0****` that is initiated to invite the Alibaba Cloud account `177242285274****` to join the resource directory `rd-3G****`.
+        
+        @param request: AcceptHandshakeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptHandshakeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.handshake_id):
@@ -126,6 +142,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.AcceptHandshakeRequest,
     ) -> resource_manager_20200331_models.AcceptHandshakeResponse:
+        """
+        After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
+        This topic provides an example on how to call the API operation to accept the invitation `h-Ih8IuPfvV0t0****` that is initiated to invite the Alibaba Cloud account `177242285274****` to join the resource directory `rd-3G****`.
+        
+        @param request: AcceptHandshakeRequest
+        @return: AcceptHandshakeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.accept_handshake_with_options(request, runtime)
 
@@ -133,6 +156,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.AcceptHandshakeRequest,
     ) -> resource_manager_20200331_models.AcceptHandshakeResponse:
+        """
+        After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
+        This topic provides an example on how to call the API operation to accept the invitation `h-Ih8IuPfvV0t0****` that is initiated to invite the Alibaba Cloud account `177242285274****` to join the resource directory `rd-3G****`.
+        
+        @param request: AcceptHandshakeRequest
+        @return: AcceptHandshakeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.accept_handshake_with_options_async(request, runtime)
 
@@ -141,6 +171,17 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.AttachControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.AttachControlPolicyResponse:
+        """
+        After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
+        By default, the system access control policy FullAliyunAccess is attached to each folder and member.
+        The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
+        A maximum of 10 access control policies can be attached to a folder or member.
+        This topic provides an example on how to call the API operation to attach the custom access control policy `cp-jExXAqIYkwHN****` to the folder `fd-ZDNPiT****`.
+        
+        @param request: AttachControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -171,6 +212,17 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.AttachControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.AttachControlPolicyResponse:
+        """
+        After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
+        By default, the system access control policy FullAliyunAccess is attached to each folder and member.
+        The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
+        A maximum of 10 access control policies can be attached to a folder or member.
+        This topic provides an example on how to call the API operation to attach the custom access control policy `cp-jExXAqIYkwHN****` to the folder `fd-ZDNPiT****`.
+        
+        @param request: AttachControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -200,6 +252,16 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.AttachControlPolicyRequest,
     ) -> resource_manager_20200331_models.AttachControlPolicyResponse:
+        """
+        After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
+        By default, the system access control policy FullAliyunAccess is attached to each folder and member.
+        The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
+        A maximum of 10 access control policies can be attached to a folder or member.
+        This topic provides an example on how to call the API operation to attach the custom access control policy `cp-jExXAqIYkwHN****` to the folder `fd-ZDNPiT****`.
+        
+        @param request: AttachControlPolicyRequest
+        @return: AttachControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_control_policy_with_options(request, runtime)
 
@@ -207,6 +269,16 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.AttachControlPolicyRequest,
     ) -> resource_manager_20200331_models.AttachControlPolicyResponse:
+        """
+        After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
+        By default, the system access control policy FullAliyunAccess is attached to each folder and member.
+        The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
+        A maximum of 10 access control policies can be attached to a folder or member.
+        This topic provides an example on how to call the API operation to attach the custom access control policy `cp-jExXAqIYkwHN****` to the folder `fd-ZDNPiT****`.
+        
+        @param request: AttachControlPolicyRequest
+        @return: AttachControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_control_policy_with_options_async(request, runtime)
 
@@ -215,6 +287,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.AttachPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.AttachPolicyResponse:
+        """
+        In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK***` resource group.
+        
+        @param request: AttachPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -251,6 +330,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.AttachPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.AttachPolicyResponse:
+        """
+        In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK***` resource group.
+        
+        @param request: AttachPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -286,6 +372,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.AttachPolicyRequest,
     ) -> resource_manager_20200331_models.AttachPolicyResponse:
+        """
+        In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK***` resource group.
+        
+        @param request: AttachPolicyRequest
+        @return: AttachPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_policy_with_options(request, runtime)
 
@@ -293,6 +385,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.AttachPolicyRequest,
     ) -> resource_manager_20200331_models.AttachPolicyResponse:
+        """
+        In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK***` resource group.
+        
+        @param request: AttachPolicyRequest
+        @return: AttachPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_policy_with_options_async(request, runtime)
 
@@ -301,6 +399,15 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.BindSecureMobilePhoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.BindSecureMobilePhoneResponse:
+        """
+        You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
+        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+        This topic provides an example on how to call the API operation to bind a mobile phone number to the member `138660628348****` for security purposes.
+        
+        @param request: BindSecureMobilePhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindSecureMobilePhoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -333,6 +440,15 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.BindSecureMobilePhoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.BindSecureMobilePhoneResponse:
+        """
+        You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
+        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+        This topic provides an example on how to call the API operation to bind a mobile phone number to the member `138660628348****` for security purposes.
+        
+        @param request: BindSecureMobilePhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindSecureMobilePhoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -364,6 +480,14 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.BindSecureMobilePhoneRequest,
     ) -> resource_manager_20200331_models.BindSecureMobilePhoneResponse:
+        """
+        You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
+        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+        This topic provides an example on how to call the API operation to bind a mobile phone number to the member `138660628348****` for security purposes.
+        
+        @param request: BindSecureMobilePhoneRequest
+        @return: BindSecureMobilePhoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_secure_mobile_phone_with_options(request, runtime)
 
@@ -371,6 +495,14 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.BindSecureMobilePhoneRequest,
     ) -> resource_manager_20200331_models.BindSecureMobilePhoneResponse:
+        """
+        You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
+        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+        This topic provides an example on how to call the API operation to bind a mobile phone number to the member `138660628348****` for security purposes.
+        
+        @param request: BindSecureMobilePhoneRequest
+        @return: BindSecureMobilePhoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_secure_mobile_phone_with_options_async(request, runtime)
 
@@ -519,6 +651,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CancelHandshakeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CancelHandshakeResponse:
+        """
+        This topic provides an example on how to call the API operation to cancel the invitation whose ID is `h-ycm4rp***`.
+        
+        @param request: CancelHandshakeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelHandshakeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.handshake_id):
@@ -547,6 +686,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CancelHandshakeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CancelHandshakeResponse:
+        """
+        This topic provides an example on how to call the API operation to cancel the invitation whose ID is `h-ycm4rp***`.
+        
+        @param request: CancelHandshakeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelHandshakeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.handshake_id):
@@ -574,6 +720,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CancelHandshakeRequest,
     ) -> resource_manager_20200331_models.CancelHandshakeResponse:
+        """
+        This topic provides an example on how to call the API operation to cancel the invitation whose ID is `h-ycm4rp***`.
+        
+        @param request: CancelHandshakeRequest
+        @return: CancelHandshakeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_handshake_with_options(request, runtime)
 
@@ -581,6 +733,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CancelHandshakeRequest,
     ) -> resource_manager_20200331_models.CancelHandshakeResponse:
+        """
+        This topic provides an example on how to call the API operation to cancel the invitation whose ID is `h-ycm4rp***`.
+        
+        @param request: CancelHandshakeRequest
+        @return: CancelHandshakeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_handshake_with_options_async(request, runtime)
 
@@ -733,6 +891,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CheckAccountDeleteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CheckAccountDeleteResponse:
+        """
+        Before you delete a member, you must call this API operation to check whether the member can be deleted.
+        This topic provides an example on how to call the API operation to perform a deletion check on the member whose ID is `179855839641****`.
+        
+        @param request: CheckAccountDeleteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckAccountDeleteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -761,6 +927,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CheckAccountDeleteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CheckAccountDeleteResponse:
+        """
+        Before you delete a member, you must call this API operation to check whether the member can be deleted.
+        This topic provides an example on how to call the API operation to perform a deletion check on the member whose ID is `179855839641****`.
+        
+        @param request: CheckAccountDeleteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckAccountDeleteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -788,6 +962,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CheckAccountDeleteRequest,
     ) -> resource_manager_20200331_models.CheckAccountDeleteResponse:
+        """
+        Before you delete a member, you must call this API operation to check whether the member can be deleted.
+        This topic provides an example on how to call the API operation to perform a deletion check on the member whose ID is `179855839641****`.
+        
+        @param request: CheckAccountDeleteRequest
+        @return: CheckAccountDeleteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_account_delete_with_options(request, runtime)
 
@@ -795,6 +976,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CheckAccountDeleteRequest,
     ) -> resource_manager_20200331_models.CheckAccountDeleteResponse:
+        """
+        Before you delete a member, you must call this API operation to check whether the member can be deleted.
+        This topic provides an example on how to call the API operation to perform a deletion check on the member whose ID is `179855839641****`.
+        
+        @param request: CheckAccountDeleteRequest
+        @return: CheckAccountDeleteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_account_delete_with_options_async(request, runtime)
 
@@ -803,6 +991,16 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateCloudAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateCloudAccountResponse:
+        """
+        A resource directory supports two types of member accounts: resource accounts and cloud accounts.
+        *   Resource account (recommended): A resource account is only used as a resource container and fully depends on a resource directory. Such member accounts are secure and easy-to-create. For more information about how to create a resource account, see [CreateResourceAccount](~~159392~~).
+        >  A resource account can be upgraded to a cloud account. For more information, see [PromoteResourceAccount](~~159395~~) .
+        *   Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root permissions.
+        
+        @param request: CreateCloudAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.display_name):
@@ -837,6 +1035,16 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateCloudAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateCloudAccountResponse:
+        """
+        A resource directory supports two types of member accounts: resource accounts and cloud accounts.
+        *   Resource account (recommended): A resource account is only used as a resource container and fully depends on a resource directory. Such member accounts are secure and easy-to-create. For more information about how to create a resource account, see [CreateResourceAccount](~~159392~~).
+        >  A resource account can be upgraded to a cloud account. For more information, see [PromoteResourceAccount](~~159395~~) .
+        *   Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root permissions.
+        
+        @param request: CreateCloudAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.display_name):
@@ -870,6 +1078,15 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CreateCloudAccountRequest,
     ) -> resource_manager_20200331_models.CreateCloudAccountResponse:
+        """
+        A resource directory supports two types of member accounts: resource accounts and cloud accounts.
+        *   Resource account (recommended): A resource account is only used as a resource container and fully depends on a resource directory. Such member accounts are secure and easy-to-create. For more information about how to create a resource account, see [CreateResourceAccount](~~159392~~).
+        >  A resource account can be upgraded to a cloud account. For more information, see [PromoteResourceAccount](~~159395~~) .
+        *   Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root permissions.
+        
+        @param request: CreateCloudAccountRequest
+        @return: CreateCloudAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_cloud_account_with_options(request, runtime)
 
@@ -877,6 +1094,15 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CreateCloudAccountRequest,
     ) -> resource_manager_20200331_models.CreateCloudAccountResponse:
+        """
+        A resource directory supports two types of member accounts: resource accounts and cloud accounts.
+        *   Resource account (recommended): A resource account is only used as a resource container and fully depends on a resource directory. Such member accounts are secure and easy-to-create. For more information about how to create a resource account, see [CreateResourceAccount](~~159392~~).
+        >  A resource account can be upgraded to a cloud account. For more information, see [PromoteResourceAccount](~~159395~~) .
+        *   Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root permissions.
+        
+        @param request: CreateCloudAccountRequest
+        @return: CreateCloudAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_cloud_account_with_options_async(request, runtime)
 
@@ -885,6 +1111,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateControlPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
+        
+        @param request: CreateControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -919,6 +1152,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateControlPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
+        
+        @param request: CreateControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -952,6 +1192,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CreateControlPolicyRequest,
     ) -> resource_manager_20200331_models.CreateControlPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
+        
+        @param request: CreateControlPolicyRequest
+        @return: CreateControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_control_policy_with_options(request, runtime)
 
@@ -959,6 +1205,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CreateControlPolicyRequest,
     ) -> resource_manager_20200331_models.CreateControlPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
+        
+        @param request: CreateControlPolicyRequest
+        @return: CreateControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_control_policy_with_options_async(request, runtime)
 
@@ -967,6 +1219,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateFolderResponse:
+        """
+        >  A maximum of five levels of folders can be created under the root folder.
+        In this example, a folder named `rdFolder` is created under the root folder.
+        
+        @param request: CreateFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFolderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.folder_name):
@@ -997,6 +1257,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateFolderResponse:
+        """
+        >  A maximum of five levels of folders can be created under the root folder.
+        In this example, a folder named `rdFolder` is created under the root folder.
+        
+        @param request: CreateFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFolderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.folder_name):
@@ -1026,6 +1294,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CreateFolderRequest,
     ) -> resource_manager_20200331_models.CreateFolderResponse:
+        """
+        >  A maximum of five levels of folders can be created under the root folder.
+        In this example, a folder named `rdFolder` is created under the root folder.
+        
+        @param request: CreateFolderRequest
+        @return: CreateFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_folder_with_options(request, runtime)
 
@@ -1033,6 +1308,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CreateFolderRequest,
     ) -> resource_manager_20200331_models.CreateFolderResponse:
+        """
+        >  A maximum of five levels of folders can be created under the root folder.
+        In this example, a folder named `rdFolder` is created under the root folder.
+        
+        @param request: CreateFolderRequest
+        @return: CreateFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_folder_with_options_async(request, runtime)
 
@@ -1197,6 +1479,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateResourceAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateResourceAccountResponse:
+        """
+        A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
+        This topic provides an example on how to call the API operation to create a member in the `fd-r23M55****` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
+        
+        @param request: CreateResourceAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name_prefix):
@@ -1235,6 +1525,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateResourceAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateResourceAccountResponse:
+        """
+        A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
+        This topic provides an example on how to call the API operation to create a member in the `fd-r23M55****` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
+        
+        @param request: CreateResourceAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name_prefix):
@@ -1272,6 +1570,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CreateResourceAccountRequest,
     ) -> resource_manager_20200331_models.CreateResourceAccountResponse:
+        """
+        A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
+        This topic provides an example on how to call the API operation to create a member in the `fd-r23M55****` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
+        
+        @param request: CreateResourceAccountRequest
+        @return: CreateResourceAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_resource_account_with_options(request, runtime)
 
@@ -1279,6 +1584,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CreateResourceAccountRequest,
     ) -> resource_manager_20200331_models.CreateResourceAccountResponse:
+        """
+        A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
+        This topic provides an example on how to call the API operation to create a member in the `fd-r23M55****` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
+        
+        @param request: CreateResourceAccountRequest
+        @return: CreateResourceAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_resource_account_with_options_async(request, runtime)
 
@@ -1287,6 +1599,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateResourceGroupResponse:
+        """
+        For more information about common request parameters, see [Common parameters](~~159973~~).
+        
+        @param request: CreateResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.display_name):
@@ -1317,6 +1636,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateResourceGroupResponse:
+        """
+        For more information about common request parameters, see [Common parameters](~~159973~~).
+        
+        @param request: CreateResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.display_name):
@@ -1346,6 +1672,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CreateResourceGroupRequest,
     ) -> resource_manager_20200331_models.CreateResourceGroupResponse:
+        """
+        For more information about common request parameters, see [Common parameters](~~159973~~).
+        
+        @param request: CreateResourceGroupRequest
+        @return: CreateResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_resource_group_with_options(request, runtime)
 
@@ -1353,6 +1685,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.CreateResourceGroupRequest,
     ) -> resource_manager_20200331_models.CreateResourceGroupResponse:
+        """
+        For more information about common request parameters, see [Common parameters](~~159973~~).
+        
+        @param request: CreateResourceGroupRequest
+        @return: CreateResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_resource_group_with_options_async(request, runtime)
 
@@ -1591,6 +1929,13 @@ class Client(OpenApiClient):
         tmp_req: resource_manager_20200331_models.DeleteAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeleteAccountResponse:
+        """
+        The ID of the member that you want to delete.
+        
+        @param tmp_req: DeleteAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = resource_manager_20200331_models.DeleteAccountShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1625,6 +1970,13 @@ class Client(OpenApiClient):
         tmp_req: resource_manager_20200331_models.DeleteAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeleteAccountResponse:
+        """
+        The ID of the member that you want to delete.
+        
+        @param tmp_req: DeleteAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = resource_manager_20200331_models.DeleteAccountShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1658,6 +2010,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeleteAccountRequest,
     ) -> resource_manager_20200331_models.DeleteAccountResponse:
+        """
+        The ID of the member that you want to delete.
+        
+        @param request: DeleteAccountRequest
+        @return: DeleteAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_account_with_options(request, runtime)
 
@@ -1665,6 +2023,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeleteAccountRequest,
     ) -> resource_manager_20200331_models.DeleteAccountResponse:
+        """
+        The ID of the member that you want to delete.
+        
+        @param request: DeleteAccountRequest
+        @return: DeleteAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
 
@@ -1673,6 +2037,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeleteControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeleteControlPolicyResponse:
+        """
+        If you want to delete a custom control policy that is attached to folders or member accounts, you must call the [DetachControlPolicy](~~208331~~) operation to detach the policy before you delete it.
+        In this example, the custom control policy `cp-SImPt8GCEwiq****` is deleted.
+        
+        @param request: DeleteControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -1701,6 +2073,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeleteControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeleteControlPolicyResponse:
+        """
+        If you want to delete a custom control policy that is attached to folders or member accounts, you must call the [DetachControlPolicy](~~208331~~) operation to detach the policy before you delete it.
+        In this example, the custom control policy `cp-SImPt8GCEwiq****` is deleted.
+        
+        @param request: DeleteControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -1728,6 +2108,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeleteControlPolicyRequest,
     ) -> resource_manager_20200331_models.DeleteControlPolicyResponse:
+        """
+        If you want to delete a custom control policy that is attached to folders or member accounts, you must call the [DetachControlPolicy](~~208331~~) operation to detach the policy before you delete it.
+        In this example, the custom control policy `cp-SImPt8GCEwiq****` is deleted.
+        
+        @param request: DeleteControlPolicyRequest
+        @return: DeleteControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_control_policy_with_options(request, runtime)
 
@@ -1735,6 +2122,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeleteControlPolicyRequest,
     ) -> resource_manager_20200331_models.DeleteControlPolicyResponse:
+        """
+        If you want to delete a custom control policy that is attached to folders or member accounts, you must call the [DetachControlPolicy](~~208331~~) operation to detach the policy before you delete it.
+        In this example, the custom control policy `cp-SImPt8GCEwiq****` is deleted.
+        
+        @param request: DeleteControlPolicyRequest
+        @return: DeleteControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_control_policy_with_options_async(request, runtime)
 
@@ -1743,6 +2137,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeleteFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeleteFolderResponse:
+        """
+        >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
+        
+        @param request: DeleteFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFolderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -1771,6 +2172,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeleteFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeleteFolderResponse:
+        """
+        >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
+        
+        @param request: DeleteFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFolderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -1798,6 +2206,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeleteFolderRequest,
     ) -> resource_manager_20200331_models.DeleteFolderResponse:
+        """
+        >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
+        
+        @param request: DeleteFolderRequest
+        @return: DeleteFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_folder_with_options(request, runtime)
 
@@ -1805,6 +2219,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeleteFolderRequest,
     ) -> resource_manager_20200331_models.DeleteFolderResponse:
+        """
+        >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
+        
+        @param request: DeleteFolderRequest
+        @return: DeleteFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_folder_with_options_async(request, runtime)
 
@@ -1813,6 +2233,15 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeletePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeletePolicyResponse:
+        """
+        >
+        *   Before you delete a policy, you must delete all non-default versions of the policy. For more information about how to delete a policy version, see [DeletePolicyVersion](~~159041~~).
+        *   Before you delete a policy, make sure that the policy is not referenced. This means that the policy is not attached to RAM users, RAM user groups, or RAM roles. For more information about how to detach a policy, see [DetachPolicy](~~159168~~).
+        
+        @param request: DeletePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -1841,6 +2270,15 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeletePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeletePolicyResponse:
+        """
+        >
+        *   Before you delete a policy, you must delete all non-default versions of the policy. For more information about how to delete a policy version, see [DeletePolicyVersion](~~159041~~).
+        *   Before you delete a policy, make sure that the policy is not referenced. This means that the policy is not attached to RAM users, RAM user groups, or RAM roles. For more information about how to detach a policy, see [DetachPolicy](~~159168~~).
+        
+        @param request: DeletePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -1868,6 +2306,14 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeletePolicyRequest,
     ) -> resource_manager_20200331_models.DeletePolicyResponse:
+        """
+        >
+        *   Before you delete a policy, you must delete all non-default versions of the policy. For more information about how to delete a policy version, see [DeletePolicyVersion](~~159041~~).
+        *   Before you delete a policy, make sure that the policy is not referenced. This means that the policy is not attached to RAM users, RAM user groups, or RAM roles. For more information about how to detach a policy, see [DetachPolicy](~~159168~~).
+        
+        @param request: DeletePolicyRequest
+        @return: DeletePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_policy_with_options(request, runtime)
 
@@ -1875,6 +2321,14 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeletePolicyRequest,
     ) -> resource_manager_20200331_models.DeletePolicyResponse:
+        """
+        >
+        *   Before you delete a policy, you must delete all non-default versions of the policy. For more information about how to delete a policy version, see [DeletePolicyVersion](~~159041~~).
+        *   Before you delete a policy, make sure that the policy is not referenced. This means that the policy is not attached to RAM users, RAM user groups, or RAM roles. For more information about how to detach a policy, see [DetachPolicy](~~159168~~).
+        
+        @param request: DeletePolicyRequest
+        @return: DeletePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_policy_with_options_async(request, runtime)
 
@@ -1883,6 +2337,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeletePolicyVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeletePolicyVersionResponse:
+        """
+        >  The default version of a permission policy cannot be deleted.
+        
+        @param request: DeletePolicyVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -1913,6 +2374,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeletePolicyVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeletePolicyVersionResponse:
+        """
+        >  The default version of a permission policy cannot be deleted.
+        
+        @param request: DeletePolicyVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -1942,6 +2410,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeletePolicyVersionRequest,
     ) -> resource_manager_20200331_models.DeletePolicyVersionResponse:
+        """
+        >  The default version of a permission policy cannot be deleted.
+        
+        @param request: DeletePolicyVersionRequest
+        @return: DeletePolicyVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_policy_version_with_options(request, runtime)
 
@@ -1949,6 +2423,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeletePolicyVersionRequest,
     ) -> resource_manager_20200331_models.DeletePolicyVersionResponse:
+        """
+        >  The default version of a permission policy cannot be deleted.
+        
+        @param request: DeletePolicyVersionRequest
+        @return: DeletePolicyVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_policy_version_with_options_async(request, runtime)
 
@@ -1957,6 +2437,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeleteResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeleteResourceGroupResponse:
+        """
+        >  Before you delete a resource group, you must delete all the resources in it.
+        In this example, the resource group whose ID is `rg-9gLOoK****` is deleted.
+        
+        @param request: DeleteResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -1985,6 +2473,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeleteResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeleteResourceGroupResponse:
+        """
+        >  Before you delete a resource group, you must delete all the resources in it.
+        In this example, the resource group whose ID is `rg-9gLOoK****` is deleted.
+        
+        @param request: DeleteResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -2012,6 +2508,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeleteResourceGroupRequest,
     ) -> resource_manager_20200331_models.DeleteResourceGroupResponse:
+        """
+        >  Before you delete a resource group, you must delete all the resources in it.
+        In this example, the resource group whose ID is `rg-9gLOoK****` is deleted.
+        
+        @param request: DeleteResourceGroupRequest
+        @return: DeleteResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_resource_group_with_options(request, runtime)
 
@@ -2019,6 +2522,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeleteResourceGroupRequest,
     ) -> resource_manager_20200331_models.DeleteResourceGroupResponse:
+        """
+        >  Before you delete a resource group, you must delete all the resources in it.
+        In this example, the resource group whose ID is `rg-9gLOoK****` is deleted.
+        
+        @param request: DeleteResourceGroupRequest
+        @return: DeleteResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_resource_group_with_options_async(request, runtime)
 
@@ -2167,6 +2677,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeregisterDelegatedAdministratorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse:
+        """
+        >  If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
+        This topic provides an example on how to call the API operation to remove the delegated administrator account `181761095690****` for Cloud Firewall.
+        
+        @param request: DeregisterDelegatedAdministratorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeregisterDelegatedAdministratorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2197,6 +2715,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeregisterDelegatedAdministratorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse:
+        """
+        >  If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
+        This topic provides an example on how to call the API operation to remove the delegated administrator account `181761095690****` for Cloud Firewall.
+        
+        @param request: DeregisterDelegatedAdministratorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeregisterDelegatedAdministratorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2226,6 +2752,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeregisterDelegatedAdministratorRequest,
     ) -> resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse:
+        """
+        >  If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
+        This topic provides an example on how to call the API operation to remove the delegated administrator account `181761095690****` for Cloud Firewall.
+        
+        @param request: DeregisterDelegatedAdministratorRequest
+        @return: DeregisterDelegatedAdministratorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.deregister_delegated_administrator_with_options(request, runtime)
 
@@ -2233,6 +2766,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DeregisterDelegatedAdministratorRequest,
     ) -> resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse:
+        """
+        >  If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
+        This topic provides an example on how to call the API operation to remove the delegated administrator account `181761095690****` for Cloud Firewall.
+        
+        @param request: DeregisterDelegatedAdministratorRequest
+        @return: DeregisterDelegatedAdministratorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.deregister_delegated_administrator_with_options_async(request, runtime)
 
@@ -2240,6 +2780,15 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DestroyResourceDirectoryResponse:
+        """
+        Before you disable a resource directory, make sure that the following requirements are met:
+        *   All member accounts must be removed from the resource directory. For more information about how to remove a member account, see [RemoveCloudAccount](~~159431~~).
+        *   All folders except the root folder must be deleted from the resource directory. For more information about how to delete a folder, see [DeleteFolder](~~159432~~).
+        
+        @param request: DestroyResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DestroyResourceDirectoryResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DestroyResourceDirectory',
@@ -2261,6 +2810,15 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DestroyResourceDirectoryResponse:
+        """
+        Before you disable a resource directory, make sure that the following requirements are met:
+        *   All member accounts must be removed from the resource directory. For more information about how to remove a member account, see [RemoveCloudAccount](~~159431~~).
+        *   All folders except the root folder must be deleted from the resource directory. For more information about how to delete a folder, see [DeleteFolder](~~159432~~).
+        
+        @param request: DestroyResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DestroyResourceDirectoryResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DestroyResourceDirectory',
@@ -2279,10 +2837,24 @@ class Client(OpenApiClient):
         )
 
     def destroy_resource_directory(self) -> resource_manager_20200331_models.DestroyResourceDirectoryResponse:
+        """
+        Before you disable a resource directory, make sure that the following requirements are met:
+        *   All member accounts must be removed from the resource directory. For more information about how to remove a member account, see [RemoveCloudAccount](~~159431~~).
+        *   All folders except the root folder must be deleted from the resource directory. For more information about how to delete a folder, see [DeleteFolder](~~159432~~).
+        
+        @return: DestroyResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.destroy_resource_directory_with_options(runtime)
 
     async def destroy_resource_directory_async(self) -> resource_manager_20200331_models.DestroyResourceDirectoryResponse:
+        """
+        Before you disable a resource directory, make sure that the following requirements are met:
+        *   All member accounts must be removed from the resource directory. For more information about how to remove a member account, see [RemoveCloudAccount](~~159431~~).
+        *   All folders except the root folder must be deleted from the resource directory. For more information about how to delete a folder, see [DeleteFolder](~~159432~~).
+        
+        @return: DestroyResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.destroy_resource_directory_with_options_async(runtime)
 
@@ -2291,6 +2863,15 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DetachControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DetachControlPolicyResponse:
+        """
+        After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
+        Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
+        This topic provides an example on how to call the API operation to detach the custom control policy `cp-jExXAqIYkwHN****` from the folder `fd-ZDNPiT****`.
+        
+        @param request: DetachControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -2321,6 +2902,15 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DetachControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DetachControlPolicyResponse:
+        """
+        After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
+        Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
+        This topic provides an example on how to call the API operation to detach the custom control policy `cp-jExXAqIYkwHN****` from the folder `fd-ZDNPiT****`.
+        
+        @param request: DetachControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -2350,6 +2940,14 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DetachControlPolicyRequest,
     ) -> resource_manager_20200331_models.DetachControlPolicyResponse:
+        """
+        After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
+        Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
+        This topic provides an example on how to call the API operation to detach the custom control policy `cp-jExXAqIYkwHN****` from the folder `fd-ZDNPiT****`.
+        
+        @param request: DetachControlPolicyRequest
+        @return: DetachControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_control_policy_with_options(request, runtime)
 
@@ -2357,6 +2955,14 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.DetachControlPolicyRequest,
     ) -> resource_manager_20200331_models.DetachControlPolicyResponse:
+        """
+        After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
+        Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
+        This topic provides an example on how to call the API operation to detach the custom control policy `cp-jExXAqIYkwHN****` from the folder `fd-ZDNPiT****`.
+        
+        @param request: DetachControlPolicyRequest
+        @return: DetachControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_control_policy_with_options_async(request, runtime)
 
@@ -2450,6 +3056,14 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DisableControlPolicyResponse:
+        """
+        After you disable the Control Policy feature, the system automatically detaches all control policies that are attached to folders and member accounts. The system does not delete these control policies, but you cannot attach them to folders or member accounts again.
+        >  If you disable the Control Policy feature, the permissions of all folders and member accounts in a resource directory are affected. You must proceed with caution.
+        
+        @param request: DisableControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableControlPolicyResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DisableControlPolicy',
@@ -2471,6 +3085,14 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DisableControlPolicyResponse:
+        """
+        After you disable the Control Policy feature, the system automatically detaches all control policies that are attached to folders and member accounts. The system does not delete these control policies, but you cannot attach them to folders or member accounts again.
+        >  If you disable the Control Policy feature, the permissions of all folders and member accounts in a resource directory are affected. You must proceed with caution.
+        
+        @param request: DisableControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableControlPolicyResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DisableControlPolicy',
@@ -2489,10 +3111,22 @@ class Client(OpenApiClient):
         )
 
     def disable_control_policy(self) -> resource_manager_20200331_models.DisableControlPolicyResponse:
+        """
+        After you disable the Control Policy feature, the system automatically detaches all control policies that are attached to folders and member accounts. The system does not delete these control policies, but you cannot attach them to folders or member accounts again.
+        >  If you disable the Control Policy feature, the permissions of all folders and member accounts in a resource directory are affected. You must proceed with caution.
+        
+        @return: DisableControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_control_policy_with_options(runtime)
 
     async def disable_control_policy_async(self) -> resource_manager_20200331_models.DisableControlPolicyResponse:
+        """
+        After you disable the Control Policy feature, the system automatically detaches all control policies that are attached to folders and member accounts. The system does not delete these control policies, but you cannot attach them to folders or member accounts again.
+        >  If you disable the Control Policy feature, the permissions of all folders and member accounts in a resource directory are affected. You must proceed with caution.
+        
+        @return: DisableControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_control_policy_with_options_async(runtime)
 
@@ -2500,6 +3134,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.EnableControlPolicyResponse:
+        """
+        The Control Policy feature allows you to manage the permission boundaries of the folders or member accounts in a resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member account in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](~~178671~~).
+        
+        @param request: EnableControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableControlPolicyResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='EnableControlPolicy',
@@ -2521,6 +3162,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.EnableControlPolicyResponse:
+        """
+        The Control Policy feature allows you to manage the permission boundaries of the folders or member accounts in a resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member account in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](~~178671~~).
+        
+        @param request: EnableControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableControlPolicyResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='EnableControlPolicy',
@@ -2539,10 +3187,20 @@ class Client(OpenApiClient):
         )
 
     def enable_control_policy(self) -> resource_manager_20200331_models.EnableControlPolicyResponse:
+        """
+        The Control Policy feature allows you to manage the permission boundaries of the folders or member accounts in a resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member account in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](~~178671~~).
+        
+        @return: EnableControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_control_policy_with_options(runtime)
 
     async def enable_control_policy_async(self) -> resource_manager_20200331_models.EnableControlPolicyResponse:
+        """
+        The Control Policy feature allows you to manage the permission boundaries of the folders or member accounts in a resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member account in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](~~178671~~).
+        
+        @return: EnableControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_control_policy_with_options_async(runtime)
 
@@ -2551,6 +3209,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.EnableResourceDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.EnableResourceDirectoryResponse:
+        """
+        You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](~~111215~~).
+        In this example, the current account is used to enable a resource directory.
+        
+        @param request: EnableResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableResourceDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_mode):
@@ -2585,6 +3251,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.EnableResourceDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.EnableResourceDirectoryResponse:
+        """
+        You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](~~111215~~).
+        In this example, the current account is used to enable a resource directory.
+        
+        @param request: EnableResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableResourceDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_mode):
@@ -2618,6 +3292,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.EnableResourceDirectoryRequest,
     ) -> resource_manager_20200331_models.EnableResourceDirectoryResponse:
+        """
+        You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](~~111215~~).
+        In this example, the current account is used to enable a resource directory.
+        
+        @param request: EnableResourceDirectoryRequest
+        @return: EnableResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_resource_directory_with_options(request, runtime)
 
@@ -2625,6 +3306,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.EnableResourceDirectoryRequest,
     ) -> resource_manager_20200331_models.EnableResourceDirectoryResponse:
+        """
+        You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](~~111215~~).
+        In this example, the current account is used to enable a resource directory.
+        
+        @param request: EnableResourceDirectoryRequest
+        @return: EnableResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_resource_directory_with_options_async(request, runtime)
 
@@ -2633,6 +3321,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690***`.
+        
+        @param request: GetAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2663,6 +3358,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690***`.
+        
+        @param request: GetAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2692,6 +3394,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.GetAccountRequest,
     ) -> resource_manager_20200331_models.GetAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690***`.
+        
+        @param request: GetAccountRequest
+        @return: GetAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_with_options(request, runtime)
 
@@ -2699,6 +3407,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.GetAccountRequest,
     ) -> resource_manager_20200331_models.GetAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690***`.
+        
+        @param request: GetAccountRequest
+        @return: GetAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_with_options_async(request, runtime)
 
@@ -2707,6 +3421,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetAccountDeletionCheckResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetAccountDeletionCheckResultResponse:
+        """
+        After you call the [CheckAccountDelete](~~448542~~) operation to perform a member deletion check, you can call the GetAccountDeletionCheckResult operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+        This topic provides an example on how to call the API operation to query the result of the deletion check for the member whose ID is `179855839641****`. The response shows that the member does not meet deletion requirements.
+        
+        @param request: GetAccountDeletionCheckResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountDeletionCheckResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2735,6 +3457,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetAccountDeletionCheckResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetAccountDeletionCheckResultResponse:
+        """
+        After you call the [CheckAccountDelete](~~448542~~) operation to perform a member deletion check, you can call the GetAccountDeletionCheckResult operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+        This topic provides an example on how to call the API operation to query the result of the deletion check for the member whose ID is `179855839641****`. The response shows that the member does not meet deletion requirements.
+        
+        @param request: GetAccountDeletionCheckResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountDeletionCheckResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2762,6 +3492,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.GetAccountDeletionCheckResultRequest,
     ) -> resource_manager_20200331_models.GetAccountDeletionCheckResultResponse:
+        """
+        After you call the [CheckAccountDelete](~~448542~~) operation to perform a member deletion check, you can call the GetAccountDeletionCheckResult operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+        This topic provides an example on how to call the API operation to query the result of the deletion check for the member whose ID is `179855839641****`. The response shows that the member does not meet deletion requirements.
+        
+        @param request: GetAccountDeletionCheckResultRequest
+        @return: GetAccountDeletionCheckResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_deletion_check_result_with_options(request, runtime)
 
@@ -2769,6 +3506,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.GetAccountDeletionCheckResultRequest,
     ) -> resource_manager_20200331_models.GetAccountDeletionCheckResultResponse:
+        """
+        After you call the [CheckAccountDelete](~~448542~~) operation to perform a member deletion check, you can call the GetAccountDeletionCheckResult operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+        This topic provides an example on how to call the API operation to query the result of the deletion check for the member whose ID is `179855839641****`. The response shows that the member does not meet deletion requirements.
+        
+        @param request: GetAccountDeletionCheckResultRequest
+        @return: GetAccountDeletionCheckResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_deletion_check_result_with_options_async(request, runtime)
 
@@ -2847,6 +3591,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetControlPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq***`.
+        
+        @param request: GetControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -2877,6 +3628,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetControlPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq***`.
+        
+        @param request: GetControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -2906,6 +3664,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.GetControlPolicyRequest,
     ) -> resource_manager_20200331_models.GetControlPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq***`.
+        
+        @param request: GetControlPolicyRequest
+        @return: GetControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_control_policy_with_options(request, runtime)
 
@@ -2913,6 +3677,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.GetControlPolicyRequest,
     ) -> resource_manager_20200331_models.GetControlPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq***`.
+        
+        @param request: GetControlPolicyRequest
+        @return: GetControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_control_policy_with_options_async(request, runtime)
 
@@ -2971,6 +3741,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetFolderResponse:
+        """
+        In this example, the information of the folder `fd-Jyl5U7***` is queried.
+        
+        @param request: GetFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFolderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -2999,6 +3776,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetFolderResponse:
+        """
+        In this example, the information of the folder `fd-Jyl5U7***` is queried.
+        
+        @param request: GetFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFolderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -3026,6 +3810,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.GetFolderRequest,
     ) -> resource_manager_20200331_models.GetFolderResponse:
+        """
+        In this example, the information of the folder `fd-Jyl5U7***` is queried.
+        
+        @param request: GetFolderRequest
+        @return: GetFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_folder_with_options(request, runtime)
 
@@ -3033,6 +3823,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.GetFolderRequest,
     ) -> resource_manager_20200331_models.GetFolderResponse:
+        """
+        In this example, the information of the folder `fd-Jyl5U7***` is queried.
+        
+        @param request: GetFolderRequest
+        @return: GetFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_folder_with_options_async(request, runtime)
 
@@ -3041,6 +3837,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetHandshakeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetHandshakeResponse:
+        """
+        In this example, the information of the invitation whose ID is `h-ycm4rp***` is queried.
+        
+        @param request: GetHandshakeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHandshakeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.handshake_id):
@@ -3069,6 +3872,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetHandshakeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetHandshakeResponse:
+        """
+        In this example, the information of the invitation whose ID is `h-ycm4rp***` is queried.
+        
+        @param request: GetHandshakeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHandshakeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.handshake_id):
@@ -3096,6 +3906,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.GetHandshakeRequest,
     ) -> resource_manager_20200331_models.GetHandshakeResponse:
+        """
+        In this example, the information of the invitation whose ID is `h-ycm4rp***` is queried.
+        
+        @param request: GetHandshakeRequest
+        @return: GetHandshakeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_handshake_with_options(request, runtime)
 
@@ -3103,6 +3919,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.GetHandshakeRequest,
     ) -> resource_manager_20200331_models.GetHandshakeResponse:
+        """
+        In this example, the information of the invitation whose ID is `h-ycm4rp***` is queried.
+        
+        @param request: GetHandshakeRequest
+        @return: GetHandshakeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_handshake_with_options_async(request, runtime)
 
@@ -3336,6 +4158,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetResourceDirectoryResponse:
+        """
+        This topic provides an example on how to use a management account to call the API operation to query the information of the resource directory that is enabled by using the management account.
+        
+        @param request: GetResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceDirectoryResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetResourceDirectory',
@@ -3357,6 +4186,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetResourceDirectoryResponse:
+        """
+        This topic provides an example on how to use a management account to call the API operation to query the information of the resource directory that is enabled by using the management account.
+        
+        @param request: GetResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceDirectoryResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetResourceDirectory',
@@ -3375,10 +4211,20 @@ class Client(OpenApiClient):
         )
 
     def get_resource_directory(self) -> resource_manager_20200331_models.GetResourceDirectoryResponse:
+        """
+        This topic provides an example on how to use a management account to call the API operation to query the information of the resource directory that is enabled by using the management account.
+        
+        @return: GetResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_resource_directory_with_options(runtime)
 
     async def get_resource_directory_async(self) -> resource_manager_20200331_models.GetResourceDirectoryResponse:
+        """
+        This topic provides an example on how to use a management account to call the API operation to query the information of the resource directory that is enabled by using the management account.
+        
+        @return: GetResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_directory_with_options_async(runtime)
 
@@ -3387,6 +4233,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetResourceGroupResponse:
+        """
+        For more information about common request parameters, see [Common parameters](~~159973~~).
+        
+        @param request: GetResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_tags):
@@ -3417,6 +4270,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetResourceGroupResponse:
+        """
+        For more information about common request parameters, see [Common parameters](~~159973~~).
+        
+        @param request: GetResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_tags):
@@ -3446,6 +4306,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.GetResourceGroupRequest,
     ) -> resource_manager_20200331_models.GetResourceGroupResponse:
+        """
+        For more information about common request parameters, see [Common parameters](~~159973~~).
+        
+        @param request: GetResourceGroupRequest
+        @return: GetResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_resource_group_with_options(request, runtime)
 
@@ -3453,58 +4319,14 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.GetResourceGroupRequest,
     ) -> resource_manager_20200331_models.GetResourceGroupResponse:
+        """
+        For more information about common request parameters, see [Common parameters](~~159973~~).
+        
+        @param request: GetResourceGroupRequest
+        @return: GetResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_group_with_options_async(request, runtime)
-
-    def get_resource_group_list_acl_mode_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetResourceGroupListAclModeResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetResourceGroupListAclMode',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetResourceGroupListAclModeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_resource_group_list_acl_mode_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetResourceGroupListAclModeResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetResourceGroupListAclMode',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetResourceGroupListAclModeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_resource_group_list_acl_mode(self) -> resource_manager_20200331_models.GetResourceGroupListAclModeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_resource_group_list_acl_mode_with_options(runtime)
-
-    async def get_resource_group_list_acl_mode_async(self) -> resource_manager_20200331_models.GetResourceGroupListAclModeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_resource_group_list_acl_mode_with_options_async(runtime)
 
     def get_role_with_options(
         self,
@@ -3654,6 +4476,15 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.InitResourceDirectoryResponse:
+        """
+        >
+        *   An account can be used to enable a resource directory only after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
+        *   We recommend that you only use the enterprise management account as the administrator of the resource directory. Do not use the enterprise management account to purchase cloud resources.
+        
+        @param request: InitResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitResourceDirectoryResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='InitResourceDirectory',
@@ -3675,6 +4506,15 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.InitResourceDirectoryResponse:
+        """
+        >
+        *   An account can be used to enable a resource directory only after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
+        *   We recommend that you only use the enterprise management account as the administrator of the resource directory. Do not use the enterprise management account to purchase cloud resources.
+        
+        @param request: InitResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitResourceDirectoryResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='InitResourceDirectory',
@@ -3693,10 +4533,24 @@ class Client(OpenApiClient):
         )
 
     def init_resource_directory(self) -> resource_manager_20200331_models.InitResourceDirectoryResponse:
+        """
+        >
+        *   An account can be used to enable a resource directory only after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
+        *   We recommend that you only use the enterprise management account as the administrator of the resource directory. Do not use the enterprise management account to purchase cloud resources.
+        
+        @return: InitResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.init_resource_directory_with_options(runtime)
 
     async def init_resource_directory_async(self) -> resource_manager_20200331_models.InitResourceDirectoryResponse:
+        """
+        >
+        *   An account can be used to enable a resource directory only after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
+        *   We recommend that you only use the enterprise management account as the administrator of the resource directory. Do not use the enterprise management account to purchase cloud resources.
+        
+        @return: InitResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.init_resource_directory_with_options_async(runtime)
 
@@ -3705,6 +4559,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.InviteAccountToResourceDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse:
+        """
+        This topic provides an example on how to call the API operation to invite the account `someone@example.com` to join a resource directory.
+        
+        @param request: InviteAccountToResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InviteAccountToResourceDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.note):
@@ -3739,6 +4600,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.InviteAccountToResourceDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse:
+        """
+        This topic provides an example on how to call the API operation to invite the account `someone@example.com` to join a resource directory.
+        
+        @param request: InviteAccountToResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InviteAccountToResourceDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.note):
@@ -3772,6 +4640,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.InviteAccountToResourceDirectoryRequest,
     ) -> resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse:
+        """
+        This topic provides an example on how to call the API operation to invite the account `someone@example.com` to join a resource directory.
+        
+        @param request: InviteAccountToResourceDirectoryRequest
+        @return: InviteAccountToResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.invite_account_to_resource_directory_with_options(request, runtime)
 
@@ -3779,6 +4653,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.InviteAccountToResourceDirectoryRequest,
     ) -> resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse:
+        """
+        This topic provides an example on how to call the API operation to invite the account `someone@example.com` to join a resource directory.
+        
+        @param request: InviteAccountToResourceDirectoryRequest
+        @return: InviteAccountToResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.invite_account_to_resource_directory_with_options_async(request, runtime)
 
@@ -3787,6 +4667,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListAccountsResponse:
+        """
+        You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
+        
+        @param request: ListAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_tags):
@@ -3821,6 +4708,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListAccountsResponse:
+        """
+        You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
+        
+        @param request: ListAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_tags):
@@ -3854,6 +4748,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListAccountsRequest,
     ) -> resource_manager_20200331_models.ListAccountsResponse:
+        """
+        You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
+        
+        @param request: ListAccountsRequest
+        @return: ListAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_accounts_with_options(request, runtime)
 
@@ -3861,6 +4761,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListAccountsRequest,
     ) -> resource_manager_20200331_models.ListAccountsResponse:
+        """
+        You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
+        
+        @param request: ListAccountsRequest
+        @return: ListAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_accounts_with_options_async(request, runtime)
 
@@ -4029,6 +4935,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListControlPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListControlPoliciesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the system access control policies within a resource directory. The response shows that the resource directory has only one system access control policy. The policy is named `FullAliyunAccess`.
+        
+        @param request: ListControlPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListControlPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -4063,6 +4976,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListControlPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListControlPoliciesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the system access control policies within a resource directory. The response shows that the resource directory has only one system access control policy. The policy is named `FullAliyunAccess`.
+        
+        @param request: ListControlPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListControlPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -4096,6 +5016,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListControlPoliciesRequest,
     ) -> resource_manager_20200331_models.ListControlPoliciesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the system access control policies within a resource directory. The response shows that the resource directory has only one system access control policy. The policy is named `FullAliyunAccess`.
+        
+        @param request: ListControlPoliciesRequest
+        @return: ListControlPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_control_policies_with_options(request, runtime)
 
@@ -4103,6 +5029,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListControlPoliciesRequest,
     ) -> resource_manager_20200331_models.ListControlPoliciesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the system access control policies within a resource directory. The response shows that the resource directory has only one system access control policy. The policy is named `FullAliyunAccess`.
+        
+        @param request: ListControlPoliciesRequest
+        @return: ListControlPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_control_policies_with_options_async(request, runtime)
 
@@ -4111,6 +5043,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse:
+        """
+        This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT***`.
+        
+        @param request: ListControlPolicyAttachmentsForTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListControlPolicyAttachmentsForTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -4141,6 +5080,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse:
+        """
+        This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT***`.
+        
+        @param request: ListControlPolicyAttachmentsForTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListControlPolicyAttachmentsForTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -4170,6 +5116,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetRequest,
     ) -> resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse:
+        """
+        This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT***`.
+        
+        @param request: ListControlPolicyAttachmentsForTargetRequest
+        @return: ListControlPolicyAttachmentsForTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_control_policy_attachments_for_target_with_options(request, runtime)
 
@@ -4177,6 +5129,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetRequest,
     ) -> resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse:
+        """
+        This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT***`.
+        
+        @param request: ListControlPolicyAttachmentsForTargetRequest
+        @return: ListControlPolicyAttachmentsForTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_control_policy_attachments_for_target_with_options_async(request, runtime)
 
@@ -4185,6 +5143,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListDelegatedAdministratorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListDelegatedAdministratorsResponse:
+        """
+        This topic provides an example on how to call the API operation to query all delegated administrator accounts in a resource directory. The response shows that two delegated administrator accounts for Cloud Firewall exist in the resource directory.
+        
+        @param request: ListDelegatedAdministratorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDelegatedAdministratorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4217,6 +5182,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListDelegatedAdministratorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListDelegatedAdministratorsResponse:
+        """
+        This topic provides an example on how to call the API operation to query all delegated administrator accounts in a resource directory. The response shows that two delegated administrator accounts for Cloud Firewall exist in the resource directory.
+        
+        @param request: ListDelegatedAdministratorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDelegatedAdministratorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4248,6 +5220,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListDelegatedAdministratorsRequest,
     ) -> resource_manager_20200331_models.ListDelegatedAdministratorsResponse:
+        """
+        This topic provides an example on how to call the API operation to query all delegated administrator accounts in a resource directory. The response shows that two delegated administrator accounts for Cloud Firewall exist in the resource directory.
+        
+        @param request: ListDelegatedAdministratorsRequest
+        @return: ListDelegatedAdministratorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_delegated_administrators_with_options(request, runtime)
 
@@ -4255,6 +5233,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListDelegatedAdministratorsRequest,
     ) -> resource_manager_20200331_models.ListDelegatedAdministratorsResponse:
+        """
+        This topic provides an example on how to call the API operation to query all delegated administrator accounts in a resource directory. The response shows that two delegated administrator accounts for Cloud Firewall exist in the resource directory.
+        
+        @param request: ListDelegatedAdministratorsRequest
+        @return: ListDelegatedAdministratorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_delegated_administrators_with_options_async(request, runtime)
 
@@ -4263,6 +5247,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListDelegatedServicesForAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListDelegatedServicesForAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to query the trusted services for which the member `138660628348***` is specified as a delegated administrator account. The response shows that the member is specified as a delegated administrator account of Cloud Firewall.
+        
+        @param request: ListDelegatedServicesForAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDelegatedServicesForAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -4291,6 +5282,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListDelegatedServicesForAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListDelegatedServicesForAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to query the trusted services for which the member `138660628348***` is specified as a delegated administrator account. The response shows that the member is specified as a delegated administrator account of Cloud Firewall.
+        
+        @param request: ListDelegatedServicesForAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDelegatedServicesForAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -4318,6 +5316,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListDelegatedServicesForAccountRequest,
     ) -> resource_manager_20200331_models.ListDelegatedServicesForAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to query the trusted services for which the member `138660628348***` is specified as a delegated administrator account. The response shows that the member is specified as a delegated administrator account of Cloud Firewall.
+        
+        @param request: ListDelegatedServicesForAccountRequest
+        @return: ListDelegatedServicesForAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_delegated_services_for_account_with_options(request, runtime)
 
@@ -4325,6 +5329,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListDelegatedServicesForAccountRequest,
     ) -> resource_manager_20200331_models.ListDelegatedServicesForAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to query the trusted services for which the member `138660628348***` is specified as a delegated administrator account. The response shows that the member is specified as a delegated administrator account of Cloud Firewall.
+        
+        @param request: ListDelegatedServicesForAccountRequest
+        @return: ListDelegatedServicesForAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_delegated_services_for_account_with_options_async(request, runtime)
 
@@ -4333,6 +5343,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListFoldersForParentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListFoldersForParentResponse:
+        """
+        >  You can view the information of only the first-level subfolders of a folder.
+        
+        @param request: ListFoldersForParentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFoldersForParentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4367,6 +5384,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListFoldersForParentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListFoldersForParentResponse:
+        """
+        >  You can view the information of only the first-level subfolders of a folder.
+        
+        @param request: ListFoldersForParentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFoldersForParentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4400,6 +5424,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListFoldersForParentRequest,
     ) -> resource_manager_20200331_models.ListFoldersForParentResponse:
+        """
+        >  You can view the information of only the first-level subfolders of a folder.
+        
+        @param request: ListFoldersForParentRequest
+        @return: ListFoldersForParentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_folders_for_parent_with_options(request, runtime)
 
@@ -4407,6 +5437,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListFoldersForParentRequest,
     ) -> resource_manager_20200331_models.ListFoldersForParentResponse:
+        """
+        >  You can view the information of only the first-level subfolders of a folder.
+        
+        @param request: ListFoldersForParentRequest
+        @return: ListFoldersForParentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_folders_for_parent_with_options_async(request, runtime)
 
@@ -4415,6 +5451,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListHandshakesForAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListHandshakesForAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to query the invitations that are associated with the management account `172841235500***`. The response shows that two invitations are associated with the management account.
+        
+        @param request: ListHandshakesForAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHandshakesForAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4445,6 +5488,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListHandshakesForAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListHandshakesForAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to query the invitations that are associated with the management account `172841235500***`. The response shows that two invitations are associated with the management account.
+        
+        @param request: ListHandshakesForAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHandshakesForAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4474,6 +5524,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListHandshakesForAccountRequest,
     ) -> resource_manager_20200331_models.ListHandshakesForAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to query the invitations that are associated with the management account `172841235500***`. The response shows that two invitations are associated with the management account.
+        
+        @param request: ListHandshakesForAccountRequest
+        @return: ListHandshakesForAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_handshakes_for_account_with_options(request, runtime)
 
@@ -4481,6 +5537,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListHandshakesForAccountRequest,
     ) -> resource_manager_20200331_models.ListHandshakesForAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to query the invitations that are associated with the management account `172841235500***`. The response shows that two invitations are associated with the management account.
+        
+        @param request: ListHandshakesForAccountRequest
+        @return: ListHandshakesForAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_handshakes_for_account_with_options_async(request, runtime)
 
@@ -4645,6 +5707,16 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListPolicyAttachmentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListPolicyAttachmentsResponse:
+        """
+        You can view the following information:
+        *   Policy attachment records under an Alibaba Cloud account or a resource group
+        *   Policies attached to RAM users, RAM user groups, or RAM roles
+        *   RAM users, RAM user groups, or RAM roles to which policies are attached under an Alibaba Cloud account or a resource group
+        
+        @param request: ListPolicyAttachmentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicyAttachmentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -4687,6 +5759,16 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListPolicyAttachmentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListPolicyAttachmentsResponse:
+        """
+        You can view the following information:
+        *   Policy attachment records under an Alibaba Cloud account or a resource group
+        *   Policies attached to RAM users, RAM user groups, or RAM roles
+        *   RAM users, RAM user groups, or RAM roles to which policies are attached under an Alibaba Cloud account or a resource group
+        
+        @param request: ListPolicyAttachmentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicyAttachmentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -4728,6 +5810,15 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListPolicyAttachmentsRequest,
     ) -> resource_manager_20200331_models.ListPolicyAttachmentsResponse:
+        """
+        You can view the following information:
+        *   Policy attachment records under an Alibaba Cloud account or a resource group
+        *   Policies attached to RAM users, RAM user groups, or RAM roles
+        *   RAM users, RAM user groups, or RAM roles to which policies are attached under an Alibaba Cloud account or a resource group
+        
+        @param request: ListPolicyAttachmentsRequest
+        @return: ListPolicyAttachmentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_policy_attachments_with_options(request, runtime)
 
@@ -4735,6 +5826,15 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListPolicyAttachmentsRequest,
     ) -> resource_manager_20200331_models.ListPolicyAttachmentsResponse:
+        """
+        You can view the following information:
+        *   Policy attachment records under an Alibaba Cloud account or a resource group
+        *   Policies attached to RAM users, RAM user groups, or RAM roles
+        *   RAM users, RAM user groups, or RAM roles to which policies are attached under an Alibaba Cloud account or a resource group
+        
+        @param request: ListPolicyAttachmentsRequest
+        @return: ListPolicyAttachmentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_policy_attachments_with_options_async(request, runtime)
 
@@ -4817,6 +5917,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListResourceGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListResourceGroupsResponse:
+        """
+        You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
+        This topic provides an example on how to call the API operation to query the basic information about the resource groups `rg-1hSBH2****` and `rg-9gLOoK****` within the current account.
+        
+        @param request: ListResourceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.display_name):
@@ -4861,6 +5969,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListResourceGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListResourceGroupsResponse:
+        """
+        You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
+        This topic provides an example on how to call the API operation to query the basic information about the resource groups `rg-1hSBH2****` and `rg-9gLOoK****` within the current account.
+        
+        @param request: ListResourceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.display_name):
@@ -4904,6 +6020,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListResourceGroupsRequest,
     ) -> resource_manager_20200331_models.ListResourceGroupsResponse:
+        """
+        You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
+        This topic provides an example on how to call the API operation to query the basic information about the resource groups `rg-1hSBH2****` and `rg-9gLOoK****` within the current account.
+        
+        @param request: ListResourceGroupsRequest
+        @return: ListResourceGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_resource_groups_with_options(request, runtime)
 
@@ -4911,6 +6034,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListResourceGroupsRequest,
     ) -> resource_manager_20200331_models.ListResourceGroupsResponse:
+        """
+        You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
+        This topic provides an example on how to call the API operation to query the basic information about the resource groups `rg-1hSBH2****` and `rg-9gLOoK****` within the current account.
+        
+        @param request: ListResourceGroupsRequest
+        @return: ListResourceGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_groups_with_options_async(request, runtime)
 
@@ -4919,6 +6049,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListResourcesResponse:
+        """
+        >  You can use a RAM role that is not associated with a session policy to call this API operation.
+        This topic provides an example on how to call the API operation to query the resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38****` in the resource group `rg-uPJpP****`.
+        
+        @param request: ListResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4959,6 +6097,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListResourcesResponse:
+        """
+        >  You can use a RAM role that is not associated with a session policy to call this API operation.
+        This topic provides an example on how to call the API operation to query the resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38****` in the resource group `rg-uPJpP****`.
+        
+        @param request: ListResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4998,6 +6144,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListResourcesRequest,
     ) -> resource_manager_20200331_models.ListResourcesResponse:
+        """
+        >  You can use a RAM role that is not associated with a session policy to call this API operation.
+        This topic provides an example on how to call the API operation to query the resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38****` in the resource group `rg-uPJpP****`.
+        
+        @param request: ListResourcesRequest
+        @return: ListResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_resources_with_options(request, runtime)
 
@@ -5005,6 +6158,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListResourcesRequest,
     ) -> resource_manager_20200331_models.ListResourcesResponse:
+        """
+        >  You can use a RAM role that is not associated with a session policy to call this API operation.
+        This topic provides an example on how to call the API operation to query the resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38****` in the resource group `rg-uPJpP****`.
+        
+        @param request: ListResourcesRequest
+        @return: ListResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_resources_with_options_async(request, runtime)
 
@@ -5091,6 +6251,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListTagKeysResponse:
+        """
+        This topic provides an example on how to call the API operation to query tag keys. The response shows that the custom tag key team exists.
+        
+        @param request: ListTagKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_filter):
@@ -5125,6 +6292,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListTagKeysResponse:
+        """
+        This topic provides an example on how to call the API operation to query tag keys. The response shows that the custom tag key team exists.
+        
+        @param request: ListTagKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_filter):
@@ -5158,6 +6332,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListTagKeysRequest,
     ) -> resource_manager_20200331_models.ListTagKeysResponse:
+        """
+        This topic provides an example on how to call the API operation to query tag keys. The response shows that the custom tag key team exists.
+        
+        @param request: ListTagKeysRequest
+        @return: ListTagKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_keys_with_options(request, runtime)
 
@@ -5165,6 +6345,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListTagKeysRequest,
     ) -> resource_manager_20200331_models.ListTagKeysResponse:
+        """
+        This topic provides an example on how to call the API operation to query tag keys. The response shows that the custom tag key team exists.
+        
+        @param request: ListTagKeysRequest
+        @return: ListTagKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_keys_with_options_async(request, runtime)
 
@@ -5173,6 +6359,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListTagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tags that are added to the resource group with an ID of `rg-aekz6bre2uq***`. The response shows that only the `k1:v1` tag is added to the resource group.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5209,6 +6402,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListTagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tags that are added to the resource group with an ID of `rg-aekz6bre2uq***`. The response shows that only the `k1:v1` tag is added to the resource group.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5244,6 +6444,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListTagResourcesRequest,
     ) -> resource_manager_20200331_models.ListTagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tags that are added to the resource group with an ID of `rg-aekz6bre2uq***`. The response shows that only the `k1:v1` tag is added to the resource group.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -5251,6 +6457,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListTagResourcesRequest,
     ) -> resource_manager_20200331_models.ListTagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tags that are added to the resource group with an ID of `rg-aekz6bre2uq***`. The response shows that only the `k1:v1` tag is added to the resource group.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -5259,6 +6471,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListTagValuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListTagValuesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tag values of the tag key k1. The response shows that the tag value of the tag key k1 is v1.
+        
+        @param request: ListTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagValuesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5295,6 +6514,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListTagValuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListTagValuesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tag values of the tag key k1. The response shows that the tag value of the tag key k1 is v1.
+        
+        @param request: ListTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagValuesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5330,6 +6556,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListTagValuesRequest,
     ) -> resource_manager_20200331_models.ListTagValuesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tag values of the tag key k1. The response shows that the tag value of the tag key k1 is v1.
+        
+        @param request: ListTagValuesRequest
+        @return: ListTagValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_values_with_options(request, runtime)
 
@@ -5337,6 +6569,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListTagValuesRequest,
     ) -> resource_manager_20200331_models.ListTagValuesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tag values of the tag key k1. The response shows that the tag value of the tag key k1 is v1.
+        
+        @param request: ListTagValuesRequest
+        @return: ListTagValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
@@ -5345,6 +6583,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse:
+        """
+        In this example, the folders or member accounts to which the control policy `cp-jExXAqIYkwHN***` is attached are queried. The returned result shows that the control policy is attached to the folder `fd-ZDNPiT****`.
+        
+        @param request: ListTargetAttachmentsForControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTargetAttachmentsForControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -5377,6 +6622,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse:
+        """
+        In this example, the folders or member accounts to which the control policy `cp-jExXAqIYkwHN***` is attached are queried. The returned result shows that the control policy is attached to the folder `fd-ZDNPiT****`.
+        
+        @param request: ListTargetAttachmentsForControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTargetAttachmentsForControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -5408,6 +6660,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyRequest,
     ) -> resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse:
+        """
+        In this example, the folders or member accounts to which the control policy `cp-jExXAqIYkwHN***` is attached are queried. The returned result shows that the control policy is attached to the folder `fd-ZDNPiT****`.
+        
+        @param request: ListTargetAttachmentsForControlPolicyRequest
+        @return: ListTargetAttachmentsForControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_target_attachments_for_control_policy_with_options(request, runtime)
 
@@ -5415,6 +6673,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyRequest,
     ) -> resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse:
+        """
+        In this example, the folders or member accounts to which the control policy `cp-jExXAqIYkwHN***` is attached are queried. The returned result shows that the control policy is attached to the folder `fd-ZDNPiT****`.
+        
+        @param request: ListTargetAttachmentsForControlPolicyRequest
+        @return: ListTargetAttachmentsForControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_target_attachments_for_control_policy_with_options_async(request, runtime)
 
@@ -5423,6 +6687,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListTrustedServiceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListTrustedServiceStatusResponse:
+        """
+        >  Only an enterprise management account or delegated administrator account can be used to call this operation.
+        In this example, the trusted services that are enabled within an enterprise management account are queried. The returned result shows that the trusted services Cloud Config and ActionTrail are enabled within the enterprise management account.
+        
+        @param request: ListTrustedServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrustedServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.admin_account_id):
@@ -5455,6 +6727,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListTrustedServiceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListTrustedServiceStatusResponse:
+        """
+        >  Only an enterprise management account or delegated administrator account can be used to call this operation.
+        In this example, the trusted services that are enabled within an enterprise management account are queried. The returned result shows that the trusted services Cloud Config and ActionTrail are enabled within the enterprise management account.
+        
+        @param request: ListTrustedServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrustedServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.admin_account_id):
@@ -5486,6 +6766,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListTrustedServiceStatusRequest,
     ) -> resource_manager_20200331_models.ListTrustedServiceStatusResponse:
+        """
+        >  Only an enterprise management account or delegated administrator account can be used to call this operation.
+        In this example, the trusted services that are enabled within an enterprise management account are queried. The returned result shows that the trusted services Cloud Config and ActionTrail are enabled within the enterprise management account.
+        
+        @param request: ListTrustedServiceStatusRequest
+        @return: ListTrustedServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_trusted_service_status_with_options(request, runtime)
 
@@ -5493,6 +6780,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.ListTrustedServiceStatusRequest,
     ) -> resource_manager_20200331_models.ListTrustedServiceStatusResponse:
+        """
+        >  Only an enterprise management account or delegated administrator account can be used to call this operation.
+        In this example, the trusted services that are enabled within an enterprise management account are queried. The returned result shows that the trusted services Cloud Config and ActionTrail are enabled within the enterprise management account.
+        
+        @param request: ListTrustedServiceStatusRequest
+        @return: ListTrustedServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_trusted_service_status_with_options_async(request, runtime)
 
@@ -5575,6 +6869,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.MoveResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.MoveResourcesResponse:
+        """
+        For more information about Alibaba Cloud services whose resources can be moved between resource groups, see the *Supported by the API** column in [Alibaba Cloud services that support resource groups](~~94479~~).
+        In this example, two virtual private clouds (VPCs) `vpc-bp1sig0mjktx5ewx1****` and `vpc-bp1visxm225pv49dz****` that reside in different regions and belong to different resource groups are moved to the resource group `rg-aekzmeobk5w****`.
+        
+        @param request: MoveResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -5605,6 +6907,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.MoveResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.MoveResourcesResponse:
+        """
+        For more information about Alibaba Cloud services whose resources can be moved between resource groups, see the *Supported by the API** column in [Alibaba Cloud services that support resource groups](~~94479~~).
+        In this example, two virtual private clouds (VPCs) `vpc-bp1sig0mjktx5ewx1****` and `vpc-bp1visxm225pv49dz****` that reside in different regions and belong to different resource groups are moved to the resource group `rg-aekzmeobk5w****`.
+        
+        @param request: MoveResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -5634,6 +6944,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.MoveResourcesRequest,
     ) -> resource_manager_20200331_models.MoveResourcesResponse:
+        """
+        For more information about Alibaba Cloud services whose resources can be moved between resource groups, see the *Supported by the API** column in [Alibaba Cloud services that support resource groups](~~94479~~).
+        In this example, two virtual private clouds (VPCs) `vpc-bp1sig0mjktx5ewx1****` and `vpc-bp1visxm225pv49dz****` that reside in different regions and belong to different resource groups are moved to the resource group `rg-aekzmeobk5w****`.
+        
+        @param request: MoveResourcesRequest
+        @return: MoveResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.move_resources_with_options(request, runtime)
 
@@ -5641,6 +6958,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.MoveResourcesRequest,
     ) -> resource_manager_20200331_models.MoveResourcesResponse:
+        """
+        For more information about Alibaba Cloud services whose resources can be moved between resource groups, see the *Supported by the API** column in [Alibaba Cloud services that support resource groups](~~94479~~).
+        In this example, two virtual private clouds (VPCs) `vpc-bp1sig0mjktx5ewx1****` and `vpc-bp1visxm225pv49dz****` that reside in different regions and belong to different resource groups are moved to the resource group `rg-aekzmeobk5w****`.
+        
+        @param request: MoveResourcesRequest
+        @return: MoveResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.move_resources_with_options_async(request, runtime)
 
@@ -5723,6 +7047,18 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.RegisterDelegatedAdministratorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.RegisterDelegatedAdministratorResponse:
+        """
+        The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
+        When you call this operation, you must take note of the following limits:
+        *   Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](~~208133~~).
+        *   Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
+        *   The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
+        This topic provides an example on how to call the API operation to specify the member `181761095690****` as a delegated administrator account of Cloud Firewall.
+        
+        @param request: RegisterDelegatedAdministratorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterDelegatedAdministratorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -5753,6 +7089,18 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.RegisterDelegatedAdministratorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.RegisterDelegatedAdministratorResponse:
+        """
+        The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
+        When you call this operation, you must take note of the following limits:
+        *   Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](~~208133~~).
+        *   Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
+        *   The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
+        This topic provides an example on how to call the API operation to specify the member `181761095690****` as a delegated administrator account of Cloud Firewall.
+        
+        @param request: RegisterDelegatedAdministratorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterDelegatedAdministratorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -5782,6 +7130,17 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.RegisterDelegatedAdministratorRequest,
     ) -> resource_manager_20200331_models.RegisterDelegatedAdministratorResponse:
+        """
+        The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
+        When you call this operation, you must take note of the following limits:
+        *   Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](~~208133~~).
+        *   Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
+        *   The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
+        This topic provides an example on how to call the API operation to specify the member `181761095690****` as a delegated administrator account of Cloud Firewall.
+        
+        @param request: RegisterDelegatedAdministratorRequest
+        @return: RegisterDelegatedAdministratorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.register_delegated_administrator_with_options(request, runtime)
 
@@ -5789,6 +7148,17 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.RegisterDelegatedAdministratorRequest,
     ) -> resource_manager_20200331_models.RegisterDelegatedAdministratorResponse:
+        """
+        The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
+        When you call this operation, you must take note of the following limits:
+        *   Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](~~208133~~).
+        *   Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
+        *   The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
+        This topic provides an example on how to call the API operation to specify the member `181761095690****` as a delegated administrator account of Cloud Firewall.
+        
+        @param request: RegisterDelegatedAdministratorRequest
+        @return: RegisterDelegatedAdministratorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.register_delegated_administrator_with_options_async(request, runtime)
 
@@ -5797,6 +7167,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.RemoveCloudAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.RemoveCloudAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to remove the member `177242285274***` from a resource directory.
+        
+        @param request: RemoveCloudAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveCloudAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -5825,6 +7202,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.RemoveCloudAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.RemoveCloudAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to remove the member `177242285274***` from a resource directory.
+        
+        @param request: RemoveCloudAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveCloudAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -5852,6 +7236,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.RemoveCloudAccountRequest,
     ) -> resource_manager_20200331_models.RemoveCloudAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to remove the member `177242285274***` from a resource directory.
+        
+        @param request: RemoveCloudAccountRequest
+        @return: RemoveCloudAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_cloud_account_with_options(request, runtime)
 
@@ -5859,6 +7249,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.RemoveCloudAccountRequest,
     ) -> resource_manager_20200331_models.RemoveCloudAccountResponse:
+        """
+        This topic provides an example on how to call the API operation to remove the member `177242285274***` from a resource directory.
+        
+        @param request: RemoveCloudAccountRequest
+        @return: RemoveCloudAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_cloud_account_with_options_async(request, runtime)
 
@@ -6077,6 +7473,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
+        """
+        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+        In this example, a verification code is sent to the mobile phone number that you want to bind to the resource account `138660628348****`.
+        
+        @param request: SendVerificationCodeForBindSecureMobilePhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendVerificationCodeForBindSecureMobilePhoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -6107,6 +7511,14 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
+        """
+        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+        In this example, a verification code is sent to the mobile phone number that you want to bind to the resource account `138660628348****`.
+        
+        @param request: SendVerificationCodeForBindSecureMobilePhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendVerificationCodeForBindSecureMobilePhoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -6136,6 +7548,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
     ) -> resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
+        """
+        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+        In this example, a verification code is sent to the mobile phone number that you want to bind to the resource account `138660628348****`.
+        
+        @param request: SendVerificationCodeForBindSecureMobilePhoneRequest
+        @return: SendVerificationCodeForBindSecureMobilePhoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_verification_code_for_bind_secure_mobile_phone_with_options(request, runtime)
 
@@ -6143,6 +7562,13 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
     ) -> resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
+        """
+        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+        In this example, a verification code is sent to the mobile phone number that you want to bind to the resource account `138660628348****`.
+        
+        @param request: SendVerificationCodeForBindSecureMobilePhoneRequest
+        @return: SendVerificationCodeForBindSecureMobilePhoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_verification_code_for_bind_secure_mobile_phone_with_options_async(request, runtime)
 
@@ -6151,6 +7577,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.SendVerificationCodeForEnableRDRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse:
+        """
+        Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
+        
+        @param request: SendVerificationCodeForEnableRDRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendVerificationCodeForEnableRDResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.secure_mobile_phone):
@@ -6179,6 +7612,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.SendVerificationCodeForEnableRDRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse:
+        """
+        Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
+        
+        @param request: SendVerificationCodeForEnableRDRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendVerificationCodeForEnableRDResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.secure_mobile_phone):
@@ -6206,6 +7646,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.SendVerificationCodeForEnableRDRequest,
     ) -> resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse:
+        """
+        Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
+        
+        @param request: SendVerificationCodeForEnableRDRequest
+        @return: SendVerificationCodeForEnableRDResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_verification_code_for_enable_rdwith_options(request, runtime)
 
@@ -6213,6 +7659,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.SendVerificationCodeForEnableRDRequest,
     ) -> resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse:
+        """
+        Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
+        
+        @param request: SendVerificationCodeForEnableRDRequest
+        @return: SendVerificationCodeForEnableRDResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_verification_code_for_enable_rdwith_options_async(request, runtime)
 
@@ -6295,6 +7747,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.SetMemberDeletionPermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.SetMemberDeletionPermissionResponse:
+        """
+        Members of the resource account type can be deleted only after the member deletion feature is enabled.
+        
+        @param request: SetMemberDeletionPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetMemberDeletionPermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.status):
@@ -6323,6 +7782,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.SetMemberDeletionPermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.SetMemberDeletionPermissionResponse:
+        """
+        Members of the resource account type can be deleted only after the member deletion feature is enabled.
+        
+        @param request: SetMemberDeletionPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetMemberDeletionPermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.status):
@@ -6350,6 +7816,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.SetMemberDeletionPermissionRequest,
     ) -> resource_manager_20200331_models.SetMemberDeletionPermissionResponse:
+        """
+        Members of the resource account type can be deleted only after the member deletion feature is enabled.
+        
+        @param request: SetMemberDeletionPermissionRequest
+        @return: SetMemberDeletionPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_member_deletion_permission_with_options(request, runtime)
 
@@ -6357,6 +7829,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.SetMemberDeletionPermissionRequest,
     ) -> resource_manager_20200331_models.SetMemberDeletionPermissionResponse:
+        """
+        Members of the resource account type can be deleted only after the member deletion feature is enabled.
+        
+        @param request: SetMemberDeletionPermissionRequest
+        @return: SetMemberDeletionPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_member_deletion_permission_with_options_async(request, runtime)
 
@@ -6365,6 +7843,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.TagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to add the tag `k1:v1` to the resource group with an ID of `rg-aekz6bre2uq***`.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -6397,6 +7882,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.TagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to add the tag `k1:v1` to the resource group with an ID of `rg-aekz6bre2uq***`.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -6428,6 +7920,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.TagResourcesRequest,
     ) -> resource_manager_20200331_models.TagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to add the tag `k1:v1` to the resource group with an ID of `rg-aekz6bre2uq***`.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -6435,6 +7933,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.TagResourcesRequest,
     ) -> resource_manager_20200331_models.TagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to add the tag `k1:v1` to the resource group with an ID of `rg-aekz6bre2uq***`.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -6443,6 +7947,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UntagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the resource group whose ID is `rg-aek2dpwyrfr***`.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -6477,6 +7988,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UntagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the resource group whose ID is `rg-aek2dpwyrfr***`.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -6510,6 +8028,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.UntagResourcesRequest,
     ) -> resource_manager_20200331_models.UntagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the resource group whose ID is `rg-aek2dpwyrfr***`.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -6517,6 +8041,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.UntagResourcesRequest,
     ) -> resource_manager_20200331_models.UntagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the resource group whose ID is `rg-aek2dpwyrfr***`.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -6525,6 +8055,16 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateAccountResponse:
+        """
+        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+        *   Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](~~111233~~).
+        *   Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](~~209980~~).
+        This example provides an example on how to call the API operation to change the display name of the member `12323344****` to `admin`.
+        
+        @param request: UpdateAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -6557,6 +8097,16 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateAccountResponse:
+        """
+        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+        *   Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](~~111233~~).
+        *   Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](~~209980~~).
+        This example provides an example on how to call the API operation to change the display name of the member `12323344****` to `admin`.
+        
+        @param request: UpdateAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -6588,6 +8138,15 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.UpdateAccountRequest,
     ) -> resource_manager_20200331_models.UpdateAccountResponse:
+        """
+        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+        *   Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](~~111233~~).
+        *   Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](~~209980~~).
+        This example provides an example on how to call the API operation to change the display name of the member `12323344****` to `admin`.
+        
+        @param request: UpdateAccountRequest
+        @return: UpdateAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_account_with_options(request, runtime)
 
@@ -6595,6 +8154,15 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.UpdateAccountRequest,
     ) -> resource_manager_20200331_models.UpdateAccountResponse:
+        """
+        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+        *   Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](~~111233~~).
+        *   Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](~~209980~~).
+        This example provides an example on how to call the API operation to change the display name of the member `12323344****` to `admin`.
+        
+        @param request: UpdateAccountRequest
+        @return: UpdateAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_account_with_options_async(request, runtime)
 
@@ -6603,6 +8171,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateControlPolicyResponse:
+        """
+        In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN***` is changed to `NewControlPolicy`.
+        
+        @param request: UpdateControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_description):
@@ -6637,6 +8212,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateControlPolicyResponse:
+        """
+        In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN***` is changed to `NewControlPolicy`.
+        
+        @param request: UpdateControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_description):
@@ -6670,6 +8252,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.UpdateControlPolicyRequest,
     ) -> resource_manager_20200331_models.UpdateControlPolicyResponse:
+        """
+        In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN***` is changed to `NewControlPolicy`.
+        
+        @param request: UpdateControlPolicyRequest
+        @return: UpdateControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_control_policy_with_options(request, runtime)
 
@@ -6677,6 +8265,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.UpdateControlPolicyRequest,
     ) -> resource_manager_20200331_models.UpdateControlPolicyResponse:
+        """
+        In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN***` is changed to `NewControlPolicy`.
+        
+        @param request: UpdateControlPolicyRequest
+        @return: UpdateControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_control_policy_with_options_async(request, runtime)
 
@@ -6759,6 +8353,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateResourceGroupResponse:
+        """
+        In this example, the display name of the resource group `rg-9gLOoK***` is changed to `project`.
+        
+        @param request: UpdateResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_display_name):
@@ -6789,6 +8390,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateResourceGroupResponse:
+        """
+        In this example, the display name of the resource group `rg-9gLOoK***` is changed to `project`.
+        
+        @param request: UpdateResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_display_name):
@@ -6818,6 +8426,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.UpdateResourceGroupRequest,
     ) -> resource_manager_20200331_models.UpdateResourceGroupResponse:
+        """
+        In this example, the display name of the resource group `rg-9gLOoK***` is changed to `project`.
+        
+        @param request: UpdateResourceGroupRequest
+        @return: UpdateResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_resource_group_with_options(request, runtime)
 
@@ -6825,6 +8439,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.UpdateResourceGroupRequest,
     ) -> resource_manager_20200331_models.UpdateResourceGroupResponse:
+        """
+        In this example, the display name of the resource group `rg-9gLOoK***` is changed to `project`.
+        
+        @param request: UpdateResourceGroupRequest
+        @return: UpdateResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_resource_group_with_options_async(request, runtime)
 
@@ -6833,6 +8453,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateRoleResponse:
+        """
+        In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
+        
+        @param request: UpdateRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_assume_role_policy_document):
@@ -6867,6 +8494,13 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateRoleResponse:
+        """
+        In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
+        
+        @param request: UpdateRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_assume_role_policy_document):
@@ -6900,6 +8534,12 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.UpdateRoleRequest,
     ) -> resource_manager_20200331_models.UpdateRoleResponse:
+        """
+        In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
+        
+        @param request: UpdateRoleRequest
+        @return: UpdateRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_role_with_options(request, runtime)
 
@@ -6907,5 +8547,11 @@ class Client(OpenApiClient):
         self,
         request: resource_manager_20200331_models.UpdateRoleRequest,
     ) -> resource_manager_20200331_models.UpdateRoleResponse:
+        """
+        In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
+        
+        @param request: UpdateRoleRequest
+        @return: UpdateRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_role_with_options_async(request, runtime)
