@@ -1,3 +1,7 @@
+2023-05-18 Version: 3.2.26
+- GetTemplateEstimateCost adds a new input parameter StackId, which is used for inquiry of updating scenarios.
+- Added OrderIds output to GetStack interface.
+
 2023-05-10 Version: 3.2.25
 - Support resource type registration and module.
 
