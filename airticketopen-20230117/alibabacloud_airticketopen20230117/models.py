@@ -1620,16 +1620,25 @@ class AncillarySuggestRequest(TeaModel):
         return self
 
 
-class AncillarySuggestResponseBodyDataSegAncillaryMapListAncillary(TeaModel):
+class AncillarySuggestResponseBodyDataSegAncillaryMapListAncillaryBaggageAncillary(TeaModel):
     def __init__(
         self,
-        ancillary_id: str = None,
-        ancillary_info: Dict[str, Any] = None,
-        ancillary_type: int = None,
+        baggage_amount: int = None,
+        baggage_weight: int = None,
+        baggage_weight_unit: str = None,
+        is_all_weight: bool = None,
+        price: float = None,
     ):
-        self.ancillary_id = ancillary_id
-        self.ancillary_info = ancillary_info
-        self.ancillary_type = ancillary_type
+        # 行李件数 取值如：3、2、1、0、-2。 -2 表示计重
+        self.baggage_amount = baggage_amount
+        # 行李重量，0-50。isAllWeght=true 时，表示所有件数总重量。
+        self.baggage_weight = baggage_weight
+        # 行李重量单位
+        self.baggage_weight_unit = baggage_weight_unit
+        # 是否所有行李重量
+        self.is_all_weight = is_all_weight
+        # 总价
+        self.price = price
 
     def validate(self):
         pass
@@ -1640,22 +1649,72 @@ class AncillarySuggestResponseBodyDataSegAncillaryMapListAncillary(TeaModel):
             return _map
 
         result = dict()
+        if self.baggage_amount is not None:
+            result['baggage_amount'] = self.baggage_amount
+        if self.baggage_weight is not None:
+            result['baggage_weight'] = self.baggage_weight
+        if self.baggage_weight_unit is not None:
+            result['baggage_weight_unit'] = self.baggage_weight_unit
+        if self.is_all_weight is not None:
+            result['is_all_weight'] = self.is_all_weight
+        if self.price is not None:
+            result['price'] = self.price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('baggage_amount') is not None:
+            self.baggage_amount = m.get('baggage_amount')
+        if m.get('baggage_weight') is not None:
+            self.baggage_weight = m.get('baggage_weight')
+        if m.get('baggage_weight_unit') is not None:
+            self.baggage_weight_unit = m.get('baggage_weight_unit')
+        if m.get('is_all_weight') is not None:
+            self.is_all_weight = m.get('is_all_weight')
+        if m.get('price') is not None:
+            self.price = m.get('price')
+        return self
+
+
+class AncillarySuggestResponseBodyDataSegAncillaryMapListAncillary(TeaModel):
+    def __init__(
+        self,
+        ancillary_id: str = None,
+        ancillary_type: int = None,
+        baggage_ancillary: AncillarySuggestResponseBodyDataSegAncillaryMapListAncillaryBaggageAncillary = None,
+    ):
+        self.ancillary_id = ancillary_id
+        self.ancillary_type = ancillary_type
+        # 行李辅营详情
+        self.baggage_ancillary = baggage_ancillary
+
+    def validate(self):
+        if self.baggage_ancillary:
+            self.baggage_ancillary.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.ancillary_id is not None:
             result['ancillary_id'] = self.ancillary_id
-        if self.ancillary_info is not None:
-            result['ancillary_info'] = self.ancillary_info
         if self.ancillary_type is not None:
             result['ancillary_type'] = self.ancillary_type
+        if self.baggage_ancillary is not None:
+            result['baggage_ancillary'] = self.baggage_ancillary.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ancillary_id') is not None:
             self.ancillary_id = m.get('ancillary_id')
-        if m.get('ancillary_info') is not None:
-            self.ancillary_info = m.get('ancillary_info')
         if m.get('ancillary_type') is not None:
             self.ancillary_type = m.get('ancillary_type')
+        if m.get('baggage_ancillary') is not None:
+            temp_model = AncillarySuggestResponseBodyDataSegAncillaryMapListAncillaryBaggageAncillary()
+            self.baggage_ancillary = temp_model.from_map(m['baggage_ancillary'])
         return self
 
 
@@ -8181,16 +8240,20 @@ class OrderDetailRequest(TeaModel):
         return self
 
 
-class OrderDetailResponseBodyDataAncillaryItemDetailListAncillary(TeaModel):
+class OrderDetailResponseBodyDataAncillaryItemDetailListAncillaryBaggageAncillary(TeaModel):
     def __init__(
         self,
-        ancillary_id: str = None,
-        ancillary_info: Dict[str, Any] = None,
-        ancillary_type: int = None,
+        baggage_amount: int = None,
+        baggage_weight: int = None,
+        baggage_weight_unit: str = None,
+        is_all_weight: bool = None,
+        price: float = None,
     ):
-        self.ancillary_id = ancillary_id
-        self.ancillary_info = ancillary_info
-        self.ancillary_type = ancillary_type
+        self.baggage_amount = baggage_amount
+        self.baggage_weight = baggage_weight
+        self.baggage_weight_unit = baggage_weight_unit
+        self.is_all_weight = is_all_weight
+        self.price = price
 
     def validate(self):
         pass
@@ -8201,22 +8264,71 @@ class OrderDetailResponseBodyDataAncillaryItemDetailListAncillary(TeaModel):
             return _map
 
         result = dict()
+        if self.baggage_amount is not None:
+            result['baggage_amount'] = self.baggage_amount
+        if self.baggage_weight is not None:
+            result['baggage_weight'] = self.baggage_weight
+        if self.baggage_weight_unit is not None:
+            result['baggage_weight_unit'] = self.baggage_weight_unit
+        if self.is_all_weight is not None:
+            result['is_all_weight'] = self.is_all_weight
+        if self.price is not None:
+            result['price'] = self.price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('baggage_amount') is not None:
+            self.baggage_amount = m.get('baggage_amount')
+        if m.get('baggage_weight') is not None:
+            self.baggage_weight = m.get('baggage_weight')
+        if m.get('baggage_weight_unit') is not None:
+            self.baggage_weight_unit = m.get('baggage_weight_unit')
+        if m.get('is_all_weight') is not None:
+            self.is_all_weight = m.get('is_all_weight')
+        if m.get('price') is not None:
+            self.price = m.get('price')
+        return self
+
+
+class OrderDetailResponseBodyDataAncillaryItemDetailListAncillary(TeaModel):
+    def __init__(
+        self,
+        ancillary_id: str = None,
+        ancillary_type: int = None,
+        baggage_ancillary: OrderDetailResponseBodyDataAncillaryItemDetailListAncillaryBaggageAncillary = None,
+    ):
+        self.ancillary_id = ancillary_id
+        self.ancillary_type = ancillary_type
+        self.baggage_ancillary = baggage_ancillary
+
+    def validate(self):
+        if self.baggage_ancillary:
+            self.baggage_ancillary.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.ancillary_id is not None:
             result['ancillary_id'] = self.ancillary_id
-        if self.ancillary_info is not None:
-            result['ancillary_info'] = self.ancillary_info
         if self.ancillary_type is not None:
             result['ancillary_type'] = self.ancillary_type
+        if self.baggage_ancillary is not None:
+            result['baggage_ancillary'] = self.baggage_ancillary.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ancillary_id') is not None:
             self.ancillary_id = m.get('ancillary_id')
-        if m.get('ancillary_info') is not None:
-            self.ancillary_info = m.get('ancillary_info')
         if m.get('ancillary_type') is not None:
             self.ancillary_type = m.get('ancillary_type')
+        if m.get('baggage_ancillary') is not None:
+            temp_model = OrderDetailResponseBodyDataAncillaryItemDetailListAncillaryBaggageAncillary()
+            self.baggage_ancillary = temp_model.from_map(m['baggage_ancillary'])
         return self
 
 
