@@ -1,3 +1,6 @@
+2023-05-19 Version: 1.1.7
+- Add DescribeDcdnDomainMd5Info.
+
 2023-04-25 Version: 1.1.6
 - Add CheckDcdnDomainExist.
 
