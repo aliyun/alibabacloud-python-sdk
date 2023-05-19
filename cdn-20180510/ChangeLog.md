@@ -1,3 +1,6 @@
+2023-05-19 Version: 1.2.9
+- Add DescribeDomainMd5Info.
+
 2023-05-04 Version: 1.2.8
 - Add SetCdnDomainSSLCertificate.
 
