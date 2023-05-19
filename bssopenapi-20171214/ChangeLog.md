@@ -1,3 +1,6 @@
+2023-05-19 Version: 2.0.10
+- DescribeInstanceAmortizedCostByAmortizationPeriodDate
+
 2023-03-07 Version: 2.0.9
 - QuerySavingsPlansInstance api add status query param. 
 

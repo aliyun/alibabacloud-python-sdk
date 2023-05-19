@@ -227,9 +227,16 @@ class AllocateCostUnitResourceRequestResourceInstanceList(TeaModel):
         resource_id: str = None,
         resource_user_id: int = None,
     ):
+        # The split item of the shared instance. This parameter is required only for shared instances.
+        # 
+        # *   Eight cloud services support bill splitting. The commodity codes of the eight services are oss, dcdn, snapshot, vod, cdn, live, cbwp, and pcdn.
+        # *   You can obtain the split item of a shared instance by calling QueryCostUnitResource operation to obtain all resource instances within a cost center.
         self.apportion_code = apportion_code
+        # The commodity code of the resource instance.
         self.commodity_code = commodity_code
+        # The ID of the resource instance.
         self.resource_id = resource_id
+        # The user ID of the resource instance owner.
         self.resource_user_id = resource_user_id
 
     def validate(self):
@@ -273,10 +280,21 @@ class AllocateCostUnitResourceRequest(TeaModel):
         to_unit_id: int = None,
         to_unit_user_id: int = None,
     ):
+        # The ID of the source cost center.
+        # 
+        # *   A value of 0 indicates that the resources to be transferred have not been allocated to a cost center.
+        # *   A value greater than 0 indicates the ID of an existing cost center.
         self.from_unit_id = from_unit_id
+        # The user ID of the owner of the source cost center.
         self.from_unit_user_id = from_unit_user_id
+        # The resource instances to be transferred.
         self.resource_instance_list = resource_instance_list
+        # The ID of the destination cost center.
+        # 
+        # *   A value of -1 indicates that the allocated resources are changed to unallocated.
+        # *   A value greater than 0 indicates the ID of an existing cost center.
         self.to_unit_id = to_unit_id
+        # The user ID of the owner of the destination cost center.
         self.to_unit_user_id = to_unit_user_id
 
     def validate(self):
@@ -330,8 +348,14 @@ class AllocateCostUnitResourceResponseBodyData(TeaModel):
         to_unit_id: int = None,
         to_unit_user_id: int = None,
     ):
+        # Indicates whether resources are allocated to the specified cost center. Valid values:
+        # 
+        # *   true: The resources are allocated to the specified cost center.
+        # *   false: The resources fail to be allocated to the specified cost center.
         self.is_success = is_success
+        # The ID of the destination cost center.
         self.to_unit_id = to_unit_id
+        # The user ID of the owner of the destination cost center.
         self.to_unit_user_id = to_unit_user_id
 
     def validate(self):
@@ -371,10 +395,15 @@ class AllocateCostUnitResourceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -688,6 +717,7 @@ class CancelOrderRequest(TeaModel):
         order_id: str = None,
         owner_id: int = None,
     ):
+        # The ID of the order.
         self.order_id = order_id
         self.owner_id = owner_id
 
@@ -720,6 +750,7 @@ class CancelOrderResponseBodyData(TeaModel):
         self,
         host_id: str = None,
     ):
+        # The ID of the host.
         self.host_id = host_id
 
     def validate(self):
@@ -751,10 +782,15 @@ class CancelOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -1237,11 +1273,26 @@ class ConvertChargeTypeRequest(TeaModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # The subscription duration. Unit: months. This parameter is required if you switch the billing method to subscription. Valid values:
+        # 
+        # *   1 to 9
+        # *   12
+        # *   24
+        # *   36
         self.period = period
+        # The code of the service to which the instance belongs.
         self.product_code = product_code
+        # The type of the service to which the instance belongs.
         self.product_type = product_type
+        # The billing method of the instance. Valid values:
+        # 
+        # *   Subscription: subscription
+        # *   PayAsYouGo: pay-as-you-go
+        # 
+        # >  After the call is successful, the billing method of the instance is switched.
         self.subscription_type = subscription_type
 
     def validate(self):
@@ -1289,6 +1340,7 @@ class ConvertChargeTypeResponseBodyData(TeaModel):
         self,
         order_id: str = None,
     ):
+        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):
@@ -1320,10 +1372,15 @@ class ConvertChargeTypeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1652,8 +1709,11 @@ class CreateCostUnitRequestUnitEntityList(TeaModel):
         parent_unit_id: int = None,
         unit_name: str = None,
     ):
+        # The user ID of the owner of the cost center.
         self.owner_uid = owner_uid
+        # The ID of the parent cost center. A value of -1 indicates the root cost center.
         self.parent_unit_id = parent_unit_id
+        # The name of the cost center.
         self.unit_name = unit_name
 
     def validate(self):
@@ -1689,6 +1749,7 @@ class CreateCostUnitRequest(TeaModel):
         self,
         unit_entity_list: List[CreateCostUnitRequestUnitEntityList] = None,
     ):
+        # The list of cost centers.
         self.unit_entity_list = unit_entity_list
 
     def validate(self):
@@ -1727,9 +1788,13 @@ class CreateCostUnitResponseBodyDataCostUnitDtoList(TeaModel):
         unit_id: int = None,
         unit_name: str = None,
     ):
+        # The user ID of the owner of the cost center.
         self.owner_uid = owner_uid
+        # The ID of the parent cost center. A value of -1 indicates the root cost center.
         self.parent_unit_id = parent_unit_id
+        # The ID of the cost center.
         self.unit_id = unit_id
+        # The name of the cost center.
         self.unit_name = unit_name
 
     def validate(self):
@@ -1769,6 +1834,7 @@ class CreateCostUnitResponseBodyData(TeaModel):
         self,
         cost_unit_dto_list: List[CreateCostUnitResponseBodyDataCostUnitDtoList] = None,
     ):
+        # The list of cost center entities.
         self.cost_unit_dto_list = cost_unit_dto_list
 
     def validate(self):
@@ -1808,10 +1874,15 @@ class CreateCostUnitResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -2186,11 +2257,8 @@ class CreateResellerUserQuotaRequest(TeaModel):
         out_biz_id: str = None,
         owner_id: int = None,
     ):
-        # The amount. Unit: CNY. This parameter is required if you create a quota account.
         self.amount = amount
-        # The name of the currency.
         self.currency = currency
-        # The ID of business in an external system.
         self.out_biz_id = out_biz_id
         self.owner_id = owner_id
 
@@ -2235,15 +2303,10 @@ class CreateResellerUserQuotaResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the call failed. For more information, see the "Error codes" section of this topic.
         self.code = code
-        # Indicates whether the request is successful.
         self.data = data
-        # The message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
         self.success = success
 
     def validate(self):
@@ -2337,12 +2400,25 @@ class CreateResourcePackageRequest(TeaModel):
         product_code: str = None,
         specification: str = None,
     ):
+        # The validity period of the resource plan.
         self.duration = duration
+        # The time when the resource plan takes effect. If you leave this parameter empty, the resource plan immediately takes effect by default.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.effective_date = effective_date
         self.owner_id = owner_id
+        # The type of the resource plan. Set this parameter to the code of the **resource plan** returned by calling the **DescribeResourcePackageProduct** operation.
         self.package_type = package_type
+        # The unit of the validity period of the resource plan. Valid values:
+        # 
+        # *   Month
+        # *   Year
+        # 
+        # Default value: Month.
         self.pricing_cycle = pricing_cycle
+        # The code of the service. You can query the code by calling the **QueryProductList** operation or viewing **Codes of Alibaba Cloud services**.
         self.product_code = product_code
+        # The specifications of the resource plan. Set this parameter to the value of the **specifications** returned by calling the **DescribeResourcePackageProduct** operation.
         self.specification = specification
 
     def validate(self):
@@ -2395,7 +2471,9 @@ class CreateResourcePackageResponseBodyData(TeaModel):
         instance_id: str = None,
         order_id: int = None,
     ):
+        # The ID of the resource plan.
         self.instance_id = instance_id
+        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):
@@ -2432,11 +2510,17 @@ class CreateResourcePackageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -2531,6 +2615,7 @@ class CreateSavingsPlansInstanceRequest(TeaModel):
         commodity_code: str = None,
         duration: str = None,
         effective_date: str = None,
+        extend_map: Dict[str, str] = None,
         pay_mode: str = None,
         pool_value: str = None,
         pricing_cycle: str = None,
@@ -2539,39 +2624,16 @@ class CreateSavingsPlansInstanceRequest(TeaModel):
         specification: str = None,
         type: str = None,
     ):
-        # The code of the service.
         self.commodity_code = commodity_code
-        # The service duration. This parameter is used together with the PricingCycle parameter.
         self.duration = duration
-        # The time when the savings plan takes effect. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.effective_date = effective_date
-        # The payment mode. Valid values:
-        # 
-        # *   total: all upfront
-        # *   half: partial upfront
-        # *   zero: no upfront
+        self.extend_map = extend_map
         self.pay_mode = pay_mode
-        # The contracted amount. unit: CNY
         self.pool_value = pool_value
-        # The unit of the service duration. This parameter is used together with the During parameter. Valid values:
-        # 
-        # *   Year
-        # *   Month
         self.pricing_cycle = pricing_cycle
-        # The ID of the region in which you create the savings plan. You must specify this parameter if the Type parameter is not set to universal.
         self.region = region
-        # The specification type. This parameter is used together with the Specification parameter. You must specify this parameter if the Type parameter is not set to universal. Valid values:
-        # 
-        # *   group: specification group
-        # *   family: specification family
         self.spec_type = spec_type
-        # The specifications of the savings plan. This parameter is used together with the SpecType parameter.
         self.specification = specification
-        # The type of the savings plan. Valid values:
-        # 
-        # *   universal: general-purpose type
-        # *   ecs: ECS compute type
-        # *   elasticy: elastic type
         self.type = type
 
     def validate(self):
@@ -2589,6 +2651,8 @@ class CreateSavingsPlansInstanceRequest(TeaModel):
             result['Duration'] = self.duration
         if self.effective_date is not None:
             result['EffectiveDate'] = self.effective_date
+        if self.extend_map is not None:
+            result['ExtendMap'] = self.extend_map
         if self.pay_mode is not None:
             result['PayMode'] = self.pay_mode
         if self.pool_value is not None:
@@ -2613,6 +2677,95 @@ class CreateSavingsPlansInstanceRequest(TeaModel):
             self.duration = m.get('Duration')
         if m.get('EffectiveDate') is not None:
             self.effective_date = m.get('EffectiveDate')
+        if m.get('ExtendMap') is not None:
+            self.extend_map = m.get('ExtendMap')
+        if m.get('PayMode') is not None:
+            self.pay_mode = m.get('PayMode')
+        if m.get('PoolValue') is not None:
+            self.pool_value = m.get('PoolValue')
+        if m.get('PricingCycle') is not None:
+            self.pricing_cycle = m.get('PricingCycle')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
+        if m.get('Specification') is not None:
+            self.specification = m.get('Specification')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateSavingsPlansInstanceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        duration: str = None,
+        effective_date: str = None,
+        extend_map_shrink: str = None,
+        pay_mode: str = None,
+        pool_value: str = None,
+        pricing_cycle: str = None,
+        region: str = None,
+        spec_type: str = None,
+        specification: str = None,
+        type: str = None,
+    ):
+        self.commodity_code = commodity_code
+        self.duration = duration
+        self.effective_date = effective_date
+        self.extend_map_shrink = extend_map_shrink
+        self.pay_mode = pay_mode
+        self.pool_value = pool_value
+        self.pricing_cycle = pricing_cycle
+        self.region = region
+        self.spec_type = spec_type
+        self.specification = specification
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.effective_date is not None:
+            result['EffectiveDate'] = self.effective_date
+        if self.extend_map_shrink is not None:
+            result['ExtendMap'] = self.extend_map_shrink
+        if self.pay_mode is not None:
+            result['PayMode'] = self.pay_mode
+        if self.pool_value is not None:
+            result['PoolValue'] = self.pool_value
+        if self.pricing_cycle is not None:
+            result['PricingCycle'] = self.pricing_cycle
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
+        if self.specification is not None:
+            result['Specification'] = self.specification
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('EffectiveDate') is not None:
+            self.effective_date = m.get('EffectiveDate')
+        if m.get('ExtendMap') is not None:
+            self.extend_map_shrink = m.get('ExtendMap')
         if m.get('PayMode') is not None:
             self.pay_mode = m.get('PayMode')
         if m.get('PoolValue') is not None:
@@ -2635,7 +2788,6 @@ class CreateSavingsPlansInstanceResponseBodyData(TeaModel):
         self,
         order_id: int = None,
     ):
-        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):
@@ -2667,15 +2819,10 @@ class CreateSavingsPlansInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
         self.code = code
-        # The data returned.
         self.data = data
-        # The error message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2766,7 +2913,9 @@ class DeleteCostUnitRequest(TeaModel):
         owner_uid: int = None,
         unit_id: int = None,
     ):
+        # The user ID of the cost center owner.
         self.owner_uid = owner_uid
+        # The ID of the cost center. A value of -1 indicates the root cost center.
         self.unit_id = unit_id
 
     def validate(self):
@@ -2800,8 +2949,11 @@ class DeleteCostUnitResponseBodyData(TeaModel):
         owner_uid: int = None,
         unit_id: int = None,
     ):
+        # Indicates whether the call is complete.
         self.is_success = is_success
+        # The user ID of the cost center owner.
         self.owner_uid = owner_uid
+        # The ID of the cost center.
         self.unit_id = unit_id
 
     def validate(self):
@@ -2841,10 +2993,15 @@ class DeleteCostUnitResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2938,10 +3095,15 @@ class DescribeCostBudgetsSummaryRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The name of the budget. Fuzzy match is supported.
         self.budget_name = budget_name
+        # The status of the budget. Valid values: overdue and notOverdue. A value of overdue specifies to filter expired budgets. A value of notOverdue specifies to filter budgets that do not expire. By default, if you do not specify this parameter, information about all budgets is to be returned.
         self.budget_status = budget_status
+        # The type of the budget. Valid values: cost, byquantity, and asset. A value of cost specifies to filter expense budgets. A value of byquantity specifies to filter budgets calculated based on the resource usage. A value of asset specifies to filter usage or coverage budgets. By default, information about all budgets is returned if you do not specify this parameter.
         self.budget_type = budget_type
+        # The number of entries to return on each page. Default value: 10. Maximum value: 10. Minimum value: 1.
         self.max_results = max_results
+        # The position in which the query starts. You must set this parameter to null or the token that is obtained from the previous query. Otherwise, an error is returned. If you set the NextToken parameter to null, the query starts from the beginning. The default value is null.
         self.next_token = next_token
 
     def validate(self):
@@ -2990,11 +3152,17 @@ class DescribeCostBudgetsSummaryResponseBodyDataItems(TeaModel):
         calculated_values: Dict[str, Any] = None,
         consume_period: Dict[str, Any] = None,
     ):
+        # The information about the budget. The BudgetCycleType parameter indicates the cycle of the budget. Valid values: daily, monthly, quarterly, and yearly. The TotalBudgetAmount parameter indicates the total budget. The BudgetMemo parameter indicates the remarks of the budget.
         self.budget = budget
+        # The name of the budget.
         self.budget_name = budget_name
+        # The status of the budget.
         self.budget_status = budget_status
+        # The type of the budget.
         self.budget_type = budget_type
+        # The information about the estimate-to-actual analysis. The ActualConsumeSum parameter indicates the accumulated actual value. The ActualAddForecastedAmount parameter indicates the sum of accumulated actual value and predicted value. If the BudgetType parameter is set to cost, the sum of actual value and predicted value includes the actual cost incurred from the budget start date to the current date and the predicted cost from the current date to the budget end date. If the BudgetType parameter is set to asset, the sum of actual value and predicted value includes the actual usage or coverage from the budget start date to the budget end date. If the budget end date minus the current date is more than one year, the part that exceeds one year is not included. The ActualAndBudgetComparison parameter indicates the comparison between the actual value and the predicted value. The value of the ActualAndBudgetComparison parameter is calculated based on the following formula: Accumulated actual value/Total budget × 100%.
         self.calculated_values = calculated_values
+        # The information about the billing cycle. The ConsumePeriodBegin parameter indicates the start date of the budget. The ConsumePeriodEnd parameter indicates the end date of the budget.
         self.consume_period = consume_period
 
     def validate(self):
@@ -3046,10 +3214,15 @@ class DescribeCostBudgetsSummaryResponseBodyData(TeaModel):
         next_token: str = None,
         total_count: int = None,
     ):
+        # The site of the host.
         self.host_id = host_id
+        # The data that is returned.
         self.items = items
+        # The maximum number of entries that are returned.
         self.max_results = max_results
+        # The token that is used to retrieve the next page
         self.next_token = next_token
+        # The total number of entries that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3105,10 +3278,15 @@ class DescribeCostBudgetsSummaryResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data that is returned.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -3896,6 +4074,648 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest(TeaModel):
+    def __init__(
+        self,
+        amortization_date_end: str = None,
+        amortization_date_start: str = None,
+        bill_owner_id_list: List[str] = None,
+        bill_user_id_list: List[str] = None,
+        billing_cycle: str = None,
+        cost_unit_code: str = None,
+        instance_id_list: List[str] = None,
+        max_results: int = None,
+        next_token: str = None,
+        product_code: str = None,
+        product_detail: str = None,
+        subscription_type: str = None,
+    ):
+        self.amortization_date_end = amortization_date_end
+        self.amortization_date_start = amortization_date_start
+        self.bill_owner_id_list = bill_owner_id_list
+        self.bill_user_id_list = bill_user_id_list
+        self.billing_cycle = billing_cycle
+        self.cost_unit_code = cost_unit_code
+        self.instance_id_list = instance_id_list
+        self.max_results = max_results
+        self.next_token = next_token
+        self.product_code = product_code
+        self.product_detail = product_detail
+        self.subscription_type = subscription_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amortization_date_end is not None:
+            result['AmortizationDateEnd'] = self.amortization_date_end
+        if self.amortization_date_start is not None:
+            result['AmortizationDateStart'] = self.amortization_date_start
+        if self.bill_owner_id_list is not None:
+            result['BillOwnerIdList'] = self.bill_owner_id_list
+        if self.bill_user_id_list is not None:
+            result['BillUserIdList'] = self.bill_user_id_list
+        if self.billing_cycle is not None:
+            result['BillingCycle'] = self.billing_cycle
+        if self.cost_unit_code is not None:
+            result['CostUnitCode'] = self.cost_unit_code
+        if self.instance_id_list is not None:
+            result['InstanceIdList'] = self.instance_id_list
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_detail is not None:
+            result['ProductDetail'] = self.product_detail
+        if self.subscription_type is not None:
+            result['SubscriptionType'] = self.subscription_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AmortizationDateEnd') is not None:
+            self.amortization_date_end = m.get('AmortizationDateEnd')
+        if m.get('AmortizationDateStart') is not None:
+            self.amortization_date_start = m.get('AmortizationDateStart')
+        if m.get('BillOwnerIdList') is not None:
+            self.bill_owner_id_list = m.get('BillOwnerIdList')
+        if m.get('BillUserIdList') is not None:
+            self.bill_user_id_list = m.get('BillUserIdList')
+        if m.get('BillingCycle') is not None:
+            self.billing_cycle = m.get('BillingCycle')
+        if m.get('CostUnitCode') is not None:
+            self.cost_unit_code = m.get('CostUnitCode')
+        if m.get('InstanceIdList') is not None:
+            self.instance_id_list = m.get('InstanceIdList')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductDetail') is not None:
+            self.product_detail = m.get('ProductDetail')
+        if m.get('SubscriptionType') is not None:
+            self.subscription_type = m.get('SubscriptionType')
+        return self
+
+
+class DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyDataItems(TeaModel):
+    def __init__(
+        self,
+        amortization_period: str = None,
+        amortization_period_day: str = None,
+        amortization_status: str = None,
+        bill_account_id: int = None,
+        bill_account_name: str = None,
+        bill_owner_id: int = None,
+        bill_owner_name: str = None,
+        biz_type: str = None,
+        consume_period: str = None,
+        consume_period_day: str = None,
+        cost_unit: str = None,
+        cost_unit_code: str = None,
+        current_amortization_deducted_by_cash_coupons: float = None,
+        current_amortization_deducted_by_coupons: float = None,
+        current_amortization_deducted_by_prepaid_card: float = None,
+        current_amortization_expenditure_amount: float = None,
+        current_amortization_invoice_discount: float = None,
+        current_amortization_pretax_amount: float = None,
+        current_amortization_pretax_gross_amount: float = None,
+        current_amortization_round_down_discount: float = None,
+        deducted_by_cash_coupons: float = None,
+        deducted_by_coupons: float = None,
+        deducted_by_prepaid_card: float = None,
+        expenditure_amount: float = None,
+        instance_id: str = None,
+        internet_ip: str = None,
+        intranet_ip: str = None,
+        invoice_discount: float = None,
+        pretax_amount: float = None,
+        pretax_gross_amount: float = None,
+        previously_amortized_deducted_by_cash_coupons: float = None,
+        previously_amortized_deducted_by_coupons: float = None,
+        previously_amortized_deducted_by_prepaid_card: float = None,
+        previously_amortized_expenditure_amount: float = None,
+        previously_amortized_invoice_discount: float = None,
+        previously_amortized_pretax_amount: float = None,
+        previously_amortized_pretax_gross_amount: float = None,
+        previously_amortized_round_down_discount: float = None,
+        product_code: str = None,
+        product_detail: str = None,
+        product_detail_code: str = None,
+        product_name: str = None,
+        region: str = None,
+        remaining_amortization_deducted_by_cash_coupons: float = None,
+        remaining_amortization_deducted_by_coupons: float = None,
+        remaining_amortization_deducted_by_prepaid_card: float = None,
+        remaining_amortization_expenditure_amount: float = None,
+        remaining_amortization_invoice_discount: float = None,
+        remaining_amortization_pretax_amount: float = None,
+        remaining_amortization_pretax_gross_amount: float = None,
+        remaining_amortization_round_down_discount: float = None,
+        resource_group: str = None,
+        round_down_discount: float = None,
+        split_account_name: str = None,
+        split_item_id: str = None,
+        split_item_name: str = None,
+        split_product_detail: str = None,
+        subscription_type: str = None,
+        tag: str = None,
+        zone: str = None,
+    ):
+        self.amortization_period = amortization_period
+        self.amortization_period_day = amortization_period_day
+        self.amortization_status = amortization_status
+        self.bill_account_id = bill_account_id
+        self.bill_account_name = bill_account_name
+        self.bill_owner_id = bill_owner_id
+        self.bill_owner_name = bill_owner_name
+        self.biz_type = biz_type
+        self.consume_period = consume_period
+        self.consume_period_day = consume_period_day
+        self.cost_unit = cost_unit
+        self.cost_unit_code = cost_unit_code
+        self.current_amortization_deducted_by_cash_coupons = current_amortization_deducted_by_cash_coupons
+        self.current_amortization_deducted_by_coupons = current_amortization_deducted_by_coupons
+        self.current_amortization_deducted_by_prepaid_card = current_amortization_deducted_by_prepaid_card
+        self.current_amortization_expenditure_amount = current_amortization_expenditure_amount
+        self.current_amortization_invoice_discount = current_amortization_invoice_discount
+        self.current_amortization_pretax_amount = current_amortization_pretax_amount
+        self.current_amortization_pretax_gross_amount = current_amortization_pretax_gross_amount
+        self.current_amortization_round_down_discount = current_amortization_round_down_discount
+        self.deducted_by_cash_coupons = deducted_by_cash_coupons
+        self.deducted_by_coupons = deducted_by_coupons
+        self.deducted_by_prepaid_card = deducted_by_prepaid_card
+        self.expenditure_amount = expenditure_amount
+        self.instance_id = instance_id
+        self.internet_ip = internet_ip
+        self.intranet_ip = intranet_ip
+        self.invoice_discount = invoice_discount
+        self.pretax_amount = pretax_amount
+        self.pretax_gross_amount = pretax_gross_amount
+        self.previously_amortized_deducted_by_cash_coupons = previously_amortized_deducted_by_cash_coupons
+        self.previously_amortized_deducted_by_coupons = previously_amortized_deducted_by_coupons
+        self.previously_amortized_deducted_by_prepaid_card = previously_amortized_deducted_by_prepaid_card
+        self.previously_amortized_expenditure_amount = previously_amortized_expenditure_amount
+        self.previously_amortized_invoice_discount = previously_amortized_invoice_discount
+        self.previously_amortized_pretax_amount = previously_amortized_pretax_amount
+        self.previously_amortized_pretax_gross_amount = previously_amortized_pretax_gross_amount
+        self.previously_amortized_round_down_discount = previously_amortized_round_down_discount
+        self.product_code = product_code
+        self.product_detail = product_detail
+        self.product_detail_code = product_detail_code
+        self.product_name = product_name
+        self.region = region
+        self.remaining_amortization_deducted_by_cash_coupons = remaining_amortization_deducted_by_cash_coupons
+        self.remaining_amortization_deducted_by_coupons = remaining_amortization_deducted_by_coupons
+        self.remaining_amortization_deducted_by_prepaid_card = remaining_amortization_deducted_by_prepaid_card
+        self.remaining_amortization_expenditure_amount = remaining_amortization_expenditure_amount
+        self.remaining_amortization_invoice_discount = remaining_amortization_invoice_discount
+        self.remaining_amortization_pretax_amount = remaining_amortization_pretax_amount
+        self.remaining_amortization_pretax_gross_amount = remaining_amortization_pretax_gross_amount
+        self.remaining_amortization_round_down_discount = remaining_amortization_round_down_discount
+        self.resource_group = resource_group
+        self.round_down_discount = round_down_discount
+        self.split_account_name = split_account_name
+        self.split_item_id = split_item_id
+        self.split_item_name = split_item_name
+        self.split_product_detail = split_product_detail
+        self.subscription_type = subscription_type
+        self.tag = tag
+        self.zone = zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amortization_period is not None:
+            result['AmortizationPeriod'] = self.amortization_period
+        if self.amortization_period_day is not None:
+            result['AmortizationPeriodDay'] = self.amortization_period_day
+        if self.amortization_status is not None:
+            result['AmortizationStatus'] = self.amortization_status
+        if self.bill_account_id is not None:
+            result['BillAccountID'] = self.bill_account_id
+        if self.bill_account_name is not None:
+            result['BillAccountName'] = self.bill_account_name
+        if self.bill_owner_id is not None:
+            result['BillOwnerID'] = self.bill_owner_id
+        if self.bill_owner_name is not None:
+            result['BillOwnerName'] = self.bill_owner_name
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.consume_period is not None:
+            result['ConsumePeriod'] = self.consume_period
+        if self.consume_period_day is not None:
+            result['ConsumePeriodDay'] = self.consume_period_day
+        if self.cost_unit is not None:
+            result['CostUnit'] = self.cost_unit
+        if self.cost_unit_code is not None:
+            result['CostUnitCode'] = self.cost_unit_code
+        if self.current_amortization_deducted_by_cash_coupons is not None:
+            result['CurrentAmortizationDeductedByCashCoupons'] = self.current_amortization_deducted_by_cash_coupons
+        if self.current_amortization_deducted_by_coupons is not None:
+            result['CurrentAmortizationDeductedByCoupons'] = self.current_amortization_deducted_by_coupons
+        if self.current_amortization_deducted_by_prepaid_card is not None:
+            result['CurrentAmortizationDeductedByPrepaidCard'] = self.current_amortization_deducted_by_prepaid_card
+        if self.current_amortization_expenditure_amount is not None:
+            result['CurrentAmortizationExpenditureAmount'] = self.current_amortization_expenditure_amount
+        if self.current_amortization_invoice_discount is not None:
+            result['CurrentAmortizationInvoiceDiscount'] = self.current_amortization_invoice_discount
+        if self.current_amortization_pretax_amount is not None:
+            result['CurrentAmortizationPretaxAmount'] = self.current_amortization_pretax_amount
+        if self.current_amortization_pretax_gross_amount is not None:
+            result['CurrentAmortizationPretaxGrossAmount'] = self.current_amortization_pretax_gross_amount
+        if self.current_amortization_round_down_discount is not None:
+            result['CurrentAmortizationRoundDownDiscount'] = self.current_amortization_round_down_discount
+        if self.deducted_by_cash_coupons is not None:
+            result['DeductedByCashCoupons'] = self.deducted_by_cash_coupons
+        if self.deducted_by_coupons is not None:
+            result['DeductedByCoupons'] = self.deducted_by_coupons
+        if self.deducted_by_prepaid_card is not None:
+            result['DeductedByPrepaidCard'] = self.deducted_by_prepaid_card
+        if self.expenditure_amount is not None:
+            result['ExpenditureAmount'] = self.expenditure_amount
+        if self.instance_id is not None:
+            result['InstanceID'] = self.instance_id
+        if self.internet_ip is not None:
+            result['InternetIP'] = self.internet_ip
+        if self.intranet_ip is not None:
+            result['IntranetIP'] = self.intranet_ip
+        if self.invoice_discount is not None:
+            result['InvoiceDiscount'] = self.invoice_discount
+        if self.pretax_amount is not None:
+            result['PretaxAmount'] = self.pretax_amount
+        if self.pretax_gross_amount is not None:
+            result['PretaxGrossAmount'] = self.pretax_gross_amount
+        if self.previously_amortized_deducted_by_cash_coupons is not None:
+            result['PreviouslyAmortizedDeductedByCashCoupons'] = self.previously_amortized_deducted_by_cash_coupons
+        if self.previously_amortized_deducted_by_coupons is not None:
+            result['PreviouslyAmortizedDeductedByCoupons'] = self.previously_amortized_deducted_by_coupons
+        if self.previously_amortized_deducted_by_prepaid_card is not None:
+            result['PreviouslyAmortizedDeductedByPrepaidCard'] = self.previously_amortized_deducted_by_prepaid_card
+        if self.previously_amortized_expenditure_amount is not None:
+            result['PreviouslyAmortizedExpenditureAmount'] = self.previously_amortized_expenditure_amount
+        if self.previously_amortized_invoice_discount is not None:
+            result['PreviouslyAmortizedInvoiceDiscount'] = self.previously_amortized_invoice_discount
+        if self.previously_amortized_pretax_amount is not None:
+            result['PreviouslyAmortizedPretaxAmount'] = self.previously_amortized_pretax_amount
+        if self.previously_amortized_pretax_gross_amount is not None:
+            result['PreviouslyAmortizedPretaxGrossAmount'] = self.previously_amortized_pretax_gross_amount
+        if self.previously_amortized_round_down_discount is not None:
+            result['PreviouslyAmortizedRoundDownDiscount'] = self.previously_amortized_round_down_discount
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_detail is not None:
+            result['ProductDetail'] = self.product_detail
+        if self.product_detail_code is not None:
+            result['ProductDetailCode'] = self.product_detail_code
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.remaining_amortization_deducted_by_cash_coupons is not None:
+            result['RemainingAmortizationDeductedByCashCoupons'] = self.remaining_amortization_deducted_by_cash_coupons
+        if self.remaining_amortization_deducted_by_coupons is not None:
+            result['RemainingAmortizationDeductedByCoupons'] = self.remaining_amortization_deducted_by_coupons
+        if self.remaining_amortization_deducted_by_prepaid_card is not None:
+            result['RemainingAmortizationDeductedByPrepaidCard'] = self.remaining_amortization_deducted_by_prepaid_card
+        if self.remaining_amortization_expenditure_amount is not None:
+            result['RemainingAmortizationExpenditureAmount'] = self.remaining_amortization_expenditure_amount
+        if self.remaining_amortization_invoice_discount is not None:
+            result['RemainingAmortizationInvoiceDiscount'] = self.remaining_amortization_invoice_discount
+        if self.remaining_amortization_pretax_amount is not None:
+            result['RemainingAmortizationPretaxAmount'] = self.remaining_amortization_pretax_amount
+        if self.remaining_amortization_pretax_gross_amount is not None:
+            result['RemainingAmortizationPretaxGrossAmount'] = self.remaining_amortization_pretax_gross_amount
+        if self.remaining_amortization_round_down_discount is not None:
+            result['RemainingAmortizationRoundDownDiscount'] = self.remaining_amortization_round_down_discount
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.round_down_discount is not None:
+            result['RoundDownDiscount'] = self.round_down_discount
+        if self.split_account_name is not None:
+            result['SplitAccountName'] = self.split_account_name
+        if self.split_item_id is not None:
+            result['SplitItemID'] = self.split_item_id
+        if self.split_item_name is not None:
+            result['SplitItemName'] = self.split_item_name
+        if self.split_product_detail is not None:
+            result['SplitProductDetail'] = self.split_product_detail
+        if self.subscription_type is not None:
+            result['SubscriptionType'] = self.subscription_type
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AmortizationPeriod') is not None:
+            self.amortization_period = m.get('AmortizationPeriod')
+        if m.get('AmortizationPeriodDay') is not None:
+            self.amortization_period_day = m.get('AmortizationPeriodDay')
+        if m.get('AmortizationStatus') is not None:
+            self.amortization_status = m.get('AmortizationStatus')
+        if m.get('BillAccountID') is not None:
+            self.bill_account_id = m.get('BillAccountID')
+        if m.get('BillAccountName') is not None:
+            self.bill_account_name = m.get('BillAccountName')
+        if m.get('BillOwnerID') is not None:
+            self.bill_owner_id = m.get('BillOwnerID')
+        if m.get('BillOwnerName') is not None:
+            self.bill_owner_name = m.get('BillOwnerName')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('ConsumePeriod') is not None:
+            self.consume_period = m.get('ConsumePeriod')
+        if m.get('ConsumePeriodDay') is not None:
+            self.consume_period_day = m.get('ConsumePeriodDay')
+        if m.get('CostUnit') is not None:
+            self.cost_unit = m.get('CostUnit')
+        if m.get('CostUnitCode') is not None:
+            self.cost_unit_code = m.get('CostUnitCode')
+        if m.get('CurrentAmortizationDeductedByCashCoupons') is not None:
+            self.current_amortization_deducted_by_cash_coupons = m.get('CurrentAmortizationDeductedByCashCoupons')
+        if m.get('CurrentAmortizationDeductedByCoupons') is not None:
+            self.current_amortization_deducted_by_coupons = m.get('CurrentAmortizationDeductedByCoupons')
+        if m.get('CurrentAmortizationDeductedByPrepaidCard') is not None:
+            self.current_amortization_deducted_by_prepaid_card = m.get('CurrentAmortizationDeductedByPrepaidCard')
+        if m.get('CurrentAmortizationExpenditureAmount') is not None:
+            self.current_amortization_expenditure_amount = m.get('CurrentAmortizationExpenditureAmount')
+        if m.get('CurrentAmortizationInvoiceDiscount') is not None:
+            self.current_amortization_invoice_discount = m.get('CurrentAmortizationInvoiceDiscount')
+        if m.get('CurrentAmortizationPretaxAmount') is not None:
+            self.current_amortization_pretax_amount = m.get('CurrentAmortizationPretaxAmount')
+        if m.get('CurrentAmortizationPretaxGrossAmount') is not None:
+            self.current_amortization_pretax_gross_amount = m.get('CurrentAmortizationPretaxGrossAmount')
+        if m.get('CurrentAmortizationRoundDownDiscount') is not None:
+            self.current_amortization_round_down_discount = m.get('CurrentAmortizationRoundDownDiscount')
+        if m.get('DeductedByCashCoupons') is not None:
+            self.deducted_by_cash_coupons = m.get('DeductedByCashCoupons')
+        if m.get('DeductedByCoupons') is not None:
+            self.deducted_by_coupons = m.get('DeductedByCoupons')
+        if m.get('DeductedByPrepaidCard') is not None:
+            self.deducted_by_prepaid_card = m.get('DeductedByPrepaidCard')
+        if m.get('ExpenditureAmount') is not None:
+            self.expenditure_amount = m.get('ExpenditureAmount')
+        if m.get('InstanceID') is not None:
+            self.instance_id = m.get('InstanceID')
+        if m.get('InternetIP') is not None:
+            self.internet_ip = m.get('InternetIP')
+        if m.get('IntranetIP') is not None:
+            self.intranet_ip = m.get('IntranetIP')
+        if m.get('InvoiceDiscount') is not None:
+            self.invoice_discount = m.get('InvoiceDiscount')
+        if m.get('PretaxAmount') is not None:
+            self.pretax_amount = m.get('PretaxAmount')
+        if m.get('PretaxGrossAmount') is not None:
+            self.pretax_gross_amount = m.get('PretaxGrossAmount')
+        if m.get('PreviouslyAmortizedDeductedByCashCoupons') is not None:
+            self.previously_amortized_deducted_by_cash_coupons = m.get('PreviouslyAmortizedDeductedByCashCoupons')
+        if m.get('PreviouslyAmortizedDeductedByCoupons') is not None:
+            self.previously_amortized_deducted_by_coupons = m.get('PreviouslyAmortizedDeductedByCoupons')
+        if m.get('PreviouslyAmortizedDeductedByPrepaidCard') is not None:
+            self.previously_amortized_deducted_by_prepaid_card = m.get('PreviouslyAmortizedDeductedByPrepaidCard')
+        if m.get('PreviouslyAmortizedExpenditureAmount') is not None:
+            self.previously_amortized_expenditure_amount = m.get('PreviouslyAmortizedExpenditureAmount')
+        if m.get('PreviouslyAmortizedInvoiceDiscount') is not None:
+            self.previously_amortized_invoice_discount = m.get('PreviouslyAmortizedInvoiceDiscount')
+        if m.get('PreviouslyAmortizedPretaxAmount') is not None:
+            self.previously_amortized_pretax_amount = m.get('PreviouslyAmortizedPretaxAmount')
+        if m.get('PreviouslyAmortizedPretaxGrossAmount') is not None:
+            self.previously_amortized_pretax_gross_amount = m.get('PreviouslyAmortizedPretaxGrossAmount')
+        if m.get('PreviouslyAmortizedRoundDownDiscount') is not None:
+            self.previously_amortized_round_down_discount = m.get('PreviouslyAmortizedRoundDownDiscount')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductDetail') is not None:
+            self.product_detail = m.get('ProductDetail')
+        if m.get('ProductDetailCode') is not None:
+            self.product_detail_code = m.get('ProductDetailCode')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RemainingAmortizationDeductedByCashCoupons') is not None:
+            self.remaining_amortization_deducted_by_cash_coupons = m.get('RemainingAmortizationDeductedByCashCoupons')
+        if m.get('RemainingAmortizationDeductedByCoupons') is not None:
+            self.remaining_amortization_deducted_by_coupons = m.get('RemainingAmortizationDeductedByCoupons')
+        if m.get('RemainingAmortizationDeductedByPrepaidCard') is not None:
+            self.remaining_amortization_deducted_by_prepaid_card = m.get('RemainingAmortizationDeductedByPrepaidCard')
+        if m.get('RemainingAmortizationExpenditureAmount') is not None:
+            self.remaining_amortization_expenditure_amount = m.get('RemainingAmortizationExpenditureAmount')
+        if m.get('RemainingAmortizationInvoiceDiscount') is not None:
+            self.remaining_amortization_invoice_discount = m.get('RemainingAmortizationInvoiceDiscount')
+        if m.get('RemainingAmortizationPretaxAmount') is not None:
+            self.remaining_amortization_pretax_amount = m.get('RemainingAmortizationPretaxAmount')
+        if m.get('RemainingAmortizationPretaxGrossAmount') is not None:
+            self.remaining_amortization_pretax_gross_amount = m.get('RemainingAmortizationPretaxGrossAmount')
+        if m.get('RemainingAmortizationRoundDownDiscount') is not None:
+            self.remaining_amortization_round_down_discount = m.get('RemainingAmortizationRoundDownDiscount')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('RoundDownDiscount') is not None:
+            self.round_down_discount = m.get('RoundDownDiscount')
+        if m.get('SplitAccountName') is not None:
+            self.split_account_name = m.get('SplitAccountName')
+        if m.get('SplitItemID') is not None:
+            self.split_item_id = m.get('SplitItemID')
+        if m.get('SplitItemName') is not None:
+            self.split_item_name = m.get('SplitItemName')
+        if m.get('SplitProductDetail') is not None:
+            self.split_product_detail = m.get('SplitProductDetail')
+        if m.get('SubscriptionType') is not None:
+            self.subscription_type = m.get('SubscriptionType')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        return self
+
+
+class DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        account_name: str = None,
+        host_id: str = None,
+        items: List[DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyDataItems] = None,
+        max_results: int = None,
+        next_token: str = None,
+        total_count: int = None,
+    ):
+        self.account_id = account_id
+        self.account_name = account_name
+        self.host_id = host_id
+        self.items = items
+        self.max_results = max_results
+        self.next_token = next_token
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountID'] = self.account_id
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.host_id is not None:
+            result['HostId'] = self.host_id
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountID') is not None:
+            self.account_id = m.get('AccountID')
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('HostId') is not None:
+            self.host_id = m.get('HostId')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5189,8 +6009,14 @@ class DescribePricingModuleRequest(TeaModel):
         subscription_type: str = None,
     ):
         self.owner_id = owner_id
+        # The service code. You can query the service code by calling the **QueryProductList** operation.
         self.product_code = product_code
+        # The type of the service. You can query the service type by calling the **QueryProductList** operation.
         self.product_type = product_type
+        # The billing method. Valid values:
+        # 
+        # *   Subscription: subscription
+        # *   PayAsYouGo: pay-as-you-go
         self.subscription_type = subscription_type
 
     def validate(self):
@@ -5233,9 +6059,18 @@ class DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttribute
         type: str = None,
         value: str = None,
     ):
+        # The attribute value that corresponds to the module code.
         self.name = name
+        # The description of the module values.
         self.remark = remark
+        # The type of the attribute value that corresponds to the module code. Valid values:
+        # 
+        # *   single_float: single value
+        # *   range_float: range value
         self.type = type
+        # The attribute value that corresponds to the module code.
+        # 
+        # >  If the Type parameter is set to range_float, the valid values of this parameter range from 1024 to 1024000. A value of 1024 indicates that the step size is 1024.
         self.value = value
 
     def validate(self):
@@ -5313,9 +6148,13 @@ class DescribePricingModuleResponseBodyDataAttributeListAttribute(TeaModel):
         unit: str = None,
         values: DescribePricingModuleResponseBodyDataAttributeListAttributeValues = None,
     ):
+        # The code of the attribute.
         self.code = code
+        # The name of the attribute.
         self.name = name
+        # The unit of the attribute.
         self.unit = unit
+        # The attribute values.
         self.values = values
 
     def validate(self):
@@ -5424,9 +6263,20 @@ class DescribePricingModuleResponseBodyDataModuleListModule(TeaModel):
         price_type: str = None,
     ):
         self.config_list = config_list
+        # The currency. Default value: CNY.
         self.currency = currency
+        # The code of the pricing module.
         self.module_code = module_code
+        # The name of the pricing module.
         self.module_name = module_name
+        # The price type. Valid values:
+        # 
+        # *   Usage: usage price
+        # *   Hour: hourly price
+        # *   Day: daily price
+        # *   Week: weekly price
+        # *   Month: monthly price
+        # *   Year: annual price
         self.price_type = price_type
 
     def validate(self):
@@ -5508,7 +6358,9 @@ class DescribePricingModuleResponseBodyData(TeaModel):
         attribute_list: DescribePricingModuleResponseBodyDataAttributeList = None,
         module_list: DescribePricingModuleResponseBodyDataModuleList = None,
     ):
+        # The module attributes.
         self.attribute_list = attribute_list
+        # The pricing information of modules.
         self.module_list = module_list
 
     def validate(self):
@@ -5549,10 +6401,15 @@ class DescribePricingModuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -6791,21 +7648,19 @@ class DescribeResourceCoverageDetailRequest(TeaModel):
         resource_type: str = None,
         start_period: str = None,
     ):
-        # The ID of the account for which you want to query coverage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+        # The status code.
         self.bill_owner_id = bill_owner_id
-        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The name and billing method of the service.
         self.end_period = end_period
-        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
+        # The zone.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. You do not need to set this parameter if you query coverage details within a specific time range for the first time. The response returns a token that you can use to query coverage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
+        # The token of the next page.
         self.next_token = next_token
-        # The time granularity at which coverage details are queried. Valid values: MONTH, DAY, and HOUR.
+        # The total amount of resources consumed.
         self.period_type = period_type
-        # The type of deduction plans whose coverage details are queried. Valid values: RI and SCU.
+        # The operation that you want to perform. Set the value to DescribeResourceCoverageDetail.
         self.resource_type = resource_type
-        # The beginning of the time range to query.
-        # 
-        # The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The ID of the account.
         self.start_period = start_period
 
     def validate(self):
@@ -6876,45 +7731,42 @@ class DescribeResourceCoverageDetailResponseBodyDataItems(TeaModel):
         zone: str = None,
         zone_name: str = None,
     ):
-        # The unit that is used to measure the resources deducted from deduction plans.
+        # The type of deduction plans whose coverage details are queried. Valid values: RI and SCU.
         self.capacity_unit = capacity_unit
-        # The code of the service.
+        # The returned data.
         self.commodity_code = commodity_code
-        # The name and billing method of the service.
+        # The time granularity at which coverage details are queried. Valid values: MONTH, DAY, and HOUR.
         self.commodity_name = commodity_name
-        # The coverage rate of a deduction plan.
+        # The total number of entries returned.
         self.coverage_percentage = coverage_percentage
-        # The currency in which deduction plans were priced.
-        self.currency = currency
-        # The amount of the resources deducted from a deduction plan.
-        self.deduct_quantity = deduct_quantity
-        # The end of the time range in which the coverage details were queried.
-        self.end_time = end_time
-        # The ID of a pay-as-you-go instance.
-        self.instance_id = instance_id
         # The specifications of a deduction plan.
-        self.instance_spec = instance_spec
-        # The amount of the bill.
-        self.payment_amount = payment_amount
-        # The code of the service.
-        self.product_code = product_code
-        # The name of the service.
-        self.product_name = product_name
-        # The region.
-        self.region = region
-        # The code of the region.
-        self.region_no = region_no
+        self.currency = currency
+        # The unit that is used to measure the resources deducted from deduction plans.
+        self.deduct_quantity = deduct_quantity
         # The beginning of the time range in which the coverage details were queried.
+        self.end_time = end_time
+        # The code of the service.
+        self.instance_id = instance_id
+        # The name of the service.
+        self.instance_spec = instance_spec
+        # The coverage rate of a deduction plan.
+        self.payment_amount = payment_amount
+        self.product_code = product_code
+        # The region.
+        self.product_name = product_name
+        # The ID of the request.
+        self.region = region
+        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        self.region_no = region_no
+        # The token that is used to retrieve the next page of results. You do not need to set this parameter if you query coverage details within a specific time range for the first time. The response returns a token that you can use to query coverage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
         self.start_time = start_time
-        # The total amount of resources consumed.
-        self.total_quantity = total_quantity
-        # The ID of the account.
-        self.user_id = user_id
         # The username of the account.
-        self.user_name = user_name
+        self.total_quantity = total_quantity
         # The code of the zone.
+        self.user_id = user_id
+        self.user_name = user_name
         self.zone = zone
-        # The zone.
+        # The currency in which deduction plans were priced.
         self.zone_name = zone_name
 
     def validate(self):
@@ -7021,13 +7873,15 @@ class DescribeResourceCoverageDetailResponseBodyData(TeaModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The data entries.
+        # The code of the region.
         self.items = items
-        # The number of entries returned on the current page.
+        # The data entries.
         self.max_results = max_results
-        # The token of the next page.
+        # The beginning of the time range to query.
+        # 
+        # The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
         self.next_token = next_token
-        # The total number of entries returned.
+        # The ID of a pay-as-you-go instance.
         self.total_count = total_count
 
     def validate(self):
@@ -7079,15 +7933,15 @@ class DescribeResourceCoverageDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The end of the time range in which the coverage details were queried.
         self.code = code
-        # The returned data.
+        # The ID of the account for which you want to query coverage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
         self.data = data
-        # The message returned.
+        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
         self.message = message
-        # The ID of the request.
+        # The message returned.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # The amount of the bill.
         self.success = success
 
     def validate(self):
@@ -7181,15 +8035,15 @@ class DescribeResourceCoverageTotalRequest(TeaModel):
         resource_type: str = None,
         start_period: str = None,
     ):
-        # The ID of the account for which you want to query total coverage data. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
-        self.bill_owner_id = bill_owner_id
-        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
-        self.end_period = end_period
         # The time granularity at which total coverage data is queried. Valid values: MONTH, DAY, and HOUR.
+        self.bill_owner_id = bill_owner_id
+        # The information about the coverage rate of deduction plans within a period.
+        self.end_period = end_period
+        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
         self.period_type = period_type
-        # The type of deduction plans whose total coverage data is queried. Valid values: RI and SCU.
+        # The status code.
         self.resource_type = resource_type
-        # The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The total amount of the resources deducted from deduction plans.
         self.start_period = start_period
 
     def validate(self):
@@ -7234,11 +8088,9 @@ class DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage(TeaModel):
         coverage_percentage: float = None,
         period: str = None,
     ):
-        # The coverage rate of deduction plans within the specified period.
+        # The returned data.
         self.coverage_percentage = coverage_percentage
-        # The period.
-        # 
-        # The value is in the format of yyyyMMddHH.
+        # The ID of the request.
         self.period = period
 
     def validate(self):
@@ -7273,13 +8125,10 @@ class DescribeResourceCoverageTotalResponseBodyDataTotalCoverage(TeaModel):
         deduct_quantity: float = None,
         total_quantity: float = None,
     ):
-        # The unit that is used to measure the resources deducted from deduction plans.
+        # Queries the total coverage data of reserved instances (RIs) or storage capacity units (SCUs).
         self.capacity_unit = capacity_unit
-        # The total coverage rate of deduction plans.
         self.coverage_percentage = coverage_percentage
-        # The total amount of the resources deducted from deduction plans.
         self.deduct_quantity = deduct_quantity
-        # The total amount of resources consumed.
         self.total_quantity = total_quantity
 
     def validate(self):
@@ -7320,9 +8169,9 @@ class DescribeResourceCoverageTotalResponseBodyData(TeaModel):
         period_coverage: List[DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage] = None,
         total_coverage: DescribeResourceCoverageTotalResponseBodyDataTotalCoverage = None,
     ):
-        # The information about the coverage rate of deduction plans within a period.
+        # The ID of the account for which you want to query total coverage data. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
         self.period_coverage = period_coverage
-        # The information about the total coverage data of deduction plans.
+        # The unit that is used to measure the resources deducted from deduction plans.
         self.total_coverage = total_coverage
 
     def validate(self):
@@ -7369,15 +8218,15 @@ class DescribeResourceCoverageTotalResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The operation that you want to perform. Set the value to DescribeResourceCoverageTotal.
         self.code = code
-        # The returned data.
+        # The information about the total coverage data of deduction plans.
         self.data = data
-        # The message returned.
+        # The type of deduction plans whose total coverage data is queried. Valid values: RI and SCU.
         self.message = message
-        # The ID of the request.
+        # The coverage rate of deduction plans within the specified period.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
         self.success = success
 
     def validate(self):
@@ -7467,7 +8316,6 @@ class DescribeResourcePackageProductRequest(TeaModel):
         self,
         product_code: str = None,
     ):
-        # The code of the service.
         self.product_code = product_code
 
     def validate(self):
@@ -7496,9 +8344,7 @@ class DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePack
         name: str = None,
         value: str = None,
     ):
-        # The name of the property.
         self.name = name
-        # The value of the property.
         self.value = value
 
     def validate(self):
@@ -7567,16 +8413,8 @@ class DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePack
         unit: str = None,
         value: int = None,
     ):
-        # The name of the validity period.
         self.name = name
-        # The unit of the validity period for the resource plan. Valid values:
-        # 
-        # *   Month
-        # *   Year
-        # 
-        # Default value: Month.
         self.unit = unit
-        # The value of the validity period.
         self.value = value
 
     def validate(self):
@@ -7649,11 +8487,8 @@ class DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePack
         name: str = None,
         value: str = None,
     ):
-        # The validity periods available for the resource plan.
         self.available_durations = available_durations
-        # The name of the specification.
         self.name = name
-        # The value of the specification.
         self.value = value
 
     def validate(self):
@@ -7729,13 +8564,9 @@ class DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePack
         properties: DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeProperties = None,
         specifications: DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecifications = None,
     ):
-        # The code of the resource plan.
         self.code = code
-        # The name of the resource plan type.
         self.name = name
-        # The properties of the resource plan.
         self.properties = properties
-        # The specifications of the resource plan.
         self.specifications = specifications
 
     def validate(self):
@@ -7818,13 +8649,9 @@ class DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePack
         product_code: str = None,
         product_type: str = None,
     ):
-        # The name of the resource plan.
         self.name = name
-        # The types of the resource plans.
         self.package_types = package_types
-        # The code of the service.
         self.product_code = product_code
-        # The type of the service.
         self.product_type = product_type
 
     def validate(self):
@@ -7901,7 +8728,6 @@ class DescribeResourcePackageProductResponseBodyData(TeaModel):
         self,
         resource_packages: DescribeResourcePackageProductResponseBodyDataResourcePackages = None,
     ):
-        # The details about the resource plans.
         self.resource_packages = resource_packages
 
     def validate(self):
@@ -7936,17 +8762,11 @@ class DescribeResourcePackageProductResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
         self.code = code
-        # The data returned.
         self.data = data
-        # The message returned.
         self.message = message
-        # The ID of the order.
         self.order_id = order_id
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -8047,17 +8867,17 @@ class DescribeResourceUsageDetailRequest(TeaModel):
         start_period: str = None,
     ):
         self.bill_owner_id = bill_owner_id
-        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The total capacity of deduction plans.
         self.end_period = end_period
-        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
+        # The zone.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. You do not need to set this parameter if you query usage details within a specific time range for the first time. The response returns a token that you can use to query usage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more usage details can be queried.
+        # The token of the next page.
         self.next_token = next_token
-        # The time granularity at which usage details are queried. Valid values: MONTH, DAY, and HOUR.
+        # The operating system.
         self.period_type = period_type
-        # The type of deduction plans whose usage details are queried. Valid values: RI and SCU.
+        # The status code.
         self.resource_type = resource_type
-        # The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The name of the state.
         self.start_period = start_period
 
     def validate(self):
@@ -8131,51 +8951,48 @@ class DescribeResourceUsageDetailResponseBodyDataItems(TeaModel):
         zone: str = None,
         zone_name: str = None,
     ):
-        # The unit that is used to measure the resources deducted from deduction plans.
+        # The type of deduction plans whose usage details are queried. Valid values: RI and SCU.
         self.capacity_unit = capacity_unit
-        # The currency in which deduction plans were priced.
+        # The number of deduction plans.
         self.currency = currency
-        # The amount of the resources deducted from deduction plans.
+        # The ID of the request.
         self.deduct_quantity = deduct_quantity
-        # The end of the time range in which the usage details were queried.
+        # The currency in which deduction plans were priced.
         self.end_time = end_time
-        # The operating system.
+        # The status of the deduction plan.
         self.image_type = image_type
-        # The specifications of a deduction plan.
+        # The fee of purchased deduction plans.
         self.instance_spec = instance_spec
-        # The equivalent of pay-as-you-go costs.
+        # The beginning of the time range in which the usage details were queried.
         self.postpaid_cost = postpaid_cost
         # The potential net savings.
         self.potential_saved_cost = potential_saved_cost
-        # The number of deduction plans.
         self.quantity = quantity
-        # The region.
+        # The total number of entries returned.
         self.region = region
-        # The code of the region.
-        self.region_no = region_no
-        # The fee of purchased deduction plans.
-        self.reservation_cost = reservation_cost
-        # The ID of a deduction plan.
-        self.resource_instance_id = resource_instance_id
-        # The net savings.
-        self.saved_cost = saved_cost
-        # The beginning of the time range in which the usage details were queried.
-        self.start_time = start_time
-        # The status of the deduction plan.
-        self.status = status
-        # The name of the state.
-        self.status_name = status_name
-        # The total capacity of deduction plans.
-        self.total_quantity = total_quantity
-        # The usage of deduction plans.
-        self.usage_percentage = usage_percentage
-        # The ID of the account.
-        self.user_id = user_id
-        # The username of the account.
-        self.user_name = user_name
         # The code of the zone.
+        self.region_no = region_no
+        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        self.reservation_cost = reservation_cost
+        # The region.
+        self.resource_instance_id = resource_instance_id
+        # The unit that is used to measure the resources deducted from deduction plans.
+        self.saved_cost = saved_cost
+        # The token that is used to retrieve the next page of results. You do not need to set this parameter if you query usage details within a specific time range for the first time. The response returns a token that you can use to query usage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more usage details can be queried.
+        self.start_time = start_time
+        # The code of the region.
+        self.status = status
+        # The time granularity at which usage details are queried. Valid values: MONTH, DAY, and HOUR.
+        self.status_name = status_name
+        # The username of the account.
+        self.total_quantity = total_quantity
+        # The returned data.
+        self.usage_percentage = usage_percentage
+        # The net savings.
+        self.user_id = user_id
+        self.user_name = user_name
         self.zone = zone
-        # The zone.
+        # The specifications of a deduction plan.
         self.zone_name = zone_name
 
     def validate(self):
@@ -8294,13 +9111,13 @@ class DescribeResourceUsageDetailResponseBodyData(TeaModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The data entries.
+        # The usage of deduction plans.
         self.items = items
-        # The number of entries returned on the current page.
+        # The data entries.
         self.max_results = max_results
-        # The token of the next page.
+        # The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
         self.next_token = next_token
-        # The total number of entries returned.
+        # The ID of a deduction plan.
         self.total_count = total_count
 
     def validate(self):
@@ -8352,15 +9169,15 @@ class DescribeResourceUsageDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The equivalent of pay-as-you-go costs.
         self.code = code
-        # The returned data.
-        self.data = data
         # The message returned.
+        self.data = data
+        # The operation that you want to perform. Set the value to DescribeResourceUsageDetail.
         self.message = message
-        # The ID of the request.
+        # The end of the time range in which the usage details were queried.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
         self.success = success
 
     def validate(self):
@@ -8502,9 +9319,9 @@ class DescribeResourceUsageTotalResponseBodyDataPeriodCoverage(TeaModel):
         period: str = None,
         usage_percentage: float = None,
     ):
-        # The period.
+        # The returned data.
         self.period = period
-        # The usage of deduction plans within the specified period.
+        # The fee of purchased deduction plans.
         self.usage_percentage = usage_percentage
 
     def validate(self):
@@ -8540,15 +9357,12 @@ class DescribeResourceUsageTotalResponseBodyDataTotalUsage(TeaModel):
         saved_cost: float = None,
         usage_percentage: float = None,
     ):
-        # The total costs of pay-as-you-go instances.
+        # The ID of the request.
         self.postpaid_cost = postpaid_cost
-        # The total potential savings.
         self.potential_saved_cost = potential_saved_cost
-        # The fee of purchased deduction plans.
         self.reservation_cost = reservation_cost
-        # The total savings.
+        # Queries the total usage data of reserved instances (RIs) or storage capacity units (SCUs).
         self.saved_cost = saved_cost
-        # The total usage of deduction plans.
         self.usage_percentage = usage_percentage
 
     def validate(self):
@@ -8593,9 +9407,9 @@ class DescribeResourceUsageTotalResponseBodyData(TeaModel):
         period_coverage: List[DescribeResourceUsageTotalResponseBodyDataPeriodCoverage] = None,
         total_usage: DescribeResourceUsageTotalResponseBodyDataTotalUsage = None,
     ):
-        # The information about the usage of deduction plans within a period.
+        # The total potential savings.
         self.period_coverage = period_coverage
-        # The information about the total usage data of deduction plans.
+        # The total usage of deduction plans.
         self.total_usage = total_usage
 
     def validate(self):
@@ -8642,15 +9456,15 @@ class DescribeResourceUsageTotalResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The total savings.
         self.code = code
-        # The returned data.
+        # The usage of deduction plans within the specified period.
         self.data = data
-        # The message returned.
+        # The total costs of pay-as-you-go instances.
         self.message = message
-        # The ID of the request.
+        # The status code.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # The operation that you want to perform. Set the value to DescribeResourceUsageTotal.
         self.success = success
 
     def validate(self):
@@ -8745,17 +9559,17 @@ class DescribeSavingsPlansCoverageDetailRequest(TeaModel):
         start_period: str = None,
         token: str = None,
     ):
-        # The ID of the account for which you want to query coverage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+        # The status code.
         self.bill_owner_id = bill_owner_id
-        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
-        self.end_period = end_period
-        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
-        self.max_results = max_results
         # The time granularity at which coverage details are queried. Valid values: MONTH, DAY, and HOUR.
-        self.period_type = period_type
-        # The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
-        self.start_period = start_period
+        self.end_period = end_period
+        # The ID of the account for which you want to query coverage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+        self.max_results = max_results
         # The token that is used to retrieve the next page of results. You do not need to set this parameter if you query coverage details within a specific time range for the first time. The response returns a token that you can use to query coverage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
+        self.period_type = period_type
+        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        self.start_period = start_period
+        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
         self.token = token
 
     def validate(self):
@@ -8814,29 +9628,28 @@ class DescribeSavingsPlansCoverageDetailResponseBodyDataItems(TeaModel):
         user_id: int = None,
         user_name: str = None,
     ):
-        # The coverage.
-        self.coverage_percentage = coverage_percentage
-        # The currency.
-        self.currency = currency
-        # The deducted amount.
-        self.deduct_amount = deduct_amount
-        # The end time.
-        self.end_period = end_period
-        # The ID of the instance.
-        self.instance_id = instance_id
-        # The specifications.
-        self.instance_spec = instance_spec
-        # The pay-as-you-go cost.
-        self.postpaid_cost = postpaid_cost
         # The region.
-        self.region = region
+        self.coverage_percentage = coverage_percentage
+        # The specifications.
+        self.currency = currency
         # The start time.
-        self.start_period = start_period
+        self.deduct_amount = deduct_amount
+        self.end_period = end_period
+        # The currency.
+        self.instance_id = instance_id
+        # The pay-as-you-go cost.
+        self.instance_spec = instance_spec
+        # The coverage.
+        self.postpaid_cost = postpaid_cost
+        # The deducted amount.
+        self.region = region
         # The total expenditure.
-        self.total_amount = total_amount
-        # The ID of the account.
-        self.user_id = user_id
+        self.start_period = start_period
         # The username of the account.
+        self.total_amount = total_amount
+        # The ID of the instance.
+        self.user_id = user_id
+        # The end time.
         self.user_name = user_name
 
     def validate(self):
@@ -8910,11 +9723,11 @@ class DescribeSavingsPlansCoverageDetailResponseBodyData(TeaModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The data entries.
+        # The ID of the account.
         self.items = items
-        # The token of the next page.
+        # The data entries.
         self.next_token = next_token
-        # The total number of entries.
+        # The token of the next page.
         self.total_count = total_count
 
     def validate(self):
@@ -8962,15 +9775,15 @@ class DescribeSavingsPlansCoverageDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
-        self.code = code
-        # The return data.
-        self.data = data
         # The message returned.
-        self.message = message
+        self.code = code
+        # The total number of entries.
+        self.data = data
         # The ID of the request.
-        self.request_id = request_id
+        self.message = message
         # Indicates whether the operation was successful.
+        self.request_id = request_id
+        # The return data.
         self.success = success
 
     def validate(self):
@@ -9063,13 +9876,13 @@ class DescribeSavingsPlansCoverageTotalRequest(TeaModel):
         period_type: str = None,
         start_period: str = None,
     ):
-        # The ID of the account for which you want to query coverage summary. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+        # The status code.
         self.bill_owner_id = bill_owner_id
-        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
-        self.end_period = end_period
         # The time granularity at which coverage summary are queried. Valid values: MONTH, DAY, and HOUR.
+        self.end_period = end_period
+        # The ID of the account for which you want to query coverage summary. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
         self.period_type = period_type
-        # The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
         self.start_period = start_period
 
     def validate(self):
@@ -9110,11 +9923,11 @@ class DescribeSavingsPlansCoverageTotalResponseBodyDataPeriodCoverage(TeaModel):
         percentage: float = None,
         period: str = None,
     ):
-        # The coverage.
-        self.percentage = percentage
         # The period.
         # 
         # The value is in the format of yyyyMMddHH.
+        self.percentage = percentage
+        # The coverage summary.
         self.period = period
 
     def validate(self):
@@ -9147,9 +9960,9 @@ class DescribeSavingsPlansCoverageTotalResponseBodyDataTotalCoverage(TeaModel):
         coverage_percentage: float = None,
         deduct_amount: float = None,
     ):
-        # The total coverage.
-        self.coverage_percentage = coverage_percentage
         # The total deducted amount.
+        self.coverage_percentage = coverage_percentage
+        # Queries the coverage summary of savings plans.
         self.deduct_amount = deduct_amount
 
     def validate(self):
@@ -9182,9 +9995,9 @@ class DescribeSavingsPlansCoverageTotalResponseBodyData(TeaModel):
         period_coverage: List[DescribeSavingsPlansCoverageTotalResponseBodyDataPeriodCoverage] = None,
         total_coverage: DescribeSavingsPlansCoverageTotalResponseBodyDataTotalCoverage = None,
     ):
-        # The coverage in different periods.
+        # The coverage.
         self.period_coverage = period_coverage
-        # The coverage summary.
+        # The total coverage.
         self.total_coverage = total_coverage
 
     def validate(self):
@@ -9231,15 +10044,15 @@ class DescribeSavingsPlansCoverageTotalResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
-        self.code = code
-        # The return data.
-        self.data = data
         # The message returned.
-        self.message = message
+        self.code = code
+        # The coverage in different periods.
+        self.data = data
         # The ID of the request.
-        self.request_id = request_id
+        self.message = message
         # Indicates whether the operation was successful.
+        self.request_id = request_id
+        # The return data.
         self.success = success
 
     def validate(self):
@@ -9661,13 +10474,13 @@ class DescribeSavingsPlansUsageTotalRequest(TeaModel):
         period_type: str = None,
         start_period: str = None,
     ):
-        # The ID of the account for which you want to query usage summary. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+        # The total amount of the savings plan.
         self.bill_owner_id = bill_owner_id
-        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The usage summary.
         self.end_period = end_period
-        # The time granularity at which usage summary are queried. Valid values: MONTH, DAY, and HOUR.
+        # The amount that is saved.
         self.period_type = period_type
-        # The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The usage.
         self.start_period = start_period
 
     def validate(self):
@@ -9708,11 +10521,7 @@ class DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage(TeaModel):
         percentage: float = None,
         period: str = None,
     ):
-        # The usage.
         self.percentage = percentage
-        # The period.
-        # 
-        # The value is in the format of yyyyMMddHH.
         self.period = period
 
     def validate(self):
@@ -9747,13 +10556,9 @@ class DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage(TeaModel):
         saved_cost: float = None,
         usage_percentage: float = None,
     ):
-        # The total amount of the savings plan.
         self.pool_value = pool_value
-        # The pay-as-you-go cost.
         self.postpaid_cost = postpaid_cost
-        # The amount that is saved.
         self.saved_cost = saved_cost
-        # The total usage.
         self.usage_percentage = usage_percentage
 
     def validate(self):
@@ -9794,9 +10599,7 @@ class DescribeSavingsPlansUsageTotalResponseBodyData(TeaModel):
         period_coverage: List[DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage] = None,
         total_usage: DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage = None,
     ):
-        # The usage in different periods.
         self.period_coverage = period_coverage
-        # The usage summary.
         self.total_usage = total_usage
 
     def validate(self):
@@ -9843,15 +10646,10 @@ class DescribeSavingsPlansUsageTotalResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
         self.code = code
-        # The return data.
         self.data = data
-        # The message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -11176,7 +11974,6 @@ class GetCustomerListResponseBodyData(TeaModel):
         self,
         uid_list: List[str] = None,
     ):
-        # The list of customer IDs.
         self.uid_list = uid_list
 
     def validate(self):
@@ -11208,18 +12005,10 @@ class GetCustomerListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
         self.code = code
-        # The data returned.
         self.data = data
-        # The message returned.
         self.message = message
-        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
-        # 
-        # *   **true**: The call is successful.
-        # *   **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -11310,6 +12099,7 @@ class GetOrderDetailRequest(TeaModel):
         order_id: str = None,
         owner_id: int = None,
     ):
+        # The ID of the order.
         self.order_id = order_id
         self.owner_id = owner_id
 
@@ -11368,32 +12158,77 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
         usage_end_time: str = None,
         usage_start_time: str = None,
     ):
+        # The aftertaxt amount of the order.
         self.after_tax_amount = after_tax_amount
+        # The service code.
         self.commodity_code = commodity_code
+        # The configurations of the main service.
         self.config = config
+        # The time when the order was created.
         self.create_time = create_time
+        # The currency.
         self.currency = currency
+        # The instance IDs.
         self.instance_ids = instance_ids
+        # The ID of the Resource Access Management (RAM) user who performs operations on the order. If no RAM user is involved, leave this parameter blank.
         self.operator = operator
+        # The ID of the order.
         self.order_id = order_id
+        # The type of the suborder. Valid values:
+        # 
+        # *   ProductSubOrder: the service suborder
+        # *   RefundSubOrder: the refund suborder
         self.order_sub_type = order_sub_type
+        # The type of the order. Valid values:
+        # 
+        # *   New: purchases an instance.
+        # *   Renew: renews an instance.
+        # *   Upgrade: upgrades the configurations of an instance.
+        # *   Refund: applies for a refund.
+        # *   Convert: switches the billing method.
+        # *   Downgrade: downgrades the configurations of an instance.
+        # *   ResizeDisk: resizes the disk.
         self.order_type = order_type
+        # The module information without standardized conversion.
         self.original_config = original_config
+        # The currency of payment.
         self.payment_currency = payment_currency
+        # The status of payment. Valid values:
+        # 
+        # *   Unpaid: The order is not paid.
+        # *   Paid: The order is paid.
+        # *   Cancelled: The order is canceled.
         self.payment_status = payment_status
+        # The time of payment.
         self.payment_time = payment_time
+        # The pretax amount of the order.
         self.pretax_amount = pretax_amount
+        # The pretax amount of the order in local currency.
         self.pretax_amount_local = pretax_amount_local
+        # The pretax gross amount of the order.
         self.pretax_gross_amount = pretax_gross_amount
+        # The code of the main service.
         self.product_code = product_code
+        # The type of the main service.
         self.product_type = product_type
+        # The number of main services.
         self.quantity = quantity
+        # The ID of the region.
         self.region = region
+        # The ID of the associated order.
         self.related_order_id = related_order_id
+        # The ID of the suborder.
         self.sub_order_id = sub_order_id
+        # The billing method. Valid values:
+        # 
+        # *   Subscription: subscription
+        # *   PayAsYouGo: pay-as-you-go
         self.subscription_type = subscription_type
+        # The tax of the order.
         self.tax = tax
+        # The time when the service ends.
         self.usage_end_time = usage_end_time
+        # The time when the service starts.
         self.usage_start_time = usage_start_time
 
     def validate(self):
@@ -11564,10 +12399,15 @@ class GetOrderDetailResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The hostname.
         self.host_name = host_name
+        # The details of the order.
         self.order_list = order_list
+        # The page number of the returned page.
         self.page_num = page_num
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -11617,10 +12457,15 @@ class GetOrderDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -12994,9 +13839,13 @@ class InquiryPriceRefundInstanceRequest(TeaModel):
         product_code: str = None,
         product_type: str = None,
     ):
+        # This parameter is required for scenarios that need idempotence. The UUID that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The ID of the instance. This parameter is required for unsubscription scenarios.
         self.instance_id = instance_id
+        # The code of the service. This parameter is required for unsubscription scenarios.
         self.product_code = product_code
+        # The type of the service. This parameter is required for unsubscription scenarios. Unless otherwise specified, set this parameter to an empty string.
         self.product_type = product_type
 
     def validate(self):
@@ -13039,9 +13888,13 @@ class InquiryPriceRefundInstanceResponseBodyData(TeaModel):
         instance_id: str = None,
         refund_amount: float = None,
     ):
+        # The currency.
         self.currency = currency
+        # The site of the execution host.
         self.host_id = host_id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The refundable amount.
         self.refund_amount = refund_amount
 
     def validate(self):
@@ -13085,11 +13938,15 @@ class InquiryPriceRefundInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
         # data
         self.data = data
+        # The description of the execution result.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -13406,8 +14263,11 @@ class ModifyCostUnitRequestUnitEntityList(TeaModel):
         owner_uid: int = None,
         unit_id: int = None,
     ):
+        # The new name of the cost center.
         self.new_unit_name = new_unit_name
+        # The user ID of the cost center owner.
         self.owner_uid = owner_uid
+        # The ID of the cost center.
         self.unit_id = unit_id
 
     def validate(self):
@@ -13443,6 +14303,7 @@ class ModifyCostUnitRequest(TeaModel):
         self,
         unit_entity_list: List[ModifyCostUnitRequestUnitEntityList] = None,
     ):
+        # The cost centers to be modified.
         self.unit_entity_list = unit_entity_list
 
     def validate(self):
@@ -13480,8 +14341,11 @@ class ModifyCostUnitResponseBodyData(TeaModel):
         owner_uid: int = None,
         unit_id: int = None,
     ):
+        # Indicates whether the cost center was modified.
         self.is_success = is_success
+        # The user ID of the cost center owner.
         self.owner_uid = owner_uid
+        # The ID of the cost center.
         self.unit_id = unit_id
 
     def validate(self):
@@ -13521,10 +14385,15 @@ class ModifyCostUnitResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -13621,7 +14490,11 @@ class ModifyInstanceRequestParameter(TeaModel):
         code: str = None,
         value: str = None,
     ):
+        # The code of the parameter n. Valid values of n: 1 to 100. Multiple parameters are concatenated in the order of n.
+        # 
+        # >  Only the parameters of the attributes that you want to modify for the instance must be configured. For example, if the instance has Attribute A and Attribute B and only Attribute A must be modified, configure only the parameter of Attribute A.
         self.code = code
+        # The value of the parameter n. Valid values of n: 1 to 100.
         self.value = value
 
     def validate(self):
@@ -13660,13 +14533,26 @@ class ModifyInstanceRequest(TeaModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
         self.client_token = client_token
+        # The ID of the instance for which you want to modify the configurations.
         self.instance_id = instance_id
+        # The type of configuration modifications. Valid values:
+        # 
+        # *   Upgrade: upgrades the configurations of the instance.
+        # *   Downgrade: downgrades the configurations of the instance.
         self.modify_type = modify_type
         self.owner_id = owner_id
+        # The details about the parameters.
         self.parameter = parameter
+        # The code of the service to which the instance belongs.
         self.product_code = product_code
+        # The type of the service to which the instance belongs.
         self.product_type = product_type
+        # The billing method. Valid values:
+        # 
+        # *   Subscription: subscription
+        # *   PayAsYouGo: pay-as-you-go
         self.subscription_type = subscription_type
 
     def validate(self):
@@ -13731,7 +14617,9 @@ class ModifyInstanceResponseBodyData(TeaModel):
         host_id: str = None,
         order_id: str = None,
     ):
+        # The ID of the host.
         self.host_id = host_id
+        # The ID of the order that was created.
         self.order_id = order_id
 
     def validate(self):
@@ -13767,10 +14655,15 @@ class ModifyInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -17381,6 +18274,7 @@ class QueryCommodityListRequest(TeaModel):
         self,
         product_code: str = None,
     ):
+        # The code of the service.
         self.product_code = product_code
 
     def validate(self):
@@ -17410,8 +18304,11 @@ class QueryCommodityListResponseBodyDataCommodityList(TeaModel):
         commodity_code: str = None,
         commodity_name: str = None,
     ):
+        # The payment type. Valid values: POSTPAY (pay-as-you-go) and PREPAY (subscription).
         self.charge_type = charge_type
+        # The code of the service, which is the same as that on the Billing Management page.
         self.commodity_code = commodity_code
+        # The name of the service.
         self.commodity_name = commodity_name
 
     def validate(self):
@@ -17447,6 +18344,7 @@ class QueryCommodityListResponseBodyData(TeaModel):
         self,
         commodity_list: List[QueryCommodityListResponseBodyDataCommodityList] = None,
     ):
+        # The information about the service.
         self.commodity_list = commodity_list
 
     def validate(self):
@@ -17486,11 +18384,15 @@ class QueryCommodityListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the information about the service was queried.
         self.success = success
 
     def validate(self):
@@ -17583,9 +18485,13 @@ class QueryCostUnitRequest(TeaModel):
         page_size: int = None,
         parent_unit_id: int = None,
     ):
+        # The user ID of the cost center owner.
         self.owner_uid = owner_uid
+        # The page number of the page to return.
         self.page_num = page_num
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the parent cost center. A value of -1 indicates the root cost center.
         self.parent_unit_id = parent_unit_id
 
     def validate(self):
@@ -17628,9 +18534,13 @@ class QueryCostUnitResponseBodyDataCostUnitDtoList(TeaModel):
         unit_id: int = None,
         unit_name: str = None,
     ):
+        # The user ID of the cost center owner.
         self.owner_uid = owner_uid
+        # The ID of the parent cost center. A value of -1 indicates the root cost center.
         self.parent_unit_id = parent_unit_id
+        # The ID of the cost center.
         self.unit_id = unit_id
+        # The name of the cost center.
         self.unit_name = unit_name
 
     def validate(self):
@@ -17673,9 +18583,13 @@ class QueryCostUnitResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The cost centers.
         self.cost_unit_dto_list = cost_unit_dto_list
+        # The page number of the returned page.
         self.page_num = page_num
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -17727,10 +18641,15 @@ class QueryCostUnitResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -17823,9 +18742,13 @@ class QueryCostUnitResourceRequest(TeaModel):
         page_size: int = None,
         unit_id: int = None,
     ):
+        # The user ID of the cost center owner.
         self.owner_uid = owner_uid
+        # The number of the page to return.
         self.page_num = page_num
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the cost center.
         self.unit_id = unit_id
 
     def validate(self):
@@ -17868,9 +18791,13 @@ class QueryCostUnitResourceResponseBodyDataCostUnit(TeaModel):
         unit_id: int = None,
         unit_name: str = None,
     ):
+        # The user ID of the cost center owner.
         self.owner_uid = owner_uid
+        # The ID of the parent cost center. A value of -1 indicates the root cost center.
         self.parent_unit_id = parent_unit_id
+        # The ID of the cost center.
         self.unit_id = unit_id
+        # The name of the cost center.
         self.unit_name = unit_name
 
     def validate(self):
@@ -17916,12 +18843,19 @@ class QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo(TeaModel):
         total_user_count: int = None,
         user_count: int = None,
     ):
+        # The number of resource instances in the cost center.
         self.resource_count = resource_count
+        # The number of resource groups in the cost center.
         self.resource_group_count = resource_group_count
+        # The number of sub-cost centers in the cost center.
         self.sub_unit_count = sub_unit_count
+        # The total number of resource instances, including resource instances of sub-cost centers, in the cost center.
         self.total_resource_count = total_resource_count
+        # The total number of resource groups, including resource groups of sub-cost centers, in the cost center.
         self.total_resource_group_count = total_resource_group_count
+        # The total number of the associated accounts, including associated accounts of sub-cost centers, in the cost center.
         self.total_user_count = total_user_count
+        # The number of sub-cost centers in the cost center.
         self.user_count = user_count
 
     def validate(self):
@@ -17985,18 +18919,31 @@ class QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList(TeaModel):
         resource_user_id: int = None,
         resource_user_name: str = None,
     ):
+        # The split code of the resource.
         self.apportion_code = apportion_code
+        # The split name of the resource.
         self.apportion_name = apportion_name
+        # The product code of the resource.
         self.commodity_code = commodity_code
+        # The commodity name of the resource.
         self.commodity_name = commodity_name
+        # The resources related to the resource instance.
         self.related_resources = related_resources
+        # The resource group to which the resource belongs.
         self.resource_group = resource_group
+        # The instance ID of the resource.
         self.resource_id = resource_id
+        # The custom name of the resource.
         self.resource_nick = resource_nick
+        # The status of the resource.
         self.resource_status = resource_status
+        # The tags of the resource.
         self.resource_tag = resource_tag
+        # The type of the resource.
         self.resource_type = resource_type
+        # The user ID of the resource owner.
         self.resource_user_id = resource_user_id
+        # The username of the resource owner.
         self.resource_user_name = resource_user_name
 
     def validate(self):
@@ -18077,11 +19024,17 @@ class QueryCostUnitResourceResponseBodyData(TeaModel):
         resource_instance_dto_list: List[QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList] = None,
         total_count: int = None,
     ):
+        # The information about the cost center.
         self.cost_unit = cost_unit
+        # The statistical information about the cost center.
         self.cost_unit_statis_info = cost_unit_statis_info
+        # The page number of the returned page.
         self.page_num = page_num
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The resource instances.
         self.resource_instance_dto_list = resource_instance_dto_list
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -18147,10 +19100,15 @@ class QueryCostUnitResourceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -20550,20 +21508,11 @@ class QueryInstanceGaapCostRequest(TeaModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
-        # The billing cycle. Format: YYYY-MM.
         self.billing_cycle = billing_cycle
-        # The number of the page to return. Default value: 1.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
-        # The code of the service.
         self.product_code = product_code
-        # The type of the service.
         self.product_type = product_type
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: the subscription billing method
-        # *   PayAsYouGo: the pay-as-you-go billing method
         self.subscription_type = subscription_type
 
     def validate(self):
@@ -20662,126 +21611,57 @@ class QueryInstanceGaapCostResponseBodyDataModulesModule(TeaModel):
         usage_end_date: str = None,
         usage_start_date: str = None,
     ):
-        # The accounting unit. This parameter is reserved and unavailable now.
         self.accounting_unit = accounting_unit
-        # The type of the bill. Valid values:
-        # 
-        # *   SubscriptionOrder: subscription order
-        # *   PayAsYouGoBill: pay-as-you-go bill
-        # *   Refund: refund
-        # *   Adjustment: reconciliation
         self.bill_type = bill_type
-        # The billing cycle, in the YYYY-MM format.
         self.billing_cycle = billing_cycle
-        # The type of the currency. Valid values:
-        # 
-        # *   CNY
-        # *   USD
-        # *   JPY
         self.currency = currency
-        # The amount deducted by using vouchers.
         self.deducted_by_cash_coupons = deducted_by_cash_coupons
-        # The amount deducted by using coupons.
         self.deducted_by_coupons = deducted_by_coupons
-        # The amount deducted by using prepaid cards.
         self.deducted_by_prepaid_card = deducted_by_prepaid_card
-        # The allocated amount deducted by using vouchers.
         self.gaap_deducted_by_cash_coupons = gaap_deducted_by_cash_coupons
-        # The allocated amount deducted by using coupons.
         self.gaap_deducted_by_coupons = gaap_deducted_by_coupons
-        # The allocated amount deducted by using prepaid cards.
         self.gaap_deducted_by_prepaid_card = gaap_deducted_by_prepaid_card
-        # The allocated amount paid in cash.
         self.gaap_payment_amount = gaap_payment_amount
-        # The allocated pretax amount.
         self.gaap_pretax_amount = gaap_pretax_amount
-        # The allocated pretax amount paid with the local currency.
         self.gaap_pretax_amount_local = gaap_pretax_amount_local
-        # The allocated pretax gross amount.
         self.gaap_pretax_gross_amount = gaap_pretax_gross_amount
-        # The allocated pricing discount.
         self.gaap_pricing_discount = gaap_pricing_discount
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The amount deducted by using vouchers and allocated to the current month.
         self.month_gaap_deducted_by_cash_coupons = month_gaap_deducted_by_cash_coupons
-        # The amount deducted by using coupons and allocated to the current month.
         self.month_gaap_deducted_by_coupons = month_gaap_deducted_by_coupons
-        # The amount deducted by using prepaid cards and allocated to the current month.
         self.month_gaap_deducted_by_prepaid_card = month_gaap_deducted_by_prepaid_card
-        # The amount paid in cash and allocated to the current month.
         self.month_gaap_payment_amount = month_gaap_payment_amount
-        # The pretax amount allocated to the current month.
         self.month_gaap_pretax_amount = month_gaap_pretax_amount
-        # The pretax amount paid with the local currency and allocated to the current month (Alibaba Cloud International site).
         self.month_gaap_pretax_amount_local = month_gaap_pretax_amount_local
-        # The pretax gross amount allocated to the current month.
         self.month_gaap_pretax_gross_amount = month_gaap_pretax_gross_amount
-        # The pricing discount allocated to the current month.
         self.month_gaap_pricing_discount = month_gaap_pricing_discount
-        # The ID of the order.
         self.order_id = order_id
-        # The type of the order. Valid values:
-        # 
-        # *   New
-        # *   Renewal
-        # *   Upgrade
-        # *   Degrade
         self.order_type = order_type
-        # The ID of the bill owner.
         self.owner_id = owner_id
-        # The time when the bill was paid.
         self.pay_time = pay_time
-        # The account of the payer.
         self.payer_account = payer_account
-        # The amount paid in cash.
         self.payment_amount = payment_amount
-        # The type of the currency (Alibaba Cloud International site).
         self.payment_currency = payment_currency
-        # The pretax amount.
         self.pretax_amount = pretax_amount
-        # The allocated pretax amount paid with the local currency (Alibaba Cloud International site).
         self.pretax_amount_local = pretax_amount_local
-        # The pretax gross amount.
         self.pretax_gross_amount = pretax_gross_amount
-        # The pricing discount.
         self.pricing_discount = pricing_discount
-        # The code of the service.
         self.product_code = product_code
-        # The type of the service.
         self.product_type = product_type
-        # The ID of the region.
         self.region = region
-        # The resource group.
         self.resource_group = resource_group
-        # The ID of the sub-order.
         self.sub_order_id = sub_order_id
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: the subscription billing method
-        # *   PayAsYouGo: the pay-as-you-go billing method
         self.subscription_type = subscription_type
-        # The tag.
         self.tag = tag
-        # The unallocated amount deducted by using vouchers.
         self.unallocated_deducted_by_cash_coupons = unallocated_deducted_by_cash_coupons
-        # The unallocated amount deducted by using coupons.
         self.unallocated_deducted_by_coupons = unallocated_deducted_by_coupons
-        # The unallocated amount deducted by using prepaid cards.
         self.unallocated_deducted_by_prepaid_card = unallocated_deducted_by_prepaid_card
-        # The unallocated amount paid in cash.
         self.unallocated_payment_amount = unallocated_payment_amount
-        # The unallocated pretax amount.
         self.unallocated_pretax_amount = unallocated_pretax_amount
-        # The unallocated pretax amount paid with the local currency.
         self.unallocated_pretax_amount_local = unallocated_pretax_amount_local
-        # The unallocated pretax gross amount.
         self.unallocated_pretax_gross_amount = unallocated_pretax_gross_amount
-        # The unallocated pricing discount.
         self.unallocated_pricing_discount = unallocated_pricing_discount
-        # The time when the service usage ended.
         self.usage_end_date = usage_end_date
-        # The time when the service usage started.
         self.usage_start_date = usage_start_date
 
     def validate(self):
@@ -21052,15 +21932,10 @@ class QueryInstanceGaapCostResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The ID of the host.
         self.host_id = host_id
-        # The billing information.
         self.modules = modules
-        # The page number of the returned page.
         self.page_num = page_num
-        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -21110,15 +21985,10 @@ class QueryInstanceGaapCostResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
         self.code = code
-        # The data returned.
         self.data = data
-        # The message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -21588,15 +22458,38 @@ class QueryOrdersRequest(TeaModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
+        # The end time of the period during which the orders were created. By default, orders within the last hour are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.create_time_end = create_time_end
+        # The start time of the period during which the orders were created. By default, orders within the last hour are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.create_time_start = create_time_start
+        # The type of the order. Valid values:
+        # 
+        # *   New: purchases an instance.
+        # *   Renew: renews an instance.
+        # *   Upgrade: upgrades the configurations of an instance.
+        # *   Refund: applies for a refund.
         self.order_type = order_type
         self.owner_id = owner_id
+        # The page number of the page to return.
         self.page_num = page_num
+        # The number of entries to return per page.
         self.page_size = page_size
+        # The status of payment. Valid values for a non-refund order:
+        # 
+        # *   Unpaid: The order is not paid.
+        # *   Paid: The order is paid.
+        # *   Cancelled: The order is canceled.
+        # 
+        # > : You can set this parameter to NULL for a refund order.
         self.payment_status = payment_status
+        # The code of the service.
         self.product_code = product_code
+        # The type of the service.
         self.product_type = product_type
+        # The billing method. Valid values:
+        # 
+        # *   Subscription: subscription
+        # *   PayAsYouGo: pay-as-you-go
         self.subscription_type = subscription_type
 
     def validate(self):
@@ -21676,22 +22569,53 @@ class QueryOrdersResponseBodyDataOrderListOrder(TeaModel):
         subscription_type: str = None,
         tax: str = None,
     ):
+        # The aftertax amount of the order.
         self.after_tax_amount = after_tax_amount
+        # The service code.
         self.commodity_code = commodity_code
+        # The time when the order was created.
         self.create_time = create_time
+        # The currency.
         self.currency = currency
+        # The ID of the order.
         self.order_id = order_id
+        # The type of the order. Valid values:
+        # 
+        # *   New: purchases an instance.
+        # *   Renew: renews an instance.
+        # *   Upgrade: upgrades the configurations of an instance.
+        # *   Refund: applies for a refund.
         self.order_type = order_type
+        # The currency of payment.
         self.payment_currency = payment_currency
+        # The status of payment. Valid values for a non-refund order:
+        # 
+        # *   Unpaid: The order is not paid.
+        # *   Paid: The order is paid.
+        # *   Cancelled: The order is canceled.
+        # 
+        # > : The value is NULL for a refund order.
         self.payment_status = payment_status
+        # The time of payment.
         self.payment_time = payment_time
+        # The pretax amount of the order.
         self.pretax_amount = pretax_amount
+        # The pretax amount of the order in local currency.
         self.pretax_amount_local = pretax_amount_local
+        # The pretax gross amount of the order.
         self.pretax_gross_amount = pretax_gross_amount
+        # The code of the main service.
         self.product_code = product_code
+        # The type of the main service.
         self.product_type = product_type
+        # The ID of the associated order.
         self.related_order_id = related_order_id
+        # The billing method. Valid values:
+        # 
+        # *   Subscription: subscription
+        # *   PayAsYouGo: pay-as-you-go
         self.subscription_type = subscription_type
+        # The tax of the order.
         self.tax = tax
 
     def validate(self):
@@ -21822,10 +22746,15 @@ class QueryOrdersResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The hostname.
         self.host_name = host_name
+        # The orders returned.
         self.order_list = order_list
+        # The page number of the returned page.
         self.page_num = page_num
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -21875,10 +22804,15 @@ class QueryOrdersResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The message returned.
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -22509,6 +23443,7 @@ class QueryPriceEntityListRequest(TeaModel):
         self,
         commodity_code: str = None,
     ):
+        # The code of the service.
         self.commodity_code = commodity_code
 
     def validate(self):
@@ -22538,8 +23473,11 @@ class QueryPriceEntityListResponseBodyDataPriceEntityInfoListPriceFactorList(Tea
         price_factor_name: str = None,
         price_factor_value_list: List[str] = None,
     ):
+        # The code of the factor.
         self.price_factor_code = price_factor_code
+        # The name of the factor.
         self.price_factor_name = price_factor_name
+        # The values of the factor.
         self.price_factor_value_list = price_factor_value_list
 
     def validate(self):
@@ -22577,8 +23515,11 @@ class QueryPriceEntityListResponseBodyDataPriceEntityInfoList(TeaModel):
         price_entity_name: str = None,
         price_factor_list: List[QueryPriceEntityListResponseBodyDataPriceEntityInfoListPriceFactorList] = None,
     ):
+        # The code of the billable item.
         self.price_entity_code = price_entity_code
+        # The name of the billable item.
         self.price_entity_name = price_entity_name
+        # The factors of the billable item.
         self.price_factor_list = price_factor_list
 
     def validate(self):
@@ -22622,6 +23563,7 @@ class QueryPriceEntityListResponseBodyData(TeaModel):
         self,
         price_entity_info_list: List[QueryPriceEntityListResponseBodyDataPriceEntityInfoList] = None,
     ):
+        # The information about the billable items.
         self.price_entity_info_list = price_entity_info_list
 
     def validate(self):
@@ -22661,11 +23603,15 @@ class QueryPriceEntityListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data that is returned.
         self.data = data
+        # The message that is returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -22757,8 +23703,11 @@ class QueryProductListRequest(TeaModel):
         page_size: int = None,
         query_total_count: bool = None,
     ):
+        # The page number of the page to return.
         self.page_num = page_num
+        # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
+        # Specifies whether to return the total number of services. Default value: false.
         self.query_total_count = query_total_count
 
     def validate(self):
@@ -22797,9 +23746,16 @@ class QueryProductListResponseBodyDataProductListProduct(TeaModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
+        # The code of the service.
         self.product_code = product_code
+        # The name of the service.
         self.product_name = product_name
+        # The type of the service.
         self.product_type = product_type
+        # The billing method. Valid values:
+        # 
+        # *   Subscription: subscription
+        # *   PayAsYouGo: pay-as-you-go
         self.subscription_type = subscription_type
 
     def validate(self):
@@ -22877,9 +23833,13 @@ class QueryProductListResponseBodyData(TeaModel):
         product_list: QueryProductListResponseBodyDataProductList = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_num = page_num
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The service definitions.
         self.product_list = product_list
+        # The total number of services.
         self.total_count = total_count
 
     def validate(self):
@@ -22925,10 +23885,15 @@ class QueryProductListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The information about all Alibaba Cloud services.
         self.data = data
+        # The message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -23025,24 +23990,13 @@ class QueryRIUtilizationDetailRequest(TeaModel):
         riinstance_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the instance whose fees are deducted by using the RI. If this parameter is left empty, the usage details of all instances are queried.
         self.deducted_instance_id = deducted_instance_id
-        # The time when the RI expires. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
-        # The instance type of the RI.
         self.instance_spec = instance_spec
-        # The number of the page to return. Default value: 1.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 20. Maximum value: 300.
         self.page_size = page_size
-        # The code of the service to which the RI is applied. Default value: ecsRi. Valid values:
-        # 
-        # *   ecsRi: ECS RI.
-        # *   scu_bag: storage capacity unit (SCU).
         self.ricommodity_code = ricommodity_code
-        # The ID of the RI. If this parameter is left empty, the usage details of all RIs are queried.
         self.riinstance_id = riinstance_id
-        # The time when the RI was created. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):
@@ -23106,25 +24060,14 @@ class QueryRIUtilizationDetailResponseBodyDataDetailListDetailList(TeaModel):
         instance_spec: str = None,
         riinstance_id: str = None,
     ):
-        # The time when the fees are deducted by using the RI.
         self.deduct_date = deduct_date
-        # The total amount of computing power of the RI or capacity of SCU in the time period.
         self.deduct_factor_total = deduct_factor_total
-        # The duration that is deducted by using the RI. Unit: hours.
-        # 
-        # This parameter is returned only if the RICommodityCode parameter is set to ecsRi. If the RICommodityCode parameter is set to scu_bag, this parameter is not returned.
         self.deduct_hours = deduct_hours
-        # The computing power or capacity of the pay-as-you-go instance whose fees are deducted by using the RI.
         self.deduct_quantity = deduct_quantity
-        # The code of the service whose fees are deducted by using the RI.
         self.deducted_commodity_code = deducted_commodity_code
-        # The ID of the instance whose fees are deducted by using the RI.
         self.deducted_instance_id = deducted_instance_id
-        # The name of the service whose fees are deducted by using the RI.
         self.deducted_product_detail = deducted_product_detail
-        # The instance type of the instance whose fees are deducted by using the RI.
         self.instance_spec = instance_spec
-        # The ID of the RI.
         self.riinstance_id = riinstance_id
 
     def validate(self):
@@ -23222,13 +24165,9 @@ class QueryRIUtilizationDetailResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The usage details of the RI.
         self.detail_list = detail_list
-        # The number of the returned page.
         self.page_num = page_num
-        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -23274,15 +24213,10 @@ class QueryRIUtilizationDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
         self.code = code
-        # The data returned.
         self.data = data
-        # The message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -24023,7 +24957,6 @@ class QueryResellerAvailableQuotaRequest(TeaModel):
         item_codes: str = None,
         owner_id: int = None,
     ):
-        # You do not need to specify the parameter.
         self.item_codes = item_codes
         self.owner_id = owner_id
 
@@ -24060,15 +24993,10 @@ class QueryResellerAvailableQuotaResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the call failed. For more information, see the "Error codes" section of this topic.
         self.code = code
-        # The remaining quota of the account.
         self.data = data
-        # The error message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
         self.success = success
 
     def validate(self):
@@ -24785,23 +25713,20 @@ class QuerySavingsPlansDeductLogRequest(TeaModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
-        self.end_time = end_time
-        # The ID of the instance.
-        self.instance_id = instance_id
         # The type of the instance ID based on which the data is queried. Valid values:
         # 
         # *   spn: queries data based on the ID of the savings plan instance.
         # *   product: queries data based on the ID of the cloud service instance.
+        self.end_time = end_time
+        # The message returned.
+        self.instance_id = instance_id
+        # The error code.
         self.instance_type = instance_type
-        # The language of the return data. Valid values:
-        # 
-        # *   ZH: Chinese
-        # *   EN: English
+        # The end of the billing cycle for which the fee is deducted.
         self.locale = locale
-        # The number of the page to return.
+        # The ID of the instance.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The operation that you want to perform. Set the value to QuerySavingsPlansDeductLog.
         self.page_size = page_size
         # The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
         self.start_time = start_time
@@ -24866,31 +25791,25 @@ class QuerySavingsPlansDeductLogResponseBodyDataItems(TeaModel):
         start_time: str = None,
         user_id: int = None,
     ):
-        # The billable item for which the fee is deducted.
+        # The total number of entries.
         self.bill_module = bill_module
-        # The service for which the fee is deducted.
         self.deduct_commodity = deduct_commodity
-        # The deducted amount.
         self.deduct_fee = deduct_fee
-        # The ID of the instance for which the fee is deducted.
+        # The ID of the request.
         self.deduct_instance_id = deduct_instance_id
-        # The deduction rate.
         self.deduct_rate = deduct_rate
-        # The discount used for the current deduction.
+        # The billable item for which the fee is deducted.
         self.discount_rate = discount_rate
-        # The end of the billing cycle for which the fee is deducted.
+        # The page number of the returned page.
         self.end_time = end_time
-        # The ID of the savings plan instance.
+        # The service for which the fee is deducted.
         self.instance_id = instance_id
         self.owner_id = owner_id
-        # The type of the savings plan. Valid values:
-        # 
-        # *   universal: general-purpose
-        # *   ecs: ECS compute
+        # The ID of the instance for which the fee is deducted.
         self.savings_type = savings_type
         # The beginning of the billing cycle for which the fee is deducted. The time is in the format of yyyy-MM-dd HH:mm:ss.
         self.start_time = start_time
-        # The ID of the user.
+        # The number of the page to return.
         self.user_id = user_id
 
     def validate(self):
@@ -24965,13 +25884,16 @@ class QuerySavingsPlansDeductLogResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The deduction details.
+        # The deduction rate.
         self.items = items
-        # The page number of the returned page.
+        # The number of entries to return on each page.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The language of the return data. Valid values:
+        # 
+        # *   ZH: Chinese
+        # *   EN: English
         self.page_size = page_size
-        # The total number of entries.
+        # The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
         self.total_count = total_count
 
     def validate(self):
@@ -25023,15 +25945,18 @@ class QuerySavingsPlansDeductLogResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The number of entries returned per page.
         self.code = code
-        # The return data.
+        # The type of the savings plan. Valid values:
+        # 
+        # *   universal: general-purpose
+        # *   ecs: ECS compute
         self.data = data
-        # The message returned.
+        # The ID of the savings plan instance.
         self.message = message
-        # The ID of the request.
+        # The deduction details.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # The return data.
         self.success = success
 
     def validate(self):
@@ -25130,15 +26055,25 @@ class QuerySavingsPlansDiscountRequest(TeaModel):
         spec: str = None,
         spn_type: str = None,
     ):
+        # The code of the service.
         self.commodity_code = commodity_code
+        # The cycle based on which queries are performed.
         self.cycle = cycle
+        # The identifier of the language.
         self.locale = locale
+        # The code of the pricing module.
         self.module_code = module_code
+        # The number of the page to return.
         self.page_num = page_num
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The payment mode.
         self.pay_mode = pay_mode
+        # The ID of the region.
         self.region = region
+        # The type of the resource.
         self.spec = spec
+        # The type of the savings plan.
         self.spn_type = spn_type
 
     def validate(self):
@@ -25210,14 +26145,27 @@ class QuerySavingsPlansDiscountResponseBodyDataItems(TeaModel):
         spec: str = None,
         spn_type: str = None,
     ):
+        # The details of the service.
         self.commodity_name = commodity_name
+        # The contracted discount.
         self.contract_discount_rate = contract_discount_rate
+        # The cycle based on which queries were performed.
         self.cycle = cycle
+        # The discount provided by the official website.
         self.discount_rate = discount_rate
+        # The name of the pricing module.
         self.module_name = module_name
+        # The payment mode. Valid values:
+        # 
+        # *   total: all upfront
+        # *   half: half upfront
+        # *   zero: no upfront
         self.pay_mode = pay_mode
+        # The ID of the region.
         self.region = region
+        # The type of the resource.
         self.spec = spec
+        # The type of the savings plan.
         self.spn_type = spn_type
 
     def validate(self):
@@ -25278,7 +26226,9 @@ class QuerySavingsPlansDiscountResponseBodyData(TeaModel):
         host_id: str = None,
         items: List[QuerySavingsPlansDiscountResponseBodyDataItems] = None,
     ):
+        # The IP address of the request.
         self.host_id = host_id
+        # The information about the discounts on saving plans.
         self.items = items
 
     def validate(self):
@@ -25322,11 +26272,15 @@ class QuerySavingsPlansDiscountResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned.
         self.code = code
-        # data
+        # The data returned.
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -25417,9 +26371,9 @@ class QuerySavingsPlansInstanceRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag to query.
+        # The ID of the savings plan instance.
         self.key = key
-        # The value of the tag to query.
+        # The instance family information. For an instance of the Elastic Compute Service (ECS) compute type, the value indicates the ECS instance family or the ECS instance family package.
         self.value = value
 
     def validate(self):
@@ -25458,20 +26412,17 @@ class QuerySavingsPlansInstanceRequest(TeaModel):
         status: str = None,
         tag: List[QuerySavingsPlansInstanceRequestTag] = None,
     ):
-        # The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The number of entries returned per page.
         self.end_time = end_time
-        # The ID of the savings plan instance.
+        # The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
         self.instance_id = instance_id
-        # The language of the return data. Valid values:
-        # 
-        # *   ZH: Chinese
-        # *   EN: English
-        self.locale = locale
-        # The number of the page to return.
-        self.page_num = page_num
-        # The number of entries to return on each page.
-        self.page_size = page_size
         # The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        self.locale = locale
+        # The message returned.
+        self.page_num = page_num
+        # The time when the instance expires. The time is in the format of yyyy-MM-dd HH:mm:ss.
+        self.page_size = page_size
+        # The number of entries to return on each page.
         self.start_time = start_time
         self.status = status
         self.tag = tag
@@ -25538,9 +26489,7 @@ class QuerySavingsPlansInstanceResponseBodyDataItemsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
         self.key = key
-        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -25584,6 +26533,7 @@ class QuerySavingsPlansInstanceResponseBodyDataItems(TeaModel):
         pool_value: str = None,
         prepay_fee: str = None,
         region: str = None,
+        rest_pool_value: str = None,
         savings_type: str = None,
         start_time: str = None,
         start_timestamp: int = None,
@@ -25598,50 +26548,46 @@ class QuerySavingsPlansInstanceResponseBodyDataItems(TeaModel):
         # *   allocated
         # *   beAllocated
         self.allocation_status = allocation_status
-        # The currency. Valid values: CNY and USD.
-        self.currency = currency
-        self.cycle = cycle
-        self.deduct_cycle_type = deduct_cycle_type
-        # The time when the instance expires. The time is in the format of yyyy-MM-dd HH:mm:ss.
-        self.end_time = end_time
-        self.end_timestamp = end_timestamp
-        # The instance family information. For an instance of the Elastic Compute Service (ECS) compute type, the value indicates the ECS instance family or the ECS instance family package.
-        self.instance_family = instance_family
-        # The ID of the savings plan instance.
-        self.instance_id = instance_id
-        self.last_bill_total_usage = last_bill_total_usage
-        self.last_bill_utilization = last_bill_utilization
-        # The payment type. Valid values:
-        # 
-        # *   total: All Upfront
-        # *   half: Partial Upfront
-        # *   zero: No Upfront
-        self.pay_mode = pay_mode
-        # The commitment.
-        self.pool_value = pool_value
-        # The prepaid amount.
-        self.prepay_fee = prepay_fee
-        # The region.
-        self.region = region
-        # The type of the savings plan. Valid values:
-        # 
-        # *   universal: general-purpose
-        # *   ecs: ECS compute
-        self.savings_type = savings_type
-        # The time when the instance takes effect. The time is in the format of yyyy-MM-dd HH:mm:ss.
-        self.start_time = start_time
-        self.start_timestamp = start_timestamp
         # The status of the instance. Valid values:
         # 
         # *   NORMAL: normal
         # *   LIMIT: stopped due to overdue payment
         # *   RELEASE: released
-        self.status = status
-        # The details about the tags.
-        self.tags = tags
+        self.currency = currency
+        self.cycle = cycle
+        self.deduct_cycle_type = deduct_cycle_type
+        # The ID of the savings plan instance.
+        self.end_time = end_time
+        self.end_timestamp = end_timestamp
+        # The value of the tag.
+        self.instance_family = instance_family
+        # The time when the instance takes effect. The time is in the format of yyyy-MM-dd HH:mm:ss.
+        self.instance_id = instance_id
+        self.last_bill_total_usage = last_bill_total_usage
+        self.last_bill_utilization = last_bill_utilization
+        self.pay_mode = pay_mode
         # The total amount that is saved.
+        self.pool_value = pool_value
+        # The page number of the returned page.
+        self.prepay_fee = prepay_fee
+        # The total number of entries.
+        self.region = region
+        self.rest_pool_value = rest_pool_value
+        # The key of the tag.
+        self.savings_type = savings_type
+        # The payment type. Valid values:
+        # 
+        # *   total: All Upfront
+        # *   half: Partial Upfront
+        # *   zero: No Upfront
+        self.start_time = start_time
+        self.start_timestamp = start_timestamp
+        # The value of the tag to query.
+        self.status = status
+        self.tags = tags
+        # The ID of the request.
         self.total_save = total_save
-        # The total usage.
+        # The currency. Valid values: CNY and USD.
         self.utilization = utilization
 
     def validate(self):
@@ -25684,6 +26630,8 @@ class QuerySavingsPlansInstanceResponseBodyDataItems(TeaModel):
             result['PrepayFee'] = self.prepay_fee
         if self.region is not None:
             result['Region'] = self.region
+        if self.rest_pool_value is not None:
+            result['RestPoolValue'] = self.rest_pool_value
         if self.savings_type is not None:
             result['SavingsType'] = self.savings_type
         if self.start_time is not None:
@@ -25732,6 +26680,8 @@ class QuerySavingsPlansInstanceResponseBodyDataItems(TeaModel):
             self.prepay_fee = m.get('PrepayFee')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('RestPoolValue') is not None:
+            self.rest_pool_value = m.get('RestPoolValue')
         if m.get('SavingsType') is not None:
             self.savings_type = m.get('SavingsType')
         if m.get('StartTime') is not None:
@@ -25760,13 +26710,19 @@ class QuerySavingsPlansInstanceResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The details about the instances.
+        # The number of the page to return.
         self.items = items
-        # The page number of the returned page.
+        # The type of the savings plan. Valid values:
+        # 
+        # *   universal: general-purpose
+        # *   ecs: ECS compute
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The key of the tag to query.
         self.page_size = page_size
-        # The total number of entries.
+        # The language of the return data. Valid values:
+        # 
+        # *   ZH: Chinese
+        # *   EN: English
         self.total_count = total_count
 
     def validate(self):
@@ -25818,15 +26774,15 @@ class QuerySavingsPlansInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The prepaid amount.
         self.code = code
-        # The return data.
+        # The commitment.
         self.data = data
-        # The message returned.
+        # The details about the instances.
         self.message = message
-        # The ID of the request.
+        # The return data.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # The region.
         self.success = success
 
     def validate(self):
@@ -25927,43 +26883,17 @@ class QuerySettleBillRequest(TeaModel):
         subscription_type: str = None,
         type: str = None,
     ):
-        # The ID of the member. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account are queried by default.
         self.bill_owner_id = bill_owner_id
-        # The billing cycle, in the YYYY-MM format.
         self.billing_cycle = billing_cycle
-        # Specifies whether to display local currency information in bills.
         self.is_display_local_currency = is_display_local_currency
-        # Specifies whether to filter out a bill whose pretax gross amount is 0. By default, a bill whose pretax gross amount is 0 is not filtered out.
-        # 
-        # *   true: filters out a bill whose pretax gross amount is 0.
-        # *   false: does not filter out a bill whose pretax gross amount is 0.
         self.is_hide_zero_charge = is_hide_zero_charge
-        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # The starting position of the query. If this parameter is left empty, the query starts from the beginning.
         self.next_token = next_token
         self.owner_id = owner_id
-        # The code of the service.
         self.product_code = product_code
-        # The type of the service.
         self.product_type = product_type
-        # The ID of the bill or order.
         self.record_id = record_id
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: the subscription billing method
-        # *   PayAsYouGo: the pay-as-you-go billing method
-        # 
-        # **\
-        # 
-        # ****This parameter must be used together with the ProductCode parameter.
         self.subscription_type = subscription_type
-        # The type of the bill. Valid values:
-        # 
-        # *   SubscriptionOrder: subscription order
-        # *   PayAsYouGoBill: pay-as-you-go bill
-        # *   Refund: refund
-        # *   Adjustment: reconciliation
         self.type = type
 
     def validate(self):
@@ -26069,92 +26999,40 @@ class QuerySettleBillResponseBodyDataItemsItem(TeaModel):
         usage_end_time: str = None,
         usage_start_time: str = None,
     ):
-        # The amount deducted by using credit refunds.
         self.adjust_amount = adjust_amount
-        # The amount paid after the tax is deducted.
         self.after_tax_amount = after_tax_amount
-        # The ID of the account to which the bill belongs.
         self.bill_account_id = bill_account_id
-        # The name of the account to which the bill belongs.
         self.bill_account_name = bill_account_name
-        # The business type.
         self.biz_type = biz_type
-        # The amount paid in cash. The amount that was deducted by using credit refunds is not included.
         self.cash_amount = cash_amount
-        # The code of the commodity. The commodity code is the same as that displayed in User Center.
         self.commodity_code = commodity_code
-        # The type of the currency.
-        # 
-        # *   CNY
-        # *   USD
-        # *   JPY
         self.currency = currency
-        # The amount deducted by using vouchers.
         self.deducted_by_cash_coupons = deducted_by_cash_coupons
-        # The amount deducted by using coupons.
         self.deducted_by_coupons = deducted_by_coupons
-        # The amount deducted by using prepaid cards.
         self.deducted_by_prepaid_card = deducted_by_prepaid_card
-        # The discount amount.
         self.invoice_discount = invoice_discount
-        # The type of the bill. Valid values:
-        # 
-        # *   Subscription
-        # *   OrderPayAsYouGoBill
-        # *   Refund
-        # *   Adjustment
         self.item = item
-        # The unsettled amount.
         self.outstanding_amount = outstanding_amount
-        # The ID of the member. This parameter is returned in a multi-account payment scenario.
         self.owner_id = owner_id
-        # The amount paid in cash. The amount that was deducted by using credit refunds is included.
         self.payment_amount = payment_amount
-        # The currency used for payment.
         self.payment_currency = payment_currency
-        # The time when the bill was paid.
         self.payment_time = payment_time
-        # The ID of the transaction.
         self.payment_transaction_id = payment_transaction_id
-        # The code of the service. The service code is the same as that displayed in User Center.
         self.pip_code = pip_code
-        # The pretax amount.
         self.pretax_amount = pretax_amount
-        # The pretax amount paid in local currency.
         self.pretax_amount_local = pretax_amount_local
-        # The pretax gross amount.
         self.pretax_gross_amount = pretax_gross_amount
-        # The code of the service.
         self.product_code = product_code
-        # The details of the service.
         self.product_detail = product_detail
-        # The name of the service.
         self.product_name = product_name
-        # The type of the service.
         self.product_type = product_type
-        # The ID of the bill or order.
         self.record_id = record_id
-        # The round down discount.
         self.round_down_discount = round_down_discount
-        # The payment status of the bill. Valid values:
-        # 
-        # *   PayFinish: The bill is paid.
-        # *   PayUnclear: The bill is not cleared.
-        # *   PayUnsettle: The bill is not settled.
-        # *   NoSettle: The bill is free of settlement.
         self.status = status
-        # The ID of the order corresponding to the bill.
         self.sub_order_id = sub_order_id
-        # The billing method. Valid values:
-        # 
-        # *   Subscription
-        # *   PayAsYouGo
         self.subscription_type = subscription_type
-        # The tax.
         self.tax = tax
-        # The end time of the bill.
         self.usage_end_time = usage_end_time
-        # The start time of the bill.
         self.usage_start_time = usage_start_time
 
     def validate(self):
@@ -26359,19 +27237,12 @@ class QuerySettleBillResponseBodyData(TeaModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The ID of the account.
         self.account_id = account_id
-        # The name of the account.
         self.account_name = account_name
-        # The billing cycle, in the YYYY-MM format.
         self.billing_cycle = billing_cycle
-        # The details of the bills.
         self.items = items
-        # The maximum number of entries returned.
         self.max_results = max_results
-        # The position where the query stopped. If no value is returned for this parameter, all data has been queried.
         self.next_token = next_token
-        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -26429,15 +27300,10 @@ class QuerySettleBillResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
         self.code = code
-        # The data returned.
         self.data = data
-        # The message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -26531,10 +27397,15 @@ class QuerySkuPriceListRequest(TeaModel):
         price_entity_code: str = None,
         price_factor_condition_map: Dict[str, List[str]] = None,
     ):
+        # The code of the service.
         self.commodity_code = commodity_code
+        # The token that is used to retrieve the next page. You do not need to set this parameter if you query coverage details for the first time. The response returns a token that you can use to query coverage details of the next page. If a null value is returned for the NextPageToken parameter, no more coverage details can be queried.
         self.next_page_token = next_page_token
+        # The number of entries to be returned on each page. Maximum value: 50.
         self.page_size = page_size
+        # The code of the pricing object.
         self.price_entity_code = price_entity_code
+        # The conditions of the pricing factors.
         self.price_factor_condition_map = price_factor_condition_map
 
     def validate(self):
@@ -26582,10 +27453,15 @@ class QuerySkuPriceListShrinkRequest(TeaModel):
         price_entity_code: str = None,
         price_factor_condition_map_shrink: str = None,
     ):
+        # The code of the service.
         self.commodity_code = commodity_code
+        # The token that is used to retrieve the next page. You do not need to set this parameter if you query coverage details for the first time. The response returns a token that you can use to query coverage details of the next page. If a null value is returned for the NextPageToken parameter, no more coverage details can be queried.
         self.next_page_token = next_page_token
+        # The number of entries to be returned on each page. Maximum value: 50.
         self.page_size = page_size
+        # The code of the pricing object.
         self.price_entity_code = price_entity_code
+        # The conditions of the pricing factors.
         self.price_factor_condition_map_shrink = price_factor_condition_map_shrink
 
     def validate(self):
@@ -26632,9 +27508,13 @@ class QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceListRang
         min: str = None,
         type: str = None,
     ):
+        # The code of the pricing factor.
         self.factor_code = factor_code
+        # The maximum value.
         self.max = max
+        # The minimum value.
         self.min = min
+        # The closure type of the interval.
         self.type = type
 
     def validate(self):
@@ -26681,13 +27561,21 @@ class QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList(Tea
         range_list: List[QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceListRangeList] = None,
         usage_unit: str = None,
     ):
+        # The unique code of the SKU price.
         self.csku_code = csku_code
+        # The currency.
         self.currency = currency
+        # The price.
         self.price = price
+        # The pricing mode.
         self.price_mode = price_mode
+        # The pricing type.
         self.price_type = price_type
+        # The unit of the price.
         self.price_unit = price_unit
+        # If the PriceMode parameter is set to STEP_ACCUMULATION or STEP_ARRIVE, the value of this field exists and specifies the range. If the PriceMode parameter is set to NORMAL_PRICE, the value of this field is null.
         self.range_list = range_list
+        # The usage unit.
         self.usage_unit = usage_unit
 
     def validate(self):
@@ -26753,9 +27641,11 @@ class QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList(TeaModel):
         sku_code: str = None,
         sku_factor_map: Dict[str, str] = None,
     ):
+        # The prices of the SKUs.
         self.csku_price_list = csku_price_list
-        # sku code
+        # The code of the SKU.
         self.sku_code = sku_code
+        # The values of the pricing factors.
         self.sku_factor_map = sku_factor_map
 
     def validate(self):
@@ -26801,8 +27691,11 @@ class QuerySkuPriceListResponseBodyDataSkuPricePage(TeaModel):
         sku_price_list: List[QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList] = None,
         total_count: int = None,
     ):
+        # The token that is used to query the next page.
         self.next_page_token = next_page_token
+        # The SKUs.
         self.sku_price_list = sku_price_list
+        # The total number of SKUs.
         self.total_count = total_count
 
     def validate(self):
@@ -26846,6 +27739,7 @@ class QuerySkuPriceListResponseBodyData(TeaModel):
         self,
         sku_price_page: QuerySkuPriceListResponseBodyDataSkuPricePage = None,
     ):
+        # The SKUs of the pricing object.
         self.sku_price_page = sku_price_page
 
     def validate(self):
@@ -26879,11 +27773,15 @@ class QuerySkuPriceListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data that is returned.
         self.data = data
+        # The message that is returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -27840,10 +28738,15 @@ class RefundInstanceRequest(TeaModel):
         product_code: str = None,
         product_type: str = None,
     ):
+        # This parameter is required for scenarios that need idempotence. The UUID that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # This parameter is required for unsubscription scenarios. Valid values: 1 and 0. A value of 1 specifies that the instance is immediately released. A value of 0 specifies that the instance is shut down based on the shutdown policy. This parameter is supported only for specified services. Default value: 1.
         self.immediately_release = immediately_release
+        # The ID of the instance. This parameter is required for unsubscription scenarios. Do not specify a custom name for this parameter.
         self.instance_id = instance_id
+        # The code of the service. This parameter is required for unsubscription scenarios.
         self.product_code = product_code
+        # The type of the service. This parameter is required for unsubscription scenarios. Unless otherwise specified, set this parameter to an empty string.
         self.product_type = product_type
 
     def validate(self):
@@ -27888,7 +28791,9 @@ class RefundInstanceResponseBodyData(TeaModel):
         host_id: str = None,
         order_id: int = None,
     ):
+        # The site of the execution host.
         self.host_id = host_id
+        # The ID of the refund order that is returned only if the instance is unsubscribed from.
         self.order_id = order_id
 
     def validate(self):
@@ -27924,11 +28829,15 @@ class RefundInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
-        # data
+        # The returned data.
         self.data = data
+        # The description of the execution result.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -28119,7 +29028,6 @@ class ReleaseInstanceResponseBody(TeaModel):
         success: bool = None,
     ):
         self.code = code
-        # data
         self.data = data
         self.message = message
         self.request_id = request_id
@@ -28403,11 +29311,21 @@ class RenewInstanceRequest(TeaModel):
         product_type: str = None,
         renew_period: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The ID of the instance
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # The code of the service to which the instance belongs.
         self.product_code = product_code
+        # The type of the service.
         self.product_type = product_type
+        # The duration of the subscription renewal. Unit: months. Valid values:
+        # 
+        # *   1 to 9
+        # *   12
+        # *   24
+        # *   36
         self.renew_period = renew_period
 
     def validate(self):
@@ -28455,6 +29373,7 @@ class RenewInstanceResponseBodyData(TeaModel):
         self,
         order_id: str = None,
     ):
+        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):
@@ -28486,10 +29405,15 @@ class RenewInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -28957,6 +29881,9 @@ class SetAllExpirationDayRequest(TeaModel):
         unify_expire_day: str = None,
     ):
         self.owner_id = owner_id
+        # The expiration date. You can set an expiration date only for ECS instances that have not expired. The expiration date that you specify do not take effect on expired ECS instances. After the expiration date is set, the expiration date is used when you renew ECS instances.
+        # 
+        # You can set the expiration date to a day from the 1st to the 28th of each month.
         self.unify_expire_day = unify_expire_day
 
     def validate(self):
@@ -28991,9 +29918,13 @@ class SetAllExpirationDayResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The message that is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -29324,13 +30255,40 @@ class SetRenewalRequest(TeaModel):
         renewal_status: str = None,
         subscription_type: str = None,
     ):
+        # The ID of the instance. You can enable auto-renewal for up to 100 subscription instances at a time. Separate multiple instance IDs with commas (,).
         self.instance_ids = instance_ids
         self.owner_id = owner_id
+        # The code of the service.
         self.product_code = product_code
+        # The type of the service.
         self.product_type = product_type
+        # The auto-renewal period. Valid values:
+        # 
+        # *   1
+        # *   2
+        # *   3
+        # *   6
+        # *   12
+        # 
+        # >  This parameter is required if the RenewalStatus parameter is set to AutoRenewal.
         self.renewal_period = renewal_period
+        # The unit of the auto-renewal period. Valid values:
+        # 
+        # *   M: months
+        # *   Y: years
+        # 
+        # >  This parameter is required if the RenewalStatus parameter is set to AutoRenewal.
         self.renewal_period_unit = renewal_period_unit
+        # The status of renewal. Valid values:
+        # 
+        # *   AutoRenewal: The instance is automatically renewed.
+        # *   ManualRenewal: The instance is manually renewed.
+        # *   NotRenewal: The instance is not renewed.
         self.renewal_status = renewal_status
+        # The billing method. Valid values:
+        # 
+        # *   Subscription: subscription
+        # *   PayAsYouGo: pay-as-you-go
         self.subscription_type = subscription_type
 
     def validate(self):
@@ -29389,9 +30347,13 @@ class SetRenewalResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -29477,9 +30439,7 @@ class SetResellerUserAlarmThresholdRequest(TeaModel):
         alarm_type: str = None,
         owner_id: int = None,
     ):
-        # The alert rules corresponding to the specified alert type. If you leave this parameter empty, no alert threshold exists.
         self.alarm_thresholds = alarm_thresholds
-        # The type of the alert. Set the value to `quota_low_balance`.
         self.alarm_type = alarm_type
         self.owner_id = owner_id
 
@@ -29520,15 +30480,10 @@ class SetResellerUserAlarmThresholdResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the call failed. For more information, see the "Error codes" section of this topic.
         self.code = code
-        # Indicates whether the request is successful.
         self.data = data
-        # The message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
         self.success = success
 
     def validate(self):
@@ -29921,30 +30876,12 @@ class SubscribeBillToOSSRequest(TeaModel):
         subscribe_bucket: str = None,
         subscribe_type: str = None,
     ):
-        # The initial billing cycle from which bills start to be pushed. After you subscribe to the bills, the system automatically pushes the data that is generated from the initial billing cycle to the current time. If the SubscribeType parameter is set to MonthBill, this parameter is invalid. Historical data is not pushed again. The data generated within the last year can be pushed.
         self.begin_billing_cycle = begin_billing_cycle
-        # The owner ID of the OSS bucket that stores the bills. This parameter is required if you are a bidder or reseller and want to push data to an OSS bucket of a member account. In this case, you must specify this account as the account used to call this operation and grant the AliyunConsumeDump2OSSRole permission to this account. If you are a regular user, you do not need to set this parameter. By default, your account is used to call this operation.
         self.bucket_owner_id = bucket_owner_id
-        # The path of the OSS bucket.
         self.bucket_path = bucket_path
-        # The type of the account whose bills are to be pushed if multi-tier accounts are involved. Valid values:
-        # 
-        # *   MA: the master account and a non-managed member account in Finance Cloud
-        # *   ACP1: a member account of a virtual network operator (VNO)
-        # 
-        # Default value: MA.
         self.mult_account_rel_subscribe = mult_account_rel_subscribe
         self.row_limit_per_file = row_limit_per_file
-        # The OSS bucket that stores the bills to which you want to subscribe.
         self.subscribe_bucket = subscribe_bucket
-        # The type of the bill to which you want to subscribe. Valid values:
-        # 
-        # *   BillingItemDetailForBillingPeriod: detailed bills of billable items
-        # *   InstanceDetailForBillingPeriod: detailed bills of instances
-        # *   BillingItemDetailMonthly: billable item-based bills summarized by billing cycle
-        # *   InstanceDetailMonthly: instance-based bills summarized by billing cycle
-        # *   SplitItemDetailDaily: split bills summarized by day
-        # *   MonthBill: monthly bills in the PDF format. You can subscribe to the monthly PDF bills only of the master account.
         self.subscribe_type = subscribe_type
 
     def validate(self):
@@ -29999,13 +30936,9 @@ class SubscribeBillToOSSResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
         self.code = code
-        # The message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

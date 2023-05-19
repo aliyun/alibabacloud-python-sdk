@@ -1277,10 +1277,14 @@ class Client(OpenApiClient):
 
     def create_savings_plans_instance_with_options(
         self,
-        request: bss_open_api_20171214_models.CreateSavingsPlansInstanceRequest,
+        tmp_req: bss_open_api_20171214_models.CreateSavingsPlansInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateSavingsPlansInstanceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20171214_models.CreateSavingsPlansInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extend_map):
+            request.extend_map_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extend_map, 'ExtendMap', 'json')
         query = {}
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
@@ -1288,6 +1292,8 @@ class Client(OpenApiClient):
             query['Duration'] = request.duration
         if not UtilClient.is_unset(request.effective_date):
             query['EffectiveDate'] = request.effective_date
+        if not UtilClient.is_unset(request.extend_map_shrink):
+            query['ExtendMap'] = request.extend_map_shrink
         if not UtilClient.is_unset(request.pay_mode):
             query['PayMode'] = request.pay_mode
         if not UtilClient.is_unset(request.pool_value):
@@ -1323,10 +1329,14 @@ class Client(OpenApiClient):
 
     async def create_savings_plans_instance_with_options_async(
         self,
-        request: bss_open_api_20171214_models.CreateSavingsPlansInstanceRequest,
+        tmp_req: bss_open_api_20171214_models.CreateSavingsPlansInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateSavingsPlansInstanceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20171214_models.CreateSavingsPlansInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extend_map):
+            request.extend_map_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extend_map, 'ExtendMap', 'json')
         query = {}
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
@@ -1334,6 +1344,8 @@ class Client(OpenApiClient):
             query['Duration'] = request.duration
         if not UtilClient.is_unset(request.effective_date):
             query['EffectiveDate'] = request.effective_date
+        if not UtilClient.is_unset(request.extend_map_shrink):
+            query['ExtendMap'] = request.extend_map_shrink
         if not UtilClient.is_unset(request.pay_mode):
             query['PayMode'] = request.pay_mode
         if not UtilClient.is_unset(request.pool_value):
@@ -1460,6 +1472,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeCostBudgetsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeCostBudgetsSummaryResponse:
+        """
+        This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
+        
+        @param request: DescribeCostBudgetsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCostBudgetsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.budget_name):
@@ -1496,6 +1515,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeCostBudgetsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeCostBudgetsSummaryResponse:
+        """
+        This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
+        
+        @param request: DescribeCostBudgetsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCostBudgetsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.budget_name):
@@ -1531,6 +1557,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeCostBudgetsSummaryRequest,
     ) -> bss_open_api_20171214_models.DescribeCostBudgetsSummaryResponse:
+        """
+        This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
+        
+        @param request: DescribeCostBudgetsSummaryRequest
+        @return: DescribeCostBudgetsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cost_budgets_summary_with_options(request, runtime)
 
@@ -1538,6 +1570,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeCostBudgetsSummaryRequest,
     ) -> bss_open_api_20171214_models.DescribeCostBudgetsSummaryResponse:
+        """
+        This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
+        
+        @param request: DescribeCostBudgetsSummaryRequest
+        @return: DescribeCostBudgetsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cost_budgets_summary_with_options_async(request, runtime)
 
@@ -1676,6 +1714,120 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_amortized_cost_by_amortization_period_with_options_async(request, runtime)
+
+    def describe_instance_amortized_cost_by_amortization_period_date_with_options(
+        self,
+        request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.amortization_date_end):
+            body['AmortizationDateEnd'] = request.amortization_date_end
+        if not UtilClient.is_unset(request.amortization_date_start):
+            body['AmortizationDateStart'] = request.amortization_date_start
+        if not UtilClient.is_unset(request.bill_owner_id_list):
+            body['BillOwnerIdList'] = request.bill_owner_id_list
+        if not UtilClient.is_unset(request.bill_user_id_list):
+            body['BillUserIdList'] = request.bill_user_id_list
+        if not UtilClient.is_unset(request.billing_cycle):
+            body['BillingCycle'] = request.billing_cycle
+        if not UtilClient.is_unset(request.cost_unit_code):
+            body['CostUnitCode'] = request.cost_unit_code
+        if not UtilClient.is_unset(request.instance_id_list):
+            body['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_detail):
+            body['ProductDetail'] = request.product_detail
+        if not UtilClient.is_unset(request.subscription_type):
+            body['SubscriptionType'] = request.subscription_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceAmortizedCostByAmortizationPeriodDate',
+            version='2017-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_amortized_cost_by_amortization_period_date_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.amortization_date_end):
+            body['AmortizationDateEnd'] = request.amortization_date_end
+        if not UtilClient.is_unset(request.amortization_date_start):
+            body['AmortizationDateStart'] = request.amortization_date_start
+        if not UtilClient.is_unset(request.bill_owner_id_list):
+            body['BillOwnerIdList'] = request.bill_owner_id_list
+        if not UtilClient.is_unset(request.bill_user_id_list):
+            body['BillUserIdList'] = request.bill_user_id_list
+        if not UtilClient.is_unset(request.billing_cycle):
+            body['BillingCycle'] = request.billing_cycle
+        if not UtilClient.is_unset(request.cost_unit_code):
+            body['CostUnitCode'] = request.cost_unit_code
+        if not UtilClient.is_unset(request.instance_id_list):
+            body['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_detail):
+            body['ProductDetail'] = request.product_detail
+        if not UtilClient.is_unset(request.subscription_type):
+            body['SubscriptionType'] = request.subscription_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceAmortizedCostByAmortizationPeriodDate',
+            version='2017-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_amortized_cost_by_amortization_period_date(
+        self,
+        request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest,
+    ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_amortized_cost_by_amortization_period_date_with_options(request, runtime)
+
+    async def describe_instance_amortized_cost_by_amortization_period_date_async(
+        self,
+        request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest,
+    ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_amortized_cost_by_amortization_period_date_with_options_async(request, runtime)
 
     def describe_instance_amortized_cost_by_consume_period_with_options(
         self,
@@ -2265,9 +2417,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageDetailResponse:
         """
-        1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
-        2\\. You can call this operation to query the coverage details of RIs or SCUs.
-        3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
+        The amount of the resources deducted from a deduction plan.
         
         @param request: DescribeResourceCoverageDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2314,9 +2464,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageDetailResponse:
         """
-        1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
-        2\\. You can call this operation to query the coverage details of RIs or SCUs.
-        3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
+        The amount of the resources deducted from a deduction plan.
         
         @param request: DescribeResourceCoverageDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2362,9 +2510,7 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourceCoverageDetailRequest,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageDetailResponse:
         """
-        1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
-        2\\. You can call this operation to query the coverage details of RIs or SCUs.
-        3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
+        The amount of the resources deducted from a deduction plan.
         
         @param request: DescribeResourceCoverageDetailRequest
         @return: DescribeResourceCoverageDetailResponse
@@ -2377,9 +2523,7 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourceCoverageDetailRequest,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageDetailResponse:
         """
-        1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
-        2\\. You can call this operation to query the coverage details of RIs or SCUs.
-        3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
+        The amount of the resources deducted from a deduction plan.
         
         @param request: DescribeResourceCoverageDetailRequest
         @return: DescribeResourceCoverageDetailResponse
@@ -2393,8 +2537,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageTotalResponse:
         """
-        The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
-        You can call this operation to query the total coverage data of RIs or SCUs.
+        Indicates whether the operation was successful.
         
         @param request: DescribeResourceCoverageTotalRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2437,8 +2580,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageTotalResponse:
         """
-        The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
-        You can call this operation to query the total coverage data of RIs or SCUs.
+        Indicates whether the operation was successful.
         
         @param request: DescribeResourceCoverageTotalRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2480,8 +2622,7 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourceCoverageTotalRequest,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageTotalResponse:
         """
-        The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
-        You can call this operation to query the total coverage data of RIs or SCUs.
+        Indicates whether the operation was successful.
         
         @param request: DescribeResourceCoverageTotalRequest
         @return: DescribeResourceCoverageTotalResponse
@@ -2494,8 +2635,7 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourceCoverageTotalRequest,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageTotalResponse:
         """
-        The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
-        You can call this operation to query the total coverage data of RIs or SCUs.
+        Indicates whether the operation was successful.
         
         @param request: DescribeResourceCoverageTotalRequest
         @return: DescribeResourceCoverageTotalResponse
@@ -3102,6 +3242,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSplitItemBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSplitItemBillResponse:
+        """
+        The code of the service.
+        
+        @param request: DescribeSplitItemBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSplitItemBillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -3154,6 +3301,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSplitItemBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSplitItemBillResponse:
+        """
+        The code of the service.
+        
+        @param request: DescribeSplitItemBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSplitItemBillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -3205,6 +3359,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeSplitItemBillRequest,
     ) -> bss_open_api_20171214_models.DescribeSplitItemBillResponse:
+        """
+        The code of the service.
+        
+        @param request: DescribeSplitItemBillRequest
+        @return: DescribeSplitItemBillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_split_item_bill_with_options(request, runtime)
 
@@ -3212,6 +3372,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeSplitItemBillRequest,
     ) -> bss_open_api_20171214_models.DescribeSplitItemBillResponse:
+        """
+        The code of the service.
+        
+        @param request: DescribeSplitItemBillRequest
+        @return: DescribeSplitItemBillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_split_item_bill_with_options_async(request, runtime)
 
@@ -3430,7 +3596,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerListResponse:
         """
-        The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
+        The ID of the customer.
         
         @param request: GetCustomerListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3458,7 +3624,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerListResponse:
         """
-        The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
+        The ID of the customer.
         
         @param request: GetCustomerListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3483,7 +3649,7 @@ class Client(OpenApiClient):
 
     def get_customer_list(self) -> bss_open_api_20171214_models.GetCustomerListResponse:
         """
-        The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
+        The ID of the customer.
         
         @return: GetCustomerListResponse
         """
@@ -3492,7 +3658,7 @@ class Client(OpenApiClient):
 
     async def get_customer_list_async(self) -> bss_open_api_20171214_models.GetCustomerListResponse:
         """
-        The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
+        The ID of the customer.
         
         @return: GetCustomerListResponse
         """
@@ -3952,6 +4118,15 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.InquiryPriceRefundInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.InquiryPriceRefundInstanceResponse:
+        """
+        1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
+        2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        
+        @param request: InquiryPriceRefundInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InquiryPriceRefundInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3986,6 +4161,15 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.InquiryPriceRefundInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.InquiryPriceRefundInstanceResponse:
+        """
+        1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
+        2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        
+        @param request: InquiryPriceRefundInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InquiryPriceRefundInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4019,6 +4203,14 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.InquiryPriceRefundInstanceRequest,
     ) -> bss_open_api_20171214_models.InquiryPriceRefundInstanceResponse:
+        """
+        1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
+        2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        
+        @param request: InquiryPriceRefundInstanceRequest
+        @return: InquiryPriceRefundInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.inquiry_price_refund_instance_with_options(request, runtime)
 
@@ -4026,6 +4218,14 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.InquiryPriceRefundInstanceRequest,
     ) -> bss_open_api_20171214_models.InquiryPriceRefundInstanceResponse:
+        """
+        1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
+        2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        
+        @param request: InquiryPriceRefundInstanceRequest
+        @return: InquiryPriceRefundInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.inquiry_price_refund_instance_with_options_async(request, runtime)
 
@@ -5144,6 +5344,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryCommodityListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCommodityListResponse:
+        """
+        You can call this operation to query the information about a service based on the service code.
+        
+        @param request: QueryCommodityListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCommodityListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5170,6 +5377,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryCommodityListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCommodityListResponse:
+        """
+        You can call this operation to query the information about a service based on the service code.
+        
+        @param request: QueryCommodityListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCommodityListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5195,6 +5409,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryCommodityListRequest,
     ) -> bss_open_api_20171214_models.QueryCommodityListResponse:
+        """
+        You can call this operation to query the information about a service based on the service code.
+        
+        @param request: QueryCommodityListRequest
+        @return: QueryCommodityListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_commodity_list_with_options(request, runtime)
 
@@ -5202,6 +5422,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryCommodityListRequest,
     ) -> bss_open_api_20171214_models.QueryCommodityListResponse:
+        """
+        You can call this operation to query the information about a service based on the service code.
+        
+        @param request: QueryCommodityListRequest
+        @return: QueryCommodityListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_commodity_list_with_options_async(request, runtime)
 
@@ -5444,6 +5670,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryDPUtilizationDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
+        """
+        The UID of the deducted instance.
+        
+        @param request: QueryDPUtilizationDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDPUtilizationDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.commodity_code):
@@ -5490,6 +5723,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryDPUtilizationDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
+        """
+        The UID of the deducted instance.
+        
+        @param request: QueryDPUtilizationDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDPUtilizationDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.commodity_code):
@@ -5535,6 +5775,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryDPUtilizationDetailRequest,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
+        """
+        The UID of the deducted instance.
+        
+        @param request: QueryDPUtilizationDetailRequest
+        @return: QueryDPUtilizationDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_dputilization_detail_with_options(request, runtime)
 
@@ -5542,6 +5788,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryDPUtilizationDetailRequest,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
+        """
+        The UID of the deducted instance.
+        
+        @param request: QueryDPUtilizationDetailRequest
+        @return: QueryDPUtilizationDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_dputilization_detail_with_options_async(request, runtime)
 
@@ -6390,6 +6642,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryPriceEntityListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryPriceEntityListResponse:
+        """
+        You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
+        
+        @param request: QueryPriceEntityListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPriceEntityListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6416,6 +6675,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryPriceEntityListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryPriceEntityListResponse:
+        """
+        You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
+        
+        @param request: QueryPriceEntityListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPriceEntityListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6441,6 +6707,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryPriceEntityListRequest,
     ) -> bss_open_api_20171214_models.QueryPriceEntityListResponse:
+        """
+        You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
+        
+        @param request: QueryPriceEntityListRequest
+        @return: QueryPriceEntityListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_price_entity_list_with_options(request, runtime)
 
@@ -6448,6 +6720,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryPriceEntityListRequest,
     ) -> bss_open_api_20171214_models.QueryPriceEntityListResponse:
+        """
+        You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
+        
+        @param request: QueryPriceEntityListRequest
+        @return: QueryPriceEntityListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_price_entity_list_with_options_async(request, runtime)
 
@@ -7740,6 +8018,15 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.RefundInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RefundInstanceResponse:
+        """
+        1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+        2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
+        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        
+        @param request: RefundInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefundInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -7776,6 +8063,15 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.RefundInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RefundInstanceResponse:
+        """
+        1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+        2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
+        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        
+        @param request: RefundInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefundInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -7811,6 +8107,14 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.RefundInstanceRequest,
     ) -> bss_open_api_20171214_models.RefundInstanceResponse:
+        """
+        1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+        2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
+        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        
+        @param request: RefundInstanceRequest
+        @return: RefundInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.refund_instance_with_options(request, runtime)
 
@@ -7818,6 +8122,14 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.RefundInstanceRequest,
     ) -> bss_open_api_20171214_models.RefundInstanceResponse:
+        """
+        1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+        2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
+        3.  For more information, see [Rules for unsubscribing from resources](https://help.aliyun.com/knowledge_detail/116043.html?spm=a2c81.e1d666e.app.2.62ae11271Kd6iM).
+        
+        @param request: RefundInstanceRequest
+        @return: RefundInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.refund_instance_with_options_async(request, runtime)
 
@@ -7826,6 +8138,14 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ReleaseInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
+        """
+        A value of true indicates that the execution is complete.
+        A value of false indicates that an error occurs during the execution.
+        
+        @param request: ReleaseInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -7866,6 +8186,14 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ReleaseInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
+        """
+        A value of true indicates that the execution is complete.
+        A value of false indicates that an error occurs during the execution.
+        
+        @param request: ReleaseInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -7905,6 +8233,13 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ReleaseInstanceRequest,
     ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
+        """
+        A value of true indicates that the execution is complete.
+        A value of false indicates that an error occurs during the execution.
+        
+        @param request: ReleaseInstanceRequest
+        @return: ReleaseInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_instance_with_options(request, runtime)
 
@@ -7912,6 +8247,13 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ReleaseInstanceRequest,
     ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
+        """
+        A value of true indicates that the execution is complete.
+        A value of false indicates that an error occurs during the execution.
+        
+        @param request: ReleaseInstanceRequest
+        @return: ReleaseInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_instance_with_options_async(request, runtime)
 
@@ -8828,39 +9170,6 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SubscribeBillToOSSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SubscribeBillToOSSResponse:
-        """
-        Before you call this operation, take note of the following items:
-        *   You can subscribe to only one type of bill at a time.
-        *   The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
-        *   The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
-        *   The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-        *   The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
-        *   To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
-        1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
-        2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
-        3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
-        4.  4.  The directory name must be 1 to 254 characters in length.
-        *   File names:
-        *   **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
-        *   File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
-        *   **InstanceDetailForBillingPeriod** (Detailed bills of instances)
-        *   File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
-        *   **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **SplitItemDetailDaily** (Split bills summarized by day)
-        *   File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **MonthBill** (Monthly bill in the PDF format)
-        *   File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
-        *   The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
-        
-        @param request: SubscribeBillToOSSRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubscribeBillToOSSResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_billing_cycle):
@@ -8901,39 +9210,6 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SubscribeBillToOSSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SubscribeBillToOSSResponse:
-        """
-        Before you call this operation, take note of the following items:
-        *   You can subscribe to only one type of bill at a time.
-        *   The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
-        *   The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
-        *   The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-        *   The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
-        *   To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
-        1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
-        2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
-        3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
-        4.  4.  The directory name must be 1 to 254 characters in length.
-        *   File names:
-        *   **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
-        *   File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
-        *   **InstanceDetailForBillingPeriod** (Detailed bills of instances)
-        *   File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
-        *   **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **SplitItemDetailDaily** (Split bills summarized by day)
-        *   File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **MonthBill** (Monthly bill in the PDF format)
-        *   File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
-        *   The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
-        
-        @param request: SubscribeBillToOSSRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubscribeBillToOSSResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_billing_cycle):
@@ -8973,38 +9249,6 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.SubscribeBillToOSSRequest,
     ) -> bss_open_api_20171214_models.SubscribeBillToOSSResponse:
-        """
-        Before you call this operation, take note of the following items:
-        *   You can subscribe to only one type of bill at a time.
-        *   The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
-        *   The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
-        *   The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-        *   The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
-        *   To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
-        1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
-        2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
-        3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
-        4.  4.  The directory name must be 1 to 254 characters in length.
-        *   File names:
-        *   **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
-        *   File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
-        *   **InstanceDetailForBillingPeriod** (Detailed bills of instances)
-        *   File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
-        *   **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **SplitItemDetailDaily** (Split bills summarized by day)
-        *   File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **MonthBill** (Monthly bill in the PDF format)
-        *   File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
-        *   The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
-        
-        @param request: SubscribeBillToOSSRequest
-        @return: SubscribeBillToOSSResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.subscribe_bill_to_osswith_options(request, runtime)
 
@@ -9012,38 +9256,6 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.SubscribeBillToOSSRequest,
     ) -> bss_open_api_20171214_models.SubscribeBillToOSSResponse:
-        """
-        Before you call this operation, take note of the following items:
-        *   You can subscribe to only one type of bill at a time.
-        *   The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
-        *   The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
-        *   The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-        *   The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
-        *   To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
-        1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
-        2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
-        3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
-        4.  4.  The directory name must be 1 to 254 characters in length.
-        *   File names:
-        *   **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
-        *   File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
-        *   **InstanceDetailForBillingPeriod** (Detailed bills of instances)
-        *   File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
-        *   **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **SplitItemDetailDaily** (Split bills summarized by day)
-        *   File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **MonthBill** (Monthly bill in the PDF format)
-        *   File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
-        *   The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
-        
-        @param request: SubscribeBillToOSSRequest
-        @return: SubscribeBillToOSSResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.subscribe_bill_to_osswith_options_async(request, runtime)
 
