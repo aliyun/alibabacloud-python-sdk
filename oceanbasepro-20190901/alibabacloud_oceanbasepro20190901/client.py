@@ -259,7 +259,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
         """
-        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
+        The description of the data source.
+        It must be 2 to 256 characters in length. The default value is null.
         
         @param request: CreateOmsMysqlDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -314,7 +315,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
         """
-        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
+        The description of the data source.
+        It must be 2 to 256 characters in length. The default value is null.
         
         @param request: CreateOmsMysqlDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -368,7 +370,8 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
         """
-        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
+        The description of the data source.
+        It must be 2 to 256 characters in length. The default value is null.
         
         @param request: CreateOmsMysqlDataSourceRequest
         @return: CreateOmsMysqlDataSourceResponse
@@ -381,7 +384,8 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
         """
-        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
+        The description of the data source.
+        It must be 2 to 256 characters in length. The default value is null.
         
         @param request: CreateOmsMysqlDataSourceRequest
         @return: CreateOmsMysqlDataSourceResponse
@@ -971,9 +975,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteInstancesResponse:
         """
-        Before you call this operation, ensure that the following requirements are met:
-        - The cluster is in the Running state.
-        - The cluster is a primary cluster and the billing method is pay-as-you-go.
+        Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
         
         @param request: DeleteInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1010,9 +1012,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteInstancesResponse:
         """
-        Before you call this operation, ensure that the following requirements are met:
-        - The cluster is in the Running state.
-        - The cluster is a primary cluster and the billing method is pay-as-you-go.
+        Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
         
         @param request: DeleteInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1048,9 +1048,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteInstancesRequest,
     ) -> ocean_base_pro_20190901_models.DeleteInstancesResponse:
         """
-        Before you call this operation, ensure that the following requirements are met:
-        - The cluster is in the Running state.
-        - The cluster is a primary cluster and the billing method is pay-as-you-go.
+        Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
         
         @param request: DeleteInstancesRequest
         @return: DeleteInstancesResponse
@@ -1063,9 +1061,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteInstancesRequest,
     ) -> ocean_base_pro_20190901_models.DeleteInstancesResponse:
         """
-        Before you call this operation, ensure that the following requirements are met:
-        - The cluster is in the Running state.
-        - The cluster is a primary cluster and the billing method is pay-as-you-go.
+        Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
         
         @param request: DeleteInstancesRequest
         @return: DeleteInstancesResponse
@@ -1686,6 +1682,8 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.DescribeCharsetResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.series):
+            body['Series'] = request.series
         if not UtilClient.is_unset(request.tenant_mode):
             body['TenantMode'] = request.tenant_mode
         req = open_api_models.OpenApiRequest(
@@ -1714,6 +1712,8 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.DescribeCharsetResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.series):
+            body['Series'] = request.series
         if not UtilClient.is_unset(request.tenant_mode):
             body['TenantMode'] = request.tenant_mode
         req = open_api_models.OpenApiRequest(
@@ -4385,6 +4385,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
+    def kill_process_list_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.KillProcessListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.KillProcessListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.session_list):
+            body['SessionList'] = request.session_list
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='KillProcessList',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.KillProcessListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def kill_process_list_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.KillProcessListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.KillProcessListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.session_list):
+            body['SessionList'] = request.session_list
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='KillProcessList',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.KillProcessListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def kill_process_list(
+        self,
+        request: ocean_base_pro_20190901_models.KillProcessListRequest,
+    ) -> ocean_base_pro_20190901_models.KillProcessListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.kill_process_list_with_options(request, runtime)
+
+    async def kill_process_list_async(
+        self,
+        request: ocean_base_pro_20190901_models.KillProcessListRequest,
+    ) -> ocean_base_pro_20190901_models.KillProcessListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.kill_process_list_with_options_async(request, runtime)
+
     def modify_database_description_with_options(
         self,
         request: ocean_base_pro_20190901_models.ModifyDatabaseDescriptionRequest,
@@ -5352,6 +5430,8 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserPasswordResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.encryption_type):
+            body['EncryptionType'] = request.encryption_type
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.tenant_id):
@@ -5386,6 +5466,8 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserPasswordResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.encryption_type):
+            body['EncryptionType'] = request.encryption_type
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.tenant_id):
