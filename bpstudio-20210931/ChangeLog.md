@@ -1,3 +1,6 @@
+2023-05-22 Version: 1.0.11
+- Fix bug asyncExecute Error.
+
 2023-03-31 Version: 1.0.10
 - Add Remark.
 

@@ -690,58 +690,10 @@ class ExecuteOperationASyncRequest(TeaModel):
         resource_group_id: str = None,
         service_type: str = None,
     ):
-        # The parameters that you need to specify when you perform an operation. The parameters vary based on the operation and are specified in the map format. The following examples show how to specify the parameters if you perform an operation on an ECS instance:
-        # 
-        # *   The following common parameters need to be specified for operations on an ECS instance:
-        # 
-        # change_type, regionId, instanceId, and appId.
-        # 
-        # *   To change the instance type of an ECS instance, specify the following parameters:
-        # 
-        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_instance_type","instance_type":"ecs.hfr7.2xlarge","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-        # 
-        # *   To stop an ECS instance, specify the following parameters:
-        # 
-        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Stopped","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-        # 
-        # *   To start an ECS instance, specify the following parameters:
-        # 
-        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Running","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-        # 
-        # *   To restart an ECS instance, specify the following parameters:
-        # 
-        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Restart","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-        # 
-        # Enumeration values
-        # 
-        # <!-- -->
-        # 
-        # :
-        # 
-        # *   { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
         self.attributes = attributes
-        # The type of the operation to be performed to modify the parameters of an instance of the specified service. Some operations are common to different services, and other operations are specific to each service. For example, set this parameter to one of the following values to perform the corresponding operation on an ECS instance:
-        # 
-        # *   rename: modifies the name of an ECS instance.
-        # *   modifyInstanceType: changes the instance type of an ECS instance.
-        # *   modifyInstanceType: starts an ECS instance.
-        # *   modifyInstanceType: stops an ECS instance.
-        # *   modifyInstanceType: restarts an ECS instance.
-        # *   addTags: adds tags to an ECS instance.
-        # *   ecsDelete: deletes an ECS instance.
-        # *   modifyPayType: changes the billing method of an ECS instance.
         self.operation = operation
-        # The ID of the resource group. This parameter is specified to verify the permissions on the resource group.
         self.resource_group_id = resource_group_id
-        # The type of the service. If you want to modify the parameters of an Elastic Compute Service (ECS) instance, set this parameter to ecs.
+        # The HTTP status code. A value of 200 indicates that the request is successful, and other values indicate that the request fails.
         self.service_type = service_type
 
     def validate(self):
@@ -784,58 +736,10 @@ class ExecuteOperationASyncShrinkRequest(TeaModel):
         resource_group_id: str = None,
         service_type: str = None,
     ):
-        # The parameters that you need to specify when you perform an operation. The parameters vary based on the operation and are specified in the map format. The following examples show how to specify the parameters if you perform an operation on an ECS instance:
-        # 
-        # *   The following common parameters need to be specified for operations on an ECS instance:
-        # 
-        # change_type, regionId, instanceId, and appId.
-        # 
-        # *   To change the instance type of an ECS instance, specify the following parameters:
-        # 
-        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_instance_type","instance_type":"ecs.hfr7.2xlarge","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-        # 
-        # *   To stop an ECS instance, specify the following parameters:
-        # 
-        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Stopped","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-        # 
-        # *   To start an ECS instance, specify the following parameters:
-        # 
-        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Running","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-        # 
-        # *   To restart an ECS instance, specify the following parameters:
-        # 
-        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Restart","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-        # 
-        # Enumeration values
-        # 
-        # <!-- -->
-        # 
-        # :
-        # 
-        # *   { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
         self.attributes_shrink = attributes_shrink
-        # The type of the operation to be performed to modify the parameters of an instance of the specified service. Some operations are common to different services, and other operations are specific to each service. For example, set this parameter to one of the following values to perform the corresponding operation on an ECS instance:
-        # 
-        # *   rename: modifies the name of an ECS instance.
-        # *   modifyInstanceType: changes the instance type of an ECS instance.
-        # *   modifyInstanceType: starts an ECS instance.
-        # *   modifyInstanceType: stops an ECS instance.
-        # *   modifyInstanceType: restarts an ECS instance.
-        # *   addTags: adds tags to an ECS instance.
-        # *   ecsDelete: deletes an ECS instance.
-        # *   modifyPayType: changes the billing method of an ECS instance.
         self.operation = operation
-        # The ID of the resource group. This parameter is specified to verify the permissions on the resource group.
         self.resource_group_id = resource_group_id
-        # The type of the service. If you want to modify the parameters of an Elastic Compute Service (ECS) instance, set this parameter to ecs.
+        # The HTTP status code. A value of 200 indicates that the request is successful, and other values indicate that the request fails.
         self.service_type = service_type
 
     def validate(self):
@@ -874,17 +778,13 @@ class ExecuteOperationASyncResponseBody(TeaModel):
     def __init__(
         self,
         code: int = None,
-        data: Dict[str, str] = None,
+        data: str = None,
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code. A value of 200 indicates that the request is successful, and other values indicate that the request fails.
         self.code = code
-        # The ID of the operation.
         self.data = data
-        # The error message.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -969,9 +869,9 @@ class GetApplicationRequest(TeaModel):
         application_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the application.
+        # The ID of the request.
         self.application_id = application_id
-        # The ID of the resource group.
+        # Queries the basic information, verification results, billing results, and deployment results of an application.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1009,19 +909,19 @@ class GetApplicationResponseBodyDataChecklist(TeaModel):
         result: str = None,
         specification: str = None,
     ):
-        # The resource tag.
-        self.lifecycle = lifecycle
-        # The ID of the region.
-        self.region = region
         # The message returned for verification.
-        self.remark = remark
-        # The service code.
-        self.resource_code = resource_code
+        self.lifecycle = lifecycle
+        # The verification results returned.
+        self.region = region
         # The name of the instance.
+        self.remark = remark
+        # The error message that is returned when a price query fails.
+        self.resource_code = resource_code
+        # ECS instance sold out
         self.resource_name = resource_name
-        # The verification result.
+        # The service code.
         self.result = result
-        # The resource specification.
+        # The verification result.
         self.specification = specification
 
     def validate(self):
@@ -1085,31 +985,31 @@ class GetApplicationResponseBodyDataPriceList(TeaModel):
         resource_code: str = None,
         specification: str = None,
     ):
-        # The billing method.
-        self.charge_type = charge_type
-        # The quantity.
-        self.count = count
-        # The name of the instance.
-        self.instance_name = instance_name
-        # The resource tag.
-        self.lifecycle = lifecycle
-        # The unit price.
-        self.one_price = one_price
-        # The original price.
-        self.original_price = original_price
-        # The service duration.
-        self.period = period
-        # The total price.
-        self.price = price
         # The price unit.
-        self.price_unit = price_unit
+        self.charge_type = charge_type
+        # The original price.
+        self.count = count
+        # The ID of the resource group to which the application belongs.
+        self.instance_name = instance_name
         # The ID of the region.
-        self.region = region
-        # The error message that is returned when a price query fails.
-        self.remark = remark
+        self.lifecycle = lifecycle
         # The service code.
-        self.resource_code = resource_code
+        self.one_price = one_price
+        # The billing results.
+        self.original_price = original_price
+        # The name of the instance.
+        self.period = period
+        # The quantity.
+        self.price = price
+        # The unit price.
+        self.price_unit = price_unit
+        # USD/Hour
+        self.region = region
         # The instance type.
+        self.remark = remark
+        # The time when the application was created.
+        self.resource_code = resource_code
+        # The total price.
         self.specification = specification
 
     def validate(self):
@@ -1192,21 +1092,21 @@ class GetApplicationResponseBodyDataResourceList(TeaModel):
         resource_type: str = None,
         status: str = None,
     ):
-        # The billing method.
-        self.charge_type = charge_type
-        # The resource tag.
-        self.lifecycle = lifecycle
-        # The deployment result.
-        self.remark = remark
         # The service code.
-        self.resource_code = resource_code
+        self.charge_type = charge_type
+        # The billing method.
+        self.lifecycle = lifecycle
         # The ID of the instance.
-        self.resource_id = resource_id
-        # The name of the instance.
-        self.resource_name = resource_name
-        # The resource type.
-        self.resource_type = resource_type
+        self.remark = remark
+        # The status of the application.
+        self.resource_code = resource_code
         # The resource deployment result.
+        self.resource_id = resource_id
+        # The resources.
+        self.resource_name = resource_name
+        # The name of the instance.
+        self.resource_type = resource_type
+        # The resource tag.
         self.status = status
 
     def validate(self):
@@ -1274,31 +1174,31 @@ class GetApplicationResponseBodyData(TeaModel):
         template_id: str = None,
         topo_url: str = None,
     ):
-        # The ID of the application.
-        self.application_id = application_id
-        # The verification results returned.
-        self.checklist = checklist
-        # The time when the application was created.
-        self.create_time = create_time
         # The description of the application.
-        self.description = description
-        # The message returned for deployment.
-        self.error = error
-        # The URL of the image in the database.
-        self.image_url = image_url
-        # The name of the application.
-        self.name = name
-        # The billing results.
-        self.price_list = price_list
-        # The ID of the resource group to which the application belongs.
-        self.resource_group_id = resource_group_id
-        # The resources.
-        self.resource_list = resource_list
-        # The status of the application.
-        self.status = status
-        # The ID of the template associated with the application.
-        self.template_id = template_id
+        self.application_id = application_id
+        # The resource tag.
+        self.checklist = checklist
         # The URL of the application topology image.
+        self.create_time = create_time
+        # The message returned for the request.
+        self.description = description
+        # The resource type.
+        self.error = error
+        # The ID of the request.
+        self.image_url = image_url
+        # The URL of the image in the database.
+        self.name = name
+        # The ID of the template associated with the application.
+        self.price_list = price_list
+        # 1411182597819805/topo-MCEXDI5EL2OM10NY.json
+        self.resource_group_id = resource_group_id
+        # The resource specification.
+        self.resource_list = resource_list
+        # Verification passed
+        self.status = status
+        # CADT application
+        self.template_id = template_id
+        # The ID of the application.
         self.topo_url = topo_url
 
     def validate(self):
@@ -1403,13 +1303,38 @@ class GetApplicationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code.
+        # The deployment result.
         self.code = code
-        # The details of the application.
+        # The ID of the resource group.
         self.data = data
-        # The message returned for the request.
+        # Possible application states:
+        # 
+        # *   Creating: The application is being created.
+        # *   Modified: The application has been modified.
+        # *   Verifying: The application is being verified.
+        # *   Verified_Failure: The application failed to pass the verification.
+        # *   Verified_Success: The application has passed the verification.
+        # *   Valuating: Fees are being calculated for the application.
+        # *   Valuating_Failure: Fees failed to be calculated for the application.
+        # *   Valuating_Success: Fees are calculated for the application.
+        # *   Deploying: The application is being deployed.
+        # *   Deployed_Failure: The application failed to be deployed.
+        # *   Partially_Deployed_Success: Some resources of the application are deployed.
+        # *   Deployed_Success: The application is deployed.
+        # *   Destroying: The application is being released.
+        # *   Delayed_Destroy: The application release is delayed.
+        # *   Destroyed_Failure: The application failed to be released.
+        # *   Partially_Destroyed_Success: Some resources of the application are released.
+        # *   Destroyed_Success: The application is released.
+        # *   Revised: The application architecture is adjusted.
+        # *   Verifying_In_Revision: The application resources are being verified during architecture adjustment.
+        # *   Verified_Failure_In_Revision: The application resources failed to pass the verification during architecture adjustment.
+        # *   Verified_Success_In_Revision: The application resources are verified during architecture adjustment.
+        # *   Valuating_In_Revision: Fees are being calculated for the application during architecture adjustment.
+        # *   Valuating_Failure_In_Revision: Fees failed to be calculated for the application during architecture adjustment.
+        # *   Valuating_Success_In_Revision: Fees are calculated for the application during architecture adjustment.
         self.message = message
-        # The ID of the request.
+        # The ID of the application.
         self.request_id = request_id
 
     def validate(self):
@@ -1676,11 +1601,8 @@ class GetTemplateRequest(TeaModel):
         resource_group_id: str = None,
         template_id: str = None,
     ):
-        # The region in which the template resides.
         self.region = region
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the template.
         self.template_id = template_id
 
     def validate(self):
@@ -1719,9 +1641,13 @@ class GetTemplateResponseBodyDataVariables(TeaModel):
         default_value: str = None,
         variable: str = None,
     ):
+        # 变量名
         self.attribute = attribute
+        # 变量类型
         self.data_type = data_type
+        # 默认值
         self.default_value = default_value
+        # 变量值
         self.variable = variable
 
     def validate(self):
@@ -1768,19 +1694,12 @@ class GetTemplateResponseBodyData(TeaModel):
         topo_url: str = None,
         variables: List[GetTemplateResponseBodyDataVariables] = None,
     ):
-        # The time when the template was created.
         self.create_time = create_time
-        # The description of the template.
         self.description = description
-        # The URL of the architecture image.
         self.image_url = image_url
-        # The name of the template.
         self.name = name
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the template.
         self.template_id = template_id
-        # The URL of the architecture image file.
         self.topo_url = topo_url
         self.variables = variables
 
@@ -1848,13 +1767,9 @@ class GetTemplateResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code.
         self.code = code
-        # The details of the template.
         self.data = data
-        # The returned message.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2131,17 +2046,13 @@ class ListApplicationRequest(TeaModel):
         resource_group_id: str = None,
         status: str = None,
     ):
-        # The keyword in the application name.
         self.keyword = keyword
-        # The number of entries to return on each page.
+        # The HTTP status code.
         self.max_results = max_results
-        # The number of the page to return.
+        # The ID of the resource group to which the application belongs.
         self.next_token = next_token
-        # The field by which the list is sorted. Valid values: 1 and 2. The value 1 specifies that the list is sorted in descending order of application update time, and the value 2 specifies that the list is sorted in descending order of application creation time.
         self.order_type = order_type
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The status of the application.
         self.status = status
 
     def validate(self):
@@ -2195,19 +2106,12 @@ class ListApplicationResponseBodyData(TeaModel):
         status: str = None,
         topo_url: str = None,
     ):
-        # The ID of the application.
         self.application_id = application_id
-        # The time when the application was created.
         self.create_time = create_time
-        # The URL of the application architecture image.
         self.image_url = image_url
-        # The name of the application.
         self.name = name
-        # The ID of the resource group to which the application belongs.
         self.resource_group_id = resource_group_id
-        # The status of the application.
         self.status = status
-        # The URL of the application topology image.
         self.topo_url = topo_url
 
     def validate(self):
@@ -2264,17 +2168,11 @@ class ListApplicationResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The HTTP status code.
         self.code = code
-        # The information about the applications.
         self.data = data
-        # The error message.
         self.message = message
-        # The page number of the next page.
         self.next_token = next_token
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of returned applications.
         self.total_count = total_count
 
     def validate(self):
