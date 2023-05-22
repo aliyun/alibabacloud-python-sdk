@@ -592,17 +592,23 @@ class CreateInstanceRequest(TeaModel):
         self,
         capacity: str = None,
         description: str = None,
+        max_endpoint: str = None,
         max_slot: str = None,
         name: str = None,
         payment_type: str = None,
+        provider_type: str = None,
+        storage_type: str = None,
         tags: List[CreateInstanceRequestTags] = None,
         type: str = None,
     ):
         self.capacity = capacity
         self.description = description
+        self.max_endpoint = max_endpoint
         self.max_slot = max_slot
         self.name = name
         self.payment_type = payment_type
+        self.provider_type = provider_type
+        self.storage_type = storage_type
         self.tags = tags
         self.type = type
 
@@ -622,12 +628,18 @@ class CreateInstanceRequest(TeaModel):
             result['Capacity'] = self.capacity
         if self.description is not None:
             result['Description'] = self.description
+        if self.max_endpoint is not None:
+            result['MaxEndpoint'] = self.max_endpoint
         if self.max_slot is not None:
             result['MaxSlot'] = self.max_slot
         if self.name is not None:
             result['Name'] = self.name
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.provider_type is not None:
+            result['ProviderType'] = self.provider_type
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -642,12 +654,18 @@ class CreateInstanceRequest(TeaModel):
             self.capacity = m.get('Capacity')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('MaxEndpoint') is not None:
+            self.max_endpoint = m.get('MaxEndpoint')
         if m.get('MaxSlot') is not None:
             self.max_slot = m.get('MaxSlot')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('ProviderType') is not None:
+            self.provider_type = m.get('ProviderType')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -1862,12 +1880,15 @@ class DescribeInstanceResponseBody(TeaModel):
         description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        max_endpoint: int = None,
         max_slot: int = None,
         name: str = None,
         owner_id: str = None,
         payment_type: str = None,
+        provider_type: str = None,
         request_id: str = None,
         status: InstanceStatus = None,
+        storage_type: str = None,
         tags: List[DescribeInstanceResponseBodyTags] = None,
         type: str = None,
         user_id: str = None,
@@ -1877,12 +1898,15 @@ class DescribeInstanceResponseBody(TeaModel):
         self.description = description
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
+        self.max_endpoint = max_endpoint
         self.max_slot = max_slot
         self.name = name
         self.owner_id = owner_id
         self.payment_type = payment_type
+        self.provider_type = provider_type
         self.request_id = request_id
         self.status = status
+        self.storage_type = storage_type
         self.tags = tags
         self.type = type
         self.user_id = user_id
@@ -1910,6 +1934,8 @@ class DescribeInstanceResponseBody(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.max_endpoint is not None:
+            result['MaxEndpoint'] = self.max_endpoint
         if self.max_slot is not None:
             result['MaxSlot'] = self.max_slot
         if self.name is not None:
@@ -1918,10 +1944,14 @@ class DescribeInstanceResponseBody(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.provider_type is not None:
+            result['ProviderType'] = self.provider_type
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.status is not None:
             result['Status'] = self.status.to_map()
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -1944,6 +1974,8 @@ class DescribeInstanceResponseBody(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('MaxEndpoint') is not None:
+            self.max_endpoint = m.get('MaxEndpoint')
         if m.get('MaxSlot') is not None:
             self.max_slot = m.get('MaxSlot')
         if m.get('Name') is not None:
@@ -1952,11 +1984,15 @@ class DescribeInstanceResponseBody(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('ProviderType') is not None:
+            self.provider_type = m.get('ProviderType')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Status') is not None:
             temp_model = InstanceStatus()
             self.status = temp_model.from_map(m['Status'])
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -2056,6 +2092,7 @@ class DescribeSlotResponseBody(TeaModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         instance_id: str = None,
+        io_type: str = None,
         life_cycle: SlotLifeCycle = None,
         name: str = None,
         owner_id: str = None,
@@ -2072,6 +2109,8 @@ class DescribeSlotResponseBody(TeaModel):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.instance_id = instance_id
+        # 数据集加速槽的读写类型。
+        self.io_type = io_type
         self.life_cycle = life_cycle
         self.name = name
         self.owner_id = owner_id
@@ -2109,6 +2148,8 @@ class DescribeSlotResponseBody(TeaModel):
             result['GmtModifiedTime'] = self.gmt_modified_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.io_type is not None:
+            result['IoType'] = self.io_type
         if self.life_cycle is not None:
             result['LifeCycle'] = self.life_cycle.to_map()
         if self.name is not None:
@@ -2145,6 +2186,8 @@ class DescribeSlotResponseBody(TeaModel):
             self.gmt_modified_time = m.get('GmtModifiedTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('IoType') is not None:
+            self.io_type = m.get('IoType')
         if m.get('LifeCycle') is not None:
             temp_model = SlotLifeCycle()
             self.life_cycle = temp_model.from_map(m['LifeCycle'])
@@ -2489,6 +2532,7 @@ class ListEndpointsRequest(TeaModel):
         type: str = None,
     ):
         self.endpoint_ids = endpoint_ids
+        # 所属加速实例的ID。
         self.instance_ids = instance_ids
         self.name = name
         self.order = order
@@ -2567,6 +2611,7 @@ class ListEndpointsResponseBodyEndpoints(TeaModel):
     ):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
+        # 所属加速实例的ID。
         self.instance_id = instance_id
         self.name = name
         self.owner_id = owner_id
@@ -2845,11 +2890,14 @@ class ListInstancesResponseBodyInstances(TeaModel):
         description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        max_endpoint: int = None,
         max_slot: int = None,
         name: str = None,
         owner_id: str = None,
         payment_type: str = None,
+        provider_type: str = None,
         status: InstanceStatus = None,
+        storage_type: str = None,
         tags: List[ListInstancesResponseBodyInstancesTags] = None,
         type: str = None,
         user_id: str = None,
@@ -2859,11 +2907,17 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.description = description
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
+        # 数据集加速实例的最大挂载点个数。
+        self.max_endpoint = max_endpoint
         self.max_slot = max_slot
         self.name = name
         self.owner_id = owner_id
         self.payment_type = payment_type
+        # 数据集加速实例的资源提供者类型。
+        self.provider_type = provider_type
         self.status = status
+        # 数据集加速实例的存储类型。
+        self.storage_type = storage_type
         self.tags = tags
         self.type = type
         self.user_id = user_id
@@ -2891,6 +2945,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.max_endpoint is not None:
+            result['MaxEndpoint'] = self.max_endpoint
         if self.max_slot is not None:
             result['MaxSlot'] = self.max_slot
         if self.name is not None:
@@ -2899,8 +2955,12 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.provider_type is not None:
+            result['ProviderType'] = self.provider_type
         if self.status is not None:
             result['Status'] = self.status.to_map()
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -2923,6 +2983,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('MaxEndpoint') is not None:
+            self.max_endpoint = m.get('MaxEndpoint')
         if m.get('MaxSlot') is not None:
             self.max_slot = m.get('MaxSlot')
         if m.get('Name') is not None:
@@ -2931,9 +2993,13 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('ProviderType') is not None:
+            self.provider_type = m.get('ProviderType')
         if m.get('Status') is not None:
             temp_model = InstanceStatus()
             self.status = temp_model.from_map(m['Status'])
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -3253,6 +3319,7 @@ class ListSlotsResponseBodySlots(TeaModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         instance_id: str = None,
+        io_type: str = None,
         life_cycle: SlotLifeCycle = None,
         name: str = None,
         owner_id: str = None,
@@ -3269,6 +3336,8 @@ class ListSlotsResponseBodySlots(TeaModel):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.instance_id = instance_id
+        # 数据集加速槽的读写类型。
+        self.io_type = io_type
         self.life_cycle = life_cycle
         self.name = name
         self.owner_id = owner_id
@@ -3313,6 +3382,8 @@ class ListSlotsResponseBodySlots(TeaModel):
             result['GmtModifiedTime'] = self.gmt_modified_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.io_type is not None:
+            result['IoType'] = self.io_type
         if self.life_cycle is not None:
             result['LifeCycle'] = self.life_cycle.to_map()
         if self.name is not None:
@@ -3352,6 +3423,8 @@ class ListSlotsResponseBodySlots(TeaModel):
             self.gmt_modified_time = m.get('GmtModifiedTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('IoType') is not None:
+            self.io_type = m.get('IoType')
         if m.get('LifeCycle') is not None:
             temp_model = SlotLifeCycle()
             self.life_cycle = temp_model.from_map(m['LifeCycle'])

@@ -1,3 +1,6 @@
+2023-05-22 Version: 1.0.4
+- Add provider type for instance.
+
 2023-05-22 Version: 1.0.3
 - Support CPFS slot.
 - Change Metric api user flow control to 20.

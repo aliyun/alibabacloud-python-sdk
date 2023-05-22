@@ -215,12 +215,18 @@ class Client(OpenApiClient):
             body['Capacity'] = request.capacity
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.max_endpoint):
+            body['MaxEndpoint'] = request.max_endpoint
         if not UtilClient.is_unset(request.max_slot):
             body['MaxSlot'] = request.max_slot
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.payment_type):
             body['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.provider_type):
+            body['ProviderType'] = request.provider_type
+        if not UtilClient.is_unset(request.storage_type):
+            body['StorageType'] = request.storage_type
         if not UtilClient.is_unset(request.tags):
             body['Tags'] = request.tags
         if not UtilClient.is_unset(request.type):
@@ -257,12 +263,18 @@ class Client(OpenApiClient):
             body['Capacity'] = request.capacity
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.max_endpoint):
+            body['MaxEndpoint'] = request.max_endpoint
         if not UtilClient.is_unset(request.max_slot):
             body['MaxSlot'] = request.max_slot
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.payment_type):
             body['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.provider_type):
+            body['ProviderType'] = request.provider_type
+        if not UtilClient.is_unset(request.storage_type):
+            body['StorageType'] = request.storage_type
         if not UtilClient.is_unset(request.tags):
             body['Tags'] = request.tags
         if not UtilClient.is_unset(request.type):
