@@ -92,14 +92,6 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ActivateRouterInterfaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ActivateRouterInterfaceResponse:
-        """
-        After you call this operation, the router interface enters the *Activating** state. After the router interface is activated, it enters the **Active** state.
-        >  You cannot activate a router interface that has overdue payments.
-        
-        @param request: ActivateRouterInterfaceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ActivateRouterInterfaceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -136,14 +128,6 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ActivateRouterInterfaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ActivateRouterInterfaceResponse:
-        """
-        After you call this operation, the router interface enters the *Activating** state. After the router interface is activated, it enters the **Active** state.
-        >  You cannot activate a router interface that has overdue payments.
-        
-        @param request: ActivateRouterInterfaceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ActivateRouterInterfaceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -179,13 +163,6 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.ActivateRouterInterfaceRequest,
     ) -> vpc_20160428_models.ActivateRouterInterfaceResponse:
-        """
-        After you call this operation, the router interface enters the *Activating** state. After the router interface is activated, it enters the **Active** state.
-        >  You cannot activate a router interface that has overdue payments.
-        
-        @param request: ActivateRouterInterfaceRequest
-        @return: ActivateRouterInterfaceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.activate_router_interface_with_options(request, runtime)
 
@@ -193,13 +170,6 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.ActivateRouterInterfaceRequest,
     ) -> vpc_20160428_models.ActivateRouterInterfaceResponse:
-        """
-        After you call this operation, the router interface enters the *Activating** state. After the router interface is activated, it enters the **Active** state.
-        >  You cannot activate a router interface that has overdue payments.
-        
-        @param request: ActivateRouterInterfaceRequest
-        @return: ActivateRouterInterfaceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.activate_router_interface_with_options_async(request, runtime)
 
@@ -935,13 +905,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddPublicIpAddressPoolCidrBlockResponse:
         """
-        Before you call this operation, take note of the following limits:
-        *   The CIDR block and the IP address pool must belong to the same region.
-        *   The CIDR block and the IP address pool must use the same line type.
-        *   The **AddPublicIpAddressPoolCidrBlock** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of a CIDR block in an IP address pool:
-        *   If the CIDR block is in the **Modifying** state, the CIDR block is being added. In this state, you can only query the CIDR block and cannot perform other operations.
-        *   If the CIDR block is in the **Created** state, the CIDR block is added.
-        *   You cannot repeatedly call the **AddPublicIpAddressPoolCidrBlock** operation to add a CIDR block to an IP address pool within the specified period of time.
+        The CIDR block.
+        >  You cannot set the **CidrBlock** and **CidrMask** parameters at the same time.
         
         @param request: AddPublicIpAddressPoolCidrBlockRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -994,13 +959,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddPublicIpAddressPoolCidrBlockResponse:
         """
-        Before you call this operation, take note of the following limits:
-        *   The CIDR block and the IP address pool must belong to the same region.
-        *   The CIDR block and the IP address pool must use the same line type.
-        *   The **AddPublicIpAddressPoolCidrBlock** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of a CIDR block in an IP address pool:
-        *   If the CIDR block is in the **Modifying** state, the CIDR block is being added. In this state, you can only query the CIDR block and cannot perform other operations.
-        *   If the CIDR block is in the **Created** state, the CIDR block is added.
-        *   You cannot repeatedly call the **AddPublicIpAddressPoolCidrBlock** operation to add a CIDR block to an IP address pool within the specified period of time.
+        The CIDR block.
+        >  You cannot set the **CidrBlock** and **CidrMask** parameters at the same time.
         
         @param request: AddPublicIpAddressPoolCidrBlockRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1052,13 +1012,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AddPublicIpAddressPoolCidrBlockRequest,
     ) -> vpc_20160428_models.AddPublicIpAddressPoolCidrBlockResponse:
         """
-        Before you call this operation, take note of the following limits:
-        *   The CIDR block and the IP address pool must belong to the same region.
-        *   The CIDR block and the IP address pool must use the same line type.
-        *   The **AddPublicIpAddressPoolCidrBlock** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of a CIDR block in an IP address pool:
-        *   If the CIDR block is in the **Modifying** state, the CIDR block is being added. In this state, you can only query the CIDR block and cannot perform other operations.
-        *   If the CIDR block is in the **Created** state, the CIDR block is added.
-        *   You cannot repeatedly call the **AddPublicIpAddressPoolCidrBlock** operation to add a CIDR block to an IP address pool within the specified period of time.
+        The CIDR block.
+        >  You cannot set the **CidrBlock** and **CidrMask** parameters at the same time.
         
         @param request: AddPublicIpAddressPoolCidrBlockRequest
         @return: AddPublicIpAddressPoolCidrBlockResponse
@@ -1071,13 +1026,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AddPublicIpAddressPoolCidrBlockRequest,
     ) -> vpc_20160428_models.AddPublicIpAddressPoolCidrBlockResponse:
         """
-        Before you call this operation, take note of the following limits:
-        *   The CIDR block and the IP address pool must belong to the same region.
-        *   The CIDR block and the IP address pool must use the same line type.
-        *   The **AddPublicIpAddressPoolCidrBlock** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of a CIDR block in an IP address pool:
-        *   If the CIDR block is in the **Modifying** state, the CIDR block is being added. In this state, you can only query the CIDR block and cannot perform other operations.
-        *   If the CIDR block is in the **Created** state, the CIDR block is added.
-        *   You cannot repeatedly call the **AddPublicIpAddressPoolCidrBlock** operation to add a CIDR block to an IP address pool within the specified period of time.
+        The CIDR block.
+        >  You cannot set the **CidrBlock** and **CidrMask** parameters at the same time.
         
         @param request: AddPublicIpAddressPoolCidrBlockRequest
         @return: AddPublicIpAddressPoolCidrBlockResponse
@@ -1091,10 +1041,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse:
         """
-        The **AddSourcesToTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
-        *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being added to the traffic mirror session.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is being added to the traffic mirror session.
-        *   You cannot repeatedly call the **AddSourcesToTrafficMirrorSession** operation to add a traffic mirror source to a traffic mirror session within the specified period of time.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         
         @param request: AddSourcesToTrafficMirrorSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1145,10 +1094,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse:
         """
-        The **AddSourcesToTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
-        *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being added to the traffic mirror session.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is being added to the traffic mirror session.
-        *   You cannot repeatedly call the **AddSourcesToTrafficMirrorSession** operation to add a traffic mirror source to a traffic mirror session within the specified period of time.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         
         @param request: AddSourcesToTrafficMirrorSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1198,10 +1146,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AddSourcesToTrafficMirrorSessionRequest,
     ) -> vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse:
         """
-        The **AddSourcesToTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
-        *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being added to the traffic mirror session.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is being added to the traffic mirror session.
-        *   You cannot repeatedly call the **AddSourcesToTrafficMirrorSession** operation to add a traffic mirror source to a traffic mirror session within the specified period of time.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         
         @param request: AddSourcesToTrafficMirrorSessionRequest
         @return: AddSourcesToTrafficMirrorSessionResponse
@@ -1214,10 +1161,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AddSourcesToTrafficMirrorSessionRequest,
     ) -> vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse:
         """
-        The **AddSourcesToTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
-        *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being added to the traffic mirror session.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is being added to the traffic mirror session.
-        *   You cannot repeatedly call the **AddSourcesToTrafficMirrorSession** operation to add a traffic mirror source to a traffic mirror session within the specified period of time.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         
         @param request: AddSourcesToTrafficMirrorSessionRequest
         @return: AddSourcesToTrafficMirrorSessionResponse
@@ -1565,9 +1511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         """
-        *AllocateEipSegmentAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](/help/en/elastic-ip-address/latest/156063) operation to query the status of a contiguous EIP group:
-        - If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
-        - If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
+        The operation that you want to perform. The operation that you want to perform. Set the value to *AllocateEipSegmentAddress**.
         
         @param request: AllocateEipSegmentAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1624,9 +1568,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         """
-        *AllocateEipSegmentAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](/help/en/elastic-ip-address/latest/156063) operation to query the status of a contiguous EIP group:
-        - If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
-        - If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
+        The operation that you want to perform. The operation that you want to perform. Set the value to *AllocateEipSegmentAddress**.
         
         @param request: AllocateEipSegmentAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1682,9 +1624,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AllocateEipSegmentAddressRequest,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         """
-        *AllocateEipSegmentAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](/help/en/elastic-ip-address/latest/156063) operation to query the status of a contiguous EIP group:
-        - If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
-        - If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
+        The operation that you want to perform. The operation that you want to perform. Set the value to *AllocateEipSegmentAddress**.
         
         @param request: AllocateEipSegmentAddressRequest
         @return: AllocateEipSegmentAddressResponse
@@ -1697,9 +1637,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AllocateEipSegmentAddressRequest,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         """
-        *AllocateEipSegmentAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](/help/en/elastic-ip-address/latest/156063) operation to query the status of a contiguous EIP group:
-        - If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
-        - If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
+        The operation that you want to perform. The operation that you want to perform. Set the value to *AllocateEipSegmentAddress**.
         
         @param request: AllocateEipSegmentAddressRequest
         @return: AllocateEipSegmentAddressResponse
@@ -2115,11 +2053,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateEipAddressResponse:
         """
-        You can associate an EIP with an Elastic Compute Service (ECS) instance, a Classic Load Balancer (CLB) instance, a secondary elastic network interface (ENI), a NAT gateway, or a high-availability virtual IP address (HAVIP) in the same region. The ECS instance and CLB instance must be deployed in a virtual private cloud (VPC).
-        *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
-        *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
-        *   If the EIP is in the **InUse** state, the EIP is associated.
-        *   You cannot repeatedly call **AssociateEipAddress** to associate an EIP with an instance within the specified period of time.
+        The ID of the region to which the EIP belongs.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: AssociateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2178,11 +2113,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateEipAddressResponse:
         """
-        You can associate an EIP with an Elastic Compute Service (ECS) instance, a Classic Load Balancer (CLB) instance, a secondary elastic network interface (ENI), a NAT gateway, or a high-availability virtual IP address (HAVIP) in the same region. The ECS instance and CLB instance must be deployed in a virtual private cloud (VPC).
-        *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
-        *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
-        *   If the EIP is in the **InUse** state, the EIP is associated.
-        *   You cannot repeatedly call **AssociateEipAddress** to associate an EIP with an instance within the specified period of time.
+        The ID of the region to which the EIP belongs.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: AssociateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2240,11 +2172,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateEipAddressRequest,
     ) -> vpc_20160428_models.AssociateEipAddressResponse:
         """
-        You can associate an EIP with an Elastic Compute Service (ECS) instance, a Classic Load Balancer (CLB) instance, a secondary elastic network interface (ENI), a NAT gateway, or a high-availability virtual IP address (HAVIP) in the same region. The ECS instance and CLB instance must be deployed in a virtual private cloud (VPC).
-        *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
-        *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
-        *   If the EIP is in the **InUse** state, the EIP is associated.
-        *   You cannot repeatedly call **AssociateEipAddress** to associate an EIP with an instance within the specified period of time.
+        The ID of the region to which the EIP belongs.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: AssociateEipAddressRequest
         @return: AssociateEipAddressResponse
@@ -2257,11 +2186,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateEipAddressRequest,
     ) -> vpc_20160428_models.AssociateEipAddressResponse:
         """
-        You can associate an EIP with an Elastic Compute Service (ECS) instance, a Classic Load Balancer (CLB) instance, a secondary elastic network interface (ENI), a NAT gateway, or a high-availability virtual IP address (HAVIP) in the same region. The ECS instance and CLB instance must be deployed in a virtual private cloud (VPC).
-        *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
-        *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
-        *   If the EIP is in the **InUse** state, the EIP is associated.
-        *   You cannot repeatedly call **AssociateEipAddress** to associate an EIP with an instance within the specified period of time.
+        The ID of the region to which the EIP belongs.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: AssociateEipAddressRequest
         @return: AssociateEipAddressResponse
@@ -2422,6 +2348,23 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateGlobalAccelerationInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse:
+        """
+        ## Usage notes
+        When you call this operation, take note of the following items:
+        *   You can specify only an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC) or a Server Load Balancer (SLB) instance as a backend server.
+        *   You can associate each GA instance with only one backend server.
+        *   You can associate multiple GA instances with the same backend server.
+        *   The backend server and the GA instance must belong to the same Alibaba Cloud account.
+        *   The region of the backend server must belong to the service area of the GA instance.
+        *   You can call this operation to associate only a dedicated-bandwidth GA instance with a backend server.
+        To associate a shared-bandwidth GA instance with a backend server, perform the following operations:
+        1.  Associate an elastic IP address (EIP) with the shared-bandwidth GA instance: For more information, see [AddGlobalAccelerationInstanceIp](~~86045~~).
+        2.  Associate the EIP with a backend server. For more information, see [AssociateEipAddress](~~120195~~). When you call AssociateEipAddress, specify **InstanceRegionId**.
+        
+        @param request: AssociateGlobalAccelerationInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateGlobalAccelerationInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_server_id):
@@ -2466,6 +2409,23 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateGlobalAccelerationInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse:
+        """
+        ## Usage notes
+        When you call this operation, take note of the following items:
+        *   You can specify only an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC) or a Server Load Balancer (SLB) instance as a backend server.
+        *   You can associate each GA instance with only one backend server.
+        *   You can associate multiple GA instances with the same backend server.
+        *   The backend server and the GA instance must belong to the same Alibaba Cloud account.
+        *   The region of the backend server must belong to the service area of the GA instance.
+        *   You can call this operation to associate only a dedicated-bandwidth GA instance with a backend server.
+        To associate a shared-bandwidth GA instance with a backend server, perform the following operations:
+        1.  Associate an elastic IP address (EIP) with the shared-bandwidth GA instance: For more information, see [AddGlobalAccelerationInstanceIp](~~86045~~).
+        2.  Associate the EIP with a backend server. For more information, see [AssociateEipAddress](~~120195~~). When you call AssociateEipAddress, specify **InstanceRegionId**.
+        
+        @param request: AssociateGlobalAccelerationInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateGlobalAccelerationInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_server_id):
@@ -2509,6 +2469,22 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.AssociateGlobalAccelerationInstanceRequest,
     ) -> vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse:
+        """
+        ## Usage notes
+        When you call this operation, take note of the following items:
+        *   You can specify only an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC) or a Server Load Balancer (SLB) instance as a backend server.
+        *   You can associate each GA instance with only one backend server.
+        *   You can associate multiple GA instances with the same backend server.
+        *   The backend server and the GA instance must belong to the same Alibaba Cloud account.
+        *   The region of the backend server must belong to the service area of the GA instance.
+        *   You can call this operation to associate only a dedicated-bandwidth GA instance with a backend server.
+        To associate a shared-bandwidth GA instance with a backend server, perform the following operations:
+        1.  Associate an elastic IP address (EIP) with the shared-bandwidth GA instance: For more information, see [AddGlobalAccelerationInstanceIp](~~86045~~).
+        2.  Associate the EIP with a backend server. For more information, see [AssociateEipAddress](~~120195~~). When you call AssociateEipAddress, specify **InstanceRegionId**.
+        
+        @param request: AssociateGlobalAccelerationInstanceRequest
+        @return: AssociateGlobalAccelerationInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.associate_global_acceleration_instance_with_options(request, runtime)
 
@@ -2516,6 +2492,22 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.AssociateGlobalAccelerationInstanceRequest,
     ) -> vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse:
+        """
+        ## Usage notes
+        When you call this operation, take note of the following items:
+        *   You can specify only an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC) or a Server Load Balancer (SLB) instance as a backend server.
+        *   You can associate each GA instance with only one backend server.
+        *   You can associate multiple GA instances with the same backend server.
+        *   The backend server and the GA instance must belong to the same Alibaba Cloud account.
+        *   The region of the backend server must belong to the service area of the GA instance.
+        *   You can call this operation to associate only a dedicated-bandwidth GA instance with a backend server.
+        To associate a shared-bandwidth GA instance with a backend server, perform the following operations:
+        1.  Associate an elastic IP address (EIP) with the shared-bandwidth GA instance: For more information, see [AddGlobalAccelerationInstanceIp](~~86045~~).
+        2.  Associate the EIP with a backend server. For more information, see [AssociateEipAddress](~~120195~~). When you call AssociateEipAddress, specify **InstanceRegionId**.
+        
+        @param request: AssociateGlobalAccelerationInstanceRequest
+        @return: AssociateGlobalAccelerationInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.associate_global_acceleration_instance_with_options_async(request, runtime)
 
@@ -2689,10 +2681,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateNetworkAclResponse:
         """
-        The **AssociateNetworkAcl** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeNetworkAclAttributes](~~116542~~) operation to query the status of a network ACL:
-        *   If the network ACL is in the **BINDING** state, the network ACL is being associated.
-        *   If the network ACL is in the **BINDED** state, the network ACL is associated.
-        *   You cannot repeatedly call the **AssociateNetworkAcl** operation to associate a network ACL within the specified period of time.
+        The ID of the resource with which you want to associate the network ACL.
         
         @param request: AssociateNetworkAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2741,10 +2730,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateNetworkAclResponse:
         """
-        The **AssociateNetworkAcl** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeNetworkAclAttributes](~~116542~~) operation to query the status of a network ACL:
-        *   If the network ACL is in the **BINDING** state, the network ACL is being associated.
-        *   If the network ACL is in the **BINDED** state, the network ACL is associated.
-        *   You cannot repeatedly call the **AssociateNetworkAcl** operation to associate a network ACL within the specified period of time.
+        The ID of the resource with which you want to associate the network ACL.
         
         @param request: AssociateNetworkAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2792,10 +2778,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateNetworkAclRequest,
     ) -> vpc_20160428_models.AssociateNetworkAclResponse:
         """
-        The **AssociateNetworkAcl** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeNetworkAclAttributes](~~116542~~) operation to query the status of a network ACL:
-        *   If the network ACL is in the **BINDING** state, the network ACL is being associated.
-        *   If the network ACL is in the **BINDED** state, the network ACL is associated.
-        *   You cannot repeatedly call the **AssociateNetworkAcl** operation to associate a network ACL within the specified period of time.
+        The ID of the resource with which you want to associate the network ACL.
         
         @param request: AssociateNetworkAclRequest
         @return: AssociateNetworkAclResponse
@@ -2808,10 +2791,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateNetworkAclRequest,
     ) -> vpc_20160428_models.AssociateNetworkAclResponse:
         """
-        The **AssociateNetworkAcl** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeNetworkAclAttributes](~~116542~~) operation to query the status of a network ACL:
-        *   If the network ACL is in the **BINDING** state, the network ACL is being associated.
-        *   If the network ACL is in the **BINDED** state, the network ACL is associated.
-        *   You cannot repeatedly call the **AssociateNetworkAcl** operation to associate a network ACL within the specified period of time.
+        The ID of the resource with which you want to associate the network ACL.
         
         @param request: AssociateNetworkAclRequest
         @return: AssociateNetworkAclResponse
@@ -3201,17 +3181,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   The gateway endpoint to be associated with the route table cannot be in one of the following states: **Creating**, **Modifying**, **Associating**, **Dissociating**, or **Deleting**.
-        *   The route table cannot be in one of the following states: **Creating**, **Modifying**, **Associating**, **Dissociating**, or **Deleting**.
-        *   The gateway endpoint and route table must belong to the same virtual private cloud (VPC).
-        *   The route table cannot be shared.
-        *   You cannot associate a gateway endpoint with a virtual border router (VBR) route table.
-        *   You can associate a gateway endpoint with at most 20 route tables at a time.
-        *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
-        *   If the **Associating** status is returned, the route table is being associated with the gateway endpoint.
-        *   If the **Created** status is returned, the route table is associated with the gateway endpoint.
-        *   You cannot repeatedly call the **AssociateRouteTablesWithVpcGatewayEndpoint** operation within a specific period of time.
+        The ID of the gateway endpoint to be associated with the route table.
         
         @param request: AssociateRouteTablesWithVpcGatewayEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3262,17 +3232,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   The gateway endpoint to be associated with the route table cannot be in one of the following states: **Creating**, **Modifying**, **Associating**, **Dissociating**, or **Deleting**.
-        *   The route table cannot be in one of the following states: **Creating**, **Modifying**, **Associating**, **Dissociating**, or **Deleting**.
-        *   The gateway endpoint and route table must belong to the same virtual private cloud (VPC).
-        *   The route table cannot be shared.
-        *   You cannot associate a gateway endpoint with a virtual border router (VBR) route table.
-        *   You can associate a gateway endpoint with at most 20 route tables at a time.
-        *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
-        *   If the **Associating** status is returned, the route table is being associated with the gateway endpoint.
-        *   If the **Created** status is returned, the route table is associated with the gateway endpoint.
-        *   You cannot repeatedly call the **AssociateRouteTablesWithVpcGatewayEndpoint** operation within a specific period of time.
+        The ID of the gateway endpoint to be associated with the route table.
         
         @param request: AssociateRouteTablesWithVpcGatewayEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3322,17 +3282,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointRequest,
     ) -> vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   The gateway endpoint to be associated with the route table cannot be in one of the following states: **Creating**, **Modifying**, **Associating**, **Dissociating**, or **Deleting**.
-        *   The route table cannot be in one of the following states: **Creating**, **Modifying**, **Associating**, **Dissociating**, or **Deleting**.
-        *   The gateway endpoint and route table must belong to the same virtual private cloud (VPC).
-        *   The route table cannot be shared.
-        *   You cannot associate a gateway endpoint with a virtual border router (VBR) route table.
-        *   You can associate a gateway endpoint with at most 20 route tables at a time.
-        *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
-        *   If the **Associating** status is returned, the route table is being associated with the gateway endpoint.
-        *   If the **Created** status is returned, the route table is associated with the gateway endpoint.
-        *   You cannot repeatedly call the **AssociateRouteTablesWithVpcGatewayEndpoint** operation within a specific period of time.
+        The ID of the gateway endpoint to be associated with the route table.
         
         @param request: AssociateRouteTablesWithVpcGatewayEndpointRequest
         @return: AssociateRouteTablesWithVpcGatewayEndpointResponse
@@ -3345,17 +3295,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointRequest,
     ) -> vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   The gateway endpoint to be associated with the route table cannot be in one of the following states: **Creating**, **Modifying**, **Associating**, **Dissociating**, or **Deleting**.
-        *   The route table cannot be in one of the following states: **Creating**, **Modifying**, **Associating**, **Dissociating**, or **Deleting**.
-        *   The gateway endpoint and route table must belong to the same virtual private cloud (VPC).
-        *   The route table cannot be shared.
-        *   You cannot associate a gateway endpoint with a virtual border router (VBR) route table.
-        *   You can associate a gateway endpoint with at most 20 route tables at a time.
-        *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
-        *   If the **Associating** status is returned, the route table is being associated with the gateway endpoint.
-        *   If the **Created** status is returned, the route table is associated with the gateway endpoint.
-        *   You cannot repeatedly call the **AssociateRouteTablesWithVpcGatewayEndpoint** operation within a specific period of time.
+        The ID of the gateway endpoint to be associated with the route table.
         
         @param request: AssociateRouteTablesWithVpcGatewayEndpointRequest
         @return: AssociateRouteTablesWithVpcGatewayEndpointResponse
@@ -3369,10 +3309,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateVpcCidrBlockResponse:
         """
-        The following list describes the limits on the maximum number of secondary CIDR blocks that can be added:
-        *   You can add up to five secondary IPv4 CIDR blocks to each VPC.
-        *   You can add up to three secondary IPv6 CIDR blocks to each VPC.
-        *   You cannot repeatedly call the **AssociateVpcCidrBlock** operation to add secondary CIDR blocks to a VPC within the specified period of time.
+        The IP version. Valid values:
+        *   **IPV4**: IPv4
+        *   **IPV6**: IPv6. If you set **IpVersion** to **IPV6** and do not set **SecondaryCidrBlock**, you can add IPv6 CIDR blocks to the VPC.
         
         @param request: AssociateVpcCidrBlockRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3429,10 +3368,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateVpcCidrBlockResponse:
         """
-        The following list describes the limits on the maximum number of secondary CIDR blocks that can be added:
-        *   You can add up to five secondary IPv4 CIDR blocks to each VPC.
-        *   You can add up to three secondary IPv6 CIDR blocks to each VPC.
-        *   You cannot repeatedly call the **AssociateVpcCidrBlock** operation to add secondary CIDR blocks to a VPC within the specified period of time.
+        The IP version. Valid values:
+        *   **IPV4**: IPv4
+        *   **IPV6**: IPv6. If you set **IpVersion** to **IPV6** and do not set **SecondaryCidrBlock**, you can add IPv6 CIDR blocks to the VPC.
         
         @param request: AssociateVpcCidrBlockRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3488,10 +3426,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateVpcCidrBlockRequest,
     ) -> vpc_20160428_models.AssociateVpcCidrBlockResponse:
         """
-        The following list describes the limits on the maximum number of secondary CIDR blocks that can be added:
-        *   You can add up to five secondary IPv4 CIDR blocks to each VPC.
-        *   You can add up to three secondary IPv6 CIDR blocks to each VPC.
-        *   You cannot repeatedly call the **AssociateVpcCidrBlock** operation to add secondary CIDR blocks to a VPC within the specified period of time.
+        The IP version. Valid values:
+        *   **IPV4**: IPv4
+        *   **IPV6**: IPv6. If you set **IpVersion** to **IPV6** and do not set **SecondaryCidrBlock**, you can add IPv6 CIDR blocks to the VPC.
         
         @param request: AssociateVpcCidrBlockRequest
         @return: AssociateVpcCidrBlockResponse
@@ -3504,10 +3441,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateVpcCidrBlockRequest,
     ) -> vpc_20160428_models.AssociateVpcCidrBlockResponse:
         """
-        The following list describes the limits on the maximum number of secondary CIDR blocks that can be added:
-        *   You can add up to five secondary IPv4 CIDR blocks to each VPC.
-        *   You can add up to three secondary IPv6 CIDR blocks to each VPC.
-        *   You cannot repeatedly call the **AssociateVpcCidrBlock** operation to add secondary CIDR blocks to a VPC within the specified period of time.
+        The IP version. Valid values:
+        *   **IPV4**: IPv4
+        *   **IPV6**: IPv6. If you set **IpVersion** to **IPV6** and do not set **SecondaryCidrBlock**, you can add IPv6 CIDR blocks to the VPC.
         
         @param request: AssociateVpcCidrBlockRequest
         @return: AssociateVpcCidrBlockResponse
@@ -3520,6 +3456,24 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateVpnGatewayWithCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse:
+        """
+        ## Usage notes
+        Before you associate a VPN gateway with an SSL certificate, take note of the following items:
+        *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
+        *   The SSL certificates must use the SM algorithm.
+        *   You cannot specify one SSL certificate as both the encryption certificate and signature certificate for one VPN gateway.
+        *   The first time you associate a VPN gateway of the SM type with an SSL certificate, the system automatically creates the AliyunServiceRoleForVPNCertificate service-linked role. In addition, the system adds the AliyunServiceRolePolicyForVPNCertificate policy to the role, which allows the VPN gateway to access other cloud resources. For more information, see [AliyunServiceRoleForVPNCertificate](~~203323~~).
+        *   **AssociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
+        *   If the VPN gateway is in the **updating** state, the SSL certificate is being associated.
+        *   If the VPN gateway is in the **active** state, the SSL certificate is being associated.
+        *   You cannot call **AssociateVpnGatewayWithCertificate** within a specific period of time.
+        ## Prerequisites
+        Make sure that you have two SSL certificates that use the SM algorithm in the Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](~~28535~~).
+        
+        @param request: AssociateVpnGatewayWithCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateVpnGatewayWithCertificateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.certificate_id):
@@ -3558,6 +3512,24 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateVpnGatewayWithCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse:
+        """
+        ## Usage notes
+        Before you associate a VPN gateway with an SSL certificate, take note of the following items:
+        *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
+        *   The SSL certificates must use the SM algorithm.
+        *   You cannot specify one SSL certificate as both the encryption certificate and signature certificate for one VPN gateway.
+        *   The first time you associate a VPN gateway of the SM type with an SSL certificate, the system automatically creates the AliyunServiceRoleForVPNCertificate service-linked role. In addition, the system adds the AliyunServiceRolePolicyForVPNCertificate policy to the role, which allows the VPN gateway to access other cloud resources. For more information, see [AliyunServiceRoleForVPNCertificate](~~203323~~).
+        *   **AssociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
+        *   If the VPN gateway is in the **updating** state, the SSL certificate is being associated.
+        *   If the VPN gateway is in the **active** state, the SSL certificate is being associated.
+        *   You cannot call **AssociateVpnGatewayWithCertificate** within a specific period of time.
+        ## Prerequisites
+        Make sure that you have two SSL certificates that use the SM algorithm in the Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](~~28535~~).
+        
+        @param request: AssociateVpnGatewayWithCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateVpnGatewayWithCertificateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.certificate_id):
@@ -3595,6 +3567,23 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.AssociateVpnGatewayWithCertificateRequest,
     ) -> vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse:
+        """
+        ## Usage notes
+        Before you associate a VPN gateway with an SSL certificate, take note of the following items:
+        *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
+        *   The SSL certificates must use the SM algorithm.
+        *   You cannot specify one SSL certificate as both the encryption certificate and signature certificate for one VPN gateway.
+        *   The first time you associate a VPN gateway of the SM type with an SSL certificate, the system automatically creates the AliyunServiceRoleForVPNCertificate service-linked role. In addition, the system adds the AliyunServiceRolePolicyForVPNCertificate policy to the role, which allows the VPN gateway to access other cloud resources. For more information, see [AliyunServiceRoleForVPNCertificate](~~203323~~).
+        *   **AssociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
+        *   If the VPN gateway is in the **updating** state, the SSL certificate is being associated.
+        *   If the VPN gateway is in the **active** state, the SSL certificate is being associated.
+        *   You cannot call **AssociateVpnGatewayWithCertificate** within a specific period of time.
+        ## Prerequisites
+        Make sure that you have two SSL certificates that use the SM algorithm in the Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](~~28535~~).
+        
+        @param request: AssociateVpnGatewayWithCertificateRequest
+        @return: AssociateVpnGatewayWithCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.associate_vpn_gateway_with_certificate_with_options(request, runtime)
 
@@ -3602,6 +3591,23 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.AssociateVpnGatewayWithCertificateRequest,
     ) -> vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse:
+        """
+        ## Usage notes
+        Before you associate a VPN gateway with an SSL certificate, take note of the following items:
+        *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
+        *   The SSL certificates must use the SM algorithm.
+        *   You cannot specify one SSL certificate as both the encryption certificate and signature certificate for one VPN gateway.
+        *   The first time you associate a VPN gateway of the SM type with an SSL certificate, the system automatically creates the AliyunServiceRoleForVPNCertificate service-linked role. In addition, the system adds the AliyunServiceRolePolicyForVPNCertificate policy to the role, which allows the VPN gateway to access other cloud resources. For more information, see [AliyunServiceRoleForVPNCertificate](~~203323~~).
+        *   **AssociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
+        *   If the VPN gateway is in the **updating** state, the SSL certificate is being associated.
+        *   If the VPN gateway is in the **active** state, the SSL certificate is being associated.
+        *   You cannot call **AssociateVpnGatewayWithCertificate** within a specific period of time.
+        ## Prerequisites
+        Make sure that you have two SSL certificates that use the SM algorithm in the Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](~~28535~~).
+        
+        @param request: AssociateVpnGatewayWithCertificateRequest
+        @return: AssociateVpnGatewayWithCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.associate_vpn_gateway_with_certificate_with_options_async(request, runtime)
 
@@ -5502,6 +5508,23 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateDefaultVSwitchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateDefaultVSwitchResponse:
+        """
+        ## Usage notes
+        When you call this operation, take note of the following items:
+        *   The first IP address and last three IP addresses of a default vSwitch CIDR block are reserved. For example, if the CIDR block of a vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved.
+        *   The number of instances in the default vSwitch cannot exceed the remaining number of instances supported by the VPC (15,000 minus the number of existing instances).
+        *   Default vSwitches do not support multicasting or broadcasting.
+        *   After you create a default vSwitch, you cannot modify its CIDR block.
+        *   **CreateDefaultVSwitch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a default vSwitch:
+        *   If a default vSwitch is in the **Pending** state, it is being configured.
+        *   If a default vSwitch is in the **Available** state, it is available.
+        *   If a default vSwitch already exists in a region, you cannot call this operation to create a default vSwitch in this region.
+        *   Before you create a default vSwitch, make sure that a default VPC is created. You can call the [CreateDefaultVpc](~~609152~~) operation to create a default VPC.
+        
+        @param request: CreateDefaultVSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDefaultVSwitchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5544,6 +5567,23 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateDefaultVSwitchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateDefaultVSwitchResponse:
+        """
+        ## Usage notes
+        When you call this operation, take note of the following items:
+        *   The first IP address and last three IP addresses of a default vSwitch CIDR block are reserved. For example, if the CIDR block of a vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved.
+        *   The number of instances in the default vSwitch cannot exceed the remaining number of instances supported by the VPC (15,000 minus the number of existing instances).
+        *   Default vSwitches do not support multicasting or broadcasting.
+        *   After you create a default vSwitch, you cannot modify its CIDR block.
+        *   **CreateDefaultVSwitch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a default vSwitch:
+        *   If a default vSwitch is in the **Pending** state, it is being configured.
+        *   If a default vSwitch is in the **Available** state, it is available.
+        *   If a default vSwitch already exists in a region, you cannot call this operation to create a default vSwitch in this region.
+        *   Before you create a default vSwitch, make sure that a default VPC is created. You can call the [CreateDefaultVpc](~~609152~~) operation to create a default VPC.
+        
+        @param request: CreateDefaultVSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDefaultVSwitchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5585,6 +5625,22 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateDefaultVSwitchRequest,
     ) -> vpc_20160428_models.CreateDefaultVSwitchResponse:
+        """
+        ## Usage notes
+        When you call this operation, take note of the following items:
+        *   The first IP address and last three IP addresses of a default vSwitch CIDR block are reserved. For example, if the CIDR block of a vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved.
+        *   The number of instances in the default vSwitch cannot exceed the remaining number of instances supported by the VPC (15,000 minus the number of existing instances).
+        *   Default vSwitches do not support multicasting or broadcasting.
+        *   After you create a default vSwitch, you cannot modify its CIDR block.
+        *   **CreateDefaultVSwitch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a default vSwitch:
+        *   If a default vSwitch is in the **Pending** state, it is being configured.
+        *   If a default vSwitch is in the **Available** state, it is available.
+        *   If a default vSwitch already exists in a region, you cannot call this operation to create a default vSwitch in this region.
+        *   Before you create a default vSwitch, make sure that a default VPC is created. You can call the [CreateDefaultVpc](~~609152~~) operation to create a default VPC.
+        
+        @param request: CreateDefaultVSwitchRequest
+        @return: CreateDefaultVSwitchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_default_vswitch_with_options(request, runtime)
 
@@ -5592,6 +5648,22 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateDefaultVSwitchRequest,
     ) -> vpc_20160428_models.CreateDefaultVSwitchResponse:
+        """
+        ## Usage notes
+        When you call this operation, take note of the following items:
+        *   The first IP address and last three IP addresses of a default vSwitch CIDR block are reserved. For example, if the CIDR block of a vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved.
+        *   The number of instances in the default vSwitch cannot exceed the remaining number of instances supported by the VPC (15,000 minus the number of existing instances).
+        *   Default vSwitches do not support multicasting or broadcasting.
+        *   After you create a default vSwitch, you cannot modify its CIDR block.
+        *   **CreateDefaultVSwitch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a default vSwitch:
+        *   If a default vSwitch is in the **Pending** state, it is being configured.
+        *   If a default vSwitch is in the **Available** state, it is available.
+        *   If a default vSwitch already exists in a region, you cannot call this operation to create a default vSwitch in this region.
+        *   Before you create a default vSwitch, make sure that a default VPC is created. You can call the [CreateDefaultVpc](~~609152~~) operation to create a default VPC.
+        
+        @param request: CreateDefaultVSwitchRequest
+        @return: CreateDefaultVSwitchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_default_vswitch_with_options_async(request, runtime)
 
@@ -6115,17 +6187,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateForwardEntryResponse:
         """
-        Each DNAT entry consists of the following parameters: *ExternalIp**, **ExternalPort**, **IpProtocol**, **InternalIp**, and **InternalPort**. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from **ExternalIp:ExternalPort** to **InternalIp:InternalPort** and sends responses back through the same route.
-        When you call this operation, take note of the following limits:
-        *   **CreateForwardEntry** is an asynchronous operation. After you make a request, a DNAT entry ID is returned but the specified DNAT entry is not added. The system adds the entry in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the status of a DNAT entry.
-        *   If the DNAT entry is in the **Pending** state, the system is adding the DNAT entry. You can only query the status of the DNAT entry, but cannot perform other operations.
-        *   If the DNAT entry is in the **Available** state, the DNAT entry is added.
-        *   You cannot repeatedly call the **CreateForwardEntry** operation to add a DNAT entry within the specified period of time.
-        *   All combinations of **ExternalIp**, **ExternalPort**, and **IpProtocol** used in DNAT entries must be unique. You cannot distribute requests to more than one Elastic Compute Service (ECS) instance if these requests are initiated from the same source IP address, received on the same port, and use the same protocol.
-        *   The combinations of **IpProtocol**, **InternalIp**, and **InternalPort** must be unique.
-        *   If one or more DNAT entries in the DNAT table are in the **Pending** or **Modifying** state, you cannot add DNAT entries to the DNAT table.
-        *   You can add at most 100 DNAT entries to a DNAT table.
-        *   For an elastic IP address (EIP) used by an Internet NAT gateway or a NAT IP address used by a Virtual Private Cloud (VPC) NAT gateway, take note of the following limit: If the IP address has IP mapping enabled and is specified in a DNAT entry, the IP address cannot be used by another DNAT or SNAT entry.
+        The region ID of the NAT gateway.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: CreateForwardEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6186,17 +6249,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateForwardEntryResponse:
         """
-        Each DNAT entry consists of the following parameters: *ExternalIp**, **ExternalPort**, **IpProtocol**, **InternalIp**, and **InternalPort**. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from **ExternalIp:ExternalPort** to **InternalIp:InternalPort** and sends responses back through the same route.
-        When you call this operation, take note of the following limits:
-        *   **CreateForwardEntry** is an asynchronous operation. After you make a request, a DNAT entry ID is returned but the specified DNAT entry is not added. The system adds the entry in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the status of a DNAT entry.
-        *   If the DNAT entry is in the **Pending** state, the system is adding the DNAT entry. You can only query the status of the DNAT entry, but cannot perform other operations.
-        *   If the DNAT entry is in the **Available** state, the DNAT entry is added.
-        *   You cannot repeatedly call the **CreateForwardEntry** operation to add a DNAT entry within the specified period of time.
-        *   All combinations of **ExternalIp**, **ExternalPort**, and **IpProtocol** used in DNAT entries must be unique. You cannot distribute requests to more than one Elastic Compute Service (ECS) instance if these requests are initiated from the same source IP address, received on the same port, and use the same protocol.
-        *   The combinations of **IpProtocol**, **InternalIp**, and **InternalPort** must be unique.
-        *   If one or more DNAT entries in the DNAT table are in the **Pending** or **Modifying** state, you cannot add DNAT entries to the DNAT table.
-        *   You can add at most 100 DNAT entries to a DNAT table.
-        *   For an elastic IP address (EIP) used by an Internet NAT gateway or a NAT IP address used by a Virtual Private Cloud (VPC) NAT gateway, take note of the following limit: If the IP address has IP mapping enabled and is specified in a DNAT entry, the IP address cannot be used by another DNAT or SNAT entry.
+        The region ID of the NAT gateway.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: CreateForwardEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6256,17 +6310,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateForwardEntryRequest,
     ) -> vpc_20160428_models.CreateForwardEntryResponse:
         """
-        Each DNAT entry consists of the following parameters: *ExternalIp**, **ExternalPort**, **IpProtocol**, **InternalIp**, and **InternalPort**. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from **ExternalIp:ExternalPort** to **InternalIp:InternalPort** and sends responses back through the same route.
-        When you call this operation, take note of the following limits:
-        *   **CreateForwardEntry** is an asynchronous operation. After you make a request, a DNAT entry ID is returned but the specified DNAT entry is not added. The system adds the entry in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the status of a DNAT entry.
-        *   If the DNAT entry is in the **Pending** state, the system is adding the DNAT entry. You can only query the status of the DNAT entry, but cannot perform other operations.
-        *   If the DNAT entry is in the **Available** state, the DNAT entry is added.
-        *   You cannot repeatedly call the **CreateForwardEntry** operation to add a DNAT entry within the specified period of time.
-        *   All combinations of **ExternalIp**, **ExternalPort**, and **IpProtocol** used in DNAT entries must be unique. You cannot distribute requests to more than one Elastic Compute Service (ECS) instance if these requests are initiated from the same source IP address, received on the same port, and use the same protocol.
-        *   The combinations of **IpProtocol**, **InternalIp**, and **InternalPort** must be unique.
-        *   If one or more DNAT entries in the DNAT table are in the **Pending** or **Modifying** state, you cannot add DNAT entries to the DNAT table.
-        *   You can add at most 100 DNAT entries to a DNAT table.
-        *   For an elastic IP address (EIP) used by an Internet NAT gateway or a NAT IP address used by a Virtual Private Cloud (VPC) NAT gateway, take note of the following limit: If the IP address has IP mapping enabled and is specified in a DNAT entry, the IP address cannot be used by another DNAT or SNAT entry.
+        The region ID of the NAT gateway.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: CreateForwardEntryRequest
         @return: CreateForwardEntryResponse
@@ -6279,17 +6324,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateForwardEntryRequest,
     ) -> vpc_20160428_models.CreateForwardEntryResponse:
         """
-        Each DNAT entry consists of the following parameters: *ExternalIp**, **ExternalPort**, **IpProtocol**, **InternalIp**, and **InternalPort**. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from **ExternalIp:ExternalPort** to **InternalIp:InternalPort** and sends responses back through the same route.
-        When you call this operation, take note of the following limits:
-        *   **CreateForwardEntry** is an asynchronous operation. After you make a request, a DNAT entry ID is returned but the specified DNAT entry is not added. The system adds the entry in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the status of a DNAT entry.
-        *   If the DNAT entry is in the **Pending** state, the system is adding the DNAT entry. You can only query the status of the DNAT entry, but cannot perform other operations.
-        *   If the DNAT entry is in the **Available** state, the DNAT entry is added.
-        *   You cannot repeatedly call the **CreateForwardEntry** operation to add a DNAT entry within the specified period of time.
-        *   All combinations of **ExternalIp**, **ExternalPort**, and **IpProtocol** used in DNAT entries must be unique. You cannot distribute requests to more than one Elastic Compute Service (ECS) instance if these requests are initiated from the same source IP address, received on the same port, and use the same protocol.
-        *   The combinations of **IpProtocol**, **InternalIp**, and **InternalPort** must be unique.
-        *   If one or more DNAT entries in the DNAT table are in the **Pending** or **Modifying** state, you cannot add DNAT entries to the DNAT table.
-        *   You can add at most 100 DNAT entries to a DNAT table.
-        *   For an elastic IP address (EIP) used by an Internet NAT gateway or a NAT IP address used by a Virtual Private Cloud (VPC) NAT gateway, take note of the following limit: If the IP address has IP mapping enabled and is specified in a DNAT entry, the IP address cannot be used by another DNAT or SNAT entry.
+        The region ID of the NAT gateway.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: CreateForwardEntryRequest
         @return: CreateForwardEntryResponse
@@ -6303,10 +6339,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateFullNatEntryResponse:
         """
-        **CreateFullNatEntry** is an asynchronous operation. After you make a request, a FULLNAT entry ID is returned but the specified FULLNAT entry is not added. The system adds the entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   If the FULLNAT entry is in the **Pending** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
-        *   If the FULLNAT entry is in the **Available** state, the FULLNAT entry is added.
-        *   You cannot repeatedly call the **CreateFullNatEntry** operation to add a FULLNAT entry to the FULLNAT table within the specified period of time.
+        The operation that you want to perform. Set the value to *CreateFullNatEntry**.
         
         @param request: CreateFullNatEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6371,10 +6404,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateFullNatEntryResponse:
         """
-        **CreateFullNatEntry** is an asynchronous operation. After you make a request, a FULLNAT entry ID is returned but the specified FULLNAT entry is not added. The system adds the entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   If the FULLNAT entry is in the **Pending** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
-        *   If the FULLNAT entry is in the **Available** state, the FULLNAT entry is added.
-        *   You cannot repeatedly call the **CreateFullNatEntry** operation to add a FULLNAT entry to the FULLNAT table within the specified period of time.
+        The operation that you want to perform. Set the value to *CreateFullNatEntry**.
         
         @param request: CreateFullNatEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6438,10 +6468,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateFullNatEntryRequest,
     ) -> vpc_20160428_models.CreateFullNatEntryResponse:
         """
-        **CreateFullNatEntry** is an asynchronous operation. After you make a request, a FULLNAT entry ID is returned but the specified FULLNAT entry is not added. The system adds the entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   If the FULLNAT entry is in the **Pending** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
-        *   If the FULLNAT entry is in the **Available** state, the FULLNAT entry is added.
-        *   You cannot repeatedly call the **CreateFullNatEntry** operation to add a FULLNAT entry to the FULLNAT table within the specified period of time.
+        The operation that you want to perform. Set the value to *CreateFullNatEntry**.
         
         @param request: CreateFullNatEntryRequest
         @return: CreateFullNatEntryResponse
@@ -6454,10 +6481,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateFullNatEntryRequest,
     ) -> vpc_20160428_models.CreateFullNatEntryResponse:
         """
-        **CreateFullNatEntry** is an asynchronous operation. After you make a request, a FULLNAT entry ID is returned but the specified FULLNAT entry is not added. The system adds the entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   If the FULLNAT entry is in the **Pending** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
-        *   If the FULLNAT entry is in the **Available** state, the FULLNAT entry is added.
-        *   You cannot repeatedly call the **CreateFullNatEntry** operation to add a FULLNAT entry to the FULLNAT table within the specified period of time.
+        The operation that you want to perform. Set the value to *CreateFullNatEntry**.
         
         @param request: CreateFullNatEntryRequest
         @return: CreateFullNatEntryResponse
@@ -6470,6 +6494,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateGlobalAccelerationInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateGlobalAccelerationInstanceResponse:
+        """
+        ## Usage notes
+        You can call this operation to create only pay-as-you-go GA instances.
+        
+        @param request: CreateGlobalAccelerationInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGlobalAccelerationInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bandwidth):
@@ -6518,6 +6550,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateGlobalAccelerationInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateGlobalAccelerationInstanceResponse:
+        """
+        ## Usage notes
+        You can call this operation to create only pay-as-you-go GA instances.
+        
+        @param request: CreateGlobalAccelerationInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGlobalAccelerationInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bandwidth):
@@ -6565,6 +6605,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateGlobalAccelerationInstanceRequest,
     ) -> vpc_20160428_models.CreateGlobalAccelerationInstanceResponse:
+        """
+        ## Usage notes
+        You can call this operation to create only pay-as-you-go GA instances.
+        
+        @param request: CreateGlobalAccelerationInstanceRequest
+        @return: CreateGlobalAccelerationInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_global_acceleration_instance_with_options(request, runtime)
 
@@ -6572,6 +6619,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateGlobalAccelerationInstanceRequest,
     ) -> vpc_20160428_models.CreateGlobalAccelerationInstanceResponse:
+        """
+        ## Usage notes
+        You can call this operation to create only pay-as-you-go GA instances.
+        
+        @param request: CreateGlobalAccelerationInstanceRequest
+        @return: CreateGlobalAccelerationInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_global_acceleration_instance_with_options_async(request, runtime)
 
@@ -7675,14 +7729,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatGatewayResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see [Service-linked roles](~~174251~~).
-        *   After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
-        *   **CreateNatGateway** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeNatGateways](~~36054~~) operation to query the status of a NAT gateway.
-        *   If a NAT gateway is in the **Creating** state, the NAT gateway is being created. In this case, you can query the NAT gateway but cannot perform other operations.
-        *   If a NAT gateway is in the **Available** state, the NAT gateway is created.
-        It takes 1 to 3 minutes to create a NAT gateway.
-        *   You cannot repeatedly call the **CreateNatGateway** operation to create a VPC NAT gateway or an Internet NAT gateway within the specified period of time.
+        The ID of the region where you want to create the NAT gateway.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: CreateNatGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7759,14 +7807,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatGatewayResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see [Service-linked roles](~~174251~~).
-        *   After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
-        *   **CreateNatGateway** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeNatGateways](~~36054~~) operation to query the status of a NAT gateway.
-        *   If a NAT gateway is in the **Creating** state, the NAT gateway is being created. In this case, you can query the NAT gateway but cannot perform other operations.
-        *   If a NAT gateway is in the **Available** state, the NAT gateway is created.
-        It takes 1 to 3 minutes to create a NAT gateway.
-        *   You cannot repeatedly call the **CreateNatGateway** operation to create a VPC NAT gateway or an Internet NAT gateway within the specified period of time.
+        The ID of the region where you want to create the NAT gateway.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: CreateNatGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7842,14 +7884,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateNatGatewayRequest,
     ) -> vpc_20160428_models.CreateNatGatewayResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see [Service-linked roles](~~174251~~).
-        *   After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
-        *   **CreateNatGateway** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeNatGateways](~~36054~~) operation to query the status of a NAT gateway.
-        *   If a NAT gateway is in the **Creating** state, the NAT gateway is being created. In this case, you can query the NAT gateway but cannot perform other operations.
-        *   If a NAT gateway is in the **Available** state, the NAT gateway is created.
-        It takes 1 to 3 minutes to create a NAT gateway.
-        *   You cannot repeatedly call the **CreateNatGateway** operation to create a VPC NAT gateway or an Internet NAT gateway within the specified period of time.
+        The ID of the region where you want to create the NAT gateway.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: CreateNatGatewayRequest
         @return: CreateNatGatewayResponse
@@ -7862,14 +7898,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateNatGatewayRequest,
     ) -> vpc_20160428_models.CreateNatGatewayResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see [Service-linked roles](~~174251~~).
-        *   After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
-        *   **CreateNatGateway** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeNatGateways](~~36054~~) operation to query the status of a NAT gateway.
-        *   If a NAT gateway is in the **Creating** state, the NAT gateway is being created. In this case, you can query the NAT gateway but cannot perform other operations.
-        *   If a NAT gateway is in the **Available** state, the NAT gateway is created.
-        It takes 1 to 3 minutes to create a NAT gateway.
-        *   You cannot repeatedly call the **CreateNatGateway** operation to create a VPC NAT gateway or an Internet NAT gateway within the specified period of time.
+        The ID of the region where you want to create the NAT gateway.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: CreateNatGatewayRequest
         @return: CreateNatGatewayResponse
@@ -8031,7 +8061,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatIpCidrResponse:
         """
-        You cannot repeatedly call the *CreateNatIpCidr** operation to create a NAT CIDR block within the specified period of time.
+        The ID of the Virtual Private Cloud (VPC) NAT gateway with which you want to associate the CIDR block.
         
         @param request: CreateNatIpCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8088,7 +8118,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatIpCidrResponse:
         """
-        You cannot repeatedly call the *CreateNatIpCidr** operation to create a NAT CIDR block within the specified period of time.
+        The ID of the Virtual Private Cloud (VPC) NAT gateway with which you want to associate the CIDR block.
         
         @param request: CreateNatIpCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8144,7 +8174,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateNatIpCidrRequest,
     ) -> vpc_20160428_models.CreateNatIpCidrResponse:
         """
-        You cannot repeatedly call the *CreateNatIpCidr** operation to create a NAT CIDR block within the specified period of time.
+        The ID of the Virtual Private Cloud (VPC) NAT gateway with which you want to associate the CIDR block.
         
         @param request: CreateNatIpCidrRequest
         @return: CreateNatIpCidrResponse
@@ -8157,7 +8187,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateNatIpCidrRequest,
     ) -> vpc_20160428_models.CreateNatIpCidrResponse:
         """
-        You cannot repeatedly call the *CreateNatIpCidr** operation to create a NAT CIDR block within the specified period of time.
+        The ID of the Virtual Private Cloud (VPC) NAT gateway with which you want to associate the CIDR block.
         
         @param request: CreateNatIpCidrRequest
         @return: CreateNatIpCidrResponse
@@ -8273,10 +8303,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePhysicalConnectionResponse:
         """
-        You can apply for a dedicated Express Connect circuit for yourself or create a hosted connection for a tenant. After your application is approved, the Express Connect circuit changes to the *Initial** state. You can contact the connectivity provider to start construction.
-        When you call this operation, take note of the following limits:
-        *   If your Alibaba Cloud account has more than five Express Connect circuits that are not in the **Enabled** state, you cannot apply for another Express Connect circuit.
-        *   If your Alibaba Cloud account has an Express Connect circuit with overdue payments, you cannot apply for another Express Connect circuit.
+        The access point ID of the Express Connect circuit.
         
         @param request: CreatePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8347,10 +8374,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePhysicalConnectionResponse:
         """
-        You can apply for a dedicated Express Connect circuit for yourself or create a hosted connection for a tenant. After your application is approved, the Express Connect circuit changes to the *Initial** state. You can contact the connectivity provider to start construction.
-        When you call this operation, take note of the following limits:
-        *   If your Alibaba Cloud account has more than five Express Connect circuits that are not in the **Enabled** state, you cannot apply for another Express Connect circuit.
-        *   If your Alibaba Cloud account has an Express Connect circuit with overdue payments, you cannot apply for another Express Connect circuit.
+        The access point ID of the Express Connect circuit.
         
         @param request: CreatePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8420,10 +8444,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreatePhysicalConnectionRequest,
     ) -> vpc_20160428_models.CreatePhysicalConnectionResponse:
         """
-        You can apply for a dedicated Express Connect circuit for yourself or create a hosted connection for a tenant. After your application is approved, the Express Connect circuit changes to the *Initial** state. You can contact the connectivity provider to start construction.
-        When you call this operation, take note of the following limits:
-        *   If your Alibaba Cloud account has more than five Express Connect circuits that are not in the **Enabled** state, you cannot apply for another Express Connect circuit.
-        *   If your Alibaba Cloud account has an Express Connect circuit with overdue payments, you cannot apply for another Express Connect circuit.
+        The access point ID of the Express Connect circuit.
         
         @param request: CreatePhysicalConnectionRequest
         @return: CreatePhysicalConnectionResponse
@@ -8436,10 +8457,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreatePhysicalConnectionRequest,
     ) -> vpc_20160428_models.CreatePhysicalConnectionResponse:
         """
-        You can apply for a dedicated Express Connect circuit for yourself or create a hosted connection for a tenant. After your application is approved, the Express Connect circuit changes to the *Initial** state. You can contact the connectivity provider to start construction.
-        When you call this operation, take note of the following limits:
-        *   If your Alibaba Cloud account has more than five Express Connect circuits that are not in the **Enabled** state, you cannot apply for another Express Connect circuit.
-        *   If your Alibaba Cloud account has an Express Connect circuit with overdue payments, you cannot apply for another Express Connect circuit.
+        The access point ID of the Express Connect circuit.
         
         @param request: CreatePhysicalConnectionRequest
         @return: CreatePhysicalConnectionResponse
@@ -8843,18 +8861,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateRouteEntriesResponse:
         """
-        **CreateRouteEntries** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteEntryList](~~138148~~) operation to query the status of a route entry:
-        *   If the route entry is in the **Creating** state, the route entry is being created.
-        *   If the route entry is in the **Created** state, the route entry is created.
-        *   You cannot repeatedly call the **CreateRouteEntries** operation to create the same route entry within the specified period of time.
-        **When you call this operation to add custom route entries to the route table of a vRouter, take note of the following items:**\
-        *   A route table can contain up to 200 custom route entries.
-        *   The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot be the same as or overlap with the CIDR block of a vSwitch in the virtual private cloud (VPC).
-        *   The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or its subnets.
-        *   The destination CIDR blocks (**DstCidrBlock**) of route entries in the same route table must be unique.
-        *   If you do not include the mask length when you specify the destination CIDR block (**DstCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-        *   Multiple custom route entries can point to the same next hop (**NextHop**).
-        *   The next hop (**NextHop**) of a custom route entry must belong to the same VPC as the route table.
+        The operation that you want to perform. Set the value to *CreateRouteEntries**.
         
         @param request: CreateRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8901,18 +8908,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateRouteEntriesResponse:
         """
-        **CreateRouteEntries** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteEntryList](~~138148~~) operation to query the status of a route entry:
-        *   If the route entry is in the **Creating** state, the route entry is being created.
-        *   If the route entry is in the **Created** state, the route entry is created.
-        *   You cannot repeatedly call the **CreateRouteEntries** operation to create the same route entry within the specified period of time.
-        **When you call this operation to add custom route entries to the route table of a vRouter, take note of the following items:**\
-        *   A route table can contain up to 200 custom route entries.
-        *   The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot be the same as or overlap with the CIDR block of a vSwitch in the virtual private cloud (VPC).
-        *   The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or its subnets.
-        *   The destination CIDR blocks (**DstCidrBlock**) of route entries in the same route table must be unique.
-        *   If you do not include the mask length when you specify the destination CIDR block (**DstCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-        *   Multiple custom route entries can point to the same next hop (**NextHop**).
-        *   The next hop (**NextHop**) of a custom route entry must belong to the same VPC as the route table.
+        The operation that you want to perform. Set the value to *CreateRouteEntries**.
         
         @param request: CreateRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8958,18 +8954,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateRouteEntriesRequest,
     ) -> vpc_20160428_models.CreateRouteEntriesResponse:
         """
-        **CreateRouteEntries** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteEntryList](~~138148~~) operation to query the status of a route entry:
-        *   If the route entry is in the **Creating** state, the route entry is being created.
-        *   If the route entry is in the **Created** state, the route entry is created.
-        *   You cannot repeatedly call the **CreateRouteEntries** operation to create the same route entry within the specified period of time.
-        **When you call this operation to add custom route entries to the route table of a vRouter, take note of the following items:**\
-        *   A route table can contain up to 200 custom route entries.
-        *   The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot be the same as or overlap with the CIDR block of a vSwitch in the virtual private cloud (VPC).
-        *   The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or its subnets.
-        *   The destination CIDR blocks (**DstCidrBlock**) of route entries in the same route table must be unique.
-        *   If you do not include the mask length when you specify the destination CIDR block (**DstCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-        *   Multiple custom route entries can point to the same next hop (**NextHop**).
-        *   The next hop (**NextHop**) of a custom route entry must belong to the same VPC as the route table.
+        The operation that you want to perform. Set the value to *CreateRouteEntries**.
         
         @param request: CreateRouteEntriesRequest
         @return: CreateRouteEntriesResponse
@@ -8982,18 +8967,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateRouteEntriesRequest,
     ) -> vpc_20160428_models.CreateRouteEntriesResponse:
         """
-        **CreateRouteEntries** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteEntryList](~~138148~~) operation to query the status of a route entry:
-        *   If the route entry is in the **Creating** state, the route entry is being created.
-        *   If the route entry is in the **Created** state, the route entry is created.
-        *   You cannot repeatedly call the **CreateRouteEntries** operation to create the same route entry within the specified period of time.
-        **When you call this operation to add custom route entries to the route table of a vRouter, take note of the following items:**\
-        *   A route table can contain up to 200 custom route entries.
-        *   The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot be the same as or overlap with the CIDR block of a vSwitch in the virtual private cloud (VPC).
-        *   The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or its subnets.
-        *   The destination CIDR blocks (**DstCidrBlock**) of route entries in the same route table must be unique.
-        *   If you do not include the mask length when you specify the destination CIDR block (**DstCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-        *   Multiple custom route entries can point to the same next hop (**NextHop**).
-        *   The next hop (**NextHop**) of a custom route entry must belong to the same VPC as the route table.
+        The operation that you want to perform. Set the value to *CreateRouteEntries**.
         
         @param request: CreateRouteEntriesRequest
         @return: CreateRouteEntriesResponse
@@ -9007,31 +8981,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateRouteEntryResponse:
         """
-        **CreateRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteEntryList](~~138148~~) operation to query the status of a route entry.
-        *   If the route entry is in the **Creating** state, the route entry is being created.
-        *   If the route entry is in the **Created** state, the route entry is created.
-        *   You cannot repeatedly call the **CreateRouteEntry** operation to add a custom route entry to the route table of a vRouter or a VBR within the specified period of time.
-        **When you call this operation to add a custom route entry to the route table of a vRouter, take note of the following limits:**\
-        *   A route table can contain up to 200 custom route entries.
-        *   The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be the same as or overlap with the CIDR block of a vSwitch in the virtual private cloud (VPC).
-        *   The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or a subset of it.
-        *   The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
-        *   If you do not include the mask length when you specify the destination CIDR block (**DestinationCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-        *   Multiple custom route entries can point to the same next hop (**NextHopId**).
-        *   The next hop (**NextHopId**) of a custom route entry must belong to the same VPC as the route table.
-        *   Equal-cost multi-path (ECMP) routing can be configured by specifying the **NextHopList** parameter.
-        *   When you add non-ECMP route entries, you must specify **DestinationCidrBlock**, **NextHopType**, and **NextHopId**, and you must not specify **NextHopList**.
-        *   When you add route entries for ECMP routing, you must specify **DestinationCidrBlock** and **NextHopList**, and you must not specify **NextHopType** or **NextHopId**.
-        **When you call this operation to add a custom route entry to the route table of a VBR, take note of the following limits:**\
-        *   A route table can contain up to 200 custom route entries.
-        *   The **NextHopList** parameter is not supported.
-        *   The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or a subset of it.
-        *   The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
-        *   If you do not include the mask length when you specify the destination CIDR block (**DestinationCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-        *   Multiple custom route entries can point to the same next hop (**NextHopId**).
-        *   The next hop (**NextHopId**) of a custom route entry must be a router interface associated with the VBR.
-        *   You can add route entries only when the VBR is in the **Active** state, and the Express Connect circuit associated with the VBR is in the **Enabled** state and is not locked due to overdue payments.
-        *   Only non-ECMP route entries are supported. When you add non-ECMP route entries, you must specify **DestinationCidrBlock**, **NextHopType**, and **NextHopId**, and you cannot specify **NextHopList**.
+        The ID of the route table to which you want to add a custom route entry.
         
         @param request: CreateRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9090,31 +9040,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateRouteEntryResponse:
         """
-        **CreateRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteEntryList](~~138148~~) operation to query the status of a route entry.
-        *   If the route entry is in the **Creating** state, the route entry is being created.
-        *   If the route entry is in the **Created** state, the route entry is created.
-        *   You cannot repeatedly call the **CreateRouteEntry** operation to add a custom route entry to the route table of a vRouter or a VBR within the specified period of time.
-        **When you call this operation to add a custom route entry to the route table of a vRouter, take note of the following limits:**\
-        *   A route table can contain up to 200 custom route entries.
-        *   The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be the same as or overlap with the CIDR block of a vSwitch in the virtual private cloud (VPC).
-        *   The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or a subset of it.
-        *   The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
-        *   If you do not include the mask length when you specify the destination CIDR block (**DestinationCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-        *   Multiple custom route entries can point to the same next hop (**NextHopId**).
-        *   The next hop (**NextHopId**) of a custom route entry must belong to the same VPC as the route table.
-        *   Equal-cost multi-path (ECMP) routing can be configured by specifying the **NextHopList** parameter.
-        *   When you add non-ECMP route entries, you must specify **DestinationCidrBlock**, **NextHopType**, and **NextHopId**, and you must not specify **NextHopList**.
-        *   When you add route entries for ECMP routing, you must specify **DestinationCidrBlock** and **NextHopList**, and you must not specify **NextHopType** or **NextHopId**.
-        **When you call this operation to add a custom route entry to the route table of a VBR, take note of the following limits:**\
-        *   A route table can contain up to 200 custom route entries.
-        *   The **NextHopList** parameter is not supported.
-        *   The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or a subset of it.
-        *   The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
-        *   If you do not include the mask length when you specify the destination CIDR block (**DestinationCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-        *   Multiple custom route entries can point to the same next hop (**NextHopId**).
-        *   The next hop (**NextHopId**) of a custom route entry must be a router interface associated with the VBR.
-        *   You can add route entries only when the VBR is in the **Active** state, and the Express Connect circuit associated with the VBR is in the **Enabled** state and is not locked due to overdue payments.
-        *   Only non-ECMP route entries are supported. When you add non-ECMP route entries, you must specify **DestinationCidrBlock**, **NextHopType**, and **NextHopId**, and you cannot specify **NextHopList**.
+        The ID of the route table to which you want to add a custom route entry.
         
         @param request: CreateRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9172,31 +9098,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateRouteEntryRequest,
     ) -> vpc_20160428_models.CreateRouteEntryResponse:
         """
-        **CreateRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteEntryList](~~138148~~) operation to query the status of a route entry.
-        *   If the route entry is in the **Creating** state, the route entry is being created.
-        *   If the route entry is in the **Created** state, the route entry is created.
-        *   You cannot repeatedly call the **CreateRouteEntry** operation to add a custom route entry to the route table of a vRouter or a VBR within the specified period of time.
-        **When you call this operation to add a custom route entry to the route table of a vRouter, take note of the following limits:**\
-        *   A route table can contain up to 200 custom route entries.
-        *   The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be the same as or overlap with the CIDR block of a vSwitch in the virtual private cloud (VPC).
-        *   The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or a subset of it.
-        *   The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
-        *   If you do not include the mask length when you specify the destination CIDR block (**DestinationCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-        *   Multiple custom route entries can point to the same next hop (**NextHopId**).
-        *   The next hop (**NextHopId**) of a custom route entry must belong to the same VPC as the route table.
-        *   Equal-cost multi-path (ECMP) routing can be configured by specifying the **NextHopList** parameter.
-        *   When you add non-ECMP route entries, you must specify **DestinationCidrBlock**, **NextHopType**, and **NextHopId**, and you must not specify **NextHopList**.
-        *   When you add route entries for ECMP routing, you must specify **DestinationCidrBlock** and **NextHopList**, and you must not specify **NextHopType** or **NextHopId**.
-        **When you call this operation to add a custom route entry to the route table of a VBR, take note of the following limits:**\
-        *   A route table can contain up to 200 custom route entries.
-        *   The **NextHopList** parameter is not supported.
-        *   The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or a subset of it.
-        *   The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
-        *   If you do not include the mask length when you specify the destination CIDR block (**DestinationCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-        *   Multiple custom route entries can point to the same next hop (**NextHopId**).
-        *   The next hop (**NextHopId**) of a custom route entry must be a router interface associated with the VBR.
-        *   You can add route entries only when the VBR is in the **Active** state, and the Express Connect circuit associated with the VBR is in the **Enabled** state and is not locked due to overdue payments.
-        *   Only non-ECMP route entries are supported. When you add non-ECMP route entries, you must specify **DestinationCidrBlock**, **NextHopType**, and **NextHopId**, and you cannot specify **NextHopList**.
+        The ID of the route table to which you want to add a custom route entry.
         
         @param request: CreateRouteEntryRequest
         @return: CreateRouteEntryResponse
@@ -9209,31 +9111,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateRouteEntryRequest,
     ) -> vpc_20160428_models.CreateRouteEntryResponse:
         """
-        **CreateRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteEntryList](~~138148~~) operation to query the status of a route entry.
-        *   If the route entry is in the **Creating** state, the route entry is being created.
-        *   If the route entry is in the **Created** state, the route entry is created.
-        *   You cannot repeatedly call the **CreateRouteEntry** operation to add a custom route entry to the route table of a vRouter or a VBR within the specified period of time.
-        **When you call this operation to add a custom route entry to the route table of a vRouter, take note of the following limits:**\
-        *   A route table can contain up to 200 custom route entries.
-        *   The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be the same as or overlap with the CIDR block of a vSwitch in the virtual private cloud (VPC).
-        *   The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or a subset of it.
-        *   The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
-        *   If you do not include the mask length when you specify the destination CIDR block (**DestinationCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-        *   Multiple custom route entries can point to the same next hop (**NextHopId**).
-        *   The next hop (**NextHopId**) of a custom route entry must belong to the same VPC as the route table.
-        *   Equal-cost multi-path (ECMP) routing can be configured by specifying the **NextHopList** parameter.
-        *   When you add non-ECMP route entries, you must specify **DestinationCidrBlock**, **NextHopType**, and **NextHopId**, and you must not specify **NextHopList**.
-        *   When you add route entries for ECMP routing, you must specify **DestinationCidrBlock** and **NextHopList**, and you must not specify **NextHopType** or **NextHopId**.
-        **When you call this operation to add a custom route entry to the route table of a VBR, take note of the following limits:**\
-        *   A route table can contain up to 200 custom route entries.
-        *   The **NextHopList** parameter is not supported.
-        *   The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or a subset of it.
-        *   The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
-        *   If you do not include the mask length when you specify the destination CIDR block (**DestinationCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-        *   Multiple custom route entries can point to the same next hop (**NextHopId**).
-        *   The next hop (**NextHopId**) of a custom route entry must be a router interface associated with the VBR.
-        *   You can add route entries only when the VBR is in the **Active** state, and the Express Connect circuit associated with the VBR is in the **Enabled** state and is not locked due to overdue payments.
-        *   Only non-ECMP route entries are supported. When you add non-ECMP route entries, you must specify **DestinationCidrBlock**, **NextHopType**, and **NextHopId**, and you cannot specify **NextHopList**.
+        The ID of the route table to which you want to add a custom route entry.
         
         @param request: CreateRouteEntryRequest
         @return: CreateRouteEntryResponse
@@ -9413,6 +9291,8 @@ class Client(OpenApiClient):
             query['AccessPointId'] = request.access_point_id
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.client_token):
@@ -9506,6 +9386,8 @@ class Client(OpenApiClient):
             query['AccessPointId'] = request.access_point_id
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.client_token):
@@ -10209,10 +10091,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse:
         """
-        The **CreateTrafficMirrorFilterRules** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of an inbound or outbound rule:
-        *   If the rule is in the **Creating** state, the rule is being created.
-        *   If the rule is in the **Created** state, the rule is created.
-        *   You cannot repeatedly call the **CreateTrafficMirrorFilterRules** operation to create an inbound or outbound rule for a traffic mirroring filter.
+        The ID of the filter.
         
         @param request: CreateTrafficMirrorFilterRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10265,10 +10144,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse:
         """
-        The **CreateTrafficMirrorFilterRules** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of an inbound or outbound rule:
-        *   If the rule is in the **Creating** state, the rule is being created.
-        *   If the rule is in the **Created** state, the rule is created.
-        *   You cannot repeatedly call the **CreateTrafficMirrorFilterRules** operation to create an inbound or outbound rule for a traffic mirroring filter.
+        The ID of the filter.
         
         @param request: CreateTrafficMirrorFilterRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10320,10 +10196,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateTrafficMirrorFilterRulesRequest,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse:
         """
-        The **CreateTrafficMirrorFilterRules** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of an inbound or outbound rule:
-        *   If the rule is in the **Creating** state, the rule is being created.
-        *   If the rule is in the **Created** state, the rule is created.
-        *   You cannot repeatedly call the **CreateTrafficMirrorFilterRules** operation to create an inbound or outbound rule for a traffic mirroring filter.
+        The ID of the filter.
         
         @param request: CreateTrafficMirrorFilterRulesRequest
         @return: CreateTrafficMirrorFilterRulesResponse
@@ -10336,10 +10209,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateTrafficMirrorFilterRulesRequest,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse:
         """
-        The **CreateTrafficMirrorFilterRules** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of an inbound or outbound rule:
-        *   If the rule is in the **Creating** state, the rule is being created.
-        *   If the rule is in the **Created** state, the rule is created.
-        *   You cannot repeatedly call the **CreateTrafficMirrorFilterRules** operation to create an inbound or outbound rule for a traffic mirroring filter.
+        The ID of the filter.
         
         @param request: CreateTrafficMirrorFilterRulesRequest
         @return: CreateTrafficMirrorFilterRulesResponse
@@ -10935,7 +10805,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVirtualBorderRouterResponse:
         """
-        When you create a VBR, the VBR is in the *Enabled** state by default.
+        The ID of the Express Connect circuit.
+        You can create a VBR for a dedicated connection or a hosted connection.
         
         @param request: CreateVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11010,7 +10881,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVirtualBorderRouterResponse:
         """
-        When you create a VBR, the VBR is in the *Enabled** state by default.
+        The ID of the Express Connect circuit.
+        You can create a VBR for a dedicated connection or a hosted connection.
         
         @param request: CreateVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11084,7 +10956,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVirtualBorderRouterRequest,
     ) -> vpc_20160428_models.CreateVirtualBorderRouterResponse:
         """
-        When you create a VBR, the VBR is in the *Enabled** state by default.
+        The ID of the Express Connect circuit.
+        You can create a VBR for a dedicated connection or a hosted connection.
         
         @param request: CreateVirtualBorderRouterRequest
         @return: CreateVirtualBorderRouterResponse
@@ -11097,7 +10970,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVirtualBorderRouterRequest,
     ) -> vpc_20160428_models.CreateVirtualBorderRouterResponse:
         """
-        When you create a VBR, the VBR is in the *Enabled** state by default.
+        The ID of the Express Connect circuit.
+        You can create a VBR for a dedicated connection or a hosted connection.
         
         @param request: CreateVirtualBorderRouterRequest
         @return: CreateVirtualBorderRouterResponse
@@ -11111,7 +10985,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVirtualPhysicalConnectionResponse:
         """
-        Before you call this API operation, familiarize yourself with the workflow for creating a hosted connection and the environment requirements. For more information, see [Overview](~~146571~~) and [Operation guide for Express Connect partners](~~155987~~).
+        The payer for the hosted connection. Valid values:
+        *   **PayByPhysicalConnectionOwner**: The partner pays for the hosted connection.
+        *   **PayByVirtualPhysicalConnectionOwner**: The tenant pays for the hosted connection.
         
         @param request: CreateVirtualPhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11168,7 +11044,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVirtualPhysicalConnectionResponse:
         """
-        Before you call this API operation, familiarize yourself with the workflow for creating a hosted connection and the environment requirements. For more information, see [Overview](~~146571~~) and [Operation guide for Express Connect partners](~~155987~~).
+        The payer for the hosted connection. Valid values:
+        *   **PayByPhysicalConnectionOwner**: The partner pays for the hosted connection.
+        *   **PayByVirtualPhysicalConnectionOwner**: The tenant pays for the hosted connection.
         
         @param request: CreateVirtualPhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11224,7 +11102,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVirtualPhysicalConnectionRequest,
     ) -> vpc_20160428_models.CreateVirtualPhysicalConnectionResponse:
         """
-        Before you call this API operation, familiarize yourself with the workflow for creating a hosted connection and the environment requirements. For more information, see [Overview](~~146571~~) and [Operation guide for Express Connect partners](~~155987~~).
+        The payer for the hosted connection. Valid values:
+        *   **PayByPhysicalConnectionOwner**: The partner pays for the hosted connection.
+        *   **PayByVirtualPhysicalConnectionOwner**: The tenant pays for the hosted connection.
         
         @param request: CreateVirtualPhysicalConnectionRequest
         @return: CreateVirtualPhysicalConnectionResponse
@@ -11237,7 +11117,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVirtualPhysicalConnectionRequest,
     ) -> vpc_20160428_models.CreateVirtualPhysicalConnectionResponse:
         """
-        Before you call this API operation, familiarize yourself with the workflow for creating a hosted connection and the environment requirements. For more information, see [Overview](~~146571~~) and [Operation guide for Express Connect partners](~~155987~~).
+        The payer for the hosted connection. Valid values:
+        *   **PayByPhysicalConnectionOwner**: The partner pays for the hosted connection.
+        *   **PayByVirtualPhysicalConnectionOwner**: The tenant pays for the hosted connection.
         
         @param request: CreateVirtualPhysicalConnectionRequest
         @return: CreateVirtualPhysicalConnectionResponse
@@ -11443,10 +11325,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
         """
-        **CreateVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns an **EndpointId** and runs the task in the background. You can call the [GetDhcpOptionsSet](~~189208~~) operation to query the status of a gateway endpoint.
-        *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
-        *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
-        *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
+        The description of the gateway endpoint.
+        The description must be 1 to 255 characters in length.
         
         @param request: CreateVpcGatewayEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11505,10 +11385,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
         """
-        **CreateVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns an **EndpointId** and runs the task in the background. You can call the [GetDhcpOptionsSet](~~189208~~) operation to query the status of a gateway endpoint.
-        *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
-        *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
-        *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
+        The description of the gateway endpoint.
+        The description must be 1 to 255 characters in length.
         
         @param request: CreateVpcGatewayEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11566,10 +11444,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpcGatewayEndpointRequest,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
         """
-        **CreateVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns an **EndpointId** and runs the task in the background. You can call the [GetDhcpOptionsSet](~~189208~~) operation to query the status of a gateway endpoint.
-        *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
-        *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
-        *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
+        The description of the gateway endpoint.
+        The description must be 1 to 255 characters in length.
         
         @param request: CreateVpcGatewayEndpointRequest
         @return: CreateVpcGatewayEndpointResponse
@@ -11582,10 +11458,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpcGatewayEndpointRequest,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
         """
-        **CreateVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns an **EndpointId** and runs the task in the background. You can call the [GetDhcpOptionsSet](~~189208~~) operation to query the status of a gateway endpoint.
-        *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
-        *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
-        *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
+        The description of the gateway endpoint.
+        The description must be 1 to 255 characters in length.
         
         @param request: CreateVpcGatewayEndpointRequest
         @return: CreateVpcGatewayEndpointResponse
@@ -11743,12 +11617,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpconnFromVbrResponse:
         """
-        If an Express Connect partner has created a virtual border router (VBR) for a tenant before, the Express Connect partner can push the Express Connect circuit that is associated with the VBR to the tenant account by adding a shared port for the tenant account. The service of the tenant is not interrupted in this process.
-        Preparations:
-        Before the Express Connect partner performs the operation, the Express Connect partner must notify the tenant and request the tenant to enable outbound data transfer billing. For more information, see [Enable outbound data transfer billing](~~274385~~).
-        What to do next:
-        1\\. After the Express Connect partner performs the operation, a shared port is added for the tenant account. The tenant must call the [ConfirmPhysicalConnection](~~324198~~) operation to accept the shared port.
-        2\\. Then, the Express Connect partner must call the [AttachVbrToVpconn](~~324191~~) operation to associate the VBR with the newly added shared port that belongs to the tenant account.
+        Specifies the party that must pay for the shared Express Connect circuit. Valid values:
+        *   **PayByPhysicalConnectionOwner**: If you set the value to PayByPhysicalConnectionOwner, the Express Connect partner must pay for the shared Express Connect circuit.
+        *   **PayByVirtualPhysicalConnectionOwner**: If you set the value to PayByVirtualPhysicalConnectionOwner, the tenant must pay for the shared Express Connect circuit.
         
         @param request: CreateVpconnFromVbrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11791,12 +11662,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpconnFromVbrResponse:
         """
-        If an Express Connect partner has created a virtual border router (VBR) for a tenant before, the Express Connect partner can push the Express Connect circuit that is associated with the VBR to the tenant account by adding a shared port for the tenant account. The service of the tenant is not interrupted in this process.
-        Preparations:
-        Before the Express Connect partner performs the operation, the Express Connect partner must notify the tenant and request the tenant to enable outbound data transfer billing. For more information, see [Enable outbound data transfer billing](~~274385~~).
-        What to do next:
-        1\\. After the Express Connect partner performs the operation, a shared port is added for the tenant account. The tenant must call the [ConfirmPhysicalConnection](~~324198~~) operation to accept the shared port.
-        2\\. Then, the Express Connect partner must call the [AttachVbrToVpconn](~~324191~~) operation to associate the VBR with the newly added shared port that belongs to the tenant account.
+        Specifies the party that must pay for the shared Express Connect circuit. Valid values:
+        *   **PayByPhysicalConnectionOwner**: If you set the value to PayByPhysicalConnectionOwner, the Express Connect partner must pay for the shared Express Connect circuit.
+        *   **PayByVirtualPhysicalConnectionOwner**: If you set the value to PayByVirtualPhysicalConnectionOwner, the tenant must pay for the shared Express Connect circuit.
         
         @param request: CreateVpconnFromVbrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11838,12 +11706,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpconnFromVbrRequest,
     ) -> vpc_20160428_models.CreateVpconnFromVbrResponse:
         """
-        If an Express Connect partner has created a virtual border router (VBR) for a tenant before, the Express Connect partner can push the Express Connect circuit that is associated with the VBR to the tenant account by adding a shared port for the tenant account. The service of the tenant is not interrupted in this process.
-        Preparations:
-        Before the Express Connect partner performs the operation, the Express Connect partner must notify the tenant and request the tenant to enable outbound data transfer billing. For more information, see [Enable outbound data transfer billing](~~274385~~).
-        What to do next:
-        1\\. After the Express Connect partner performs the operation, a shared port is added for the tenant account. The tenant must call the [ConfirmPhysicalConnection](~~324198~~) operation to accept the shared port.
-        2\\. Then, the Express Connect partner must call the [AttachVbrToVpconn](~~324191~~) operation to associate the VBR with the newly added shared port that belongs to the tenant account.
+        Specifies the party that must pay for the shared Express Connect circuit. Valid values:
+        *   **PayByPhysicalConnectionOwner**: If you set the value to PayByPhysicalConnectionOwner, the Express Connect partner must pay for the shared Express Connect circuit.
+        *   **PayByVirtualPhysicalConnectionOwner**: If you set the value to PayByVirtualPhysicalConnectionOwner, the tenant must pay for the shared Express Connect circuit.
         
         @param request: CreateVpconnFromVbrRequest
         @return: CreateVpconnFromVbrResponse
@@ -11856,12 +11721,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpconnFromVbrRequest,
     ) -> vpc_20160428_models.CreateVpconnFromVbrResponse:
         """
-        If an Express Connect partner has created a virtual border router (VBR) for a tenant before, the Express Connect partner can push the Express Connect circuit that is associated with the VBR to the tenant account by adding a shared port for the tenant account. The service of the tenant is not interrupted in this process.
-        Preparations:
-        Before the Express Connect partner performs the operation, the Express Connect partner must notify the tenant and request the tenant to enable outbound data transfer billing. For more information, see [Enable outbound data transfer billing](~~274385~~).
-        What to do next:
-        1\\. After the Express Connect partner performs the operation, a shared port is added for the tenant account. The tenant must call the [ConfirmPhysicalConnection](~~324198~~) operation to accept the shared port.
-        2\\. Then, the Express Connect partner must call the [AttachVbrToVpconn](~~324191~~) operation to associate the VBR with the newly added shared port that belongs to the tenant account.
+        Specifies the party that must pay for the shared Express Connect circuit. Valid values:
+        *   **PayByPhysicalConnectionOwner**: If you set the value to PayByPhysicalConnectionOwner, the Express Connect partner must pay for the shared Express Connect circuit.
+        *   **PayByVirtualPhysicalConnectionOwner**: If you set the value to PayByVirtualPhysicalConnectionOwner, the tenant must pay for the shared Express Connect circuit.
         
         @param request: CreateVpconnFromVbrRequest
         @return: CreateVpconnFromVbrResponse
@@ -13845,10 +13707,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteFullNatEntryResponse:
         """
-        *DeleteFullNatEntry** is an asynchronous operation. After you make a request, the ID of the request is returned but the FULLNAT entry is not deleted. The system deletes the FULLNAT entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   If the FULLNAT entry is in the **Deleting** state, the system is deleting the FULLNAT entry. In this case, you can query the status of the FULLNAT entry, but cannot perform other operations.
-        *   If the FULLNAT entry cannot be found, the FULLNAT entry is deleted.
-        You cannot repeatedly call the **DeleteFullNatEntry** operation to delete a FULLNAT entry within the specified period of time.
+        The operation that you want to perform. Set the value to *DeleteFullNatEntry**.
         
         @param request: DeleteFullNatEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13899,10 +13758,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteFullNatEntryResponse:
         """
-        *DeleteFullNatEntry** is an asynchronous operation. After you make a request, the ID of the request is returned but the FULLNAT entry is not deleted. The system deletes the FULLNAT entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   If the FULLNAT entry is in the **Deleting** state, the system is deleting the FULLNAT entry. In this case, you can query the status of the FULLNAT entry, but cannot perform other operations.
-        *   If the FULLNAT entry cannot be found, the FULLNAT entry is deleted.
-        You cannot repeatedly call the **DeleteFullNatEntry** operation to delete a FULLNAT entry within the specified period of time.
+        The operation that you want to perform. Set the value to *DeleteFullNatEntry**.
         
         @param request: DeleteFullNatEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13952,10 +13808,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteFullNatEntryRequest,
     ) -> vpc_20160428_models.DeleteFullNatEntryResponse:
         """
-        *DeleteFullNatEntry** is an asynchronous operation. After you make a request, the ID of the request is returned but the FULLNAT entry is not deleted. The system deletes the FULLNAT entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   If the FULLNAT entry is in the **Deleting** state, the system is deleting the FULLNAT entry. In this case, you can query the status of the FULLNAT entry, but cannot perform other operations.
-        *   If the FULLNAT entry cannot be found, the FULLNAT entry is deleted.
-        You cannot repeatedly call the **DeleteFullNatEntry** operation to delete a FULLNAT entry within the specified period of time.
+        The operation that you want to perform. Set the value to *DeleteFullNatEntry**.
         
         @param request: DeleteFullNatEntryRequest
         @return: DeleteFullNatEntryResponse
@@ -13968,10 +13821,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteFullNatEntryRequest,
     ) -> vpc_20160428_models.DeleteFullNatEntryResponse:
         """
-        *DeleteFullNatEntry** is an asynchronous operation. After you make a request, the ID of the request is returned but the FULLNAT entry is not deleted. The system deletes the FULLNAT entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   If the FULLNAT entry is in the **Deleting** state, the system is deleting the FULLNAT entry. In this case, you can query the status of the FULLNAT entry, but cannot perform other operations.
-        *   If the FULLNAT entry cannot be found, the FULLNAT entry is deleted.
-        You cannot repeatedly call the **DeleteFullNatEntry** operation to delete a FULLNAT entry within the specified period of time.
+        The operation that you want to perform. Set the value to *DeleteFullNatEntry**.
         
         @param request: DeleteFullNatEntryRequest
         @return: DeleteFullNatEntryResponse
@@ -13984,6 +13834,16 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteGlobalAccelerationInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   You can delete only pay-as-you-go instances.
+        *   Before you can delete a dedicated instance, disassociate the backend server from the instance first.
+        *   Before you can delete a shared instance, disassociate the elastic IP address (EIP) from the instance first.
+        
+        @param request: DeleteGlobalAccelerationInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGlobalAccelerationInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.global_acceleration_instance_id):
@@ -14022,6 +13882,16 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteGlobalAccelerationInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   You can delete only pay-as-you-go instances.
+        *   Before you can delete a dedicated instance, disassociate the backend server from the instance first.
+        *   Before you can delete a shared instance, disassociate the elastic IP address (EIP) from the instance first.
+        
+        @param request: DeleteGlobalAccelerationInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGlobalAccelerationInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.global_acceleration_instance_id):
@@ -14059,6 +13929,15 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DeleteGlobalAccelerationInstanceRequest,
     ) -> vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   You can delete only pay-as-you-go instances.
+        *   Before you can delete a dedicated instance, disassociate the backend server from the instance first.
+        *   Before you can delete a shared instance, disassociate the elastic IP address (EIP) from the instance first.
+        
+        @param request: DeleteGlobalAccelerationInstanceRequest
+        @return: DeleteGlobalAccelerationInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_global_acceleration_instance_with_options(request, runtime)
 
@@ -14066,6 +13945,15 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DeleteGlobalAccelerationInstanceRequest,
     ) -> vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   You can delete only pay-as-you-go instances.
+        *   Before you can delete a dedicated instance, disassociate the backend server from the instance first.
+        *   Before you can delete a shared instance, disassociate the elastic IP address (EIP) from the instance first.
+        
+        @param request: DeleteGlobalAccelerationInstanceRequest
+        @return: DeleteGlobalAccelerationInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_global_acceleration_instance_with_options_async(request, runtime)
 
@@ -14629,11 +14517,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpv4GatewayResponse:
         """
-        Before you delete an IPv4 gateway, make sure that no route tables are associated with the IPv4 gateway.
-        *   The **DeleteIpv4Gateway** operation is an asynchronous operation. After you call this operation, the system returns a **request ID**. However, the deletion task is still being run in the background. You can call the [GetIpv4GatewayAttribute](~~407670~~) operation to query the status of the IPv4 gateway.
-        *   If the IPv4 gateway is in the **Deleting** state, the IPv4 gateway is being deleted.
-        *   If the IPv4 gateway cannot be queried, the deletion is complete.
-        *   After you call the **DeleteIpv4Gateway** operation to delete an IPv4 gateway, you cannot call the operation again to delete the IPv4 gateway until the deletion task is complete.
+        The ID of the IPv4 gateway that you want to delete.
         
         @param request: DeleteIpv4GatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14684,11 +14568,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpv4GatewayResponse:
         """
-        Before you delete an IPv4 gateway, make sure that no route tables are associated with the IPv4 gateway.
-        *   The **DeleteIpv4Gateway** operation is an asynchronous operation. After you call this operation, the system returns a **request ID**. However, the deletion task is still being run in the background. You can call the [GetIpv4GatewayAttribute](~~407670~~) operation to query the status of the IPv4 gateway.
-        *   If the IPv4 gateway is in the **Deleting** state, the IPv4 gateway is being deleted.
-        *   If the IPv4 gateway cannot be queried, the deletion is complete.
-        *   After you call the **DeleteIpv4Gateway** operation to delete an IPv4 gateway, you cannot call the operation again to delete the IPv4 gateway until the deletion task is complete.
+        The ID of the IPv4 gateway that you want to delete.
         
         @param request: DeleteIpv4GatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14738,11 +14618,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteIpv4GatewayRequest,
     ) -> vpc_20160428_models.DeleteIpv4GatewayResponse:
         """
-        Before you delete an IPv4 gateway, make sure that no route tables are associated with the IPv4 gateway.
-        *   The **DeleteIpv4Gateway** operation is an asynchronous operation. After you call this operation, the system returns a **request ID**. However, the deletion task is still being run in the background. You can call the [GetIpv4GatewayAttribute](~~407670~~) operation to query the status of the IPv4 gateway.
-        *   If the IPv4 gateway is in the **Deleting** state, the IPv4 gateway is being deleted.
-        *   If the IPv4 gateway cannot be queried, the deletion is complete.
-        *   After you call the **DeleteIpv4Gateway** operation to delete an IPv4 gateway, you cannot call the operation again to delete the IPv4 gateway until the deletion task is complete.
+        The ID of the IPv4 gateway that you want to delete.
         
         @param request: DeleteIpv4GatewayRequest
         @return: DeleteIpv4GatewayResponse
@@ -14755,11 +14631,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteIpv4GatewayRequest,
     ) -> vpc_20160428_models.DeleteIpv4GatewayResponse:
         """
-        Before you delete an IPv4 gateway, make sure that no route tables are associated with the IPv4 gateway.
-        *   The **DeleteIpv4Gateway** operation is an asynchronous operation. After you call this operation, the system returns a **request ID**. However, the deletion task is still being run in the background. You can call the [GetIpv4GatewayAttribute](~~407670~~) operation to query the status of the IPv4 gateway.
-        *   If the IPv4 gateway is in the **Deleting** state, the IPv4 gateway is being deleted.
-        *   If the IPv4 gateway cannot be queried, the deletion is complete.
-        *   After you call the **DeleteIpv4Gateway** operation to delete an IPv4 gateway, you cannot call the operation again to delete the IPv4 gateway until the deletion task is complete.
+        The ID of the IPv4 gateway that you want to delete.
         
         @param request: DeleteIpv4GatewayRequest
         @return: DeleteIpv4GatewayResponse
@@ -15169,11 +15041,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatGatewayResponse:
         """
-        **DeleteNatGateway** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT gateway is not deleted. The system deletes the NAT gateway in the background. You can call the [DescribeNatGateways](~~36054~~) to query the status of a NAT gateway.
-        *   If a NAT gateway is in the **Deleting** state, the NAT gateway is being deleted. In this case, you can query the NAT gateway but you cannot perform other operations.
-        *   If the NAY gateway cannot be found, the NAT gateway is deleted.
-        After you delete a NAT gateway, you cannot restore the NAT gateway. Proceed with caution.
-        *   You cannot repeatedly call the **DeleteNatGateway** operation to delete a NAT gateway within the specified period of time.
+        The ID of the region where the NAT gateway is deployed.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: DeleteNatGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15220,11 +15089,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatGatewayResponse:
         """
-        **DeleteNatGateway** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT gateway is not deleted. The system deletes the NAT gateway in the background. You can call the [DescribeNatGateways](~~36054~~) to query the status of a NAT gateway.
-        *   If a NAT gateway is in the **Deleting** state, the NAT gateway is being deleted. In this case, you can query the NAT gateway but you cannot perform other operations.
-        *   If the NAY gateway cannot be found, the NAT gateway is deleted.
-        After you delete a NAT gateway, you cannot restore the NAT gateway. Proceed with caution.
-        *   You cannot repeatedly call the **DeleteNatGateway** operation to delete a NAT gateway within the specified period of time.
+        The ID of the region where the NAT gateway is deployed.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: DeleteNatGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15270,11 +15136,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteNatGatewayRequest,
     ) -> vpc_20160428_models.DeleteNatGatewayResponse:
         """
-        **DeleteNatGateway** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT gateway is not deleted. The system deletes the NAT gateway in the background. You can call the [DescribeNatGateways](~~36054~~) to query the status of a NAT gateway.
-        *   If a NAT gateway is in the **Deleting** state, the NAT gateway is being deleted. In this case, you can query the NAT gateway but you cannot perform other operations.
-        *   If the NAY gateway cannot be found, the NAT gateway is deleted.
-        After you delete a NAT gateway, you cannot restore the NAT gateway. Proceed with caution.
-        *   You cannot repeatedly call the **DeleteNatGateway** operation to delete a NAT gateway within the specified period of time.
+        The ID of the region where the NAT gateway is deployed.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: DeleteNatGatewayRequest
         @return: DeleteNatGatewayResponse
@@ -15287,11 +15150,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteNatGatewayRequest,
     ) -> vpc_20160428_models.DeleteNatGatewayResponse:
         """
-        **DeleteNatGateway** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT gateway is not deleted. The system deletes the NAT gateway in the background. You can call the [DescribeNatGateways](~~36054~~) to query the status of a NAT gateway.
-        *   If a NAT gateway is in the **Deleting** state, the NAT gateway is being deleted. In this case, you can query the NAT gateway but you cannot perform other operations.
-        *   If the NAY gateway cannot be found, the NAT gateway is deleted.
-        After you delete a NAT gateway, you cannot restore the NAT gateway. Proceed with caution.
-        *   You cannot repeatedly call the **DeleteNatGateway** operation to delete a NAT gateway within the specified period of time.
+        The ID of the region where the NAT gateway is deployed.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: DeleteNatGatewayRequest
         @return: DeleteNatGatewayResponse
@@ -15305,10 +15165,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatIpResponse:
         """
-        **DeleteNatIp** is an asynchronous operation. After you make a request, the ID of the request is returned but the specified NAT IP address is not deleted. The system deletes the NAT IP address in the background. You can call the [ListNatIps](~~281979~~) operation to query the status of a NAT IP address.
-        *   If a NAT IP address is in the **Deleting** state, the NAT IP address is being deleted. In this case, you can only query the NAT IP address but cannot perform other operations.
-        *   If the NAT IP address cannot be found, it is deleted.
-        *   You cannot repeatedly call the **DeleteNatIp** operation to delete a NAT IP address within the specified period of time.
+        The ID of the NAT IP address that you want to delete.
         
         @param request: DeleteNatIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15359,10 +15216,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatIpResponse:
         """
-        **DeleteNatIp** is an asynchronous operation. After you make a request, the ID of the request is returned but the specified NAT IP address is not deleted. The system deletes the NAT IP address in the background. You can call the [ListNatIps](~~281979~~) operation to query the status of a NAT IP address.
-        *   If a NAT IP address is in the **Deleting** state, the NAT IP address is being deleted. In this case, you can only query the NAT IP address but cannot perform other operations.
-        *   If the NAT IP address cannot be found, it is deleted.
-        *   You cannot repeatedly call the **DeleteNatIp** operation to delete a NAT IP address within the specified period of time.
+        The ID of the NAT IP address that you want to delete.
         
         @param request: DeleteNatIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15412,10 +15266,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteNatIpRequest,
     ) -> vpc_20160428_models.DeleteNatIpResponse:
         """
-        **DeleteNatIp** is an asynchronous operation. After you make a request, the ID of the request is returned but the specified NAT IP address is not deleted. The system deletes the NAT IP address in the background. You can call the [ListNatIps](~~281979~~) operation to query the status of a NAT IP address.
-        *   If a NAT IP address is in the **Deleting** state, the NAT IP address is being deleted. In this case, you can only query the NAT IP address but cannot perform other operations.
-        *   If the NAT IP address cannot be found, it is deleted.
-        *   You cannot repeatedly call the **DeleteNatIp** operation to delete a NAT IP address within the specified period of time.
+        The ID of the NAT IP address that you want to delete.
         
         @param request: DeleteNatIpRequest
         @return: DeleteNatIpResponse
@@ -15428,10 +15279,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteNatIpRequest,
     ) -> vpc_20160428_models.DeleteNatIpResponse:
         """
-        **DeleteNatIp** is an asynchronous operation. After you make a request, the ID of the request is returned but the specified NAT IP address is not deleted. The system deletes the NAT IP address in the background. You can call the [ListNatIps](~~281979~~) operation to query the status of a NAT IP address.
-        *   If a NAT IP address is in the **Deleting** state, the NAT IP address is being deleted. In this case, you can only query the NAT IP address but cannot perform other operations.
-        *   If the NAT IP address cannot be found, it is deleted.
-        *   You cannot repeatedly call the **DeleteNatIp** operation to delete a NAT IP address within the specified period of time.
+        The ID of the NAT IP address that you want to delete.
         
         @param request: DeleteNatIpRequest
         @return: DeleteNatIpResponse
@@ -15445,7 +15293,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         """
-        You cannot repeatedly call the *DeleteNatIpCidr** operation to delete a NAT CIDR block within the specified period of time.
+        The NAT CIDR block to be deleted.
+        *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
+        *   The default NAT CIDR block cannot be deleted.
         
         @param request: DeleteNatIpCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15498,7 +15348,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         """
-        You cannot repeatedly call the *DeleteNatIpCidr** operation to delete a NAT CIDR block within the specified period of time.
+        The NAT CIDR block to be deleted.
+        *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
+        *   The default NAT CIDR block cannot be deleted.
         
         @param request: DeleteNatIpCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15550,7 +15402,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteNatIpCidrRequest,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         """
-        You cannot repeatedly call the *DeleteNatIpCidr** operation to delete a NAT CIDR block within the specified period of time.
+        The NAT CIDR block to be deleted.
+        *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
+        *   The default NAT CIDR block cannot be deleted.
         
         @param request: DeleteNatIpCidrRequest
         @return: DeleteNatIpCidrResponse
@@ -15563,7 +15417,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteNatIpCidrRequest,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         """
-        You cannot repeatedly call the *DeleteNatIpCidr** operation to delete a NAT CIDR block within the specified period of time.
+        The NAT CIDR block to be deleted.
+        *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
+        *   The default NAT CIDR block cannot be deleted.
         
         @param request: DeleteNatIpCidrRequest
         @return: DeleteNatIpCidrResponse
@@ -15821,12 +15677,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeletePublicIpAddressPoolResponse:
         """
-        The **DeletePublicIpAddressPool** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of an IP address pool:
-        *   If the IP address pool is in the **Deleting** state, the IP address pool is being deleted. In this state. you can only query the IP address pool and cannot perform other operations.
-        *   If you cannot query the IP address pool, the IP address pool is deleted.
-        *   You cannot repeatedly call the **DeletePublicIpAddressPool** operation to delete an IP address pool within the specified period of time.
-        ## Prerequisites
-        Before you delete an IP address pool, make sure that no IP address in the pool is being used.
+        The ID of the IP address pool.
         
         @param request: DeletePublicIpAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15875,12 +15726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeletePublicIpAddressPoolResponse:
         """
-        The **DeletePublicIpAddressPool** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of an IP address pool:
-        *   If the IP address pool is in the **Deleting** state, the IP address pool is being deleted. In this state. you can only query the IP address pool and cannot perform other operations.
-        *   If you cannot query the IP address pool, the IP address pool is deleted.
-        *   You cannot repeatedly call the **DeletePublicIpAddressPool** operation to delete an IP address pool within the specified period of time.
-        ## Prerequisites
-        Before you delete an IP address pool, make sure that no IP address in the pool is being used.
+        The ID of the IP address pool.
         
         @param request: DeletePublicIpAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15928,12 +15774,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeletePublicIpAddressPoolRequest,
     ) -> vpc_20160428_models.DeletePublicIpAddressPoolResponse:
         """
-        The **DeletePublicIpAddressPool** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of an IP address pool:
-        *   If the IP address pool is in the **Deleting** state, the IP address pool is being deleted. In this state. you can only query the IP address pool and cannot perform other operations.
-        *   If you cannot query the IP address pool, the IP address pool is deleted.
-        *   You cannot repeatedly call the **DeletePublicIpAddressPool** operation to delete an IP address pool within the specified period of time.
-        ## Prerequisites
-        Before you delete an IP address pool, make sure that no IP address in the pool is being used.
+        The ID of the IP address pool.
         
         @param request: DeletePublicIpAddressPoolRequest
         @return: DeletePublicIpAddressPoolResponse
@@ -15946,12 +15787,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeletePublicIpAddressPoolRequest,
     ) -> vpc_20160428_models.DeletePublicIpAddressPoolResponse:
         """
-        The **DeletePublicIpAddressPool** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of an IP address pool:
-        *   If the IP address pool is in the **Deleting** state, the IP address pool is being deleted. In this state. you can only query the IP address pool and cannot perform other operations.
-        *   If you cannot query the IP address pool, the IP address pool is deleted.
-        *   You cannot repeatedly call the **DeletePublicIpAddressPool** operation to delete an IP address pool within the specified period of time.
-        ## Prerequisites
-        Before you delete an IP address pool, make sure that no IP address in the pool is being used.
+        The ID of the IP address pool.
         
         @param request: DeletePublicIpAddressPoolRequest
         @return: DeletePublicIpAddressPoolResponse
@@ -15965,12 +15801,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeletePublicIpAddressPoolCidrBlockResponse:
         """
-        The **DeletePublicIpAddressPoolCidrBlock** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of a CIDR block in an IP address pool:
-        *   If the CIDR block is in the **Deleting** state, the CIDR block is being deleted. In this state, you can only query the CIDR block and cannot perform other operations.
-        *   If you cannot query the CIDR block, the CIDR block is deleted.
-        *   You cannot repeatedly call the **DeletePublicIpAddressPoolCidrBlock** operation to delete a CIDR block within the specified period of time.
-        ## Prerequisites
-        Before you delete a CIDR block, make sure that it is not being used.
+        The ID of the IP address pool.
         
         @param request: DeletePublicIpAddressPoolCidrBlockRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16021,12 +15852,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeletePublicIpAddressPoolCidrBlockResponse:
         """
-        The **DeletePublicIpAddressPoolCidrBlock** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of a CIDR block in an IP address pool:
-        *   If the CIDR block is in the **Deleting** state, the CIDR block is being deleted. In this state, you can only query the CIDR block and cannot perform other operations.
-        *   If you cannot query the CIDR block, the CIDR block is deleted.
-        *   You cannot repeatedly call the **DeletePublicIpAddressPoolCidrBlock** operation to delete a CIDR block within the specified period of time.
-        ## Prerequisites
-        Before you delete a CIDR block, make sure that it is not being used.
+        The ID of the IP address pool.
         
         @param request: DeletePublicIpAddressPoolCidrBlockRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16076,12 +15902,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeletePublicIpAddressPoolCidrBlockRequest,
     ) -> vpc_20160428_models.DeletePublicIpAddressPoolCidrBlockResponse:
         """
-        The **DeletePublicIpAddressPoolCidrBlock** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of a CIDR block in an IP address pool:
-        *   If the CIDR block is in the **Deleting** state, the CIDR block is being deleted. In this state, you can only query the CIDR block and cannot perform other operations.
-        *   If you cannot query the CIDR block, the CIDR block is deleted.
-        *   You cannot repeatedly call the **DeletePublicIpAddressPoolCidrBlock** operation to delete a CIDR block within the specified period of time.
-        ## Prerequisites
-        Before you delete a CIDR block, make sure that it is not being used.
+        The ID of the IP address pool.
         
         @param request: DeletePublicIpAddressPoolCidrBlockRequest
         @return: DeletePublicIpAddressPoolCidrBlockResponse
@@ -16094,12 +15915,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeletePublicIpAddressPoolCidrBlockRequest,
     ) -> vpc_20160428_models.DeletePublicIpAddressPoolCidrBlockResponse:
         """
-        The **DeletePublicIpAddressPoolCidrBlock** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of a CIDR block in an IP address pool:
-        *   If the CIDR block is in the **Deleting** state, the CIDR block is being deleted. In this state, you can only query the CIDR block and cannot perform other operations.
-        *   If you cannot query the CIDR block, the CIDR block is deleted.
-        *   You cannot repeatedly call the **DeletePublicIpAddressPoolCidrBlock** operation to delete a CIDR block within the specified period of time.
-        ## Prerequisites
-        Before you delete a CIDR block, make sure that it is not being used.
+        The ID of the IP address pool.
         
         @param request: DeletePublicIpAddressPoolCidrBlockRequest
         @return: DeletePublicIpAddressPoolCidrBlockResponse
@@ -17077,10 +16893,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterResponse:
         """
-        The **DeleteTrafficMirrorFilter** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of a filter:
-        *   If the filter is in the **Deleting** state, the filter is being deleted.
-        *   If you cannot query the filter, the filter is deleted.
-        *   You cannot repeatedly call the **DeleteTrafficMirrorFilter** operation to delete a filter within the specified period of time.
+        The ID of the filter.
         
         @param request: DeleteTrafficMirrorFilterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17129,10 +16942,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterResponse:
         """
-        The **DeleteTrafficMirrorFilter** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of a filter:
-        *   If the filter is in the **Deleting** state, the filter is being deleted.
-        *   If you cannot query the filter, the filter is deleted.
-        *   You cannot repeatedly call the **DeleteTrafficMirrorFilter** operation to delete a filter within the specified period of time.
+        The ID of the filter.
         
         @param request: DeleteTrafficMirrorFilterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17180,10 +16990,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteTrafficMirrorFilterRequest,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterResponse:
         """
-        The **DeleteTrafficMirrorFilter** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of a filter:
-        *   If the filter is in the **Deleting** state, the filter is being deleted.
-        *   If you cannot query the filter, the filter is deleted.
-        *   You cannot repeatedly call the **DeleteTrafficMirrorFilter** operation to delete a filter within the specified period of time.
+        The ID of the filter.
         
         @param request: DeleteTrafficMirrorFilterRequest
         @return: DeleteTrafficMirrorFilterResponse
@@ -17196,10 +17003,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteTrafficMirrorFilterRequest,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterResponse:
         """
-        The **DeleteTrafficMirrorFilter** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](~~261353~~) operation to query the status of a filter:
-        *   If the filter is in the **Deleting** state, the filter is being deleted.
-        *   If you cannot query the filter, the filter is deleted.
-        *   You cannot repeatedly call the **DeleteTrafficMirrorFilter** operation to delete a filter within the specified period of time.
+        The ID of the filter.
         
         @param request: DeleteTrafficMirrorFilterRequest
         @return: DeleteTrafficMirrorFilterResponse
@@ -18237,7 +18041,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpcPrefixListResponse:
         """
-        You cannot repeatedly call the *DeleteDhcpOptionsSet** operation to delete a prefix list within the specified period of time.
+        The ID of the prefix list that you want to delete.
         
         @param request: DeleteVpcPrefixListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18286,7 +18090,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpcPrefixListResponse:
         """
-        You cannot repeatedly call the *DeleteDhcpOptionsSet** operation to delete a prefix list within the specified period of time.
+        The ID of the prefix list that you want to delete.
         
         @param request: DeleteVpcPrefixListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18334,7 +18138,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteVpcPrefixListRequest,
     ) -> vpc_20160428_models.DeleteVpcPrefixListResponse:
         """
-        You cannot repeatedly call the *DeleteDhcpOptionsSet** operation to delete a prefix list within the specified period of time.
+        The ID of the prefix list that you want to delete.
         
         @param request: DeleteVpcPrefixListRequest
         @return: DeleteVpcPrefixListResponse
@@ -18347,7 +18151,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteVpcPrefixListRequest,
     ) -> vpc_20160428_models.DeleteVpcPrefixListResponse:
         """
-        You cannot repeatedly call the *DeleteDhcpOptionsSet** operation to delete a prefix list within the specified period of time.
+        The ID of the prefix list that you want to delete.
         
         @param request: DeleteVpcPrefixListRequest
         @return: DeleteVpcPrefixListResponse
@@ -19170,6 +18974,8 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.DescribeAccessPointsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
@@ -19208,6 +19014,8 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.DescribeAccessPointsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
@@ -19969,7 +19777,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeEipAddressesResponse:
         """
-        You can call this operation to query the information about EIPs in a specified region, including the maximum bandwidth, billing methods, and associated instances.
+        The number of the page to return. Default value: *1**.
         
         @param request: DescribeEipAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20048,7 +19856,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeEipAddressesResponse:
         """
-        You can call this operation to query the information about EIPs in a specified region, including the maximum bandwidth, billing methods, and associated instances.
+        The number of the page to return. Default value: *1**.
         
         @param request: DescribeEipAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20126,7 +19934,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeEipAddressesRequest,
     ) -> vpc_20160428_models.DescribeEipAddressesResponse:
         """
-        You can call this operation to query the information about EIPs in a specified region, including the maximum bandwidth, billing methods, and associated instances.
+        The number of the page to return. Default value: *1**.
         
         @param request: DescribeEipAddressesRequest
         @return: DescribeEipAddressesResponse
@@ -20139,7 +19947,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeEipAddressesRequest,
     ) -> vpc_20160428_models.DescribeEipAddressesResponse:
         """
-        You can call this operation to query the information about EIPs in a specified region, including the maximum bandwidth, billing methods, and associated instances.
+        The number of the page to return. Default value: *1**.
         
         @param request: DescribeEipAddressesRequest
         @return: DescribeEipAddressesResponse
@@ -23562,6 +23370,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse:
+        """
+        > You can call this operation to query only dedicated-bandwidth GA instances.
+        
+        @param request: DescribeServerRelatedGlobalAccelerationInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServerRelatedGlobalAccelerationInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -23602,6 +23417,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse:
+        """
+        > You can call this operation to query only dedicated-bandwidth GA instances.
+        
+        @param request: DescribeServerRelatedGlobalAccelerationInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServerRelatedGlobalAccelerationInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -23641,6 +23463,12 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesRequest,
     ) -> vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse:
+        """
+        > You can call this operation to query only dedicated-bandwidth GA instances.
+        
+        @param request: DescribeServerRelatedGlobalAccelerationInstancesRequest
+        @return: DescribeServerRelatedGlobalAccelerationInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_server_related_global_acceleration_instances_with_options(request, runtime)
 
@@ -23648,6 +23476,12 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesRequest,
     ) -> vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse:
+        """
+        > You can call this operation to query only dedicated-bandwidth GA instances.
+        
+        @param request: DescribeServerRelatedGlobalAccelerationInstancesRequest
+        @return: DescribeServerRelatedGlobalAccelerationInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_server_related_global_acceleration_instances_with_options_async(request, runtime)
 
@@ -26509,10 +26343,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse:
         """
-        The **DetachDhcpOptionsSetFromVpc** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of a DHCP options set:
-        *   If the DHCP options set is in the **Pending** state, the DHCP options set is being disassociated.
-        *   If the DHCP options set is in the **UnUsed** state, the DHCP options set is disassociated.
-        *   You cannot repeatedly call the **DetachDhcpOptionsSetFromVpc** operation to disassociate a DHCP options set from a VPC within the specified period of time.
+        The region to which the DHCP options set belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: DetachDhcpOptionsSetFromVpcRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26563,10 +26394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse:
         """
-        The **DetachDhcpOptionsSetFromVpc** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of a DHCP options set:
-        *   If the DHCP options set is in the **Pending** state, the DHCP options set is being disassociated.
-        *   If the DHCP options set is in the **UnUsed** state, the DHCP options set is disassociated.
-        *   You cannot repeatedly call the **DetachDhcpOptionsSetFromVpc** operation to disassociate a DHCP options set from a VPC within the specified period of time.
+        The region to which the DHCP options set belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: DetachDhcpOptionsSetFromVpcRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26616,10 +26444,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DetachDhcpOptionsSetFromVpcRequest,
     ) -> vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse:
         """
-        The **DetachDhcpOptionsSetFromVpc** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of a DHCP options set:
-        *   If the DHCP options set is in the **Pending** state, the DHCP options set is being disassociated.
-        *   If the DHCP options set is in the **UnUsed** state, the DHCP options set is disassociated.
-        *   You cannot repeatedly call the **DetachDhcpOptionsSetFromVpc** operation to disassociate a DHCP options set from a VPC within the specified period of time.
+        The region to which the DHCP options set belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: DetachDhcpOptionsSetFromVpcRequest
         @return: DetachDhcpOptionsSetFromVpcResponse
@@ -26632,10 +26457,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DetachDhcpOptionsSetFromVpcRequest,
     ) -> vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse:
         """
-        The **DetachDhcpOptionsSetFromVpc** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of a DHCP options set:
-        *   If the DHCP options set is in the **Pending** state, the DHCP options set is being disassociated.
-        *   If the DHCP options set is in the **UnUsed** state, the DHCP options set is disassociated.
-        *   You cannot repeatedly call the **DetachDhcpOptionsSetFromVpc** operation to disassociate a DHCP options set from a VPC within the specified period of time.
+        The region to which the DHCP options set belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: DetachDhcpOptionsSetFromVpcRequest
         @return: DetachDhcpOptionsSetFromVpcResponse
@@ -27148,6 +26970,17 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DissociateVpnGatewayWithCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse:
+        """
+        ## Usage notes
+        *   **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
+        *   If the VPN gateway is in the **updating** state, the SSL certificate is being disassociated from the VPN gateway.
+        *   If the VPN gateway is in the **active** state, the SSL certificate is disassociated from the VPN gateway.
+        *   You cannot repeatedly call **DissociateVpnGatewayWithCertificate** within a specific period of time.
+        
+        @param request: DissociateVpnGatewayWithCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DissociateVpnGatewayWithCertificateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.certificate_id):
@@ -27186,6 +27019,17 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DissociateVpnGatewayWithCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse:
+        """
+        ## Usage notes
+        *   **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
+        *   If the VPN gateway is in the **updating** state, the SSL certificate is being disassociated from the VPN gateway.
+        *   If the VPN gateway is in the **active** state, the SSL certificate is disassociated from the VPN gateway.
+        *   You cannot repeatedly call **DissociateVpnGatewayWithCertificate** within a specific period of time.
+        
+        @param request: DissociateVpnGatewayWithCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DissociateVpnGatewayWithCertificateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.certificate_id):
@@ -27223,6 +27067,16 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DissociateVpnGatewayWithCertificateRequest,
     ) -> vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse:
+        """
+        ## Usage notes
+        *   **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
+        *   If the VPN gateway is in the **updating** state, the SSL certificate is being disassociated from the VPN gateway.
+        *   If the VPN gateway is in the **active** state, the SSL certificate is disassociated from the VPN gateway.
+        *   You cannot repeatedly call **DissociateVpnGatewayWithCertificate** within a specific period of time.
+        
+        @param request: DissociateVpnGatewayWithCertificateRequest
+        @return: DissociateVpnGatewayWithCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.dissociate_vpn_gateway_with_certificate_with_options(request, runtime)
 
@@ -27230,6 +27084,16 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DissociateVpnGatewayWithCertificateRequest,
     ) -> vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse:
+        """
+        ## Usage notes
+        *   **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
+        *   If the VPN gateway is in the **updating** state, the SSL certificate is being disassociated from the VPN gateway.
+        *   If the VPN gateway is in the **active** state, the SSL certificate is disassociated from the VPN gateway.
+        *   You cannot repeatedly call **DissociateVpnGatewayWithCertificate** within a specific period of time.
+        
+        @param request: DissociateVpnGatewayWithCertificateRequest
+        @return: DissociateVpnGatewayWithCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.dissociate_vpn_gateway_with_certificate_with_options_async(request, runtime)
 
@@ -27411,9 +27275,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnablePhysicalConnectionResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   You can enable only an Express Connect circuit that is in the **Confirmed** state.
-        *   After you enable an Express Connect circuit, it changes to the **Enabled** state.
+        The region ID of the Express Connect circuit.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: EnablePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27460,9 +27323,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnablePhysicalConnectionResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   You can enable only an Express Connect circuit that is in the **Confirmed** state.
-        *   After you enable an Express Connect circuit, it changes to the **Enabled** state.
+        The region ID of the Express Connect circuit.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: EnablePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27508,9 +27370,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.EnablePhysicalConnectionRequest,
     ) -> vpc_20160428_models.EnablePhysicalConnectionResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   You can enable only an Express Connect circuit that is in the **Confirmed** state.
-        *   After you enable an Express Connect circuit, it changes to the **Enabled** state.
+        The region ID of the Express Connect circuit.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: EnablePhysicalConnectionRequest
         @return: EnablePhysicalConnectionResponse
@@ -27523,9 +27384,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.EnablePhysicalConnectionRequest,
     ) -> vpc_20160428_models.EnablePhysicalConnectionResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   You can enable only an Express Connect circuit that is in the **Confirmed** state.
-        *   After you enable an Express Connect circuit, it changes to the **Enabled** state.
+        The region ID of the Express Connect circuit.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         
         @param request: EnablePhysicalConnectionRequest
         @return: EnablePhysicalConnectionResponse
@@ -29070,6 +28930,14 @@ class Client(OpenApiClient):
         tmp_req: vpc_20160428_models.GrantInstanceToVbrRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GrantInstanceToVbrResponse:
+        """
+        ## Usage notes
+        When you connect a VBR to a VPC that belongs to another Alibaba Cloud account, the VBR must acquire the required permissions from the VPC.
+        
+        @param tmp_req: GrantInstanceToVbrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantInstanceToVbrResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = vpc_20160428_models.GrantInstanceToVbrShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -29112,6 +28980,14 @@ class Client(OpenApiClient):
         tmp_req: vpc_20160428_models.GrantInstanceToVbrRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GrantInstanceToVbrResponse:
+        """
+        ## Usage notes
+        When you connect a VBR to a VPC that belongs to another Alibaba Cloud account, the VBR must acquire the required permissions from the VPC.
+        
+        @param tmp_req: GrantInstanceToVbrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantInstanceToVbrResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = vpc_20160428_models.GrantInstanceToVbrShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -29153,6 +29029,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.GrantInstanceToVbrRequest,
     ) -> vpc_20160428_models.GrantInstanceToVbrResponse:
+        """
+        ## Usage notes
+        When you connect a VBR to a VPC that belongs to another Alibaba Cloud account, the VBR must acquire the required permissions from the VPC.
+        
+        @param request: GrantInstanceToVbrRequest
+        @return: GrantInstanceToVbrResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.grant_instance_to_vbr_with_options(request, runtime)
 
@@ -29160,6 +29043,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.GrantInstanceToVbrRequest,
     ) -> vpc_20160428_models.GrantInstanceToVbrResponse:
+        """
+        ## Usage notes
+        When you connect a VBR to a VPC that belongs to another Alibaba Cloud account, the VBR must acquire the required permissions from the VPC.
+        
+        @param request: GrantInstanceToVbrRequest
+        @return: GrantInstanceToVbrResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.grant_instance_to_vbr_with_options_async(request, runtime)
 
@@ -31504,6 +31394,18 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListVpnCertificateAssociationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVpnCertificateAssociationsResponse:
+        """
+        ## Usage notes
+        When you call **ListVpnCertificateAssociations**, take note of the following information:
+        *   If you specify only **RegionId**, the SSL certificates associated with all VPN gateways in the specified region are queried.
+        *   If you specify **RegionId** and **CertificateType**, the SSL certificates of the specified type that are associated with the VPN gateways in the specified region are queried.
+        *   If you specify **RegionId** and **VpnGatewayId**, the SSL certificates associated with the specified VPN gateway in the specified region are queried.
+        *   If you specify **RegionId** and **CertificateId**, the VPN gateways associated with the specified SSL certificate in the specified region are queried.
+        
+        @param request: ListVpnCertificateAssociationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpnCertificateAssociationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.certificate_id):
@@ -31542,6 +31444,18 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListVpnCertificateAssociationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVpnCertificateAssociationsResponse:
+        """
+        ## Usage notes
+        When you call **ListVpnCertificateAssociations**, take note of the following information:
+        *   If you specify only **RegionId**, the SSL certificates associated with all VPN gateways in the specified region are queried.
+        *   If you specify **RegionId** and **CertificateType**, the SSL certificates of the specified type that are associated with the VPN gateways in the specified region are queried.
+        *   If you specify **RegionId** and **VpnGatewayId**, the SSL certificates associated with the specified VPN gateway in the specified region are queried.
+        *   If you specify **RegionId** and **CertificateId**, the VPN gateways associated with the specified SSL certificate in the specified region are queried.
+        
+        @param request: ListVpnCertificateAssociationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpnCertificateAssociationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.certificate_id):
@@ -31579,6 +31493,17 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.ListVpnCertificateAssociationsRequest,
     ) -> vpc_20160428_models.ListVpnCertificateAssociationsResponse:
+        """
+        ## Usage notes
+        When you call **ListVpnCertificateAssociations**, take note of the following information:
+        *   If you specify only **RegionId**, the SSL certificates associated with all VPN gateways in the specified region are queried.
+        *   If you specify **RegionId** and **CertificateType**, the SSL certificates of the specified type that are associated with the VPN gateways in the specified region are queried.
+        *   If you specify **RegionId** and **VpnGatewayId**, the SSL certificates associated with the specified VPN gateway in the specified region are queried.
+        *   If you specify **RegionId** and **CertificateId**, the VPN gateways associated with the specified SSL certificate in the specified region are queried.
+        
+        @param request: ListVpnCertificateAssociationsRequest
+        @return: ListVpnCertificateAssociationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_vpn_certificate_associations_with_options(request, runtime)
 
@@ -31586,6 +31511,17 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.ListVpnCertificateAssociationsRequest,
     ) -> vpc_20160428_models.ListVpnCertificateAssociationsResponse:
+        """
+        ## Usage notes
+        When you call **ListVpnCertificateAssociations**, take note of the following information:
+        *   If you specify only **RegionId**, the SSL certificates associated with all VPN gateways in the specified region are queried.
+        *   If you specify **RegionId** and **CertificateType**, the SSL certificates of the specified type that are associated with the VPN gateways in the specified region are queried.
+        *   If you specify **RegionId** and **VpnGatewayId**, the SSL certificates associated with the specified VPN gateway in the specified region are queried.
+        *   If you specify **RegionId** and **CertificateId**, the VPN gateways associated with the specified SSL certificate in the specified region are queried.
+        
+        @param request: ListVpnCertificateAssociationsRequest
+        @return: ListVpnCertificateAssociationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_vpn_certificate_associations_with_options_async(request, runtime)
 
@@ -32791,10 +32727,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyForwardEntryResponse:
         """
-        **ModifyForwardEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the status of a DNAT entry.
-        *   **Pending**: indicates that the system is modifying the DNAT entry. You can only query the DNAT entry, but cannot perform other operations.
-        *   **Available**: indicates that the DNAT entry is modified.
-        *   You cannot repeatedly call the **ModifyForwardEntry** operation to modify a DNAT entry within the specified period of time.
+        The ID of the DNAT table to which the DNAT entry belongs.
         
         @param request: ModifyForwardEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32857,10 +32790,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyForwardEntryResponse:
         """
-        **ModifyForwardEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the status of a DNAT entry.
-        *   **Pending**: indicates that the system is modifying the DNAT entry. You can only query the DNAT entry, but cannot perform other operations.
-        *   **Available**: indicates that the DNAT entry is modified.
-        *   You cannot repeatedly call the **ModifyForwardEntry** operation to modify a DNAT entry within the specified period of time.
+        The ID of the DNAT table to which the DNAT entry belongs.
         
         @param request: ModifyForwardEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32922,10 +32852,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyForwardEntryRequest,
     ) -> vpc_20160428_models.ModifyForwardEntryResponse:
         """
-        **ModifyForwardEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the status of a DNAT entry.
-        *   **Pending**: indicates that the system is modifying the DNAT entry. You can only query the DNAT entry, but cannot perform other operations.
-        *   **Available**: indicates that the DNAT entry is modified.
-        *   You cannot repeatedly call the **ModifyForwardEntry** operation to modify a DNAT entry within the specified period of time.
+        The ID of the DNAT table to which the DNAT entry belongs.
         
         @param request: ModifyForwardEntryRequest
         @return: ModifyForwardEntryResponse
@@ -32938,10 +32865,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyForwardEntryRequest,
     ) -> vpc_20160428_models.ModifyForwardEntryResponse:
         """
-        **ModifyForwardEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the status of a DNAT entry.
-        *   **Pending**: indicates that the system is modifying the DNAT entry. You can only query the DNAT entry, but cannot perform other operations.
-        *   **Available**: indicates that the DNAT entry is modified.
-        *   You cannot repeatedly call the **ModifyForwardEntry** operation to modify a DNAT entry within the specified period of time.
+        The ID of the DNAT table to which the DNAT entry belongs.
         
         @param request: ModifyForwardEntryRequest
         @return: ModifyForwardEntryResponse
@@ -32955,10 +32879,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyFullNatEntryAttributeResponse:
         """
-        **ModifyFullNatEntryAttribute** is an asynchronous operation. After you make a request, the ID of the request is returned but the specified FULLNAT entry is not modified. The system modifies the FULLNAT entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   **Modifying**: indicates that the system is modifying the FULLNAT entry. You can query the FULLNAT entry, but cannot perform other operations.
-        *   **Available**: indicates that the FULLNAT entry is modified.
-        *   You cannot repeatedly call the **ModifyFullNatEntryAttribute** operation to modify a FULLNAT entry within the specified period of time.
+        The operation that you want to perform. Set the value to *ModifyFullNatEntryAttribute**.
         
         @param request: ModifyFullNatEntryAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33025,10 +32946,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyFullNatEntryAttributeResponse:
         """
-        **ModifyFullNatEntryAttribute** is an asynchronous operation. After you make a request, the ID of the request is returned but the specified FULLNAT entry is not modified. The system modifies the FULLNAT entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   **Modifying**: indicates that the system is modifying the FULLNAT entry. You can query the FULLNAT entry, but cannot perform other operations.
-        *   **Available**: indicates that the FULLNAT entry is modified.
-        *   You cannot repeatedly call the **ModifyFullNatEntryAttribute** operation to modify a FULLNAT entry within the specified period of time.
+        The operation that you want to perform. Set the value to *ModifyFullNatEntryAttribute**.
         
         @param request: ModifyFullNatEntryAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33094,10 +33012,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyFullNatEntryAttributeRequest,
     ) -> vpc_20160428_models.ModifyFullNatEntryAttributeResponse:
         """
-        **ModifyFullNatEntryAttribute** is an asynchronous operation. After you make a request, the ID of the request is returned but the specified FULLNAT entry is not modified. The system modifies the FULLNAT entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   **Modifying**: indicates that the system is modifying the FULLNAT entry. You can query the FULLNAT entry, but cannot perform other operations.
-        *   **Available**: indicates that the FULLNAT entry is modified.
-        *   You cannot repeatedly call the **ModifyFullNatEntryAttribute** operation to modify a FULLNAT entry within the specified period of time.
+        The operation that you want to perform. Set the value to *ModifyFullNatEntryAttribute**.
         
         @param request: ModifyFullNatEntryAttributeRequest
         @return: ModifyFullNatEntryAttributeResponse
@@ -33110,10 +33025,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyFullNatEntryAttributeRequest,
     ) -> vpc_20160428_models.ModifyFullNatEntryAttributeResponse:
         """
-        **ModifyFullNatEntryAttribute** is an asynchronous operation. After you make a request, the ID of the request is returned but the specified FULLNAT entry is not modified. The system modifies the FULLNAT entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   **Modifying**: indicates that the system is modifying the FULLNAT entry. You can query the FULLNAT entry, but cannot perform other operations.
-        *   **Available**: indicates that the FULLNAT entry is modified.
-        *   You cannot repeatedly call the **ModifyFullNatEntryAttribute** operation to modify a FULLNAT entry within the specified period of time.
+        The operation that you want to perform. Set the value to *ModifyFullNatEntryAttribute**.
         
         @param request: ModifyFullNatEntryAttributeRequest
         @return: ModifyFullNatEntryAttributeResponse
@@ -33224,6 +33136,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse:
+        """
+        ## Usage notes
+        You cannot call this operation to modify the maximum bandwidth of a subscription GA instance.
+        
+        @param request: ModifyGlobalAccelerationInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGlobalAccelerationInstanceSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bandwidth):
@@ -33264,6 +33184,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse:
+        """
+        ## Usage notes
+        You cannot call this operation to modify the maximum bandwidth of a subscription GA instance.
+        
+        @param request: ModifyGlobalAccelerationInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGlobalAccelerationInstanceSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bandwidth):
@@ -33303,6 +33231,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecRequest,
     ) -> vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse:
+        """
+        ## Usage notes
+        You cannot call this operation to modify the maximum bandwidth of a subscription GA instance.
+        
+        @param request: ModifyGlobalAccelerationInstanceSpecRequest
+        @return: ModifyGlobalAccelerationInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_global_acceleration_instance_spec_with_options(request, runtime)
 
@@ -33310,6 +33245,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecRequest,
     ) -> vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse:
+        """
+        ## Usage notes
+        You cannot call this operation to modify the maximum bandwidth of a subscription GA instance.
+        
+        @param request: ModifyGlobalAccelerationInstanceSpecRequest
+        @return: ModifyGlobalAccelerationInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_global_acceleration_instance_spec_with_options_async(request, runtime)
 
@@ -34741,7 +34683,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNatIpAttributeResponse:
         """
-        You cannot repeatedly call the *ModifyNatIpAttribute** operation to modify the name and description of a NAT IP address within the specified period of time.
+        The ID of the NAT IP address that you want to modify.
         
         @param request: ModifyNatIpAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34796,7 +34738,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNatIpAttributeResponse:
         """
-        You cannot repeatedly call the *ModifyNatIpAttribute** operation to modify the name and description of a NAT IP address within the specified period of time.
+        The ID of the NAT IP address that you want to modify.
         
         @param request: ModifyNatIpAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34850,7 +34792,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyNatIpAttributeRequest,
     ) -> vpc_20160428_models.ModifyNatIpAttributeResponse:
         """
-        You cannot repeatedly call the *ModifyNatIpAttribute** operation to modify the name and description of a NAT IP address within the specified period of time.
+        The ID of the NAT IP address that you want to modify.
         
         @param request: ModifyNatIpAttributeRequest
         @return: ModifyNatIpAttributeResponse
@@ -34863,7 +34805,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyNatIpAttributeRequest,
     ) -> vpc_20160428_models.ModifyNatIpAttributeResponse:
         """
-        You cannot repeatedly call the *ModifyNatIpAttribute** operation to modify the name and description of a NAT IP address within the specified period of time.
+        The ID of the NAT IP address that you want to modify.
         
         @param request: ModifyNatIpAttributeRequest
         @return: ModifyNatIpAttributeResponse
@@ -36193,7 +36135,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVRouterAttributeResponse:
         """
-        You cannot repeatedly call the *ModifyVRouterAttribute** operation to modify the name and description of a vRouter within the specified period of time.
+        The ID of the vRouter.
         
         @param request: ModifyVRouterAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36242,7 +36184,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVRouterAttributeResponse:
         """
-        You cannot repeatedly call the *ModifyVRouterAttribute** operation to modify the name and description of a vRouter within the specified period of time.
+        The ID of the vRouter.
         
         @param request: ModifyVRouterAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36290,7 +36232,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVRouterAttributeRequest,
     ) -> vpc_20160428_models.ModifyVRouterAttributeResponse:
         """
-        You cannot repeatedly call the *ModifyVRouterAttribute** operation to modify the name and description of a vRouter within the specified period of time.
+        The ID of the vRouter.
         
         @param request: ModifyVRouterAttributeRequest
         @return: ModifyVRouterAttributeResponse
@@ -36303,7 +36245,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVRouterAttributeRequest,
     ) -> vpc_20160428_models.ModifyVRouterAttributeResponse:
         """
-        You cannot repeatedly call the *ModifyVRouterAttribute** operation to modify the name and description of a vRouter within the specified period of time.
+        The ID of the vRouter.
         
         @param request: ModifyVRouterAttributeRequest
         @return: ModifyVRouterAttributeResponse
@@ -39593,10 +39535,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse:
         """
-        The **RemoveSourcesFromTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
-        *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being deleted.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is deleted.
-        *   You cannot repeatedly call the **RemoveSourcesFromTrafficMirrorSession** operation to delete a traffic mirror source from a traffic mirror session within the specified period of time.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         
         @param request: RemoveSourcesFromTrafficMirrorSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39647,10 +39588,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse:
         """
-        The **RemoveSourcesFromTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
-        *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being deleted.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is deleted.
-        *   You cannot repeatedly call the **RemoveSourcesFromTrafficMirrorSession** operation to delete a traffic mirror source from a traffic mirror session within the specified period of time.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         
         @param request: RemoveSourcesFromTrafficMirrorSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39700,10 +39640,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionRequest,
     ) -> vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse:
         """
-        The **RemoveSourcesFromTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
-        *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being deleted.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is deleted.
-        *   You cannot repeatedly call the **RemoveSourcesFromTrafficMirrorSession** operation to delete a traffic mirror source from a traffic mirror session within the specified period of time.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         
         @param request: RemoveSourcesFromTrafficMirrorSessionRequest
         @return: RemoveSourcesFromTrafficMirrorSessionResponse
@@ -39716,10 +39655,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionRequest,
     ) -> vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse:
         """
-        The **RemoveSourcesFromTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
-        *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being deleted.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is deleted.
-        *   You cannot repeatedly call the **RemoveSourcesFromTrafficMirrorSession** operation to delete a traffic mirror source from a traffic mirror session within the specified period of time.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         
         @param request: RemoveSourcesFromTrafficMirrorSessionRequest
         @return: RemoveSourcesFromTrafficMirrorSessionResponse
@@ -40399,14 +40337,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TagResourcesResponse:
         """
-        Tags are used to classify instances. Each tag consists of a key and a value. Take note of the following limits when you use tags:
-        *   The keys of tags that are added to the same instance must be unique.
-        *   You cannot create tags without adding them to instances. All tags must be added to instances.
-        *   Tag information is not shared across regions.
-        For example, in the China (Shanghai) region, you cannot view the tags that are created in the China (Hangzhou) region.
-        *   Virtual private clouds (VPCs), route tables, vSwitches, and elastic IP addresses (EIPs) that belong to the same Alibaba Cloud account and are deployed in the same region share tag information with each other.
-        For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-        *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
+        The ID of the resource. You can specify up to 20 IDs.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40455,14 +40386,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TagResourcesResponse:
         """
-        Tags are used to classify instances. Each tag consists of a key and a value. Take note of the following limits when you use tags:
-        *   The keys of tags that are added to the same instance must be unique.
-        *   You cannot create tags without adding them to instances. All tags must be added to instances.
-        *   Tag information is not shared across regions.
-        For example, in the China (Shanghai) region, you cannot view the tags that are created in the China (Hangzhou) region.
-        *   Virtual private clouds (VPCs), route tables, vSwitches, and elastic IP addresses (EIPs) that belong to the same Alibaba Cloud account and are deployed in the same region share tag information with each other.
-        For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-        *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
+        The ID of the resource. You can specify up to 20 IDs.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40510,14 +40434,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.TagResourcesRequest,
     ) -> vpc_20160428_models.TagResourcesResponse:
         """
-        Tags are used to classify instances. Each tag consists of a key and a value. Take note of the following limits when you use tags:
-        *   The keys of tags that are added to the same instance must be unique.
-        *   You cannot create tags without adding them to instances. All tags must be added to instances.
-        *   Tag information is not shared across regions.
-        For example, in the China (Shanghai) region, you cannot view the tags that are created in the China (Hangzhou) region.
-        *   Virtual private clouds (VPCs), route tables, vSwitches, and elastic IP addresses (EIPs) that belong to the same Alibaba Cloud account and are deployed in the same region share tag information with each other.
-        For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-        *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
+        The ID of the resource. You can specify up to 20 IDs.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -40530,14 +40447,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.TagResourcesRequest,
     ) -> vpc_20160428_models.TagResourcesResponse:
         """
-        Tags are used to classify instances. Each tag consists of a key and a value. Take note of the following limits when you use tags:
-        *   The keys of tags that are added to the same instance must be unique.
-        *   You cannot create tags without adding them to instances. All tags must be added to instances.
-        *   Tag information is not shared across regions.
-        For example, in the China (Shanghai) region, you cannot view the tags that are created in the China (Hangzhou) region.
-        *   Virtual private clouds (VPCs), route tables, vSwitches, and elastic IP addresses (EIPs) that belong to the same Alibaba Cloud account and are deployed in the same region share tag information with each other.
-        For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-        *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
+        The ID of the resource. You can specify up to 20 IDs.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -41053,10 +40963,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateEipAddressResponse:
         """
-        **UnassociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP:
-        *   If the EIP is in the **Unassociating** state, the EIP is being disassociated. In this state, you can only query the EIP and cannot perform other operations.
-        *   If the EIP is in the **Available** state, the EIP is disassociated.
-        *   You cannot repeatedly call the **UnassociateEipAddress** operation to disassociate an EIP within the specified period of time.
+        Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
+        *   **false** (default): does not disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
+        *   **true**: disassociates the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
         
         @param request: UnassociateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41111,10 +41020,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateEipAddressResponse:
         """
-        **UnassociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP:
-        *   If the EIP is in the **Unassociating** state, the EIP is being disassociated. In this state, you can only query the EIP and cannot perform other operations.
-        *   If the EIP is in the **Available** state, the EIP is disassociated.
-        *   You cannot repeatedly call the **UnassociateEipAddress** operation to disassociate an EIP within the specified period of time.
+        Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
+        *   **false** (default): does not disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
+        *   **true**: disassociates the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
         
         @param request: UnassociateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41168,10 +41076,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UnassociateEipAddressRequest,
     ) -> vpc_20160428_models.UnassociateEipAddressResponse:
         """
-        **UnassociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP:
-        *   If the EIP is in the **Unassociating** state, the EIP is being disassociated. In this state, you can only query the EIP and cannot perform other operations.
-        *   If the EIP is in the **Available** state, the EIP is disassociated.
-        *   You cannot repeatedly call the **UnassociateEipAddress** operation to disassociate an EIP within the specified period of time.
+        Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
+        *   **false** (default): does not disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
+        *   **true**: disassociates the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
         
         @param request: UnassociateEipAddressRequest
         @return: UnassociateEipAddressResponse
@@ -41184,10 +41091,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UnassociateEipAddressRequest,
     ) -> vpc_20160428_models.UnassociateEipAddressResponse:
         """
-        **UnassociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP:
-        *   If the EIP is in the **Unassociating** state, the EIP is being disassociated. In this state, you can only query the EIP and cannot perform other operations.
-        *   If the EIP is in the **Available** state, the EIP is disassociated.
-        *   You cannot repeatedly call the **UnassociateEipAddress** operation to disassociate an EIP within the specified period of time.
+        Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
+        *   **false** (default): does not disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
+        *   **true**: disassociates the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
         
         @param request: UnassociateEipAddressRequest
         @return: UnassociateEipAddressResponse
@@ -41295,13 +41201,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateHaVipResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   The ECS instance must be in the **Running** or **Stopped** state.
-        *   The HAVIP must be in the **Available** or **InUse** state.
-        *   The **UnassociateHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of an HAVIP:
-        *   If the HAVIP is in the **Unassociating** state, the HAVIP is being disassociated.
-        *   If the HAVIP is in the **Inuse** or **Available** state, the HAVIP is disassociated.
-        *   You cannot repeatedly call the **UnassociateHaVip** operation to disassociate an HAVIP within the specified period of time.
+        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length.
         
         @param request: UnassociateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41354,13 +41254,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateHaVipResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   The ECS instance must be in the **Running** or **Stopped** state.
-        *   The HAVIP must be in the **Available** or **InUse** state.
-        *   The **UnassociateHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of an HAVIP:
-        *   If the HAVIP is in the **Unassociating** state, the HAVIP is being disassociated.
-        *   If the HAVIP is in the **Inuse** or **Available** state, the HAVIP is disassociated.
-        *   You cannot repeatedly call the **UnassociateHaVip** operation to disassociate an HAVIP within the specified period of time.
+        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length.
         
         @param request: UnassociateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41412,13 +41306,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UnassociateHaVipRequest,
     ) -> vpc_20160428_models.UnassociateHaVipResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   The ECS instance must be in the **Running** or **Stopped** state.
-        *   The HAVIP must be in the **Available** or **InUse** state.
-        *   The **UnassociateHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of an HAVIP:
-        *   If the HAVIP is in the **Unassociating** state, the HAVIP is being disassociated.
-        *   If the HAVIP is in the **Inuse** or **Available** state, the HAVIP is disassociated.
-        *   You cannot repeatedly call the **UnassociateHaVip** operation to disassociate an HAVIP within the specified period of time.
+        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length.
         
         @param request: UnassociateHaVipRequest
         @return: UnassociateHaVipResponse
@@ -41431,13 +41319,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UnassociateHaVipRequest,
     ) -> vpc_20160428_models.UnassociateHaVipResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   The ECS instance must be in the **Running** or **Stopped** state.
-        *   The HAVIP must be in the **Available** or **InUse** state.
-        *   The **UnassociateHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of an HAVIP:
-        *   If the HAVIP is in the **Unassociating** state, the HAVIP is being disassociated.
-        *   If the HAVIP is in the **Inuse** or **Available** state, the HAVIP is disassociated.
-        *   You cannot repeatedly call the **UnassociateHaVip** operation to disassociate an HAVIP within the specified period of time.
+        The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length.
         
         @param request: UnassociateHaVipRequest
         @return: UnassociateHaVipResponse
@@ -41451,10 +41333,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateNetworkAclResponse:
         """
-        The **UnassociateNetworkAcl** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeNetworkAclAttributes](~~116542~~) operation to query the status of a network ACL:
-        *   If the network ACL is in the **UNBINDING** state, the network ACL is being disassociated from the vSwitch.
-        *   If the network ACL is in the **UNBINDED** state, the network ACL is disassociated from the vSwitch.
-        *   You cannot repeatedly call the **UnassociateNetworkAcl** operation to disassociate a network ACL from a vSwitch within the specified period of time.
+        The ID of the resource from which you want to disassociate the network ACL.
         
         @param request: UnassociateNetworkAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41503,10 +41382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateNetworkAclResponse:
         """
-        The **UnassociateNetworkAcl** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeNetworkAclAttributes](~~116542~~) operation to query the status of a network ACL:
-        *   If the network ACL is in the **UNBINDING** state, the network ACL is being disassociated from the vSwitch.
-        *   If the network ACL is in the **UNBINDED** state, the network ACL is disassociated from the vSwitch.
-        *   You cannot repeatedly call the **UnassociateNetworkAcl** operation to disassociate a network ACL from a vSwitch within the specified period of time.
+        The ID of the resource from which you want to disassociate the network ACL.
         
         @param request: UnassociateNetworkAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41554,10 +41430,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UnassociateNetworkAclRequest,
     ) -> vpc_20160428_models.UnassociateNetworkAclResponse:
         """
-        The **UnassociateNetworkAcl** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeNetworkAclAttributes](~~116542~~) operation to query the status of a network ACL:
-        *   If the network ACL is in the **UNBINDING** state, the network ACL is being disassociated from the vSwitch.
-        *   If the network ACL is in the **UNBINDED** state, the network ACL is disassociated from the vSwitch.
-        *   You cannot repeatedly call the **UnassociateNetworkAcl** operation to disassociate a network ACL from a vSwitch within the specified period of time.
+        The ID of the resource from which you want to disassociate the network ACL.
         
         @param request: UnassociateNetworkAclRequest
         @return: UnassociateNetworkAclResponse
@@ -41570,10 +41443,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UnassociateNetworkAclRequest,
     ) -> vpc_20160428_models.UnassociateNetworkAclResponse:
         """
-        The **UnassociateNetworkAcl** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeNetworkAclAttributes](~~116542~~) operation to query the status of a network ACL:
-        *   If the network ACL is in the **UNBINDING** state, the network ACL is being disassociated from the vSwitch.
-        *   If the network ACL is in the **UNBINDED** state, the network ACL is disassociated from the vSwitch.
-        *   You cannot repeatedly call the **UnassociateNetworkAcl** operation to disassociate a network ACL from a vSwitch within the specified period of time.
+        The ID of the resource from which you want to disassociate the network ACL.
         
         @param request: UnassociateNetworkAclRequest
         @return: UnassociateNetworkAclResponse
@@ -42911,7 +42781,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdatePublicIpAddressPoolAttributeResponse:
         """
-        You cannot repeatedly call the *UpdatePublicIpAddressPoolAttribute** operation to modify the attributes of an IP address pool within the specified period of time.
+        The ID of the IP address pool.
         
         @param request: UpdatePublicIpAddressPoolAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -42964,7 +42834,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdatePublicIpAddressPoolAttributeResponse:
         """
-        You cannot repeatedly call the *UpdatePublicIpAddressPoolAttribute** operation to modify the attributes of an IP address pool within the specified period of time.
+        The ID of the IP address pool.
         
         @param request: UpdatePublicIpAddressPoolAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43016,7 +42886,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdatePublicIpAddressPoolAttributeRequest,
     ) -> vpc_20160428_models.UpdatePublicIpAddressPoolAttributeResponse:
         """
-        You cannot repeatedly call the *UpdatePublicIpAddressPoolAttribute** operation to modify the attributes of an IP address pool within the specified period of time.
+        The ID of the IP address pool.
         
         @param request: UpdatePublicIpAddressPoolAttributeRequest
         @return: UpdatePublicIpAddressPoolAttributeResponse
@@ -43029,7 +42899,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdatePublicIpAddressPoolAttributeRequest,
     ) -> vpc_20160428_models.UpdatePublicIpAddressPoolAttributeResponse:
         """
-        You cannot repeatedly call the *UpdatePublicIpAddressPoolAttribute** operation to modify the attributes of an IP address pool within the specified period of time.
+        The ID of the IP address pool.
         
         @param request: UpdatePublicIpAddressPoolAttributeRequest
         @return: UpdatePublicIpAddressPoolAttributeResponse
@@ -43327,10 +43197,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse:
         """
-        The **UpdateTrafficMirrorSessionAttribute** operation is asynchronous. After you send a request, the system returns the request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
-        *   If the traffic mirror session is in the **Modifying** state, the configuration of the traffic mirror session is being modified.
-        *   If the traffic mirror session is in the **Created** state, the configuration of the traffic mirror session is modified.
-        *   After you call the **UpdateTrafficMirrorSessionAttribute** operation to modify the configuration of a traffic mirror session, you cannot call the operation again to modify the configuration of the traffic mirror session until the previous modification task is complete.
+        The description of the traffic mirror session.
+        The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         
         @param request: UpdateTrafficMirrorSessionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43397,10 +43265,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse:
         """
-        The **UpdateTrafficMirrorSessionAttribute** operation is asynchronous. After you send a request, the system returns the request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
-        *   If the traffic mirror session is in the **Modifying** state, the configuration of the traffic mirror session is being modified.
-        *   If the traffic mirror session is in the **Created** state, the configuration of the traffic mirror session is modified.
-        *   After you call the **UpdateTrafficMirrorSessionAttribute** operation to modify the configuration of a traffic mirror session, you cannot call the operation again to modify the configuration of the traffic mirror session until the previous modification task is complete.
+        The description of the traffic mirror session.
+        The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         
         @param request: UpdateTrafficMirrorSessionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43466,10 +43332,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateTrafficMirrorSessionAttributeRequest,
     ) -> vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse:
         """
-        The **UpdateTrafficMirrorSessionAttribute** operation is asynchronous. After you send a request, the system returns the request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
-        *   If the traffic mirror session is in the **Modifying** state, the configuration of the traffic mirror session is being modified.
-        *   If the traffic mirror session is in the **Created** state, the configuration of the traffic mirror session is modified.
-        *   After you call the **UpdateTrafficMirrorSessionAttribute** operation to modify the configuration of a traffic mirror session, you cannot call the operation again to modify the configuration of the traffic mirror session until the previous modification task is complete.
+        The description of the traffic mirror session.
+        The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         
         @param request: UpdateTrafficMirrorSessionAttributeRequest
         @return: UpdateTrafficMirrorSessionAttributeResponse
@@ -43482,10 +43346,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateTrafficMirrorSessionAttributeRequest,
     ) -> vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse:
         """
-        The **UpdateTrafficMirrorSessionAttribute** operation is asynchronous. After you send a request, the system returns the request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
-        *   If the traffic mirror session is in the **Modifying** state, the configuration of the traffic mirror session is being modified.
-        *   If the traffic mirror session is in the **Created** state, the configuration of the traffic mirror session is modified.
-        *   After you call the **UpdateTrafficMirrorSessionAttribute** operation to modify the configuration of a traffic mirror session, you cannot call the operation again to modify the configuration of the traffic mirror session until the previous modification task is complete.
+        The description of the traffic mirror session.
+        The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         
         @param request: UpdateTrafficMirrorSessionAttributeRequest
         @return: UpdateTrafficMirrorSessionAttributeResponse
@@ -43687,10 +43549,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse:
         """
-        **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of a gateway endpoint.
-        *   If the gateway endpoint is in the **Updating** state, it is being modified.
-        *   If the gateway endpoint is in the **Created** state, it is modified.
-        *   You cannot call the **UpdateVpcGatewayEndpointAttribute** operation within a specific period of time.
+        The ID of the gateway endpoint that you want to modify.
         
         @param request: UpdateVpcGatewayEndpointAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43745,10 +43604,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse:
         """
-        **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of a gateway endpoint.
-        *   If the gateway endpoint is in the **Updating** state, it is being modified.
-        *   If the gateway endpoint is in the **Created** state, it is modified.
-        *   You cannot call the **UpdateVpcGatewayEndpointAttribute** operation within a specific period of time.
+        The ID of the gateway endpoint that you want to modify.
         
         @param request: UpdateVpcGatewayEndpointAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43802,10 +43658,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateVpcGatewayEndpointAttributeRequest,
     ) -> vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse:
         """
-        **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of a gateway endpoint.
-        *   If the gateway endpoint is in the **Updating** state, it is being modified.
-        *   If the gateway endpoint is in the **Created** state, it is modified.
-        *   You cannot call the **UpdateVpcGatewayEndpointAttribute** operation within a specific period of time.
+        The ID of the gateway endpoint that you want to modify.
         
         @param request: UpdateVpcGatewayEndpointAttributeRequest
         @return: UpdateVpcGatewayEndpointAttributeResponse
@@ -43818,10 +43671,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateVpcGatewayEndpointAttributeRequest,
     ) -> vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse:
         """
-        **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of a gateway endpoint.
-        *   If the gateway endpoint is in the **Updating** state, it is being modified.
-        *   If the gateway endpoint is in the **Created** state, it is modified.
-        *   You cannot call the **UpdateVpcGatewayEndpointAttribute** operation within a specific period of time.
+        The ID of the gateway endpoint that you want to modify.
         
         @param request: UpdateVpcGatewayEndpointAttributeRequest
         @return: UpdateVpcGatewayEndpointAttributeResponse
