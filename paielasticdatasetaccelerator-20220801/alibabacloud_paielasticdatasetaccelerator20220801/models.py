@@ -429,11 +429,13 @@ class BindEndpointResponse(TeaModel):
 class CreateEndpointRequest(TeaModel):
     def __init__(
         self,
+        instance_id: str = None,
         name: str = None,
         type: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        self.instance_id = instance_id
         self.name = name
         self.type = type
         self.vpc_id = vpc_id
@@ -448,6 +450,8 @@ class CreateEndpointRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.name is not None:
             result['Name'] = self.name
         if self.type is not None:
@@ -460,6 +464,8 @@ class CreateEndpointRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Type') is not None:
@@ -1103,6 +1109,77 @@ class CreateTagResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteEndpointResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteEndpointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEndpointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEndpointResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2402,6 +2479,7 @@ class ListEndpointsRequest(TeaModel):
     def __init__(
         self,
         endpoint_ids: str = None,
+        instance_ids: str = None,
         name: str = None,
         order: str = None,
         page_number: int = None,
@@ -2411,6 +2489,7 @@ class ListEndpointsRequest(TeaModel):
         type: str = None,
     ):
         self.endpoint_ids = endpoint_ids
+        self.instance_ids = instance_ids
         self.name = name
         self.order = order
         self.page_number = page_number
@@ -2430,6 +2509,8 @@ class ListEndpointsRequest(TeaModel):
         result = dict()
         if self.endpoint_ids is not None:
             result['EndpointIds'] = self.endpoint_ids
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
         if self.name is not None:
             result['Name'] = self.name
         if self.order is not None:
@@ -2450,6 +2531,8 @@ class ListEndpointsRequest(TeaModel):
         m = m or dict()
         if m.get('EndpointIds') is not None:
             self.endpoint_ids = m.get('EndpointIds')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Order') is not None:
@@ -2472,6 +2555,7 @@ class ListEndpointsResponseBodyEndpoints(TeaModel):
         self,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        instance_id: str = None,
         name: str = None,
         owner_id: str = None,
         status: EndpointStatus = None,
@@ -2483,6 +2567,7 @@ class ListEndpointsResponseBodyEndpoints(TeaModel):
     ):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
+        self.instance_id = instance_id
         self.name = name
         self.owner_id = owner_id
         self.status = status
@@ -2506,6 +2591,8 @@ class ListEndpointsResponseBodyEndpoints(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.name is not None:
             result['Name'] = self.name
         if self.owner_id is not None:
@@ -2530,6 +2617,8 @@ class ListEndpointsResponseBodyEndpoints(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OwnerId') is not None:
@@ -2953,6 +3042,7 @@ class ListInstancesResponse(TeaModel):
 class ListSlotsRequest(TeaModel):
     def __init__(
         self,
+        endpoint_ids: str = None,
         instance_ids: str = None,
         name: str = None,
         order: str = None,
@@ -2962,7 +3052,10 @@ class ListSlotsRequest(TeaModel):
         slot_ids: str = None,
         sort_by: str = None,
         storage_type: str = None,
+        storage_uri: str = None,
     ):
+        # 加速槽所对应的数据集加速挂载点的唯一标识符。
+        self.endpoint_ids = endpoint_ids
         self.instance_ids = instance_ids
         self.name = name
         self.order = order
@@ -2972,6 +3065,8 @@ class ListSlotsRequest(TeaModel):
         self.slot_ids = slot_ids
         self.sort_by = sort_by
         self.storage_type = storage_type
+        # 数据集加速槽的数据存储路径（URI）。
+        self.storage_uri = storage_uri
 
     def validate(self):
         pass
@@ -2982,6 +3077,8 @@ class ListSlotsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.endpoint_ids is not None:
+            result['EndpointIds'] = self.endpoint_ids
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.name is not None:
@@ -3000,10 +3097,14 @@ class ListSlotsRequest(TeaModel):
             result['SortBy'] = self.sort_by
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
+        if self.storage_uri is not None:
+            result['StorageUri'] = self.storage_uri
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndpointIds') is not None:
+            self.endpoint_ids = m.get('EndpointIds')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('Name') is not None:
@@ -3022,6 +3123,8 @@ class ListSlotsRequest(TeaModel):
             self.sort_by = m.get('SortBy')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
+        if m.get('StorageUri') is not None:
+            self.storage_uri = m.get('StorageUri')
         return self
 
 

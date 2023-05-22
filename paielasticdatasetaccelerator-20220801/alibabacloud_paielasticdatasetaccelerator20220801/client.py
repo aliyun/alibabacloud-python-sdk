@@ -119,6 +119,8 @@ class Client(OpenApiClient):
     ) -> paielastic_dataset_accelerator_20220801_models.CreateEndpointResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.type):
@@ -155,6 +157,8 @@ class Client(OpenApiClient):
     ) -> paielastic_dataset_accelerator_20220801_models.CreateEndpointResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.type):
@@ -498,6 +502,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_tag_with_options_async(request, headers, runtime)
+
+    def delete_endpoint_with_options(
+        self,
+        endpoint_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paielastic_dataset_accelerator_20220801_models.DeleteEndpointResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteEndpoint',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/endpoints/{OpenApiUtilClient.get_encode_param(endpoint_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paielastic_dataset_accelerator_20220801_models.DeleteEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_endpoint_with_options_async(
+        self,
+        endpoint_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paielastic_dataset_accelerator_20220801_models.DeleteEndpointResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteEndpoint',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/endpoints/{OpenApiUtilClient.get_encode_param(endpoint_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paielastic_dataset_accelerator_20220801_models.DeleteEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_endpoint(
+        self,
+        endpoint_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.DeleteEndpointResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_endpoint_with_options(endpoint_id, headers, runtime)
+
+    async def delete_endpoint_async(
+        self,
+        endpoint_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.DeleteEndpointResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_endpoint_with_options_async(endpoint_id, headers, runtime)
 
     def delete_instance_with_options(
         self,
@@ -1129,6 +1199,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.endpoint_ids):
             query['EndpointIds'] = request.endpoint_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.order):
@@ -1173,6 +1245,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.endpoint_ids):
             query['EndpointIds'] = request.endpoint_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.order):
@@ -1339,6 +1413,8 @@ class Client(OpenApiClient):
     ) -> paielastic_dataset_accelerator_20220801_models.ListSlotsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.endpoint_ids):
+            query['EndpointIds'] = request.endpoint_ids
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.name):
@@ -1357,6 +1433,8 @@ class Client(OpenApiClient):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.storage_uri):
+            query['StorageUri'] = request.storage_uri
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1385,6 +1463,8 @@ class Client(OpenApiClient):
     ) -> paielastic_dataset_accelerator_20220801_models.ListSlotsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.endpoint_ids):
+            query['EndpointIds'] = request.endpoint_ids
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.name):
@@ -1403,6 +1483,8 @@ class Client(OpenApiClient):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.storage_uri):
+            query['StorageUri'] = request.storage_uri
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
