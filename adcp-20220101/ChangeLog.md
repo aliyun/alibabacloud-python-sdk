@@ -1,3 +1,7 @@
+2023-05-22 Version: 1.0.10
+- GrantUserPermission suppoert RamRole.
+
+
 2023-04-27 Version: 1.0.9
 - Add Policy API.
 
