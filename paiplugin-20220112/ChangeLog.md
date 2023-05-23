@@ -1,3 +1,6 @@
+2023-05-23 Version: 1.0.13
+- Support setting payment type when calling api CreateSchedule and SendMessage.
+
 2022-09-29 Version: 1.0.12
 - Add Algorithm APIs.
 
