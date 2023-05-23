@@ -2508,6 +2508,7 @@ class CreateHotelRequest(TeaModel):
         self.hotel_name = hotel_name
         self.phone_number = phone_number
         self.related_pk = related_pk
+        # 酒店关联产品列表
         self.related_pks = related_pks
         self.remark = remark
         self.room_num = room_num
@@ -2595,6 +2596,7 @@ class CreateHotelShrinkRequest(TeaModel):
         self.hotel_name = hotel_name
         self.phone_number = phone_number
         self.related_pk = related_pk
+        # 酒店关联产品列表
         self.related_pks_shrink = related_pks_shrink
         self.remark = remark
         self.room_num = room_num
@@ -8532,7 +8534,9 @@ class GetHotelSettingResponseBodyResultNightMode(TeaModel):
         standby_action: str = None,
         start: str = None,
     ):
+        # 夜间模式下的默认亮度
         self.default_bright = default_bright
+        # 夜间模式下的默认音量
         self.default_volume = default_volume
         self.enable = enable
         self.end = end
@@ -16678,11 +16682,16 @@ class QueryHotelRoomDetailRequest(TeaModel):
         hotel_id: str = None,
         mac: str = None,
         room_no: str = None,
+        sn: str = None,
         uuid: str = None,
     ):
         self.hotel_id = hotel_id
         self.mac = mac
         self.room_no = room_no
+        # 设备sn信息
+        # 注：若在mac uuid sn全都输入的情况下 按照输入正确的内容查询 若全输入都是正确的 则 按照 uuid > mac > sn 优先级查询
+        # 传入mac uuid sn其中一个 则酒店id和房间号可不传
+        self.sn = sn
         self.uuid = uuid
 
     def validate(self):
@@ -16700,6 +16709,8 @@ class QueryHotelRoomDetailRequest(TeaModel):
             result['Mac'] = self.mac
         if self.room_no is not None:
             result['RoomNo'] = self.room_no
+        if self.sn is not None:
+            result['Sn'] = self.sn
         if self.uuid is not None:
             result['Uuid'] = self.uuid
         return result
@@ -16712,6 +16723,8 @@ class QueryHotelRoomDetailRequest(TeaModel):
             self.mac = m.get('Mac')
         if m.get('RoomNo') is not None:
             self.room_no = m.get('RoomNo')
+        if m.get('Sn') is not None:
+            self.sn = m.get('Sn')
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')
         return self

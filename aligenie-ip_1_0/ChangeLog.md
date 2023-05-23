@@ -1,3 +1,6 @@
+2023-05-23 Version: 1.0.22
+- Add query hotel room detail api.
+
 2023-05-11 Version: 1.0.21
 - Add query hotel room detail api.
 

@@ -6261,6 +6261,8 @@ class Client(OpenApiClient):
             body['Mac'] = request.mac
         if not UtilClient.is_unset(request.room_no):
             body['RoomNo'] = request.room_no
+        if not UtilClient.is_unset(request.sn):
+            body['Sn'] = request.sn
         if not UtilClient.is_unset(request.uuid):
             body['Uuid'] = request.uuid
         real_headers = {}
@@ -6304,6 +6306,8 @@ class Client(OpenApiClient):
             body['Mac'] = request.mac
         if not UtilClient.is_unset(request.room_no):
             body['RoomNo'] = request.room_no
+        if not UtilClient.is_unset(request.sn):
+            body['Sn'] = request.sn
         if not UtilClient.is_unset(request.uuid):
             body['Uuid'] = request.uuid
         real_headers = {}
