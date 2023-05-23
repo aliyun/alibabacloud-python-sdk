@@ -1,3 +1,6 @@
+2023-05-23 Version: 1.1.15
+- RecognizeHkIdcard.
+
 2023-05-18 Version: 1.1.14
 - RecognizePurchaseRecord.
 
