@@ -760,7 +760,7 @@ class YuqingMessage(TeaModel):
         emotion_type: int = None,
         ext_info: Dict[str, str] = None,
         fin_event_count: int = None,
-        finance_event_list: YuqingFinanceEvent = None,
+        finance_event_list: List[YuqingFinanceEvent] = None,
         highlight_keywords: List[str] = None,
         image_count: int = None,
         influence_score: float = None,
@@ -852,7 +852,9 @@ class YuqingMessage(TeaModel):
 
     def validate(self):
         if self.finance_event_list:
-            self.finance_event_list.validate()
+            for k in self.finance_event_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -952,8 +954,10 @@ class YuqingMessage(TeaModel):
             result['extInfo'] = self.ext_info
         if self.fin_event_count is not None:
             result['finEventCount'] = self.fin_event_count
+        result['financeEventList'] = []
         if self.finance_event_list is not None:
-            result['financeEventList'] = self.finance_event_list.to_map()
+            for k in self.finance_event_list:
+                result['financeEventList'].append(k.to_map() if k else None)
         if self.highlight_keywords is not None:
             result['highlightKeywords'] = self.highlight_keywords
         if self.image_count is not None:
@@ -1090,9 +1094,11 @@ class YuqingMessage(TeaModel):
             self.ext_info = m.get('extInfo')
         if m.get('finEventCount') is not None:
             self.fin_event_count = m.get('finEventCount')
+        self.finance_event_list = []
         if m.get('financeEventList') is not None:
-            temp_model = YuqingFinanceEvent()
-            self.finance_event_list = temp_model.from_map(m['financeEventList'])
+            for k in m.get('financeEventList'):
+                temp_model = YuqingFinanceEvent()
+                self.finance_event_list.append(temp_model.from_map(k))
         if m.get('highlightKeywords') is not None:
             self.highlight_keywords = m.get('highlightKeywords')
         if m.get('imageCount') is not None:
