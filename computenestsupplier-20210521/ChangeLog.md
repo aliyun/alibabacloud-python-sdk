@@ -1,3 +1,6 @@
+2023-05-23 Version: 1.2.3
+- Add UpdateService GetService DeleteService.
+
 2023-05-16 Version: 1.2.2
 - Add UpdateService GetService DeleteService.
 
