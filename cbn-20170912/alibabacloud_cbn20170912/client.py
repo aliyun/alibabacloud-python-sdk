@@ -48,7 +48,7 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ActiveFlowLogResponse:
         """
         After you create a flow log, it is enabled by default. You can call this operation to enable a disabled flow log.
-        *   The `ActiveFlowLog` operation is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
         *   If a flow log is in the **Modifying** state, the flow log is being enabled. In this case, you can query the flow log but cannot perform other operations.
         *   If a flow log is in the **Active** state, the flow log is enabled.
         
@@ -100,7 +100,7 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ActiveFlowLogResponse:
         """
         After you create a flow log, it is enabled by default. You can call this operation to enable a disabled flow log.
-        *   The `ActiveFlowLog` operation is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
         *   If a flow log is in the **Modifying** state, the flow log is being enabled. In this case, you can query the flow log but cannot perform other operations.
         *   If a flow log is in the **Active** state, the flow log is enabled.
         
@@ -151,7 +151,7 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ActiveFlowLogResponse:
         """
         After you create a flow log, it is enabled by default. You can call this operation to enable a disabled flow log.
-        *   The `ActiveFlowLog` operation is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
         *   If a flow log is in the **Modifying** state, the flow log is being enabled. In this case, you can query the flow log but cannot perform other operations.
         *   If a flow log is in the **Active** state, the flow log is enabled.
         
@@ -167,7 +167,7 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ActiveFlowLogResponse:
         """
         After you create a flow log, it is enabled by default. You can call this operation to enable a disabled flow log.
-        *   The `ActiveFlowLog` operation is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
         *   If a flow log is in the **Modifying** state, the flow log is being enabled. In this case, you can query the flow log but cannot perform other operations.
         *   If a flow log is in the **Active** state, the flow log is enabled.
         
@@ -183,7 +183,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse:
         """
-        The ID of the request.
+        *AddTrafficMatchRuleToTrafficMarkingPolicy** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic classification rule.
+        *   If a traffic classification rule is in the **Creating** state, the traffic classification rule is being created. In this case, you can query the traffic classification rule but cannot perform other operations.
+        *   If a traffic classification rule is in the **Active** state, the traffic classification rule is added to the traffic marking policy.
         
         @param request: AddTrafficMatchRuleToTrafficMarkingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -232,7 +234,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse:
         """
-        The ID of the request.
+        *AddTrafficMatchRuleToTrafficMarkingPolicy** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic classification rule.
+        *   If a traffic classification rule is in the **Creating** state, the traffic classification rule is being created. In this case, you can query the traffic classification rule but cannot perform other operations.
+        *   If a traffic classification rule is in the **Active** state, the traffic classification rule is added to the traffic marking policy.
         
         @param request: AddTrafficMatchRuleToTrafficMarkingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -280,7 +284,9 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyRequest,
     ) -> cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse:
         """
-        The ID of the request.
+        *AddTrafficMatchRuleToTrafficMarkingPolicy** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic classification rule.
+        *   If a traffic classification rule is in the **Creating** state, the traffic classification rule is being created. In this case, you can query the traffic classification rule but cannot perform other operations.
+        *   If a traffic classification rule is in the **Active** state, the traffic classification rule is added to the traffic marking policy.
         
         @param request: AddTrafficMatchRuleToTrafficMarkingPolicyRequest
         @return: AddTrafficMatchRuleToTrafficMarkingPolicyResponse
@@ -293,7 +299,9 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyRequest,
     ) -> cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse:
         """
-        The ID of the request.
+        *AddTrafficMatchRuleToTrafficMarkingPolicy** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic classification rule.
+        *   If a traffic classification rule is in the **Creating** state, the traffic classification rule is being created. In this case, you can query the traffic classification rule but cannot perform other operations.
+        *   If a traffic classification rule is in the **Active** state, the traffic classification rule is added to the traffic marking policy.
         
         @param request: AddTrafficMatchRuleToTrafficMarkingPolicyRequest
         @return: AddTrafficMatchRuleToTrafficMarkingPolicyResponse
@@ -308,8 +316,7 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyResponse:
         """
         @deprecated : AddTraficMatchRuleToTrafficMarkingPolicy is deprecated, please use Cbn::2017-09-12::AddTrafficMatchRuleToTrafficMarkingPolicy instead.
-        # Usage notes
-        The **AddTraficMatchRuleToTrafficMarkingPolicy** operation is deprecated and will be discontinued soon. If you need to add a traffic classification rule to a traffic marking policy, call the [AddTrafficMatchRuleToTrafficMarkingPolicy](~~427602~~) operation.
+        The ID of the request.
         
         @param request: AddTraficMatchRuleToTrafficMarkingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -360,8 +367,7 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyResponse:
         """
         @deprecated : AddTraficMatchRuleToTrafficMarkingPolicy is deprecated, please use Cbn::2017-09-12::AddTrafficMatchRuleToTrafficMarkingPolicy instead.
-        # Usage notes
-        The **AddTraficMatchRuleToTrafficMarkingPolicy** operation is deprecated and will be discontinued soon. If you need to add a traffic classification rule to a traffic marking policy, call the [AddTrafficMatchRuleToTrafficMarkingPolicy](~~427602~~) operation.
+        The ID of the request.
         
         @param request: AddTraficMatchRuleToTrafficMarkingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -411,8 +417,7 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyResponse:
         """
         @deprecated : AddTraficMatchRuleToTrafficMarkingPolicy is deprecated, please use Cbn::2017-09-12::AddTrafficMatchRuleToTrafficMarkingPolicy instead.
-        # Usage notes
-        The **AddTraficMatchRuleToTrafficMarkingPolicy** operation is deprecated and will be discontinued soon. If you need to add a traffic classification rule to a traffic marking policy, call the [AddTrafficMatchRuleToTrafficMarkingPolicy](~~427602~~) operation.
+        The ID of the request.
         
         @param request: AddTraficMatchRuleToTrafficMarkingPolicyRequest
         @return: AddTraficMatchRuleToTrafficMarkingPolicyResponse
@@ -427,8 +432,7 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyResponse:
         """
         @deprecated : AddTraficMatchRuleToTrafficMarkingPolicy is deprecated, please use Cbn::2017-09-12::AddTrafficMatchRuleToTrafficMarkingPolicy instead.
-        # Usage notes
-        The **AddTraficMatchRuleToTrafficMarkingPolicy** operation is deprecated and will be discontinued soon. If you need to add a traffic classification rule to a traffic marking policy, call the [AddTrafficMatchRuleToTrafficMarkingPolicy](~~427602~~) operation.
+        The ID of the request.
         
         @param request: AddTraficMatchRuleToTrafficMarkingPolicyRequest
         @return: AddTraficMatchRuleToTrafficMarkingPolicyResponse
@@ -702,16 +706,6 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.AssociateTransitRouterMulticastDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.AssociateTransitRouterMulticastDomainResponse:
-        """
-        A vSwitch can be associated with only one multicast domain. Make sure that the vSwitch is not associated with other multicast domains. For more information about how to disassociate a vSwitch from a multicast domain, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
-        *   **AssociateTransitRouterMulticastDomain** is an asynchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the **ListTransitRouterMulticastDomainAssociations** operation to query the association status between a vSwitch and a multicast domain.
-        *   **Associating**: The vSwitch is being associated with the multicast domain. In this case, you can query the vSwitch but cannot perform other operations.
-        *   **Associated**: The vSwitch is associated with the multicast domain.
-        
-        @param request: AssociateTransitRouterMulticastDomainRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AssociateTransitRouterMulticastDomainResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -756,16 +750,6 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.AssociateTransitRouterMulticastDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.AssociateTransitRouterMulticastDomainResponse:
-        """
-        A vSwitch can be associated with only one multicast domain. Make sure that the vSwitch is not associated with other multicast domains. For more information about how to disassociate a vSwitch from a multicast domain, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
-        *   **AssociateTransitRouterMulticastDomain** is an asynchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the **ListTransitRouterMulticastDomainAssociations** operation to query the association status between a vSwitch and a multicast domain.
-        *   **Associating**: The vSwitch is being associated with the multicast domain. In this case, you can query the vSwitch but cannot perform other operations.
-        *   **Associated**: The vSwitch is associated with the multicast domain.
-        
-        @param request: AssociateTransitRouterMulticastDomainRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AssociateTransitRouterMulticastDomainResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -809,15 +793,6 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.AssociateTransitRouterMulticastDomainRequest,
     ) -> cbn_20170912_models.AssociateTransitRouterMulticastDomainResponse:
-        """
-        A vSwitch can be associated with only one multicast domain. Make sure that the vSwitch is not associated with other multicast domains. For more information about how to disassociate a vSwitch from a multicast domain, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
-        *   **AssociateTransitRouterMulticastDomain** is an asynchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the **ListTransitRouterMulticastDomainAssociations** operation to query the association status between a vSwitch and a multicast domain.
-        *   **Associating**: The vSwitch is being associated with the multicast domain. In this case, you can query the vSwitch but cannot perform other operations.
-        *   **Associated**: The vSwitch is associated with the multicast domain.
-        
-        @param request: AssociateTransitRouterMulticastDomainRequest
-        @return: AssociateTransitRouterMulticastDomainResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.associate_transit_router_multicast_domain_with_options(request, runtime)
 
@@ -825,15 +800,6 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.AssociateTransitRouterMulticastDomainRequest,
     ) -> cbn_20170912_models.AssociateTransitRouterMulticastDomainResponse:
-        """
-        A vSwitch can be associated with only one multicast domain. Make sure that the vSwitch is not associated with other multicast domains. For more information about how to disassociate a vSwitch from a multicast domain, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
-        *   **AssociateTransitRouterMulticastDomain** is an asynchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the **ListTransitRouterMulticastDomainAssociations** operation to query the association status between a vSwitch and a multicast domain.
-        *   **Associating**: The vSwitch is being associated with the multicast domain. In this case, you can query the vSwitch but cannot perform other operations.
-        *   **Associated**: The vSwitch is associated with the multicast domain.
-        
-        @param request: AssociateTransitRouterMulticastDomainRequest
-        @return: AssociateTransitRouterMulticastDomainResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.associate_transit_router_multicast_domain_with_options_async(request, runtime)
 
@@ -2845,17 +2811,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterCidrResponse:
         """
-        You can specify a CIDR block for a transit router. The CIDR block works in a similar way as the CIDR block of the loopback interface on a router. IP addresses within the CIDR block can be assigned to IPsec-VPN connections. For more information, see [Transit router CIDR blocks](~~462635~~).
-        The **CreateTransitRouterCidr** operation can be used to create a CIDR block only after you create a transit router.
-        The CIDR block must meet the following requirements:
-        *   Only Enterprise Edition transit routers support custom CIDR blocks.
-        *   This feature is in pubic preview and is available only in some regions. For more information about the supported regions, see [Limits on transit router CIDR blocks](~~462635~~).
-        *   Each transit router supports at most five CIDR blocks. The subnet mask of a CIDR block must be 16 bits to 24 bits in length.
-        *   The following CIDR blocks and their subnets are not supported: 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, and 169.254.0.0/16.
-        *   The CIDR block cannot overlap with CIDR blocks that network instances attached to the CEN instance use to communicate with each other.
-        *   On the same CEN instance, each transit router CIDR block must be unique.
-        *   When you create the first VPN connection after you add a CIDR block for a transit router, three CIDR blocks within the CIDR block are reserved. An IP address is allocated from the remaining CIDR blocks to the IPsec-VPN connection.
-        You can call [ListTransitRouterCidrAllocation](~~464173~~) to query reserved CIDR blocks and IP addresses allocated to network connections.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
         
         @param request: CreateTransitRouterCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2912,17 +2870,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterCidrResponse:
         """
-        You can specify a CIDR block for a transit router. The CIDR block works in a similar way as the CIDR block of the loopback interface on a router. IP addresses within the CIDR block can be assigned to IPsec-VPN connections. For more information, see [Transit router CIDR blocks](~~462635~~).
-        The **CreateTransitRouterCidr** operation can be used to create a CIDR block only after you create a transit router.
-        The CIDR block must meet the following requirements:
-        *   Only Enterprise Edition transit routers support custom CIDR blocks.
-        *   This feature is in pubic preview and is available only in some regions. For more information about the supported regions, see [Limits on transit router CIDR blocks](~~462635~~).
-        *   Each transit router supports at most five CIDR blocks. The subnet mask of a CIDR block must be 16 bits to 24 bits in length.
-        *   The following CIDR blocks and their subnets are not supported: 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, and 169.254.0.0/16.
-        *   The CIDR block cannot overlap with CIDR blocks that network instances attached to the CEN instance use to communicate with each other.
-        *   On the same CEN instance, each transit router CIDR block must be unique.
-        *   When you create the first VPN connection after you add a CIDR block for a transit router, three CIDR blocks within the CIDR block are reserved. An IP address is allocated from the remaining CIDR blocks to the IPsec-VPN connection.
-        You can call [ListTransitRouterCidrAllocation](~~464173~~) to query reserved CIDR blocks and IP addresses allocated to network connections.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
         
         @param request: CreateTransitRouterCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2978,17 +2928,9 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterCidrRequest,
     ) -> cbn_20170912_models.CreateTransitRouterCidrResponse:
         """
-        You can specify a CIDR block for a transit router. The CIDR block works in a similar way as the CIDR block of the loopback interface on a router. IP addresses within the CIDR block can be assigned to IPsec-VPN connections. For more information, see [Transit router CIDR blocks](~~462635~~).
-        The **CreateTransitRouterCidr** operation can be used to create a CIDR block only after you create a transit router.
-        The CIDR block must meet the following requirements:
-        *   Only Enterprise Edition transit routers support custom CIDR blocks.
-        *   This feature is in pubic preview and is available only in some regions. For more information about the supported regions, see [Limits on transit router CIDR blocks](~~462635~~).
-        *   Each transit router supports at most five CIDR blocks. The subnet mask of a CIDR block must be 16 bits to 24 bits in length.
-        *   The following CIDR blocks and their subnets are not supported: 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, and 169.254.0.0/16.
-        *   The CIDR block cannot overlap with CIDR blocks that network instances attached to the CEN instance use to communicate with each other.
-        *   On the same CEN instance, each transit router CIDR block must be unique.
-        *   When you create the first VPN connection after you add a CIDR block for a transit router, three CIDR blocks within the CIDR block are reserved. An IP address is allocated from the remaining CIDR blocks to the IPsec-VPN connection.
-        You can call [ListTransitRouterCidrAllocation](~~464173~~) to query reserved CIDR blocks and IP addresses allocated to network connections.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
         
         @param request: CreateTransitRouterCidrRequest
         @return: CreateTransitRouterCidrResponse
@@ -3001,17 +2943,9 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterCidrRequest,
     ) -> cbn_20170912_models.CreateTransitRouterCidrResponse:
         """
-        You can specify a CIDR block for a transit router. The CIDR block works in a similar way as the CIDR block of the loopback interface on a router. IP addresses within the CIDR block can be assigned to IPsec-VPN connections. For more information, see [Transit router CIDR blocks](~~462635~~).
-        The **CreateTransitRouterCidr** operation can be used to create a CIDR block only after you create a transit router.
-        The CIDR block must meet the following requirements:
-        *   Only Enterprise Edition transit routers support custom CIDR blocks.
-        *   This feature is in pubic preview and is available only in some regions. For more information about the supported regions, see [Limits on transit router CIDR blocks](~~462635~~).
-        *   Each transit router supports at most five CIDR blocks. The subnet mask of a CIDR block must be 16 bits to 24 bits in length.
-        *   The following CIDR blocks and their subnets are not supported: 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, and 169.254.0.0/16.
-        *   The CIDR block cannot overlap with CIDR blocks that network instances attached to the CEN instance use to communicate with each other.
-        *   On the same CEN instance, each transit router CIDR block must be unique.
-        *   When you create the first VPN connection after you add a CIDR block for a transit router, three CIDR blocks within the CIDR block are reserved. An IP address is allocated from the remaining CIDR blocks to the IPsec-VPN connection.
-        You can call [ListTransitRouterCidrAllocation](~~464173~~) to query reserved CIDR blocks and IP addresses allocated to network connections.
+        The client token that is used to ensure the idempotence of the request.
+        You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
         
         @param request: CreateTransitRouterCidrRequest
         @return: CreateTransitRouterCidrResponse
@@ -3969,7 +3903,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse:
         """
-        The ID of the VPC connection.
+        You can use the following methods to attach a VPC to an Enterprise Edition transit router:
+        *   If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
+        *   If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
+        *   **CreateTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the VPC connection ID is returned but the operation is still being performed in the system background. You can call the [ListTransitRouterVpcAttachments](~~261222~~) operation to query the status of a VPC connection.
+        *   If a VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
+        *   If a VPC connection is in the **Attached** state, the VPC connection is created.
+        *   By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
+        ## Prerequisites
+        Before you call this operation, make sure that the following requirements are met:
+        *   At least one vSwitch is deployed for the VPC in the zones supported by Enterprise Edition transit routers. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](~~181681~~).
+        *   To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](~~181553~~).
+        *   VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](~~189836~~).
         
         @param request: CreateTransitRouterVpcAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4036,7 +3981,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse:
         """
-        The ID of the VPC connection.
+        You can use the following methods to attach a VPC to an Enterprise Edition transit router:
+        *   If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
+        *   If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
+        *   **CreateTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the VPC connection ID is returned but the operation is still being performed in the system background. You can call the [ListTransitRouterVpcAttachments](~~261222~~) operation to query the status of a VPC connection.
+        *   If a VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
+        *   If a VPC connection is in the **Attached** state, the VPC connection is created.
+        *   By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
+        ## Prerequisites
+        Before you call this operation, make sure that the following requirements are met:
+        *   At least one vSwitch is deployed for the VPC in the zones supported by Enterprise Edition transit routers. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](~~181681~~).
+        *   To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](~~181553~~).
+        *   VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](~~189836~~).
         
         @param request: CreateTransitRouterVpcAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4102,7 +4058,18 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterVpcAttachmentRequest,
     ) -> cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse:
         """
-        The ID of the VPC connection.
+        You can use the following methods to attach a VPC to an Enterprise Edition transit router:
+        *   If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
+        *   If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
+        *   **CreateTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the VPC connection ID is returned but the operation is still being performed in the system background. You can call the [ListTransitRouterVpcAttachments](~~261222~~) operation to query the status of a VPC connection.
+        *   If a VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
+        *   If a VPC connection is in the **Attached** state, the VPC connection is created.
+        *   By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
+        ## Prerequisites
+        Before you call this operation, make sure that the following requirements are met:
+        *   At least one vSwitch is deployed for the VPC in the zones supported by Enterprise Edition transit routers. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](~~181681~~).
+        *   To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](~~181553~~).
+        *   VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](~~189836~~).
         
         @param request: CreateTransitRouterVpcAttachmentRequest
         @return: CreateTransitRouterVpcAttachmentResponse
@@ -4115,7 +4082,18 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterVpcAttachmentRequest,
     ) -> cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse:
         """
-        The ID of the VPC connection.
+        You can use the following methods to attach a VPC to an Enterprise Edition transit router:
+        *   If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
+        *   If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
+        *   **CreateTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the VPC connection ID is returned but the operation is still being performed in the system background. You can call the [ListTransitRouterVpcAttachments](~~261222~~) operation to query the status of a VPC connection.
+        *   If a VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
+        *   If a VPC connection is in the **Attached** state, the VPC connection is created.
+        *   By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
+        ## Prerequisites
+        Before you call this operation, make sure that the following requirements are met:
+        *   At least one vSwitch is deployed for the VPC in the zones supported by Enterprise Edition transit routers. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](~~181681~~).
+        *   To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](~~181553~~).
+        *   VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](~~189836~~).
         
         @param request: CreateTransitRouterVpcAttachmentRequest
         @return: CreateTransitRouterVpcAttachmentResponse
@@ -4437,17 +4415,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeleteCenResponse:
         """
-        *DeleteCen** is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
-        - If a CEN instance is in the **Deleting** state, the CEN instance is being deleted. In this case, you can query the CEN instance but cannot perform other operations.
-        - If a CEN instance cannot be found, the CEN instance is deleted.
-        ## Prerequisites
-        The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
-        - For more information about how to detach a network instance, see the following topics:   - [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment)
-        - [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment)
-        - [DeleteTransitRouterVpnAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpnattachment)
-        - [DeleteTransitRouterPeerAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterpeerattachment)>  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/detachcenchildinstance).
-        - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterroutetable).
-        - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/unassociatecenbandwidthpackage).
+        DeleteCen
         
         @param request: DeleteCenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4490,17 +4458,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeleteCenResponse:
         """
-        *DeleteCen** is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
-        - If a CEN instance is in the **Deleting** state, the CEN instance is being deleted. In this case, you can query the CEN instance but cannot perform other operations.
-        - If a CEN instance cannot be found, the CEN instance is deleted.
-        ## Prerequisites
-        The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
-        - For more information about how to detach a network instance, see the following topics:   - [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment)
-        - [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment)
-        - [DeleteTransitRouterVpnAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpnattachment)
-        - [DeleteTransitRouterPeerAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterpeerattachment)>  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/detachcenchildinstance).
-        - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterroutetable).
-        - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/unassociatecenbandwidthpackage).
+        DeleteCen
         
         @param request: DeleteCenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4542,17 +4500,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeleteCenRequest,
     ) -> cbn_20170912_models.DeleteCenResponse:
         """
-        *DeleteCen** is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
-        - If a CEN instance is in the **Deleting** state, the CEN instance is being deleted. In this case, you can query the CEN instance but cannot perform other operations.
-        - If a CEN instance cannot be found, the CEN instance is deleted.
-        ## Prerequisites
-        The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
-        - For more information about how to detach a network instance, see the following topics:   - [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment)
-        - [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment)
-        - [DeleteTransitRouterVpnAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpnattachment)
-        - [DeleteTransitRouterPeerAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterpeerattachment)>  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/detachcenchildinstance).
-        - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterroutetable).
-        - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/unassociatecenbandwidthpackage).
+        DeleteCen
         
         @param request: DeleteCenRequest
         @return: DeleteCenResponse
@@ -4565,17 +4513,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeleteCenRequest,
     ) -> cbn_20170912_models.DeleteCenResponse:
         """
-        *DeleteCen** is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
-        - If a CEN instance is in the **Deleting** state, the CEN instance is being deleted. In this case, you can query the CEN instance but cannot perform other operations.
-        - If a CEN instance cannot be found, the CEN instance is deleted.
-        ## Prerequisites
-        The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
-        - For more information about how to detach a network instance, see the following topics:   - [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment)
-        - [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment)
-        - [DeleteTransitRouterVpnAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpnattachment)
-        - [DeleteTransitRouterPeerAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterpeerattachment)>  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/detachcenchildinstance).
-        - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterroutetable).
-        - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/unassociatecenbandwidthpackage).
+        DeleteCen
         
         @param request: DeleteCenRequest
         @return: DeleteCenResponse
@@ -6076,16 +6014,6 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeleteTransitRouterMulticastDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeleteTransitRouterMulticastDomainResponse:
-        """
-        Before you delete a multicast domain, make sure that the following requirements are met:
-        *   The multicast domain is disassociated from all vSwitches. For more information, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
-        *   All multicast sources and members are removed from the multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupSources](~~429776~~) and [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
-        *   The multicast domain is not added to other multicast domains as a multicast member. If the multicast domain is added to another multicast domain as a multicast member, you must remove the multicast domain from the other multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
-        
-        @param request: DeleteTransitRouterMulticastDomainRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteTransitRouterMulticastDomainResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6126,16 +6054,6 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeleteTransitRouterMulticastDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeleteTransitRouterMulticastDomainResponse:
-        """
-        Before you delete a multicast domain, make sure that the following requirements are met:
-        *   The multicast domain is disassociated from all vSwitches. For more information, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
-        *   All multicast sources and members are removed from the multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupSources](~~429776~~) and [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
-        *   The multicast domain is not added to other multicast domains as a multicast member. If the multicast domain is added to another multicast domain as a multicast member, you must remove the multicast domain from the other multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
-        
-        @param request: DeleteTransitRouterMulticastDomainRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteTransitRouterMulticastDomainResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6175,15 +6093,6 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.DeleteTransitRouterMulticastDomainRequest,
     ) -> cbn_20170912_models.DeleteTransitRouterMulticastDomainResponse:
-        """
-        Before you delete a multicast domain, make sure that the following requirements are met:
-        *   The multicast domain is disassociated from all vSwitches. For more information, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
-        *   All multicast sources and members are removed from the multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupSources](~~429776~~) and [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
-        *   The multicast domain is not added to other multicast domains as a multicast member. If the multicast domain is added to another multicast domain as a multicast member, you must remove the multicast domain from the other multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
-        
-        @param request: DeleteTransitRouterMulticastDomainRequest
-        @return: DeleteTransitRouterMulticastDomainResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.delete_transit_router_multicast_domain_with_options(request, runtime)
 
@@ -6191,15 +6100,6 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.DeleteTransitRouterMulticastDomainRequest,
     ) -> cbn_20170912_models.DeleteTransitRouterMulticastDomainResponse:
-        """
-        Before you delete a multicast domain, make sure that the following requirements are met:
-        *   The multicast domain is disassociated from all vSwitches. For more information, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
-        *   All multicast sources and members are removed from the multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupSources](~~429776~~) and [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
-        *   The multicast domain is not added to other multicast domains as a multicast member. If the multicast domain is added to another multicast domain as a multicast member, you must remove the multicast domain from the other multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
-        
-        @param request: DeleteTransitRouterMulticastDomainRequest
-        @return: DeleteTransitRouterMulticastDomainResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_transit_router_multicast_domain_with_options_async(request, runtime)
 
@@ -6209,7 +6109,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeleteTransitRouterPeerAttachmentResponse:
         """
-        *DeleteTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the system background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+        *DeleteTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTransitRouterPeerAttachments** to query the status of an inter-region connection.
         *   If an inter-region connection is in the **Detaching** state, the inter-region connection is being deleted. You can query the inter-region connection but cannot perform other operations.
         *   If an inter-region connection cannot be found, the inter-region connection is deleted.
         ## Prerequisites
@@ -6267,7 +6167,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeleteTransitRouterPeerAttachmentResponse:
         """
-        *DeleteTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the system background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+        *DeleteTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTransitRouterPeerAttachments** to query the status of an inter-region connection.
         *   If an inter-region connection is in the **Detaching** state, the inter-region connection is being deleted. You can query the inter-region connection but cannot perform other operations.
         *   If an inter-region connection cannot be found, the inter-region connection is deleted.
         ## Prerequisites
@@ -6324,7 +6224,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeleteTransitRouterPeerAttachmentRequest,
     ) -> cbn_20170912_models.DeleteTransitRouterPeerAttachmentResponse:
         """
-        *DeleteTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the system background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+        *DeleteTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTransitRouterPeerAttachments** to query the status of an inter-region connection.
         *   If an inter-region connection is in the **Detaching** state, the inter-region connection is being deleted. You can query the inter-region connection but cannot perform other operations.
         *   If an inter-region connection cannot be found, the inter-region connection is deleted.
         ## Prerequisites
@@ -6346,7 +6246,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeleteTransitRouterPeerAttachmentRequest,
     ) -> cbn_20170912_models.DeleteTransitRouterPeerAttachmentResponse:
         """
-        *DeleteTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the system background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+        *DeleteTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTransitRouterPeerAttachments** to query the status of an inter-region connection.
         *   If an inter-region connection is in the **Detaching** state, the inter-region connection is being deleted. You can query the inter-region connection but cannot perform other operations.
         *   If an inter-region connection cannot be found, the inter-region connection is deleted.
         ## Prerequisites
@@ -9146,6 +9046,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cen_id):
             query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_owner_id):
+            query['ChildInstanceOwnerId'] = request.child_instance_owner_id
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -9190,6 +9094,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cen_id):
             query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_owner_id):
+            query['ChildInstanceOwnerId'] = request.child_instance_owner_id
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -10099,10 +10007,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DisableTransitRouterRouteTablePropagationResponse:
         """
-        # Usage notes
-        **DisableTransitRouterRouteTablePropagation** is an synchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the **ListTransitRouterRouteTablePropagations** operation to query the status of a route learning correlation.
-        *   If a route learning correlation is in the **Disabling** state, the route learning correlation is being deleted. You can query the route learning correlation but cannot perform other operations.
-        *   If a route learning correlation cannot be found, the route learning correlation is deleted.
+        The ID of the route table of the Enterprise Edition transit router.
         
         @param request: DisableTransitRouterRouteTablePropagationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10151,10 +10056,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DisableTransitRouterRouteTablePropagationResponse:
         """
-        # Usage notes
-        **DisableTransitRouterRouteTablePropagation** is an synchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the **ListTransitRouterRouteTablePropagations** operation to query the status of a route learning correlation.
-        *   If a route learning correlation is in the **Disabling** state, the route learning correlation is being deleted. You can query the route learning correlation but cannot perform other operations.
-        *   If a route learning correlation cannot be found, the route learning correlation is deleted.
+        The ID of the route table of the Enterprise Edition transit router.
         
         @param request: DisableTransitRouterRouteTablePropagationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10202,10 +10104,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DisableTransitRouterRouteTablePropagationRequest,
     ) -> cbn_20170912_models.DisableTransitRouterRouteTablePropagationResponse:
         """
-        # Usage notes
-        **DisableTransitRouterRouteTablePropagation** is an synchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the **ListTransitRouterRouteTablePropagations** operation to query the status of a route learning correlation.
-        *   If a route learning correlation is in the **Disabling** state, the route learning correlation is being deleted. You can query the route learning correlation but cannot perform other operations.
-        *   If a route learning correlation cannot be found, the route learning correlation is deleted.
+        The ID of the route table of the Enterprise Edition transit router.
         
         @param request: DisableTransitRouterRouteTablePropagationRequest
         @return: DisableTransitRouterRouteTablePropagationResponse
@@ -10218,10 +10117,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DisableTransitRouterRouteTablePropagationRequest,
     ) -> cbn_20170912_models.DisableTransitRouterRouteTablePropagationResponse:
         """
-        # Usage notes
-        **DisableTransitRouterRouteTablePropagation** is an synchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the **ListTransitRouterRouteTablePropagations** operation to query the status of a route learning correlation.
-        *   If a route learning correlation is in the **Disabling** state, the route learning correlation is being deleted. You can query the route learning correlation but cannot perform other operations.
-        *   If a route learning correlation cannot be found, the route learning correlation is deleted.
+        The ID of the route table of the Enterprise Edition transit router.
         
         @param request: DisableTransitRouterRouteTablePropagationRequest
         @return: DisableTransitRouterRouteTablePropagationResponse
@@ -11807,13 +11703,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRouterAvailableResourceResponse:
         """
-        You can call **ListTransitRouterAvailableResource** to query the zones that support Enterprise Edition transit routers in a specified region.
-        *   If you do not set **SupportMulticast** to **true**, general-purpose zones that support Enterprise Edition transit routers are queried.
-        *   If you set **SupportMulticast** to **true**, zones in which Enterprise Edition transit routers support multicast are queried.
-        *   On May 31, 2022, VPC-connected Enterprise Edition transit routers were optimized. Optimized Enterprise Edition transit routers do not require you to specify the primary and secondary zones when you connect VPCs to the Enterprise Edition transit routers. You can specify one or more zones.
-        *   If your Enterprise Edition transit router has not been optimized, you must specify the primary and secondary zones when you connect a VPC to your Enterprise Edition transit router. After you call **ListTransitRouterAvailableResource**, you can call **MasterZones** and **SlaveZones** to query the primary and secondary zones.
-        *   If your Enterprise Edition transit router has been optimized, you can specify a zone as needed when you connect a VPC to your Enterprise Edition transit router. After you call **ListTransitRouterAvailableResource**, you can call **AvailableZones** to query the zones.
-        For more information about the optimization, see [Announcement: Optimization on VPC-connected Enterprise Edition transit routers](~~434191~~).
+        A list of primary zones.
         
         @param request: ListTransitRouterAvailableResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11858,13 +11748,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRouterAvailableResourceResponse:
         """
-        You can call **ListTransitRouterAvailableResource** to query the zones that support Enterprise Edition transit routers in a specified region.
-        *   If you do not set **SupportMulticast** to **true**, general-purpose zones that support Enterprise Edition transit routers are queried.
-        *   If you set **SupportMulticast** to **true**, zones in which Enterprise Edition transit routers support multicast are queried.
-        *   On May 31, 2022, VPC-connected Enterprise Edition transit routers were optimized. Optimized Enterprise Edition transit routers do not require you to specify the primary and secondary zones when you connect VPCs to the Enterprise Edition transit routers. You can specify one or more zones.
-        *   If your Enterprise Edition transit router has not been optimized, you must specify the primary and secondary zones when you connect a VPC to your Enterprise Edition transit router. After you call **ListTransitRouterAvailableResource**, you can call **MasterZones** and **SlaveZones** to query the primary and secondary zones.
-        *   If your Enterprise Edition transit router has been optimized, you can specify a zone as needed when you connect a VPC to your Enterprise Edition transit router. After you call **ListTransitRouterAvailableResource**, you can call **AvailableZones** to query the zones.
-        For more information about the optimization, see [Announcement: Optimization on VPC-connected Enterprise Edition transit routers](~~434191~~).
+        A list of primary zones.
         
         @param request: ListTransitRouterAvailableResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11908,13 +11792,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRouterAvailableResourceRequest,
     ) -> cbn_20170912_models.ListTransitRouterAvailableResourceResponse:
         """
-        You can call **ListTransitRouterAvailableResource** to query the zones that support Enterprise Edition transit routers in a specified region.
-        *   If you do not set **SupportMulticast** to **true**, general-purpose zones that support Enterprise Edition transit routers are queried.
-        *   If you set **SupportMulticast** to **true**, zones in which Enterprise Edition transit routers support multicast are queried.
-        *   On May 31, 2022, VPC-connected Enterprise Edition transit routers were optimized. Optimized Enterprise Edition transit routers do not require you to specify the primary and secondary zones when you connect VPCs to the Enterprise Edition transit routers. You can specify one or more zones.
-        *   If your Enterprise Edition transit router has not been optimized, you must specify the primary and secondary zones when you connect a VPC to your Enterprise Edition transit router. After you call **ListTransitRouterAvailableResource**, you can call **MasterZones** and **SlaveZones** to query the primary and secondary zones.
-        *   If your Enterprise Edition transit router has been optimized, you can specify a zone as needed when you connect a VPC to your Enterprise Edition transit router. After you call **ListTransitRouterAvailableResource**, you can call **AvailableZones** to query the zones.
-        For more information about the optimization, see [Announcement: Optimization on VPC-connected Enterprise Edition transit routers](~~434191~~).
+        A list of primary zones.
         
         @param request: ListTransitRouterAvailableResourceRequest
         @return: ListTransitRouterAvailableResourceResponse
@@ -11927,13 +11805,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRouterAvailableResourceRequest,
     ) -> cbn_20170912_models.ListTransitRouterAvailableResourceResponse:
         """
-        You can call **ListTransitRouterAvailableResource** to query the zones that support Enterprise Edition transit routers in a specified region.
-        *   If you do not set **SupportMulticast** to **true**, general-purpose zones that support Enterprise Edition transit routers are queried.
-        *   If you set **SupportMulticast** to **true**, zones in which Enterprise Edition transit routers support multicast are queried.
-        *   On May 31, 2022, VPC-connected Enterprise Edition transit routers were optimized. Optimized Enterprise Edition transit routers do not require you to specify the primary and secondary zones when you connect VPCs to the Enterprise Edition transit routers. You can specify one or more zones.
-        *   If your Enterprise Edition transit router has not been optimized, you must specify the primary and secondary zones when you connect a VPC to your Enterprise Edition transit router. After you call **ListTransitRouterAvailableResource**, you can call **MasterZones** and **SlaveZones** to query the primary and secondary zones.
-        *   If your Enterprise Edition transit router has been optimized, you can specify a zone as needed when you connect a VPC to your Enterprise Edition transit router. After you call **ListTransitRouterAvailableResource**, you can call **AvailableZones** to query the zones.
-        For more information about the optimization, see [Announcement: Optimization on VPC-connected Enterprise Edition transit routers](~~434191~~).
+        A list of primary zones.
         
         @param request: ListTransitRouterAvailableResourceRequest
         @return: ListTransitRouterAvailableResourceResponse
@@ -12322,13 +12194,6 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse:
-        """
-        You can query vSwitches only in VPCs that are connected to Enterprise Edition transit routers.
-        
-        @param request: ListTransitRouterMulticastDomainVSwitchesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTransitRouterMulticastDomainVSwitchesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -12373,13 +12238,6 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse:
-        """
-        You can query vSwitches only in VPCs that are connected to Enterprise Edition transit routers.
-        
-        @param request: ListTransitRouterMulticastDomainVSwitchesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTransitRouterMulticastDomainVSwitchesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -12423,12 +12281,6 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesRequest,
     ) -> cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse:
-        """
-        You can query vSwitches only in VPCs that are connected to Enterprise Edition transit routers.
-        
-        @param request: ListTransitRouterMulticastDomainVSwitchesRequest
-        @return: ListTransitRouterMulticastDomainVSwitchesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.list_transit_router_multicast_domain_vswitches_with_options(request, runtime)
 
@@ -12436,12 +12288,6 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesRequest,
     ) -> cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse:
-        """
-        You can query vSwitches only in VPCs that are connected to Enterprise Edition transit routers.
-        
-        @param request: ListTransitRouterMulticastDomainVSwitchesRequest
-        @return: ListTransitRouterMulticastDomainVSwitchesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.list_transit_router_multicast_domain_vswitches_with_options_async(request, runtime)
 
@@ -13692,6 +13538,16 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRouterVpcAttachmentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRouterVpcAttachmentsResponse:
+        """
+        You can use the following methods to query VPC connections on an Enterprise Edition transit router:
+        *   Specify the ID of the Enterprise Edition transit router.
+        *   Specify the ID of the relevant Cloud Enterprise Network (CEN) instance and the region ID of the Enterprise Edition transit router.
+        *   Specify the ID of the region where the Enterprise Edition transit router is deployed.
+        
+        @param request: ListTransitRouterVpcAttachmentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTransitRouterVpcAttachmentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -13746,6 +13602,16 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRouterVpcAttachmentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRouterVpcAttachmentsResponse:
+        """
+        You can use the following methods to query VPC connections on an Enterprise Edition transit router:
+        *   Specify the ID of the Enterprise Edition transit router.
+        *   Specify the ID of the relevant Cloud Enterprise Network (CEN) instance and the region ID of the Enterprise Edition transit router.
+        *   Specify the ID of the region where the Enterprise Edition transit router is deployed.
+        
+        @param request: ListTransitRouterVpcAttachmentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTransitRouterVpcAttachmentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -13799,6 +13665,15 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.ListTransitRouterVpcAttachmentsRequest,
     ) -> cbn_20170912_models.ListTransitRouterVpcAttachmentsResponse:
+        """
+        You can use the following methods to query VPC connections on an Enterprise Edition transit router:
+        *   Specify the ID of the Enterprise Edition transit router.
+        *   Specify the ID of the relevant Cloud Enterprise Network (CEN) instance and the region ID of the Enterprise Edition transit router.
+        *   Specify the ID of the region where the Enterprise Edition transit router is deployed.
+        
+        @param request: ListTransitRouterVpcAttachmentsRequest
+        @return: ListTransitRouterVpcAttachmentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_transit_router_vpc_attachments_with_options(request, runtime)
 
@@ -13806,6 +13681,15 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.ListTransitRouterVpcAttachmentsRequest,
     ) -> cbn_20170912_models.ListTransitRouterVpcAttachmentsResponse:
+        """
+        You can use the following methods to query VPC connections on an Enterprise Edition transit router:
+        *   Specify the ID of the Enterprise Edition transit router.
+        *   Specify the ID of the relevant Cloud Enterprise Network (CEN) instance and the region ID of the Enterprise Edition transit router.
+        *   Specify the ID of the region where the Enterprise Edition transit router is deployed.
+        
+        @param request: ListTransitRouterVpcAttachmentsRequest
+        @return: ListTransitRouterVpcAttachmentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_transit_router_vpc_attachments_with_options_async(request, runtime)
 
@@ -14419,9 +14303,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyCenRouteMapResponse:
         """
-        `ModifyCenRouteMap` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeCenRouteMaps` operation to query the status of a routing policy.
-        *   **Modifying**: indicates that the system is modifying the routing policy. You can only query the routing policy, but cannot perform other operations.
-        *   **Active**: indicates that the routing policy is modified.
+        The response.
         
         @param request: ModifyCenRouteMapRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14518,9 +14400,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyCenRouteMapResponse:
         """
-        `ModifyCenRouteMap` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeCenRouteMaps` operation to query the status of a routing policy.
-        *   **Modifying**: indicates that the system is modifying the routing policy. You can only query the routing policy, but cannot perform other operations.
-        *   **Active**: indicates that the routing policy is modified.
+        The response.
         
         @param request: ModifyCenRouteMapRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14616,9 +14496,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyCenRouteMapRequest,
     ) -> cbn_20170912_models.ModifyCenRouteMapResponse:
         """
-        `ModifyCenRouteMap` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeCenRouteMaps` operation to query the status of a routing policy.
-        *   **Modifying**: indicates that the system is modifying the routing policy. You can only query the routing policy, but cannot perform other operations.
-        *   **Active**: indicates that the routing policy is modified.
+        The response.
         
         @param request: ModifyCenRouteMapRequest
         @return: ModifyCenRouteMapResponse
@@ -14631,9 +14509,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyCenRouteMapRequest,
     ) -> cbn_20170912_models.ModifyCenRouteMapResponse:
         """
-        `ModifyCenRouteMap` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeCenRouteMaps` operation to query the status of a routing policy.
-        *   **Modifying**: indicates that the system is modifying the routing policy. You can only query the routing policy, but cannot perform other operations.
-        *   **Active**: indicates that the routing policy is modified.
+        The response.
         
         @param request: ModifyCenRouteMapRequest
         @return: ModifyCenRouteMapResponse
@@ -14646,16 +14522,6 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyFlowLogAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
-        """
-        # Usage notes
-        `ModifyFlowLogAttribute` is an asynchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
-        *   If a flow log is in the **Modifying** state, the flow log is being modified. In this case, you can query the flow log but cannot perform other operations.
-        *   If a flow log is in the **Active** state, the flow log is modified.
-        
-        @param request: ModifyFlowLogAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyFlowLogAttributeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -14702,16 +14568,6 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyFlowLogAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
-        """
-        # Usage notes
-        `ModifyFlowLogAttribute` is an asynchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
-        *   If a flow log is in the **Modifying** state, the flow log is being modified. In this case, you can query the flow log but cannot perform other operations.
-        *   If a flow log is in the **Active** state, the flow log is modified.
-        
-        @param request: ModifyFlowLogAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyFlowLogAttributeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -14757,15 +14613,6 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.ModifyFlowLogAttributeRequest,
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
-        """
-        # Usage notes
-        `ModifyFlowLogAttribute` is an asynchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
-        *   If a flow log is in the **Modifying** state, the flow log is being modified. In this case, you can query the flow log but cannot perform other operations.
-        *   If a flow log is in the **Active** state, the flow log is modified.
-        
-        @param request: ModifyFlowLogAttributeRequest
-        @return: ModifyFlowLogAttributeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_flow_log_attribute_with_options(request, runtime)
 
@@ -14773,15 +14620,6 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.ModifyFlowLogAttributeRequest,
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
-        """
-        # Usage notes
-        `ModifyFlowLogAttribute` is an asynchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
-        *   If a flow log is in the **Modifying** state, the flow log is being modified. In this case, you can query the flow log but cannot perform other operations.
-        *   If a flow log is in the **Active** state, the flow log is modified.
-        
-        @param request: ModifyFlowLogAttributeRequest
-        @return: ModifyFlowLogAttributeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_flow_log_attribute_with_options_async(request, runtime)
 
@@ -15041,8 +14879,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.MoveResourceGroupResponse:
         """
-        ## Usage notes
-        By default, CEN instances and bandwidth plans are in the default resource group. You can call `MoveResourceGroup` to move CEN instances or bandwidth plans to another resource group.
+        By default, CEN instances and bandwidth plans are in the default resource group. You can call the `MoveResourceGroup` operation to move CEN instances or bandwidth plans to another resource group.
         
         @param request: MoveResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15093,8 +14930,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.MoveResourceGroupResponse:
         """
-        ## Usage notes
-        By default, CEN instances and bandwidth plans are in the default resource group. You can call `MoveResourceGroup` to move CEN instances or bandwidth plans to another resource group.
+        By default, CEN instances and bandwidth plans are in the default resource group. You can call the `MoveResourceGroup` operation to move CEN instances or bandwidth plans to another resource group.
         
         @param request: MoveResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15144,8 +14980,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.MoveResourceGroupRequest,
     ) -> cbn_20170912_models.MoveResourceGroupResponse:
         """
-        ## Usage notes
-        By default, CEN instances and bandwidth plans are in the default resource group. You can call `MoveResourceGroup` to move CEN instances or bandwidth plans to another resource group.
+        By default, CEN instances and bandwidth plans are in the default resource group. You can call the `MoveResourceGroup` operation to move CEN instances or bandwidth plans to another resource group.
         
         @param request: MoveResourceGroupRequest
         @return: MoveResourceGroupResponse
@@ -15158,8 +14993,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.MoveResourceGroupRequest,
     ) -> cbn_20170912_models.MoveResourceGroupResponse:
         """
-        ## Usage notes
-        By default, CEN instances and bandwidth plans are in the default resource group. You can call `MoveResourceGroup` to move CEN instances or bandwidth plans to another resource group.
+        By default, CEN instances and bandwidth plans are in the default resource group. You can call the `MoveResourceGroup` operation to move CEN instances or bandwidth plans to another resource group.
         
         @param request: MoveResourceGroupRequest
         @return: MoveResourceGroupResponse
@@ -18043,10 +17877,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse:
         """
-        ## Usage notes
-        **UpdateTransitRouterVbrAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns the **request ID** but the operation is still being performed in the system background. You can call **ListTransitRouterVbrAttachments** to query the status of a VBR connection.
-        *   If a VBR connection is in the **Modifying** state, the VBR connection is being modified. You can query the VBR connection but cannot perform other operations.
-        *   If the VBR connection is in the **Attached** state, the VBR connection is modified.
+        The ID of the request.
         
         @param request: UpdateTransitRouterVbrAttachmentAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18099,10 +17930,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse:
         """
-        ## Usage notes
-        **UpdateTransitRouterVbrAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns the **request ID** but the operation is still being performed in the system background. You can call **ListTransitRouterVbrAttachments** to query the status of a VBR connection.
-        *   If a VBR connection is in the **Modifying** state, the VBR connection is being modified. You can query the VBR connection but cannot perform other operations.
-        *   If the VBR connection is in the **Attached** state, the VBR connection is modified.
+        The ID of the request.
         
         @param request: UpdateTransitRouterVbrAttachmentAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18154,10 +17982,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeRequest,
     ) -> cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse:
         """
-        ## Usage notes
-        **UpdateTransitRouterVbrAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns the **request ID** but the operation is still being performed in the system background. You can call **ListTransitRouterVbrAttachments** to query the status of a VBR connection.
-        *   If a VBR connection is in the **Modifying** state, the VBR connection is being modified. You can query the VBR connection but cannot perform other operations.
-        *   If the VBR connection is in the **Attached** state, the VBR connection is modified.
+        The ID of the request.
         
         @param request: UpdateTransitRouterVbrAttachmentAttributeRequest
         @return: UpdateTransitRouterVbrAttachmentAttributeResponse
@@ -18170,10 +17995,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeRequest,
     ) -> cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse:
         """
-        ## Usage notes
-        **UpdateTransitRouterVbrAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns the **request ID** but the operation is still being performed in the system background. You can call **ListTransitRouterVbrAttachments** to query the status of a VBR connection.
-        *   If a VBR connection is in the **Modifying** state, the VBR connection is being modified. You can query the VBR connection but cannot perform other operations.
-        *   If the VBR connection is in the **Attached** state, the VBR connection is modified.
+        The ID of the request.
         
         @param request: UpdateTransitRouterVbrAttachmentAttributeRequest
         @return: UpdateTransitRouterVbrAttachmentAttributeResponse
@@ -18186,6 +18008,15 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse:
+        """
+        *UpdateTransitRouterVpcAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterVpcAttachments** operation to query the status of a VPC connection.
+        *   If a VPC connection is in the **Modifying** state, the VPC connection is being modified. You can query the VPC connection but cannot perform other operations.
+        *   If a VPC connection is in the **Attached** state, the VPC connection is modified.
+        
+        @param request: UpdateTransitRouterVpcAttachmentAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTransitRouterVpcAttachmentAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_publish_route_enabled):
@@ -18232,6 +18063,15 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse:
+        """
+        *UpdateTransitRouterVpcAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterVpcAttachments** operation to query the status of a VPC connection.
+        *   If a VPC connection is in the **Modifying** state, the VPC connection is being modified. You can query the VPC connection but cannot perform other operations.
+        *   If a VPC connection is in the **Attached** state, the VPC connection is modified.
+        
+        @param request: UpdateTransitRouterVpcAttachmentAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTransitRouterVpcAttachmentAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_publish_route_enabled):
@@ -18277,6 +18117,14 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeRequest,
     ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse:
+        """
+        *UpdateTransitRouterVpcAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterVpcAttachments** operation to query the status of a VPC connection.
+        *   If a VPC connection is in the **Modifying** state, the VPC connection is being modified. You can query the VPC connection but cannot perform other operations.
+        *   If a VPC connection is in the **Attached** state, the VPC connection is modified.
+        
+        @param request: UpdateTransitRouterVpcAttachmentAttributeRequest
+        @return: UpdateTransitRouterVpcAttachmentAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_transit_router_vpc_attachment_attribute_with_options(request, runtime)
 
@@ -18284,6 +18132,14 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeRequest,
     ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse:
+        """
+        *UpdateTransitRouterVpcAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterVpcAttachments** operation to query the status of a VPC connection.
+        *   If a VPC connection is in the **Modifying** state, the VPC connection is being modified. You can query the VPC connection but cannot perform other operations.
+        *   If a VPC connection is in the **Attached** state, the VPC connection is modified.
+        
+        @param request: UpdateTransitRouterVpcAttachmentAttributeRequest
+        @return: UpdateTransitRouterVpcAttachmentAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_transit_router_vpc_attachment_attribute_with_options_async(request, runtime)
 
