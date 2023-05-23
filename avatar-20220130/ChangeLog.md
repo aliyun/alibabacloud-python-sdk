@@ -1,3 +1,6 @@
+2023-05-23 Version: 1.0.19
+- VideoInfo字段不再是必填字段
+
 2023-05-10 Version: 1.0.18
 - SendMessage add Feedback param
 
