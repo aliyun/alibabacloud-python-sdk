@@ -8280,6 +8280,201 @@ class ListAddressGroupsResponse(TeaModel):
         return self
 
 
+class ListAssignmentRequest(TeaModel):
+    def __init__(
+        self,
+        limit: int = None,
+        manage_resource_id: str = None,
+        manage_resource_type: str = None,
+        marker: str = None,
+    ):
+        self.limit = limit
+        self.manage_resource_id = manage_resource_id
+        self.manage_resource_type = manage_resource_type
+        self.marker = marker
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.manage_resource_id is not None:
+            result['manage_resource_id'] = self.manage_resource_id
+        if self.manage_resource_type is not None:
+            result['manage_resource_type'] = self.manage_resource_type
+        if self.marker is not None:
+            result['marker'] = self.marker
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('manage_resource_id') is not None:
+            self.manage_resource_id = m.get('manage_resource_id')
+        if m.get('manage_resource_type') is not None:
+            self.manage_resource_type = m.get('manage_resource_type')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        return self
+
+
+class ListAssignmentResponseBodyAssignmentList(TeaModel):
+    def __init__(
+        self,
+        created_at: int = None,
+        creator: str = None,
+        domain_id: str = None,
+        identity: Identity = None,
+        manage_resource_id: str = None,
+        manage_resource_type: str = None,
+        role_id: str = None,
+    ):
+        self.created_at = created_at
+        self.creator = creator
+        self.domain_id = domain_id
+        self.identity = identity
+        self.manage_resource_id = manage_resource_id
+        self.manage_resource_type = manage_resource_type
+        self.role_id = role_id
+
+    def validate(self):
+        if self.identity:
+            self.identity.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.identity is not None:
+            result['identity'] = self.identity.to_map()
+        if self.manage_resource_id is not None:
+            result['manage_resource_id'] = self.manage_resource_id
+        if self.manage_resource_type is not None:
+            result['manage_resource_type'] = self.manage_resource_type
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('identity') is not None:
+            temp_model = Identity()
+            self.identity = temp_model.from_map(m['identity'])
+        if m.get('manage_resource_id') is not None:
+            self.manage_resource_id = m.get('manage_resource_id')
+        if m.get('manage_resource_type') is not None:
+            self.manage_resource_type = m.get('manage_resource_type')
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        return self
+
+
+class ListAssignmentResponseBody(TeaModel):
+    def __init__(
+        self,
+        assignment_list: List[ListAssignmentResponseBodyAssignmentList] = None,
+        next_marker: str = None,
+    ):
+        self.assignment_list = assignment_list
+        self.next_marker = next_marker
+
+    def validate(self):
+        if self.assignment_list:
+            for k in self.assignment_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['assignment_list'] = []
+        if self.assignment_list is not None:
+            for k in self.assignment_list:
+                result['assignment_list'].append(k.to_map() if k else None)
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.assignment_list = []
+        if m.get('assignment_list') is not None:
+            for k in m.get('assignment_list'):
+                temp_model = ListAssignmentResponseBodyAssignmentList()
+                self.assignment_list.append(temp_model.from_map(k))
+        if m.get('next_marker') is not None:
+            self.next_marker = m.get('next_marker')
+        return self
+
+
+class ListAssignmentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAssignmentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAssignmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDeltaRequest(TeaModel):
     def __init__(
         self,

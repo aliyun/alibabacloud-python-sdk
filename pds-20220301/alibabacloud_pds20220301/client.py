@@ -4427,6 +4427,104 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_address_groups_with_options_async(request, headers, runtime)
 
+    def list_assignment_with_options(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.ListAssignmentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListAssignmentResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['domain_id'] = domain_id
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.manage_resource_id):
+            body['manage_resource_id'] = request.manage_resource_id
+        if not UtilClient.is_unset(request.manage_resource_type):
+            body['manage_resource_type'] = request.manage_resource_type
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAssignment',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/role/list_assignment',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListAssignmentResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_assignment_with_options_async(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.ListAssignmentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListAssignmentResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['domain_id'] = domain_id
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.manage_resource_id):
+            body['manage_resource_id'] = request.manage_resource_id
+        if not UtilClient.is_unset(request.manage_resource_type):
+            body['manage_resource_type'] = request.manage_resource_type
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAssignment',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/role/list_assignment',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListAssignmentResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_assignment(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.ListAssignmentRequest,
+    ) -> pds_20220301_models.ListAssignmentResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_assignment_with_options(domain_id, request, headers, runtime)
+
+    async def list_assignment_async(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.ListAssignmentRequest,
+    ) -> pds_20220301_models.ListAssignmentResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_assignment_with_options_async(domain_id, request, headers, runtime)
+
     def list_delta_with_options(
         self,
         request: pds_20220301_models.ListDeltaRequest,
