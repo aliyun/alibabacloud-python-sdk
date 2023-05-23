@@ -286,6 +286,10 @@ class Client(OpenApiClient):
             body['AppName'] = request.app_name
         if not UtilClient.is_unset(request.app_type):
             body['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.streaming_app_id):
+            body['StreamingAppId'] = request.streaming_app_id
+        if not UtilClient.is_unset(request.streaming_solution):
+            body['StreamingSolution'] = request.streaming_solution
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -316,6 +320,10 @@ class Client(OpenApiClient):
             body['AppName'] = request.app_name
         if not UtilClient.is_unset(request.app_type):
             body['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.streaming_app_id):
+            body['StreamingAppId'] = request.streaming_app_id
+        if not UtilClient.is_unset(request.streaming_solution):
+            body['StreamingSolution'] = request.streaming_solution
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -368,6 +376,8 @@ class Client(OpenApiClient):
             query['CustomSessionId'] = request.custom_session_id
         if not UtilClient.is_unset(request.custom_user_id):
             query['CustomUserId'] = request.custom_user_id
+        if not UtilClient.is_unset(request.district_id):
+            query['DistrictId'] = request.district_id
         if not UtilClient.is_unset(request.enable_postpaid):
             query['EnablePostpaid'] = request.enable_postpaid
         if not UtilClient.is_unset(request.project_id):
@@ -416,6 +426,8 @@ class Client(OpenApiClient):
             query['CustomSessionId'] = request.custom_session_id
         if not UtilClient.is_unset(request.custom_user_id):
             query['CustomUserId'] = request.custom_user_id
+        if not UtilClient.is_unset(request.district_id):
+            query['DistrictId'] = request.district_id
         if not UtilClient.is_unset(request.enable_postpaid):
             query['EnablePostpaid'] = request.enable_postpaid
         if not UtilClient.is_unset(request.project_id):
@@ -458,6 +470,92 @@ class Client(OpenApiClient):
     ) -> cgcs20211111_models.CreateAppSessionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_app_session_with_options_async(request, runtime)
+
+    def create_app_session_batch_with_options(
+        self,
+        tmp_req: cgcs20211111_models.CreateAppSessionBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.CreateAppSessionBatchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cgcs20211111_models.CreateAppSessionBatchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app_infos):
+            request.app_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_infos, 'AppInfos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_infos_shrink):
+            query['AppInfos'] = request.app_infos_shrink
+        if not UtilClient.is_unset(request.custom_task_id):
+            query['CustomTaskId'] = request.custom_task_id
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppSessionBatch',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.CreateAppSessionBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_session_batch_with_options_async(
+        self,
+        tmp_req: cgcs20211111_models.CreateAppSessionBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.CreateAppSessionBatchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cgcs20211111_models.CreateAppSessionBatchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app_infos):
+            request.app_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_infos, 'AppInfos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_infos_shrink):
+            query['AppInfos'] = request.app_infos_shrink
+        if not UtilClient.is_unset(request.custom_task_id):
+            query['CustomTaskId'] = request.custom_task_id
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppSessionBatch',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.CreateAppSessionBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_session_batch(
+        self,
+        request: cgcs20211111_models.CreateAppSessionBatchRequest,
+    ) -> cgcs20211111_models.CreateAppSessionBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_app_session_batch_with_options(request, runtime)
+
+    async def create_app_session_batch_async(
+        self,
+        request: cgcs20211111_models.CreateAppSessionBatchRequest,
+    ) -> cgcs20211111_models.CreateAppSessionBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_app_session_batch_with_options_async(request, runtime)
 
     def create_app_session_batch_sync_with_options(
         self,
@@ -1317,76 +1415,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_app_version_with_options_async(request, runtime)
 
-    def get_auto_pick_pic_with_options(
-        self,
-        request: cgcs20211111_models.GetAutoPickPicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.GetAutoPickPicResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetAutoPickPic',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.GetAutoPickPicResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_auto_pick_pic_with_options_async(
-        self,
-        request: cgcs20211111_models.GetAutoPickPicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.GetAutoPickPicResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetAutoPickPic',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.GetAutoPickPicResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_auto_pick_pic(
-        self,
-        request: cgcs20211111_models.GetAutoPickPicRequest,
-    ) -> cgcs20211111_models.GetAutoPickPicResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_auto_pick_pic_with_options(request, runtime)
-
-    async def get_auto_pick_pic_async(
-        self,
-        request: cgcs20211111_models.GetAutoPickPicRequest,
-    ) -> cgcs20211111_models.GetAutoPickPicResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_auto_pick_pic_with_options_async(request, runtime)
-
     def get_capacity_with_options(
         self,
         request: cgcs20211111_models.GetCapacityRequest,
@@ -1720,6 +1748,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.platform_session_ids):
             query['PlatformSessionIds'] = request.platform_session_ids
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1756,6 +1786,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.platform_session_ids):
             query['PlatformSessionIds'] = request.platform_session_ids
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2354,3 +2386,77 @@ class Client(OpenApiClient):
     ) -> cgcs20211111_models.StopAppSessionBatchResponse:
         runtime = util_models.RuntimeOptions()
         return await self.stop_app_session_batch_with_options_async(request, runtime)
+
+    def update_session_biz_status_with_options(
+        self,
+        request: cgcs20211111_models.UpdateSessionBizStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.UpdateSessionBizStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_status):
+            query['BizStatus'] = request.biz_status
+        if not UtilClient.is_unset(request.platform_session_id):
+            query['PlatformSessionId'] = request.platform_session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSessionBizStatus',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.UpdateSessionBizStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_session_biz_status_with_options_async(
+        self,
+        request: cgcs20211111_models.UpdateSessionBizStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.UpdateSessionBizStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_status):
+            query['BizStatus'] = request.biz_status
+        if not UtilClient.is_unset(request.platform_session_id):
+            query['PlatformSessionId'] = request.platform_session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSessionBizStatus',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.UpdateSessionBizStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_session_biz_status(
+        self,
+        request: cgcs20211111_models.UpdateSessionBizStatusRequest,
+    ) -> cgcs20211111_models.UpdateSessionBizStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_session_biz_status_with_options(request, runtime)
+
+    async def update_session_biz_status_async(
+        self,
+        request: cgcs20211111_models.UpdateSessionBizStatusRequest,
+    ) -> cgcs20211111_models.UpdateSessionBizStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_session_biz_status_with_options_async(request, runtime)

@@ -1,3 +1,6 @@
+2023-05-23 Version: 2.7.5
+- Update ListAppSessionBatch Api Add ProjectId.
+
 2022-12-09 Version: 2.5.0
 - Update BatchCheckSession Api.
 
