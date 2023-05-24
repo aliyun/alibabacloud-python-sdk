@@ -30775,6 +30775,426 @@ class GroupUserSaveResponse(TeaModel):
         return self
 
 
+class HotelAskingPriceHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class HotelAskingPriceRequest(TeaModel):
+    def __init__(
+        self,
+        adult_num: str = None,
+        btrip_user_id: str = None,
+        check_in_date: str = None,
+        check_out_date: str = None,
+        city_code: str = None,
+        city_name: str = None,
+        dir: int = None,
+        hotel_star: str = None,
+        is_protocol: bool = None,
+        payment_type: int = None,
+        shids: List[int] = None,
+        sort_code: int = None,
+    ):
+        self.adult_num = adult_num
+        self.btrip_user_id = btrip_user_id
+        self.check_in_date = check_in_date
+        self.check_out_date = check_out_date
+        self.city_code = city_code
+        self.city_name = city_name
+        self.dir = dir
+        self.hotel_star = hotel_star
+        self.is_protocol = is_protocol
+        self.payment_type = payment_type
+        self.shids = shids
+        self.sort_code = sort_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adult_num is not None:
+            result['adult_num'] = self.adult_num
+        if self.btrip_user_id is not None:
+            result['btrip_user_id'] = self.btrip_user_id
+        if self.check_in_date is not None:
+            result['check_in_date'] = self.check_in_date
+        if self.check_out_date is not None:
+            result['check_out_date'] = self.check_out_date
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+        if self.city_name is not None:
+            result['city_name'] = self.city_name
+        if self.dir is not None:
+            result['dir'] = self.dir
+        if self.hotel_star is not None:
+            result['hotel_star'] = self.hotel_star
+        if self.is_protocol is not None:
+            result['is_protocol'] = self.is_protocol
+        if self.payment_type is not None:
+            result['payment_type'] = self.payment_type
+        if self.shids is not None:
+            result['shids'] = self.shids
+        if self.sort_code is not None:
+            result['sort_code'] = self.sort_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('adult_num') is not None:
+            self.adult_num = m.get('adult_num')
+        if m.get('btrip_user_id') is not None:
+            self.btrip_user_id = m.get('btrip_user_id')
+        if m.get('check_in_date') is not None:
+            self.check_in_date = m.get('check_in_date')
+        if m.get('check_out_date') is not None:
+            self.check_out_date = m.get('check_out_date')
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+        if m.get('city_name') is not None:
+            self.city_name = m.get('city_name')
+        if m.get('dir') is not None:
+            self.dir = m.get('dir')
+        if m.get('hotel_star') is not None:
+            self.hotel_star = m.get('hotel_star')
+        if m.get('is_protocol') is not None:
+            self.is_protocol = m.get('is_protocol')
+        if m.get('payment_type') is not None:
+            self.payment_type = m.get('payment_type')
+        if m.get('shids') is not None:
+            self.shids = m.get('shids')
+        if m.get('sort_code') is not None:
+            self.sort_code = m.get('sort_code')
+        return self
+
+
+class HotelAskingPriceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        adult_num: str = None,
+        btrip_user_id: str = None,
+        check_in_date: str = None,
+        check_out_date: str = None,
+        city_code: str = None,
+        city_name: str = None,
+        dir: int = None,
+        hotel_star: str = None,
+        is_protocol: bool = None,
+        payment_type: int = None,
+        shids_shrink: str = None,
+        sort_code: int = None,
+    ):
+        self.adult_num = adult_num
+        self.btrip_user_id = btrip_user_id
+        self.check_in_date = check_in_date
+        self.check_out_date = check_out_date
+        self.city_code = city_code
+        self.city_name = city_name
+        self.dir = dir
+        self.hotel_star = hotel_star
+        self.is_protocol = is_protocol
+        self.payment_type = payment_type
+        self.shids_shrink = shids_shrink
+        self.sort_code = sort_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adult_num is not None:
+            result['adult_num'] = self.adult_num
+        if self.btrip_user_id is not None:
+            result['btrip_user_id'] = self.btrip_user_id
+        if self.check_in_date is not None:
+            result['check_in_date'] = self.check_in_date
+        if self.check_out_date is not None:
+            result['check_out_date'] = self.check_out_date
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+        if self.city_name is not None:
+            result['city_name'] = self.city_name
+        if self.dir is not None:
+            result['dir'] = self.dir
+        if self.hotel_star is not None:
+            result['hotel_star'] = self.hotel_star
+        if self.is_protocol is not None:
+            result['is_protocol'] = self.is_protocol
+        if self.payment_type is not None:
+            result['payment_type'] = self.payment_type
+        if self.shids_shrink is not None:
+            result['shids'] = self.shids_shrink
+        if self.sort_code is not None:
+            result['sort_code'] = self.sort_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('adult_num') is not None:
+            self.adult_num = m.get('adult_num')
+        if m.get('btrip_user_id') is not None:
+            self.btrip_user_id = m.get('btrip_user_id')
+        if m.get('check_in_date') is not None:
+            self.check_in_date = m.get('check_in_date')
+        if m.get('check_out_date') is not None:
+            self.check_out_date = m.get('check_out_date')
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+        if m.get('city_name') is not None:
+            self.city_name = m.get('city_name')
+        if m.get('dir') is not None:
+            self.dir = m.get('dir')
+        if m.get('hotel_star') is not None:
+            self.hotel_star = m.get('hotel_star')
+        if m.get('is_protocol') is not None:
+            self.is_protocol = m.get('is_protocol')
+        if m.get('payment_type') is not None:
+            self.payment_type = m.get('payment_type')
+        if m.get('shids') is not None:
+            self.shids_shrink = m.get('shids')
+        if m.get('sort_code') is not None:
+            self.sort_code = m.get('sort_code')
+        return self
+
+
+class HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        hotel_address: str = None,
+        hotel_code: str = None,
+        hotel_name: str = None,
+        is_protocol: bool = None,
+        min_price: float = None,
+        original_min_price: float = None,
+    ):
+        self.city_code = city_code
+        self.hotel_address = hotel_address
+        self.hotel_code = hotel_code
+        self.hotel_name = hotel_name
+        self.is_protocol = is_protocol
+        self.min_price = min_price
+        self.original_min_price = original_min_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+        if self.hotel_address is not None:
+            result['hotel_address'] = self.hotel_address
+        if self.hotel_code is not None:
+            result['hotel_code'] = self.hotel_code
+        if self.hotel_name is not None:
+            result['hotel_name'] = self.hotel_name
+        if self.is_protocol is not None:
+            result['is_protocol'] = self.is_protocol
+        if self.min_price is not None:
+            result['min_price'] = self.min_price
+        if self.original_min_price is not None:
+            result['original_min_price'] = self.original_min_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+        if m.get('hotel_address') is not None:
+            self.hotel_address = m.get('hotel_address')
+        if m.get('hotel_code') is not None:
+            self.hotel_code = m.get('hotel_code')
+        if m.get('hotel_name') is not None:
+            self.hotel_name = m.get('hotel_name')
+        if m.get('is_protocol') is not None:
+            self.is_protocol = m.get('is_protocol')
+        if m.get('min_price') is not None:
+            self.min_price = m.get('min_price')
+        if m.get('original_min_price') is not None:
+            self.original_min_price = m.get('original_min_price')
+        return self
+
+
+class HotelAskingPriceResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        hotel_asking_price_details: List[HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails] = None,
+    ):
+        self.hotel_asking_price_details = hotel_asking_price_details
+
+    def validate(self):
+        if self.hotel_asking_price_details:
+            for k in self.hotel_asking_price_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['hotel_asking_price_details'] = []
+        if self.hotel_asking_price_details is not None:
+            for k in self.hotel_asking_price_details:
+                result['hotel_asking_price_details'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hotel_asking_price_details = []
+        if m.get('hotel_asking_price_details') is not None:
+            for k in m.get('hotel_asking_price_details'):
+                temp_model = HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails()
+                self.hotel_asking_price_details.append(temp_model.from_map(k))
+        return self
+
+
+class HotelAskingPriceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: HotelAskingPriceResponseBodyModule = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('module') is not None:
+            temp_model = HotelAskingPriceResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class HotelAskingPriceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: HotelAskingPriceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = HotelAskingPriceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class HotelBillSettlementQueryHeaders(TeaModel):
     def __init__(
         self,
