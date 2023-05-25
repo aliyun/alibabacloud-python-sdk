@@ -1,3 +1,6 @@
+2023-05-25 Version: 2.0.37
+- Add user for the response of GetQueryOptimizeDataStats.
+
 2023-03-10 Version: 2.0.36
 - Public CreateKillInstanceSessionTaskWithMaintainUser.
 

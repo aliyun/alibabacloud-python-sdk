@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 
 class DataResultValue(TeaModel):
@@ -41,6 +41,39 @@ class DataResultValue(TeaModel):
             self.instance_id = m.get('instanceId')
         if m.get('count') is not None:
             self.count = m.get('count')
+        return self
+
+
+class DataValue(TeaModel):
+    def __init__(
+        self,
+        timestamp: str = None,
+        value: Any = None,
+    ):
+        self.timestamp = timestamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -1573,6 +1606,158 @@ class CreateKillInstanceSessionTaskWithMaintainUserResponse(TeaModel):
         return self
 
 
+class CreateQueryOptimizeTagRequest(TeaModel):
+    def __init__(
+        self,
+        comments: str = None,
+        engine: str = None,
+        instance_id: str = None,
+        sql_ids: str = None,
+        status: int = None,
+        tags: str = None,
+    ):
+        self.comments = comments
+        self.engine = engine
+        self.instance_id = instance_id
+        self.sql_ids = sql_ids
+        self.status = status
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comments is not None:
+            result['Comments'] = self.comments
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.sql_ids is not None:
+            result['SqlIds'] = self.sql_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comments') is not None:
+            self.comments = m.get('Comments')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SqlIds') is not None:
+            self.sql_ids = m.get('SqlIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class CreateQueryOptimizeTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateQueryOptimizeTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateQueryOptimizeTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateQueryOptimizeTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateRequestDiagnosisRequest(TeaModel):
     def __init__(
         self,
@@ -2562,6 +2747,118 @@ class DescribeCacheAnalysisJobResponseBodyDataBigKeys(TeaModel):
         return self
 
 
+class DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNumKeyInfo(TeaModel):
+    def __init__(
+        self,
+        bytes: int = None,
+        count: int = None,
+        db: int = None,
+        encoding: str = None,
+        expiration_time_millis: int = None,
+        key: str = None,
+        node_id: str = None,
+        type: str = None,
+    ):
+        # Key占用字节数。
+        self.bytes = bytes
+        # Key的元素个数。
+        self.count = count
+        # 数据库名称。
+        self.db = db
+        # Key内部数据类型。
+        self.encoding = encoding
+        # Key过期时间，单位：毫秒（ms），0表示不过期。
+        self.expiration_time_millis = expiration_time_millis
+        # Key的名称。
+        self.key = key
+        # 实例的数据节点ID。
+        self.node_id = node_id
+        # Redis数据结构类型。
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bytes is not None:
+            result['Bytes'] = self.bytes
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.db is not None:
+            result['Db'] = self.db
+        if self.encoding is not None:
+            result['Encoding'] = self.encoding
+        if self.expiration_time_millis is not None:
+            result['ExpirationTimeMillis'] = self.expiration_time_millis
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bytes') is not None:
+            self.bytes = m.get('Bytes')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Db') is not None:
+            self.db = m.get('Db')
+        if m.get('Encoding') is not None:
+            self.encoding = m.get('Encoding')
+        if m.get('ExpirationTimeMillis') is not None:
+            self.expiration_time_millis = m.get('ExpirationTimeMillis')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum(TeaModel):
+    def __init__(
+        self,
+        key_info: List[DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNumKeyInfo] = None,
+    ):
+        self.key_info = key_info
+
+    def validate(self):
+        if self.key_info:
+            for k in self.key_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyInfo'] = []
+        if self.key_info is not None:
+            for k in self.key_info:
+                result['KeyInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_info = []
+        if m.get('KeyInfo') is not None:
+            for k in m.get('KeyInfo'):
+                temp_model = DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNumKeyInfo()
+                self.key_info.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeCacheAnalysisJobResponseBodyDataKeyPrefixesPrefix(TeaModel):
     def __init__(
         self,
@@ -2648,30 +2945,269 @@ class DescribeCacheAnalysisJobResponseBodyDataKeyPrefixes(TeaModel):
         return self
 
 
+class DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytesKeyInfo(TeaModel):
+    def __init__(
+        self,
+        bytes: int = None,
+        count: int = None,
+        db: int = None,
+        encoding: str = None,
+        expiration_time_millis: int = None,
+        key: str = None,
+        node_id: str = None,
+        type: str = None,
+    ):
+        # Key占用字节数。
+        self.bytes = bytes
+        # Key的元素个数。
+        self.count = count
+        # 数据库名称。
+        self.db = db
+        # Key内部数据类型。
+        self.encoding = encoding
+        # Key过期时间，单位：毫秒（ms），0表示不过期。
+        self.expiration_time_millis = expiration_time_millis
+        # Key的名称。
+        self.key = key
+        # 实例的数据节点ID
+        self.node_id = node_id
+        # Redis数据结构类型。
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bytes is not None:
+            result['Bytes'] = self.bytes
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.db is not None:
+            result['Db'] = self.db
+        if self.encoding is not None:
+            result['Encoding'] = self.encoding
+        if self.expiration_time_millis is not None:
+            result['ExpirationTimeMillis'] = self.expiration_time_millis
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bytes') is not None:
+            self.bytes = m.get('Bytes')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Db') is not None:
+            self.db = m.get('Db')
+        if m.get('Encoding') is not None:
+            self.encoding = m.get('Encoding')
+        if m.get('ExpirationTimeMillis') is not None:
+            self.expiration_time_millis = m.get('ExpirationTimeMillis')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytes(TeaModel):
+    def __init__(
+        self,
+        key_info: List[DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytesKeyInfo] = None,
+    ):
+        self.key_info = key_info
+
+    def validate(self):
+        if self.key_info:
+            for k in self.key_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyInfo'] = []
+        if self.key_info is not None:
+            for k in self.key_info:
+                result['KeyInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_info = []
+        if m.get('KeyInfo') is not None:
+            for k in m.get('KeyInfo'):
+                temp_model = DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytesKeyInfo()
+                self.key_info.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo(TeaModel):
+    def __init__(
+        self,
+        bytes: int = None,
+        count: int = None,
+        db: int = None,
+        encoding: str = None,
+        expiration_time_millis: int = None,
+        key: str = None,
+        node_id: str = None,
+        type: str = None,
+    ):
+        # Key占用字节数。
+        self.bytes = bytes
+        # Key的元素个数。
+        self.count = count
+        # 数据库名称。
+        self.db = db
+        # Key内部数据类型。
+        self.encoding = encoding
+        # Key过期时间，单位：毫秒（ms），0表示不过期。
+        self.expiration_time_millis = expiration_time_millis
+        # Key的名称。
+        self.key = key
+        # 实例的数据节点ID。
+        self.node_id = node_id
+        # Redis数据结构类型。
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bytes is not None:
+            result['Bytes'] = self.bytes
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.db is not None:
+            result['Db'] = self.db
+        if self.encoding is not None:
+            result['Encoding'] = self.encoding
+        if self.expiration_time_millis is not None:
+            result['ExpirationTimeMillis'] = self.expiration_time_millis
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bytes') is not None:
+            self.bytes = m.get('Bytes')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Db') is not None:
+            self.db = m.get('Db')
+        if m.get('Encoding') is not None:
+            self.encoding = m.get('Encoding')
+        if m.get('ExpirationTimeMillis') is not None:
+            self.expiration_time_millis = m.get('ExpirationTimeMillis')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNum(TeaModel):
+    def __init__(
+        self,
+        key_info: List[DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo] = None,
+    ):
+        self.key_info = key_info
+
+    def validate(self):
+        if self.key_info:
+            for k in self.key_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyInfo'] = []
+        if self.key_info is not None:
+            for k in self.key_info:
+                result['KeyInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_info = []
+        if m.get('KeyInfo') is not None:
+            for k in m.get('KeyInfo'):
+                temp_model = DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo()
+                self.key_info.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeCacheAnalysisJobResponseBodyData(TeaModel):
     def __init__(
         self,
         big_keys: DescribeCacheAnalysisJobResponseBodyDataBigKeys = None,
+        big_keys_of_num: DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum = None,
         instance_id: str = None,
         job_id: str = None,
         key_prefixes: DescribeCacheAnalysisJobResponseBodyDataKeyPrefixes = None,
         message: str = None,
         node_id: str = None,
         task_state: str = None,
+        unex_big_keys_of_bytes: DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytes = None,
+        unex_big_keys_of_num: DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNum = None,
     ):
         self.big_keys = big_keys
+        # 大Key详细信息，根据Key数量降序排列。
+        self.big_keys_of_num = big_keys_of_num
         self.instance_id = instance_id
         self.job_id = job_id
         self.key_prefixes = key_prefixes
         self.message = message
         self.node_id = node_id
         self.task_state = task_state
+        # 永不过期Key的详细信息，根据Key占用字节数降序排列。
+        self.unex_big_keys_of_bytes = unex_big_keys_of_bytes
+        # 永不过期Key的详细信息，根据Key数量降序排列。
+        self.unex_big_keys_of_num = unex_big_keys_of_num
 
     def validate(self):
         if self.big_keys:
             self.big_keys.validate()
+        if self.big_keys_of_num:
+            self.big_keys_of_num.validate()
         if self.key_prefixes:
             self.key_prefixes.validate()
+        if self.unex_big_keys_of_bytes:
+            self.unex_big_keys_of_bytes.validate()
+        if self.unex_big_keys_of_num:
+            self.unex_big_keys_of_num.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2681,6 +3217,8 @@ class DescribeCacheAnalysisJobResponseBodyData(TeaModel):
         result = dict()
         if self.big_keys is not None:
             result['BigKeys'] = self.big_keys.to_map()
+        if self.big_keys_of_num is not None:
+            result['BigKeysOfNum'] = self.big_keys_of_num.to_map()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.job_id is not None:
@@ -2693,6 +3231,10 @@ class DescribeCacheAnalysisJobResponseBodyData(TeaModel):
             result['NodeId'] = self.node_id
         if self.task_state is not None:
             result['TaskState'] = self.task_state
+        if self.unex_big_keys_of_bytes is not None:
+            result['UnexBigKeysOfBytes'] = self.unex_big_keys_of_bytes.to_map()
+        if self.unex_big_keys_of_num is not None:
+            result['UnexBigKeysOfNum'] = self.unex_big_keys_of_num.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -2700,6 +3242,9 @@ class DescribeCacheAnalysisJobResponseBodyData(TeaModel):
         if m.get('BigKeys') is not None:
             temp_model = DescribeCacheAnalysisJobResponseBodyDataBigKeys()
             self.big_keys = temp_model.from_map(m['BigKeys'])
+        if m.get('BigKeysOfNum') is not None:
+            temp_model = DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum()
+            self.big_keys_of_num = temp_model.from_map(m['BigKeysOfNum'])
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('JobId') is not None:
@@ -2713,6 +3258,12 @@ class DescribeCacheAnalysisJobResponseBodyData(TeaModel):
             self.node_id = m.get('NodeId')
         if m.get('TaskState') is not None:
             self.task_state = m.get('TaskState')
+        if m.get('UnexBigKeysOfBytes') is not None:
+            temp_model = DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytes()
+            self.unex_big_keys_of_bytes = temp_model.from_map(m['UnexBigKeysOfBytes'])
+        if m.get('UnexBigKeysOfNum') is not None:
+            temp_model = DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNum()
+            self.unex_big_keys_of_num = temp_model.from_map(m['UnexBigKeysOfNum'])
         return self
 
 
@@ -9009,6 +9560,7 @@ class GetDasProServiceUsageResponseBodyData(TeaModel):
         instance_id: str = None,
         ip: str = None,
         is_spare: bool = None,
+        migration_predict_remaining_time: int = None,
         port: int = None,
         region: str = None,
         service_unit_id: str = None,
@@ -9026,6 +9578,7 @@ class GetDasProServiceUsageResponseBodyData(TeaModel):
         self.instance_id = instance_id
         self.ip = ip
         self.is_spare = is_spare
+        self.migration_predict_remaining_time = migration_predict_remaining_time
         self.port = port
         self.region = region
         self.service_unit_id = service_unit_id
@@ -9059,6 +9612,8 @@ class GetDasProServiceUsageResponseBodyData(TeaModel):
             result['ip'] = self.ip
         if self.is_spare is not None:
             result['isSpare'] = self.is_spare
+        if self.migration_predict_remaining_time is not None:
+            result['migrationPredictRemainingTime'] = self.migration_predict_remaining_time
         if self.port is not None:
             result['port'] = self.port
         if self.region is not None:
@@ -9095,6 +9650,8 @@ class GetDasProServiceUsageResponseBodyData(TeaModel):
             self.ip = m.get('ip')
         if m.get('isSpare') is not None:
             self.is_spare = m.get('isSpare')
+        if m.get('migrationPredictRemainingTime') is not None:
+            self.migration_predict_remaining_time = m.get('migrationPredictRemainingTime')
         if m.get('port') is not None:
             self.port = m.get('port')
         if m.get('region') is not None:
@@ -13570,6 +14127,1172 @@ class GetPartitionsHeatmapResponse(TeaModel):
         return self
 
 
+class GetPfsMetricTrendsRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        instance_id: str = None,
+        metric: str = None,
+        node_id: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.metric = metric
+        self.node_id = node_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetPfsMetricTrendsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Dict[str, List[DataValue]] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for v in self.data.values():
+                for k1 in v:
+                    if k1:
+                        k1.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = {}
+        if self.data is not None:
+            for k, v in self.data.items():
+                l1 = []
+                for k1 in v:
+                    l1.append(k1.to_map() if k1 else None)
+                result['data'][k] = l1
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = {}
+        if m.get('Data') is not None:
+            for k, v in m.get('Data').items():
+                l1 = []
+                for k1 in v:
+                    temp_model = DataValue()
+                    l1.append(temp_model.from_map(k1))
+                self.data['k'] = l1
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetPfsMetricTrendsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPfsMetricTrendsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPfsMetricTrendsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPfsSqlSampleRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        instance_id: str = None,
+        node_id: str = None,
+        sql_id: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.node_id = node_id
+        # SQL ID。
+        self.sql_id = sql_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetPfsSqlSampleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_tmp_disk_tables: int = None,
+        create_tmp_tables: int = None,
+        db: str = None,
+        end_event_id: int = None,
+        errors: int = None,
+        event_id: int = None,
+        event_name: str = None,
+        instance_id: str = None,
+        latency: float = None,
+        lock_latency: float = None,
+        logic_id: str = None,
+        no_good_index_used: int = None,
+        no_index_used: int = None,
+        node_id: str = None,
+        rows_affected: int = None,
+        rows_examined: int = None,
+        rows_sent: int = None,
+        select_full_join: int = None,
+        select_full_range_join: int = None,
+        select_range: int = None,
+        select_range_check: int = None,
+        select_scan: int = None,
+        sort_merge_passes: int = None,
+        sort_range: int = None,
+        sort_rows: int = None,
+        sort_scan: int = None,
+        sql: str = None,
+        sql_id: str = None,
+        thread_id: int = None,
+        timestamp: int = None,
+        user_id: str = None,
+        warnings: int = None,
+    ):
+        self.create_tmp_disk_tables = create_tmp_disk_tables
+        self.create_tmp_tables = create_tmp_tables
+        self.db = db
+        self.end_event_id = end_event_id
+        self.errors = errors
+        self.event_id = event_id
+        self.event_name = event_name
+        self.instance_id = instance_id
+        self.latency = latency
+        self.lock_latency = lock_latency
+        self.logic_id = logic_id
+        self.no_good_index_used = no_good_index_used
+        self.no_index_used = no_index_used
+        self.node_id = node_id
+        self.rows_affected = rows_affected
+        self.rows_examined = rows_examined
+        self.rows_sent = rows_sent
+        self.select_full_join = select_full_join
+        self.select_full_range_join = select_full_range_join
+        self.select_range = select_range
+        self.select_range_check = select_range_check
+        self.select_scan = select_scan
+        self.sort_merge_passes = sort_merge_passes
+        self.sort_range = sort_range
+        self.sort_rows = sort_rows
+        self.sort_scan = sort_scan
+        self.sql = sql
+        # SQL ID。
+        self.sql_id = sql_id
+        self.thread_id = thread_id
+        self.timestamp = timestamp
+        self.user_id = user_id
+        self.warnings = warnings
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_tmp_disk_tables is not None:
+            result['CreateTmpDiskTables'] = self.create_tmp_disk_tables
+        if self.create_tmp_tables is not None:
+            result['CreateTmpTables'] = self.create_tmp_tables
+        if self.db is not None:
+            result['Db'] = self.db
+        if self.end_event_id is not None:
+            result['EndEventId'] = self.end_event_id
+        if self.errors is not None:
+            result['Errors'] = self.errors
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_name is not None:
+            result['EventName'] = self.event_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.latency is not None:
+            result['Latency'] = self.latency
+        if self.lock_latency is not None:
+            result['LockLatency'] = self.lock_latency
+        if self.logic_id is not None:
+            result['LogicId'] = self.logic_id
+        if self.no_good_index_used is not None:
+            result['NoGoodIndexUsed'] = self.no_good_index_used
+        if self.no_index_used is not None:
+            result['NoIndexUsed'] = self.no_index_used
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.rows_affected is not None:
+            result['RowsAffected'] = self.rows_affected
+        if self.rows_examined is not None:
+            result['RowsExamined'] = self.rows_examined
+        if self.rows_sent is not None:
+            result['RowsSent'] = self.rows_sent
+        if self.select_full_join is not None:
+            result['SelectFullJoin'] = self.select_full_join
+        if self.select_full_range_join is not None:
+            result['SelectFullRangeJoin'] = self.select_full_range_join
+        if self.select_range is not None:
+            result['SelectRange'] = self.select_range
+        if self.select_range_check is not None:
+            result['SelectRangeCheck'] = self.select_range_check
+        if self.select_scan is not None:
+            result['SelectScan'] = self.select_scan
+        if self.sort_merge_passes is not None:
+            result['SortMergePasses'] = self.sort_merge_passes
+        if self.sort_range is not None:
+            result['SortRange'] = self.sort_range
+        if self.sort_rows is not None:
+            result['SortRows'] = self.sort_rows
+        if self.sort_scan is not None:
+            result['SortScan'] = self.sort_scan
+        if self.sql is not None:
+            result['Sql'] = self.sql
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.thread_id is not None:
+            result['ThreadId'] = self.thread_id
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.warnings is not None:
+            result['Warnings'] = self.warnings
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTmpDiskTables') is not None:
+            self.create_tmp_disk_tables = m.get('CreateTmpDiskTables')
+        if m.get('CreateTmpTables') is not None:
+            self.create_tmp_tables = m.get('CreateTmpTables')
+        if m.get('Db') is not None:
+            self.db = m.get('Db')
+        if m.get('EndEventId') is not None:
+            self.end_event_id = m.get('EndEventId')
+        if m.get('Errors') is not None:
+            self.errors = m.get('Errors')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventName') is not None:
+            self.event_name = m.get('EventName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Latency') is not None:
+            self.latency = m.get('Latency')
+        if m.get('LockLatency') is not None:
+            self.lock_latency = m.get('LockLatency')
+        if m.get('LogicId') is not None:
+            self.logic_id = m.get('LogicId')
+        if m.get('NoGoodIndexUsed') is not None:
+            self.no_good_index_used = m.get('NoGoodIndexUsed')
+        if m.get('NoIndexUsed') is not None:
+            self.no_index_used = m.get('NoIndexUsed')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('RowsAffected') is not None:
+            self.rows_affected = m.get('RowsAffected')
+        if m.get('RowsExamined') is not None:
+            self.rows_examined = m.get('RowsExamined')
+        if m.get('RowsSent') is not None:
+            self.rows_sent = m.get('RowsSent')
+        if m.get('SelectFullJoin') is not None:
+            self.select_full_join = m.get('SelectFullJoin')
+        if m.get('SelectFullRangeJoin') is not None:
+            self.select_full_range_join = m.get('SelectFullRangeJoin')
+        if m.get('SelectRange') is not None:
+            self.select_range = m.get('SelectRange')
+        if m.get('SelectRangeCheck') is not None:
+            self.select_range_check = m.get('SelectRangeCheck')
+        if m.get('SelectScan') is not None:
+            self.select_scan = m.get('SelectScan')
+        if m.get('SortMergePasses') is not None:
+            self.sort_merge_passes = m.get('SortMergePasses')
+        if m.get('SortRange') is not None:
+            self.sort_range = m.get('SortRange')
+        if m.get('SortRows') is not None:
+            self.sort_rows = m.get('SortRows')
+        if m.get('SortScan') is not None:
+            self.sort_scan = m.get('SortScan')
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('ThreadId') is not None:
+            self.thread_id = m.get('ThreadId')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Warnings') is not None:
+            self.warnings = m.get('Warnings')
+        return self
+
+
+class GetPfsSqlSampleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[GetPfsSqlSampleResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetPfsSqlSampleResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetPfsSqlSampleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPfsSqlSampleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPfsSqlSampleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPfsSqlSummariesRequest(TeaModel):
+    def __init__(
+        self,
+        asc: bool = None,
+        end_time: int = None,
+        instance_id: str = None,
+        keywords: str = None,
+        node_id: str = None,
+        order_by: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        sql_id: str = None,
+        start_time: int = None,
+    ):
+        self.asc = asc
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.keywords = keywords
+        self.node_id = node_id
+        self.order_by = order_by
+        self.page_no = page_no
+        self.page_size = page_size
+        self.sql_id = sql_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asc is not None:
+            result['Asc'] = self.asc
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.keywords is not None:
+            result['Keywords'] = self.keywords
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Asc') is not None:
+            self.asc = m.get('Asc')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Keywords') is not None:
+            self.keywords = m.get('Keywords')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetPfsSqlSummariesResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        avg_latency: float = None,
+        count: int = None,
+        count_rate: float = None,
+        cpu_rate: float = None,
+        cpu_time: float = None,
+        data_read_time: float = None,
+        data_reads: int = None,
+        data_write_time: float = None,
+        data_writes: int = None,
+        db: str = None,
+        elapsed_time: float = None,
+        err_count: int = None,
+        first_time: int = None,
+        full_scan: bool = None,
+        id: int = None,
+        instance_id: str = None,
+        last_time: int = None,
+        lock_latency_avg: float = None,
+        logic_id: int = None,
+        logic_reads: int = None,
+        max_latency: float = None,
+        mutex_spins: int = None,
+        mutex_waits: int = None,
+        node_id: str = None,
+        physical_async_reads: int = None,
+        physical_reads: int = None,
+        psql: str = None,
+        redo_writes: int = None,
+        rows_affected: int = None,
+        rows_affected_avg: float = None,
+        rows_examined: int = None,
+        rows_examined_avg: float = None,
+        rows_send_avg: float = None,
+        rows_sent: int = None,
+        rows_sent_avg: float = None,
+        rows_sorted: int = None,
+        rt_rate: float = None,
+        rwlock_os_waits: int = None,
+        rwlock_spin_rounds: int = None,
+        rwlock_spin_waits: int = None,
+        select_full_join_avg: float = None,
+        select_full_range_join_avg: float = None,
+        select_range_avg: float = None,
+        select_scan_avg: float = None,
+        semisync_delay_time: float = None,
+        server_lock_time: float = None,
+        sort_merge_passes: int = None,
+        sort_range_avg: float = None,
+        sort_rows_avg: float = None,
+        sort_scan_avg: float = None,
+        sql_id: str = None,
+        sql_type: str = None,
+        tables: List[str] = None,
+        timer_wait_avg: float = None,
+        timestamp: int = None,
+        tmp_disk_tables: int = None,
+        tmp_disk_tables_avg: float = None,
+        tmp_tables: int = None,
+        tmp_tables_avg: float = None,
+        total_latency: float = None,
+        transaction_lock_time: float = None,
+        user_id: str = None,
+        warn_count: int = None,
+    ):
+        self.avg_latency = avg_latency
+        self.count = count
+        self.count_rate = count_rate
+        self.cpu_rate = cpu_rate
+        self.cpu_time = cpu_time
+        self.data_read_time = data_read_time
+        self.data_reads = data_reads
+        self.data_write_time = data_write_time
+        self.data_writes = data_writes
+        self.db = db
+        self.elapsed_time = elapsed_time
+        self.err_count = err_count
+        self.first_time = first_time
+        self.full_scan = full_scan
+        self.id = id
+        self.instance_id = instance_id
+        self.last_time = last_time
+        self.lock_latency_avg = lock_latency_avg
+        self.logic_id = logic_id
+        self.logic_reads = logic_reads
+        self.max_latency = max_latency
+        self.mutex_spins = mutex_spins
+        self.mutex_waits = mutex_waits
+        self.node_id = node_id
+        self.physical_async_reads = physical_async_reads
+        self.physical_reads = physical_reads
+        self.psql = psql
+        self.redo_writes = redo_writes
+        self.rows_affected = rows_affected
+        self.rows_affected_avg = rows_affected_avg
+        self.rows_examined = rows_examined
+        self.rows_examined_avg = rows_examined_avg
+        self.rows_send_avg = rows_send_avg
+        self.rows_sent = rows_sent
+        self.rows_sent_avg = rows_sent_avg
+        self.rows_sorted = rows_sorted
+        self.rt_rate = rt_rate
+        self.rwlock_os_waits = rwlock_os_waits
+        self.rwlock_spin_rounds = rwlock_spin_rounds
+        self.rwlock_spin_waits = rwlock_spin_waits
+        self.select_full_join_avg = select_full_join_avg
+        self.select_full_range_join_avg = select_full_range_join_avg
+        self.select_range_avg = select_range_avg
+        self.select_scan_avg = select_scan_avg
+        self.semisync_delay_time = semisync_delay_time
+        self.server_lock_time = server_lock_time
+        self.sort_merge_passes = sort_merge_passes
+        self.sort_range_avg = sort_range_avg
+        self.sort_rows_avg = sort_rows_avg
+        self.sort_scan_avg = sort_scan_avg
+        self.sql_id = sql_id
+        self.sql_type = sql_type
+        self.tables = tables
+        self.timer_wait_avg = timer_wait_avg
+        self.timestamp = timestamp
+        self.tmp_disk_tables = tmp_disk_tables
+        self.tmp_disk_tables_avg = tmp_disk_tables_avg
+        self.tmp_tables = tmp_tables
+        self.tmp_tables_avg = tmp_tables_avg
+        self.total_latency = total_latency
+        self.transaction_lock_time = transaction_lock_time
+        self.user_id = user_id
+        self.warn_count = warn_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_latency is not None:
+            result['AvgLatency'] = self.avg_latency
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.count_rate is not None:
+            result['CountRate'] = self.count_rate
+        if self.cpu_rate is not None:
+            result['CpuRate'] = self.cpu_rate
+        if self.cpu_time is not None:
+            result['CpuTime'] = self.cpu_time
+        if self.data_read_time is not None:
+            result['DataReadTime'] = self.data_read_time
+        if self.data_reads is not None:
+            result['DataReads'] = self.data_reads
+        if self.data_write_time is not None:
+            result['DataWriteTime'] = self.data_write_time
+        if self.data_writes is not None:
+            result['DataWrites'] = self.data_writes
+        if self.db is not None:
+            result['Db'] = self.db
+        if self.elapsed_time is not None:
+            result['ElapsedTime'] = self.elapsed_time
+        if self.err_count is not None:
+            result['ErrCount'] = self.err_count
+        if self.first_time is not None:
+            result['FirstTime'] = self.first_time
+        if self.full_scan is not None:
+            result['FullScan'] = self.full_scan
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_time is not None:
+            result['LastTime'] = self.last_time
+        if self.lock_latency_avg is not None:
+            result['LockLatencyAvg'] = self.lock_latency_avg
+        if self.logic_id is not None:
+            result['LogicId'] = self.logic_id
+        if self.logic_reads is not None:
+            result['LogicReads'] = self.logic_reads
+        if self.max_latency is not None:
+            result['MaxLatency'] = self.max_latency
+        if self.mutex_spins is not None:
+            result['MutexSpins'] = self.mutex_spins
+        if self.mutex_waits is not None:
+            result['MutexWaits'] = self.mutex_waits
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.physical_async_reads is not None:
+            result['PhysicalAsyncReads'] = self.physical_async_reads
+        if self.physical_reads is not None:
+            result['PhysicalReads'] = self.physical_reads
+        if self.psql is not None:
+            result['Psql'] = self.psql
+        if self.redo_writes is not None:
+            result['RedoWrites'] = self.redo_writes
+        if self.rows_affected is not None:
+            result['RowsAffected'] = self.rows_affected
+        if self.rows_affected_avg is not None:
+            result['RowsAffectedAvg'] = self.rows_affected_avg
+        if self.rows_examined is not None:
+            result['RowsExamined'] = self.rows_examined
+        if self.rows_examined_avg is not None:
+            result['RowsExaminedAvg'] = self.rows_examined_avg
+        if self.rows_send_avg is not None:
+            result['RowsSendAvg'] = self.rows_send_avg
+        if self.rows_sent is not None:
+            result['RowsSent'] = self.rows_sent
+        if self.rows_sent_avg is not None:
+            result['RowsSentAvg'] = self.rows_sent_avg
+        if self.rows_sorted is not None:
+            result['RowsSorted'] = self.rows_sorted
+        if self.rt_rate is not None:
+            result['RtRate'] = self.rt_rate
+        if self.rwlock_os_waits is not None:
+            result['RwlockOsWaits'] = self.rwlock_os_waits
+        if self.rwlock_spin_rounds is not None:
+            result['RwlockSpinRounds'] = self.rwlock_spin_rounds
+        if self.rwlock_spin_waits is not None:
+            result['RwlockSpinWaits'] = self.rwlock_spin_waits
+        if self.select_full_join_avg is not None:
+            result['SelectFullJoinAvg'] = self.select_full_join_avg
+        if self.select_full_range_join_avg is not None:
+            result['SelectFullRangeJoinAvg'] = self.select_full_range_join_avg
+        if self.select_range_avg is not None:
+            result['SelectRangeAvg'] = self.select_range_avg
+        if self.select_scan_avg is not None:
+            result['SelectScanAvg'] = self.select_scan_avg
+        if self.semisync_delay_time is not None:
+            result['SemisyncDelayTime'] = self.semisync_delay_time
+        if self.server_lock_time is not None:
+            result['ServerLockTime'] = self.server_lock_time
+        if self.sort_merge_passes is not None:
+            result['SortMergePasses'] = self.sort_merge_passes
+        if self.sort_range_avg is not None:
+            result['SortRangeAvg'] = self.sort_range_avg
+        if self.sort_rows_avg is not None:
+            result['SortRowsAvg'] = self.sort_rows_avg
+        if self.sort_scan_avg is not None:
+            result['SortScanAvg'] = self.sort_scan_avg
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        if self.tables is not None:
+            result['Tables'] = self.tables
+        if self.timer_wait_avg is not None:
+            result['TimerWaitAvg'] = self.timer_wait_avg
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.tmp_disk_tables is not None:
+            result['TmpDiskTables'] = self.tmp_disk_tables
+        if self.tmp_disk_tables_avg is not None:
+            result['TmpDiskTablesAvg'] = self.tmp_disk_tables_avg
+        if self.tmp_tables is not None:
+            result['TmpTables'] = self.tmp_tables
+        if self.tmp_tables_avg is not None:
+            result['TmpTablesAvg'] = self.tmp_tables_avg
+        if self.total_latency is not None:
+            result['TotalLatency'] = self.total_latency
+        if self.transaction_lock_time is not None:
+            result['TransactionLockTime'] = self.transaction_lock_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.warn_count is not None:
+            result['WarnCount'] = self.warn_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgLatency') is not None:
+            self.avg_latency = m.get('AvgLatency')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('CountRate') is not None:
+            self.count_rate = m.get('CountRate')
+        if m.get('CpuRate') is not None:
+            self.cpu_rate = m.get('CpuRate')
+        if m.get('CpuTime') is not None:
+            self.cpu_time = m.get('CpuTime')
+        if m.get('DataReadTime') is not None:
+            self.data_read_time = m.get('DataReadTime')
+        if m.get('DataReads') is not None:
+            self.data_reads = m.get('DataReads')
+        if m.get('DataWriteTime') is not None:
+            self.data_write_time = m.get('DataWriteTime')
+        if m.get('DataWrites') is not None:
+            self.data_writes = m.get('DataWrites')
+        if m.get('Db') is not None:
+            self.db = m.get('Db')
+        if m.get('ElapsedTime') is not None:
+            self.elapsed_time = m.get('ElapsedTime')
+        if m.get('ErrCount') is not None:
+            self.err_count = m.get('ErrCount')
+        if m.get('FirstTime') is not None:
+            self.first_time = m.get('FirstTime')
+        if m.get('FullScan') is not None:
+            self.full_scan = m.get('FullScan')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastTime') is not None:
+            self.last_time = m.get('LastTime')
+        if m.get('LockLatencyAvg') is not None:
+            self.lock_latency_avg = m.get('LockLatencyAvg')
+        if m.get('LogicId') is not None:
+            self.logic_id = m.get('LogicId')
+        if m.get('LogicReads') is not None:
+            self.logic_reads = m.get('LogicReads')
+        if m.get('MaxLatency') is not None:
+            self.max_latency = m.get('MaxLatency')
+        if m.get('MutexSpins') is not None:
+            self.mutex_spins = m.get('MutexSpins')
+        if m.get('MutexWaits') is not None:
+            self.mutex_waits = m.get('MutexWaits')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PhysicalAsyncReads') is not None:
+            self.physical_async_reads = m.get('PhysicalAsyncReads')
+        if m.get('PhysicalReads') is not None:
+            self.physical_reads = m.get('PhysicalReads')
+        if m.get('Psql') is not None:
+            self.psql = m.get('Psql')
+        if m.get('RedoWrites') is not None:
+            self.redo_writes = m.get('RedoWrites')
+        if m.get('RowsAffected') is not None:
+            self.rows_affected = m.get('RowsAffected')
+        if m.get('RowsAffectedAvg') is not None:
+            self.rows_affected_avg = m.get('RowsAffectedAvg')
+        if m.get('RowsExamined') is not None:
+            self.rows_examined = m.get('RowsExamined')
+        if m.get('RowsExaminedAvg') is not None:
+            self.rows_examined_avg = m.get('RowsExaminedAvg')
+        if m.get('RowsSendAvg') is not None:
+            self.rows_send_avg = m.get('RowsSendAvg')
+        if m.get('RowsSent') is not None:
+            self.rows_sent = m.get('RowsSent')
+        if m.get('RowsSentAvg') is not None:
+            self.rows_sent_avg = m.get('RowsSentAvg')
+        if m.get('RowsSorted') is not None:
+            self.rows_sorted = m.get('RowsSorted')
+        if m.get('RtRate') is not None:
+            self.rt_rate = m.get('RtRate')
+        if m.get('RwlockOsWaits') is not None:
+            self.rwlock_os_waits = m.get('RwlockOsWaits')
+        if m.get('RwlockSpinRounds') is not None:
+            self.rwlock_spin_rounds = m.get('RwlockSpinRounds')
+        if m.get('RwlockSpinWaits') is not None:
+            self.rwlock_spin_waits = m.get('RwlockSpinWaits')
+        if m.get('SelectFullJoinAvg') is not None:
+            self.select_full_join_avg = m.get('SelectFullJoinAvg')
+        if m.get('SelectFullRangeJoinAvg') is not None:
+            self.select_full_range_join_avg = m.get('SelectFullRangeJoinAvg')
+        if m.get('SelectRangeAvg') is not None:
+            self.select_range_avg = m.get('SelectRangeAvg')
+        if m.get('SelectScanAvg') is not None:
+            self.select_scan_avg = m.get('SelectScanAvg')
+        if m.get('SemisyncDelayTime') is not None:
+            self.semisync_delay_time = m.get('SemisyncDelayTime')
+        if m.get('ServerLockTime') is not None:
+            self.server_lock_time = m.get('ServerLockTime')
+        if m.get('SortMergePasses') is not None:
+            self.sort_merge_passes = m.get('SortMergePasses')
+        if m.get('SortRangeAvg') is not None:
+            self.sort_range_avg = m.get('SortRangeAvg')
+        if m.get('SortRowsAvg') is not None:
+            self.sort_rows_avg = m.get('SortRowsAvg')
+        if m.get('SortScanAvg') is not None:
+            self.sort_scan_avg = m.get('SortScanAvg')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        if m.get('Tables') is not None:
+            self.tables = m.get('Tables')
+        if m.get('TimerWaitAvg') is not None:
+            self.timer_wait_avg = m.get('TimerWaitAvg')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('TmpDiskTables') is not None:
+            self.tmp_disk_tables = m.get('TmpDiskTables')
+        if m.get('TmpDiskTablesAvg') is not None:
+            self.tmp_disk_tables_avg = m.get('TmpDiskTablesAvg')
+        if m.get('TmpTables') is not None:
+            self.tmp_tables = m.get('TmpTables')
+        if m.get('TmpTablesAvg') is not None:
+            self.tmp_tables_avg = m.get('TmpTablesAvg')
+        if m.get('TotalLatency') is not None:
+            self.total_latency = m.get('TotalLatency')
+        if m.get('TransactionLockTime') is not None:
+            self.transaction_lock_time = m.get('TransactionLockTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('WarnCount') is not None:
+            self.warn_count = m.get('WarnCount')
+        return self
+
+
+class GetPfsSqlSummariesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        extra: Any = None,
+        list: List[GetPfsSqlSummariesResponseBodyDataList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.extra = extra
+        self.list = list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extra is not None:
+            result['Extra'] = self.extra
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = GetPfsSqlSummariesResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetPfsSqlSummariesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetPfsSqlSummariesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetPfsSqlSummariesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetPfsSqlSummariesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPfsSqlSummariesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPfsSqlSummariesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetQueryOptimizeDataStatsRequest(TeaModel):
     def __init__(
         self,
@@ -13583,10 +15306,12 @@ class GetQueryOptimizeDataStatsRequest(TeaModel):
         order_by: str = None,
         page_no: str = None,
         page_size: str = None,
+        region: str = None,
         rules: str = None,
         sql_ids: str = None,
         tag_names: str = None,
         time: str = None,
+        user: str = None,
     ):
         self.asc = asc
         self.db_names = db_names
@@ -13598,10 +15323,12 @@ class GetQueryOptimizeDataStatsRequest(TeaModel):
         self.order_by = order_by
         self.page_no = page_no
         self.page_size = page_size
+        self.region = region
         self.rules = rules
         self.sql_ids = sql_ids
         self.tag_names = tag_names
         self.time = time
+        self.user = user
 
     def validate(self):
         pass
@@ -13632,6 +15359,8 @@ class GetQueryOptimizeDataStatsRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region is not None:
+            result['Region'] = self.region
         if self.rules is not None:
             result['Rules'] = self.rules
         if self.sql_ids is not None:
@@ -13640,6 +15369,8 @@ class GetQueryOptimizeDataStatsRequest(TeaModel):
             result['TagNames'] = self.tag_names
         if self.time is not None:
             result['Time'] = self.time
+        if self.user is not None:
+            result['User'] = self.user
         return result
 
     def from_map(self, m: dict = None):
@@ -13664,6 +15395,8 @@ class GetQueryOptimizeDataStatsRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         if m.get('Rules') is not None:
             self.rules = m.get('Rules')
         if m.get('SqlIds') is not None:
@@ -13672,6 +15405,8 @@ class GetQueryOptimizeDataStatsRequest(TeaModel):
             self.tag_names = m.get('TagNames')
         if m.get('Time') is not None:
             self.time = m.get('Time')
+        if m.get('User') is not None:
+            self.user = m.get('User')
         return self
 
 
@@ -13729,6 +15464,7 @@ class GetQueryOptimizeDataStatsResponseBodyDataList(TeaModel):
         sql_id: str = None,
         sql_sample: str = None,
         sql_type: str = None,
+        user: str = None,
     ):
         self.avg_lock_time = avg_lock_time
         self.avg_query_time = avg_query_time
@@ -13748,6 +15484,7 @@ class GetQueryOptimizeDataStatsResponseBodyDataList(TeaModel):
         self.sql_id = sql_id
         self.sql_sample = sql_sample
         self.sql_type = sql_type
+        self.user = user
 
     def validate(self):
         if self.rule_list:
@@ -13799,6 +15536,8 @@ class GetQueryOptimizeDataStatsResponseBodyDataList(TeaModel):
             result['SqlSample'] = self.sql_sample
         if self.sql_type is not None:
             result['SqlType'] = self.sql_type
+        if self.user is not None:
+            result['User'] = self.user
         return result
 
     def from_map(self, m: dict = None):
@@ -13842,6 +15581,8 @@ class GetQueryOptimizeDataStatsResponseBodyDataList(TeaModel):
             self.sql_sample = m.get('SqlSample')
         if m.get('SqlType') is not None:
             self.sql_type = m.get('SqlType')
+        if m.get('User') is not None:
+            self.user = m.get('User')
         return self
 
 
@@ -14006,12 +15747,14 @@ class GetQueryOptimizeDataTopRequest(TeaModel):
         self,
         engine: str = None,
         instance_ids: str = None,
+        region: str = None,
         tag_names: str = None,
         time: str = None,
         type: str = None,
     ):
         self.engine = engine
         self.instance_ids = instance_ids
+        self.region = region
         self.tag_names = tag_names
         self.time = time
         self.type = type
@@ -14029,6 +15772,8 @@ class GetQueryOptimizeDataTopRequest(TeaModel):
             result['Engine'] = self.engine
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
+        if self.region is not None:
+            result['Region'] = self.region
         if self.tag_names is not None:
             result['TagNames'] = self.tag_names
         if self.time is not None:
@@ -14043,6 +15788,8 @@ class GetQueryOptimizeDataTopRequest(TeaModel):
             self.engine = m.get('Engine')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         if m.get('TagNames') is not None:
             self.tag_names = m.get('TagNames')
         if m.get('Time') is not None:
@@ -14253,12 +16000,14 @@ class GetQueryOptimizeDataTrendRequest(TeaModel):
         end: str = None,
         engine: str = None,
         instance_ids: str = None,
+        region: str = None,
         start: str = None,
         tag_names: str = None,
     ):
         self.end = end
         self.engine = engine
         self.instance_ids = instance_ids
+        self.region = region
         self.start = start
         self.tag_names = tag_names
 
@@ -14277,6 +16026,8 @@ class GetQueryOptimizeDataTrendRequest(TeaModel):
             result['Engine'] = self.engine
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
+        if self.region is not None:
+            result['Region'] = self.region
         if self.start is not None:
             result['Start'] = self.start
         if self.tag_names is not None:
@@ -14291,6 +16042,8 @@ class GetQueryOptimizeDataTrendRequest(TeaModel):
             self.engine = m.get('Engine')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         if m.get('Start') is not None:
             self.start = m.get('Start')
         if m.get('TagNames') is not None:
@@ -14769,6 +16522,7 @@ class GetQueryOptimizeExecErrorStatsRequest(TeaModel):
         order_by: str = None,
         page_no: str = None,
         page_size: str = None,
+        region: str = None,
         time: str = None,
     ):
         self.asc = asc
@@ -14780,6 +16534,7 @@ class GetQueryOptimizeExecErrorStatsRequest(TeaModel):
         self.order_by = order_by
         self.page_no = page_no
         self.page_size = page_size
+        self.region = region
         self.time = time
 
     def validate(self):
@@ -14809,6 +16564,8 @@ class GetQueryOptimizeExecErrorStatsRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region is not None:
+            result['Region'] = self.region
         if self.time is not None:
             result['Time'] = self.time
         return result
@@ -14833,6 +16590,8 @@ class GetQueryOptimizeExecErrorStatsRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         if m.get('Time') is not None:
             self.time = m.get('Time')
         return self
@@ -15062,10 +16821,12 @@ class GetQueryOptimizeRuleListRequest(TeaModel):
         self,
         engine: str = None,
         instance_ids: str = None,
+        region: str = None,
         tag_names: str = None,
     ):
         self.engine = engine
         self.instance_ids = instance_ids
+        self.region = region
         self.tag_names = tag_names
 
     def validate(self):
@@ -15081,6 +16842,8 @@ class GetQueryOptimizeRuleListRequest(TeaModel):
             result['Engine'] = self.engine
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
+        if self.region is not None:
+            result['Region'] = self.region
         if self.tag_names is not None:
             result['TagNames'] = self.tag_names
         return result
@@ -15091,6 +16854,8 @@ class GetQueryOptimizeRuleListRequest(TeaModel):
             self.engine = m.get('Engine')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         if m.get('TagNames') is not None:
             self.tag_names = m.get('TagNames')
         return self
@@ -15291,14 +17056,228 @@ class GetQueryOptimizeRuleListResponse(TeaModel):
         return self
 
 
+class GetQueryOptimizeShareUrlRequest(TeaModel):
+    def __init__(
+        self,
+        asc: bool = None,
+        db_names: str = None,
+        engine: str = None,
+        instance_ids: str = None,
+        keywords: str = None,
+        logical_operator: str = None,
+        only_optimized_sql: bool = None,
+        order_by: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        region: str = None,
+        rules: str = None,
+        sql_ids: str = None,
+        tag_names: str = None,
+        time: int = None,
+        user: str = None,
+    ):
+        self.asc = asc
+        self.db_names = db_names
+        self.engine = engine
+        self.instance_ids = instance_ids
+        self.keywords = keywords
+        self.logical_operator = logical_operator
+        self.only_optimized_sql = only_optimized_sql
+        self.order_by = order_by
+        self.page_no = page_no
+        self.page_size = page_size
+        self.region = region
+        self.rules = rules
+        self.sql_ids = sql_ids
+        self.tag_names = tag_names
+        self.time = time
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asc is not None:
+            result['Asc'] = self.asc
+        if self.db_names is not None:
+            result['DbNames'] = self.db_names
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.keywords is not None:
+            result['Keywords'] = self.keywords
+        if self.logical_operator is not None:
+            result['LogicalOperator'] = self.logical_operator
+        if self.only_optimized_sql is not None:
+            result['OnlyOptimizedSql'] = self.only_optimized_sql
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.rules is not None:
+            result['Rules'] = self.rules
+        if self.sql_ids is not None:
+            result['SqlIds'] = self.sql_ids
+        if self.tag_names is not None:
+            result['TagNames'] = self.tag_names
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.user is not None:
+            result['User'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Asc') is not None:
+            self.asc = m.get('Asc')
+        if m.get('DbNames') is not None:
+            self.db_names = m.get('DbNames')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Keywords') is not None:
+            self.keywords = m.get('Keywords')
+        if m.get('LogicalOperator') is not None:
+            self.logical_operator = m.get('LogicalOperator')
+        if m.get('OnlyOptimizedSql') is not None:
+            self.only_optimized_sql = m.get('OnlyOptimizedSql')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Rules') is not None:
+            self.rules = m.get('Rules')
+        if m.get('SqlIds') is not None:
+            self.sql_ids = m.get('SqlIds')
+        if m.get('TagNames') is not None:
+            self.tag_names = m.get('TagNames')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        return self
+
+
+class GetQueryOptimizeShareUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetQueryOptimizeShareUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetQueryOptimizeShareUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetQueryOptimizeShareUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetQueryOptimizeSolutionRequest(TeaModel):
     def __init__(
         self,
         engine: str = None,
+        instance_id: str = None,
         rule_ids: str = None,
         sql_id: str = None,
     ):
         self.engine = engine
+        self.instance_id = instance_id
         self.rule_ids = rule_ids
         self.sql_id = sql_id
 
@@ -15313,6 +17292,8 @@ class GetQueryOptimizeSolutionRequest(TeaModel):
         result = dict()
         if self.engine is not None:
             result['Engine'] = self.engine
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.rule_ids is not None:
             result['RuleIds'] = self.rule_ids
         if self.sql_id is not None:
@@ -15323,6 +17304,8 @@ class GetQueryOptimizeSolutionRequest(TeaModel):
         m = m or dict()
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('RuleIds') is not None:
             self.rule_ids = m.get('RuleIds')
         if m.get('SqlId') is not None:
@@ -15527,6 +17510,182 @@ class GetQueryOptimizeSolutionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetQueryOptimizeSolutionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetQueryOptimizeTagRequest(TeaModel):
+    def __init__(
+        self,
+        engine: str = None,
+        instance_id: str = None,
+        sql_id: str = None,
+    ):
+        self.engine = engine
+        self.instance_id = instance_id
+        self.sql_id = sql_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        return self
+
+
+class GetQueryOptimizeTagResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        comments: str = None,
+        sql_id: str = None,
+        tags: str = None,
+    ):
+        self.comments = comments
+        self.sql_id = sql_id
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comments is not None:
+            result['Comments'] = self.comments
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comments') is not None:
+            self.comments = m.get('Comments')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class GetQueryOptimizeTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetQueryOptimizeTagResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        # SqlTag
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetQueryOptimizeTagResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetQueryOptimizeTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetQueryOptimizeTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetQueryOptimizeTagResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17171,12 +19330,14 @@ class GetSqlOptimizeAdviceRequest(TeaModel):
         end_dt: str = None,
         engine: str = None,
         instance_ids: str = None,
+        region: str = None,
         start_dt: str = None,
     ):
         self.console_context = console_context
         self.end_dt = end_dt
         self.engine = engine
         self.instance_ids = instance_ids
+        self.region = region
         self.start_dt = start_dt
 
     def validate(self):
@@ -17196,6 +19357,8 @@ class GetSqlOptimizeAdviceRequest(TeaModel):
             result['Engine'] = self.engine
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
+        if self.region is not None:
+            result['Region'] = self.region
         if self.start_dt is not None:
             result['StartDt'] = self.start_dt
         return result
@@ -17210,6 +19373,8 @@ class GetSqlOptimizeAdviceRequest(TeaModel):
             self.engine = m.get('Engine')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         if m.get('StartDt') is not None:
             self.start_dt = m.get('StartDt')
         return self
@@ -18183,21 +20348,25 @@ class SetEventSubscriptionRequest(TeaModel):
         channel_type: str = None,
         contact_group_name: str = None,
         contact_name: str = None,
+        dispatch_rule: str = None,
         event_context: str = None,
         instance_id: str = None,
         lang: str = None,
         level: str = None,
         min_interval: str = None,
+        severity: str = None,
     ):
         self.active = active
         self.channel_type = channel_type
         self.contact_group_name = contact_group_name
         self.contact_name = contact_name
+        self.dispatch_rule = dispatch_rule
         self.event_context = event_context
         self.instance_id = instance_id
         self.lang = lang
         self.level = level
         self.min_interval = min_interval
+        self.severity = severity
 
     def validate(self):
         pass
@@ -18216,6 +20385,8 @@ class SetEventSubscriptionRequest(TeaModel):
             result['ContactGroupName'] = self.contact_group_name
         if self.contact_name is not None:
             result['ContactName'] = self.contact_name
+        if self.dispatch_rule is not None:
+            result['DispatchRule'] = self.dispatch_rule
         if self.event_context is not None:
             result['EventContext'] = self.event_context
         if self.instance_id is not None:
@@ -18226,6 +20397,8 @@ class SetEventSubscriptionRequest(TeaModel):
             result['Level'] = self.level
         if self.min_interval is not None:
             result['MinInterval'] = self.min_interval
+        if self.severity is not None:
+            result['Severity'] = self.severity
         return result
 
     def from_map(self, m: dict = None):
@@ -18238,6 +20411,8 @@ class SetEventSubscriptionRequest(TeaModel):
             self.contact_group_name = m.get('ContactGroupName')
         if m.get('ContactName') is not None:
             self.contact_name = m.get('ContactName')
+        if m.get('DispatchRule') is not None:
+            self.dispatch_rule = m.get('DispatchRule')
         if m.get('EventContext') is not None:
             self.event_context = m.get('EventContext')
         if m.get('InstanceId') is not None:
@@ -18248,6 +20423,8 @@ class SetEventSubscriptionRequest(TeaModel):
             self.level = m.get('Level')
         if m.get('MinInterval') is not None:
             self.min_interval = m.get('MinInterval')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
         return self
 
 
