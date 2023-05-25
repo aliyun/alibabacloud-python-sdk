@@ -1,3 +1,6 @@
+2023-05-25 Version: 2.2.17
+- Add ValidateVpcConnectivity.
+
 2023-04-13 Version: 2.2.16
 - DescribeDomain add CertificateValid date.
 
