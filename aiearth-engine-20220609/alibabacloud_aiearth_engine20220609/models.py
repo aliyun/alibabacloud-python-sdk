@@ -579,9 +579,11 @@ class DownloadDataRequest(TeaModel):
     def __init__(
         self,
         band_no: str = None,
+        compress: bool = None,
         data_id: str = None,
     ):
         self.band_no = band_no
+        self.compress = compress
         self.data_id = data_id
 
     def validate(self):
@@ -595,6 +597,8 @@ class DownloadDataRequest(TeaModel):
         result = dict()
         if self.band_no is not None:
             result['BandNo'] = self.band_no
+        if self.compress is not None:
+            result['Compress'] = self.compress
         if self.data_id is not None:
             result['DataId'] = self.data_id
         return result
@@ -603,6 +607,8 @@ class DownloadDataRequest(TeaModel):
         m = m or dict()
         if m.get('BandNo') is not None:
             self.band_no = m.get('BandNo')
+        if m.get('Compress') is not None:
+            self.compress = m.get('Compress')
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
         return self
@@ -931,6 +937,116 @@ class GetJobsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetUserTokenRequest(TeaModel):
+    def __init__(
+        self,
+        force_create: bool = None,
+    ):
+        self.force_create = force_create
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.force_create is not None:
+            result['ForceCreate'] = self.force_create
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ForceCreate') is not None:
+            self.force_create = m.get('ForceCreate')
+        return self
+
+
+class GetUserTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        expired_at: int = None,
+        request_id: str = None,
+        token: str = None,
+    ):
+        self.expired_at = expired_at
+        self.request_id = request_id
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expired_at is not None:
+            result['ExpiredAt'] = self.expired_at
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpiredAt') is not None:
+            self.expired_at = m.get('ExpiredAt')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class GetUserTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUserTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUserTokenResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

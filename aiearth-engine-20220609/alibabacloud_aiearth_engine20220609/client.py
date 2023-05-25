@@ -242,6 +242,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.band_no):
             body['BandNo'] = request.band_no
+        if not UtilClient.is_unset(request.compress):
+            body['Compress'] = request.compress
         if not UtilClient.is_unset(request.data_id):
             body['DataId'] = request.data_id
         req = open_api_models.OpenApiRequest(
@@ -272,6 +274,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.band_no):
             body['BandNo'] = request.band_no
+        if not UtilClient.is_unset(request.compress):
+            body['Compress'] = request.compress
         if not UtilClient.is_unset(request.data_id):
             body['DataId'] = request.data_id
         req = open_api_models.OpenApiRequest(
@@ -384,6 +388,76 @@ class Client(OpenApiClient):
     ) -> aiearth__engine_20220609_models.GetJobsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_jobs_with_options_async(request, runtime)
+
+    def get_user_token_with_options(
+        self,
+        request: aiearth__engine_20220609_models.GetUserTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.GetUserTokenResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.force_create):
+            body['ForceCreate'] = request.force_create
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserToken',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.GetUserTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_token_with_options_async(
+        self,
+        request: aiearth__engine_20220609_models.GetUserTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.GetUserTokenResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.force_create):
+            body['ForceCreate'] = request.force_create
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserToken',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.GetUserTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_token(
+        self,
+        request: aiearth__engine_20220609_models.GetUserTokenRequest,
+    ) -> aiearth__engine_20220609_models.GetUserTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_user_token_with_options(request, runtime)
+
+    async def get_user_token_async(
+        self,
+        request: aiearth__engine_20220609_models.GetUserTokenRequest,
+    ) -> aiearth__engine_20220609_models.GetUserTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_user_token_with_options_async(request, runtime)
 
     def list_datas_with_options(
         self,

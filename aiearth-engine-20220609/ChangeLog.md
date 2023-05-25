@@ -1,3 +1,7 @@
+2023-05-25 Version: 1.0.5
+- Added user token get.
+- Added compress param for download.
+
 2023-03-23 Version: 1.0.4
 - Added raster, vector and map_service publish.
 - Added AI Job submit to support MAP_SERVICE.
