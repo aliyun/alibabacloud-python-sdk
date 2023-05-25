@@ -1,3 +1,9 @@
+2023-05-25 Version: 1.50.0
+- Support AnalyzeLineage API.
+- Modify ListTaskFlowsByPage API. Add input parameters: DagIdList. Add output parameters: CronSwitch, CronStr, CronParam, TriggerType, CronType, TimeZoneId
+- Modify BackFill API. Add output parameters DagInstanceId (same as the existed parameter NodeId).
+- Modify ListTaskFlowInstance API. Add Input parameters: StartBizTime、EndBizTime.
+
 2023-05-18 Version: 1.49.0
 - Support GetDatabase, GetPhysicalDatabase to return InstanceAlias information.
 
