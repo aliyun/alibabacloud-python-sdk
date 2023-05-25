@@ -3326,6 +3326,184 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_das_pro_service_usage_with_options_async(request, runtime)
 
+    def get_das_sqllog_hot_data_with_options(
+        self,
+        request: das20200116_models.GetDasSQLLogHotDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetDasSQLLogHotDataResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.child_dbinstance_ids):
+            body['ChildDBInstanceIDs'] = request.child_dbinstance_ids
+        if not UtilClient.is_unset(request.dbname):
+            body['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.end):
+            body['End'] = request.end
+        if not UtilClient.is_unset(request.fail):
+            body['Fail'] = request.fail
+        if not UtilClient.is_unset(request.host_address):
+            body['HostAddress'] = request.host_address
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.logical_operator):
+            body['LogicalOperator'] = request.logical_operator
+        if not UtilClient.is_unset(request.max_latancy):
+            body['MaxLatancy'] = request.max_latancy
+        if not UtilClient.is_unset(request.max_records_per_page):
+            body['MaxRecordsPerPage'] = request.max_records_per_page
+        if not UtilClient.is_unset(request.max_rows):
+            body['MaxRows'] = request.max_rows
+        if not UtilClient.is_unset(request.max_scan_rows):
+            body['MaxScanRows'] = request.max_scan_rows
+        if not UtilClient.is_unset(request.max_spill_cnt):
+            body['MaxSpillCnt'] = request.max_spill_cnt
+        if not UtilClient.is_unset(request.min_latancy):
+            body['MinLatancy'] = request.min_latancy
+        if not UtilClient.is_unset(request.min_rows):
+            body['MinRows'] = request.min_rows
+        if not UtilClient.is_unset(request.min_scan_rows):
+            body['MinScanRows'] = request.min_scan_rows
+        if not UtilClient.is_unset(request.min_spill_cnt):
+            body['MinSpillCnt'] = request.min_spill_cnt
+        if not UtilClient.is_unset(request.page_numbers):
+            body['PageNumbers'] = request.page_numbers
+        if not UtilClient.is_unset(request.query_keyword):
+            body['QueryKeyword'] = request.query_keyword
+        if not UtilClient.is_unset(request.role):
+            body['Role'] = request.role
+        if not UtilClient.is_unset(request.sort_key):
+            body['SortKey'] = request.sort_key
+        if not UtilClient.is_unset(request.sort_method):
+            body['SortMethod'] = request.sort_method
+        if not UtilClient.is_unset(request.sql_type):
+            body['SqlType'] = request.sql_type
+        if not UtilClient.is_unset(request.start):
+            body['Start'] = request.start
+        if not UtilClient.is_unset(request.state):
+            body['State'] = request.state
+        if not UtilClient.is_unset(request.thread_id):
+            body['ThreadID'] = request.thread_id
+        if not UtilClient.is_unset(request.trace_id):
+            body['TraceId'] = request.trace_id
+        if not UtilClient.is_unset(request.transaction_id):
+            body['TransactionId'] = request.transaction_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDasSQLLogHotData',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetDasSQLLogHotDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_das_sqllog_hot_data_with_options_async(
+        self,
+        request: das20200116_models.GetDasSQLLogHotDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetDasSQLLogHotDataResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.child_dbinstance_ids):
+            body['ChildDBInstanceIDs'] = request.child_dbinstance_ids
+        if not UtilClient.is_unset(request.dbname):
+            body['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.end):
+            body['End'] = request.end
+        if not UtilClient.is_unset(request.fail):
+            body['Fail'] = request.fail
+        if not UtilClient.is_unset(request.host_address):
+            body['HostAddress'] = request.host_address
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.logical_operator):
+            body['LogicalOperator'] = request.logical_operator
+        if not UtilClient.is_unset(request.max_latancy):
+            body['MaxLatancy'] = request.max_latancy
+        if not UtilClient.is_unset(request.max_records_per_page):
+            body['MaxRecordsPerPage'] = request.max_records_per_page
+        if not UtilClient.is_unset(request.max_rows):
+            body['MaxRows'] = request.max_rows
+        if not UtilClient.is_unset(request.max_scan_rows):
+            body['MaxScanRows'] = request.max_scan_rows
+        if not UtilClient.is_unset(request.max_spill_cnt):
+            body['MaxSpillCnt'] = request.max_spill_cnt
+        if not UtilClient.is_unset(request.min_latancy):
+            body['MinLatancy'] = request.min_latancy
+        if not UtilClient.is_unset(request.min_rows):
+            body['MinRows'] = request.min_rows
+        if not UtilClient.is_unset(request.min_scan_rows):
+            body['MinScanRows'] = request.min_scan_rows
+        if not UtilClient.is_unset(request.min_spill_cnt):
+            body['MinSpillCnt'] = request.min_spill_cnt
+        if not UtilClient.is_unset(request.page_numbers):
+            body['PageNumbers'] = request.page_numbers
+        if not UtilClient.is_unset(request.query_keyword):
+            body['QueryKeyword'] = request.query_keyword
+        if not UtilClient.is_unset(request.role):
+            body['Role'] = request.role
+        if not UtilClient.is_unset(request.sort_key):
+            body['SortKey'] = request.sort_key
+        if not UtilClient.is_unset(request.sort_method):
+            body['SortMethod'] = request.sort_method
+        if not UtilClient.is_unset(request.sql_type):
+            body['SqlType'] = request.sql_type
+        if not UtilClient.is_unset(request.start):
+            body['Start'] = request.start
+        if not UtilClient.is_unset(request.state):
+            body['State'] = request.state
+        if not UtilClient.is_unset(request.thread_id):
+            body['ThreadID'] = request.thread_id
+        if not UtilClient.is_unset(request.trace_id):
+            body['TraceId'] = request.trace_id
+        if not UtilClient.is_unset(request.transaction_id):
+            body['TransactionId'] = request.transaction_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDasSQLLogHotData',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetDasSQLLogHotDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_das_sqllog_hot_data(
+        self,
+        request: das20200116_models.GetDasSQLLogHotDataRequest,
+    ) -> das20200116_models.GetDasSQLLogHotDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_das_sqllog_hot_data_with_options(request, runtime)
+
+    async def get_das_sqllog_hot_data_async(
+        self,
+        request: das20200116_models.GetDasSQLLogHotDataRequest,
+    ) -> das20200116_models.GetDasSQLLogHotDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_das_sqllog_hot_data_with_options_async(request, runtime)
+
     def get_endpoint_switch_task_with_options(
         self,
         request: das20200116_models.GetEndpointSwitchTaskRequest,

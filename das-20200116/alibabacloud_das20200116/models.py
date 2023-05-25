@@ -9770,6 +9770,487 @@ class GetDasProServiceUsageResponse(TeaModel):
         return self
 
 
+class GetDasSQLLogHotDataRequest(TeaModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        child_dbinstance_ids: str = None,
+        dbname: str = None,
+        end: int = None,
+        fail: str = None,
+        host_address: str = None,
+        instance_id: str = None,
+        logical_operator: str = None,
+        max_latancy: int = None,
+        max_records_per_page: int = None,
+        max_rows: int = None,
+        max_scan_rows: int = None,
+        max_spill_cnt: int = None,
+        min_latancy: int = None,
+        min_rows: int = None,
+        min_scan_rows: int = None,
+        min_spill_cnt: int = None,
+        page_numbers: int = None,
+        query_keyword: str = None,
+        role: str = None,
+        sort_key: str = None,
+        sort_method: str = None,
+        sql_type: str = None,
+        start: int = None,
+        state: str = None,
+        thread_id: str = None,
+        trace_id: str = None,
+        transaction_id: str = None,
+    ):
+        self.account_name = account_name
+        self.child_dbinstance_ids = child_dbinstance_ids
+        self.dbname = dbname
+        self.end = end
+        self.fail = fail
+        self.host_address = host_address
+        self.instance_id = instance_id
+        self.logical_operator = logical_operator
+        self.max_latancy = max_latancy
+        self.max_records_per_page = max_records_per_page
+        self.max_rows = max_rows
+        self.max_scan_rows = max_scan_rows
+        self.max_spill_cnt = max_spill_cnt
+        self.min_latancy = min_latancy
+        self.min_rows = min_rows
+        self.min_scan_rows = min_scan_rows
+        self.min_spill_cnt = min_spill_cnt
+        self.page_numbers = page_numbers
+        self.query_keyword = query_keyword
+        self.role = role
+        self.sort_key = sort_key
+        self.sort_method = sort_method
+        self.sql_type = sql_type
+        self.start = start
+        self.state = state
+        self.thread_id = thread_id
+        self.trace_id = trace_id
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.child_dbinstance_ids is not None:
+            result['ChildDBInstanceIDs'] = self.child_dbinstance_ids
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
+        if self.end is not None:
+            result['End'] = self.end
+        if self.fail is not None:
+            result['Fail'] = self.fail
+        if self.host_address is not None:
+            result['HostAddress'] = self.host_address
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.logical_operator is not None:
+            result['LogicalOperator'] = self.logical_operator
+        if self.max_latancy is not None:
+            result['MaxLatancy'] = self.max_latancy
+        if self.max_records_per_page is not None:
+            result['MaxRecordsPerPage'] = self.max_records_per_page
+        if self.max_rows is not None:
+            result['MaxRows'] = self.max_rows
+        if self.max_scan_rows is not None:
+            result['MaxScanRows'] = self.max_scan_rows
+        if self.max_spill_cnt is not None:
+            result['MaxSpillCnt'] = self.max_spill_cnt
+        if self.min_latancy is not None:
+            result['MinLatancy'] = self.min_latancy
+        if self.min_rows is not None:
+            result['MinRows'] = self.min_rows
+        if self.min_scan_rows is not None:
+            result['MinScanRows'] = self.min_scan_rows
+        if self.min_spill_cnt is not None:
+            result['MinSpillCnt'] = self.min_spill_cnt
+        if self.page_numbers is not None:
+            result['PageNumbers'] = self.page_numbers
+        if self.query_keyword is not None:
+            result['QueryKeyword'] = self.query_keyword
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.sort_key is not None:
+            result['SortKey'] = self.sort_key
+        if self.sort_method is not None:
+            result['SortMethod'] = self.sort_method
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        if self.start is not None:
+            result['Start'] = self.start
+        if self.state is not None:
+            result['State'] = self.state
+        if self.thread_id is not None:
+            result['ThreadID'] = self.thread_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('ChildDBInstanceIDs') is not None:
+            self.child_dbinstance_ids = m.get('ChildDBInstanceIDs')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Fail') is not None:
+            self.fail = m.get('Fail')
+        if m.get('HostAddress') is not None:
+            self.host_address = m.get('HostAddress')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LogicalOperator') is not None:
+            self.logical_operator = m.get('LogicalOperator')
+        if m.get('MaxLatancy') is not None:
+            self.max_latancy = m.get('MaxLatancy')
+        if m.get('MaxRecordsPerPage') is not None:
+            self.max_records_per_page = m.get('MaxRecordsPerPage')
+        if m.get('MaxRows') is not None:
+            self.max_rows = m.get('MaxRows')
+        if m.get('MaxScanRows') is not None:
+            self.max_scan_rows = m.get('MaxScanRows')
+        if m.get('MaxSpillCnt') is not None:
+            self.max_spill_cnt = m.get('MaxSpillCnt')
+        if m.get('MinLatancy') is not None:
+            self.min_latancy = m.get('MinLatancy')
+        if m.get('MinRows') is not None:
+            self.min_rows = m.get('MinRows')
+        if m.get('MinScanRows') is not None:
+            self.min_scan_rows = m.get('MinScanRows')
+        if m.get('MinSpillCnt') is not None:
+            self.min_spill_cnt = m.get('MinSpillCnt')
+        if m.get('PageNumbers') is not None:
+            self.page_numbers = m.get('PageNumbers')
+        if m.get('QueryKeyword') is not None:
+            self.query_keyword = m.get('QueryKeyword')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('SortKey') is not None:
+            self.sort_key = m.get('SortKey')
+        if m.get('SortMethod') is not None:
+            self.sort_method = m.get('SortMethod')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('ThreadID') is not None:
+            self.thread_id = m.get('ThreadID')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class GetDasSQLLogHotDataResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        dbname: str = None,
+        execute_time: str = None,
+        ext: str = None,
+        host_address: str = None,
+        latancy: int = None,
+        lock_time: int = None,
+        logic_read: int = None,
+        origin_time: str = None,
+        physic_async_read: int = None,
+        physic_sync_read: int = None,
+        return_rows: int = None,
+        sqltext: str = None,
+        scan_rows: int = None,
+        sql_type: str = None,
+        state: str = None,
+        thread_id: int = None,
+        transaction_id: str = None,
+        update_rows: int = None,
+    ):
+        self.account_name = account_name
+        self.dbname = dbname
+        self.execute_time = execute_time
+        self.ext = ext
+        self.host_address = host_address
+        self.latancy = latancy
+        self.lock_time = lock_time
+        self.logic_read = logic_read
+        self.origin_time = origin_time
+        self.physic_async_read = physic_async_read
+        self.physic_sync_read = physic_sync_read
+        self.return_rows = return_rows
+        self.sqltext = sqltext
+        self.scan_rows = scan_rows
+        self.sql_type = sql_type
+        self.state = state
+        self.thread_id = thread_id
+        self.transaction_id = transaction_id
+        self.update_rows = update_rows
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.host_address is not None:
+            result['HostAddress'] = self.host_address
+        if self.latancy is not None:
+            result['Latancy'] = self.latancy
+        if self.lock_time is not None:
+            result['LockTime'] = self.lock_time
+        if self.logic_read is not None:
+            result['LogicRead'] = self.logic_read
+        if self.origin_time is not None:
+            result['OriginTime'] = self.origin_time
+        if self.physic_async_read is not None:
+            result['PhysicAsyncRead'] = self.physic_async_read
+        if self.physic_sync_read is not None:
+            result['PhysicSyncRead'] = self.physic_sync_read
+        if self.return_rows is not None:
+            result['ReturnRows'] = self.return_rows
+        if self.sqltext is not None:
+            result['SQLText'] = self.sqltext
+        if self.scan_rows is not None:
+            result['ScanRows'] = self.scan_rows
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        if self.state is not None:
+            result['State'] = self.state
+        if self.thread_id is not None:
+            result['ThreadID'] = self.thread_id
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        if self.update_rows is not None:
+            result['UpdateRows'] = self.update_rows
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('HostAddress') is not None:
+            self.host_address = m.get('HostAddress')
+        if m.get('Latancy') is not None:
+            self.latancy = m.get('Latancy')
+        if m.get('LockTime') is not None:
+            self.lock_time = m.get('LockTime')
+        if m.get('LogicRead') is not None:
+            self.logic_read = m.get('LogicRead')
+        if m.get('OriginTime') is not None:
+            self.origin_time = m.get('OriginTime')
+        if m.get('PhysicAsyncRead') is not None:
+            self.physic_async_read = m.get('PhysicAsyncRead')
+        if m.get('PhysicSyncRead') is not None:
+            self.physic_sync_read = m.get('PhysicSyncRead')
+        if m.get('ReturnRows') is not None:
+            self.return_rows = m.get('ReturnRows')
+        if m.get('SQLText') is not None:
+            self.sqltext = m.get('SQLText')
+        if m.get('ScanRows') is not None:
+            self.scan_rows = m.get('ScanRows')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('ThreadID') is not None:
+            self.thread_id = m.get('ThreadID')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        if m.get('UpdateRows') is not None:
+            self.update_rows = m.get('UpdateRows')
+        return self
+
+
+class GetDasSQLLogHotDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        extra: Any = None,
+        list: List[GetDasSQLLogHotDataResponseBodyDataList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.extra = extra
+        self.list = list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extra is not None:
+            result['Extra'] = self.extra
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = GetDasSQLLogHotDataResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetDasSQLLogHotDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetDasSQLLogHotDataResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        # ListResult<Map<String, Object>>
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetDasSQLLogHotDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDasSQLLogHotDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDasSQLLogHotDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDasSQLLogHotDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetEndpointSwitchTaskRequest(TeaModel):
     def __init__(
         self,

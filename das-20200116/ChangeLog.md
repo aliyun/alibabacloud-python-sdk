@@ -1,3 +1,6 @@
+2023-05-25 Version: 2.0.38
+- Add action GetDasSQLLogHotData.
+
 2023-05-25 Version: 2.0.37
 - Add user for the response of GetQueryOptimizeDataStats.
 
