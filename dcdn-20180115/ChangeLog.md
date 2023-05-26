@@ -1,3 +1,6 @@
+2023-05-26 Version: 1.1.9
+- Add DescribeDcdnFullDomainsBlockIPConfig.
+
 2023-05-22 Version: 1.1.8
 - Add DescribeDcdnFullDomainsBlockIPHistory.
 
