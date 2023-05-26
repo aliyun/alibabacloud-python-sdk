@@ -522,11 +522,17 @@ class Client(OpenApiClient):
     def get_job_with_options(
         self,
         job_id: str,
+        request: pai_dlc_20201203_models.GetJobRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.need_detail):
+            query['NeedDetail'] = request.need_detail
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetJob',
@@ -547,11 +553,17 @@ class Client(OpenApiClient):
     async def get_job_with_options_async(
         self,
         job_id: str,
+        request: pai_dlc_20201203_models.GetJobRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.need_detail):
+            query['NeedDetail'] = request.need_detail
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetJob',
@@ -572,18 +584,20 @@ class Client(OpenApiClient):
     def get_job(
         self,
         job_id: str,
+        request: pai_dlc_20201203_models.GetJobRequest,
     ) -> pai_dlc_20201203_models.GetJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_job_with_options(job_id, headers, runtime)
+        return self.get_job_with_options(job_id, request, headers, runtime)
 
     async def get_job_async(
         self,
         job_id: str,
+        request: pai_dlc_20201203_models.GetJobRequest,
     ) -> pai_dlc_20201203_models.GetJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_job_with_options_async(job_id, headers, runtime)
+        return await self.get_job_with_options_async(job_id, request, headers, runtime)
 
     def get_job_events_with_options(
         self,

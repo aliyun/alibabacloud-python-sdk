@@ -1,3 +1,6 @@
+2023-05-26 Version: 1.2.6
+- Add parameter in JobElasticSpec.
+
 2023-03-23 Version: 1.2.5
 - Change the type of RequestId to string in GetJobEvents API.
 
