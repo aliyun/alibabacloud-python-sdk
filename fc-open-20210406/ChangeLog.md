@@ -1,3 +1,6 @@
+2023-05-30 Version: 2.0.9
+- Add Request Level Stateful Invocation.
+
 2023-04-11 Version: 2.0.8
 - Fix http invocation with sts credentials.
 
