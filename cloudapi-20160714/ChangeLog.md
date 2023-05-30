@@ -1,3 +1,6 @@
+2023-05-30 Version: 2.2.18
+- Modify parameter location of CreateApi.
+
 2023-05-25 Version: 2.2.17
 - Add ValidateVpcConnectivity.
 

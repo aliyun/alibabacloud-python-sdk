@@ -828,16 +828,10 @@ class Client(OpenApiClient):
             query['BackendEnable'] = request.backend_enable
         if not UtilClient.is_unset(request.backend_id):
             query['BackendId'] = request.backend_id
-        if not UtilClient.is_unset(request.constant_parameters):
-            query['ConstantParameters'] = request.constant_parameters
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.disable_internet):
             query['DisableInternet'] = request.disable_internet
-        if not UtilClient.is_unset(request.error_code_samples):
-            query['ErrorCodeSamples'] = request.error_code_samples
-        if not UtilClient.is_unset(request.fail_result_sample):
-            query['FailResultSample'] = request.fail_result_sample
         if not UtilClient.is_unset(request.force_nonce_check):
             query['ForceNonceCheck'] = request.force_nonce_check
         if not UtilClient.is_unset(request.group_id):
@@ -846,32 +840,40 @@ class Client(OpenApiClient):
             query['OpenIdConnectConfig'] = request.open_id_connect_config
         if not UtilClient.is_unset(request.request_config):
             query['RequestConfig'] = request.request_config
-        if not UtilClient.is_unset(request.request_parameters):
-            query['RequestParameters'] = request.request_parameters
         if not UtilClient.is_unset(request.result_body_model):
             query['ResultBodyModel'] = request.result_body_model
-        if not UtilClient.is_unset(request.result_descriptions):
-            query['ResultDescriptions'] = request.result_descriptions
-        if not UtilClient.is_unset(request.result_sample):
-            query['ResultSample'] = request.result_sample
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_config):
             query['ServiceConfig'] = request.service_config
-        if not UtilClient.is_unset(request.service_parameters):
-            query['ServiceParameters'] = request.service_parameters
-        if not UtilClient.is_unset(request.service_parameters_map):
-            query['ServiceParametersMap'] = request.service_parameters_map
-        if not UtilClient.is_unset(request.system_parameters):
-            query['SystemParameters'] = request.system_parameters
         if not UtilClient.is_unset(request.visibility):
             query['Visibility'] = request.visibility
         if not UtilClient.is_unset(request.web_socket_api_type):
             query['WebSocketApiType'] = request.web_socket_api_type
+        body = {}
+        if not UtilClient.is_unset(request.constant_parameters):
+            body['ConstantParameters'] = request.constant_parameters
+        if not UtilClient.is_unset(request.error_code_samples):
+            body['ErrorCodeSamples'] = request.error_code_samples
+        if not UtilClient.is_unset(request.fail_result_sample):
+            body['FailResultSample'] = request.fail_result_sample
+        if not UtilClient.is_unset(request.request_parameters):
+            body['RequestParameters'] = request.request_parameters
+        if not UtilClient.is_unset(request.result_descriptions):
+            body['ResultDescriptions'] = request.result_descriptions
+        if not UtilClient.is_unset(request.result_sample):
+            body['ResultSample'] = request.result_sample
+        if not UtilClient.is_unset(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        if not UtilClient.is_unset(request.service_parameters_map):
+            body['ServiceParametersMap'] = request.service_parameters_map
+        if not UtilClient.is_unset(request.system_parameters):
+            body['SystemParameters'] = request.system_parameters
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateApi',
@@ -918,16 +920,10 @@ class Client(OpenApiClient):
             query['BackendEnable'] = request.backend_enable
         if not UtilClient.is_unset(request.backend_id):
             query['BackendId'] = request.backend_id
-        if not UtilClient.is_unset(request.constant_parameters):
-            query['ConstantParameters'] = request.constant_parameters
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.disable_internet):
             query['DisableInternet'] = request.disable_internet
-        if not UtilClient.is_unset(request.error_code_samples):
-            query['ErrorCodeSamples'] = request.error_code_samples
-        if not UtilClient.is_unset(request.fail_result_sample):
-            query['FailResultSample'] = request.fail_result_sample
         if not UtilClient.is_unset(request.force_nonce_check):
             query['ForceNonceCheck'] = request.force_nonce_check
         if not UtilClient.is_unset(request.group_id):
@@ -936,32 +932,40 @@ class Client(OpenApiClient):
             query['OpenIdConnectConfig'] = request.open_id_connect_config
         if not UtilClient.is_unset(request.request_config):
             query['RequestConfig'] = request.request_config
-        if not UtilClient.is_unset(request.request_parameters):
-            query['RequestParameters'] = request.request_parameters
         if not UtilClient.is_unset(request.result_body_model):
             query['ResultBodyModel'] = request.result_body_model
-        if not UtilClient.is_unset(request.result_descriptions):
-            query['ResultDescriptions'] = request.result_descriptions
-        if not UtilClient.is_unset(request.result_sample):
-            query['ResultSample'] = request.result_sample
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_config):
             query['ServiceConfig'] = request.service_config
-        if not UtilClient.is_unset(request.service_parameters):
-            query['ServiceParameters'] = request.service_parameters
-        if not UtilClient.is_unset(request.service_parameters_map):
-            query['ServiceParametersMap'] = request.service_parameters_map
-        if not UtilClient.is_unset(request.system_parameters):
-            query['SystemParameters'] = request.system_parameters
         if not UtilClient.is_unset(request.visibility):
             query['Visibility'] = request.visibility
         if not UtilClient.is_unset(request.web_socket_api_type):
             query['WebSocketApiType'] = request.web_socket_api_type
+        body = {}
+        if not UtilClient.is_unset(request.constant_parameters):
+            body['ConstantParameters'] = request.constant_parameters
+        if not UtilClient.is_unset(request.error_code_samples):
+            body['ErrorCodeSamples'] = request.error_code_samples
+        if not UtilClient.is_unset(request.fail_result_sample):
+            body['FailResultSample'] = request.fail_result_sample
+        if not UtilClient.is_unset(request.request_parameters):
+            body['RequestParameters'] = request.request_parameters
+        if not UtilClient.is_unset(request.result_descriptions):
+            body['ResultDescriptions'] = request.result_descriptions
+        if not UtilClient.is_unset(request.result_sample):
+            body['ResultSample'] = request.result_sample
+        if not UtilClient.is_unset(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        if not UtilClient.is_unset(request.service_parameters_map):
+            body['ServiceParametersMap'] = request.service_parameters_map
+        if not UtilClient.is_unset(request.system_parameters):
+            body['SystemParameters'] = request.system_parameters
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateApi',

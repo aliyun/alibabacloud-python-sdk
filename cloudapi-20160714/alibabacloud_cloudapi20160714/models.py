@@ -1116,18 +1116,13 @@ class CreateApiRequest(TeaModel):
         self.backend_enable = backend_enable
         # The IDof the backend service
         self.backend_id = backend_id
-        # The parameters of the API.
         self.constant_parameters = constant_parameters
         # The description of the API. The description can be up to 180 characters in length.
         self.description = description
         # *   Specifies whether to set **DisableInternet** to **true** to limit API calls to within the VPC.
         # *   If you set **DisableInternet** to **false**, the limit is lifted. The default value is false when you create an API.
         self.disable_internet = disable_internet
-        # The sample error codes returned by the backend service.
-        # 
-        # For more information, see [ErrorCodeSample](~~44392~~).
         self.error_code_samples = error_code_samples
-        # The sample error response from the backend service.
         self.fail_result_sample = fail_result_sample
         # *   Specifies whether to set **ForceNonceCheck** to **true** to force the check of X-Ca-Nonce during the request. This is the unique identifier of the request and is generally identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
         # *   If you set **ForceNonceCheck** to **false**, the check is not performed. The default value is false when you create an API.
@@ -1140,15 +1135,10 @@ class CreateApiRequest(TeaModel):
         # 
         # For more information, see [RequestConfig](~~43985~~).
         self.request_config = request_config
-        # The parameters of API requests sent by the consumer to API Gateway.
-        # 
-        # For more information, see [RequestParameter](~~43986~~).
         self.request_parameters = request_parameters
         # The return description of the API.
         self.result_body_model = result_body_model
-        # The return description of the API.
         self.result_descriptions = result_descriptions
-        # The sample response from the backend service.
         self.result_sample = result_sample
         # The format of the response from the backend service. Valid values: JSON, TEXT, BINARY, XML, and HTML. Default value: JSON.
         self.result_type = result_type
@@ -1157,15 +1147,8 @@ class CreateApiRequest(TeaModel):
         # 
         # For more information, see [ServiceConfig](~~43987~~).
         self.service_config = service_config
-        # The parameters of API requests sent by API Gateway to the backend service.
-        # 
-        # For more information, see [ServiceParameter](~~43988~~).
         self.service_parameters = service_parameters
-        # The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
-        # 
-        # For more information, see [ServiceParameterMap](~~43989~~).
         self.service_parameters_map = service_parameters_map
-        # The common parameters of APIs in JSON format.
         self.system_parameters = system_parameters
         # Specifies whether to make the API public. Valid values:
         # 
