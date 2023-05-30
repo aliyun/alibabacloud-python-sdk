@@ -8603,14 +8603,20 @@ class Client(OpenApiClient):
 
     def isv_rule_save_with_options(
         self,
-        request: btrip_open_20220520_models.IsvRuleSaveRequest,
+        tmp_req: btrip_open_20220520_models.IsvRuleSaveRequest,
         headers: btrip_open_20220520_models.IsvRuleSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IsvRuleSaveResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.IsvRuleSaveShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.bookuser_list):
+            request.bookuser_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bookuser_list, 'bookuser_list', 'json')
         body = {}
         if not UtilClient.is_unset(request.book_type):
             body['book_type'] = request.book_type
+        if not UtilClient.is_unset(request.bookuser_list_shrink):
+            body['bookuser_list'] = request.bookuser_list_shrink
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
         if not UtilClient.is_unset(request.user_id):
@@ -8642,14 +8648,20 @@ class Client(OpenApiClient):
 
     async def isv_rule_save_with_options_async(
         self,
-        request: btrip_open_20220520_models.IsvRuleSaveRequest,
+        tmp_req: btrip_open_20220520_models.IsvRuleSaveRequest,
         headers: btrip_open_20220520_models.IsvRuleSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IsvRuleSaveResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.IsvRuleSaveShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.bookuser_list):
+            request.bookuser_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bookuser_list, 'bookuser_list', 'json')
         body = {}
         if not UtilClient.is_unset(request.book_type):
             body['book_type'] = request.book_type
+        if not UtilClient.is_unset(request.bookuser_list_shrink):
+            body['bookuser_list'] = request.bookuser_list_shrink
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
         if not UtilClient.is_unset(request.user_id):

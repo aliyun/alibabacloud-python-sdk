@@ -42869,14 +42869,102 @@ class IsvRuleSaveHeaders(TeaModel):
         return self
 
 
+class IsvRuleSaveRequestBookuserList(TeaModel):
+    def __init__(
+        self,
+        entity_id: str = None,
+        entity_type: int = None,
+    ):
+        self.entity_id = entity_id
+        self.entity_type = entity_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_id is not None:
+            result['entity_id'] = self.entity_id
+        if self.entity_type is not None:
+            result['entity_type'] = self.entity_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('entity_id') is not None:
+            self.entity_id = m.get('entity_id')
+        if m.get('entity_type') is not None:
+            self.entity_type = m.get('entity_type')
+        return self
+
+
 class IsvRuleSaveRequest(TeaModel):
     def __init__(
         self,
         book_type: str = None,
+        bookuser_list: List[IsvRuleSaveRequestBookuserList] = None,
         status: int = None,
         user_id: str = None,
     ):
         self.book_type = book_type
+        self.bookuser_list = bookuser_list
+        self.status = status
+        self.user_id = user_id
+
+    def validate(self):
+        if self.bookuser_list:
+            for k in self.bookuser_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.book_type is not None:
+            result['book_type'] = self.book_type
+        result['bookuser_list'] = []
+        if self.bookuser_list is not None:
+            for k in self.bookuser_list:
+                result['bookuser_list'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['status'] = self.status
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('book_type') is not None:
+            self.book_type = m.get('book_type')
+        self.bookuser_list = []
+        if m.get('bookuser_list') is not None:
+            for k in m.get('bookuser_list'):
+                temp_model = IsvRuleSaveRequestBookuserList()
+                self.bookuser_list.append(temp_model.from_map(k))
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
+class IsvRuleSaveShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        book_type: str = None,
+        bookuser_list_shrink: str = None,
+        status: int = None,
+        user_id: str = None,
+    ):
+        self.book_type = book_type
+        self.bookuser_list_shrink = bookuser_list_shrink
         self.status = status
         self.user_id = user_id
 
@@ -42891,6 +42979,8 @@ class IsvRuleSaveRequest(TeaModel):
         result = dict()
         if self.book_type is not None:
             result['book_type'] = self.book_type
+        if self.bookuser_list_shrink is not None:
+            result['bookuser_list'] = self.bookuser_list_shrink
         if self.status is not None:
             result['status'] = self.status
         if self.user_id is not None:
@@ -42901,6 +42991,8 @@ class IsvRuleSaveRequest(TeaModel):
         m = m or dict()
         if m.get('book_type') is not None:
             self.book_type = m.get('book_type')
+        if m.get('bookuser_list') is not None:
+            self.bookuser_list_shrink = m.get('bookuser_list')
         if m.get('status') is not None:
             self.status = m.get('status')
         if m.get('user_id') is not None:
