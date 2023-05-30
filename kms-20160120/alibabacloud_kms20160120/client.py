@@ -327,17 +327,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.AsymmetricSignResponse:
         """
-        This operation supports only asymmetric keys for which the *Usage** parameter is set to **SIGN/VERIFY**. The following table describes the supported signature algorithms.
-        | KeySpec | Algorithm | Description |
-        | ------- | --------- | ----------- |
-        | RSA_2048 | RSA_PSS_SHA_256 | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
-        | RSA_2048 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256 |
-        | RSA_3072 | RSA_PSS_SHA_256 | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
-        | RSA_3072 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256 |
-        | EC_P256 | ECDSA_SHA_256 | ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest |
-        | EC_P256K | ECDSA_SHA_256 | ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
-        | EC_SM2 | SM2DSA | SM2 public key encryption algorithm based on elliptic curves cryptography (ECC) |
-        >  According to GB/T 32918.2 "Information security technology-Public key cryptographic algorithm SM2 based on elliptic curves-Part 2: Digital signature algorithm", when you calculate the SM2 signature, the **Digest** parameter is used to calculate the digest value of the combination of Z(A) and M, rather than the SM3 digest value. M indicates the original message to be signed. Z(A) indicates the hash value for User A. The hash value is defined in GB/T GB/T 32918.2. In this example, the asymmetric key whose ID is `5c438b18-05be-40ad-b6c2-3be6752c****` and version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****` and the signature algorithm `RSA_PSS_SHA_256` are used to generate a signature for the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=`.
+        Generates a signature by using an asymmetric key.
         
         @param request: AsymmetricSignRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -378,17 +368,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.AsymmetricSignResponse:
         """
-        This operation supports only asymmetric keys for which the *Usage** parameter is set to **SIGN/VERIFY**. The following table describes the supported signature algorithms.
-        | KeySpec | Algorithm | Description |
-        | ------- | --------- | ----------- |
-        | RSA_2048 | RSA_PSS_SHA_256 | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
-        | RSA_2048 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256 |
-        | RSA_3072 | RSA_PSS_SHA_256 | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
-        | RSA_3072 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256 |
-        | EC_P256 | ECDSA_SHA_256 | ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest |
-        | EC_P256K | ECDSA_SHA_256 | ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
-        | EC_SM2 | SM2DSA | SM2 public key encryption algorithm based on elliptic curves cryptography (ECC) |
-        >  According to GB/T 32918.2 "Information security technology-Public key cryptographic algorithm SM2 based on elliptic curves-Part 2: Digital signature algorithm", when you calculate the SM2 signature, the **Digest** parameter is used to calculate the digest value of the combination of Z(A) and M, rather than the SM3 digest value. M indicates the original message to be signed. Z(A) indicates the hash value for User A. The hash value is defined in GB/T GB/T 32918.2. In this example, the asymmetric key whose ID is `5c438b18-05be-40ad-b6c2-3be6752c****` and version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****` and the signature algorithm `RSA_PSS_SHA_256` are used to generate a signature for the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=`.
+        Generates a signature by using an asymmetric key.
         
         @param request: AsymmetricSignRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -428,17 +408,7 @@ class Client(OpenApiClient):
         request: kms_20160120_models.AsymmetricSignRequest,
     ) -> kms_20160120_models.AsymmetricSignResponse:
         """
-        This operation supports only asymmetric keys for which the *Usage** parameter is set to **SIGN/VERIFY**. The following table describes the supported signature algorithms.
-        | KeySpec | Algorithm | Description |
-        | ------- | --------- | ----------- |
-        | RSA_2048 | RSA_PSS_SHA_256 | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
-        | RSA_2048 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256 |
-        | RSA_3072 | RSA_PSS_SHA_256 | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
-        | RSA_3072 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256 |
-        | EC_P256 | ECDSA_SHA_256 | ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest |
-        | EC_P256K | ECDSA_SHA_256 | ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
-        | EC_SM2 | SM2DSA | SM2 public key encryption algorithm based on elliptic curves cryptography (ECC) |
-        >  According to GB/T 32918.2 "Information security technology-Public key cryptographic algorithm SM2 based on elliptic curves-Part 2: Digital signature algorithm", when you calculate the SM2 signature, the **Digest** parameter is used to calculate the digest value of the combination of Z(A) and M, rather than the SM3 digest value. M indicates the original message to be signed. Z(A) indicates the hash value for User A. The hash value is defined in GB/T GB/T 32918.2. In this example, the asymmetric key whose ID is `5c438b18-05be-40ad-b6c2-3be6752c****` and version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****` and the signature algorithm `RSA_PSS_SHA_256` are used to generate a signature for the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=`.
+        Generates a signature by using an asymmetric key.
         
         @param request: AsymmetricSignRequest
         @return: AsymmetricSignResponse
@@ -451,17 +421,7 @@ class Client(OpenApiClient):
         request: kms_20160120_models.AsymmetricSignRequest,
     ) -> kms_20160120_models.AsymmetricSignResponse:
         """
-        This operation supports only asymmetric keys for which the *Usage** parameter is set to **SIGN/VERIFY**. The following table describes the supported signature algorithms.
-        | KeySpec | Algorithm | Description |
-        | ------- | --------- | ----------- |
-        | RSA_2048 | RSA_PSS_SHA_256 | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
-        | RSA_2048 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256 |
-        | RSA_3072 | RSA_PSS_SHA_256 | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
-        | RSA_3072 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256 |
-        | EC_P256 | ECDSA_SHA_256 | ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest |
-        | EC_P256K | ECDSA_SHA_256 | ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
-        | EC_SM2 | SM2DSA | SM2 public key encryption algorithm based on elliptic curves cryptography (ECC) |
-        >  According to GB/T 32918.2 "Information security technology-Public key cryptographic algorithm SM2 based on elliptic curves-Part 2: Digital signature algorithm", when you calculate the SM2 signature, the **Digest** parameter is used to calculate the digest value of the combination of Z(A) and M, rather than the SM3 digest value. M indicates the original message to be signed. Z(A) indicates the hash value for User A. The hash value is defined in GB/T GB/T 32918.2. In this example, the asymmetric key whose ID is `5c438b18-05be-40ad-b6c2-3be6752c****` and version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****` and the signature algorithm `RSA_PSS_SHA_256` are used to generate a signature for the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=`.
+        Generates a signature by using an asymmetric key.
         
         @param request: AsymmetricSignRequest
         @return: AsymmetricSignResponse
@@ -1491,21 +1451,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CreateKeyResponse:
         """
-        A CMK can be symmetric or asymmetric. Symmetric CMKs are used to generate data keys that can be used to encrypt large amounts of data. You can also use symmetric CMKs to encrypt small volume of data that is less than 6 KB. For more information, see [GenerateDataKey](https://www.alibabacloud.com/help/en/key-management-service/latest/generatedatakey). Asymmetric CMKs are used to encrypt data, decrypt data, generate digital signatures, and verify digital signatures. However, you cannot use asymmetric CMKs to generate data keys.
-        The following table describes different types of CMKs and the operations that are supported by the CMKs.
-        | CMK category | CMK type | Description | Encryption and decryption | Signature generation and verification |
-        | ------------ | -------- | ----------- | ------------------------- | ------------------------------------- |
-        | Symmetric CMK | Aliyun_AES_256 | An advanced Encryption Standard (AES) CMK with a length of 256 bits. | Yes | No |
-        | Symmetric CMK | Aliyun_AES_128 | An AES CMK with a length of 128 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
-        | Symmetric CMK | Aliyun_AES_192 | An AES CMK with a length of 192 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
-        | Symmetric CMK | Aliyun_SM4 | SM4 CMK. | Yes | No |
-        | Asymmetric CMK | RSA_2048 | Rivest-Shamir-Adleman (RSA) CMK with a length of 2,048 bits. | Supported | Supported |
-        | Asymmetric CMK | RSA_3072 | RSA CMK with a length of 3,072 bits. | Supported | Supported |
-        | Asymmetric CMK | EC_P256 | National Institute of Standards and Technology (NIST)-recommended elliptic curve P-256 (secp256r1). | Not supported | Supported |
-        | Asymmetric CMK | EC_P256K | Standards for Efficient Cryptography Group (SECG) elliptic curve secp256k1 | Not supported | Supported |
-        | Asymmetric CMK | EC_SM2 | 256-bit elliptic curves over the prime field that is defined in GB/T 32918. | Supported | Supported |
-        > - If the value of the KeySpec parameter that is used to create a symmetric CMK is prefixed with `Aliyun_`, a standard cryptographic algorithm is used, but non-standard ciphertext is generated. An asymmetric CMK can be used to generate standard ciphertext or signatures.
-        - You can use an RSA CMK to perform one of the two types of operations: encrypt and decrypt data, and generate and verify signatures. You cannot use the RSA CMK to perform both two types of operations.
+        Creates a customer master key (CMK).
         
         @param request: CreateKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1529,6 +1475,8 @@ class Client(OpenApiClient):
             query['ProtectionLevel'] = request.protection_level
         if not UtilClient.is_unset(request.rotation_interval):
             query['RotationInterval'] = request.rotation_interval
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1554,21 +1502,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CreateKeyResponse:
         """
-        A CMK can be symmetric or asymmetric. Symmetric CMKs are used to generate data keys that can be used to encrypt large amounts of data. You can also use symmetric CMKs to encrypt small volume of data that is less than 6 KB. For more information, see [GenerateDataKey](https://www.alibabacloud.com/help/en/key-management-service/latest/generatedatakey). Asymmetric CMKs are used to encrypt data, decrypt data, generate digital signatures, and verify digital signatures. However, you cannot use asymmetric CMKs to generate data keys.
-        The following table describes different types of CMKs and the operations that are supported by the CMKs.
-        | CMK category | CMK type | Description | Encryption and decryption | Signature generation and verification |
-        | ------------ | -------- | ----------- | ------------------------- | ------------------------------------- |
-        | Symmetric CMK | Aliyun_AES_256 | An advanced Encryption Standard (AES) CMK with a length of 256 bits. | Yes | No |
-        | Symmetric CMK | Aliyun_AES_128 | An AES CMK with a length of 128 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
-        | Symmetric CMK | Aliyun_AES_192 | An AES CMK with a length of 192 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
-        | Symmetric CMK | Aliyun_SM4 | SM4 CMK. | Yes | No |
-        | Asymmetric CMK | RSA_2048 | Rivest-Shamir-Adleman (RSA) CMK with a length of 2,048 bits. | Supported | Supported |
-        | Asymmetric CMK | RSA_3072 | RSA CMK with a length of 3,072 bits. | Supported | Supported |
-        | Asymmetric CMK | EC_P256 | National Institute of Standards and Technology (NIST)-recommended elliptic curve P-256 (secp256r1). | Not supported | Supported |
-        | Asymmetric CMK | EC_P256K | Standards for Efficient Cryptography Group (SECG) elliptic curve secp256k1 | Not supported | Supported |
-        | Asymmetric CMK | EC_SM2 | 256-bit elliptic curves over the prime field that is defined in GB/T 32918. | Supported | Supported |
-        > - If the value of the KeySpec parameter that is used to create a symmetric CMK is prefixed with `Aliyun_`, a standard cryptographic algorithm is used, but non-standard ciphertext is generated. An asymmetric CMK can be used to generate standard ciphertext or signatures.
-        - You can use an RSA CMK to perform one of the two types of operations: encrypt and decrypt data, and generate and verify signatures. You cannot use the RSA CMK to perform both two types of operations.
+        Creates a customer master key (CMK).
         
         @param request: CreateKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1592,6 +1526,8 @@ class Client(OpenApiClient):
             query['ProtectionLevel'] = request.protection_level
         if not UtilClient.is_unset(request.rotation_interval):
             query['RotationInterval'] = request.rotation_interval
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1616,21 +1552,7 @@ class Client(OpenApiClient):
         request: kms_20160120_models.CreateKeyRequest,
     ) -> kms_20160120_models.CreateKeyResponse:
         """
-        A CMK can be symmetric or asymmetric. Symmetric CMKs are used to generate data keys that can be used to encrypt large amounts of data. You can also use symmetric CMKs to encrypt small volume of data that is less than 6 KB. For more information, see [GenerateDataKey](https://www.alibabacloud.com/help/en/key-management-service/latest/generatedatakey). Asymmetric CMKs are used to encrypt data, decrypt data, generate digital signatures, and verify digital signatures. However, you cannot use asymmetric CMKs to generate data keys.
-        The following table describes different types of CMKs and the operations that are supported by the CMKs.
-        | CMK category | CMK type | Description | Encryption and decryption | Signature generation and verification |
-        | ------------ | -------- | ----------- | ------------------------- | ------------------------------------- |
-        | Symmetric CMK | Aliyun_AES_256 | An advanced Encryption Standard (AES) CMK with a length of 256 bits. | Yes | No |
-        | Symmetric CMK | Aliyun_AES_128 | An AES CMK with a length of 128 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
-        | Symmetric CMK | Aliyun_AES_192 | An AES CMK with a length of 192 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
-        | Symmetric CMK | Aliyun_SM4 | SM4 CMK. | Yes | No |
-        | Asymmetric CMK | RSA_2048 | Rivest-Shamir-Adleman (RSA) CMK with a length of 2,048 bits. | Supported | Supported |
-        | Asymmetric CMK | RSA_3072 | RSA CMK with a length of 3,072 bits. | Supported | Supported |
-        | Asymmetric CMK | EC_P256 | National Institute of Standards and Technology (NIST)-recommended elliptic curve P-256 (secp256r1). | Not supported | Supported |
-        | Asymmetric CMK | EC_P256K | Standards for Efficient Cryptography Group (SECG) elliptic curve secp256k1 | Not supported | Supported |
-        | Asymmetric CMK | EC_SM2 | 256-bit elliptic curves over the prime field that is defined in GB/T 32918. | Supported | Supported |
-        > - If the value of the KeySpec parameter that is used to create a symmetric CMK is prefixed with `Aliyun_`, a standard cryptographic algorithm is used, but non-standard ciphertext is generated. An asymmetric CMK can be used to generate standard ciphertext or signatures.
-        - You can use an RSA CMK to perform one of the two types of operations: encrypt and decrypt data, and generate and verify signatures. You cannot use the RSA CMK to perform both two types of operations.
+        Creates a customer master key (CMK).
         
         @param request: CreateKeyRequest
         @return: CreateKeyResponse
@@ -1643,21 +1565,7 @@ class Client(OpenApiClient):
         request: kms_20160120_models.CreateKeyRequest,
     ) -> kms_20160120_models.CreateKeyResponse:
         """
-        A CMK can be symmetric or asymmetric. Symmetric CMKs are used to generate data keys that can be used to encrypt large amounts of data. You can also use symmetric CMKs to encrypt small volume of data that is less than 6 KB. For more information, see [GenerateDataKey](https://www.alibabacloud.com/help/en/key-management-service/latest/generatedatakey). Asymmetric CMKs are used to encrypt data, decrypt data, generate digital signatures, and verify digital signatures. However, you cannot use asymmetric CMKs to generate data keys.
-        The following table describes different types of CMKs and the operations that are supported by the CMKs.
-        | CMK category | CMK type | Description | Encryption and decryption | Signature generation and verification |
-        | ------------ | -------- | ----------- | ------------------------- | ------------------------------------- |
-        | Symmetric CMK | Aliyun_AES_256 | An advanced Encryption Standard (AES) CMK with a length of 256 bits. | Yes | No |
-        | Symmetric CMK | Aliyun_AES_128 | An AES CMK with a length of 128 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
-        | Symmetric CMK | Aliyun_AES_192 | An AES CMK with a length of 192 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
-        | Symmetric CMK | Aliyun_SM4 | SM4 CMK. | Yes | No |
-        | Asymmetric CMK | RSA_2048 | Rivest-Shamir-Adleman (RSA) CMK with a length of 2,048 bits. | Supported | Supported |
-        | Asymmetric CMK | RSA_3072 | RSA CMK with a length of 3,072 bits. | Supported | Supported |
-        | Asymmetric CMK | EC_P256 | National Institute of Standards and Technology (NIST)-recommended elliptic curve P-256 (secp256r1). | Not supported | Supported |
-        | Asymmetric CMK | EC_P256K | Standards for Efficient Cryptography Group (SECG) elliptic curve secp256k1 | Not supported | Supported |
-        | Asymmetric CMK | EC_SM2 | 256-bit elliptic curves over the prime field that is defined in GB/T 32918. | Supported | Supported |
-        > - If the value of the KeySpec parameter that is used to create a symmetric CMK is prefixed with `Aliyun_`, a standard cryptographic algorithm is used, but non-standard ciphertext is generated. An asymmetric CMK can be used to generate standard ciphertext or signatures.
-        - You can use an RSA CMK to perform one of the two types of operations: encrypt and decrypt data, and generate and verify signatures. You cannot use the RSA CMK to perform both two types of operations.
+        Creates a customer master key (CMK).
         
         @param request: CreateKeyRequest
         @return: CreateKeyResponse
@@ -1783,10 +1691,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CreateSecretResponse:
         """
-        You must specify the secret name, the secret value that is stored in the initial version, and the version number. The initial version is labeled as ACSCurrent.
-        You can specify a symmetric customer master key (CMK) as the encryption key to encrypt the secret value. If you do not specify an encryption key, Secrets Manager creates a CMK to encrypt the secret value. This CMK is used as the default encryption key for all secrets that are created by your Alibaba Cloud account in the current region. Secrets Manager encrypts only the secret value of each version. Secrets Manager does not encrypt the metadata such as the secret name, version number, or state label.
-        To use a specified CMK to encrypt the secret value, you must have the `kms:GenerateDataKey` permission on the CMK.
-        In this example, a generic secret named `mydbconninfo` is created. The initial version number of the secret is specified in the `VersionId` parameter, and the value is `v1`. The secret value is specified in the `SecretData` parameter, and the value is `{"user":"root","passwd":"****"}`.
+        The name of the secret.
+        The value must be 1 to 64 characters in length and can contain letters, digits, underscores (\\_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
+        *   If the SecretType parameter is set to Generic or Rds, the name cannot start with `acs/`.
+        *   If the SecretType parameter is set to RAMCredentials, set the SecretName parameter to `$Auto`. In this case, KMS automatically generates a secret name that starts with `acs/ram/user/`. The name includes the display name of RAM user.
+        *   If the SecretType parameter is set to ECS, the name must start with `acs/ecs/`.
         
         @param tmp_req: CreateSecretRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1847,10 +1756,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CreateSecretResponse:
         """
-        You must specify the secret name, the secret value that is stored in the initial version, and the version number. The initial version is labeled as ACSCurrent.
-        You can specify a symmetric customer master key (CMK) as the encryption key to encrypt the secret value. If you do not specify an encryption key, Secrets Manager creates a CMK to encrypt the secret value. This CMK is used as the default encryption key for all secrets that are created by your Alibaba Cloud account in the current region. Secrets Manager encrypts only the secret value of each version. Secrets Manager does not encrypt the metadata such as the secret name, version number, or state label.
-        To use a specified CMK to encrypt the secret value, you must have the `kms:GenerateDataKey` permission on the CMK.
-        In this example, a generic secret named `mydbconninfo` is created. The initial version number of the secret is specified in the `VersionId` parameter, and the value is `v1`. The secret value is specified in the `SecretData` parameter, and the value is `{"user":"root","passwd":"****"}`.
+        The name of the secret.
+        The value must be 1 to 64 characters in length and can contain letters, digits, underscores (\\_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
+        *   If the SecretType parameter is set to Generic or Rds, the name cannot start with `acs/`.
+        *   If the SecretType parameter is set to RAMCredentials, set the SecretName parameter to `$Auto`. In this case, KMS automatically generates a secret name that starts with `acs/ram/user/`. The name includes the display name of RAM user.
+        *   If the SecretType parameter is set to ECS, the name must start with `acs/ecs/`.
         
         @param tmp_req: CreateSecretRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1910,10 +1820,11 @@ class Client(OpenApiClient):
         request: kms_20160120_models.CreateSecretRequest,
     ) -> kms_20160120_models.CreateSecretResponse:
         """
-        You must specify the secret name, the secret value that is stored in the initial version, and the version number. The initial version is labeled as ACSCurrent.
-        You can specify a symmetric customer master key (CMK) as the encryption key to encrypt the secret value. If you do not specify an encryption key, Secrets Manager creates a CMK to encrypt the secret value. This CMK is used as the default encryption key for all secrets that are created by your Alibaba Cloud account in the current region. Secrets Manager encrypts only the secret value of each version. Secrets Manager does not encrypt the metadata such as the secret name, version number, or state label.
-        To use a specified CMK to encrypt the secret value, you must have the `kms:GenerateDataKey` permission on the CMK.
-        In this example, a generic secret named `mydbconninfo` is created. The initial version number of the secret is specified in the `VersionId` parameter, and the value is `v1`. The secret value is specified in the `SecretData` parameter, and the value is `{"user":"root","passwd":"****"}`.
+        The name of the secret.
+        The value must be 1 to 64 characters in length and can contain letters, digits, underscores (\\_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
+        *   If the SecretType parameter is set to Generic or Rds, the name cannot start with `acs/`.
+        *   If the SecretType parameter is set to RAMCredentials, set the SecretName parameter to `$Auto`. In this case, KMS automatically generates a secret name that starts with `acs/ram/user/`. The name includes the display name of RAM user.
+        *   If the SecretType parameter is set to ECS, the name must start with `acs/ecs/`.
         
         @param request: CreateSecretRequest
         @return: CreateSecretResponse
@@ -1926,10 +1837,11 @@ class Client(OpenApiClient):
         request: kms_20160120_models.CreateSecretRequest,
     ) -> kms_20160120_models.CreateSecretResponse:
         """
-        You must specify the secret name, the secret value that is stored in the initial version, and the version number. The initial version is labeled as ACSCurrent.
-        You can specify a symmetric customer master key (CMK) as the encryption key to encrypt the secret value. If you do not specify an encryption key, Secrets Manager creates a CMK to encrypt the secret value. This CMK is used as the default encryption key for all secrets that are created by your Alibaba Cloud account in the current region. Secrets Manager encrypts only the secret value of each version. Secrets Manager does not encrypt the metadata such as the secret name, version number, or state label.
-        To use a specified CMK to encrypt the secret value, you must have the `kms:GenerateDataKey` permission on the CMK.
-        In this example, a generic secret named `mydbconninfo` is created. The initial version number of the secret is specified in the `VersionId` parameter, and the value is `v1`. The secret value is specified in the `SecretData` parameter, and the value is `{"user":"root","passwd":"****"}`.
+        The name of the secret.
+        The value must be 1 to 64 characters in length and can contain letters, digits, underscores (\\_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
+        *   If the SecretType parameter is set to Generic or Rds, the name cannot start with `acs/`.
+        *   If the SecretType parameter is set to RAMCredentials, set the SecretName parameter to `$Auto`. In this case, KMS automatically generates a secret name that starts with `acs/ram/user/`. The name includes the display name of RAM user.
+        *   If the SecretType parameter is set to ECS, the name must start with `acs/ecs/`.
         
         @param request: CreateSecretRequest
         @return: CreateSecretResponse
@@ -3615,9 +3527,8 @@ class Client(OpenApiClient):
         """
         This operation creates a random data key, encrypts the data key by using a specific symmetric CMK, and returns the ciphertext of the data key. This operation serves the same purpose as the [GenerateDataKey](~~28948~~) operation. The only difference is that this operation does not return the plaintext of the data key.
         The CMK that you specify in the request of this operation is only used to encrypt the data key and is not involved in the generation of the data key. KMS does not record or store the generated data key.
-        >
-        *   This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
-        *   This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
+        > * This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
+        > * This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
         
         @param tmp_req: GenerateDataKeyWithoutPlaintextRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3664,9 +3575,8 @@ class Client(OpenApiClient):
         """
         This operation creates a random data key, encrypts the data key by using a specific symmetric CMK, and returns the ciphertext of the data key. This operation serves the same purpose as the [GenerateDataKey](~~28948~~) operation. The only difference is that this operation does not return the plaintext of the data key.
         The CMK that you specify in the request of this operation is only used to encrypt the data key and is not involved in the generation of the data key. KMS does not record or store the generated data key.
-        >
-        *   This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
-        *   This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
+        > * This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
+        > * This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
         
         @param tmp_req: GenerateDataKeyWithoutPlaintextRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3712,9 +3622,8 @@ class Client(OpenApiClient):
         """
         This operation creates a random data key, encrypts the data key by using a specific symmetric CMK, and returns the ciphertext of the data key. This operation serves the same purpose as the [GenerateDataKey](~~28948~~) operation. The only difference is that this operation does not return the plaintext of the data key.
         The CMK that you specify in the request of this operation is only used to encrypt the data key and is not involved in the generation of the data key. KMS does not record or store the generated data key.
-        >
-        *   This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
-        *   This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
+        > * This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
+        > * This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
         
         @param request: GenerateDataKeyWithoutPlaintextRequest
         @return: GenerateDataKeyWithoutPlaintextResponse
@@ -3729,9 +3638,8 @@ class Client(OpenApiClient):
         """
         This operation creates a random data key, encrypts the data key by using a specific symmetric CMK, and returns the ciphertext of the data key. This operation serves the same purpose as the [GenerateDataKey](~~28948~~) operation. The only difference is that this operation does not return the plaintext of the data key.
         The CMK that you specify in the request of this operation is only used to encrypt the data key and is not involved in the generation of the data key. KMS does not record or store the generated data key.
-        >
-        *   This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
-        *   This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
+        > * This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
+        > * This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
         
         @param request: GenerateDataKeyWithoutPlaintextRequest
         @return: GenerateDataKeyWithoutPlaintextResponse
@@ -4277,15 +4185,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ImportKeyMaterialResponse:
         """
-        Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external.* Origin** set to** EXTERNAL**. This API is used to import the key material into the CMK.
+        Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external. *Origin** set to **EXTERNAL**. This API is used to import the key material into the CMK.
         *   To view the CMK **Origin**, see [DescribeKey](~~28952~~).
         *   Before importing key material, you need to call the [GetParametersForImport](~~68621~~) obtain the parameters required to import the key material, including the public key and import token.
-        >
-        *   The key type of the pair is** Aliyun_AES\\_256** the key material must be 256 bits. The key type must be** Aliyun_SM4** the CMK and key material must be 128 bits.
-        *   You can set the expiration time for the key material, or you can set it to never expire.
-        *   You can reimport the key material and reset the expiration time for the specified CMK at any time, but the same key material must be imported.
-        *   After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material are imported again.
-        *   A Key material can be imported to multiple cmks, but any Data or Data Key encrypted by one CMK cannot be decrypted by another CMK.
+        > *   The key type of the pair is **Aliyun\\_AES\\_256** the key material must be 256 bits. The key type must be **Aliyun\\_SM4** the CMK and key material must be 128 bits.
+        > *   You can set the expiration time for the key material, or you can set it to never expire.
+        > *   You can reimport the key material and reset the expiration time for the specified CMK at any time, but the same key material must be imported.
+        > *   After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material are imported again.
+        > *   A Key material can be imported to multiple cmks, but any Data or Data Key encrypted by one CMK cannot be decrypted by another CMK.
         
         @param request: ImportKeyMaterialRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4326,15 +4233,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ImportKeyMaterialResponse:
         """
-        Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external.* Origin** set to** EXTERNAL**. This API is used to import the key material into the CMK.
+        Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external. *Origin** set to **EXTERNAL**. This API is used to import the key material into the CMK.
         *   To view the CMK **Origin**, see [DescribeKey](~~28952~~).
         *   Before importing key material, you need to call the [GetParametersForImport](~~68621~~) obtain the parameters required to import the key material, including the public key and import token.
-        >
-        *   The key type of the pair is** Aliyun_AES\\_256** the key material must be 256 bits. The key type must be** Aliyun_SM4** the CMK and key material must be 128 bits.
-        *   You can set the expiration time for the key material, or you can set it to never expire.
-        *   You can reimport the key material and reset the expiration time for the specified CMK at any time, but the same key material must be imported.
-        *   After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material are imported again.
-        *   A Key material can be imported to multiple cmks, but any Data or Data Key encrypted by one CMK cannot be decrypted by another CMK.
+        > *   The key type of the pair is **Aliyun\\_AES\\_256** the key material must be 256 bits. The key type must be **Aliyun\\_SM4** the CMK and key material must be 128 bits.
+        > *   You can set the expiration time for the key material, or you can set it to never expire.
+        > *   You can reimport the key material and reset the expiration time for the specified CMK at any time, but the same key material must be imported.
+        > *   After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material are imported again.
+        > *   A Key material can be imported to multiple cmks, but any Data or Data Key encrypted by one CMK cannot be decrypted by another CMK.
         
         @param request: ImportKeyMaterialRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4374,15 +4280,14 @@ class Client(OpenApiClient):
         request: kms_20160120_models.ImportKeyMaterialRequest,
     ) -> kms_20160120_models.ImportKeyMaterialResponse:
         """
-        Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external.* Origin** set to** EXTERNAL**. This API is used to import the key material into the CMK.
+        Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external. *Origin** set to **EXTERNAL**. This API is used to import the key material into the CMK.
         *   To view the CMK **Origin**, see [DescribeKey](~~28952~~).
         *   Before importing key material, you need to call the [GetParametersForImport](~~68621~~) obtain the parameters required to import the key material, including the public key and import token.
-        >
-        *   The key type of the pair is** Aliyun_AES\\_256** the key material must be 256 bits. The key type must be** Aliyun_SM4** the CMK and key material must be 128 bits.
-        *   You can set the expiration time for the key material, or you can set it to never expire.
-        *   You can reimport the key material and reset the expiration time for the specified CMK at any time, but the same key material must be imported.
-        *   After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material are imported again.
-        *   A Key material can be imported to multiple cmks, but any Data or Data Key encrypted by one CMK cannot be decrypted by another CMK.
+        > *   The key type of the pair is **Aliyun\\_AES\\_256** the key material must be 256 bits. The key type must be **Aliyun\\_SM4** the CMK and key material must be 128 bits.
+        > *   You can set the expiration time for the key material, or you can set it to never expire.
+        > *   You can reimport the key material and reset the expiration time for the specified CMK at any time, but the same key material must be imported.
+        > *   After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material are imported again.
+        > *   A Key material can be imported to multiple cmks, but any Data or Data Key encrypted by one CMK cannot be decrypted by another CMK.
         
         @param request: ImportKeyMaterialRequest
         @return: ImportKeyMaterialResponse
@@ -4395,15 +4300,14 @@ class Client(OpenApiClient):
         request: kms_20160120_models.ImportKeyMaterialRequest,
     ) -> kms_20160120_models.ImportKeyMaterialResponse:
         """
-        Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external.* Origin** set to** EXTERNAL**. This API is used to import the key material into the CMK.
+        Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external. *Origin** set to **EXTERNAL**. This API is used to import the key material into the CMK.
         *   To view the CMK **Origin**, see [DescribeKey](~~28952~~).
         *   Before importing key material, you need to call the [GetParametersForImport](~~68621~~) obtain the parameters required to import the key material, including the public key and import token.
-        >
-        *   The key type of the pair is** Aliyun_AES\\_256** the key material must be 256 bits. The key type must be** Aliyun_SM4** the CMK and key material must be 128 bits.
-        *   You can set the expiration time for the key material, or you can set it to never expire.
-        *   You can reimport the key material and reset the expiration time for the specified CMK at any time, but the same key material must be imported.
-        *   After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material are imported again.
-        *   A Key material can be imported to multiple cmks, but any Data or Data Key encrypted by one CMK cannot be decrypted by another CMK.
+        > *   The key type of the pair is **Aliyun\\_AES\\_256** the key material must be 256 bits. The key type must be **Aliyun\\_SM4** the CMK and key material must be 128 bits.
+        > *   You can set the expiration time for the key material, or you can set it to never expire.
+        > *   You can reimport the key material and reset the expiration time for the specified CMK at any time, but the same key material must be imported.
+        > *   After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material are imported again.
+        > *   A Key material can be imported to multiple cmks, but any Data or Data Key encrypted by one CMK cannot be decrypted by another CMK.
         
         @param request: ImportKeyMaterialRequest
         @return: ImportKeyMaterialResponse
@@ -4929,8 +4833,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ListSecretsResponse:
         """
-        This operation returns the metadata information about the secrets and does not return encrypted secret values.
-        In this example, the secrets created by the current account in the current region are returned. The `PageNumber` parameter is set to `1`, and the `PageSize` parameter is set to `2`, which indicates that two secrets are to be returned on Page 1.
+        Specifies whether to return the resource tags of the secret. Valid values:
+        *   true: returns the resource tags.
+        *   false: does not return the resource tags. This is the default value.
         
         @param request: ListSecretsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4971,8 +4876,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ListSecretsResponse:
         """
-        This operation returns the metadata information about the secrets and does not return encrypted secret values.
-        In this example, the secrets created by the current account in the current region are returned. The `PageNumber` parameter is set to `1`, and the `PageSize` parameter is set to `2`, which indicates that two secrets are to be returned on Page 1.
+        Specifies whether to return the resource tags of the secret. Valid values:
+        *   true: returns the resource tags.
+        *   false: does not return the resource tags. This is the default value.
         
         @param request: ListSecretsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5012,8 +4918,9 @@ class Client(OpenApiClient):
         request: kms_20160120_models.ListSecretsRequest,
     ) -> kms_20160120_models.ListSecretsResponse:
         """
-        This operation returns the metadata information about the secrets and does not return encrypted secret values.
-        In this example, the secrets created by the current account in the current region are returned. The `PageNumber` parameter is set to `1`, and the `PageSize` parameter is set to `2`, which indicates that two secrets are to be returned on Page 1.
+        Specifies whether to return the resource tags of the secret. Valid values:
+        *   true: returns the resource tags.
+        *   false: does not return the resource tags. This is the default value.
         
         @param request: ListSecretsRequest
         @return: ListSecretsResponse
@@ -5026,14 +4933,101 @@ class Client(OpenApiClient):
         request: kms_20160120_models.ListSecretsRequest,
     ) -> kms_20160120_models.ListSecretsResponse:
         """
-        This operation returns the metadata information about the secrets and does not return encrypted secret values.
-        In this example, the secrets created by the current account in the current region are returned. The `PageNumber` parameter is set to `1`, and the `PageSize` parameter is set to `2`, which indicates that two secrets are to be returned on Page 1.
+        Specifies whether to return the resource tags of the secret. Valid values:
+        *   true: returns the resource tags.
+        *   false: does not return the resource tags. This is the default value.
         
         @param request: ListSecretsRequest
         @return: ListSecretsResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_secrets_with_options_async(request, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        request: kms_20160120_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: kms_20160120_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: kms_20160120_models.ListTagResourcesRequest,
+    ) -> kms_20160120_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: kms_20160120_models.ListTagResourcesRequest,
+    ) -> kms_20160120_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
 
     def open_kms_service_with_options(
         self,
@@ -5961,13 +5955,97 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.tag_resource_with_options_async(request, runtime)
 
+    def tag_resources_with_options(
+        self,
+        request: kms_20160120_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: kms_20160120_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: kms_20160120_models.TagResourcesRequest,
+    ) -> kms_20160120_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: kms_20160120_models.TagResourcesRequest,
+    ) -> kms_20160120_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
     def untag_resource_with_options(
         self,
         request: kms_20160120_models.UntagResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UntagResourceResponse:
         """
-        In this example, the tags whose tag keys are tagkey1 and tagkey2 are removed from the CMK whose ID is `08c33a6f-4e0a-4a1b-a3fa-7ddf***`.
+        One or more tag keys. Separate multiple tag keys with commas (,).
+        You need to specify only the tag keys, not the tag values.
+        Each tag key must be 1 to 128 bytes in length.
         
         @param request: UntagResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6008,7 +6086,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UntagResourceResponse:
         """
-        In this example, the tags whose tag keys are tagkey1 and tagkey2 are removed from the CMK whose ID is `08c33a6f-4e0a-4a1b-a3fa-7ddf***`.
+        One or more tag keys. Separate multiple tag keys with commas (,).
+        You need to specify only the tag keys, not the tag values.
+        Each tag key must be 1 to 128 bytes in length.
         
         @param request: UntagResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6048,7 +6128,9 @@ class Client(OpenApiClient):
         request: kms_20160120_models.UntagResourceRequest,
     ) -> kms_20160120_models.UntagResourceResponse:
         """
-        In this example, the tags whose tag keys are tagkey1 and tagkey2 are removed from the CMK whose ID is `08c33a6f-4e0a-4a1b-a3fa-7ddf***`.
+        One or more tag keys. Separate multiple tag keys with commas (,).
+        You need to specify only the tag keys, not the tag values.
+        Each tag key must be 1 to 128 bytes in length.
         
         @param request: UntagResourceRequest
         @return: UntagResourceResponse
@@ -6061,13 +6143,101 @@ class Client(OpenApiClient):
         request: kms_20160120_models.UntagResourceRequest,
     ) -> kms_20160120_models.UntagResourceResponse:
         """
-        In this example, the tags whose tag keys are tagkey1 and tagkey2 are removed from the CMK whose ID is `08c33a6f-4e0a-4a1b-a3fa-7ddf***`.
+        One or more tag keys. Separate multiple tag keys with commas (,).
+        You need to specify only the tag keys, not the tag values.
+        Each tag key must be 1 to 128 bytes in length.
         
         @param request: UntagResourceRequest
         @return: UntagResourceResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resource_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: kms_20160120_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: kms_20160120_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: kms_20160120_models.UntagResourcesRequest,
+    ) -> kms_20160120_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: kms_20160120_models.UntagResourcesRequest,
+    ) -> kms_20160120_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
 
     def update_alias_with_options(
         self,
@@ -6701,11 +6871,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateSecretVersionStageResponse:
         """
-        You can use this operation to achieve the following purposes:
-        *   Use a specified stage label to mark a new secret version.
-        *   Remove a specific stage label from an existing secret version.
-        Limits: This operation is available only for generic secrets.
-        In this example, the stage label that marks the version of the `secret001` secret is updated. The stage label `ACSCurrent` is used to mark the `002` version.
+        Updates the stage label that marks a secret version.
         
         @param request: UpdateSecretVersionStageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6746,11 +6912,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateSecretVersionStageResponse:
         """
-        You can use this operation to achieve the following purposes:
-        *   Use a specified stage label to mark a new secret version.
-        *   Remove a specific stage label from an existing secret version.
-        Limits: This operation is available only for generic secrets.
-        In this example, the stage label that marks the version of the `secret001` secret is updated. The stage label `ACSCurrent` is used to mark the `002` version.
+        Updates the stage label that marks a secret version.
         
         @param request: UpdateSecretVersionStageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6790,11 +6952,7 @@ class Client(OpenApiClient):
         request: kms_20160120_models.UpdateSecretVersionStageRequest,
     ) -> kms_20160120_models.UpdateSecretVersionStageResponse:
         """
-        You can use this operation to achieve the following purposes:
-        *   Use a specified stage label to mark a new secret version.
-        *   Remove a specific stage label from an existing secret version.
-        Limits: This operation is available only for generic secrets.
-        In this example, the stage label that marks the version of the `secret001` secret is updated. The stage label `ACSCurrent` is used to mark the `002` version.
+        Updates the stage label that marks a secret version.
         
         @param request: UpdateSecretVersionStageRequest
         @return: UpdateSecretVersionStageResponse
@@ -6807,11 +6965,7 @@ class Client(OpenApiClient):
         request: kms_20160120_models.UpdateSecretVersionStageRequest,
     ) -> kms_20160120_models.UpdateSecretVersionStageResponse:
         """
-        You can use this operation to achieve the following purposes:
-        *   Use a specified stage label to mark a new secret version.
-        *   Remove a specific stage label from an existing secret version.
-        Limits: This operation is available only for generic secrets.
-        In this example, the stage label that marks the version of the `secret001` secret is updated. The stage label `ACSCurrent` is used to mark the `002` version.
+        Updates the stage label that marks a secret version.
         
         @param request: UpdateSecretVersionStageRequest
         @return: UpdateSecretVersionStageResponse

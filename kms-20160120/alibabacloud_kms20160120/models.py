@@ -16,9 +16,8 @@ class AsymmetricDecryptRequest(TeaModel):
         self.algorithm = algorithm
         # The ciphertext that you want to decrypt.
         # 
-        # > 
-        # *   The value is encoded in Base64.
-        # *   You can call the [AsymmetricEncrypt](~~148131~~) operation to generate the ciphertext.
+        # > * The value is encoded in Base64.
+        # > * You can call the [AsymmetricEncrypt](~~148131~~) operation to generate the ciphertext.
         self.ciphertext_blob = ciphertext_blob
         # The ID of the customer master key (CMK). The ID must be globally unique.
         # 
@@ -310,19 +309,15 @@ class AsymmetricSignRequest(TeaModel):
         key_id: str = None,
         key_version_id: str = None,
     ):
-        # The signature algorithm.
+        # The version ID of the CMK. The ID must be globally unique.
         self.algorithm = algorithm
-        # The digest that is generated for the original message by using a hash algorithm. The hash algorithm is specified by the Algorithm parameter.
-        # 
-        # > 
-        # *   The value is encoded in Base64.
-        # *   For more information about how to calculate message digests, see the **Preprocess signature: compute a message digest** section of the [Generate and verify a signature by using an asymmetric CMK](~~148146~~) topic.
+        # The signature algorithm.
         self.digest = digest
+        # The operation that you want to perform. Set the value to **AsymmetricSign**.
+        self.key_id = key_id
         # The ID of the customer master key (CMK). The ID must be globally unique.
         # 
         # >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](~~68522~~).
-        self.key_id = key_id
-        # The version ID of the CMK. The ID must be globally unique.
         self.key_version_id = key_version_id
 
     def validate(self):
@@ -365,17 +360,20 @@ class AsymmetricSignResponseBody(TeaModel):
         request_id: str = None,
         value: str = None,
     ):
-        # The ID of the CMK. The ID must be globally unique.
-        # 
-        # >  If you set the KeyId parameter in the request to an alias, the ID of the CMK to which the alias is bound is returned.
-        self.key_id = key_id
         # The version ID of the CMK. The ID must be globally unique.
+        self.key_id = key_id
+        # The digest that is generated for the original message by using a hash algorithm. The hash algorithm is specified by the Algorithm parameter.
+        # 
+        # > * The value is encoded in Base64.
+        # > * For more information about how to calculate message digests, see the **Preprocess signature: compute a message digest** section of the [Generate and verify a signature by using an asymmetric CMK](~~148146~~) topic.
         self.key_version_id = key_version_id
-        # The ID of the request, which is used to locate and troubleshoot issues.
-        self.request_id = request_id
         # The calculated signature.
         # 
         # >  The value is encoded in Base64.
+        self.request_id = request_id
+        # The ID of the CMK. The ID must be globally unique.
+        # 
+        # >  If you set the KeyId parameter in the request to an alias, the ID of the CMK to which the alias is bound is returned.
         self.value = value
 
     def validate(self):
@@ -1686,22 +1684,8 @@ class CreateKeyRequest(TeaModel):
         origin: str = None,
         protection_level: str = None,
         rotation_interval: str = None,
+        tags: str = None,
     ):
-        # The ID of the dedicated KMS instance.
-        self.dkmsinstance_id = dkmsinstance_id
-        # The description of the CMK.
-        # 
-        # The description can be 0 to 8,192 characters in length.
-        self.description = description
-        # Specifies whether to enable automatic key rotation. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Default value: false.
-        # 
-        # >  If the Origin parameter is set to EXTERNAL or the KeySpec parameter is set to an asymmetric CMK type, automatic key rotation is not supported.
-        self.enable_automatic_rotation = enable_automatic_rotation
         # The type of the CMK. Valid values:
         # 
         # *   Aliyun_AES\_256
@@ -1714,27 +1698,11 @@ class CreateKeyRequest(TeaModel):
         # *   EC_P256K
         # *   EC_SM2
         # 
-        # > 
-        # *   The default type of the CMK is Aliyun_AES\_256.
-        # *   Only Dedicated KMS supports Aliyun_AES\_128 and Aliyun_AES\_192.
-        self.key_spec = key_spec
-        # The usage of the CMK. Valid values:
-        # 
-        # *   ENCRYPT/DECRYPT: encrypts or decrypts data.
-        # *   SIGN/VERIFY: generates or verifies a digital signature.
-        # 
-        # If the CMK supports signature verification, the default value is SIGN/VERIFY. If the CMK does not support signature verification, the default value is ENCRYPT/DECRYPT.
-        self.key_usage = key_usage
-        # The source of key material. Valid values:
-        # 
-        # *   Aliyun_KMS (default value)
-        # *   EXTERNAL
-        # 
-        # > 
-        # *   The value of this parameter is case-sensitive.
-        # *   If you set the KeySpec parameter to an asymmetric CMK type, you are not allowed to set the Origin parameter to EXTERNAL.
-        # *   If you set the Origin parameter to EXTERNAL, you must import key material. For more information, see [Import key material](~~68523~~).
-        self.origin = origin
+        # > * The default type of the CMK is Aliyun\_AES\_256.
+        # > * Only Dedicated KMS supports Aliyun\_AES\_128 and Aliyun\_AES\_192.
+        self.dkmsinstance_id = dkmsinstance_id
+        # The operation that you want to perform. Set the value to **CreateKey**.
+        self.description = description
         # The protection level of the CMK. Valid values:
         # 
         # *   SOFTWARE
@@ -1742,14 +1710,43 @@ class CreateKeyRequest(TeaModel):
         # 
         # Default value: SOFTWARE.
         # 
-        # > 
-        # *   The value of this parameter is case-sensitive.
-        # *   Assume that you set this parameter to HSM. If you set the Origin parameter to Aliyun_KMS, the CMK is created in a managed HSM. If you set the Origin parameter to EXTERNAL, you can import an external key into the managed HSM.
-        self.protection_level = protection_level
+        # > * The value of this parameter is case-sensitive.
+        # > * Assume that you set this parameter to HSM. If you set the Origin parameter to Aliyun_KMS, the CMK is created in a managed HSM. If you set the Origin parameter to EXTERNAL, you can import an external key into the managed HSM.
+        self.enable_automatic_rotation = enable_automatic_rotation
         # The period of automatic key rotation. Specify the value in the integer\[unit] format. Unit: d (day), h (hour), m (minute), or s (second). For example, you can use either 7d or 604800s to specify a seven-day period. The period can range from 7 days to 730 days.
         # 
         # >  If you set the EnableAutomaticRotation parameter to true, you must also specify this parameter. If you set the EnableAutomaticRotation parameter to false, you can leave this parameter unspecified.
+        self.key_spec = key_spec
+        # The description of the CMK.
+        # 
+        # The description can be 0 to 8,192 characters in length.
+        self.key_usage = key_usage
+        # The usage of the CMK. Valid values:
+        # 
+        # *   ENCRYPT/DECRYPT: encrypts or decrypts data.
+        # *   SIGN/VERIFY: generates or verifies a digital signature.
+        # 
+        # If the CMK supports signature verification, the default value is SIGN/VERIFY. If the CMK does not support signature verification, the default value is ENCRYPT/DECRYPT.
+        self.origin = origin
+        # The source of key material. Valid values:
+        # 
+        # *   Aliyun_KMS (default value)
+        # *   EXTERNAL
+        # 
+        # > * The value of this parameter is case-sensitive.
+        # > * If you set the KeySpec parameter to an asymmetric CMK type, you are not allowed to set the Origin parameter to EXTERNAL.
+        # > * If you set the Origin parameter to EXTERNAL, you must import key material. For more information, see [Import key material](~~68523~~).
+        self.protection_level = protection_level
+        # Specifies whether to enable automatic key rotation. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
+        # 
+        # >  If the Origin parameter is set to EXTERNAL or the KeySpec parameter is set to an asymmetric CMK type, automatic key rotation is not supported.
         self.rotation_interval = rotation_interval
+        self.tags = tags
 
     def validate(self):
         pass
@@ -1776,6 +1773,8 @@ class CreateKeyRequest(TeaModel):
             result['ProtectionLevel'] = self.protection_level
         if self.rotation_interval is not None:
             result['RotationInterval'] = self.rotation_interval
+        if self.tags is not None:
+            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -1796,6 +1795,8 @@ class CreateKeyRequest(TeaModel):
             self.protection_level = m.get('ProtectionLevel')
         if m.get('RotationInterval') is not None:
             self.rotation_interval = m.get('RotationInterval')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         return self
 
 
@@ -1821,8 +1822,51 @@ class CreateKeyResponseBodyKeyMetadata(TeaModel):
         protection_level: str = None,
         rotation_interval: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the CMK.
+        # The period of automatic key rotation. Unit: seconds. The value is in the format of an integer followed by the letter s. For example, if the rotation period is seven days, this parameter is set to 604800s. This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
         self.arn = arn
+        # The time when the key material expires. The time is displayed in UTC.
+        # 
+        # If this parameter value is empty, the key material does not expire.
+        self.automatic_rotation = automatic_rotation
+        # The usage of the CMK.
+        self.creation_date = creation_date
+        # The Alibaba Cloud Resource Name (ARN) of the CMK.
+        self.creator = creator
+        # The date and time when the CMK was created. The time is displayed in UTC.
+        self.dkmsinstance_id = dkmsinstance_id
+        # The time when the last rotation was performed. The time is displayed in UTC.
+        # 
+        # For a new CMK, this parameter value is the time when the initial version of the CMK was generated.
+        self.delete_date = delete_date
+        # The ID of the current primary key version of the symmetric CMK.
+        # 
+        # > * The primary key version of a symmetric CMK is an active encryption key. KMS uses the primary key version of a specified CMK to encrypt data.
+        # > * This parameter is unavailable for asymmetric CMKs.
+        self.description = description
+        # The metadata of the CMK.
+        self.key_id = key_id
+        # The description of the CMK.
+        self.key_spec = key_spec
+        # The time when the next rotation will be performed.
+        # 
+        # >  This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
+        self.key_state = key_state
+        # The protection level of the CMK.
+        self.key_usage = key_usage
+        # The creator of the CMK.
+        self.last_rotation_date = last_rotation_date
+        # The source of the key material for the CMK.
+        self.material_expire_time = material_expire_time
+        # The ID of the CMK. The ID must be globally unique.
+        self.next_rotation_date = next_rotation_date
+        # The type of the CMK.
+        self.origin = origin
+        # The time when the CMK is scheduled for deletion.
+        # 
+        # For more information, see [ScheduleKeyDeletion](~~44196~~).
+        # 
+        # >  This value is returned only when the value of the KeyState parameter is PendingDeletion.
+        self.primary_key_version = primary_key_version
         # Indicates whether automatic key rotation is enabled. Valid values:
         # 
         # *   Enabled: Automatic key rotation is enabled.
@@ -1830,54 +1874,10 @@ class CreateKeyResponseBodyKeyMetadata(TeaModel):
         # *   Suspended: Automatic key rotation is suspended. For more information, see [Automatic key rotation](~~134270~~).
         # 
         # >  Automatic key rotation is available only for symmetric CMKs.
-        self.automatic_rotation = automatic_rotation
-        # The date and time when the CMK was created. The time is displayed in UTC.
-        self.creation_date = creation_date
-        # The creator of the CMK.
-        self.creator = creator
-        # The ID of the dedicated KMS instance.
-        self.dkmsinstance_id = dkmsinstance_id
-        # The time when the CMK is scheduled for deletion.
-        # 
-        # For more information, see [ScheduleKeyDeletion](~~44196~~).
-        # 
-        # >  This value is returned only when the value of the KeyState parameter is PendingDeletion.
-        self.delete_date = delete_date
-        # The description of the CMK.
-        self.description = description
-        # The ID of the CMK. The ID must be globally unique.
-        self.key_id = key_id
-        # The type of the CMK.
-        self.key_spec = key_spec
+        self.protection_level = protection_level
         # The status of the CMK.
         # 
         # For more information, see [Impact of CMK status on API operations](~~44211~~).
-        self.key_state = key_state
-        # The usage of the CMK.
-        self.key_usage = key_usage
-        # The time when the last rotation was performed. The time is displayed in UTC.
-        # 
-        # For a new CMK, this parameter value is the time when the initial version of the CMK was generated.
-        self.last_rotation_date = last_rotation_date
-        # The time when the key material expires. The time is displayed in UTC.
-        # 
-        # If this parameter value is empty, the key material does not expire.
-        self.material_expire_time = material_expire_time
-        # The time when the next rotation will be performed.
-        # 
-        # >  This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
-        self.next_rotation_date = next_rotation_date
-        # The source of the key material for the CMK.
-        self.origin = origin
-        # The ID of the current primary key version of the symmetric CMK.
-        # 
-        # > 
-        # *   The primary key version of a symmetric CMK is an active encryption key. KMS uses the primary key version of a specified CMK to encrypt data.
-        # *   This parameter is unavailable for asymmetric CMKs.
-        self.primary_key_version = primary_key_version
-        # The protection level of the CMK.
-        self.protection_level = protection_level
-        # The period of automatic key rotation. Unit: seconds. The value is in the format of an integer followed by the letter s. For example, if the rotation period is seven days, this parameter is set to 604800s. This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
         self.rotation_interval = rotation_interval
 
     def validate(self):
@@ -1974,9 +1974,9 @@ class CreateKeyResponseBody(TeaModel):
         key_metadata: CreateKeyResponseBodyKeyMetadata = None,
         request_id: str = None,
     ):
-        # The metadata of the CMK.
-        self.key_metadata = key_metadata
         # The ID of the request, which is used to locate and troubleshoot issues.
+        self.key_metadata = key_metadata
+        # The ID of the dedicated KMS instance.
         self.request_id = request_id
 
     def validate(self):
@@ -2218,23 +2218,31 @@ class CreateSecretRequest(TeaModel):
         tags: str = None,
         version_id: str = None,
     ):
-        # The ID of the dedicated KMS instance.
+        # The version number of the secret.
         self.dkmsinstance_id = dkmsinstance_id
-        # The description of the secret.
-        self.description = description
         # Specifies whether to enable automatic rotation. Valid values:
         # 
         # *   true: specifies to enable automatic rotation.
         # *   false: specifies to disable automatic rotation. This is the default value.
         # 
         # >  This parameter is valid if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
+        self.description = description
+        # Indicates whether automatic rotation is enabled. Valid values:
+        # 
+        # *   Enabled: indicates that automatic rotation is enabled.
+        # *   Disabled: indicates that automatic rotation is disabled.
+        # *   Invalid: indicates that the status of automatic rotation is abnormal. In this case, Secrets Manager cannot automatically rotate the secret.
+        # 
+        # >  This parameter is returned if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
         self.enable_automatic_rotation = enable_automatic_rotation
-        # The ID of the CMK that is used to encrypt the secret value.
-        # 
-        # If the DKMSInstanceId parameter is empty, Secrets Manager uses a CMK that is created by Dedicated KMS to encrypt and protect secrets. If the DKMSInstanceId parameter is not empty, specify the CMK of the dedicated KMS instance to encrypt and protect secrets.
-        # 
-        # >  The CMK must be a symmetric CMK.
+        # The description of the secret.
         self.encryption_key_id = encryption_key_id
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.extended_config = extended_config
+        # The name of the secret.
+        self.rotation_interval = rotation_interval
+        # The tags of the secret.
+        self.secret_data = secret_data
         # The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length.
         # 
         # *   If you set the SecretType parameter to Generic, you do not need to configure this parameter.
@@ -2270,15 +2278,7 @@ class CreateSecretRequest(TeaModel):
         #     *   CustomData: optional. The custom data. The value is a collection of key-value pairs in the JSON format. Up to 10 key-value pairs can be specified. Separate multiple key-value pairs with commas (,). The default value is a pair of empty braces (`{}`).
         # 
         # >  This parameter is required if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
-        self.extended_config = extended_config
-        # The interval for automatic rotation. Valid values: 6 hours to 8,760 hours (365 days).
-        # 
-        # The value is in the `integer[unit]` format.
-        # 
-        # The unit can be d (day), h (hour), m (minute), or s (second). For example, both 7d and 604800s indicate a seven-day interval.
-        # 
-        # >  This parameter is required if you set the EnableAutomaticRotation parameter to true. This parameter is ignored if you set the EnableAutomaticRotation parameter to false or if the EnableAutomaticRotation parameter is not configured.
-        self.rotation_interval = rotation_interval
+        self.secret_data_type = secret_data_type
         # The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores the encrypted value in the initial version.
         # 
         # *   If you set the SecretType parameter to Generic that indicates a generic secret, you can customize the secret value.
@@ -2291,32 +2291,23 @@ class CreateSecretRequest(TeaModel):
         # 
         #     *   `{"UserName":"","Password": ""}`: In the format, `UserName` specifies the username that is used to log on to the ECS instance, and `Password` specifies the password that is used to log on to the ECS instance.
         #     *   `{"UserName":"","PublicKey": "", "PrivateKey": ""}`: In the format, `PublicKey` indicates the SSH public key that is used to log on to the ECS instance, and `PrivateKey` specifies the SSH private key that is used to log on to the ECS instance.
-        self.secret_data = secret_data
+        self.secret_name = secret_name
+        # The ID of the dedicated KMS instance.
+        self.secret_type = secret_type
+        # The interval for automatic rotation. Valid values: 6 hours to 8,760 hours (365 days).
+        # 
+        # The value is in the `integer[unit]` format.
+        # 
+        # The unit can be d (day), h (hour), m (minute), or s (second). For example, both 7d and 604800s indicate a seven-day interval.
+        # 
+        # >  This parameter is required if you set the EnableAutomaticRotation parameter to true. This parameter is ignored if you set the EnableAutomaticRotation parameter to false or if the EnableAutomaticRotation parameter is not configured.
+        self.tags = tags
         # The type of the secret value. Valid values:
         # 
         # *   text
         # *   binary
         # 
         # >  If you set the SecretType parameter to Rds, RAMCredentials, or ECS, the SecretDataType parameter must be set to text.
-        self.secret_data_type = secret_data_type
-        # The name of the secret.
-        # 
-        # The value must be 1 to 64 characters in length and can contain letters, digits, underscores (\_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
-        # 
-        # *   If the SecretType parameter is set to Generic or Rds, the name cannot start with `acs/`.
-        # *   If the SecretType parameter is set to RAMCredentials, set the SecretName parameter to `$Auto`. In this case, KMS automatically generates a secret name that starts with `acs/ram/user/`. The name includes the display name of RAM user.
-        # *   If the SecretType parameter is set to ECS, the name must start with `acs/ecs/`.
-        self.secret_name = secret_name
-        # The type of the secret. Valid values:
-        # 
-        # *   Generic: specifies a generic secret.
-        # *   Rds: specifies a managed ApsaraDB RDS secret.
-        # *   RAMCredentials: specifies a managed RAM secret.
-        # *   ECS: specifies a managed ECS secret.
-        self.secret_type = secret_type
-        # The tags of the secret.
-        self.tags = tags
-        # The initial version number. Version numbers are unique in each secret.
         self.version_id = version_id
 
     def validate(self):
@@ -2399,23 +2390,31 @@ class CreateSecretShrinkRequest(TeaModel):
         tags: str = None,
         version_id: str = None,
     ):
-        # The ID of the dedicated KMS instance.
+        # The version number of the secret.
         self.dkmsinstance_id = dkmsinstance_id
-        # The description of the secret.
-        self.description = description
         # Specifies whether to enable automatic rotation. Valid values:
         # 
         # *   true: specifies to enable automatic rotation.
         # *   false: specifies to disable automatic rotation. This is the default value.
         # 
         # >  This parameter is valid if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
+        self.description = description
+        # Indicates whether automatic rotation is enabled. Valid values:
+        # 
+        # *   Enabled: indicates that automatic rotation is enabled.
+        # *   Disabled: indicates that automatic rotation is disabled.
+        # *   Invalid: indicates that the status of automatic rotation is abnormal. In this case, Secrets Manager cannot automatically rotate the secret.
+        # 
+        # >  This parameter is returned if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
         self.enable_automatic_rotation = enable_automatic_rotation
-        # The ID of the CMK that is used to encrypt the secret value.
-        # 
-        # If the DKMSInstanceId parameter is empty, Secrets Manager uses a CMK that is created by Dedicated KMS to encrypt and protect secrets. If the DKMSInstanceId parameter is not empty, specify the CMK of the dedicated KMS instance to encrypt and protect secrets.
-        # 
-        # >  The CMK must be a symmetric CMK.
+        # The description of the secret.
         self.encryption_key_id = encryption_key_id
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.extended_config_shrink = extended_config_shrink
+        # The name of the secret.
+        self.rotation_interval = rotation_interval
+        # The tags of the secret.
+        self.secret_data = secret_data
         # The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length.
         # 
         # *   If you set the SecretType parameter to Generic, you do not need to configure this parameter.
@@ -2451,15 +2450,7 @@ class CreateSecretShrinkRequest(TeaModel):
         #     *   CustomData: optional. The custom data. The value is a collection of key-value pairs in the JSON format. Up to 10 key-value pairs can be specified. Separate multiple key-value pairs with commas (,). The default value is a pair of empty braces (`{}`).
         # 
         # >  This parameter is required if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
-        self.extended_config_shrink = extended_config_shrink
-        # The interval for automatic rotation. Valid values: 6 hours to 8,760 hours (365 days).
-        # 
-        # The value is in the `integer[unit]` format.
-        # 
-        # The unit can be d (day), h (hour), m (minute), or s (second). For example, both 7d and 604800s indicate a seven-day interval.
-        # 
-        # >  This parameter is required if you set the EnableAutomaticRotation parameter to true. This parameter is ignored if you set the EnableAutomaticRotation parameter to false or if the EnableAutomaticRotation parameter is not configured.
-        self.rotation_interval = rotation_interval
+        self.secret_data_type = secret_data_type
         # The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores the encrypted value in the initial version.
         # 
         # *   If you set the SecretType parameter to Generic that indicates a generic secret, you can customize the secret value.
@@ -2472,32 +2463,23 @@ class CreateSecretShrinkRequest(TeaModel):
         # 
         #     *   `{"UserName":"","Password": ""}`: In the format, `UserName` specifies the username that is used to log on to the ECS instance, and `Password` specifies the password that is used to log on to the ECS instance.
         #     *   `{"UserName":"","PublicKey": "", "PrivateKey": ""}`: In the format, `PublicKey` indicates the SSH public key that is used to log on to the ECS instance, and `PrivateKey` specifies the SSH private key that is used to log on to the ECS instance.
-        self.secret_data = secret_data
+        self.secret_name = secret_name
+        # The ID of the dedicated KMS instance.
+        self.secret_type = secret_type
+        # The interval for automatic rotation. Valid values: 6 hours to 8,760 hours (365 days).
+        # 
+        # The value is in the `integer[unit]` format.
+        # 
+        # The unit can be d (day), h (hour), m (minute), or s (second). For example, both 7d and 604800s indicate a seven-day interval.
+        # 
+        # >  This parameter is required if you set the EnableAutomaticRotation parameter to true. This parameter is ignored if you set the EnableAutomaticRotation parameter to false or if the EnableAutomaticRotation parameter is not configured.
+        self.tags = tags
         # The type of the secret value. Valid values:
         # 
         # *   text
         # *   binary
         # 
         # >  If you set the SecretType parameter to Rds, RAMCredentials, or ECS, the SecretDataType parameter must be set to text.
-        self.secret_data_type = secret_data_type
-        # The name of the secret.
-        # 
-        # The value must be 1 to 64 characters in length and can contain letters, digits, underscores (\_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
-        # 
-        # *   If the SecretType parameter is set to Generic or Rds, the name cannot start with `acs/`.
-        # *   If the SecretType parameter is set to RAMCredentials, set the SecretName parameter to `$Auto`. In this case, KMS automatically generates a secret name that starts with `acs/ram/user/`. The name includes the display name of RAM user.
-        # *   If the SecretType parameter is set to ECS, the name must start with `acs/ecs/`.
-        self.secret_name = secret_name
-        # The type of the secret. Valid values:
-        # 
-        # *   Generic: specifies a generic secret.
-        # *   Rds: specifies a managed ApsaraDB RDS secret.
-        # *   RAMCredentials: specifies a managed RAM secret.
-        # *   ECS: specifies a managed ECS secret.
-        self.secret_type = secret_type
-        # The tags of the secret.
-        self.tags = tags
-        # The initial version number. Version numbers are unique in each secret.
         self.version_id = version_id
 
     def validate(self):
@@ -2578,44 +2560,34 @@ class CreateSecretResponseBody(TeaModel):
         secret_type: str = None,
         version_id: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the secret.
         self.arn = arn
-        # Indicates whether automatic rotation is enabled. Valid values:
-        # 
-        # *   Enabled: indicates that automatic rotation is enabled.
-        # *   Disabled: indicates that automatic rotation is disabled.
-        # *   Invalid: indicates that the status of automatic rotation is abnormal. In this case, Secrets Manager cannot automatically rotate the secret.
-        # 
-        # >  This parameter is returned if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
-        self.automatic_rotation = automatic_rotation
-        # The ID of the dedicated KMS instance.
-        self.dkmsinstance_id = dkmsinstance_id
-        # The extended configuration of the secret.
-        # 
-        # >  This parameter is returned if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
-        self.extended_config = extended_config
-        # The time when the next rotation will be performed.
-        # 
-        # >  This parameter is returned if automatic rotation is enabled.
-        self.next_rotation_date = next_rotation_date
-        # The ID of the request, which is used to locate and troubleshoot issues.
-        self.request_id = request_id
-        # The interval for automatic rotation.
-        # 
-        # The value is in the `integer[unit]` format. The value of the `unit` field is fixed as s. For example, if the value is 604800s, automatic rotation is performed at a 7-day interval.
-        # 
-        # >  This parameter is returned if automatic rotation is enabled.
-        self.rotation_interval = rotation_interval
-        # The name of the secret.
-        self.secret_name = secret_name
         # The type of the secret. Valid values:
         # 
         # *   Generic: indicates a generic secret.
         # *   Rds: indicates a managed ApsaraDB RDS secret.
         # *   RAMCredentials: indicates a managed RAM secret.
         # *   ECS: indicates a managed ECS secret.
+        self.automatic_rotation = automatic_rotation
+        self.dkmsinstance_id = dkmsinstance_id
+        self.extended_config = extended_config
+        # The extended configuration of the secret.
+        # 
+        # >  This parameter is returned if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
+        self.next_rotation_date = next_rotation_date
+        # The time when the next rotation will be performed.
+        # 
+        # >  This parameter is returned if automatic rotation is enabled.
+        self.request_id = request_id
+        self.rotation_interval = rotation_interval
+        # The interval for automatic rotation.
+        # 
+        # The value is in the `integer[unit]` format. The value of the `unit` field is fixed as s. For example, if the value is 604800s, automatic rotation is performed at a 7-day interval.
+        # 
+        # >  This parameter is returned if automatic rotation is enabled.
+        self.secret_name = secret_name
+        # The ID of the dedicated KMS instance.
         self.secret_type = secret_type
-        # The version number of the secret.
+        # The Alibaba Cloud Resource Name (ARN) of the secret.
         self.version_id = version_id
 
     def validate(self):
@@ -6782,9 +6754,9 @@ class ImportKeyMaterialRequest(TeaModel):
         key_id: str = None,
         key_material_expire_unix: int = None,
     ):
-        # Use** GetParametersForImport** the Returned public key and the base64-encoded key material.
+        # Use **GetParametersForImport** the Returned public key and the base64-encoded key material.
         self.encrypted_key_material = encrypted_key_material
-        # By calling** GetParametersForImport** the import token.
+        # By calling **GetParametersForImport** the import token.
         self.import_token = import_token
         # The ID of the CMK to be imported.
         self.key_id = key_id
@@ -7588,61 +7560,11 @@ class ListKeysRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The CMK filter. The filter consists of one or more key-value pairs. You can specify a maximum of 10 key-value pairs.
-        # 
-        # *   Key
-        # 
-        #     *   Description: the property that you want to filter.
-        # 
-        #     *   Type: string.
-        # 
-        #     *   Valid values:
-        # 
-        #         *   KeyState: the status of the CMK.
-        #         *   KeySpec: the type of the CMK.
-        #         *   KeyUsage: the usage of the CMK.
-        #         *   ProtectionLevel: the protection level.
-        #         *   CreatorType: the type of the creator.
-        # 
-        # *   Values
-        # 
-        #     *   Description: the value to be included after filtering.
-        # 
-        #     *   Format: string array.
-        # 
-        #     *   Length: 0 to 10.
-        # 
-        #     *   Valid values:
-        # 
-        #         *   When Key is set to KeyState, the value can be Enabled, Disabled, PendingDeletion, or PendingImport.
-        # 
-        #         *   When Key is set to KeySpec, the value can be Aliyun_AES\_256, Aliyun_SM4, RSA\_2048, EC_P256, EC_P256K, or EC_SM2.
-        # 
-        #             Note: You can create CMKs of the EC_SM2 or Aliyun_SM4 type only in regions where State Cryptography Administration (SCA)-certified managed HSMs reside. For more information about the regions, see [Supported regions](~~125803~~). If your region does not support EC_SM2 or Aliyun_SM4, the two values are ignored if they are specified.
-        # 
-        #         *   When Key is set to KeyUsage, the value can be ENCRYPT/DECRYPT or SIGN/VERIFY. ENCRYPT/DECRYPT indicates that the CMK is used to encrypt and decrypt data. SIGN/VERIFY indicates that the CMK is used to generate and verify digital signatures.
-        # 
-        #         *   When Key is set to ProtectionLevel, the value can be SOFTWARE (software) or HSM (hardware).
-        # 
-        #             You can set ProtectionLevel to HSM in only specific regions. For more information about the regions, see [Supported regions](~~125803~~). If your region does not support the value HSM, the value is ignored if the value is specified.
-        # 
-        #         *   If Key is set to CreatorType, the value can be User or Service. User indicates that CMKs created by the current account are queried. Service indicates that CMKs automatically created by other cloud services authorized by the current account are queried.
-        # 
-        # The logical relationship between different keys is AND, and the logical relationship between multiple items in the same key is OR. Example:
-        # 
-        # `[ {"Key":"KeyState", "Values":["Enabled","Disabled"]}, {"Key":"KeyState", "Values":["PendingDeletion"]}, {"Key":"KeySpec", "Values":["Aliyun_AES_256"]}]`. In this example, the semantics are:`(KeyState=Enabled OR KeyState=Disabled OR KeyState=PendingDeletion) AND (KeySpec=Aliyun_AES_ 256)`.
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.filters = filters
-        # The number of the page to return.
-        # 
-        # Pages start from page 1.
-        # 
-        # Default value: 1.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries to return on each page.
-        # 
-        # Valid values: 1 to 100.
-        # 
-        # Default value: 10
+        # The number of entries returned per page.
         self.page_size = page_size
 
     def validate(self):
@@ -7679,9 +7601,7 @@ class ListKeysResponseBodyKeysKey(TeaModel):
         key_arn: str = None,
         key_id: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the CMK.
         self.key_arn = key_arn
-        # The ID of the CMK. The ID must be globally unique.
         self.key_id = key_id
 
     def validate(self):
@@ -7752,15 +7672,14 @@ class ListKeysResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the CMKs of the current Alibaba Cloud account in the current region.
         self.keys = keys
-        # The page number of the returned page.
-        self.page_number = page_number
-        # The number of entries returned per page.
-        self.page_size = page_size
-        # The ID of the request, which is used to locate and troubleshoot issues.
-        self.request_id = request_id
         # The total number of CMKs.
+        self.page_number = page_number
+        # An array that consists of the CMKs of the current Alibaba Cloud account in the current region.
+        self.page_size = page_size
+        # The ID of the CMK. The ID must be globally unique.
+        self.request_id = request_id
+        # The Alibaba Cloud Resource Name (ARN) of the CMK.
         self.total_count = total_count
 
     def validate(self):
@@ -8310,11 +8229,14 @@ class ListSecretsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Specifies whether to return the resource tags of the secret. Valid values:
+        # The number of entries to return on each page.
         # 
-        # *   true: returns the resource tags.
-        # *   false: does not return the resource tags. This is the default value.
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.fetch_tags = fetch_tags
+        # The number of entries returned per page.
+        self.filters = filters
         # The secret filter. The filter consists of one or more key-value pairs. You can specify one key-value pair or leave this parameter empty. If you use one tag key or tag value to filter resources, up to 4,000 resources can be queried. If you want to query more than 4,000 resources, call the [ListResourceTags](~~120090~~) operation.
         # 
         # *   Key
@@ -8346,18 +8268,8 @@ class ListSecretsRequest(TeaModel):
         #         *   If the Key field is set to TagValue, the value must be 1 to 256 characters in length and can contain letters, numbers, and special characters `/ _ - . + = @ :`.
         # 
         # The logical relationship between values of the Values field in a key-value pair is OR. Example: `[ {"Key":"SecretName", "Values":["sec1","sec2"]}]`. In this example, the semantics are `SecretName=sec 1 OR SecretName=sec 2`.
-        self.filters = filters
-        # The number of the page to return.
-        # 
-        # Pages start from page 1.
-        # 
-        # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
-        # 
-        # Valid values: 1 to 100.
-        # 
-        # Default value: 10.
+        # The page number of the returned page.
         self.page_size = page_size
 
     def validate(self):
@@ -8398,9 +8310,7 @@ class ListSecretsResponseBodySecretListSecretTagsTag(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -8472,22 +8382,22 @@ class ListSecretsResponseBodySecretListSecret(TeaModel):
         tags: ListSecretsResponseBodySecretListSecretTags = None,
         update_time: str = None,
     ):
-        # The time when the secret was created.
+        # The tag value.
         self.create_time = create_time
-        # The time when the secret is scheduled to be deleted.
+        # The resource tags of the secret.
+        # 
+        # This parameter is not returned if you set the FetchTags parameter to false or do not specify the FetchTags parameter.
         self.planned_delete_time = planned_delete_time
-        # The secret name.
-        self.secret_name = secret_name
         # The type of the secret. Valid values:
         # 
         # *   Generic: indicates a generic secret.
         # *   Rds: indicates a managed ApsaraDB RDS secret.
+        self.secret_name = secret_name
+        # The time when the secret was created.
         self.secret_type = secret_type
-        # The resource tags of the secret.
-        # 
-        # This parameter is not returned if you set the FetchTags parameter to false or do not specify the FetchTags parameter.
+        # The tag key.
         self.tags = tags
-        # The time when the secret was updated.
+        # The time when the secret is scheduled to be deleted.
         self.update_time = update_time
 
     def validate(self):
@@ -8576,15 +8486,15 @@ class ListSecretsResponseBody(TeaModel):
         secret_list: ListSecretsResponseBodySecretList = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
-        self.page_number = page_number
-        # The number of entries returned per page.
-        self.page_size = page_size
         # The ID of the request, which is used to locate and troubleshoot issues.
-        self.request_id = request_id
-        # The list of secrets.
-        self.secret_list = secret_list
+        self.page_number = page_number
         # The number of returned secrets.
+        self.page_size = page_size
+        # The list of secrets.
+        self.request_id = request_id
+        # The time when the secret was updated.
+        self.secret_list = secret_list
+        # The secret name.
         self.total_count = total_count
 
     def validate(self):
@@ -8665,6 +8575,263 @@ class ListSecretsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListSecretsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        self.next_token = next_token
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        tag_resource: List[ListTagResourcesResponseBodyTagResourcesTagResource] = None,
+    ):
+        self.tag_resource = tag_resource
+
+    def validate(self):
+        if self.tag_resource:
+            for k in self.tag_resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TagResource'] = []
+        if self.tag_resource is not None:
+            for k in self.tag_resource:
+                result['TagResource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_resource = []
+        if m.get('TagResource') is not None:
+            for k in m.get('TagResource'):
+                temp_model = ListTagResourcesResponseBodyTagResourcesTagResource()
+                self.tag_resource.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: ListTagResourcesResponseBodyTagResources = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            self.tag_resources.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_resources is not None:
+            result['TagResources'] = self.tag_resources.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagResources') is not None:
+            temp_model = ListTagResourcesResponseBodyTagResources()
+            self.tag_resources = temp_model.from_map(m['TagResources'])
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9800,6 +9967,163 @@ class TagResourceResponse(TeaModel):
         return self
 
 
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UntagResourceRequest(TeaModel):
     def __init__(
         self,
@@ -9808,23 +10132,10 @@ class UntagResourceRequest(TeaModel):
         secret_name: str = None,
         tag_keys: str = None,
     ):
-        # The ID of the certificate.
-        # 
-        # >  You can configure only one of the KeyId, SecretName, and CertificateId parameters.
         self.certificate_id = certificate_id
-        # The ID of the customer master key (CMK). The ID must be globally unique.
-        # 
-        # >  You can configure only one of the KeyId, SecretName, and CertificateId parameters.
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.key_id = key_id
-        # The name of the secret.
-        # 
-        # >  You can configure only one of the KeyId, SecretName, and CertificateId parameters.
         self.secret_name = secret_name
-        # One or more tag keys. Separate multiple tag keys with commas (,).
-        # 
-        # You need to specify only the tag keys, not the tag values.
-        # 
-        # Each tag key must be 1 to 128 bytes in length.
         self.tag_keys = tag_keys
 
     def validate(self):
@@ -9864,7 +10175,6 @@ class UntagResourceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -9927,6 +10237,128 @@ class UntagResourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        self.all = all
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10388,9 +10820,8 @@ class UpdateSecretRequestExtendedConfig(TeaModel):
     ):
         # The custom data in the extended configuration of the secret.
         # 
-        # > 
-        # *   If this parameter is specified, the existing extended configuration of the secret is updated.
-        # *   This parameter is unavailable for generic secrets.
+        # > *   If this parameter is specified, the existing extended configuration of the secret is updated.
+        # > *   This parameter is unavailable for generic secrets.
         self.custom_data = custom_data
 
     def validate(self):
@@ -10463,9 +10894,8 @@ class UpdateSecretShrinkRequestExtendedConfig(TeaModel):
     ):
         # The custom data in the extended configuration of the secret.
         # 
-        # > 
-        # *   If this parameter is specified, the existing extended configuration of the secret is updated.
-        # *   This parameter is unavailable for generic secrets.
+        # > *   If this parameter is specified, the existing extended configuration of the secret is updated.
+        # > *   This parameter is unavailable for generic secrets.
         self.custom_data = custom_data
 
     def validate(self):
@@ -10748,23 +11178,19 @@ class UpdateSecretVersionStageRequest(TeaModel):
         secret_name: str = None,
         version_stage: str = None,
     ):
-        # The version to which you want to apply the specified stage label.
-        # 
-        # > 
-        # *   You must specify at least one of the RemoveFromVersion and MoveToVersion parameters.
-        # *   If the VersionStage parameter is set to ACSCurrent or ACSPrevious, this parameter is required.
-        self.move_to_version = move_to_version
         # The version from which you want to remove the specified stage label.
         # 
         # >  You must specify at least one of the RemoveFromVersion and MoveToVersion parameters.
-        self.remove_from_version = remove_from_version
-        # The name of the secret.
-        self.secret_name = secret_name
+        self.move_to_version = move_to_version
         # The specified stage label. Valid values:
         # 
         # *   ACSCurrent
         # *   ACSPrevious
         # *   Custom stage label
+        self.remove_from_version = remove_from_version
+        # The operation that you want to perform. Set the value to **UpdateSecretVersionStage**.
+        self.secret_name = secret_name
+        # The name of the secret.
         self.version_stage = version_stage
 
     def validate(self):
@@ -10805,9 +11231,12 @@ class UpdateSecretVersionStageResponseBody(TeaModel):
         request_id: str = None,
         secret_name: str = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
-        self.request_id = request_id
         # The name of the secret.
+        self.request_id = request_id
+        # The version to which you want to apply the specified stage label.
+        # 
+        # > * You must specify at least one of the RemoveFromVersion and MoveToVersion parameters.
+        # > * If the VersionStage parameter is set to ACSCurrent or ACSPrevious, this parameter is required.
         self.secret_name = secret_name
 
     def validate(self):
