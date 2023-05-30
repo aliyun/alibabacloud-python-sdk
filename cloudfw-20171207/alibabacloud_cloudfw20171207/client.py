@@ -187,7 +187,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
         """
-        You can call the AddControlPolicy operation to create an access control policy to allow, deny, or monitor traffic that passes through Cloud Firewall.
+        You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -258,7 +258,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
         """
-        You can call the AddControlPolicy operation to create an access control policy to allow, deny, or monitor traffic that passes through Cloud Firewall.
+        You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -328,7 +328,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.AddControlPolicyRequest,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
         """
-        You can call the AddControlPolicy operation to create an access control policy to allow, deny, or monitor traffic that passes through Cloud Firewall.
+        You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -343,7 +343,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.AddControlPolicyRequest,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
         """
-        You can call the AddControlPolicy operation to create an access control policy to allow, deny, or monitor traffic that passes through Cloud Firewall.
+        You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -584,6 +584,230 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.batch_copy_vpc_firewall_control_policy_with_options_async(request, runtime)
+
+    def create_tr_firewall_v2with_options(
+        self,
+        request: cloudfw_20171207_models.CreateTrFirewallV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateTrFirewallV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.firewall_description):
+            query['FirewallDescription'] = request.firewall_description
+        if not UtilClient.is_unset(request.firewall_name):
+            query['FirewallName'] = request.firewall_name
+        if not UtilClient.is_unset(request.firewall_subnet_cidr):
+            query['FirewallSubnetCidr'] = request.firewall_subnet_cidr
+        if not UtilClient.is_unset(request.firewall_vpc_cidr):
+            query['FirewallVpcCidr'] = request.firewall_vpc_cidr
+        if not UtilClient.is_unset(request.firewall_vpc_id):
+            query['FirewallVpcId'] = request.firewall_vpc_id
+        if not UtilClient.is_unset(request.firewall_vswitch_id):
+            query['FirewallVswitchId'] = request.firewall_vswitch_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.route_mode):
+            query['RouteMode'] = request.route_mode
+        if not UtilClient.is_unset(request.tr_attachment_master_cidr):
+            query['TrAttachmentMasterCidr'] = request.tr_attachment_master_cidr
+        if not UtilClient.is_unset(request.tr_attachment_slave_cidr):
+            query['TrAttachmentSlaveCidr'] = request.tr_attachment_slave_cidr
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTrFirewallV2',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateTrFirewallV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tr_firewall_v2with_options_async(
+        self,
+        request: cloudfw_20171207_models.CreateTrFirewallV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateTrFirewallV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.firewall_description):
+            query['FirewallDescription'] = request.firewall_description
+        if not UtilClient.is_unset(request.firewall_name):
+            query['FirewallName'] = request.firewall_name
+        if not UtilClient.is_unset(request.firewall_subnet_cidr):
+            query['FirewallSubnetCidr'] = request.firewall_subnet_cidr
+        if not UtilClient.is_unset(request.firewall_vpc_cidr):
+            query['FirewallVpcCidr'] = request.firewall_vpc_cidr
+        if not UtilClient.is_unset(request.firewall_vpc_id):
+            query['FirewallVpcId'] = request.firewall_vpc_id
+        if not UtilClient.is_unset(request.firewall_vswitch_id):
+            query['FirewallVswitchId'] = request.firewall_vswitch_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.route_mode):
+            query['RouteMode'] = request.route_mode
+        if not UtilClient.is_unset(request.tr_attachment_master_cidr):
+            query['TrAttachmentMasterCidr'] = request.tr_attachment_master_cidr
+        if not UtilClient.is_unset(request.tr_attachment_slave_cidr):
+            query['TrAttachmentSlaveCidr'] = request.tr_attachment_slave_cidr
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTrFirewallV2',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateTrFirewallV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tr_firewall_v2(
+        self,
+        request: cloudfw_20171207_models.CreateTrFirewallV2Request,
+    ) -> cloudfw_20171207_models.CreateTrFirewallV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.create_tr_firewall_v2with_options(request, runtime)
+
+    async def create_tr_firewall_v2_async(
+        self,
+        request: cloudfw_20171207_models.CreateTrFirewallV2Request,
+    ) -> cloudfw_20171207_models.CreateTrFirewallV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_tr_firewall_v2with_options_async(request, runtime)
+
+    def create_tr_firewall_v2route_policy_with_options(
+        self,
+        tmp_req: cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dest_candidate_list):
+            request.dest_candidate_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dest_candidate_list, 'DestCandidateList', 'json')
+        if not UtilClient.is_unset(tmp_req.src_candidate_list):
+            request.src_candidate_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.src_candidate_list, 'SrcCandidateList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dest_candidate_list_shrink):
+            query['DestCandidateList'] = request.dest_candidate_list_shrink
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.policy_description):
+            query['PolicyDescription'] = request.policy_description
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.src_candidate_list_shrink):
+            query['SrcCandidateList'] = request.src_candidate_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTrFirewallV2RoutePolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tr_firewall_v2route_policy_with_options_async(
+        self,
+        tmp_req: cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dest_candidate_list):
+            request.dest_candidate_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dest_candidate_list, 'DestCandidateList', 'json')
+        if not UtilClient.is_unset(tmp_req.src_candidate_list):
+            request.src_candidate_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.src_candidate_list, 'SrcCandidateList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dest_candidate_list_shrink):
+            query['DestCandidateList'] = request.dest_candidate_list_shrink
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.policy_description):
+            query['PolicyDescription'] = request.policy_description
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.src_candidate_list_shrink):
+            query['SrcCandidateList'] = request.src_candidate_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTrFirewallV2RoutePolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tr_firewall_v2route_policy(
+        self,
+        request: cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyRequest,
+    ) -> cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_tr_firewall_v2route_policy_with_options(request, runtime)
+
+    async def create_tr_firewall_v2route_policy_async(
+        self,
+        request: cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyRequest,
+    ) -> cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_tr_firewall_v2route_policy_with_options_async(request, runtime)
 
     def create_vpc_firewall_cen_configure_with_options(
         self,
@@ -1249,6 +1473,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_control_policy_with_options_async(request, runtime)
 
+    def delete_firewall_v2route_policies_with_options(
+        self,
+        request: cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.tr_firewall_route_policy_id):
+            query['TrFirewallRoutePolicyId'] = request.tr_firewall_route_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFirewallV2RoutePolicies',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_firewall_v2route_policies_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.tr_firewall_route_policy_id):
+            query['TrFirewallRoutePolicyId'] = request.tr_firewall_route_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFirewallV2RoutePolicies',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_firewall_v2route_policies(
+        self,
+        request: cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesRequest,
+    ) -> cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_firewall_v2route_policies_with_options(request, runtime)
+
+    async def delete_firewall_v2route_policies_async(
+        self,
+        request: cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesRequest,
+    ) -> cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_firewall_v2route_policies_with_options_async(request, runtime)
+
     def delete_instance_members_with_options(
         self,
         request: cloudfw_20171207_models.DeleteInstanceMembersRequest,
@@ -1352,6 +1654,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_instance_members_with_options_async(request, runtime)
+
+    def delete_tr_firewall_v2with_options(
+        self,
+        request: cloudfw_20171207_models.DeleteTrFirewallV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteTrFirewallV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTrFirewallV2',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteTrFirewallV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_tr_firewall_v2with_options_async(
+        self,
+        request: cloudfw_20171207_models.DeleteTrFirewallV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteTrFirewallV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTrFirewallV2',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteTrFirewallV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_tr_firewall_v2(
+        self,
+        request: cloudfw_20171207_models.DeleteTrFirewallV2Request,
+    ) -> cloudfw_20171207_models.DeleteTrFirewallV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_tr_firewall_v2with_options(request, runtime)
+
+    async def delete_tr_firewall_v2_async(
+        self,
+        request: cloudfw_20171207_models.DeleteTrFirewallV2Request,
+    ) -> cloudfw_20171207_models.DeleteTrFirewallV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_tr_firewall_v2with_options_async(request, runtime)
 
     def delete_vpc_firewall_cen_configure_with_options(
         self,
@@ -2357,6 +2733,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_members_with_options_async(request, runtime)
 
+    def describe_internet_traffic_trend_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetTrafficTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInternetTrafficTrendResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_code):
+            query['SourceCode'] = request.source_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.src_private_ip):
+            query['SrcPrivateIP'] = request.src_private_ip
+        if not UtilClient.is_unset(request.src_public_ip):
+            query['SrcPublicIP'] = request.src_public_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.traffic_type):
+            query['TrafficType'] = request.traffic_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInternetTrafficTrend',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInternetTrafficTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_internet_traffic_trend_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetTrafficTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInternetTrafficTrendResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_code):
+            query['SourceCode'] = request.source_code
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.src_private_ip):
+            query['SrcPrivateIP'] = request.src_private_ip
+        if not UtilClient.is_unset(request.src_public_ip):
+            query['SrcPublicIP'] = request.src_public_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.traffic_type):
+            query['TrafficType'] = request.traffic_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInternetTrafficTrend',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInternetTrafficTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_internet_traffic_trend(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetTrafficTrendRequest,
+    ) -> cloudfw_20171207_models.DescribeInternetTrafficTrendResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_internet_traffic_trend_with_options(request, runtime)
+
+    async def describe_internet_traffic_trend_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInternetTrafficTrendRequest,
+    ) -> cloudfw_20171207_models.DescribeInternetTrafficTrendResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_internet_traffic_trend_with_options_async(request, runtime)
+
     def describe_invade_event_list_with_options(
         self,
         request: cloudfw_20171207_models.DescribeInvadeEventListRequest,
@@ -3139,6 +3621,436 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_risk_event_group_with_options_async(request, runtime)
 
+    def describe_tr_firewall_policy_back_up_association_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.tr_firewall_route_policy_id):
+            query['TrFirewallRoutePolicyId'] = request.tr_firewall_route_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTrFirewallPolicyBackUpAssociationList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tr_firewall_policy_back_up_association_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.tr_firewall_route_policy_id):
+            query['TrFirewallRoutePolicyId'] = request.tr_firewall_route_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTrFirewallPolicyBackUpAssociationList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tr_firewall_policy_back_up_association_list(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListRequest,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tr_firewall_policy_back_up_association_list_with_options(request, runtime)
+
+    async def describe_tr_firewall_policy_back_up_association_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListRequest,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tr_firewall_policy_back_up_association_list_with_options_async(request, runtime)
+
+    def describe_tr_firewall_v2route_policy_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTrFirewallV2RoutePolicyList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tr_firewall_v2route_policy_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTrFirewallV2RoutePolicyList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tr_firewall_v2route_policy_list(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListRequest,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tr_firewall_v2route_policy_list_with_options(request, runtime)
+
+    async def describe_tr_firewall_v2route_policy_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListRequest,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tr_firewall_v2route_policy_list_with_options_async(request, runtime)
+
+    def describe_tr_firewalls_v2detail_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallsV2DetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallsV2DetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTrFirewallsV2Detail',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeTrFirewallsV2DetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tr_firewalls_v2detail_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallsV2DetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallsV2DetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTrFirewallsV2Detail',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeTrFirewallsV2DetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tr_firewalls_v2detail(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallsV2DetailRequest,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallsV2DetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tr_firewalls_v2detail_with_options(request, runtime)
+
+    async def describe_tr_firewalls_v2detail_async(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallsV2DetailRequest,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallsV2DetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tr_firewalls_v2detail_with_options_async(request, runtime)
+
+    def describe_tr_firewalls_v2list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallsV2ListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallsV2ListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.firewall_name):
+            query['FirewallName'] = request.firewall_name
+        if not UtilClient.is_unset(request.firewall_switch_status):
+            query['FirewallSwitchStatus'] = request.firewall_switch_status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.route_mode):
+            query['RouteMode'] = request.route_mode
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTrFirewallsV2List',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeTrFirewallsV2ListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tr_firewalls_v2list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallsV2ListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallsV2ListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.firewall_name):
+            query['FirewallName'] = request.firewall_name
+        if not UtilClient.is_unset(request.firewall_switch_status):
+            query['FirewallSwitchStatus'] = request.firewall_switch_status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.route_mode):
+            query['RouteMode'] = request.route_mode
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTrFirewallsV2List',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeTrFirewallsV2ListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tr_firewalls_v2list(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallsV2ListRequest,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallsV2ListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tr_firewalls_v2list_with_options(request, runtime)
+
+    async def describe_tr_firewalls_v2list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallsV2ListRequest,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallsV2ListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tr_firewalls_v2list_with_options_async(request, runtime)
+
+    def describe_tr_firewalls_v2route_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallsV2RouteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tr_firewall_route_policy_id):
+            query['TrFirewallRoutePolicyId'] = request.tr_firewall_route_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTrFirewallsV2RouteList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tr_firewalls_v2route_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallsV2RouteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tr_firewall_route_policy_id):
+            query['TrFirewallRoutePolicyId'] = request.tr_firewall_route_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTrFirewallsV2RouteList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tr_firewalls_v2route_list(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallsV2RouteListRequest,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tr_firewalls_v2route_list_with_options(request, runtime)
+
+    async def describe_tr_firewalls_v2route_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeTrFirewallsV2RouteListRequest,
+    ) -> cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tr_firewalls_v2route_list_with_options_async(request, runtime)
+
     def describe_user_asset_iptraffic_info_with_options(
         self,
         request: cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoRequest,
@@ -3603,7 +4515,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse:
         """
-        You can call the DescribeVpcFirewallControlPolicy operation to query the details of all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        ## Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeVpcFirewallControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3660,7 +4574,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse:
         """
-        You can call the DescribeVpcFirewallControlPolicy operation to query the details of all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        ## Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeVpcFirewallControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3716,7 +4632,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse:
         """
-        You can call the DescribeVpcFirewallControlPolicy operation to query the details of all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        ## Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeVpcFirewallControlPolicyRequest
         @return: DescribeVpcFirewallControlPolicyResponse
@@ -3729,7 +4647,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse:
         """
-        You can call the DescribeVpcFirewallControlPolicy operation to query the details of all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        ## Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeVpcFirewallControlPolicyRequest
         @return: DescribeVpcFirewallControlPolicyResponse
@@ -3976,8 +4896,8 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
         """
         You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ### Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeVpcFirewallListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4035,8 +4955,8 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
         """
         You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ### Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeVpcFirewallListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4093,8 +5013,8 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
         """
         You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ### Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeVpcFirewallListRequest
         @return: DescribeVpcFirewallListResponse
@@ -4108,8 +5028,8 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
         """
         You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ### Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeVpcFirewallListRequest
         @return: DescribeVpcFirewallListResponse
@@ -4783,6 +5703,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_control_policy_position_with_options_async(request, runtime)
 
+    def modify_firewall_v2route_policy_switch_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.should_recover):
+            query['ShouldRecover'] = request.should_recover
+        if not UtilClient.is_unset(request.tr_firewall_route_policy_id):
+            query['TrFirewallRoutePolicyId'] = request.tr_firewall_route_policy_id
+        if not UtilClient.is_unset(request.tr_firewall_route_policy_switch_status):
+            query['TrFirewallRoutePolicySwitchStatus'] = request.tr_firewall_route_policy_switch_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyFirewallV2RoutePolicySwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_firewall_v2route_policy_switch_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.should_recover):
+            query['ShouldRecover'] = request.should_recover
+        if not UtilClient.is_unset(request.tr_firewall_route_policy_id):
+            query['TrFirewallRoutePolicyId'] = request.tr_firewall_route_policy_id
+        if not UtilClient.is_unset(request.tr_firewall_route_policy_switch_status):
+            query['TrFirewallRoutePolicySwitchStatus'] = request.tr_firewall_route_policy_switch_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyFirewallV2RoutePolicySwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_firewall_v2route_policy_switch(
+        self,
+        request: cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchRequest,
+    ) -> cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_firewall_v2route_policy_switch_with_options(request, runtime)
+
+    async def modify_firewall_v2route_policy_switch_async(
+        self,
+        request: cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchRequest,
+    ) -> cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_firewall_v2route_policy_switch_with_options_async(request, runtime)
+
     def modify_instance_member_attributes_with_options(
         self,
         request: cloudfw_20171207_models.ModifyInstanceMemberAttributesRequest,
@@ -4998,6 +6004,182 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_policy_advanced_config_with_options_async(request, runtime)
+
+    def modify_tr_firewall_v2configuration_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.firewall_name):
+            query['FirewallName'] = request.firewall_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTrFirewallV2Configuration',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_tr_firewall_v2configuration_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.firewall_name):
+            query['FirewallName'] = request.firewall_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTrFirewallV2Configuration',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_tr_firewall_v2configuration(
+        self,
+        request: cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationRequest,
+    ) -> cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_tr_firewall_v2configuration_with_options(request, runtime)
+
+    async def modify_tr_firewall_v2configuration_async(
+        self,
+        request: cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationRequest,
+    ) -> cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_tr_firewall_v2configuration_with_options_async(request, runtime)
+
+    def modify_tr_firewall_v2route_policy_scope_with_options(
+        self,
+        tmp_req: cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dest_candidate_list):
+            request.dest_candidate_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dest_candidate_list, 'DestCandidateList', 'json')
+        if not UtilClient.is_unset(tmp_req.src_candidate_list):
+            request.src_candidate_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.src_candidate_list, 'SrcCandidateList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dest_candidate_list_shrink):
+            query['DestCandidateList'] = request.dest_candidate_list_shrink
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.src_candidate_list_shrink):
+            query['SrcCandidateList'] = request.src_candidate_list_shrink
+        if not UtilClient.is_unset(request.tr_firewall_route_policy_id):
+            query['TrFirewallRoutePolicyId'] = request.tr_firewall_route_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTrFirewallV2RoutePolicyScope',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_tr_firewall_v2route_policy_scope_with_options_async(
+        self,
+        tmp_req: cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dest_candidate_list):
+            request.dest_candidate_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dest_candidate_list, 'DestCandidateList', 'json')
+        if not UtilClient.is_unset(tmp_req.src_candidate_list):
+            request.src_candidate_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.src_candidate_list, 'SrcCandidateList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dest_candidate_list_shrink):
+            query['DestCandidateList'] = request.dest_candidate_list_shrink
+        if not UtilClient.is_unset(request.firewall_id):
+            query['FirewallId'] = request.firewall_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.src_candidate_list_shrink):
+            query['SrcCandidateList'] = request.src_candidate_list_shrink
+        if not UtilClient.is_unset(request.tr_firewall_route_policy_id):
+            query['TrFirewallRoutePolicyId'] = request.tr_firewall_route_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTrFirewallV2RoutePolicyScope',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_tr_firewall_v2route_policy_scope(
+        self,
+        request: cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeRequest,
+    ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_tr_firewall_v2route_policy_scope_with_options(request, runtime)
+
+    async def modify_tr_firewall_v2route_policy_scope_async(
+        self,
+        request: cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeRequest,
+    ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_tr_firewall_v2route_policy_scope_with_options_async(request, runtime)
 
     def modify_vpc_firewall_cen_configure_with_options(
         self,
@@ -5365,7 +6547,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse:
         """
-        You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specific policy group. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
+        You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5430,7 +6612,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse:
         """
-        You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specific policy group. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
+        You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5494,7 +6676,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse:
         """
-        You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specific policy group. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
+        You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5509,7 +6691,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse:
         """
-        You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specific policy group. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
+        You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         

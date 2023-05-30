@@ -1,3 +1,17 @@
+2023-05-30 Version: 1.2.7
+- Support rematch acl.
+- Fix bugs for Fw-TR apis.
+- Add new api DescribeDownloadTaskType.
+- Add new api CreateDownloadTask.
+- Add new api DescribeDownloadTask.
+- Add new api DeleteDownloadTask.
+- Supported nat acl for cloudfw.
+- Fix bug of DescribeDownloadTaskType on no login env.
+- Fix bug of API DescribeDownloadTask on no login env.
+- Fixed bugs for vuln interface.
+- Support ips muti address group.
+- Deprecated sourceIp.
+
 2023-03-16 Version: 1.2.6
 - Support search risk event group name.
 
