@@ -1904,6 +1904,244 @@ class Client(OpenApiClient):
         detect_knee_xray_resp = await self.detect_knee_xray_with_options_async(detect_knee_xray_req, runtime)
         return detect_knee_xray_resp
 
+    def detect_liver_steatosis_with_options(
+        self,
+        request: imageprocess_20200320_models.DetectLiverSteatosisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectLiverSteatosisResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectLiverSteatosis',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.DetectLiverSteatosisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_liver_steatosis_with_options_async(
+        self,
+        request: imageprocess_20200320_models.DetectLiverSteatosisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectLiverSteatosisResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectLiverSteatosis',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.DetectLiverSteatosisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_liver_steatosis(
+        self,
+        request: imageprocess_20200320_models.DetectLiverSteatosisRequest,
+    ) -> imageprocess_20200320_models.DetectLiverSteatosisResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_liver_steatosis_with_options(request, runtime)
+
+    async def detect_liver_steatosis_async(
+        self,
+        request: imageprocess_20200320_models.DetectLiverSteatosisRequest,
+    ) -> imageprocess_20200320_models.DetectLiverSteatosisResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_liver_steatosis_with_options_async(request, runtime)
+
+    def detect_liver_steatosis_advance(
+        self,
+        request: imageprocess_20200320_models.DetectLiverSteatosisAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectLiverSteatosisResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='imageprocess',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        detect_liver_steatosis_req = imageprocess_20200320_models.DetectLiverSteatosisRequest()
+        OpenApiUtilClient.convert(request, detect_liver_steatosis_req)
+        if not UtilClient.is_unset(request.urllist):
+            i_0 = 0
+            for item_0 in request.urllist:
+                if not UtilClient.is_unset(item_0.urlobject):
+                    auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    oss_client.post_object(upload_request, oss_runtime)
+                    tmp = detect_liver_steatosis_req.urllist[i_0]
+                    tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        detect_liver_steatosis_resp = self.detect_liver_steatosis_with_options(detect_liver_steatosis_req, runtime)
+        return detect_liver_steatosis_resp
+
+    async def detect_liver_steatosis_advance_async(
+        self,
+        request: imageprocess_20200320_models.DetectLiverSteatosisAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectLiverSteatosisResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='imageprocess',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        detect_liver_steatosis_req = imageprocess_20200320_models.DetectLiverSteatosisRequest()
+        OpenApiUtilClient.convert(request, detect_liver_steatosis_req)
+        if not UtilClient.is_unset(request.urllist):
+            i_0 = 0
+            for item_0 in request.urllist:
+                if not UtilClient.is_unset(item_0.urlobject):
+                    auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    await oss_client.post_object_async(upload_request, oss_runtime)
+                    tmp = detect_liver_steatosis_req.urllist[i_0]
+                    tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        detect_liver_steatosis_resp = await self.detect_liver_steatosis_with_options_async(detect_liver_steatosis_req, runtime)
+        return detect_liver_steatosis_resp
+
     def detect_lung_nodule_with_options(
         self,
         request: imageprocess_20200320_models.DetectLungNoduleRequest,
@@ -3430,6 +3668,244 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_async_job_result_with_options_async(request, runtime)
 
+    def predict_cvdwith_options(
+        self,
+        request: imageprocess_20200320_models.PredictCVDRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.PredictCVDResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PredictCVD',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.PredictCVDResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def predict_cvdwith_options_async(
+        self,
+        request: imageprocess_20200320_models.PredictCVDRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.PredictCVDResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PredictCVD',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.PredictCVDResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def predict_cvd(
+        self,
+        request: imageprocess_20200320_models.PredictCVDRequest,
+    ) -> imageprocess_20200320_models.PredictCVDResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.predict_cvdwith_options(request, runtime)
+
+    async def predict_cvd_async(
+        self,
+        request: imageprocess_20200320_models.PredictCVDRequest,
+    ) -> imageprocess_20200320_models.PredictCVDResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.predict_cvdwith_options_async(request, runtime)
+
+    def predict_cvdadvance(
+        self,
+        request: imageprocess_20200320_models.PredictCVDAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.PredictCVDResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='imageprocess',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        predict_cvdreq = imageprocess_20200320_models.PredictCVDRequest()
+        OpenApiUtilClient.convert(request, predict_cvdreq)
+        if not UtilClient.is_unset(request.urllist):
+            i_0 = 0
+            for item_0 in request.urllist:
+                if not UtilClient.is_unset(item_0.urlobject):
+                    auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    oss_client.post_object(upload_request, oss_runtime)
+                    tmp = predict_cvdreq.urllist[i_0]
+                    tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        predict_cvdresp = self.predict_cvdwith_options(predict_cvdreq, runtime)
+        return predict_cvdresp
+
+    async def predict_cvdadvance_async(
+        self,
+        request: imageprocess_20200320_models.PredictCVDAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.PredictCVDResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='imageprocess',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        predict_cvdreq = imageprocess_20200320_models.PredictCVDRequest()
+        OpenApiUtilClient.convert(request, predict_cvdreq)
+        if not UtilClient.is_unset(request.urllist):
+            i_0 = 0
+            for item_0 in request.urllist:
+                if not UtilClient.is_unset(item_0.urlobject):
+                    auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    await oss_client.post_object_async(upload_request, oss_runtime)
+                    tmp = predict_cvdreq.urllist[i_0]
+                    tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        predict_cvdresp = await self.predict_cvdwith_options_async(predict_cvdreq, runtime)
+        return predict_cvdresp
+
     def run_ctregistration_with_options(
         self,
         request: imageprocess_20200320_models.RunCTRegistrationRequest,
@@ -3980,6 +4456,244 @@ class Client(OpenApiClient):
         run_med_qaresp = await self.run_med_qawith_options_async(run_med_qareq, runtime)
         return run_med_qaresp
 
+    def screen_crcwith_options(
+        self,
+        request: imageprocess_20200320_models.ScreenCRCRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenCRCResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScreenCRC',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.ScreenCRCResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def screen_crcwith_options_async(
+        self,
+        request: imageprocess_20200320_models.ScreenCRCRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenCRCResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScreenCRC',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.ScreenCRCResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def screen_crc(
+        self,
+        request: imageprocess_20200320_models.ScreenCRCRequest,
+    ) -> imageprocess_20200320_models.ScreenCRCResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.screen_crcwith_options(request, runtime)
+
+    async def screen_crc_async(
+        self,
+        request: imageprocess_20200320_models.ScreenCRCRequest,
+    ) -> imageprocess_20200320_models.ScreenCRCResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.screen_crcwith_options_async(request, runtime)
+
+    def screen_crcadvance(
+        self,
+        request: imageprocess_20200320_models.ScreenCRCAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenCRCResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='imageprocess',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        screen_crcreq = imageprocess_20200320_models.ScreenCRCRequest()
+        OpenApiUtilClient.convert(request, screen_crcreq)
+        if not UtilClient.is_unset(request.urllist):
+            i_0 = 0
+            for item_0 in request.urllist:
+                if not UtilClient.is_unset(item_0.urlobject):
+                    auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    oss_client.post_object(upload_request, oss_runtime)
+                    tmp = screen_crcreq.urllist[i_0]
+                    tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        screen_crcresp = self.screen_crcwith_options(screen_crcreq, runtime)
+        return screen_crcresp
+
+    async def screen_crcadvance_async(
+        self,
+        request: imageprocess_20200320_models.ScreenCRCAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenCRCResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='imageprocess',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        screen_crcreq = imageprocess_20200320_models.ScreenCRCRequest()
+        OpenApiUtilClient.convert(request, screen_crcreq)
+        if not UtilClient.is_unset(request.urllist):
+            i_0 = 0
+            for item_0 in request.urllist:
+                if not UtilClient.is_unset(item_0.urlobject):
+                    auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    await oss_client.post_object_async(upload_request, oss_runtime)
+                    tmp = screen_crcreq.urllist[i_0]
+                    tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        screen_crcresp = await self.screen_crcwith_options_async(screen_crcreq, runtime)
+        return screen_crcresp
+
     def screen_chest_ctwith_options(
         self,
         request: imageprocess_20200320_models.ScreenChestCTRequest,
@@ -4295,6 +5009,482 @@ class Client(OpenApiClient):
     ) -> imageprocess_20200320_models.ScreenECResponse:
         runtime = util_models.RuntimeOptions()
         return await self.screen_ecwith_options_async(request, runtime)
+
+    def screen_gcwith_options(
+        self,
+        request: imageprocess_20200320_models.ScreenGCRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenGCResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScreenGC',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.ScreenGCResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def screen_gcwith_options_async(
+        self,
+        request: imageprocess_20200320_models.ScreenGCRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenGCResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScreenGC',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.ScreenGCResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def screen_gc(
+        self,
+        request: imageprocess_20200320_models.ScreenGCRequest,
+    ) -> imageprocess_20200320_models.ScreenGCResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.screen_gcwith_options(request, runtime)
+
+    async def screen_gc_async(
+        self,
+        request: imageprocess_20200320_models.ScreenGCRequest,
+    ) -> imageprocess_20200320_models.ScreenGCResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.screen_gcwith_options_async(request, runtime)
+
+    def screen_gcadvance(
+        self,
+        request: imageprocess_20200320_models.ScreenGCAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenGCResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='imageprocess',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        screen_gcreq = imageprocess_20200320_models.ScreenGCRequest()
+        OpenApiUtilClient.convert(request, screen_gcreq)
+        if not UtilClient.is_unset(request.urllist):
+            i_0 = 0
+            for item_0 in request.urllist:
+                if not UtilClient.is_unset(item_0.urlobject):
+                    auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    oss_client.post_object(upload_request, oss_runtime)
+                    tmp = screen_gcreq.urllist[i_0]
+                    tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        screen_gcresp = self.screen_gcwith_options(screen_gcreq, runtime)
+        return screen_gcresp
+
+    async def screen_gcadvance_async(
+        self,
+        request: imageprocess_20200320_models.ScreenGCAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenGCResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='imageprocess',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        screen_gcreq = imageprocess_20200320_models.ScreenGCRequest()
+        OpenApiUtilClient.convert(request, screen_gcreq)
+        if not UtilClient.is_unset(request.urllist):
+            i_0 = 0
+            for item_0 in request.urllist:
+                if not UtilClient.is_unset(item_0.urlobject):
+                    auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    await oss_client.post_object_async(upload_request, oss_runtime)
+                    tmp = screen_gcreq.urllist[i_0]
+                    tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        screen_gcresp = await self.screen_gcwith_options_async(screen_gcreq, runtime)
+        return screen_gcresp
+
+    def screen_lcwith_options(
+        self,
+        request: imageprocess_20200320_models.ScreenLCRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenLCResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScreenLC',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.ScreenLCResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def screen_lcwith_options_async(
+        self,
+        request: imageprocess_20200320_models.ScreenLCRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenLCResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScreenLC',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.ScreenLCResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def screen_lc(
+        self,
+        request: imageprocess_20200320_models.ScreenLCRequest,
+    ) -> imageprocess_20200320_models.ScreenLCResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.screen_lcwith_options(request, runtime)
+
+    async def screen_lc_async(
+        self,
+        request: imageprocess_20200320_models.ScreenLCRequest,
+    ) -> imageprocess_20200320_models.ScreenLCResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.screen_lcwith_options_async(request, runtime)
+
+    def screen_lcadvance(
+        self,
+        request: imageprocess_20200320_models.ScreenLCAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenLCResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='imageprocess',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        screen_lcreq = imageprocess_20200320_models.ScreenLCRequest()
+        OpenApiUtilClient.convert(request, screen_lcreq)
+        if not UtilClient.is_unset(request.urllist):
+            i_0 = 0
+            for item_0 in request.urllist:
+                if not UtilClient.is_unset(item_0.urlobject):
+                    auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    oss_client.post_object(upload_request, oss_runtime)
+                    tmp = screen_lcreq.urllist[i_0]
+                    tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        screen_lcresp = self.screen_lcwith_options(screen_lcreq, runtime)
+        return screen_lcresp
+
+    async def screen_lcadvance_async(
+        self,
+        request: imageprocess_20200320_models.ScreenLCAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenLCResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='imageprocess',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        screen_lcreq = imageprocess_20200320_models.ScreenLCRequest()
+        OpenApiUtilClient.convert(request, screen_lcreq)
+        if not UtilClient.is_unset(request.urllist):
+            i_0 = 0
+            for item_0 in request.urllist:
+                if not UtilClient.is_unset(item_0.urlobject):
+                    auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    await oss_client.post_object_async(upload_request, oss_runtime)
+                    tmp = screen_lcreq.urllist[i_0]
+                    tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        screen_lcresp = await self.screen_lcwith_options_async(screen_lcreq, runtime)
+        return screen_lcresp
 
     def segment_lymph_node_with_options(
         self,

@@ -2592,6 +2592,445 @@ class DetectKneeXRayResponse(TeaModel):
         return self
 
 
+class DetectLiverSteatosisRequestURLList(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class DetectLiverSteatosisRequest(TeaModel):
+    def __init__(
+        self,
+        data_format: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        source_type: str = None,
+        urllist: List[DetectLiverSteatosisRequestURLList] = None,
+    ):
+        self.data_format = data_format
+        self.org_id = org_id
+        self.org_name = org_name
+        self.source_type = source_type
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = DetectLiverSteatosisRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class DetectLiverSteatosisAdvanceRequestURLList(TeaModel):
+    def __init__(
+        self,
+        urlobject: BinaryIO = None,
+    ):
+        self.urlobject = urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.urlobject is not None:
+            result['URL'] = self.urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.urlobject = m.get('URL')
+        return self
+
+
+class DetectLiverSteatosisAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        data_format: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        source_type: str = None,
+        urllist: List[DetectLiverSteatosisAdvanceRequestURLList] = None,
+    ):
+        self.data_format = data_format
+        self.org_id = org_id
+        self.org_name = org_name
+        self.source_type = source_type
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = DetectLiverSteatosisAdvanceRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class DetectLiverSteatosisResponseBodyDataDetections(TeaModel):
+    def __init__(
+        self,
+        liver_hu: float = None,
+        liver_roi1: float = None,
+        liver_roi2: float = None,
+        liver_roi3: float = None,
+        liver_slice: float = None,
+        liver_spleen_difference: float = None,
+        liver_spleen_ratio: float = None,
+        liver_volume: float = None,
+        prediction: str = None,
+        probability: float = None,
+        roi1center: List[int] = None,
+        roi2center: List[int] = None,
+        roi3center: List[int] = None,
+        radius: int = None,
+        spleen_center: List[int] = None,
+        spleen_hu: float = None,
+        spleen_roi: float = None,
+        spleen_slice: float = None,
+        spleen_volume: float = None,
+    ):
+        self.liver_hu = liver_hu
+        self.liver_roi1 = liver_roi1
+        self.liver_roi2 = liver_roi2
+        self.liver_roi3 = liver_roi3
+        self.liver_slice = liver_slice
+        self.liver_spleen_difference = liver_spleen_difference
+        self.liver_spleen_ratio = liver_spleen_ratio
+        self.liver_volume = liver_volume
+        self.prediction = prediction
+        self.probability = probability
+        self.roi1center = roi1center
+        self.roi2center = roi2center
+        self.roi3center = roi3center
+        self.radius = radius
+        self.spleen_center = spleen_center
+        self.spleen_hu = spleen_hu
+        self.spleen_roi = spleen_roi
+        self.spleen_slice = spleen_slice
+        self.spleen_volume = spleen_volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.liver_hu is not None:
+            result['LiverHU'] = self.liver_hu
+        if self.liver_roi1 is not None:
+            result['LiverROI1'] = self.liver_roi1
+        if self.liver_roi2 is not None:
+            result['LiverROI2'] = self.liver_roi2
+        if self.liver_roi3 is not None:
+            result['LiverROI3'] = self.liver_roi3
+        if self.liver_slice is not None:
+            result['LiverSlice'] = self.liver_slice
+        if self.liver_spleen_difference is not None:
+            result['LiverSpleenDifference'] = self.liver_spleen_difference
+        if self.liver_spleen_ratio is not None:
+            result['LiverSpleenRatio'] = self.liver_spleen_ratio
+        if self.liver_volume is not None:
+            result['LiverVolume'] = self.liver_volume
+        if self.prediction is not None:
+            result['Prediction'] = self.prediction
+        if self.probability is not None:
+            result['Probability'] = self.probability
+        if self.roi1center is not None:
+            result['ROI1Center'] = self.roi1center
+        if self.roi2center is not None:
+            result['ROI2Center'] = self.roi2center
+        if self.roi3center is not None:
+            result['ROI3Center'] = self.roi3center
+        if self.radius is not None:
+            result['Radius'] = self.radius
+        if self.spleen_center is not None:
+            result['SpleenCenter'] = self.spleen_center
+        if self.spleen_hu is not None:
+            result['SpleenHU'] = self.spleen_hu
+        if self.spleen_roi is not None:
+            result['SpleenROI'] = self.spleen_roi
+        if self.spleen_slice is not None:
+            result['SpleenSlice'] = self.spleen_slice
+        if self.spleen_volume is not None:
+            result['SpleenVolume'] = self.spleen_volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LiverHU') is not None:
+            self.liver_hu = m.get('LiverHU')
+        if m.get('LiverROI1') is not None:
+            self.liver_roi1 = m.get('LiverROI1')
+        if m.get('LiverROI2') is not None:
+            self.liver_roi2 = m.get('LiverROI2')
+        if m.get('LiverROI3') is not None:
+            self.liver_roi3 = m.get('LiverROI3')
+        if m.get('LiverSlice') is not None:
+            self.liver_slice = m.get('LiverSlice')
+        if m.get('LiverSpleenDifference') is not None:
+            self.liver_spleen_difference = m.get('LiverSpleenDifference')
+        if m.get('LiverSpleenRatio') is not None:
+            self.liver_spleen_ratio = m.get('LiverSpleenRatio')
+        if m.get('LiverVolume') is not None:
+            self.liver_volume = m.get('LiverVolume')
+        if m.get('Prediction') is not None:
+            self.prediction = m.get('Prediction')
+        if m.get('Probability') is not None:
+            self.probability = m.get('Probability')
+        if m.get('ROI1Center') is not None:
+            self.roi1center = m.get('ROI1Center')
+        if m.get('ROI2Center') is not None:
+            self.roi2center = m.get('ROI2Center')
+        if m.get('ROI3Center') is not None:
+            self.roi3center = m.get('ROI3Center')
+        if m.get('Radius') is not None:
+            self.radius = m.get('Radius')
+        if m.get('SpleenCenter') is not None:
+            self.spleen_center = m.get('SpleenCenter')
+        if m.get('SpleenHU') is not None:
+            self.spleen_hu = m.get('SpleenHU')
+        if m.get('SpleenROI') is not None:
+            self.spleen_roi = m.get('SpleenROI')
+        if m.get('SpleenSlice') is not None:
+            self.spleen_slice = m.get('SpleenSlice')
+        if m.get('SpleenVolume') is not None:
+            self.spleen_volume = m.get('SpleenVolume')
+        return self
+
+
+class DetectLiverSteatosisResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        detections: List[DetectLiverSteatosisResponseBodyDataDetections] = None,
+        origin: List[float] = None,
+        spacing: List[float] = None,
+    ):
+        self.detections = detections
+        self.origin = origin
+        self.spacing = spacing
+
+    def validate(self):
+        if self.detections:
+            for k in self.detections:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Detections'] = []
+        if self.detections is not None:
+            for k in self.detections:
+                result['Detections'].append(k.to_map() if k else None)
+        if self.origin is not None:
+            result['Origin'] = self.origin
+        if self.spacing is not None:
+            result['Spacing'] = self.spacing
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detections = []
+        if m.get('Detections') is not None:
+            for k in m.get('Detections'):
+                temp_model = DetectLiverSteatosisResponseBodyDataDetections()
+                self.detections.append(temp_model.from_map(k))
+        if m.get('Origin') is not None:
+            self.origin = m.get('Origin')
+        if m.get('Spacing') is not None:
+            self.spacing = m.get('Spacing')
+        return self
+
+
+class DetectLiverSteatosisResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DetectLiverSteatosisResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DetectLiverSteatosisResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetectLiverSteatosisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetectLiverSteatosisResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetectLiverSteatosisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DetectLungNoduleRequestURLList(TeaModel):
     def __init__(
         self,
@@ -3308,6 +3747,7 @@ class DetectLymphResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # 提交异步任务后的提示信息。
         self.message = message
         self.request_id = request_id
 
@@ -3609,6 +4049,7 @@ class DetectPancResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # 提交异步任务后的提示信息。
         self.message = message
         self.request_id = request_id
 
@@ -4901,6 +5342,438 @@ class GetAsyncJobResultResponse(TeaModel):
         return self
 
 
+class PredictCVDRequestURLList(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class PredictCVDRequest(TeaModel):
+    def __init__(
+        self,
+        data_format: str = None,
+        data_source_type: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        urllist: List[PredictCVDRequestURLList] = None,
+    ):
+        self.data_format = data_format
+        self.data_source_type = data_source_type
+        self.org_id = org_id
+        self.org_name = org_name
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = PredictCVDRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class PredictCVDAdvanceRequestURLList(TeaModel):
+    def __init__(
+        self,
+        urlobject: BinaryIO = None,
+    ):
+        self.urlobject = urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.urlobject is not None:
+            result['URL'] = self.urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.urlobject = m.get('URL')
+        return self
+
+
+class PredictCVDAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        data_format: str = None,
+        data_source_type: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        urllist: List[PredictCVDAdvanceRequestURLList] = None,
+    ):
+        self.data_format = data_format
+        self.data_source_type = data_source_type
+        self.org_id = org_id
+        self.org_name = org_name
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = PredictCVDAdvanceRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class PredictCVDResponseBodyDataLesionFeatureScore(TeaModel):
+    def __init__(
+        self,
+        aorta_calcium_score: List[float] = None,
+        aorta_calcium_volume: List[float] = None,
+        asc_ao_max_diam: List[float] = None,
+        ascend_aorta_length: List[float] = None,
+        cardio_thoracic_ratio: List[float] = None,
+        coronary_calcium_score: List[float] = None,
+        coronary_calcium_vol: List[float] = None,
+        deep_feature: List[float] = None,
+        eat_humean: List[float] = None,
+        eat_hustd: List[float] = None,
+        eat_volume: List[float] = None,
+        left_lung_lowatt_ratio: List[float] = None,
+        myo_epi_ratio: List[float] = None,
+        right_lung_lowatt_ratio: List[float] = None,
+    ):
+        self.aorta_calcium_score = aorta_calcium_score
+        self.aorta_calcium_volume = aorta_calcium_volume
+        self.asc_ao_max_diam = asc_ao_max_diam
+        self.ascend_aorta_length = ascend_aorta_length
+        self.cardio_thoracic_ratio = cardio_thoracic_ratio
+        self.coronary_calcium_score = coronary_calcium_score
+        self.coronary_calcium_vol = coronary_calcium_vol
+        self.deep_feature = deep_feature
+        self.eat_humean = eat_humean
+        self.eat_hustd = eat_hustd
+        self.eat_volume = eat_volume
+        self.left_lung_lowatt_ratio = left_lung_lowatt_ratio
+        self.myo_epi_ratio = myo_epi_ratio
+        self.right_lung_lowatt_ratio = right_lung_lowatt_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aorta_calcium_score is not None:
+            result['AortaCalciumScore'] = self.aorta_calcium_score
+        if self.aorta_calcium_volume is not None:
+            result['AortaCalciumVolume'] = self.aorta_calcium_volume
+        if self.asc_ao_max_diam is not None:
+            result['AscAoMaxDiam'] = self.asc_ao_max_diam
+        if self.ascend_aorta_length is not None:
+            result['AscendAortaLength'] = self.ascend_aorta_length
+        if self.cardio_thoracic_ratio is not None:
+            result['CardioThoracicRatio'] = self.cardio_thoracic_ratio
+        if self.coronary_calcium_score is not None:
+            result['CoronaryCalciumScore'] = self.coronary_calcium_score
+        if self.coronary_calcium_vol is not None:
+            result['CoronaryCalciumVol'] = self.coronary_calcium_vol
+        if self.deep_feature is not None:
+            result['DeepFeature'] = self.deep_feature
+        if self.eat_humean is not None:
+            result['EatHUMean'] = self.eat_humean
+        if self.eat_hustd is not None:
+            result['EatHUSTD'] = self.eat_hustd
+        if self.eat_volume is not None:
+            result['EatVolume'] = self.eat_volume
+        if self.left_lung_lowatt_ratio is not None:
+            result['LeftLungLowattRatio'] = self.left_lung_lowatt_ratio
+        if self.myo_epi_ratio is not None:
+            result['MyoEpiRatio'] = self.myo_epi_ratio
+        if self.right_lung_lowatt_ratio is not None:
+            result['RightLungLowattRatio'] = self.right_lung_lowatt_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AortaCalciumScore') is not None:
+            self.aorta_calcium_score = m.get('AortaCalciumScore')
+        if m.get('AortaCalciumVolume') is not None:
+            self.aorta_calcium_volume = m.get('AortaCalciumVolume')
+        if m.get('AscAoMaxDiam') is not None:
+            self.asc_ao_max_diam = m.get('AscAoMaxDiam')
+        if m.get('AscendAortaLength') is not None:
+            self.ascend_aorta_length = m.get('AscendAortaLength')
+        if m.get('CardioThoracicRatio') is not None:
+            self.cardio_thoracic_ratio = m.get('CardioThoracicRatio')
+        if m.get('CoronaryCalciumScore') is not None:
+            self.coronary_calcium_score = m.get('CoronaryCalciumScore')
+        if m.get('CoronaryCalciumVol') is not None:
+            self.coronary_calcium_vol = m.get('CoronaryCalciumVol')
+        if m.get('DeepFeature') is not None:
+            self.deep_feature = m.get('DeepFeature')
+        if m.get('EatHUMean') is not None:
+            self.eat_humean = m.get('EatHUMean')
+        if m.get('EatHUSTD') is not None:
+            self.eat_hustd = m.get('EatHUSTD')
+        if m.get('EatVolume') is not None:
+            self.eat_volume = m.get('EatVolume')
+        if m.get('LeftLungLowattRatio') is not None:
+            self.left_lung_lowatt_ratio = m.get('LeftLungLowattRatio')
+        if m.get('MyoEpiRatio') is not None:
+            self.myo_epi_ratio = m.get('MyoEpiRatio')
+        if m.get('RightLungLowattRatio') is not None:
+            self.right_lung_lowatt_ratio = m.get('RightLungLowattRatio')
+        return self
+
+
+class PredictCVDResponseBodyDataLesion(TeaModel):
+    def __init__(
+        self,
+        cvdprobability: float = None,
+        feature_score: PredictCVDResponseBodyDataLesionFeatureScore = None,
+        result_url: List[str] = None,
+    ):
+        self.cvdprobability = cvdprobability
+        self.feature_score = feature_score
+        self.result_url = result_url
+
+    def validate(self):
+        if self.feature_score:
+            self.feature_score.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cvdprobability is not None:
+            result['CVDProbability'] = self.cvdprobability
+        if self.feature_score is not None:
+            result['FeatureScore'] = self.feature_score.to_map()
+        if self.result_url is not None:
+            result['ResultURL'] = self.result_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CVDProbability') is not None:
+            self.cvdprobability = m.get('CVDProbability')
+        if m.get('FeatureScore') is not None:
+            temp_model = PredictCVDResponseBodyDataLesionFeatureScore()
+            self.feature_score = temp_model.from_map(m['FeatureScore'])
+        if m.get('ResultURL') is not None:
+            self.result_url = m.get('ResultURL')
+        return self
+
+
+class PredictCVDResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        lesion: PredictCVDResponseBodyDataLesion = None,
+    ):
+        self.lesion = lesion
+
+    def validate(self):
+        if self.lesion:
+            self.lesion.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lesion is not None:
+            result['Lesion'] = self.lesion.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lesion') is not None:
+            temp_model = PredictCVDResponseBodyDataLesion()
+            self.lesion = temp_model.from_map(m['Lesion'])
+        return self
+
+
+class PredictCVDResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: PredictCVDResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = PredictCVDResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PredictCVDResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PredictCVDResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PredictCVDResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RunCTRegistrationRequestFloatingList(TeaModel):
     def __init__(
         self,
@@ -5765,6 +6638,337 @@ class RunMedQAResponse(TeaModel):
         return self
 
 
+class ScreenCRCRequestURLList(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class ScreenCRCRequest(TeaModel):
+    def __init__(
+        self,
+        data_format: str = None,
+        data_source_type: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        urllist: List[ScreenCRCRequestURLList] = None,
+    ):
+        self.data_format = data_format
+        self.data_source_type = data_source_type
+        self.org_id = org_id
+        self.org_name = org_name
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = ScreenCRCRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class ScreenCRCAdvanceRequestURLList(TeaModel):
+    def __init__(
+        self,
+        urlobject: BinaryIO = None,
+    ):
+        self.urlobject = urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.urlobject is not None:
+            result['URL'] = self.urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.urlobject = m.get('URL')
+        return self
+
+
+class ScreenCRCAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        data_format: str = None,
+        data_source_type: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        urllist: List[ScreenCRCAdvanceRequestURLList] = None,
+    ):
+        self.data_format = data_format
+        self.data_source_type = data_source_type
+        self.org_id = org_id
+        self.org_name = org_name
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = ScreenCRCAdvanceRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class ScreenCRCResponseBodyDataLesion(TeaModel):
+    def __init__(
+        self,
+        crcvolume: str = None,
+        colorectum_volume: str = None,
+        mask: str = None,
+        probabilities: str = None,
+    ):
+        self.crcvolume = crcvolume
+        self.colorectum_volume = colorectum_volume
+        self.mask = mask
+        self.probabilities = probabilities
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.crcvolume is not None:
+            result['CRCVolume'] = self.crcvolume
+        if self.colorectum_volume is not None:
+            result['ColorectumVolume'] = self.colorectum_volume
+        if self.mask is not None:
+            result['Mask'] = self.mask
+        if self.probabilities is not None:
+            result['Probabilities'] = self.probabilities
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CRCVolume') is not None:
+            self.crcvolume = m.get('CRCVolume')
+        if m.get('ColorectumVolume') is not None:
+            self.colorectum_volume = m.get('ColorectumVolume')
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
+        if m.get('Probabilities') is not None:
+            self.probabilities = m.get('Probabilities')
+        return self
+
+
+class ScreenCRCResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        lesion: ScreenCRCResponseBodyDataLesion = None,
+    ):
+        self.lesion = lesion
+
+    def validate(self):
+        if self.lesion:
+            self.lesion.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lesion is not None:
+            result['Lesion'] = self.lesion.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lesion') is not None:
+            temp_model = ScreenCRCResponseBodyDataLesion()
+            self.lesion = temp_model.from_map(m['Lesion'])
+        return self
+
+
+class ScreenCRCResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ScreenCRCResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ScreenCRCResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ScreenCRCResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ScreenCRCResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ScreenCRCResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ScreenChestCTRequestURLList(TeaModel):
     def __init__(
         self,
@@ -6276,11 +7480,13 @@ class ScreenChestCTResponseBodyDataCalcBMD(TeaModel):
         detections: List[ScreenChestCTResponseBodyDataCalcBMDDetections] = None,
         origin: List[float] = None,
         result_url: str = None,
+        series_instance_uid: str = None,
         spacing: List[float] = None,
     ):
         self.detections = detections
         self.origin = origin
         self.result_url = result_url
+        self.series_instance_uid = series_instance_uid
         self.spacing = spacing
 
     def validate(self):
@@ -6303,6 +7509,8 @@ class ScreenChestCTResponseBodyDataCalcBMD(TeaModel):
             result['Origin'] = self.origin
         if self.result_url is not None:
             result['ResultURL'] = self.result_url
+        if self.series_instance_uid is not None:
+            result['SeriesInstanceUid'] = self.series_instance_uid
         if self.spacing is not None:
             result['Spacing'] = self.spacing
         return result
@@ -6318,6 +7526,8 @@ class ScreenChestCTResponseBodyDataCalcBMD(TeaModel):
             self.origin = m.get('Origin')
         if m.get('ResultURL') is not None:
             self.result_url = m.get('ResultURL')
+        if m.get('SeriesInstanceUid') is not None:
+            self.series_instance_uid = m.get('SeriesInstanceUid')
         if m.get('Spacing') is not None:
             self.spacing = m.get('Spacing')
         return self
@@ -6520,10 +7730,12 @@ class ScreenChestCTResponseBodyDataDetectLiverSteatosis(TeaModel):
         self,
         detections: List[ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections] = None,
         origin: List[float] = None,
+        series_instance_uid: str = None,
         spacing: List[float] = None,
     ):
         self.detections = detections
         self.origin = origin
+        self.series_instance_uid = series_instance_uid
         self.spacing = spacing
 
     def validate(self):
@@ -6544,6 +7756,8 @@ class ScreenChestCTResponseBodyDataDetectLiverSteatosis(TeaModel):
                 result['Detections'].append(k.to_map() if k else None)
         if self.origin is not None:
             result['Origin'] = self.origin
+        if self.series_instance_uid is not None:
+            result['SeriesInstanceUid'] = self.series_instance_uid
         if self.spacing is not None:
             result['Spacing'] = self.spacing
         return result
@@ -6557,6 +7771,8 @@ class ScreenChestCTResponseBodyDataDetectLiverSteatosis(TeaModel):
                 self.detections.append(temp_model.from_map(k))
         if m.get('Origin') is not None:
             self.origin = m.get('Origin')
+        if m.get('SeriesInstanceUid') is not None:
+            self.series_instance_uid = m.get('SeriesInstanceUid')
         if m.get('Spacing') is not None:
             self.spacing = m.get('Spacing')
         return self
@@ -7103,6 +8319,255 @@ class ScreenChestCTResponseBodyDataLungNodule(TeaModel):
         return self
 
 
+class ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore(TeaModel):
+    def __init__(
+        self,
+        aorta_calcium_score: List[float] = None,
+        aorta_calcium_volume: List[float] = None,
+        asc_ao_max_diam: List[float] = None,
+        ascend_aorta_length: List[float] = None,
+        cardio_thoracic_ratio: List[float] = None,
+        coronary_calcium_vol: List[float] = None,
+        deep_feature: List[float] = None,
+        eat_humean: List[float] = None,
+        eat_hustd: List[float] = None,
+        eat_volume: List[float] = None,
+        left_lung_lowatt_ratio: List[float] = None,
+        myo_epi_ratio: List[float] = None,
+        right_lung_lowatt_ratio: List[float] = None,
+    ):
+        self.aorta_calcium_score = aorta_calcium_score
+        self.aorta_calcium_volume = aorta_calcium_volume
+        self.asc_ao_max_diam = asc_ao_max_diam
+        self.ascend_aorta_length = ascend_aorta_length
+        self.cardio_thoracic_ratio = cardio_thoracic_ratio
+        self.coronary_calcium_vol = coronary_calcium_vol
+        self.deep_feature = deep_feature
+        self.eat_humean = eat_humean
+        self.eat_hustd = eat_hustd
+        self.eat_volume = eat_volume
+        self.left_lung_lowatt_ratio = left_lung_lowatt_ratio
+        self.myo_epi_ratio = myo_epi_ratio
+        self.right_lung_lowatt_ratio = right_lung_lowatt_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aorta_calcium_score is not None:
+            result['AortaCalciumScore'] = self.aorta_calcium_score
+        if self.aorta_calcium_volume is not None:
+            result['AortaCalciumVolume'] = self.aorta_calcium_volume
+        if self.asc_ao_max_diam is not None:
+            result['AscAoMaxDiam'] = self.asc_ao_max_diam
+        if self.ascend_aorta_length is not None:
+            result['AscendAortaLength'] = self.ascend_aorta_length
+        if self.cardio_thoracic_ratio is not None:
+            result['CardioThoracicRatio'] = self.cardio_thoracic_ratio
+        if self.coronary_calcium_vol is not None:
+            result['CoronaryCalciumVol'] = self.coronary_calcium_vol
+        if self.deep_feature is not None:
+            result['DeepFeature'] = self.deep_feature
+        if self.eat_humean is not None:
+            result['EatHUMean'] = self.eat_humean
+        if self.eat_hustd is not None:
+            result['EatHUSTD'] = self.eat_hustd
+        if self.eat_volume is not None:
+            result['EatVolume'] = self.eat_volume
+        if self.left_lung_lowatt_ratio is not None:
+            result['LeftLungLowattRatio'] = self.left_lung_lowatt_ratio
+        if self.myo_epi_ratio is not None:
+            result['MyoEpiRatio'] = self.myo_epi_ratio
+        if self.right_lung_lowatt_ratio is not None:
+            result['RightLungLowattRatio'] = self.right_lung_lowatt_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AortaCalciumScore') is not None:
+            self.aorta_calcium_score = m.get('AortaCalciumScore')
+        if m.get('AortaCalciumVolume') is not None:
+            self.aorta_calcium_volume = m.get('AortaCalciumVolume')
+        if m.get('AscAoMaxDiam') is not None:
+            self.asc_ao_max_diam = m.get('AscAoMaxDiam')
+        if m.get('AscendAortaLength') is not None:
+            self.ascend_aorta_length = m.get('AscendAortaLength')
+        if m.get('CardioThoracicRatio') is not None:
+            self.cardio_thoracic_ratio = m.get('CardioThoracicRatio')
+        if m.get('CoronaryCalciumVol') is not None:
+            self.coronary_calcium_vol = m.get('CoronaryCalciumVol')
+        if m.get('DeepFeature') is not None:
+            self.deep_feature = m.get('DeepFeature')
+        if m.get('EatHUMean') is not None:
+            self.eat_humean = m.get('EatHUMean')
+        if m.get('EatHUSTD') is not None:
+            self.eat_hustd = m.get('EatHUSTD')
+        if m.get('EatVolume') is not None:
+            self.eat_volume = m.get('EatVolume')
+        if m.get('LeftLungLowattRatio') is not None:
+            self.left_lung_lowatt_ratio = m.get('LeftLungLowattRatio')
+        if m.get('MyoEpiRatio') is not None:
+            self.myo_epi_ratio = m.get('MyoEpiRatio')
+        if m.get('RightLungLowattRatio') is not None:
+            self.right_lung_lowatt_ratio = m.get('RightLungLowattRatio')
+        return self
+
+
+class ScreenChestCTResponseBodyDataPredictCVDLesion(TeaModel):
+    def __init__(
+        self,
+        cvdprobability: float = None,
+        feature_score: ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore = None,
+        result_url: List[str] = None,
+    ):
+        self.cvdprobability = cvdprobability
+        self.feature_score = feature_score
+        self.result_url = result_url
+
+    def validate(self):
+        if self.feature_score:
+            self.feature_score.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cvdprobability is not None:
+            result['CVDProbability'] = self.cvdprobability
+        if self.feature_score is not None:
+            result['FeatureScore'] = self.feature_score.to_map()
+        if self.result_url is not None:
+            result['ResultURL'] = self.result_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CVDProbability') is not None:
+            self.cvdprobability = m.get('CVDProbability')
+        if m.get('FeatureScore') is not None:
+            temp_model = ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore()
+            self.feature_score = temp_model.from_map(m['FeatureScore'])
+        if m.get('ResultURL') is not None:
+            self.result_url = m.get('ResultURL')
+        return self
+
+
+class ScreenChestCTResponseBodyDataPredictCVD(TeaModel):
+    def __init__(
+        self,
+        lesion: ScreenChestCTResponseBodyDataPredictCVDLesion = None,
+        series_instance_uid: str = None,
+    ):
+        self.lesion = lesion
+        self.series_instance_uid = series_instance_uid
+
+    def validate(self):
+        if self.lesion:
+            self.lesion.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lesion is not None:
+            result['Lesion'] = self.lesion.to_map()
+        if self.series_instance_uid is not None:
+            result['SeriesInstanceUid'] = self.series_instance_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lesion') is not None:
+            temp_model = ScreenChestCTResponseBodyDataPredictCVDLesion()
+            self.lesion = temp_model.from_map(m['Lesion'])
+        if m.get('SeriesInstanceUid') is not None:
+            self.series_instance_uid = m.get('SeriesInstanceUid')
+        return self
+
+
+class ScreenChestCTResponseBodyDataScreenCRCLesion(TeaModel):
+    def __init__(
+        self,
+        colorectum_volume: str = None,
+        mask: str = None,
+        probabilities: List[str] = None,
+    ):
+        self.colorectum_volume = colorectum_volume
+        self.mask = mask
+        self.probabilities = probabilities
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.colorectum_volume is not None:
+            result['ColorectumVolume'] = self.colorectum_volume
+        if self.mask is not None:
+            result['Mask'] = self.mask
+        if self.probabilities is not None:
+            result['Probabilities'] = self.probabilities
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColorectumVolume') is not None:
+            self.colorectum_volume = m.get('ColorectumVolume')
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
+        if m.get('Probabilities') is not None:
+            self.probabilities = m.get('Probabilities')
+        return self
+
+
+class ScreenChestCTResponseBodyDataScreenCRC(TeaModel):
+    def __init__(
+        self,
+        lesion: ScreenChestCTResponseBodyDataScreenCRCLesion = None,
+        series_instance_uid: str = None,
+    ):
+        self.lesion = lesion
+        self.series_instance_uid = series_instance_uid
+
+    def validate(self):
+        if self.lesion:
+            self.lesion.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lesion is not None:
+            result['Lesion'] = self.lesion.to_map()
+        if self.series_instance_uid is not None:
+            result['SeriesInstanceUid'] = self.series_instance_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lesion') is not None:
+            temp_model = ScreenChestCTResponseBodyDataScreenCRCLesion()
+            self.lesion = temp_model.from_map(m['Lesion'])
+        if m.get('SeriesInstanceUid') is not None:
+            self.series_instance_uid = m.get('SeriesInstanceUid')
+        return self
+
+
 class ScreenChestCTResponseBodyDataScreenEcLesion(TeaModel):
     def __init__(
         self,
@@ -7189,6 +8654,285 @@ class ScreenChestCTResponseBodyDataScreenEc(TeaModel):
         return self
 
 
+class ScreenChestCTResponseBodyDataScreenGCLesion(TeaModel):
+    def __init__(
+        self,
+        gcvolume: str = None,
+        mask: str = None,
+        non_gcvolume: str = None,
+        probabilities: List[str] = None,
+        stomach_volume: str = None,
+    ):
+        self.gcvolume = gcvolume
+        self.mask = mask
+        self.non_gcvolume = non_gcvolume
+        self.probabilities = probabilities
+        self.stomach_volume = stomach_volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gcvolume is not None:
+            result['GCVolume'] = self.gcvolume
+        if self.mask is not None:
+            result['Mask'] = self.mask
+        if self.non_gcvolume is not None:
+            result['NonGCVolume'] = self.non_gcvolume
+        if self.probabilities is not None:
+            result['Probabilities'] = self.probabilities
+        if self.stomach_volume is not None:
+            result['StomachVolume'] = self.stomach_volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GCVolume') is not None:
+            self.gcvolume = m.get('GCVolume')
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
+        if m.get('NonGCVolume') is not None:
+            self.non_gcvolume = m.get('NonGCVolume')
+        if m.get('Probabilities') is not None:
+            self.probabilities = m.get('Probabilities')
+        if m.get('StomachVolume') is not None:
+            self.stomach_volume = m.get('StomachVolume')
+        return self
+
+
+class ScreenChestCTResponseBodyDataScreenGC(TeaModel):
+    def __init__(
+        self,
+        lesion: ScreenChestCTResponseBodyDataScreenGCLesion = None,
+        series_instance_uid: str = None,
+    ):
+        self.lesion = lesion
+        self.series_instance_uid = series_instance_uid
+
+    def validate(self):
+        if self.lesion:
+            self.lesion.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lesion is not None:
+            result['Lesion'] = self.lesion.to_map()
+        if self.series_instance_uid is not None:
+            result['SeriesInstanceUid'] = self.series_instance_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lesion') is not None:
+            temp_model = ScreenChestCTResponseBodyDataScreenGCLesion()
+            self.lesion = temp_model.from_map(m['Lesion'])
+        if m.get('SeriesInstanceUid') is not None:
+            self.series_instance_uid = m.get('SeriesInstanceUid')
+        return self
+
+
+class ScreenChestCTResponseBodyDataScreenLCLesionLesionList(TeaModel):
+    def __init__(
+        self,
+        diameter: List[float] = None,
+        key_slice: int = None,
+        malignancy: float = None,
+        recist_endpoints: List[float] = None,
+        type: str = None,
+        volume: float = None,
+    ):
+        self.diameter = diameter
+        self.key_slice = key_slice
+        self.malignancy = malignancy
+        self.recist_endpoints = recist_endpoints
+        self.type = type
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diameter is not None:
+            result['Diameter'] = self.diameter
+        if self.key_slice is not None:
+            result['KeySlice'] = self.key_slice
+        if self.malignancy is not None:
+            result['Malignancy'] = self.malignancy
+        if self.recist_endpoints is not None:
+            result['RecistEndpoints'] = self.recist_endpoints
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Diameter') is not None:
+            self.diameter = m.get('Diameter')
+        if m.get('KeySlice') is not None:
+            self.key_slice = m.get('KeySlice')
+        if m.get('Malignancy') is not None:
+            self.malignancy = m.get('Malignancy')
+        if m.get('RecistEndpoints') is not None:
+            self.recist_endpoints = m.get('RecistEndpoints')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult(TeaModel):
+    def __init__(
+        self,
+        benign_non_cyst_prob: str = None,
+        cyst_prob: str = None,
+        hccprob: str = None,
+        malignant_non_hccprob: str = None,
+    ):
+        self.benign_non_cyst_prob = benign_non_cyst_prob
+        self.cyst_prob = cyst_prob
+        self.hccprob = hccprob
+        self.malignant_non_hccprob = malignant_non_hccprob
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.benign_non_cyst_prob is not None:
+            result['BenignNonCystProb'] = self.benign_non_cyst_prob
+        if self.cyst_prob is not None:
+            result['CystProb'] = self.cyst_prob
+        if self.hccprob is not None:
+            result['HCCProb'] = self.hccprob
+        if self.malignant_non_hccprob is not None:
+            result['MalignantNonHCCProb'] = self.malignant_non_hccprob
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BenignNonCystProb') is not None:
+            self.benign_non_cyst_prob = m.get('BenignNonCystProb')
+        if m.get('CystProb') is not None:
+            self.cyst_prob = m.get('CystProb')
+        if m.get('HCCProb') is not None:
+            self.hccprob = m.get('HCCProb')
+        if m.get('MalignantNonHCCProb') is not None:
+            self.malignant_non_hccprob = m.get('MalignantNonHCCProb')
+        return self
+
+
+class ScreenChestCTResponseBodyDataScreenLCLesion(TeaModel):
+    def __init__(
+        self,
+        lesion_list: List[ScreenChestCTResponseBodyDataScreenLCLesionLesionList] = None,
+        liver_volume: str = None,
+        mask: str = None,
+        patient_level_result: ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult = None,
+    ):
+        self.lesion_list = lesion_list
+        self.liver_volume = liver_volume
+        self.mask = mask
+        self.patient_level_result = patient_level_result
+
+    def validate(self):
+        if self.lesion_list:
+            for k in self.lesion_list:
+                if k:
+                    k.validate()
+        if self.patient_level_result:
+            self.patient_level_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LesionList'] = []
+        if self.lesion_list is not None:
+            for k in self.lesion_list:
+                result['LesionList'].append(k.to_map() if k else None)
+        if self.liver_volume is not None:
+            result['LiverVolume'] = self.liver_volume
+        if self.mask is not None:
+            result['Mask'] = self.mask
+        if self.patient_level_result is not None:
+            result['PatientLevelResult'] = self.patient_level_result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.lesion_list = []
+        if m.get('LesionList') is not None:
+            for k in m.get('LesionList'):
+                temp_model = ScreenChestCTResponseBodyDataScreenLCLesionLesionList()
+                self.lesion_list.append(temp_model.from_map(k))
+        if m.get('LiverVolume') is not None:
+            self.liver_volume = m.get('LiverVolume')
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
+        if m.get('PatientLevelResult') is not None:
+            temp_model = ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult()
+            self.patient_level_result = temp_model.from_map(m['PatientLevelResult'])
+        return self
+
+
+class ScreenChestCTResponseBodyDataScreenLC(TeaModel):
+    def __init__(
+        self,
+        lesion: ScreenChestCTResponseBodyDataScreenLCLesion = None,
+        series_instance_uid: str = None,
+    ):
+        self.lesion = lesion
+        self.series_instance_uid = series_instance_uid
+
+    def validate(self):
+        if self.lesion:
+            self.lesion.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lesion is not None:
+            result['Lesion'] = self.lesion.to_map()
+        if self.series_instance_uid is not None:
+            result['SeriesInstanceUid'] = self.series_instance_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lesion') is not None:
+            temp_model = ScreenChestCTResponseBodyDataScreenLCLesion()
+            self.lesion = temp_model.from_map(m['Lesion'])
+        if m.get('SeriesInstanceUid') is not None:
+            self.series_instance_uid = m.get('SeriesInstanceUid')
+        return self
+
+
 class ScreenChestCTResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -7203,7 +8947,11 @@ class ScreenChestCTResponseBodyData(TeaModel):
         error_message: str = None,
         lung_nodule: ScreenChestCTResponseBodyDataLungNodule = None,
         nested_url_list: Dict[str, Any] = None,
+        predict_cvd: ScreenChestCTResponseBodyDataPredictCVD = None,
+        screen_crc: ScreenChestCTResponseBodyDataScreenCRC = None,
         screen_ec: ScreenChestCTResponseBodyDataScreenEc = None,
+        screen_gc: ScreenChestCTResponseBodyDataScreenGC = None,
+        screen_lc: ScreenChestCTResponseBodyDataScreenLC = None,
         urllist: Dict[str, Any] = None,
     ):
         self.analyze_chest_vessel = analyze_chest_vessel
@@ -7217,7 +8965,11 @@ class ScreenChestCTResponseBodyData(TeaModel):
         self.error_message = error_message
         self.lung_nodule = lung_nodule
         self.nested_url_list = nested_url_list
+        self.predict_cvd = predict_cvd
+        self.screen_crc = screen_crc
         self.screen_ec = screen_ec
+        self.screen_gc = screen_gc
+        self.screen_lc = screen_lc
         self.urllist = urllist
 
     def validate(self):
@@ -7239,8 +8991,16 @@ class ScreenChestCTResponseBodyData(TeaModel):
             self.detect_rib_fracture.validate()
         if self.lung_nodule:
             self.lung_nodule.validate()
+        if self.predict_cvd:
+            self.predict_cvd.validate()
+        if self.screen_crc:
+            self.screen_crc.validate()
         if self.screen_ec:
             self.screen_ec.validate()
+        if self.screen_gc:
+            self.screen_gc.validate()
+        if self.screen_lc:
+            self.screen_lc.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7270,8 +9030,16 @@ class ScreenChestCTResponseBodyData(TeaModel):
             result['LungNodule'] = self.lung_nodule.to_map()
         if self.nested_url_list is not None:
             result['NestedUrlList'] = self.nested_url_list
+        if self.predict_cvd is not None:
+            result['PredictCVD'] = self.predict_cvd.to_map()
+        if self.screen_crc is not None:
+            result['ScreenCRC'] = self.screen_crc.to_map()
         if self.screen_ec is not None:
             result['ScreenEc'] = self.screen_ec.to_map()
+        if self.screen_gc is not None:
+            result['ScreenGC'] = self.screen_gc.to_map()
+        if self.screen_lc is not None:
+            result['ScreenLC'] = self.screen_lc.to_map()
         if self.urllist is not None:
             result['URLList'] = self.urllist
         return result
@@ -7309,9 +9077,21 @@ class ScreenChestCTResponseBodyData(TeaModel):
             self.lung_nodule = temp_model.from_map(m['LungNodule'])
         if m.get('NestedUrlList') is not None:
             self.nested_url_list = m.get('NestedUrlList')
+        if m.get('PredictCVD') is not None:
+            temp_model = ScreenChestCTResponseBodyDataPredictCVD()
+            self.predict_cvd = temp_model.from_map(m['PredictCVD'])
+        if m.get('ScreenCRC') is not None:
+            temp_model = ScreenChestCTResponseBodyDataScreenCRC()
+            self.screen_crc = temp_model.from_map(m['ScreenCRC'])
         if m.get('ScreenEc') is not None:
             temp_model = ScreenChestCTResponseBodyDataScreenEc()
             self.screen_ec = temp_model.from_map(m['ScreenEc'])
+        if m.get('ScreenGC') is not None:
+            temp_model = ScreenChestCTResponseBodyDataScreenGC()
+            self.screen_gc = temp_model.from_map(m['ScreenGC'])
+        if m.get('ScreenLC') is not None:
+            temp_model = ScreenChestCTResponseBodyDataScreenLC()
+            self.screen_lc = temp_model.from_map(m['ScreenLC'])
         if m.get('URLList') is not None:
             self.urllist = m.get('URLList')
         return self
@@ -7631,6 +9411,787 @@ class ScreenECResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ScreenECResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ScreenGCRequestURLList(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class ScreenGCRequest(TeaModel):
+    def __init__(
+        self,
+        data_format: str = None,
+        data_source_type: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        urllist: List[ScreenGCRequestURLList] = None,
+    ):
+        self.data_format = data_format
+        self.data_source_type = data_source_type
+        self.org_id = org_id
+        self.org_name = org_name
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = ScreenGCRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class ScreenGCAdvanceRequestURLList(TeaModel):
+    def __init__(
+        self,
+        urlobject: BinaryIO = None,
+    ):
+        self.urlobject = urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.urlobject is not None:
+            result['URL'] = self.urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.urlobject = m.get('URL')
+        return self
+
+
+class ScreenGCAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        data_format: str = None,
+        data_source_type: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        urllist: List[ScreenGCAdvanceRequestURLList] = None,
+    ):
+        self.data_format = data_format
+        self.data_source_type = data_source_type
+        self.org_id = org_id
+        self.org_name = org_name
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = ScreenGCAdvanceRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class ScreenGCResponseBodyDataLesion(TeaModel):
+    def __init__(
+        self,
+        gcvolume: str = None,
+        mask: str = None,
+        non_gcvolume: str = None,
+        probabilities: str = None,
+        stomach_volume: str = None,
+    ):
+        self.gcvolume = gcvolume
+        self.mask = mask
+        self.non_gcvolume = non_gcvolume
+        self.probabilities = probabilities
+        self.stomach_volume = stomach_volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gcvolume is not None:
+            result['GCVolume'] = self.gcvolume
+        if self.mask is not None:
+            result['Mask'] = self.mask
+        if self.non_gcvolume is not None:
+            result['NonGCVolume'] = self.non_gcvolume
+        if self.probabilities is not None:
+            result['Probabilities'] = self.probabilities
+        if self.stomach_volume is not None:
+            result['StomachVolume'] = self.stomach_volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GCVolume') is not None:
+            self.gcvolume = m.get('GCVolume')
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
+        if m.get('NonGCVolume') is not None:
+            self.non_gcvolume = m.get('NonGCVolume')
+        if m.get('Probabilities') is not None:
+            self.probabilities = m.get('Probabilities')
+        if m.get('StomachVolume') is not None:
+            self.stomach_volume = m.get('StomachVolume')
+        return self
+
+
+class ScreenGCResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        lesion: ScreenGCResponseBodyDataLesion = None,
+    ):
+        self.lesion = lesion
+
+    def validate(self):
+        if self.lesion:
+            self.lesion.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lesion is not None:
+            result['Lesion'] = self.lesion.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lesion') is not None:
+            temp_model = ScreenGCResponseBodyDataLesion()
+            self.lesion = temp_model.from_map(m['Lesion'])
+        return self
+
+
+class ScreenGCResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ScreenGCResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ScreenGCResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ScreenGCResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ScreenGCResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ScreenGCResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ScreenLCRequestURLList(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class ScreenLCRequest(TeaModel):
+    def __init__(
+        self,
+        data_format: str = None,
+        data_source_type: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        urllist: List[ScreenLCRequestURLList] = None,
+    ):
+        self.data_format = data_format
+        self.data_source_type = data_source_type
+        self.org_id = org_id
+        self.org_name = org_name
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = ScreenLCRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class ScreenLCAdvanceRequestURLList(TeaModel):
+    def __init__(
+        self,
+        urlobject: BinaryIO = None,
+    ):
+        self.urlobject = urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.urlobject is not None:
+            result['URL'] = self.urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.urlobject = m.get('URL')
+        return self
+
+
+class ScreenLCAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        data_format: str = None,
+        data_source_type: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        urllist: List[ScreenLCAdvanceRequestURLList] = None,
+    ):
+        self.data_format = data_format
+        self.data_source_type = data_source_type
+        self.org_id = org_id
+        self.org_name = org_name
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = ScreenLCAdvanceRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class ScreenLCResponseBodyDataLesionLesionList(TeaModel):
+    def __init__(
+        self,
+        diameter: List[float] = None,
+        key_slice: int = None,
+        malignancy: float = None,
+        recist_endpoints: List[float] = None,
+        type: str = None,
+        volume: float = None,
+    ):
+        self.diameter = diameter
+        self.key_slice = key_slice
+        self.malignancy = malignancy
+        self.recist_endpoints = recist_endpoints
+        self.type = type
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diameter is not None:
+            result['Diameter'] = self.diameter
+        if self.key_slice is not None:
+            result['KeySlice'] = self.key_slice
+        if self.malignancy is not None:
+            result['Malignancy'] = self.malignancy
+        if self.recist_endpoints is not None:
+            result['RecistEndpoints'] = self.recist_endpoints
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Diameter') is not None:
+            self.diameter = m.get('Diameter')
+        if m.get('KeySlice') is not None:
+            self.key_slice = m.get('KeySlice')
+        if m.get('Malignancy') is not None:
+            self.malignancy = m.get('Malignancy')
+        if m.get('RecistEndpoints') is not None:
+            self.recist_endpoints = m.get('RecistEndpoints')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class ScreenLCResponseBodyDataLesionPatientLevelResult(TeaModel):
+    def __init__(
+        self,
+        benign_non_cyst_prob: str = None,
+        cyst_prob: float = None,
+        hccprob: float = None,
+        malignant_non_hccprob: float = None,
+    ):
+        self.benign_non_cyst_prob = benign_non_cyst_prob
+        self.cyst_prob = cyst_prob
+        self.hccprob = hccprob
+        self.malignant_non_hccprob = malignant_non_hccprob
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.benign_non_cyst_prob is not None:
+            result['BenignNonCystProb'] = self.benign_non_cyst_prob
+        if self.cyst_prob is not None:
+            result['CystProb'] = self.cyst_prob
+        if self.hccprob is not None:
+            result['HCCProb'] = self.hccprob
+        if self.malignant_non_hccprob is not None:
+            result['MalignantNonHCCProb'] = self.malignant_non_hccprob
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BenignNonCystProb') is not None:
+            self.benign_non_cyst_prob = m.get('BenignNonCystProb')
+        if m.get('CystProb') is not None:
+            self.cyst_prob = m.get('CystProb')
+        if m.get('HCCProb') is not None:
+            self.hccprob = m.get('HCCProb')
+        if m.get('MalignantNonHCCProb') is not None:
+            self.malignant_non_hccprob = m.get('MalignantNonHCCProb')
+        return self
+
+
+class ScreenLCResponseBodyDataLesion(TeaModel):
+    def __init__(
+        self,
+        lesion_list: List[ScreenLCResponseBodyDataLesionLesionList] = None,
+        liver_volume: float = None,
+        mask: str = None,
+        patient_level_result: ScreenLCResponseBodyDataLesionPatientLevelResult = None,
+    ):
+        self.lesion_list = lesion_list
+        self.liver_volume = liver_volume
+        self.mask = mask
+        self.patient_level_result = patient_level_result
+
+    def validate(self):
+        if self.lesion_list:
+            for k in self.lesion_list:
+                if k:
+                    k.validate()
+        if self.patient_level_result:
+            self.patient_level_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LesionList'] = []
+        if self.lesion_list is not None:
+            for k in self.lesion_list:
+                result['LesionList'].append(k.to_map() if k else None)
+        if self.liver_volume is not None:
+            result['LiverVolume'] = self.liver_volume
+        if self.mask is not None:
+            result['Mask'] = self.mask
+        if self.patient_level_result is not None:
+            result['PatientLevelResult'] = self.patient_level_result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.lesion_list = []
+        if m.get('LesionList') is not None:
+            for k in m.get('LesionList'):
+                temp_model = ScreenLCResponseBodyDataLesionLesionList()
+                self.lesion_list.append(temp_model.from_map(k))
+        if m.get('LiverVolume') is not None:
+            self.liver_volume = m.get('LiverVolume')
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
+        if m.get('PatientLevelResult') is not None:
+            temp_model = ScreenLCResponseBodyDataLesionPatientLevelResult()
+            self.patient_level_result = temp_model.from_map(m['PatientLevelResult'])
+        return self
+
+
+class ScreenLCResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        lesion: ScreenLCResponseBodyDataLesion = None,
+    ):
+        self.lesion = lesion
+
+    def validate(self):
+        if self.lesion:
+            self.lesion.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lesion is not None:
+            result['Lesion'] = self.lesion.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lesion') is not None:
+            temp_model = ScreenLCResponseBodyDataLesion()
+            self.lesion = temp_model.from_map(m['Lesion'])
+        return self
+
+
+class ScreenLCResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ScreenLCResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ScreenLCResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ScreenLCResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ScreenLCResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ScreenLCResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
