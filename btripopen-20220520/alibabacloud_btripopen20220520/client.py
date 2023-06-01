@@ -6621,6 +6621,8 @@ class Client(OpenApiClient):
             body['corp_pay_price'] = request.corp_pay_price
         if not UtilClient.is_unset(request.dis_order_id):
             body['dis_order_id'] = request.dis_order_id
+        if not UtilClient.is_unset(request.extra):
+            body['extra'] = request.extra
         if not UtilClient.is_unset(request.invoice_info_shrink):
             body['invoice_info'] = request.invoice_info_shrink
         if not UtilClient.is_unset(request.item_id):
@@ -6704,6 +6706,8 @@ class Client(OpenApiClient):
             body['corp_pay_price'] = request.corp_pay_price
         if not UtilClient.is_unset(request.dis_order_id):
             body['dis_order_id'] = request.dis_order_id
+        if not UtilClient.is_unset(request.extra):
+            body['extra'] = request.extra
         if not UtilClient.is_unset(request.invoice_info_shrink):
             body['invoice_info'] = request.invoice_info_shrink
         if not UtilClient.is_unset(request.item_id):
