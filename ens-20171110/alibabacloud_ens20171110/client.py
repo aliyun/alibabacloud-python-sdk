@@ -341,6 +341,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_network_interface_to_instance_with_options_async(request, runtime)
 
+    def add_snat_ip_for_snat_entry_with_options(
+        self,
+        request: ens_20171110_models.AddSnatIpForSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.AddSnatIpForSnatEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_ip):
+            query['SnatIp'] = request.snat_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSnatIpForSnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.AddSnatIpForSnatEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_snat_ip_for_snat_entry_with_options_async(
+        self,
+        request: ens_20171110_models.AddSnatIpForSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.AddSnatIpForSnatEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_ip):
+            query['SnatIp'] = request.snat_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSnatIpForSnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.AddSnatIpForSnatEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_snat_ip_for_snat_entry(
+        self,
+        request: ens_20171110_models.AddSnatIpForSnatEntryRequest,
+    ) -> ens_20171110_models.AddSnatIpForSnatEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_snat_ip_for_snat_entry_with_options(request, runtime)
+
+    async def add_snat_ip_for_snat_entry_async(
+        self,
+        request: ens_20171110_models.AddSnatIpForSnatEntryRequest,
+    ) -> ens_20171110_models.AddSnatIpForSnatEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_snat_ip_for_snat_entry_with_options_async(request, runtime)
+
     def assign_private_ip_addresses_with_options(
         self,
         request: ens_20171110_models.AssignPrivateIpAddressesRequest,
@@ -4976,6 +5050,80 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DeleteSnatEntryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_snat_entry_with_options_async(request, runtime)
+
+    def delete_snat_ip_for_snat_entry_with_options(
+        self,
+        request: ens_20171110_models.DeleteSnatIpForSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteSnatIpForSnatEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_ip):
+            query['SnatIp'] = request.snat_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSnatIpForSnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteSnatIpForSnatEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_snat_ip_for_snat_entry_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteSnatIpForSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteSnatIpForSnatEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_ip):
+            query['SnatIp'] = request.snat_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSnatIpForSnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteSnatIpForSnatEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_snat_ip_for_snat_entry(
+        self,
+        request: ens_20171110_models.DeleteSnatIpForSnatEntryRequest,
+    ) -> ens_20171110_models.DeleteSnatIpForSnatEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_snat_ip_for_snat_entry_with_options(request, runtime)
+
+    async def delete_snat_ip_for_snat_entry_async(
+        self,
+        request: ens_20171110_models.DeleteSnatIpForSnatEntryRequest,
+    ) -> ens_20171110_models.DeleteSnatIpForSnatEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_snat_ip_for_snat_entry_with_options_async(request, runtime)
 
     def delete_vswitch_with_options(
         self,
@@ -11123,6 +11271,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_servcie_schedule_with_options_async(request, runtime)
 
+    def describe_snat_attribute_with_options(
+        self,
+        request: ens_20171110_models.DescribeSnatAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSnatAttributeResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSnatAttribute',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSnatAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_snat_attribute_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeSnatAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSnatAttributeResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSnatAttribute',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSnatAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_snat_attribute(
+        self,
+        request: ens_20171110_models.DescribeSnatAttributeRequest,
+    ) -> ens_20171110_models.DescribeSnatAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_snat_attribute_with_options(request, runtime)
+
+    async def describe_snat_attribute_async(
+        self,
+        request: ens_20171110_models.DescribeSnatAttributeRequest,
+    ) -> ens_20171110_models.DescribeSnatAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_snat_attribute_with_options_async(request, runtime)
+
     def describe_snat_table_entries_with_options(
         self,
         request: ens_20171110_models.DescribeSnatTableEntriesRequest,
@@ -17007,6 +17221,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_load_balancer_listener_with_options_async(request, runtime)
 
+    def start_snat_ip_for_snat_entry_with_options(
+        self,
+        request: ens_20171110_models.StartSnatIpForSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.StartSnatIpForSnatEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_ip):
+            query['SnatIp'] = request.snat_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartSnatIpForSnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.StartSnatIpForSnatEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_snat_ip_for_snat_entry_with_options_async(
+        self,
+        request: ens_20171110_models.StartSnatIpForSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.StartSnatIpForSnatEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_ip):
+            query['SnatIp'] = request.snat_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartSnatIpForSnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.StartSnatIpForSnatEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_snat_ip_for_snat_entry(
+        self,
+        request: ens_20171110_models.StartSnatIpForSnatEntryRequest,
+    ) -> ens_20171110_models.StartSnatIpForSnatEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_snat_ip_for_snat_entry_with_options(request, runtime)
+
+    async def start_snat_ip_for_snat_entry_async(
+        self,
+        request: ens_20171110_models.StartSnatIpForSnatEntryRequest,
+    ) -> ens_20171110_models.StartSnatIpForSnatEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_snat_ip_for_snat_entry_with_options_async(request, runtime)
+
     def stop_epn_instance_with_options(
         self,
         request: ens_20171110_models.StopEpnInstanceRequest,
@@ -17310,6 +17598,80 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.StopLoadBalancerListenerResponse:
         runtime = util_models.RuntimeOptions()
         return await self.stop_load_balancer_listener_with_options_async(request, runtime)
+
+    def stop_snat_ip_for_snat_entry_with_options(
+        self,
+        request: ens_20171110_models.StopSnatIpForSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.StopSnatIpForSnatEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_ip):
+            query['SnatIp'] = request.snat_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopSnatIpForSnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.StopSnatIpForSnatEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_snat_ip_for_snat_entry_with_options_async(
+        self,
+        request: ens_20171110_models.StopSnatIpForSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.StopSnatIpForSnatEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_ip):
+            query['SnatIp'] = request.snat_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopSnatIpForSnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.StopSnatIpForSnatEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_snat_ip_for_snat_entry(
+        self,
+        request: ens_20171110_models.StopSnatIpForSnatEntryRequest,
+    ) -> ens_20171110_models.StopSnatIpForSnatEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_snat_ip_for_snat_entry_with_options(request, runtime)
+
+    async def stop_snat_ip_for_snat_entry_async(
+        self,
+        request: ens_20171110_models.StopSnatIpForSnatEntryRequest,
+    ) -> ens_20171110_models.StopSnatIpForSnatEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_snat_ip_for_snat_entry_with_options_async(request, runtime)
 
     def un_associate_ens_eip_address_with_options(
         self,

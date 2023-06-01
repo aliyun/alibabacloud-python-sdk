@@ -1262,6 +1262,111 @@ class AddNetworkInterfaceToInstanceResponse(TeaModel):
         return self
 
 
+class AddSnatIpForSnatEntryRequest(TeaModel):
+    def __init__(
+        self,
+        snat_entry_id: str = None,
+        snat_ip: str = None,
+    ):
+        self.snat_entry_id = snat_entry_id
+        self.snat_ip = snat_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.snat_entry_id is not None:
+            result['SnatEntryId'] = self.snat_entry_id
+        if self.snat_ip is not None:
+            result['SnatIp'] = self.snat_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SnatEntryId') is not None:
+            self.snat_entry_id = m.get('SnatEntryId')
+        if m.get('SnatIp') is not None:
+            self.snat_ip = m.get('SnatIp')
+        return self
+
+
+class AddSnatIpForSnatEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddSnatIpForSnatEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddSnatIpForSnatEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddSnatIpForSnatEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AssignPrivateIpAddressesRequest(TeaModel):
     def __init__(
         self,
@@ -8714,6 +8819,111 @@ class DeleteSnatEntryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSnatEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSnatIpForSnatEntryRequest(TeaModel):
+    def __init__(
+        self,
+        snat_entry_id: str = None,
+        snat_ip: str = None,
+    ):
+        self.snat_entry_id = snat_entry_id
+        self.snat_ip = snat_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.snat_entry_id is not None:
+            result['SnatEntryId'] = self.snat_entry_id
+        if self.snat_ip is not None:
+            result['SnatIp'] = self.snat_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SnatEntryId') is not None:
+            self.snat_entry_id = m.get('SnatEntryId')
+        if m.get('SnatIp') is not None:
+            self.snat_ip = m.get('SnatIp')
+        return self
+
+
+class DeleteSnatIpForSnatEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteSnatIpForSnatEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSnatIpForSnatEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSnatIpForSnatEntryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31519,6 +31729,200 @@ class DescribeServcieScheduleResponse(TeaModel):
         return self
 
 
+class DescribeSnatAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        snat_entry_id: str = None,
+    ):
+        self.snat_entry_id = snat_entry_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.snat_entry_id is not None:
+            result['SnatEntryId'] = self.snat_entry_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SnatEntryId') is not None:
+            self.snat_entry_id = m.get('SnatEntryId')
+        return self
+
+
+class DescribeSnatAttributeResponseBodySnatIps(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        ip: str = None,
+        status: str = None,
+    ):
+        self.creation_time = creation_time
+        self.ip = ip
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeSnatAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        nat_gateway_id: str = None,
+        request_id: str = None,
+        snat_entry_id: str = None,
+        snat_entry_name: str = None,
+        snat_ip: str = None,
+        snat_ips: List[DescribeSnatAttributeResponseBodySnatIps] = None,
+        source_cidr: str = None,
+        status: str = None,
+    ):
+        self.creation_time = creation_time
+        self.nat_gateway_id = nat_gateway_id
+        # Id of the request
+        self.request_id = request_id
+        self.snat_entry_id = snat_entry_id
+        self.snat_entry_name = snat_entry_name
+        self.snat_ip = snat_ip
+        self.snat_ips = snat_ips
+        self.source_cidr = source_cidr
+        self.status = status
+
+    def validate(self):
+        if self.snat_ips:
+            for k in self.snat_ips:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.snat_entry_id is not None:
+            result['SnatEntryId'] = self.snat_entry_id
+        if self.snat_entry_name is not None:
+            result['SnatEntryName'] = self.snat_entry_name
+        if self.snat_ip is not None:
+            result['SnatIp'] = self.snat_ip
+        result['SnatIps'] = []
+        if self.snat_ips is not None:
+            for k in self.snat_ips:
+                result['SnatIps'].append(k.to_map() if k else None)
+        if self.source_cidr is not None:
+            result['SourceCIDR'] = self.source_cidr
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SnatEntryId') is not None:
+            self.snat_entry_id = m.get('SnatEntryId')
+        if m.get('SnatEntryName') is not None:
+            self.snat_entry_name = m.get('SnatEntryName')
+        if m.get('SnatIp') is not None:
+            self.snat_ip = m.get('SnatIp')
+        self.snat_ips = []
+        if m.get('SnatIps') is not None:
+            for k in m.get('SnatIps'):
+                temp_model = DescribeSnatAttributeResponseBodySnatIps()
+                self.snat_ips.append(temp_model.from_map(k))
+        if m.get('SourceCIDR') is not None:
+            self.source_cidr = m.get('SourceCIDR')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeSnatAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSnatAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSnatAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSnatTableEntriesRequest(TeaModel):
     def __init__(
         self,
@@ -41981,6 +42385,111 @@ class StartLoadBalancerListenerResponse(TeaModel):
         return self
 
 
+class StartSnatIpForSnatEntryRequest(TeaModel):
+    def __init__(
+        self,
+        snat_entry_id: str = None,
+        snat_ip: str = None,
+    ):
+        self.snat_entry_id = snat_entry_id
+        self.snat_ip = snat_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.snat_entry_id is not None:
+            result['SnatEntryId'] = self.snat_entry_id
+        if self.snat_ip is not None:
+            result['SnatIp'] = self.snat_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SnatEntryId') is not None:
+            self.snat_entry_id = m.get('SnatEntryId')
+        if m.get('SnatIp') is not None:
+            self.snat_ip = m.get('SnatIp')
+        return self
+
+
+class StartSnatIpForSnatEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartSnatIpForSnatEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartSnatIpForSnatEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartSnatIpForSnatEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopEpnInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -42440,6 +42949,111 @@ class StopLoadBalancerListenerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopLoadBalancerListenerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopSnatIpForSnatEntryRequest(TeaModel):
+    def __init__(
+        self,
+        snat_entry_id: str = None,
+        snat_ip: str = None,
+    ):
+        self.snat_entry_id = snat_entry_id
+        self.snat_ip = snat_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.snat_entry_id is not None:
+            result['SnatEntryId'] = self.snat_entry_id
+        if self.snat_ip is not None:
+            result['SnatIp'] = self.snat_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SnatEntryId') is not None:
+            self.snat_entry_id = m.get('SnatEntryId')
+        if m.get('SnatIp') is not None:
+            self.snat_ip = m.get('SnatIp')
+        return self
+
+
+class StopSnatIpForSnatEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopSnatIpForSnatEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopSnatIpForSnatEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopSnatIpForSnatEntryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

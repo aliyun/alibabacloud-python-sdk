@@ -1,3 +1,6 @@
+2023-06-01 Version: 3.0.16
+- Support SNAT API.
+
 2023-05-16 Version: 3.0.15
 - Support RunInstances API.
 
