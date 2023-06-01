@@ -1994,15 +1994,13 @@ class BookRequestContact(TeaModel):
         return self
 
 
-class BookRequestPassengerAncillaryPurchaseMapListAncillaryList(TeaModel):
+class BookRequestPassengerAncillaryPurchaseMapListBookAncillaryReqItem(TeaModel):
     def __init__(
         self,
         ancillary_id: str = None,
-        ancillary_info: Dict[str, Any] = None,
         ancillary_type: int = None,
     ):
         self.ancillary_id = ancillary_id
-        self.ancillary_info = ancillary_info
         self.ancillary_type = ancillary_type
 
     def validate(self):
@@ -2016,8 +2014,6 @@ class BookRequestPassengerAncillaryPurchaseMapListAncillaryList(TeaModel):
         result = dict()
         if self.ancillary_id is not None:
             result['ancillary_id'] = self.ancillary_id
-        if self.ancillary_info is not None:
-            result['ancillary_info'] = self.ancillary_info
         if self.ancillary_type is not None:
             result['ancillary_type'] = self.ancillary_type
         return result
@@ -2026,8 +2022,6 @@ class BookRequestPassengerAncillaryPurchaseMapListAncillaryList(TeaModel):
         m = m or dict()
         if m.get('ancillary_id') is not None:
             self.ancillary_id = m.get('ancillary_id')
-        if m.get('ancillary_info') is not None:
-            self.ancillary_info = m.get('ancillary_info')
         if m.get('ancillary_type') is not None:
             self.ancillary_type = m.get('ancillary_type')
         return self
@@ -2158,17 +2152,15 @@ class BookRequestPassengerAncillaryPurchaseMapListPassengerList(TeaModel):
 class BookRequestPassengerAncillaryPurchaseMapList(TeaModel):
     def __init__(
         self,
-        ancillary_list: List[BookRequestPassengerAncillaryPurchaseMapListAncillaryList] = None,
+        book_ancillary_req_item: BookRequestPassengerAncillaryPurchaseMapListBookAncillaryReqItem = None,
         passenger_list: List[BookRequestPassengerAncillaryPurchaseMapListPassengerList] = None,
     ):
-        self.ancillary_list = ancillary_list
+        self.book_ancillary_req_item = book_ancillary_req_item
         self.passenger_list = passenger_list
 
     def validate(self):
-        if self.ancillary_list:
-            for k in self.ancillary_list:
-                if k:
-                    k.validate()
+        if self.book_ancillary_req_item:
+            self.book_ancillary_req_item.validate()
         if self.passenger_list:
             for k in self.passenger_list:
                 if k:
@@ -2180,10 +2172,8 @@ class BookRequestPassengerAncillaryPurchaseMapList(TeaModel):
             return _map
 
         result = dict()
-        result['ancillary_list'] = []
-        if self.ancillary_list is not None:
-            for k in self.ancillary_list:
-                result['ancillary_list'].append(k.to_map() if k else None)
+        if self.book_ancillary_req_item is not None:
+            result['book_ancillary_req_item'] = self.book_ancillary_req_item.to_map()
         result['passenger_list'] = []
         if self.passenger_list is not None:
             for k in self.passenger_list:
@@ -2192,11 +2182,9 @@ class BookRequestPassengerAncillaryPurchaseMapList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.ancillary_list = []
-        if m.get('ancillary_list') is not None:
-            for k in m.get('ancillary_list'):
-                temp_model = BookRequestPassengerAncillaryPurchaseMapListAncillaryList()
-                self.ancillary_list.append(temp_model.from_map(k))
+        if m.get('book_ancillary_req_item') is not None:
+            temp_model = BookRequestPassengerAncillaryPurchaseMapListBookAncillaryReqItem()
+            self.book_ancillary_req_item = temp_model.from_map(m['book_ancillary_req_item'])
         self.passenger_list = []
         if m.get('passenger_list') is not None:
             for k in m.get('passenger_list'):
