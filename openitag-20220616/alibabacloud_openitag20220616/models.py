@@ -378,6 +378,39 @@ class TaskTemplateConfig(TeaModel):
         return self
 
 
+class CreateTaskDetailVoteInfo(TeaModel):
+    def __init__(
+        self,
+        min_vote: int = None,
+        vote_num: int = None,
+    ):
+        self.min_vote = min_vote
+        self.vote_num = vote_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.min_vote is not None:
+            result['MinVote'] = self.min_vote
+        if self.vote_num is not None:
+            result['VoteNum'] = self.vote_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MinVote') is not None:
+            self.min_vote = m.get('MinVote')
+        if m.get('VoteNum') is not None:
+            self.vote_num = m.get('VoteNum')
+        return self
+
+
 class CreateTaskDetail(TeaModel):
     def __init__(
         self,
@@ -392,6 +425,7 @@ class CreateTaskDetail(TeaModel):
         task_workflow: List[CreateTaskDetailTaskWorkflow] = None,
         template_id: str = None,
         uuid: str = None,
+        vote_configs: Dict[str, CreateTaskDetailVoteInfo] = None,
     ):
         self.admins = admins
         self.allow_append_data = allow_append_data
@@ -404,6 +438,7 @@ class CreateTaskDetail(TeaModel):
         self.task_workflow = task_workflow
         self.template_id = template_id
         self.uuid = uuid
+        self.vote_configs = vote_configs
 
     def validate(self):
         if self.admins:
@@ -420,6 +455,10 @@ class CreateTaskDetail(TeaModel):
             for k in self.task_workflow:
                 if k:
                     k.validate()
+        if self.vote_configs:
+            for v in self.vote_configs.values():
+                if v:
+                    v.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -453,6 +492,10 @@ class CreateTaskDetail(TeaModel):
             result['TemplateId'] = self.template_id
         if self.uuid is not None:
             result['UUID'] = self.uuid
+        result['VoteConfigs'] = {}
+        if self.vote_configs is not None:
+            for k, v in self.vote_configs.items():
+                result['VoteConfigs'][k] = v.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -488,6 +531,11 @@ class CreateTaskDetail(TeaModel):
             self.template_id = m.get('TemplateId')
         if m.get('UUID') is not None:
             self.uuid = m.get('UUID')
+        self.vote_configs = {}
+        if m.get('VoteConfigs') is not None:
+            for k, v in m.get('VoteConfigs').items():
+                temp_model = CreateTaskDetailVoteInfo()
+                self.vote_configs[k] = temp_model.from_map(v)
         return self
 
 

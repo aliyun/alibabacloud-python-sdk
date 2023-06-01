@@ -41,28 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_work_node_workforce(
-        self,
-        tenant_id: str,
-        task_id: str,
-        work_node_id: str,
-        request: open_itag_20220616_models.AddWorkNodeWorkforceRequest,
-    ) -> open_itag_20220616_models.AddWorkNodeWorkforceResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.add_work_node_workforce_with_options(tenant_id, task_id, work_node_id, request, headers, runtime)
-
-    async def add_work_node_workforce_async(
-        self,
-        tenant_id: str,
-        task_id: str,
-        work_node_id: str,
-        request: open_itag_20220616_models.AddWorkNodeWorkforceRequest,
-    ) -> open_itag_20220616_models.AddWorkNodeWorkforceResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.add_work_node_workforce_with_options_async(tenant_id, task_id, work_node_id, request, headers, runtime)
-
     def add_work_node_workforce_with_options(
         self,
         tenant_id: str,
@@ -129,23 +107,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_task(
+    def add_work_node_workforce(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.CreateTaskRequest,
-    ) -> open_itag_20220616_models.CreateTaskResponse:
+        task_id: str,
+        work_node_id: str,
+        request: open_itag_20220616_models.AddWorkNodeWorkforceRequest,
+    ) -> open_itag_20220616_models.AddWorkNodeWorkforceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_task_with_options(tenant_id, request, headers, runtime)
+        return self.add_work_node_workforce_with_options(tenant_id, task_id, work_node_id, request, headers, runtime)
 
-    async def create_task_async(
+    async def add_work_node_workforce_async(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.CreateTaskRequest,
-    ) -> open_itag_20220616_models.CreateTaskResponse:
+        task_id: str,
+        work_node_id: str,
+        request: open_itag_20220616_models.AddWorkNodeWorkforceRequest,
+    ) -> open_itag_20220616_models.AddWorkNodeWorkforceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_task_with_options_async(tenant_id, request, headers, runtime)
+        return await self.add_work_node_workforce_with_options_async(tenant_id, task_id, work_node_id, request, headers, runtime)
 
     def create_task_with_options(
         self,
@@ -157,7 +139,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateTask',
@@ -185,7 +167,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateTask',
@@ -203,23 +185,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_template(
+    def create_task(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.CreateTemplateRequest,
-    ) -> open_itag_20220616_models.CreateTemplateResponse:
+        request: open_itag_20220616_models.CreateTaskRequest,
+    ) -> open_itag_20220616_models.CreateTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_template_with_options(tenant_id, request, headers, runtime)
+        return self.create_task_with_options(tenant_id, request, headers, runtime)
 
-    async def create_template_async(
+    async def create_task_async(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.CreateTemplateRequest,
-    ) -> open_itag_20220616_models.CreateTemplateResponse:
+        request: open_itag_20220616_models.CreateTaskRequest,
+    ) -> open_itag_20220616_models.CreateTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_template_with_options_async(tenant_id, request, headers, runtime)
+        return await self.create_task_with_options_async(tenant_id, request, headers, runtime)
 
     def create_template_with_options(
         self,
@@ -231,7 +213,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateTemplate',
@@ -259,7 +241,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateTemplate',
@@ -277,23 +259,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_user(
+    def create_template(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.CreateUserRequest,
-    ) -> open_itag_20220616_models.CreateUserResponse:
+        request: open_itag_20220616_models.CreateTemplateRequest,
+    ) -> open_itag_20220616_models.CreateTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_user_with_options(tenant_id, request, headers, runtime)
+        return self.create_template_with_options(tenant_id, request, headers, runtime)
 
-    async def create_user_async(
+    async def create_template_async(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.CreateUserRequest,
-    ) -> open_itag_20220616_models.CreateUserResponse:
+        request: open_itag_20220616_models.CreateTemplateRequest,
+    ) -> open_itag_20220616_models.CreateTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_user_with_options_async(tenant_id, request, headers, runtime)
+        return await self.create_template_with_options_async(tenant_id, request, headers, runtime)
 
     def create_user_with_options(
         self,
@@ -369,23 +351,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_task(
+    def create_user(
         self,
         tenant_id: str,
-        task_id: str,
-    ) -> open_itag_20220616_models.DeleteTaskResponse:
+        request: open_itag_20220616_models.CreateUserRequest,
+    ) -> open_itag_20220616_models.CreateUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_task_with_options(tenant_id, task_id, headers, runtime)
+        return self.create_user_with_options(tenant_id, request, headers, runtime)
 
-    async def delete_task_async(
+    async def create_user_async(
         self,
         tenant_id: str,
-        task_id: str,
-    ) -> open_itag_20220616_models.DeleteTaskResponse:
+        request: open_itag_20220616_models.CreateUserRequest,
+    ) -> open_itag_20220616_models.CreateUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_task_with_options_async(tenant_id, task_id, headers, runtime)
+        return await self.create_user_with_options_async(tenant_id, request, headers, runtime)
 
     def delete_task_with_options(
         self,
@@ -439,23 +421,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_template(
+    def delete_task(
         self,
         tenant_id: str,
-        template_id: str,
-    ) -> open_itag_20220616_models.DeleteTemplateResponse:
+        task_id: str,
+    ) -> open_itag_20220616_models.DeleteTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_template_with_options(tenant_id, template_id, headers, runtime)
+        return self.delete_task_with_options(tenant_id, task_id, headers, runtime)
 
-    async def delete_template_async(
+    async def delete_task_async(
         self,
         tenant_id: str,
-        template_id: str,
-    ) -> open_itag_20220616_models.DeleteTemplateResponse:
+        task_id: str,
+    ) -> open_itag_20220616_models.DeleteTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_template_with_options_async(tenant_id, template_id, headers, runtime)
+        return await self.delete_task_with_options_async(tenant_id, task_id, headers, runtime)
 
     def delete_template_with_options(
         self,
@@ -509,23 +491,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_user(
+    def delete_template(
         self,
         tenant_id: str,
-        user_id: str,
-    ) -> open_itag_20220616_models.DeleteUserResponse:
+        template_id: str,
+    ) -> open_itag_20220616_models.DeleteTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_user_with_options(tenant_id, user_id, headers, runtime)
+        return self.delete_template_with_options(tenant_id, template_id, headers, runtime)
 
-    async def delete_user_async(
+    async def delete_template_async(
         self,
         tenant_id: str,
-        user_id: str,
-    ) -> open_itag_20220616_models.DeleteUserResponse:
+        template_id: str,
+    ) -> open_itag_20220616_models.DeleteTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_user_with_options_async(tenant_id, user_id, headers, runtime)
+        return await self.delete_template_with_options_async(tenant_id, template_id, headers, runtime)
 
     def delete_user_with_options(
         self,
@@ -579,25 +561,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def export_annotations(
+    def delete_user(
         self,
         tenant_id: str,
-        task_id: str,
-        request: open_itag_20220616_models.ExportAnnotationsRequest,
-    ) -> open_itag_20220616_models.ExportAnnotationsResponse:
+        user_id: str,
+    ) -> open_itag_20220616_models.DeleteUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.export_annotations_with_options(tenant_id, task_id, request, headers, runtime)
+        return self.delete_user_with_options(tenant_id, user_id, headers, runtime)
 
-    async def export_annotations_async(
+    async def delete_user_async(
         self,
         tenant_id: str,
-        task_id: str,
-        request: open_itag_20220616_models.ExportAnnotationsRequest,
-    ) -> open_itag_20220616_models.ExportAnnotationsResponse:
+        user_id: str,
+    ) -> open_itag_20220616_models.DeleteUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.export_annotations_with_options_async(tenant_id, task_id, request, headers, runtime)
+        return await self.delete_user_with_options_async(tenant_id, user_id, headers, runtime)
 
     def export_annotations_with_options(
         self,
@@ -671,25 +651,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_job(
+    def export_annotations(
         self,
         tenant_id: str,
-        job_id: str,
-        request: open_itag_20220616_models.GetJobRequest,
-    ) -> open_itag_20220616_models.GetJobResponse:
+        task_id: str,
+        request: open_itag_20220616_models.ExportAnnotationsRequest,
+    ) -> open_itag_20220616_models.ExportAnnotationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_job_with_options(tenant_id, job_id, request, headers, runtime)
+        return self.export_annotations_with_options(tenant_id, task_id, request, headers, runtime)
 
-    async def get_job_async(
+    async def export_annotations_async(
         self,
         tenant_id: str,
-        job_id: str,
-        request: open_itag_20220616_models.GetJobRequest,
-    ) -> open_itag_20220616_models.GetJobResponse:
+        task_id: str,
+        request: open_itag_20220616_models.ExportAnnotationsRequest,
+    ) -> open_itag_20220616_models.ExportAnnotationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_job_with_options_async(tenant_id, job_id, request, headers, runtime)
+        return await self.export_annotations_with_options_async(tenant_id, task_id, request, headers, runtime)
 
     def get_job_with_options(
         self,
@@ -755,25 +735,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_subtask(
+    def get_job(
         self,
         tenant_id: str,
-        task_id: str,
-        subtask_id: str,
-    ) -> open_itag_20220616_models.GetSubtaskResponse:
+        job_id: str,
+        request: open_itag_20220616_models.GetJobRequest,
+    ) -> open_itag_20220616_models.GetJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_subtask_with_options(tenant_id, task_id, subtask_id, headers, runtime)
+        return self.get_job_with_options(tenant_id, job_id, request, headers, runtime)
 
-    async def get_subtask_async(
+    async def get_job_async(
         self,
         tenant_id: str,
-        task_id: str,
-        subtask_id: str,
-    ) -> open_itag_20220616_models.GetSubtaskResponse:
+        job_id: str,
+        request: open_itag_20220616_models.GetJobRequest,
+    ) -> open_itag_20220616_models.GetJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_subtask_with_options_async(tenant_id, task_id, subtask_id, headers, runtime)
+        return await self.get_job_with_options_async(tenant_id, job_id, request, headers, runtime)
 
     def get_subtask_with_options(
         self,
@@ -829,27 +809,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_subtask_item(
+    def get_subtask(
         self,
         tenant_id: str,
         task_id: str,
         subtask_id: str,
-        item_id: str,
-    ) -> open_itag_20220616_models.GetSubtaskItemResponse:
+    ) -> open_itag_20220616_models.GetSubtaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_subtask_item_with_options(tenant_id, task_id, subtask_id, item_id, headers, runtime)
+        return self.get_subtask_with_options(tenant_id, task_id, subtask_id, headers, runtime)
 
-    async def get_subtask_item_async(
+    async def get_subtask_async(
         self,
         tenant_id: str,
         task_id: str,
         subtask_id: str,
-        item_id: str,
-    ) -> open_itag_20220616_models.GetSubtaskItemResponse:
+    ) -> open_itag_20220616_models.GetSubtaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_subtask_item_with_options_async(tenant_id, task_id, subtask_id, item_id, headers, runtime)
+        return await self.get_subtask_with_options_async(tenant_id, task_id, subtask_id, headers, runtime)
 
     def get_subtask_item_with_options(
         self,
@@ -907,23 +885,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_task(
+    def get_subtask_item(
         self,
         tenant_id: str,
         task_id: str,
-    ) -> open_itag_20220616_models.GetTaskResponse:
+        subtask_id: str,
+        item_id: str,
+    ) -> open_itag_20220616_models.GetSubtaskItemResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_task_with_options(tenant_id, task_id, headers, runtime)
+        return self.get_subtask_item_with_options(tenant_id, task_id, subtask_id, item_id, headers, runtime)
 
-    async def get_task_async(
+    async def get_subtask_item_async(
         self,
         tenant_id: str,
         task_id: str,
-    ) -> open_itag_20220616_models.GetTaskResponse:
+        subtask_id: str,
+        item_id: str,
+    ) -> open_itag_20220616_models.GetSubtaskItemResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_task_with_options_async(tenant_id, task_id, headers, runtime)
+        return await self.get_subtask_item_with_options_async(tenant_id, task_id, subtask_id, item_id, headers, runtime)
 
     def get_task_with_options(
         self,
@@ -977,25 +959,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_task_statistics(
+    def get_task(
         self,
         tenant_id: str,
         task_id: str,
-        request: open_itag_20220616_models.GetTaskStatisticsRequest,
-    ) -> open_itag_20220616_models.GetTaskStatisticsResponse:
+    ) -> open_itag_20220616_models.GetTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_task_statistics_with_options(tenant_id, task_id, request, headers, runtime)
+        return self.get_task_with_options(tenant_id, task_id, headers, runtime)
 
-    async def get_task_statistics_async(
+    async def get_task_async(
         self,
         tenant_id: str,
         task_id: str,
-        request: open_itag_20220616_models.GetTaskStatisticsRequest,
-    ) -> open_itag_20220616_models.GetTaskStatisticsResponse:
+    ) -> open_itag_20220616_models.GetTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_task_statistics_with_options_async(tenant_id, task_id, request, headers, runtime)
+        return await self.get_task_with_options_async(tenant_id, task_id, headers, runtime)
 
     def get_task_statistics_with_options(
         self,
@@ -1061,23 +1041,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_task_status(
+    def get_task_statistics(
         self,
         tenant_id: str,
         task_id: str,
-    ) -> open_itag_20220616_models.GetTaskStatusResponse:
+        request: open_itag_20220616_models.GetTaskStatisticsRequest,
+    ) -> open_itag_20220616_models.GetTaskStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_task_status_with_options(tenant_id, task_id, headers, runtime)
+        return self.get_task_statistics_with_options(tenant_id, task_id, request, headers, runtime)
 
-    async def get_task_status_async(
+    async def get_task_statistics_async(
         self,
         tenant_id: str,
         task_id: str,
-    ) -> open_itag_20220616_models.GetTaskStatusResponse:
+        request: open_itag_20220616_models.GetTaskStatisticsRequest,
+    ) -> open_itag_20220616_models.GetTaskStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_task_status_with_options_async(tenant_id, task_id, headers, runtime)
+        return await self.get_task_statistics_with_options_async(tenant_id, task_id, request, headers, runtime)
 
     def get_task_status_with_options(
         self,
@@ -1131,23 +1113,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_task_template(
+    def get_task_status(
         self,
         tenant_id: str,
         task_id: str,
-    ) -> open_itag_20220616_models.GetTaskTemplateResponse:
+    ) -> open_itag_20220616_models.GetTaskStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_task_template_with_options(tenant_id, task_id, headers, runtime)
+        return self.get_task_status_with_options(tenant_id, task_id, headers, runtime)
 
-    async def get_task_template_async(
+    async def get_task_status_async(
         self,
         tenant_id: str,
         task_id: str,
-    ) -> open_itag_20220616_models.GetTaskTemplateResponse:
+    ) -> open_itag_20220616_models.GetTaskStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_task_template_with_options_async(tenant_id, task_id, headers, runtime)
+        return await self.get_task_status_with_options_async(tenant_id, task_id, headers, runtime)
 
     def get_task_template_with_options(
         self,
@@ -1201,23 +1183,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_task_template_questions(
+    def get_task_template(
         self,
         tenant_id: str,
         task_id: str,
-    ) -> open_itag_20220616_models.GetTaskTemplateQuestionsResponse:
+    ) -> open_itag_20220616_models.GetTaskTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_task_template_questions_with_options(tenant_id, task_id, headers, runtime)
+        return self.get_task_template_with_options(tenant_id, task_id, headers, runtime)
 
-    async def get_task_template_questions_async(
+    async def get_task_template_async(
         self,
         tenant_id: str,
         task_id: str,
-    ) -> open_itag_20220616_models.GetTaskTemplateQuestionsResponse:
+    ) -> open_itag_20220616_models.GetTaskTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_task_template_questions_with_options_async(tenant_id, task_id, headers, runtime)
+        return await self.get_task_template_with_options_async(tenant_id, task_id, headers, runtime)
 
     def get_task_template_questions_with_options(
         self,
@@ -1271,23 +1253,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_task_template_views(
+    def get_task_template_questions(
         self,
         tenant_id: str,
         task_id: str,
-    ) -> open_itag_20220616_models.GetTaskTemplateViewsResponse:
+    ) -> open_itag_20220616_models.GetTaskTemplateQuestionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_task_template_views_with_options(tenant_id, task_id, headers, runtime)
+        return self.get_task_template_questions_with_options(tenant_id, task_id, headers, runtime)
 
-    async def get_task_template_views_async(
+    async def get_task_template_questions_async(
         self,
         tenant_id: str,
         task_id: str,
-    ) -> open_itag_20220616_models.GetTaskTemplateViewsResponse:
+    ) -> open_itag_20220616_models.GetTaskTemplateQuestionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_task_template_views_with_options_async(tenant_id, task_id, headers, runtime)
+        return await self.get_task_template_questions_with_options_async(tenant_id, task_id, headers, runtime)
 
     def get_task_template_views_with_options(
         self,
@@ -1341,23 +1323,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_task_workforce(
+    def get_task_template_views(
         self,
         tenant_id: str,
         task_id: str,
-    ) -> open_itag_20220616_models.GetTaskWorkforceResponse:
+    ) -> open_itag_20220616_models.GetTaskTemplateViewsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_task_workforce_with_options(tenant_id, task_id, headers, runtime)
+        return self.get_task_template_views_with_options(tenant_id, task_id, headers, runtime)
 
-    async def get_task_workforce_async(
+    async def get_task_template_views_async(
         self,
         tenant_id: str,
         task_id: str,
-    ) -> open_itag_20220616_models.GetTaskWorkforceResponse:
+    ) -> open_itag_20220616_models.GetTaskTemplateViewsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_task_workforce_with_options_async(tenant_id, task_id, headers, runtime)
+        return await self.get_task_template_views_with_options_async(tenant_id, task_id, headers, runtime)
 
     def get_task_workforce_with_options(
         self,
@@ -1411,25 +1393,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_task_workforce_statistic(
+    def get_task_workforce(
         self,
         tenant_id: str,
         task_id: str,
-        request: open_itag_20220616_models.GetTaskWorkforceStatisticRequest,
-    ) -> open_itag_20220616_models.GetTaskWorkforceStatisticResponse:
+    ) -> open_itag_20220616_models.GetTaskWorkforceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_task_workforce_statistic_with_options(tenant_id, task_id, request, headers, runtime)
+        return self.get_task_workforce_with_options(tenant_id, task_id, headers, runtime)
 
-    async def get_task_workforce_statistic_async(
+    async def get_task_workforce_async(
         self,
         tenant_id: str,
         task_id: str,
-        request: open_itag_20220616_models.GetTaskWorkforceStatisticRequest,
-    ) -> open_itag_20220616_models.GetTaskWorkforceStatisticResponse:
+    ) -> open_itag_20220616_models.GetTaskWorkforceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_task_workforce_statistic_with_options_async(tenant_id, task_id, request, headers, runtime)
+        return await self.get_task_workforce_with_options_async(tenant_id, task_id, headers, runtime)
 
     def get_task_workforce_statistic_with_options(
         self,
@@ -1503,23 +1483,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_template(
+    def get_task_workforce_statistic(
         self,
         tenant_id: str,
-        template_id: str,
-    ) -> open_itag_20220616_models.GetTemplateResponse:
+        task_id: str,
+        request: open_itag_20220616_models.GetTaskWorkforceStatisticRequest,
+    ) -> open_itag_20220616_models.GetTaskWorkforceStatisticResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_template_with_options(tenant_id, template_id, headers, runtime)
+        return self.get_task_workforce_statistic_with_options(tenant_id, task_id, request, headers, runtime)
 
-    async def get_template_async(
+    async def get_task_workforce_statistic_async(
         self,
         tenant_id: str,
-        template_id: str,
-    ) -> open_itag_20220616_models.GetTemplateResponse:
+        task_id: str,
+        request: open_itag_20220616_models.GetTaskWorkforceStatisticRequest,
+    ) -> open_itag_20220616_models.GetTaskWorkforceStatisticResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_template_with_options_async(tenant_id, template_id, headers, runtime)
+        return await self.get_task_workforce_statistic_with_options_async(tenant_id, task_id, request, headers, runtime)
 
     def get_template_with_options(
         self,
@@ -1573,23 +1555,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_template_questions(
+    def get_template(
         self,
         tenant_id: str,
         template_id: str,
-    ) -> open_itag_20220616_models.GetTemplateQuestionsResponse:
+    ) -> open_itag_20220616_models.GetTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_template_questions_with_options(tenant_id, template_id, headers, runtime)
+        return self.get_template_with_options(tenant_id, template_id, headers, runtime)
 
-    async def get_template_questions_async(
+    async def get_template_async(
         self,
         tenant_id: str,
         template_id: str,
-    ) -> open_itag_20220616_models.GetTemplateQuestionsResponse:
+    ) -> open_itag_20220616_models.GetTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_template_questions_with_options_async(tenant_id, template_id, headers, runtime)
+        return await self.get_template_with_options_async(tenant_id, template_id, headers, runtime)
 
     def get_template_questions_with_options(
         self,
@@ -1643,23 +1625,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_template_view(
+    def get_template_questions(
         self,
         tenant_id: str,
         template_id: str,
-    ) -> open_itag_20220616_models.GetTemplateViewResponse:
+    ) -> open_itag_20220616_models.GetTemplateQuestionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_template_view_with_options(tenant_id, template_id, headers, runtime)
+        return self.get_template_questions_with_options(tenant_id, template_id, headers, runtime)
 
-    async def get_template_view_async(
+    async def get_template_questions_async(
         self,
         tenant_id: str,
         template_id: str,
-    ) -> open_itag_20220616_models.GetTemplateViewResponse:
+    ) -> open_itag_20220616_models.GetTemplateQuestionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_template_view_with_options_async(tenant_id, template_id, headers, runtime)
+        return await self.get_template_questions_with_options_async(tenant_id, template_id, headers, runtime)
 
     def get_template_view_with_options(
         self,
@@ -1713,21 +1695,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_tenant(
+    def get_template_view(
         self,
         tenant_id: str,
-    ) -> open_itag_20220616_models.GetTenantResponse:
+        template_id: str,
+    ) -> open_itag_20220616_models.GetTemplateViewResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_tenant_with_options(tenant_id, headers, runtime)
+        return self.get_template_view_with_options(tenant_id, template_id, headers, runtime)
 
-    async def get_tenant_async(
+    async def get_template_view_async(
         self,
         tenant_id: str,
-    ) -> open_itag_20220616_models.GetTenantResponse:
+        template_id: str,
+    ) -> open_itag_20220616_models.GetTemplateViewResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_tenant_with_options_async(tenant_id, headers, runtime)
+        return await self.get_template_view_with_options_async(tenant_id, template_id, headers, runtime)
 
     def get_tenant_with_options(
         self,
@@ -1779,23 +1763,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_user(
+    def get_tenant(
         self,
         tenant_id: str,
-        user_id: str,
-    ) -> open_itag_20220616_models.GetUserResponse:
+    ) -> open_itag_20220616_models.GetTenantResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_user_with_options(tenant_id, user_id, headers, runtime)
+        return self.get_tenant_with_options(tenant_id, headers, runtime)
 
-    async def get_user_async(
+    async def get_tenant_async(
         self,
         tenant_id: str,
-        user_id: str,
-    ) -> open_itag_20220616_models.GetUserResponse:
+    ) -> open_itag_20220616_models.GetTenantResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_user_with_options_async(tenant_id, user_id, headers, runtime)
+        return await self.get_tenant_with_options_async(tenant_id, headers, runtime)
 
     def get_user_with_options(
         self,
@@ -1849,23 +1831,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_jobs(
+    def get_user(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.ListJobsRequest,
-    ) -> open_itag_20220616_models.ListJobsResponse:
+        user_id: str,
+    ) -> open_itag_20220616_models.GetUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_jobs_with_options(tenant_id, request, headers, runtime)
+        return self.get_user_with_options(tenant_id, user_id, headers, runtime)
 
-    async def list_jobs_async(
+    async def get_user_async(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.ListJobsRequest,
-    ) -> open_itag_20220616_models.ListJobsResponse:
+        user_id: str,
+    ) -> open_itag_20220616_models.GetUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_jobs_with_options_async(tenant_id, request, headers, runtime)
+        return await self.get_user_with_options_async(tenant_id, user_id, headers, runtime)
 
     def list_jobs_with_options(
         self,
@@ -1937,27 +1919,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_subtask_items(
+    def list_jobs(
         self,
         tenant_id: str,
-        task_id: str,
-        subtask_id: str,
-        request: open_itag_20220616_models.ListSubtaskItemsRequest,
-    ) -> open_itag_20220616_models.ListSubtaskItemsResponse:
+        request: open_itag_20220616_models.ListJobsRequest,
+    ) -> open_itag_20220616_models.ListJobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_subtask_items_with_options(tenant_id, task_id, subtask_id, request, headers, runtime)
+        return self.list_jobs_with_options(tenant_id, request, headers, runtime)
 
-    async def list_subtask_items_async(
+    async def list_jobs_async(
         self,
         tenant_id: str,
-        task_id: str,
-        subtask_id: str,
-        request: open_itag_20220616_models.ListSubtaskItemsRequest,
-    ) -> open_itag_20220616_models.ListSubtaskItemsResponse:
+        request: open_itag_20220616_models.ListJobsRequest,
+    ) -> open_itag_20220616_models.ListJobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_subtask_items_with_options_async(tenant_id, task_id, subtask_id, request, headers, runtime)
+        return await self.list_jobs_with_options_async(tenant_id, request, headers, runtime)
 
     def list_subtask_items_with_options(
         self,
@@ -2029,25 +2007,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_subtasks(
+    def list_subtask_items(
         self,
         tenant_id: str,
         task_id: str,
-        request: open_itag_20220616_models.ListSubtasksRequest,
-    ) -> open_itag_20220616_models.ListSubtasksResponse:
+        subtask_id: str,
+        request: open_itag_20220616_models.ListSubtaskItemsRequest,
+    ) -> open_itag_20220616_models.ListSubtaskItemsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_subtasks_with_options(tenant_id, task_id, request, headers, runtime)
+        return self.list_subtask_items_with_options(tenant_id, task_id, subtask_id, request, headers, runtime)
 
-    async def list_subtasks_async(
+    async def list_subtask_items_async(
         self,
         tenant_id: str,
         task_id: str,
-        request: open_itag_20220616_models.ListSubtasksRequest,
-    ) -> open_itag_20220616_models.ListSubtasksResponse:
+        subtask_id: str,
+        request: open_itag_20220616_models.ListSubtaskItemsRequest,
+    ) -> open_itag_20220616_models.ListSubtaskItemsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_subtasks_with_options_async(tenant_id, task_id, request, headers, runtime)
+        return await self.list_subtask_items_with_options_async(tenant_id, task_id, subtask_id, request, headers, runtime)
 
     def list_subtasks_with_options(
         self,
@@ -2117,23 +2097,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tasks(
+    def list_subtasks(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.ListTasksRequest,
-    ) -> open_itag_20220616_models.ListTasksResponse:
+        task_id: str,
+        request: open_itag_20220616_models.ListSubtasksRequest,
+    ) -> open_itag_20220616_models.ListSubtasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tasks_with_options(tenant_id, request, headers, runtime)
+        return self.list_subtasks_with_options(tenant_id, task_id, request, headers, runtime)
 
-    async def list_tasks_async(
+    async def list_subtasks_async(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.ListTasksRequest,
-    ) -> open_itag_20220616_models.ListTasksResponse:
+        task_id: str,
+        request: open_itag_20220616_models.ListSubtasksRequest,
+    ) -> open_itag_20220616_models.ListSubtasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tasks_with_options_async(tenant_id, request, headers, runtime)
+        return await self.list_subtasks_with_options_async(tenant_id, task_id, request, headers, runtime)
 
     def list_tasks_with_options(
         self,
@@ -2201,23 +2183,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_templates(
+    def list_tasks(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.ListTemplatesRequest,
-    ) -> open_itag_20220616_models.ListTemplatesResponse:
+        request: open_itag_20220616_models.ListTasksRequest,
+    ) -> open_itag_20220616_models.ListTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_templates_with_options(tenant_id, request, headers, runtime)
+        return self.list_tasks_with_options(tenant_id, request, headers, runtime)
 
-    async def list_templates_async(
+    async def list_tasks_async(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.ListTemplatesRequest,
-    ) -> open_itag_20220616_models.ListTemplatesResponse:
+        request: open_itag_20220616_models.ListTasksRequest,
+    ) -> open_itag_20220616_models.ListTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_templates_with_options_async(tenant_id, request, headers, runtime)
+        return await self.list_tasks_with_options_async(tenant_id, request, headers, runtime)
 
     def list_templates_with_options(
         self,
@@ -2301,21 +2283,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tenants(
+    def list_templates(
         self,
-        request: open_itag_20220616_models.ListTenantsRequest,
-    ) -> open_itag_20220616_models.ListTenantsResponse:
+        tenant_id: str,
+        request: open_itag_20220616_models.ListTemplatesRequest,
+    ) -> open_itag_20220616_models.ListTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tenants_with_options(request, headers, runtime)
+        return self.list_templates_with_options(tenant_id, request, headers, runtime)
 
-    async def list_tenants_async(
+    async def list_templates_async(
         self,
-        request: open_itag_20220616_models.ListTenantsRequest,
-    ) -> open_itag_20220616_models.ListTenantsResponse:
+        tenant_id: str,
+        request: open_itag_20220616_models.ListTemplatesRequest,
+    ) -> open_itag_20220616_models.ListTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tenants_with_options_async(request, headers, runtime)
+        return await self.list_templates_with_options_async(tenant_id, request, headers, runtime)
 
     def list_tenants_with_options(
         self,
@@ -2381,23 +2365,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_users(
+    def list_tenants(
         self,
-        tenant_id: str,
-        request: open_itag_20220616_models.ListUsersRequest,
-    ) -> open_itag_20220616_models.ListUsersResponse:
+        request: open_itag_20220616_models.ListTenantsRequest,
+    ) -> open_itag_20220616_models.ListTenantsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_users_with_options(tenant_id, request, headers, runtime)
+        return self.list_tenants_with_options(request, headers, runtime)
 
-    async def list_users_async(
+    async def list_tenants_async(
         self,
-        tenant_id: str,
-        request: open_itag_20220616_models.ListUsersRequest,
-    ) -> open_itag_20220616_models.ListUsersResponse:
+        request: open_itag_20220616_models.ListTenantsRequest,
+    ) -> open_itag_20220616_models.ListTenantsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_users_with_options_async(tenant_id, request, headers, runtime)
+        return await self.list_tenants_with_options_async(request, headers, runtime)
 
     def list_users_with_options(
         self,
@@ -2465,27 +2447,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_work_node_workforce(
+    def list_users(
         self,
         tenant_id: str,
-        task_id: str,
-        work_node_id: str,
-        request: open_itag_20220616_models.RemoveWorkNodeWorkforceRequest,
-    ) -> open_itag_20220616_models.RemoveWorkNodeWorkforceResponse:
+        request: open_itag_20220616_models.ListUsersRequest,
+    ) -> open_itag_20220616_models.ListUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_work_node_workforce_with_options(tenant_id, task_id, work_node_id, request, headers, runtime)
+        return self.list_users_with_options(tenant_id, request, headers, runtime)
 
-    async def remove_work_node_workforce_async(
+    async def list_users_async(
         self,
         tenant_id: str,
-        task_id: str,
-        work_node_id: str,
-        request: open_itag_20220616_models.RemoveWorkNodeWorkforceRequest,
-    ) -> open_itag_20220616_models.RemoveWorkNodeWorkforceResponse:
+        request: open_itag_20220616_models.ListUsersRequest,
+    ) -> open_itag_20220616_models.ListUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_work_node_workforce_with_options_async(tenant_id, task_id, work_node_id, request, headers, runtime)
+        return await self.list_users_with_options_async(tenant_id, request, headers, runtime)
 
     def remove_work_node_workforce_with_options(
         self,
@@ -2553,25 +2531,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_task(
+    def remove_work_node_workforce(
         self,
         tenant_id: str,
         task_id: str,
-        request: open_itag_20220616_models.UpdateTaskRequest,
-    ) -> open_itag_20220616_models.UpdateTaskResponse:
+        work_node_id: str,
+        request: open_itag_20220616_models.RemoveWorkNodeWorkforceRequest,
+    ) -> open_itag_20220616_models.RemoveWorkNodeWorkforceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_task_with_options(tenant_id, task_id, request, headers, runtime)
+        return self.remove_work_node_workforce_with_options(tenant_id, task_id, work_node_id, request, headers, runtime)
 
-    async def update_task_async(
+    async def remove_work_node_workforce_async(
         self,
         tenant_id: str,
         task_id: str,
-        request: open_itag_20220616_models.UpdateTaskRequest,
-    ) -> open_itag_20220616_models.UpdateTaskResponse:
+        work_node_id: str,
+        request: open_itag_20220616_models.RemoveWorkNodeWorkforceRequest,
+    ) -> open_itag_20220616_models.RemoveWorkNodeWorkforceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_task_with_options_async(tenant_id, task_id, request, headers, runtime)
+        return await self.remove_work_node_workforce_with_options_async(tenant_id, task_id, work_node_id, request, headers, runtime)
 
     def update_task_with_options(
         self,
@@ -2584,7 +2564,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateTask',
@@ -2613,7 +2593,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateTask',
@@ -2631,25 +2611,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_task_workforce(
+    def update_task(
         self,
         tenant_id: str,
         task_id: str,
-        request: open_itag_20220616_models.UpdateTaskWorkforceRequest,
-    ) -> open_itag_20220616_models.UpdateTaskWorkforceResponse:
+        request: open_itag_20220616_models.UpdateTaskRequest,
+    ) -> open_itag_20220616_models.UpdateTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_task_workforce_with_options(tenant_id, task_id, request, headers, runtime)
+        return self.update_task_with_options(tenant_id, task_id, request, headers, runtime)
 
-    async def update_task_workforce_async(
+    async def update_task_async(
         self,
         tenant_id: str,
         task_id: str,
-        request: open_itag_20220616_models.UpdateTaskWorkforceRequest,
-    ) -> open_itag_20220616_models.UpdateTaskWorkforceResponse:
+        request: open_itag_20220616_models.UpdateTaskRequest,
+    ) -> open_itag_20220616_models.UpdateTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_task_workforce_with_options_async(tenant_id, task_id, request, headers, runtime)
+        return await self.update_task_with_options_async(tenant_id, task_id, request, headers, runtime)
 
     def update_task_workforce_with_options(
         self,
@@ -2715,25 +2695,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_template(
+    def update_task_workforce(
         self,
         tenant_id: str,
-        template_id: str,
-        request: open_itag_20220616_models.UpdateTemplateRequest,
-    ) -> open_itag_20220616_models.UpdateTemplateResponse:
+        task_id: str,
+        request: open_itag_20220616_models.UpdateTaskWorkforceRequest,
+    ) -> open_itag_20220616_models.UpdateTaskWorkforceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_template_with_options(tenant_id, template_id, request, headers, runtime)
+        return self.update_task_workforce_with_options(tenant_id, task_id, request, headers, runtime)
 
-    async def update_template_async(
+    async def update_task_workforce_async(
         self,
         tenant_id: str,
-        template_id: str,
-        request: open_itag_20220616_models.UpdateTemplateRequest,
-    ) -> open_itag_20220616_models.UpdateTemplateResponse:
+        task_id: str,
+        request: open_itag_20220616_models.UpdateTaskWorkforceRequest,
+    ) -> open_itag_20220616_models.UpdateTaskWorkforceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_template_with_options_async(tenant_id, template_id, request, headers, runtime)
+        return await self.update_task_workforce_with_options_async(tenant_id, task_id, request, headers, runtime)
 
     def update_template_with_options(
         self,
@@ -2746,7 +2726,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateTemplate',
@@ -2775,7 +2755,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateTemplate',
@@ -2793,23 +2773,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_tenant(
+    def update_template(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.UpdateTenantRequest,
-    ) -> open_itag_20220616_models.UpdateTenantResponse:
+        template_id: str,
+        request: open_itag_20220616_models.UpdateTemplateRequest,
+    ) -> open_itag_20220616_models.UpdateTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_tenant_with_options(tenant_id, request, headers, runtime)
+        return self.update_template_with_options(tenant_id, template_id, request, headers, runtime)
 
-    async def update_tenant_async(
+    async def update_template_async(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.UpdateTenantRequest,
-    ) -> open_itag_20220616_models.UpdateTenantResponse:
+        template_id: str,
+        request: open_itag_20220616_models.UpdateTemplateRequest,
+    ) -> open_itag_20220616_models.UpdateTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_tenant_with_options_async(tenant_id, request, headers, runtime)
+        return await self.update_template_with_options_async(tenant_id, template_id, request, headers, runtime)
 
     def update_tenant_with_options(
         self,
@@ -2877,25 +2859,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_user(
+    def update_tenant(
         self,
         tenant_id: str,
-        user_id: str,
-        request: open_itag_20220616_models.UpdateUserRequest,
-    ) -> open_itag_20220616_models.UpdateUserResponse:
+        request: open_itag_20220616_models.UpdateTenantRequest,
+    ) -> open_itag_20220616_models.UpdateTenantResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_user_with_options(tenant_id, user_id, request, headers, runtime)
+        return self.update_tenant_with_options(tenant_id, request, headers, runtime)
 
-    async def update_user_async(
+    async def update_tenant_async(
         self,
         tenant_id: str,
-        user_id: str,
-        request: open_itag_20220616_models.UpdateUserRequest,
-    ) -> open_itag_20220616_models.UpdateUserResponse:
+        request: open_itag_20220616_models.UpdateTenantRequest,
+    ) -> open_itag_20220616_models.UpdateTenantResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_user_with_options_async(tenant_id, user_id, request, headers, runtime)
+        return await self.update_tenant_with_options_async(tenant_id, request, headers, runtime)
 
     def update_user_with_options(
         self,
@@ -2964,3 +2944,23 @@ class Client(OpenApiClient):
             open_itag_20220616_models.UpdateUserResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_user(
+        self,
+        tenant_id: str,
+        user_id: str,
+        request: open_itag_20220616_models.UpdateUserRequest,
+    ) -> open_itag_20220616_models.UpdateUserResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_user_with_options(tenant_id, user_id, request, headers, runtime)
+
+    async def update_user_async(
+        self,
+        tenant_id: str,
+        user_id: str,
+        request: open_itag_20220616_models.UpdateUserRequest,
+    ) -> open_itag_20220616_models.UpdateUserResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_user_with_options_async(tenant_id, user_id, request, headers, runtime)
