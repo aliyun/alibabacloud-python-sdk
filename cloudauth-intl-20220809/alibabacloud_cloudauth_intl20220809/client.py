@@ -41,6 +41,108 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def card_ocr_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.CardOcrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CardOcrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.doc_type):
+            query['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.id_face_quality):
+            query['IdFaceQuality'] = request.id_face_quality
+        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
+            query['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
+        if not UtilClient.is_unset(request.id_ocr_picture_url):
+            query['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.ocr):
+            query['Ocr'] = request.ocr
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.spoof):
+            query['Spoof'] = request.spoof
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CardOcr',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.CardOcrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def card_ocr_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.CardOcrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CardOcrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.doc_type):
+            query['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.id_face_quality):
+            query['IdFaceQuality'] = request.id_face_quality
+        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
+            query['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
+        if not UtilClient.is_unset(request.id_ocr_picture_url):
+            query['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.ocr):
+            query['Ocr'] = request.ocr
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.spoof):
+            query['Spoof'] = request.spoof
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CardOcr',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.CardOcrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def card_ocr(
+        self,
+        request: cloudauth_intl_20220809_models.CardOcrRequest,
+    ) -> cloudauth_intl_20220809_models.CardOcrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.card_ocr_with_options(request, runtime)
+
+    async def card_ocr_async(
+        self,
+        request: cloudauth_intl_20220809_models.CardOcrRequest,
+    ) -> cloudauth_intl_20220809_models.CardOcrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.card_ocr_with_options_async(request, runtime)
+
     def check_result_with_options(
         self,
         request: cloudauth_intl_20220809_models.CheckResultRequest,

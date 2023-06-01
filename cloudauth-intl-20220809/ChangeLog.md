@@ -1,3 +1,6 @@
+2023-06-01 Version: 1.0.11
+- Support ekyc.
+
 2023-05-10 Version: 1.0.10
 - Support ekyc.
 
