@@ -41,22 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_and_remove_favorite_content(
-        self,
-        request: ali_geniessp__1__0_models.AddAndRemoveFavoriteContentRequest,
-    ) -> ali_geniessp__1__0_models.AddAndRemoveFavoriteContentResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.AddAndRemoveFavoriteContentHeaders()
-        return self.add_and_remove_favorite_content_with_options(request, headers, runtime)
-
-    async def add_and_remove_favorite_content_async(
-        self,
-        request: ali_geniessp__1__0_models.AddAndRemoveFavoriteContentRequest,
-    ) -> ali_geniessp__1__0_models.AddAndRemoveFavoriteContentResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.AddAndRemoveFavoriteContentHeaders()
-        return await self.add_and_remove_favorite_content_with_options_async(request, headers, runtime)
-
     def add_and_remove_favorite_content_with_options(
         self,
         tmp_req: ali_geniessp__1__0_models.AddAndRemoveFavoriteContentRequest,
@@ -67,11 +51,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.AddAndRemoveFavoriteContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_add_and_remove_favorite_content_request):
-            request.open_add_and_remove_favorite_content_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_add_and_remove_favorite_content_request), 'OpenAddAndRemoveFavoriteContentRequest', 'json')
+            request.open_add_and_remove_favorite_content_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_add_and_remove_favorite_content_request, 'OpenAddAndRemoveFavoriteContentRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -118,11 +102,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.AddAndRemoveFavoriteContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_add_and_remove_favorite_content_request):
-            request.open_add_and_remove_favorite_content_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_add_and_remove_favorite_content_request), 'OpenAddAndRemoveFavoriteContentRequest', 'json')
+            request.open_add_and_remove_favorite_content_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_add_and_remove_favorite_content_request, 'OpenAddAndRemoveFavoriteContentRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -159,21 +143,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def add_sub(
+    def add_and_remove_favorite_content(
         self,
-        request: ali_geniessp__1__0_models.AddSubRequest,
-    ) -> ali_geniessp__1__0_models.AddSubResponse:
+        request: ali_geniessp__1__0_models.AddAndRemoveFavoriteContentRequest,
+    ) -> ali_geniessp__1__0_models.AddAndRemoveFavoriteContentResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.AddSubHeaders()
-        return self.add_sub_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.AddAndRemoveFavoriteContentHeaders()
+        return self.add_and_remove_favorite_content_with_options(request, headers, runtime)
 
-    async def add_sub_async(
+    async def add_and_remove_favorite_content_async(
         self,
-        request: ali_geniessp__1__0_models.AddSubRequest,
-    ) -> ali_geniessp__1__0_models.AddSubResponse:
+        request: ali_geniessp__1__0_models.AddAndRemoveFavoriteContentRequest,
+    ) -> ali_geniessp__1__0_models.AddAndRemoveFavoriteContentResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.AddSubHeaders()
-        return await self.add_sub_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.AddAndRemoveFavoriteContentHeaders()
+        return await self.add_and_remove_favorite_content_with_options_async(request, headers, runtime)
 
     def add_sub_with_options(
         self,
@@ -185,11 +169,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.AddSubShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.add_subscription_info_request):
-            request.add_subscription_info_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.add_subscription_info_request), 'AddSubscriptionInfoRequest', 'json')
+            request.add_subscription_info_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.add_subscription_info_request, 'AddSubscriptionInfoRequest', 'json')
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.add_subscription_info_request_shrink):
             query['AddSubscriptionInfoRequest'] = request.add_subscription_info_request_shrink
@@ -234,11 +218,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.AddSubShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.add_subscription_info_request):
-            request.add_subscription_info_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.add_subscription_info_request), 'AddSubscriptionInfoRequest', 'json')
+            request.add_subscription_info_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.add_subscription_info_request, 'AddSubscriptionInfoRequest', 'json')
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.add_subscription_info_request_shrink):
             query['AddSubscriptionInfoRequest'] = request.add_subscription_info_request_shrink
@@ -273,21 +257,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def auth_login_with_aligenie_user_info(
+    def add_sub(
         self,
-        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoRequest,
-    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoResponse:
+        request: ali_geniessp__1__0_models.AddSubRequest,
+    ) -> ali_geniessp__1__0_models.AddSubResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoHeaders()
-        return self.auth_login_with_aligenie_user_info_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.AddSubHeaders()
+        return self.add_sub_with_options(request, headers, runtime)
 
-    async def auth_login_with_aligenie_user_info_async(
+    async def add_sub_async(
         self,
-        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoRequest,
-    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoResponse:
+        request: ali_geniessp__1__0_models.AddSubRequest,
+    ) -> ali_geniessp__1__0_models.AddSubResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoHeaders()
-        return await self.auth_login_with_aligenie_user_info_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.AddSubHeaders()
+        return await self.add_sub_with_options_async(request, headers, runtime)
 
     def auth_login_with_aligenie_user_info_with_options(
         self,
@@ -367,21 +351,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def auth_login_with_aligenie_user_info_generated_by_phone_number(
+    def auth_login_with_aligenie_user_info(
         self,
-        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest,
-    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse:
+        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders()
-        return self.auth_login_with_aligenie_user_info_generated_by_phone_number_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoHeaders()
+        return self.auth_login_with_aligenie_user_info_with_options(request, headers, runtime)
 
-    async def auth_login_with_aligenie_user_info_generated_by_phone_number_async(
+    async def auth_login_with_aligenie_user_info_async(
         self,
-        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest,
-    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse:
+        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders()
-        return await self.auth_login_with_aligenie_user_info_generated_by_phone_number_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoHeaders()
+        return await self.auth_login_with_aligenie_user_info_with_options_async(request, headers, runtime)
 
     def auth_login_with_aligenie_user_info_generated_by_phone_number_with_options(
         self,
@@ -457,21 +441,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def auth_login_with_taobao_user_info(
+    def auth_login_with_aligenie_user_info_generated_by_phone_number(
         self,
-        request: ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoRequest,
-    ) -> ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoResponse:
+        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoHeaders()
-        return self.auth_login_with_taobao_user_info_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders()
+        return self.auth_login_with_aligenie_user_info_generated_by_phone_number_with_options(request, headers, runtime)
 
-    async def auth_login_with_taobao_user_info_async(
+    async def auth_login_with_aligenie_user_info_generated_by_phone_number_async(
         self,
-        request: ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoRequest,
-    ) -> ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoResponse:
+        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoHeaders()
-        return await self.auth_login_with_taobao_user_info_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders()
+        return await self.auth_login_with_aligenie_user_info_generated_by_phone_number_with_options_async(request, headers, runtime)
 
     def auth_login_with_taobao_user_info_with_options(
         self,
@@ -551,21 +535,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def auth_login_with_third_user_info(
+    def auth_login_with_taobao_user_info(
         self,
-        request: ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoRequest,
-    ) -> ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoResponse:
+        request: ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoHeaders()
-        return self.auth_login_with_third_user_info_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoHeaders()
+        return self.auth_login_with_taobao_user_info_with_options(request, headers, runtime)
 
-    async def auth_login_with_third_user_info_async(
+    async def auth_login_with_taobao_user_info_async(
         self,
-        request: ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoRequest,
-    ) -> ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoResponse:
+        request: ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoHeaders()
-        return await self.auth_login_with_third_user_info_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoHeaders()
+        return await self.auth_login_with_taobao_user_info_with_options_async(request, headers, runtime)
 
     def auth_login_with_third_user_info_with_options(
         self,
@@ -661,21 +645,139 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def check_auth_code_bind_for_ext(
+    def auth_login_with_third_user_info(
         self,
-        request: ali_geniessp__1__0_models.CheckAuthCodeBindForExtRequest,
-    ) -> ali_geniessp__1__0_models.CheckAuthCodeBindForExtResponse:
+        request: ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.CheckAuthCodeBindForExtHeaders()
-        return self.check_auth_code_bind_for_ext_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoHeaders()
+        return self.auth_login_with_third_user_info_with_options(request, headers, runtime)
 
-    async def check_auth_code_bind_for_ext_async(
+    async def auth_login_with_third_user_info_async(
         self,
-        request: ali_geniessp__1__0_models.CheckAuthCodeBindForExtRequest,
-    ) -> ali_geniessp__1__0_models.CheckAuthCodeBindForExtResponse:
+        request: ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.CheckAuthCodeBindForExtHeaders()
-        return await self.check_auth_code_bind_for_ext_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoHeaders()
+        return await self.auth_login_with_third_user_info_with_options_async(request, headers, runtime)
+
+    def check_and_do_voip_call_for_hotel_with_options(
+        self,
+        tmp_req: ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelRequest,
+        headers: ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.biz_data):
+            body['BizData'] = request.biz_data
+        if not UtilClient.is_unset(request.callee_nick):
+            body['CalleeNick'] = request.callee_nick
+        if not UtilClient.is_unset(request.callee_phone_num):
+            body['CalleePhoneNum'] = request.callee_phone_num
+        if not UtilClient.is_unset(request.device_info_shrink):
+            body['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            body['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckAndDoVoipCallForHotel',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/checkAndDoVoipCallForHotel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_and_do_voip_call_for_hotel_with_options_async(
+        self,
+        tmp_req: ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelRequest,
+        headers: ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.biz_data):
+            body['BizData'] = request.biz_data
+        if not UtilClient.is_unset(request.callee_nick):
+            body['CalleeNick'] = request.callee_nick
+        if not UtilClient.is_unset(request.callee_phone_num):
+            body['CalleePhoneNum'] = request.callee_phone_num
+        if not UtilClient.is_unset(request.device_info_shrink):
+            body['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            body['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckAndDoVoipCallForHotel',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/checkAndDoVoipCallForHotel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_and_do_voip_call_for_hotel(
+        self,
+        request: ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelRequest,
+    ) -> ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelHeaders()
+        return self.check_and_do_voip_call_for_hotel_with_options(request, headers, runtime)
+
+    async def check_and_do_voip_call_for_hotel_async(
+        self,
+        request: ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelRequest,
+    ) -> ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.CheckAndDoVoipCallForHotelHeaders()
+        return await self.check_and_do_voip_call_for_hotel_with_options_async(request, headers, runtime)
 
     def check_auth_code_bind_for_ext_with_options(
         self,
@@ -687,7 +789,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.CheckAuthCodeBindForExtShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
@@ -734,7 +836,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.CheckAuthCodeBindForExtShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
@@ -771,21 +873,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_alarm(
+    def check_auth_code_bind_for_ext(
         self,
-        request: ali_geniessp__1__0_models.CreateAlarmRequest,
-    ) -> ali_geniessp__1__0_models.CreateAlarmResponse:
+        request: ali_geniessp__1__0_models.CheckAuthCodeBindForExtRequest,
+    ) -> ali_geniessp__1__0_models.CheckAuthCodeBindForExtResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.CreateAlarmHeaders()
-        return self.create_alarm_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.CheckAuthCodeBindForExtHeaders()
+        return self.check_auth_code_bind_for_ext_with_options(request, headers, runtime)
 
-    async def create_alarm_async(
+    async def check_auth_code_bind_for_ext_async(
         self,
-        request: ali_geniessp__1__0_models.CreateAlarmRequest,
-    ) -> ali_geniessp__1__0_models.CreateAlarmResponse:
+        request: ali_geniessp__1__0_models.CheckAuthCodeBindForExtRequest,
+    ) -> ali_geniessp__1__0_models.CheckAuthCodeBindForExtResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.CreateAlarmHeaders()
-        return await self.create_alarm_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.CheckAuthCodeBindForExtHeaders()
+        return await self.check_auth_code_bind_for_ext_with_options_async(request, headers, runtime)
 
     def create_alarm_with_options(
         self,
@@ -797,11 +899,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.CreateAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -846,11 +948,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.CreateAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -885,21 +987,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_playing_list(
+    def create_alarm(
         self,
-        request: ali_geniessp__1__0_models.CreatePlayingListRequest,
-    ) -> ali_geniessp__1__0_models.CreatePlayingListResponse:
+        request: ali_geniessp__1__0_models.CreateAlarmRequest,
+    ) -> ali_geniessp__1__0_models.CreateAlarmResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.CreatePlayingListHeaders()
-        return self.create_playing_list_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.CreateAlarmHeaders()
+        return self.create_alarm_with_options(request, headers, runtime)
 
-    async def create_playing_list_async(
+    async def create_alarm_async(
         self,
-        request: ali_geniessp__1__0_models.CreatePlayingListRequest,
-    ) -> ali_geniessp__1__0_models.CreatePlayingListResponse:
+        request: ali_geniessp__1__0_models.CreateAlarmRequest,
+    ) -> ali_geniessp__1__0_models.CreateAlarmResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.CreatePlayingListHeaders()
-        return await self.create_playing_list_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.CreateAlarmHeaders()
+        return await self.create_alarm_with_options_async(request, headers, runtime)
 
     def create_playing_list_with_options(
         self,
@@ -911,11 +1013,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.CreatePlayingListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_create_playing_list_request):
-            request.open_create_playing_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_create_playing_list_request), 'OpenCreatePlayingListRequest', 'json')
+            request.open_create_playing_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_create_playing_list_request, 'OpenCreatePlayingListRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -962,11 +1064,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.CreatePlayingListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_create_playing_list_request):
-            request.open_create_playing_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_create_playing_list_request), 'OpenCreatePlayingListRequest', 'json')
+            request.open_create_playing_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_create_playing_list_request, 'OpenCreatePlayingListRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -1003,21 +1105,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_schedule_task(
+    def create_playing_list(
         self,
-        request: ali_geniessp__1__0_models.CreateScheduleTaskRequest,
-    ) -> ali_geniessp__1__0_models.CreateScheduleTaskResponse:
+        request: ali_geniessp__1__0_models.CreatePlayingListRequest,
+    ) -> ali_geniessp__1__0_models.CreatePlayingListResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.CreateScheduleTaskHeaders()
-        return self.create_schedule_task_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.CreatePlayingListHeaders()
+        return self.create_playing_list_with_options(request, headers, runtime)
 
-    async def create_schedule_task_async(
+    async def create_playing_list_async(
         self,
-        request: ali_geniessp__1__0_models.CreateScheduleTaskRequest,
-    ) -> ali_geniessp__1__0_models.CreateScheduleTaskResponse:
+        request: ali_geniessp__1__0_models.CreatePlayingListRequest,
+    ) -> ali_geniessp__1__0_models.CreatePlayingListResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.CreateScheduleTaskHeaders()
-        return await self.create_schedule_task_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.CreatePlayingListHeaders()
+        return await self.create_playing_list_with_options_async(request, headers, runtime)
 
     def create_schedule_task_with_options(
         self,
@@ -1029,11 +1131,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.CreateScheduleTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -1078,11 +1180,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.CreateScheduleTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -1117,21 +1219,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_alarms(
+    def create_schedule_task(
         self,
-        request: ali_geniessp__1__0_models.DeleteAlarmsRequest,
-    ) -> ali_geniessp__1__0_models.DeleteAlarmsResponse:
+        request: ali_geniessp__1__0_models.CreateScheduleTaskRequest,
+    ) -> ali_geniessp__1__0_models.CreateScheduleTaskResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.DeleteAlarmsHeaders()
-        return self.delete_alarms_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.CreateScheduleTaskHeaders()
+        return self.create_schedule_task_with_options(request, headers, runtime)
 
-    async def delete_alarms_async(
+    async def create_schedule_task_async(
         self,
-        request: ali_geniessp__1__0_models.DeleteAlarmsRequest,
-    ) -> ali_geniessp__1__0_models.DeleteAlarmsResponse:
+        request: ali_geniessp__1__0_models.CreateScheduleTaskRequest,
+    ) -> ali_geniessp__1__0_models.CreateScheduleTaskResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.DeleteAlarmsHeaders()
-        return await self.delete_alarms_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.CreateScheduleTaskHeaders()
+        return await self.create_schedule_task_with_options_async(request, headers, runtime)
 
     def delete_alarms_with_options(
         self,
@@ -1143,11 +1245,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.DeleteAlarmsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -1192,11 +1294,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.DeleteAlarmsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -1231,21 +1333,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_schedule_task(
+    def delete_alarms(
         self,
-        request: ali_geniessp__1__0_models.DeleteScheduleTaskRequest,
-    ) -> ali_geniessp__1__0_models.DeleteScheduleTaskResponse:
+        request: ali_geniessp__1__0_models.DeleteAlarmsRequest,
+    ) -> ali_geniessp__1__0_models.DeleteAlarmsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.DeleteScheduleTaskHeaders()
-        return self.delete_schedule_task_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.DeleteAlarmsHeaders()
+        return self.delete_alarms_with_options(request, headers, runtime)
 
-    async def delete_schedule_task_async(
+    async def delete_alarms_async(
         self,
-        request: ali_geniessp__1__0_models.DeleteScheduleTaskRequest,
-    ) -> ali_geniessp__1__0_models.DeleteScheduleTaskResponse:
+        request: ali_geniessp__1__0_models.DeleteAlarmsRequest,
+    ) -> ali_geniessp__1__0_models.DeleteAlarmsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.DeleteScheduleTaskHeaders()
-        return await self.delete_schedule_task_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.DeleteAlarmsHeaders()
+        return await self.delete_alarms_with_options_async(request, headers, runtime)
 
     def delete_schedule_task_with_options(
         self,
@@ -1257,11 +1359,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.DeleteScheduleTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -1306,11 +1408,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.DeleteScheduleTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -1345,21 +1447,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_sub(
+    def delete_schedule_task(
         self,
-        request: ali_geniessp__1__0_models.DeleteSubRequest,
-    ) -> ali_geniessp__1__0_models.DeleteSubResponse:
+        request: ali_geniessp__1__0_models.DeleteScheduleTaskRequest,
+    ) -> ali_geniessp__1__0_models.DeleteScheduleTaskResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.DeleteSubHeaders()
-        return self.delete_sub_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.DeleteScheduleTaskHeaders()
+        return self.delete_schedule_task_with_options(request, headers, runtime)
 
-    async def delete_sub_async(
+    async def delete_schedule_task_async(
         self,
-        request: ali_geniessp__1__0_models.DeleteSubRequest,
-    ) -> ali_geniessp__1__0_models.DeleteSubResponse:
+        request: ali_geniessp__1__0_models.DeleteScheduleTaskRequest,
+    ) -> ali_geniessp__1__0_models.DeleteScheduleTaskResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.DeleteSubHeaders()
-        return await self.delete_sub_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.DeleteScheduleTaskHeaders()
+        return await self.delete_schedule_task_with_options_async(request, headers, runtime)
 
     def delete_sub_with_options(
         self,
@@ -1435,21 +1537,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def device_control(
+    def delete_sub(
         self,
-        request: ali_geniessp__1__0_models.DeviceControlRequest,
-    ) -> ali_geniessp__1__0_models.DeviceControlResponse:
+        request: ali_geniessp__1__0_models.DeleteSubRequest,
+    ) -> ali_geniessp__1__0_models.DeleteSubResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.DeviceControlHeaders()
-        return self.device_control_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.DeleteSubHeaders()
+        return self.delete_sub_with_options(request, headers, runtime)
 
-    async def device_control_async(
+    async def delete_sub_async(
         self,
-        request: ali_geniessp__1__0_models.DeviceControlRequest,
-    ) -> ali_geniessp__1__0_models.DeviceControlResponse:
+        request: ali_geniessp__1__0_models.DeleteSubRequest,
+    ) -> ali_geniessp__1__0_models.DeleteSubResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.DeviceControlHeaders()
-        return await self.device_control_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.DeleteSubHeaders()
+        return await self.delete_sub_with_options_async(request, headers, runtime)
 
     def device_control_with_options(
         self,
@@ -1461,9 +1563,9 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.DeviceControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.control_request):
-            request.control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.control_request), 'ControlRequest', 'json')
+            request.control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.control_request, 'ControlRequest', 'json')
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -1508,9 +1610,9 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.DeviceControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.control_request):
-            request.control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.control_request), 'ControlRequest', 'json')
+            request.control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.control_request, 'ControlRequest', 'json')
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -1545,21 +1647,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def ecology_openness_authenticate(
+    def device_control(
         self,
-        request: ali_geniessp__1__0_models.EcologyOpennessAuthenticateRequest,
-    ) -> ali_geniessp__1__0_models.EcologyOpennessAuthenticateResponse:
+        request: ali_geniessp__1__0_models.DeviceControlRequest,
+    ) -> ali_geniessp__1__0_models.DeviceControlResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.EcologyOpennessAuthenticateHeaders()
-        return self.ecology_openness_authenticate_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.DeviceControlHeaders()
+        return self.device_control_with_options(request, headers, runtime)
 
-    async def ecology_openness_authenticate_async(
+    async def device_control_async(
         self,
-        request: ali_geniessp__1__0_models.EcologyOpennessAuthenticateRequest,
-    ) -> ali_geniessp__1__0_models.EcologyOpennessAuthenticateResponse:
+        request: ali_geniessp__1__0_models.DeviceControlRequest,
+    ) -> ali_geniessp__1__0_models.DeviceControlResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.EcologyOpennessAuthenticateHeaders()
-        return await self.ecology_openness_authenticate_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.DeviceControlHeaders()
+        return await self.device_control_with_options_async(request, headers, runtime)
 
     def ecology_openness_authenticate_with_options(
         self,
@@ -1643,21 +1745,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def ecology_openness_send_verification_code(
+    def ecology_openness_authenticate(
         self,
-        request: ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeRequest,
-    ) -> ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeResponse:
+        request: ali_geniessp__1__0_models.EcologyOpennessAuthenticateRequest,
+    ) -> ali_geniessp__1__0_models.EcologyOpennessAuthenticateResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeHeaders()
-        return self.ecology_openness_send_verification_code_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.EcologyOpennessAuthenticateHeaders()
+        return self.ecology_openness_authenticate_with_options(request, headers, runtime)
 
-    async def ecology_openness_send_verification_code_async(
+    async def ecology_openness_authenticate_async(
         self,
-        request: ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeRequest,
-    ) -> ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeResponse:
+        request: ali_geniessp__1__0_models.EcologyOpennessAuthenticateRequest,
+    ) -> ali_geniessp__1__0_models.EcologyOpennessAuthenticateResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeHeaders()
-        return await self.ecology_openness_send_verification_code_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.EcologyOpennessAuthenticateHeaders()
+        return await self.ecology_openness_authenticate_with_options_async(request, headers, runtime)
 
     def ecology_openness_send_verification_code_with_options(
         self,
@@ -1741,21 +1843,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def find_userlist_to_auth_login_with_phone_number(
+    def ecology_openness_send_verification_code(
         self,
-        request: ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberRequest,
-    ) -> ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberResponse:
+        request: ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeRequest,
+    ) -> ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberHeaders()
-        return self.find_userlist_to_auth_login_with_phone_number_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeHeaders()
+        return self.ecology_openness_send_verification_code_with_options(request, headers, runtime)
 
-    async def find_userlist_to_auth_login_with_phone_number_async(
+    async def ecology_openness_send_verification_code_async(
         self,
-        request: ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberRequest,
-    ) -> ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberResponse:
+        request: ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeRequest,
+    ) -> ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberHeaders()
-        return await self.find_userlist_to_auth_login_with_phone_number_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeHeaders()
+        return await self.ecology_openness_send_verification_code_with_options_async(request, headers, runtime)
 
     def find_userlist_to_auth_login_with_phone_number_with_options(
         self,
@@ -1843,21 +1945,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_alarm(
+    def find_userlist_to_auth_login_with_phone_number(
         self,
-        request: ali_geniessp__1__0_models.GetAlarmRequest,
-    ) -> ali_geniessp__1__0_models.GetAlarmResponse:
+        request: ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberRequest,
+    ) -> ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetAlarmHeaders()
-        return self.get_alarm_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberHeaders()
+        return self.find_userlist_to_auth_login_with_phone_number_with_options(request, headers, runtime)
 
-    async def get_alarm_async(
+    async def find_userlist_to_auth_login_with_phone_number_async(
         self,
-        request: ali_geniessp__1__0_models.GetAlarmRequest,
-    ) -> ali_geniessp__1__0_models.GetAlarmResponse:
+        request: ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberRequest,
+    ) -> ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetAlarmHeaders()
-        return await self.get_alarm_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberHeaders()
+        return await self.find_userlist_to_auth_login_with_phone_number_with_options_async(request, headers, runtime)
 
     def get_alarm_with_options(
         self,
@@ -1869,11 +1971,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -1918,11 +2020,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -1957,21 +2059,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_album(
+    def get_alarm(
         self,
-        request: ali_geniessp__1__0_models.GetAlbumRequest,
-    ) -> ali_geniessp__1__0_models.GetAlbumResponse:
+        request: ali_geniessp__1__0_models.GetAlarmRequest,
+    ) -> ali_geniessp__1__0_models.GetAlarmResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetAlbumHeaders()
-        return self.get_album_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetAlarmHeaders()
+        return self.get_alarm_with_options(request, headers, runtime)
 
-    async def get_album_async(
+    async def get_alarm_async(
         self,
-        request: ali_geniessp__1__0_models.GetAlbumRequest,
-    ) -> ali_geniessp__1__0_models.GetAlbumResponse:
+        request: ali_geniessp__1__0_models.GetAlarmRequest,
+    ) -> ali_geniessp__1__0_models.GetAlarmResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetAlbumHeaders()
-        return await self.get_album_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetAlarmHeaders()
+        return await self.get_alarm_with_options_async(request, headers, runtime)
 
     def get_album_with_options(
         self,
@@ -2051,21 +2153,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_album_detail_by_id(
+    def get_album(
         self,
-        request: ali_geniessp__1__0_models.GetAlbumDetailByIdRequest,
-    ) -> ali_geniessp__1__0_models.GetAlbumDetailByIdResponse:
+        request: ali_geniessp__1__0_models.GetAlbumRequest,
+    ) -> ali_geniessp__1__0_models.GetAlbumResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetAlbumDetailByIdHeaders()
-        return self.get_album_detail_by_id_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetAlbumHeaders()
+        return self.get_album_with_options(request, headers, runtime)
 
-    async def get_album_detail_by_id_async(
+    async def get_album_async(
         self,
-        request: ali_geniessp__1__0_models.GetAlbumDetailByIdRequest,
-    ) -> ali_geniessp__1__0_models.GetAlbumDetailByIdResponse:
+        request: ali_geniessp__1__0_models.GetAlbumRequest,
+    ) -> ali_geniessp__1__0_models.GetAlbumResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetAlbumDetailByIdHeaders()
-        return await self.get_album_detail_by_id_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetAlbumHeaders()
+        return await self.get_album_with_options_async(request, headers, runtime)
 
     def get_album_detail_by_id_with_options(
         self,
@@ -2141,21 +2243,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_aligenie_user_info(
+    def get_album_detail_by_id(
         self,
-        request: ali_geniessp__1__0_models.GetAligenieUserInfoRequest,
-    ) -> ali_geniessp__1__0_models.GetAligenieUserInfoResponse:
+        request: ali_geniessp__1__0_models.GetAlbumDetailByIdRequest,
+    ) -> ali_geniessp__1__0_models.GetAlbumDetailByIdResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetAligenieUserInfoHeaders()
-        return self.get_aligenie_user_info_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetAlbumDetailByIdHeaders()
+        return self.get_album_detail_by_id_with_options(request, headers, runtime)
 
-    async def get_aligenie_user_info_async(
+    async def get_album_detail_by_id_async(
         self,
-        request: ali_geniessp__1__0_models.GetAligenieUserInfoRequest,
-    ) -> ali_geniessp__1__0_models.GetAligenieUserInfoResponse:
+        request: ali_geniessp__1__0_models.GetAlbumDetailByIdRequest,
+    ) -> ali_geniessp__1__0_models.GetAlbumDetailByIdResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetAligenieUserInfoHeaders()
-        return await self.get_aligenie_user_info_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetAlbumDetailByIdHeaders()
+        return await self.get_album_detail_by_id_with_options_async(request, headers, runtime)
 
     def get_aligenie_user_info_with_options(
         self,
@@ -2231,21 +2333,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_code_enhance(
+    def get_aligenie_user_info(
         self,
-        request: ali_geniessp__1__0_models.GetCodeEnhanceRequest,
-    ) -> ali_geniessp__1__0_models.GetCodeEnhanceResponse:
+        request: ali_geniessp__1__0_models.GetAligenieUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.GetAligenieUserInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetCodeEnhanceHeaders()
-        return self.get_code_enhance_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetAligenieUserInfoHeaders()
+        return self.get_aligenie_user_info_with_options(request, headers, runtime)
 
-    async def get_code_enhance_async(
+    async def get_aligenie_user_info_async(
         self,
-        request: ali_geniessp__1__0_models.GetCodeEnhanceRequest,
-    ) -> ali_geniessp__1__0_models.GetCodeEnhanceResponse:
+        request: ali_geniessp__1__0_models.GetAligenieUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.GetAligenieUserInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetCodeEnhanceHeaders()
-        return await self.get_code_enhance_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetAligenieUserInfoHeaders()
+        return await self.get_aligenie_user_info_with_options_async(request, headers, runtime)
 
     def get_code_enhance_with_options(
         self,
@@ -2257,9 +2359,9 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetCodeEnhanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.channel_info):
-            request.channel_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.channel_info), 'ChannelInfo', 'json')
+            request.channel_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_info, 'ChannelInfo', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.channel_info_shrink):
             query['ChannelInfo'] = request.channel_info_shrink
@@ -2302,9 +2404,9 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetCodeEnhanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.channel_info):
-            request.channel_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.channel_info), 'ChannelInfo', 'json')
+            request.channel_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_info, 'ChannelInfo', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.channel_info_shrink):
             query['ChannelInfo'] = request.channel_info_shrink
@@ -2337,21 +2439,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_content(
+    def get_code_enhance(
         self,
-        request: ali_geniessp__1__0_models.GetContentRequest,
-    ) -> ali_geniessp__1__0_models.GetContentResponse:
+        request: ali_geniessp__1__0_models.GetCodeEnhanceRequest,
+    ) -> ali_geniessp__1__0_models.GetCodeEnhanceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetContentHeaders()
-        return self.get_content_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetCodeEnhanceHeaders()
+        return self.get_code_enhance_with_options(request, headers, runtime)
 
-    async def get_content_async(
+    async def get_code_enhance_async(
         self,
-        request: ali_geniessp__1__0_models.GetContentRequest,
-    ) -> ali_geniessp__1__0_models.GetContentResponse:
+        request: ali_geniessp__1__0_models.GetCodeEnhanceRequest,
+    ) -> ali_geniessp__1__0_models.GetCodeEnhanceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetContentHeaders()
-        return await self.get_content_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetCodeEnhanceHeaders()
+        return await self.get_code_enhance_with_options_async(request, headers, runtime)
 
     def get_content_with_options(
         self,
@@ -2431,21 +2533,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_current_playing_item(
+    def get_content(
         self,
-        request: ali_geniessp__1__0_models.GetCurrentPlayingItemRequest,
-    ) -> ali_geniessp__1__0_models.GetCurrentPlayingItemResponse:
+        request: ali_geniessp__1__0_models.GetContentRequest,
+    ) -> ali_geniessp__1__0_models.GetContentResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetCurrentPlayingItemHeaders()
-        return self.get_current_playing_item_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetContentHeaders()
+        return self.get_content_with_options(request, headers, runtime)
 
-    async def get_current_playing_item_async(
+    async def get_content_async(
         self,
-        request: ali_geniessp__1__0_models.GetCurrentPlayingItemRequest,
-    ) -> ali_geniessp__1__0_models.GetCurrentPlayingItemResponse:
+        request: ali_geniessp__1__0_models.GetContentRequest,
+    ) -> ali_geniessp__1__0_models.GetContentResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetCurrentPlayingItemHeaders()
-        return await self.get_current_playing_item_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetContentHeaders()
+        return await self.get_content_with_options_async(request, headers, runtime)
 
     def get_current_playing_item_with_options(
         self,
@@ -2457,9 +2559,9 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetCurrentPlayingItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -2502,9 +2604,9 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetCurrentPlayingItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -2537,21 +2639,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_current_playing_list(
+    def get_current_playing_item(
         self,
-        request: ali_geniessp__1__0_models.GetCurrentPlayingListRequest,
-    ) -> ali_geniessp__1__0_models.GetCurrentPlayingListResponse:
+        request: ali_geniessp__1__0_models.GetCurrentPlayingItemRequest,
+    ) -> ali_geniessp__1__0_models.GetCurrentPlayingItemResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetCurrentPlayingListHeaders()
-        return self.get_current_playing_list_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetCurrentPlayingItemHeaders()
+        return self.get_current_playing_item_with_options(request, headers, runtime)
 
-    async def get_current_playing_list_async(
+    async def get_current_playing_item_async(
         self,
-        request: ali_geniessp__1__0_models.GetCurrentPlayingListRequest,
-    ) -> ali_geniessp__1__0_models.GetCurrentPlayingListResponse:
+        request: ali_geniessp__1__0_models.GetCurrentPlayingItemRequest,
+    ) -> ali_geniessp__1__0_models.GetCurrentPlayingItemResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetCurrentPlayingListHeaders()
-        return await self.get_current_playing_list_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetCurrentPlayingItemHeaders()
+        return await self.get_current_playing_item_with_options_async(request, headers, runtime)
 
     def get_current_playing_list_with_options(
         self,
@@ -2563,11 +2665,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetCurrentPlayingListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_query_play_list_request):
-            request.open_query_play_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_query_play_list_request), 'OpenQueryPlayListRequest', 'json')
+            request.open_query_play_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_query_play_list_request, 'OpenQueryPlayListRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -2614,11 +2716,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetCurrentPlayingListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_query_play_list_request):
-            request.open_query_play_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_query_play_list_request), 'OpenQueryPlayListRequest', 'json')
+            request.open_query_play_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_query_play_list_request, 'OpenQueryPlayListRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -2655,21 +2757,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_device_basic_info(
+    def get_current_playing_list(
         self,
-        request: ali_geniessp__1__0_models.GetDeviceBasicInfoRequest,
-    ) -> ali_geniessp__1__0_models.GetDeviceBasicInfoResponse:
+        request: ali_geniessp__1__0_models.GetCurrentPlayingListRequest,
+    ) -> ali_geniessp__1__0_models.GetCurrentPlayingListResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetDeviceBasicInfoHeaders()
-        return self.get_device_basic_info_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetCurrentPlayingListHeaders()
+        return self.get_current_playing_list_with_options(request, headers, runtime)
 
-    async def get_device_basic_info_async(
+    async def get_current_playing_list_async(
         self,
-        request: ali_geniessp__1__0_models.GetDeviceBasicInfoRequest,
-    ) -> ali_geniessp__1__0_models.GetDeviceBasicInfoResponse:
+        request: ali_geniessp__1__0_models.GetCurrentPlayingListRequest,
+    ) -> ali_geniessp__1__0_models.GetCurrentPlayingListResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetDeviceBasicInfoHeaders()
-        return await self.get_device_basic_info_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetCurrentPlayingListHeaders()
+        return await self.get_current_playing_list_with_options_async(request, headers, runtime)
 
     def get_device_basic_info_with_options(
         self,
@@ -2681,7 +2783,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetDeviceBasicInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -2722,7 +2824,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetDeviceBasicInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -2753,21 +2855,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_device_id_by_identity(
+    def get_device_basic_info(
         self,
-        request: ali_geniessp__1__0_models.GetDeviceIdByIdentityRequest,
-    ) -> ali_geniessp__1__0_models.GetDeviceIdByIdentityResponse:
+        request: ali_geniessp__1__0_models.GetDeviceBasicInfoRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceBasicInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetDeviceIdByIdentityHeaders()
-        return self.get_device_id_by_identity_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetDeviceBasicInfoHeaders()
+        return self.get_device_basic_info_with_options(request, headers, runtime)
 
-    async def get_device_id_by_identity_async(
+    async def get_device_basic_info_async(
         self,
-        request: ali_geniessp__1__0_models.GetDeviceIdByIdentityRequest,
-    ) -> ali_geniessp__1__0_models.GetDeviceIdByIdentityResponse:
+        request: ali_geniessp__1__0_models.GetDeviceBasicInfoRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceBasicInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetDeviceIdByIdentityHeaders()
-        return await self.get_device_id_by_identity_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetDeviceBasicInfoHeaders()
+        return await self.get_device_basic_info_with_options_async(request, headers, runtime)
 
     def get_device_id_by_identity_with_options(
         self,
@@ -2859,21 +2961,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_device_setting(
+    def get_device_id_by_identity(
         self,
-        request: ali_geniessp__1__0_models.GetDeviceSettingRequest,
-    ) -> ali_geniessp__1__0_models.GetDeviceSettingResponse:
+        request: ali_geniessp__1__0_models.GetDeviceIdByIdentityRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceIdByIdentityResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetDeviceSettingHeaders()
-        return self.get_device_setting_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetDeviceIdByIdentityHeaders()
+        return self.get_device_id_by_identity_with_options(request, headers, runtime)
 
-    async def get_device_setting_async(
+    async def get_device_id_by_identity_async(
         self,
-        request: ali_geniessp__1__0_models.GetDeviceSettingRequest,
-    ) -> ali_geniessp__1__0_models.GetDeviceSettingResponse:
+        request: ali_geniessp__1__0_models.GetDeviceIdByIdentityRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceIdByIdentityResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetDeviceSettingHeaders()
-        return await self.get_device_setting_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetDeviceIdByIdentityHeaders()
+        return await self.get_device_id_by_identity_with_options_async(request, headers, runtime)
 
     def get_device_setting_with_options(
         self,
@@ -2885,7 +2987,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetDeviceSettingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.keys):
             request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'json')
         query = {}
@@ -2930,7 +3032,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetDeviceSettingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.keys):
             request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'json')
         query = {}
@@ -2965,21 +3067,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_device_status_detail(
+    def get_device_setting(
         self,
-        request: ali_geniessp__1__0_models.GetDeviceStatusDetailRequest,
-    ) -> ali_geniessp__1__0_models.GetDeviceStatusDetailResponse:
+        request: ali_geniessp__1__0_models.GetDeviceSettingRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceSettingResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetDeviceStatusDetailHeaders()
-        return self.get_device_status_detail_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetDeviceSettingHeaders()
+        return self.get_device_setting_with_options(request, headers, runtime)
 
-    async def get_device_status_detail_async(
+    async def get_device_setting_async(
         self,
-        request: ali_geniessp__1__0_models.GetDeviceStatusDetailRequest,
-    ) -> ali_geniessp__1__0_models.GetDeviceStatusDetailResponse:
+        request: ali_geniessp__1__0_models.GetDeviceSettingRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceSettingResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetDeviceStatusDetailHeaders()
-        return await self.get_device_status_detail_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetDeviceSettingHeaders()
+        return await self.get_device_setting_with_options_async(request, headers, runtime)
 
     def get_device_status_detail_with_options(
         self,
@@ -2991,7 +3093,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetDeviceStatusDetailShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.keys):
             request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'json')
         query = {}
@@ -3036,7 +3138,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetDeviceStatusDetailShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.keys):
             request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'json')
         query = {}
@@ -3071,21 +3173,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_device_status_info(
+    def get_device_status_detail(
         self,
-        request: ali_geniessp__1__0_models.GetDeviceStatusInfoRequest,
-    ) -> ali_geniessp__1__0_models.GetDeviceStatusInfoResponse:
+        request: ali_geniessp__1__0_models.GetDeviceStatusDetailRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceStatusDetailResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetDeviceStatusInfoHeaders()
-        return self.get_device_status_info_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetDeviceStatusDetailHeaders()
+        return self.get_device_status_detail_with_options(request, headers, runtime)
 
-    async def get_device_status_info_async(
+    async def get_device_status_detail_async(
         self,
-        request: ali_geniessp__1__0_models.GetDeviceStatusInfoRequest,
-    ) -> ali_geniessp__1__0_models.GetDeviceStatusInfoResponse:
+        request: ali_geniessp__1__0_models.GetDeviceStatusDetailRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceStatusDetailResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetDeviceStatusInfoHeaders()
-        return await self.get_device_status_info_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetDeviceStatusDetailHeaders()
+        return await self.get_device_status_detail_with_options_async(request, headers, runtime)
 
     def get_device_status_info_with_options(
         self,
@@ -3097,7 +3199,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetDeviceStatusInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -3138,7 +3240,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetDeviceStatusInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -3169,21 +3271,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_device_tag(
+    def get_device_status_info(
         self,
-        request: ali_geniessp__1__0_models.GetDeviceTagRequest,
-    ) -> ali_geniessp__1__0_models.GetDeviceTagResponse:
+        request: ali_geniessp__1__0_models.GetDeviceStatusInfoRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceStatusInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetDeviceTagHeaders()
-        return self.get_device_tag_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetDeviceStatusInfoHeaders()
+        return self.get_device_status_info_with_options(request, headers, runtime)
 
-    async def get_device_tag_async(
+    async def get_device_status_info_async(
         self,
-        request: ali_geniessp__1__0_models.GetDeviceTagRequest,
-    ) -> ali_geniessp__1__0_models.GetDeviceTagResponse:
+        request: ali_geniessp__1__0_models.GetDeviceStatusInfoRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceStatusInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetDeviceTagHeaders()
-        return await self.get_device_tag_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetDeviceStatusInfoHeaders()
+        return await self.get_device_status_info_with_options_async(request, headers, runtime)
 
     def get_device_tag_with_options(
         self,
@@ -3195,7 +3297,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetDeviceTagShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -3236,7 +3338,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetDeviceTagShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -3267,21 +3369,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_schedule_task(
+    def get_device_tag(
         self,
-        request: ali_geniessp__1__0_models.GetScheduleTaskRequest,
-    ) -> ali_geniessp__1__0_models.GetScheduleTaskResponse:
+        request: ali_geniessp__1__0_models.GetDeviceTagRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceTagResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetScheduleTaskHeaders()
-        return self.get_schedule_task_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetDeviceTagHeaders()
+        return self.get_device_tag_with_options(request, headers, runtime)
 
-    async def get_schedule_task_async(
+    async def get_device_tag_async(
         self,
-        request: ali_geniessp__1__0_models.GetScheduleTaskRequest,
-    ) -> ali_geniessp__1__0_models.GetScheduleTaskResponse:
+        request: ali_geniessp__1__0_models.GetDeviceTagRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceTagResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetScheduleTaskHeaders()
-        return await self.get_schedule_task_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetDeviceTagHeaders()
+        return await self.get_device_tag_with_options_async(request, headers, runtime)
 
     def get_schedule_task_with_options(
         self,
@@ -3293,11 +3395,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetScheduleTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -3342,11 +3444,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetScheduleTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -3381,21 +3483,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_unread_message_count(
+    def get_schedule_task(
         self,
-        request: ali_geniessp__1__0_models.GetUnreadMessageCountRequest,
-    ) -> ali_geniessp__1__0_models.GetUnreadMessageCountResponse:
+        request: ali_geniessp__1__0_models.GetScheduleTaskRequest,
+    ) -> ali_geniessp__1__0_models.GetScheduleTaskResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetUnreadMessageCountHeaders()
-        return self.get_unread_message_count_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetScheduleTaskHeaders()
+        return self.get_schedule_task_with_options(request, headers, runtime)
 
-    async def get_unread_message_count_async(
+    async def get_schedule_task_async(
         self,
-        request: ali_geniessp__1__0_models.GetUnreadMessageCountRequest,
-    ) -> ali_geniessp__1__0_models.GetUnreadMessageCountResponse:
+        request: ali_geniessp__1__0_models.GetScheduleTaskRequest,
+    ) -> ali_geniessp__1__0_models.GetScheduleTaskResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetUnreadMessageCountHeaders()
-        return await self.get_unread_message_count_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetScheduleTaskHeaders()
+        return await self.get_schedule_task_with_options_async(request, headers, runtime)
 
     def get_unread_message_count_with_options(
         self,
@@ -3407,7 +3509,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetUnreadMessageCountShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.user_info_shrink):
             query['UserInfo'] = request.user_info_shrink
@@ -3448,7 +3550,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetUnreadMessageCountShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.user_info_shrink):
             query['UserInfo'] = request.user_info_shrink
@@ -3479,21 +3581,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_user_by_device_id(
+    def get_unread_message_count(
         self,
-        request: ali_geniessp__1__0_models.GetUserByDeviceIdRequest,
-    ) -> ali_geniessp__1__0_models.GetUserByDeviceIdResponse:
+        request: ali_geniessp__1__0_models.GetUnreadMessageCountRequest,
+    ) -> ali_geniessp__1__0_models.GetUnreadMessageCountResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetUserByDeviceIdHeaders()
-        return self.get_user_by_device_id_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetUnreadMessageCountHeaders()
+        return self.get_unread_message_count_with_options(request, headers, runtime)
 
-    async def get_user_by_device_id_async(
+    async def get_unread_message_count_async(
         self,
-        request: ali_geniessp__1__0_models.GetUserByDeviceIdRequest,
-    ) -> ali_geniessp__1__0_models.GetUserByDeviceIdResponse:
+        request: ali_geniessp__1__0_models.GetUnreadMessageCountRequest,
+    ) -> ali_geniessp__1__0_models.GetUnreadMessageCountResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetUserByDeviceIdHeaders()
-        return await self.get_user_by_device_id_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetUnreadMessageCountHeaders()
+        return await self.get_unread_message_count_with_options_async(request, headers, runtime)
 
     def get_user_by_device_id_with_options(
         self,
@@ -3505,7 +3607,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetUserByDeviceIdShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -3546,7 +3648,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetUserByDeviceIdShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -3577,21 +3679,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_weather(
+    def get_user_by_device_id(
         self,
-        request: ali_geniessp__1__0_models.GetWeatherRequest,
-    ) -> ali_geniessp__1__0_models.GetWeatherResponse:
+        request: ali_geniessp__1__0_models.GetUserByDeviceIdRequest,
+    ) -> ali_geniessp__1__0_models.GetUserByDeviceIdResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetWeatherHeaders()
-        return self.get_weather_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetUserByDeviceIdHeaders()
+        return self.get_user_by_device_id_with_options(request, headers, runtime)
 
-    async def get_weather_async(
+    async def get_user_by_device_id_async(
         self,
-        request: ali_geniessp__1__0_models.GetWeatherRequest,
-    ) -> ali_geniessp__1__0_models.GetWeatherResponse:
+        request: ali_geniessp__1__0_models.GetUserByDeviceIdRequest,
+    ) -> ali_geniessp__1__0_models.GetUserByDeviceIdResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.GetWeatherHeaders()
-        return await self.get_weather_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetUserByDeviceIdHeaders()
+        return await self.get_user_by_device_id_with_options_async(request, headers, runtime)
 
     def get_weather_with_options(
         self,
@@ -3603,11 +3705,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetWeatherShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -3652,11 +3754,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.GetWeatherShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -3691,21 +3793,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def index_control_playing_list(
+    def get_weather(
         self,
-        request: ali_geniessp__1__0_models.IndexControlPlayingListRequest,
-    ) -> ali_geniessp__1__0_models.IndexControlPlayingListResponse:
+        request: ali_geniessp__1__0_models.GetWeatherRequest,
+    ) -> ali_geniessp__1__0_models.GetWeatherResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.IndexControlPlayingListHeaders()
-        return self.index_control_playing_list_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetWeatherHeaders()
+        return self.get_weather_with_options(request, headers, runtime)
 
-    async def index_control_playing_list_async(
+    async def get_weather_async(
         self,
-        request: ali_geniessp__1__0_models.IndexControlPlayingListRequest,
-    ) -> ali_geniessp__1__0_models.IndexControlPlayingListResponse:
+        request: ali_geniessp__1__0_models.GetWeatherRequest,
+    ) -> ali_geniessp__1__0_models.GetWeatherResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.IndexControlPlayingListHeaders()
-        return await self.index_control_playing_list_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.GetWeatherHeaders()
+        return await self.get_weather_with_options_async(request, headers, runtime)
 
     def index_control_playing_list_with_options(
         self,
@@ -3717,11 +3819,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.IndexControlPlayingListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_index_control_request):
-            request.open_index_control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_index_control_request), 'OpenIndexControlRequest', 'json')
+            request.open_index_control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_index_control_request, 'OpenIndexControlRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -3768,11 +3870,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.IndexControlPlayingListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_index_control_request):
-            request.open_index_control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_index_control_request), 'OpenIndexControlRequest', 'json')
+            request.open_index_control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_index_control_request, 'OpenIndexControlRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -3809,21 +3911,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_alarms(
+    def index_control_playing_list(
         self,
-        request: ali_geniessp__1__0_models.ListAlarmsRequest,
-    ) -> ali_geniessp__1__0_models.ListAlarmsResponse:
+        request: ali_geniessp__1__0_models.IndexControlPlayingListRequest,
+    ) -> ali_geniessp__1__0_models.IndexControlPlayingListResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListAlarmsHeaders()
-        return self.list_alarms_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.IndexControlPlayingListHeaders()
+        return self.index_control_playing_list_with_options(request, headers, runtime)
 
-    async def list_alarms_async(
+    async def index_control_playing_list_async(
         self,
-        request: ali_geniessp__1__0_models.ListAlarmsRequest,
-    ) -> ali_geniessp__1__0_models.ListAlarmsResponse:
+        request: ali_geniessp__1__0_models.IndexControlPlayingListRequest,
+    ) -> ali_geniessp__1__0_models.IndexControlPlayingListResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListAlarmsHeaders()
-        return await self.list_alarms_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.IndexControlPlayingListHeaders()
+        return await self.index_control_playing_list_with_options_async(request, headers, runtime)
 
     def list_alarms_with_options(
         self,
@@ -3835,11 +3937,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListAlarmsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -3884,11 +3986,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListAlarmsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -3923,21 +4025,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_album_detail(
+    def list_alarms(
         self,
-        request: ali_geniessp__1__0_models.ListAlbumDetailRequest,
-    ) -> ali_geniessp__1__0_models.ListAlbumDetailResponse:
+        request: ali_geniessp__1__0_models.ListAlarmsRequest,
+    ) -> ali_geniessp__1__0_models.ListAlarmsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListAlbumDetailHeaders()
-        return self.list_album_detail_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListAlarmsHeaders()
+        return self.list_alarms_with_options(request, headers, runtime)
 
-    async def list_album_detail_async(
+    async def list_alarms_async(
         self,
-        request: ali_geniessp__1__0_models.ListAlbumDetailRequest,
-    ) -> ali_geniessp__1__0_models.ListAlbumDetailResponse:
+        request: ali_geniessp__1__0_models.ListAlarmsRequest,
+    ) -> ali_geniessp__1__0_models.ListAlarmsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListAlbumDetailHeaders()
-        return await self.list_album_detail_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListAlarmsHeaders()
+        return await self.list_alarms_with_options_async(request, headers, runtime)
 
     def list_album_detail_with_options(
         self,
@@ -4021,21 +4123,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_album_is_added(
+    def list_album_detail(
         self,
-        request: ali_geniessp__1__0_models.ListAlbumIsAddedRequest,
-    ) -> ali_geniessp__1__0_models.ListAlbumIsAddedResponse:
+        request: ali_geniessp__1__0_models.ListAlbumDetailRequest,
+    ) -> ali_geniessp__1__0_models.ListAlbumDetailResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListAlbumIsAddedHeaders()
-        return self.list_album_is_added_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListAlbumDetailHeaders()
+        return self.list_album_detail_with_options(request, headers, runtime)
 
-    async def list_album_is_added_async(
+    async def list_album_detail_async(
         self,
-        request: ali_geniessp__1__0_models.ListAlbumIsAddedRequest,
-    ) -> ali_geniessp__1__0_models.ListAlbumIsAddedResponse:
+        request: ali_geniessp__1__0_models.ListAlbumDetailRequest,
+    ) -> ali_geniessp__1__0_models.ListAlbumDetailResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListAlbumIsAddedHeaders()
-        return await self.list_album_is_added_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListAlbumDetailHeaders()
+        return await self.list_album_detail_with_options_async(request, headers, runtime)
 
     def list_album_is_added_with_options(
         self,
@@ -4049,9 +4151,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.album_id_list):
             request.album_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.album_id_list, 'AlbumIdList', 'json')
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.album_id_list_shrink):
             query['AlbumIdList'] = request.album_id_list_shrink
@@ -4098,9 +4200,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.album_id_list):
             request.album_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.album_id_list, 'AlbumIdList', 'json')
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.album_id_list_shrink):
             query['AlbumIdList'] = request.album_id_list_shrink
@@ -4135,21 +4237,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_cate_content(
+    def list_album_is_added(
         self,
-        request: ali_geniessp__1__0_models.ListCateContentRequest,
-    ) -> ali_geniessp__1__0_models.ListCateContentResponse:
+        request: ali_geniessp__1__0_models.ListAlbumIsAddedRequest,
+    ) -> ali_geniessp__1__0_models.ListAlbumIsAddedResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListCateContentHeaders()
-        return self.list_cate_content_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListAlbumIsAddedHeaders()
+        return self.list_album_is_added_with_options(request, headers, runtime)
 
-    async def list_cate_content_async(
+    async def list_album_is_added_async(
         self,
-        request: ali_geniessp__1__0_models.ListCateContentRequest,
-    ) -> ali_geniessp__1__0_models.ListCateContentResponse:
+        request: ali_geniessp__1__0_models.ListAlbumIsAddedRequest,
+    ) -> ali_geniessp__1__0_models.ListAlbumIsAddedResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListCateContentHeaders()
-        return await self.list_cate_content_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListAlbumIsAddedHeaders()
+        return await self.list_album_is_added_with_options_async(request, headers, runtime)
 
     def list_cate_content_with_options(
         self,
@@ -4161,11 +4263,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListCateContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.request):
-            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request), 'Request', 'json')
+            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request, 'Request', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -4212,11 +4314,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListCateContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.request):
-            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request), 'Request', 'json')
+            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request, 'Request', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -4253,21 +4355,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_cate_info(
+    def list_cate_content(
         self,
-        request: ali_geniessp__1__0_models.ListCateInfoRequest,
-    ) -> ali_geniessp__1__0_models.ListCateInfoResponse:
+        request: ali_geniessp__1__0_models.ListCateContentRequest,
+    ) -> ali_geniessp__1__0_models.ListCateContentResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListCateInfoHeaders()
-        return self.list_cate_info_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListCateContentHeaders()
+        return self.list_cate_content_with_options(request, headers, runtime)
 
-    async def list_cate_info_async(
+    async def list_cate_content_async(
         self,
-        request: ali_geniessp__1__0_models.ListCateInfoRequest,
-    ) -> ali_geniessp__1__0_models.ListCateInfoResponse:
+        request: ali_geniessp__1__0_models.ListCateContentRequest,
+    ) -> ali_geniessp__1__0_models.ListCateContentResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListCateInfoHeaders()
-        return await self.list_cate_info_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListCateContentHeaders()
+        return await self.list_cate_content_with_options_async(request, headers, runtime)
 
     def list_cate_info_with_options(
         self,
@@ -4343,21 +4445,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_common_cate_first_floor(
+    def list_cate_info(
         self,
-        request: ali_geniessp__1__0_models.ListCommonCateFirstFloorRequest,
-    ) -> ali_geniessp__1__0_models.ListCommonCateFirstFloorResponse:
+        request: ali_geniessp__1__0_models.ListCateInfoRequest,
+    ) -> ali_geniessp__1__0_models.ListCateInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListCommonCateFirstFloorHeaders()
-        return self.list_common_cate_first_floor_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListCateInfoHeaders()
+        return self.list_cate_info_with_options(request, headers, runtime)
 
-    async def list_common_cate_first_floor_async(
+    async def list_cate_info_async(
         self,
-        request: ali_geniessp__1__0_models.ListCommonCateFirstFloorRequest,
-    ) -> ali_geniessp__1__0_models.ListCommonCateFirstFloorResponse:
+        request: ali_geniessp__1__0_models.ListCateInfoRequest,
+    ) -> ali_geniessp__1__0_models.ListCateInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListCommonCateFirstFloorHeaders()
-        return await self.list_common_cate_first_floor_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListCateInfoHeaders()
+        return await self.list_cate_info_with_options_async(request, headers, runtime)
 
     def list_common_cate_first_floor_with_options(
         self,
@@ -4433,21 +4535,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_common_cate_second_floor(
+    def list_common_cate_first_floor(
         self,
-        request: ali_geniessp__1__0_models.ListCommonCateSecondFloorRequest,
-    ) -> ali_geniessp__1__0_models.ListCommonCateSecondFloorResponse:
+        request: ali_geniessp__1__0_models.ListCommonCateFirstFloorRequest,
+    ) -> ali_geniessp__1__0_models.ListCommonCateFirstFloorResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListCommonCateSecondFloorHeaders()
-        return self.list_common_cate_second_floor_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListCommonCateFirstFloorHeaders()
+        return self.list_common_cate_first_floor_with_options(request, headers, runtime)
 
-    async def list_common_cate_second_floor_async(
+    async def list_common_cate_first_floor_async(
         self,
-        request: ali_geniessp__1__0_models.ListCommonCateSecondFloorRequest,
-    ) -> ali_geniessp__1__0_models.ListCommonCateSecondFloorResponse:
+        request: ali_geniessp__1__0_models.ListCommonCateFirstFloorRequest,
+    ) -> ali_geniessp__1__0_models.ListCommonCateFirstFloorResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListCommonCateSecondFloorHeaders()
-        return await self.list_common_cate_second_floor_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListCommonCateFirstFloorHeaders()
+        return await self.list_common_cate_first_floor_with_options_async(request, headers, runtime)
 
     def list_common_cate_second_floor_with_options(
         self,
@@ -4523,21 +4625,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_device_basic_info(
+    def list_common_cate_second_floor(
         self,
-        request: ali_geniessp__1__0_models.ListDeviceBasicInfoRequest,
-    ) -> ali_geniessp__1__0_models.ListDeviceBasicInfoResponse:
+        request: ali_geniessp__1__0_models.ListCommonCateSecondFloorRequest,
+    ) -> ali_geniessp__1__0_models.ListCommonCateSecondFloorResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListDeviceBasicInfoHeaders()
-        return self.list_device_basic_info_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListCommonCateSecondFloorHeaders()
+        return self.list_common_cate_second_floor_with_options(request, headers, runtime)
 
-    async def list_device_basic_info_async(
+    async def list_common_cate_second_floor_async(
         self,
-        request: ali_geniessp__1__0_models.ListDeviceBasicInfoRequest,
-    ) -> ali_geniessp__1__0_models.ListDeviceBasicInfoResponse:
+        request: ali_geniessp__1__0_models.ListCommonCateSecondFloorRequest,
+    ) -> ali_geniessp__1__0_models.ListCommonCateSecondFloorResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListDeviceBasicInfoHeaders()
-        return await self.list_device_basic_info_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListCommonCateSecondFloorHeaders()
+        return await self.list_common_cate_second_floor_with_options_async(request, headers, runtime)
 
     def list_device_basic_info_with_options(
         self,
@@ -4549,7 +4651,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListDeviceBasicInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_infos):
-            request.device_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_infos), 'DeviceInfos', 'json')
+            request.device_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_infos, 'DeviceInfos', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_infos_shrink):
             query['DeviceInfos'] = request.device_infos_shrink
@@ -4590,7 +4692,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListDeviceBasicInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_infos):
-            request.device_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_infos), 'DeviceInfos', 'json')
+            request.device_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_infos, 'DeviceInfos', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_infos_shrink):
             query['DeviceInfos'] = request.device_infos_shrink
@@ -4621,21 +4723,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_device_by_user_id(
+    def list_device_basic_info(
         self,
-        request: ali_geniessp__1__0_models.ListDeviceByUserIdRequest,
-    ) -> ali_geniessp__1__0_models.ListDeviceByUserIdResponse:
+        request: ali_geniessp__1__0_models.ListDeviceBasicInfoRequest,
+    ) -> ali_geniessp__1__0_models.ListDeviceBasicInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListDeviceByUserIdHeaders()
-        return self.list_device_by_user_id_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListDeviceBasicInfoHeaders()
+        return self.list_device_basic_info_with_options(request, headers, runtime)
 
-    async def list_device_by_user_id_async(
+    async def list_device_basic_info_async(
         self,
-        request: ali_geniessp__1__0_models.ListDeviceByUserIdRequest,
-    ) -> ali_geniessp__1__0_models.ListDeviceByUserIdResponse:
+        request: ali_geniessp__1__0_models.ListDeviceBasicInfoRequest,
+    ) -> ali_geniessp__1__0_models.ListDeviceBasicInfoResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListDeviceByUserIdHeaders()
-        return await self.list_device_by_user_id_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListDeviceBasicInfoHeaders()
+        return await self.list_device_basic_info_with_options_async(request, headers, runtime)
 
     def list_device_by_user_id_with_options(
         self,
@@ -4647,7 +4749,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListDeviceByUserIdShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.user_info_shrink):
             query['UserInfo'] = request.user_info_shrink
@@ -4688,7 +4790,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListDeviceByUserIdShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.user_info_shrink):
             query['UserInfo'] = request.user_info_shrink
@@ -4719,21 +4821,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_device_by_user_id_and_chanel(
+    def list_device_by_user_id(
         self,
-        request: ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelRequest,
-    ) -> ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelResponse:
+        request: ali_geniessp__1__0_models.ListDeviceByUserIdRequest,
+    ) -> ali_geniessp__1__0_models.ListDeviceByUserIdResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelHeaders()
-        return self.list_device_by_user_id_and_chanel_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListDeviceByUserIdHeaders()
+        return self.list_device_by_user_id_with_options(request, headers, runtime)
 
-    async def list_device_by_user_id_and_chanel_async(
+    async def list_device_by_user_id_async(
         self,
-        request: ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelRequest,
-    ) -> ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelResponse:
+        request: ali_geniessp__1__0_models.ListDeviceByUserIdRequest,
+    ) -> ali_geniessp__1__0_models.ListDeviceByUserIdResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelHeaders()
-        return await self.list_device_by_user_id_and_chanel_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListDeviceByUserIdHeaders()
+        return await self.list_device_by_user_id_with_options_async(request, headers, runtime)
 
     def list_device_by_user_id_and_chanel_with_options(
         self,
@@ -4745,9 +4847,9 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.channel_info):
-            request.channel_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.channel_info), 'ChannelInfo', 'json')
+            request.channel_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_info, 'ChannelInfo', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.channel_info_shrink):
             query['ChannelInfo'] = request.channel_info_shrink
@@ -4790,9 +4892,9 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.channel_info):
-            request.channel_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.channel_info), 'ChannelInfo', 'json')
+            request.channel_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_info, 'ChannelInfo', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.channel_info_shrink):
             query['ChannelInfo'] = request.channel_info_shrink
@@ -4825,21 +4927,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_device_id_by_identities(
+    def list_device_by_user_id_and_chanel(
         self,
-        request: ali_geniessp__1__0_models.ListDeviceIdByIdentitiesRequest,
-    ) -> ali_geniessp__1__0_models.ListDeviceIdByIdentitiesResponse:
+        request: ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelRequest,
+    ) -> ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListDeviceIdByIdentitiesHeaders()
-        return self.list_device_id_by_identities_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelHeaders()
+        return self.list_device_by_user_id_and_chanel_with_options(request, headers, runtime)
 
-    async def list_device_id_by_identities_async(
+    async def list_device_by_user_id_and_chanel_async(
         self,
-        request: ali_geniessp__1__0_models.ListDeviceIdByIdentitiesRequest,
-    ) -> ali_geniessp__1__0_models.ListDeviceIdByIdentitiesResponse:
+        request: ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelRequest,
+    ) -> ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListDeviceIdByIdentitiesHeaders()
-        return await self.list_device_id_by_identities_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListDeviceByUserIdAndChanelHeaders()
+        return await self.list_device_by_user_id_and_chanel_with_options_async(request, headers, runtime)
 
     def list_device_id_by_identities_with_options(
         self,
@@ -4939,21 +5041,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_music(
+    def list_device_id_by_identities(
         self,
-        request: ali_geniessp__1__0_models.ListMusicRequest,
-    ) -> ali_geniessp__1__0_models.ListMusicResponse:
+        request: ali_geniessp__1__0_models.ListDeviceIdByIdentitiesRequest,
+    ) -> ali_geniessp__1__0_models.ListDeviceIdByIdentitiesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListMusicHeaders()
-        return self.list_music_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListDeviceIdByIdentitiesHeaders()
+        return self.list_device_id_by_identities_with_options(request, headers, runtime)
 
-    async def list_music_async(
+    async def list_device_id_by_identities_async(
         self,
-        request: ali_geniessp__1__0_models.ListMusicRequest,
-    ) -> ali_geniessp__1__0_models.ListMusicResponse:
+        request: ali_geniessp__1__0_models.ListDeviceIdByIdentitiesRequest,
+    ) -> ali_geniessp__1__0_models.ListDeviceIdByIdentitiesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListMusicHeaders()
-        return await self.list_music_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListDeviceIdByIdentitiesHeaders()
+        return await self.list_device_id_by_identities_with_options_async(request, headers, runtime)
 
     def list_music_with_options(
         self,
@@ -4965,11 +5067,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListMusicShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -5014,11 +5116,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListMusicShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -5053,21 +5155,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_play_history(
+    def list_music(
         self,
-        request: ali_geniessp__1__0_models.ListPlayHistoryRequest,
-    ) -> ali_geniessp__1__0_models.ListPlayHistoryResponse:
+        request: ali_geniessp__1__0_models.ListMusicRequest,
+    ) -> ali_geniessp__1__0_models.ListMusicResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListPlayHistoryHeaders()
-        return self.list_play_history_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListMusicHeaders()
+        return self.list_music_with_options(request, headers, runtime)
 
-    async def list_play_history_async(
+    async def list_music_async(
         self,
-        request: ali_geniessp__1__0_models.ListPlayHistoryRequest,
-    ) -> ali_geniessp__1__0_models.ListPlayHistoryResponse:
+        request: ali_geniessp__1__0_models.ListMusicRequest,
+    ) -> ali_geniessp__1__0_models.ListMusicResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListPlayHistoryHeaders()
-        return await self.list_play_history_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListMusicHeaders()
+        return await self.list_music_with_options_async(request, headers, runtime)
 
     def list_play_history_with_options(
         self,
@@ -5079,11 +5181,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListPlayHistoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.request):
-            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request), 'Request', 'json')
+            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request, 'Request', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -5130,11 +5232,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListPlayHistoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.request):
-            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request), 'Request', 'json')
+            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request, 'Request', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -5171,21 +5273,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_recommend_content(
+    def list_play_history(
         self,
-        request: ali_geniessp__1__0_models.ListRecommendContentRequest,
-    ) -> ali_geniessp__1__0_models.ListRecommendContentResponse:
+        request: ali_geniessp__1__0_models.ListPlayHistoryRequest,
+    ) -> ali_geniessp__1__0_models.ListPlayHistoryResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListRecommendContentHeaders()
-        return self.list_recommend_content_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListPlayHistoryHeaders()
+        return self.list_play_history_with_options(request, headers, runtime)
 
-    async def list_recommend_content_async(
+    async def list_play_history_async(
         self,
-        request: ali_geniessp__1__0_models.ListRecommendContentRequest,
-    ) -> ali_geniessp__1__0_models.ListRecommendContentResponse:
+        request: ali_geniessp__1__0_models.ListPlayHistoryRequest,
+    ) -> ali_geniessp__1__0_models.ListPlayHistoryResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListRecommendContentHeaders()
-        return await self.list_recommend_content_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListPlayHistoryHeaders()
+        return await self.list_play_history_with_options_async(request, headers, runtime)
 
     def list_recommend_content_with_options(
         self,
@@ -5197,11 +5299,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListRecommendContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.request):
-            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request), 'Request', 'json')
+            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request, 'Request', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -5248,11 +5350,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListRecommendContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.request):
-            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request), 'Request', 'json')
+            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request, 'Request', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -5289,21 +5391,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_sub(
+    def list_recommend_content(
         self,
-        request: ali_geniessp__1__0_models.ListSubRequest,
-    ) -> ali_geniessp__1__0_models.ListSubResponse:
+        request: ali_geniessp__1__0_models.ListRecommendContentRequest,
+    ) -> ali_geniessp__1__0_models.ListRecommendContentResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListSubHeaders()
-        return self.list_sub_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListRecommendContentHeaders()
+        return self.list_recommend_content_with_options(request, headers, runtime)
 
-    async def list_sub_async(
+    async def list_recommend_content_async(
         self,
-        request: ali_geniessp__1__0_models.ListSubRequest,
-    ) -> ali_geniessp__1__0_models.ListSubResponse:
+        request: ali_geniessp__1__0_models.ListRecommendContentRequest,
+    ) -> ali_geniessp__1__0_models.ListRecommendContentResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListSubHeaders()
-        return await self.list_sub_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListRecommendContentHeaders()
+        return await self.list_recommend_content_with_options_async(request, headers, runtime)
 
     def list_sub_with_options(
         self,
@@ -5315,11 +5417,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListSubShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.page):
-            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.page), 'Page', 'json')
+            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page, 'Page', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -5364,11 +5466,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListSubShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.page):
-            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.page), 'Page', 'json')
+            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page, 'Page', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -5403,21 +5505,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_sub_album(
+    def list_sub(
         self,
-        request: ali_geniessp__1__0_models.ListSubAlbumRequest,
-    ) -> ali_geniessp__1__0_models.ListSubAlbumResponse:
+        request: ali_geniessp__1__0_models.ListSubRequest,
+    ) -> ali_geniessp__1__0_models.ListSubResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListSubAlbumHeaders()
-        return self.list_sub_album_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListSubHeaders()
+        return self.list_sub_with_options(request, headers, runtime)
 
-    async def list_sub_album_async(
+    async def list_sub_async(
         self,
-        request: ali_geniessp__1__0_models.ListSubAlbumRequest,
-    ) -> ali_geniessp__1__0_models.ListSubAlbumResponse:
+        request: ali_geniessp__1__0_models.ListSubRequest,
+    ) -> ali_geniessp__1__0_models.ListSubResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListSubAlbumHeaders()
-        return await self.list_sub_album_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListSubHeaders()
+        return await self.list_sub_with_options_async(request, headers, runtime)
 
     def list_sub_album_with_options(
         self,
@@ -5429,11 +5531,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListSubAlbumShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.query_subscription_album_request):
-            request.query_subscription_album_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.query_subscription_album_request), 'QuerySubscriptionAlbumRequest', 'json')
+            request.query_subscription_album_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_subscription_album_request, 'QuerySubscriptionAlbumRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -5478,11 +5580,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListSubAlbumShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.query_subscription_album_request):
-            request.query_subscription_album_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.query_subscription_album_request), 'QuerySubscriptionAlbumRequest', 'json')
+            request.query_subscription_album_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_subscription_album_request, 'QuerySubscriptionAlbumRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -5517,21 +5619,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_subscription_album_category(
+    def list_sub_album(
         self,
-        request: ali_geniessp__1__0_models.ListSubscriptionAlbumCategoryRequest,
-    ) -> ali_geniessp__1__0_models.ListSubscriptionAlbumCategoryResponse:
+        request: ali_geniessp__1__0_models.ListSubAlbumRequest,
+    ) -> ali_geniessp__1__0_models.ListSubAlbumResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListSubscriptionAlbumCategoryHeaders()
-        return self.list_subscription_album_category_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListSubAlbumHeaders()
+        return self.list_sub_album_with_options(request, headers, runtime)
 
-    async def list_subscription_album_category_async(
+    async def list_sub_album_async(
         self,
-        request: ali_geniessp__1__0_models.ListSubscriptionAlbumCategoryRequest,
-    ) -> ali_geniessp__1__0_models.ListSubscriptionAlbumCategoryResponse:
+        request: ali_geniessp__1__0_models.ListSubAlbumRequest,
+    ) -> ali_geniessp__1__0_models.ListSubAlbumResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListSubscriptionAlbumCategoryHeaders()
-        return await self.list_subscription_album_category_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListSubAlbumHeaders()
+        return await self.list_sub_album_with_options_async(request, headers, runtime)
 
     def list_subscription_album_category_with_options(
         self,
@@ -5607,21 +5709,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_user_message(
+    def list_subscription_album_category(
         self,
-        request: ali_geniessp__1__0_models.ListUserMessageRequest,
-    ) -> ali_geniessp__1__0_models.ListUserMessageResponse:
+        request: ali_geniessp__1__0_models.ListSubscriptionAlbumCategoryRequest,
+    ) -> ali_geniessp__1__0_models.ListSubscriptionAlbumCategoryResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListUserMessageHeaders()
-        return self.list_user_message_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListSubscriptionAlbumCategoryHeaders()
+        return self.list_subscription_album_category_with_options(request, headers, runtime)
 
-    async def list_user_message_async(
+    async def list_subscription_album_category_async(
         self,
-        request: ali_geniessp__1__0_models.ListUserMessageRequest,
-    ) -> ali_geniessp__1__0_models.ListUserMessageResponse:
+        request: ali_geniessp__1__0_models.ListSubscriptionAlbumCategoryRequest,
+    ) -> ali_geniessp__1__0_models.ListSubscriptionAlbumCategoryResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListUserMessageHeaders()
-        return await self.list_user_message_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListSubscriptionAlbumCategoryHeaders()
+        return await self.list_subscription_album_category_with_options_async(request, headers, runtime)
 
     def list_user_message_with_options(
         self,
@@ -5633,7 +5735,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListUserMessageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.before_time):
             query['BeforeTime'] = request.before_time
@@ -5678,7 +5780,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ListUserMessageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.before_time):
             query['BeforeTime'] = request.before_time
@@ -5713,21 +5815,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def play_and_pause_control(
+    def list_user_message(
         self,
-        request: ali_geniessp__1__0_models.PlayAndPauseControlRequest,
-    ) -> ali_geniessp__1__0_models.PlayAndPauseControlResponse:
+        request: ali_geniessp__1__0_models.ListUserMessageRequest,
+    ) -> ali_geniessp__1__0_models.ListUserMessageResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.PlayAndPauseControlHeaders()
-        return self.play_and_pause_control_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListUserMessageHeaders()
+        return self.list_user_message_with_options(request, headers, runtime)
 
-    async def play_and_pause_control_async(
+    async def list_user_message_async(
         self,
-        request: ali_geniessp__1__0_models.PlayAndPauseControlRequest,
-    ) -> ali_geniessp__1__0_models.PlayAndPauseControlResponse:
+        request: ali_geniessp__1__0_models.ListUserMessageRequest,
+    ) -> ali_geniessp__1__0_models.ListUserMessageResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.PlayAndPauseControlHeaders()
-        return await self.play_and_pause_control_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListUserMessageHeaders()
+        return await self.list_user_message_with_options_async(request, headers, runtime)
 
     def play_and_pause_control_with_options(
         self,
@@ -5739,11 +5841,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.PlayAndPauseControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_play_and_pause_control_param):
-            request.open_play_and_pause_control_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_play_and_pause_control_param), 'OpenPlayAndPauseControlParam', 'json')
+            request.open_play_and_pause_control_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_play_and_pause_control_param, 'OpenPlayAndPauseControlParam', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -5790,11 +5892,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.PlayAndPauseControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_play_and_pause_control_param):
-            request.open_play_and_pause_control_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_play_and_pause_control_param), 'OpenPlayAndPauseControlParam', 'json')
+            request.open_play_and_pause_control_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_play_and_pause_control_param, 'OpenPlayAndPauseControlParam', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -5831,21 +5933,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def play_mode_control(
+    def play_and_pause_control(
         self,
-        request: ali_geniessp__1__0_models.PlayModeControlRequest,
-    ) -> ali_geniessp__1__0_models.PlayModeControlResponse:
+        request: ali_geniessp__1__0_models.PlayAndPauseControlRequest,
+    ) -> ali_geniessp__1__0_models.PlayAndPauseControlResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.PlayModeControlHeaders()
-        return self.play_mode_control_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.PlayAndPauseControlHeaders()
+        return self.play_and_pause_control_with_options(request, headers, runtime)
 
-    async def play_mode_control_async(
+    async def play_and_pause_control_async(
         self,
-        request: ali_geniessp__1__0_models.PlayModeControlRequest,
-    ) -> ali_geniessp__1__0_models.PlayModeControlResponse:
+        request: ali_geniessp__1__0_models.PlayAndPauseControlRequest,
+    ) -> ali_geniessp__1__0_models.PlayAndPauseControlResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.PlayModeControlHeaders()
-        return await self.play_mode_control_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.PlayAndPauseControlHeaders()
+        return await self.play_and_pause_control_with_options_async(request, headers, runtime)
 
     def play_mode_control_with_options(
         self,
@@ -5857,11 +5959,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.PlayModeControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_play_mode_control_request):
-            request.open_play_mode_control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_play_mode_control_request), 'OpenPlayModeControlRequest', 'json')
+            request.open_play_mode_control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_play_mode_control_request, 'OpenPlayModeControlRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -5908,11 +6010,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.PlayModeControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_play_mode_control_request):
-            request.open_play_mode_control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_play_mode_control_request), 'OpenPlayModeControlRequest', 'json')
+            request.open_play_mode_control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_play_mode_control_request, 'OpenPlayModeControlRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -5949,21 +6051,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def previous_and_next_control(
+    def play_mode_control(
         self,
-        request: ali_geniessp__1__0_models.PreviousAndNextControlRequest,
-    ) -> ali_geniessp__1__0_models.PreviousAndNextControlResponse:
+        request: ali_geniessp__1__0_models.PlayModeControlRequest,
+    ) -> ali_geniessp__1__0_models.PlayModeControlResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.PreviousAndNextControlHeaders()
-        return self.previous_and_next_control_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.PlayModeControlHeaders()
+        return self.play_mode_control_with_options(request, headers, runtime)
 
-    async def previous_and_next_control_async(
+    async def play_mode_control_async(
         self,
-        request: ali_geniessp__1__0_models.PreviousAndNextControlRequest,
-    ) -> ali_geniessp__1__0_models.PreviousAndNextControlResponse:
+        request: ali_geniessp__1__0_models.PlayModeControlRequest,
+    ) -> ali_geniessp__1__0_models.PlayModeControlResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.PreviousAndNextControlHeaders()
-        return await self.previous_and_next_control_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.PlayModeControlHeaders()
+        return await self.play_mode_control_with_options_async(request, headers, runtime)
 
     def previous_and_next_control_with_options(
         self,
@@ -5975,11 +6077,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.PreviousAndNextControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_control_playing_list_request):
-            request.open_control_playing_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_control_playing_list_request), 'OpenControlPlayingListRequest', 'json')
+            request.open_control_playing_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_control_playing_list_request, 'OpenControlPlayingListRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -6026,11 +6128,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.PreviousAndNextControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_control_playing_list_request):
-            request.open_control_playing_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_control_playing_list_request), 'OpenControlPlayingListRequest', 'json')
+            request.open_control_playing_list_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_control_playing_list_request, 'OpenControlPlayingListRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -6067,21 +6169,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def progress_control(
+    def previous_and_next_control(
         self,
-        request: ali_geniessp__1__0_models.ProgressControlRequest,
-    ) -> ali_geniessp__1__0_models.ProgressControlResponse:
+        request: ali_geniessp__1__0_models.PreviousAndNextControlRequest,
+    ) -> ali_geniessp__1__0_models.PreviousAndNextControlResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ProgressControlHeaders()
-        return self.progress_control_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.PreviousAndNextControlHeaders()
+        return self.previous_and_next_control_with_options(request, headers, runtime)
 
-    async def progress_control_async(
+    async def previous_and_next_control_async(
         self,
-        request: ali_geniessp__1__0_models.ProgressControlRequest,
-    ) -> ali_geniessp__1__0_models.ProgressControlResponse:
+        request: ali_geniessp__1__0_models.PreviousAndNextControlRequest,
+    ) -> ali_geniessp__1__0_models.PreviousAndNextControlResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ProgressControlHeaders()
-        return await self.progress_control_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.PreviousAndNextControlHeaders()
+        return await self.previous_and_next_control_with_options_async(request, headers, runtime)
 
     def progress_control_with_options(
         self,
@@ -6093,11 +6195,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ProgressControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_progress_control_request):
-            request.open_progress_control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_progress_control_request), 'OpenProgressControlRequest', 'json')
+            request.open_progress_control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_progress_control_request, 'OpenProgressControlRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -6144,11 +6246,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ProgressControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.open_progress_control_request):
-            request.open_progress_control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_progress_control_request), 'OpenProgressControlRequest', 'json')
+            request.open_progress_control_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_progress_control_request, 'OpenProgressControlRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -6185,21 +6287,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_music_type(
+    def progress_control(
         self,
-        request: ali_geniessp__1__0_models.QueryMusicTypeRequest,
-    ) -> ali_geniessp__1__0_models.QueryMusicTypeResponse:
+        request: ali_geniessp__1__0_models.ProgressControlRequest,
+    ) -> ali_geniessp__1__0_models.ProgressControlResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.QueryMusicTypeHeaders()
-        return self.query_music_type_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ProgressControlHeaders()
+        return self.progress_control_with_options(request, headers, runtime)
 
-    async def query_music_type_async(
+    async def progress_control_async(
         self,
-        request: ali_geniessp__1__0_models.QueryMusicTypeRequest,
-    ) -> ali_geniessp__1__0_models.QueryMusicTypeResponse:
+        request: ali_geniessp__1__0_models.ProgressControlRequest,
+    ) -> ali_geniessp__1__0_models.ProgressControlResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.QueryMusicTypeHeaders()
-        return await self.query_music_type_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ProgressControlHeaders()
+        return await self.progress_control_with_options_async(request, headers, runtime)
 
     def query_music_type_with_options(
         self,
@@ -6211,11 +6313,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.QueryMusicTypeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -6260,11 +6362,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.QueryMusicTypeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -6299,21 +6401,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def read_message(
+    def query_music_type(
         self,
-        request: ali_geniessp__1__0_models.ReadMessageRequest,
-    ) -> ali_geniessp__1__0_models.ReadMessageResponse:
+        request: ali_geniessp__1__0_models.QueryMusicTypeRequest,
+    ) -> ali_geniessp__1__0_models.QueryMusicTypeResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ReadMessageHeaders()
-        return self.read_message_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.QueryMusicTypeHeaders()
+        return self.query_music_type_with_options(request, headers, runtime)
 
-    async def read_message_async(
+    async def query_music_type_async(
         self,
-        request: ali_geniessp__1__0_models.ReadMessageRequest,
-    ) -> ali_geniessp__1__0_models.ReadMessageResponse:
+        request: ali_geniessp__1__0_models.QueryMusicTypeRequest,
+    ) -> ali_geniessp__1__0_models.QueryMusicTypeResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ReadMessageHeaders()
-        return await self.read_message_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.QueryMusicTypeHeaders()
+        return await self.query_music_type_with_options_async(request, headers, runtime)
 
     def read_message_with_options(
         self,
@@ -6325,7 +6427,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ReadMessageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.message_id):
             query['MessageId'] = request.message_id
@@ -6368,7 +6470,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ReadMessageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.message_id):
             query['MessageId'] = request.message_id
@@ -6401,21 +6503,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def scan_code_bind(
+    def read_message(
         self,
-        request: ali_geniessp__1__0_models.ScanCodeBindRequest,
-    ) -> ali_geniessp__1__0_models.ScanCodeBindResponse:
+        request: ali_geniessp__1__0_models.ReadMessageRequest,
+    ) -> ali_geniessp__1__0_models.ReadMessageResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ScanCodeBindHeaders()
-        return self.scan_code_bind_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ReadMessageHeaders()
+        return self.read_message_with_options(request, headers, runtime)
 
-    async def scan_code_bind_async(
+    async def read_message_async(
         self,
-        request: ali_geniessp__1__0_models.ScanCodeBindRequest,
-    ) -> ali_geniessp__1__0_models.ScanCodeBindResponse:
+        request: ali_geniessp__1__0_models.ReadMessageRequest,
+    ) -> ali_geniessp__1__0_models.ReadMessageResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ScanCodeBindHeaders()
-        return await self.scan_code_bind_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ReadMessageHeaders()
+        return await self.read_message_with_options_async(request, headers, runtime)
 
     def scan_code_bind_with_options(
         self,
@@ -6427,9 +6529,9 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ScanCodeBindShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.bind_req):
-            request.bind_req_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.bind_req), 'BindReq', 'json')
+            request.bind_req_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bind_req, 'BindReq', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.bind_req_shrink):
             body['BindReq'] = request.bind_req_shrink
@@ -6472,9 +6574,9 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ScanCodeBindShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.bind_req):
-            request.bind_req_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.bind_req), 'BindReq', 'json')
+            request.bind_req_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bind_req, 'BindReq', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.bind_req_shrink):
             body['BindReq'] = request.bind_req_shrink
@@ -6507,21 +6609,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def scg_search(
+    def scan_code_bind(
         self,
-        request: ali_geniessp__1__0_models.ScgSearchRequest,
-    ) -> ali_geniessp__1__0_models.ScgSearchResponse:
+        request: ali_geniessp__1__0_models.ScanCodeBindRequest,
+    ) -> ali_geniessp__1__0_models.ScanCodeBindResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ScgSearchHeaders()
-        return self.scg_search_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ScanCodeBindHeaders()
+        return self.scan_code_bind_with_options(request, headers, runtime)
 
-    async def scg_search_async(
+    async def scan_code_bind_async(
         self,
-        request: ali_geniessp__1__0_models.ScgSearchRequest,
-    ) -> ali_geniessp__1__0_models.ScgSearchResponse:
+        request: ali_geniessp__1__0_models.ScanCodeBindRequest,
+    ) -> ali_geniessp__1__0_models.ScanCodeBindResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ScgSearchHeaders()
-        return await self.scg_search_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ScanCodeBindHeaders()
+        return await self.scan_code_bind_with_options_async(request, headers, runtime)
 
     def scg_search_with_options(
         self,
@@ -6533,7 +6635,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ScgSearchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.scg_filter):
-            request.scg_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.scg_filter), 'ScgFilter', 'json')
+            request.scg_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scg_filter, 'ScgFilter', 'json')
         query = {}
         if not UtilClient.is_unset(request.scg_filter_shrink):
             query['ScgFilter'] = request.scg_filter_shrink
@@ -6576,7 +6678,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.ScgSearchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.scg_filter):
-            request.scg_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.scg_filter), 'ScgFilter', 'json')
+            request.scg_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scg_filter, 'ScgFilter', 'json')
         query = {}
         if not UtilClient.is_unset(request.scg_filter_shrink):
             query['ScgFilter'] = request.scg_filter_shrink
@@ -6609,21 +6711,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def search_content(
+    def scg_search(
         self,
-        request: ali_geniessp__1__0_models.SearchContentRequest,
-    ) -> ali_geniessp__1__0_models.SearchContentResponse:
+        request: ali_geniessp__1__0_models.ScgSearchRequest,
+    ) -> ali_geniessp__1__0_models.ScgSearchResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.SearchContentHeaders()
-        return self.search_content_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ScgSearchHeaders()
+        return self.scg_search_with_options(request, headers, runtime)
 
-    async def search_content_async(
+    async def scg_search_async(
         self,
-        request: ali_geniessp__1__0_models.SearchContentRequest,
-    ) -> ali_geniessp__1__0_models.SearchContentResponse:
+        request: ali_geniessp__1__0_models.ScgSearchRequest,
+    ) -> ali_geniessp__1__0_models.ScgSearchResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.SearchContentHeaders()
-        return await self.search_content_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ScgSearchHeaders()
+        return await self.scg_search_with_options_async(request, headers, runtime)
 
     def search_content_with_options(
         self,
@@ -6635,11 +6737,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.SearchContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.request):
-            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request), 'Request', 'json')
+            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request, 'Request', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -6686,11 +6788,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.SearchContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.request):
-            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request), 'Request', 'json')
+            request.request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request, 'Request', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -6727,21 +6829,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def send_message(
+    def search_content(
         self,
-        request: ali_geniessp__1__0_models.SendMessageRequest,
-    ) -> ali_geniessp__1__0_models.SendMessageResponse:
+        request: ali_geniessp__1__0_models.SearchContentRequest,
+    ) -> ali_geniessp__1__0_models.SearchContentResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.SendMessageHeaders()
-        return self.send_message_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.SearchContentHeaders()
+        return self.search_content_with_options(request, headers, runtime)
 
-    async def send_message_async(
+    async def search_content_async(
         self,
-        request: ali_geniessp__1__0_models.SendMessageRequest,
-    ) -> ali_geniessp__1__0_models.SendMessageResponse:
+        request: ali_geniessp__1__0_models.SearchContentRequest,
+    ) -> ali_geniessp__1__0_models.SearchContentResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.SendMessageHeaders()
-        return await self.send_message_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.SearchContentHeaders()
+        return await self.search_content_with_options_async(request, headers, runtime)
 
     def send_message_with_options(
         self,
@@ -6753,7 +6855,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.SendMessageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
@@ -6796,7 +6898,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.SendMessageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
@@ -6829,21 +6931,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def set_device_setting(
+    def send_message(
         self,
-        request: ali_geniessp__1__0_models.SetDeviceSettingRequest,
-    ) -> ali_geniessp__1__0_models.SetDeviceSettingResponse:
+        request: ali_geniessp__1__0_models.SendMessageRequest,
+    ) -> ali_geniessp__1__0_models.SendMessageResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.SetDeviceSettingHeaders()
-        return self.set_device_setting_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.SendMessageHeaders()
+        return self.send_message_with_options(request, headers, runtime)
 
-    async def set_device_setting_async(
+    async def send_message_async(
         self,
-        request: ali_geniessp__1__0_models.SetDeviceSettingRequest,
-    ) -> ali_geniessp__1__0_models.SetDeviceSettingResponse:
+        request: ali_geniessp__1__0_models.SendMessageRequest,
+    ) -> ali_geniessp__1__0_models.SendMessageResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.SetDeviceSettingHeaders()
-        return await self.set_device_setting_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.SendMessageHeaders()
+        return await self.send_message_with_options_async(request, headers, runtime)
 
     def set_device_setting_with_options(
         self,
@@ -6855,7 +6957,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.SetDeviceSettingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -6902,7 +7004,7 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.SetDeviceSettingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             query['DeviceInfo'] = request.device_info_shrink
@@ -6939,21 +7041,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def unbind_aligenie_user(
+    def set_device_setting(
         self,
-        request: ali_geniessp__1__0_models.UnbindAligenieUserRequest,
-    ) -> ali_geniessp__1__0_models.UnbindAligenieUserResponse:
+        request: ali_geniessp__1__0_models.SetDeviceSettingRequest,
+    ) -> ali_geniessp__1__0_models.SetDeviceSettingResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.UnbindAligenieUserHeaders()
-        return self.unbind_aligenie_user_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.SetDeviceSettingHeaders()
+        return self.set_device_setting_with_options(request, headers, runtime)
 
-    async def unbind_aligenie_user_async(
+    async def set_device_setting_async(
         self,
-        request: ali_geniessp__1__0_models.UnbindAligenieUserRequest,
-    ) -> ali_geniessp__1__0_models.UnbindAligenieUserResponse:
+        request: ali_geniessp__1__0_models.SetDeviceSettingRequest,
+    ) -> ali_geniessp__1__0_models.SetDeviceSettingResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.UnbindAligenieUserHeaders()
-        return await self.unbind_aligenie_user_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.SetDeviceSettingHeaders()
+        return await self.set_device_setting_with_options_async(request, headers, runtime)
 
     def unbind_aligenie_user_with_options(
         self,
@@ -7029,21 +7131,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def unbind_device(
+    def unbind_aligenie_user(
         self,
-        request: ali_geniessp__1__0_models.UnbindDeviceRequest,
-    ) -> ali_geniessp__1__0_models.UnbindDeviceResponse:
+        request: ali_geniessp__1__0_models.UnbindAligenieUserRequest,
+    ) -> ali_geniessp__1__0_models.UnbindAligenieUserResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.UnbindDeviceHeaders()
-        return self.unbind_device_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.UnbindAligenieUserHeaders()
+        return self.unbind_aligenie_user_with_options(request, headers, runtime)
 
-    async def unbind_device_async(
+    async def unbind_aligenie_user_async(
         self,
-        request: ali_geniessp__1__0_models.UnbindDeviceRequest,
-    ) -> ali_geniessp__1__0_models.UnbindDeviceResponse:
+        request: ali_geniessp__1__0_models.UnbindAligenieUserRequest,
+    ) -> ali_geniessp__1__0_models.UnbindAligenieUserResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.UnbindDeviceHeaders()
-        return await self.unbind_device_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.UnbindAligenieUserHeaders()
+        return await self.unbind_aligenie_user_with_options_async(request, headers, runtime)
 
     def unbind_device_with_options(
         self,
@@ -7055,9 +7157,9 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.UnbindDeviceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -7100,9 +7202,9 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.UnbindDeviceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -7135,21 +7237,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_alarm(
+    def unbind_device(
         self,
-        request: ali_geniessp__1__0_models.UpdateAlarmRequest,
-    ) -> ali_geniessp__1__0_models.UpdateAlarmResponse:
+        request: ali_geniessp__1__0_models.UnbindDeviceRequest,
+    ) -> ali_geniessp__1__0_models.UnbindDeviceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.UpdateAlarmHeaders()
-        return self.update_alarm_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.UnbindDeviceHeaders()
+        return self.unbind_device_with_options(request, headers, runtime)
 
-    async def update_alarm_async(
+    async def unbind_device_async(
         self,
-        request: ali_geniessp__1__0_models.UpdateAlarmRequest,
-    ) -> ali_geniessp__1__0_models.UpdateAlarmResponse:
+        request: ali_geniessp__1__0_models.UnbindDeviceRequest,
+    ) -> ali_geniessp__1__0_models.UnbindDeviceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.UpdateAlarmHeaders()
-        return await self.update_alarm_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.UnbindDeviceHeaders()
+        return await self.unbind_device_with_options_async(request, headers, runtime)
 
     def update_alarm_with_options(
         self,
@@ -7161,11 +7263,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.UpdateAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -7210,11 +7312,11 @@ class Client(OpenApiClient):
         request = ali_geniessp__1__0_models.UpdateAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.device_info):
-            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
-            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
-            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
         if not UtilClient.is_unset(request.device_info_shrink):
             body['DeviceInfo'] = request.device_info_shrink
@@ -7248,3 +7350,19 @@ class Client(OpenApiClient):
             ali_geniessp__1__0_models.UpdateAlarmResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_alarm(
+        self,
+        request: ali_geniessp__1__0_models.UpdateAlarmRequest,
+    ) -> ali_geniessp__1__0_models.UpdateAlarmResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.UpdateAlarmHeaders()
+        return self.update_alarm_with_options(request, headers, runtime)
+
+    async def update_alarm_async(
+        self,
+        request: ali_geniessp__1__0_models.UpdateAlarmRequest,
+    ) -> ali_geniessp__1__0_models.UpdateAlarmResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.UpdateAlarmHeaders()
+        return await self.update_alarm_with_options_async(request, headers, runtime)

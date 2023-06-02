@@ -1952,6 +1952,544 @@ class AuthLoginWithThirdUserInfoResponse(TeaModel):
         return self
 
 
+class CheckAndDoVoipCallForHotelHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class CheckAndDoVoipCallForHotelRequestDeviceInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.id = id
+        self.id_type = id_type
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class CheckAndDoVoipCallForHotelRequestUserInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.id = id
+        self.id_type = id_type
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class CheckAndDoVoipCallForHotelRequest(TeaModel):
+    def __init__(
+        self,
+        biz_data: str = None,
+        callee_nick: str = None,
+        callee_phone_num: str = None,
+        device_info: CheckAndDoVoipCallForHotelRequestDeviceInfo = None,
+        user_info: CheckAndDoVoipCallForHotelRequestUserInfo = None,
+    ):
+        self.biz_data = biz_data
+        self.callee_nick = callee_nick
+        self.callee_phone_num = callee_phone_num
+        self.device_info = device_info
+        self.user_info = user_info
+
+    def validate(self):
+        if self.device_info:
+            self.device_info.validate()
+        if self.user_info:
+            self.user_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_data is not None:
+            result['BizData'] = self.biz_data
+        if self.callee_nick is not None:
+            result['CalleeNick'] = self.callee_nick
+        if self.callee_phone_num is not None:
+            result['CalleePhoneNum'] = self.callee_phone_num
+        if self.device_info is not None:
+            result['DeviceInfo'] = self.device_info.to_map()
+        if self.user_info is not None:
+            result['UserInfo'] = self.user_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizData') is not None:
+            self.biz_data = m.get('BizData')
+        if m.get('CalleeNick') is not None:
+            self.callee_nick = m.get('CalleeNick')
+        if m.get('CalleePhoneNum') is not None:
+            self.callee_phone_num = m.get('CalleePhoneNum')
+        if m.get('DeviceInfo') is not None:
+            temp_model = CheckAndDoVoipCallForHotelRequestDeviceInfo()
+            self.device_info = temp_model.from_map(m['DeviceInfo'])
+        if m.get('UserInfo') is not None:
+            temp_model = CheckAndDoVoipCallForHotelRequestUserInfo()
+            self.user_info = temp_model.from_map(m['UserInfo'])
+        return self
+
+
+class CheckAndDoVoipCallForHotelShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_data: str = None,
+        callee_nick: str = None,
+        callee_phone_num: str = None,
+        device_info_shrink: str = None,
+        user_info_shrink: str = None,
+    ):
+        self.biz_data = biz_data
+        self.callee_nick = callee_nick
+        self.callee_phone_num = callee_phone_num
+        self.device_info_shrink = device_info_shrink
+        self.user_info_shrink = user_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_data is not None:
+            result['BizData'] = self.biz_data
+        if self.callee_nick is not None:
+            result['CalleeNick'] = self.callee_nick
+        if self.callee_phone_num is not None:
+            result['CalleePhoneNum'] = self.callee_phone_num
+        if self.device_info_shrink is not None:
+            result['DeviceInfo'] = self.device_info_shrink
+        if self.user_info_shrink is not None:
+            result['UserInfo'] = self.user_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizData') is not None:
+            self.biz_data = m.get('BizData')
+        if m.get('CalleeNick') is not None:
+            self.callee_nick = m.get('CalleeNick')
+        if m.get('CalleePhoneNum') is not None:
+            self.callee_phone_num = m.get('CalleePhoneNum')
+        if m.get('DeviceInfo') is not None:
+            self.device_info_shrink = m.get('DeviceInfo')
+        if m.get('UserInfo') is not None:
+            self.user_info_shrink = m.get('UserInfo')
+        return self
+
+
+class CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData(TeaModel):
+    def __init__(
+        self,
+        device_icon: str = None,
+        device_name: str = None,
+        device_type: str = None,
+        online: bool = None,
+        uuid: str = None,
+    ):
+        self.device_icon = device_icon
+        self.device_name = device_name
+        self.device_type = device_type
+        self.online = online
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_icon is not None:
+            result['DeviceIcon'] = self.device_icon
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.online is not None:
+            result['Online'] = self.online
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceIcon') is not None:
+            self.device_icon = m.get('DeviceIcon')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('Online') is not None:
+            self.online = m.get('Online')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData] = None,
+        msg: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.msg = msg
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        return self
+
+
+class CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        ret_code: int = None,
+        ret_value: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.message = message
+        self.ret_code = ret_code
+        self.ret_value = ret_value
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        if self.ret_value is not None:
+            result['RetValue'] = self.ret_value
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        if m.get('RetValue') is not None:
+            self.ret_value = m.get('RetValue')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class CheckAndDoVoipCallForHotelResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        device_targets: CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets = None,
+        is_start_call: bool = None,
+        passed: bool = None,
+        start_call_result: CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult = None,
+    ):
+        self.device_targets = device_targets
+        self.is_start_call = is_start_call
+        self.passed = passed
+        self.start_call_result = start_call_result
+
+    def validate(self):
+        if self.device_targets:
+            self.device_targets.validate()
+        if self.start_call_result:
+            self.start_call_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_targets is not None:
+            result['DeviceTargets'] = self.device_targets.to_map()
+        if self.is_start_call is not None:
+            result['IsStartCall'] = self.is_start_call
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.start_call_result is not None:
+            result['StartCallResult'] = self.start_call_result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceTargets') is not None:
+            temp_model = CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets()
+            self.device_targets = temp_model.from_map(m['DeviceTargets'])
+        if m.get('IsStartCall') is not None:
+            self.is_start_call = m.get('IsStartCall')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('StartCallResult') is not None:
+            temp_model = CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult()
+            self.start_call_result = temp_model.from_map(m['StartCallResult'])
+        return self
+
+
+class CheckAndDoVoipCallForHotelResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: CheckAndDoVoipCallForHotelResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = CheckAndDoVoipCallForHotelResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class CheckAndDoVoipCallForHotelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckAndDoVoipCallForHotelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckAndDoVoipCallForHotelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckAuthCodeBindForExtHeaders(TeaModel):
     def __init__(
         self,
@@ -2141,6 +2679,7 @@ class CheckAuthCodeBindForExtResponseBodyResultDeviceOpenInfo(TeaModel):
         id_type: str = None,
     ):
         self.id = id
+        # DEVICE_ID
         self.id_type = id_type
 
     def validate(self):
@@ -2174,6 +2713,7 @@ class CheckAuthCodeBindForExtResponseBodyResultUserOpenInfo(TeaModel):
         id_type: str = None,
     ):
         self.id = id
+        # USER_ID
         self.id_type = id_type
 
     def validate(self):
@@ -12416,6 +12956,7 @@ class GetWeatherResponseBody(TeaModel):
         request_id: str = None,
         result: GetWeatherResponseBodyResult = None,
     ):
+        # HttpCode
         self.code = code
         self.message = message
         self.request_id = request_id
@@ -14156,6 +14697,7 @@ class ListAlbumDetailResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # Id of the request
         self.request_id = request_id
         self.result = result
 
@@ -15257,6 +15799,7 @@ class ListCateContentResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # Id of the request
         self.request_id = request_id
         self.result = result
 
@@ -18176,6 +18719,7 @@ class ListPlayHistoryResponseBody(TeaModel):
         self.code = code
         self.message = message
         self.result = result
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -19681,6 +20225,7 @@ class ListSubAlbumRequest(TeaModel):
         user_info: ListSubAlbumRequestUserInfo = None,
     ):
         self.device_info = device_info
+        # request
         self.query_subscription_album_request = query_subscription_album_request
         self.user_info = user_info
 
@@ -19728,6 +20273,7 @@ class ListSubAlbumShrinkRequest(TeaModel):
         user_info_shrink: str = None,
     ):
         self.device_info_shrink = device_info_shrink
+        # request
         self.query_subscription_album_request_shrink = query_subscription_album_request_shrink
         self.user_info_shrink = user_info_shrink
 
@@ -22861,6 +23407,7 @@ class ScanCodeBindRequestBindReq(TeaModel):
         ext_info: str = None,
     ):
         self.client_id = client_id
+        # authCode
         self.code = code
         self.ext_info = ext_info
 
@@ -23024,7 +23571,9 @@ class ScanCodeBindResponseBodyResult(TeaModel):
     ):
         self.biz_group = biz_group
         self.biz_type = biz_type
+        # A963*0158
         self.device_open_id = device_open_id
+        # DAFE****ce3ej=\
         self.user_open_id = user_open_id
 
     def validate(self):
@@ -23481,7 +24030,7 @@ class ScgSearchResponseBodyResult(TeaModel):
         is_audition: bool = None,
         is_charge: str = None,
         need_charge: bool = None,
-        raw_id: int = None,
+        raw_id: str = None,
         singers: str = None,
         source: str = None,
         support_audition: bool = None,
@@ -24337,6 +24886,7 @@ class SearchContentResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # Id of the request
         self.request_id = request_id
         self.result = result
 

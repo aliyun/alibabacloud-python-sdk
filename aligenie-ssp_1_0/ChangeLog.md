@@ -1,3 +1,6 @@
+2023-06-02 Version: 2.0.0
+- 修改ScgSearch返回结果类型.
+
 2022-10-17 Version: 1.0.14
 - Add ScanCodeBind api.
 
