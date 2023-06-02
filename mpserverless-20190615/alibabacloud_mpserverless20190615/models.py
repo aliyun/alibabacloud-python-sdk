@@ -2950,11 +2950,13 @@ class DescribeFileUploadSignedUrlResponseBody(TeaModel):
         self,
         id: str = None,
         oss_callback_url: str = None,
+        overwrite: bool = None,
         request_id: str = None,
         sign_url: str = None,
     ):
         self.id = id
         self.oss_callback_url = oss_callback_url
+        self.overwrite = overwrite
         self.request_id = request_id
         self.sign_url = sign_url
 
@@ -2971,6 +2973,8 @@ class DescribeFileUploadSignedUrlResponseBody(TeaModel):
             result['Id'] = self.id
         if self.oss_callback_url is not None:
             result['OssCallbackUrl'] = self.oss_callback_url
+        if self.overwrite is not None:
+            result['Overwrite'] = self.overwrite
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.sign_url is not None:
@@ -2983,6 +2987,8 @@ class DescribeFileUploadSignedUrlResponseBody(TeaModel):
             self.id = m.get('Id')
         if m.get('OssCallbackUrl') is not None:
             self.oss_callback_url = m.get('OssCallbackUrl')
+        if m.get('Overwrite') is not None:
+            self.overwrite = m.get('Overwrite')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SignUrl') is not None:
@@ -7902,6 +7908,7 @@ class ListWebHostingCustomDomainsResponseBodyData(TeaModel):
     def __init__(
         self,
         access_control_allow_origin: str = None,
+        access_origin_control: bool = None,
         cname: str = None,
         create_time: int = None,
         description: str = None,
@@ -7913,6 +7920,7 @@ class ListWebHostingCustomDomainsResponseBodyData(TeaModel):
         update_time: int = None,
     ):
         self.access_control_allow_origin = access_control_allow_origin
+        self.access_origin_control = access_origin_control
         self.cname = cname
         self.create_time = create_time
         self.description = description
@@ -7934,6 +7942,8 @@ class ListWebHostingCustomDomainsResponseBodyData(TeaModel):
         result = dict()
         if self.access_control_allow_origin is not None:
             result['AccessControlAllowOrigin'] = self.access_control_allow_origin
+        if self.access_origin_control is not None:
+            result['AccessOriginControl'] = self.access_origin_control
         if self.cname is not None:
             result['Cname'] = self.cname
         if self.create_time is not None:
@@ -7958,6 +7968,8 @@ class ListWebHostingCustomDomainsResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('AccessControlAllowOrigin') is not None:
             self.access_control_allow_origin = m.get('AccessControlAllowOrigin')
+        if m.get('AccessOriginControl') is not None:
+            self.access_origin_control = m.get('AccessOriginControl')
         if m.get('Cname') is not None:
             self.cname = m.get('Cname')
         if m.get('CreateTime') is not None:
@@ -9888,10 +9900,12 @@ class QuerySpaceUsageRequest(TeaModel):
     def __init__(
         self,
         end_time: str = None,
+        interval: int = None,
         space_id: str = None,
         start_time: str = None,
     ):
         self.end_time = end_time
+        self.interval = interval
         self.space_id = space_id
         self.start_time = start_time
 
@@ -9906,6 +9920,8 @@ class QuerySpaceUsageRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
         if self.space_id is not None:
             result['SpaceId'] = self.space_id
         if self.start_time is not None:
@@ -9916,6 +9932,8 @@ class QuerySpaceUsageRequest(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
         if m.get('SpaceId') is not None:
             self.space_id = m.get('SpaceId')
         if m.get('StartTime') is not None:
@@ -10091,6 +10109,9 @@ class QuerySpaceUsageResponseBodySpaceUsageDataList(TeaModel):
     ):
         self.cs_usage = cs_usage
         self.db_usage = db_usage
+        # 标记该数据是否出账。
+        # - true：正常出账。
+        # - false：不出账，例如在空间停服的情况下，用量数据不用于出账。
         self.effective_bill_flag = effective_bill_flag
         self.fc_usage = fc_usage
         self.timestamp = timestamp
@@ -11315,11 +11336,13 @@ class SaveWebHostingCustomDomainCorsConfigRequest(TeaModel):
     def __init__(
         self,
         access_control_allow_origin: str = None,
+        access_origin_control: bool = None,
         domain_name: str = None,
         enable_cors: bool = None,
         space_id: str = None,
     ):
         self.access_control_allow_origin = access_control_allow_origin
+        self.access_origin_control = access_origin_control
         self.domain_name = domain_name
         self.enable_cors = enable_cors
         self.space_id = space_id
@@ -11335,6 +11358,8 @@ class SaveWebHostingCustomDomainCorsConfigRequest(TeaModel):
         result = dict()
         if self.access_control_allow_origin is not None:
             result['AccessControlAllowOrigin'] = self.access_control_allow_origin
+        if self.access_origin_control is not None:
+            result['AccessOriginControl'] = self.access_origin_control
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.enable_cors is not None:
@@ -11347,6 +11372,8 @@ class SaveWebHostingCustomDomainCorsConfigRequest(TeaModel):
         m = m or dict()
         if m.get('AccessControlAllowOrigin') is not None:
             self.access_control_allow_origin = m.get('AccessControlAllowOrigin')
+        if m.get('AccessOriginControl') is not None:
+            self.access_origin_control = m.get('AccessOriginControl')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('EnableCors') is not None:
