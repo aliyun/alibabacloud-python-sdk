@@ -2967,6 +2967,7 @@ class ChangeApplyRequestChangedJourneysSegmentList(TeaModel):
         code_share: bool = None,
         departure_airport: str = None,
         departure_city: str = None,
+        departure_date: str = None,
         departure_terminal: str = None,
         departure_time: int = None,
         marketing_flight_no: str = None,
@@ -2979,6 +2980,7 @@ class ChangeApplyRequestChangedJourneysSegmentList(TeaModel):
         self.code_share = code_share
         self.departure_airport = departure_airport
         self.departure_city = departure_city
+        self.departure_date = departure_date
         self.departure_terminal = departure_terminal
         self.departure_time = departure_time
         self.marketing_flight_no = marketing_flight_no
@@ -3007,6 +3009,8 @@ class ChangeApplyRequestChangedJourneysSegmentList(TeaModel):
             result['departure_airport'] = self.departure_airport
         if self.departure_city is not None:
             result['departure_city'] = self.departure_city
+        if self.departure_date is not None:
+            result['departure_date'] = self.departure_date
         if self.departure_terminal is not None:
             result['departure_terminal'] = self.departure_terminal
         if self.departure_time is not None:
@@ -3033,6 +3037,8 @@ class ChangeApplyRequestChangedJourneysSegmentList(TeaModel):
             self.departure_airport = m.get('departure_airport')
         if m.get('departure_city') is not None:
             self.departure_city = m.get('departure_city')
+        if m.get('departure_date') is not None:
+            self.departure_date = m.get('departure_date')
         if m.get('departure_terminal') is not None:
             self.departure_terminal = m.get('departure_terminal')
         if m.get('departure_time') is not None:
