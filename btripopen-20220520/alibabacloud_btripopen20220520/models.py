@@ -34052,6 +34052,7 @@ class HotelOrderCreateRequestOccupantInfoList(TeaModel):
         last_name: str = None,
         name: str = None,
         phone: str = None,
+        room_no: str = None,
         staff_no: str = None,
         user_type: int = None,
     ):
@@ -34066,6 +34067,7 @@ class HotelOrderCreateRequestOccupantInfoList(TeaModel):
         self.last_name = last_name
         self.name = name
         self.phone = phone
+        self.room_no = room_no
         self.staff_no = staff_no
         self.user_type = user_type
 
@@ -34100,6 +34102,8 @@ class HotelOrderCreateRequestOccupantInfoList(TeaModel):
             result['name'] = self.name
         if self.phone is not None:
             result['phone'] = self.phone
+        if self.room_no is not None:
+            result['room_no'] = self.room_no
         if self.staff_no is not None:
             result['staff_no'] = self.staff_no
         if self.user_type is not None:
@@ -34130,6 +34134,8 @@ class HotelOrderCreateRequestOccupantInfoList(TeaModel):
             self.name = m.get('name')
         if m.get('phone') is not None:
             self.phone = m.get('phone')
+        if m.get('room_no') is not None:
+            self.room_no = m.get('room_no')
         if m.get('staff_no') is not None:
             self.staff_no = m.get('staff_no')
         if m.get('user_type') is not None:
@@ -35147,6 +35153,7 @@ class HotelOrderDetailInfoResponseBodyModuleOccupantInfoList(TeaModel):
         last_name: str = None,
         name: str = None,
         phone: str = None,
+        room_no: str = None,
         selected: bool = None,
         staff_no: str = None,
         user_type: int = None,
@@ -35164,6 +35171,7 @@ class HotelOrderDetailInfoResponseBodyModuleOccupantInfoList(TeaModel):
         self.last_name = last_name
         self.name = name
         self.phone = phone
+        self.room_no = room_no
         self.selected = selected
         self.staff_no = staff_no
         self.user_type = user_type
@@ -35208,6 +35216,8 @@ class HotelOrderDetailInfoResponseBodyModuleOccupantInfoList(TeaModel):
             result['name'] = self.name
         if self.phone is not None:
             result['phone'] = self.phone
+        if self.room_no is not None:
+            result['room_no'] = self.room_no
         if self.selected is not None:
             result['selected'] = self.selected
         if self.staff_no is not None:
@@ -35247,6 +35257,8 @@ class HotelOrderDetailInfoResponseBodyModuleOccupantInfoList(TeaModel):
             self.name = m.get('name')
         if m.get('phone') is not None:
             self.phone = m.get('phone')
+        if m.get('room_no') is not None:
+            self.room_no = m.get('room_no')
         if m.get('selected') is not None:
             self.selected = m.get('selected')
         if m.get('staff_no') is not None:
@@ -37087,6 +37099,7 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanDaily(TeaModel):
         self,
         board: str = None,
         discount_price: str = None,
+        max_booking_num: str = None,
         price: int = None,
         rate_start_time: str = None,
         room_count: int = None,
@@ -37096,6 +37109,7 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanDaily(TeaModel):
     ):
         self.board = board
         self.discount_price = discount_price
+        self.max_booking_num = max_booking_num
         self.price = price
         self.rate_start_time = rate_start_time
         self.room_count = room_count
@@ -37116,6 +37130,8 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanDaily(TeaModel):
             result['board'] = self.board
         if self.discount_price is not None:
             result['discount_price'] = self.discount_price
+        if self.max_booking_num is not None:
+            result['max_booking_num'] = self.max_booking_num
         if self.price is not None:
             result['price'] = self.price
         if self.rate_start_time is not None:
@@ -37136,6 +37152,8 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanDaily(TeaModel):
             self.board = m.get('board')
         if m.get('discount_price') is not None:
             self.discount_price = m.get('discount_price')
+        if m.get('max_booking_num') is not None:
+            self.max_booking_num = m.get('max_booking_num')
         if m.get('price') is not None:
             self.price = m.get('price')
         if m.get('rate_start_time') is not None:
