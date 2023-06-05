@@ -41,6 +41,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def expire_login_token_with_options(
+        self,
+        request: appstream_center_20210218_models.ExpireLoginTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210218_models.ExpireLoginTokenResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.office_site_id):
+            body['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExpireLoginToken',
+            version='2021-02-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210218_models.ExpireLoginTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def expire_login_token_with_options_async(
+        self,
+        request: appstream_center_20210218_models.ExpireLoginTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210218_models.ExpireLoginTokenResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.office_site_id):
+            body['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExpireLoginToken',
+            version='2021-02-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210218_models.ExpireLoginTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def expire_login_token(
+        self,
+        request: appstream_center_20210218_models.ExpireLoginTokenRequest,
+    ) -> appstream_center_20210218_models.ExpireLoginTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.expire_login_token_with_options(request, runtime)
+
+    async def expire_login_token_async(
+        self,
+        request: appstream_center_20210218_models.ExpireLoginTokenRequest,
+    ) -> appstream_center_20210218_models.ExpireLoginTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.expire_login_token_with_options_async(request, runtime)
+
     def get_auth_code_with_options(
         self,
         request: appstream_center_20210218_models.GetAuthCodeRequest,
@@ -48,6 +130,8 @@ class Client(OpenApiClient):
     ) -> appstream_center_20210218_models.GetAuthCodeResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.auto_create_user):
+            body['AutoCreateUser'] = request.auto_create_user
         if not UtilClient.is_unset(request.end_user_id):
             body['EndUserId'] = request.end_user_id
         if not UtilClient.is_unset(request.external_user_id):
@@ -80,6 +164,8 @@ class Client(OpenApiClient):
     ) -> appstream_center_20210218_models.GetAuthCodeResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.auto_create_user):
+            body['AutoCreateUser'] = request.auto_create_user
         if not UtilClient.is_unset(request.end_user_id):
             body['EndUserId'] = request.end_user_id
         if not UtilClient.is_unset(request.external_user_id):
