@@ -18116,10 +18116,104 @@ class DescribeCheckWarningDetailRequest(TeaModel):
         return self
 
 
+class DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        show_name: str = None,
+        type: str = None,
+    ):
+        self.key = key
+        self.show_name = show_name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.show_name is not None:
+            result['ShowName'] = self.show_name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('ShowName') is not None:
+            self.show_name = m.get('ShowName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCheckWarningDetailResponseBodyCheckDetailColumns(TeaModel):
+    def __init__(
+        self,
+        grids: List[DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids] = None,
+        key: str = None,
+        show_name: str = None,
+        type: str = None,
+    ):
+        self.grids = grids
+        self.key = key
+        self.show_name = show_name
+        self.type = type
+
+    def validate(self):
+        if self.grids:
+            for k in self.grids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Grids'] = []
+        if self.grids is not None:
+            for k in self.grids:
+                result['Grids'].append(k.to_map() if k else None)
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.show_name is not None:
+            result['ShowName'] = self.show_name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.grids = []
+        if m.get('Grids') is not None:
+            for k in m.get('Grids'):
+                temp_model = DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids()
+                self.grids.append(temp_model.from_map(k))
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('ShowName') is not None:
+            self.show_name = m.get('ShowName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class DescribeCheckWarningDetailResponseBody(TeaModel):
     def __init__(
         self,
         advice: str = None,
+        check_detail_asset_info: List[Dict[str, str]] = None,
+        check_detail_columns: List[DescribeCheckWarningDetailResponseBodyCheckDetailColumns] = None,
         check_id: int = None,
         description: str = None,
         item: str = None,
@@ -18130,6 +18224,8 @@ class DescribeCheckWarningDetailResponseBody(TeaModel):
     ):
         # The suggestion for the management of the risk item.
         self.advice = advice
+        self.check_detail_asset_info = check_detail_asset_info
+        self.check_detail_columns = check_detail_columns
         # The ID of the check item.
         self.check_id = check_id
         # The additional information about the risk item.
@@ -18150,7 +18246,10 @@ class DescribeCheckWarningDetailResponseBody(TeaModel):
         self.type = type
 
     def validate(self):
-        pass
+        if self.check_detail_columns:
+            for k in self.check_detail_columns:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -18160,6 +18259,12 @@ class DescribeCheckWarningDetailResponseBody(TeaModel):
         result = dict()
         if self.advice is not None:
             result['Advice'] = self.advice
+        if self.check_detail_asset_info is not None:
+            result['CheckDetailAssetInfo'] = self.check_detail_asset_info
+        result['CheckDetailColumns'] = []
+        if self.check_detail_columns is not None:
+            for k in self.check_detail_columns:
+                result['CheckDetailColumns'].append(k.to_map() if k else None)
         if self.check_id is not None:
             result['CheckId'] = self.check_id
         if self.description is not None:
@@ -18180,6 +18285,13 @@ class DescribeCheckWarningDetailResponseBody(TeaModel):
         m = m or dict()
         if m.get('Advice') is not None:
             self.advice = m.get('Advice')
+        if m.get('CheckDetailAssetInfo') is not None:
+            self.check_detail_asset_info = m.get('CheckDetailAssetInfo')
+        self.check_detail_columns = []
+        if m.get('CheckDetailColumns') is not None:
+            for k in m.get('CheckDetailColumns'):
+                temp_model = DescribeCheckWarningDetailResponseBodyCheckDetailColumns()
+                self.check_detail_columns.append(temp_model.from_map(k))
         if m.get('CheckId') is not None:
             self.check_id = m.get('CheckId')
         if m.get('Description') is not None:
@@ -46124,6 +46236,17 @@ class DescribePropertyScheduleConfigRequest(TeaModel):
         self,
         type: str = None,
     ):
+        # The type of the asset fingerprints to query. Valid values:
+        # 
+        # *   **scheduler_port_period**: listening port
+        # *   **scheduler_process_period**: running process
+        # *   **scheduler_account_period**: account
+        # *   **scheduler_software_period**: software
+        # *   **scheduler_cron_period**: scheduled task
+        # *   **scheduler_sca_period**: middleware
+        # *   **scheduler_autorun_period**: startup item
+        # *   **scheduler_lkm_period**: kernel module
+        # *   **scheduler_sca_proxy_period**: website
         self.type = type
 
     def validate(self):
@@ -46152,7 +46275,11 @@ class DescribePropertyScheduleConfigResponseBody(TeaModel):
         config: str = None,
         request_id: str = None,
     ):
+        # The configuration time. Unit: hours.
+        # 
+        # >  The value **0** indicates that asset fingerprint collection is disabled for this type of asset.
         self.config = config
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -71222,6 +71349,402 @@ class GetAppNetworkResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAppNetworkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAssetDetailByUuidRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        source_ip: str = None,
+        uuid: str = None,
+    ):
+        self.lang = lang
+        self.source_ip = source_ip
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList(TeaModel):
+    def __init__(
+        self,
+        disk_name: str = None,
+        total_size: int = None,
+        total_size_byte: int = None,
+        use_size: int = None,
+        use_size_byte: int = None,
+    ):
+        self.disk_name = disk_name
+        self.total_size = total_size
+        self.total_size_byte = total_size_byte
+        self.use_size = use_size
+        self.use_size_byte = use_size_byte
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_name is not None:
+            result['DiskName'] = self.disk_name
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        if self.total_size_byte is not None:
+            result['TotalSizeByte'] = self.total_size_byte
+        if self.use_size is not None:
+            result['UseSize'] = self.use_size
+        if self.use_size_byte is not None:
+            result['UseSizeByte'] = self.use_size_byte
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskName') is not None:
+            self.disk_name = m.get('DiskName')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        if m.get('TotalSizeByte') is not None:
+            self.total_size_byte = m.get('TotalSizeByte')
+        if m.get('UseSize') is not None:
+            self.use_size = m.get('UseSize')
+        if m.get('UseSizeByte') is not None:
+            self.use_size_byte = m.get('UseSizeByte')
+        return self
+
+
+class GetAssetDetailByUuidResponseBodyAssetDetail(TeaModel):
+    def __init__(
+        self,
+        asset_type: str = None,
+        auth_modify_time: int = None,
+        auth_version: int = None,
+        bind: bool = None,
+        client_status: str = None,
+        client_version: str = None,
+        cpu: int = None,
+        cpu_info: str = None,
+        create_time: int = None,
+        disk_info_list: List[GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList] = None,
+        flag: int = None,
+        group_trace: str = None,
+        host_name: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        internet_ip: str = None,
+        intranet_ip: str = None,
+        ip: str = None,
+        ip_list: List[str] = None,
+        kernel: str = None,
+        mac_list: List[str] = None,
+        mem: int = None,
+        memory: int = None,
+        os: str = None,
+        os_detail: str = None,
+        os_name: str = None,
+        region: str = None,
+        region_id: str = None,
+        region_name: str = None,
+        sys_info: str = None,
+        tag: str = None,
+        uuid: str = None,
+        vpc_instance_id: str = None,
+    ):
+        self.asset_type = asset_type
+        self.auth_modify_time = auth_modify_time
+        self.auth_version = auth_version
+        self.bind = bind
+        self.client_status = client_status
+        self.client_version = client_version
+        self.cpu = cpu
+        self.cpu_info = cpu_info
+        self.create_time = create_time
+        self.disk_info_list = disk_info_list
+        self.flag = flag
+        self.group_trace = group_trace
+        self.host_name = host_name
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.internet_ip = internet_ip
+        self.intranet_ip = intranet_ip
+        self.ip = ip
+        self.ip_list = ip_list
+        self.kernel = kernel
+        self.mac_list = mac_list
+        self.mem = mem
+        self.memory = memory
+        self.os = os
+        self.os_detail = os_detail
+        self.os_name = os_name
+        self.region = region
+        self.region_id = region_id
+        self.region_name = region_name
+        self.sys_info = sys_info
+        self.tag = tag
+        self.uuid = uuid
+        self.vpc_instance_id = vpc_instance_id
+
+    def validate(self):
+        if self.disk_info_list:
+            for k in self.disk_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_type is not None:
+            result['AssetType'] = self.asset_type
+        if self.auth_modify_time is not None:
+            result['AuthModifyTime'] = self.auth_modify_time
+        if self.auth_version is not None:
+            result['AuthVersion'] = self.auth_version
+        if self.bind is not None:
+            result['Bind'] = self.bind
+        if self.client_status is not None:
+            result['ClientStatus'] = self.client_status
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.cpu_info is not None:
+            result['CpuInfo'] = self.cpu_info
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['DiskInfoList'] = []
+        if self.disk_info_list is not None:
+            for k in self.disk_info_list:
+                result['DiskInfoList'].append(k.to_map() if k else None)
+        if self.flag is not None:
+            result['Flag'] = self.flag
+        if self.group_trace is not None:
+            result['GroupTrace'] = self.group_trace
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        if self.intranet_ip is not None:
+            result['IntranetIp'] = self.intranet_ip
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.ip_list is not None:
+            result['IpList'] = self.ip_list
+        if self.kernel is not None:
+            result['Kernel'] = self.kernel
+        if self.mac_list is not None:
+            result['MacList'] = self.mac_list
+        if self.mem is not None:
+            result['Mem'] = self.mem
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.os_detail is not None:
+            result['OsDetail'] = self.os_detail
+        if self.os_name is not None:
+            result['OsName'] = self.os_name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.region_name is not None:
+            result['RegionName'] = self.region_name
+        if self.sys_info is not None:
+            result['SysInfo'] = self.sys_info
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.vpc_instance_id is not None:
+            result['VpcInstanceId'] = self.vpc_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetType') is not None:
+            self.asset_type = m.get('AssetType')
+        if m.get('AuthModifyTime') is not None:
+            self.auth_modify_time = m.get('AuthModifyTime')
+        if m.get('AuthVersion') is not None:
+            self.auth_version = m.get('AuthVersion')
+        if m.get('Bind') is not None:
+            self.bind = m.get('Bind')
+        if m.get('ClientStatus') is not None:
+            self.client_status = m.get('ClientStatus')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('CpuInfo') is not None:
+            self.cpu_info = m.get('CpuInfo')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.disk_info_list = []
+        if m.get('DiskInfoList') is not None:
+            for k in m.get('DiskInfoList'):
+                temp_model = GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList()
+                self.disk_info_list.append(temp_model.from_map(k))
+        if m.get('Flag') is not None:
+            self.flag = m.get('Flag')
+        if m.get('GroupTrace') is not None:
+            self.group_trace = m.get('GroupTrace')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        if m.get('IntranetIp') is not None:
+            self.intranet_ip = m.get('IntranetIp')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('IpList') is not None:
+            self.ip_list = m.get('IpList')
+        if m.get('Kernel') is not None:
+            self.kernel = m.get('Kernel')
+        if m.get('MacList') is not None:
+            self.mac_list = m.get('MacList')
+        if m.get('Mem') is not None:
+            self.mem = m.get('Mem')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('OsDetail') is not None:
+            self.os_detail = m.get('OsDetail')
+        if m.get('OsName') is not None:
+            self.os_name = m.get('OsName')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RegionName') is not None:
+            self.region_name = m.get('RegionName')
+        if m.get('SysInfo') is not None:
+            self.sys_info = m.get('SysInfo')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('VpcInstanceId') is not None:
+            self.vpc_instance_id = m.get('VpcInstanceId')
+        return self
+
+
+class GetAssetDetailByUuidResponseBody(TeaModel):
+    def __init__(
+        self,
+        asset_detail: GetAssetDetailByUuidResponseBodyAssetDetail = None,
+        request_id: str = None,
+    ):
+        self.asset_detail = asset_detail
+        self.request_id = request_id
+
+    def validate(self):
+        if self.asset_detail:
+            self.asset_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_detail is not None:
+            result['AssetDetail'] = self.asset_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetDetail') is not None:
+            temp_model = GetAssetDetailByUuidResponseBodyAssetDetail()
+            self.asset_detail = temp_model.from_map(m['AssetDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAssetDetailByUuidResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAssetDetailByUuidResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAssetDetailByUuidResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
