@@ -22,31 +22,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'central'
-        self._endpoint_map = {
-            'ap-northeast-1': 'resourcemanager.ap-northeast-1.aliyuncs.com',
-            'ap-south-1': 'resourcemanager.ap-south-1.aliyuncs.com',
-            'ap-southeast-1': 'resourcemanager.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-2': 'resourcemanager.ap-southeast-2.aliyuncs.com',
-            'ap-southeast-3': 'resourcemanager.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-5': 'resourcemanager.ap-southeast-5.aliyuncs.com',
-            'cn-beijing': 'resourcemanager.cn-beijing.aliyuncs.com',
-            'cn-chengdu': 'resourcemanager.cn-chengdu.aliyuncs.com',
-            'cn-hangzhou-finance': 'resourcemanager.cn-hangzhou-finance.aliyuncs.com',
-            'cn-hongkong': 'resourcemanager.cn-hongkong.aliyuncs.com',
-            'cn-huhehaote': 'resourcemanager.cn-huhehaote.aliyuncs.com',
-            'cn-north-2-gov-1': 'resourcemanager.cn-north-2-gov-1.aliyuncs.com',
-            'cn-qingdao': 'resourcemanager.cn-qingdao.aliyuncs.com',
-            'cn-shanghai-finance-1': 'resourcemanager.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shenzhen': 'resourcemanager.cn-shenzhen.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'resourcemanager.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-wulanchabu': 'resourcemanager.cn-wulanchabu.aliyuncs.com',
-            'cn-zhangjiakou': 'resourcemanager.cn-zhangjiakou.aliyuncs.com',
-            'eu-central-1': 'resourcemanager.eu-central-1.aliyuncs.com',
-            'eu-west-1': 'resourcemanager.eu-west-1.aliyuncs.com',
-            'me-east-1': 'resourcemanager.me-east-1.aliyuncs.com',
-            'us-east-1': 'resourcemanager.us-east-1.aliyuncs.com',
-            'us-west-1': 'resourcemanager.us-west-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('resourcemanager', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
