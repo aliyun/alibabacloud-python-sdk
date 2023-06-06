@@ -3675,6 +3675,145 @@ class CreateUploadStreamResponse(TeaModel):
         return self
 
 
+class DecryptKMSDataKeyRequest(TeaModel):
+    def __init__(
+        self,
+        ciphertext_blob: str = None,
+    ):
+        self.ciphertext_blob = ciphertext_blob
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ciphertext_blob is not None:
+            result['CiphertextBlob'] = self.ciphertext_blob
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CiphertextBlob') is not None:
+            self.ciphertext_blob = m.get('CiphertextBlob')
+        return self
+
+
+class DecryptKMSDataKeyResponseBodyDataKey(TeaModel):
+    def __init__(
+        self,
+        key_id: str = None,
+        plaintext: str = None,
+    ):
+        self.key_id = key_id
+        self.plaintext = plaintext
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        if self.plaintext is not None:
+            result['Plaintext'] = self.plaintext
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        if m.get('Plaintext') is not None:
+            self.plaintext = m.get('Plaintext')
+        return self
+
+
+class DecryptKMSDataKeyResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_key: DecryptKMSDataKeyResponseBodyDataKey = None,
+        request_id: str = None,
+    ):
+        self.data_key = data_key
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data_key:
+            self.data_key.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_key is not None:
+            result['DataKey'] = self.data_key.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataKey') is not None:
+            temp_model = DecryptKMSDataKeyResponseBodyDataKey()
+            self.data_key = temp_model.from_map(m['DataKey'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DecryptKMSDataKeyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DecryptKMSDataKeyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DecryptKMSDataKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteCategoryRequest(TeaModel):
     def __init__(
         self,
@@ -10291,6 +10430,124 @@ class DescribeQueryConfigsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeQueryConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateKMSDataKeyResponseBodyDataKey(TeaModel):
+    def __init__(
+        self,
+        ciphertext_blob: str = None,
+        key_id: str = None,
+        plaintext: str = None,
+    ):
+        self.ciphertext_blob = ciphertext_blob
+        self.key_id = key_id
+        self.plaintext = plaintext
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ciphertext_blob is not None:
+            result['CiphertextBlob'] = self.ciphertext_blob
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        if self.plaintext is not None:
+            result['Plaintext'] = self.plaintext
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CiphertextBlob') is not None:
+            self.ciphertext_blob = m.get('CiphertextBlob')
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        if m.get('Plaintext') is not None:
+            self.plaintext = m.get('Plaintext')
+        return self
+
+
+class GenerateKMSDataKeyResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_key: GenerateKMSDataKeyResponseBodyDataKey = None,
+        request_id: str = None,
+    ):
+        self.data_key = data_key
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data_key:
+            self.data_key.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_key is not None:
+            result['DataKey'] = self.data_key.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataKey') is not None:
+            temp_model = GenerateKMSDataKeyResponseBodyDataKey()
+            self.data_key = temp_model.from_map(m['DataKey'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GenerateKMSDataKeyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateKMSDataKeyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateKMSDataKeyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19562,10 +19819,12 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncry
         cipher_text: str = None,
         decrypt_key_uri: str = None,
         encrypt_type: str = None,
+        key_service_type: str = None,
     ):
         self.cipher_text = cipher_text
         self.decrypt_key_uri = decrypt_key_uri
         self.encrypt_type = encrypt_type
+        self.key_service_type = key_service_type
 
     def validate(self):
         pass
@@ -19582,6 +19841,8 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncry
             result['DecryptKeyUri'] = self.decrypt_key_uri
         if self.encrypt_type is not None:
             result['EncryptType'] = self.encrypt_type
+        if self.key_service_type is not None:
+            result['KeyServiceType'] = self.key_service_type
         return result
 
     def from_map(self, m: dict = None):
@@ -19592,6 +19853,8 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncry
             self.decrypt_key_uri = m.get('DecryptKeyUri')
         if m.get('EncryptType') is not None:
             self.encrypt_type = m.get('EncryptType')
+        if m.get('KeyServiceType') is not None:
+            self.key_service_type = m.get('KeyServiceType')
         return self
 
 
@@ -21206,10 +21469,12 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         cipher_text: str = None,
         decrypt_key_uri: str = None,
         encrypt_type: str = None,
+        key_service_type: str = None,
     ):
         self.cipher_text = cipher_text
         self.decrypt_key_uri = decrypt_key_uri
         self.encrypt_type = encrypt_type
+        self.key_service_type = key_service_type
 
     def validate(self):
         pass
@@ -21226,6 +21491,8 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
             result['DecryptKeyUri'] = self.decrypt_key_uri
         if self.encrypt_type is not None:
             result['EncryptType'] = self.encrypt_type
+        if self.key_service_type is not None:
+            result['KeyServiceType'] = self.key_service_type
         return result
 
     def from_map(self, m: dict = None):
@@ -21236,6 +21503,8 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
             self.decrypt_key_uri = m.get('DecryptKeyUri')
         if m.get('EncryptType') is not None:
             self.encrypt_type = m.get('EncryptType')
+        if m.get('KeyServiceType') is not None:
+            self.key_service_type = m.get('KeyServiceType')
         return self
 
 
@@ -44070,10 +44339,12 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption(TeaModel):
         cipher_text: str = None,
         decrypt_key_uri: str = None,
         encrypt_type: str = None,
+        key_service_type: str = None,
     ):
         self.cipher_text = cipher_text
         self.decrypt_key_uri = decrypt_key_uri
         self.encrypt_type = encrypt_type
+        self.key_service_type = key_service_type
 
     def validate(self):
         pass
@@ -44090,6 +44361,8 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption(TeaModel):
             result['DecryptKeyUri'] = self.decrypt_key_uri
         if self.encrypt_type is not None:
             result['EncryptType'] = self.encrypt_type
+        if self.key_service_type is not None:
+            result['KeyServiceType'] = self.key_service_type
         return result
 
     def from_map(self, m: dict = None):
@@ -44100,6 +44373,8 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption(TeaModel):
             self.decrypt_key_uri = m.get('DecryptKeyUri')
         if m.get('EncryptType') is not None:
             self.encrypt_type = m.get('EncryptType')
+        if m.get('KeyServiceType') is not None:
+            self.key_service_type = m.get('KeyServiceType')
         return self
 
 
@@ -45414,10 +45689,12 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEn
         cipher_text: str = None,
         decrypt_key_uri: str = None,
         encrypt_type: str = None,
+        key_service_type: str = None,
     ):
         self.cipher_text = cipher_text
         self.decrypt_key_uri = decrypt_key_uri
         self.encrypt_type = encrypt_type
+        self.key_service_type = key_service_type
 
     def validate(self):
         pass
@@ -45434,6 +45711,8 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEn
             result['DecryptKeyUri'] = self.decrypt_key_uri
         if self.encrypt_type is not None:
             result['EncryptType'] = self.encrypt_type
+        if self.key_service_type is not None:
+            result['KeyServiceType'] = self.key_service_type
         return result
 
     def from_map(self, m: dict = None):
@@ -45444,6 +45723,8 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEn
             self.decrypt_key_uri = m.get('DecryptKeyUri')
         if m.get('EncryptType') is not None:
             self.encrypt_type = m.get('EncryptType')
+        if m.get('KeyServiceType') is not None:
+            self.key_service_type = m.get('KeyServiceType')
         return self
 
 
@@ -47058,10 +47339,12 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         cipher_text: str = None,
         decrypt_key_uri: str = None,
         encrypt_type: str = None,
+        key_service_type: str = None,
     ):
         self.cipher_text = cipher_text
         self.decrypt_key_uri = decrypt_key_uri
         self.encrypt_type = encrypt_type
+        self.key_service_type = key_service_type
 
     def validate(self):
         pass
@@ -47078,6 +47361,8 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
             result['DecryptKeyUri'] = self.decrypt_key_uri
         if self.encrypt_type is not None:
             result['EncryptType'] = self.encrypt_type
+        if self.key_service_type is not None:
+            result['KeyServiceType'] = self.key_service_type
         return result
 
     def from_map(self, m: dict = None):
@@ -47088,6 +47373,8 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
             self.decrypt_key_uri = m.get('DecryptKeyUri')
         if m.get('EncryptType') is not None:
             self.encrypt_type = m.get('EncryptType')
+        if m.get('KeyServiceType') is not None:
+            self.key_service_type = m.get('KeyServiceType')
         return self
 
 

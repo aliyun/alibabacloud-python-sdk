@@ -1588,6 +1588,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_upload_stream_with_options_async(request, runtime)
 
+    def decrypt_kmsdata_key_with_options(
+        self,
+        request: ice20201109_models.DecryptKMSDataKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DecryptKMSDataKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DecryptKMSDataKey',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DecryptKMSDataKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def decrypt_kmsdata_key_with_options_async(
+        self,
+        request: ice20201109_models.DecryptKMSDataKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DecryptKMSDataKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DecryptKMSDataKey',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DecryptKMSDataKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def decrypt_kmsdata_key(
+        self,
+        request: ice20201109_models.DecryptKMSDataKeyRequest,
+    ) -> ice20201109_models.DecryptKMSDataKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.decrypt_kmsdata_key_with_options(request, runtime)
+
+    async def decrypt_kmsdata_key_async(
+        self,
+        request: ice20201109_models.DecryptKMSDataKeyRequest,
+    ) -> ice20201109_models.DecryptKMSDataKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.decrypt_kmsdata_key_with_options_async(request, runtime)
+
     def delete_category_with_options(
         self,
         request: ice20201109_models.DeleteCategoryRequest,
@@ -4909,6 +4979,56 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DescribeQueryConfigsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_query_configs_with_options_async(request, runtime)
+
+    def generate_kmsdata_key_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GenerateKMSDataKeyResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GenerateKMSDataKey',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GenerateKMSDataKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_kmsdata_key_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GenerateKMSDataKeyResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GenerateKMSDataKey',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GenerateKMSDataKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_kmsdata_key(self) -> ice20201109_models.GenerateKMSDataKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.generate_kmsdata_key_with_options(runtime)
+
+    async def generate_kmsdata_key_async(self) -> ice20201109_models.GenerateKMSDataKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_kmsdata_key_with_options_async(runtime)
 
     def get_categories_with_options(
         self,
