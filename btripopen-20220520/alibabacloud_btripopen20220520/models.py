@@ -34052,7 +34052,7 @@ class HotelOrderCreateRequestOccupantInfoList(TeaModel):
         last_name: str = None,
         name: str = None,
         phone: str = None,
-        room_no: str = None,
+        room_no: int = None,
         staff_no: str = None,
         user_type: int = None,
     ):
@@ -35153,7 +35153,7 @@ class HotelOrderDetailInfoResponseBodyModuleOccupantInfoList(TeaModel):
         last_name: str = None,
         name: str = None,
         phone: str = None,
-        room_no: str = None,
+        room_no: int = None,
         selected: bool = None,
         staff_no: str = None,
         user_type: int = None,
