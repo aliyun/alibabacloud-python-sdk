@@ -131,12 +131,21 @@ class CreateCustomImageRequest(TeaModel):
         region_id: str = None,
         system_snapshot_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the data disk snapshot.
         self.data_snapshot_id = data_snapshot_id
+        # The description of the custom image.
         self.description = description
+        # The name of the custom image. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter or a digit.
+        # 
+        # This parameter is empty by default.
         self.image_name = image_name
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the system disk snapshot.
         self.system_snapshot_id = system_snapshot_id
 
     def validate(self):
@@ -189,7 +198,9 @@ class CreateCustomImageResponseBody(TeaModel):
         image_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the custom image.
         self.image_id = image_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -270,11 +281,21 @@ class CreateFirewallRuleRequest(TeaModel):
         remark: str = None,
         rule_protocol: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. ****For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The port range. Valid values: 1 to 65535. Specify a port range in the format of \<start port number>/\<end port number>. Example: `1024/1055`, which indicates that the port range of 1024 to 1055.
         self.port = port
+        # The region ID of the simple application server.
         self.region_id = region_id
+        # The remarks of the firewall rule.
         self.remark = remark
+        # The transport layer protocol. Valid values:
+        # 
+        # *   TCP: the TCP protocol
+        # *   UDP: the UDP protocol
+        # *   TCP+UDP: the TCP and UDP protocols
         self.rule_protocol = rule_protocol
 
     def validate(self):
@@ -323,7 +344,9 @@ class CreateFirewallRuleResponseBody(TeaModel):
         firewall_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the firewall rule.
         self.firewall_id = firewall_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -394,6 +417,354 @@ class CreateFirewallRuleResponse(TeaModel):
         return self
 
 
+class CreateFirewallRulesRequestFirewallRules(TeaModel):
+    def __init__(
+        self,
+        port: str = None,
+        remark: str = None,
+        rule_protocol: str = None,
+        source_cidr_ip: str = None,
+    ):
+        self.port = port
+        self.remark = remark
+        self.rule_protocol = rule_protocol
+        self.source_cidr_ip = source_cidr_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.rule_protocol is not None:
+            result['RuleProtocol'] = self.rule_protocol
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RuleProtocol') is not None:
+            self.rule_protocol = m.get('RuleProtocol')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        return self
+
+
+class CreateFirewallRulesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        firewall_rules: List[CreateFirewallRulesRequestFirewallRules] = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.firewall_rules = firewall_rules
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        if self.firewall_rules:
+            for k in self.firewall_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['FirewallRules'] = []
+        if self.firewall_rules is not None:
+            for k in self.firewall_rules:
+                result['FirewallRules'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.firewall_rules = []
+        if m.get('FirewallRules') is not None:
+            for k in m.get('FirewallRules'):
+                temp_model = CreateFirewallRulesRequestFirewallRules()
+                self.firewall_rules.append(temp_model.from_map(k))
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateFirewallRulesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        firewall_rules_shrink: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.firewall_rules_shrink = firewall_rules_shrink
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.firewall_rules_shrink is not None:
+            result['FirewallRules'] = self.firewall_rules_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('FirewallRules') is not None:
+            self.firewall_rules_shrink = m.get('FirewallRules')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateFirewallRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateFirewallRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFirewallRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFirewallRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateInstanceKeyPairRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        key_pair_name: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.key_pair_name = key_pair_name
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateInstanceKeyPairResponseBody(TeaModel):
+    def __init__(
+        self,
+        fingerprint: str = None,
+        key_pair_name: str = None,
+        private_key: str = None,
+        request_id: str = None,
+    ):
+        self.fingerprint = fingerprint
+        self.key_pair_name = key_pair_name
+        self.private_key = private_key
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fingerprint is not None:
+            result['Fingerprint'] = self.fingerprint
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.private_key is not None:
+            result['PrivateKey'] = self.private_key
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Fingerprint') is not None:
+            self.fingerprint = m.get('Fingerprint')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('PrivateKey') is not None:
+            self.private_key = m.get('PrivateKey')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateInstanceKeyPairResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateInstanceKeyPairResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateInstanceKeyPairResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -408,15 +779,39 @@ class CreateInstancesRequest(TeaModel):
         plan_id: str = None,
         region_id: str = None,
     ):
+        # The number of simple application servers that you want to create. Valid values: 1 to 20.
+        # 
+        # Default value: 1.
         self.amount = amount
+        # Specifies whether to enable auto-renewal. Valid values:
+        # 
+        # *   true: enables auto-renewal.
+        # *   false: does not enable auto-renewal.
+        # 
+        # Default value: false.
         self.auto_renew = auto_renew
+        # The auto-renewal period. This parameter is required only when you set `AutoRenew` to true. Unit: months Valid values: 1, 3, 6, 12, 24, and 36.
         self.auto_renew_period = auto_renew_period
+        # The billing method of the simple application server. Set the value to PrePaid, which indicates the subscription billing method. Only the subscription billing method is supported.
+        # 
+        # Default value: PrePaid.
         self.charge_type = charge_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The size of the data disk. Unit: GB. Valid values: 0 to 16380. The value must be an integral multiple of 20.
+        # 
+        # *   A value of 0 indicates that no data disk is attached.
+        # *   If the disk included in the specified plan is a standard SSD, the data disk must be 20 GB or larger in size.
+        # 
+        # Default value: 0.
         self.data_disk_size = data_disk_size
+        # The ID of the image. You can call the [ListImages](~~189313~~) operation to query the available images in the specified region.
         self.image_id = image_id
+        # The subscription period. Unit: months Valid values: 1, 3, 6, 12, 24, and 36.
         self.period = period
+        # The ID of the plan. You can call the [ListPlans](~~189314~~) operation to query all the plans provided by Simple Application Server in the specified region.
         self.plan_id = plan_id
+        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -481,7 +876,9 @@ class CreateInstancesResponseBody(TeaModel):
         instance_ids: List[str] = None,
         request_id: str = None,
     ):
+        # The IDs of the simple application servers.
         self.instance_ids = instance_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -560,9 +957,13 @@ class CreateSnapshotRequest(TeaModel):
         region_id: str = None,
         snapshot_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the disk.
         self.disk_id = disk_id
+        # The region ID of the simple application server to which the disk is attached.
         self.region_id = region_id
+        # The name of the snapshot. The name must be 2 to 50 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
         self.snapshot_name = snapshot_name
 
     def validate(self):
@@ -603,7 +1004,9 @@ class CreateSnapshotResponseBody(TeaModel):
         request_id: str = None,
         snapshot_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -681,8 +1084,11 @@ class DeleteCustomImageRequest(TeaModel):
         image_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the custom image.
         self.image_id = image_id
+        # The region ID of the custom image. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -718,6 +1124,7 @@ class DeleteCustomImageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -792,9 +1199,13 @@ class DeleteFirewallRuleRequest(TeaModel):
         region_id: str = None,
         rule_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the server.
         self.region_id = region_id
+        # The ID of the firewall rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -834,6 +1245,7 @@ class DeleteFirewallRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -900,6 +1312,116 @@ class DeleteFirewallRuleResponse(TeaModel):
         return self
 
 
+class DeleteInstanceKeyPairRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteInstanceKeyPairResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteInstanceKeyPairResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteInstanceKeyPairResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteInstanceKeyPairResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSnapshotRequest(TeaModel):
     def __init__(
         self,
@@ -907,8 +1429,11 @@ class DeleteSnapshotRequest(TeaModel):
         region_id: str = None,
         snapshot_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The region ID of the snapshot.
         self.region_id = region_id
+        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -944,6 +1469,7 @@ class DeleteSnapshotResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1010,6 +1536,116 @@ class DeleteSnapshotResponse(TeaModel):
         return self
 
 
+class DeleteSnapshotsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        region_id: str = None,
+        snapshot_ids: str = None,
+    ):
+        self.client_token = client_token
+        self.region_id = region_id
+        self.snapshot_ids = snapshot_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.snapshot_ids is not None:
+            result['SnapshotIds'] = self.snapshot_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SnapshotIds') is not None:
+            self.snapshot_ids = m.get('SnapshotIds')
+        return self
+
+
+class DeleteSnapshotsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteSnapshotsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSnapshotsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSnapshotsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCloudAssistantStatusRequest(TeaModel):
     def __init__(
         self,
@@ -1018,9 +1654,21 @@ class DescribeCloudAssistantStatusRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The IDs of the simple application servers.
         self.instance_ids = instance_ids
+        # The number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The region ID of the simple application server.
         self.region_id = region_id
 
     def validate(self):
@@ -1063,9 +1711,21 @@ class DescribeCloudAssistantStatusShrinkRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The IDs of the simple application servers.
         self.instance_ids_shrink = instance_ids_shrink
+        # The number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The region ID of the simple application server.
         self.region_id = region_id
 
     def validate(self):
@@ -1106,7 +1766,9 @@ class DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus(TeaModel):
         instance_id: str = None,
         status: bool = None,
     ):
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # Indicates whether the Cloud Assistant client is installed on the server.
         self.status = status
 
     def validate(self):
@@ -1142,10 +1804,23 @@ class DescribeCloudAssistantStatusResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The status of the Cloud Assistant client.
         self.cloud_assistant_status = cloud_assistant_status
+        # The page number of the returned page.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries returned per page.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of commands.
         self.total_count = total_count
 
     def validate(self):
@@ -1232,6 +1907,169 @@ class DescribeCloudAssistantStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCloudAssistantStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudMonitorAgentStatusesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_ids: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_ids = instance_ids
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList(TeaModel):
+    def __init__(
+        self,
+        auto_install: bool = None,
+        instance_id: str = None,
+        status: str = None,
+    ):
+        self.auto_install = auto_install
+        self.instance_id = instance_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_install is not None:
+            result['AutoInstall'] = self.auto_install
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoInstall') is not None:
+            self.auto_install = m.get('AutoInstall')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeCloudMonitorAgentStatusesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_status_list: List[DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList] = None,
+        request_id: str = None,
+    ):
+        self.instance_status_list = instance_status_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_status_list:
+            for k in self.instance_status_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceStatusList'] = []
+        if self.instance_status_list is not None:
+            for k in self.instance_status_list:
+                result['InstanceStatusList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_status_list = []
+        if m.get('InstanceStatusList') is not None:
+            for k in m.get('InstanceStatusList'):
+                temp_model = DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList()
+                self.instance_status_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCloudMonitorAgentStatusesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudMonitorAgentStatusesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudMonitorAgentStatusesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2346,6 +3184,366 @@ class DescribeDatabaseSlowLogRecordsResponse(TeaModel):
         return self
 
 
+class DescribeInstanceKeyPairRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeInstanceKeyPairResponseBody(TeaModel):
+    def __init__(
+        self,
+        fingerprint: str = None,
+        key_pair_name: str = None,
+        request_id: str = None,
+    ):
+        self.fingerprint = fingerprint
+        self.key_pair_name = key_pair_name
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fingerprint is not None:
+            result['Fingerprint'] = self.fingerprint
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Fingerprint') is not None:
+            self.fingerprint = m.get('Fingerprint')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeInstanceKeyPairResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceKeyPairResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceKeyPairResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInstancePasswordsSettingRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeInstancePasswordsSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_password_setting: bool = None,
+        request_id: str = None,
+        vnc_password_setting: bool = None,
+    ):
+        self.instance_password_setting = instance_password_setting
+        self.request_id = request_id
+        self.vnc_password_setting = vnc_password_setting
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_password_setting is not None:
+            result['InstancePasswordSetting'] = self.instance_password_setting
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.vnc_password_setting is not None:
+            result['VncPasswordSetting'] = self.vnc_password_setting
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstancePasswordSetting') is not None:
+            self.instance_password_setting = m.get('InstancePasswordSetting')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VncPasswordSetting') is not None:
+            self.vnc_password_setting = m.get('VncPasswordSetting')
+        return self
+
+
+class DescribeInstancePasswordsSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstancePasswordsSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstancePasswordsSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInstanceVncUrlRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeInstanceVncUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vnc_url: str = None,
+    ):
+        self.request_id = request_id
+        self.vnc_url = vnc_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.vnc_url is not None:
+            result['VncUrl'] = self.vnc_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VncUrl') is not None:
+            self.vnc_url = m.get('VncUrl')
+        return self
+
+
+class DescribeInstanceVncUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceVncUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceVncUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInvocationResultRequest(TeaModel):
     def __init__(
         self,
@@ -2353,8 +3551,11 @@ class DescribeInvocationResultRequest(TeaModel):
         invoke_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The ID of the command task. You can call the [DescribeInvocations](~~439368~~) operation to query the task IDs.
         self.invoke_id = invoke_id
+        # The region ID of the simple application server. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2400,16 +3601,83 @@ class DescribeInvocationResultResponseBodyInvocationResult(TeaModel):
         output: str = None,
         start_time: str = None,
     ):
+        # The error code returned when the command cannot be sent or run. Valid values:
+        # 
+        # *   If this parameter is empty, the command is run normally.
+        # *   InstanceNotExists: The instance does not exist or is released.
+        # *   InstanceReleased: The instance was released while the command was being run on the instance.
+        # *   InstanceNotRunning: The instance is not in the Running state while the command is being run.
+        # *   CommandNotApplicable: The command is not applicable to the specified instance.
+        # *   AccountNotExists: The specified account does not exist.
+        # *   DirectoryNotExists: The specified directory does not exist.
+        # *   BadCronExpression: The specified cron expression for the running schedule is invalid.
+        # *   ClientNotRunning: The Cloud Assistant client is not running.
+        # *   ClientNotResponse: The Cloud Assistant client does not respond.
+        # *   ClientIsUpgrading: The Cloud Assistant client is being upgraded.
+        # *   ClientNeedUpgrade: The Cloud Assistant client needs to be upgraded.
+        # *   DeliveryTimeout: The request for sending the command times out.
+        # *   ExecutionTimeout: The running of the command times out.
+        # *   ExecutionException: An exception has occurred while the command is being run.
+        # *   ExecutionInterrupted: The running of the command is interrupted.
+        # *   ExitCodeNonzero: The command finishes running, but the exit code is not 0.
         self.error_code = error_code
+        # The error message returned when the command cannot be sent or run. Valid values:
+        # 
+        # *   If this parameter is empty, the command is run normally.
+        # *   the specified instance does not exists: The specified instance does not exist or is released.
+        # *   the instance has released when create task: The instance was released while the command was being run on the instance.
+        # *   the instance is not running when create task: The instance is not in the Running state while the command is being run.
+        # *   the command is not applicable: The command is not applicable to the specified instance.
+        # *   the specified account does not exists: The specified account does not exist.
+        # *   the specified directory does not exists: The specified directory does not exist.
+        # *   the cron job expression is invalid: The specified cron expression for the runing schedule is invalid.
+        # *   the aliyun service is not running on the instance: The Cloud Assistance client is not running.
+        # *   the aliyun service in the instance does not response: The Cloud Assistant client does not respond.
+        # *   the aliyun service in the instance is upgrading now: The Cloud Assistant client is being upgraded.
+        # *   the aliyun service in the instance need upgrade: The Cloud Assistant client needs to be upgraded.
+        # *   the command delivery has been timeout: The request for sending the command times out.
+        # *   the command execution has been timeout: The running of the command times out.
+        # *   the command execution got an exception: An exception has occurred while the command is being run.
+        # *   the command execution has been interrupted: The running of the command is interrupted.
+        # *   the command execution exit code is not zero: The command finishes running, but the exit code is not 0.
         self.error_info = error_info
+        # The exit code of the command task.
+        # 
+        # *   For Linux instances, the value is the exit code of the shell command.
+        # *   For Windows instances, the value is the exit code of the batch or PowerShell command.
         self.exit_code = exit_code
+        # The time when the command finished running on the instance.
         self.finished_time = finished_time
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The status of the command. Valid values:
+        # 
+        # *   Pending: The command is being verified or sent.
+        # *   Invalid: The specified command type or parameter is invalid.
+        # *   Aborted: The command failed to be sent. To send a command to an instance, make sure that the instance is in the Running state and the command is sent to the instance within 1 minute.
+        # *   Running: The command is being run on the instance.
+        # *   Success: The command finishes running, and the exit code is 0.
+        # *   Failed: The command finishes running, but the exit code is not 0.
+        # *   Error: The running of the command cannot proceed due to an exception.
+        # *   Timeout: The running of the command times out.
+        # *   Cancelled: The running is canceled, and the command is not run.
+        # *   Stopping: The command that is running is being stopped.
+        # *   Terminated: The command is terminated while it is being run.
         self.invocation_status = invocation_status
+        # The ID of the command task.
         self.invoke_id = invoke_id
+        # The status of the command task. Valid values:
+        # 
+        # *   Running
+        # *   Finished
+        # *   Failed
+        # *   Stopped
         self.invoke_record_status = invoke_record_status
+        # The username who runs the command on the simple application server.
         self.invoke_user = invoke_user
+        # The command output.
         self.output = output
+        # The time when the command started to be run on the instance.
         self.start_time = start_time
 
     def validate(self):
@@ -2478,7 +3746,9 @@ class DescribeInvocationResultResponseBody(TeaModel):
         invocation_result: DescribeInvocationResultResponseBodyInvocationResult = None,
         request_id: str = None,
     ):
+        # The information about the command running result.
         self.invocation_result = invocation_result
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2560,10 +3830,27 @@ class DescribeInvocationsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The status of the command. Valid values:
+        # 
+        # *   Running: The command is running.
+        # *   Finished: The command finishes running.
+        # *   Failed: The command failed to be run.
         self.invoke_status = invoke_status
+        # The number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10
         self.page_size = page_size
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2614,13 +3901,42 @@ class DescribeInvocationsResponseBodyInvocations(TeaModel):
         invoke_status: str = None,
         parameters: Dict[str, Any] = None,
     ):
+        # The content of the command, which is Base64-encoded.
         self.command_content = command_content
+        # The name of the command.
         self.command_name = command_name
+        # The type of the command. Valid values:
+        # 
+        # *   RunBatScript: batch command (applicable to Windows instances).
+        # *   RunPowerShellScript: PowerShell command (applicable to Windows instances).
+        # *   RunShellScript: shell command (applicable to Linux instances).
         self.command_type = command_type
+        # The time when the command was created.
         self.creation_time = creation_time
+        # The status of the command. Valid values:
+        # 
+        # *   Pending: The command is being verified or sent.
+        # *   Invalid: The specified command type or parameter is invalid.
+        # *   Aborted: The command failed to be sent. To send a command to an instance, make sure that the instance is in the Running state and the command is sent to the instance within 1 minute.
+        # *   Running: The command is being run on the instance.
+        # *   Success: The command finishes running, and the exit code is 0.
+        # *   Failed: The command finishes running, but the exit code is not 0.
+        # *   Error: The running of the command cannot proceed due to an exception.
+        # *   Timeout: The running of the command times out.
+        # *   Cancelled: The running is canceled, and the command is not run.
+        # *   Stopping: The command that is running is being stopped.
+        # *   Terminated: The command is terminated while it is being run.
         self.invocation_status = invocation_status
+        # The ID of the command task.
         self.invoke_id = invoke_id
+        # The status of the command. Valid values:
+        # 
+        # *   Running: The command is running.
+        # *   Finished: The command finishes running.
+        # *   Failed: The running of the command failed.
+        # *   Stopped: The running is stopped.
         self.invoke_status = invoke_status
+        # The custom parameters in the command. If no custom parameter exists in the command, the default value is {}.
         self.parameters = parameters
 
     def validate(self):
@@ -2680,10 +3996,15 @@ class DescribeInvocationsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Running records of commands.
         self.invocations = invocations
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of commands.
         self.total_count = total_count
 
     def validate(self):
@@ -2774,13 +4095,545 @@ class DescribeInvocationsResponse(TeaModel):
         return self
 
 
+class DescribeMonitorDataRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        end_time: str = None,
+        instance_id: str = None,
+        length: str = None,
+        metric_name: str = None,
+        next_token: str = None,
+        period: str = None,
+        region_id: str = None,
+        start_time: str = None,
+    ):
+        self.client_token = client_token
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.length = length
+        self.metric_name = metric_name
+        self.next_token = next_token
+        self.period = period
+        self.region_id = region_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.length is not None:
+            result['Length'] = self.length
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Length') is not None:
+            self.length = m.get('Length')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeMonitorDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        datapoints: str = None,
+        next_token: str = None,
+        period: str = None,
+        request_id: str = None,
+    ):
+        self.datapoints = datapoints
+        self.next_token = next_token
+        self.period = period
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.datapoints is not None:
+            result['Datapoints'] = self.datapoints
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Datapoints') is not None:
+            self.datapoints = m.get('Datapoints')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeMonitorDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMonitorDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMonitorDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSecurityAgentStatusRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeSecurityAgentStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        client_status: str = None,
+        request_id: str = None,
+    ):
+        self.client_status = client_status
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_status is not None:
+            result['ClientStatus'] = self.client_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientStatus') is not None:
+            self.client_status = m.get('ClientStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeSecurityAgentStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSecurityAgentStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSecurityAgentStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableFirewallRuleRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        remark: str = None,
+        rule_id: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.remark = remark
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class DisableFirewallRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableFirewallRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableFirewallRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableFirewallRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableFirewallRuleRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        remark: str = None,
+        rule_id: str = None,
+        source_cidr_ip: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.remark = remark
+        self.rule_id = rule_id
+        self.source_cidr_ip = source_cidr_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        return self
+
+
+class EnableFirewallRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableFirewallRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableFirewallRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableFirewallRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InstallCloudAssistantRequest(TeaModel):
     def __init__(
         self,
         instance_ids: List[str] = None,
         region_id: str = None,
     ):
+        # The IDs of the simple application servers.
         self.instance_ids = instance_ids
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2813,7 +4666,9 @@ class InstallCloudAssistantShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         region_id: str = None,
     ):
+        # The IDs of the simple application servers.
         self.instance_ids_shrink = instance_ids_shrink
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2845,6 +4700,7 @@ class InstallCloudAssistantResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2911,19 +4767,419 @@ class InstallCloudAssistantResponse(TeaModel):
         return self
 
 
+class InstallCloudMonitorAgentRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        force: bool = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.force = force
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.force is not None:
+            result['Force'] = self.force
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class InstallCloudMonitorAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class InstallCloudMonitorAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InstallCloudMonitorAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InstallCloudMonitorAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCustomImagesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        data_snapshot_id: str = None,
+        image_ids: str = None,
+        image_names: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        system_snapshot_id: str = None,
+    ):
+        self.client_token = client_token
+        self.data_snapshot_id = data_snapshot_id
+        self.image_ids = image_ids
+        self.image_names = image_names
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.system_snapshot_id = system_snapshot_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.data_snapshot_id is not None:
+            result['DataSnapshotId'] = self.data_snapshot_id
+        if self.image_ids is not None:
+            result['ImageIds'] = self.image_ids
+        if self.image_names is not None:
+            result['ImageNames'] = self.image_names
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.system_snapshot_id is not None:
+            result['SystemSnapshotId'] = self.system_snapshot_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DataSnapshotId') is not None:
+            self.data_snapshot_id = m.get('DataSnapshotId')
+        if m.get('ImageIds') is not None:
+            self.image_ids = m.get('ImageIds')
+        if m.get('ImageNames') is not None:
+            self.image_names = m.get('ImageNames')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SystemSnapshotId') is not None:
+            self.system_snapshot_id = m.get('SystemSnapshotId')
+        return self
+
+
+class ListCustomImagesResponseBodyCustomImages(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        data_snapshot_id: str = None,
+        data_snapshot_name: str = None,
+        description: str = None,
+        image_id: str = None,
+        in_share: bool = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        name: str = None,
+        region_id: str = None,
+        status: str = None,
+        system_snapshot_id: str = None,
+        system_snapshot_name: str = None,
+    ):
+        self.creation_time = creation_time
+        self.data_snapshot_id = data_snapshot_id
+        self.data_snapshot_name = data_snapshot_name
+        self.description = description
+        self.image_id = image_id
+        self.in_share = in_share
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.name = name
+        self.region_id = region_id
+        self.status = status
+        self.system_snapshot_id = system_snapshot_id
+        self.system_snapshot_name = system_snapshot_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.data_snapshot_id is not None:
+            result['DataSnapshotId'] = self.data_snapshot_id
+        if self.data_snapshot_name is not None:
+            result['DataSnapshotName'] = self.data_snapshot_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.in_share is not None:
+            result['InShare'] = self.in_share
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.system_snapshot_id is not None:
+            result['SystemSnapshotId'] = self.system_snapshot_id
+        if self.system_snapshot_name is not None:
+            result['SystemSnapshotName'] = self.system_snapshot_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DataSnapshotId') is not None:
+            self.data_snapshot_id = m.get('DataSnapshotId')
+        if m.get('DataSnapshotName') is not None:
+            self.data_snapshot_name = m.get('DataSnapshotName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InShare') is not None:
+            self.in_share = m.get('InShare')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SystemSnapshotId') is not None:
+            self.system_snapshot_id = m.get('SystemSnapshotId')
+        if m.get('SystemSnapshotName') is not None:
+            self.system_snapshot_name = m.get('SystemSnapshotName')
+        return self
+
+
+class ListCustomImagesResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_images: List[ListCustomImagesResponseBodyCustomImages] = None,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.custom_images = custom_images
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.custom_images:
+            for k in self.custom_images:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomImages'] = []
+        if self.custom_images is not None:
+            for k in self.custom_images:
+                result['CustomImages'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_images = []
+        if m.get('CustomImages') is not None:
+            for k in m.get('CustomImages'):
+                temp_model = ListCustomImagesResponseBodyCustomImages()
+                self.custom_images.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCustomImagesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCustomImagesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCustomImagesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDisksRequest(TeaModel):
     def __init__(
         self,
         disk_ids: str = None,
+        disk_type: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
     ):
+        # The IDs of the disks. The value can be a JSON array that consists of up to 100 disk IDs. Separate the disk IDs with commas (,).
         self.disk_ids = disk_ids
+        self.disk_type = disk_type
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The number of the page to return.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Maximum value: 100.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The region ID of the simple application server.
         self.region_id = region_id
 
     def validate(self):
@@ -2937,6 +5193,8 @@ class ListDisksRequest(TeaModel):
         result = dict()
         if self.disk_ids is not None:
             result['DiskIds'] = self.disk_ids
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.page_number is not None:
@@ -2951,6 +5209,8 @@ class ListDisksRequest(TeaModel):
         m = m or dict()
         if m.get('DiskIds') is not None:
             self.disk_ids = m.get('DiskIds')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
@@ -2973,20 +5233,48 @@ class ListDisksResponseBodyDisks(TeaModel):
         disk_name: str = None,
         disk_type: str = None,
         instance_id: str = None,
+        instance_name: str = None,
         region_id: str = None,
+        remark: str = None,
         size: int = None,
         status: str = None,
     ):
+        # The category of the disk. Valid values: Valid values:
+        # 
+        # *   ESSD: enhanced SSD (ESSD) at performance level 0 (PL0)
+        # *   SSD: standard SSD
         self.category = category
+        # The time when the disk was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The device name of the disk on the simple application server.
         self.device = device
+        # The billing method of the disk.
         self.disk_charge_type = disk_charge_type
+        # The ID of the disk.
         self.disk_id = disk_id
+        # The name of the disk.
         self.disk_name = disk_name
+        # The type of the disk. Valid values:
+        # 
+        # *   System: system disk
+        # *   Data: data disk
         self.disk_type = disk_type
+        # The ID of the simple application server to which the disk is attached.
         self.instance_id = instance_id
+        self.instance_name = instance_name
+        # The region ID of the server.
         self.region_id = region_id
+        self.remark = remark
+        # The size of the disk. Unit: GB.
         self.size = size
+        # The status of the disk. Valid values:
+        # 
+        # *   ReIniting: The disk is being initialized.
+        # *   Creating: The disk is being created.
+        # *   In_Use: The disk is being used.
+        # *   Available: The disk can be attached.
+        # *   Attaching: The disk is being attached.
+        # *   Detaching: The disk is being detached.
         self.status = status
 
     def validate(self):
@@ -3014,8 +5302,12 @@ class ListDisksResponseBodyDisks(TeaModel):
             result['DiskType'] = self.disk_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.size is not None:
             result['Size'] = self.size
         if self.status is not None:
@@ -3040,8 +5332,12 @@ class ListDisksResponseBodyDisks(TeaModel):
             self.disk_type = m.get('DiskType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         if m.get('Status') is not None:
@@ -3058,10 +5354,15 @@ class ListDisksResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Details about the disks.
         self.disks = disks
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of disks.
         self.total_count = total_count
 
     def validate(self):
@@ -3160,9 +5461,21 @@ class ListFirewallRulesRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Maximum value: 100.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The region ID of the simple application server.
         self.region_id = region_id
 
     def validate(self):
@@ -3200,15 +5513,27 @@ class ListFirewallRulesRequest(TeaModel):
 class ListFirewallRulesResponseBodyFirewallRules(TeaModel):
     def __init__(
         self,
+        policy: str = None,
         port: str = None,
         remark: str = None,
         rule_id: str = None,
         rule_protocol: str = None,
+        source_cidr_ip: str = None,
     ):
+        self.policy = policy
+        # The port range.
         self.port = port
+        # The remarks of the firewall rule.
         self.remark = remark
+        # The ID of the firewall rule.
         self.rule_id = rule_id
+        # The transport layer protocol. Valid values:
+        # 
+        # *   TCP: the TCP protocol.
+        # *   UDP: the UDP protocol.
+        # *   TCP+UDP: the TCP and UDP protocols.
         self.rule_protocol = rule_protocol
+        self.source_cidr_ip = source_cidr_ip
 
     def validate(self):
         pass
@@ -3219,6 +5544,8 @@ class ListFirewallRulesResponseBodyFirewallRules(TeaModel):
             return _map
 
         result = dict()
+        if self.policy is not None:
+            result['Policy'] = self.policy
         if self.port is not None:
             result['Port'] = self.port
         if self.remark is not None:
@@ -3227,10 +5554,14 @@ class ListFirewallRulesResponseBodyFirewallRules(TeaModel):
             result['RuleId'] = self.rule_id
         if self.rule_protocol is not None:
             result['RuleProtocol'] = self.rule_protocol
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
         if m.get('Port') is not None:
             self.port = m.get('Port')
         if m.get('Remark') is not None:
@@ -3239,6 +5570,8 @@ class ListFirewallRulesResponseBodyFirewallRules(TeaModel):
             self.rule_id = m.get('RuleId')
         if m.get('RuleProtocol') is not None:
             self.rule_protocol = m.get('RuleProtocol')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
         return self
 
 
@@ -3251,10 +5584,15 @@ class ListFirewallRulesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Details about the firewall rules.
         self.firewall_rules = firewall_rules
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of firewall rules.
         self.total_count = total_count
 
     def validate(self):
@@ -3352,8 +5690,15 @@ class ListImagesRequest(TeaModel):
         image_type: str = None,
         region_id: str = None,
     ):
+        # The IDs of the images. The value can be a JSON array that consists of up to 50 image IDs, in the format of `["xxx", "yyy", … "zzz"]`. Separate the image IDs with commas (,).
         self.image_ids = image_ids
+        # The type of the image. Valid values:
+        # 
+        # *   system
+        # *   app
+        # *   custom
         self.image_type = image_type
+        # The region ID of the images. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -3393,10 +5738,22 @@ class ListImagesResponseBodyImages(TeaModel):
         image_type: str = None,
         platform: str = None,
     ):
+        # The description of the image.
         self.description = description
+        # The ID of the image.
         self.image_id = image_id
+        # The name of the image.
         self.image_name = image_name
+        # The type of the image. Valid values:
+        # 
+        # *   system
+        # *   app
+        # *   custom
         self.image_type = image_type
+        # The operating system type of the image. Valid values:
+        # 
+        # *   Linux
+        # *   Windows
         self.platform = platform
 
     def validate(self):
@@ -3441,7 +5798,9 @@ class ListImagesResponseBody(TeaModel):
         images: List[ListImagesResponseBodyImages] = None,
         request_id: str = None,
     ):
+        # Details of the images.
         self.images = images
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3526,7 +5885,9 @@ class ListInstancePlansModificationRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -3567,15 +5928,31 @@ class ListInstancePlansModificationResponseBodyPlans(TeaModel):
         plan_id: str = None,
         support_platform: str = None,
     ):
+        # The peak bandwidth. Unit: Mbit/s.
         self.bandwidth = bandwidth
+        # The number of vCPUs.
         self.core = core
+        # The unit of the plan price. Valid values:
+        # 
+        # *   CNY
+        # *   USD
         self.currency = currency
+        # The disk size of the simple application server. Unit: GB.
         self.disk_size = disk_size
+        # The category of the disk. Valid values:
+        # 
+        # *   SSD: standard SSD
+        # *   ESSD: enhanced SSD
         self.disk_type = disk_type
+        # The monthly data transfer quota. Unit: GB.
         self.flow = flow
+        # The memory size. Unit: GB.
         self.memory = memory
+        # The price of the plan.
         self.origin_price = origin_price
+        # The ID of the plan.
         self.plan_id = plan_id
+        # The operating system types supported by the plan.
         self.support_platform = support_platform
 
     def validate(self):
@@ -3640,7 +6017,9 @@ class ListInstancePlansModificationResponseBody(TeaModel):
         plans: List[ListInstancePlansModificationResponseBodyPlans] = None,
         request_id: str = None,
     ):
+        # Details about the plans.
         self.plans = plans
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3719,6 +6098,187 @@ class ListInstancePlansModificationResponse(TeaModel):
         return self
 
 
+class ListInstanceStatusRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        self.instance_ids = instance_ids
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListInstanceStatusResponseBodyInstanceStatuses(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        status: str = None,
+    ):
+        self.instance_id = instance_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListInstanceStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_statuses: List[ListInstanceStatusResponseBodyInstanceStatuses] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.instance_statuses = instance_statuses
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.instance_statuses:
+            for k in self.instance_statuses:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceStatuses'] = []
+        if self.instance_statuses is not None:
+            for k in self.instance_statuses:
+                result['InstanceStatuses'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_statuses = []
+        if m.get('InstanceStatuses') is not None:
+            for k in m.get('InstanceStatuses'):
+                temp_model = ListInstanceStatusResponseBodyInstanceStatuses()
+                self.instance_statuses.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListInstanceStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListInstanceStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListInstanceStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -3729,11 +6289,27 @@ class ListInstancesRequest(TeaModel):
         public_ip_addresses: str = None,
         region_id: str = None,
     ):
+        # The billing method of the simple application server. Set the value to PrePaid, which indicates the subscription billing method. Only the subscription billing method is supported.
+        # 
+        # Default value: PrePaid.
         self.charge_type = charge_type
+        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate the server IDs with commas (,).
+        # 
+        # >  If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that each specified ID and its corresponding public IP address belong to the same simple application server. Otherwise, an empty result is returned.
         self.instance_ids = instance_ids
+        # The number of the page to return.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Maximum value: 100.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The public IP addresses of the simple application servers. The value can be a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,).
+        # 
+        # >  If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that each specified ID and its corresponding public IP address belong to the same simple application server. Otherwise, an empty result is returned.
         self.public_ip_addresses = public_ip_addresses
+        # The region ID of the simple application servers.
         self.region_id = region_id
 
     def validate(self):
@@ -3776,14 +6352,132 @@ class ListInstancesRequest(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyInstancesImage(TeaModel):
+    def __init__(
+        self,
+        image_contact: str = None,
+        image_icon_url: str = None,
+        image_name: str = None,
+        image_type: str = None,
+        image_version: str = None,
+        os_type: str = None,
+    ):
+        self.image_contact = image_contact
+        self.image_icon_url = image_icon_url
+        self.image_name = image_name
+        self.image_type = image_type
+        self.image_version = image_version
+        self.os_type = os_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_contact is not None:
+            result['ImageContact'] = self.image_contact
+        if self.image_icon_url is not None:
+            result['ImageIconUrl'] = self.image_icon_url
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
+        if self.image_version is not None:
+            result['ImageVersion'] = self.image_version
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageContact') is not None:
+            self.image_contact = m.get('ImageContact')
+        if m.get('ImageIconUrl') is not None:
+            self.image_icon_url = m.get('ImageIconUrl')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
+        if m.get('ImageVersion') is not None:
+            self.image_version = m.get('ImageVersion')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        return self
+
+
+class ListInstancesResponseBodyInstancesResourceSpec(TeaModel):
+    def __init__(
+        self,
+        bandwidth: int = None,
+        cpu: int = None,
+        disk_category: str = None,
+        disk_size: int = None,
+        flow: float = None,
+        memory: float = None,
+    ):
+        self.bandwidth = bandwidth
+        self.cpu = cpu
+        self.disk_category = disk_category
+        self.disk_size = disk_size
+        self.flow = flow
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.disk_category is not None:
+            result['DiskCategory'] = self.disk_category
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
+        if self.flow is not None:
+            result['Flow'] = self.flow
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('DiskCategory') is not None:
+            self.disk_category = m.get('DiskCategory')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
+        if m.get('Flow') is not None:
+            self.flow = m.get('Flow')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        return self
+
+
 class ListInstancesResponseBodyInstances(TeaModel):
     def __init__(
         self,
         business_status: str = None,
         charge_type: str = None,
+        combination: bool = None,
+        combination_instance_id: str = None,
         creation_time: str = None,
         ddos_status: str = None,
+        disable_reason: str = None,
         expired_time: str = None,
+        image: ListInstancesResponseBodyInstancesImage = None,
         image_id: str = None,
         inner_ip_address: str = None,
         instance_id: str = None,
@@ -3791,24 +6485,65 @@ class ListInstancesResponseBodyInstances(TeaModel):
         plan_id: str = None,
         public_ip_address: str = None,
         region_id: str = None,
+        resource_spec: ListInstancesResponseBodyInstancesResourceSpec = None,
         status: str = None,
+        uuid: str = None,
     ):
+        # The status of the simple application server. Valid values:
+        # 
+        # *   Normal
+        # *   Expired
+        # *   Overdue
         self.business_status = business_status
+        # The billing method of the simple application server.
         self.charge_type = charge_type
+        self.combination = combination
+        self.combination_instance_id = combination_instance_id
+        # The time when the simple application server was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The DDoS protection status. Valid values:
+        # 
+        # *   Normal: Normal
+        # *   BlackHole: Blackholing
+        # *   Defense: Cleaning
         self.ddos_status = ddos_status
+        self.disable_reason = disable_reason
+        # The time when the simple application server expires. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expired_time = expired_time
+        self.image = image
+        # The ID of the image.
         self.image_id = image_id
+        # The internal IP address of the simple application server.
         self.inner_ip_address = inner_ip_address
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The name of the simple application server.
         self.instance_name = instance_name
+        # The ID of the plan.
         self.plan_id = plan_id
+        # The public IP address.
         self.public_ip_address = public_ip_address
+        # The region ID of the simple application servers.
         self.region_id = region_id
+        self.resource_spec = resource_spec
+        # The status of the simple application server. Valid values:
+        # 
+        # *   Pending
+        # *   Starting
+        # *   Running
+        # *   Stopping
+        # *   Stopped
+        # *   Resetting
+        # *   Upgrading
+        # *   Disabled
         self.status = status
+        self.uuid = uuid
 
     def validate(self):
-        pass
+        if self.image:
+            self.image.validate()
+        if self.resource_spec:
+            self.resource_spec.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3820,12 +6555,20 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['BusinessStatus'] = self.business_status
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.combination is not None:
+            result['Combination'] = self.combination
+        if self.combination_instance_id is not None:
+            result['CombinationInstanceId'] = self.combination_instance_id
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
         if self.ddos_status is not None:
             result['DdosStatus'] = self.ddos_status
+        if self.disable_reason is not None:
+            result['DisableReason'] = self.disable_reason
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
+        if self.image is not None:
+            result['Image'] = self.image.to_map()
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.inner_ip_address is not None:
@@ -3840,8 +6583,12 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['PublicIpAddress'] = self.public_ip_address
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_spec is not None:
+            result['ResourceSpec'] = self.resource_spec.to_map()
         if self.status is not None:
             result['Status'] = self.status
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
         return result
 
     def from_map(self, m: dict = None):
@@ -3850,12 +6597,21 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.business_status = m.get('BusinessStatus')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('Combination') is not None:
+            self.combination = m.get('Combination')
+        if m.get('CombinationInstanceId') is not None:
+            self.combination_instance_id = m.get('CombinationInstanceId')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
         if m.get('DdosStatus') is not None:
             self.ddos_status = m.get('DdosStatus')
+        if m.get('DisableReason') is not None:
+            self.disable_reason = m.get('DisableReason')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
+        if m.get('Image') is not None:
+            temp_model = ListInstancesResponseBodyInstancesImage()
+            self.image = temp_model.from_map(m['Image'])
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('InnerIpAddress') is not None:
@@ -3870,8 +6626,13 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.public_ip_address = m.get('PublicIpAddress')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceSpec') is not None:
+            temp_model = ListInstancesResponseBodyInstancesResourceSpec()
+            self.resource_spec = temp_model.from_map(m['ResourceSpec'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
         return self
 
 
@@ -3884,10 +6645,15 @@ class ListInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Details about the simple application servers.
         self.instances = instances
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of simple application servers returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3984,7 +6750,9 @@ class ListInstancesTrafficPackagesRequest(TeaModel):
         instance_ids: str = None,
         region_id: str = None,
     ):
+        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate the server IDs with commas (,).
         self.instance_ids = instance_ids
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4020,10 +6788,17 @@ class ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages(TeaMo
         traffic_package_total: int = None,
         traffic_used: int = None,
     ):
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The data transfers that exceeds the quota of the data transfer plan in the current month. Unit: Byte.
         self.traffic_overflow = traffic_overflow
+        # The unused quota of the data transfer plan in the current month. Unit: Byte.
         self.traffic_package_remaining = traffic_package_remaining
+        # The quota of the data transfer plan in the current month. Unit: Byte.
+        # 
+        # >  TrafficPackageTotal = TrafficUsed + TrafficPackageRemaining
         self.traffic_package_total = traffic_package_total
+        # The used quota of the data transfer plan in the current month. Unit: Byte.
         self.traffic_used = traffic_used
 
     def validate(self):
@@ -4068,7 +6843,9 @@ class ListInstancesTrafficPackagesResponseBody(TeaModel):
         instance_traffic_package_usages: List[ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages] = None,
         request_id: str = None,
     ):
+        # The details of the data transfer plans of the simple application servers.
         self.instance_traffic_package_usages = instance_traffic_package_usages
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4152,6 +6929,7 @@ class ListPlansRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4188,15 +6966,33 @@ class ListPlansResponseBodyPlans(TeaModel):
         plan_id: str = None,
         support_platform: str = None,
     ):
+        # The peak bandwidth. Unit: Mbit/s.
         self.bandwidth = bandwidth
+        # The number of vCPUs.
         self.core = core
+        # The unit of the plan price. Valid values:
+        # 
+        # *   CNY
+        # *   USD
+        # 
+        # >  CNY is for the China site (aliyun.com). USD is for the international site (alibabacloud.com).
         self.currency = currency
+        # The size of the disk. Unit: GB.
         self.disk_size = disk_size
+        # The category of the disk. Valid values:
+        # 
+        # *   SSD: standard SSDs
+        # *   ESSD: enhanced SSDs
         self.disk_type = disk_type
+        # The monthly data transfer quota. Unit: GB.
         self.flow = flow
+        # The memory size. Unit: GB.
         self.memory = memory
+        # The monthly price of the plan.
         self.origin_price = origin_price
+        # The ID of the plan.
         self.plan_id = plan_id
+        # The operating system types supported by the plan.
         self.support_platform = support_platform
 
     def validate(self):
@@ -4261,7 +7057,9 @@ class ListPlansResponseBody(TeaModel):
         plans: List[ListPlansResponseBodyPlans] = None,
         request_id: str = None,
     ):
+        # Details about the plans.
         self.plans = plans
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4347,8 +7145,11 @@ class ListRegionsResponseBodyRegions(TeaModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
+        # The name of the region.
         self.local_name = local_name
+        # The endpoint of the region.
         self.region_endpoint = region_endpoint
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -4385,7 +7186,9 @@ class ListRegionsResponseBody(TeaModel):
         regions: List[ListRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # Details about the regions.
         self.regions = regions
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4473,13 +7276,25 @@ class ListSnapshotsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
         snapshot_ids: str = None,
+        source_disk_type: str = None,
     ):
+        # The ID of the source disk.
         self.disk_id = disk_id
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The number of the page to return.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Maximum value: 100.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The region ID of the simple application server.
         self.region_id = region_id
+        # The IDs of the snapshots. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate the snapshot IDs with commas (,).
         self.snapshot_ids = snapshot_ids
+        self.source_disk_type = source_disk_type
 
     def validate(self):
         pass
@@ -4502,6 +7317,8 @@ class ListSnapshotsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.snapshot_ids is not None:
             result['SnapshotIds'] = self.snapshot_ids
+        if self.source_disk_type is not None:
+            result['SourceDiskType'] = self.source_disk_type
         return result
 
     def from_map(self, m: dict = None):
@@ -4518,6 +7335,8 @@ class ListSnapshotsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('SnapshotIds') is not None:
             self.snapshot_ids = m.get('SnapshotIds')
+        if m.get('SourceDiskType') is not None:
+            self.source_disk_type = m.get('SourceDiskType')
         return self
 
 
@@ -4525,23 +7344,43 @@ class ListSnapshotsResponseBodySnapshots(TeaModel):
     def __init__(
         self,
         creation_time: str = None,
+        instance_id: str = None,
         progress: str = None,
         region_id: str = None,
         remark: str = None,
+        rollback_time: str = None,
         snapshot_id: str = None,
         snapshot_name: str = None,
         source_disk_id: str = None,
         source_disk_type: str = None,
         status: str = None,
     ):
+        # The time when the snapshot was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        self.instance_id = instance_id
+        # The progress of snapshot creation.
         self.progress = progress
+        # The ID of the region.
         self.region_id = region_id
+        # The remarks of the snapshot.
         self.remark = remark
+        self.rollback_time = rollback_time
+        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
+        # The name of the snapshot.
         self.snapshot_name = snapshot_name
+        # The ID of the source disk. This parameter has a value even after the source disk is released.
         self.source_disk_id = source_disk_id
+        # The type of the source disk. Valid values:
+        # 
+        # *   System: system disk
+        # *   data: data disk
         self.source_disk_type = source_disk_type
+        # The status of the snapshot. Valid values:
+        # 
+        # *   Progressing: The snapshot is being created.
+        # *   Accomplished: The snapshot is created.
+        # *   Failed: The snapshot failed to be created.
         self.status = status
 
     def validate(self):
@@ -4555,12 +7394,16 @@ class ListSnapshotsResponseBodySnapshots(TeaModel):
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.progress is not None:
             result['Progress'] = self.progress
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.remark is not None:
             result['Remark'] = self.remark
+        if self.rollback_time is not None:
+            result['RollbackTime'] = self.rollback_time
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
         if self.snapshot_name is not None:
@@ -4577,12 +7420,16 @@ class ListSnapshotsResponseBodySnapshots(TeaModel):
         m = m or dict()
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+        if m.get('RollbackTime') is not None:
+            self.rollback_time = m.get('RollbackTime')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
         if m.get('SnapshotName') is not None:
@@ -4605,10 +7452,15 @@ class ListSnapshotsResponseBody(TeaModel):
         snapshots: List[ListSnapshotsResponseBodySnapshots] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # Details about the snapshots.
         self.snapshots = snapshots
+        # The total number of snapshots.
         self.total_count = total_count
 
     def validate(self):
@@ -4707,9 +7559,21 @@ class LoginInstanceRequest(TeaModel):
         region_id: str = None,
         username: str = None,
     ):
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The password that corresponds to the username.
+        # 
+        # *   For a Linux server, you do not need to enter a password.
+        # *   For a Windows server, enter the password that you set. If you have not set a password for the simple application server, set a password. For more information, see [Reset the password](~~60055~~l).
         self.password = password
+        # The region ID of the simple application server.
+        # 
+        # You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The username of the simple application server.
+        # 
+        # *   For a Linux server, you do not need to enter a username.
+        # *   For a Windows server, the default username is `administrator`.
         self.username = username
 
     def validate(self):
@@ -4750,7 +7614,9 @@ class LoginInstanceResponseBody(TeaModel):
         redirect_url: str = None,
         request_id: str = None,
     ):
+        # The URL that you use to log on to the server.
         self.redirect_url = redirect_url
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5059,6 +7925,146 @@ class ModifyDatabaseInstanceParameterResponse(TeaModel):
         return self
 
 
+class ModifyFirewallRuleRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        port: str = None,
+        region_id: str = None,
+        remark: str = None,
+        rule_id: str = None,
+        rule_protocol: str = None,
+        source_cidr_ip: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.port = port
+        self.region_id = region_id
+        self.remark = remark
+        self.rule_id = rule_id
+        self.rule_protocol = rule_protocol
+        self.source_cidr_ip = source_cidr_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_protocol is not None:
+            result['RuleProtocol'] = self.rule_protocol
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleProtocol') is not None:
+            self.rule_protocol = m.get('RuleProtocol')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        return self
+
+
+class ModifyFirewallRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyFirewallRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyFirewallRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyFirewallRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyImageShareStatusRequest(TeaModel):
     def __init__(
         self,
@@ -5067,9 +8073,16 @@ class ModifyImageShareStatusRequest(TeaModel):
         operation: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the image.
         self.image_id = image_id
+        # Valid values:
+        # 
+        # *   Share
+        # *   UnShare
         self.operation = operation
+        # The region ID of the custom image. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -5109,6 +8122,7 @@ class ModifyImageShareStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5175,6 +8189,122 @@ class ModifyImageShareStatusResponse(TeaModel):
         return self
 
 
+class ModifyInstanceVncPasswordRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        vnc_password: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.vnc_password = vnc_password
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.vnc_password is not None:
+            result['VncPassword'] = self.vnc_password
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VncPassword') is not None:
+            self.vnc_password = m.get('VncPassword')
+        return self
+
+
+class ModifyInstanceVncPasswordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceVncPasswordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceVncPasswordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceVncPasswordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RebootInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -5182,8 +8312,11 @@ class RebootInstanceRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server.
         self.region_id = region_id
 
     def validate(self):
@@ -5219,6 +8352,7 @@ class RebootInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5281,6 +8415,122 @@ class RebootInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RebootInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RebootInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        force_reboot: bool = None,
+        instance_ids: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.force_reboot = force_reboot
+        self.instance_ids = instance_ids
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.force_reboot is not None:
+            result['ForceReboot'] = self.force_reboot
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ForceReboot') is not None:
+            self.force_reboot = m.get('ForceReboot')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class RebootInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RebootInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RebootInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RebootInstancesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5403,9 +8653,13 @@ class RenewInstanceRequest(TeaModel):
         period: int = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The renewal duration. Unit: months Valid values: 1, 3, 6, 12, 24, and 36.
         self.period = period
+        # The region ID of the simple application server.
         self.region_id = region_id
 
     def validate(self):
@@ -5445,6 +8699,7 @@ class RenewInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5635,9 +8890,13 @@ class ResetDiskRequest(TeaModel):
         region_id: str = None,
         snapshot_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the disk to be rolled back.
         self.disk_id = disk_id
+        # The region ID of the simple application server for which the snapshot is created.
         self.region_id = region_id
+        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -5677,6 +8936,7 @@ class ResetDiskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5751,9 +9011,13 @@ class ResetSystemRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. ****For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the image that is used to replace the image on the simple application server. If you do not specify this parameter, the operating system of the simple application server is reset by default.
         self.image_id = image_id
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -5793,6 +9057,7 @@ class ResetSystemResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5984,16 +9249,62 @@ class RunCommandRequest(TeaModel):
         working_dir: str = None,
         working_user: str = None,
     ):
+        # The content of the command. Take note of the following items:
+        # 
+        # *   When `EnableParameter` is set to true, the custom parameter feature is enabled and you can configure custom parameters based on the following rules:
+        # *   Define custom parameters in the {{}} format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
+        # *   The number of custom parameters cannot be greater than 20.
+        # *   A custom parameter name can contain only letters, digits, underscores (\_), and hyphens (-). The name is case-insensitive.
+        # *   Each custom parameter name cannot exceed 64 bytes in length.
         self.command_content = command_content
+        # Specifies whether to include custom parameters in the command.
+        # 
+        # Default value: false.
         self.enable_parameter = enable_parameter
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The name of the command.
         self.name = name
+        # The custom parameters in the key-value pair format that are to be passed in when the command includes custom parameters. For example, if the command content is `echo {{name}}`, you can set the `Parameters` parameter to the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced with the paired Jack value to generate a new command. As a result, the `echo Jack` command is actually run.
+        # 
+        # Number of custom parameters ranges from 0 to 20. Take note of the following items:
+        # 
+        # *   The key cannot be an empty string and can be up to 64 characters in length.
+        # *   The value can be an empty string.
+        # *   After custom parameters and original command content are encoded in Base64, the command cannot exceed 16 KB in size.
+        # *   The value of Parameters must be included in the custom parameters specified when you created the command. You can use empty strings to represent the parameters that are not passed in.
+        # 
+        # This parameter is empty by default. You can leave this parameter empty to disable the custom parameter feature.
         self.parameters = parameters
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # Specifies the timeout period of the command on the server.
+        # 
+        # If a task that runs the command times out, Command Assistant forcefully terminates the task process. Valid values: 10 to 86400. Unit: seconds. The period of 86400 seconds is equal to 24 hours.
+        # 
+        # Default value: 60.
         self.timeout = timeout
+        # The language type of the command. Valid values:
+        # 
+        # *   RunBatScript: batch commands (applicable to Windows servers).
+        # *   RunPowerShellScript: PowerShell commands (applicable to Windows servers).
+        # *   RunShellScript: shell commands (applicable to Linux servers).
         self.type = type
+        # The name of the password to be used to run the command on a Windows server.
+        # 
+        # If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. The password is hosted in plaintext in the parameter repository of Operation Orchestration Service (OOS) to reduce the risk of password leaks. Only the name of the password is passed in by using the WindowsPasswordName parameter.
         self.windows_password_name = windows_password_name
+        # The execution path of the command. You can specify a value for the parameter. Default execution paths vary based on the operating systems of the servers.
+        # 
+        # *   For Linux servers, the default execution path is the /home directory of the root user.
+        # *   For Windows servers, the default execution path is C:\Windows\system32.
         self.working_dir = working_dir
+        # A user of the server who runs the command. We recommend that you run the command as a regular user to reduce security risks.
+        # 
+        # Default value:
+        # 
+        # *   For Linux servers, the default value is root.
+        # *   For Windows servers, the default value is system.
         self.working_user = working_user
 
     def validate(self):
@@ -6071,16 +9382,62 @@ class RunCommandShrinkRequest(TeaModel):
         working_dir: str = None,
         working_user: str = None,
     ):
+        # The content of the command. Take note of the following items:
+        # 
+        # *   When `EnableParameter` is set to true, the custom parameter feature is enabled and you can configure custom parameters based on the following rules:
+        # *   Define custom parameters in the {{}} format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
+        # *   The number of custom parameters cannot be greater than 20.
+        # *   A custom parameter name can contain only letters, digits, underscores (\_), and hyphens (-). The name is case-insensitive.
+        # *   Each custom parameter name cannot exceed 64 bytes in length.
         self.command_content = command_content
+        # Specifies whether to include custom parameters in the command.
+        # 
+        # Default value: false.
         self.enable_parameter = enable_parameter
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The name of the command.
         self.name = name
+        # The custom parameters in the key-value pair format that are to be passed in when the command includes custom parameters. For example, if the command content is `echo {{name}}`, you can set the `Parameters` parameter to the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced with the paired Jack value to generate a new command. As a result, the `echo Jack` command is actually run.
+        # 
+        # Number of custom parameters ranges from 0 to 20. Take note of the following items:
+        # 
+        # *   The key cannot be an empty string and can be up to 64 characters in length.
+        # *   The value can be an empty string.
+        # *   After custom parameters and original command content are encoded in Base64, the command cannot exceed 16 KB in size.
+        # *   The value of Parameters must be included in the custom parameters specified when you created the command. You can use empty strings to represent the parameters that are not passed in.
+        # 
+        # This parameter is empty by default. You can leave this parameter empty to disable the custom parameter feature.
         self.parameters_shrink = parameters_shrink
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # Specifies the timeout period of the command on the server.
+        # 
+        # If a task that runs the command times out, Command Assistant forcefully terminates the task process. Valid values: 10 to 86400. Unit: seconds. The period of 86400 seconds is equal to 24 hours.
+        # 
+        # Default value: 60.
         self.timeout = timeout
+        # The language type of the command. Valid values:
+        # 
+        # *   RunBatScript: batch commands (applicable to Windows servers).
+        # *   RunPowerShellScript: PowerShell commands (applicable to Windows servers).
+        # *   RunShellScript: shell commands (applicable to Linux servers).
         self.type = type
+        # The name of the password to be used to run the command on a Windows server.
+        # 
+        # If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. The password is hosted in plaintext in the parameter repository of Operation Orchestration Service (OOS) to reduce the risk of password leaks. Only the name of the password is passed in by using the WindowsPasswordName parameter.
         self.windows_password_name = windows_password_name
+        # The execution path of the command. You can specify a value for the parameter. Default execution paths vary based on the operating systems of the servers.
+        # 
+        # *   For Linux servers, the default execution path is the /home directory of the root user.
+        # *   For Windows servers, the default execution path is C:\Windows\system32.
         self.working_dir = working_dir
+        # A user of the server who runs the command. We recommend that you run the command as a regular user to reduce security risks.
+        # 
+        # Default value:
+        # 
+        # *   For Linux servers, the default value is root.
+        # *   For Windows servers, the default value is system.
         self.working_user = working_user
 
     def validate(self):
@@ -6149,7 +9506,9 @@ class RunCommandResponseBody(TeaModel):
         invoke_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the command task.
         self.invoke_id = invoke_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6337,8 +9696,11 @@ class StartInstanceRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server.
         self.region_id = region_id
 
     def validate(self):
@@ -6374,6 +9736,7 @@ class StartInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6436,6 +9799,116 @@ class StartInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_ids: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_ids = instance_ids
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class StartInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartInstancesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6557,8 +10030,11 @@ class StopInstanceRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the server.
         self.region_id = region_id
 
     def validate(self):
@@ -6594,6 +10070,7 @@ class StopInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6660,6 +10137,238 @@ class StopInstanceResponse(TeaModel):
         return self
 
 
+class StopInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        force_stop: bool = None,
+        instance_ids: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.force_stop = force_stop
+        self.instance_ids = instance_ids
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.force_stop is not None:
+            result['ForceStop'] = self.force_stop
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ForceStop') is not None:
+            self.force_stop = m.get('ForceStop')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class StopInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDiskAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        disk_id: str = None,
+        region_id: str = None,
+        remark: str = None,
+    ):
+        self.client_token = client_token
+        self.disk_id = disk_id
+        self.region_id = region_id
+        self.remark = remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        return self
+
+
+class UpdateDiskAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateDiskAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDiskAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDiskAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateInstanceAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -6669,10 +10378,17 @@ class UpdateInstanceAttributeRequest(TeaModel):
         password: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The new name of the simple application server. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
         self.instance_name = instance_name
+        # The new password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include
+        # 
+        # `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`
         self.password = password
+        # The region ID of the simple application server.
         self.region_id = region_id
 
     def validate(self):
@@ -6716,6 +10432,7 @@ class UpdateInstanceAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6782,6 +10499,122 @@ class UpdateInstanceAttributeResponse(TeaModel):
         return self
 
 
+class UpdateSnapshotAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        region_id: str = None,
+        remark: str = None,
+        snapshot_id: str = None,
+    ):
+        self.client_token = client_token
+        self.region_id = region_id
+        self.remark = remark
+        self.snapshot_id = snapshot_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.snapshot_id is not None:
+            result['SnapshotId'] = self.snapshot_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SnapshotId') is not None:
+            self.snapshot_id = m.get('SnapshotId')
+        return self
+
+
+class UpdateSnapshotAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateSnapshotAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSnapshotAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSnapshotAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpgradeInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -6790,9 +10623,13 @@ class UpgradeInstanceRequest(TeaModel):
         plan_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The ID of the new plan. You can call the [ListPlans](~~189314~~) operation to query plans provided by Simple Application Server.
         self.plan_id = plan_id
+        # The region ID of the simple application server.
         self.region_id = region_id
 
     def validate(self):
@@ -6832,6 +10669,7 @@ class UpgradeInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6894,6 +10732,128 @@ class UpgradeInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpgradeInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadInstanceKeyPairRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        key_pair_name: str = None,
+        public_key: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.key_pair_name = key_pair_name
+        self.public_key = public_key
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.public_key is not None:
+            result['PublicKey'] = self.public_key
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('PublicKey') is not None:
+            self.public_key = m.get('PublicKey')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UploadInstanceKeyPairResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UploadInstanceKeyPairResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UploadInstanceKeyPairResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UploadInstanceKeyPairResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
