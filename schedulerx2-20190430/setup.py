@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_schedulerx220190430.
 
-Created on 27/02/2023
+Created on 07/06/2023
 
 @author: Alibaba Cloud SDK
 """
