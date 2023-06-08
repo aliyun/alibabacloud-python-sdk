@@ -13313,39 +13313,13 @@ class DescribeDcdnDomainRealTimeDetailDataRequest(TeaModel):
         merge_loc_isp: str = None,
         start_time: str = None,
     ):
-        # Specifies whether to return a summary value of **LocationNameEn** and **IspNameEn**. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # The default value is **false**.
         self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        # 
-        # > The end time must be later than the start time, and the maximum time range to query is 10 minutes.
         self.end_time = end_time
-        # Specifies whether to return a summary value. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # The default value is **false**.
         self.field = field
-        # The information returned.
         self.isp_name_en = isp_name_en
-        # The type of the information that you want to query. Separate multiple types with commas (,). Valid values:
-        # 
-        # *   **qps**: queries per second
-        # *   **bps**: bandwidth
-        # *   **http_code**: HTTP status code
         self.location_name_en = location_name_en
-        # The ID of the request.
         self.merge = merge
-        # The name of the region. You can call the [DescribeDcdnRegionAndIsp](~~207199~~) operation to query the region name.
-        # 
-        # If you do not specify a value for this parameter, all regions are queried.
         self.merge_loc_isp = merge_loc_isp
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -13402,9 +13376,7 @@ class DescribeDcdnDomainRealTimeDetailDataResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
-        # DescribeDcdnDomainRealTimeDetailData
         self.data = data
-        # Queries traffic data and the number of visits of each ISP in each region. Data is collected every minute. The maximum time range to query for this operation is 10 minutes.
         self.request_id = request_id
 
     def validate(self):
@@ -32414,9 +32386,7 @@ class GetDcdnKvRequest(TeaModel):
         key: str = None,
         namespace: str = None,
     ):
-        # The name of the namespace.
         self.key = key
-        # Queries the value of the key in a key-value pair.
         self.namespace = namespace
 
     def validate(self):
@@ -32449,9 +32419,7 @@ class GetDcdnKvResponseBody(TeaModel):
         request_id: str = None,
         value: str = None,
     ):
-        # The value of the key.
         self.request_id = request_id
-        # The name of the key that you want to query.
         self.value = value
 
     def validate(self):

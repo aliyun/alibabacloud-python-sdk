@@ -1,3 +1,6 @@
+2023-06-08 Version: 1.1.10
+- Update DeleteDcdnSpecificStagingConfig.
+
 2023-05-26 Version: 1.1.9
 - Add DescribeDcdnFullDomainsBlockIPConfig.
 
