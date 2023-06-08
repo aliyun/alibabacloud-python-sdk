@@ -46,6 +46,14 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CardOcrRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CardOcrResponse:
+        """
+        @deprecated : CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+        
+        @param request: CardOcrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CardOcrResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.doc_type):
@@ -90,6 +98,14 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CardOcrRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CardOcrResponse:
+        """
+        @deprecated : CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+        
+        @param request: CardOcrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CardOcrResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.doc_type):
@@ -133,6 +149,13 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.CardOcrRequest,
     ) -> cloudauth_intl_20220809_models.CardOcrResponse:
+        """
+        @deprecated : CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+        
+        @param request: CardOcrRequest
+        @return: CardOcrResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.card_ocr_with_options(request, runtime)
 
@@ -140,6 +163,13 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.CardOcrRequest,
     ) -> cloudauth_intl_20220809_models.CardOcrResponse:
+        """
+        @deprecated : CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+        
+        @param request: CardOcrRequest
+        @return: CardOcrResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.card_ocr_with_options_async(request, runtime)
 
@@ -638,6 +668,108 @@ class Client(OpenApiClient):
     ) -> cloudauth_intl_20220809_models.DescribeTransactionsListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_transactions_list_with_options_async(request, runtime)
+
+    def doc_ocr_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DocOcrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DocOcrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.doc_type):
+            query['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.id_face_quality):
+            query['IdFaceQuality'] = request.id_face_quality
+        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
+            query['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
+        if not UtilClient.is_unset(request.id_ocr_picture_url):
+            query['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.ocr):
+            query['Ocr'] = request.ocr
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.spoof):
+            query['Spoof'] = request.spoof
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DocOcr',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DocOcrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def doc_ocr_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DocOcrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DocOcrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.doc_type):
+            query['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.id_face_quality):
+            query['IdFaceQuality'] = request.id_face_quality
+        if not UtilClient.is_unset(request.id_ocr_picture_base_64):
+            query['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
+        if not UtilClient.is_unset(request.id_ocr_picture_url):
+            query['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.ocr):
+            query['Ocr'] = request.ocr
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.spoof):
+            query['Spoof'] = request.spoof
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DocOcr',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DocOcrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def doc_ocr(
+        self,
+        request: cloudauth_intl_20220809_models.DocOcrRequest,
+    ) -> cloudauth_intl_20220809_models.DocOcrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.doc_ocr_with_options(request, runtime)
+
+    async def doc_ocr_async(
+        self,
+        request: cloudauth_intl_20220809_models.DocOcrRequest,
+    ) -> cloudauth_intl_20220809_models.DocOcrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.doc_ocr_with_options_async(request, runtime)
 
     def face_compare_with_options(
         self,
