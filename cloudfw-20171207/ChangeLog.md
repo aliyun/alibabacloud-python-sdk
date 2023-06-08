@@ -1,3 +1,9 @@
+2023-06-08 Version: 1.2.8
+- Support nat acl white page.
+- Add new api DescribeCfwRiskLevelSummary.
+- Add new api DescribeInstanceRiskLevels.
+- Add total count field for DescribeTrFirewallV2RoutePolicyList response.
+
 2023-05-30 Version: 1.2.7
 - Support rematch acl.
 - Fix bugs for Fw-TR apis.
