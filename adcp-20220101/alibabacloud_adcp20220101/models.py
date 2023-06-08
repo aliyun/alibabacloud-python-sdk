@@ -4835,22 +4835,11 @@ class GrantUserPermissionRequest(TeaModel):
         role_type: str = None,
         user_id: str = None,
     ):
-        # The ID of the master instance.
         self.cluster_id = cluster_id
         self.is_ram_role = is_ram_role
-        # The namespace to which the permissions are scoped. By default, this parameter is empty when you set role_type to cluster.
         self.namespace = namespace
-        # Specifies the predefined role that you want to assign. Valid values:
-        # 
-        # *   admin: the administrator role.
-        # *   dev: the developer role.
         self.role_name = role_name
-        # The authorization type. Valid values:
-        # 
-        # *   cluster: specifies that the permissions are scoped to a master instance.
-        # *   namespace: specifies that the permissions are scoped to a namespace of a cluster.
         self.role_type = role_type
-        # The ID of the RAM user.
         self.user_id = user_id
 
     def validate(self):
@@ -4898,7 +4887,6 @@ class GrantUserPermissionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5167,6 +5155,7 @@ class UpdateHubClusterFeatureRequest(TeaModel):
         api_server_eip_id: str = None,
         argo_cdenabled: bool = None,
         argo_server_enabled: bool = None,
+        arms_enabled: bool = None,
         audit_log_enabled: bool = None,
         cluster_id: str = None,
         deletion_protection: bool = None,
@@ -5181,6 +5170,7 @@ class UpdateHubClusterFeatureRequest(TeaModel):
         self.api_server_eip_id = api_server_eip_id
         self.argo_cdenabled = argo_cdenabled
         self.argo_server_enabled = argo_server_enabled
+        self.arms_enabled = arms_enabled
         # Specifies whether to enable the audit logging feature. Valid values:
         # 
         # *   true: enables the audit logging feature.
@@ -5224,6 +5214,8 @@ class UpdateHubClusterFeatureRequest(TeaModel):
             result['ArgoCDEnabled'] = self.argo_cdenabled
         if self.argo_server_enabled is not None:
             result['ArgoServerEnabled'] = self.argo_server_enabled
+        if self.arms_enabled is not None:
+            result['ArmsEnabled'] = self.arms_enabled
         if self.audit_log_enabled is not None:
             result['AuditLogEnabled'] = self.audit_log_enabled
         if self.cluster_id is not None:
@@ -5252,6 +5244,8 @@ class UpdateHubClusterFeatureRequest(TeaModel):
             self.argo_cdenabled = m.get('ArgoCDEnabled')
         if m.get('ArgoServerEnabled') is not None:
             self.argo_server_enabled = m.get('ArgoServerEnabled')
+        if m.get('ArmsEnabled') is not None:
+            self.arms_enabled = m.get('ArmsEnabled')
         if m.get('AuditLogEnabled') is not None:
             self.audit_log_enabled = m.get('AuditLogEnabled')
         if m.get('ClusterId') is not None:
@@ -5279,6 +5273,7 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
         api_server_eip_id: str = None,
         argo_cdenabled: bool = None,
         argo_server_enabled: bool = None,
+        arms_enabled: bool = None,
         audit_log_enabled: bool = None,
         cluster_id: str = None,
         deletion_protection: bool = None,
@@ -5293,6 +5288,7 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
         self.api_server_eip_id = api_server_eip_id
         self.argo_cdenabled = argo_cdenabled
         self.argo_server_enabled = argo_server_enabled
+        self.arms_enabled = arms_enabled
         # Specifies whether to enable the audit logging feature. Valid values:
         # 
         # *   true: enables the audit logging feature.
@@ -5336,6 +5332,8 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
             result['ArgoCDEnabled'] = self.argo_cdenabled
         if self.argo_server_enabled is not None:
             result['ArgoServerEnabled'] = self.argo_server_enabled
+        if self.arms_enabled is not None:
+            result['ArmsEnabled'] = self.arms_enabled
         if self.audit_log_enabled is not None:
             result['AuditLogEnabled'] = self.audit_log_enabled
         if self.cluster_id is not None:
@@ -5364,6 +5362,8 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
             self.argo_cdenabled = m.get('ArgoCDEnabled')
         if m.get('ArgoServerEnabled') is not None:
             self.argo_server_enabled = m.get('ArgoServerEnabled')
+        if m.get('ArmsEnabled') is not None:
+            self.arms_enabled = m.get('ArmsEnabled')
         if m.get('AuditLogEnabled') is not None:
             self.audit_log_enabled = m.get('AuditLogEnabled')
         if m.get('ClusterId') is not None:

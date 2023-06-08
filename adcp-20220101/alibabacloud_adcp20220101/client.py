@@ -1698,6 +1698,8 @@ class Client(OpenApiClient):
             query['ArgoCDEnabled'] = request.argo_cdenabled
         if not UtilClient.is_unset(request.argo_server_enabled):
             query['ArgoServerEnabled'] = request.argo_server_enabled
+        if not UtilClient.is_unset(request.arms_enabled):
+            query['ArmsEnabled'] = request.arms_enabled
         if not UtilClient.is_unset(request.audit_log_enabled):
             query['AuditLogEnabled'] = request.audit_log_enabled
         if not UtilClient.is_unset(request.cluster_id):
@@ -1752,6 +1754,8 @@ class Client(OpenApiClient):
             query['ArgoCDEnabled'] = request.argo_cdenabled
         if not UtilClient.is_unset(request.argo_server_enabled):
             query['ArgoServerEnabled'] = request.argo_server_enabled
+        if not UtilClient.is_unset(request.arms_enabled):
+            query['ArmsEnabled'] = request.arms_enabled
         if not UtilClient.is_unset(request.audit_log_enabled):
             query['AuditLogEnabled'] = request.audit_log_enabled
         if not UtilClient.is_unset(request.cluster_id):

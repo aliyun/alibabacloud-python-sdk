@@ -1,3 +1,7 @@
+2023-06-08 Version: 1.0.11
+- UpdateHubClusterFeature suppoert ArmsEnabled.
+
+
 2023-05-22 Version: 1.0.10
 - GrantUserPermission suppoert RamRole.
 
