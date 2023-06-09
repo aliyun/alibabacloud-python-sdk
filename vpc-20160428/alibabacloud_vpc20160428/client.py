@@ -1543,6 +1543,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.zone):
+            query['Zone'] = request.zone
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1600,6 +1602,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.zone):
+            query['Zone'] = request.zone
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7729,8 +7733,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatGatewayResponse:
         """
-        The ID of the region where you want to create the NAT gateway.
-        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        Before you call this operation, take note of the following items:
+        *   When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see [Service-linked roles](~~174251~~).
+        *   After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
+        *   **CreateNatGateway** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeNatGateways](~~36054~~) operation to query the status of a NAT gateway.
+        *   If a NAT gateway is in the **Creating** state, the NAT gateway is being created. In this case, you can query the NAT gateway but cannot perform other operations.
+        *   If a NAT gateway is in the **Available** state, the NAT gateway is created.
+        It takes 1 to 3 minutes to create a NAT gateway.
+        *   You cannot repeatedly call the **CreateNatGateway** operation to create a VPC NAT gateway or an Internet NAT gateway within the specified period of time.
         
         @param request: CreateNatGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7807,8 +7817,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatGatewayResponse:
         """
-        The ID of the region where you want to create the NAT gateway.
-        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        Before you call this operation, take note of the following items:
+        *   When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see [Service-linked roles](~~174251~~).
+        *   After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
+        *   **CreateNatGateway** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeNatGateways](~~36054~~) operation to query the status of a NAT gateway.
+        *   If a NAT gateway is in the **Creating** state, the NAT gateway is being created. In this case, you can query the NAT gateway but cannot perform other operations.
+        *   If a NAT gateway is in the **Available** state, the NAT gateway is created.
+        It takes 1 to 3 minutes to create a NAT gateway.
+        *   You cannot repeatedly call the **CreateNatGateway** operation to create a VPC NAT gateway or an Internet NAT gateway within the specified period of time.
         
         @param request: CreateNatGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7884,8 +7900,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateNatGatewayRequest,
     ) -> vpc_20160428_models.CreateNatGatewayResponse:
         """
-        The ID of the region where you want to create the NAT gateway.
-        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        Before you call this operation, take note of the following items:
+        *   When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see [Service-linked roles](~~174251~~).
+        *   After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
+        *   **CreateNatGateway** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeNatGateways](~~36054~~) operation to query the status of a NAT gateway.
+        *   If a NAT gateway is in the **Creating** state, the NAT gateway is being created. In this case, you can query the NAT gateway but cannot perform other operations.
+        *   If a NAT gateway is in the **Available** state, the NAT gateway is created.
+        It takes 1 to 3 minutes to create a NAT gateway.
+        *   You cannot repeatedly call the **CreateNatGateway** operation to create a VPC NAT gateway or an Internet NAT gateway within the specified period of time.
         
         @param request: CreateNatGatewayRequest
         @return: CreateNatGatewayResponse
@@ -7898,8 +7920,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateNatGatewayRequest,
     ) -> vpc_20160428_models.CreateNatGatewayResponse:
         """
-        The ID of the region where you want to create the NAT gateway.
-        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        Before you call this operation, take note of the following items:
+        *   When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see [Service-linked roles](~~174251~~).
+        *   After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
+        *   **CreateNatGateway** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeNatGateways](~~36054~~) operation to query the status of a NAT gateway.
+        *   If a NAT gateway is in the **Creating** state, the NAT gateway is being created. In this case, you can query the NAT gateway but cannot perform other operations.
+        *   If a NAT gateway is in the **Available** state, the NAT gateway is created.
+        It takes 1 to 3 minutes to create a NAT gateway.
+        *   You cannot repeatedly call the **CreateNatGateway** operation to create a VPC NAT gateway or an Internet NAT gateway within the specified period of time.
         
         @param request: CreateNatGatewayRequest
         @return: CreateNatGatewayResponse
@@ -15293,9 +15321,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         """
-        The NAT CIDR block to be deleted.
-        *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
-        *   The default NAT CIDR block cannot be deleted.
+        Specifies whether only to precheck this request. Valid values:
+        *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
         
         @param request: DeleteNatIpCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15348,9 +15376,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         """
-        The NAT CIDR block to be deleted.
-        *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
-        *   The default NAT CIDR block cannot be deleted.
+        Specifies whether only to precheck this request. Valid values:
+        *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
         
         @param request: DeleteNatIpCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15402,9 +15430,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteNatIpCidrRequest,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         """
-        The NAT CIDR block to be deleted.
-        *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
-        *   The default NAT CIDR block cannot be deleted.
+        Specifies whether only to precheck this request. Valid values:
+        *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
         
         @param request: DeleteNatIpCidrRequest
         @return: DeleteNatIpCidrResponse
@@ -15417,9 +15445,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteNatIpCidrRequest,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         """
-        The NAT CIDR block to be deleted.
-        *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
-        *   The default NAT CIDR block cannot be deleted.
+        Specifies whether only to precheck this request. Valid values:
+        *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
         
         @param request: DeleteNatIpCidrRequest
         @return: DeleteNatIpCidrResponse
@@ -16493,10 +16521,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSnatEntryResponse:
         """
-        DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of SNAT entries.
-        *   If the SNAT entries are in the **Deleting** state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
-        *   If no SNAT entry is returned in the response, the SNAT entry is deleted.
-        If some SNAT entries are in the **Pending** state, you cannot delete these SNAT entries.
+        The operation that you want to perform. Set the value to *DeleteSnatEntry**.
         
         @param request: DeleteSnatEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16545,10 +16570,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSnatEntryResponse:
         """
-        DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of SNAT entries.
-        *   If the SNAT entries are in the **Deleting** state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
-        *   If no SNAT entry is returned in the response, the SNAT entry is deleted.
-        If some SNAT entries are in the **Pending** state, you cannot delete these SNAT entries.
+        The operation that you want to perform. Set the value to *DeleteSnatEntry**.
         
         @param request: DeleteSnatEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16596,10 +16618,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteSnatEntryRequest,
     ) -> vpc_20160428_models.DeleteSnatEntryResponse:
         """
-        DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of SNAT entries.
-        *   If the SNAT entries are in the **Deleting** state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
-        *   If no SNAT entry is returned in the response, the SNAT entry is deleted.
-        If some SNAT entries are in the **Pending** state, you cannot delete these SNAT entries.
+        The operation that you want to perform. Set the value to *DeleteSnatEntry**.
         
         @param request: DeleteSnatEntryRequest
         @return: DeleteSnatEntryResponse
@@ -16612,10 +16631,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteSnatEntryRequest,
     ) -> vpc_20160428_models.DeleteSnatEntryResponse:
         """
-        DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of SNAT entries.
-        *   If the SNAT entries are in the **Deleting** state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
-        *   If no SNAT entry is returned in the response, the SNAT entry is deleted.
-        If some SNAT entries are in the **Pending** state, you cannot delete these SNAT entries.
+        The operation that you want to perform. Set the value to *DeleteSnatEntry**.
         
         @param request: DeleteSnatEntryRequest
         @return: DeleteSnatEntryResponse
@@ -21492,6 +21508,8 @@ class Client(OpenApiClient):
             query['AssociatedInstanceId'] = request.associated_instance_id
         if not UtilClient.is_unset(request.associated_instance_type):
             query['AssociatedInstanceType'] = request.associated_instance_type
+        if not UtilClient.is_unset(request.include_reservation_data):
+            query['IncludeReservationData'] = request.include_reservation_data
         if not UtilClient.is_unset(request.ipv_6address):
             query['Ipv6Address'] = request.ipv_6address
         if not UtilClient.is_unset(request.ipv_6address_id):
@@ -21552,6 +21570,8 @@ class Client(OpenApiClient):
             query['AssociatedInstanceId'] = request.associated_instance_id
         if not UtilClient.is_unset(request.associated_instance_type):
             query['AssociatedInstanceType'] = request.associated_instance_type
+        if not UtilClient.is_unset(request.include_reservation_data):
+            query['IncludeReservationData'] = request.include_reservation_data
         if not UtilClient.is_unset(request.ipv_6address):
             query['Ipv6Address'] = request.ipv_6address
         if not UtilClient.is_unset(request.ipv_6address_id):
@@ -29247,7 +29267,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse:
         """
-        You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
+        The ID of the region that you want to query.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
         
         @param request: ListEnhanhcedNatGatewayAvailableZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29294,7 +29316,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse:
         """
-        You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
+        The ID of the region that you want to query.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
         
         @param request: ListEnhanhcedNatGatewayAvailableZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29340,7 +29364,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesRequest,
     ) -> vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse:
         """
-        You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
+        The ID of the region that you want to query.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
         
         @param request: ListEnhanhcedNatGatewayAvailableZonesRequest
         @return: ListEnhanhcedNatGatewayAvailableZonesResponse
@@ -29353,7 +29379,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesRequest,
     ) -> vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse:
         """
-        You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
+        The ID of the region that you want to query.
+        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
         
         @param request: ListEnhanhcedNatGatewayAvailableZonesRequest
         @return: ListEnhanhcedNatGatewayAvailableZonesResponse

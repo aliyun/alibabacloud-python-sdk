@@ -2004,6 +2004,7 @@ class AllocateEipSegmentAddressRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        zone: str = None,
     ):
         # The subnet mask length of the contiguous EIPs. Valid values:
         # 
@@ -2058,6 +2059,7 @@ class AllocateEipSegmentAddressRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.zone = zone
 
     def validate(self):
         pass
@@ -2092,6 +2094,8 @@ class AllocateEipSegmentAddressRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.zone is not None:
+            result['Zone'] = self.zone
         return result
 
     def from_map(self, m: dict = None):
@@ -2120,6 +2124,8 @@ class AllocateEipSegmentAddressRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
         return self
 
 
@@ -10563,9 +10569,9 @@ class CreateNatGatewayRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The ID of the NAT gateway.
+        # The tag key. The format of Tag.N.Key when you call the operation. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
         self.key = key
-        # The ID of the request.
+        # The tag value. The format of Tag.N.Value when you call the operation. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -10618,16 +10624,73 @@ class CreateNatGatewayRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The type of NAT gateway. Set the value to **Enhanced** (enhanced NAT gateway).
+        # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
         self.auto_pay = auto_pay
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # 
+        # >  If you do not specify this parameter, the system automatically sets **ClientToken** to the value of **RequestId**. **RequestId** might be different for each API request.
+        self.client_token = client_token
+        # The description of the NAT gateway.
+        # 
+        # You can leave this parameter empty or enter a description. If you enter a description, the description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        self.description = description
+        # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
+        self.duration = duration
+        # The mode in which the EIP is associated with the NAT gateway. Valid values:
+        # 
+        # *   **MULTI_BINDED** (default): Multi-EIP-to-ENI mode.
+        # 
+        # *   **NAT**: NAT mode. IPv4 gateways are supported.
+        # 
+        # > If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with at most 50 EIPs.
+        self.eip_bind_mode = eip_bind_mode
+        # Specifies whether to enable the ICMP non-retrieval feature. Valid values:
+        # 
+        # *   **false** (default): no
+        # *   **true**: yes
+        self.icmp_reply_enabled = icmp_reply_enabled
         # The billing method of the NAT gateway.
         # 
         # Set the value to **PostPaid** (pay-as-you-go), which is the default value.
         # 
         # For more information, see [Internet NAT gateway billing](~~48126~~) and [VPC NAT gateway billing](~~270913~~).
-        self.client_token = client_token
+        self.instance_charge_type = instance_charge_type
+        # The metering method of the NAT gateway. Set the value to **PayByLcu**, which specifies the pay-by-CU metering method.
+        self.internet_charge_type = internet_charge_type
+        # The name of the NAT gateway.
+        # 
+        # The name must be 2 to 128 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # 
+        # If this parameter is not set, the system assigns a default name to the NAT gateway.
+        self.name = name
+        # The type of NAT gateway. Set the value to **Enhanced** (enhanced NAT gateway).
+        self.nat_type = nat_type
+        # The network type of the NAT gateway. Valid values:
+        # 
+        # *   **internet**: an Internet NAT gateway
+        # *   **intranet**: a VPC NAT gateway
+        self.network_type = network_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
         # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
-        self.description = description
+        self.pricing_cycle = pricing_cycle
+        # The ID of the region where you want to create the NAT gateway.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Specifies whether to enable the firewall feature. Valid values:
+        # 
+        # *   **false** (default): no
+        # *   **true**: yes
+        self.security_protection_enabled = security_protection_enabled
+        # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
+        self.spec = spec
+        # The list of Tag entries.
+        self.tag = tag
         # The ID of the vSwitch to which the NAT gateway is attached.
         # 
         # When you create a NAT gateway, you must specify a vSwitch for the NAT gateway. Then, the system assigns an idle private IP address from the vSwitch to the NAT gateway.
@@ -10636,62 +10699,8 @@ class CreateNatGatewayRequest(TeaModel):
         # *   If no vSwitch exists in the VPC, create a vSwitch in a zone that supports NAT gateways. Then, specify the vSwitch for the NAT gateway.
         # 
         # >  You can query the zones that support NAT gateways by calling the [ListEnhanhcedNatGatewayAvailableZones](~~182292~~) operation. You can query the number of available IP addresses in a vSwitch by calling the [DescribeVSwitches](~~35748~~) operation.
-        self.duration = duration
-        # The tag value. The format of Tag.N.Value when you call the operation. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
-        self.eip_bind_mode = eip_bind_mode
-        # The tag key. The format of Tag.N.Key when you call the operation. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
-        self.icmp_reply_enabled = icmp_reply_enabled
-        # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
-        self.instance_charge_type = instance_charge_type
-        # Specifies whether to enable the firewall feature. Valid values:
-        # 
-        # *   **false** (default): no
-        # *   **true**: yes
-        self.internet_charge_type = internet_charge_type
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests.
-        # 
-        # >  If you do not specify this parameter, the system automatically sets **ClientToken** to the value of **RequestId**. **RequestId** might be different for each API request.
-        self.name = name
-        # The network type of the NAT gateway. Valid values:
-        # 
-        # *   **internet**: an Internet NAT gateway
-        # *   **intranet**: a VPC NAT gateway
-        self.nat_type = nat_type
-        # Specifies whether to enable the ICMP non-retrieval feature. Valid values:
-        # 
-        # *   **false** (default): no
-        # *   **true**: yes
-        self.network_type = network_type
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
-        self.pricing_cycle = pricing_cycle
-        # The name of the NAT gateway.
-        # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
-        # 
-        # If this parameter is not set, the system assigns a default name to the NAT gateway.
-        self.region_id = region_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        # The mode in which the EIP is associated with the NAT gateway. Valid values:
-        # 
-        # *   **MULTI_BINDED** (default): Multi-EIP-to-ENI mode.
-        # 
-        # *   **NAT**: NAT mode. IPv4 gateways are supported.
-        # 
-        # > If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with at most 50 EIPs.
-        self.security_protection_enabled = security_protection_enabled
-        # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
-        self.spec = spec
-        self.tag = tag
-        # The metering method of the NAT gateway. Set the value to **PayByLcu**, which specifies the pay-by-CU metering method.
         self.v_switch_id = v_switch_id
-        # The description of the NAT gateway.
-        # 
-        # You can leave this parameter empty or enter a description. If you enter a description, the description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The ID of the VPC where you want to create the NAT gateway.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -10896,13 +10905,15 @@ class CreateNatGatewayResponseBody(TeaModel):
         request_id: str = None,
         snat_table_ids: CreateNatGatewayResponseBodySnatTableIds = None,
     ):
-        # The list of FULLNAT entries.
-        self.forward_table_ids = forward_table_ids
-        self.full_nat_table_ids = full_nat_table_ids
         # The list of DNAT entries.
+        self.forward_table_ids = forward_table_ids
+        # The list of FULLNAT entries.
+        self.full_nat_table_ids = full_nat_table_ids
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The list of SNAT entries.
+        # The ID of the request.
         self.request_id = request_id
+        # The list of SNAT entries.
         self.snat_table_ids = snat_table_ids
 
     def validate(self):
@@ -22554,24 +22565,20 @@ class DeleteNatIpCidrRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The operation that you want to perform. Set the value to **DeleteNatIpCidr**.
-        self.client_token = client_token
-        # The ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
-        self.dry_run = dry_run
         # The ID of the request.
+        self.client_token = client_token
+        # The operation that you want to perform. Set the value to **DeleteNatIpCidr**.
+        self.dry_run = dry_run
         self.nat_gateway_id = nat_gateway_id
+        # The ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
+        self.nat_ip_cidr = nat_ip_cidr
+        self.owner_account = owner_account
+        self.owner_id = owner_id
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
         # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-        self.nat_ip_cidr = nat_ip_cidr
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # Specifies whether only to precheck this request. Valid values:
-        # 
-        # *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24055,23 +24062,21 @@ class DeleteSnatEntryRequest(TeaModel):
         snat_entry_id: str = None,
         snat_table_id: str = None,
     ):
+        # The ID of the request.
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the SNAT table to which the SNAT entry belongs.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
         # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-        self.client_token = client_token
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # The region ID of the NAT gateway.
-        # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-        self.region_id = region_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        # The ID of the SNAT entry that you want to delete.
         self.snat_entry_id = snat_entry_id
-        # The ID of the SNAT table to which the SNAT entry belongs.
+        # The ID of the SNAT entry that you want to delete.
         self.snat_table_id = snat_table_id
 
     def validate(self):
@@ -24127,7 +24132,6 @@ class DeleteSnatEntryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -35713,6 +35717,7 @@ class DescribeIpv6AddressesRequest(TeaModel):
         self,
         associated_instance_id: str = None,
         associated_instance_type: str = None,
+        include_reservation_data: bool = None,
         ipv_6address: str = None,
         ipv_6address_id: str = None,
         ipv_6internet_bandwidth_id: str = None,
@@ -35734,6 +35739,7 @@ class DescribeIpv6AddressesRequest(TeaModel):
         # 
         # Set the value to **EcsInstance**, which specifies an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). This is the default value.
         self.associated_instance_type = associated_instance_type
+        self.include_reservation_data = include_reservation_data
         # The IPv6 address that you want to query.
         self.ipv_6address = ipv_6address
         # The ID of the IPv6 address that you want to query. You can enter at most 20 IPv6 IDs in each API request. Separate IPv6 IDs with commas (,).
@@ -35777,6 +35783,8 @@ class DescribeIpv6AddressesRequest(TeaModel):
             result['AssociatedInstanceId'] = self.associated_instance_id
         if self.associated_instance_type is not None:
             result['AssociatedInstanceType'] = self.associated_instance_type
+        if self.include_reservation_data is not None:
+            result['IncludeReservationData'] = self.include_reservation_data
         if self.ipv_6address is not None:
             result['Ipv6Address'] = self.ipv_6address
         if self.ipv_6address_id is not None:
@@ -35813,6 +35821,8 @@ class DescribeIpv6AddressesRequest(TeaModel):
             self.associated_instance_id = m.get('AssociatedInstanceId')
         if m.get('AssociatedInstanceType') is not None:
             self.associated_instance_type = m.get('AssociatedInstanceType')
+        if m.get('IncludeReservationData') is not None:
+            self.include_reservation_data = m.get('IncludeReservationData')
         if m.get('Ipv6Address') is not None:
             self.ipv_6address = m.get('Ipv6Address')
         if m.get('Ipv6AddressId') is not None:
@@ -35849,9 +35859,14 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
         self,
         bandwidth: int = None,
         business_status: str = None,
+        has_reservation_data: bool = None,
         instance_charge_type: str = None,
         internet_charge_type: str = None,
         ipv_6internet_bandwidth_id: str = None,
+        reservation_active_time: str = None,
+        reservation_bandwidth: int = None,
+        reservation_internet_charge_type: str = None,
+        reservation_order_type: str = None,
     ):
         # The exclusive Internet bandwidth of the IPv6 address. Unit: Mbit/s.
         self.bandwidth = bandwidth
@@ -35861,6 +35876,7 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
         # *   **FinancialLocked**: locked due to overdue payments
         # *   **SecurityLocked**: locked due to security reasons
         self.business_status = business_status
+        self.has_reservation_data = has_reservation_data
         # The billing method of the Internet bandwidth of the IPv6 address. Valid values:
         # 
         # **PostPaid**: pay-as-you-go
@@ -35872,6 +35888,10 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
         self.internet_charge_type = internet_charge_type
         # The instance ID of the Internet bandwidth of the IPv6 address.
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
+        self.reservation_active_time = reservation_active_time
+        self.reservation_bandwidth = reservation_bandwidth
+        self.reservation_internet_charge_type = reservation_internet_charge_type
+        self.reservation_order_type = reservation_order_type
 
     def validate(self):
         pass
@@ -35886,12 +35906,22 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
             result['Bandwidth'] = self.bandwidth
         if self.business_status is not None:
             result['BusinessStatus'] = self.business_status
+        if self.has_reservation_data is not None:
+            result['HasReservationData'] = self.has_reservation_data
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
         if self.internet_charge_type is not None:
             result['InternetChargeType'] = self.internet_charge_type
         if self.ipv_6internet_bandwidth_id is not None:
             result['Ipv6InternetBandwidthId'] = self.ipv_6internet_bandwidth_id
+        if self.reservation_active_time is not None:
+            result['ReservationActiveTime'] = self.reservation_active_time
+        if self.reservation_bandwidth is not None:
+            result['ReservationBandwidth'] = self.reservation_bandwidth
+        if self.reservation_internet_charge_type is not None:
+            result['ReservationInternetChargeType'] = self.reservation_internet_charge_type
+        if self.reservation_order_type is not None:
+            result['ReservationOrderType'] = self.reservation_order_type
         return result
 
     def from_map(self, m: dict = None):
@@ -35900,12 +35930,22 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
             self.bandwidth = m.get('Bandwidth')
         if m.get('BusinessStatus') is not None:
             self.business_status = m.get('BusinessStatus')
+        if m.get('HasReservationData') is not None:
+            self.has_reservation_data = m.get('HasReservationData')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
         if m.get('InternetChargeType') is not None:
             self.internet_charge_type = m.get('InternetChargeType')
         if m.get('Ipv6InternetBandwidthId') is not None:
             self.ipv_6internet_bandwidth_id = m.get('Ipv6InternetBandwidthId')
+        if m.get('ReservationActiveTime') is not None:
+            self.reservation_active_time = m.get('ReservationActiveTime')
+        if m.get('ReservationBandwidth') is not None:
+            self.reservation_bandwidth = m.get('ReservationBandwidth')
+        if m.get('ReservationInternetChargeType') is not None:
+            self.reservation_internet_charge_type = m.get('ReservationInternetChargeType')
+        if m.get('ReservationOrderType') is not None:
+            self.reservation_order_type = m.get('ReservationOrderType')
         return self
 
 
@@ -37262,11 +37302,9 @@ class DescribeNatGatewaysRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag values of the NAT gateway. You can specify up to 20 tag values.
-        # 
-        # The tag value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+        # The ID of the request.
         self.key = key
-        # The ID of the zone to which the NAT gateway belongs.
+        # The page number of the returned page.
         self.value = value
 
     def validate(self):
@@ -37316,13 +37354,10 @@ class DescribeNatGatewaysRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The status of the NAT gateway. Valid values:
+        # The type of the NAT gateway. Valid values:
         # 
-        # *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the **Creating** state until the operation is completed.
-        # *   **Available**: The NAT gateway remains in a stable state after the NAT gateway is created.
-        # *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the **Modifying** state until the operation is completed.
-        # *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the **Deleting** state until the operation is completed.
-        # *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the **Converting** state until the operation is completed.
+        # *   **internet**: an Internet NAT gateway
+        # *   **intranet**: a VPC NAT gateway
         self.dry_run = dry_run
         # The size of the NAT gateway. Ignore this parameter.
         self.instance_charge_type = instance_charge_type
@@ -37330,34 +37365,40 @@ class DescribeNatGatewaysRequest(TeaModel):
         self.name = name
         # The ID of the VPC to which the NAT gateway belongs.
         self.nat_gateway_id = nat_gateway_id
-        # The ID of the resource group to which the NAT gateway belongs.
+        # The number of the page to return. Default value: **1**.
         self.nat_type = nat_type
-        # The tag keys of the NAT gateway. You can specify up to 20 tag keys.
+        # The tag values of the NAT gateway. You can specify up to 20 tag values.
         # 
-        # Each tag key cannot exceed 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
-        self.page_number = page_number
         # Specifies whether to perform a dry run. Valid values:
         # 
         # - **true**: performs a dry run. The system prechecks whether your AccessKey pair is valid, whether the RAM user is authorized, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        self.page_number = page_number
+        # The status of the NAT gateway. Valid values:
+        # 
+        # *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the **Creating** state until the operation is completed.
+        # *   **Available**: The NAT gateway remains in a stable state after the NAT gateway is created.
+        # *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the **Modifying** state until the operation is completed.
+        # *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the **Deleting** state until the operation is completed.
+        # *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the **Converting** state until the operation is completed.
         self.page_size = page_size
         # The ID of the NAT gateway.
         self.region_id = region_id
-        # The number of the page to return. Default value: **1**.
+        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of NAT gateway. Set the value to **Enhanced** (enhanced NAT gateway).
         self.spec = spec
-        # The type of the NAT gateway. Valid values:
+        # The tag keys of the NAT gateway. You can specify up to 20 tag keys.
         # 
-        # *   **internet**: an Internet NAT gateway
-        # *   **intranet**: a VPC NAT gateway
+        # Each tag key cannot exceed 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.status = status
+        # The ID of the zone to which the NAT gateway belongs.
         self.tag = tag
         # The name of the NAT gateway. 
         # 
@@ -37365,7 +37406,7 @@ class DescribeNatGatewaysRequest(TeaModel):
         # 
         # If this parameter is not set, the system automatically assigns a name to the NAT gateway.
         self.vpc_id = vpc_id
-        # The number of entries returned per page.
+        # The number of NAT gateway entries that are returned.
         self.zone_id = zone_id
 
     def validate(self):
@@ -37531,18 +37572,17 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpListsIpList(TeaModel
         snat_entry_enabled: bool = None,
         using_status: str = None,
     ):
-        # The private IP address of the NAT gateway.
+        # The ID of the FULLNAT table.
         self.allocation_id = allocation_id
-        # Indicates whether IP addresses that are used in DNAT entries can be specified in SNAT entries. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        self.ip_address = ip_address
         # The ID of the DNAT table.
+        self.ip_address = ip_address
+        # The private network information about the enhanced Internet NAT gateway.
+        # 
+        # >  If **NatType** is set to **Normal**, all parameters returned in this list are empty.
         self.private_ip_address = private_ip_address
-        # The ID of the EIP associated with the NAT gateway.
+        # The ID of the SNAT table of the NAT gateway.
         self.snat_entry_enabled = snat_entry_enabled
-        # The IP address of the EIP associated with the NAT gateway.
+        # The private IP address of the NAT gateway.
         self.using_status = using_status
 
     def validate(self):
@@ -37628,27 +37668,34 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayNatGatewayPrivateInfo(
         private_ip_address: str = None,
         vswitch_id: str = None,
     ):
-        # The maximum bandwidth. Unit: Mbit/s.
-        self.eni_instance_id = eni_instance_id
         # Indicates whether the NAT gateway supports PrivateLink. Valid values:
         # 
         # *   **true**: yes
         # *   **false**: no
+        self.eni_instance_id = eni_instance_id
         self.eni_type = eni_type
+        # The tag value of the instance.
+        self.iz_no = iz_no
+        # The mode that is used by PrivateLink. Valid values:
+        # 
+        # *   **FullNat**: the FULLNAT mode
+        # *   **Geneve**: the GENEVE mode
+        self.max_bandwidth = max_bandwidth
+        # The tags that are added to the resource group.
+        self.max_session_establish_rate = max_session_establish_rate
+        # The mode in which the NAT gateway is associated with an elastic IP address (EIP). Valid values:
+        # 
+        # *   **MULTI_BINDED**: multi-EIP-to-ENI mode
+        # *   **NAT**: NAT mode, which is compatible with IPv4 addresses.
+        # 
+        # >  Note: If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with up to 50 EIPs.
+        self.max_session_quota = max_session_quota
+        # The tag key of the instance.
+        self.private_ip_address = private_ip_address
         # The mode in which the ENI is associated with the NAT gateway.
         # 
         # *   **indirect**: non-cut-through mode
         # *   If an empty value is returned, it indicates that the cut-through mode is used.
-        self.iz_no = iz_no
-        # The number of concurrent connections to the NAT gateway. Unit: connections.
-        self.max_bandwidth = max_bandwidth
-        # The private IP address.
-        self.max_session_establish_rate = max_session_establish_rate
-        # The number of new connections to the NAT gateway. Unit: connections per second.
-        self.max_session_quota = max_session_quota
-        # The zone to which the NAT gateway belongs.
-        self.private_ip_address = private_ip_address
-        # The ID of the elastic network interface (ENI).
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -37732,7 +37779,6 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag value of the instance.
         self.tag_key = tag_key
         self.tag_value = tag_value
 
@@ -37828,104 +37874,93 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
         tags: DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags = None,
         vpc_id: str = None,
     ):
+        # Indicates whether the firewall feature is enabled. Valid values:
+        # 
+        # *   **false**: no
+        # *   **true**: yes
+        self.auto_pay = auto_pay
+        # The IP address of the EIP associated with the NAT gateway.
+        self.business_status = business_status
         # The size of the NAT gateway. An empty value is returned for the parameter.
         # 
         # If **InternetChargeType** is set to **PayByLcu**, an empty value is returned.
-        self.auto_pay = auto_pay
-        # The name of the NAT gateway.
-        self.business_status = business_status
-        # The ID of the VPC where the NAT gateway is deployed.
         self.creation_time = creation_time
-        # The type of NAT gateway. Valid values:
-        # 
-        # *   **internet**: an Internet NAT gateway
-        # *   **intranet**: a VPC NAT gateway
-        self.deletion_protection = deletion_protection
-        # The time when the NAT gateway expires.
-        self.description = description
-        # Indicates whether the ICMP non-retrieval feature is enabled. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        self.ecs_metric_enabled = ecs_metric_enabled
-        # The tags that are added to the resource group.
-        self.eip_bind_mode = eip_bind_mode
-        # The ID of the resource group to which the contiguous EIP group belongs.
-        self.expired_time = expired_time
-        # The ID of the SNAT table of the NAT gateway.
-        self.forward_table_ids = forward_table_ids
-        # The private network information about the enhanced Internet NAT gateway.
-        # 
-        # >  If **NatType** is set to **Normal**, all parameters returned in this list are empty.
-        self.full_nat_table_ids = full_nat_table_ids
-        # The description of the NAT gateway.
-        self.icmp_reply_enabled = icmp_reply_enabled
         # The ID of the region where the NAT gateway is deployed.
-        self.instance_charge_type = instance_charge_type
+        self.deletion_protection = deletion_protection
+        # The metering method of the NAT gateway. Valid values:
+        # 
+        # *   **PayBySpec**: pay-by-specification
+        # *   **PayByLcu**: pay-by-CU
+        self.description = description
+        # The ID of the resource group to which the contiguous EIP group belongs.
+        self.ecs_metric_enabled = ecs_metric_enabled
+        self.eip_bind_mode = eip_bind_mode
         # The status of the NAT gateway. Valid values:
         # 
         # *   **Normal**: normal
         # *   **FinancialLocked**: locked due to overdue payments
-        self.internet_charge_type = internet_charge_type
+        self.expired_time = expired_time
+        # The ID of the vSwitch to which the NAT gateway belongs.
+        self.forward_table_ids = forward_table_ids
+        # The number of new connections to the NAT gateway. Unit: connections per second.
+        self.full_nat_table_ids = full_nat_table_ids
+        # The ID of the NAT gateway.
+        self.icmp_reply_enabled = icmp_reply_enabled
+        # The description of the NAT gateway.
+        self.instance_charge_type = instance_charge_type
         # The association between the EIP and the Internet NAT gateway. Valid values:
         # 
         # *   **UsedByForwardTable**: The EIP is specified in a DNAT entry.
         # *   **UsedBySnatTable**: The EIP is specified in an SNAT entry.
         # *   **UsedByForwardSnatTable**: The EIP is specified in both an SNAT entry and a DNAT entry.
         # *   **Idle**: The EIP is not specified in a DNAT or SNAT entry.
+        self.internet_charge_type = internet_charge_type
+        # The ID of the EIP associated with the NAT gateway.
         self.ip_lists = ip_lists
-        # The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
+        # Indicates whether IP addresses that are used in DNAT entries can be specified in SNAT entries. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.name = name
-        # The metering method of the NAT gateway. Valid values:
-        # 
-        # *   **PayBySpec**: pay-by-specification
-        # *   **PayByLcu**: pay-by-CU
+        # The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The ID of the vSwitch to which the NAT gateway belongs.
+        # The zone to which the NAT gateway belongs.
         self.nat_gateway_private_info = nat_gateway_private_info
-        # Indicates whether automatic payment is enabled. Valid values:
+        # The type of NAT gateway. Valid values:
         # 
-        # *   **false**: no
-        # *   **true**: yes
+        # *   **internet**: an Internet NAT gateway
+        # *   **intranet**: a VPC NAT gateway
         self.nat_type = nat_type
-        # Indicates whether the firewall feature is enabled. Valid values:
-        # 
-        # *   **false**: no
-        # *   **true**: yes
-        self.network_type = network_type
-        # The mode that is used by PrivateLink. Valid values:
-        # 
-        # *   **FullNat**: the FULLNAT mode
-        # *   **Geneve**: the GENEVE mode
-        self.private_link_enabled = private_link_enabled
-        # The mode in which the NAT gateway is associated with an elastic IP address (EIP). Valid values:
-        # 
-        # *   **MULTI_BINDED**: multi-EIP-to-ENI mode
-        # *   **NAT**: NAT mode, which is compatible with IPv4 addresses.
-        # 
-        # >  Note: If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with up to 50 EIPs.
-        self.private_link_mode = private_link_mode
         # Indicates whether the traffic monitoring feature is enabled. Valid values:
         # 
         # *   **true**: yes
         # *   **false**: no
+        self.network_type = network_type
+        self.private_link_enabled = private_link_enabled
+        self.private_link_mode = private_link_mode
+        # The time when the NAT gateway expires.
         self.region_id = region_id
-        # The ID of the NAT gateway.
+        # The name of the NAT gateway.
         self.resource_group_id = resource_group_id
-        # The billing method of the NAT gateway. The value is set to **PostPaid**, which indicates the pay-as-you-go billing method.
+        # Indicates whether the ICMP non-retrieval feature is enabled. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.security_protection_enabled = security_protection_enabled
-        # The ID of the FULLNAT table.
+        # The maximum bandwidth. Unit: Mbit/s.
         self.snat_table_ids = snat_table_ids
+        # The billing method of the NAT gateway. The value is set to **PostPaid**, which indicates the pay-as-you-go billing method.
+        self.spec = spec
+        # Indicates whether automatic payment is enabled. Valid values:
+        # 
+        # *   **false**: no
+        # *   **true**: yes
+        self.status = status
+        self.tags = tags
         # Indicates whether the deletion protection feature is enabled. Valid values:
         # 
         # *   **true**: yes
         # *   **false**: no
-        self.spec = spec
-        # The time when the NAT gateway was created.
-        self.status = status
-        # The tag key of the instance.
-        self.tags = tags
-        # The type of the NAT gateway. The value is set to **Enhanced** (enhanced NAT gateway).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -38121,6 +38156,12 @@ class DescribeNatGatewaysResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The type of the NAT gateway. The value is set to **Enhanced** (enhanced NAT gateway).
+        self.nat_gateways = nat_gateways
+        # The time when the NAT gateway was created.
+        self.page_number = page_number
+        # The details about the NAT gateway.
+        self.page_size = page_size
         # The status of the NAT gateway. Valid values:
         # 
         # *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is completed.
@@ -38128,14 +38169,8 @@ class DescribeNatGatewaysResponseBody(TeaModel):
         # *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the Modifying state until the operation is completed.
         # *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is completed.
         # *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the Converting state until the operation is completed.
-        self.nat_gateways = nat_gateways
-        # The number of NAT gateway entries that are returned.
-        self.page_number = page_number
-        # The ID of the request.
-        self.page_size = page_size
-        # The page number of the returned page.
         self.request_id = request_id
-        # The details about the NAT gateway.
+        # The ID of the VPC where the NAT gateway is deployed.
         self.total_count = total_count
 
     def validate(self):
@@ -61517,18 +61552,14 @@ class ListEnhanhcedNatGatewayAvailableZonesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The operation that you want to perform. Set the value to **ListEnhanhcedNatGatewayAvailableZones**.
+        self.accept_language = accept_language
+        self.owner_account = owner_account
+        self.owner_id = owner_id
         # The language to display the results. Valid values:
         # 
         # *   **zh-CN** (default): Chinese
         # *   **en-US**: English
-        self.accept_language = accept_language
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # The ID of the region that you want to query.
-        # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-        # 
-        # In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -61579,9 +61610,8 @@ class ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones(TeaModel):
         local_name: str = None,
         zone_id: str = None,
     ):
-        # The name of the zone.
         self.local_name = local_name
-        # The ID of the zone where the instance is deployed.
+        # The name of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -61614,9 +61644,9 @@ class ListEnhanhcedNatGatewayAvailableZonesResponseBody(TeaModel):
         request_id: str = None,
         zones: List[ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones] = None,
     ):
-        # The ID of the request.
-        self.request_id = request_id
         # The list of zones.
+        self.request_id = request_id
+        # The ID of the zone where the instance is deployed.
         self.zones = zones
 
     def validate(self):
@@ -63558,37 +63588,40 @@ class ListNatIpCidrsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The status of the CIDR block that you want to query. Set the value to **Available**.
+        self.client_token = client_token
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
         # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-        self.client_token = client_token
+        self.dry_run = dry_run
+        # The name of the CIDR block that you want to query. Valid values of **N**: **1** to **20**.
+        self.max_results = max_results
+        # The CIDR block of the NAT gateway that you want to query.
+        self.nat_gateway_id = nat_gateway_id
         # Specifies whether to only precheck this request. Valid values:
         # 
         # *   **true**: checks the API request. The CIDR blocks of the NAT gateway are not queried if the API request passes the precheck. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is authorized, and whether the required parameters are set. If the request fails to pass the precheck, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
         # *   **false**: sends the API request. If the request passes the precheck, 2xx HTTP status code is returned and the CIDR blocks of the NAT gateway are queried. This is the default value.
-        self.dry_run = dry_run
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
-        self.max_results = max_results
-        # The ID of the VPC NAT gateway that you want to query.
-        self.nat_gateway_id = nat_gateway_id
-        # The CIDR block of the NAT gateway that you want to query.
         self.nat_ip_cidr = nat_ip_cidr
+        # The CIDR block of the NAT gateway that you want to query. Valid values of **N**: **1** to **20**.
         self.nat_ip_cidr_name = nat_ip_cidr_name
-        # The status of the CIDR block that you want to query. Set the value to **Available**.
-        self.nat_ip_cidr_status = nat_ip_cidr_status
-        self.nat_ip_cidrs = nat_ip_cidrs
         # The token that is used for the next query. Set the value as needed.
         # 
         # *   If this is your first query or no next query is to be sent, ignore this parameter.
         # *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+        self.nat_ip_cidr_status = nat_ip_cidr_status
+        # The token that is used for the next query. Valid values:
+        # 
+        # *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
+        # *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        self.nat_ip_cidrs = nat_ip_cidrs
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the Virtual Private Cloud (VPC) NAT gateway that you want to query.
-        # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the VPC NAT gateway that you want to query.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -63677,24 +63710,18 @@ class ListNatIpCidrsResponseBodyNatIpCidrs(TeaModel):
         nat_ip_cidr_name: str = None,
         nat_ip_cidr_status: str = None,
     ):
-        # The time when the CIDR block was created.
-        self.creation_time = creation_time
-        # Indicates whether the CIDR block is the default CIDR block of the NAT gateway. Valid values:
-        # 
-        # *   **true**: The CIDR block is the default CIDR block of the NAT gateway.
-        # *   **false**: The CIDR block is not the default CIDR block of the NAT gateway.
-        self.is_default = is_default
-        # The ID of the VPC NAT gateway.
-        self.nat_gateway_id = nat_gateway_id
-        # The CIDR block of the NAT gateway.
-        self.nat_ip_cidr = nat_ip_cidr
-        # The description of the CIDR block of the NAT gateway.
-        self.nat_ip_cidr_description = nat_ip_cidr_description
-        # The ID of the CIDR block of the NAT gateway.
-        self.nat_ip_cidr_id = nat_ip_cidr_id
-        # The name of the CIDR block of the NAT gateway.
-        self.nat_ip_cidr_name = nat_ip_cidr_name
         # The status of the CIDR block of the NAT gateway. If **Available** is returned, it indicates that the CIDR block is available.
+        self.creation_time = creation_time
+        # The CIDR block of the NAT gateway.
+        self.is_default = is_default
+        self.nat_gateway_id = nat_gateway_id
+        self.nat_ip_cidr = nat_ip_cidr
+        self.nat_ip_cidr_description = nat_ip_cidr_description
+        # The name of the CIDR block of the NAT gateway.
+        self.nat_ip_cidr_id = nat_ip_cidr_id
+        # The description of the CIDR block of the NAT gateway.
+        self.nat_ip_cidr_name = nat_ip_cidr_name
+        # The ID of the VPC NAT gateway.
         self.nat_ip_cidr_status = nat_ip_cidr_status
 
     def validate(self):
@@ -63753,16 +63780,16 @@ class ListNatIpCidrsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The CIDR blocks of the NAT gateway.
-        self.nat_ip_cidrs = nat_ip_cidrs
-        # The token that is used for the next query. Valid values:
+        # Indicates whether the CIDR block is the default CIDR block of the NAT gateway. Valid values:
         # 
-        # *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
-        # *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # *   **true**: The CIDR block is the default CIDR block of the NAT gateway.
+        # *   **false**: The CIDR block is not the default CIDR block of the NAT gateway.
+        self.nat_ip_cidrs = nat_ip_cidrs
+        # The CIDR blocks of the NAT gateway.
         self.next_token = next_token
-        # The ID of the request.
+        # The time when the CIDR block was created.
         self.request_id = request_id
-        # The number of CIDR blocks that are returned.
+        # The ID of the CIDR block of the NAT gateway.
         self.total_count = total_count
 
     def validate(self):
@@ -63867,41 +63894,44 @@ class ListNatIpsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-        self.client_token = client_token
-        # Specifies whether to only precheck the request. Valid values:
-        # 
-        # *   **true**: checks the API request. IP addresses are not queried. The system checks the required parameters, request syntax, and limits. If the request fails to pass the precheck, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
-        self.dry_run = dry_run
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
-        self.max_results = max_results
-        # The ID of the NAT gateway.
-        self.nat_gateway_id = nat_gateway_id
-        # The CIDR block to which the IP address belongs.
-        self.nat_ip_cidr = nat_ip_cidr
-        self.nat_ip_ids = nat_ip_ids
-        self.nat_ip_name = nat_ip_name
         # The status of the IP address. Valid values:
         # 
         # *   **Available**\
         # *   **Deleting**\
         # *   **Creating**\
-        self.nat_ip_status = nat_ip_status
+        self.client_token = client_token
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # 
+        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        self.dry_run = dry_run
+        # The name of the IP address. Valid values of **N**: **1** to **20**.
+        self.max_results = max_results
+        # The CIDR block to which the IP address belongs.
+        self.nat_gateway_id = nat_gateway_id
+        # Specifies whether to only precheck the request. Valid values:
+        # 
+        # *   **true**: checks the API request. IP addresses are not queried. The system checks the required parameters, request syntax, and limits. If the request fails to pass the precheck, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        self.nat_ip_cidr = nat_ip_cidr
+        # The token that is used for the next query. Valid values:
+        # 
+        # *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
+        # *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        self.nat_ip_ids = nat_ip_ids
+        # The ID of the IP address. Valid values of **N**: **1** to **20**.
+        self.nat_ip_name = nat_ip_name
         # The token that is used for the next query. Valid values:
         # 
         # *   If this is your first query or no next query is to be sent, ignore this parameter.
         # *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+        self.nat_ip_status = nat_ip_status
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the NAT gateway is deployed.
-        # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the NAT gateway.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -63990,23 +64020,13 @@ class ListNatIpsResponseBodyNatIps(TeaModel):
         nat_ip_name: str = None,
         nat_ip_status: str = None,
     ):
-        # Indicates whether the IP address is the default IP address of the NAT gateway. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        self.is_default = is_default
-        # The ID of the Virtual Private Cloud (VPC) NAT gateway to which the IP address is assigned.
-        self.nat_gateway_id = nat_gateway_id
-        # The IP address.
-        self.nat_ip = nat_ip
-        # The CIDR block to which the IP address belongs.
-        self.nat_ip_cidr = nat_ip_cidr
-        # The description of the IP address.
-        self.nat_ip_description = nat_ip_description
         # The ID of the IP address.
-        self.nat_ip_id = nat_ip_id
-        # The name of the IP address.
-        self.nat_ip_name = nat_ip_name
+        self.is_default = is_default
+        self.nat_gateway_id = nat_gateway_id
+        # The description of the IP address.
+        self.nat_ip = nat_ip
+        # The ID of the Virtual Private Cloud (VPC) NAT gateway to which the IP address is assigned.
+        self.nat_ip_cidr = nat_ip_cidr
         # The status of the IP address. Valid values:
         # 
         # *   **Available**: available
@@ -64015,6 +64035,10 @@ class ListNatIpsResponseBodyNatIps(TeaModel):
         # *   **Creating**: creating
         # *   **Associated**: specified in an SNAT or DNAT entry
         # *   **Associating**: being specified in an SNAT or DNAT entry
+        self.nat_ip_description = nat_ip_description
+        # The name of the IP address.
+        self.nat_ip_id = nat_ip_id
+        self.nat_ip_name = nat_ip_name
         self.nat_ip_status = nat_ip_status
 
     def validate(self):
@@ -64073,16 +64097,16 @@ class ListNatIpsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The list of IP addresses of the NAT gateway.
+        # The CIDR block to which the IP address belongs.
         self.nat_ips = nat_ips
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
-        # *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # The list of IP addresses of the NAT gateway.
         self.next_token = next_token
-        # The ID of the request.
+        # Indicates whether the IP address is the default IP address of the NAT gateway. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.request_id = request_id
-        # The number of IP addresses that are returned.
+        # The IP address.
         self.total_count = total_count
 
     def validate(self):
