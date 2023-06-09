@@ -711,92 +711,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_service_linked_role_for_product_with_options_async(request, runtime)
 
-    def create_targets_with_options(
-        self,
-        tmp_req: eventbridge_20200401_models.CreateTargetsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> eventbridge_20200401_models.CreateTargetsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = eventbridge_20200401_models.CreateTargetsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.targets):
-            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.event_bus_name):
-            query['EventBusName'] = request.event_bus_name
-        if not UtilClient.is_unset(request.rule_name):
-            query['RuleName'] = request.rule_name
-        if not UtilClient.is_unset(request.targets_shrink):
-            query['Targets'] = request.targets_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateTargets',
-            version='2020-04-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eventbridge_20200401_models.CreateTargetsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_targets_with_options_async(
-        self,
-        tmp_req: eventbridge_20200401_models.CreateTargetsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> eventbridge_20200401_models.CreateTargetsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = eventbridge_20200401_models.CreateTargetsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.targets):
-            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.event_bus_name):
-            query['EventBusName'] = request.event_bus_name
-        if not UtilClient.is_unset(request.rule_name):
-            query['RuleName'] = request.rule_name
-        if not UtilClient.is_unset(request.targets_shrink):
-            query['Targets'] = request.targets_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateTargets',
-            version='2020-04-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eventbridge_20200401_models.CreateTargetsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_targets(
-        self,
-        request: eventbridge_20200401_models.CreateTargetsRequest,
-    ) -> eventbridge_20200401_models.CreateTargetsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_targets_with_options(request, runtime)
-
-    async def create_targets_async(
-        self,
-        request: eventbridge_20200401_models.CreateTargetsRequest,
-    ) -> eventbridge_20200401_models.CreateTargetsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_targets_with_options_async(request, runtime)
-
     def delete_api_destination_with_options(
         self,
         request: eventbridge_20200401_models.DeleteApiDestinationRequest,
@@ -2110,6 +2024,10 @@ class Client(OpenApiClient):
             body['NamePrefix'] = request.name_prefix
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sink_arn):
+            body['SinkArn'] = request.sink_arn
+        if not UtilClient.is_unset(request.source_arn):
+            body['SourceArn'] = request.source_arn
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2142,6 +2060,10 @@ class Client(OpenApiClient):
             body['NamePrefix'] = request.name_prefix
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sink_arn):
+            body['SinkArn'] = request.sink_arn
+        if not UtilClient.is_unset(request.source_arn):
+            body['SourceArn'] = request.source_arn
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2256,6 +2178,92 @@ class Client(OpenApiClient):
     ) -> eventbridge_20200401_models.ListRulesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_rules_with_options_async(request, runtime)
+
+    def list_targets_with_options(
+        self,
+        request: eventbridge_20200401_models.ListTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.ListTargetsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arn):
+            query['Arn'] = request.arn
+        if not UtilClient.is_unset(request.event_bus_name):
+            query['EventBusName'] = request.event_bus_name
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTargets',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListTargetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_targets_with_options_async(
+        self,
+        request: eventbridge_20200401_models.ListTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.ListTargetsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arn):
+            query['Arn'] = request.arn
+        if not UtilClient.is_unset(request.event_bus_name):
+            query['EventBusName'] = request.event_bus_name
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTargets',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.ListTargetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_targets(
+        self,
+        request: eventbridge_20200401_models.ListTargetsRequest,
+    ) -> eventbridge_20200401_models.ListTargetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_targets_with_options(request, runtime)
+
+    async def list_targets_async(
+        self,
+        request: eventbridge_20200401_models.ListTargetsRequest,
+    ) -> eventbridge_20200401_models.ListTargetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_targets_with_options_async(request, runtime)
 
     def list_user_defined_event_sources_with_options(
         self,
