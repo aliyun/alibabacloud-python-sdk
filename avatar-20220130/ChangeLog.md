@@ -1,3 +1,6 @@
+2023-06-09 Version: 1.0.23
+- SubmitAudioTo3DAvatarVideoTask
+
 2023-06-09 Version: 1.0.22
 - SubmitAudioTo3DAvatarVideoTask
 

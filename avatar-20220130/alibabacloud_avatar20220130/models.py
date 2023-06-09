@@ -3945,6 +3945,363 @@ class SubmitAudioTo2DAvatarVideoTaskResponse(TeaModel):
         return self
 
 
+class SubmitAudioTo3DAvatarVideoTaskRequestApp(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        code: str = None,
+        locate: int = None,
+    ):
+        self.angle = angle
+        self.code = code
+        self.locate = locate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.locate is not None:
+            result['Locate'] = self.locate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Locate') is not None:
+            self.locate = m.get('Locate')
+        return self
+
+
+class SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo(TeaModel):
+    def __init__(
+        self,
+        alpha_format: int = None,
+        background_image_url: str = None,
+        is_alpha: bool = None,
+        resolution: int = None,
+    ):
+        self.alpha_format = alpha_format
+        self.background_image_url = background_image_url
+        self.is_alpha = is_alpha
+        self.resolution = resolution
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha_format is not None:
+            result['AlphaFormat'] = self.alpha_format
+        if self.background_image_url is not None:
+            result['BackgroundImageUrl'] = self.background_image_url
+        if self.is_alpha is not None:
+            result['IsAlpha'] = self.is_alpha
+        if self.resolution is not None:
+            result['Resolution'] = self.resolution
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlphaFormat') is not None:
+            self.alpha_format = m.get('AlphaFormat')
+        if m.get('BackgroundImageUrl') is not None:
+            self.background_image_url = m.get('BackgroundImageUrl')
+        if m.get('IsAlpha') is not None:
+            self.is_alpha = m.get('IsAlpha')
+        if m.get('Resolution') is not None:
+            self.resolution = m.get('Resolution')
+        return self
+
+
+class SubmitAudioTo3DAvatarVideoTaskRequest(TeaModel):
+    def __init__(
+        self,
+        app: SubmitAudioTo3DAvatarVideoTaskRequestApp = None,
+        avatar_info: SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo = None,
+        tenant_id: int = None,
+        title: str = None,
+        url: str = None,
+        video_info: SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo = None,
+    ):
+        self.app = app
+        self.avatar_info = avatar_info
+        self.tenant_id = tenant_id
+        self.title = title
+        self.url = url
+        self.video_info = video_info
+
+    def validate(self):
+        if self.app:
+            self.app.validate()
+        if self.avatar_info:
+            self.avatar_info.validate()
+        if self.video_info:
+            self.video_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app is not None:
+            result['App'] = self.app.to_map()
+        if self.avatar_info is not None:
+            result['AvatarInfo'] = self.avatar_info.to_map()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.video_info is not None:
+            result['VideoInfo'] = self.video_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('App') is not None:
+            temp_model = SubmitAudioTo3DAvatarVideoTaskRequestApp()
+            self.app = temp_model.from_map(m['App'])
+        if m.get('AvatarInfo') is not None:
+            temp_model = SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo()
+            self.avatar_info = temp_model.from_map(m['AvatarInfo'])
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('VideoInfo') is not None:
+            temp_model = SubmitAudioTo3DAvatarVideoTaskRequestVideoInfo()
+            self.video_info = temp_model.from_map(m['VideoInfo'])
+        return self
+
+
+class SubmitAudioTo3DAvatarVideoTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_shrink: str = None,
+        avatar_info_shrink: str = None,
+        tenant_id: int = None,
+        title: str = None,
+        url: str = None,
+        video_info_shrink: str = None,
+    ):
+        self.app_shrink = app_shrink
+        self.avatar_info_shrink = avatar_info_shrink
+        self.tenant_id = tenant_id
+        self.title = title
+        self.url = url
+        self.video_info_shrink = video_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_shrink is not None:
+            result['App'] = self.app_shrink
+        if self.avatar_info_shrink is not None:
+            result['AvatarInfo'] = self.avatar_info_shrink
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.video_info_shrink is not None:
+            result['VideoInfo'] = self.video_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('App') is not None:
+            self.app_shrink = m.get('App')
+        if m.get('AvatarInfo') is not None:
+            self.avatar_info_shrink = m.get('AvatarInfo')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('VideoInfo') is not None:
+            self.video_info_shrink = m.get('VideoInfo')
+        return self
+
+
+class SubmitAudioTo3DAvatarVideoTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_uuid: str = None,
+    ):
+        self.task_uuid = task_uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_uuid is not None:
+            result['TaskUuid'] = self.task_uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskUuid') is not None:
+            self.task_uuid = m.get('TaskUuid')
+        return self
+
+
+class SubmitAudioTo3DAvatarVideoTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitAudioTo3DAvatarVideoTaskResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitAudioTo3DAvatarVideoTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitAudioTo3DAvatarVideoTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitAudioTo3DAvatarVideoTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitAudioTo3DAvatarVideoTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SubmitTextTo2DAvatarVideoTaskRequestApp(TeaModel):
     def __init__(
         self,

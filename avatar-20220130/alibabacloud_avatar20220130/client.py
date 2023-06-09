@@ -1237,6 +1237,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_audio_to_2davatar_video_task_with_options_async(request, runtime)
 
+    def submit_audio_to_3davatar_video_task_with_options(
+        self,
+        tmp_req: avatar_20220130_models.SubmitAudioTo3DAvatarVideoTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SubmitAudioTo3DAvatarVideoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.SubmitAudioTo3DAvatarVideoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app, 'App', 'json')
+        if not UtilClient.is_unset(tmp_req.avatar_info):
+            request.avatar_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.avatar_info, 'AvatarInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.video_info):
+            request.video_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_info, 'VideoInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.avatar_info_shrink):
+            query['AvatarInfo'] = request.avatar_info_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.video_info_shrink):
+            query['VideoInfo'] = request.video_info_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitAudioTo3DAvatarVideoTask',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SubmitAudioTo3DAvatarVideoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_audio_to_3davatar_video_task_with_options_async(
+        self,
+        tmp_req: avatar_20220130_models.SubmitAudioTo3DAvatarVideoTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SubmitAudioTo3DAvatarVideoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.SubmitAudioTo3DAvatarVideoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app, 'App', 'json')
+        if not UtilClient.is_unset(tmp_req.avatar_info):
+            request.avatar_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.avatar_info, 'AvatarInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.video_info):
+            request.video_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_info, 'VideoInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.avatar_info_shrink):
+            query['AvatarInfo'] = request.avatar_info_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.video_info_shrink):
+            query['VideoInfo'] = request.video_info_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitAudioTo3DAvatarVideoTask',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SubmitAudioTo3DAvatarVideoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_audio_to_3davatar_video_task(
+        self,
+        request: avatar_20220130_models.SubmitAudioTo3DAvatarVideoTaskRequest,
+    ) -> avatar_20220130_models.SubmitAudioTo3DAvatarVideoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_audio_to_3davatar_video_task_with_options(request, runtime)
+
+    async def submit_audio_to_3davatar_video_task_async(
+        self,
+        request: avatar_20220130_models.SubmitAudioTo3DAvatarVideoTaskRequest,
+    ) -> avatar_20220130_models.SubmitAudioTo3DAvatarVideoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_audio_to_3davatar_video_task_with_options_async(request, runtime)
+
     def submit_text_to_2davatar_video_task_with_options(
         self,
         tmp_req: avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskRequest,
