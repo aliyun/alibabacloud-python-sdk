@@ -119,9 +119,7 @@ class AccessTokenResponseBody(TeaModel):
         self.message = message
         self.module = module
         self.request_id = request_id
-        # 成功标识
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -9392,7 +9390,6 @@ class CitySearchResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
-        # module
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -37099,7 +37096,7 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanDaily(TeaModel):
         self,
         board: str = None,
         discount_price: str = None,
-        max_booking_num: str = None,
+        max_booking_num: int = None,
         price: int = None,
         rate_start_time: str = None,
         room_count: int = None,
@@ -41383,7 +41380,6 @@ class InvoiceAddResponseBody(TeaModel):
         self.message = message
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
