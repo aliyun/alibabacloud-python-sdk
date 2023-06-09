@@ -145,6 +145,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.EnableMultiAccountResourceCenterResponse:
+        """
+        If you have created a resource directory for your enterprise, you can enable the cross-account resource search feature by using the management account of the resource directory or a delegated administrator account of Resource Center to view the resources of members in the resource directory. For more information about a resource directory, see [Resource Directory overview](~~200506~~).
+        
+        @param request: EnableMultiAccountResourceCenterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableMultiAccountResourceCenterResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='EnableMultiAccountResourceCenter',
@@ -166,6 +173,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.EnableMultiAccountResourceCenterResponse:
+        """
+        If you have created a resource directory for your enterprise, you can enable the cross-account resource search feature by using the management account of the resource directory or a delegated administrator account of Resource Center to view the resources of members in the resource directory. For more information about a resource directory, see [Resource Directory overview](~~200506~~).
+        
+        @param request: EnableMultiAccountResourceCenterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableMultiAccountResourceCenterResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='EnableMultiAccountResourceCenter',
@@ -184,10 +198,20 @@ class Client(OpenApiClient):
         )
 
     def enable_multi_account_resource_center(self) -> resource_center_20221201_models.EnableMultiAccountResourceCenterResponse:
+        """
+        If you have created a resource directory for your enterprise, you can enable the cross-account resource search feature by using the management account of the resource directory or a delegated administrator account of Resource Center to view the resources of members in the resource directory. For more information about a resource directory, see [Resource Directory overview](~~200506~~).
+        
+        @return: EnableMultiAccountResourceCenterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_multi_account_resource_center_with_options(runtime)
 
     async def enable_multi_account_resource_center_async(self) -> resource_center_20221201_models.EnableMultiAccountResourceCenterResponse:
+        """
+        If you have created a resource directory for your enterprise, you can enable the cross-account resource search feature by using the management account of the resource directory or a delegated administrator account of Resource Center to view the resources of members in the resource directory. For more information about a resource directory, see [Resource Directory overview](~~200506~~).
+        
+        @return: EnableMultiAccountResourceCenterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_multi_account_resource_center_with_options_async(runtime)
 
@@ -500,6 +524,80 @@ class Client(OpenApiClient):
     ) -> resource_center_20221201_models.GetResourceConfigurationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_configuration_with_options_async(request, runtime)
+
+    def get_resource_counts_with_options(
+        self,
+        request: resource_center_20221201_models.GetResourceCountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_center_20221201_models.GetResourceCountsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.group_by_key):
+            query['GroupByKey'] = request.group_by_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceCounts',
+            version='2022-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_center_20221201_models.GetResourceCountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_counts_with_options_async(
+        self,
+        request: resource_center_20221201_models.GetResourceCountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_center_20221201_models.GetResourceCountsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.group_by_key):
+            query['GroupByKey'] = request.group_by_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceCounts',
+            version='2022-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_center_20221201_models.GetResourceCountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_counts(
+        self,
+        request: resource_center_20221201_models.GetResourceCountsRequest,
+    ) -> resource_center_20221201_models.GetResourceCountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_resource_counts_with_options(request, runtime)
+
+    async def get_resource_counts_async(
+        self,
+        request: resource_center_20221201_models.GetResourceCountsRequest,
+    ) -> resource_center_20221201_models.GetResourceCountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_resource_counts_with_options_async(request, runtime)
 
     def list_multi_account_resource_groups_with_options(
         self,
