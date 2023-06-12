@@ -495,6 +495,8 @@ class Client(OpenApiClient):
     ) -> videoenhan_20200320_models.AddFaceVideoTemplateResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.video_scene):
+            body['VideoScene'] = request.video_scene
         if not UtilClient.is_unset(request.video_url):
             body['VideoURL'] = request.video_url
         req = open_api_models.OpenApiRequest(
@@ -523,6 +525,8 @@ class Client(OpenApiClient):
     ) -> videoenhan_20200320_models.AddFaceVideoTemplateResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.video_scene):
+            body['VideoScene'] = request.video_scene
         if not UtilClient.is_unset(request.video_url):
             body['VideoURL'] = request.video_url
         req = open_api_models.OpenApiRequest(
@@ -3399,6 +3403,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.face_image_url):
             body['FaceImageURL'] = request.face_image_url
+        if not UtilClient.is_unset(request.merge_infos):
+            body['MergeInfos'] = request.merge_infos
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
@@ -3429,6 +3435,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.face_image_url):
             body['FaceImageURL'] = request.face_image_url
+        if not UtilClient.is_unset(request.merge_infos):
+            body['MergeInfos'] = request.merge_infos
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(

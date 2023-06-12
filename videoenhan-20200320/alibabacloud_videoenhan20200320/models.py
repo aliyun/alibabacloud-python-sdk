@@ -393,8 +393,10 @@ class AbstractFilmVideoResponse(TeaModel):
 class AddFaceVideoTemplateRequest(TeaModel):
     def __init__(
         self,
+        video_scene: str = None,
         video_url: str = None,
     ):
+        self.video_scene = video_scene
         self.video_url = video_url
 
     def validate(self):
@@ -406,12 +408,16 @@ class AddFaceVideoTemplateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.video_scene is not None:
+            result['VideoScene'] = self.video_scene
         if self.video_url is not None:
             result['VideoURL'] = self.video_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('VideoScene') is not None:
+            self.video_scene = m.get('VideoScene')
         if m.get('VideoURL') is not None:
             self.video_url = m.get('VideoURL')
         return self
@@ -420,8 +426,10 @@ class AddFaceVideoTemplateRequest(TeaModel):
 class AddFaceVideoTemplateAdvanceRequest(TeaModel):
     def __init__(
         self,
+        video_scene: str = None,
         video_urlobject: BinaryIO = None,
     ):
+        self.video_scene = video_scene
         self.video_urlobject = video_urlobject
 
     def validate(self):
@@ -433,23 +441,29 @@ class AddFaceVideoTemplateAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.video_scene is not None:
+            result['VideoScene'] = self.video_scene
         if self.video_urlobject is not None:
             result['VideoURL'] = self.video_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('VideoScene') is not None:
+            self.video_scene = m.get('VideoScene')
         if m.get('VideoURL') is not None:
             self.video_urlobject = m.get('VideoURL')
         return self
 
 
-class AddFaceVideoTemplateResponseBodyDate(TeaModel):
+class AddFaceVideoTemplateResponseBodyDateFaceInfos(TeaModel):
     def __init__(
         self,
-        template_id: str = None,
+        template_face_id: str = None,
+        template_face_url: str = None,
     ):
-        self.template_id = template_id
+        self.template_face_id = template_face_id
+        self.template_face_url = template_face_url
 
     def validate(self):
         pass
@@ -460,12 +474,57 @@ class AddFaceVideoTemplateResponseBodyDate(TeaModel):
             return _map
 
         result = dict()
+        if self.template_face_id is not None:
+            result['TemplateFaceID'] = self.template_face_id
+        if self.template_face_url is not None:
+            result['TemplateFaceURL'] = self.template_face_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateFaceID') is not None:
+            self.template_face_id = m.get('TemplateFaceID')
+        if m.get('TemplateFaceURL') is not None:
+            self.template_face_url = m.get('TemplateFaceURL')
+        return self
+
+
+class AddFaceVideoTemplateResponseBodyDate(TeaModel):
+    def __init__(
+        self,
+        face_infos: List[AddFaceVideoTemplateResponseBodyDateFaceInfos] = None,
+        template_id: str = None,
+    ):
+        self.face_infos = face_infos
+        self.template_id = template_id
+
+    def validate(self):
+        if self.face_infos:
+            for k in self.face_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FaceInfos'] = []
+        if self.face_infos is not None:
+            for k in self.face_infos:
+                result['FaceInfos'].append(k.to_map() if k else None)
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.face_infos = []
+        if m.get('FaceInfos') is not None:
+            for k in m.get('FaceInfos'):
+                temp_model = AddFaceVideoTemplateResponseBodyDateFaceInfos()
+                self.face_infos.append(temp_model.from_map(k))
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         return self
@@ -3331,17 +3390,61 @@ class MergeVideoFaceResponse(TeaModel):
         return self
 
 
+class MergeVideoModelFaceRequestMergeInfos(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        template_face_id: str = None,
+        template_face_url: str = None,
+    ):
+        self.image_url = image_url
+        self.template_face_id = template_face_id
+        self.template_face_url = template_face_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.template_face_id is not None:
+            result['TemplateFaceID'] = self.template_face_id
+        if self.template_face_url is not None:
+            result['TemplateFaceURL'] = self.template_face_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        if m.get('TemplateFaceID') is not None:
+            self.template_face_id = m.get('TemplateFaceID')
+        if m.get('TemplateFaceURL') is not None:
+            self.template_face_url = m.get('TemplateFaceURL')
+        return self
+
+
 class MergeVideoModelFaceRequest(TeaModel):
     def __init__(
         self,
         face_image_url: str = None,
+        merge_infos: List[MergeVideoModelFaceRequestMergeInfos] = None,
         template_id: str = None,
     ):
         self.face_image_url = face_image_url
+        self.merge_infos = merge_infos
         self.template_id = template_id
 
     def validate(self):
-        pass
+        if self.merge_infos:
+            for k in self.merge_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3351,6 +3454,10 @@ class MergeVideoModelFaceRequest(TeaModel):
         result = dict()
         if self.face_image_url is not None:
             result['FaceImageURL'] = self.face_image_url
+        result['MergeInfos'] = []
+        if self.merge_infos is not None:
+            for k in self.merge_infos:
+                result['MergeInfos'].append(k.to_map() if k else None)
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         return result
@@ -3359,19 +3466,26 @@ class MergeVideoModelFaceRequest(TeaModel):
         m = m or dict()
         if m.get('FaceImageURL') is not None:
             self.face_image_url = m.get('FaceImageURL')
+        self.merge_infos = []
+        if m.get('MergeInfos') is not None:
+            for k in m.get('MergeInfos'):
+                temp_model = MergeVideoModelFaceRequestMergeInfos()
+                self.merge_infos.append(temp_model.from_map(k))
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         return self
 
 
-class MergeVideoModelFaceAdvanceRequest(TeaModel):
+class MergeVideoModelFaceAdvanceRequestMergeInfos(TeaModel):
     def __init__(
         self,
-        face_image_urlobject: BinaryIO = None,
-        template_id: str = None,
+        image_url: str = None,
+        template_face_id: str = None,
+        template_face_url: str = None,
     ):
-        self.face_image_urlobject = face_image_urlobject
-        self.template_id = template_id
+        self.image_url = image_url
+        self.template_face_id = template_face_id
+        self.template_face_url = template_face_url
 
     def validate(self):
         pass
@@ -3382,8 +3496,54 @@ class MergeVideoModelFaceAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.template_face_id is not None:
+            result['TemplateFaceID'] = self.template_face_id
+        if self.template_face_url is not None:
+            result['TemplateFaceURL'] = self.template_face_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        if m.get('TemplateFaceID') is not None:
+            self.template_face_id = m.get('TemplateFaceID')
+        if m.get('TemplateFaceURL') is not None:
+            self.template_face_url = m.get('TemplateFaceURL')
+        return self
+
+
+class MergeVideoModelFaceAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        face_image_urlobject: BinaryIO = None,
+        merge_infos: List[MergeVideoModelFaceAdvanceRequestMergeInfos] = None,
+        template_id: str = None,
+    ):
+        self.face_image_urlobject = face_image_urlobject
+        self.merge_infos = merge_infos
+        self.template_id = template_id
+
+    def validate(self):
+        if self.merge_infos:
+            for k in self.merge_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.face_image_urlobject is not None:
             result['FaceImageURL'] = self.face_image_urlobject
+        result['MergeInfos'] = []
+        if self.merge_infos is not None:
+            for k in self.merge_infos:
+                result['MergeInfos'].append(k.to_map() if k else None)
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         return result
@@ -3392,6 +3552,11 @@ class MergeVideoModelFaceAdvanceRequest(TeaModel):
         m = m or dict()
         if m.get('FaceImageURL') is not None:
             self.face_image_urlobject = m.get('FaceImageURL')
+        self.merge_infos = []
+        if m.get('MergeInfos') is not None:
+            for k in m.get('MergeInfos'):
+                temp_model = MergeVideoModelFaceAdvanceRequestMergeInfos()
+                self.merge_infos.append(temp_model.from_map(k))
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         return self
@@ -3536,20 +3701,14 @@ class QueryFaceVideoTemplateRequest(TeaModel):
         return self
 
 
-class QueryFaceVideoTemplateResponseBodyDataElements(TeaModel):
+class QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos(TeaModel):
     def __init__(
         self,
-        create_time: str = None,
-        template_id: str = None,
-        template_url: str = None,
-        update_time: str = None,
-        user_id: str = None,
+        template_face_id: str = None,
+        template_face_url: str = None,
     ):
-        self.create_time = create_time
-        self.template_id = template_id
-        self.template_url = template_url
-        self.update_time = update_time
-        self.user_id = user_id
+        self.template_face_id = template_face_id
+        self.template_face_url = template_face_url
 
     def validate(self):
         pass
@@ -3560,8 +3719,56 @@ class QueryFaceVideoTemplateResponseBodyDataElements(TeaModel):
             return _map
 
         result = dict()
+        if self.template_face_id is not None:
+            result['TemplateFaceID'] = self.template_face_id
+        if self.template_face_url is not None:
+            result['TemplateFaceURL'] = self.template_face_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateFaceID') is not None:
+            self.template_face_id = m.get('TemplateFaceID')
+        if m.get('TemplateFaceURL') is not None:
+            self.template_face_url = m.get('TemplateFaceURL')
+        return self
+
+
+class QueryFaceVideoTemplateResponseBodyDataElements(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        face_infos: List[QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos] = None,
+        template_id: str = None,
+        template_url: str = None,
+        update_time: str = None,
+        user_id: str = None,
+    ):
+        self.create_time = create_time
+        self.face_infos = face_infos
+        self.template_id = template_id
+        self.template_url = template_url
+        self.update_time = update_time
+        self.user_id = user_id
+
+    def validate(self):
+        if self.face_infos:
+            for k in self.face_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        result['FaceInfos'] = []
+        if self.face_infos is not None:
+            for k in self.face_infos:
+                result['FaceInfos'].append(k.to_map() if k else None)
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         if self.template_url is not None:
@@ -3576,6 +3783,11 @@ class QueryFaceVideoTemplateResponseBodyDataElements(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        self.face_infos = []
+        if m.get('FaceInfos') is not None:
+            for k in m.get('FaceInfos'):
+                temp_model = QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos()
+                self.face_infos.append(temp_model.from_map(k))
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         if m.get('TemplateURL') is not None:

@@ -1,3 +1,6 @@
+2023-06-12 Version: 3.0.15
+- Update AddFaceVideoTemplate and MergeVideoModelFace.
+
 2023-03-28 Version: 3.0.14
 - Release ReduceVideoNoise and EnhancePortraitVideo. 
 
