@@ -119,7 +119,9 @@ class AccessTokenResponseBody(TeaModel):
         self.message = message
         self.module = module
         self.request_id = request_id
+        # 成功标识
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -9390,6 +9392,7 @@ class CitySearchResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -30271,6 +30274,7 @@ class GroupDepartSaveRequest(TeaModel):
         outer_dept_pid: str = None,
         status: int = None,
         sub_corp_id_list: List[str] = None,
+        sync_group: bool = None,
     ):
         self.dept_name = dept_name
         self.manager_ids = manager_ids
@@ -30278,6 +30282,7 @@ class GroupDepartSaveRequest(TeaModel):
         self.outer_dept_pid = outer_dept_pid
         self.status = status
         self.sub_corp_id_list = sub_corp_id_list
+        self.sync_group = sync_group
 
     def validate(self):
         pass
@@ -30300,6 +30305,8 @@ class GroupDepartSaveRequest(TeaModel):
             result['status'] = self.status
         if self.sub_corp_id_list is not None:
             result['sub_corp_id_list'] = self.sub_corp_id_list
+        if self.sync_group is not None:
+            result['sync_group'] = self.sync_group
         return result
 
     def from_map(self, m: dict = None):
@@ -30316,6 +30323,8 @@ class GroupDepartSaveRequest(TeaModel):
             self.status = m.get('status')
         if m.get('sub_corp_id_list') is not None:
             self.sub_corp_id_list = m.get('sub_corp_id_list')
+        if m.get('sync_group') is not None:
+            self.sync_group = m.get('sync_group')
         return self
 
 
@@ -30328,6 +30337,7 @@ class GroupDepartSaveShrinkRequest(TeaModel):
         outer_dept_pid: str = None,
         status: int = None,
         sub_corp_id_list_shrink: str = None,
+        sync_group: bool = None,
     ):
         self.dept_name = dept_name
         self.manager_ids = manager_ids
@@ -30335,6 +30345,7 @@ class GroupDepartSaveShrinkRequest(TeaModel):
         self.outer_dept_pid = outer_dept_pid
         self.status = status
         self.sub_corp_id_list_shrink = sub_corp_id_list_shrink
+        self.sync_group = sync_group
 
     def validate(self):
         pass
@@ -30357,6 +30368,8 @@ class GroupDepartSaveShrinkRequest(TeaModel):
             result['status'] = self.status
         if self.sub_corp_id_list_shrink is not None:
             result['sub_corp_id_list'] = self.sub_corp_id_list_shrink
+        if self.sync_group is not None:
+            result['sync_group'] = self.sync_group
         return result
 
     def from_map(self, m: dict = None):
@@ -30373,6 +30386,8 @@ class GroupDepartSaveShrinkRequest(TeaModel):
             self.status = m.get('status')
         if m.get('sub_corp_id_list') is not None:
             self.sub_corp_id_list_shrink = m.get('sub_corp_id_list')
+        if m.get('sync_group') is not None:
+            self.sync_group = m.get('sync_group')
         return self
 
 
@@ -41380,6 +41395,7 @@ class InvoiceAddResponseBody(TeaModel):
         self.message = message
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
