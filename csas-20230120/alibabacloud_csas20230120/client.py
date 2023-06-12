@@ -439,21 +439,20 @@ class Client(OpenApiClient):
 
     def create_user_group_with_options(
         self,
-        tmp_req: csas_20230120_models.CreateUserGroupRequest,
+        request: csas_20230120_models.CreateUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateUserGroupResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.CreateUserGroupShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.attributes):
-            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
+        UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.attributes_shrink):
-            body['Attributes'] = request.attributes_shrink
+        body_flat = {}
+        if not UtilClient.is_unset(request.attributes):
+            body_flat['Attributes'] = request.attributes
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -475,21 +474,20 @@ class Client(OpenApiClient):
 
     async def create_user_group_with_options_async(
         self,
-        tmp_req: csas_20230120_models.CreateUserGroupRequest,
+        request: csas_20230120_models.CreateUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateUserGroupResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.CreateUserGroupShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.attributes):
-            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
+        UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.attributes_shrink):
-            body['Attributes'] = request.attributes_shrink
+        body_flat = {}
+        if not UtilClient.is_unset(request.attributes):
+            body_flat['Attributes'] = request.attributes
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1085,14 +1083,10 @@ class Client(OpenApiClient):
 
     def list_applications_for_private_access_policy_with_options(
         self,
-        tmp_req: csas_20230120_models.ListApplicationsForPrivateAccessPolicyRequest,
+        request: csas_20230120_models.ListApplicationsForPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListApplicationsForPrivateAccessPolicyResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListApplicationsForPrivateAccessPolicyShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.policy_ids):
-            request.policy_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy_ids, 'PolicyIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1115,14 +1109,10 @@ class Client(OpenApiClient):
 
     async def list_applications_for_private_access_policy_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListApplicationsForPrivateAccessPolicyRequest,
+        request: csas_20230120_models.ListApplicationsForPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListApplicationsForPrivateAccessPolicyResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListApplicationsForPrivateAccessPolicyShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.policy_ids):
-            request.policy_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy_ids, 'PolicyIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1159,14 +1149,10 @@ class Client(OpenApiClient):
 
     def list_applications_for_private_access_tag_with_options(
         self,
-        tmp_req: csas_20230120_models.ListApplicationsForPrivateAccessTagRequest,
+        request: csas_20230120_models.ListApplicationsForPrivateAccessTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListApplicationsForPrivateAccessTagResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListApplicationsForPrivateAccessTagShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.tag_ids):
-            request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1189,14 +1175,10 @@ class Client(OpenApiClient):
 
     async def list_applications_for_private_access_tag_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListApplicationsForPrivateAccessTagRequest,
+        request: csas_20230120_models.ListApplicationsForPrivateAccessTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListApplicationsForPrivateAccessTagResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListApplicationsForPrivateAccessTagShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.tag_ids):
-            request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1233,14 +1215,10 @@ class Client(OpenApiClient):
 
     def list_connectors_with_options(
         self,
-        tmp_req: csas_20230120_models.ListConnectorsRequest,
+        request: csas_20230120_models.ListConnectorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListConnectorsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListConnectorsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.connector_ids):
-            request.connector_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.connector_ids, 'ConnectorIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1263,14 +1241,10 @@ class Client(OpenApiClient):
 
     async def list_connectors_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListConnectorsRequest,
+        request: csas_20230120_models.ListConnectorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListConnectorsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListConnectorsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.connector_ids):
-            request.connector_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.connector_ids, 'ConnectorIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1307,14 +1281,10 @@ class Client(OpenApiClient):
 
     def list_polices_for_private_access_application_with_options(
         self,
-        tmp_req: csas_20230120_models.ListPolicesForPrivateAccessApplicationRequest,
+        request: csas_20230120_models.ListPolicesForPrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPolicesForPrivateAccessApplicationResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListPolicesForPrivateAccessApplicationShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.application_ids):
-            request.application_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_ids, 'ApplicationIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1337,14 +1307,10 @@ class Client(OpenApiClient):
 
     async def list_polices_for_private_access_application_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListPolicesForPrivateAccessApplicationRequest,
+        request: csas_20230120_models.ListPolicesForPrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPolicesForPrivateAccessApplicationResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListPolicesForPrivateAccessApplicationShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.application_ids):
-            request.application_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_ids, 'ApplicationIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1381,14 +1347,10 @@ class Client(OpenApiClient):
 
     def list_polices_for_private_access_tag_with_options(
         self,
-        tmp_req: csas_20230120_models.ListPolicesForPrivateAccessTagRequest,
+        request: csas_20230120_models.ListPolicesForPrivateAccessTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPolicesForPrivateAccessTagResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListPolicesForPrivateAccessTagShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.tag_ids):
-            request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1411,14 +1373,10 @@ class Client(OpenApiClient):
 
     async def list_polices_for_private_access_tag_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListPolicesForPrivateAccessTagRequest,
+        request: csas_20230120_models.ListPolicesForPrivateAccessTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPolicesForPrivateAccessTagResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListPolicesForPrivateAccessTagShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.tag_ids):
-            request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1455,14 +1413,10 @@ class Client(OpenApiClient):
 
     def list_polices_for_user_group_with_options(
         self,
-        tmp_req: csas_20230120_models.ListPolicesForUserGroupRequest,
+        request: csas_20230120_models.ListPolicesForUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPolicesForUserGroupResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListPolicesForUserGroupShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.user_group_ids):
-            request.user_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_group_ids, 'UserGroupIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1485,14 +1439,10 @@ class Client(OpenApiClient):
 
     async def list_polices_for_user_group_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListPolicesForUserGroupRequest,
+        request: csas_20230120_models.ListPolicesForUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPolicesForUserGroupResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListPolicesForUserGroupShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.user_group_ids):
-            request.user_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_group_ids, 'UserGroupIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1529,14 +1479,10 @@ class Client(OpenApiClient):
 
     def list_private_access_applications_with_options(
         self,
-        tmp_req: csas_20230120_models.ListPrivateAccessApplicationsRequest,
+        request: csas_20230120_models.ListPrivateAccessApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessApplicationsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListPrivateAccessApplicationsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.application_ids):
-            request.application_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_ids, 'ApplicationIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1559,14 +1505,10 @@ class Client(OpenApiClient):
 
     async def list_private_access_applications_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListPrivateAccessApplicationsRequest,
+        request: csas_20230120_models.ListPrivateAccessApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessApplicationsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListPrivateAccessApplicationsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.application_ids):
-            request.application_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_ids, 'ApplicationIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1603,14 +1545,10 @@ class Client(OpenApiClient):
 
     def list_private_access_polices_with_options(
         self,
-        tmp_req: csas_20230120_models.ListPrivateAccessPolicesRequest,
+        request: csas_20230120_models.ListPrivateAccessPolicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessPolicesResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListPrivateAccessPolicesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.policy_ids):
-            request.policy_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy_ids, 'PolicyIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1633,14 +1571,10 @@ class Client(OpenApiClient):
 
     async def list_private_access_polices_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListPrivateAccessPolicesRequest,
+        request: csas_20230120_models.ListPrivateAccessPolicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessPolicesResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListPrivateAccessPolicesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.policy_ids):
-            request.policy_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy_ids, 'PolicyIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1677,14 +1611,10 @@ class Client(OpenApiClient):
 
     def list_private_access_tags_with_options(
         self,
-        tmp_req: csas_20230120_models.ListPrivateAccessTagsRequest,
+        request: csas_20230120_models.ListPrivateAccessTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessTagsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListPrivateAccessTagsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.tag_ids):
-            request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1707,14 +1637,10 @@ class Client(OpenApiClient):
 
     async def list_private_access_tags_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListPrivateAccessTagsRequest,
+        request: csas_20230120_models.ListPrivateAccessTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessTagsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListPrivateAccessTagsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.tag_ids):
-            request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1751,14 +1677,10 @@ class Client(OpenApiClient):
 
     def list_tags_for_private_access_application_with_options(
         self,
-        tmp_req: csas_20230120_models.ListTagsForPrivateAccessApplicationRequest,
+        request: csas_20230120_models.ListTagsForPrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListTagsForPrivateAccessApplicationResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListTagsForPrivateAccessApplicationShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.application_ids):
-            request.application_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_ids, 'ApplicationIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1781,14 +1703,10 @@ class Client(OpenApiClient):
 
     async def list_tags_for_private_access_application_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListTagsForPrivateAccessApplicationRequest,
+        request: csas_20230120_models.ListTagsForPrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListTagsForPrivateAccessApplicationResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListTagsForPrivateAccessApplicationShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.application_ids):
-            request.application_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_ids, 'ApplicationIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1825,14 +1743,10 @@ class Client(OpenApiClient):
 
     def list_tags_for_private_access_policy_with_options(
         self,
-        tmp_req: csas_20230120_models.ListTagsForPrivateAccessPolicyRequest,
+        request: csas_20230120_models.ListTagsForPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListTagsForPrivateAccessPolicyResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListTagsForPrivateAccessPolicyShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.policy_ids):
-            request.policy_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy_ids, 'PolicyIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1855,14 +1769,10 @@ class Client(OpenApiClient):
 
     async def list_tags_for_private_access_policy_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListTagsForPrivateAccessPolicyRequest,
+        request: csas_20230120_models.ListTagsForPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListTagsForPrivateAccessPolicyResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListTagsForPrivateAccessPolicyShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.policy_ids):
-            request.policy_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy_ids, 'PolicyIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1899,14 +1809,10 @@ class Client(OpenApiClient):
 
     def list_user_groups_with_options(
         self,
-        tmp_req: csas_20230120_models.ListUserGroupsRequest,
+        request: csas_20230120_models.ListUserGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserGroupsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListUserGroupsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.user_group_ids):
-            request.user_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_group_ids, 'UserGroupIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1929,14 +1835,10 @@ class Client(OpenApiClient):
 
     async def list_user_groups_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListUserGroupsRequest,
+        request: csas_20230120_models.ListUserGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserGroupsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListUserGroupsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.user_group_ids):
-            request.user_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_group_ids, 'UserGroupIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -1973,14 +1875,10 @@ class Client(OpenApiClient):
 
     def list_user_groups_for_private_access_policy_with_options(
         self,
-        tmp_req: csas_20230120_models.ListUserGroupsForPrivateAccessPolicyRequest,
+        request: csas_20230120_models.ListUserGroupsForPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserGroupsForPrivateAccessPolicyResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListUserGroupsForPrivateAccessPolicyShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.policy_ids):
-            request.policy_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy_ids, 'PolicyIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -2003,14 +1901,10 @@ class Client(OpenApiClient):
 
     async def list_user_groups_for_private_access_policy_with_options_async(
         self,
-        tmp_req: csas_20230120_models.ListUserGroupsForPrivateAccessPolicyRequest,
+        request: csas_20230120_models.ListUserGroupsForPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserGroupsForPrivateAccessPolicyResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.ListUserGroupsForPrivateAccessPolicyShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.policy_ids):
-            request.policy_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy_ids, 'PolicyIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -2295,23 +2189,22 @@ class Client(OpenApiClient):
 
     def update_user_group_with_options(
         self,
-        tmp_req: csas_20230120_models.UpdateUserGroupRequest,
+        request: csas_20230120_models.UpdateUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateUserGroupResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.UpdateUserGroupShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.attributes):
-            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
+        UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.attributes_shrink):
-            body['Attributes'] = request.attributes_shrink
+        body_flat = {}
+        if not UtilClient.is_unset(request.attributes):
+            body_flat['Attributes'] = request.attributes
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.modify_type):
             body['ModifyType'] = request.modify_type
         if not UtilClient.is_unset(request.user_group_id):
             body['UserGroupId'] = request.user_group_id
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2333,23 +2226,22 @@ class Client(OpenApiClient):
 
     async def update_user_group_with_options_async(
         self,
-        tmp_req: csas_20230120_models.UpdateUserGroupRequest,
+        request: csas_20230120_models.UpdateUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateUserGroupResponse:
-        UtilClient.validate_model(tmp_req)
-        request = csas_20230120_models.UpdateUserGroupShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.attributes):
-            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
+        UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.attributes_shrink):
-            body['Attributes'] = request.attributes_shrink
+        body_flat = {}
+        if not UtilClient.is_unset(request.attributes):
+            body_flat['Attributes'] = request.attributes
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.modify_type):
             body['ModifyType'] = request.modify_type
         if not UtilClient.is_unset(request.user_group_id):
             body['UserGroupId'] = request.user_group_id
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
