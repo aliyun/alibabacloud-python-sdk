@@ -118,6 +118,131 @@ class Entity(TeaModel):
         return self
 
 
+class LineageEntityVO(TeaModel):
+    def __init__(
+        self,
+        detail_url: str = None,
+        name: str = None,
+        parent_name: str = None,
+        qualified_name: str = None,
+    ):
+        self.detail_url = detail_url
+        self.name = name
+        self.parent_name = parent_name
+        self.qualified_name = qualified_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detail_url is not None:
+            result['DetailUrl'] = self.detail_url
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parent_name is not None:
+            result['ParentName'] = self.parent_name
+        if self.qualified_name is not None:
+            result['QualifiedName'] = self.qualified_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DetailUrl') is not None:
+            self.detail_url = m.get('DetailUrl')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ParentName') is not None:
+            self.parent_name = m.get('ParentName')
+        if m.get('QualifiedName') is not None:
+            self.qualified_name = m.get('QualifiedName')
+        return self
+
+
+class RelationshipVO(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class LineageRelationRegisterVO(TeaModel):
+    def __init__(
+        self,
+        create_timestamp: int = None,
+        dest_entity: LineageEntityVO = None,
+        relationship: RelationshipVO = None,
+        src_entity: LineageEntityVO = None,
+    ):
+        self.create_timestamp = create_timestamp
+        self.dest_entity = dest_entity
+        self.relationship = relationship
+        self.src_entity = src_entity
+
+    def validate(self):
+        if self.dest_entity:
+            self.dest_entity.validate()
+        if self.relationship:
+            self.relationship.validate()
+        if self.src_entity:
+            self.src_entity.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.dest_entity is not None:
+            result['DestEntity'] = self.dest_entity.to_map()
+        if self.relationship is not None:
+            result['Relationship'] = self.relationship.to_map()
+        if self.src_entity is not None:
+            result['SrcEntity'] = self.src_entity.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('DestEntity') is not None:
+            temp_model = LineageEntityVO()
+            self.dest_entity = temp_model.from_map(m['DestEntity'])
+        if m.get('Relationship') is not None:
+            temp_model = RelationshipVO()
+            self.relationship = temp_model.from_map(m['Relationship'])
+        if m.get('SrcEntity') is not None:
+            temp_model = LineageEntityVO()
+            self.src_entity = temp_model.from_map(m['SrcEntity'])
+        return self
+
+
 class AbolishDataServiceApiRequest(TeaModel):
     def __init__(
         self,
@@ -8781,6 +8906,146 @@ class DeleteFromMetaCategoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteFromMetaCategoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteLineageRelationRequest(TeaModel):
+    def __init__(
+        self,
+        dest_entity_qualified_name: str = None,
+        relationship_guid: str = None,
+        src_entity_qualified_name: str = None,
+    ):
+        self.dest_entity_qualified_name = dest_entity_qualified_name
+        self.relationship_guid = relationship_guid
+        self.src_entity_qualified_name = src_entity_qualified_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_entity_qualified_name is not None:
+            result['DestEntityQualifiedName'] = self.dest_entity_qualified_name
+        if self.relationship_guid is not None:
+            result['RelationshipGuid'] = self.relationship_guid
+        if self.src_entity_qualified_name is not None:
+            result['SrcEntityQualifiedName'] = self.src_entity_qualified_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestEntityQualifiedName') is not None:
+            self.dest_entity_qualified_name = m.get('DestEntityQualifiedName')
+        if m.get('RelationshipGuid') is not None:
+            self.relationship_guid = m.get('RelationshipGuid')
+        if m.get('SrcEntityQualifiedName') is not None:
+            self.src_entity_qualified_name = m.get('SrcEntityQualifiedName')
+        return self
+
+
+class DeleteLineageRelationResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        status: bool = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteLineageRelationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteLineageRelationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteLineageRelationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -44870,6 +45135,296 @@ class ListInstancesResponse(TeaModel):
         return self
 
 
+class ListLineageRequest(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        entity_qualified_name: str = None,
+        keyword: str = None,
+        next_token: str = None,
+        page_size: int = None,
+    ):
+        self.direction = direction
+        self.entity_qualified_name = entity_qualified_name
+        self.keyword = keyword
+        self.next_token = next_token
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.entity_qualified_name is not None:
+            result['EntityQualifiedName'] = self.entity_qualified_name
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('EntityQualifiedName') is not None:
+            self.entity_qualified_name = m.get('EntityQualifiedName')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListLineageResponseBodyDataDataEntityListRelationList(TeaModel):
+    def __init__(
+        self,
+        channel: str = None,
+        datasource: str = None,
+        guid: str = None,
+        type: str = None,
+    ):
+        self.channel = channel
+        self.datasource = datasource
+        self.guid = guid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['Channel'] = self.channel
+        if self.datasource is not None:
+            result['Datasource'] = self.datasource
+        if self.guid is not None:
+            result['Guid'] = self.guid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+        if m.get('Datasource') is not None:
+            self.datasource = m.get('Datasource')
+        if m.get('Guid') is not None:
+            self.guid = m.get('Guid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListLineageResponseBodyDataDataEntityList(TeaModel):
+    def __init__(
+        self,
+        create_timestamp: int = None,
+        entity: Entity = None,
+        relation_list: List[ListLineageResponseBodyDataDataEntityListRelationList] = None,
+    ):
+        self.create_timestamp = create_timestamp
+        self.entity = entity
+        self.relation_list = relation_list
+
+    def validate(self):
+        if self.entity:
+            self.entity.validate()
+        if self.relation_list:
+            for k in self.relation_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.entity is not None:
+            result['Entity'] = self.entity.to_map()
+        result['RelationList'] = []
+        if self.relation_list is not None:
+            for k in self.relation_list:
+                result['RelationList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Entity') is not None:
+            temp_model = Entity()
+            self.entity = temp_model.from_map(m['Entity'])
+        self.relation_list = []
+        if m.get('RelationList') is not None:
+            for k in m.get('RelationList'):
+                temp_model = ListLineageResponseBodyDataDataEntityListRelationList()
+                self.relation_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListLineageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_entity_list: List[ListLineageResponseBodyDataDataEntityList] = None,
+        next_token: str = None,
+    ):
+        self.data_entity_list = data_entity_list
+        self.next_token = next_token
+
+    def validate(self):
+        if self.data_entity_list:
+            for k in self.data_entity_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataEntityList'] = []
+        if self.data_entity_list is not None:
+            for k in self.data_entity_list:
+                result['DataEntityList'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_entity_list = []
+        if m.get('DataEntityList') is not None:
+            for k in m.get('DataEntityList'):
+                temp_model = ListLineageResponseBodyDataDataEntityList()
+                self.data_entity_list.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListLineageResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListLineageResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListLineageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListLineageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLineageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLineageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListManualDagInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -54437,6 +54992,204 @@ class QueryPublicModelEngineResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryPublicModelEngineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RegisterLineageRelationRequest(TeaModel):
+    def __init__(
+        self,
+        lineage_relation_register_vo: LineageRelationRegisterVO = None,
+    ):
+        self.lineage_relation_register_vo = lineage_relation_register_vo
+
+    def validate(self):
+        if self.lineage_relation_register_vo:
+            self.lineage_relation_register_vo.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lineage_relation_register_vo is not None:
+            result['LineageRelationRegisterVO'] = self.lineage_relation_register_vo.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LineageRelationRegisterVO') is not None:
+            temp_model = LineageRelationRegisterVO()
+            self.lineage_relation_register_vo = temp_model.from_map(m['LineageRelationRegisterVO'])
+        return self
+
+
+class RegisterLineageRelationShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        lineage_relation_register_voshrink: str = None,
+    ):
+        self.lineage_relation_register_voshrink = lineage_relation_register_voshrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lineage_relation_register_voshrink is not None:
+            result['LineageRelationRegisterVO'] = self.lineage_relation_register_voshrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LineageRelationRegisterVO') is not None:
+            self.lineage_relation_register_voshrink = m.get('LineageRelationRegisterVO')
+        return self
+
+
+class RegisterLineageRelationResponseBodyLineageRelation(TeaModel):
+    def __init__(
+        self,
+        dest_entity_qualified_name: str = None,
+        relationship_guid: str = None,
+        src_entity_qualified_name: str = None,
+    ):
+        self.dest_entity_qualified_name = dest_entity_qualified_name
+        self.relationship_guid = relationship_guid
+        self.src_entity_qualified_name = src_entity_qualified_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_entity_qualified_name is not None:
+            result['DestEntityQualifiedName'] = self.dest_entity_qualified_name
+        if self.relationship_guid is not None:
+            result['RelationshipGuid'] = self.relationship_guid
+        if self.src_entity_qualified_name is not None:
+            result['SrcEntityQualifiedName'] = self.src_entity_qualified_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestEntityQualifiedName') is not None:
+            self.dest_entity_qualified_name = m.get('DestEntityQualifiedName')
+        if m.get('RelationshipGuid') is not None:
+            self.relationship_guid = m.get('RelationshipGuid')
+        if m.get('SrcEntityQualifiedName') is not None:
+            self.src_entity_qualified_name = m.get('SrcEntityQualifiedName')
+        return self
+
+
+class RegisterLineageRelationResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        lineage_relation: RegisterLineageRelationResponseBodyLineageRelation = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.lineage_relation = lineage_relation
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.lineage_relation:
+            self.lineage_relation.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.lineage_relation is not None:
+            result['LineageRelation'] = self.lineage_relation.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('LineageRelation') is not None:
+            temp_model = RegisterLineageRelationResponseBodyLineageRelation()
+            self.lineage_relation = temp_model.from_map(m['LineageRelation'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RegisterLineageRelationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RegisterLineageRelationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RegisterLineageRelationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

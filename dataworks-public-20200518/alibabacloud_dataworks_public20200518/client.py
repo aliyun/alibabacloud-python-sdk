@@ -4937,6 +4937,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_from_meta_category_with_options_async(request, runtime)
 
+    def delete_lineage_relation_with_options(
+        self,
+        request: dataworks_public_20200518_models.DeleteLineageRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dest_entity_qualified_name):
+            query['DestEntityQualifiedName'] = request.dest_entity_qualified_name
+        if not UtilClient.is_unset(request.relationship_guid):
+            query['RelationshipGuid'] = request.relationship_guid
+        if not UtilClient.is_unset(request.src_entity_qualified_name):
+            query['SrcEntityQualifiedName'] = request.src_entity_qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLineageRelation',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteLineageRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_lineage_relation_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteLineageRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dest_entity_qualified_name):
+            query['DestEntityQualifiedName'] = request.dest_entity_qualified_name
+        if not UtilClient.is_unset(request.relationship_guid):
+            query['RelationshipGuid'] = request.relationship_guid
+        if not UtilClient.is_unset(request.src_entity_qualified_name):
+            query['SrcEntityQualifiedName'] = request.src_entity_qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLineageRelation',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteLineageRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_lineage_relation(
+        self,
+        request: dataworks_public_20200518_models.DeleteLineageRelationRequest,
+    ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_lineage_relation_with_options(request, runtime)
+
+    async def delete_lineage_relation_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteLineageRelationRequest,
+    ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_lineage_relation_with_options_async(request, runtime)
+
     def delete_meta_category_with_options(
         self,
         request: dataworks_public_20200518_models.DeleteMetaCategoryRequest,
@@ -14965,6 +15043,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
 
+    def list_lineage_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListLineageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListLineageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.entity_qualified_name):
+            query['EntityQualifiedName'] = request.entity_qualified_name
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLineage',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListLineageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_lineage_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListLineageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListLineageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.entity_qualified_name):
+            query['EntityQualifiedName'] = request.entity_qualified_name
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLineage',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListLineageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_lineage(
+        self,
+        request: dataworks_public_20200518_models.ListLineageRequest,
+    ) -> dataworks_public_20200518_models.ListLineageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_lineage_with_options(request, runtime)
+
+    async def list_lineage_async(
+        self,
+        request: dataworks_public_20200518_models.ListLineageRequest,
+    ) -> dataworks_public_20200518_models.ListLineageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_lineage_with_options_async(request, runtime)
+
     def list_manual_dag_instances_with_options(
         self,
         request: dataworks_public_20200518_models.ListManualDagInstancesRequest,
@@ -17842,6 +18006,84 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.QueryPublicModelEngineResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_public_model_engine_with_options_async(request, runtime)
+
+    def register_lineage_relation_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.RegisterLineageRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.RegisterLineageRelationResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.RegisterLineageRelationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.lineage_relation_register_vo):
+            request.lineage_relation_register_voshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lineage_relation_register_vo, 'LineageRelationRegisterVO', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.lineage_relation_register_voshrink):
+            body['LineageRelationRegisterVO'] = request.lineage_relation_register_voshrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RegisterLineageRelation',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.RegisterLineageRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def register_lineage_relation_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.RegisterLineageRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.RegisterLineageRelationResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.RegisterLineageRelationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.lineage_relation_register_vo):
+            request.lineage_relation_register_voshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lineage_relation_register_vo, 'LineageRelationRegisterVO', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.lineage_relation_register_voshrink):
+            body['LineageRelationRegisterVO'] = request.lineage_relation_register_voshrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RegisterLineageRelation',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.RegisterLineageRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def register_lineage_relation(
+        self,
+        request: dataworks_public_20200518_models.RegisterLineageRelationRequest,
+    ) -> dataworks_public_20200518_models.RegisterLineageRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.register_lineage_relation_with_options(request, runtime)
+
+    async def register_lineage_relation_async(
+        self,
+        request: dataworks_public_20200518_models.RegisterLineageRelationRequest,
+    ) -> dataworks_public_20200518_models.RegisterLineageRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.register_lineage_relation_with_options_async(request, runtime)
 
     def remove_project_member_from_role_with_options(
         self,
