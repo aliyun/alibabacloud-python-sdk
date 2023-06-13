@@ -1402,6 +1402,8 @@ class Client(OpenApiClient):
             query['FileNameExtension'] = request.file_name_extension
         if not UtilClient.is_unset(request.file_url):
             query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.structure_type):
+            query['StructureType'] = request.structure_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1434,6 +1436,8 @@ class Client(OpenApiClient):
             query['FileNameExtension'] = request.file_name_extension
         if not UtilClient.is_unset(request.file_url):
             query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.structure_type):
+            query['StructureType'] = request.structure_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

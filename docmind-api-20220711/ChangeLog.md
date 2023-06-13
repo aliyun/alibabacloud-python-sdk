@@ -1,3 +1,8 @@
+2023-06-13 Version: 1.0.4
+- Support docmind experience center.
+- Docmind support new seven types for industry intelligence.
+- Add new parameter to support different document parse process.
+
 2023-03-13 Version: 1.0.3
 - Add param to support digital chain.
 
