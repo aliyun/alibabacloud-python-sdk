@@ -1,3 +1,6 @@
+2023-06-13 Version: 1.0.4
+- Lingjun Controller Initial Version Released.
+
 2023-04-24 Version: 1.0.3
 - Lingjun Controller Initial Version Released.
 

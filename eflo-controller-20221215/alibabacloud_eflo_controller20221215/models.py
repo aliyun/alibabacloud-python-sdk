@@ -580,7 +580,9 @@ class CreateClusterRequestNetworksVpdInfo(TeaModel):
         vpd_id: str = None,
         vpd_subnets: List[str] = None,
     ):
+        # 专有网络 id
         self.vpd_id = vpd_id
+        # 集群子网id列表
         self.vpd_subnets = vpd_subnets
 
     def validate(self):
@@ -616,6 +618,7 @@ class CreateClusterRequestNetworks(TeaModel):
     ):
         self.ip_allocation_policy = ip_allocation_policy
         self.new_vpd_info = new_vpd_info
+        # 复用VPD信息
         self.vpd_info = vpd_info
 
     def validate(self):
@@ -1549,6 +1552,7 @@ class DescribeNodeResponseBody(TeaModel):
         self.expired_time = expired_time
         self.hostname = hostname
         self.image_id = image_id
+        # 镜像名称
         self.image_name = image_name
         self.machine_type = machine_type
         self.networks = networks
@@ -2005,6 +2009,7 @@ class DescribeTaskResponseBody(TeaModel):
         cluster_name: str = None,
         create_time: str = None,
         message: str = None,
+        node_ids: List[str] = None,
         request_id: str = None,
         steps: List[DescribeTaskResponseBodySteps] = None,
         task_state: str = None,
@@ -2015,6 +2020,7 @@ class DescribeTaskResponseBody(TeaModel):
         self.cluster_name = cluster_name
         self.create_time = create_time
         self.message = message
+        self.node_ids = node_ids
         self.request_id = request_id
         self.steps = steps
         self.task_state = task_state
@@ -2041,6 +2047,8 @@ class DescribeTaskResponseBody(TeaModel):
             result['CreateTime'] = self.create_time
         if self.message is not None:
             result['Message'] = self.message
+        if self.node_ids is not None:
+            result['NodeIds'] = self.node_ids
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         result['Steps'] = []
@@ -2065,6 +2073,8 @@ class DescribeTaskResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('NodeIds') is not None:
+            self.node_ids = m.get('NodeIds')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         self.steps = []
