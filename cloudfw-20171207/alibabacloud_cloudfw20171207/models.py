@@ -1298,6 +1298,9 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
         self,
         cen_id: str = None,
         firewall_switch: str = None,
+        firewall_vswitch_cidr_block: str = None,
+        firewall_vpc_cidr_block: str = None,
+        firewall_vpc_zone_id: str = None,
         lang: str = None,
         member_uid: str = None,
         network_instance_id: str = None,
@@ -1312,6 +1315,9 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
         # *   **open**: After you create the VPC firewall, the VPC firewall is automatically enabled. This is the default value.
         # *   **close**: After you create the VPC firewall, the VPC firewall is disabled. You can call the [ModifyVpcFirewallCenSwitchStatus](~~345780~~) operation to manually enable the VPC firewall.
         self.firewall_switch = firewall_switch
+        self.firewall_vswitch_cidr_block = firewall_vswitch_cidr_block
+        self.firewall_vpc_cidr_block = firewall_vpc_cidr_block
+        self.firewall_vpc_zone_id = firewall_vpc_zone_id
         # The language of the content within the request and response. Valid values:
         # 
         # *   **zh**: Chinese (default)
@@ -1342,6 +1348,12 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
             result['CenId'] = self.cen_id
         if self.firewall_switch is not None:
             result['FirewallSwitch'] = self.firewall_switch
+        if self.firewall_vswitch_cidr_block is not None:
+            result['FirewallVSwitchCidrBlock'] = self.firewall_vswitch_cidr_block
+        if self.firewall_vpc_cidr_block is not None:
+            result['FirewallVpcCidrBlock'] = self.firewall_vpc_cidr_block
+        if self.firewall_vpc_zone_id is not None:
+            result['FirewallVpcZoneId'] = self.firewall_vpc_zone_id
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.member_uid is not None:
@@ -1362,6 +1374,12 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
             self.cen_id = m.get('CenId')
         if m.get('FirewallSwitch') is not None:
             self.firewall_switch = m.get('FirewallSwitch')
+        if m.get('FirewallVSwitchCidrBlock') is not None:
+            self.firewall_vswitch_cidr_block = m.get('FirewallVSwitchCidrBlock')
+        if m.get('FirewallVpcCidrBlock') is not None:
+            self.firewall_vpc_cidr_block = m.get('FirewallVpcCidrBlock')
+        if m.get('FirewallVpcZoneId') is not None:
+            self.firewall_vpc_zone_id = m.get('FirewallVpcZoneId')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('MemberUid') is not None:
@@ -8440,6 +8458,108 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig(TeaModel):
         return self
 
 
+class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        peer_tr_list: List[str] = None,
+        vbr_list: List[str] = None,
+        vpc_list: List[str] = None,
+        vpn_list: List[str] = None,
+    ):
+        self.count = count
+        self.peer_tr_list = peer_tr_list
+        self.vbr_list = vbr_list
+        self.vpc_list = vpc_list
+        self.vpn_list = vpn_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.peer_tr_list is not None:
+            result['PeerTrList'] = self.peer_tr_list
+        if self.vbr_list is not None:
+            result['VbrList'] = self.vbr_list
+        if self.vpc_list is not None:
+            result['VpcList'] = self.vpc_list
+        if self.vpn_list is not None:
+            result['VpnList'] = self.vpn_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('PeerTrList') is not None:
+            self.peer_tr_list = m.get('PeerTrList')
+        if m.get('VbrList') is not None:
+            self.vbr_list = m.get('VbrList')
+        if m.get('VpcList') is not None:
+            self.vpc_list = m.get('VpcList')
+        if m.get('VpnList') is not None:
+            self.vpn_list = m.get('VpnList')
+        return self
+
+
+class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        peer_tr_list: List[str] = None,
+        vbr_list: List[str] = None,
+        vpc_list: List[str] = None,
+        vpn_list: List[str] = None,
+    ):
+        self.count = count
+        self.peer_tr_list = peer_tr_list
+        self.vbr_list = vbr_list
+        self.vpc_list = vpc_list
+        self.vpn_list = vpn_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.peer_tr_list is not None:
+            result['PeerTrList'] = self.peer_tr_list
+        if self.vbr_list is not None:
+            result['VbrList'] = self.vbr_list
+        if self.vpc_list is not None:
+            result['VpcList'] = self.vpc_list
+        if self.vpn_list is not None:
+            result['VpnList'] = self.vpn_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('PeerTrList') is not None:
+            self.peer_tr_list = m.get('PeerTrList')
+        if m.get('VbrList') is not None:
+            self.vbr_list = m.get('VbrList')
+        if m.get('VpcList') is not None:
+            self.vpc_list = m.get('VpcList')
+        if m.get('VpnList') is not None:
+            self.vpn_list = m.get('VpnList')
+        return self
+
+
 class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
     def __init__(
         self,
@@ -8450,11 +8570,13 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
         ips_config: DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig = None,
         owner_id: int = None,
         precheck_status: str = None,
+        protected_resource: DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource = None,
         region_no: str = None,
         region_status: str = None,
         result_code: str = None,
         route_mode: str = None,
         transit_router_id: str = None,
+        unprotected_resource: DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource = None,
         vpc_firewall_name: str = None,
     ):
         self.cen_id = cen_id
@@ -8464,16 +8586,22 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
         self.ips_config = ips_config
         self.owner_id = owner_id
         self.precheck_status = precheck_status
+        self.protected_resource = protected_resource
         self.region_no = region_no
         self.region_status = region_status
         self.result_code = result_code
         self.route_mode = route_mode
         self.transit_router_id = transit_router_id
+        self.unprotected_resource = unprotected_resource
         self.vpc_firewall_name = vpc_firewall_name
 
     def validate(self):
         if self.ips_config:
             self.ips_config.validate()
+        if self.protected_resource:
+            self.protected_resource.validate()
+        if self.unprotected_resource:
+            self.unprotected_resource.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8495,6 +8623,8 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.precheck_status is not None:
             result['PrecheckStatus'] = self.precheck_status
+        if self.protected_resource is not None:
+            result['ProtectedResource'] = self.protected_resource.to_map()
         if self.region_no is not None:
             result['RegionNo'] = self.region_no
         if self.region_status is not None:
@@ -8505,6 +8635,8 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
             result['RouteMode'] = self.route_mode
         if self.transit_router_id is not None:
             result['TransitRouterId'] = self.transit_router_id
+        if self.unprotected_resource is not None:
+            result['UnprotectedResource'] = self.unprotected_resource.to_map()
         if self.vpc_firewall_name is not None:
             result['VpcFirewallName'] = self.vpc_firewall_name
         return result
@@ -8526,6 +8658,9 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PrecheckStatus') is not None:
             self.precheck_status = m.get('PrecheckStatus')
+        if m.get('ProtectedResource') is not None:
+            temp_model = DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource()
+            self.protected_resource = temp_model.from_map(m['ProtectedResource'])
         if m.get('RegionNo') is not None:
             self.region_no = m.get('RegionNo')
         if m.get('RegionStatus') is not None:
@@ -8536,6 +8671,9 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
             self.route_mode = m.get('RouteMode')
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
+        if m.get('UnprotectedResource') is not None:
+            temp_model = DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource()
+            self.unprotected_resource = temp_model.from_map(m['UnprotectedResource'])
         if m.get('VpcFirewallName') is not None:
             self.vpc_firewall_name = m.get('VpcFirewallName')
         return self
@@ -9238,16 +9376,75 @@ class DescribeVpcFirewallCenDetailRequest(TeaModel):
         return self
 
 
+class DescribeVpcFirewallCenDetailResponseBodyFirewallVpc(TeaModel):
+    def __init__(
+        self,
+        allow_configuration: int = None,
+        vpc_cidr: str = None,
+        vpc_id: str = None,
+        vswitch_cidr: str = None,
+        vswitch_id: str = None,
+        zone_id: str = None,
+    ):
+        self.allow_configuration = allow_configuration
+        self.vpc_cidr = vpc_cidr
+        self.vpc_id = vpc_id
+        self.vswitch_cidr = vswitch_cidr
+        self.vswitch_id = vswitch_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_configuration is not None:
+            result['AllowConfiguration'] = self.allow_configuration
+        if self.vpc_cidr is not None:
+            result['VpcCidr'] = self.vpc_cidr
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vswitch_cidr is not None:
+            result['VswitchCidr'] = self.vswitch_cidr
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowConfiguration') is not None:
+            self.allow_configuration = m.get('AllowConfiguration')
+        if m.get('VpcCidr') is not None:
+            self.vpc_cidr = m.get('VpcCidr')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VswitchCidr') is not None:
+            self.vswitch_cidr = m.get('VswitchCidr')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
 class DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList(TeaModel):
     def __init__(
         self,
         eni_id: str = None,
         eni_private_ip_address: str = None,
+        eni_vswitch_id: str = None,
     ):
         # The ID of the ENI that belongs to the VPC.
         self.eni_id = eni_id
         # The private IP address of the ENI that belongs to the VPC.
         self.eni_private_ip_address = eni_private_ip_address
+        self.eni_vswitch_id = eni_vswitch_id
 
     def validate(self):
         pass
@@ -9262,6 +9459,8 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList(TeaModel):
             result['EniId'] = self.eni_id
         if self.eni_private_ip_address is not None:
             result['EniPrivateIpAddress'] = self.eni_private_ip_address
+        if self.eni_vswitch_id is not None:
+            result['EniVSwitchId'] = self.eni_vswitch_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9270,6 +9469,8 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList(TeaModel):
             self.eni_id = m.get('EniId')
         if m.get('EniPrivateIpAddress') is not None:
             self.eni_private_ip_address = m.get('EniPrivateIpAddress')
+        if m.get('EniVSwitchId') is not None:
+            self.eni_vswitch_id = m.get('EniVSwitchId')
         return self
 
 
@@ -9522,6 +9723,7 @@ class DescribeVpcFirewallCenDetailResponseBody(TeaModel):
         self,
         connect_type: str = None,
         firewall_switch_status: str = None,
+        firewall_vpc: DescribeVpcFirewallCenDetailResponseBodyFirewallVpc = None,
         local_vpc: DescribeVpcFirewallCenDetailResponseBodyLocalVpc = None,
         request_id: str = None,
         vpc_firewall_id: str = None,
@@ -9535,6 +9737,7 @@ class DescribeVpcFirewallCenDetailResponseBody(TeaModel):
         # *   **closed**: disabled
         # *   **notconfigured**: not configured
         self.firewall_switch_status = firewall_switch_status
+        self.firewall_vpc = firewall_vpc
         # The details about the VPC.
         self.local_vpc = local_vpc
         # The ID of the request.
@@ -9545,6 +9748,8 @@ class DescribeVpcFirewallCenDetailResponseBody(TeaModel):
         self.vpc_firewall_name = vpc_firewall_name
 
     def validate(self):
+        if self.firewall_vpc:
+            self.firewall_vpc.validate()
         if self.local_vpc:
             self.local_vpc.validate()
 
@@ -9558,6 +9763,8 @@ class DescribeVpcFirewallCenDetailResponseBody(TeaModel):
             result['ConnectType'] = self.connect_type
         if self.firewall_switch_status is not None:
             result['FirewallSwitchStatus'] = self.firewall_switch_status
+        if self.firewall_vpc is not None:
+            result['FirewallVpc'] = self.firewall_vpc.to_map()
         if self.local_vpc is not None:
             result['LocalVpc'] = self.local_vpc.to_map()
         if self.request_id is not None:
@@ -9574,6 +9781,9 @@ class DescribeVpcFirewallCenDetailResponseBody(TeaModel):
             self.connect_type = m.get('ConnectType')
         if m.get('FirewallSwitchStatus') is not None:
             self.firewall_switch_status = m.get('FirewallSwitchStatus')
+        if m.get('FirewallVpc') is not None:
+            temp_model = DescribeVpcFirewallCenDetailResponseBodyFirewallVpc()
+            self.firewall_vpc = temp_model.from_map(m['FirewallVpc'])
         if m.get('LocalVpc') is not None:
             temp_model = DescribeVpcFirewallCenDetailResponseBodyLocalVpc()
             self.local_vpc = temp_model.from_map(m['LocalVpc'])

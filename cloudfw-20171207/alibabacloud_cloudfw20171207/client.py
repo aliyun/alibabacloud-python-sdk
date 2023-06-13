@@ -829,6 +829,12 @@ class Client(OpenApiClient):
             query['CenId'] = request.cen_id
         if not UtilClient.is_unset(request.firewall_switch):
             query['FirewallSwitch'] = request.firewall_switch
+        if not UtilClient.is_unset(request.firewall_vswitch_cidr_block):
+            query['FirewallVSwitchCidrBlock'] = request.firewall_vswitch_cidr_block
+        if not UtilClient.is_unset(request.firewall_vpc_cidr_block):
+            query['FirewallVpcCidrBlock'] = request.firewall_vpc_cidr_block
+        if not UtilClient.is_unset(request.firewall_vpc_zone_id):
+            query['FirewallVpcZoneId'] = request.firewall_vpc_zone_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.member_uid):
@@ -880,6 +886,12 @@ class Client(OpenApiClient):
             query['CenId'] = request.cen_id
         if not UtilClient.is_unset(request.firewall_switch):
             query['FirewallSwitch'] = request.firewall_switch
+        if not UtilClient.is_unset(request.firewall_vswitch_cidr_block):
+            query['FirewallVSwitchCidrBlock'] = request.firewall_vswitch_cidr_block
+        if not UtilClient.is_unset(request.firewall_vpc_cidr_block):
+            query['FirewallVpcCidrBlock'] = request.firewall_vpc_cidr_block
+        if not UtilClient.is_unset(request.firewall_vpc_zone_id):
+            query['FirewallVpcZoneId'] = request.firewall_vpc_zone_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.member_uid):

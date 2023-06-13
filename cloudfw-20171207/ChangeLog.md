@@ -1,3 +1,11 @@
+2023-06-13 Version: 1.2.9
+- Support DescribeCaptureFileAddr Api for capture task.
+- Support DescribeTaskLimitParam Api for capture task.
+- Support DescribeCaptureTask Api for capture task.
+- Support DeleteCaptureTask Api for capture task.
+- Support CreateCaptureTask Api for capture task.
+- Support Cen VPC Firewall.
+
 2023-06-08 Version: 1.2.8
 - Support nat acl white page.
 - Add new api DescribeCfwRiskLevelSummary.
