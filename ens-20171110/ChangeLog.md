@@ -1,3 +1,6 @@
+2023-06-13 Version: 3.0.17
+- Support AIC API.
+
 2023-06-01 Version: 3.0.16
 - Support SNAT API.
 

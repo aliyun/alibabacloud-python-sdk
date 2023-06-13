@@ -1028,6 +1028,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.resolution):
             query['Resolution'] = request.resolution
+        if not UtilClient.is_unset(request.server_name):
+            query['ServerName'] = request.server_name
         if not UtilClient.is_unset(request.server_type):
             query['ServerType'] = request.server_type
         req = open_api_models.OpenApiRequest(
@@ -1080,6 +1082,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.resolution):
             query['Resolution'] = request.resolution
+        if not UtilClient.is_unset(request.server_name):
+            query['ServerName'] = request.server_name
         if not UtilClient.is_unset(request.server_type):
             query['ServerType'] = request.server_type
         req = open_api_models.OpenApiRequest(
@@ -11591,6 +11595,190 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vswitches_with_options_async(request, runtime)
 
+    def describe_workflow_with_options(
+        self,
+        request: ens_20171110_models.DescribeWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeWorkflowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.work_flow_id):
+            query['WorkFlowId'] = request.work_flow_id
+        if not UtilClient.is_unset(request.work_flow_name):
+            query['WorkFlowName'] = request.work_flow_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWorkflow',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_workflow_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeWorkflowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.work_flow_id):
+            query['WorkFlowId'] = request.work_flow_id
+        if not UtilClient.is_unset(request.work_flow_name):
+            query['WorkFlowName'] = request.work_flow_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWorkflow',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_workflow(
+        self,
+        request: ens_20171110_models.DescribeWorkflowRequest,
+    ) -> ens_20171110_models.DescribeWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_workflow_with_options(request, runtime)
+
+    async def describe_workflow_async(
+        self,
+        request: ens_20171110_models.DescribeWorkflowRequest,
+    ) -> ens_20171110_models.DescribeWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_workflow_with_options_async(request, runtime)
+
+    def describe_workflow_activity_with_options(
+        self,
+        request: ens_20171110_models.DescribeWorkflowActivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeWorkflowActivityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.work_flow_id):
+            query['WorkFlowId'] = request.work_flow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWorkflowActivity',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeWorkflowActivityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_workflow_activity_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeWorkflowActivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeWorkflowActivityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.work_flow_id):
+            query['WorkFlowId'] = request.work_flow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWorkflowActivity',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeWorkflowActivityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_workflow_activity(
+        self,
+        request: ens_20171110_models.DescribeWorkflowActivityRequest,
+    ) -> ens_20171110_models.DescribeWorkflowActivityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_workflow_activity_with_options(request, runtime)
+
+    async def describe_workflow_activity_async(
+        self,
+        request: ens_20171110_models.DescribeWorkflowActivityRequest,
+    ) -> ens_20171110_models.DescribeWorkflowActivityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_workflow_activity_with_options_async(request, runtime)
+
     def detach_disk_with_options(
         self,
         request: ens_20171110_models.DetachDiskRequest,
@@ -15653,6 +15841,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.restart_device_instance_with_options_async(request, runtime)
 
+    def restart_workflow_with_options(
+        self,
+        tmp_req: ens_20171110_models.RestartWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RestartWorkflowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RestartWorkflowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.workflow_ids_shrink):
+            query['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartWorkflow',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RestartWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_workflow_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.RestartWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RestartWorkflowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RestartWorkflowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.workflow_ids_shrink):
+            query['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartWorkflow',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RestartWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_workflow(
+        self,
+        request: ens_20171110_models.RestartWorkflowRequest,
+    ) -> ens_20171110_models.RestartWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.restart_workflow_with_options(request, runtime)
+
+    async def restart_workflow_async(
+        self,
+        request: ens_20171110_models.RestartWorkflowRequest,
+    ) -> ens_20171110_models.RestartWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_workflow_with_options_async(request, runtime)
+
+    def retry_workflow_with_options(
+        self,
+        tmp_req: ens_20171110_models.RetryWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RetryWorkflowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RetryWorkflowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.workflow_ids_shrink):
+            query['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RetryWorkflow',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RetryWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_workflow_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.RetryWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RetryWorkflowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RetryWorkflowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.workflow_ids_shrink):
+            query['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RetryWorkflow',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RetryWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_workflow(
+        self,
+        request: ens_20171110_models.RetryWorkflowRequest,
+    ) -> ens_20171110_models.RetryWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.retry_workflow_with_options(request, runtime)
+
+    async def retry_workflow_async(
+        self,
+        request: ens_20171110_models.RetryWorkflowRequest,
+    ) -> ens_20171110_models.RetryWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.retry_workflow_with_options_async(request, runtime)
+
     def revoke_security_group_with_options(
         self,
         request: ens_20171110_models.RevokeSecurityGroupRequest,
@@ -15930,6 +16274,84 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.RollbackApplicationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.rollback_application_with_options_async(request, runtime)
+
+    def rollback_workflow_with_options(
+        self,
+        tmp_req: ens_20171110_models.RollbackWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RollbackWorkflowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RollbackWorkflowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.workflow_ids_shrink):
+            query['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RollbackWorkflow',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RollbackWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rollback_workflow_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.RollbackWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RollbackWorkflowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RollbackWorkflowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.workflow_ids_shrink):
+            query['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RollbackWorkflow',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RollbackWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rollback_workflow(
+        self,
+        request: ens_20171110_models.RollbackWorkflowRequest,
+    ) -> ens_20171110_models.RollbackWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.rollback_workflow_with_options(request, runtime)
+
+    async def rollback_workflow_async(
+        self,
+        request: ens_20171110_models.RollbackWorkflowRequest,
+    ) -> ens_20171110_models.RollbackWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.rollback_workflow_with_options_async(request, runtime)
 
     def run_instances_with_options(
         self,
@@ -17672,6 +18094,84 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.StopSnatIpForSnatEntryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.stop_snat_ip_for_snat_entry_with_options_async(request, runtime)
+
+    def terminate_workflow_with_options(
+        self,
+        tmp_req: ens_20171110_models.TerminateWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.TerminateWorkflowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.TerminateWorkflowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.workflow_ids_shrink):
+            query['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TerminateWorkflow',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.TerminateWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def terminate_workflow_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.TerminateWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.TerminateWorkflowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.TerminateWorkflowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.workflow_ids_shrink):
+            query['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TerminateWorkflow',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.TerminateWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def terminate_workflow(
+        self,
+        request: ens_20171110_models.TerminateWorkflowRequest,
+    ) -> ens_20171110_models.TerminateWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.terminate_workflow_with_options(request, runtime)
+
+    async def terminate_workflow_async(
+        self,
+        request: ens_20171110_models.TerminateWorkflowRequest,
+    ) -> ens_20171110_models.TerminateWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.terminate_workflow_with_options_async(request, runtime)
 
     def un_associate_ens_eip_address_with_options(
         self,
