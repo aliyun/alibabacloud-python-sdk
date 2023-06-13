@@ -2524,6 +2524,45 @@ class QueryTimedResetOperateStatusResponse(TeaModel):
         return self
 
 
+class SendMessageRequestStreamExtension(TeaModel):
+    def __init__(
+        self,
+        index: int = None,
+        is_stream: bool = None,
+        position: str = None,
+    ):
+        self.index = index
+        self.is_stream = is_stream
+        self.position = position
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.is_stream is not None:
+            result['IsStream'] = self.is_stream
+        if self.position is not None:
+            result['Position'] = self.position
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('IsStream') is not None:
+            self.is_stream = m.get('IsStream')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        return self
+
+
 class SendMessageRequestTextRequest(TeaModel):
     def __init__(
         self,
@@ -2607,17 +2646,21 @@ class SendMessageRequest(TeaModel):
         self,
         feedback: bool = None,
         session_id: str = None,
+        stream_extension: SendMessageRequestStreamExtension = None,
         tenant_id: int = None,
         text_request: SendMessageRequestTextRequest = None,
         vamlrequest: SendMessageRequestVAMLRequest = None,
     ):
         self.feedback = feedback
         self.session_id = session_id
+        self.stream_extension = stream_extension
         self.tenant_id = tenant_id
         self.text_request = text_request
         self.vamlrequest = vamlrequest
 
     def validate(self):
+        if self.stream_extension:
+            self.stream_extension.validate()
         if self.text_request:
             self.text_request.validate()
         if self.vamlrequest:
@@ -2633,6 +2676,8 @@ class SendMessageRequest(TeaModel):
             result['Feedback'] = self.feedback
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        if self.stream_extension is not None:
+            result['StreamExtension'] = self.stream_extension.to_map()
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.text_request is not None:
@@ -2647,6 +2692,9 @@ class SendMessageRequest(TeaModel):
             self.feedback = m.get('Feedback')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        if m.get('StreamExtension') is not None:
+            temp_model = SendMessageRequestStreamExtension()
+            self.stream_extension = temp_model.from_map(m['StreamExtension'])
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('TextRequest') is not None:
@@ -2663,12 +2711,14 @@ class SendMessageShrinkRequest(TeaModel):
         self,
         feedback: bool = None,
         session_id: str = None,
+        stream_extension_shrink: str = None,
         tenant_id: int = None,
         text_request_shrink: str = None,
         vamlrequest_shrink: str = None,
     ):
         self.feedback = feedback
         self.session_id = session_id
+        self.stream_extension_shrink = stream_extension_shrink
         self.tenant_id = tenant_id
         self.text_request_shrink = text_request_shrink
         self.vamlrequest_shrink = vamlrequest_shrink
@@ -2686,6 +2736,8 @@ class SendMessageShrinkRequest(TeaModel):
             result['Feedback'] = self.feedback
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        if self.stream_extension_shrink is not None:
+            result['StreamExtension'] = self.stream_extension_shrink
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.text_request_shrink is not None:
@@ -2700,6 +2752,8 @@ class SendMessageShrinkRequest(TeaModel):
             self.feedback = m.get('Feedback')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        if m.get('StreamExtension') is not None:
+            self.stream_extension_shrink = m.get('StreamExtension')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('TextRequest') is not None:

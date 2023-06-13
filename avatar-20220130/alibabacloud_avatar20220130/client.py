@@ -787,6 +787,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = avatar_20220130_models.SendMessageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.stream_extension):
+            request.stream_extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_extension, 'StreamExtension', 'json')
         if not UtilClient.is_unset(tmp_req.text_request):
             request.text_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_request, 'TextRequest', 'json')
         if not UtilClient.is_unset(tmp_req.vamlrequest):
@@ -796,6 +798,8 @@ class Client(OpenApiClient):
             query['Feedback'] = request.feedback
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.stream_extension_shrink):
+            query['StreamExtension'] = request.stream_extension_shrink
         if not UtilClient.is_unset(request.tenant_id):
             query['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.text_request_shrink):
@@ -829,6 +833,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = avatar_20220130_models.SendMessageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.stream_extension):
+            request.stream_extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_extension, 'StreamExtension', 'json')
         if not UtilClient.is_unset(tmp_req.text_request):
             request.text_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_request, 'TextRequest', 'json')
         if not UtilClient.is_unset(tmp_req.vamlrequest):
@@ -838,6 +844,8 @@ class Client(OpenApiClient):
             query['Feedback'] = request.feedback
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.stream_extension_shrink):
+            query['StreamExtension'] = request.stream_extension_shrink
         if not UtilClient.is_unset(request.tenant_id):
             query['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.text_request_shrink):
