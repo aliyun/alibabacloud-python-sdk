@@ -89,6 +89,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.AttachPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.AttachPolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to attach a tag policy to the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to attach a tag policy to the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to attach the tag policy with an ID of `p-de62a0bf400e4b69****` to the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: AttachPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -129,6 +137,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.AttachPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.AttachPolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to attach a tag policy to the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to attach a tag policy to the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to attach the tag policy with an ID of `p-de62a0bf400e4b69****` to the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: AttachPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -168,6 +184,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.AttachPolicyRequest,
     ) -> tag_20180828_models.AttachPolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to attach a tag policy to the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to attach a tag policy to the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to attach the tag policy with an ID of `p-de62a0bf400e4b69****` to the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: AttachPolicyRequest
+        @return: AttachPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_policy_with_options(request, runtime)
 
@@ -175,14 +198,200 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.AttachPolicyRequest,
     ) -> tag_20180828_models.AttachPolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to attach a tag policy to the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to attach a tag policy to the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to attach the tag policy with an ID of `p-de62a0bf400e4b69****` to the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: AttachPolicyRequest
+        @return: AttachPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_policy_with_options_async(request, runtime)
+
+    def check_created_by_enabled_with_options(
+        self,
+        request: tag_20180828_models.CheckCreatedByEnabledRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.CheckCreatedByEnabledResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckCreatedByEnabled',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.CheckCreatedByEnabledResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_created_by_enabled_with_options_async(
+        self,
+        request: tag_20180828_models.CheckCreatedByEnabledRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.CheckCreatedByEnabledResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckCreatedByEnabled',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.CheckCreatedByEnabledResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_created_by_enabled(
+        self,
+        request: tag_20180828_models.CheckCreatedByEnabledRequest,
+    ) -> tag_20180828_models.CheckCreatedByEnabledResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_created_by_enabled_with_options(request, runtime)
+
+    async def check_created_by_enabled_async(
+        self,
+        request: tag_20180828_models.CheckCreatedByEnabledRequest,
+    ) -> tag_20180828_models.CheckCreatedByEnabledResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_created_by_enabled_with_options_async(request, runtime)
+
+    def close_created_by_with_options(
+        self,
+        request: tag_20180828_models.CloseCreatedByRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.CloseCreatedByResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseCreatedBy',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.CloseCreatedByResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def close_created_by_with_options_async(
+        self,
+        request: tag_20180828_models.CloseCreatedByRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.CloseCreatedByResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseCreatedBy',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.CloseCreatedByResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def close_created_by(
+        self,
+        request: tag_20180828_models.CloseCreatedByRequest,
+    ) -> tag_20180828_models.CloseCreatedByResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.close_created_by_with_options(request, runtime)
+
+    async def close_created_by_async(
+        self,
+        request: tag_20180828_models.CloseCreatedByRequest,
+    ) -> tag_20180828_models.CloseCreatedByResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.close_created_by_with_options_async(request, runtime)
 
     def create_policy_with_options(
         self,
         request: tag_20180828_models.CreatePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.CreatePolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to create a tag policy named `test`. In this example, the Tag Policy feature in multi-account mode is used. The tag policy defines that resources to which the `CostCenter:Beijing` or `CostCenter:Shanghai` tag is added are compliant and other resources are not compliant.
+        
+        @param request: CreatePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -227,6 +436,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.CreatePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.CreatePolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to create a tag policy named `test`. In this example, the Tag Policy feature in multi-account mode is used. The tag policy defines that resources to which the `CostCenter:Beijing` or `CostCenter:Shanghai` tag is added are compliant and other resources are not compliant.
+        
+        @param request: CreatePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -270,6 +486,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.CreatePolicyRequest,
     ) -> tag_20180828_models.CreatePolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to create a tag policy named `test`. In this example, the Tag Policy feature in multi-account mode is used. The tag policy defines that resources to which the `CostCenter:Beijing` or `CostCenter:Shanghai` tag is added are compliant and other resources are not compliant.
+        
+        @param request: CreatePolicyRequest
+        @return: CreatePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_policy_with_options(request, runtime)
 
@@ -277,6 +499,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.CreatePolicyRequest,
     ) -> tag_20180828_models.CreatePolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to create a tag policy named `test`. In this example, the Tag Policy feature in multi-account mode is used. The tag policy defines that resources to which the `CostCenter:Beijing` or `CostCenter:Shanghai` tag is added are compliant and other resources are not compliant.
+        
+        @param request: CreatePolicyRequest
+        @return: CreatePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_policy_with_options_async(request, runtime)
 
@@ -285,6 +513,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.CreateTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.CreateTagsResponse:
+        """
+        The region ID.
+        >  Only `cn-hangzhou` is supported.
+        
+        @param request: CreateTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -321,6 +557,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.CreateTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.CreateTagsResponse:
+        """
+        The region ID.
+        >  Only `cn-hangzhou` is supported.
+        
+        @param request: CreateTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -356,6 +600,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.CreateTagsRequest,
     ) -> tag_20180828_models.CreateTagsResponse:
+        """
+        The region ID.
+        >  Only `cn-hangzhou` is supported.
+        
+        @param request: CreateTagsRequest
+        @return: CreateTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_tags_with_options(request, runtime)
 
@@ -363,6 +614,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.CreateTagsRequest,
     ) -> tag_20180828_models.CreateTagsResponse:
+        """
+        The region ID.
+        >  Only `cn-hangzhou` is supported.
+        
+        @param request: CreateTagsRequest
+        @return: CreateTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_tags_with_options_async(request, runtime)
 
@@ -371,6 +629,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.DeletePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.DeletePolicyResponse:
+        """
+        Before you delete a tag policy, make sure that the tag policy is detached from all objects to which the tag policy is attached. For more information about how to detach a tag policy, see [DetachPolicy](~~429724~~).
+        This topic provides an example on how to call the API operation to delete the tag policy with an ID of `p-557cb141331f41c7****`.
+        
+        @param request: DeletePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -407,6 +673,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.DeletePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.DeletePolicyResponse:
+        """
+        Before you delete a tag policy, make sure that the tag policy is detached from all objects to which the tag policy is attached. For more information about how to detach a tag policy, see [DetachPolicy](~~429724~~).
+        This topic provides an example on how to call the API operation to delete the tag policy with an ID of `p-557cb141331f41c7****`.
+        
+        @param request: DeletePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -442,6 +716,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.DeletePolicyRequest,
     ) -> tag_20180828_models.DeletePolicyResponse:
+        """
+        Before you delete a tag policy, make sure that the tag policy is detached from all objects to which the tag policy is attached. For more information about how to detach a tag policy, see [DetachPolicy](~~429724~~).
+        This topic provides an example on how to call the API operation to delete the tag policy with an ID of `p-557cb141331f41c7****`.
+        
+        @param request: DeletePolicyRequest
+        @return: DeletePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_policy_with_options(request, runtime)
 
@@ -449,6 +730,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.DeletePolicyRequest,
     ) -> tag_20180828_models.DeletePolicyResponse:
+        """
+        Before you delete a tag policy, make sure that the tag policy is detached from all objects to which the tag policy is attached. For more information about how to detach a tag policy, see [DetachPolicy](~~429724~~).
+        This topic provides an example on how to call the API operation to delete the tag policy with an ID of `p-557cb141331f41c7****`.
+        
+        @param request: DeletePolicyRequest
+        @return: DeletePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_policy_with_options_async(request, runtime)
 
@@ -457,6 +745,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.DeleteTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.DeleteTagResponse:
+        """
+        The region ID.
+        >  Only `cn-hangzhou` is supported.
+        
+        @param request: DeleteTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key):
@@ -495,6 +791,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.DeleteTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.DeleteTagResponse:
+        """
+        The region ID.
+        >  Only `cn-hangzhou` is supported.
+        
+        @param request: DeleteTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key):
@@ -532,6 +836,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.DeleteTagRequest,
     ) -> tag_20180828_models.DeleteTagResponse:
+        """
+        The region ID.
+        >  Only `cn-hangzhou` is supported.
+        
+        @param request: DeleteTagRequest
+        @return: DeleteTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_tag_with_options(request, runtime)
 
@@ -539,6 +850,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.DeleteTagRequest,
     ) -> tag_20180828_models.DeleteTagResponse:
+        """
+        The region ID.
+        >  Only `cn-hangzhou` is supported.
+        
+        @param request: DeleteTagRequest
+        @return: DeleteTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_tag_with_options_async(request, runtime)
 
@@ -637,6 +955,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.DetachPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.DetachPolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to detach the tag policy with an ID of `p-a3381efe2fe34a75****` from the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: DetachPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -677,6 +1003,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.DetachPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.DetachPolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to detach the tag policy with an ID of `p-a3381efe2fe34a75****` from the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: DetachPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -716,6 +1050,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.DetachPolicyRequest,
     ) -> tag_20180828_models.DetachPolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to detach the tag policy with an ID of `p-a3381efe2fe34a75****` from the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: DetachPolicyRequest
+        @return: DetachPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_policy_with_options(request, runtime)
 
@@ -723,6 +1064,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.DetachPolicyRequest,
     ) -> tag_20180828_models.DetachPolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to detach the tag policy with an ID of `p-a3381efe2fe34a75****` from the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: DetachPolicyRequest
+        @return: DetachPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_policy_with_options_async(request, runtime)
 
@@ -911,6 +1259,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.GenerateConfigRuleReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GenerateConfigRuleReportResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to generate a resource non-compliance report for the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to generate a resource non-compliance report for the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call this API operation to generate a resource non-compliance report for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: GenerateConfigRuleReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateConfigRuleReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -951,6 +1307,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.GenerateConfigRuleReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GenerateConfigRuleReportResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to generate a resource non-compliance report for the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to generate a resource non-compliance report for the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call this API operation to generate a resource non-compliance report for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: GenerateConfigRuleReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateConfigRuleReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -990,6 +1354,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.GenerateConfigRuleReportRequest,
     ) -> tag_20180828_models.GenerateConfigRuleReportResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to generate a resource non-compliance report for the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to generate a resource non-compliance report for the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call this API operation to generate a resource non-compliance report for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: GenerateConfigRuleReportRequest
+        @return: GenerateConfigRuleReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_config_rule_report_with_options(request, runtime)
 
@@ -997,6 +1368,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.GenerateConfigRuleReportRequest,
     ) -> tag_20180828_models.GenerateConfigRuleReportResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to generate a resource non-compliance report for the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to generate a resource non-compliance report for the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call this API operation to generate a resource non-compliance report for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: GenerateConfigRuleReportRequest
+        @return: GenerateConfigRuleReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_config_rule_report_with_options_async(request, runtime)
 
@@ -1005,6 +1383,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.GetConfigRuleReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GetConfigRuleReportResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the basic information of the resource non-compliance report that is last generated for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the basic information of the resource non-compliance report that is last generated for an object in the resource directory. The object can be the Root folder, a folder other than the Root folder, or a member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call this API operation to query the basic information of the resource non-compliance report that is last generated for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that the ID of the report is `crp-ao0786618088006c****`.
+        
+        @param request: GetConfigRuleReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConfigRuleReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -1045,6 +1431,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.GetConfigRuleReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GetConfigRuleReportResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the basic information of the resource non-compliance report that is last generated for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the basic information of the resource non-compliance report that is last generated for an object in the resource directory. The object can be the Root folder, a folder other than the Root folder, or a member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call this API operation to query the basic information of the resource non-compliance report that is last generated for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that the ID of the report is `crp-ao0786618088006c****`.
+        
+        @param request: GetConfigRuleReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConfigRuleReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -1084,6 +1478,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.GetConfigRuleReportRequest,
     ) -> tag_20180828_models.GetConfigRuleReportResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the basic information of the resource non-compliance report that is last generated for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the basic information of the resource non-compliance report that is last generated for an object in the resource directory. The object can be the Root folder, a folder other than the Root folder, or a member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call this API operation to query the basic information of the resource non-compliance report that is last generated for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that the ID of the report is `crp-ao0786618088006c****`.
+        
+        @param request: GetConfigRuleReportRequest
+        @return: GetConfigRuleReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_config_rule_report_with_options(request, runtime)
 
@@ -1091,6 +1492,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.GetConfigRuleReportRequest,
     ) -> tag_20180828_models.GetConfigRuleReportResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the basic information of the resource non-compliance report that is last generated for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the basic information of the resource non-compliance report that is last generated for an object in the resource directory. The object can be the Root folder, a folder other than the Root folder, or a member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call this API operation to query the basic information of the resource non-compliance report that is last generated for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that the ID of the report is `crp-ao0786618088006c****`.
+        
+        @param request: GetConfigRuleReportRequest
+        @return: GetConfigRuleReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_config_rule_report_with_options_async(request, runtime)
 
@@ -1099,6 +1507,15 @@ class Client(OpenApiClient):
         request: tag_20180828_models.GetEffectivePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GetEffectivePolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](~~417435~~).
+        This topic provides an example on how to call the API operation to query the effective tag policy for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: GetEffectivePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEffectivePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -1137,6 +1554,15 @@ class Client(OpenApiClient):
         request: tag_20180828_models.GetEffectivePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GetEffectivePolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](~~417435~~).
+        This topic provides an example on how to call the API operation to query the effective tag policy for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: GetEffectivePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEffectivePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -1174,6 +1600,14 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.GetEffectivePolicyRequest,
     ) -> tag_20180828_models.GetEffectivePolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](~~417435~~).
+        This topic provides an example on how to call the API operation to query the effective tag policy for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: GetEffectivePolicyRequest
+        @return: GetEffectivePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_effective_policy_with_options(request, runtime)
 
@@ -1181,6 +1615,14 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.GetEffectivePolicyRequest,
     ) -> tag_20180828_models.GetEffectivePolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](~~417435~~).
+        This topic provides an example on how to call the API operation to query the effective tag policy for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+        
+        @param request: GetEffectivePolicyRequest
+        @return: GetEffectivePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_effective_policy_with_options_async(request, runtime)
 
@@ -1189,6 +1631,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.GetPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GetPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to query the details of the tag policy with an ID of `p-557cb141331f41c7***`.
+        
+        @param request: GetPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -1225,6 +1674,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.GetPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GetPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to query the details of the tag policy with an ID of `p-557cb141331f41c7***`.
+        
+        @param request: GetPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -1260,6 +1716,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.GetPolicyRequest,
     ) -> tag_20180828_models.GetPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to query the details of the tag policy with an ID of `p-557cb141331f41c7***`.
+        
+        @param request: GetPolicyRequest
+        @return: GetPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_policy_with_options(request, runtime)
 
@@ -1267,6 +1729,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.GetPolicyRequest,
     ) -> tag_20180828_models.GetPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to query the details of the tag policy with an ID of `p-557cb141331f41c7***`.
+        
+        @param request: GetPolicyRequest
+        @return: GetPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_policy_with_options_async(request, runtime)
 
@@ -1275,6 +1743,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.GetPolicyEnableStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GetPolicyEnableStatusResponse:
+        """
+        This topic provides an example on how to call the API operation to query the status of the Tag Policy feature for the current logon account. The response shows that the Tag Policy feature in multi-account mode is enabled for the current logon account.
+        
+        @param request: GetPolicyEnableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPolicyEnableStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -1313,6 +1788,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.GetPolicyEnableStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GetPolicyEnableStatusResponse:
+        """
+        This topic provides an example on how to call the API operation to query the status of the Tag Policy feature for the current logon account. The response shows that the Tag Policy feature in multi-account mode is enabled for the current logon account.
+        
+        @param request: GetPolicyEnableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPolicyEnableStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -1350,6 +1832,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.GetPolicyEnableStatusRequest,
     ) -> tag_20180828_models.GetPolicyEnableStatusResponse:
+        """
+        This topic provides an example on how to call the API operation to query the status of the Tag Policy feature for the current logon account. The response shows that the Tag Policy feature in multi-account mode is enabled for the current logon account.
+        
+        @param request: GetPolicyEnableStatusRequest
+        @return: GetPolicyEnableStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_policy_enable_status_with_options(request, runtime)
 
@@ -1357,6 +1845,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.GetPolicyEnableStatusRequest,
     ) -> tag_20180828_models.GetPolicyEnableStatusResponse:
+        """
+        This topic provides an example on how to call the API operation to query the status of the Tag Policy feature for the current logon account. The response shows that the Tag Policy feature in multi-account mode is enabled for the current logon account.
+        
+        @param request: GetPolicyEnableStatusRequest
+        @return: GetPolicyEnableStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_policy_enable_status_with_options_async(request, runtime)
 
@@ -1365,6 +1859,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListConfigRulesForTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListConfigRulesForTargetResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag detection tasks for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag detection tasks for the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query the tag detection tasks for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag detection task exists.
+        
+        @param request: ListConfigRulesForTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigRulesForTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_result):
@@ -1413,6 +1915,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListConfigRulesForTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListConfigRulesForTargetResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag detection tasks for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag detection tasks for the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query the tag detection tasks for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag detection task exists.
+        
+        @param request: ListConfigRulesForTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigRulesForTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_result):
@@ -1460,6 +1970,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListConfigRulesForTargetRequest,
     ) -> tag_20180828_models.ListConfigRulesForTargetResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag detection tasks for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag detection tasks for the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query the tag detection tasks for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag detection task exists.
+        
+        @param request: ListConfigRulesForTargetRequest
+        @return: ListConfigRulesForTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_config_rules_for_target_with_options(request, runtime)
 
@@ -1467,6 +1984,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListConfigRulesForTargetRequest,
     ) -> tag_20180828_models.ListConfigRulesForTargetResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag detection tasks for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag detection tasks for the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query the tag detection tasks for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag detection task exists.
+        
+        @param request: ListConfigRulesForTargetRequest
+        @return: ListConfigRulesForTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_config_rules_for_target_with_options_async(request, runtime)
 
@@ -1475,6 +1999,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListPoliciesResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query all tag policies that are created for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query all tag policies that are created for the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query all tag policies that are created for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that two tag policies are created.
+        
+        @param request: ListPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_result):
@@ -1519,6 +2051,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListPoliciesResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query all tag policies that are created for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query all tag policies that are created for the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query all tag policies that are created for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that two tag policies are created.
+        
+        @param request: ListPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_result):
@@ -1562,6 +2102,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListPoliciesRequest,
     ) -> tag_20180828_models.ListPoliciesResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query all tag policies that are created for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query all tag policies that are created for the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query all tag policies that are created for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that two tag policies are created.
+        
+        @param request: ListPoliciesRequest
+        @return: ListPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_policies_with_options(request, runtime)
 
@@ -1569,6 +2116,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListPoliciesRequest,
     ) -> tag_20180828_models.ListPoliciesResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query all tag policies that are created for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query all tag policies that are created for the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query all tag policies that are created for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that two tag policies are created.
+        
+        @param request: ListPoliciesRequest
+        @return: ListPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_policies_with_options_async(request, runtime)
 
@@ -1577,6 +2131,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListPoliciesForTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListPoliciesForTargetResponse:
+        """
+        For more information about common request parameters, see [Common parameters](~~159973~~).
+        
+        @param request: ListPoliciesForTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesForTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_result):
@@ -1619,6 +2180,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListPoliciesForTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListPoliciesForTargetResponse:
+        """
+        For more information about common request parameters, see [Common parameters](~~159973~~).
+        
+        @param request: ListPoliciesForTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesForTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_result):
@@ -1660,6 +2228,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListPoliciesForTargetRequest,
     ) -> tag_20180828_models.ListPoliciesForTargetResponse:
+        """
+        For more information about common request parameters, see [Common parameters](~~159973~~).
+        
+        @param request: ListPoliciesForTargetRequest
+        @return: ListPoliciesForTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_policies_for_target_with_options(request, runtime)
 
@@ -1667,6 +2241,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListPoliciesForTargetRequest,
     ) -> tag_20180828_models.ListPoliciesForTargetResponse:
+        """
+        For more information about common request parameters, see [Common parameters](~~159973~~).
+        
+        @param request: ListPoliciesForTargetRequest
+        @return: ListPoliciesForTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_policies_for_target_with_options_async(request, runtime)
 
@@ -1675,6 +2255,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListResourcesByTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListResourcesByTagResponse:
+        """
+        This topic provides an example on how to call the API operation in the China (Shenzhen) region to query virtual private clouds (VPCs) to which the tag key `k1` is added. The response shows that the tag key is added to two VPCs.
+        
+        @param request: ListResourcesByTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourcesByTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fuzzy_type):
@@ -1723,6 +2310,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListResourcesByTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListResourcesByTagResponse:
+        """
+        This topic provides an example on how to call the API operation in the China (Shenzhen) region to query virtual private clouds (VPCs) to which the tag key `k1` is added. The response shows that the tag key is added to two VPCs.
+        
+        @param request: ListResourcesByTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourcesByTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fuzzy_type):
@@ -1770,6 +2364,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListResourcesByTagRequest,
     ) -> tag_20180828_models.ListResourcesByTagResponse:
+        """
+        This topic provides an example on how to call the API operation in the China (Shenzhen) region to query virtual private clouds (VPCs) to which the tag key `k1` is added. The response shows that the tag key is added to two VPCs.
+        
+        @param request: ListResourcesByTagRequest
+        @return: ListResourcesByTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_resources_by_tag_with_options(request, runtime)
 
@@ -1777,6 +2377,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListResourcesByTagRequest,
     ) -> tag_20180828_models.ListResourcesByTagResponse:
+        """
+        This topic provides an example on how to call the API operation in the China (Shenzhen) region to query virtual private clouds (VPCs) to which the tag key `k1` is added. The response shows that the tag key is added to two VPCs.
+        
+        @param request: ListResourcesByTagRequest
+        @return: ListResourcesByTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_resources_by_tag_with_options_async(request, runtime)
 
@@ -1785,6 +2391,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListSupportResourceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListSupportResourceTypesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the resource types supported by tags.
+        
+        @param request: ListSupportResourceTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSupportResourceTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_result):
@@ -1831,6 +2444,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListSupportResourceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListSupportResourceTypesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the resource types supported by tags.
+        
+        @param request: ListSupportResourceTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSupportResourceTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_result):
@@ -1876,6 +2496,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListSupportResourceTypesRequest,
     ) -> tag_20180828_models.ListSupportResourceTypesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the resource types supported by tags.
+        
+        @param request: ListSupportResourceTypesRequest
+        @return: ListSupportResourceTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_support_resource_types_with_options(request, runtime)
 
@@ -1883,6 +2509,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListSupportResourceTypesRequest,
     ) -> tag_20180828_models.ListSupportResourceTypesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the resource types supported by tags.
+        
+        @param request: ListSupportResourceTypesRequest
+        @return: ListSupportResourceTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_support_resource_types_with_options_async(request, runtime)
 
@@ -1891,6 +2523,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListTagKeysResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tag keys in the `cn-hangzhou` region. The response shows that the following tag keys exist: `team`, `k1`, and `k2`.
+        
+        @param request: ListTagKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -1941,6 +2580,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListTagKeysResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tag keys in the `cn-hangzhou` region. The response shows that the following tag keys exist: `team`, `k1`, and `k2`.
+        
+        @param request: ListTagKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -1990,6 +2636,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListTagKeysRequest,
     ) -> tag_20180828_models.ListTagKeysResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tag keys in the `cn-hangzhou` region. The response shows that the following tag keys exist: `team`, `k1`, and `k2`.
+        
+        @param request: ListTagKeysRequest
+        @return: ListTagKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_keys_with_options(request, runtime)
 
@@ -1997,6 +2649,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListTagKeysRequest,
     ) -> tag_20180828_models.ListTagKeysResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tag keys in the `cn-hangzhou` region. The response shows that the following tag keys exist: `team`, `k1`, and `k2`.
+        
+        @param request: ListTagKeysRequest
+        @return: ListTagKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_keys_with_options_async(request, runtime)
 
@@ -2005,6 +2663,16 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListTagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tags that are added to resources in the cn-hangzhou region. The response shows the following information:
+        *   The tags `k1:v1` and `k2:v2` are added to the Elastic Compute Service (ECS) instance `i-bp15hr53jws84akg****`.
+        *   The tags `k1:v1` and `k2:v2` are added to the disk `d-bp16cat8zekjocv4****`.
+        *   The tags `k1:v1` and `k2:v2` are added to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****`.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -2051,6 +2719,16 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListTagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tags that are added to resources in the cn-hangzhou region. The response shows the following information:
+        *   The tags `k1:v1` and `k2:v2` are added to the Elastic Compute Service (ECS) instance `i-bp15hr53jws84akg****`.
+        *   The tags `k1:v1` and `k2:v2` are added to the disk `d-bp16cat8zekjocv4****`.
+        *   The tags `k1:v1` and `k2:v2` are added to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****`.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -2096,6 +2774,15 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListTagResourcesRequest,
     ) -> tag_20180828_models.ListTagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tags that are added to resources in the cn-hangzhou region. The response shows the following information:
+        *   The tags `k1:v1` and `k2:v2` are added to the Elastic Compute Service (ECS) instance `i-bp15hr53jws84akg****`.
+        *   The tags `k1:v1` and `k2:v2` are added to the disk `d-bp16cat8zekjocv4****`.
+        *   The tags `k1:v1` and `k2:v2` are added to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****`.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -2103,6 +2790,15 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListTagResourcesRequest,
     ) -> tag_20180828_models.ListTagResourcesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the tags that are added to resources in the cn-hangzhou region. The response shows the following information:
+        *   The tags `k1:v1` and `k2:v2` are added to the Elastic Compute Service (ECS) instance `i-bp15hr53jws84akg****`.
+        *   The tags `k1:v1` and `k2:v2` are added to the disk `d-bp16cat8zekjocv4****`.
+        *   The tags `k1:v1` and `k2:v2` are added to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****`.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -2111,6 +2807,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListTagValuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListTagValuesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the values of the tag key `k1` in the `cn-hangzhou` region. The response shows that the value of the tag key `k1` is `v1`.
+        
+        @param request: ListTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagValuesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fuzzy_type):
@@ -2161,6 +2864,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListTagValuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListTagValuesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the values of the tag key `k1` in the `cn-hangzhou` region. The response shows that the value of the tag key `k1` is `v1`.
+        
+        @param request: ListTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagValuesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fuzzy_type):
@@ -2210,6 +2920,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListTagValuesRequest,
     ) -> tag_20180828_models.ListTagValuesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the values of the tag key `k1` in the `cn-hangzhou` region. The response shows that the value of the tag key `k1` is `v1`.
+        
+        @param request: ListTagValuesRequest
+        @return: ListTagValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_values_with_options(request, runtime)
 
@@ -2217,6 +2933,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListTagValuesRequest,
     ) -> tag_20180828_models.ListTagValuesResponse:
+        """
+        This topic provides an example on how to call the API operation to query the values of the tag key `k1` in the `cn-hangzhou` region. The response shows that the value of the tag key `k1` is `v1`.
+        
+        @param request: ListTagValuesRequest
+        @return: ListTagValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
@@ -2225,6 +2947,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListTargetsForPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListTargetsForPolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the object to which a tag policy is attached. The object is the current logon account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the objects to which a tag policy is attached. The objects include the Root folder, folders other than the Root folder, and members in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query the objects to which the tag policy with an ID of `p-de62a0bf400e4b69****` is attached. In this example, the Tag Policy feature in multi-account mode is used. The response shows that the tag policy is attached to two members in the related resource directory.
+        
+        @param request: ListTargetsForPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTargetsForPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_result):
@@ -2265,6 +2995,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListTargetsForPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListTargetsForPolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the object to which a tag policy is attached. The object is the current logon account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the objects to which a tag policy is attached. The objects include the Root folder, folders other than the Root folder, and members in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query the objects to which the tag policy with an ID of `p-de62a0bf400e4b69****` is attached. In this example, the Tag Policy feature in multi-account mode is used. The response shows that the tag policy is attached to two members in the related resource directory.
+        
+        @param request: ListTargetsForPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTargetsForPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_result):
@@ -2304,6 +3042,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListTargetsForPolicyRequest,
     ) -> tag_20180828_models.ListTargetsForPolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the object to which a tag policy is attached. The object is the current logon account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the objects to which a tag policy is attached. The objects include the Root folder, folders other than the Root folder, and members in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query the objects to which the tag policy with an ID of `p-de62a0bf400e4b69****` is attached. In this example, the Tag Policy feature in multi-account mode is used. The response shows that the tag policy is attached to two members in the related resource directory.
+        
+        @param request: ListTargetsForPolicyRequest
+        @return: ListTargetsForPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_targets_for_policy_with_options(request, runtime)
 
@@ -2311,6 +3056,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ListTargetsForPolicyRequest,
     ) -> tag_20180828_models.ListTargetsForPolicyResponse:
+        """
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the object to which a tag policy is attached. The object is the current logon account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the objects to which a tag policy is attached. The objects include the Root folder, folders other than the Root folder, and members in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query the objects to which the tag policy with an ID of `p-de62a0bf400e4b69****` is attached. In this example, the Tag Policy feature in multi-account mode is used. The response shows that the tag policy is attached to two members in the related resource directory.
+        
+        @param request: ListTargetsForPolicyRequest
+        @return: ListTargetsForPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_targets_for_policy_with_options_async(request, runtime)
 
@@ -2319,6 +3071,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ModifyPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ModifyPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
+        
+        @param request: ModifyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -2363,6 +3122,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ModifyPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ModifyPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
+        
+        @param request: ModifyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -2406,6 +3172,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ModifyPolicyRequest,
     ) -> tag_20180828_models.ModifyPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
+        
+        @param request: ModifyPolicyRequest
+        @return: ModifyPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_policy_with_options(request, runtime)
 
@@ -2413,14 +3185,114 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.ModifyPolicyRequest,
     ) -> tag_20180828_models.ModifyPolicyResponse:
+        """
+        This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
+        
+        @param request: ModifyPolicyRequest
+        @return: ModifyPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_policy_with_options_async(request, runtime)
+
+    def open_created_by_with_options(
+        self,
+        request: tag_20180828_models.OpenCreatedByRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.OpenCreatedByResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenCreatedBy',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.OpenCreatedByResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_created_by_with_options_async(
+        self,
+        request: tag_20180828_models.OpenCreatedByRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.OpenCreatedByResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenCreatedBy',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.OpenCreatedByResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_created_by(
+        self,
+        request: tag_20180828_models.OpenCreatedByRequest,
+    ) -> tag_20180828_models.OpenCreatedByResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.open_created_by_with_options(request, runtime)
+
+    async def open_created_by_async(
+        self,
+        request: tag_20180828_models.OpenCreatedByRequest,
+    ) -> tag_20180828_models.OpenCreatedByResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.open_created_by_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
         request: tag_20180828_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.TagResourcesResponse:
+        """
+        Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](~~156983~~).
+        This topic provides an example on how to call the API operation to add the tags `k1:v1` and `k2:v2` to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -2461,6 +3333,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.TagResourcesResponse:
+        """
+        Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](~~156983~~).
+        This topic provides an example on how to call the API operation to add the tags `k1:v1` and `k2:v2` to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -2500,6 +3380,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.TagResourcesRequest,
     ) -> tag_20180828_models.TagResourcesResponse:
+        """
+        Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](~~156983~~).
+        This topic provides an example on how to call the API operation to add the tags `k1:v1` and `k2:v2` to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -2507,6 +3394,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.TagResourcesRequest,
     ) -> tag_20180828_models.TagResourcesResponse:
+        """
+        Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](~~156983~~).
+        This topic provides an example on how to call the API operation to add the tags `k1:v1` and `k2:v2` to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -2515,6 +3409,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.UntagResourcesResponse:
+        """
+        After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
+        This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -2555,6 +3457,14 @@ class Client(OpenApiClient):
         request: tag_20180828_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.UntagResourcesResponse:
+        """
+        After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
+        This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -2594,6 +3504,13 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.UntagResourcesRequest,
     ) -> tag_20180828_models.UntagResourcesResponse:
+        """
+        After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
+        This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -2601,5 +3518,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.UntagResourcesRequest,
     ) -> tag_20180828_models.UntagResourcesResponse:
+        """
+        After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
+        This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
