@@ -1,3 +1,6 @@
+2023-06-15 Version: 2.1.5
+- Support More Open Api.
+
 2023-03-27 Version: 2.1.4
 - Support More Open Api.
 
