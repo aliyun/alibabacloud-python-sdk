@@ -41324,6 +41324,7 @@ class InvoiceAddRequest(TeaModel):
         third_part_id: str = None,
         title: str = None,
         type: int = None,
+        unit_type: int = None,
     ):
         self.address = address
         self.bank_name = bank_name
@@ -41333,6 +41334,7 @@ class InvoiceAddRequest(TeaModel):
         self.third_part_id = third_part_id
         self.title = title
         self.type = type
+        self.unit_type = unit_type
 
     def validate(self):
         pass
@@ -41359,6 +41361,8 @@ class InvoiceAddRequest(TeaModel):
             result['title'] = self.title
         if self.type is not None:
             result['type'] = self.type
+        if self.unit_type is not None:
+            result['unit_type'] = self.unit_type
         return result
 
     def from_map(self, m: dict = None):
@@ -41379,6 +41383,8 @@ class InvoiceAddRequest(TeaModel):
             self.title = m.get('title')
         if m.get('type') is not None:
             self.type = m.get('type')
+        if m.get('unit_type') is not None:
+            self.unit_type = m.get('unit_type')
         return self
 
 
@@ -41678,6 +41684,7 @@ class InvoiceModifyRequest(TeaModel):
         third_part_id: str = None,
         title: str = None,
         type: int = None,
+        unit_type: int = None,
     ):
         self.address = address
         self.bank_name = bank_name
@@ -41687,6 +41694,7 @@ class InvoiceModifyRequest(TeaModel):
         self.third_part_id = third_part_id
         self.title = title
         self.type = type
+        self.unit_type = unit_type
 
     def validate(self):
         pass
@@ -41713,6 +41721,8 @@ class InvoiceModifyRequest(TeaModel):
             result['title'] = self.title
         if self.type is not None:
             result['type'] = self.type
+        if self.unit_type is not None:
+            result['unit_type'] = self.unit_type
         return result
 
     def from_map(self, m: dict = None):
@@ -41733,6 +41743,8 @@ class InvoiceModifyRequest(TeaModel):
             self.title = m.get('title')
         if m.get('type') is not None:
             self.type = m.get('type')
+        if m.get('unit_type') is not None:
+            self.unit_type = m.get('unit_type')
         return self
 
 

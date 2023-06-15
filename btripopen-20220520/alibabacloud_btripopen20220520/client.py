@@ -7927,6 +7927,8 @@ class Client(OpenApiClient):
             body['title'] = request.title
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
+        if not UtilClient.is_unset(request.unit_type):
+            body['unit_type'] = request.unit_type
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -7976,6 +7978,8 @@ class Client(OpenApiClient):
             body['title'] = request.title
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
+        if not UtilClient.is_unset(request.unit_type):
+            body['unit_type'] = request.unit_type
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -8127,6 +8131,8 @@ class Client(OpenApiClient):
             body['title'] = request.title
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
+        if not UtilClient.is_unset(request.unit_type):
+            body['unit_type'] = request.unit_type
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -8176,6 +8182,8 @@ class Client(OpenApiClient):
             body['title'] = request.title
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
+        if not UtilClient.is_unset(request.unit_type):
+            body['unit_type'] = request.unit_type
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
