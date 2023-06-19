@@ -12424,6 +12424,8 @@ class Client(OpenApiClient):
             query['RpcPattern'] = request.rpc_pattern
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.support_sse):
+            query['SupportSSE'] = request.support_sse
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_log_config):
@@ -12476,6 +12478,8 @@ class Client(OpenApiClient):
             query['RpcPattern'] = request.rpc_pattern
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.support_sse):
+            query['SupportSSE'] = request.support_sse
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_log_config):

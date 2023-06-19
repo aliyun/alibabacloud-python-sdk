@@ -1,3 +1,7 @@
+2023-06-19 Version: 2.2.19
+- Update DescribeApiGroup and DescribeInstances.
+- Add DescribeSummaryData.
+
 2023-05-30 Version: 2.2.18
 - Modify parameter location of CreateApi.
 
