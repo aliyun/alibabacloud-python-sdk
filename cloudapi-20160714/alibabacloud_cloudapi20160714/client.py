@@ -10653,6 +10653,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_signatures_by_api_with_options_async(request, runtime)
 
+    def describe_summary_data_with_options(
+        self,
+        request: cloud_api20160714_models.DescribeSummaryDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeSummaryDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSummaryData',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeSummaryDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_summary_data_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribeSummaryDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeSummaryDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSummaryData',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeSummaryDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_summary_data(
+        self,
+        request: cloud_api20160714_models.DescribeSummaryDataRequest,
+    ) -> cloud_api20160714_models.DescribeSummaryDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_summary_data_with_options(request, runtime)
+
+    async def describe_summary_data_async(
+        self,
+        request: cloud_api20160714_models.DescribeSummaryDataRequest,
+    ) -> cloud_api20160714_models.DescribeSummaryDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_summary_data_with_options_async(request, runtime)
+
     def describe_system_parameters_with_options(
         self,
         request: cloud_api20160714_models.DescribeSystemParametersRequest,

@@ -29340,6 +29340,134 @@ class DescribeSignaturesByApiResponse(TeaModel):
         return self
 
 
+class DescribeSummaryDataRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+    ):
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeSummaryDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        expire_instance_num: int = None,
+        region: str = None,
+        request_id: str = None,
+        usage_api_num: int = None,
+        usage_group_num: int = None,
+        usage_instance_num: int = None,
+    ):
+        self.expire_instance_num = expire_instance_num
+        self.region = region
+        self.request_id = request_id
+        self.usage_api_num = usage_api_num
+        self.usage_group_num = usage_group_num
+        self.usage_instance_num = usage_instance_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expire_instance_num is not None:
+            result['ExpireInstanceNum'] = self.expire_instance_num
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.usage_api_num is not None:
+            result['UsageApiNum'] = self.usage_api_num
+        if self.usage_group_num is not None:
+            result['UsageGroupNum'] = self.usage_group_num
+        if self.usage_instance_num is not None:
+            result['UsageInstanceNum'] = self.usage_instance_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpireInstanceNum') is not None:
+            self.expire_instance_num = m.get('ExpireInstanceNum')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('UsageApiNum') is not None:
+            self.usage_api_num = m.get('UsageApiNum')
+        if m.get('UsageGroupNum') is not None:
+            self.usage_group_num = m.get('UsageGroupNum')
+        if m.get('UsageInstanceNum') is not None:
+            self.usage_instance_num = m.get('UsageInstanceNum')
+        return self
+
+
+class DescribeSummaryDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSummaryDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSummaryDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSystemParametersRequest(TeaModel):
     def __init__(
         self,

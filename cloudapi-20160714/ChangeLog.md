@@ -1,3 +1,6 @@
+2023-06-19 Version: 2.2.20
+- Republish.
+
 2023-06-19 Version: 2.2.19
 - Update DescribeApiGroup and DescribeInstances.
 - Add DescribeSummaryData.
