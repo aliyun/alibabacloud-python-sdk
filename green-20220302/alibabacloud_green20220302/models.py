@@ -111,8 +111,10 @@ class DescribeImageResultExtResponseBodyDataTextInImage(TeaModel):
     def __init__(
         self,
         ocr_datas: List[str] = None,
+        risk_words: List[str] = None,
     ):
         self.ocr_datas = ocr_datas
+        self.risk_words = risk_words
 
     def validate(self):
         pass
@@ -125,12 +127,16 @@ class DescribeImageResultExtResponseBodyDataTextInImage(TeaModel):
         result = dict()
         if self.ocr_datas is not None:
             result['OcrDatas'] = self.ocr_datas
+        if self.risk_words is not None:
+            result['RiskWords'] = self.risk_words
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('OcrDatas') is not None:
             self.ocr_datas = m.get('OcrDatas')
+        if m.get('RiskWords') is not None:
+            self.risk_words = m.get('RiskWords')
         return self
 
 
