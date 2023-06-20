@@ -140,6 +140,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.activate_license_with_options_async(request, runtime)
 
+    def auto_renew_instance_with_options(
+        self,
+        request: market_20151101_models.AutoRenewInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.AutoRenewInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_renew_cycle):
+            body['AutoRenewCycle'] = request.auto_renew_cycle
+        if not UtilClient.is_unset(request.auto_renew_duration):
+            body['AutoRenewDuration'] = request.auto_renew_duration
+        if not UtilClient.is_unset(request.order_biz_id):
+            body['OrderBizId'] = request.order_biz_id
+        if not UtilClient.is_unset(request.owner_id):
+            body['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AutoRenewInstance',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.AutoRenewInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def auto_renew_instance_with_options_async(
+        self,
+        request: market_20151101_models.AutoRenewInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.AutoRenewInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_renew_cycle):
+            body['AutoRenewCycle'] = request.auto_renew_cycle
+        if not UtilClient.is_unset(request.auto_renew_duration):
+            body['AutoRenewDuration'] = request.auto_renew_duration
+        if not UtilClient.is_unset(request.order_biz_id):
+            body['OrderBizId'] = request.order_biz_id
+        if not UtilClient.is_unset(request.owner_id):
+            body['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AutoRenewInstance',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.AutoRenewInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def auto_renew_instance(
+        self,
+        request: market_20151101_models.AutoRenewInstanceRequest,
+    ) -> market_20151101_models.AutoRenewInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.auto_renew_instance_with_options(request, runtime)
+
+    async def auto_renew_instance_async(
+        self,
+        request: market_20151101_models.AutoRenewInstanceRequest,
+    ) -> market_20151101_models.AutoRenewInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.auto_renew_instance_with_options_async(request, runtime)
+
     def create_order_with_options(
         self,
         request: market_20151101_models.CreateOrderRequest,
@@ -230,6 +316,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_order_with_options_async(request, runtime)
 
+    def cross_account_verify_token_with_options(
+        self,
+        request: market_20151101_models.CrossAccountVerifyTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.CrossAccountVerifyTokenResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CrossAccountVerifyToken',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.CrossAccountVerifyTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cross_account_verify_token_with_options_async(
+        self,
+        request: market_20151101_models.CrossAccountVerifyTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.CrossAccountVerifyTokenResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CrossAccountVerifyToken',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.CrossAccountVerifyTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cross_account_verify_token(
+        self,
+        request: market_20151101_models.CrossAccountVerifyTokenRequest,
+    ) -> market_20151101_models.CrossAccountVerifyTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cross_account_verify_token_with_options(request, runtime)
+
+    async def cross_account_verify_token_async(
+        self,
+        request: market_20151101_models.CrossAccountVerifyTokenRequest,
+    ) -> market_20151101_models.CrossAccountVerifyTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cross_account_verify_token_with_options_async(request, runtime)
+
+    def describe_api_metering_with_options(
+        self,
+        request: market_20151101_models.DescribeApiMeteringRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.DescribeApiMeteringResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApiMetering',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.DescribeApiMeteringResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_api_metering_with_options_async(
+        self,
+        request: market_20151101_models.DescribeApiMeteringRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.DescribeApiMeteringResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApiMetering',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.DescribeApiMeteringResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_api_metering(
+        self,
+        request: market_20151101_models.DescribeApiMeteringRequest,
+    ) -> market_20151101_models.DescribeApiMeteringResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_api_metering_with_options(request, runtime)
+
+    async def describe_api_metering_async(
+        self,
+        request: market_20151101_models.DescribeApiMeteringRequest,
+    ) -> market_20151101_models.DescribeApiMeteringResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_api_metering_with_options_async(request, runtime)
+
     def describe_current_node_info_with_options(
         self,
         request: market_20151101_models.DescribeCurrentNodeInfoRequest,
@@ -299,6 +521,150 @@ class Client(OpenApiClient):
     ) -> market_20151101_models.DescribeCurrentNodeInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_current_node_info_with_options_async(request, runtime)
+
+    def describe_distribution_products_with_options(
+        self,
+        request: market_20151101_models.DescribeDistributionProductsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.DescribeDistributionProductsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDistributionProducts',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.DescribeDistributionProductsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_distribution_products_with_options_async(
+        self,
+        request: market_20151101_models.DescribeDistributionProductsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.DescribeDistributionProductsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDistributionProducts',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.DescribeDistributionProductsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_distribution_products(
+        self,
+        request: market_20151101_models.DescribeDistributionProductsRequest,
+    ) -> market_20151101_models.DescribeDistributionProductsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_distribution_products_with_options(request, runtime)
+
+    async def describe_distribution_products_async(
+        self,
+        request: market_20151101_models.DescribeDistributionProductsRequest,
+    ) -> market_20151101_models.DescribeDistributionProductsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_distribution_products_with_options_async(request, runtime)
+
+    def describe_distribution_products_link_with_options(
+        self,
+        tmp_req: market_20151101_models.DescribeDistributionProductsLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.DescribeDistributionProductsLinkResponse:
+        UtilClient.validate_model(tmp_req)
+        request = market_20151101_models.DescribeDistributionProductsLinkShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.codes):
+            request.codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.codes, 'Codes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.codes_shrink):
+            query['Codes'] = request.codes_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDistributionProductsLink',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.DescribeDistributionProductsLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_distribution_products_link_with_options_async(
+        self,
+        tmp_req: market_20151101_models.DescribeDistributionProductsLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.DescribeDistributionProductsLinkResponse:
+        UtilClient.validate_model(tmp_req)
+        request = market_20151101_models.DescribeDistributionProductsLinkShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.codes):
+            request.codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.codes, 'Codes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.codes_shrink):
+            query['Codes'] = request.codes_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDistributionProductsLink',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.DescribeDistributionProductsLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_distribution_products_link(
+        self,
+        request: market_20151101_models.DescribeDistributionProductsLinkRequest,
+    ) -> market_20151101_models.DescribeDistributionProductsLinkResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_distribution_products_link_with_options(request, runtime)
+
+    async def describe_distribution_products_link_async(
+        self,
+        request: market_20151101_models.DescribeDistributionProductsLinkRequest,
+    ) -> market_20151101_models.DescribeDistributionProductsLinkResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_distribution_products_link_with_options_async(request, runtime)
 
     def describe_instance_with_options(
         self,
@@ -1057,6 +1423,14 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProjectNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProjectNodesResponse:
+        """
+        *\
+        **\
+        
+        @param request: DescribeProjectNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1085,6 +1459,14 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProjectNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProjectNodesResponse:
+        """
+        *\
+        **\
+        
+        @param request: DescribeProjectNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1112,6 +1494,13 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProjectNodesRequest,
     ) -> market_20151101_models.DescribeProjectNodesResponse:
+        """
+        *\
+        **\
+        
+        @param request: DescribeProjectNodesRequest
+        @return: DescribeProjectNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_project_nodes_with_options(request, runtime)
 
@@ -1119,6 +1508,13 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProjectNodesRequest,
     ) -> market_20151101_models.DescribeProjectNodesResponse:
+        """
+        *\
+        **\
+        
+        @param request: DescribeProjectNodesRequest
+        @return: DescribeProjectNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_project_nodes_with_options_async(request, runtime)
 

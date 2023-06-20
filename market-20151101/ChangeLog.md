@@ -1,3 +1,6 @@
+2023-06-20 Version: 3.0.3
+- Add DistributionProducts API.
+
 2022-03-10 Version: 3.0.2
 - Remove private api.
 
