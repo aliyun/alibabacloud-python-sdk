@@ -1276,3 +1276,105 @@ class Client(OpenApiClient):
     ) -> bpstudio_20210931_models.ValuateApplicationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.valuate_application_with_options_async(request, runtime)
+
+    def valuate_template_with_options(
+        self,
+        tmp_req: bpstudio_20210931_models.ValuateTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ValuateTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.ValuateTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instances):
+            request.instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instances, 'Instances', 'json')
+        if not UtilClient.is_unset(tmp_req.variables):
+            request.variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.area_id):
+            body['AreaId'] = request.area_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instances_shrink):
+            body['Instances'] = request.instances_shrink
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.variables_shrink):
+            body['Variables'] = request.variables_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ValuateTemplate',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ValuateTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def valuate_template_with_options_async(
+        self,
+        tmp_req: bpstudio_20210931_models.ValuateTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ValuateTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.ValuateTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instances):
+            request.instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instances, 'Instances', 'json')
+        if not UtilClient.is_unset(tmp_req.variables):
+            request.variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.area_id):
+            body['AreaId'] = request.area_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instances_shrink):
+            body['Instances'] = request.instances_shrink
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.variables_shrink):
+            body['Variables'] = request.variables_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ValuateTemplate',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ValuateTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def valuate_template(
+        self,
+        request: bpstudio_20210931_models.ValuateTemplateRequest,
+    ) -> bpstudio_20210931_models.ValuateTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.valuate_template_with_options(request, runtime)
+
+    async def valuate_template_async(
+        self,
+        request: bpstudio_20210931_models.ValuateTemplateRequest,
+    ) -> bpstudio_20210931_models.ValuateTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.valuate_template_with_options_async(request, runtime)

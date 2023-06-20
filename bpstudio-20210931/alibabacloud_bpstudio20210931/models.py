@@ -1172,7 +1172,6 @@ class GetApplicationResponseBodyData(TeaModel):
         resource_list: List[GetApplicationResponseBodyDataResourceList] = None,
         status: str = None,
         template_id: str = None,
-        topo_url: str = None,
     ):
         # The description of the application.
         self.application_id = application_id
@@ -1198,8 +1197,6 @@ class GetApplicationResponseBodyData(TeaModel):
         self.status = status
         # CADT application
         self.template_id = template_id
-        # The ID of the application.
-        self.topo_url = topo_url
 
     def validate(self):
         if self.checklist:
@@ -1251,8 +1248,6 @@ class GetApplicationResponseBodyData(TeaModel):
             result['Status'] = self.status
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
-        if self.topo_url is not None:
-            result['TopoURL'] = self.topo_url
         return result
 
     def from_map(self, m: dict = None):
@@ -1290,8 +1285,6 @@ class GetApplicationResponseBodyData(TeaModel):
             self.status = m.get('Status')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
-        if m.get('TopoURL') is not None:
-            self.topo_url = m.get('TopoURL')
         return self
 
 
@@ -1691,7 +1684,6 @@ class GetTemplateResponseBodyData(TeaModel):
         name: str = None,
         resource_group_id: str = None,
         template_id: str = None,
-        topo_url: str = None,
         variables: List[GetTemplateResponseBodyDataVariables] = None,
     ):
         self.create_time = create_time
@@ -1700,7 +1692,6 @@ class GetTemplateResponseBodyData(TeaModel):
         self.name = name
         self.resource_group_id = resource_group_id
         self.template_id = template_id
-        self.topo_url = topo_url
         self.variables = variables
 
     def validate(self):
@@ -1727,8 +1718,6 @@ class GetTemplateResponseBodyData(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
-        if self.topo_url is not None:
-            result['TopoURL'] = self.topo_url
         result['Variables'] = []
         if self.variables is not None:
             for k in self.variables:
@@ -1749,8 +1738,6 @@ class GetTemplateResponseBodyData(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
-        if m.get('TopoURL') is not None:
-            self.topo_url = m.get('TopoURL')
         self.variables = []
         if m.get('Variables') is not None:
             for k in m.get('Variables'):
@@ -2104,7 +2091,6 @@ class ListApplicationResponseBodyData(TeaModel):
         name: str = None,
         resource_group_id: str = None,
         status: str = None,
-        topo_url: str = None,
     ):
         self.application_id = application_id
         self.create_time = create_time
@@ -2112,7 +2098,6 @@ class ListApplicationResponseBodyData(TeaModel):
         self.name = name
         self.resource_group_id = resource_group_id
         self.status = status
-        self.topo_url = topo_url
 
     def validate(self):
         pass
@@ -2135,8 +2120,6 @@ class ListApplicationResponseBodyData(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
-        if self.topo_url is not None:
-            result['TopoURL'] = self.topo_url
         return result
 
     def from_map(self, m: dict = None):
@@ -2153,8 +2136,6 @@ class ListApplicationResponseBodyData(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('TopoURL') is not None:
-            self.topo_url = m.get('TopoURL')
         return self
 
 
@@ -2273,7 +2254,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -2310,11 +2293,17 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The ID of the region.
         self.region_id = region_id
+        # The resource IDs. You can specify a maximum number of 50 IDs.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The tags. A maximum of 20 tags are supported.
         self.tag = tag
 
     def validate(self):
@@ -2373,9 +2362,13 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The resource type. Valid values: application and template.
         self.resource_type = resource_type
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -2419,11 +2412,15 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The HTTP status code. A value of 200 indicates that the request is successful.
         self.code = code
+        # The error message returned if the request failed.
         self.message = message
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
-        # TagResource
+        # The tags that are added to the resources.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -2597,7 +2594,6 @@ class ListTemplateResponseBodyData(TeaModel):
         tag_id: int = None,
         tag_name: str = None,
         template_id: str = None,
-        topo_url: str = None,
     ):
         # The time when the template was created.
         self.create_time = create_time
@@ -2613,8 +2609,6 @@ class ListTemplateResponseBodyData(TeaModel):
         self.tag_name = tag_name
         # The ID of the template.
         self.template_id = template_id
-        # The URL of the template topology image.
-        self.topo_url = topo_url
 
     def validate(self):
         pass
@@ -2639,8 +2633,6 @@ class ListTemplateResponseBodyData(TeaModel):
             result['TagName'] = self.tag_name
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
-        if self.topo_url is not None:
-            result['TopoURL'] = self.topo_url
         return result
 
     def from_map(self, m: dict = None):
@@ -2659,8 +2651,6 @@ class ListTemplateResponseBodyData(TeaModel):
             self.tag_name = m.get('TagName')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
-        if m.get('TopoURL') is not None:
-            self.topo_url = m.get('TopoURL')
         return self
 
 
@@ -3159,6 +3149,445 @@ class ValuateApplicationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ValuateApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ValuateTemplateRequestInstances(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        node_name: str = None,
+        node_type: str = None,
+    ):
+        self.id = id
+        self.node_name = node_name
+        self.node_type = node_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        return self
+
+
+class ValuateTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        area_id: str = None,
+        client_token: str = None,
+        instances: List[ValuateTemplateRequestInstances] = None,
+        resource_group_id: str = None,
+        template_id: str = None,
+        variables: Dict[str, str] = None,
+    ):
+        self.area_id = area_id
+        self.client_token = client_token
+        self.instances = instances
+        self.resource_group_id = resource_group_id
+        self.template_id = template_id
+        self.variables = variables
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.area_id is not None:
+            result['AreaId'] = self.area_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['Instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['Instances'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.variables is not None:
+            result['Variables'] = self.variables
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AreaId') is not None:
+            self.area_id = m.get('AreaId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.instances = []
+        if m.get('Instances') is not None:
+            for k in m.get('Instances'):
+                temp_model = ValuateTemplateRequestInstances()
+                self.instances.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Variables') is not None:
+            self.variables = m.get('Variables')
+        return self
+
+
+class ValuateTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        area_id: str = None,
+        client_token: str = None,
+        instances_shrink: str = None,
+        resource_group_id: str = None,
+        template_id: str = None,
+        variables_shrink: str = None,
+    ):
+        self.area_id = area_id
+        self.client_token = client_token
+        self.instances_shrink = instances_shrink
+        self.resource_group_id = resource_group_id
+        self.template_id = template_id
+        self.variables_shrink = variables_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.area_id is not None:
+            result['AreaId'] = self.area_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instances_shrink is not None:
+            result['Instances'] = self.instances_shrink
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.variables_shrink is not None:
+            result['Variables'] = self.variables_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AreaId') is not None:
+            self.area_id = m.get('AreaId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Instances') is not None:
+            self.instances_shrink = m.get('Instances')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Variables') is not None:
+            self.variables_shrink = m.get('Variables')
+        return self
+
+
+class ValuateTemplateResponseBodyDataResourceListPriceList(TeaModel):
+    def __init__(
+        self,
+        discount_amount: float = None,
+        error: str = None,
+        node_type: str = None,
+        original_price: float = None,
+        price_unit: str = None,
+        promotion_name: str = None,
+        resource_id: str = None,
+        trade_price: float = None,
+        type: str = None,
+    ):
+        self.discount_amount = discount_amount
+        self.error = error
+        self.node_type = node_type
+        self.original_price = original_price
+        self.price_unit = price_unit
+        self.promotion_name = promotion_name
+        self.resource_id = resource_id
+        self.trade_price = trade_price
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discount_amount is not None:
+            result['DiscountAmount'] = self.discount_amount
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        if self.original_price is not None:
+            result['OriginalPrice'] = self.original_price
+        if self.price_unit is not None:
+            result['PriceUnit'] = self.price_unit
+        if self.promotion_name is not None:
+            result['PromotionName'] = self.promotion_name
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.trade_price is not None:
+            result['TradePrice'] = self.trade_price
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscountAmount') is not None:
+            self.discount_amount = m.get('DiscountAmount')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        if m.get('OriginalPrice') is not None:
+            self.original_price = m.get('OriginalPrice')
+        if m.get('PriceUnit') is not None:
+            self.price_unit = m.get('PriceUnit')
+        if m.get('PromotionName') is not None:
+            self.promotion_name = m.get('PromotionName')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('TradePrice') is not None:
+            self.trade_price = m.get('TradePrice')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ValuateTemplateResponseBodyDataResourceList(TeaModel):
+    def __init__(
+        self,
+        discount_amount: float = None,
+        error: str = None,
+        node_type: str = None,
+        original_price: float = None,
+        price_list: List[ValuateTemplateResponseBodyDataResourceListPriceList] = None,
+        price_unit: str = None,
+        promotion_name: str = None,
+        trade_price: float = None,
+    ):
+        self.discount_amount = discount_amount
+        self.error = error
+        self.node_type = node_type
+        self.original_price = original_price
+        self.price_list = price_list
+        self.price_unit = price_unit
+        self.promotion_name = promotion_name
+        self.trade_price = trade_price
+
+    def validate(self):
+        if self.price_list:
+            for k in self.price_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discount_amount is not None:
+            result['DiscountAmount'] = self.discount_amount
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        if self.original_price is not None:
+            result['OriginalPrice'] = self.original_price
+        result['PriceList'] = []
+        if self.price_list is not None:
+            for k in self.price_list:
+                result['PriceList'].append(k.to_map() if k else None)
+        if self.price_unit is not None:
+            result['PriceUnit'] = self.price_unit
+        if self.promotion_name is not None:
+            result['PromotionName'] = self.promotion_name
+        if self.trade_price is not None:
+            result['TradePrice'] = self.trade_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscountAmount') is not None:
+            self.discount_amount = m.get('DiscountAmount')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        if m.get('OriginalPrice') is not None:
+            self.original_price = m.get('OriginalPrice')
+        self.price_list = []
+        if m.get('PriceList') is not None:
+            for k in m.get('PriceList'):
+                temp_model = ValuateTemplateResponseBodyDataResourceListPriceList()
+                self.price_list.append(temp_model.from_map(k))
+        if m.get('PriceUnit') is not None:
+            self.price_unit = m.get('PriceUnit')
+        if m.get('PromotionName') is not None:
+            self.promotion_name = m.get('PromotionName')
+        if m.get('TradePrice') is not None:
+            self.trade_price = m.get('TradePrice')
+        return self
+
+
+class ValuateTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        resource_list: List[ValuateTemplateResponseBodyDataResourceList] = None,
+    ):
+        self.resource_list = resource_list
+
+    def validate(self):
+        if self.resource_list:
+            for k in self.resource_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ResourceList'] = []
+        if self.resource_list is not None:
+            for k in self.resource_list:
+                result['ResourceList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.resource_list = []
+        if m.get('ResourceList') is not None:
+            for k in m.get('ResourceList'):
+                temp_model = ValuateTemplateResponseBodyDataResourceList()
+                self.resource_list.append(temp_model.from_map(k))
+        return self
+
+
+class ValuateTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ValuateTemplateResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ValuateTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ValuateTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ValuateTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ValuateTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
