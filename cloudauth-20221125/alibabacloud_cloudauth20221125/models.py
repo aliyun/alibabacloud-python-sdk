@@ -84,10 +84,12 @@ class EntElementVerifyResponseBodyResult(TeaModel):
         self,
         biz_code: str = None,
         reason_code: str = None,
+        reason_detail: str = None,
         status: str = None,
     ):
         self.biz_code = biz_code
         self.reason_code = reason_code
+        self.reason_detail = reason_detail
         self.status = status
 
     def validate(self):
@@ -103,6 +105,8 @@ class EntElementVerifyResponseBodyResult(TeaModel):
             result['BizCode'] = self.biz_code
         if self.reason_code is not None:
             result['ReasonCode'] = self.reason_code
+        if self.reason_detail is not None:
+            result['ReasonDetail'] = self.reason_detail
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -113,6 +117,8 @@ class EntElementVerifyResponseBodyResult(TeaModel):
             self.biz_code = m.get('BizCode')
         if m.get('ReasonCode') is not None:
             self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonDetail') is not None:
+            self.reason_detail = m.get('ReasonDetail')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
