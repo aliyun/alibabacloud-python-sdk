@@ -1,3 +1,8 @@
+2023-06-25 Version: 3.0.0
+- Add CreateUserKey.
+- Add DeleteUserKey.
+- Add ListUserKey.
+
 2023-04-04 Version: 2.1.9
 - Add update repository group api.
 
