@@ -3758,6 +3758,9 @@ class SubmitAudioTo2DAvatarVideoTaskRequest(TeaModel):
         self,
         app: SubmitAudioTo2DAvatarVideoTaskRequestApp = None,
         avatar_info: SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo = None,
+        callback: bool = None,
+        callback_params: str = None,
+        ext_params: str = None,
         tenant_id: int = None,
         title: str = None,
         url: str = None,
@@ -3765,6 +3768,9 @@ class SubmitAudioTo2DAvatarVideoTaskRequest(TeaModel):
     ):
         self.app = app
         self.avatar_info = avatar_info
+        self.callback = callback
+        self.callback_params = callback_params
+        self.ext_params = ext_params
         self.tenant_id = tenant_id
         self.title = title
         self.url = url
@@ -3788,6 +3794,12 @@ class SubmitAudioTo2DAvatarVideoTaskRequest(TeaModel):
             result['App'] = self.app.to_map()
         if self.avatar_info is not None:
             result['AvatarInfo'] = self.avatar_info.to_map()
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callback_params is not None:
+            result['CallbackParams'] = self.callback_params
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.title is not None:
@@ -3806,6 +3818,12 @@ class SubmitAudioTo2DAvatarVideoTaskRequest(TeaModel):
         if m.get('AvatarInfo') is not None:
             temp_model = SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo()
             self.avatar_info = temp_model.from_map(m['AvatarInfo'])
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('CallbackParams') is not None:
+            self.callback_params = m.get('CallbackParams')
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('Title') is not None:
@@ -3823,6 +3841,9 @@ class SubmitAudioTo2DAvatarVideoTaskShrinkRequest(TeaModel):
         self,
         app_shrink: str = None,
         avatar_info_shrink: str = None,
+        callback: bool = None,
+        callback_params: str = None,
+        ext_params: str = None,
         tenant_id: int = None,
         title: str = None,
         url: str = None,
@@ -3830,6 +3851,9 @@ class SubmitAudioTo2DAvatarVideoTaskShrinkRequest(TeaModel):
     ):
         self.app_shrink = app_shrink
         self.avatar_info_shrink = avatar_info_shrink
+        self.callback = callback
+        self.callback_params = callback_params
+        self.ext_params = ext_params
         self.tenant_id = tenant_id
         self.title = title
         self.url = url
@@ -3848,6 +3872,12 @@ class SubmitAudioTo2DAvatarVideoTaskShrinkRequest(TeaModel):
             result['App'] = self.app_shrink
         if self.avatar_info_shrink is not None:
             result['AvatarInfo'] = self.avatar_info_shrink
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callback_params is not None:
+            result['CallbackParams'] = self.callback_params
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.title is not None:
@@ -3864,6 +3894,12 @@ class SubmitAudioTo2DAvatarVideoTaskShrinkRequest(TeaModel):
             self.app_shrink = m.get('App')
         if m.get('AvatarInfo') is not None:
             self.avatar_info_shrink = m.get('AvatarInfo')
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('CallbackParams') is not None:
+            self.callback_params = m.get('CallbackParams')
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('Title') is not None:
@@ -4115,6 +4151,9 @@ class SubmitAudioTo3DAvatarVideoTaskRequest(TeaModel):
         self,
         app: SubmitAudioTo3DAvatarVideoTaskRequestApp = None,
         avatar_info: SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo = None,
+        callback: bool = None,
+        callback_params: str = None,
+        ext_params: str = None,
         tenant_id: int = None,
         title: str = None,
         url: str = None,
@@ -4122,6 +4161,9 @@ class SubmitAudioTo3DAvatarVideoTaskRequest(TeaModel):
     ):
         self.app = app
         self.avatar_info = avatar_info
+        self.callback = callback
+        self.callback_params = callback_params
+        self.ext_params = ext_params
         self.tenant_id = tenant_id
         self.title = title
         self.url = url
@@ -4145,6 +4187,12 @@ class SubmitAudioTo3DAvatarVideoTaskRequest(TeaModel):
             result['App'] = self.app.to_map()
         if self.avatar_info is not None:
             result['AvatarInfo'] = self.avatar_info.to_map()
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callback_params is not None:
+            result['CallbackParams'] = self.callback_params
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.title is not None:
@@ -4163,6 +4211,12 @@ class SubmitAudioTo3DAvatarVideoTaskRequest(TeaModel):
         if m.get('AvatarInfo') is not None:
             temp_model = SubmitAudioTo3DAvatarVideoTaskRequestAvatarInfo()
             self.avatar_info = temp_model.from_map(m['AvatarInfo'])
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('CallbackParams') is not None:
+            self.callback_params = m.get('CallbackParams')
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('Title') is not None:
@@ -4180,6 +4234,9 @@ class SubmitAudioTo3DAvatarVideoTaskShrinkRequest(TeaModel):
         self,
         app_shrink: str = None,
         avatar_info_shrink: str = None,
+        callback: bool = None,
+        callback_params: str = None,
+        ext_params: str = None,
         tenant_id: int = None,
         title: str = None,
         url: str = None,
@@ -4187,6 +4244,9 @@ class SubmitAudioTo3DAvatarVideoTaskShrinkRequest(TeaModel):
     ):
         self.app_shrink = app_shrink
         self.avatar_info_shrink = avatar_info_shrink
+        self.callback = callback
+        self.callback_params = callback_params
+        self.ext_params = ext_params
         self.tenant_id = tenant_id
         self.title = title
         self.url = url
@@ -4205,6 +4265,12 @@ class SubmitAudioTo3DAvatarVideoTaskShrinkRequest(TeaModel):
             result['App'] = self.app_shrink
         if self.avatar_info_shrink is not None:
             result['AvatarInfo'] = self.avatar_info_shrink
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callback_params is not None:
+            result['CallbackParams'] = self.callback_params
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.title is not None:
@@ -4221,6 +4287,12 @@ class SubmitAudioTo3DAvatarVideoTaskShrinkRequest(TeaModel):
             self.app_shrink = m.get('App')
         if m.get('AvatarInfo') is not None:
             self.avatar_info_shrink = m.get('AvatarInfo')
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('CallbackParams') is not None:
+            self.callback_params = m.get('CallbackParams')
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('Title') is not None:
@@ -4512,6 +4584,9 @@ class SubmitTextTo2DAvatarVideoTaskRequest(TeaModel):
         app: SubmitTextTo2DAvatarVideoTaskRequestApp = None,
         audio_info: SubmitTextTo2DAvatarVideoTaskRequestAudioInfo = None,
         avatar_info: SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo = None,
+        callback: bool = None,
+        callback_params: str = None,
+        ext_params: str = None,
         tenant_id: int = None,
         text: str = None,
         title: str = None,
@@ -4520,6 +4595,9 @@ class SubmitTextTo2DAvatarVideoTaskRequest(TeaModel):
         self.app = app
         self.audio_info = audio_info
         self.avatar_info = avatar_info
+        self.callback = callback
+        self.callback_params = callback_params
+        self.ext_params = ext_params
         self.tenant_id = tenant_id
         self.text = text
         self.title = title
@@ -4547,6 +4625,12 @@ class SubmitTextTo2DAvatarVideoTaskRequest(TeaModel):
             result['AudioInfo'] = self.audio_info.to_map()
         if self.avatar_info is not None:
             result['AvatarInfo'] = self.avatar_info.to_map()
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callback_params is not None:
+            result['CallbackParams'] = self.callback_params
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.text is not None:
@@ -4568,6 +4652,12 @@ class SubmitTextTo2DAvatarVideoTaskRequest(TeaModel):
         if m.get('AvatarInfo') is not None:
             temp_model = SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo()
             self.avatar_info = temp_model.from_map(m['AvatarInfo'])
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('CallbackParams') is not None:
+            self.callback_params = m.get('CallbackParams')
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('Text') is not None:
@@ -4586,6 +4676,9 @@ class SubmitTextTo2DAvatarVideoTaskShrinkRequest(TeaModel):
         app_shrink: str = None,
         audio_info_shrink: str = None,
         avatar_info_shrink: str = None,
+        callback: bool = None,
+        callback_params: str = None,
+        ext_params: str = None,
         tenant_id: int = None,
         text: str = None,
         title: str = None,
@@ -4594,6 +4687,9 @@ class SubmitTextTo2DAvatarVideoTaskShrinkRequest(TeaModel):
         self.app_shrink = app_shrink
         self.audio_info_shrink = audio_info_shrink
         self.avatar_info_shrink = avatar_info_shrink
+        self.callback = callback
+        self.callback_params = callback_params
+        self.ext_params = ext_params
         self.tenant_id = tenant_id
         self.text = text
         self.title = title
@@ -4614,6 +4710,12 @@ class SubmitTextTo2DAvatarVideoTaskShrinkRequest(TeaModel):
             result['AudioInfo'] = self.audio_info_shrink
         if self.avatar_info_shrink is not None:
             result['AvatarInfo'] = self.avatar_info_shrink
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callback_params is not None:
+            result['CallbackParams'] = self.callback_params
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.text is not None:
@@ -4632,6 +4734,12 @@ class SubmitTextTo2DAvatarVideoTaskShrinkRequest(TeaModel):
             self.audio_info_shrink = m.get('AudioInfo')
         if m.get('AvatarInfo') is not None:
             self.avatar_info_shrink = m.get('AvatarInfo')
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('CallbackParams') is not None:
+            self.callback_params = m.get('CallbackParams')
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('Text') is not None:
