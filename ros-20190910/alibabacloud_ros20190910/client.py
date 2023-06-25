@@ -2637,6 +2637,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.template_scratch_id):
             query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2676,6 +2678,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.template_scratch_id):
             query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2947,7 +2951,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetFeatureDetailsResponse:
         """
-        The Terraform version that is supported by ROS. The parameter value is the same as the value of the Transform parameter in a Terraform template.
+        You can call this operation to query the Terraform hosting, resource cleaner, and scenario features.
+        This topic provides an example on how to query the details of features supported by ROS in the China (Hangzhou) region. The details include Terraform versions, provider versions, and supported resource types.
+        >  In the Examples section, only part of the sample code is provided.
         
         @param request: GetFeatureDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2984,7 +2990,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetFeatureDetailsResponse:
         """
-        The Terraform version that is supported by ROS. The parameter value is the same as the value of the Transform parameter in a Terraform template.
+        You can call this operation to query the Terraform hosting, resource cleaner, and scenario features.
+        This topic provides an example on how to query the details of features supported by ROS in the China (Hangzhou) region. The details include Terraform versions, provider versions, and supported resource types.
+        >  In the Examples section, only part of the sample code is provided.
         
         @param request: GetFeatureDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3020,7 +3028,9 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetFeatureDetailsRequest,
     ) -> ros20190910_models.GetFeatureDetailsResponse:
         """
-        The Terraform version that is supported by ROS. The parameter value is the same as the value of the Transform parameter in a Terraform template.
+        You can call this operation to query the Terraform hosting, resource cleaner, and scenario features.
+        This topic provides an example on how to query the details of features supported by ROS in the China (Hangzhou) region. The details include Terraform versions, provider versions, and supported resource types.
+        >  In the Examples section, only part of the sample code is provided.
         
         @param request: GetFeatureDetailsRequest
         @return: GetFeatureDetailsResponse
@@ -3033,7 +3043,9 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetFeatureDetailsRequest,
     ) -> ros20190910_models.GetFeatureDetailsResponse:
         """
-        The Terraform version that is supported by ROS. The parameter value is the same as the value of the Transform parameter in a Terraform template.
+        You can call this operation to query the Terraform hosting, resource cleaner, and scenario features.
+        This topic provides an example on how to query the details of features supported by ROS in the China (Hangzhou) region. The details include Terraform versions, provider versions, and supported resource types.
+        >  In the Examples section, only part of the sample code is provided.
         
         @param request: GetFeatureDetailsRequest
         @return: GetFeatureDetailsResponse
@@ -4245,8 +4257,6 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.stack_id):
             query['StackId'] = request.stack_id
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_scratch_id):
@@ -4257,8 +4267,12 @@ class Client(OpenApiClient):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetTemplateEstimateCost',
@@ -4298,8 +4312,6 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.stack_id):
             query['StackId'] = request.stack_id
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_scratch_id):
@@ -4310,8 +4322,12 @@ class Client(OpenApiClient):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetTemplateEstimateCost',
@@ -4388,16 +4404,18 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.stack_id):
             query['StackId'] = request.stack_id
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetTemplateParameterConstraints',
@@ -4448,16 +4466,18 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.stack_id):
             query['StackId'] = request.stack_id
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetTemplateParameterConstraints',
@@ -5691,7 +5711,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackOperationRisksResponse:
         """
-        The ID of the stack.
+        The ListStackOperationRisks operation is suitable for the following scenarios:
+        *   You want to detect high risks that may arise in resources when you delete a stack that contains the resources, and query the cause of each risk in a resource.
+        *   When you create a stack, the creation may fail. In this case, you can call this operation to check which types of permissions that are required to create stacks are missing.
         
         @param request: ListStackOperationRisksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5746,7 +5768,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackOperationRisksResponse:
         """
-        The ID of the stack.
+        The ListStackOperationRisks operation is suitable for the following scenarios:
+        *   You want to detect high risks that may arise in resources when you delete a stack that contains the resources, and query the cause of each risk in a resource.
+        *   When you create a stack, the creation may fail. In this case, you can call this operation to check which types of permissions that are required to create stacks are missing.
         
         @param request: ListStackOperationRisksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5800,7 +5824,9 @@ class Client(OpenApiClient):
         request: ros20190910_models.ListStackOperationRisksRequest,
     ) -> ros20190910_models.ListStackOperationRisksResponse:
         """
-        The ID of the stack.
+        The ListStackOperationRisks operation is suitable for the following scenarios:
+        *   You want to detect high risks that may arise in resources when you delete a stack that contains the resources, and query the cause of each risk in a resource.
+        *   When you create a stack, the creation may fail. In this case, you can call this operation to check which types of permissions that are required to create stacks are missing.
         
         @param request: ListStackOperationRisksRequest
         @return: ListStackOperationRisksResponse
@@ -5813,7 +5839,9 @@ class Client(OpenApiClient):
         request: ros20190910_models.ListStackOperationRisksRequest,
     ) -> ros20190910_models.ListStackOperationRisksResponse:
         """
-        The ID of the stack.
+        The ListStackOperationRisks operation is suitable for the following scenarios:
+        *   You want to detect high risks that may arise in resources when you delete a stack that contains the resources, and query the cause of each risk in a resource.
+        *   When you create a stack, the creation may fail. In this case, you can call this operation to check which types of permissions that are required to create stacks are missing.
         
         @param request: ListStackOperationRisksRequest
         @return: ListStackOperationRisksResponse

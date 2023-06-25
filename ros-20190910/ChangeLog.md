@@ -1,3 +1,6 @@
+2023-06-25 Version: 3.2.27
+- GenerateTemplateByScratch adds a new input parameter TemplateType.
+
 2023-05-18 Version: 3.2.26
 - GetTemplateEstimateCost adds a new input parameter StackId, which is used for inquiry of updating scenarios.
 - Added OrderIds output to GetStack interface.
