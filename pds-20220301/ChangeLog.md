@@ -1,3 +1,6 @@
+2023-06-25 Version: 1.0.11
+- 新增AI字段
+
 2023-05-23 Version: 1.0.10
 - Support list assignment api.
 

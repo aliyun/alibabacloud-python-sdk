@@ -123,6 +123,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_group_member_with_options_async(domain_id, request, headers, runtime)
 
+    def add_story_files_with_options(
+        self,
+        request: pds_20220301_models.AddStoryFilesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.AddStoryFilesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.files):
+            body['files'] = request.files
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddStoryFiles',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/add_story_files',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.AddStoryFilesResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def add_story_files_with_options_async(
+        self,
+        request: pds_20220301_models.AddStoryFilesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.AddStoryFilesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.files):
+            body['files'] = request.files
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddStoryFiles',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/add_story_files',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.AddStoryFilesResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def add_story_files(
+        self,
+        request: pds_20220301_models.AddStoryFilesRequest,
+    ) -> pds_20220301_models.AddStoryFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.add_story_files_with_options(request, headers, runtime)
+
+    async def add_story_files_async(
+        self,
+        request: pds_20220301_models.AddStoryFilesRequest,
+    ) -> pds_20220301_models.AddStoryFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.add_story_files_with_options_async(request, headers, runtime)
+
     def authorize_with_options(
         self,
         tmp_req: pds_20220301_models.AuthorizeRequest,
@@ -642,6 +726,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.copy_file_with_options_async(request, headers, runtime)
+
+    def create_customized_story_with_options(
+        self,
+        request: pds_20220301_models.CreateCustomizedStoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CreateCustomizedStoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.custom_labels):
+            body['custom_labels'] = request.custom_labels
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.story_cover):
+            body['story_cover'] = request.story_cover
+        if not UtilClient.is_unset(request.story_files):
+            body['story_files'] = request.story_files
+        if not UtilClient.is_unset(request.story_name):
+            body['story_name'] = request.story_name
+        if not UtilClient.is_unset(request.story_sub_type):
+            body['story_sub_type'] = request.story_sub_type
+        if not UtilClient.is_unset(request.story_type):
+            body['story_type'] = request.story_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomizedStory',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/create_customized_story',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CreateCustomizedStoryResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_customized_story_with_options_async(
+        self,
+        request: pds_20220301_models.CreateCustomizedStoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CreateCustomizedStoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.custom_labels):
+            body['custom_labels'] = request.custom_labels
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.story_cover):
+            body['story_cover'] = request.story_cover
+        if not UtilClient.is_unset(request.story_files):
+            body['story_files'] = request.story_files
+        if not UtilClient.is_unset(request.story_name):
+            body['story_name'] = request.story_name
+        if not UtilClient.is_unset(request.story_sub_type):
+            body['story_sub_type'] = request.story_sub_type
+        if not UtilClient.is_unset(request.story_type):
+            body['story_type'] = request.story_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomizedStory',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/create_customized_story',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CreateCustomizedStoryResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_customized_story(
+        self,
+        request: pds_20220301_models.CreateCustomizedStoryRequest,
+    ) -> pds_20220301_models.CreateCustomizedStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_customized_story_with_options(request, headers, runtime)
+
+    async def create_customized_story_async(
+        self,
+        request: pds_20220301_models.CreateCustomizedStoryRequest,
+    ) -> pds_20220301_models.CreateCustomizedStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_customized_story_with_options_async(request, headers, runtime)
 
     def create_domain_with_options(
         self,
@@ -1311,6 +1495,198 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_share_link_with_options_async(request, headers, runtime)
 
+    def create_similar_image_cluster_task_with_options(
+        self,
+        request: pds_20220301_models.CreateSimilarImageClusterTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CreateSimilarImageClusterTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSimilarImageClusterTask',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/create_similar_image_cluster_task',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CreateSimilarImageClusterTaskResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_similar_image_cluster_task_with_options_async(
+        self,
+        request: pds_20220301_models.CreateSimilarImageClusterTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CreateSimilarImageClusterTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSimilarImageClusterTask',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/create_similar_image_cluster_task',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CreateSimilarImageClusterTaskResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_similar_image_cluster_task(
+        self,
+        request: pds_20220301_models.CreateSimilarImageClusterTaskRequest,
+    ) -> pds_20220301_models.CreateSimilarImageClusterTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_similar_image_cluster_task_with_options(request, headers, runtime)
+
+    async def create_similar_image_cluster_task_async(
+        self,
+        request: pds_20220301_models.CreateSimilarImageClusterTaskRequest,
+    ) -> pds_20220301_models.CreateSimilarImageClusterTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_similar_image_cluster_task_with_options_async(request, headers, runtime)
+
+    def create_story_with_options(
+        self,
+        request: pds_20220301_models.CreateStoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CreateStoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.address):
+            body['address'] = request.address
+        if not UtilClient.is_unset(request.custom_labels):
+            body['custom_labels'] = request.custom_labels
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.max_image_count):
+            body['max_image_count'] = request.max_image_count
+        if not UtilClient.is_unset(request.min_image_count):
+            body['min_image_count'] = request.min_image_count
+        if not UtilClient.is_unset(request.story_end_time):
+            body['story_end_time'] = request.story_end_time
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        if not UtilClient.is_unset(request.story_name):
+            body['story_name'] = request.story_name
+        if not UtilClient.is_unset(request.story_start_time):
+            body['story_start_time'] = request.story_start_time
+        if not UtilClient.is_unset(request.story_sub_type):
+            body['story_sub_type'] = request.story_sub_type
+        if not UtilClient.is_unset(request.story_type):
+            body['story_type'] = request.story_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateStory',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/create_story',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CreateStoryResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_story_with_options_async(
+        self,
+        request: pds_20220301_models.CreateStoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CreateStoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.address):
+            body['address'] = request.address
+        if not UtilClient.is_unset(request.custom_labels):
+            body['custom_labels'] = request.custom_labels
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.max_image_count):
+            body['max_image_count'] = request.max_image_count
+        if not UtilClient.is_unset(request.min_image_count):
+            body['min_image_count'] = request.min_image_count
+        if not UtilClient.is_unset(request.story_end_time):
+            body['story_end_time'] = request.story_end_time
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        if not UtilClient.is_unset(request.story_name):
+            body['story_name'] = request.story_name
+        if not UtilClient.is_unset(request.story_start_time):
+            body['story_start_time'] = request.story_start_time
+        if not UtilClient.is_unset(request.story_sub_type):
+            body['story_sub_type'] = request.story_sub_type
+        if not UtilClient.is_unset(request.story_type):
+            body['story_type'] = request.story_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateStory',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/create_story',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CreateStoryResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_story(
+        self,
+        request: pds_20220301_models.CreateStoryRequest,
+    ) -> pds_20220301_models.CreateStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_story_with_options(request, headers, runtime)
+
+    async def create_story_async(
+        self,
+        request: pds_20220301_models.CreateStoryRequest,
+    ) -> pds_20220301_models.CreateStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_story_with_options_async(request, headers, runtime)
+
     def create_user_with_options(
         self,
         request: pds_20220301_models.CreateUserRequest,
@@ -1902,6 +2278,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_revision_with_options_async(request, headers, runtime)
+
+    def delete_story_with_options(
+        self,
+        request: pds_20220301_models.DeleteStoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.DeleteStoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteStory',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/delete_story',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.DeleteStoryResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_story_with_options_async(
+        self,
+        request: pds_20220301_models.DeleteStoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.DeleteStoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteStory',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/delete_story',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.DeleteStoryResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_story(
+        self,
+        request: pds_20220301_models.DeleteStoryRequest,
+    ) -> pds_20220301_models.DeleteStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_story_with_options(request, headers, runtime)
+
+    async def delete_story_async(
+        self,
+        request: pds_20220301_models.DeleteStoryRequest,
+    ) -> pds_20220301_models.DeleteStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_story_with_options_async(request, headers, runtime)
 
     def delete_user_with_options(
         self,
@@ -3711,6 +4167,190 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_share_link_token_with_options_async(request, headers, runtime)
 
+    def get_story_with_options(
+        self,
+        request: pds_20220301_models.GetStoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GetStoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cover_image_thumbnail_process):
+            body['cover_image_thumbnail_process'] = request.cover_image_thumbnail_process
+        if not UtilClient.is_unset(request.cover_video_thumbnail_process):
+            body['cover_video_thumbnail_process'] = request.cover_video_thumbnail_process
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.image_thumbnail_process):
+            body['image_thumbnail_process'] = request.image_thumbnail_process
+        if not UtilClient.is_unset(request.image_url_process):
+            body['image_url_process'] = request.image_url_process
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        if not UtilClient.is_unset(request.url_expire_sec):
+            body['url_expire_sec'] = request.url_expire_sec
+        if not UtilClient.is_unset(request.video_thumbnail_process):
+            body['video_thumbnail_process'] = request.video_thumbnail_process
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetStory',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/get_story',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GetStoryResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_story_with_options_async(
+        self,
+        request: pds_20220301_models.GetStoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GetStoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cover_image_thumbnail_process):
+            body['cover_image_thumbnail_process'] = request.cover_image_thumbnail_process
+        if not UtilClient.is_unset(request.cover_video_thumbnail_process):
+            body['cover_video_thumbnail_process'] = request.cover_video_thumbnail_process
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.image_thumbnail_process):
+            body['image_thumbnail_process'] = request.image_thumbnail_process
+        if not UtilClient.is_unset(request.image_url_process):
+            body['image_url_process'] = request.image_url_process
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        if not UtilClient.is_unset(request.url_expire_sec):
+            body['url_expire_sec'] = request.url_expire_sec
+        if not UtilClient.is_unset(request.video_thumbnail_process):
+            body['video_thumbnail_process'] = request.video_thumbnail_process
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetStory',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/get_story',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GetStoryResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_story(
+        self,
+        request: pds_20220301_models.GetStoryRequest,
+    ) -> pds_20220301_models.GetStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_story_with_options(request, headers, runtime)
+
+    async def get_story_async(
+        self,
+        request: pds_20220301_models.GetStoryRequest,
+    ) -> pds_20220301_models.GetStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_story_with_options_async(request, headers, runtime)
+
+    def get_task_status_with_options(
+        self,
+        request: pds_20220301_models.GetTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GetTaskStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.task_id):
+            body['task_id'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTaskStatus',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/get_task_status',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GetTaskStatusResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_task_status_with_options_async(
+        self,
+        request: pds_20220301_models.GetTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GetTaskStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.task_id):
+            body['task_id'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTaskStatus',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/get_task_status',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GetTaskStatusResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_task_status(
+        self,
+        request: pds_20220301_models.GetTaskStatusRequest,
+    ) -> pds_20220301_models.GetTaskStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_task_status_with_options(request, headers, runtime)
+
+    async def get_task_status_async(
+        self,
+        request: pds_20220301_models.GetTaskStatusRequest,
+    ) -> pds_20220301_models.GetTaskStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_task_status_with_options_async(request, headers, runtime)
+
     def get_upload_url_with_options(
         self,
         request: pds_20220301_models.GetUploadUrlRequest,
@@ -4901,6 +5541,8 @@ class Client(OpenApiClient):
             body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
+        if not UtilClient.is_unset(request.thumbnail_processes):
+            body['thumbnail_processes'] = request.thumbnail_processes
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -4951,6 +5593,8 @@ class Client(OpenApiClient):
             body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
+        if not UtilClient.is_unset(request.thumbnail_processes):
+            body['thumbnail_processes'] = request.thumbnail_processes
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -6379,6 +7023,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.remove_group_member_with_options_async(domain_id, request, headers, runtime)
 
+    def remove_story_files_with_options(
+        self,
+        request: pds_20220301_models.RemoveStoryFilesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.RemoveStoryFilesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.files):
+            body['files'] = request.files
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RemoveStoryFiles',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/remove_story_files',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.RemoveStoryFilesResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def remove_story_files_with_options_async(
+        self,
+        request: pds_20220301_models.RemoveStoryFilesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.RemoveStoryFilesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.files):
+            body['files'] = request.files
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RemoveStoryFiles',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/remove_story_files',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.RemoveStoryFilesResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def remove_story_files(
+        self,
+        request: pds_20220301_models.RemoveStoryFilesRequest,
+    ) -> pds_20220301_models.RemoveStoryFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.remove_story_files_with_options(request, headers, runtime)
+
+    async def remove_story_files_async(
+        self,
+        request: pds_20220301_models.RemoveStoryFilesRequest,
+    ) -> pds_20220301_models.RemoveStoryFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.remove_story_files_with_options_async(request, headers, runtime)
+
     def restore_file_with_options(
         self,
         request: pds_20220301_models.RestoreFileRequest,
@@ -7106,6 +7834,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.search_share_link_with_options_async(request, headers, runtime)
+
+    def search_similar_image_clusters_with_options(
+        self,
+        request: pds_20220301_models.SearchSimilarImageClustersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.SearchSimilarImageClustersResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.image_thumbnail_process):
+            body['image_thumbnail_process'] = request.image_thumbnail_process
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        if not UtilClient.is_unset(request.order):
+            body['order'] = request.order
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchSimilarImageClusters',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/query_similar_image_clusters',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.SearchSimilarImageClustersResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def search_similar_image_clusters_with_options_async(
+        self,
+        request: pds_20220301_models.SearchSimilarImageClustersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.SearchSimilarImageClustersResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.image_thumbnail_process):
+            body['image_thumbnail_process'] = request.image_thumbnail_process
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        if not UtilClient.is_unset(request.order):
+            body['order'] = request.order
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchSimilarImageClusters',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/query_similar_image_clusters',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.SearchSimilarImageClustersResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def search_similar_image_clusters(
+        self,
+        request: pds_20220301_models.SearchSimilarImageClustersRequest,
+    ) -> pds_20220301_models.SearchSimilarImageClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.search_similar_image_clusters_with_options(request, headers, runtime)
+
+    async def search_similar_image_clusters_async(
+        self,
+        request: pds_20220301_models.SearchSimilarImageClustersRequest,
+    ) -> pds_20220301_models.SearchSimilarImageClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.search_similar_image_clusters_with_options_async(request, headers, runtime)
+
+    def search_stories_with_options(
+        self,
+        request: pds_20220301_models.SearchStoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.SearchStoriesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cover_image_thumbnail_process):
+            body['cover_image_thumbnail_process'] = request.cover_image_thumbnail_process
+        if not UtilClient.is_unset(request.cover_video_thumbnail_process):
+            body['cover_video_thumbnail_process'] = request.cover_video_thumbnail_process
+        if not UtilClient.is_unset(request.create_time_range):
+            body['create_time_range'] = request.create_time_range
+        if not UtilClient.is_unset(request.custom_labels):
+            body['custom_labels'] = request.custom_labels
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.face_group_ids):
+            body['face_group_ids'] = request.face_group_ids
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        if not UtilClient.is_unset(request.order):
+            body['order'] = request.order
+        if not UtilClient.is_unset(request.sort):
+            body['sort'] = request.sort
+        if not UtilClient.is_unset(request.story_end_time_range):
+            body['story_end_time_range'] = request.story_end_time_range
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        if not UtilClient.is_unset(request.story_name):
+            body['story_name'] = request.story_name
+        if not UtilClient.is_unset(request.story_start_time_range):
+            body['story_start_time_range'] = request.story_start_time_range
+        if not UtilClient.is_unset(request.story_type):
+            body['story_type'] = request.story_type
+        if not UtilClient.is_unset(request.url_expire_sec):
+            body['url_expire_sec'] = request.url_expire_sec
+        if not UtilClient.is_unset(request.with_empty_stories):
+            body['with_empty_stories'] = request.with_empty_stories
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchStories',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/find_stories',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.SearchStoriesResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def search_stories_with_options_async(
+        self,
+        request: pds_20220301_models.SearchStoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.SearchStoriesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cover_image_thumbnail_process):
+            body['cover_image_thumbnail_process'] = request.cover_image_thumbnail_process
+        if not UtilClient.is_unset(request.cover_video_thumbnail_process):
+            body['cover_video_thumbnail_process'] = request.cover_video_thumbnail_process
+        if not UtilClient.is_unset(request.create_time_range):
+            body['create_time_range'] = request.create_time_range
+        if not UtilClient.is_unset(request.custom_labels):
+            body['custom_labels'] = request.custom_labels
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.face_group_ids):
+            body['face_group_ids'] = request.face_group_ids
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        if not UtilClient.is_unset(request.order):
+            body['order'] = request.order
+        if not UtilClient.is_unset(request.sort):
+            body['sort'] = request.sort
+        if not UtilClient.is_unset(request.story_end_time_range):
+            body['story_end_time_range'] = request.story_end_time_range
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        if not UtilClient.is_unset(request.story_name):
+            body['story_name'] = request.story_name
+        if not UtilClient.is_unset(request.story_start_time_range):
+            body['story_start_time_range'] = request.story_start_time_range
+        if not UtilClient.is_unset(request.story_type):
+            body['story_type'] = request.story_type
+        if not UtilClient.is_unset(request.url_expire_sec):
+            body['url_expire_sec'] = request.url_expire_sec
+        if not UtilClient.is_unset(request.with_empty_stories):
+            body['with_empty_stories'] = request.with_empty_stories
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchStories',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/find_stories',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.SearchStoriesResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def search_stories(
+        self,
+        request: pds_20220301_models.SearchStoriesRequest,
+    ) -> pds_20220301_models.SearchStoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.search_stories_with_options(request, headers, runtime)
+
+    async def search_stories_async(
+        self,
+        request: pds_20220301_models.SearchStoriesRequest,
+    ) -> pds_20220301_models.SearchStoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.search_stories_with_options_async(request, headers, runtime)
 
     def search_user_with_options(
         self,
@@ -8198,6 +9158,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_share_link_with_options_async(request, headers, runtime)
+
+    def update_story_with_options(
+        self,
+        request: pds_20220301_models.UpdateStoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.UpdateStoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cover):
+            body['cover'] = request.cover
+        if not UtilClient.is_unset(request.custom_labels):
+            body['custom_labels'] = request.custom_labels
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        if not UtilClient.is_unset(request.story_name):
+            body['story_name'] = request.story_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateStory',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/update_story',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.UpdateStoryResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_story_with_options_async(
+        self,
+        request: pds_20220301_models.UpdateStoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.UpdateStoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cover):
+            body['cover'] = request.cover
+        if not UtilClient.is_unset(request.custom_labels):
+            body['custom_labels'] = request.custom_labels
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.story_id):
+            body['story_id'] = request.story_id
+        if not UtilClient.is_unset(request.story_name):
+            body['story_name'] = request.story_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateStory',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/image/update_story',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.UpdateStoryResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_story(
+        self,
+        request: pds_20220301_models.UpdateStoryRequest,
+    ) -> pds_20220301_models.UpdateStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_story_with_options(request, headers, runtime)
+
+    async def update_story_async(
+        self,
+        request: pds_20220301_models.UpdateStoryRequest,
+    ) -> pds_20220301_models.UpdateStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_story_with_options_async(request, headers, runtime)
 
     def update_user_with_options(
         self,

@@ -623,6 +623,45 @@ class FaceGroup(TeaModel):
         return self
 
 
+class FaceThumbnail(TeaModel):
+    def __init__(
+        self,
+        face_group_id: str = None,
+        face_id: str = None,
+        face_thumbnail: str = None,
+    ):
+        self.face_group_id = face_group_id
+        self.face_id = face_id
+        self.face_thumbnail = face_thumbnail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_group_id is not None:
+            result['face_group_id'] = self.face_group_id
+        if self.face_id is not None:
+            result['face_id'] = self.face_id
+        if self.face_thumbnail is not None:
+            result['face_thumbnail'] = self.face_thumbnail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('face_group_id') is not None:
+            self.face_group_id = m.get('face_group_id')
+        if m.get('face_id') is not None:
+            self.face_id = m.get('face_id')
+        if m.get('face_thumbnail') is not None:
+            self.face_thumbnail = m.get('face_thumbnail')
+        return self
+
+
 class FileInvestigationInfo(TeaModel):
     def __init__(
         self,
@@ -656,6 +695,221 @@ class FileInvestigationInfo(TeaModel):
         return self
 
 
+class ImageQuality(TeaModel):
+    def __init__(
+        self,
+        overall_score: float = None,
+    ):
+        self.overall_score = overall_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.overall_score is not None:
+            result['overall_score'] = self.overall_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('overall_score') is not None:
+            self.overall_score = m.get('overall_score')
+        return self
+
+
+class SystemTag(TeaModel):
+    def __init__(
+        self,
+        centric_score: float = None,
+        confidence: float = None,
+        name: str = None,
+        parent_name: str = None,
+        source: str = None,
+        tag_level: int = None,
+    ):
+        self.centric_score = centric_score
+        self.confidence = confidence
+        self.name = name
+        self.parent_name = parent_name
+        self.source = source
+        self.tag_level = tag_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.centric_score is not None:
+            result['centric_score'] = self.centric_score
+        if self.confidence is not None:
+            result['confidence'] = self.confidence
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_name is not None:
+            result['parent_name'] = self.parent_name
+        if self.source is not None:
+            result['source'] = self.source
+        if self.tag_level is not None:
+            result['tag_level'] = self.tag_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('centric_score') is not None:
+            self.centric_score = m.get('centric_score')
+        if m.get('confidence') is not None:
+            self.confidence = m.get('confidence')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parent_name') is not None:
+            self.parent_name = m.get('parent_name')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('tag_level') is not None:
+            self.tag_level = m.get('tag_level')
+        return self
+
+
+class ImageMediaMetadata(TeaModel):
+    def __init__(
+        self,
+        address_line: str = None,
+        city: str = None,
+        country: str = None,
+        district: str = None,
+        exif: str = None,
+        faces: str = None,
+        faces_thumbnail: List[FaceThumbnail] = None,
+        height: int = None,
+        image_quality: ImageQuality = None,
+        image_tags: List[SystemTag] = None,
+        location: str = None,
+        province: str = None,
+        time: str = None,
+        township: str = None,
+        width: int = None,
+    ):
+        self.address_line = address_line
+        self.city = city
+        self.country = country
+        self.district = district
+        self.exif = exif
+        self.faces = faces
+        self.faces_thumbnail = faces_thumbnail
+        self.height = height
+        self.image_quality = image_quality
+        self.image_tags = image_tags
+        self.location = location
+        self.province = province
+        self.time = time
+        self.township = township
+        self.width = width
+
+    def validate(self):
+        if self.faces_thumbnail:
+            for k in self.faces_thumbnail:
+                if k:
+                    k.validate()
+        if self.image_quality:
+            self.image_quality.validate()
+        if self.image_tags:
+            for k in self.image_tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_line is not None:
+            result['address_line'] = self.address_line
+        if self.city is not None:
+            result['city'] = self.city
+        if self.country is not None:
+            result['country'] = self.country
+        if self.district is not None:
+            result['district'] = self.district
+        if self.exif is not None:
+            result['exif'] = self.exif
+        if self.faces is not None:
+            result['faces'] = self.faces
+        result['faces_thumbnail'] = []
+        if self.faces_thumbnail is not None:
+            for k in self.faces_thumbnail:
+                result['faces_thumbnail'].append(k.to_map() if k else None)
+        if self.height is not None:
+            result['height'] = self.height
+        if self.image_quality is not None:
+            result['image_quality'] = self.image_quality.to_map()
+        result['image_tags'] = []
+        if self.image_tags is not None:
+            for k in self.image_tags:
+                result['image_tags'].append(k.to_map() if k else None)
+        if self.location is not None:
+            result['location'] = self.location
+        if self.province is not None:
+            result['province'] = self.province
+        if self.time is not None:
+            result['time'] = self.time
+        if self.township is not None:
+            result['township'] = self.township
+        if self.width is not None:
+            result['width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('address_line') is not None:
+            self.address_line = m.get('address_line')
+        if m.get('city') is not None:
+            self.city = m.get('city')
+        if m.get('country') is not None:
+            self.country = m.get('country')
+        if m.get('district') is not None:
+            self.district = m.get('district')
+        if m.get('exif') is not None:
+            self.exif = m.get('exif')
+        if m.get('faces') is not None:
+            self.faces = m.get('faces')
+        self.faces_thumbnail = []
+        if m.get('faces_thumbnail') is not None:
+            for k in m.get('faces_thumbnail'):
+                temp_model = FaceThumbnail()
+                self.faces_thumbnail.append(temp_model.from_map(k))
+        if m.get('height') is not None:
+            self.height = m.get('height')
+        if m.get('image_quality') is not None:
+            temp_model = ImageQuality()
+            self.image_quality = temp_model.from_map(m['image_quality'])
+        self.image_tags = []
+        if m.get('image_tags') is not None:
+            for k in m.get('image_tags'):
+                temp_model = SystemTag()
+                self.image_tags.append(temp_model.from_map(k))
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('province') is not None:
+            self.province = m.get('province')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        if m.get('township') is not None:
+            self.township = m.get('township')
+        if m.get('width') is not None:
+            self.width = m.get('width')
+        return self
+
+
 class File(TeaModel):
     def __init__(
         self,
@@ -672,8 +926,9 @@ class File(TeaModel):
         file_extension: str = None,
         file_id: str = None,
         hidden: bool = None,
+        image_media_metadata: ImageMediaMetadata = None,
         investigation_info: FileInvestigationInfo = None,
-        labels: str = None,
+        labels: List[str] = None,
         local_created_at: str = None,
         local_modified_at: str = None,
         name: str = None,
@@ -683,6 +938,7 @@ class File(TeaModel):
         starred: bool = None,
         status: str = None,
         thumbnail: str = None,
+        thumbnail_urls: Dict[str, str] = None,
         trashed_at: str = None,
         type: str = None,
         updated_at: str = None,
@@ -701,6 +957,7 @@ class File(TeaModel):
         self.file_extension = file_extension
         self.file_id = file_id
         self.hidden = hidden
+        self.image_media_metadata = image_media_metadata
         self.investigation_info = investigation_info
         self.labels = labels
         self.local_created_at = local_created_at
@@ -712,12 +969,15 @@ class File(TeaModel):
         self.starred = starred
         self.status = status
         self.thumbnail = thumbnail
+        self.thumbnail_urls = thumbnail_urls
         self.trashed_at = trashed_at
         self.type = type
         self.updated_at = updated_at
         self.upload_id = upload_id
 
     def validate(self):
+        if self.image_media_metadata:
+            self.image_media_metadata.validate()
         if self.investigation_info:
             self.investigation_info.validate()
 
@@ -753,6 +1013,8 @@ class File(TeaModel):
             result['file_id'] = self.file_id
         if self.hidden is not None:
             result['hidden'] = self.hidden
+        if self.image_media_metadata is not None:
+            result['image_media_metadata'] = self.image_media_metadata.to_map()
         if self.investigation_info is not None:
             result['investigation_info'] = self.investigation_info.to_map()
         if self.labels is not None:
@@ -775,6 +1037,8 @@ class File(TeaModel):
             result['status'] = self.status
         if self.thumbnail is not None:
             result['thumbnail'] = self.thumbnail
+        if self.thumbnail_urls is not None:
+            result['thumbnail_urls'] = self.thumbnail_urls
         if self.trashed_at is not None:
             result['trashed_at'] = self.trashed_at
         if self.type is not None:
@@ -813,6 +1077,9 @@ class File(TeaModel):
             self.file_id = m.get('file_id')
         if m.get('hidden') is not None:
             self.hidden = m.get('hidden')
+        if m.get('image_media_metadata') is not None:
+            temp_model = ImageMediaMetadata()
+            self.image_media_metadata = temp_model.from_map(m['image_media_metadata'])
         if m.get('investigation_info') is not None:
             temp_model = FileInvestigationInfo()
             self.investigation_info = temp_model.from_map(m['investigation_info'])
@@ -836,6 +1103,8 @@ class File(TeaModel):
             self.status = m.get('status')
         if m.get('thumbnail') is not None:
             self.thumbnail = m.get('thumbnail')
+        if m.get('thumbnail_urls') is not None:
+            self.thumbnail_urls = m.get('thumbnail_urls')
         if m.get('trashed_at') is not None:
             self.trashed_at = m.get('trashed_at')
         if m.get('type') is not None:
@@ -1254,16 +1523,16 @@ class IdentityToBenefitPkgMapping(TeaModel):
         return self
 
 
-class ImageMediaMetadata(TeaModel):
+class ImageProcess(TeaModel):
     def __init__(
         self,
-        height: int = None,
-        taken_at: str = None,
-        width: int = None,
+        image_thumbnail_process: str = None,
+        office_thumbnail_process: str = None,
+        video_thumbnail_process: str = None,
     ):
-        self.height = height
-        self.taken_at = taken_at
-        self.width = width
+        self.image_thumbnail_process = image_thumbnail_process
+        self.office_thumbnail_process = office_thumbnail_process
+        self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
         pass
@@ -1274,22 +1543,22 @@ class ImageMediaMetadata(TeaModel):
             return _map
 
         result = dict()
-        if self.height is not None:
-            result['height'] = self.height
-        if self.taken_at is not None:
-            result['taken_at'] = self.taken_at
-        if self.width is not None:
-            result['width'] = self.width
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.office_thumbnail_process is not None:
+            result['office_thumbnail_process'] = self.office_thumbnail_process
+        if self.video_thumbnail_process is not None:
+            result['video_thumbnail_process'] = self.video_thumbnail_process
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('height') is not None:
-            self.height = m.get('height')
-        if m.get('taken_at') is not None:
-            self.taken_at = m.get('taken_at')
-        if m.get('width') is not None:
-            self.width = m.get('width')
+        if m.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = m.get('image_thumbnail_process')
+        if m.get('office_thumbnail_process') is not None:
+            self.office_thumbnail_process = m.get('office_thumbnail_process')
+        if m.get('video_thumbnail_process') is not None:
+            self.video_thumbnail_process = m.get('video_thumbnail_process')
         return self
 
 
@@ -1852,23 +2121,42 @@ class ShareLink(TeaModel):
         return self
 
 
-class SystemTag(TeaModel):
+class Story(TeaModel):
     def __init__(
         self,
-        confidence: float = None,
-        name: str = None,
-        parent_name: str = None,
-        source: str = None,
-        tag_level: int = None,
+        cover_file_id: str = None,
+        cover_file_thumbnail_url: str = None,
+        created_at: str = None,
+        custom_labels: Dict[str, Any] = None,
+        face_group_ids: List[str] = None,
+        story_end_time: str = None,
+        story_file_list: List[File] = None,
+        story_id: str = None,
+        story_name: str = None,
+        story_start_time: str = None,
+        story_sub_type: str = None,
+        story_type: str = None,
+        updated_at: str = None,
     ):
-        self.confidence = confidence
-        self.name = name
-        self.parent_name = parent_name
-        self.source = source
-        self.tag_level = tag_level
+        self.cover_file_id = cover_file_id
+        self.cover_file_thumbnail_url = cover_file_thumbnail_url
+        self.created_at = created_at
+        self.custom_labels = custom_labels
+        self.face_group_ids = face_group_ids
+        self.story_end_time = story_end_time
+        self.story_file_list = story_file_list
+        self.story_id = story_id
+        self.story_name = story_name
+        self.story_start_time = story_start_time
+        self.story_sub_type = story_sub_type
+        self.story_type = story_type
+        self.updated_at = updated_at
 
     def validate(self):
-        pass
+        if self.story_file_list:
+            for k in self.story_file_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1876,30 +2164,67 @@ class SystemTag(TeaModel):
             return _map
 
         result = dict()
-        if self.confidence is not None:
-            result['confidence'] = self.confidence
-        if self.name is not None:
-            result['name'] = self.name
-        if self.parent_name is not None:
-            result['parent_name'] = self.parent_name
-        if self.source is not None:
-            result['source'] = self.source
-        if self.tag_level is not None:
-            result['tag_level'] = self.tag_level
+        if self.cover_file_id is not None:
+            result['cover_file_id'] = self.cover_file_id
+        if self.cover_file_thumbnail_url is not None:
+            result['cover_file_thumbnail_url'] = self.cover_file_thumbnail_url
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.custom_labels is not None:
+            result['custom_labels'] = self.custom_labels
+        if self.face_group_ids is not None:
+            result['face_group_ids'] = self.face_group_ids
+        if self.story_end_time is not None:
+            result['story_end_time'] = self.story_end_time
+        result['story_file_list'] = []
+        if self.story_file_list is not None:
+            for k in self.story_file_list:
+                result['story_file_list'].append(k.to_map() if k else None)
+        if self.story_id is not None:
+            result['story_id'] = self.story_id
+        if self.story_name is not None:
+            result['story_name'] = self.story_name
+        if self.story_start_time is not None:
+            result['story_start_time'] = self.story_start_time
+        if self.story_sub_type is not None:
+            result['story_sub_type'] = self.story_sub_type
+        if self.story_type is not None:
+            result['story_type'] = self.story_type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('confidence') is not None:
-            self.confidence = m.get('confidence')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('parent_name') is not None:
-            self.parent_name = m.get('parent_name')
-        if m.get('source') is not None:
-            self.source = m.get('source')
-        if m.get('tag_level') is not None:
-            self.tag_level = m.get('tag_level')
+        if m.get('cover_file_id') is not None:
+            self.cover_file_id = m.get('cover_file_id')
+        if m.get('cover_file_thumbnail_url') is not None:
+            self.cover_file_thumbnail_url = m.get('cover_file_thumbnail_url')
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('custom_labels') is not None:
+            self.custom_labels = m.get('custom_labels')
+        if m.get('face_group_ids') is not None:
+            self.face_group_ids = m.get('face_group_ids')
+        if m.get('story_end_time') is not None:
+            self.story_end_time = m.get('story_end_time')
+        self.story_file_list = []
+        if m.get('story_file_list') is not None:
+            for k in m.get('story_file_list'):
+                temp_model = File()
+                self.story_file_list.append(temp_model.from_map(k))
+        if m.get('story_id') is not None:
+            self.story_id = m.get('story_id')
+        if m.get('story_name') is not None:
+            self.story_name = m.get('story_name')
+        if m.get('story_start_time') is not None:
+            self.story_start_time = m.get('story_start_time')
+        if m.get('story_sub_type') is not None:
+            self.story_sub_type = m.get('story_sub_type')
+        if m.get('story_type') is not None:
+            self.story_type = m.get('story_type')
+        if m.get('updated_at') is not None:
+            self.updated_at = m.get('updated_at')
         return self
 
 
@@ -2529,6 +2854,163 @@ class AddGroupMemberResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        return self
+
+
+class AddStoryFilesRequestFiles(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        revision_id: str = None,
+    ):
+        self.file_id = file_id
+        self.revision_id = revision_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
+        return self
+
+
+class AddStoryFilesRequest(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+        files: List[AddStoryFilesRequestFiles] = None,
+        story_id: str = None,
+    ):
+        self.drive_id = drive_id
+        self.files = files
+        self.story_id = story_id
+
+    def validate(self):
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        result['files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['files'].append(k.to_map() if k else None)
+        if self.story_id is not None:
+            result['story_id'] = self.story_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        self.files = []
+        if m.get('files') is not None:
+            for k in m.get('files'):
+                temp_model = AddStoryFilesRequestFiles()
+                self.files.append(temp_model.from_map(k))
+        if m.get('story_id') is not None:
+            self.story_id = m.get('story_id')
+        return self
+
+
+class AddStoryFilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+        story_id: str = None,
+    ):
+        self.drive_id = drive_id
+        self.story_id = story_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.story_id is not None:
+            result['story_id'] = self.story_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('story_id') is not None:
+            self.story_id = m.get('story_id')
+        return self
+
+
+class AddStoryFilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddStoryFilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddStoryFilesResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -3298,6 +3780,223 @@ class CopyFileResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CopyFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCustomizedStoryRequestStoryCover(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        revision_id: str = None,
+    ):
+        self.file_id = file_id
+        self.revision_id = revision_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
+        return self
+
+
+class CreateCustomizedStoryRequestStoryFiles(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        revision_id: str = None,
+    ):
+        self.file_id = file_id
+        self.revision_id = revision_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
+        return self
+
+
+class CreateCustomizedStoryRequest(TeaModel):
+    def __init__(
+        self,
+        custom_labels: Dict[str, str] = None,
+        drive_id: str = None,
+        story_cover: CreateCustomizedStoryRequestStoryCover = None,
+        story_files: List[CreateCustomizedStoryRequestStoryFiles] = None,
+        story_name: str = None,
+        story_sub_type: str = None,
+        story_type: str = None,
+    ):
+        self.custom_labels = custom_labels
+        self.drive_id = drive_id
+        self.story_cover = story_cover
+        self.story_files = story_files
+        self.story_name = story_name
+        self.story_sub_type = story_sub_type
+        self.story_type = story_type
+
+    def validate(self):
+        if self.story_cover:
+            self.story_cover.validate()
+        if self.story_files:
+            for k in self.story_files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_labels is not None:
+            result['custom_labels'] = self.custom_labels
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.story_cover is not None:
+            result['story_cover'] = self.story_cover.to_map()
+        result['story_files'] = []
+        if self.story_files is not None:
+            for k in self.story_files:
+                result['story_files'].append(k.to_map() if k else None)
+        if self.story_name is not None:
+            result['story_name'] = self.story_name
+        if self.story_sub_type is not None:
+            result['story_sub_type'] = self.story_sub_type
+        if self.story_type is not None:
+            result['story_type'] = self.story_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('custom_labels') is not None:
+            self.custom_labels = m.get('custom_labels')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('story_cover') is not None:
+            temp_model = CreateCustomizedStoryRequestStoryCover()
+            self.story_cover = temp_model.from_map(m['story_cover'])
+        self.story_files = []
+        if m.get('story_files') is not None:
+            for k in m.get('story_files'):
+                temp_model = CreateCustomizedStoryRequestStoryFiles()
+                self.story_files.append(temp_model.from_map(k))
+        if m.get('story_name') is not None:
+            self.story_name = m.get('story_name')
+        if m.get('story_sub_type') is not None:
+            self.story_sub_type = m.get('story_sub_type')
+        if m.get('story_type') is not None:
+            self.story_type = m.get('story_type')
+        return self
+
+
+class CreateCustomizedStoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+        story_id: str = None,
+    ):
+        self.drive_id = drive_id
+        self.story_id = story_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.story_id is not None:
+            result['story_id'] = self.story_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('story_id') is not None:
+            self.story_id = m.get('story_id')
+        return self
+
+
+class CreateCustomizedStoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCustomizedStoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCustomizedStoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4214,6 +4913,264 @@ class CreateShareLinkResponse(TeaModel):
         return self
 
 
+class CreateSimilarImageClusterTaskRequest(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+    ):
+        self.drive_id = drive_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        return self
+
+
+class CreateSimilarImageClusterTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class CreateSimilarImageClusterTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSimilarImageClusterTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSimilarImageClusterTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateStoryRequest(TeaModel):
+    def __init__(
+        self,
+        address: Address = None,
+        custom_labels: Dict[str, str] = None,
+        drive_id: str = None,
+        max_image_count: int = None,
+        min_image_count: int = None,
+        story_end_time: str = None,
+        story_id: str = None,
+        story_name: str = None,
+        story_start_time: str = None,
+        story_sub_type: str = None,
+        story_type: str = None,
+    ):
+        self.address = address
+        self.custom_labels = custom_labels
+        self.drive_id = drive_id
+        self.max_image_count = max_image_count
+        self.min_image_count = min_image_count
+        self.story_end_time = story_end_time
+        self.story_id = story_id
+        self.story_name = story_name
+        self.story_start_time = story_start_time
+        self.story_sub_type = story_sub_type
+        self.story_type = story_type
+
+    def validate(self):
+        if self.address:
+            self.address.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['address'] = self.address.to_map()
+        if self.custom_labels is not None:
+            result['custom_labels'] = self.custom_labels
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.max_image_count is not None:
+            result['max_image_count'] = self.max_image_count
+        if self.min_image_count is not None:
+            result['min_image_count'] = self.min_image_count
+        if self.story_end_time is not None:
+            result['story_end_time'] = self.story_end_time
+        if self.story_id is not None:
+            result['story_id'] = self.story_id
+        if self.story_name is not None:
+            result['story_name'] = self.story_name
+        if self.story_start_time is not None:
+            result['story_start_time'] = self.story_start_time
+        if self.story_sub_type is not None:
+            result['story_sub_type'] = self.story_sub_type
+        if self.story_type is not None:
+            result['story_type'] = self.story_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('address') is not None:
+            temp_model = Address()
+            self.address = temp_model.from_map(m['address'])
+        if m.get('custom_labels') is not None:
+            self.custom_labels = m.get('custom_labels')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('max_image_count') is not None:
+            self.max_image_count = m.get('max_image_count')
+        if m.get('min_image_count') is not None:
+            self.min_image_count = m.get('min_image_count')
+        if m.get('story_end_time') is not None:
+            self.story_end_time = m.get('story_end_time')
+        if m.get('story_id') is not None:
+            self.story_id = m.get('story_id')
+        if m.get('story_name') is not None:
+            self.story_name = m.get('story_name')
+        if m.get('story_start_time') is not None:
+            self.story_start_time = m.get('story_start_time')
+        if m.get('story_sub_type') is not None:
+            self.story_sub_type = m.get('story_sub_type')
+        if m.get('story_type') is not None:
+            self.story_type = m.get('story_type')
+        return self
+
+
+class CreateStoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+    ):
+        self.drive_id = drive_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        return self
+
+
+class CreateStoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateStoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateStoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateUserRequestGroupInfoList(TeaModel):
     def __init__(
         self,
@@ -4985,6 +5942,110 @@ class DeleteRevisionResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        return self
+
+
+class DeleteStoryRequest(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+        story_id: str = None,
+    ):
+        self.drive_id = drive_id
+        self.story_id = story_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.story_id is not None:
+            result['story_id'] = self.story_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('story_id') is not None:
+            self.story_id = m.get('story_id')
+        return self
+
+
+class DeleteStoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+    ):
+        self.drive_id = drive_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        return self
+
+
+class DeleteStoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteStoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteStoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -7229,6 +8290,223 @@ class GetShareLinkTokenResponse(TeaModel):
         return self
 
 
+class GetStoryRequest(TeaModel):
+    def __init__(
+        self,
+        cover_image_thumbnail_process: str = None,
+        cover_video_thumbnail_process: str = None,
+        drive_id: str = None,
+        image_thumbnail_process: str = None,
+        image_url_process: str = None,
+        story_id: str = None,
+        url_expire_sec: int = None,
+        video_thumbnail_process: str = None,
+    ):
+        self.cover_image_thumbnail_process = cover_image_thumbnail_process
+        self.cover_video_thumbnail_process = cover_video_thumbnail_process
+        self.drive_id = drive_id
+        self.image_thumbnail_process = image_thumbnail_process
+        self.image_url_process = image_url_process
+        self.story_id = story_id
+        self.url_expire_sec = url_expire_sec
+        self.video_thumbnail_process = video_thumbnail_process
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_image_thumbnail_process is not None:
+            result['cover_image_thumbnail_process'] = self.cover_image_thumbnail_process
+        if self.cover_video_thumbnail_process is not None:
+            result['cover_video_thumbnail_process'] = self.cover_video_thumbnail_process
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.image_url_process is not None:
+            result['image_url_process'] = self.image_url_process
+        if self.story_id is not None:
+            result['story_id'] = self.story_id
+        if self.url_expire_sec is not None:
+            result['url_expire_sec'] = self.url_expire_sec
+        if self.video_thumbnail_process is not None:
+            result['video_thumbnail_process'] = self.video_thumbnail_process
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cover_image_thumbnail_process') is not None:
+            self.cover_image_thumbnail_process = m.get('cover_image_thumbnail_process')
+        if m.get('cover_video_thumbnail_process') is not None:
+            self.cover_video_thumbnail_process = m.get('cover_video_thumbnail_process')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = m.get('image_thumbnail_process')
+        if m.get('image_url_process') is not None:
+            self.image_url_process = m.get('image_url_process')
+        if m.get('story_id') is not None:
+            self.story_id = m.get('story_id')
+        if m.get('url_expire_sec') is not None:
+            self.url_expire_sec = m.get('url_expire_sec')
+        if m.get('video_thumbnail_process') is not None:
+            self.video_thumbnail_process = m.get('video_thumbnail_process')
+        return self
+
+
+class GetStoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Story = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Story()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTaskStatusRequest(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+        task_id: str = None,
+    ):
+        self.drive_id = drive_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class GetTaskStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+    ):
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetTaskStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTaskStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTaskStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUploadUrlRequestPartInfoListParallelSha1Ctx(TeaModel):
     def __init__(
         self,
@@ -9049,6 +10327,7 @@ class ListFileRequest(TeaModel):
         parent_file_id: str = None,
         share_id: str = None,
         status: str = None,
+        thumbnail_processes: Dict[str, ImageProcess] = None,
         type: str = None,
     ):
         self.category = category
@@ -9061,10 +10340,14 @@ class ListFileRequest(TeaModel):
         self.parent_file_id = parent_file_id
         self.share_id = share_id
         self.status = status
+        self.thumbnail_processes = thumbnail_processes
         self.type = type
 
     def validate(self):
-        pass
+        if self.thumbnail_processes:
+            for v in self.thumbnail_processes.values():
+                if v:
+                    v.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9092,6 +10375,10 @@ class ListFileRequest(TeaModel):
             result['share_id'] = self.share_id
         if self.status is not None:
             result['status'] = self.status
+        result['thumbnail_processes'] = {}
+        if self.thumbnail_processes is not None:
+            for k, v in self.thumbnail_processes.items():
+                result['thumbnail_processes'][k] = v.to_map()
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -9118,6 +10405,11 @@ class ListFileRequest(TeaModel):
             self.share_id = m.get('share_id')
         if m.get('status') is not None:
             self.status = m.get('status')
+        self.thumbnail_processes = {}
+        if m.get('thumbnail_processes') is not None:
+            for k, v in m.get('thumbnail_processes').items():
+                temp_model = ImageProcess()
+                self.thumbnail_processes[k] = temp_model.from_map(v)
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -11187,6 +12479,163 @@ class RemoveGroupMemberResponse(TeaModel):
         return self
 
 
+class RemoveStoryFilesRequestFiles(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        revision_id: str = None,
+    ):
+        self.file_id = file_id
+        self.revision_id = revision_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
+        return self
+
+
+class RemoveStoryFilesRequest(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+        files: List[RemoveStoryFilesRequestFiles] = None,
+        story_id: str = None,
+    ):
+        self.drive_id = drive_id
+        self.files = files
+        self.story_id = story_id
+
+    def validate(self):
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        result['files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['files'].append(k.to_map() if k else None)
+        if self.story_id is not None:
+            result['story_id'] = self.story_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        self.files = []
+        if m.get('files') is not None:
+            for k in m.get('files'):
+                temp_model = RemoveStoryFilesRequestFiles()
+                self.files.append(temp_model.from_map(k))
+        if m.get('story_id') is not None:
+            self.story_id = m.get('story_id')
+        return self
+
+
+class RemoveStoryFilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+        story_id: str = None,
+    ):
+        self.drive_id = drive_id
+        self.story_id = story_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.story_id is not None:
+            result['story_id'] = self.story_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('story_id') is not None:
+            self.story_id = m.get('story_id')
+        return self
+
+
+class RemoveStoryFilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveStoryFilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveStoryFilesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RestoreFileRequest(TeaModel):
     def __init__(
         self,
@@ -12228,6 +13677,492 @@ class SearchShareLinkResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SearchShareLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SearchSimilarImageClustersRequest(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+        image_thumbnail_process: str = None,
+        limit: int = None,
+        marker: str = None,
+        order: str = None,
+    ):
+        self.drive_id = drive_id
+        self.image_thumbnail_process = image_thumbnail_process
+        self.limit = limit
+        self.marker = marker
+        self.order = order
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.order is not None:
+            result['order'] = self.order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = m.get('image_thumbnail_process')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        return self
+
+
+class SearchSimilarImageClustersResponseBodySimilarImageClusters(TeaModel):
+    def __init__(
+        self,
+        files: List[File] = None,
+    ):
+        self.files = files
+
+    def validate(self):
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['files'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.files = []
+        if m.get('files') is not None:
+            for k in m.get('files'):
+                temp_model = File()
+                self.files.append(temp_model.from_map(k))
+        return self
+
+
+class SearchSimilarImageClustersResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_marker: str = None,
+        similar_image_clusters: List[SearchSimilarImageClustersResponseBodySimilarImageClusters] = None,
+    ):
+        self.next_marker = next_marker
+        self.similar_image_clusters = similar_image_clusters
+
+    def validate(self):
+        if self.similar_image_clusters:
+            for k in self.similar_image_clusters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
+        result['similar_image_clusters'] = []
+        if self.similar_image_clusters is not None:
+            for k in self.similar_image_clusters:
+                result['similar_image_clusters'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('next_marker') is not None:
+            self.next_marker = m.get('next_marker')
+        self.similar_image_clusters = []
+        if m.get('similar_image_clusters') is not None:
+            for k in m.get('similar_image_clusters'):
+                temp_model = SearchSimilarImageClustersResponseBodySimilarImageClusters()
+                self.similar_image_clusters.append(temp_model.from_map(k))
+        return self
+
+
+class SearchSimilarImageClustersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchSimilarImageClustersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchSimilarImageClustersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SearchStoriesRequestCreateTimeRange(TeaModel):
+    def __init__(
+        self,
+        end: str = None,
+        start: str = None,
+    ):
+        self.end = end
+        self.start = start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['end'] = self.end
+        if self.start is not None:
+            result['start'] = self.start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('end') is not None:
+            self.end = m.get('end')
+        if m.get('start') is not None:
+            self.start = m.get('start')
+        return self
+
+
+class SearchStoriesRequestStoryEndTimeRange(TeaModel):
+    def __init__(
+        self,
+        end: str = None,
+        start: str = None,
+    ):
+        self.end = end
+        self.start = start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['end'] = self.end
+        if self.start is not None:
+            result['start'] = self.start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('end') is not None:
+            self.end = m.get('end')
+        if m.get('start') is not None:
+            self.start = m.get('start')
+        return self
+
+
+class SearchStoriesRequestStoryStartTimeRange(TeaModel):
+    def __init__(
+        self,
+        end: str = None,
+        start: str = None,
+    ):
+        self.end = end
+        self.start = start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['end'] = self.end
+        if self.start is not None:
+            result['start'] = self.start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('end') is not None:
+            self.end = m.get('end')
+        if m.get('start') is not None:
+            self.start = m.get('start')
+        return self
+
+
+class SearchStoriesRequest(TeaModel):
+    def __init__(
+        self,
+        cover_image_thumbnail_process: str = None,
+        cover_video_thumbnail_process: str = None,
+        create_time_range: SearchStoriesRequestCreateTimeRange = None,
+        custom_labels: str = None,
+        drive_id: str = None,
+        face_group_ids: List[str] = None,
+        limit: int = None,
+        marker: str = None,
+        order: str = None,
+        sort: str = None,
+        story_end_time_range: SearchStoriesRequestStoryEndTimeRange = None,
+        story_id: str = None,
+        story_name: str = None,
+        story_start_time_range: SearchStoriesRequestStoryStartTimeRange = None,
+        story_type: str = None,
+        url_expire_sec: int = None,
+        with_empty_stories: bool = None,
+    ):
+        self.cover_image_thumbnail_process = cover_image_thumbnail_process
+        self.cover_video_thumbnail_process = cover_video_thumbnail_process
+        self.create_time_range = create_time_range
+        self.custom_labels = custom_labels
+        self.drive_id = drive_id
+        self.face_group_ids = face_group_ids
+        self.limit = limit
+        self.marker = marker
+        self.order = order
+        self.sort = sort
+        self.story_end_time_range = story_end_time_range
+        self.story_id = story_id
+        self.story_name = story_name
+        self.story_start_time_range = story_start_time_range
+        self.story_type = story_type
+        self.url_expire_sec = url_expire_sec
+        self.with_empty_stories = with_empty_stories
+
+    def validate(self):
+        if self.create_time_range:
+            self.create_time_range.validate()
+        if self.story_end_time_range:
+            self.story_end_time_range.validate()
+        if self.story_start_time_range:
+            self.story_start_time_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_image_thumbnail_process is not None:
+            result['cover_image_thumbnail_process'] = self.cover_image_thumbnail_process
+        if self.cover_video_thumbnail_process is not None:
+            result['cover_video_thumbnail_process'] = self.cover_video_thumbnail_process
+        if self.create_time_range is not None:
+            result['create_time_range'] = self.create_time_range.to_map()
+        if self.custom_labels is not None:
+            result['custom_labels'] = self.custom_labels
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.face_group_ids is not None:
+            result['face_group_ids'] = self.face_group_ids
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.order is not None:
+            result['order'] = self.order
+        if self.sort is not None:
+            result['sort'] = self.sort
+        if self.story_end_time_range is not None:
+            result['story_end_time_range'] = self.story_end_time_range.to_map()
+        if self.story_id is not None:
+            result['story_id'] = self.story_id
+        if self.story_name is not None:
+            result['story_name'] = self.story_name
+        if self.story_start_time_range is not None:
+            result['story_start_time_range'] = self.story_start_time_range.to_map()
+        if self.story_type is not None:
+            result['story_type'] = self.story_type
+        if self.url_expire_sec is not None:
+            result['url_expire_sec'] = self.url_expire_sec
+        if self.with_empty_stories is not None:
+            result['with_empty_stories'] = self.with_empty_stories
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cover_image_thumbnail_process') is not None:
+            self.cover_image_thumbnail_process = m.get('cover_image_thumbnail_process')
+        if m.get('cover_video_thumbnail_process') is not None:
+            self.cover_video_thumbnail_process = m.get('cover_video_thumbnail_process')
+        if m.get('create_time_range') is not None:
+            temp_model = SearchStoriesRequestCreateTimeRange()
+            self.create_time_range = temp_model.from_map(m['create_time_range'])
+        if m.get('custom_labels') is not None:
+            self.custom_labels = m.get('custom_labels')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('face_group_ids') is not None:
+            self.face_group_ids = m.get('face_group_ids')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('sort') is not None:
+            self.sort = m.get('sort')
+        if m.get('story_end_time_range') is not None:
+            temp_model = SearchStoriesRequestStoryEndTimeRange()
+            self.story_end_time_range = temp_model.from_map(m['story_end_time_range'])
+        if m.get('story_id') is not None:
+            self.story_id = m.get('story_id')
+        if m.get('story_name') is not None:
+            self.story_name = m.get('story_name')
+        if m.get('story_start_time_range') is not None:
+            temp_model = SearchStoriesRequestStoryStartTimeRange()
+            self.story_start_time_range = temp_model.from_map(m['story_start_time_range'])
+        if m.get('story_type') is not None:
+            self.story_type = m.get('story_type')
+        if m.get('url_expire_sec') is not None:
+            self.url_expire_sec = m.get('url_expire_sec')
+        if m.get('with_empty_stories') is not None:
+            self.with_empty_stories = m.get('with_empty_stories')
+        return self
+
+
+class SearchStoriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[Story] = None,
+        next_marker: str = None,
+    ):
+        self.items = items
+        self.next_marker = next_marker
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = Story()
+                self.items.append(temp_model.from_map(k))
+        if m.get('next_marker') is not None:
+            self.next_marker = m.get('next_marker')
+        return self
+
+
+class SearchStoriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchStoriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchStoriesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13505,6 +15440,169 @@ class UpdateShareLinkResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ShareLink()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateStoryRequestCover(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        revision_id: str = None,
+    ):
+        self.file_id = file_id
+        self.revision_id = revision_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
+        return self
+
+
+class UpdateStoryRequest(TeaModel):
+    def __init__(
+        self,
+        cover: UpdateStoryRequestCover = None,
+        custom_labels: Dict[str, str] = None,
+        drive_id: str = None,
+        story_id: str = None,
+        story_name: str = None,
+    ):
+        self.cover = cover
+        self.custom_labels = custom_labels
+        self.drive_id = drive_id
+        self.story_id = story_id
+        self.story_name = story_name
+
+    def validate(self):
+        if self.cover:
+            self.cover.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover is not None:
+            result['cover'] = self.cover.to_map()
+        if self.custom_labels is not None:
+            result['custom_labels'] = self.custom_labels
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.story_id is not None:
+            result['story_id'] = self.story_id
+        if self.story_name is not None:
+            result['story_name'] = self.story_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cover') is not None:
+            temp_model = UpdateStoryRequestCover()
+            self.cover = temp_model.from_map(m['cover'])
+        if m.get('custom_labels') is not None:
+            self.custom_labels = m.get('custom_labels')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('story_id') is not None:
+            self.story_id = m.get('story_id')
+        if m.get('story_name') is not None:
+            self.story_name = m.get('story_name')
+        return self
+
+
+class UpdateStoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+        story_id: str = None,
+    ):
+        self.drive_id = drive_id
+        self.story_id = story_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.story_id is not None:
+            result['story_id'] = self.story_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('story_id') is not None:
+            self.story_id = m.get('story_id')
+        return self
+
+
+class UpdateStoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateStoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateStoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
