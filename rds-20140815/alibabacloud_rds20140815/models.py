@@ -19296,7 +19296,7 @@ class DescribeDBInstanceAttributeRequest(TeaModel):
         # Specifies whether the instance expires. Valid values:
         # 
         # *   **True**: The instance expires.
-        # *   **False**: The instance does not expire.
+        # *   **False:** The instance does not expire.
         self.expired = expired
         self.resource_owner_id = resource_owner_id
 
@@ -19334,16 +19334,16 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeBabelfishCo
         babelfish_enabled: str = None,
         migration_mode: str = None,
     ):
-        # The switch to enable or disable Babelfish. 
+        # The switch to enable or disable Babelfish.
         # 
-        # >  If Babelfish is enabled when you purchase an ApsaraDB RDS for PostgreSQL instance, this parameter is fixed as **true**.
+        # > If Babelfish is enabled when you purchase an ApsaraDB RDS for PostgreSQL instance, this parameter is fixed as **true**.
         self.babelfish_enabled = babelfish_enabled
         # The migration mode for Babelfish. Valid values:
         # 
-        # - **single-db**\
-        # - **multi-db**\
+        # *   **single-db**\
+        # *   **multi-db**\
         # 
-        # >  For more information about migration modes for Babelfish, see [Migration modes](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+        # > For more information about migration modes for Babelfish, see [Migration mode](~~428613~~).
         self.migration_mode = migration_mode
 
     def validate(self):
@@ -19383,14 +19383,14 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNo
         self.class_code = class_code
         # The ID of the node.
         self.node_id = node_id
-        # The region ID of the node.
+        # The ID of the region.
         self.node_region_id = node_region_id
-        # The role of node. The valid values:
+        # The role of the node. Valid values:
         # 
-        # - **primary**: primary node.
-        # - **secondary**: standby node.
+        # *   **primary**: primary node
+        # *   **secondary**: secondary node
         self.node_role = node_role
-        # The zone ID of the node.
+        # The zone ID of the instance.
         self.node_zone_id = node_zone_id
 
     def validate(self):
@@ -19496,7 +19496,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra(TeaMo
         self,
         dbinstance_ids: DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds = None,
     ):
-        # The IDs of the instances.
+        # The details of the instance.
         self.dbinstance_ids = dbinstance_ids
 
     def validate(self):
@@ -19526,7 +19526,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnlyDBI
         self,
         dbinstance_id: str = None,
     ):
-        # The ID of the read-only RDS instance.
+        # The ID of the read-only instance.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -19592,23 +19592,23 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeServerlessC
         scale_min: float = None,
         switch_force: bool = None,
     ):
-        # Indicates whether the automatic suspension feature is enabled for the serverless instance. Valid values: 
+        # Indicates whether the automatic start and stop feature is enabled for the serverless instance. Valid values:
         # 
-        # - **true**: The feature is enabled.
-        # - **false**: The feature is disabled. This is the default value.
+        # *   **true**: The feature is enabled.
+        # *   **false** (default): The feature is disabled.
         # 
-        # >  After the automatic suspension feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection is established to the instance, the instance is automatically resumed.
+        # > After the automatic start and stop feature is enabled, if no connections are established to the instance within 10 minutes, the instance is suspended. After a connection is established to the instance, the instance automatically resumes.
         self.auto_pause = auto_pause
-        # The maximum value of RCU.
+        # The maximum number of RDS Capacity Units (RCUs).
         self.scale_max = scale_max
-        # The minimum value of RDS Capacity Unit (RCU).
+        # The minimum number of RDS Capacity Units (RCUs).
         self.scale_min = scale_min
         # Indicates whether the forced scaling feature is enabled for the serverless instance.
         # 
-        # - **true**: The feature is enabled.
-        # - **false**: The feature is disabled. This is the default value.
+        # *   **true**: The feature is enabled.
+        # *   **false** (default): The feature is disabled.
         # 
-        # >  In most cases, ApsaraDB RDS automatically scales in or out the RCUs of a serverless instance based on business requirements in real time. In some cases, the scaling does not take effect in real time. You can enable the forced scaling feature to forcefully scales in or out the RCUs of the instance.
+        # > In most cases, the RCU scaling of a serverless instance immediately takes effect. In some cases, the RCU scaling does not immediately take effect. If this happens, you can enable the forced scaling feature to forcefully scale the RCUs of the serverless instance.
         self.switch_force = switch_force
 
     def validate(self):
@@ -19779,7 +19779,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         zone_id: str = None,
         kind_code: str = None,
     ):
-        # The maximum number of accounts that can be created on an instance.
+        # The maximum number of accounts that can be created on the instance.
         self.account_max_quantity = account_max_quantity
         # The advanced features that are enabled for the instance. If multiple advanced features are enabled, the advanced features are separated by commas (,). This parameter is available only to instances that run **SQL Server**. Valid values:
         # 
@@ -19793,26 +19793,31 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.auto_upgrade_minor_version = auto_upgrade_minor_version
         # The availability status of the instance in percentage.
         self.availability_value = availability_value
-        # The configuration of Babelfish for the instance. 
+        # The configuration of the Babelfish feature for the ApsaraDB RDS for PostgreSQL instance.
         # 
-        # >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+        # > This parameter applies only to ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled. For more information, see [Introduction to Babelfish](~~428613~~).
         self.babelfish_config = babelfish_config
+        # <props="china">预留参数，无需配置。</props>
+        # <props="intl">无效参数，无需配置。</props>
         self.bpe_enabled = bpe_enabled
+        # <props="china">预留参数，无需配置。</props>
+        # <props="intl">无效参数，无需配置。</props>
         self.bursting_enabled = bursting_enabled
         # The RDS edition of the instance. Valid values:
         # 
         # *   **Basic**: RDS Basic Edition
         # *   **HighAvailability**: RDS High-availability Edition
-        # *   **AlwaysOn**: RDS Cluster Edition for SQL Server
         # *   **cluster**: RDS Cluster Edition for MySQL
+        # *   **AlwaysOn**: RDS Cluster Edition for SQL Server
         # *   **Finance**: RDS Enterprise Edition
+        # *   **Serverless_basic**: RDS Serverless Basic Edition
         self.category = category
         # The character set collation of the instance.
         self.collation = collation
         # The connection mode of the instance. Valid values:
         # 
         # *   **Standard**: standard mode
-        # *   **Safe**: proxy mode
+        # *   **Safe**: database proxy mode
         self.connection_mode = connection_mode
         # The internal endpoint of the instance.
         self.connection_string = connection_string
@@ -19821,13 +19826,13 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **1**: shared proxy
         # *   **2**: dedicated proxy
         # 
-        # >  We recommend that you use the **ProxyType** parameter instead of this parameter.
+        # > We recommend that you use the **ProxyType** parameter instead of this parameter.
         self.console_version = console_version
-        # The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The creation time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The minor engine version of the instance.
         self.current_kernel_version = current_kernel_version
-        # The nodes of cluster.
+        # The information about the node in the cluster.
         self.dbcluster_nodes = dbcluster_nodes
         # The number of cores that are configured for the instance.
         self.dbinstance_cpu = dbinstance_cpu
@@ -19848,8 +19853,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbinstance_memory = dbinstance_memory
         # The type of the network over which the instance is connected. Valid values:
         # 
-        # *   **Internet**\
-        # *   **Intranet**\
+        # *   **Internet**: Internet
+        # *   **Intranet**: internal network
         self.dbinstance_net_type = dbinstance_net_type
         # The status of the instance. For more information, see [Instance states](~~26315~~).
         self.dbinstance_status = dbinstance_status
@@ -19859,7 +19864,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # 
         # *   **local_ssd** and **ephemeral_ssd**: local SSD
         # *   **cloud_ssd**: standard SSD
-        # *   **cloud_essd**: enhanced SSD (ESSD)
+        # *   **cloud_essd**: enhanced SSD
         self.dbinstance_storage_type = dbinstance_storage_type
         # The type of the instance. Valid values:
         # 
@@ -19870,12 +19875,12 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbinstance_type = dbinstance_type
         # The maximum number of databases that can be created on the instance.
         self.dbmax_quantity = dbmax_quantity
-        # The ID of the dedicated cluster to which the instance belongs.
+        # The ID of the dedicated cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
         # Indicates whether the release protection feature is enabled. Valid values:
         # 
-        # - **true**: The feature is enabled.
-        # - **false**: The feature is disabled.
+        # *   **true**: The feature is enabled.
+        # *   **false**: The feature is disabled.
         self.deletion_protection = deletion_protection
         # The database engine of the instance. Valid values:
         # 
@@ -19884,31 +19889,31 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **SQLServer**\
         # *   **MariaDB**\
         self.engine = engine
-        # The database engine version of the instance.
+        # The version of the database engine.
         self.engine_version = engine_version
-        # The time at which the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The expiration time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         # 
-        # >  Pay-as-you-go instances never expire.
+        # > Pay-as-you-go instances never expire.
         self.expire_time = expire_time
         # The extended information of the instance.
         self.extra = extra
-        # The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance runs MySQL on RDS Standard Edition and is created in a dedicated cluster.
+        # The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
         self.general_group_name = general_group_name
         # The ID of the disaster recovery instance that is attached to the instance.
         self.guard_dbinstance_id = guard_dbinstance_id
-        # The type of the IP address that is used by the instance. The value is fixed as **IPv4**.
+        # The type of the IP address. Only **IPv4** addresses are supported.
         self.iptype = iptype
         # The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance or read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
         self.increment_source_dbinstance_id = increment_source_dbinstance_id
         # The network type of the instance. Valid values:
         # 
-        # *   **Classic**\
-        # *   **VPC**\
+        # *   **Classic**: classic network
+        # *   **VPC**: virtual private cloud (VPC)
         self.instance_network_type = instance_network_type
         # The architecture type of the instance. Valid values:
         # 
-        # - **x86**\
-        # - **arm**\
+        # *   **x86**\
+        # *   **arm**\
         self.instruction_set_arch = instruction_set_arch
         # The latest minor engine version that is supported by the instance.
         self.latest_kernel_version = latest_kernel_version
@@ -19919,7 +19924,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
         # *   **LockByRestoration**: The instance is automatically locked due to instance restoration.
         # *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
-        # *   **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked when the disk space is exhausted.
+        # *   **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked due to exhausted storage.
         self.lock_mode = lock_mode
         # The reason why the instance was locked.
         self.lock_reason = lock_reason
@@ -19927,22 +19932,22 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.maintain_time = maintain_time
         # The ID of the primary instance.
         # 
-        # >  If this parameter is not returned, the instance is the primary instance.
+        # > If this parameter is not returned, the instance is the primary instance.
         self.master_instance_id = master_instance_id
-        # The ID of the primary zone.
+        # The zone ID of the primary instance.
         self.master_zone = master_zone
-        # The maximum number of concurrent connections that are allowed by the instance.
+        # The maximum number of concurrent connections.
         self.max_connections = max_connections
         # The maximum I/O throughput. Unit: MB/s.
         self.max_iombps = max_iombps
-        # The maximum number of I/O requests that can be processed by the instance per second.
+        # The maximum number of I/O requests that is processed by the instance per second.
         self.max_iops = max_iops
         # The billing method of the instance. Valid values:
         # 
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
         self.pay_type = pay_type
-        # The internal port number that is used to connect to the instance.
+        # The port that is used to connect to the instance over an internal network.
         self.port = port
         # The type of the proxy that is supported by the instance. Valid values:
         # 
@@ -19950,13 +19955,13 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **1**: The instance supports shared proxies, with which the instance runs in multi-tenant mode.
         # *   **2**: The instance supports dedicated proxies, with which the instance runs in single-tenant mode.
         self.proxy_type = proxy_type
-        # An array that consists of the IDs of the read-only instances that are attached to the primary instance.
+        # An array consisting of the IDs of the read-only instances that are attached to the primary instance.
         self.read_only_dbinstance_ids = read_only_dbinstance_ids
-        # The latency at which the read-only instances replicate data. The read-only instances replicate data from the primary instance at the latency that is specified by the **ReadonlyInstanceSQLDelayedTime** parameter. Unit: seconds.
+        # The latency at which the system replicates data to read-only instances. The system replicates data from the primary instance to the read-only instances at the latency that is specified by the **ReadonlyInstanceSQLDelayedTime** parameter. Unit: seconds.
         self.readonly_instance_sqldelayed_time = readonly_instance_sqldelayed_time
         # The region ID of the instance.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The IP addresses in the IP address whitelist.
         self.security_iplist = security_iplist
@@ -19978,22 +19983,22 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.temp_dbinstance_id = temp_dbinstance_id
         # The time zone of the instance.
         self.time_zone = time_zone
-        # The information about the exception that is detected on the instance. This parameter is returned only when the instance runs MySQL on RDS Standard Edition and is created in a dedicated cluster.
+        # The information about the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
         self.tips = tips
-        # The severity level of the exception that is detected on the instance. This parameter is returned only when the instance runs MySQL on RDS Standard Edition and is created in a dedicated cluster. Valid values:
+        # The severity level of the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition. Valid values:
         # 
         # *   **1**: The instance is normal.
-        # *   **2**: The specifications of the read-only instances do not match the specifications of the primary instance. You must adjust the specifications of these instances based on your business requirements.
+        # *   **2**: The specifications of the read-only instances do not match the specifications of the primary instance, and the performance is affected. You must adjust the specifications of these instances based on your business requirements.
         self.tips_level = tips_level
-        # The ID of the vSwitch that serves the instance.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the instance belongs. This parameter is returned only when the instance resides in a VPC.
+        # The VPC ID of the instance. This parameter is returned only when the instance resides in a VPC.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
-        # The ID of the virtual private cloud (VPC) to which the instance belongs.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
-        # The ID of the zone to which the instances belong.
+        # The zone ID of the instance.
         self.zone_id = zone_id
-        # An internal parameter. This operation does not return a value for this parameter.
+        # An internal parameter. You can ignore this parameter.
         self.kind_code = kind_code
 
     def validate(self):
@@ -21022,10 +21027,13 @@ class DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList(TeaModel):
         self.encryption_key = encryption_key
         # The status of the key. Valid values:
         # 
-        # *   Enabled
-        # *   Disabled
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.encryption_key_status = encryption_key_status
-        # The type of the key.
+        # The type of the key. Valid values:
+        # 
+        # *   **CMK**\
+        # *   **ServiceKey**\
         self.key_type = key_type
         # The purpose of the key.
         self.key_usage = key_usage
@@ -21033,7 +21041,10 @@ class DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList(TeaModel):
         self.material_expire_time = material_expire_time
         # The source of the key.
         self.origin = origin
-        # The role of the instance that uses the key. Valid values: ***master**: primary instance*. **slave**: read-only instance.
+        # The role of the instance. Valid values:
+        # 
+        # *   **Master**: primary instance
+        # *   **slave**: read-only instance
         self.used_by = used_by
 
     def validate(self):
@@ -21118,12 +21129,12 @@ class DescribeDBInstanceEncryptionKeyResponseBody(TeaModel):
         self.description = description
         # The ID of the key.
         self.encryption_key = encryption_key
-        # An array that consists of keys.
+        # The details about the key.
         self.encryption_key_list = encryption_key_list
         # The status of the key. Valid values:
         # 
-        # *   Enabled
-        # *   Disabled
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.encryption_key_status = encryption_key_status
         # The purpose of the key.
         self.key_usage = key_usage
@@ -25801,15 +25812,19 @@ class DescribeDBInstancesResponse(TeaModel):
 class DescribeDBInstancesAsCsvRequest(TeaModel):
     def __init__(
         self,
+        cached_async: bool = None,
         dbinstance_id: str = None,
+        export_key: str = None,
         owner_id: int = None,
         region_id: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.cached_async = cached_async
         # The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
         self.dbinstance_id = dbinstance_id
+        self.export_key = export_key
         self.owner_id = owner_id
         # The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -25827,8 +25842,12 @@ class DescribeDBInstancesAsCsvRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cached_async is not None:
+            result['CachedAsync'] = self.cached_async
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.export_key is not None:
+            result['ExportKey'] = self.export_key
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
@@ -25843,8 +25862,12 @@ class DescribeDBInstancesAsCsvRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CachedAsync') is not None:
+            self.cached_async = m.get('CachedAsync')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('ExportKey') is not None:
+            self.export_key = m.get('ExportKey')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
@@ -25855,6 +25878,33 @@ class DescribeDBInstancesAsCsvRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones(TeaModel):
+    def __init__(
+        self,
+        slave_region: List[str] = None,
+    ):
+        self.slave_region = slave_region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.slave_region is not None:
+            result['slaveRegion'] = self.slave_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('slaveRegion') is not None:
+            self.slave_region = m.get('slaveRegion')
         return self
 
 
@@ -25882,6 +25932,7 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
         engine: str = None,
         engine_version: str = None,
         expire_time: str = None,
+        export_key: str = None,
         guard_dbinstance_id: str = None,
         increment_source_dbinstance_id: str = None,
         instance_network_type: str = None,
@@ -25896,6 +25947,7 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
         read_delay_time: str = None,
         region_id: str = None,
         security_iplist: str = None,
+        slave_zones: DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones = None,
         support_upgrade_account_type: str = None,
         tags: str = None,
         temp_dbinstance_id: str = None,
@@ -25956,6 +26008,7 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.engine_version = engine_version
         # The expiration time.
         self.expire_time = expire_time
+        self.export_key = export_key
         # The ID of the disaster recovery instance that is attached to the instance.
         self.guard_dbinstance_id = guard_dbinstance_id
         # The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance or read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
@@ -25984,6 +26037,7 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.region_id = region_id
         # The IP address whitelist of the instance.
         self.security_iplist = security_iplist
+        self.slave_zones = slave_zones
         # None.
         self.support_upgrade_account_type = support_upgrade_account_type
         # The tag.
@@ -25998,7 +26052,8 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.slave_zones:
+            self.slave_zones.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -26048,6 +26103,8 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['EngineVersion'] = self.engine_version
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+        if self.export_key is not None:
+            result['ExportKey'] = self.export_key
         if self.guard_dbinstance_id is not None:
             result['GuardDBInstanceId'] = self.guard_dbinstance_id
         if self.increment_source_dbinstance_id is not None:
@@ -26076,6 +26133,8 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['RegionId'] = self.region_id
         if self.security_iplist is not None:
             result['SecurityIPList'] = self.security_iplist
+        if self.slave_zones is not None:
+            result['SlaveZones'] = self.slave_zones.to_map()
         if self.support_upgrade_account_type is not None:
             result['SupportUpgradeAccountType'] = self.support_upgrade_account_type
         if self.tags is not None:
@@ -26134,6 +26193,8 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.engine_version = m.get('EngineVersion')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+        if m.get('ExportKey') is not None:
+            self.export_key = m.get('ExportKey')
         if m.get('GuardDBInstanceId') is not None:
             self.guard_dbinstance_id = m.get('GuardDBInstanceId')
         if m.get('IncrementSourceDBInstanceId') is not None:
@@ -26162,6 +26223,9 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('SecurityIPList') is not None:
             self.security_iplist = m.get('SecurityIPList')
+        if m.get('SlaveZones') is not None:
+            temp_model = DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones()
+            self.slave_zones = temp_model.from_map(m['SlaveZones'])
         if m.get('SupportUpgradeAccountType') is not None:
             self.support_upgrade_account_type = m.get('SupportUpgradeAccountType')
         if m.get('Tags') is not None:
@@ -29782,10 +29846,93 @@ class DescribeDatabasesResponseBodyDatabasesDatabaseAccounts(TeaModel):
         return self
 
 
+class DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo(TeaModel):
+    def __init__(
+        self,
+        advanced_db_property: List[Dict[str, Any]] = None,
+    ):
+        self.advanced_db_property = advanced_db_property
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_db_property is not None:
+            result['AdvancedDbProperty'] = self.advanced_db_property
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdvancedDbProperty') is not None:
+            self.advanced_db_property = m.get('AdvancedDbProperty')
+        return self
+
+
+class DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo(TeaModel):
+    def __init__(
+        self,
+        basic_db_property: List[Dict[str, Any]] = None,
+    ):
+        self.basic_db_property = basic_db_property
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.basic_db_property is not None:
+            result['BasicDbProperty'] = self.basic_db_property
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BasicDbProperty') is not None:
+            self.basic_db_property = m.get('BasicDbProperty')
+        return self
+
+
+class DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo(TeaModel):
+    def __init__(
+        self,
+        runtime_db_property: List[Dict[str, Any]] = None,
+    ):
+        self.runtime_db_property = runtime_db_property
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.runtime_db_property is not None:
+            result['RuntimeDbProperty'] = self.runtime_db_property
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuntimeDbProperty') is not None:
+            self.runtime_db_property = m.get('RuntimeDbProperty')
+        return self
+
+
 class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
     def __init__(
         self,
         accounts: DescribeDatabasesResponseBodyDatabasesDatabaseAccounts = None,
+        advanced_info: DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo = None,
+        basic_info: DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo = None,
         character_set_name: str = None,
         collate: str = None,
         conn_limit: str = None,
@@ -29798,11 +29945,14 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
         page_number: int = None,
         page_size: int = None,
         resource_group_id: str = None,
+        runtime_info: DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo = None,
         tablespace: str = None,
         total_count: int = None,
     ):
         # An array that consists of the details of the accounts. Each account has specific permissions on the database.
         self.accounts = accounts
+        self.advanced_info = advanced_info
+        self.basic_info = basic_info
         # The name of the character set.
         self.character_set_name = character_set_name
         # The collation of the character set. The example value C stands for localization.
@@ -29836,6 +29986,7 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
         self.page_size = page_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.runtime_info = runtime_info
         # The tablespace of the database.
         # 
         # >  This parameter is returned only for instances that run PostgreSQL.
@@ -29846,6 +29997,12 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
     def validate(self):
         if self.accounts:
             self.accounts.validate()
+        if self.advanced_info:
+            self.advanced_info.validate()
+        if self.basic_info:
+            self.basic_info.validate()
+        if self.runtime_info:
+            self.runtime_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -29855,6 +30012,10 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
         result = dict()
         if self.accounts is not None:
             result['Accounts'] = self.accounts.to_map()
+        if self.advanced_info is not None:
+            result['AdvancedInfo'] = self.advanced_info.to_map()
+        if self.basic_info is not None:
+            result['BasicInfo'] = self.basic_info.to_map()
         if self.character_set_name is not None:
             result['CharacterSetName'] = self.character_set_name
         if self.collate is not None:
@@ -29879,6 +30040,8 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
             result['PageSize'] = self.page_size
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.runtime_info is not None:
+            result['RuntimeInfo'] = self.runtime_info.to_map()
         if self.tablespace is not None:
             result['Tablespace'] = self.tablespace
         if self.total_count is not None:
@@ -29890,6 +30053,12 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
         if m.get('Accounts') is not None:
             temp_model = DescribeDatabasesResponseBodyDatabasesDatabaseAccounts()
             self.accounts = temp_model.from_map(m['Accounts'])
+        if m.get('AdvancedInfo') is not None:
+            temp_model = DescribeDatabasesResponseBodyDatabasesDatabaseAdvancedInfo()
+            self.advanced_info = temp_model.from_map(m['AdvancedInfo'])
+        if m.get('BasicInfo') is not None:
+            temp_model = DescribeDatabasesResponseBodyDatabasesDatabaseBasicInfo()
+            self.basic_info = temp_model.from_map(m['BasicInfo'])
         if m.get('CharacterSetName') is not None:
             self.character_set_name = m.get('CharacterSetName')
         if m.get('Collate') is not None:
@@ -29914,6 +30083,9 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('RuntimeInfo') is not None:
+            temp_model = DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo()
+            self.runtime_info = temp_model.from_map(m['RuntimeInfo'])
         if m.get('Tablespace') is not None:
             self.tablespace = m.get('Tablespace')
         if m.get('TotalCount') is not None:
@@ -41126,13 +41298,9 @@ class DescribeSQLLogFilesRequest(TeaModel):
         self.file_name = file_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Valid values: **1 to 100000**.  
-        # 
-        # Default value: **1**.
+        # The number of the page to return. Valid values: **1 to 100000**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid value: **30 to 200**. 
-        # 
-        # Default value: **30**.
+        # The number of entries to return on each page. Valid value: **30 to 200**. Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -41195,9 +41363,9 @@ class DescribeSQLLogFilesResponseBodyItemsLogFile(TeaModel):
         log_start_time: str = None,
         log_status: str = None,
     ):
-        # The name of the audit log file.
+        # The name of the file.
         self.file_id = file_id
-        # The download URL of the audit log file. If the audit log file cannot be downloaded, this parameter is null.
+        # The download URL of the file. If the audit log file cannot be downloaded, this parameter is null.
         self.log_download_url = log_download_url
         # The time at which the last SQL statement recorded in the audit log file was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.log_end_time = log_end_time
@@ -41300,11 +41468,11 @@ class DescribeSQLLogFilesResponseBody(TeaModel):
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
         # The ID of the request.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):
