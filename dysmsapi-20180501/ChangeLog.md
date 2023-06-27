@@ -1,3 +1,6 @@
+2023-06-27 Version: 1.0.4
+- Fix empty RequestId return for QueryMessage and SendMessageWithTemplate.
+
 2021-12-27 Version: 1.0.3
 - Fix empty RequestId return for QueryMessage and SendMessageWithTemplate.
 

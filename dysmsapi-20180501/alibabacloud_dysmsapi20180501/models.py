@@ -12,12 +12,24 @@ class BatchSendMessageToGlobeRequest(TeaModel):
         task_id: str = None,
         to: str = None,
         type: str = None,
+        validity_period: int = None,
     ):
+        # The mobile phone number of the sender. You can also specify a sender ID. The sender ID can contain both letters and digits. If it does, the ID must be between 1 to 11 characters in length. If the sender ID contains only digits, it must be 1 to 15 characters in length.
         self.from_ = from_
+        # The content of the message.
         self.message = message
+        # The ID of the messaging campaign. It must be 1 to 255 characters in length. The ID is the value of the TaskId field in the delivery receipt of the message.
         self.task_id = task_id
+        # The mobile phone numbers to which the message is sent. You must add the dialing code to the beginning of each mobile phone number.
+        # 
+        # For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
         self.to = to
+        # The type of the message. Valid values:
+        # 
+        # *   **NOTIFY**: notification
+        # *   **MKT**: promotional message
         self.type = type
+        self.validity_period = validity_period
 
     def validate(self):
         pass
@@ -38,6 +50,8 @@ class BatchSendMessageToGlobeRequest(TeaModel):
             result['To'] = self.to
         if self.type is not None:
             result['Type'] = self.type
+        if self.validity_period is not None:
+            result['ValidityPeriod'] = self.validity_period
         return result
 
     def from_map(self, m: dict = None):
@@ -52,6 +66,8 @@ class BatchSendMessageToGlobeRequest(TeaModel):
             self.to = m.get('To')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('ValidityPeriod') is not None:
+            self.validity_period = m.get('ValidityPeriod')
         return self
 
 
@@ -66,12 +82,19 @@ class BatchSendMessageToGlobeResponseBody(TeaModel):
         response_description: str = None,
         success_count: str = None,
     ):
+        # The list of mobile phone numbers that failed to receive the message.
         self.failed_list = failed_list
+        # The sender ID returned.
         self.from_ = from_
+        # The ID of the message.
         self.message_id_list = message_id_list
+        # The ID of the request.
         self.request_id = request_id
+        # The status code. If OK is returned, the request is successful. For more information, see [Error codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/error-codes).
         self.response_code = response_code
+        # The description of the status code.
         self.response_description = response_description
+        # The number of mobile phone numbers that received the message.
         self.success_count = success_count
 
     def validate(self):
@@ -122,13 +145,16 @@ class BatchSendMessageToGlobeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BatchSendMessageToGlobeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -141,6 +167,8 @@ class BatchSendMessageToGlobeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -149,6 +177,8 @@ class BatchSendMessageToGlobeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchSendMessageToGlobeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -161,7 +191,13 @@ class ConversionDataRequest(TeaModel):
         conversion_rate: str = None,
         report_time: int = None,
     ):
+        # Conversion rate monitoring return value.
+        # 
+        # >  The value of this parameter is of type double, and the value is between \[0,1].
         self.conversion_rate = conversion_rate
+        # Timestamp of the conversion rate observation should be a Unix timestamp, millisecond-level long integer.
+        # 
+        # >  If this field is not specified: the current timestamp is the default.
         self.report_time = report_time
 
     def validate(self):
@@ -195,8 +231,11 @@ class ConversionDataResponseBody(TeaModel):
         response_code: str = None,
         response_description: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Status code. Returning OK means the request was successful. For other error codes, please refer to the [Error codes](~~180674~~) list.
         self.response_code = response_code
+        # The description of the status code.
         self.response_description = response_description
 
     def validate(self):
@@ -231,13 +270,16 @@ class ConversionDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ConversionDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -250,6 +292,8 @@ class ConversionDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -258,6 +302,8 @@ class ConversionDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ConversionDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -269,6 +315,7 @@ class QueryMessageRequest(TeaModel):
         self,
         message_id: str = None,
     ):
+        # The ID of the message.
         self.message_id = message_id
 
     def validate(self):
@@ -298,8 +345,11 @@ class QueryMessageResponseBodyNumberDetail(TeaModel):
         country: str = None,
         region: str = None,
     ):
+        # The carrier that owns the mobile phone number.
         self.carrier = carrier
+        # The country to which the mobile phone number belongs.
         self.country = country
+        # The region to which the mobile phone number belongs.
         self.region = region
 
     def validate(self):
@@ -346,17 +396,33 @@ class QueryMessageResponseBody(TeaModel):
         status: str = None,
         to: str = None,
     ):
+        # The status code of the message.
         self.error_code = error_code
+        # The description of the status code.
         self.error_description = error_description
+        # The content of the message.
         self.message = message
+        # The ID of the message.
         self.message_id = message_id
+        # The details about the mobile phone number.
         self.number_detail = number_detail
+        # The time when the delivery receipt was received from the carrier.
         self.receive_date = receive_date
+        # The ID of the request.
         self.request_id = request_id
+        # The status code of the delivery request.
         self.response_code = response_code
+        # The description of the delivery request status.
         self.response_description = response_description
+        # The time when the message was sent to the carrier.
         self.send_date = send_date
+        # The delivery status of the message.
+        # 
+        # *   1: The message was sent.
+        # *   2: The message failed to be sent.
+        # *   3: The message is being sent.
         self.status = status
+        # The mobile phone number to which the message was sent.
         self.to = to
 
     def validate(self):
@@ -429,13 +495,16 @@ class QueryMessageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QueryMessageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -448,6 +517,8 @@ class QueryMessageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -456,6 +527,8 @@ class QueryMessageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryMessageResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -469,11 +542,19 @@ class SendMessageToGlobeRequest(TeaModel):
         message: str = None,
         task_id: str = None,
         to: str = None,
+        validity_period: int = None,
     ):
+        # The mobile phone number of the sender. You can also specify a sender ID. The sender ID can contain both letters and digits. If it does, the ID must be between 1 to 11 characters in length. If the sender ID contains only digits, it must be 1 to 15 characters in length.
         self.from_ = from_
+        # The content of the message.
         self.message = message
+        # The ID of the messaging campaign. It must be 1 to 255 characters in length. The ID is the value of the TaskId field in the delivery receipt of the message.
         self.task_id = task_id
+        # The mobile phone number to which the message is sent. You must add the dialing code to the beginning of the mobile phone number. Example: 8521245567\*\*\*\*.
+        # 
+        # For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
         self.to = to
+        self.validity_period = validity_period
 
     def validate(self):
         pass
@@ -492,6 +573,8 @@ class SendMessageToGlobeRequest(TeaModel):
             result['TaskId'] = self.task_id
         if self.to is not None:
             result['To'] = self.to
+        if self.validity_period is not None:
+            result['ValidityPeriod'] = self.validity_period
         return result
 
     def from_map(self, m: dict = None):
@@ -504,6 +587,8 @@ class SendMessageToGlobeRequest(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('To') is not None:
             self.to = m.get('To')
+        if m.get('ValidityPeriod') is not None:
+            self.validity_period = m.get('ValidityPeriod')
         return self
 
 
@@ -514,8 +599,11 @@ class SendMessageToGlobeResponseBodyNumberDetail(TeaModel):
         country: str = None,
         region: str = None,
     ):
+        # The carrier that owns the mobile phone number.
         self.carrier = carrier
+        # The country to which the mobile phone number belongs.
         self.country = country
+        # The region to which the mobile phone number belongs.
         self.region = region
 
     def validate(self):
@@ -558,13 +646,21 @@ class SendMessageToGlobeResponseBody(TeaModel):
         segments: str = None,
         to: str = None,
     ):
+        # The sender ID returned.
         self.from_ = from_
+        # The ID of the message.
         self.message_id = message_id
+        # The details about the mobile phone number of the recipient.
         self.number_detail = number_detail
+        # The ID of the request.
         self.request_id = request_id
+        # The status code of the delivery request.
         self.response_code = response_code
+        # The description of the delivery request status.
         self.response_description = response_description
+        # The number of messages that incurred fees.
         self.segments = segments
+        # The mobile phone number to which the message was sent.
         self.to = to
 
     def validate(self):
@@ -621,13 +717,16 @@ class SendMessageToGlobeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SendMessageToGlobeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -640,6 +739,8 @@ class SendMessageToGlobeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -648,6 +749,8 @@ class SendMessageToGlobeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendMessageToGlobeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -662,12 +765,21 @@ class SendMessageWithTemplateRequest(TeaModel):
         template_code: str = None,
         template_param: str = None,
         to: str = None,
+        validity_period: int = None,
     ):
+        # The signature. To query the signature, log on to the [Short Message Service (SMS) console](https://sms-intl.console.aliyun.com/overview) and navigate to the **Signatures** tab of the **Go China** page.
         self.from_ = from_
+        # The extension code of the MO message.
         self.sms_up_extend_code = sms_up_extend_code
+        # The code of the message template. To query the code, log on to the [SMS console](https://sms-intl.console.aliyun.com/overview) and navigate to the **Templates** tab of the **Go China** page.
         self.template_code = template_code
+        # The value of the variable in the message template. If a variable exists in the template, the parameter is required.
         self.template_param = template_param
+        # The mobile phone number to which the message is sent. You must add the country code to the beginning of the mobile phone number. Example: 861503871\*\*\*\*.
+        # 
+        # For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
         self.to = to
+        self.validity_period = validity_period
 
     def validate(self):
         pass
@@ -688,6 +800,8 @@ class SendMessageWithTemplateRequest(TeaModel):
             result['TemplateParam'] = self.template_param
         if self.to is not None:
             result['To'] = self.to
+        if self.validity_period is not None:
+            result['ValidityPeriod'] = self.validity_period
         return result
 
     def from_map(self, m: dict = None):
@@ -702,6 +816,8 @@ class SendMessageWithTemplateRequest(TeaModel):
             self.template_param = m.get('TemplateParam')
         if m.get('To') is not None:
             self.to = m.get('To')
+        if m.get('ValidityPeriod') is not None:
+            self.validity_period = m.get('ValidityPeriod')
         return self
 
 
@@ -712,8 +828,11 @@ class SendMessageWithTemplateResponseBodyNumberDetail(TeaModel):
         country: str = None,
         region: str = None,
     ):
+        # The carrier that owns the mobile phone number.
         self.carrier = carrier
+        # The country to which the mobile phone number belongs.
         self.country = country
+        # The region to which the mobile phone number belongs.
         self.region = region
 
     def validate(self):
@@ -755,12 +874,19 @@ class SendMessageWithTemplateResponseBody(TeaModel):
         segments: str = None,
         to: str = None,
     ):
+        # The ID of the message.
         self.message_id = message_id
+        # The details about the mobile phone number of the recipient.
         self.number_detail = number_detail
+        # The ID of the request.
         self.request_id = request_id
+        # The status code of the delivery request.
         self.response_code = response_code
+        # The description of the delivery request status.
         self.response_description = response_description
+        # The number of messages that incurred fees.
         self.segments = segments
+        # The mobile phone number to which the message was sent. The dialing code was added to the beginning of the mobile phone number. Example: 861503871\*\*\*\*.
         self.to = to
 
     def validate(self):
@@ -813,13 +939,16 @@ class SendMessageWithTemplateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SendMessageWithTemplateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -832,6 +961,8 @@ class SendMessageWithTemplateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -840,6 +971,8 @@ class SendMessageWithTemplateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendMessageWithTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -853,8 +986,14 @@ class SmsConversionRequest(TeaModel):
         delivered: bool = None,
         message_id: str = None,
     ):
+        # The time when the OTP message was delivered. The value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # *   If you leave the parameter empty, the current timestamp is specified by default.
+        # *   If you specify the parameter, the timestamp must be greater than the message sending time and less than the current timestamp.
         self.conversion_time = conversion_time
+        # Specifies whether customers replied to the OTP message. Valid values: true and false.
         self.delivered = delivered
+        # The ID of the OTP message.
         self.message_id = message_id
 
     def validate(self):
@@ -892,8 +1031,11 @@ class SmsConversionResponseBody(TeaModel):
         response_code: str = None,
         response_description: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The status code. If OK is returned, the request is successful. For more information, see [Error codes](~~180674~~).
         self.response_code = response_code
+        # The description of the status code.
         self.response_description = response_description
 
     def validate(self):
@@ -928,13 +1070,16 @@ class SmsConversionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SmsConversionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -947,6 +1092,8 @@ class SmsConversionResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -955,6 +1102,8 @@ class SmsConversionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SmsConversionResponseBody()
             self.body = temp_model.from_map(m['body'])
