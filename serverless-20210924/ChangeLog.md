@@ -1,3 +1,6 @@
+2023-06-27 Version: 1.1.10
+- Fix the output field type in TaskStatus.
+
 2022-12-08 Version: 1.1.4
 - Add CancelTask API.
 

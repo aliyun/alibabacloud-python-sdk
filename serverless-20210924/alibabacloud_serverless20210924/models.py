@@ -884,11 +884,9 @@ class PipelineTemplateSpec(TeaModel):
     def __init__(
         self,
         context: Context = None,
-        context_schema: Dict[str, Any] = None,
         tasks: List[TaskExec] = None,
     ):
         self.context = context
-        self.context_schema = context_schema
         self.tasks = tasks
 
     def validate(self):
@@ -907,8 +905,6 @@ class PipelineTemplateSpec(TeaModel):
         result = dict()
         if self.context is not None:
             result['context'] = self.context.to_map()
-        if self.context_schema is not None:
-            result['contextSchema'] = self.context_schema
         result['tasks'] = []
         if self.tasks is not None:
             for k in self.tasks:
@@ -920,8 +916,6 @@ class PipelineTemplateSpec(TeaModel):
         if m.get('context') is not None:
             temp_model = Context()
             self.context = temp_model.from_map(m['context'])
-        if m.get('contextSchema') is not None:
-            self.context_schema = m.get('contextSchema')
         self.tasks = []
         if m.get('tasks') is not None:
             for k in m.get('tasks'):
@@ -1531,16 +1525,22 @@ class TaskSpec(TeaModel):
         return self
 
 
-class TaskStatus(TeaModel):
+class TaskInvocation(TeaModel):
     def __init__(
         self,
-        execution_details: List[str] = None,
-        phase: str = None,
-        status_generation: int = None,
+        instance_id: str = None,
+        invocation_id: str = None,
+        invocation_target: str = None,
+        output: str = None,
+        request_id: str = None,
+        status: str = None,
     ):
-        self.execution_details = execution_details
-        self.phase = phase
-        self.status_generation = status_generation
+        self.instance_id = instance_id
+        self.invocation_id = invocation_id
+        self.invocation_target = invocation_target
+        self.output = output
+        self.request_id = request_id
+        self.status = status
 
     def validate(self):
         pass
@@ -1551,8 +1551,68 @@ class TaskStatus(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_id is not None:
+            result['instanceID'] = self.instance_id
+        if self.invocation_id is not None:
+            result['invocationID'] = self.invocation_id
+        if self.invocation_target is not None:
+            result['invocationTarget'] = self.invocation_target
+        if self.output is not None:
+            result['output'] = self.output
+        if self.request_id is not None:
+            result['requestID'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceID') is not None:
+            self.instance_id = m.get('instanceID')
+        if m.get('invocationID') is not None:
+            self.invocation_id = m.get('invocationID')
+        if m.get('invocationTarget') is not None:
+            self.invocation_target = m.get('invocationTarget')
+        if m.get('output') is not None:
+            self.output = m.get('output')
+        if m.get('requestID') is not None:
+            self.request_id = m.get('requestID')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class TaskStatus(TeaModel):
+    def __init__(
+        self,
+        execution_details: List[str] = None,
+        invocations: List[TaskInvocation] = None,
+        phase: str = None,
+        status_generation: int = None,
+    ):
+        self.execution_details = execution_details
+        self.invocations = invocations
+        self.phase = phase
+        self.status_generation = status_generation
+
+    def validate(self):
+        if self.invocations:
+            for k in self.invocations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.execution_details is not None:
             result['executionDetails'] = self.execution_details
+        result['invocations'] = []
+        if self.invocations is not None:
+            for k in self.invocations:
+                result['invocations'].append(k.to_map() if k else None)
         if self.phase is not None:
             result['phase'] = self.phase
         if self.status_generation is not None:
@@ -1563,6 +1623,11 @@ class TaskStatus(TeaModel):
         m = m or dict()
         if m.get('executionDetails') is not None:
             self.execution_details = m.get('executionDetails')
+        self.invocations = []
+        if m.get('invocations') is not None:
+            for k in m.get('invocations'):
+                temp_model = TaskInvocation()
+                self.invocations.append(temp_model.from_map(k))
         if m.get('phase') is not None:
             self.phase = m.get('phase')
         if m.get('statusGeneration') is not None:
@@ -1693,13 +1758,11 @@ class TaskTemplateSpec(TeaModel):
     def __init__(
         self,
         context: Context = None,
-        context_schema: Dict[str, Any] = None,
         description: str = None,
         execute_condition: Condition = None,
         worker: TaskWorker = None,
     ):
         self.context = context
-        self.context_schema = context_schema
         self.description = description
         self.execute_condition = execute_condition
         self.worker = worker
@@ -1720,8 +1783,6 @@ class TaskTemplateSpec(TeaModel):
         result = dict()
         if self.context is not None:
             result['context'] = self.context.to_map()
-        if self.context_schema is not None:
-            result['contextSchema'] = self.context_schema
         if self.description is not None:
             result['description'] = self.description
         if self.execute_condition is not None:
@@ -1735,8 +1796,6 @@ class TaskTemplateSpec(TeaModel):
         if m.get('context') is not None:
             temp_model = Context()
             self.context = temp_model.from_map(m['context'])
-        if m.get('contextSchema') is not None:
-            self.context_schema = m.get('contextSchema')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('executeCondition') is not None:
@@ -3391,6 +3450,142 @@ class GetTemplateResponse(TeaModel):
         return self
 
 
+class ListApplicationsRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: str = None,
+        filter_name: str = None,
+        page_size: str = None,
+        template: str = None,
+    ):
+        self.current_page = current_page
+        self.filter_name = filter_name
+        self.page_size = page_size
+        self.template = template
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.filter_name is not None:
+            result['filterName'] = self.filter_name
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.template is not None:
+            result['template'] = self.template
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('filterName') is not None:
+            self.filter_name = m.get('filterName')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('template') is not None:
+            self.template = m.get('template')
+        return self
+
+
+class ListApplicationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: str = None,
+        result: List[Application] = None,
+        total_count: str = None,
+    ):
+        self.current_page = current_page
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = Application()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListApplicationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApplicationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApplicationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListEnvironmentRevisionsRequest(TeaModel):
     def __init__(
         self,
@@ -4763,6 +4958,50 @@ class PutTemplateResponse(TeaModel):
 
 
 class ResumeTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Task = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Task()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RetryTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,

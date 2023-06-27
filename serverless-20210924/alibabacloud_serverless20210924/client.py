@@ -7,8 +7,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_serverless20210924 import models as serverless_20210924_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_serverless20210924 import models as serverless_20210924_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
@@ -40,22 +40,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
-
-    def cancel_task(
-        self,
-        name: str,
-    ) -> serverless_20210924_models.CancelTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.cancel_task_with_options(name, headers, runtime)
-
-    async def cancel_task_async(
-        self,
-        name: str,
-    ) -> serverless_20210924_models.CancelTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.cancel_task_with_options_async(name, headers, runtime)
 
     def cancel_task_with_options(
         self,
@@ -107,21 +91,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_application(
+    def cancel_task(
         self,
-        request: serverless_20210924_models.CreateApplicationRequest,
-    ) -> serverless_20210924_models.CreateApplicationResponse:
+        name: str,
+    ) -> serverless_20210924_models.CancelTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_application_with_options(request, headers, runtime)
+        return self.cancel_task_with_options(name, headers, runtime)
 
-    async def create_application_async(
+    async def cancel_task_async(
         self,
-        request: serverless_20210924_models.CreateApplicationRequest,
-    ) -> serverless_20210924_models.CreateApplicationResponse:
+        name: str,
+    ) -> serverless_20210924_models.CancelTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_application_with_options_async(request, headers, runtime)
+        return await self.cancel_task_with_options_async(name, headers, runtime)
 
     def create_application_with_options(
         self,
@@ -215,21 +199,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_pipeline(
+    def create_application(
         self,
-        request: serverless_20210924_models.CreatePipelineRequest,
-    ) -> serverless_20210924_models.CreatePipelineResponse:
+        request: serverless_20210924_models.CreateApplicationRequest,
+    ) -> serverless_20210924_models.CreateApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_pipeline_with_options(request, headers, runtime)
+        return self.create_application_with_options(request, headers, runtime)
 
-    async def create_pipeline_async(
+    async def create_application_async(
         self,
-        request: serverless_20210924_models.CreatePipelineRequest,
-    ) -> serverless_20210924_models.CreatePipelineResponse:
+        request: serverless_20210924_models.CreateApplicationRequest,
+    ) -> serverless_20210924_models.CreateApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_pipeline_with_options_async(request, headers, runtime)
+        return await self.create_application_with_options_async(request, headers, runtime)
 
     def create_pipeline_with_options(
         self,
@@ -285,21 +269,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_pipeline_template(
+    def create_pipeline(
         self,
-        request: serverless_20210924_models.CreatePipelineTemplateRequest,
-    ) -> serverless_20210924_models.CreatePipelineTemplateResponse:
+        request: serverless_20210924_models.CreatePipelineRequest,
+    ) -> serverless_20210924_models.CreatePipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_pipeline_template_with_options(request, headers, runtime)
+        return self.create_pipeline_with_options(request, headers, runtime)
 
-    async def create_pipeline_template_async(
+    async def create_pipeline_async(
         self,
-        request: serverless_20210924_models.CreatePipelineTemplateRequest,
-    ) -> serverless_20210924_models.CreatePipelineTemplateResponse:
+        request: serverless_20210924_models.CreatePipelineRequest,
+    ) -> serverless_20210924_models.CreatePipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_pipeline_template_with_options_async(request, headers, runtime)
+        return await self.create_pipeline_with_options_async(request, headers, runtime)
 
     def create_pipeline_template_with_options(
         self,
@@ -355,23 +339,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_release(
+    def create_pipeline_template(
         self,
-        app_name: str,
-        request: serverless_20210924_models.CreateReleaseRequest,
-    ) -> serverless_20210924_models.CreateReleaseResponse:
+        request: serverless_20210924_models.CreatePipelineTemplateRequest,
+    ) -> serverless_20210924_models.CreatePipelineTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_release_with_options(app_name, request, headers, runtime)
+        return self.create_pipeline_template_with_options(request, headers, runtime)
 
-    async def create_release_async(
+    async def create_pipeline_template_async(
         self,
-        app_name: str,
-        request: serverless_20210924_models.CreateReleaseRequest,
-    ) -> serverless_20210924_models.CreateReleaseResponse:
+        request: serverless_20210924_models.CreatePipelineTemplateRequest,
+    ) -> serverless_20210924_models.CreatePipelineTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_release_with_options_async(app_name, request, headers, runtime)
+        return await self.create_pipeline_template_with_options_async(request, headers, runtime)
 
     def create_release_with_options(
         self,
@@ -435,21 +417,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_task(
+    def create_release(
         self,
-        request: serverless_20210924_models.CreateTaskRequest,
-    ) -> serverless_20210924_models.CreateTaskResponse:
+        app_name: str,
+        request: serverless_20210924_models.CreateReleaseRequest,
+    ) -> serverless_20210924_models.CreateReleaseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_task_with_options(request, headers, runtime)
+        return self.create_release_with_options(app_name, request, headers, runtime)
 
-    async def create_task_async(
+    async def create_release_async(
         self,
-        request: serverless_20210924_models.CreateTaskRequest,
-    ) -> serverless_20210924_models.CreateTaskResponse:
+        app_name: str,
+        request: serverless_20210924_models.CreateReleaseRequest,
+    ) -> serverless_20210924_models.CreateReleaseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_task_with_options_async(request, headers, runtime)
+        return await self.create_release_with_options_async(app_name, request, headers, runtime)
 
     def create_task_with_options(
         self,
@@ -505,21 +489,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_task_template(
+    def create_task(
         self,
-        request: serverless_20210924_models.CreateTaskTemplateRequest,
-    ) -> serverless_20210924_models.CreateTaskTemplateResponse:
+        request: serverless_20210924_models.CreateTaskRequest,
+    ) -> serverless_20210924_models.CreateTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_task_template_with_options(request, headers, runtime)
+        return self.create_task_with_options(request, headers, runtime)
 
-    async def create_task_template_async(
+    async def create_task_async(
         self,
-        request: serverless_20210924_models.CreateTaskTemplateRequest,
-    ) -> serverless_20210924_models.CreateTaskTemplateResponse:
+        request: serverless_20210924_models.CreateTaskRequest,
+    ) -> serverless_20210924_models.CreateTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_task_template_with_options_async(request, headers, runtime)
+        return await self.create_task_with_options_async(request, headers, runtime)
 
     def create_task_template_with_options(
         self,
@@ -575,21 +559,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_application(
+    def create_task_template(
         self,
-        name: str,
-    ) -> serverless_20210924_models.DeleteApplicationResponse:
+        request: serverless_20210924_models.CreateTaskTemplateRequest,
+    ) -> serverless_20210924_models.CreateTaskTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_application_with_options(name, headers, runtime)
+        return self.create_task_template_with_options(request, headers, runtime)
 
-    async def delete_application_async(
+    async def create_task_template_async(
         self,
-        name: str,
-    ) -> serverless_20210924_models.DeleteApplicationResponse:
+        request: serverless_20210924_models.CreateTaskTemplateRequest,
+    ) -> serverless_20210924_models.CreateTaskTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_application_with_options_async(name, headers, runtime)
+        return await self.create_task_template_with_options_async(request, headers, runtime)
 
     def delete_application_with_options(
         self,
@@ -641,21 +625,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_environment(
+    def delete_application(
         self,
         name: str,
-    ) -> serverless_20210924_models.DeleteEnvironmentResponse:
+    ) -> serverless_20210924_models.DeleteApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_environment_with_options(name, headers, runtime)
+        return self.delete_application_with_options(name, headers, runtime)
 
-    async def delete_environment_async(
+    async def delete_application_async(
         self,
         name: str,
-    ) -> serverless_20210924_models.DeleteEnvironmentResponse:
+    ) -> serverless_20210924_models.DeleteApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_environment_with_options_async(name, headers, runtime)
+        return await self.delete_application_with_options_async(name, headers, runtime)
 
     def delete_environment_with_options(
         self,
@@ -707,21 +691,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_pipeline_template(
+    def delete_environment(
         self,
         name: str,
-    ) -> serverless_20210924_models.DeletePipelineTemplateResponse:
+    ) -> serverless_20210924_models.DeleteEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_pipeline_template_with_options(name, headers, runtime)
+        return self.delete_environment_with_options(name, headers, runtime)
 
-    async def delete_pipeline_template_async(
+    async def delete_environment_async(
         self,
         name: str,
-    ) -> serverless_20210924_models.DeletePipelineTemplateResponse:
+    ) -> serverless_20210924_models.DeleteEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_pipeline_template_with_options_async(name, headers, runtime)
+        return await self.delete_environment_with_options_async(name, headers, runtime)
 
     def delete_pipeline_template_with_options(
         self,
@@ -773,21 +757,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_task_template(
+    def delete_pipeline_template(
         self,
         name: str,
-    ) -> serverless_20210924_models.DeleteTaskTemplateResponse:
+    ) -> serverless_20210924_models.DeletePipelineTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_task_template_with_options(name, headers, runtime)
+        return self.delete_pipeline_template_with_options(name, headers, runtime)
 
-    async def delete_task_template_async(
+    async def delete_pipeline_template_async(
         self,
         name: str,
-    ) -> serverless_20210924_models.DeleteTaskTemplateResponse:
+    ) -> serverless_20210924_models.DeletePipelineTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_task_template_with_options_async(name, headers, runtime)
+        return await self.delete_pipeline_template_with_options_async(name, headers, runtime)
 
     def delete_task_template_with_options(
         self,
@@ -839,23 +823,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_template(
+    def delete_task_template(
         self,
         name: str,
-        request: serverless_20210924_models.DeleteTemplateRequest,
-    ) -> serverless_20210924_models.DeleteTemplateResponse:
+    ) -> serverless_20210924_models.DeleteTaskTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_template_with_options(name, request, headers, runtime)
+        return self.delete_task_template_with_options(name, headers, runtime)
 
-    async def delete_template_async(
+    async def delete_task_template_async(
         self,
         name: str,
-        request: serverless_20210924_models.DeleteTemplateRequest,
-    ) -> serverless_20210924_models.DeleteTemplateResponse:
+    ) -> serverless_20210924_models.DeleteTaskTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_template_with_options_async(name, request, headers, runtime)
+        return await self.delete_task_template_with_options_async(name, headers, runtime)
 
     def delete_template_with_options(
         self,
@@ -919,21 +901,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_application(
+    def delete_template(
         self,
         name: str,
-    ) -> serverless_20210924_models.GetApplicationResponse:
+        request: serverless_20210924_models.DeleteTemplateRequest,
+    ) -> serverless_20210924_models.DeleteTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_application_with_options(name, headers, runtime)
+        return self.delete_template_with_options(name, request, headers, runtime)
 
-    async def get_application_async(
+    async def delete_template_async(
         self,
         name: str,
-    ) -> serverless_20210924_models.GetApplicationResponse:
+        request: serverless_20210924_models.DeleteTemplateRequest,
+    ) -> serverless_20210924_models.DeleteTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_application_with_options_async(name, headers, runtime)
+        return await self.delete_template_with_options_async(name, request, headers, runtime)
 
     def get_application_with_options(
         self,
@@ -985,21 +969,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_environment(
+    def get_application(
         self,
         name: str,
-    ) -> serverless_20210924_models.GetEnvironmentResponse:
+    ) -> serverless_20210924_models.GetApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_environment_with_options(name, headers, runtime)
+        return self.get_application_with_options(name, headers, runtime)
 
-    async def get_environment_async(
+    async def get_application_async(
         self,
         name: str,
-    ) -> serverless_20210924_models.GetEnvironmentResponse:
+    ) -> serverless_20210924_models.GetApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_environment_with_options_async(name, headers, runtime)
+        return await self.get_application_with_options_async(name, headers, runtime)
 
     def get_environment_with_options(
         self,
@@ -1051,21 +1035,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_pipeline(
+    def get_environment(
         self,
         name: str,
-    ) -> serverless_20210924_models.GetPipelineResponse:
+    ) -> serverless_20210924_models.GetEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_pipeline_with_options(name, headers, runtime)
+        return self.get_environment_with_options(name, headers, runtime)
 
-    async def get_pipeline_async(
+    async def get_environment_async(
         self,
         name: str,
-    ) -> serverless_20210924_models.GetPipelineResponse:
+    ) -> serverless_20210924_models.GetEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_pipeline_with_options_async(name, headers, runtime)
+        return await self.get_environment_with_options_async(name, headers, runtime)
 
     def get_pipeline_with_options(
         self,
@@ -1117,21 +1101,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_pipeline_template(
+    def get_pipeline(
         self,
         name: str,
-    ) -> serverless_20210924_models.GetPipelineTemplateResponse:
+    ) -> serverless_20210924_models.GetPipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_pipeline_template_with_options(name, headers, runtime)
+        return self.get_pipeline_with_options(name, headers, runtime)
 
-    async def get_pipeline_template_async(
+    async def get_pipeline_async(
         self,
         name: str,
-    ) -> serverless_20210924_models.GetPipelineTemplateResponse:
+    ) -> serverless_20210924_models.GetPipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_pipeline_template_with_options_async(name, headers, runtime)
+        return await self.get_pipeline_with_options_async(name, headers, runtime)
 
     def get_pipeline_template_with_options(
         self,
@@ -1183,23 +1167,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_release(
+    def get_pipeline_template(
         self,
-        app_name: str,
-        version_id: str,
-    ) -> serverless_20210924_models.GetReleaseResponse:
+        name: str,
+    ) -> serverless_20210924_models.GetPipelineTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_release_with_options(app_name, version_id, headers, runtime)
+        return self.get_pipeline_template_with_options(name, headers, runtime)
 
-    async def get_release_async(
+    async def get_pipeline_template_async(
         self,
-        app_name: str,
-        version_id: str,
-    ) -> serverless_20210924_models.GetReleaseResponse:
+        name: str,
+    ) -> serverless_20210924_models.GetPipelineTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_release_with_options_async(app_name, version_id, headers, runtime)
+        return await self.get_pipeline_template_with_options_async(name, headers, runtime)
 
     def get_release_with_options(
         self,
@@ -1253,21 +1235,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_service(
+    def get_release(
         self,
-        name: str,
-    ) -> serverless_20210924_models.GetServiceResponse:
+        app_name: str,
+        version_id: str,
+    ) -> serverless_20210924_models.GetReleaseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_service_with_options(name, headers, runtime)
+        return self.get_release_with_options(app_name, version_id, headers, runtime)
 
-    async def get_service_async(
+    async def get_release_async(
         self,
-        name: str,
-    ) -> serverless_20210924_models.GetServiceResponse:
+        app_name: str,
+        version_id: str,
+    ) -> serverless_20210924_models.GetReleaseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_service_with_options_async(name, headers, runtime)
+        return await self.get_release_with_options_async(app_name, version_id, headers, runtime)
 
     def get_service_with_options(
         self,
@@ -1319,21 +1303,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_task(
+    def get_service(
         self,
         name: str,
-    ) -> serverless_20210924_models.GetTaskResponse:
+    ) -> serverless_20210924_models.GetServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_task_with_options(name, headers, runtime)
+        return self.get_service_with_options(name, headers, runtime)
 
-    async def get_task_async(
+    async def get_service_async(
         self,
         name: str,
-    ) -> serverless_20210924_models.GetTaskResponse:
+    ) -> serverless_20210924_models.GetServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_task_with_options_async(name, headers, runtime)
+        return await self.get_service_with_options_async(name, headers, runtime)
 
     def get_task_with_options(
         self,
@@ -1385,21 +1369,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_task_template(
+    def get_task(
         self,
         name: str,
-    ) -> serverless_20210924_models.GetTaskTemplateResponse:
+    ) -> serverless_20210924_models.GetTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_task_template_with_options(name, headers, runtime)
+        return self.get_task_with_options(name, headers, runtime)
 
-    async def get_task_template_async(
+    async def get_task_async(
         self,
         name: str,
-    ) -> serverless_20210924_models.GetTaskTemplateResponse:
+    ) -> serverless_20210924_models.GetTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_task_template_with_options_async(name, headers, runtime)
+        return await self.get_task_with_options_async(name, headers, runtime)
 
     def get_task_template_with_options(
         self,
@@ -1451,23 +1435,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_template(
+    def get_task_template(
         self,
         name: str,
-        request: serverless_20210924_models.GetTemplateRequest,
-    ) -> serverless_20210924_models.GetTemplateResponse:
+    ) -> serverless_20210924_models.GetTaskTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_template_with_options(name, request, headers, runtime)
+        return self.get_task_template_with_options(name, headers, runtime)
 
-    async def get_template_async(
+    async def get_task_template_async(
         self,
         name: str,
-        request: serverless_20210924_models.GetTemplateRequest,
-    ) -> serverless_20210924_models.GetTemplateResponse:
+    ) -> serverless_20210924_models.GetTaskTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_template_with_options_async(name, request, headers, runtime)
+        return await self.get_task_template_with_options_async(name, headers, runtime)
 
     def get_template_with_options(
         self,
@@ -1531,21 +1513,111 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_environment_revisions(
+    def get_template(
         self,
-        request: serverless_20210924_models.ListEnvironmentRevisionsRequest,
-    ) -> serverless_20210924_models.ListEnvironmentRevisionsResponse:
+        name: str,
+        request: serverless_20210924_models.GetTemplateRequest,
+    ) -> serverless_20210924_models.GetTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_environment_revisions_with_options(request, headers, runtime)
+        return self.get_template_with_options(name, request, headers, runtime)
 
-    async def list_environment_revisions_async(
+    async def get_template_async(
         self,
-        request: serverless_20210924_models.ListEnvironmentRevisionsRequest,
-    ) -> serverless_20210924_models.ListEnvironmentRevisionsResponse:
+        name: str,
+        request: serverless_20210924_models.GetTemplateRequest,
+    ) -> serverless_20210924_models.GetTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_environment_revisions_with_options_async(request, headers, runtime)
+        return await self.get_template_with_options_async(name, request, headers, runtime)
+
+    def list_applications_with_options(
+        self,
+        request: serverless_20210924_models.ListApplicationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> serverless_20210924_models.ListApplicationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.filter_name):
+            query['filterName'] = request.filter_name
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.template):
+            query['template'] = request.template
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplications',
+            version='2021-09-24',
+            protocol='HTTPS',
+            pathname=f'/apis/serverlessdeployment/v1/applications',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            serverless_20210924_models.ListApplicationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_applications_with_options_async(
+        self,
+        request: serverless_20210924_models.ListApplicationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> serverless_20210924_models.ListApplicationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.filter_name):
+            query['filterName'] = request.filter_name
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.template):
+            query['template'] = request.template
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplications',
+            version='2021-09-24',
+            protocol='HTTPS',
+            pathname=f'/apis/serverlessdeployment/v1/applications',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            serverless_20210924_models.ListApplicationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_applications(
+        self,
+        request: serverless_20210924_models.ListApplicationsRequest,
+    ) -> serverless_20210924_models.ListApplicationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_applications_with_options(request, headers, runtime)
+
+    async def list_applications_async(
+        self,
+        request: serverless_20210924_models.ListApplicationsRequest,
+    ) -> serverless_20210924_models.ListApplicationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_applications_with_options_async(request, headers, runtime)
 
     def list_environment_revisions_with_options(
         self,
@@ -1607,15 +1679,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_environments(self) -> serverless_20210924_models.ListEnvironmentsResponse:
+    def list_environment_revisions(
+        self,
+        request: serverless_20210924_models.ListEnvironmentRevisionsRequest,
+    ) -> serverless_20210924_models.ListEnvironmentRevisionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_environments_with_options(headers, runtime)
+        return self.list_environment_revisions_with_options(request, headers, runtime)
 
-    async def list_environments_async(self) -> serverless_20210924_models.ListEnvironmentsResponse:
+    async def list_environment_revisions_async(
+        self,
+        request: serverless_20210924_models.ListEnvironmentRevisionsRequest,
+    ) -> serverless_20210924_models.ListEnvironmentRevisionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_environments_with_options_async(headers, runtime)
+        return await self.list_environment_revisions_with_options_async(request, headers, runtime)
 
     def list_environments_with_options(
         self,
@@ -1665,21 +1743,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_pipeline_templates(
-        self,
-        request: serverless_20210924_models.ListPipelineTemplatesRequest,
-    ) -> serverless_20210924_models.ListPipelineTemplatesResponse:
+    def list_environments(self) -> serverless_20210924_models.ListEnvironmentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_pipeline_templates_with_options(request, headers, runtime)
+        return self.list_environments_with_options(headers, runtime)
 
-    async def list_pipeline_templates_async(
-        self,
-        request: serverless_20210924_models.ListPipelineTemplatesRequest,
-    ) -> serverless_20210924_models.ListPipelineTemplatesResponse:
+    async def list_environments_async(self) -> serverless_20210924_models.ListEnvironmentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_pipeline_templates_with_options_async(request, headers, runtime)
+        return await self.list_environments_with_options_async(headers, runtime)
 
     def list_pipeline_templates_with_options(
         self,
@@ -1749,21 +1821,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_pipelines(
+    def list_pipeline_templates(
         self,
-        request: serverless_20210924_models.ListPipelinesRequest,
-    ) -> serverless_20210924_models.ListPipelinesResponse:
+        request: serverless_20210924_models.ListPipelineTemplatesRequest,
+    ) -> serverless_20210924_models.ListPipelineTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_pipelines_with_options(request, headers, runtime)
+        return self.list_pipeline_templates_with_options(request, headers, runtime)
 
-    async def list_pipelines_async(
+    async def list_pipeline_templates_async(
         self,
-        request: serverless_20210924_models.ListPipelinesRequest,
-    ) -> serverless_20210924_models.ListPipelinesResponse:
+        request: serverless_20210924_models.ListPipelineTemplatesRequest,
+    ) -> serverless_20210924_models.ListPipelineTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_pipelines_with_options_async(request, headers, runtime)
+        return await self.list_pipeline_templates_with_options_async(request, headers, runtime)
 
     def list_pipelines_with_options(
         self,
@@ -1833,21 +1905,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_service_revisions(
+    def list_pipelines(
         self,
-        request: serverless_20210924_models.ListServiceRevisionsRequest,
-    ) -> serverless_20210924_models.ListServiceRevisionsResponse:
+        request: serverless_20210924_models.ListPipelinesRequest,
+    ) -> serverless_20210924_models.ListPipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_service_revisions_with_options(request, headers, runtime)
+        return self.list_pipelines_with_options(request, headers, runtime)
 
-    async def list_service_revisions_async(
+    async def list_pipelines_async(
         self,
-        request: serverless_20210924_models.ListServiceRevisionsRequest,
-    ) -> serverless_20210924_models.ListServiceRevisionsResponse:
+        request: serverless_20210924_models.ListPipelinesRequest,
+    ) -> serverless_20210924_models.ListPipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_service_revisions_with_options_async(request, headers, runtime)
+        return await self.list_pipelines_with_options_async(request, headers, runtime)
 
     def list_service_revisions_with_options(
         self,
@@ -1909,15 +1981,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_services(self) -> serverless_20210924_models.ListServicesResponse:
+    def list_service_revisions(
+        self,
+        request: serverless_20210924_models.ListServiceRevisionsRequest,
+    ) -> serverless_20210924_models.ListServiceRevisionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_services_with_options(headers, runtime)
+        return self.list_service_revisions_with_options(request, headers, runtime)
 
-    async def list_services_async(self) -> serverless_20210924_models.ListServicesResponse:
+    async def list_service_revisions_async(
+        self,
+        request: serverless_20210924_models.ListServiceRevisionsRequest,
+    ) -> serverless_20210924_models.ListServiceRevisionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_services_with_options_async(headers, runtime)
+        return await self.list_service_revisions_with_options_async(request, headers, runtime)
 
     def list_services_with_options(
         self,
@@ -1967,21 +2045,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_task_templates(
-        self,
-        request: serverless_20210924_models.ListTaskTemplatesRequest,
-    ) -> serverless_20210924_models.ListTaskTemplatesResponse:
+    def list_services(self) -> serverless_20210924_models.ListServicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_task_templates_with_options(request, headers, runtime)
+        return self.list_services_with_options(headers, runtime)
 
-    async def list_task_templates_async(
-        self,
-        request: serverless_20210924_models.ListTaskTemplatesRequest,
-    ) -> serverless_20210924_models.ListTaskTemplatesResponse:
+    async def list_services_async(self) -> serverless_20210924_models.ListServicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_task_templates_with_options_async(request, headers, runtime)
+        return await self.list_services_with_options_async(headers, runtime)
 
     def list_task_templates_with_options(
         self,
@@ -2051,21 +2123,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tasks(
+    def list_task_templates(
         self,
-        request: serverless_20210924_models.ListTasksRequest,
-    ) -> serverless_20210924_models.ListTasksResponse:
+        request: serverless_20210924_models.ListTaskTemplatesRequest,
+    ) -> serverless_20210924_models.ListTaskTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tasks_with_options(request, headers, runtime)
+        return self.list_task_templates_with_options(request, headers, runtime)
 
-    async def list_tasks_async(
+    async def list_task_templates_async(
         self,
-        request: serverless_20210924_models.ListTasksRequest,
-    ) -> serverless_20210924_models.ListTasksResponse:
+        request: serverless_20210924_models.ListTaskTemplatesRequest,
+    ) -> serverless_20210924_models.ListTaskTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tasks_with_options_async(request, headers, runtime)
+        return await self.list_task_templates_with_options_async(request, headers, runtime)
 
     def list_tasks_with_options(
         self,
@@ -2135,21 +2207,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_template_revisions(
+    def list_tasks(
         self,
-        request: serverless_20210924_models.ListTemplateRevisionsRequest,
-    ) -> serverless_20210924_models.ListTemplateRevisionsResponse:
+        request: serverless_20210924_models.ListTasksRequest,
+    ) -> serverless_20210924_models.ListTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_template_revisions_with_options(request, headers, runtime)
+        return self.list_tasks_with_options(request, headers, runtime)
 
-    async def list_template_revisions_async(
+    async def list_tasks_async(
         self,
-        request: serverless_20210924_models.ListTemplateRevisionsRequest,
-    ) -> serverless_20210924_models.ListTemplateRevisionsResponse:
+        request: serverless_20210924_models.ListTasksRequest,
+    ) -> serverless_20210924_models.ListTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_template_revisions_with_options_async(request, headers, runtime)
+        return await self.list_tasks_with_options_async(request, headers, runtime)
 
     def list_template_revisions_with_options(
         self,
@@ -2215,21 +2287,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_templates(
+    def list_template_revisions(
         self,
-        request: serverless_20210924_models.ListTemplatesRequest,
-    ) -> serverless_20210924_models.ListTemplatesResponse:
+        request: serverless_20210924_models.ListTemplateRevisionsRequest,
+    ) -> serverless_20210924_models.ListTemplateRevisionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_templates_with_options(request, headers, runtime)
+        return self.list_template_revisions_with_options(request, headers, runtime)
 
-    async def list_templates_async(
+    async def list_template_revisions_async(
         self,
-        request: serverless_20210924_models.ListTemplatesRequest,
-    ) -> serverless_20210924_models.ListTemplatesResponse:
+        request: serverless_20210924_models.ListTemplateRevisionsRequest,
+    ) -> serverless_20210924_models.ListTemplateRevisionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_templates_with_options_async(request, headers, runtime)
+        return await self.list_template_revisions_with_options_async(request, headers, runtime)
 
     def list_templates_with_options(
         self,
@@ -2291,23 +2363,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_environment(
+    def list_templates(
         self,
-        name: str,
-        request: serverless_20210924_models.PutEnvironmentRequest,
-    ) -> serverless_20210924_models.PutEnvironmentResponse:
+        request: serverless_20210924_models.ListTemplatesRequest,
+    ) -> serverless_20210924_models.ListTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_environment_with_options(name, request, headers, runtime)
+        return self.list_templates_with_options(request, headers, runtime)
 
-    async def put_environment_async(
+    async def list_templates_async(
         self,
-        name: str,
-        request: serverless_20210924_models.PutEnvironmentRequest,
-    ) -> serverless_20210924_models.PutEnvironmentResponse:
+        request: serverless_20210924_models.ListTemplatesRequest,
+    ) -> serverless_20210924_models.ListTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_environment_with_options_async(name, request, headers, runtime)
+        return await self.list_templates_with_options_async(request, headers, runtime)
 
     def put_environment_with_options(
         self,
@@ -2365,23 +2435,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_pipeline_status(
+    def put_environment(
         self,
         name: str,
-        request: serverless_20210924_models.PutPipelineStatusRequest,
-    ) -> serverless_20210924_models.PutPipelineStatusResponse:
+        request: serverless_20210924_models.PutEnvironmentRequest,
+    ) -> serverless_20210924_models.PutEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_pipeline_status_with_options(name, request, headers, runtime)
+        return self.put_environment_with_options(name, request, headers, runtime)
 
-    async def put_pipeline_status_async(
+    async def put_environment_async(
         self,
         name: str,
-        request: serverless_20210924_models.PutPipelineStatusRequest,
-    ) -> serverless_20210924_models.PutPipelineStatusResponse:
+        request: serverless_20210924_models.PutEnvironmentRequest,
+    ) -> serverless_20210924_models.PutEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_pipeline_status_with_options_async(name, request, headers, runtime)
+        return await self.put_environment_with_options_async(name, request, headers, runtime)
 
     def put_pipeline_status_with_options(
         self,
@@ -2447,23 +2517,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_pipeline_template(
+    def put_pipeline_status(
         self,
         name: str,
-        request: serverless_20210924_models.PutPipelineTemplateRequest,
-    ) -> serverless_20210924_models.PutPipelineTemplateResponse:
+        request: serverless_20210924_models.PutPipelineStatusRequest,
+    ) -> serverless_20210924_models.PutPipelineStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_pipeline_template_with_options(name, request, headers, runtime)
+        return self.put_pipeline_status_with_options(name, request, headers, runtime)
 
-    async def put_pipeline_template_async(
+    async def put_pipeline_status_async(
         self,
         name: str,
-        request: serverless_20210924_models.PutPipelineTemplateRequest,
-    ) -> serverless_20210924_models.PutPipelineTemplateResponse:
+        request: serverless_20210924_models.PutPipelineStatusRequest,
+    ) -> serverless_20210924_models.PutPipelineStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_pipeline_template_with_options_async(name, request, headers, runtime)
+        return await self.put_pipeline_status_with_options_async(name, request, headers, runtime)
 
     def put_pipeline_template_with_options(
         self,
@@ -2529,23 +2599,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_service(
+    def put_pipeline_template(
         self,
         name: str,
-        request: serverless_20210924_models.PutServiceRequest,
-    ) -> serverless_20210924_models.PutServiceResponse:
+        request: serverless_20210924_models.PutPipelineTemplateRequest,
+    ) -> serverless_20210924_models.PutPipelineTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_service_with_options(name, request, headers, runtime)
+        return self.put_pipeline_template_with_options(name, request, headers, runtime)
 
-    async def put_service_async(
+    async def put_pipeline_template_async(
         self,
         name: str,
-        request: serverless_20210924_models.PutServiceRequest,
-    ) -> serverless_20210924_models.PutServiceResponse:
+        request: serverless_20210924_models.PutPipelineTemplateRequest,
+    ) -> serverless_20210924_models.PutPipelineTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_service_with_options_async(name, request, headers, runtime)
+        return await self.put_pipeline_template_with_options_async(name, request, headers, runtime)
 
     def put_service_with_options(
         self,
@@ -2603,23 +2673,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_task_status(
+    def put_service(
         self,
         name: str,
-        request: serverless_20210924_models.PutTaskStatusRequest,
-    ) -> serverless_20210924_models.PutTaskStatusResponse:
+        request: serverless_20210924_models.PutServiceRequest,
+    ) -> serverless_20210924_models.PutServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_task_status_with_options(name, request, headers, runtime)
+        return self.put_service_with_options(name, request, headers, runtime)
 
-    async def put_task_status_async(
+    async def put_service_async(
         self,
         name: str,
-        request: serverless_20210924_models.PutTaskStatusRequest,
-    ) -> serverless_20210924_models.PutTaskStatusResponse:
+        request: serverless_20210924_models.PutServiceRequest,
+    ) -> serverless_20210924_models.PutServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_task_status_with_options_async(name, request, headers, runtime)
+        return await self.put_service_with_options_async(name, request, headers, runtime)
 
     def put_task_status_with_options(
         self,
@@ -2685,23 +2755,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_task_template(
+    def put_task_status(
         self,
         name: str,
-        request: serverless_20210924_models.PutTaskTemplateRequest,
-    ) -> serverless_20210924_models.PutTaskTemplateResponse:
+        request: serverless_20210924_models.PutTaskStatusRequest,
+    ) -> serverless_20210924_models.PutTaskStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_task_template_with_options(name, request, headers, runtime)
+        return self.put_task_status_with_options(name, request, headers, runtime)
 
-    async def put_task_template_async(
+    async def put_task_status_async(
         self,
         name: str,
-        request: serverless_20210924_models.PutTaskTemplateRequest,
-    ) -> serverless_20210924_models.PutTaskTemplateResponse:
+        request: serverless_20210924_models.PutTaskStatusRequest,
+    ) -> serverless_20210924_models.PutTaskStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_task_template_with_options_async(name, request, headers, runtime)
+        return await self.put_task_status_with_options_async(name, request, headers, runtime)
 
     def put_task_template_with_options(
         self,
@@ -2767,23 +2837,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_template(
+    def put_task_template(
         self,
         name: str,
-        request: serverless_20210924_models.PutTemplateRequest,
-    ) -> serverless_20210924_models.PutTemplateResponse:
+        request: serverless_20210924_models.PutTaskTemplateRequest,
+    ) -> serverless_20210924_models.PutTaskTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_template_with_options(name, request, headers, runtime)
+        return self.put_task_template_with_options(name, request, headers, runtime)
 
-    async def put_template_async(
+    async def put_task_template_async(
         self,
         name: str,
-        request: serverless_20210924_models.PutTemplateRequest,
-    ) -> serverless_20210924_models.PutTemplateResponse:
+        request: serverless_20210924_models.PutTaskTemplateRequest,
+    ) -> serverless_20210924_models.PutTaskTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_template_with_options_async(name, request, headers, runtime)
+        return await self.put_task_template_with_options_async(name, request, headers, runtime)
 
     def put_template_with_options(
         self,
@@ -2849,21 +2919,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def resume_task(
+    def put_template(
         self,
         name: str,
-    ) -> serverless_20210924_models.ResumeTaskResponse:
+        request: serverless_20210924_models.PutTemplateRequest,
+    ) -> serverless_20210924_models.PutTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.resume_task_with_options(name, headers, runtime)
+        return self.put_template_with_options(name, request, headers, runtime)
 
-    async def resume_task_async(
+    async def put_template_async(
         self,
         name: str,
-    ) -> serverless_20210924_models.ResumeTaskResponse:
+        request: serverless_20210924_models.PutTemplateRequest,
+    ) -> serverless_20210924_models.PutTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.resume_task_with_options_async(name, headers, runtime)
+        return await self.put_template_with_options_async(name, request, headers, runtime)
 
     def resume_task_with_options(
         self,
@@ -2915,21 +2987,87 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_pipeline(
+    def resume_task(
         self,
         name: str,
-    ) -> serverless_20210924_models.StartPipelineResponse:
+    ) -> serverless_20210924_models.ResumeTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_pipeline_with_options(name, headers, runtime)
+        return self.resume_task_with_options(name, headers, runtime)
 
-    async def start_pipeline_async(
+    async def resume_task_async(
         self,
         name: str,
-    ) -> serverless_20210924_models.StartPipelineResponse:
+    ) -> serverless_20210924_models.ResumeTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_pipeline_with_options_async(name, headers, runtime)
+        return await self.resume_task_with_options_async(name, headers, runtime)
+
+    def retry_task_with_options(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> serverless_20210924_models.RetryTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='RetryTask',
+            version='2021-09-24',
+            protocol='HTTPS',
+            pathname=f'/apis/serverlessdeployment/v1/tasks/{OpenApiUtilClient.get_encode_param(name)}/retry',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            serverless_20210924_models.RetryTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_task_with_options_async(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> serverless_20210924_models.RetryTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='RetryTask',
+            version='2021-09-24',
+            protocol='HTTPS',
+            pathname=f'/apis/serverlessdeployment/v1/tasks/{OpenApiUtilClient.get_encode_param(name)}/retry',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            serverless_20210924_models.RetryTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_task(
+        self,
+        name: str,
+    ) -> serverless_20210924_models.RetryTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.retry_task_with_options(name, headers, runtime)
+
+    async def retry_task_async(
+        self,
+        name: str,
+    ) -> serverless_20210924_models.RetryTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.retry_task_with_options_async(name, headers, runtime)
 
     def start_pipeline_with_options(
         self,
@@ -2981,21 +3119,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_task(
+    def start_pipeline(
         self,
         name: str,
-    ) -> serverless_20210924_models.StartTaskResponse:
+    ) -> serverless_20210924_models.StartPipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_task_with_options(name, headers, runtime)
+        return self.start_pipeline_with_options(name, headers, runtime)
 
-    async def start_task_async(
+    async def start_pipeline_async(
         self,
         name: str,
-    ) -> serverless_20210924_models.StartTaskResponse:
+    ) -> serverless_20210924_models.StartPipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_task_with_options_async(name, headers, runtime)
+        return await self.start_pipeline_with_options_async(name, headers, runtime)
 
     def start_task_with_options(
         self,
@@ -3047,23 +3185,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_application(
+    def start_task(
         self,
         name: str,
-        request: serverless_20210924_models.UpdateApplicationRequest,
-    ) -> serverless_20210924_models.UpdateApplicationResponse:
+    ) -> serverless_20210924_models.StartTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_application_with_options(name, request, headers, runtime)
+        return self.start_task_with_options(name, headers, runtime)
 
-    async def update_application_async(
+    async def start_task_async(
         self,
         name: str,
-        request: serverless_20210924_models.UpdateApplicationRequest,
-    ) -> serverless_20210924_models.UpdateApplicationResponse:
+    ) -> serverless_20210924_models.StartTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_application_with_options_async(name, request, headers, runtime)
+        return await self.start_task_with_options_async(name, headers, runtime)
 
     def update_application_with_options(
         self,
@@ -3120,3 +3256,21 @@ class Client(OpenApiClient):
             serverless_20210924_models.UpdateApplicationResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_application(
+        self,
+        name: str,
+        request: serverless_20210924_models.UpdateApplicationRequest,
+    ) -> serverless_20210924_models.UpdateApplicationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_application_with_options(name, request, headers, runtime)
+
+    async def update_application_async(
+        self,
+        name: str,
+        request: serverless_20210924_models.UpdateApplicationRequest,
+    ) -> serverless_20210924_models.UpdateApplicationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_application_with_options_async(name, request, headers, runtime)
