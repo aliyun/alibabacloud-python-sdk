@@ -78,6 +78,8 @@ class Client(OpenApiClient):
             query['CheckUrl'] = request.check_url
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.global_resource_plan):
+            query['GlobalResourcePlan'] = request.global_resource_plan
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -137,6 +139,8 @@ class Client(OpenApiClient):
             query['CheckUrl'] = request.check_url
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.global_resource_plan):
+            query['GlobalResourcePlan'] = request.global_resource_plan
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):

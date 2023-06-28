@@ -45,6 +45,7 @@ class AddCdnDomainRequest(TeaModel):
         cdn_type: str = None,
         check_url: str = None,
         domain_name: str = None,
+        global_resource_plan: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_group_id: str = None,
@@ -66,6 +67,7 @@ class AddCdnDomainRequest(TeaModel):
         # 
         # A wildcard domain that starts with a period (.) is supported, such as .example.com.
         self.domain_name = domain_name
+        self.global_resource_plan = global_resource_plan
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the resource group.
@@ -104,6 +106,8 @@ class AddCdnDomainRequest(TeaModel):
             result['CheckUrl'] = self.check_url
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+        if self.global_resource_plan is not None:
+            result['GlobalResourcePlan'] = self.global_resource_plan
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -132,6 +136,8 @@ class AddCdnDomainRequest(TeaModel):
             self.check_url = m.get('CheckUrl')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+        if m.get('GlobalResourcePlan') is not None:
+            self.global_resource_plan = m.get('GlobalResourcePlan')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -5024,6 +5030,7 @@ class DescribeCdnDomainDetailResponseBodyGetDomainDetailModel(TeaModel):
         description: str = None,
         domain_name: str = None,
         domain_status: str = None,
+        global_resource_plan: str = None,
         gmt_created: str = None,
         gmt_modified: str = None,
         https_cname: str = None,
@@ -5055,6 +5062,7 @@ class DescribeCdnDomainDetailResponseBodyGetDomainDetailModel(TeaModel):
         # *   **stopping**\
         # *   **deleting**\
         self.domain_status = domain_status
+        self.global_resource_plan = global_resource_plan
         # The time when the domain name was created.
         self.gmt_created = gmt_created
         # The time when the domain name was last modified.
@@ -5093,6 +5101,8 @@ class DescribeCdnDomainDetailResponseBodyGetDomainDetailModel(TeaModel):
             result['DomainName'] = self.domain_name
         if self.domain_status is not None:
             result['DomainStatus'] = self.domain_status
+        if self.global_resource_plan is not None:
+            result['GlobalResourcePlan'] = self.global_resource_plan
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
         if self.gmt_modified is not None:
@@ -5121,6 +5131,8 @@ class DescribeCdnDomainDetailResponseBodyGetDomainDetailModel(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('DomainStatus') is not None:
             self.domain_status = m.get('DomainStatus')
+        if m.get('GlobalResourcePlan') is not None:
+            self.global_resource_plan = m.get('GlobalResourcePlan')
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')
         if m.get('GmtModified') is not None:
@@ -25857,6 +25869,7 @@ class DescribeUserDomainsResponseBodyDomainsPageData(TeaModel):
         domain_id: int = None,
         domain_name: str = None,
         domain_status: str = None,
+        global_resource_plan: str = None,
         gmt_created: str = None,
         gmt_modified: str = None,
         resource_group_id: str = None,
@@ -25895,6 +25908,7 @@ class DescribeUserDomainsResponseBodyDomainsPageData(TeaModel):
         # *   **stopping**\
         # *   **deleting**\
         self.domain_status = domain_status
+        self.global_resource_plan = global_resource_plan
         # The time when the accelerated domain name was added.
         self.gmt_created = gmt_created
         # The time when the accelerated domain name was modified.
@@ -25935,6 +25949,8 @@ class DescribeUserDomainsResponseBodyDomainsPageData(TeaModel):
             result['DomainName'] = self.domain_name
         if self.domain_status is not None:
             result['DomainStatus'] = self.domain_status
+        if self.global_resource_plan is not None:
+            result['GlobalResourcePlan'] = self.global_resource_plan
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
         if self.gmt_modified is not None:
@@ -25965,6 +25981,8 @@ class DescribeUserDomainsResponseBodyDomainsPageData(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('DomainStatus') is not None:
             self.domain_status = m.get('DomainStatus')
+        if m.get('GlobalResourcePlan') is not None:
+            self.global_resource_plan = m.get('GlobalResourcePlan')
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')
         if m.get('GmtModified') is not None:
