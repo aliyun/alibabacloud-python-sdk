@@ -265,6 +265,7 @@ class AddDirectionalAddressRequest(TeaModel):
         msg_notify: bool = None,
         serial_no: str = None,
         source: str = None,
+        url_insecurity_force: bool = None,
     ):
         self.address = address
         self.address_type = address_type
@@ -272,6 +273,7 @@ class AddDirectionalAddressRequest(TeaModel):
         self.msg_notify = msg_notify
         self.serial_no = serial_no
         self.source = source
+        self.url_insecurity_force = url_insecurity_force
 
     def validate(self):
         pass
@@ -294,6 +296,8 @@ class AddDirectionalAddressRequest(TeaModel):
             result['SerialNo'] = self.serial_no
         if self.source is not None:
             result['Source'] = self.source
+        if self.url_insecurity_force is not None:
+            result['UrlInsecurityForce'] = self.url_insecurity_force
         return result
 
     def from_map(self, m: dict = None):
@@ -310,6 +314,8 @@ class AddDirectionalAddressRequest(TeaModel):
             self.serial_no = m.get('SerialNo')
         if m.get('Source') is not None:
             self.source = m.get('Source')
+        if m.get('UrlInsecurityForce') is not None:
+            self.url_insecurity_force = m.get('UrlInsecurityForce')
         return self
 
 
@@ -3567,6 +3573,7 @@ class GetCredentialPoolStatisticsResponseBodyData(TeaModel):
         credential_type: str = None,
         effective_available_flow: str = None,
         effective_total_flow: str = None,
+        month_exceed_fee: int = None,
         month_feature_fee: int = None,
         month_used_amount: int = None,
         pool_avaiable: str = None,
@@ -3583,6 +3590,7 @@ class GetCredentialPoolStatisticsResponseBodyData(TeaModel):
         self.credential_type = credential_type
         self.effective_available_flow = effective_available_flow
         self.effective_total_flow = effective_total_flow
+        self.month_exceed_fee = month_exceed_fee
         self.month_feature_fee = month_feature_fee
         self.month_used_amount = month_used_amount
         self.pool_avaiable = pool_avaiable
@@ -3615,6 +3623,8 @@ class GetCredentialPoolStatisticsResponseBodyData(TeaModel):
             result['EffectiveAvailableFlow'] = self.effective_available_flow
         if self.effective_total_flow is not None:
             result['EffectiveTotalFlow'] = self.effective_total_flow
+        if self.month_exceed_fee is not None:
+            result['MonthExceedFee'] = self.month_exceed_fee
         if self.month_feature_fee is not None:
             result['MonthFeatureFee'] = self.month_feature_fee
         if self.month_used_amount is not None:
@@ -3649,6 +3659,8 @@ class GetCredentialPoolStatisticsResponseBodyData(TeaModel):
             self.effective_available_flow = m.get('EffectiveAvailableFlow')
         if m.get('EffectiveTotalFlow') is not None:
             self.effective_total_flow = m.get('EffectiveTotalFlow')
+        if m.get('MonthExceedFee') is not None:
+            self.month_exceed_fee = m.get('MonthExceedFee')
         if m.get('MonthFeatureFee') is not None:
             self.month_feature_fee = m.get('MonthFeatureFee')
         if m.get('MonthUsedAmount') is not None:
