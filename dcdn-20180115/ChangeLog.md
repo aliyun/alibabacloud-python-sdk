@@ -1,3 +1,6 @@
+2023-06-28 Version: 1.1.12
+- Add DescribeDdosBpsMax.
+
 2023-06-20 Version: 1.1.11
 - Add DescribeDdosEventMax.
 

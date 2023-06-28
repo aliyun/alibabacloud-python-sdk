@@ -13428,7 +13428,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnUserTagsResponse:
         """
-        The ID of the request.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDcdnUserTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13456,7 +13456,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnUserTagsResponse:
         """
-        The ID of the request.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDcdnUserTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13481,7 +13481,7 @@ class Client(OpenApiClient):
 
     def describe_dcdn_user_tags(self) -> dcdn_20180115_models.DescribeDcdnUserTagsResponse:
         """
-        The ID of the request.
+        > You can call this operation up to 100 times per second per account.
         
         @return: DescribeDcdnUserTagsResponse
         """
@@ -13490,7 +13490,7 @@ class Client(OpenApiClient):
 
     async def describe_dcdn_user_tags_async(self) -> dcdn_20180115_models.DescribeDcdnUserTagsResponse:
         """
-        The ID of the request.
+        > You can call this operation up to 100 times per second per account.
         
         @return: DescribeDcdnUserTagsResponse
         """
@@ -18138,6 +18138,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_dcdn_domain_staging_config_with_options_async(request, runtime)
+
+    def set_dcdn_full_domains_block_ipwith_options(
+        self,
+        request: dcdn_20180115_models.SetDcdnFullDomainsBlockIPRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse:
+        """
+        > You can call this operation up to 10 times per second per account.
+        
+        @param request: SetDcdnFullDomainsBlockIPRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDcdnFullDomainsBlockIPResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.block_interval):
+            body['BlockInterval'] = request.block_interval
+        if not UtilClient.is_unset(request.iplist):
+            body['IPList'] = request.iplist
+        if not UtilClient.is_unset(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.update_type):
+            body['UpdateType'] = request.update_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetDcdnFullDomainsBlockIP',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_dcdn_full_domains_block_ipwith_options_async(
+        self,
+        request: dcdn_20180115_models.SetDcdnFullDomainsBlockIPRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse:
+        """
+        > You can call this operation up to 10 times per second per account.
+        
+        @param request: SetDcdnFullDomainsBlockIPRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDcdnFullDomainsBlockIPResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.block_interval):
+            body['BlockInterval'] = request.block_interval
+        if not UtilClient.is_unset(request.iplist):
+            body['IPList'] = request.iplist
+        if not UtilClient.is_unset(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.update_type):
+            body['UpdateType'] = request.update_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetDcdnFullDomainsBlockIP',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_dcdn_full_domains_block_ip(
+        self,
+        request: dcdn_20180115_models.SetDcdnFullDomainsBlockIPRequest,
+    ) -> dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse:
+        """
+        > You can call this operation up to 10 times per second per account.
+        
+        @param request: SetDcdnFullDomainsBlockIPRequest
+        @return: SetDcdnFullDomainsBlockIPResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_dcdn_full_domains_block_ipwith_options(request, runtime)
+
+    async def set_dcdn_full_domains_block_ip_async(
+        self,
+        request: dcdn_20180115_models.SetDcdnFullDomainsBlockIPRequest,
+    ) -> dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse:
+        """
+        > You can call this operation up to 10 times per second per account.
+        
+        @param request: SetDcdnFullDomainsBlockIPRequest
+        @return: SetDcdnFullDomainsBlockIPResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_dcdn_full_domains_block_ipwith_options_async(request, runtime)
 
     def set_dcdn_user_config_with_options(
         self,

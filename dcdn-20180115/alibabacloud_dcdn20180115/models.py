@@ -26633,7 +26633,7 @@ class DescribeDcdnUserTagsResponseBodyTags(TeaModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The value of the returned tag.
+        # The tag key.
         self.key = key
         self.value = value
 
@@ -26667,9 +26667,9 @@ class DescribeDcdnUserTagsResponseBody(TeaModel):
         request_id: str = None,
         tags: List[DescribeDcdnUserTagsResponseBodyTags] = None,
     ):
-        # The tags.
+        # The request ID.
         self.request_id = request_id
-        # The key of the returned tag.
+        # The tag.
         self.tags = tags
 
     def validate(self):
@@ -34577,6 +34577,145 @@ class SetDcdnDomainStagingConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetDcdnDomainStagingConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetDcdnFullDomainsBlockIPRequest(TeaModel):
+    def __init__(
+        self,
+        block_interval: int = None,
+        iplist: str = None,
+        operation_type: str = None,
+        update_type: str = None,
+    ):
+        # The blocking period. Unit: seconds.
+        # 
+        # > If you set the **OperationType** parameter to **unblock**, you do not need to set this parameter.
+        self.block_interval = block_interval
+        # The IP addresses that are blocked or unblocked. Separate multiple IP addresses with commas (,). You can specify up to 1,000 IP addresses.
+        self.iplist = iplist
+        # The action. Valid values:
+        # 
+        # *   **block**\
+        # *   **unblock**\
+        self.operation_type = operation_type
+        self.update_type = update_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_interval is not None:
+            result['BlockInterval'] = self.block_interval
+        if self.iplist is not None:
+            result['IPList'] = self.iplist
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.update_type is not None:
+            result['UpdateType'] = self.update_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockInterval') is not None:
+            self.block_interval = m.get('BlockInterval')
+        if m.get('IPList') is not None:
+            self.iplist = m.get('IPList')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('UpdateType') is not None:
+            self.update_type = m.get('UpdateType')
+        return self
+
+
+class SetDcdnFullDomainsBlockIPResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The response code.
+        self.code = code
+        # The status code that indicates the result.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetDcdnFullDomainsBlockIPResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetDcdnFullDomainsBlockIPResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetDcdnFullDomainsBlockIPResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
