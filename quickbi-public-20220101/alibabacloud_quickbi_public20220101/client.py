@@ -47,9 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse:
         """
-        Indicates whether the request is successful. Valid values:
-        *   true: The request was successful.
-        *   false: The request failed.
+        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.\\n
         
         @param request: AddDataLevelPermissionRuleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -84,9 +82,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse:
         """
-        Indicates whether the request is successful. Valid values:
-        *   true: The request was successful.
-        *   false: The request failed.
+        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.\\n
         
         @param request: AddDataLevelPermissionRuleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -120,9 +116,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersRequest,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse:
         """
-        Indicates whether the request is successful. Valid values:
-        *   true: The request was successful.
-        *   false: The request failed.
+        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.\\n
         
         @param request: AddDataLevelPermissionRuleUsersRequest
         @return: AddDataLevelPermissionRuleUsersResponse
@@ -135,9 +129,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersRequest,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse:
         """
-        Indicates whether the request is successful. Valid values:
-        *   true: The request was successful.
-        *   false: The request failed.
+        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.\\n
         
         @param request: AddDataLevelPermissionRuleUsersRequest
         @return: AddDataLevelPermissionRuleUsersResponse
@@ -3407,6 +3399,260 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_api_datasource_parameters_with_options_async(request, runtime)
 
+    def query_component_performance_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cost_time_avg_min):
+            query['CostTimeAvgMin'] = request.cost_time_avg_min
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryComponentPerformance',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryComponentPerformanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_component_performance_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cost_time_avg_min):
+            query['CostTimeAvgMin'] = request.cost_time_avg_min
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryComponentPerformance',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryComponentPerformanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_component_performance(
+        self,
+        request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
+    ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_component_performance_with_options(request, runtime)
+
+    async def query_component_performance_async(
+        self,
+        request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
+    ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_component_performance_with_options_async(request, runtime)
+
+    def query_cube_optimization_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCubeOptimization',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryCubeOptimizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_cube_optimization_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCubeOptimization',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryCubeOptimizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_cube_optimization(
+        self,
+        request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
+    ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_cube_optimization_with_options(request, runtime)
+
+    async def query_cube_optimization_async(
+        self,
+        request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
+    ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_cube_optimization_with_options_async(request, runtime)
+
+    def query_cube_performance_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryCubePerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryCubePerformanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cost_time_avg_min):
+            query['CostTimeAvgMin'] = request.cost_time_avg_min
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCubePerformance',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryCubePerformanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_cube_performance_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryCubePerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryCubePerformanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cost_time_avg_min):
+            query['CostTimeAvgMin'] = request.cost_time_avg_min
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCubePerformance',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryCubePerformanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_cube_performance(
+        self,
+        request: quickbi_public_20220101_models.QueryCubePerformanceRequest,
+    ) -> quickbi_public_20220101_models.QueryCubePerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_cube_performance_with_options(request, runtime)
+
+    async def query_cube_performance_async(
+        self,
+        request: quickbi_public_20220101_models.QueryCubePerformanceRequest,
+    ) -> quickbi_public_20220101_models.QueryCubePerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_cube_performance_with_options_async(request, runtime)
+
     def query_data_service_with_options(
         self,
         request: quickbi_public_20220101_models.QueryDataServiceRequest,
@@ -3517,9 +3763,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetDetailInfoResponse:
         """
-        The execution result of the interface is returned. Valid values:
-        *   true: The request was successful.
-        *   false: The request fails.
+        The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
         
         @param request: QueryDatasetDetailInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3554,9 +3798,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetDetailInfoResponse:
         """
-        The execution result of the interface is returned. Valid values:
-        *   true: The request was successful.
-        *   false: The request fails.
+        The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
         
         @param request: QueryDatasetDetailInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3590,9 +3832,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetDetailInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetDetailInfoResponse:
         """
-        The execution result of the interface is returned. Valid values:
-        *   true: The request was successful.
-        *   false: The request fails.
+        The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
         
         @param request: QueryDatasetDetailInfoRequest
         @return: QueryDatasetDetailInfoResponse
@@ -3605,9 +3845,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetDetailInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetDetailInfoResponse:
         """
-        The execution result of the interface is returned. Valid values:
-        *   true: The request was successful.
-        *   false: The request fails.
+        The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
         
         @param request: QueryDatasetDetailInfoRequest
         @return: QueryDatasetDetailInfoResponse
@@ -4116,6 +4354,100 @@ class Client(OpenApiClient):
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_readable_resources_list_by_user_id_with_options_async(request, runtime)
+
+    def query_report_performance_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryReportPerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryReportPerformanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cost_time_avg_min):
+            query['CostTimeAvgMin'] = request.cost_time_avg_min
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryReportPerformance',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryReportPerformanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_report_performance_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryReportPerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryReportPerformanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cost_time_avg_min):
+            query['CostTimeAvgMin'] = request.cost_time_avg_min
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryReportPerformance',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryReportPerformanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_report_performance(
+        self,
+        request: quickbi_public_20220101_models.QueryReportPerformanceRequest,
+    ) -> quickbi_public_20220101_models.QueryReportPerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_report_performance_with_options(request, runtime)
+
+    async def query_report_performance_async(
+        self,
+        request: quickbi_public_20220101_models.QueryReportPerformanceRequest,
+    ) -> quickbi_public_20220101_models.QueryReportPerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_report_performance_with_options_async(request, runtime)
 
     def query_share_list_with_options(
         self,
@@ -5500,15 +5832,6 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
-        """
-        Indicates whether the request is successful. Valid values:
-        *   true: The request was successful.
-        *   false: The request failed.
-        
-        @param request: SetDataLevelPermissionRuleConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetDataLevelPermissionRuleConfigResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_model):
@@ -5537,15 +5860,6 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
-        """
-        Indicates whether the request is successful. Valid values:
-        *   true: The request was successful.
-        *   false: The request failed.
-        
-        @param request: SetDataLevelPermissionRuleConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetDataLevelPermissionRuleConfigResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_model):
@@ -5573,14 +5887,6 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
-        """
-        Indicates whether the request is successful. Valid values:
-        *   true: The request was successful.
-        *   false: The request failed.
-        
-        @param request: SetDataLevelPermissionRuleConfigRequest
-        @return: SetDataLevelPermissionRuleConfigResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.set_data_level_permission_rule_config_with_options(request, runtime)
 
@@ -5588,14 +5894,6 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
-        """
-        Indicates whether the request is successful. Valid values:
-        *   true: The request was successful.
-        *   false: The request failed.
-        
-        @param request: SetDataLevelPermissionRuleConfigRequest
-        @return: SetDataLevelPermissionRuleConfigResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.set_data_level_permission_rule_config_with_options_async(request, runtime)
 
