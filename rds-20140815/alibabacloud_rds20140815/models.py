@@ -375,6 +375,7 @@ class AllocateInstancePublicConnectionRequest(TeaModel):
         general_group_name: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        pgbouncer_port: str = None,
         port: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -393,6 +394,7 @@ class AllocateInstancePublicConnectionRequest(TeaModel):
         self.general_group_name = general_group_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.pgbouncer_port = pgbouncer_port
         # The public port of the instance. Valid values: **1000 to 5999**.
         self.port = port
         self.resource_owner_account = resource_owner_account
@@ -419,6 +421,8 @@ class AllocateInstancePublicConnectionRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.pgbouncer_port is not None:
+            result['PGBouncerPort'] = self.pgbouncer_port
         if self.port is not None:
             result['Port'] = self.port
         if self.resource_owner_account is not None:
@@ -441,6 +445,8 @@ class AllocateInstancePublicConnectionRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PGBouncerPort') is not None:
+            self.pgbouncer_port = m.get('PGBouncerPort')
         if m.get('Port') is not None:
             self.port = m.get('Port')
         if m.get('ResourceOwnerAccount') is not None:
@@ -5572,6 +5578,7 @@ class CreateDBInstanceEndpointRequest(TeaModel):
         node_items: List[CreateDBInstanceEndpointRequestNodeItems] = None,
         port: str = None,
         private_ip_address: str = None,
+        resource_group_id: str = None,
         resource_owner_id: int = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -5601,6 +5608,7 @@ class CreateDBInstanceEndpointRequest(TeaModel):
         self.port = port
         # The IP address of the internal endpoint.
         self.private_ip_address = private_ip_address
+        self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
         # The vSwitch ID of the internal endpoint.
         self.v_switch_id = v_switch_id
@@ -5637,6 +5645,8 @@ class CreateDBInstanceEndpointRequest(TeaModel):
             result['Port'] = self.port
         if self.private_ip_address is not None:
             result['PrivateIpAddress'] = self.private_ip_address
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.v_switch_id is not None:
@@ -5666,6 +5676,8 @@ class CreateDBInstanceEndpointRequest(TeaModel):
             self.port = m.get('Port')
         if m.get('PrivateIpAddress') is not None:
             self.private_ip_address = m.get('PrivateIpAddress')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('VSwitchId') is not None:
@@ -5686,6 +5698,7 @@ class CreateDBInstanceEndpointShrinkRequest(TeaModel):
         node_items_shrink: str = None,
         port: str = None,
         private_ip_address: str = None,
+        resource_group_id: str = None,
         resource_owner_id: int = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -5715,6 +5728,7 @@ class CreateDBInstanceEndpointShrinkRequest(TeaModel):
         self.port = port
         # The IP address of the internal endpoint.
         self.private_ip_address = private_ip_address
+        self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
         # The vSwitch ID of the internal endpoint.
         self.v_switch_id = v_switch_id
@@ -5746,6 +5760,8 @@ class CreateDBInstanceEndpointShrinkRequest(TeaModel):
             result['Port'] = self.port
         if self.private_ip_address is not None:
             result['PrivateIpAddress'] = self.private_ip_address
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.v_switch_id is not None:
@@ -5772,6 +5788,8 @@ class CreateDBInstanceEndpointShrinkRequest(TeaModel):
             self.port = m.get('Port')
         if m.get('PrivateIpAddress') is not None:
             self.private_ip_address = m.get('PrivateIpAddress')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('VSwitchId') is not None:
@@ -5913,6 +5931,7 @@ class CreateDBInstanceEndpointAddressRequest(TeaModel):
         dbinstance_id: str = None,
         ip_type: str = None,
         port: str = None,
+        resource_group_id: str = None,
         resource_owner_id: int = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
@@ -5929,6 +5948,7 @@ class CreateDBInstanceEndpointAddressRequest(TeaModel):
         self.ip_type = ip_type
         # The port number of the public endpoint.
         self.port = port
+        self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
 
     def validate(self):
@@ -5952,6 +5972,8 @@ class CreateDBInstanceEndpointAddressRequest(TeaModel):
             result['IpType'] = self.ip_type
         if self.port is not None:
             result['Port'] = self.port
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
         return result
@@ -5970,6 +5992,8 @@ class CreateDBInstanceEndpointAddressRequest(TeaModel):
             self.ip_type = m.get('IpType')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
         return self
@@ -6448,6 +6472,7 @@ class CreateDBNodesRequest(TeaModel):
         dbnode: List[CreateDBNodesRequestDBNode] = None,
         owner_account: str = None,
         owner_id: int = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -6461,6 +6486,7 @@ class CreateDBNodesRequest(TeaModel):
         self.dbnode = dbnode
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -6488,6 +6514,8 @@ class CreateDBNodesRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -6509,6 +6537,8 @@ class CreateDBNodesRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -6524,6 +6554,7 @@ class CreateDBNodesShrinkRequest(TeaModel):
         dbnode_shrink: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -6537,6 +6568,7 @@ class CreateDBNodesShrinkRequest(TeaModel):
         self.dbnode_shrink = dbnode_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -6559,6 +6591,8 @@ class CreateDBNodesShrinkRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -6577,6 +6611,8 @@ class CreateDBNodesShrinkRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -19757,6 +19793,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         max_connections: int = None,
         max_iombps: int = None,
         max_iops: int = None,
+        pgbouncer_enabled: str = None,
         pay_type: str = None,
         port: str = None,
         proxy_type: int = None,
@@ -19942,6 +19979,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.max_iombps = max_iombps
         # The maximum number of I/O requests that is processed by the instance per second.
         self.max_iops = max_iops
+        self.pgbouncer_enabled = pgbouncer_enabled
         # The billing method of the instance. Valid values:
         # 
         # *   **Postpaid**: pay-as-you-go
@@ -20117,6 +20155,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['MaxIOMBPS'] = self.max_iombps
         if self.max_iops is not None:
             result['MaxIOPS'] = self.max_iops
+        if self.pgbouncer_enabled is not None:
+            result['PGBouncerEnabled'] = self.pgbouncer_enabled
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.port is not None:
@@ -20262,6 +20302,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.max_iombps = m.get('MaxIOMBPS')
         if m.get('MaxIOPS') is not None:
             self.max_iops = m.get('MaxIOPS')
+        if m.get('PGBouncerEnabled') is not None:
+            self.pgbouncer_enabled = m.get('PGBouncerEnabled')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('Port') is not None:
@@ -22964,6 +23006,7 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo(T
         ipaddress: str = None,
         iptype: str = None,
         max_delay_time: str = None,
+        pgbouncer_port: str = None,
         port: str = None,
         security_ipgroups: DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroups = None,
         upgradeable: str = None,
@@ -23005,6 +23048,7 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo(T
         # 
         # > If the latency on a read-only instance exceeds the specified threshold, the system no longer forwards read requests to the read-only instance.
         self.max_delay_time = max_delay_time
+        self.pgbouncer_port = pgbouncer_port
         # The port that is used to connect to the instance.
         self.port = port
         # An array that consists of the details about the IP address whitelists.
@@ -23051,6 +23095,8 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo(T
             result['IPType'] = self.iptype
         if self.max_delay_time is not None:
             result['MaxDelayTime'] = self.max_delay_time
+        if self.pgbouncer_port is not None:
+            result['PGBouncerPort'] = self.pgbouncer_port
         if self.port is not None:
             result['Port'] = self.port
         if self.security_ipgroups is not None:
@@ -23084,6 +23130,8 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo(T
             self.iptype = m.get('IPType')
         if m.get('MaxDelayTime') is not None:
             self.max_delay_time = m.get('MaxDelayTime')
+        if m.get('PGBouncerPort') is not None:
+            self.pgbouncer_port = m.get('PGBouncerPort')
         if m.get('Port') is not None:
             self.port = m.get('Port')
         if m.get('SecurityIPGroups') is not None:
@@ -38031,9 +38079,13 @@ class DescribeParametersResponseBodyParamGroupInfo(TeaModel):
         parameter_group_name: str = None,
         parameter_group_type: str = None,
     ):
+        # Parameter template ID.
         self.param_group_id = param_group_id
+        # Parameter template description.
         self.parameter_group_desc = parameter_group_desc
+        # Parameter template name.
         self.parameter_group_name = parameter_group_name
+        # Parameter template type.
         self.parameter_group_type = parameter_group_type
 
     def validate(self):
@@ -38161,6 +38213,7 @@ class DescribeParametersResponseBody(TeaModel):
         self.engine = engine
         # The database engine version of the instance.
         self.engine_version = engine_version
+        # Parameter template information.
         self.param_group_info = param_group_info
         # The ID of the request.
         self.request_id = request_id
@@ -50641,6 +50694,7 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         general_group_name: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        pgbouncer_port: str = None,
         port: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -50663,6 +50717,7 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         self.general_group_name = general_group_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.pgbouncer_port = pgbouncer_port
         # The port number after the change.
         self.port = port
         self.resource_owner_account = resource_owner_account
@@ -50691,6 +50746,8 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.pgbouncer_port is not None:
+            result['PGBouncerPort'] = self.pgbouncer_port
         if self.port is not None:
             result['Port'] = self.port
         if self.resource_owner_account is not None:
@@ -50715,6 +50772,8 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PGBouncerPort') is not None:
+            self.pgbouncer_port = m.get('PGBouncerPort')
         if m.get('Port') is not None:
             self.port = m.get('Port')
         if m.get('ResourceOwnerAccount') is not None:
