@@ -12,9 +12,24 @@ class CreateConfigRequest(TeaModel):
         lang: str = None,
         value: str = None,
     ):
+        # The code of the common configuration item. Valid values:
+        # 
+        # *   **access_failed_cnt**: the maximum number of access attempts allowed when Data Security Center (DSC) fails to access an unauthorized resource.
+        # *   **access_permission_exprie_max_days**: the maximum idle period allowed for access permissions before an alert is triggered.
+        # *   **log_datasize_avg_days**: the minimum percentage of the volume of logs of a specific type generated on the current day to the average volume of logs generated in the previous 10 days before an alert is triggered.
         self.code = code
+        # The description of the common configuration item.
         self.description = description
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The value of the common configuration item. The meaning of this parameter varies with the value of the Code parameter.
+        # 
+        # *   If you set the Code parameter to **access_failed_cnt**, the Value parameter specifies the maximum number of access attempts allowed when DSC fails to access an unauthorized resource.
+        # *   If you set the Code parameter to **access_permission_exprie_max_days**, the Value parameter specifies the maximum idle period allowed for access permissions before an alert is triggered.
+        # *   If you set the Code parameter to **log_datasize_avg_days**, the Value parameter specifies the minimum percentage of the volume of logs of a specific type generated on the current day to the average amount of logs generated in the previous 10 days before an alert is triggered.
         self.value = value
 
     def validate(self):
@@ -55,7 +70,9 @@ class CreateConfigResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the common alert configuration.
         self.id = id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -131,6 +148,7 @@ class CreateDataLimitRequest(TeaModel):
         self,
         audit_status: int = None,
         auto_scan: int = None,
+        certificate_permission: str = None,
         enable: int = None,
         engine_type: str = None,
         event_status: int = None,
@@ -145,20 +163,88 @@ class CreateDataLimitRequest(TeaModel):
         service_region_id: str = None,
         user_name: str = None,
     ):
+        # Specifies whether to enable the security audit feature. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.audit_status = audit_status
+        # Specifies whether to automatically trigger a re-scan after a rule is modified. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
+        # 
+        # > When a re-scan is triggered, DSC scans all data in your data asset.
         self.auto_scan = auto_scan
+        # The permissions. Valid values:
+        # 
+        # *   **ReadOnly**: read-only permissions
+        # *   **ReadWrite**: read and write permissions
+        self.certificate_permission = certificate_permission
+        # Specifies whether to enable sensitive data detection. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
+        # 
+        # > If this is your first time to authorize DSC to access the data asset, the default value is 1. If this is not your first time to authorize DSC to access the data asset, the default value is the same as that used in the last authorization operation. Both 1 and 0 are possible.
         self.enable = enable
+        # The database engine that is run by the instance. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **SQLServer**\
         self.engine_type = engine_type
+        # Specifies whether to enable anomalous event detection. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes (default)
         self.event_status = event_status
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The retention period of raw logs after you enable the security audit feature. Unit: days. Valid values:
+        # 
+        # *   **30**\
+        # *   **90**\
+        # *   **180**\
+        # *   **365**\
         self.log_store_day = log_store_day
+        # Specifies whether to enable optical character recognition (OCR). Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.ocr_status = ocr_status
+        # The name of the data asset.
         self.parent_id = parent_id
+        # The password that is used to access the database.
         self.password = password
+        # The port that is used to connect to the database.
         self.port = port
+        # The type of service to which the data asset belongs. Valid values:
+        # 
+        # *   **1** :MaxCompute
+        # *   **2**: Object Storage Service (OSS)
+        # *   **3**: AnalyticDB for MySQL
+        # *   **4** :Tablestore
+        # *   **5**: ApsaraDB RDS
         self.resource_type = resource_type
+        # The number of sensitive data samples that are collected after sensitive data detection is enabled. Valid values:
+        # 
+        # *   **0**\
+        # *   **5**\
+        # *   **10**\
         self.sampling_size = sampling_size
+        # The region in which the data asset resides. Valid values:
+        # 
+        # *   **cn-beijing**: China (Beijing).
+        # *   **cn-zhangjiakou**: China (Zhangjiakou)
+        # *   **cn-huhehaote**: China (Hohhot)
+        # *   **cn-hangzhou**: China (Hangzhou)
+        # *   **cn-shanghai**: China (Shanghai)
+        # *   **cn-shenzhen**: China (Shenzhen)
+        # *   **cn-hongkong**: China (Hong Kong)
         self.service_region_id = service_region_id
+        # The username that is used to access the database.
         self.user_name = user_name
 
     def validate(self):
@@ -174,6 +260,8 @@ class CreateDataLimitRequest(TeaModel):
             result['AuditStatus'] = self.audit_status
         if self.auto_scan is not None:
             result['AutoScan'] = self.auto_scan
+        if self.certificate_permission is not None:
+            result['CertificatePermission'] = self.certificate_permission
         if self.enable is not None:
             result['Enable'] = self.enable
         if self.engine_type is not None:
@@ -208,6 +296,8 @@ class CreateDataLimitRequest(TeaModel):
             self.audit_status = m.get('AuditStatus')
         if m.get('AutoScan') is not None:
             self.auto_scan = m.get('AutoScan')
+        if m.get('CertificatePermission') is not None:
+            self.certificate_permission = m.get('CertificatePermission')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
         if m.get('EngineType') is not None:
@@ -243,7 +333,9 @@ class CreateDataLimitResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the data asset.
         self.id = id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -322,6 +414,7 @@ class CreateRuleRequest(TeaModel):
         content_category: int = None,
         description: str = None,
         lang: str = None,
+        match_type: int = None,
         name: str = None,
         product_code: str = None,
         product_id: int = None,
@@ -329,22 +422,67 @@ class CreateRuleRequest(TeaModel):
         rule_type: int = None,
         stat_express: str = None,
         status: int = None,
+        support_form: int = None,
         target: str = None,
         warn_level: int = None,
     ):
+        # The content type of the sensitive data detection rule. Valid values:
+        # 
+        # *   **0**: keyword
+        # *   **2**: regular expression
         self.category = category
+        # The content of the sensitive data detection rule. You can specify a regular expression or keywords that are used to match sensitive fields or text.
         self.content = content
+        # The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
         self.content_category = content_category
+        # The description of the rule.
         self.description = description
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The match type. Valid values:
+        # 
+        # *   **1**: rule-based match
+        # *   **2**: dictionary-based match
+        self.match_type = match_type
+        # The name of the sensitive data detection rule.
         self.name = name
+        # The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
         self.product_code = product_code
+        # The ID of the service to which the data asset belongs. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.product_id = product_id
+        # The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+        # 
+        # *   **1**: N/A, which indicates that no sensitive data is detected.
+        # *   **2**: S1, which indicates the low sensitivity level.
+        # *   **3**: S2, which indicates the medium sensitivity level.
+        # *   **4**: S3, which indicates the high sensitivity level.
+        # *   **5**: S4, which indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
+        # The type of the sensitive data detection rule. Valid values:
+        # 
+        # *   **1**: sensitive data detection rule
+        # *   **2**: audit rule
+        # *   **3**: anomalous event detection rule
+        # *   **99**: custom rule
         self.rule_type = rule_type
+        # The statistical expression.
         self.stat_express = stat_express
+        # Specifies whether to enable the sensitive data detection rule. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.status = status
+        self.support_form = support_form
+        # The code of the service to which the sensitive data detection rule is applied. Valid values include **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
         self.target = target
+        # The risk level of the alert that is triggered. Valid values:
+        # 
+        # *   **1**: low
+        # *   **2**: medium
+        # *   **3**: high
         self.warn_level = warn_level
 
     def validate(self):
@@ -366,6 +504,8 @@ class CreateRuleRequest(TeaModel):
             result['Description'] = self.description
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.match_type is not None:
+            result['MatchType'] = self.match_type
         if self.name is not None:
             result['Name'] = self.name
         if self.product_code is not None:
@@ -380,6 +520,8 @@ class CreateRuleRequest(TeaModel):
             result['StatExpress'] = self.stat_express
         if self.status is not None:
             result['Status'] = self.status
+        if self.support_form is not None:
+            result['SupportForm'] = self.support_form
         if self.target is not None:
             result['Target'] = self.target
         if self.warn_level is not None:
@@ -398,6 +540,8 @@ class CreateRuleRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('MatchType') is not None:
+            self.match_type = m.get('MatchType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ProductCode') is not None:
@@ -412,6 +556,8 @@ class CreateRuleRequest(TeaModel):
             self.stat_express = m.get('StatExpress')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SupportForm') is not None:
+            self.support_form = m.get('SupportForm')
         if m.get('Target') is not None:
             self.target = m.get('Target')
         if m.get('WarnLevel') is not None:
@@ -425,7 +571,9 @@ class CreateRuleResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The unique ID of the sensitive data detection rule.
         self.id = id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -511,16 +659,35 @@ class CreateScanTaskRequest(TeaModel):
         task_name: str = None,
         task_user_name: str = None,
     ):
+        # The unique ID of the data asset, such as an instance, a database, and a bucket. You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the unique ID.
         self.data_limit_id = data_limit_id
+        # The interval between two consecutive custom scan tasks. Unit: days. Valid values: 1 to 2147483648.
         self.interval_day = interval_day
+        # The language of the content within the request and response.
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The data to be scanned in the Object Storage Service (OSS) bucket. Prefix match, suffix match, and regular expression match are supported.
         self.oss_scan_path = oss_scan_path
+        # The type of the service to which the data assets to be scanned belong. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.resource_type = resource_type
+        # The time when the scan task is executed next time. Unit: hours.
         self.run_hour = run_hour
+        # The time when the scan task is executed next time. Unit: minutes.
         self.run_minute = run_minute
+        # The matching rule that specifies the scan scope of the custom scan task. This parameter takes effect only if you set the **ScanRangeContent** parameter. Valid values:
+        # 
+        # *   **0**: exact match
+        # *   **1**: prefix match
+        # *   **2**: suffix match
+        # *   **3**: regular expression match
         self.scan_range = scan_range
+        # The data to be scanned in a structured data asset. Prefix match, suffix match, and regular expression match are supported.
         self.scan_range_content = scan_range_content
+        # The name of the scan task.
         self.task_name = task_name
+        # The account that is used to create the scan task.
         self.task_user_name = task_user_name
 
     def validate(self):
@@ -589,7 +756,9 @@ class CreateScanTaskResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the custom scan task.
         self.id = id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -665,6 +834,10 @@ class CreateSlrRoleRequest(TeaModel):
         self,
         lang: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Simplified Chinese
+        # *   **en_us**: English
         self.lang = lang
 
     def validate(self):
@@ -693,7 +866,12 @@ class CreateSlrRoleResponseBody(TeaModel):
         has_permission: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the service-linked role was created. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.has_permission = has_permission
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -770,7 +948,14 @@ class DeleteDataLimitRequest(TeaModel):
         id: int = None,
         lang: str = None,
     ):
+        # The ID of the data asset.
+        # 
+        # You can call the DescribeDataLimits operation to query the IDs of data assets. The value of the Id response parameter indicates the ID of a data asset.
         self.id = id
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Chinese
+        # *   **en_us**: English
         self.lang = lang
 
     def validate(self):
@@ -802,6 +987,7 @@ class DeleteDataLimitResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -874,7 +1060,9 @@ class DeleteRuleRequest(TeaModel):
         id: int = None,
         lang: str = None,
     ):
+        # The ID of the sensitive data detection rule.
         self.id = id
+        # The language of the content within the request and response. Valid values: **zh** and **en**. The value zh indicates Chinese, and the value en indicates English.
         self.lang = lang
 
     def validate(self):
@@ -906,6 +1094,7 @@ class DeleteRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -981,10 +1170,35 @@ class DescribeCategoryTemplateRuleListRequest(TeaModel):
         risk_level_id: int = None,
         status: int = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Simplified Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The sensitivity level of the data that is not compliant with the rule. Valid values: **1** to **11**. Default value: **null**.
+        # 
+        # *   **1**: No sensitive data is detected.
+        # *   **2**: specifies the S1 sensitivity level.
+        # *   **3**: specifies the S2 sensitivity level.
+        # *   **4**: specifies the S3 sensitivity level.
+        # *   **5**: specifies the S4 sensitivity level.
+        # *   **6**: specifies the S5 sensitivity level.
+        # *   **7**: specifies the S6 sensitivity level.
+        # *   **8**: specifies the S7 sensitivity level.
+        # *   **9**: specifies the S8 sensitivity level.
+        # *   **10**: specifies the S9 sensitivity level.
+        # *   **11**: specifies the S10 sensitivity level.
+        # *   **null**: specifies all preceding sensitivity levels.
         self.risk_level_id = risk_level_id
+        # The status of the rule. Default value: **null**. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
+        # *   **null**: all states
         self.status = status
 
     def validate(self):
@@ -1034,12 +1248,44 @@ class DescribeCategoryTemplateRuleListResponseBodyItems(TeaModel):
         risk_level_id: int = None,
         status: int = None,
     ):
+        # The description of the rule.
         self.description = description
+        # The unique ID of the rule.
         self.id = id
+        # The IDs of sensitive data types. Multiple IDs are separated by commas (,).
         self.identification_rule_ids = identification_rule_ids
+        # The scan scope of the rule. The value is a JSON array of the STRING type. Each element in a JSON array indicates a scan scope that contains the following fields:
+        # 
+        # *   **Asset**: the data asset type. Valid values: RDS, DRDS, PolarDB, OTS, ADB, and OceanBase. The value is of the STRING type.
+        # 
+        # *   **Content**: the scan scope. The value is of the STRING type. Each element in a JSON array indicates a scan scope that contains the following fields:
+        # 
+        #     *   **Range**: the matching condition. Valid values: Instance, database, table, column, project, bucket, and object. The value project is valid only for data assets in MaxCompute. The values bucket and object are valid only for data assets in Object Storage Service (OSS). The value of this parameter is of the STRING type.
+        #     *   **Operator**: the operator. Valid values: equals, regex, prefix, and suffix. The operator equals indicates a full match. The operator regex indicates a match by regular expression. The operator prefix indicates a match by prefix. The operator suffix indicates a match by suffix.
+        #     *   **Value**: the matching content. The value is of the STRING type.
         self.identification_scope = identification_scope
+        # The name of the rule.
         self.name = name
+        # The sensitivity level of the data that is not compliant with the rule. Valid values: **1** to **11**.
+        # 
+        # *   **1**: No sensitive data is detected.
+        # *   **2**: indicates the S1 sensitivity level.
+        # *   **3**: indicates the S2 sensitivity level.
+        # *   **4**: indicates the S3 sensitivity level.
+        # *   **5**: indicates the S4 sensitivity level.
+        # *   **6**: indicates the S5 sensitivity level.
+        # *   **7**: indicates the S6 sensitivity level.
+        # *   **8**: indicates the S7 sensitivity level.
+        # *   **9**: indicates the S8 sensitivity level.
+        # *   **10**: indicates the S9 sensitivity level.
+        # *   **11**: indicates the S10 sensitivity level.
+        # *   **null**: indicates all preceding sensitivity levels.
         self.risk_level_id = risk_level_id
+        # The status of the rule. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
+        # *   **null**: all states
         self.status = status
 
     def validate(self):
@@ -1095,10 +1341,15 @@ class DescribeCategoryTemplateRuleListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # The list of rules.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of rules in the template.
         self.total_count = total_count
 
     def validate(self):
@@ -1206,18 +1457,54 @@ class DescribeColumnsRequest(TeaModel):
         table_id: int = None,
         table_name: str = None,
     ):
+        # The page number of the page to return.
         self.current_page = current_page
+        # The ID of the instance to which data in the column of the table belongs.
+        # 
+        # > You can call the [DescribeInstances](~~DescribeRules~~) operation to query the IDs of instances.
         self.instance_id = instance_id
+        # The name of the instance to which data in the column of the table belongs.
         self.instance_name = instance_name
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The search keyword. Fuzzy match is supported.
+        # 
+        # For example, if you enter **test**, all columns whose names contain **test** are retrieved.
         self.name = name
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        # The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+        # 
+        # *   **1**: N/A
+        # *   **2**: S1
+        # *   **3**: S2
+        # *   **4**: S3
+        # *   **5**: S4
         self.risk_level_id = risk_level_id
+        # The ID of the sensitive data detection rule that data in the column of the table hits.
+        # 
+        # > You can call the [DescribeRules](~~DescribeRules~~) operation to query the IDs of sensitive data detection rules.
         self.rule_id = rule_id
+        # The name of the sensitive data detection rule that data in the column of the table hits.
         self.rule_name = rule_name
+        # The name of the sensitivity level of the data that hits the sensitive data detection rule. Valid values:
+        # 
+        # *   **N/A**: No sensitive data is detected.
+        # *   **S1**: indicates the low sensitivity level.
+        # *   **S2**: indicates the medium sensitivity level.
+        # *   **S3**: indicates the high sensitivity level.
+        # *   **S4**: indicates the highest sensitivity level.
         self.sens_level_name = sens_level_name
+        # The ID of the table to which the column belongs.
+        # 
+        # > You can call the [DescribeTables](~~DescribeTables~~) operation to query the IDs of tables.
         self.table_id = table_id
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -1288,6 +1575,39 @@ class DescribeColumnsRequest(TeaModel):
         return self
 
 
+class DescribeColumnsResponseBodyItemsModelTags(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
 class DescribeColumnsResponseBodyItems(TeaModel):
     def __init__(
         self,
@@ -1296,6 +1616,7 @@ class DescribeColumnsResponseBodyItems(TeaModel):
         id: str = None,
         instance_id: int = None,
         instance_name: str = None,
+        model_tags: List[DescribeColumnsResponseBodyItemsModelTags] = None,
         name: str = None,
         odps_risk_level_name: str = None,
         odps_risk_level_value: int = None,
@@ -1311,28 +1632,87 @@ class DescribeColumnsResponseBodyItems(TeaModel):
         table_id: int = None,
         table_name: str = None,
     ):
+        # The beginning of the time range during which data in the column of the table is created. The value is a UNIX timestamp. Unit: milliseconds.
         self.creation_time = creation_time
+        # The type of data in the column of the table.
         self.data_type = data_type
+        # The ID of the column of the table.
         self.id = id
+        # The ID of the instance to which data in the column of the table belongs.
         self.instance_id = instance_id
+        # The name of the instance to which data in the column of the table belongs.
         self.instance_name = instance_name
+        self.model_tags = model_tags
+        # The name of the column of the table.
         self.name = name
+        # The name of the sensitivity level for data in the column of the table. Valid values:
+        # 
+        # *   **N/A**: No sensitive data is detected.
+        # *   **S1**: indicates the low sensitivity level.
+        # *   **S2**: indicates the medium sensitivity level.
+        # *   **S3**: indicates the high sensitivity level.
+        # *   **S4**: indicates the highest sensitivity level.
         self.odps_risk_level_name = odps_risk_level_name
+        # The ID of the sensitivity level for data in the column of the table. Valid values:
+        # 
+        # *   **1**: N/A
+        # *   **2**: S1
+        # *   **3**: S2
+        # *   **4**: S3
+        # *   **5**: S4
         self.odps_risk_level_value = odps_risk_level_value
+        # The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        # The ID of the revision record.
         self.revision_id = revision_id
+        # Indicates whether the column is revised. Valid values:
+        # 
+        # *   1: yes
+        # *   0: no
         self.revision_status = revision_status
+        # The ID of the sensitivity level of data in the column of the table. Valid values:
+        # 
+        # *   **1**: N/A
+        # *   **2**: S1
+        # *   **3**: S2
+        # *   **4**: S3
+        # *   **5**: S4
         self.risk_level_id = risk_level_id
+        # The name of the sensitivity level for data in the column of the table. Valid values:
+        # 
+        # *   **N/A**: No sensitive data is detected.
+        # *   **S1**: indicates the low sensitivity level.
+        # *   **S2**: indicates the medium sensitivity level.
+        # *   **S3**: indicates the high sensitivity level.
+        # *   **S4**: indicates the highest sensitivity level.
         self.risk_level_name = risk_level_name
+        # The ID of the sensitive data detection rule that data in the column of the table hits.
         self.rule_id = rule_id
+        # The name of the sensitive data detection rule that data in the column of the table hits.
         self.rule_name = rule_name
+        # The name of the sensitivity level of the data that hits the sensitive data detection rule. Valid values:
+        # 
+        # *   **N/A**: No sensitive data is detected.
+        # *   **S1**: indicates the low sensitivity level.
+        # *   **S2**: indicates the medium sensitivity level.
+        # *   **S3**: indicates the high sensitivity level.
+        # *   **S4**: indicates the highest sensitivity level.
         self.sens_level_name = sens_level_name
+        # Indicates whether the column contains sensitive data. Valid values:
+        # 
+        # *   true: the column contains sensitive data.
+        # *   false: the column does not contain sensitive data.
         self.sensitive = sensitive
+        # The ID of the table.
         self.table_id = table_id
+        # The name of the table to which the revised column belongs.
         self.table_name = table_name
 
     def validate(self):
-        pass
+        if self.model_tags:
+            for k in self.model_tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1350,6 +1730,10 @@ class DescribeColumnsResponseBodyItems(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        result['ModelTags'] = []
+        if self.model_tags is not None:
+            for k in self.model_tags:
+                result['ModelTags'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
         if self.odps_risk_level_name is not None:
@@ -1392,6 +1776,11 @@ class DescribeColumnsResponseBodyItems(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        self.model_tags = []
+        if m.get('ModelTags') is not None:
+            for k in m.get('ModelTags'):
+                temp_model = DescribeColumnsResponseBodyItemsModelTags()
+                self.model_tags.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OdpsRiskLevelName') is not None:
@@ -1432,10 +1821,15 @@ class DescribeColumnsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of data in the column of the table.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -1531,6 +1925,10 @@ class DescribeConfigsRequest(TeaModel):
         self,
         lang: str = None,
     ):
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -1562,10 +1960,15 @@ class DescribeConfigsResponseBodyConfigList(TeaModel):
         id: int = None,
         value: str = None,
     ):
+        # The code of the common configuration item.
         self.code = code
+        # The description of the default value for the common configuration item.
         self.default_value = default_value
+        # The description of the common configuration item.
         self.description = description
+        # The unique ID of the common configuration item.
         self.id = id
+        # The value of the common configuration item.
         self.value = value
 
     def validate(self):
@@ -1610,7 +2013,9 @@ class DescribeConfigsResponseBody(TeaModel):
         config_list: List[DescribeConfigsResponseBodyConfigList] = None,
         request_id: str = None,
     ):
+        # An array that consists of common configuration items for alerts.
         self.config_list = config_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1700,12 +2105,49 @@ class DescribeDataAssetsRequest(TeaModel):
         risk_levels: str = None,
         rule_id: int = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Simplified Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The keyword that is used to search for data assets. Fuzzy search is supported.
         self.name = name
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The type of the data asset that you want to query. Valid values:
+        # 
+        # *   **1**: MaxCompute project
+        # *   **2**: MaxCompute table
+        # *   **3**: MaxCompute package
+        # *   **11**: AnalyticDB for MySQL database
+        # *   **12**: AnalyticDB for MySQL table
+        # *   **21**: Object Storage Service (OSS) bucket
+        # *   **22**: OSS object
+        # *   **31**: Tablestore instance
+        # *   **32**: Tablestore table
+        # *   **51**: ApsaraDB RDS database
+        # *   **52**: ApsaraDB RDS table
+        # *   **61**: self-managed database hosted on an Elastic Compute Service (ECS) instance
+        # *   **62**: self-managed table hosted on an ECS instance
+        # *   **71**: PolarDB-X database
+        # *   **72**: PolarDB-X table
+        # *   **81**: PolarDB database
+        # *   **82**: PolarDB table
+        # *   **91**: AnalyticDB for PostgreSQL database
+        # *   **92**: AnalyticDB for PostgreSQL table
         self.range_id = range_id
+        # The sensitivity level of the data asset. Separate multiple sensitivity levels with commas (,). Valid values:
+        # 
+        # *   **2**: S1, indicating the low sensitivity level
+        # *   **3**: S2, indicating the medium sensitivity level
+        # *   **4**: S3, indicating the high sensitivity level
+        # *   **5**: S4, indicating the highest sensitivity level
         self.risk_levels = risk_levels
+        # The unique ID of the sensitive data detection rule that the data assets to be queried hit.
+        # 
+        # > If you query sensitive data detection results based on the sensitive data detection rule that the data assets hit, you can call the [DescribeRules](~~DescribeRules~~) operation to query the ID of the sensitive data detection rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -1775,24 +2217,83 @@ class DescribeDataAssetsResponseBodyItems(TeaModel):
         sensitive_ratio: str = None,
         total_count: int = None,
     ):
+        # The access control list (ACL) that controls the access permissions on the OSS bucket.
+        # 
+        # > This parameter is returned only when you set the parameter **RangeId** to **21**.
         self.acl = acl
+        # The time when the data asset was created. Unit: milliseconds.
         self.creation_time = creation_time
+        # The data type of the data asset.
         self.data_type = data_type
+        # The ID of the data asset.
         self.id = id
+        # The sensitivity tag of the data. The value is fixed as **0**. **0**, **1**, **2**, or **3** is returned for this parameter only when you set the parameter **RangeId** to **1**.
+        # 
+        # *   **0**: unclassified
+        # *   **1**: confidential
+        # *   **2**: sensitive
+        # *   **3**: highly sensitive
         self.labelsec = labelsec
+        # The name of the data asset.
         self.name = name
+        # The key value of the OSS object.
+        # 
+        # > This parameter is returned only when you set the parameter **RangeId** to **22**.
         self.object_key = object_key
+        # The sensitivity level of the MaxCompute data asset. Valid values:
+        # 
+        # *   **S1**: low sensitivity level
+        # *   **S2**: medium sensitivity level
+        # *   **S3**: high sensitivity level
+        # *   **S4**: highest sensitivity level
+        # 
+        # > This parameter is returned only when you set the parameter **RangeId** to **1**.
         self.odps_risk_level_name = odps_risk_level_name
+        # The account that owns the data asset.
         self.owner = owner
+        # The name of the service to which the data asset belongs.
         self.product_code = product_code
+        # The ID of the service to which the data asset belongs. Valid values:
+        # 
+        # *   **1**: MaxCompute
+        # *   **2**: OSS
+        # *   **3**: AnalyticDB for MySQL
+        # *   **4**: Tablestore
+        # *   **5**: ApsaraDB RDS
         self.product_id = product_id
+        # Indicates whether the data protection mechanism is enabled for the data asset. The value is fixed as **false**. **true** or **false** is returned for this parameter only when you set the parameter **RangeId** to **1**.
+        # 
+        # *   **false**: The data protection mechanism is disabled.
+        # *   **true**: The data protection mechanism is enabled. Only data inbound is supported. Data outbound is not supported.
         self.protection = protection
+        # The sensitivity level of the data asset. A higher sensitivity level indicates that the identified data is more sensitive. Valid values:
+        # 
+        # *   **1**: No sensitive data is identified.
+        # *   **2**: sensitive data at level 1.
+        # *   **3**: sensitive data at level 2.
+        # *   **3**: sensitive data at level 3.
+        # *   **5**: sensitive data at level 4.
+        # *   **6**: sensitive data at level 5.
+        # *   **7**: sensitive data at level 6.
+        # *   **8**: sensitive data at level 7.
+        # *   **9**: sensitive data at level 8.
+        # *   **10**: sensitive data at level 9.
+        # *   **11**: sensitive data at level 10.
         self.risk_level_id = risk_level_id
+        # The name of the sensitivity level for the data asset.
         self.risk_level_name = risk_level_name
+        # The name of the sensitive data detection rule that the data asset hits.
         self.rule_name = rule_name
+        # Indicates whether the data asset contains sensitive data. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.sensitive = sensitive
+        # The total number of sensitive data assets. For example, the value can be the total number of sensitive MaxCompute projects, packages, or tables, the total number of sensitive ApsaraDB RDS databases or tables, or the total number of sensitive OSS buckets or objects.
         self.sensitive_count = sensitive_count
+        # The percentage of sensitive data in all data assets.
         self.sensitive_ratio = sensitive_ratio
+        # The total number of data assets. For example, the value can be the total number of MaxCompute projects, packages, or tables, the total number of ApsaraDB RDS databases or tables, or the total number of OSS buckets or objects.
         self.total_count = total_count
 
     def validate(self):
@@ -1896,10 +2397,15 @@ class DescribeDataAssetsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of data assets.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of queried data assets that contain sensitive data.
         self.total_count = total_count
 
     def validate(self):
@@ -1997,8 +2503,19 @@ class DescribeDataLimitDetailRequest(TeaModel):
         lang: str = None,
         network_type: int = None,
     ):
+        # The unique ID of the data asset that you want to query.
+        # 
+        # > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
         self.id = id
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Simplified Chinese.
+        # *   **en**: English
         self.lang = lang
+        # The network type of the data asset that you want to query. Valid values:
+        # 
+        # *   **1**: virtual private cloud (VPC)
+        # *   **2**: classic network
         self.network_type = network_type
 
     def validate(self):
@@ -2044,16 +2561,47 @@ class DescribeDataLimitDetailResponseBodyDataLimit(TeaModel):
         resource_type_code: str = None,
         user_name: str = None,
     ):
+        # The status of the connectivity test between the data asset and DSC. Valid values:
+        # 
+        # *   **2**: indicates that the data asset was being connected.
+        # *   **3**: indicates that the data asset was connected to DSC.
+        # *   **4**: indicates that the data asset failed to be connected.
         self.check_status = check_status
+        # The result that indicates the status of the connectivity test between the data asset and DSC. Valid values:
+        # 
+        # *   **Passed**\
+        # *   **Failed**\
+        # *   **Testing**\
         self.check_status_name = check_status_name
+        # The time when the data asset was connected to DSC. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
+        # The ID of the data asset.
         self.id = id
+        # The region in which the data asset resides.
         self.local_name = local_name
+        # The ID and name of the data asset in the service to which the data asset belongs.
         self.parent_id = parent_id
+        # The port number that is used to connect to the database.
         self.port = port
+        # The ID of the region in which the data asset resides.
         self.region_id = region_id
+        # The type of the service to which the data asset belongs. Valid values:
+        # 
+        # *   **1**: MaxCompute
+        # *   **2**: OSS
+        # *   **3**: AnalyticDB for MySQL
+        # *   **4**: Tablestore
+        # *   **5**: ApsaraDB RDS
         self.resource_type = resource_type
+        # The service to which the data asset belongs. Valid values:
+        # 
+        # *   **MaxCompute**\
+        # *   **OSS**\
+        # *   **ADS**\
+        # *   **OTS**\
+        # *   **RDS**\
         self.resource_type_code = resource_type_code
+        # The account of the user who manages the data asset.
         self.user_name = user_name
 
     def validate(self):
@@ -2122,7 +2670,9 @@ class DescribeDataLimitDetailResponseBody(TeaModel):
         data_limit: DescribeDataLimitDetailResponseBodyDataLimit = None,
         request_id: str = None,
     ):
+        # The details of the data asset.
         self.data_limit = data_limit
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -2202,8 +2752,22 @@ class DescribeDataLimitSetRequest(TeaModel):
         parent_id: str = None,
         resource_type: int = None,
     ):
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh_cn**: Simplified Chinese (default)
+        # *   **en_us**: English
         self.lang = lang
+        # The parent asset ID of the data asset.
+        # 
+        # You can call the [DescribeDataLimitDetail](~~DescribeDataLimitDetail~~) or [DescribeDataLimits](~~DescribeDataLimits~~) operation to obtain the parent asset ID of the data asset from the value of the **ParentId** parameter.
         self.parent_id = parent_id
+        # The type of service to which the data asset belongs. Valid values:
+        # 
+        # *   **1**: MaxCompute
+        # *   **2**: OSS
+        # *   **3**: AnalyticDB for MySQL
+        # *   **4**: Tablestore
+        # *   **5**: ApsaraDB RDS
         self.resource_type = resource_type
 
     def validate(self):
@@ -2249,16 +2813,43 @@ class DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList(TeaModel):
         resource_type_code: str = None,
         user_name: str = None,
     ):
+        # Indicates whether the test of connectivity between DSC and the data asset is passed.
+        # 
+        # *   **2**: The connectivity test is in progress.
+        # *   **3**: The connectivity test is passed.
+        # *   **4**: The connectivity test failed.
         self.check_status = check_status
+        # The name of the data detection status.
         self.check_status_name = check_status_name
+        # The connection string that is used to access the data asset.
         self.connector = connector
+        # The time when the data asset was created. Unit: milliseconds.
         self.gmt_create = gmt_create
+        # The ID of the data asset.
         self.id = id
+        # The region in which the data asset resides.
         self.local_name = local_name
+        # The parent asset ID of the data asset.
         self.parent_id = parent_id
+        # The region in which the data asset resides.
         self.region_id = region_id
+        # The type of service to which the data asset belongs. Valid values:
+        # 
+        # *   **1**: MaxCompute
+        # *   **2**: OSS
+        # *   **3**: AnalyticDB for MySQL
+        # *   **4**: Tablestore
+        # *   **5**: ApsaraDB RDS
         self.resource_type = resource_type
+        # The code of the service to which the data asset belongs. Valid values:
+        # 
+        # *   **ODPS**\
+        # *   **OSS**\
+        # *   **ADS**\
+        # *   **OTS**\
+        # *   **RDS**\
         self.resource_type_code = resource_type_code
+        # The username that is used to access the data asset.
         self.user_name = user_name
 
     def validate(self):
@@ -2327,7 +2918,9 @@ class DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList(TeaModel):
         bucket_name: str = None,
         region_id: str = None,
     ):
+        # The name of the OSS bucket to which the OSS object belongs.
         self.bucket_name = bucket_name
+        # The region ID of the OSS object.
         self.region_id = region_id
 
     def validate(self):
@@ -2360,7 +2953,9 @@ class DescribeDataLimitSetResponseBodyDataLimitSetRegionList(TeaModel):
         local_name: str = None,
         region_id: str = None,
     ):
+        # The name of the region.
         self.local_name = local_name
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -2397,11 +2992,29 @@ class DescribeDataLimitSetResponseBodyDataLimitSet(TeaModel):
         resource_type_code: str = None,
         total_count: int = None,
     ):
+        # An array that consists of data assets that DSC is authorized to scan.
         self.data_limit_list = data_limit_list
+        # An array consisting of the OSS objects that DSC is authorized to scan.
         self.oss_bucket_list = oss_bucket_list
+        # An array consisting of the regions in which the data assets can be scanned.
         self.region_list = region_list
+        # The type of service to which the data asset belongs. Valid values:
+        # 
+        # *   **1**: MaxCompute
+        # *   **2**: OSS
+        # *   **3**: AnalyticDB for MySQL
+        # *   **4**: Tablestore
+        # *   **5**: ApsaraDB RDS
         self.resource_type = resource_type
+        # The service to which the data asset belongs. Valid values:
+        # 
+        # *   **ODPS**\
+        # *   **OSS**\
+        # *   **ADS**\
+        # *   **OTS**\
+        # *   **RDS**\
         self.resource_type_code = resource_type_code
+        # The total number of data objects in the data assets.
         self.total_count = total_count
 
     def validate(self):
@@ -2476,7 +3089,9 @@ class DescribeDataLimitSetResponseBody(TeaModel):
         data_limit_set: DescribeDataLimitSetResponseBodyDataLimitSet = None,
         request_id: str = None,
     ):
+        # The information about the data asset.
         self.data_limit_set = data_limit_set
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2566,18 +3181,60 @@ class DescribeDataLimitsRequest(TeaModel):
         service_region_id: str = None,
         start_time: int = None,
     ):
+        # Specifies whether to enable the security audit feature. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.audit_status = audit_status
+        # The data detection status. Valid values:
+        # 
+        # *   **0**: The data detection is ready.
+        # *   **1**: The data detection is running.
+        # *   **2**: The connectivity test is in progress.
+        # *   **3**: The connectivity test passed.
+        # *   **4**: The connectivity test failed.
         self.check_status = check_status
+        # The number of the page to return.
         self.current_page = current_page
+        # Specifies whether DSC has the data de-identification permissions on the data asset. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.datamask_status = datamask_status
+        # Specifies whether DSC has the data detection permissions on the data asset. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.enable = enable
+        # The end of the time range to query The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
+        # The type of the database engine. Valid values include **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
         self.engine_type = engine_type
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The parent ID of the data asset to be queried. Valid values:
+        # 
+        # *   The name or ID of the MaxCompute project.
+        # *   The name or ID of the OSS bucket.
+        # *   The name or ID of the ApsaraDB RDS instance or database.
         self.parent_id = parent_id
+        # The type of the service to which the data asset to be queried belongs. Valid values:
+        # 
+        # *   **1**: MaxCompute
+        # *   **2**: Object Storage Service (OSS)
+        # *   **3**: AnalyticDB for MySQL
+        # *   **4**: Tablestore
+        # *   **5**: ApsaraDB RDS
+        # *   **6**: self-managed database
         self.resource_type = resource_type
+        # The region in which the data asset resides.
         self.service_region_id = service_region_id
+        # The beginning of the time range to query The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -2679,6 +3336,7 @@ class DescribeDataLimitsResponseBodyItems(TeaModel):
         resource_type: int = None,
         resource_type_code: str = None,
         sampling_size: int = None,
+        security_group_id_list: List[str] = None,
         support_audit: bool = None,
         support_datamask: bool = None,
         support_event: bool = None,
@@ -2687,43 +3345,142 @@ class DescribeDataLimitsResponseBodyItems(TeaModel):
         tenant_name: str = None,
         total_count: int = None,
         user_name: str = None,
+        v_switch_id_list: List[str] = None,
+        vpc_id: str = None,
     ):
+        # Indicates whether the security audit feature is enabled. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.audit_status = audit_status
+        # Indicates whether the data asset can be automatically scanned. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.auto_scan = auto_scan
+        # The data detection status. Valid values:
+        # 
+        # *   **0**: The data detection is ready.
+        # *   **1**: The data detection is running.
+        # *   **2**: The connectivity test is in progress.
+        # *   **3**: The connectivity test passed.
+        # *   **4**: The connectivity test failed.
         self.check_status = check_status
+        # The name of the data detection status.
         self.check_status_name = check_status_name
+        # Indicates whether DSC has the data de-identification permissions on the data asset. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.datamask_status = datamask_status
+        # The database engine version of the instance.
         self.db_version = db_version
+        # Indicates whether DSC has the data detection permissions on the data asset. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.enable = enable
+        # The type of the database engine. Valid values include **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
         self.engine_type = engine_type
+        # The error code that is returned.
         self.error_code = error_code
+        # The reason for the failure.
         self.error_message = error_message
+        # Indicates whether the data leak prevention feature is enabled. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes (default value)
         self.event_status = event_status
+        # The time when the data asset was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
+        # The ID of the data asset.
         self.id = id
+        # The description of the instance.
         self.instance_description = instance_description
+        # The ID of the instance to which the table belongs.
         self.instance_id = instance_id
+        # The time when the last scan was finished.
+        # 
+        # *   The value is a UNIX timestamp.
+        # *   Unit: milliseconds.
         self.last_finished_time = last_finished_time
+        # The region in which the data asset resides.
         self.local_name = local_name
+        # The retention period of raw logs. Unit: days.
         self.log_store_day = log_store_day
+        # The next time when the data asset is scanned. The value is a UNIX timestamp. Unit: milliseconds.
         self.next_start_time = next_start_time
+        # Indicates whether the optical character recognition (OCR) feature is enabled. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.ocr_status = ocr_status
+        # The parent ID of the data asset. Valid values include **bucket, db, and project**.
         self.parent_id = parent_id
+        # The port number of the self-managed database.
         self.port = port
+        # The status of the data asset scan. Valid values:
+        # 
+        # *   **-1**: invalid
+        # *   **0**: waiting
+        # *   **1**: being scanned
+        # *   **2**: suspended
+        # *   **3**: completed
         self.process_status = process_status
+        # The total number of data tables or files.
         self.process_total_count = process_total_count
+        # The region in which the data asset resides.
         self.region_id = region_id
+        # The type of the service to which the data asset belongs. Valid values:
+        # 
+        # *   **1**: MaxCompute
+        # *   **2**: OSS
+        # *   **3**: AnalyticDB for MySQL
+        # *   **4**: Tablestore
+        # *   **5**: ApsaraDB RDS
+        # *   **6**: self-managed database
         self.resource_type = resource_type
+        # The code of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.resource_type_code = resource_type_code
+        # The number of sensitive data samples. Valid values: **0**, **5**, and **10**. Unit: data entries.
         self.sampling_size = sampling_size
+        # The array consisting of the IDs of the security groups that are used by PrivateLink when you install the DSC agent.
+        self.security_group_id_list = security_group_id_list
+        # Indicates whether the security audit feature is supported. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.support_audit = support_audit
+        # Indicates whether data de-identification is supported. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.support_datamask = support_datamask
+        # Indicates whether anomalous event detection is supported. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.support_event = support_event
+        # Indicates whether OCR is supported. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.support_ocr = support_ocr
+        # Indicates whether the data asset scan feature is supported. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.support_scan = support_scan
+        # The alias of the tenant.
         self.tenant_name = tenant_name
+        # The total number of fields in the table.
         self.total_count = total_count
+        # The username that is used to access the data asset.
         self.user_name = user_name
+        # The array consisting of the IDs of the vSwitches that are used by PrivateLink when you install the DSC agent.
+        self.v_switch_id_list = v_switch_id_list
+        # The ID of the virtual private cloud (VPC) to which the data asset belongs.
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -2790,6 +3547,8 @@ class DescribeDataLimitsResponseBodyItems(TeaModel):
             result['ResourceTypeCode'] = self.resource_type_code
         if self.sampling_size is not None:
             result['SamplingSize'] = self.sampling_size
+        if self.security_group_id_list is not None:
+            result['SecurityGroupIdList'] = self.security_group_id_list
         if self.support_audit is not None:
             result['SupportAudit'] = self.support_audit
         if self.support_datamask is not None:
@@ -2806,6 +3565,10 @@ class DescribeDataLimitsResponseBodyItems(TeaModel):
             result['TotalCount'] = self.total_count
         if self.user_name is not None:
             result['UserName'] = self.user_name
+        if self.v_switch_id_list is not None:
+            result['VSwitchIdList'] = self.v_switch_id_list
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2866,6 +3629,8 @@ class DescribeDataLimitsResponseBodyItems(TeaModel):
             self.resource_type_code = m.get('ResourceTypeCode')
         if m.get('SamplingSize') is not None:
             self.sampling_size = m.get('SamplingSize')
+        if m.get('SecurityGroupIdList') is not None:
+            self.security_group_id_list = m.get('SecurityGroupIdList')
         if m.get('SupportAudit') is not None:
             self.support_audit = m.get('SupportAudit')
         if m.get('SupportDatamask') is not None:
@@ -2882,6 +3647,10 @@ class DescribeDataLimitsResponseBodyItems(TeaModel):
             self.total_count = m.get('TotalCount')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
+        if m.get('VSwitchIdList') is not None:
+            self.v_switch_id_list = m.get('VSwitchIdList')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -2894,10 +3663,15 @@ class DescribeDataLimitsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of the data assets.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3003,16 +3777,39 @@ class DescribeDataMaskingRunHistoryRequest(TeaModel):
         status: int = None,
         task_id: str = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The type of the service to which the de-identified data belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.dst_type = dst_type
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The ID of the task.
+        # 
+        # > If a task has one or more subtasks, the value of the parameter must be the ID of the task. Otherwise, leave this parameter empty.
         self.main_process_id = main_process_id
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The name of the source table.
         self.src_table_name = src_table_name
+        # The type of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.src_type = src_type
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
+        # The status of the de-identification task. Valid values:
+        # 
+        # *   **-1**: waiting
+        # *   **0**: being executed
+        # *   **1**: executed
+        # *   **2**: failed to be executed
+        # *   **3**: terminated
+        # *   **4**: partially failed
         self.status = status
+        # The ID of the de-identification task.
         self.task_id = task_id
 
     def validate(self):
@@ -3098,24 +3895,56 @@ class DescribeDataMaskingRunHistoryResponseBodyItems(TeaModel):
         task_id: str = None,
         type: int = None,
     ):
+        # The number of rows that are in conflict with the data to be de-identified in the destination table to which the data to be de-identified is moved.
         self.conflict_count = conflict_count
+        # The type of the service to which the de-identified data belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.dst_type = dst_type
+        # The service that stores the de-identified data. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.dst_type_code = dst_type_code
+        # The end time of the de-identification task.
         self.end_time = end_time
+        # The error code that is returned when the de-identification task fails.
         self.fail_code = fail_code
+        # The reason why the de-identification task fails.
         self.fail_msg = fail_msg
+        # Indicates whether a file is available for download.
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.has_download_file = has_download_file
+        # The number of created subtasks.
         self.has_sub_process = has_sub_process
+        # The ID of the task execution record.
         self.id = id
+        # The number of rows that are de-identified.
         self.masking_count = masking_count
+        # The progress of the de-identification task.
         self.percentage = percentage
+        # The number of times that the de-identification task is executed.
         self.run_index = run_index
+        # The name of the source table.
         self.src_table_name = src_table_name
+        # The type of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.src_type = src_type
+        # The service to which the data to be de-identified belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.src_type_code = src_type_code
+        # The time when the de-identification task was executed. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
+        # The status of the de-identification task. Valid values:
+        # 
+        # *   **-1**: waiting
+        # *   **0**: being executed
+        # *   **1**: executed
+        # *   **2**: failed to be executed
+        # *   **3**: terminated
+        # *   **4**: partially failed
         self.status = status
+        # The ID of the identification task.
         self.task_id = task_id
+        # The mode in which the de-identification task is executed. Valid values:
+        # 
+        # *   **1**: manual
+        # *   **2**: scheduled
         self.type = type
 
     def validate(self):
@@ -3219,10 +4048,15 @@ class DescribeDataMaskingRunHistoryResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # The execution information about the de-identification task.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3324,12 +4158,22 @@ class DescribeDataMaskingTasksRequest(TeaModel):
         search_key: str = None,
         start_time: int = None,
     ):
+        # The page number of the page to return.
         self.current_page = current_page
+        # The service to which the data to be de-identified belongs. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.dst_type = dst_type
+        # The end of the time range during which the de-identification tasks to be queried are created. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The keyword used to query the de-identification tasks, which can be the task name or ID.
         self.search_key = search_key
+        # The beginning of the time range during which the de-identification tasks to be queried are created. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -3396,21 +4240,44 @@ class DescribeDataMaskingTasksResponseBodyItems(TeaModel):
         task_name: str = None,
         trigger_type: int = None,
     ):
+        # The destination directory.
         self.dst_path = dst_path
+        # The service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.dst_type = dst_type
+        # The service to which the de-identified data belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.dst_type_code = dst_type_code
+        # The time when the task was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
+        # Indicates whether the de-identification task is running.
         self.has_unfinish_process = has_unfinish_process
+        # The ID of the task.
         self.id = id
+        # Indicates whether the source table is de-identified.
         self.original_table = original_table
+        # The user who created the de-identification task.
         self.owner = owner
+        # The number of times that the de-identification task is run.
         self.run_count = run_count
+        # The source path.
         self.src_path = src_path
+        # The code of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.src_type = src_type
+        # The service to which the data to be de-identified belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.src_type_code = src_type_code
+        # The status of the task. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
         self.status = status
+        # The ID of the task.
         self.task_id = task_id
+        # The name of the task.
         self.task_name = task_name
+        # The mode in which the de-identification task is run. Valid values:
+        # 
+        # *   **1**: manual
+        # *   **2**: scheduled
+        # *   **3**: manual and scheduled
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -3502,10 +4369,15 @@ class DescribeDataMaskingTasksResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of de-identification tasks.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3596,13 +4468,710 @@ class DescribeDataMaskingTasksResponse(TeaModel):
         return self
 
 
+class DescribeDataObjectColumnDetailRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        id: int = None,
+        lang: str = None,
+        page_size: int = None,
+        product_id: int = None,
+        template_id: int = None,
+    ):
+        self.current_page = current_page
+        self.id = id
+        self.lang = lang
+        self.page_size = page_size
+        self.product_id = product_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeDataObjectColumnDetailResponseBodyItemsModelTags(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeDataObjectColumnDetailResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        categories: List[str] = None,
+        column_comment: str = None,
+        column_name: str = None,
+        data_type: str = None,
+        id: str = None,
+        model_tags: List[DescribeDataObjectColumnDetailResponseBodyItemsModelTags] = None,
+        primary_key: bool = None,
+        risk_level_id: int = None,
+        risk_level_name: str = None,
+        rule_id: int = None,
+        rule_name: str = None,
+    ):
+        self.categories = categories
+        self.column_comment = column_comment
+        self.column_name = column_name
+        self.data_type = data_type
+        self.id = id
+        self.model_tags = model_tags
+        self.primary_key = primary_key
+        self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.model_tags:
+            for k in self.model_tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.categories is not None:
+            result['Categories'] = self.categories
+        if self.column_comment is not None:
+            result['ColumnComment'] = self.column_comment
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.id is not None:
+            result['Id'] = self.id
+        result['ModelTags'] = []
+        if self.model_tags is not None:
+            for k in self.model_tags:
+                result['ModelTags'].append(k.to_map() if k else None)
+        if self.primary_key is not None:
+            result['PrimaryKey'] = self.primary_key
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Categories') is not None:
+            self.categories = m.get('Categories')
+        if m.get('ColumnComment') is not None:
+            self.column_comment = m.get('ColumnComment')
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        self.model_tags = []
+        if m.get('ModelTags') is not None:
+            for k in m.get('ModelTags'):
+                temp_model = DescribeDataObjectColumnDetailResponseBodyItemsModelTags()
+                self.model_tags.append(temp_model.from_map(k))
+        if m.get('PrimaryKey') is not None:
+            self.primary_key = m.get('PrimaryKey')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class DescribeDataObjectColumnDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[DescribeDataObjectColumnDetailResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.items = items
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeDataObjectColumnDetailResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDataObjectColumnDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDataObjectColumnDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDataObjectColumnDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDataObjectsRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        domain_id: int = None,
+        lang: str = None,
+        model_tag_ids: str = None,
+        page_size: int = None,
+        parent_category_ids: str = None,
+        product_ids: str = None,
+        query_name: str = None,
+        risk_levels: str = None,
+        service_region_id: str = None,
+        template_id: int = None,
+    ):
+        self.current_page = current_page
+        self.domain_id = domain_id
+        self.lang = lang
+        self.model_tag_ids = model_tag_ids
+        self.page_size = page_size
+        self.parent_category_ids = parent_category_ids
+        self.product_ids = product_ids
+        self.query_name = query_name
+        self.risk_levels = risk_levels
+        self.service_region_id = service_region_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.model_tag_ids is not None:
+            result['ModelTagIds'] = self.model_tag_ids
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.parent_category_ids is not None:
+            result['ParentCategoryIds'] = self.parent_category_ids
+        if self.product_ids is not None:
+            result['ProductIds'] = self.product_ids
+        if self.query_name is not None:
+            result['QueryName'] = self.query_name
+        if self.risk_levels is not None:
+            result['RiskLevels'] = self.risk_levels
+        if self.service_region_id is not None:
+            result['ServiceRegionId'] = self.service_region_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ModelTagIds') is not None:
+            self.model_tag_ids = m.get('ModelTagIds')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ParentCategoryIds') is not None:
+            self.parent_category_ids = m.get('ParentCategoryIds')
+        if m.get('ProductIds') is not None:
+            self.product_ids = m.get('ProductIds')
+        if m.get('QueryName') is not None:
+            self.query_name = m.get('QueryName')
+        if m.get('RiskLevels') is not None:
+            self.risk_levels = m.get('RiskLevels')
+        if m.get('ServiceRegionId') is not None:
+            self.service_region_id = m.get('ServiceRegionId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeDataObjectsResponseBodyItemsModelTags(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeDataObjectsResponseBodyItemsRuleList(TeaModel):
+    def __init__(
+        self,
+        risk_level_id: int = None,
+        risk_level_name: str = None,
+        rule_count: int = None,
+        rule_id: int = None,
+        rule_name: str = None,
+    ):
+        self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
+        self.rule_count = rule_count
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
+        if self.rule_count is not None:
+            result['RuleCount'] = self.rule_count
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
+        if m.get('RuleCount') is not None:
+            self.rule_count = m.get('RuleCount')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class DescribeDataObjectsResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        categories: List[str] = None,
+        id: str = None,
+        instance_description: str = None,
+        instance_id: str = None,
+        last_scan_time: int = None,
+        model_tags: List[DescribeDataObjectsResponseBodyItemsModelTags] = None,
+        name: str = None,
+        object_type: str = None,
+        path: str = None,
+        product_code: str = None,
+        product_id: int = None,
+        region_name: str = None,
+        rule_list: List[DescribeDataObjectsResponseBodyItemsRuleList] = None,
+        sensitive_count: int = None,
+        template_id: int = None,
+    ):
+        self.categories = categories
+        self.id = id
+        self.instance_description = instance_description
+        self.instance_id = instance_id
+        self.last_scan_time = last_scan_time
+        self.model_tags = model_tags
+        self.name = name
+        self.object_type = object_type
+        self.path = path
+        self.product_code = product_code
+        self.product_id = product_id
+        self.region_name = region_name
+        self.rule_list = rule_list
+        self.sensitive_count = sensitive_count
+        self.template_id = template_id
+
+    def validate(self):
+        if self.model_tags:
+            for k in self.model_tags:
+                if k:
+                    k.validate()
+        if self.rule_list:
+            for k in self.rule_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.categories is not None:
+            result['Categories'] = self.categories
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_description is not None:
+            result['InstanceDescription'] = self.instance_description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_scan_time is not None:
+            result['LastScanTime'] = self.last_scan_time
+        result['ModelTags'] = []
+        if self.model_tags is not None:
+            for k in self.model_tags:
+                result['ModelTags'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.region_name is not None:
+            result['RegionName'] = self.region_name
+        result['RuleList'] = []
+        if self.rule_list is not None:
+            for k in self.rule_list:
+                result['RuleList'].append(k.to_map() if k else None)
+        if self.sensitive_count is not None:
+            result['SensitiveCount'] = self.sensitive_count
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Categories') is not None:
+            self.categories = m.get('Categories')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceDescription') is not None:
+            self.instance_description = m.get('InstanceDescription')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastScanTime') is not None:
+            self.last_scan_time = m.get('LastScanTime')
+        self.model_tags = []
+        if m.get('ModelTags') is not None:
+            for k in m.get('ModelTags'):
+                temp_model = DescribeDataObjectsResponseBodyItemsModelTags()
+                self.model_tags.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('RegionName') is not None:
+            self.region_name = m.get('RegionName')
+        self.rule_list = []
+        if m.get('RuleList') is not None:
+            for k in m.get('RuleList'):
+                temp_model = DescribeDataObjectsResponseBodyItemsRuleList()
+                self.rule_list.append(temp_model.from_map(k))
+        if m.get('SensitiveCount') is not None:
+            self.sensitive_count = m.get('SensitiveCount')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeDataObjectsResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[DescribeDataObjectsResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.items = items
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeDataObjectsResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDataObjectsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDataObjectsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDataObjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeEventDetailRequest(TeaModel):
     def __init__(
         self,
         id: int = None,
         lang: str = None,
     ):
+        # The ID of the anomalous event.
+        # 
+        # > You can call the **DescribeEvents** operation to query the ID of the anomalous event.
         self.id = id
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -3635,7 +5204,9 @@ class DescribeEventDetailResponseBodyEventDetailChartData(TeaModel):
         x: List[str] = None,
         y: List[str] = None,
     ):
+        # The values of data on the x-axis.
         self.x = x
+        # The values of data on the y-axis.
         self.y = y
 
     def validate(self):
@@ -3671,10 +5242,18 @@ class DescribeEventDetailResponseBodyEventDetailChart(TeaModel):
         xlabel: str = None,
         ylabel: str = None,
     ):
+        # The data in the baseline behavior profile of the anomalous event.
         self.data = data
+        # The name of the baseline behavior chart of the anomalous event.
         self.label = label
+        # The type of the chart. Valid values:
+        # 
+        # *   **1**: column chart
+        # *   **2**: line chart
         self.type = type
+        # The descriptive label of data on the x-axis.
         self.xlabel = xlabel
+        # The descriptive label of data on the y-axis.
         self.ylabel = ylabel
 
     def validate(self):
@@ -3721,7 +5300,9 @@ class DescribeEventDetailResponseBodyEventDetailContent(TeaModel):
         label: str = None,
         value: str = None,
     ):
+        # The title of the content in the anomalous event.
         self.label = label
+        # The description of the content in the anomalous event.
         self.value = value
 
     def validate(self):
@@ -3754,7 +5335,9 @@ class DescribeEventDetailResponseBodyEventDetailResourceInfo(TeaModel):
         label: str = None,
         value: str = None,
     ):
+        # The source title.
         self.label = label
+        # The source description.
         self.value = value
 
     def validate(self):
@@ -3788,8 +5371,11 @@ class DescribeEventDetailResponseBodyEventDetail(TeaModel):
         content: List[DescribeEventDetailResponseBodyEventDetailContent] = None,
         resource_info: List[DescribeEventDetailResponseBodyEventDetailResourceInfo] = None,
     ):
+        # An array that consists of the baseline behavior chart of the anomalous event.
         self.chart = chart
+        # An array that consists of the content in the anomalous event.
         self.content = content
+        # An array that consists of the source from which the information of the anomalous event is recorded.
         self.resource_info = resource_info
 
     def validate(self):
@@ -3858,13 +5444,26 @@ class DescribeEventDetailResponseBodyEventHandleInfoList(TeaModel):
         id: int = None,
         status: int = None,
     ):
+        # The account that is used to handle the anomalous event.
         self.current_value = current_value
+        # The point in time when the account was locked. The value is a UNIX timestamp. Unit: milliseconds.
         self.disable_time = disable_time
+        # The point in time when the account was unlocked. The value is a UNIX timestamp. Unit: milliseconds.
         self.enable_time = enable_time
+        # The handling method.
         self.handler_name = handler_name
+        # The type of the handling method.
         self.handler_type = handler_type
+        # The duration for which the handling operation takes effect. If you leave this parameter empty, the handling operation is permanently valid. Unit: minutes.
         self.handler_value = handler_value
+        # The ID of the handling record.
         self.id = id
+        # The status of the account that triggered the anomalous event. Valid values:
+        # 
+        # *   **0**: locked
+        # *   **1**: unlocked
+        # *   **-1**: failed to unlock the account
+        # *   **-2**: failed to enable the account
         self.status = status
 
     def validate(self):
@@ -3942,28 +5541,64 @@ class DescribeEventDetailResponseBodyEvent(TeaModel):
         type_name: str = None,
         user_id: int = None,
     ):
+        # The time when the alert for the anomalous event was generated. The value is a UNIX timestamp. Unit: milliseconds.
         self.alert_time = alert_time
+        # Indicates whether the handling result of the anomalous event is used to enhance the detection of anomalous events. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # > If you enhance the detection of anomalous events, the detection accuracy and the rate of triggering alerts for anomalous events are improved.
         self.backed = backed
+        # The instance name of the service in which the anomalous event was detected.
         self.data_instance = data_instance
+        # The display name of the account that is used to handle the anomalous event.
         self.deal_display_name = deal_display_name
+        # The username of the account that is used to handle the anomalous event.
         self.deal_login_name = deal_login_name
+        # The reason why the anomalous event is handled.
         self.deal_reason = deal_reason
+        # The time when the anomalous event was handled. The value is a UNIX timestamp. Unit: milliseconds.
         self.deal_time = deal_time
+        # The ID of the account that is used to handle the anomalous event.
         self.deal_user_id = deal_user_id
+        # The content in the details of the anomalous event.
         self.detail = detail
+        # The display name of the account that triggered the anomalous event.
         self.display_name = display_name
+        # The time when the anomalous event occurred. The value is a UNIX timestamp. Unit: milliseconds.
         self.event_time = event_time
+        # An array that consists of the handling records of the anomalous event.
         self.handle_info_list = handle_info_list
+        # The unique ID of the anomalous event.
         self.id = id
+        # The details of the alert logs.
         self.log_detail = log_detail
+        # The username of the account that triggered the anomalous event.
         self.login_name = login_name
+        # The name of the service in which the anomalous event was detected. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        # The handling status for the anomalous event. Valid values:
+        # 
+        # *   **0**: unhandled
+        # *   **1**: confirmed
+        # *   **2**: marked as false positive
         self.status = status
+        # The name of the handling status for the anomalous event.
         self.status_name = status_name
+        # The code of the anomalous event subtype.
         self.sub_type_code = sub_type_code
+        # The name of the anomalous event subtype.
         self.sub_type_name = sub_type_name
+        # The code of the anomalous event type.
         self.type_code = type_code
+        # The name of the anomalous event type. Valid values:
+        # 
+        # *   **01**: anomalous permission usage
+        # *   **02**: anomalous data flow
+        # *   **03**: anomalous data operation
         self.type_name = type_name
+        # The ID of the account that triggered the anomalous event.
         self.user_id = user_id
 
     def validate(self):
@@ -4091,7 +5726,9 @@ class DescribeEventDetailResponseBody(TeaModel):
         event: DescribeEventDetailResponseBodyEvent = None,
         request_id: str = None,
     ):
+        # The details of the anomalous event.
         self.event = event
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4172,9 +5809,23 @@ class DescribeEventTypesRequest(TeaModel):
         resource_id: int = None,
         status: int = None,
     ):
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The type of anomalous event for which you want to query the anomalous events of subtypes. Valid values:
+        # 
+        # *   **01**: anomalous permission usage
+        # *   **02**: anomalous data flow
+        # *   **03**: anomalous data operation
         self.parent_type_id = parent_type_id
+        # The type of the resource. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.resource_id = resource_id
+        # The status of the anomalous event. Valid values:
+        # 
+        # *   **1**: enabled
+        # *   **2**: disabled
         self.status = status
 
     def validate(self):
@@ -4224,16 +5875,33 @@ class DescribeEventTypesResponseBodyEventTypeListSubTypeList(TeaModel):
         name: str = None,
         status: int = None,
     ):
+        # The service to which the anomalous event detection rule applies. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.adapted_product = adapted_product
+        # The code of the anomalous event subtype.
         self.code = code
+        # The code of the configuration.
         self.config_code = config_code
+        # The content format of anomalous event detection rule. Valid values:
+        # 
+        # *   **0**: numeric values such as thresholds
+        # *   **1**: text such as IP addresses
         self.config_content_type = config_content_type
+        # The description of the configuration.
         self.config_description = config_description
+        # The value of the configuration.
         self.config_value = config_value
+        # The description of the anomalous event subtype.
         self.description = description
+        # The number of times that the anomalous event hits the anomalous event detection rule.
         self.event_hit_count = event_hit_count
+        # The ID of the anomalous event subtype.
         self.id = id
+        # The name of the anomalous event subtype.
         self.name = name
+        # Indicates whether detection is enabled for the anomalous event subtype. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.status = status
 
     def validate(self):
@@ -4305,10 +5973,15 @@ class DescribeEventTypesResponseBodyEventTypeList(TeaModel):
         name: str = None,
         sub_type_list: List[DescribeEventTypesResponseBodyEventTypeListSubTypeList] = None,
     ):
+        # The code of the anomalous event type.
         self.code = code
+        # The description of the anomalous event type.
         self.description = description
+        # The ID of the anomalous event type.
         self.id = id
+        # The name of the anomalous event type.
         self.name = name
+        # An array that consists of anomalous event subtypes.
         self.sub_type_list = sub_type_list
 
     def validate(self):
@@ -4361,7 +6034,11 @@ class DescribeEventTypesResponseBody(TeaModel):
         event_type_list: List[DescribeEventTypesResponseBodyEventTypeList] = None,
         request_id: str = None,
     ):
+        # An array that consists of the types of anomalous events.
+        # 
+        # > If you leave the ParentTypeId parameter empty, anomalous event types are returned. If you set the ParentTypeId parameter, anomalous event subtypes under the specified anomalous event type are returned.
         self.event_type_list = event_type_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4459,20 +6136,48 @@ class DescribeEventsRequest(TeaModel):
         user_id: int = None,
         user_name: str = None,
     ):
+        # The page number of the page to return.
         self.current_page = current_page
+        # The ID of the account that handles the anomalous event.
         self.deal_user_id = deal_user_id
+        # The end of the time range during which the anomalous events are detected. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
+        # The unique ID of the anomalous event.
         self.id = id
+        # The name of the data asset.
         self.instance_name = instance_name
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The name of the service to which the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        # The beginning of the time range during which the anomalous events are detected. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
+        # The handling status of the anomalous event. Valid values:
+        # 
+        # *   0: unhandled
+        # *   1: confirmed
+        # *   2: marked as false positive
         self.status = status
+        # The name of the anomalous event subtype.
+        # 
+        # > You can call the **DescribeEventTypes** operation to query the name of the anomalous event subtype.
         self.sub_type_code = sub_type_code
+        # The name of the destination service in an anomalous data flow. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**\
         self.target_product_code = target_product_code
+        # The name of the anomalous event type. Valid values:
+        # 
+        # *   01: anomalous permission usage
+        # *   02: anomalous data flow
+        # *   03: anomalous data operation
         self.type_code = type_code
+        # The ID of the account that triggered the anomalous event.
         self.user_id = user_id
+        # The username of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -4575,25 +6280,56 @@ class DescribeEventsResponseBodyItems(TeaModel):
         user_id: int = None,
         warn_level: int = None,
     ):
+        # The time when an alert was triggered for the anomalous event. The value is a UNIX timestamp. Unit: milliseconds.
         self.alert_time = alert_time
+        # Indicates whether the detection of anomalous events is enhanced. If the detection of anomalous events is enhanced, the detection accuracy and the rate of triggering alerts for anomalous events are improved. Valid values:
+        # 
+        # *   true: yes
+        # *   false: no
         self.backed = backed
+        # The display name of the account that is used to handle the anomalous event.
         self.deal_display_name = deal_display_name
+        # The username of the account that is used to handle the anomalous event.
         self.deal_login_name = deal_login_name
+        # The time when the anomalous event was handled. The value is a UNIX timestamp. Unit: milliseconds.
         self.deal_time = deal_time
+        # The ID of the account that is used to handle the anomalous event.
         self.deal_user_id = deal_user_id
+        # The display name of the account that triggered the anomalous event.
         self.display_name = display_name
+        # The time when the anomalous event occurred. The value is a UNIX timestamp. Unit: milliseconds.
         self.event_time = event_time
+        # The ID of the anomalous event.
         self.id = id
+        # The username of the account that triggered the anomalous event.
         self.login_name = login_name
+        # The name of the service in which the anomalous event was detected.
         self.product_code = product_code
+        # The handling status for the anomalous event. Valid values:
+        # 
+        # *   0: unhandled
+        # *   1: confirmed
+        # *   2: marked as false positive
         self.status = status
+        # The name of the handling status for the anomalous event.
         self.status_name = status_name
+        # The code of the anomalous event subtype.
         self.sub_type_code = sub_type_code
+        # The name of the anomalous event subtype.
         self.sub_type_name = sub_type_name
+        # The name of the destination service in an anomalous data flow.
         self.target_product_code = target_product_code
+        # The code of the anomalous event type.
         self.type_code = type_code
+        # The name of the anomalous event type.
         self.type_name = type_name
+        # The ID of the account that triggered the anomalous event.
         self.user_id = user_id
+        # The severity of the anomalous event.
+        # 
+        # *   **1**: low
+        # *   **2**: medium
+        # *   **3**: high
         self.warn_level = warn_level
 
     def validate(self):
@@ -4701,10 +6437,15 @@ class DescribeEventsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of the anomalous events.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4811,17 +6552,42 @@ class DescribeInstanceSourcesRequest(TeaModel):
         search_type: str = None,
         service_region_id: str = None,
     ):
+        # Specifies whether to enable the security audit feature. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.audit_status = audit_status
+        # Specifies whether DSC is authorized to access the data asset.
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.auth_status = auth_status
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The type of the database engine. Valid values: **MySQL, MariaDB, Oracle, PostgreSQL, and SQLServer**.
         self.engine_type = engine_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh_cn**: Simplified Chinese (default)
+        # *   **en_us**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The name of the service to which the data asset to query belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        # The ID of the service to which the data asset to query belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.product_id = product_id
+        # The content based on which a fuzzy search is performed.
         self.search_key = search_key
+        # The data asset type based on which a fuzzy search is performed.
+        # 
+        # *   **InstanceId**: the ID of the instance.
+        # *   **InstanceName**: the name of the instance.
+        # *   **DatabaseName**: the name of the database.
         self.search_type = search_type
+        # The region in which the data asset resides. For more information, see [Supported regions](~~214257~~).
         self.service_region_id = service_region_id
 
     def validate(self):
@@ -4917,30 +6683,79 @@ class DescribeInstanceSourcesResponseBodyItems(TeaModel):
         tenant_name: str = None,
         user_name: str = None,
     ):
+        # Indicates whether the security audit feature is enabled. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.audit_status = audit_status
+        # Indicates whether the automatic scan feature is enabled to detect sensitive data. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.auto_scan = auto_scan
+        # Indicates whether the username and password can be changed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.can_modify_user_name = can_modify_user_name
+        # The data detection status. Valid values:
+        # 
+        # *   **0**: The data detection is ready.
+        # *   **1**: The data detection is running.
+        # *   **2**: The connectivity test is in progress.
+        # *   **3**: The connectivity test passed.
+        # *   **4**: The connectivity test failed.
         self.check_status = check_status
+        # Indicates whether DSC has the data de-identification permissions on the data asset. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.datamask_status = datamask_status
+        # The name of the database to which the data asset belongs.
         self.db_name = db_name
+        # Indicates whether sensitive data detection is enabled for the data asset. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.enable = enable
+        # The type of the database engine. Valid values: **MySQL, MariaDB, Oracle, PostgreSQL, and SQLServer**.
         self.engine_type = engine_type
+        # The reason for the failure.
         self.error_message = error_message
+        # The time when the data asset was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
+        # The unique ID of the data asset.
         self.id = id
+        # The description of the instance.
         self.instance_description = instance_description
+        # The ID of the instance
         self.instance_id = instance_id
+        # The storage space size of the instance. This parameter is valid only if the value of the ProductId parameter is 2. Unit: bytes.
         self.instance_size = instance_size
+        # The time when the data asset was last modified. Unit: milliseconds.
         self.last_modify_time = last_modify_time
+        # The ID of the account that is last used to modify the data asset.
         self.last_modify_user_id = last_modify_user_id
+        # The retention period of raw logs. Unit: days.
         self.log_store_day = log_store_day
+        # Indicates whether the password is used. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.password_status = password_status
+        # The ID of the service to which the data asset belongs. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.product_id = product_id
+        # The ID of the region where the instance resides.
         self.region_id = region_id
+        # The name of the region.
         self.region_name = region_name
+        # The number of sensitive data samples. Valid values: **0**, **5**, and **10**. Unit: data entries.
         self.sampling_size = sampling_size
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The name of the tenant.
         self.tenant_name = tenant_name
+        # The username of the account.
         self.user_name = user_name
 
     def validate(self):
@@ -5068,10 +6883,15 @@ class DescribeInstanceSourcesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of the queried data assets.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5176,15 +6996,40 @@ class DescribeInstancesRequest(TeaModel):
         rule_id: int = None,
         service_region_id: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # This parameter is deprecated.
         self.feature_type = feature_type
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Simplified Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The keyword that is used to search for data assets. DSC searches for data assets based on the keyword that you specify in fuzzy match mode. For example, if you specify data, all data assets whose names contain data are queried.
         self.name = name
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](~~212906~~).
         self.product_code = product_code
+        # The ID of the service to which the data asset belongs. You can call the [DescribeDataAssets](~~DescribeDataAssets~~) operation to query the ID of the service.
         self.product_id = product_id
+        # The sensitivity level ID of the data asset. A higher sensitivity level indicates that the identified data is more sensitive. Valid values:
+        # 
+        # *   **1**: No sensitive data is identified.
+        # *   **2**: sensitive data at level 1.
+        # *   **3**: sensitive data at level 2.
+        # *   **4**: sensitive data at level 3
+        # *   **5**: sensitive data at level 4.
+        # *   **6**: sensitive data at level 5.
+        # *   **7**: sensitive data at level 6.
+        # *   **8**: sensitive data at level 7.
+        # *   **9**: sensitive data at level 8.
+        # *   **10**: sensitive data at level 9.
+        # *   **11**: sensitive data at level 10.
         self.risk_level_id = risk_level_id
+        # The ID of the sensitive data detection rule that the data asset hits. You can call the [DescribeRules](~~DescribeRules~~) operation and obtain the ID of the sensitive data detection rule from the **Id** response parameter.
         self.rule_id = rule_id
+        # The region where the data asset resides. For more information, see [Supported regions](~~214257~~).
         self.service_region_id = service_region_id
 
     def validate(self):
@@ -5243,6 +7088,39 @@ class DescribeInstancesRequest(TeaModel):
         return self
 
 
+class DescribeInstancesResponseBodyItemsModelTags(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
 class DescribeInstancesResponseBodyItems(TeaModel):
     def __init__(
         self,
@@ -5252,6 +7130,7 @@ class DescribeInstancesResponseBodyItems(TeaModel):
         instance_description: str = None,
         labelsec: bool = None,
         last_finish_time: int = None,
+        model_tags: List[DescribeInstancesResponseBodyItemsModelTags] = None,
         name: str = None,
         odps_risk_level_name: str = None,
         owner: str = None,
@@ -5266,28 +7145,72 @@ class DescribeInstancesResponseBodyItems(TeaModel):
         tenant_name: str = None,
         total_count: int = None,
     ):
+        # The point in time when the data asset was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.creation_time = creation_time
+        # The name of the department to which the data asset belongs.
         self.depart_name = depart_name
+        # The unique ID of the data asset.
         self.id = id
+        # The description of the data asset.
         self.instance_description = instance_description
+        # The security status of the data asset. Valid values:
+        # 
+        # *   **true**: The data asset is secure.
+        # *   **false**: The data asset is insecure.
         self.labelsec = labelsec
+        # The point in time when the data asset was last scanned. This value is a UNIX timestamp. Unit: milliseconds.
         self.last_finish_time = last_finish_time
+        self.model_tags = model_tags
+        # The name of the data asset.
         self.name = name
+        # This parameter is deprecated.
         self.odps_risk_level_name = odps_risk_level_name
+        # The Alibaba Cloud account to which the data asset belongs.
         self.owner = owner
+        # The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](~~212906~~).
         self.product_code = product_code
+        # The ID of the service to which the data asset belongs.
         self.product_id = product_id
+        # The protection status of the data asset. Valid values:
+        # 
+        # *   **true**: The data asset is being protected.
+        # *   **false**: The data asset is not protected.
         self.protection = protection
+        # The sensitivity level of the data asset. A higher sensitivity level indicates that the identified data is more sensitive.
+        # 
+        # *   **1**: No sensitive data is identified.
+        # *   **2**: sensitive data at level 1.
+        # *   **3**: sensitive data at level 2.
+        # *   **4**: sensitive data at level 3
+        # *   **5**: sensitive data at level 4.
+        # *   **6**: sensitive data at level 5.
+        # *   **7**: sensitive data at level 6.
+        # *   **8**: sensitive data at level 7.
+        # *   **9**: sensitive data at level 8.
+        # *   **10**: sensitive data at level 9.
+        # *   **11**: sensitive data at level 10.
         self.risk_level_id = risk_level_id
+        # The name of the sensitivity level for the data asset.
         self.risk_level_name = risk_level_name
+        # The name of the sensitive data detection rule that the data asset hits.
         self.rule_name = rule_name
+        # Indicates whether the data asset contains sensitive data. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.sensitive = sensitive
+        # The total number of sensitive data objects in the data asset. For example, if the data asset is an ApsaraDB RDS instance, the value indicates the total number of sensitive tables in all databases of the instance.
         self.sensitive_count = sensitive_count
+        # The name of the tenant.
         self.tenant_name = tenant_name
+        # The total number of data objects in the data asset. For example, if the data asset is an ApsaraDB RDS instance, the value indicates the total number of tables in all databases of the instance.
         self.total_count = total_count
 
     def validate(self):
-        pass
+        if self.model_tags:
+            for k in self.model_tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5307,6 +7230,10 @@ class DescribeInstancesResponseBodyItems(TeaModel):
             result['Labelsec'] = self.labelsec
         if self.last_finish_time is not None:
             result['LastFinishTime'] = self.last_finish_time
+        result['ModelTags'] = []
+        if self.model_tags is not None:
+            for k in self.model_tags:
+                result['ModelTags'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
         if self.odps_risk_level_name is not None:
@@ -5349,6 +7276,11 @@ class DescribeInstancesResponseBodyItems(TeaModel):
             self.labelsec = m.get('Labelsec')
         if m.get('LastFinishTime') is not None:
             self.last_finish_time = m.get('LastFinishTime')
+        self.model_tags = []
+        if m.get('ModelTags') is not None:
+            for k in m.get('ModelTags'):
+                temp_model = DescribeInstancesResponseBodyItemsModelTags()
+                self.model_tags.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OdpsRiskLevelName') is not None:
@@ -5387,10 +7319,15 @@ class DescribeInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of the data assets.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of data assets.
         self.total_count = total_count
 
     def validate(self):
@@ -5487,7 +7424,14 @@ class DescribeOssObjectDetailRequest(TeaModel):
         id: int = None,
         lang: str = None,
     ):
+        # The ID of the OSS object.
+        # 
+        # > You can call the **DescribeOssObjects** operation to obtain the ID of the OSS object.
         self.id = id
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Chinese
+        # *   **en_us**: English
         self.lang = lang
 
     def validate(self):
@@ -5514,23 +7458,72 @@ class DescribeOssObjectDetailRequest(TeaModel):
         return self
 
 
+class DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
 class DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList(TeaModel):
     def __init__(
         self,
         category_name: str = None,
         count: int = None,
+        model_tags: List[DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags] = None,
         risk_level_id: int = None,
         risk_level_name: str = None,
         rule_name: str = None,
     ):
+        # The type of the OSS object.
         self.category_name = category_name
+        # The number of times that the OSS object hits the sensitive data detection rule.
         self.count = count
+        self.model_tags = model_tags
+        # The sensitivity level of the OSS object.
+        # 
+        # *   **1**: No sensitive data is detected.
+        # *   **2**: indicates the low sensitivity level.
+        # *   **3**: indicates the medium sensitivity level.
+        # *   **4**: indicates the high sensitivity level.
+        # *   **5**: indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
+        # The name of the sensitivity level for the OSS object.
         self.risk_level_name = risk_level_name
+        # The name of the sensitive data detection rule.
         self.rule_name = rule_name
 
     def validate(self):
-        pass
+        if self.model_tags:
+            for k in self.model_tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5542,6 +7535,10 @@ class DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList(TeaModel):
             result['CategoryName'] = self.category_name
         if self.count is not None:
             result['Count'] = self.count
+        result['ModelTags'] = []
+        if self.model_tags is not None:
+            for k in self.model_tags:
+                result['ModelTags'].append(k.to_map() if k else None)
         if self.risk_level_id is not None:
             result['RiskLevelId'] = self.risk_level_id
         if self.risk_level_name is not None:
@@ -5556,6 +7553,11 @@ class DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList(TeaModel):
             self.category_name = m.get('CategoryName')
         if m.get('Count') is not None:
             self.count = m.get('Count')
+        self.model_tags = []
+        if m.get('ModelTags') is not None:
+            for k in m.get('ModelTags'):
+                temp_model = DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags()
+                self.model_tags.append(temp_model.from_map(k))
         if m.get('RiskLevelId') is not None:
             self.risk_level_id = m.get('RiskLevelId')
         if m.get('RiskLevelName') is not None:
@@ -5575,11 +7577,17 @@ class DescribeOssObjectDetailResponseBodyOssObjectDetail(TeaModel):
         risk_level_name: str = None,
         rule_list: List[DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList] = None,
     ):
+        # The name of the OSS bucket to which the OSS object belongs.
         self.bucket_name = bucket_name
+        # The type of the OSS object.
         self.category_name = category_name
+        # The name of the OSS object.
         self.name = name
+        # The region ID of the OSS object.
         self.region_id = region_id
+        # The name of the sensitivity level for the OSS object.
         self.risk_level_name = risk_level_name
+        # An array consisting of the sensitive data detection rules that the OSS object hits.
         self.rule_list = rule_list
 
     def validate(self):
@@ -5636,7 +7644,9 @@ class DescribeOssObjectDetailResponseBody(TeaModel):
         oss_object_detail: DescribeOssObjectDetailResponseBodyOssObjectDetail = None,
         request_id: str = None,
     ):
+        # The details of the OSS object.
         self.oss_object_detail = oss_object_detail
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5722,17 +7732,43 @@ class DescribeOssObjectsRequest(TeaModel):
         risk_level_id: int = None,
         rule_id: int = None,
         service_region_id: str = None,
+        template_id: int = None,
     ):
+        # The page number of the page to return.
         self.current_page = current_page
+        # The ID of the instance to which the OSS object belongs.
+        # 
+        # > You can call the **DescribeInstances** operation to query the instance ID.
         self.instance_id = instance_id
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The end time of the last scan. The value is a UNIX timestamp. Unit: milliseconds.
         self.last_scan_time_end = last_scan_time_end
+        # The start time of the last scan. The value is a UNIX timestamp. Unit: milliseconds.
         self.last_scan_time_start = last_scan_time_start
+        # The search keyword. Fuzzy match is supported.
         self.name = name
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The sensitivity level of the OSS object. Valid values:
+        # 
+        # *   **1**: N/A, which indicates that no sensitive data is detected.
+        # *   **2**: S1, which indicates the low sensitivity level.
+        # *   **3**: S2, which indicates the medium sensitivity level.
+        # *   **4**: S3, which indicates the high sensitivity level.
+        # *   **5**: S4, which indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
+        # The ID of the sensitive data detection rule that the OSS object hits.
+        # 
+        # > You can call the **DescribeRules** operation to query the ID of the sensitive data detection rule.
         self.rule_id = rule_id
+        # The region in which the data asset resides.
         self.service_region_id = service_region_id
+        # The ID of the industry-specific rule template.
+        self.template_id = template_id
 
     def validate(self):
         pass
@@ -5763,6 +7799,8 @@ class DescribeOssObjectsRequest(TeaModel):
             result['RuleId'] = self.rule_id
         if self.service_region_id is not None:
             result['ServiceRegionId'] = self.service_region_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5787,6 +7825,8 @@ class DescribeOssObjectsRequest(TeaModel):
             self.rule_id = m.get('RuleId')
         if m.get('ServiceRegionId') is not None:
             self.service_region_id = m.get('ServiceRegionId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         return self
 
 
@@ -5797,8 +7837,17 @@ class DescribeOssObjectsResponseBodyItemsRuleList(TeaModel):
         name: str = None,
         risk_level_id: int = None,
     ):
+        # The number of times that the rule is hit.
         self.count = count
+        # The search keyword. Fuzzy match is supported.
         self.name = name
+        # The sensitivity level of the OSS object. Valid values:
+        # 
+        # *   **1**: N/A, which indicates that no sensitive data is detected.
+        # *   **2**: S1, which indicates the low sensitivity level.
+        # *   **3**: S2, which indicates the medium sensitivity level.
+        # *   **4**: S3, which indicates the high sensitivity level.
+        # *   **5**: S4, which indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
 
     def validate(self):
@@ -5847,19 +7896,39 @@ class DescribeOssObjectsResponseBodyItems(TeaModel):
         sensitive_count: int = None,
         size: int = None,
     ):
+        # The name of the OSS bucket.
         self.bucket_name = bucket_name
+        # The type ID of the OSS object. Valid values include **900001**, **800015**, or **800005**, which indicates the MP4 file, PDF file, or OSS configuration file, respectively.
         self.category = category
+        # The file type of the OSS object.
         self.category_name = category_name
+        # The file ID of the OSS object.
         self.file_id = file_id
+        # The ID of the OSS object.
         self.id = id
+        # The ID of the instance to which the OSS object belongs.
         self.instance_id = instance_id
+        # The name of the OSS object.
         self.name = name
+        # The region ID of the OSS object.
         self.region_id = region_id
+        # The sensitivity level of the OSS object. Valid values:
+        # 
+        # *   **1**: N/A, which indicates that no sensitive data is detected.
+        # *   **2**: S1, which indicates the low sensitivity level.
+        # *   **3**: S2, which indicates the medium sensitivity level.
+        # *   **4**: S3, which indicates the high sensitivity level.
+        # *   **5**: S4, which indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
+        # The name of the sensitivity level for the OSS object.
         self.risk_level_name = risk_level_name
+        # The number of rules that are hit.
         self.rule_count = rule_count
+        # An array that consists of the rules.
         self.rule_list = rule_list
+        # The number of fields that are hit.
         self.sensitive_count = sensitive_count
+        # The size of the file. Unit: bytes.
         self.size = size
 
     def validate(self):
@@ -5951,10 +8020,15 @@ class DescribeOssObjectsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of the OSS objects.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6057,13 +8131,36 @@ class DescribePackagesRequest(TeaModel):
         risk_level_id: int = None,
         rule_id: int = None,
     ):
+        # The page number of the page to return.
         self.current_page = current_page
+        # The ID of the instance to which the package belongs.
+        # 
+        # > You can call the **DescribeInstances** operation to query the ID of the instance.
         self.instance_id = instance_id
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The search keyword. Fuzzy match is supported.
         self.name = name
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the service to which the package belongs.
+        # 
+        # > You can call the **DescribeDataAssets** operation to query the ID of the service.
         self.product_id = product_id
+        # The sensitivity level of the package. Valid values:
+        # 
+        # *   **1**: N/A, which indicates that no sensitive data is detected.
+        # *   **2**: S1, which indicates the low sensitivity level.
+        # *   **3**: S2, which indicates the medium sensitivity level.
+        # *   **4**: S3, which indicates the high sensitivity level.
+        # *   **5**: S4, which indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
+        # The ID of the sensitive data detection rule that the package hits.
+        # 
+        # > You can call the **DescribeRules** operation to query the ID of the sensitive data detection rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -6128,15 +8225,34 @@ class DescribePackagesResponseBodyItems(TeaModel):
         sensitive_count: int = None,
         total_count: int = None,
     ):
+        # The point in time when the MaxCompute package was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.creation_time = creation_time
+        # The ID of the package.
         self.id = id
+        # The ID of the instance to which the package belongs.
         self.instance_id = instance_id
+        # The name of the package.
         self.name = name
+        # The account of the user that owns the package.
         self.owner = owner
+        # The sensitivity level of the package. Valid values:
+        # 
+        # *   **1**: N/A, which indicates that no sensitive data is detected.
+        # *   **2**: S1, which indicates the low sensitivity level.
+        # *   **3**: S2, which indicates the medium sensitivity level.
+        # *   **4**: S3, which indicates the high sensitivity level.
+        # *   **5**: S4, which indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
+        # The name of the sensitivity level for the package.
         self.risk_level_name = risk_level_name
+        # Indicates whether the package contains sensitive data. Valid values:
+        # 
+        # *   true: yes
+        # *   false: no
         self.sensitive = sensitive
+        # The total volume of sensitive data in the package. For example, the value can be the total number of sensitive tables in the MaxCompute package.
         self.sensitive_count = sensitive_count
+        # The total volume of data in the package. For example, the value can be the total number of tables in the MaxCompute package.
         self.total_count = total_count
 
     def validate(self):
@@ -6204,10 +8320,15 @@ class DescribePackagesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of the information about the packages.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6302,8 +8423,15 @@ class DescribeRiskLevelsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
+        template_id: int = None,
     ):
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   zh_cn: Chinese (default)
+        # *   en_us: English
         self.lang = lang
+        # The ID of the industry-specific rule template.
+        self.template_id = template_id
 
     def validate(self):
         pass
@@ -6316,12 +8444,16 @@ class DescribeRiskLevelsRequest(TeaModel):
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         return self
 
 
@@ -6333,9 +8465,41 @@ class DescribeRiskLevelsResponseBodyRiskLevelList(TeaModel):
         name: str = None,
         reference_num: int = None,
     ):
+        # The description of the sensitivity level. You can enter a custom description.
+        # 
+        # The following list describes the sensitivity level names and the corresponding default description:
+        # 
+        # *   **NA**: which indicates that no sensitive data is detected.
+        # *   **S1**: which indicates the sensitive data at sensitivity level 1.
+        # *   **S2**: which indicates the sensitive data at sensitivity level 2.
+        # *   **S3**: which indicates the sensitive data at sensitivity level 3.
+        # *   **S4**: which indicates the sensitive data at sensitivity level 4.
+        # *   **S5**: which indicates the sensitive data at sensitivity level 5.
+        # *   **S6**: which indicates the sensitive data at sensitivity level 6.
+        # *   **S7**: which indicates the sensitive data at sensitivity level 7.
+        # *   **S8**: which indicates the sensitive data at sensitivity level 8.
+        # *   **S9**: which indicates the sensitive data at sensitivity level 9.
+        # *   **S10**: which indicates the sensitive data at sensitivity level 10.
         self.description = description
+        # The unique ID of the sensitivity level. Valid values: 1 to 11. Each sensitivity level ID maps a sensitivity level. For example, the sensitivity level ID of 2 corresponds to the sensitivity level S1.
+        # 
+        # For more information, see the description of the Name parameter.
         self.id = id
+        # The name of the sensitivity level. The highest sensitivity level varies based on rule templates. The highest sensitivity level is S10. The highest sensitivity level of the **Built-in data security classification templates for Alibaba and Ant Group** is S4, and that of the **built-in classification templates for financial data** and **built-in classification templates for assets** is S5. For more information about the built-in classification templates for financial data, see Guidelines for Security Classification of Financial Data and Security Data - JRT 0197-2020. For a copied rule template, the highest sensitivity level is S10. The following list describes the sensitivity level names and the corresponding IDs:
+        # 
+        # *   **NA**: 1
+        # *   **S1**: 2
+        # *   **S2**: 3
+        # *   **S3**: 4
+        # *   **S4**: 5
+        # *   **S5**: 6
+        # *   **S6**: 7
+        # *   **S7**: 8
+        # *   **S8**: 9
+        # *   **S9**: 10
+        # *   **S10**: 11
         self.name = name
+        # The number of times that each sensitivity level is referenced in the rule template. Default value: 0.
         self.reference_num = reference_num
 
     def validate(self):
@@ -6376,7 +8540,9 @@ class DescribeRiskLevelsResponseBody(TeaModel):
         request_id: str = None,
         risk_level_list: List[DescribeRiskLevelsResponseBodyRiskLevelList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # An array that consists of sensitivity levels.
         self.risk_level_list = risk_level_list
 
     def validate(self):
@@ -6465,6 +8631,7 @@ class DescribeRulesRequest(TeaModel):
         group_id: str = None,
         keyword_compatible: bool = None,
         lang: str = None,
+        match_type: int = None,
         name: str = None,
         page_size: int = None,
         product_code: int = None,
@@ -6474,20 +8641,72 @@ class DescribeRulesRequest(TeaModel):
         status: int = None,
         warn_level: int = None,
     ):
+        # The content type of the sensitive data detection rule. Valid values:
+        # 
+        # *   **0**: keyword
+        # *   **2**: regular expression
         self.category = category
+        # The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
         self.content_category = content_category
+        # The page number of the page to return.
         self.current_page = current_page
+        # The type of the sensitive data detection rule. Valid values:
+        # 
+        # *   **0**: built-in rule
+        # *   **1**: custom rule
         self.custom_type = custom_type
+        # The parent group type of the rule.
         self.group_id = group_id
+        # Specifies whether to allow earlier versions of request parameters to support keywords that are supported in later versions of request parameters. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # > To specify keywords as the content type of the sensitive data detection rule, you can set the Category parameter to 0 for earlier versions of request parameters and set the Category parameter to 5 for later versions of request parameters. You can specify the KeywordCompatible parameter based on your business requirements.
         self.keyword_compatible = keyword_compatible
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The match type. Valid values:
+        # 
+        # *   1: rule-based match
+        # *   2: dictionary-based match
+        self.match_type = match_type
+        # The name of the sensitive data detection rule. Fuzzy match is supported.
         self.name = name
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        # The ID of the service to which the sensitive data detection rule is applied. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.product_id = product_id
+        # The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+        # 
+        # *   **1**: N/A, which indicates that no sensitive data is detected.
+        # *   **2**: S1, which indicates the low sensitivity level.
+        # *   **3**: S2, which indicates the medium sensitivity level.
+        # *   **4**: S3, which indicates the high sensitivity level.
+        # *   **5**: S4, which indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
+        # The type of the sensitive data detection rule. Valid values:
+        # 
+        # *   **1**: sensitive data detection rule
+        # *   **2**: audit rule
+        # *   **3**: anomalous event detection rule
+        # *   **99**: custom rule
         self.rule_type = rule_type
+        # The status of the sensitive data detection rule. Valid values:
+        # 
+        # *   **1**: enabled
+        # *   **0**: disabled
         self.status = status
+        # The severity level of the alert. Valid values:
+        # 
+        # *   **1**: low
+        # *   **2**: medium
+        # *   **3**: high
         self.warn_level = warn_level
 
     def validate(self):
@@ -6513,6 +8732,8 @@ class DescribeRulesRequest(TeaModel):
             result['KeywordCompatible'] = self.keyword_compatible
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.match_type is not None:
+            result['MatchType'] = self.match_type
         if self.name is not None:
             result['Name'] = self.name
         if self.page_size is not None:
@@ -6547,6 +8768,8 @@ class DescribeRulesRequest(TeaModel):
             self.keyword_compatible = m.get('KeywordCompatible')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('MatchType') is not None:
+            self.match_type = m.get('MatchType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PageSize') is not None:
@@ -6583,6 +8806,7 @@ class DescribeRulesResponseBodyItems(TeaModel):
         id: int = None,
         login_name: str = None,
         major_key: str = None,
+        match_type: int = None,
         name: str = None,
         product_code: str = None,
         product_id: int = None,
@@ -6590,33 +8814,89 @@ class DescribeRulesResponseBodyItems(TeaModel):
         risk_level_name: str = None,
         stat_express: str = None,
         status: int = None,
+        support_form: int = None,
         target: str = None,
         user_id: int = None,
         warn_level: int = None,
     ):
+        # The content type of the sensitive data detection rule. Valid values:
+        # 
+        # *   **0**: keyword
+        # *   **2**: regular expression
         self.category = category
+        # The name of the content type of the sensitive data detection rule.
         self.category_name = category_name
+        # The content in the sensitive data detection rule.
         self.content = content
+        # The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
         self.content_category = content_category
+        # The type of the sensitive data detection rule.
+        # 
+        # *   0: built-in rule
+        # *   1: custom rule
         self.custom_type = custom_type
+        # The description of the sensitive data detection rule.
         self.description = description
+        # The display name of the account that is used to create the sensitive data detection rule.
         self.display_name = display_name
+        # The time when the sensitive data detection rule is created. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
+        # The time when the sensitive data detection rule is modified. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_modified = gmt_modified
+        # The parent group type of the rule.
         self.group_id = group_id
+        # The number of times that the sensitive data detection rule is hit.
         self.hit_total_count = hit_total_count
+        # The ID of the sensitive data detection rule.
         self.id = id
+        # The username of the account that is used to create the sensitive data detection rule.
         self.login_name = login_name
+        # The key of the primary dimension.
         self.major_key = major_key
+        # The match type. Valid values:
+        # 
+        # *   **1**: rule-based match
+        # *   **2**: dictionary-based match
+        self.match_type = match_type
+        # The name of the sensitive data detection rule.
         self.name = name
+        # The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        # The ID of the service to which the sensitive data detection rule is applied. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.product_id = product_id
+        # The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+        # 
+        # *   **1**: N/A, which indicates that no sensitive data is detected.
+        # *   **2**: S1, which indicates the low sensitivity level.
+        # *   **3**: S2, which indicates the medium sensitivity level.
+        # *   **4**: S3, which indicates the high sensitivity level.
+        # *   **5**: S4, which indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
+        # The sensitivity level of data that hits the sensitive data detection rule. Valid values:
+        # 
+        # *   **N/A**: No sensitive data is detected.
+        # *   **S1**: indicates the low sensitivity level.
+        # *   **S2**: indicates the medium sensitivity level.
+        # *   **S3**: indicates the high sensitivity level.
+        # *   **S4**: indicates the highest sensitivity level.
         self.risk_level_name = risk_level_name
+        # The statistical expression.
         self.stat_express = stat_express
+        # The status of the sensitive data detection rule. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
         self.status = status
+        self.support_form = support_form
+        # The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.target = target
+        # The ID of the account that is used to create the sensitive data detection rule.
         self.user_id = user_id
+        # The severity level of the alert. Valid values:
+        # 
+        # *   **1**: low
+        # *   **2**: medium
+        # *   **3**: high
         self.warn_level = warn_level
 
     def validate(self):
@@ -6656,6 +8936,8 @@ class DescribeRulesResponseBodyItems(TeaModel):
             result['LoginName'] = self.login_name
         if self.major_key is not None:
             result['MajorKey'] = self.major_key
+        if self.match_type is not None:
+            result['MatchType'] = self.match_type
         if self.name is not None:
             result['Name'] = self.name
         if self.product_code is not None:
@@ -6670,6 +8952,8 @@ class DescribeRulesResponseBodyItems(TeaModel):
             result['StatExpress'] = self.stat_express
         if self.status is not None:
             result['Status'] = self.status
+        if self.support_form is not None:
+            result['SupportForm'] = self.support_form
         if self.target is not None:
             result['Target'] = self.target
         if self.user_id is not None:
@@ -6708,6 +8992,8 @@ class DescribeRulesResponseBodyItems(TeaModel):
             self.login_name = m.get('LoginName')
         if m.get('MajorKey') is not None:
             self.major_key = m.get('MajorKey')
+        if m.get('MatchType') is not None:
+            self.match_type = m.get('MatchType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ProductCode') is not None:
@@ -6722,6 +9008,8 @@ class DescribeRulesResponseBodyItems(TeaModel):
             self.stat_express = m.get('StatExpress')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SupportForm') is not None:
+            self.support_form = m.get('SupportForm')
         if m.get('Target') is not None:
             self.target = m.get('Target')
         if m.get('UserId') is not None:
@@ -6740,10 +9028,15 @@ class DescribeRulesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of the sensitive data detection rules.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6848,18 +9141,41 @@ class DescribeTablesRequest(TeaModel):
         risk_level_id: int = None,
         rule_id: int = None,
         service_region_id: str = None,
+        template_id: int = None,
     ):
+        # The page number of the page to return. Default value: 1.
         self.current_page = current_page
+        # The ID of the data asset to which the table belongs. You can call the [DescribeInstances](~~DescribeInstances~~) operation to obtain the ID of the data asset.
         self.instance_id = instance_id
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The search keyword. Fuzzy match is supported. For example, if you specify test, all tables whose names contain test are retrieved.
         self.name = name
+        # The ID of the package to which the table belongs. You can call the [DescribePackages](~~DescribePackages~~) operation to obtain the ID of the package.
         self.package_id = package_id
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
+        # The name of the service to which the table belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which Data Security Center (DSC) can scan for sensitive data, see [Supported data assets](~~212906~~).
         self.product_code = product_code
+        # The ID of the service to which the table belongs. You can call the [DescribeDataAssets](~~DescribeDataAssets~~) operation to obtain the ID of the service.
         self.product_id = product_id
+        # The sensitivity level of the table. Each sensitivity level ID corresponds to a sensitivity level name. Valid values:
+        # 
+        # *   **1**: N/A, which indicates that no sensitive data is detected.
+        # *   **2**: S1, which indicates the low sensitivity level.
+        # *   **3**: S2, which indicates the medium sensitivity level.
+        # *   **4**: S3, which indicates the high sensitivity level.
+        # *   **5**: S4, which indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
+        # The ID of the sensitive data detection rule that the table hits. You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the ID of the sensitive data detection rule.
         self.rule_id = rule_id
+        # The region in which DSC is activated. For more information, see [Supported regions](~~214257~~).
         self.service_region_id = service_region_id
+        # The ID of the industry-specific rule template.
+        self.template_id = template_id
 
     def validate(self):
         pass
@@ -6892,6 +9208,8 @@ class DescribeTablesRequest(TeaModel):
             result['RuleId'] = self.rule_id
         if self.service_region_id is not None:
             result['ServiceRegionId'] = self.service_region_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6918,6 +9236,8 @@ class DescribeTablesRequest(TeaModel):
             self.rule_id = m.get('RuleId')
         if m.get('ServiceRegionId') is not None:
             self.service_region_id = m.get('ServiceRegionId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         return self
 
 
@@ -6928,8 +9248,17 @@ class DescribeTablesResponseBodyItemsRuleList(TeaModel):
         name: str = None,
         risk_level_id: int = None,
     ):
+        # The total number of rules.
         self.count = count
+        # The name of the rule.
         self.name = name
+        # The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+        # 
+        # *   **1**: N/A, which indicates that no sensitive data is detected.
+        # *   **2**: S1, which indicates the low sensitivity level.
+        # *   **3**: S2, which indicates the medium sensitivity level.
+        # *   **4**: S3, which indicates the high sensitivity level.
+        # *   **5**: S4, which indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
 
     def validate(self):
@@ -6981,22 +9310,54 @@ class DescribeTablesResponseBodyItems(TeaModel):
         tenant_name: str = None,
         total_count: int = None,
     ):
+        # The point in time when the table was created. Unit: milliseconds.
         self.creation_time = creation_time
+        # The ID of the table.
         self.id = id
+        # The description of the data asset.
         self.instance_description = instance_description
+        # The ID of the data asset to which the table belongs.
         self.instance_id = instance_id
+        # The name of the data asset to which the table belongs.
         self.instance_name = instance_name
+        # The name of the table.
         self.name = name
+        # The Alibaba Cloud account to which the table belongs.
         self.owner = owner
+        # The name of the service to which the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](~~212906~~).
         self.product_code = product_code
+        # The ID of the service to which the table belongs.
         self.product_id = product_id
+        # The sensitivity level of the table. Each sensitivity level ID corresponds to a sensitivity level name. Valid values:
+        # 
+        # *   **1**: N/A, which indicates that no sensitive data is detected.
+        # *   **2**: S1, which indicates the low sensitivity level.
+        # *   **3**: S2, which indicates the medium sensitivity level.
+        # *   **4**: S3, which indicates the high sensitivity level.
+        # *   **5**: S4, which indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
+        # The name of the sensitivity level for the table. Valid values:
+        # 
+        # *   **N/A**: indicates that no sensitive data is detected.
+        # *   **S1**: indicates the low sensitivity level.
+        # *   **S2**: indicates the medium sensitivity level.
+        # *   **S3**: indicates the high sensitivity level.
+        # *   **S4**: indicates the highest sensitivity level.
         self.risk_level_name = risk_level_name
+        # The information about the sensitive data detection rules that are hit.
         self.rule_list = rule_list
+        # Indicates whether the table contains sensitive fields. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.sensitive = sensitive
+        # The total number of sensitive fields in the table.
         self.sensitive_count = sensitive_count
+        # The percentage of sensitive fields in the table.
         self.sensitive_ratio = sensitive_ratio
+        # The name of the tenant.
         self.tenant_name = tenant_name
+        # The total number of fields in the table.
         self.total_count = total_count
 
     def validate(self):
@@ -7100,10 +9461,15 @@ class DescribeTablesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of tables.
         self.items = items
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7199,6 +9565,10 @@ class DescribeUserStatusRequest(TeaModel):
         self,
         lang: str = None,
     ):
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh_cn**: Simplified Chinese (default)
+        # *   **en_us**: English
         self.lang = lang
 
     def validate(self):
@@ -7225,29 +9595,81 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
     def __init__(
         self,
         access_key_id: str = None,
+        audit_closable: bool = None,
+        audit_releasable: bool = None,
         authed: bool = None,
         charge_type: str = None,
         data_manager_role: int = None,
         instance_id: str = None,
         instance_num: int = None,
+        instance_total_count: int = None,
         lab_status: int = None,
+        oss_total_size: int = None,
         purchased: bool = None,
+        release_days: int = None,
+        release_time: int = None,
         remain_days: int = None,
         trail: bool = None,
         use_instance_num: int = None,
         use_oss_size: int = None,
     ):
+        # The AccessKey ID of the current account.
         self.access_key_id = access_key_id
+        # Indicates whether the SQL Explorer feature can be disabled. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        self.audit_closable = audit_closable
+        # Indicates whether the audit resources can be released.
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        self.audit_releasable = audit_releasable
+        # Indicates whether DSC has permission to access user resources within the current account. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.authed = authed
+        # The billing method of DCS that is purchased by using the current account. Valid values:
+        # 
+        # *   **PREPAY**: subscription
+        # *   **POSTPAY**: pay-as-you-go
         self.charge_type = charge_type
+        # The permissions that the current account has. Valid values:
+        # 
+        # *   **0**: The current account has the administrative permissions or read-only permissions on Data Security Center.
+        # *   **1**: The current account has the permissions to manage data domains.
         self.data_manager_role = data_manager_role
+        # The ID of the instance within the current account.
         self.instance_id = instance_id
+        # The number of instances within the current account.
         self.instance_num = instance_num
+        self.instance_total_count = instance_total_count
+        # Indicates whether the data security lab feature is enabled. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.lab_status = lab_status
+        self.oss_total_size = oss_total_size
+        # Indicates whether DSC is purchased. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.purchased = purchased
+        # The grace period between when DSC is expired and when DSC is released. Unit: days.
+        self.release_days = release_days
+        # The time when the audit resources are released. Unit: milliseconds.
+        self.release_time = release_time
+        # The remaining period for which the data assets within the current account can be protected by DSC.
         self.remain_days = remain_days
+        # Indicates whether the current account uses a free trial of DSC. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.trail = trail
+        # The number of instances that are used.
         self.use_instance_num = use_instance_num
+        # The occupied space of the Object Storage Service (OSS) bucket. Unit: bytes.
         self.use_oss_size = use_oss_size
 
     def validate(self):
@@ -7261,6 +9683,10 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
         result = dict()
         if self.access_key_id is not None:
             result['AccessKeyId'] = self.access_key_id
+        if self.audit_closable is not None:
+            result['AuditClosable'] = self.audit_closable
+        if self.audit_releasable is not None:
+            result['AuditReleasable'] = self.audit_releasable
         if self.authed is not None:
             result['Authed'] = self.authed
         if self.charge_type is not None:
@@ -7271,10 +9697,18 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_num is not None:
             result['InstanceNum'] = self.instance_num
+        if self.instance_total_count is not None:
+            result['InstanceTotalCount'] = self.instance_total_count
         if self.lab_status is not None:
             result['LabStatus'] = self.lab_status
+        if self.oss_total_size is not None:
+            result['OssTotalSize'] = self.oss_total_size
         if self.purchased is not None:
             result['Purchased'] = self.purchased
+        if self.release_days is not None:
+            result['ReleaseDays'] = self.release_days
+        if self.release_time is not None:
+            result['ReleaseTime'] = self.release_time
         if self.remain_days is not None:
             result['RemainDays'] = self.remain_days
         if self.trail is not None:
@@ -7289,6 +9723,10 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
         m = m or dict()
         if m.get('AccessKeyId') is not None:
             self.access_key_id = m.get('AccessKeyId')
+        if m.get('AuditClosable') is not None:
+            self.audit_closable = m.get('AuditClosable')
+        if m.get('AuditReleasable') is not None:
+            self.audit_releasable = m.get('AuditReleasable')
         if m.get('Authed') is not None:
             self.authed = m.get('Authed')
         if m.get('ChargeType') is not None:
@@ -7299,10 +9737,18 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceNum') is not None:
             self.instance_num = m.get('InstanceNum')
+        if m.get('InstanceTotalCount') is not None:
+            self.instance_total_count = m.get('InstanceTotalCount')
         if m.get('LabStatus') is not None:
             self.lab_status = m.get('LabStatus')
+        if m.get('OssTotalSize') is not None:
+            self.oss_total_size = m.get('OssTotalSize')
         if m.get('Purchased') is not None:
             self.purchased = m.get('Purchased')
+        if m.get('ReleaseDays') is not None:
+            self.release_days = m.get('ReleaseDays')
+        if m.get('ReleaseTime') is not None:
+            self.release_time = m.get('ReleaseTime')
         if m.get('RemainDays') is not None:
             self.remain_days = m.get('RemainDays')
         if m.get('Trail') is not None:
@@ -7320,7 +9766,9 @@ class DescribeUserStatusResponseBody(TeaModel):
         request_id: str = None,
         user_status: DescribeUserStatusResponseBodyUserStatus = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the current account.
         self.user_status = user_status
 
     def validate(self):
@@ -7399,7 +9847,12 @@ class DisableUserConfigRequest(TeaModel):
         code: str = None,
         lang: str = None,
     ):
+        # The code of the configuration item. You can call the [DescribeConfigs](~~DescribeConfigs~~) operation to obtain the code of the configuration item.
         self.code = code
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh_cn**: Chinese (default)
+        # *   **en_us**: English
         self.lang = lang
 
     def validate(self):
@@ -7431,6 +9884,7 @@ class DisableUserConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7504,8 +9958,21 @@ class ExecDatamaskRequest(TeaModel):
         lang: str = None,
         template_id: int = None,
     ):
+        # The sensitive data to be de-identified. The value is a JSON string that contains the following parameters:
+        # 
+        # *   **dataHeaderList**: the names of the columns in which data needs to be de-identified. Specify the column names in accordance with the order of data that needs to be de-identified.
+        # *   **dataList**: the data that needs to be de-identified.
+        # *   **ruleList**: the IDs of sensitive data detection rules used to detect data that needs to be de-identified. Specify the rule IDs in accordance with the order of data that needs to be de-identified. Each ID identifies a sensitive data detection rule that is used to detect a type of sensitive data. You can call the [DescribeRules](~~DescribeRules~~) operation to query the IDs of sensitive data detection rules.
         self.data = data
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Simplified Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The ID of the de-identification template. The ID is generated after you create the de-identification template in the [Data Security Center (DSC) console](https://yundun.console.aliyun.com/?\&p=sddpnext#/sddp/dm/template). You can choose **Data desensitization** > **Desensitization Template** in the left-side navigation pane and obtain the ID of the de-identification template from the **Desensitization Template** page.
+        # 
+        # *   If you select **Field name** as the matching mode of the template, DSC matches data based on the columns specified by the **dataHeaderList** parameter in the **Data** parameter.
+        # *   If you select **Sensitive type** as the matching mode of the template, DSC matches data based on the sensitive data detection rules specified by the **ruleList** parameter in the **Data** parameter.
         self.template_id = template_id
 
     def validate(self):
@@ -7542,7 +10009,13 @@ class ExecDatamaskResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The de-identified data, which is described in a JSON string. The JSON string contains the following parameters:
+        # 
+        # *   **dataHeaderList**: the names of columns that contain the de-identified data.
+        # *   **dataList**: the de-identified data. The column order of the de-identified data is the same as that indicated by the dataHeaderList parameter.
+        # *   **ruleList**: the IDs of sensitive data detection rules.
         self.data = data
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -7619,7 +10092,14 @@ class ManualTriggerMaskingProcessRequest(TeaModel):
         id: int = None,
         lang: str = None,
     ):
+        # The ID of the de-identification task.
+        # 
+        # The ID of the de-identification task is a string. You can call the DescribeDataMaskingTasks operation to query the ID.
         self.id = id
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -7651,6 +10131,7 @@ class ManualTriggerMaskingProcessResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7731,22 +10212,86 @@ class ModifyDataLimitRequest(TeaModel):
         port: int = None,
         resource_type: int = None,
         sampling_size: int = None,
+        security_group_id_list: List[str] = None,
         service_region_id: str = None,
         user_name: str = None,
+        v_switch_id_list: List[str] = None,
+        vpc_id: str = None,
     ):
+        # Specifies whether to enable the security audit feature. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.audit_status = audit_status
+        # Specifies whether to automatically trigger a re-scan after a rule is modified. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
+        # 
+        # > When a re-scan is triggered, DSC scans all data in your data asset.
         self.auto_scan = auto_scan
+        # The database engine that is run by the instance. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **SQLServer**\
         self.engine_type = engine_type
+        # The unique ID of the data asset for which you want to modify configuration items.
+        # 
+        # > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
         self.id = id
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
+        # The retention period of raw logs after you enable the security audit feature. Unit: days. Valid values:
+        # 
+        # *   **30**\
+        # *   **90**\
+        # *   **180**\
+        # *   **365**\
         self.log_store_day = log_store_day
+        # Specifies whether to change the username and password that are used to log on to the ApsaraDB RDS database. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.modify_password = modify_password
+        # The password used to log on to the ApsaraDB RDS database that you authorize DSC to access.
         self.password = password
+        # The port that is used to connect to the database.
         self.port = port
+        # The name of the service to which the data asset belongs. Valid values:
+        # 
+        # *   **1**: MaxCompute
+        # *   **2**: Object Storage Service (OSS)
+        # *   **3**: AnalyticDB for MySQL
+        # *   **4**: Tablestore
+        # *   **5**: ApsaraDB RDS
         self.resource_type = resource_type
+        # The number of sensitive data samples tht are collected after sensitive data detection is enabled. Valid values:
+        # 
+        # *   **0**\
+        # *   **5**\
+        # *   **10**\
         self.sampling_size = sampling_size
+        # The security group that is used by PrivateLink when you install the DSC agent.
+        self.security_group_id_list = security_group_id_list
+        # The region in which the data asset resides. Valid values:
+        # 
+        # *   **cn-beijing**: China (Beijing)
+        # *   **cn-zhangjiakou**: China (Zhangjiakou)
+        # *   **cn-huhehaote**: China (Hohhot)
+        # *   **cn-hangzhou**: China (Hangzhou)
+        # *   **cn-shanghai**: China (Shanghai)
+        # *   **cn-shenzhen**: China (Shenzhen)
+        # *   **cn-hongkong**: China (Hong Kong)
         self.service_region_id = service_region_id
+        # The username used to log on to the ApsaraDB RDS database that you authorize DSC to access.
         self.user_name = user_name
+        # The vSwitch that is used by PrivateLink when you install the DSC agent.
+        self.v_switch_id_list = v_switch_id_list
+        # The ID of the virtual private cloud (VPC) to which the data asset belongs.
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -7779,10 +10324,16 @@ class ModifyDataLimitRequest(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.sampling_size is not None:
             result['SamplingSize'] = self.sampling_size
+        if self.security_group_id_list is not None:
+            result['SecurityGroupIdList'] = self.security_group_id_list
         if self.service_region_id is not None:
             result['ServiceRegionId'] = self.service_region_id
         if self.user_name is not None:
             result['UserName'] = self.user_name
+        if self.v_switch_id_list is not None:
+            result['VSwitchIdList'] = self.v_switch_id_list
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7809,10 +10360,16 @@ class ModifyDataLimitRequest(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('SamplingSize') is not None:
             self.sampling_size = m.get('SamplingSize')
+        if m.get('SecurityGroupIdList') is not None:
+            self.security_group_id_list = m.get('SecurityGroupIdList')
         if m.get('ServiceRegionId') is not None:
             self.service_region_id = m.get('ServiceRegionId')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
+        if m.get('VSwitchIdList') is not None:
+            self.v_switch_id_list = m.get('VSwitchIdList')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -7821,6 +10378,7 @@ class ModifyDataLimitResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -7894,8 +10452,26 @@ class ModifyDefaultLevelRequest(TeaModel):
         lang: str = None,
         sensitive_ids: str = None,
     ):
+        # The default sensitivity level of data that Data Security Center (DSC) cannot classify as sensitive or insensitive. Valid values:
+        # 
+        # *   **1**: N/A
+        # *   **2**: S1
+        # *   **3**: S2
+        # *   **4**: S3
+        # *   **5**: S4
         self.default_id = default_id
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The sensitivity level ID of data that DSC classifies as sensitive. Separate multiple IDs with commas (,). Valid values:
+        # 
+        # *   **1**: N/A
+        # *   **2**: S1
+        # *   **3**: S2
+        # *   **4**: S3
+        # *   **5**: S4
         self.sensitive_ids = sensitive_ids
 
     def validate(self):
@@ -7931,6 +10507,7 @@ class ModifyDefaultLevelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8006,10 +10583,26 @@ class ModifyEventStatusRequest(TeaModel):
         lang: str = None,
         status: int = None,
     ):
+        # Specifies whether to enhance the detection of anomalous events. If you enhance the detection of anomalous events, the detection accuracy and the rate of triggering alerts for anomalous events are improved. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.backed = backed
+        # The reason why the anomalous event is handled.
         self.deal_reason = deal_reason
+        # The ID of the anomalous event.
+        # 
+        # > You can call the **DescribeEvents** operation to query the ID of the anomalous event.
         self.id = id
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The method to handle the anomalous event. Valid values:
+        # 
+        # *   **1**: marks the anomalous event as a false positive.
+        # *   **2**: confirms and handles the anomalous event.
         self.status = status
 
     def validate(self):
@@ -8053,6 +10646,7 @@ class ModifyEventStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8125,7 +10719,11 @@ class ModifyEventTypeStatusRequest(TeaModel):
         lang: str = None,
         sub_type_ids: str = None,
     ):
+        # The language of the content within the request and response. Valid values: **zh** and **en**. The value zh indicates Chinese, and the value en indicates English.
         self.lang = lang
+        # The ID of the anomalous event subtype. Separate multiple IDs with commas (,).
+        # 
+        # > You can call the **DescribeEventTypes** operation to query the ID of anomalous event subtype.
         self.sub_type_ids = sub_type_ids
 
     def validate(self):
@@ -8157,6 +10755,7 @@ class ModifyEventTypeStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8229,7 +10828,17 @@ class ModifyReportTaskStatusRequest(TeaModel):
         lang: str = None,
         report_task_status: int = None,
     ):
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Simplified Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # Specifies the status of the report task. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
+        # 
+        # > This parameter is required.
         self.report_task_status = report_task_status
 
     def validate(self):
@@ -8261,6 +10870,7 @@ class ModifyReportTaskStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -8334,22 +10944,65 @@ class ModifyRuleRequest(TeaModel):
         content: str = None,
         id: int = None,
         lang: str = None,
+        match_type: int = None,
         name: str = None,
         product_code: str = None,
         product_id: int = None,
         risk_level_id: int = None,
         rule_type: int = None,
+        support_form: int = None,
         warn_level: int = None,
     ):
+        # The content type of the sensitive data detection rule. Valid values:
+        # 
+        # *   **2**: regular expression
+        # *   **3**: algorithm
+        # *   **5**: keyword
         self.category = category
+        # The content of the sensitive data detection rule. You can specify a regular expression, an algorithm, or keywords that are used to match sensitive fields or text.
         self.content = content
+        # The ID of the sensitive data detection rule.
+        # 
+        # You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the rule ID.
         self.id = id
+        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # *   **zh_cn**: Simplified Chinese
+        # *   **en_us**: English
         self.lang = lang
+        # The match type. Valid values:
+        # 
+        # *   **1**: rule-based match
+        # *   **2**: dictionary-based match
+        self.match_type = match_type
+        # The name of the sensitive data detection rule.
+        # 
+        # You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the rule name.
         self.name = name
+        # The service to which the sensitive data detection rule is applied. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        # The ID of the service to which the sensitive data detection rule is applied. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
         self.product_id = product_id
+        # The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+        # 
+        # *   **1**: N/A, which indicates that no sensitive data is detected.
+        # *   **2**: S1, which indicates the low sensitivity level.
+        # *   **3**: S2, which indicates the medium sensitivity level.
+        # *   **4**: S3, which indicates the high sensitivity level.
+        # *   **5**: S4, which indicates the highest sensitivity level.
         self.risk_level_id = risk_level_id
+        # The type of the sensitive data detection rule. Valid values:
+        # 
+        # *   **1**: data detection rule
+        # *   **2**: audit rule
+        # *   **3**: anomalous event detection rule
         self.rule_type = rule_type
+        self.support_form = support_form
+        # The risk level of the alert that is triggered by the sensitive data detection rule. Valid values:
+        # 
+        # *   **1**: low level
+        # *   **2**: medium level
+        # *   **3**: high level
         self.warn_level = warn_level
 
     def validate(self):
@@ -8369,6 +11022,8 @@ class ModifyRuleRequest(TeaModel):
             result['Id'] = self.id
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.match_type is not None:
+            result['MatchType'] = self.match_type
         if self.name is not None:
             result['Name'] = self.name
         if self.product_code is not None:
@@ -8379,6 +11034,8 @@ class ModifyRuleRequest(TeaModel):
             result['RiskLevelId'] = self.risk_level_id
         if self.rule_type is not None:
             result['RuleType'] = self.rule_type
+        if self.support_form is not None:
+            result['SupportForm'] = self.support_form
         if self.warn_level is not None:
             result['WarnLevel'] = self.warn_level
         return result
@@ -8393,6 +11050,8 @@ class ModifyRuleRequest(TeaModel):
             self.id = m.get('Id')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('MatchType') is not None:
+            self.match_type = m.get('MatchType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ProductCode') is not None:
@@ -8403,6 +11062,8 @@ class ModifyRuleRequest(TeaModel):
             self.risk_level_id = m.get('RiskLevelId')
         if m.get('RuleType') is not None:
             self.rule_type = m.get('RuleType')
+        if m.get('SupportForm') is not None:
+            self.support_form = m.get('SupportForm')
         if m.get('WarnLevel') is not None:
             self.warn_level = m.get('WarnLevel')
         return self
@@ -8413,6 +11074,7 @@ class ModifyRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8487,9 +11149,23 @@ class ModifyRuleStatusRequest(TeaModel):
         lang: str = None,
         status: int = None,
     ):
+        # The ID of the sensitive data detection rule.
+        # 
+        # > You can query the ID of the sensitive data detection rule by calling the **DescribeRules** operation.
         self.id = id
+        # The ID of the sensitive data detection rule. Separate multiple IDs with commas (,).
+        # 
+        # > You can query the ID of the sensitive data detection rule by calling the **DescribeRules** operation.
         self.ids = ids
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # Specifies whether to enable or disable the sensitive data detection rule. Valid values:
+        # 
+        # *   **0**: disables the sensitive data detection rule.
+        # *   **1**: enables the sensitive data detection rule.
         self.status = status
 
     def validate(self):
@@ -8530,7 +11206,9 @@ class ModifyRuleStatusResponseBody(TeaModel):
         failed_ids: str = None,
         request_id: str = None,
     ):
+        # The IDs of sensitive data detection rules whose status failed to be changed. Multiple IDs are separated with commas (,).
         self.failed_ids = failed_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8607,7 +11285,12 @@ class StopMaskingProcessRequest(TeaModel):
         id: int = None,
         lang: str = None,
     ):
+        # The unique ID of the de-identification task. You can query the task ID by calling the [DescribeDataMaskingTasks](~~DescribeDataMaskingTasks~~) operation.
         self.id = id
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh_cn**: Simplified Chinese (default)
+        # *   **en_us**: English
         self.lang = lang
 
     def validate(self):
@@ -8639,6 +11322,7 @@ class StopMaskingProcessResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
