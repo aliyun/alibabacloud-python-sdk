@@ -884,6 +884,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_rule_with_options_async(request, runtime)
 
+    def describe_category_template_list_with_options(
+        self,
+        request: sddp_20190103_models.DescribeCategoryTemplateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeCategoryTemplateListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.usage_scenario):
+            query['UsageScenario'] = request.usage_scenario
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCategoryTemplateList',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeCategoryTemplateListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_category_template_list_with_options_async(
+        self,
+        request: sddp_20190103_models.DescribeCategoryTemplateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeCategoryTemplateListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.usage_scenario):
+            query['UsageScenario'] = request.usage_scenario
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCategoryTemplateList',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeCategoryTemplateListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_category_template_list(
+        self,
+        request: sddp_20190103_models.DescribeCategoryTemplateListRequest,
+    ) -> sddp_20190103_models.DescribeCategoryTemplateListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_category_template_list_with_options(request, runtime)
+
+    async def describe_category_template_list_async(
+        self,
+        request: sddp_20190103_models.DescribeCategoryTemplateListRequest,
+    ) -> sddp_20190103_models.DescribeCategoryTemplateListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_category_template_list_with_options_async(request, runtime)
+
     def describe_category_template_rule_list_with_options(
         self,
         request: sddp_20190103_models.DescribeCategoryTemplateRuleListRequest,

@@ -1161,6 +1161,241 @@ class DeleteRuleResponse(TeaModel):
         return self
 
 
+class DescribeCategoryTemplateListRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        lang: str = None,
+        page_size: int = None,
+        usage_scenario: int = None,
+    ):
+        self.current_page = current_page
+        self.lang = lang
+        self.page_size = page_size
+        self.usage_scenario = usage_scenario
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.usage_scenario is not None:
+            result['UsageScenario'] = self.usage_scenario
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('UsageScenario') is not None:
+            self.usage_scenario = m.get('UsageScenario')
+        return self
+
+
+class DescribeCategoryTemplateListResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        current_risk_level: int = None,
+        description: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        id: int = None,
+        max_category_level: int = None,
+        max_risk_level: int = None,
+        name: str = None,
+        status: int = None,
+        support_edit: int = None,
+        type: int = None,
+    ):
+        self.current_risk_level = current_risk_level
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.max_category_level = max_category_level
+        self.max_risk_level = max_risk_level
+        self.name = name
+        self.status = status
+        self.support_edit = support_edit
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_risk_level is not None:
+            result['CurrentRiskLevel'] = self.current_risk_level
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.max_category_level is not None:
+            result['MaxCategoryLevel'] = self.max_category_level
+        if self.max_risk_level is not None:
+            result['MaxRiskLevel'] = self.max_risk_level
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.support_edit is not None:
+            result['SupportEdit'] = self.support_edit
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentRiskLevel') is not None:
+            self.current_risk_level = m.get('CurrentRiskLevel')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MaxCategoryLevel') is not None:
+            self.max_category_level = m.get('MaxCategoryLevel')
+        if m.get('MaxRiskLevel') is not None:
+            self.max_risk_level = m.get('MaxRiskLevel')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SupportEdit') is not None:
+            self.support_edit = m.get('SupportEdit')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCategoryTemplateListResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[DescribeCategoryTemplateListResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.items = items
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeCategoryTemplateListResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeCategoryTemplateListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCategoryTemplateListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCategoryTemplateListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCategoryTemplateRuleListRequest(TeaModel):
     def __init__(
         self,
