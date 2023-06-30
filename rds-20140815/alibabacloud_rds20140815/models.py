@@ -15372,6 +15372,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         backup_interval: str = None,
         backup_log: str = None,
         backup_method: str = None,
+        backup_priority: int = None,
         backup_retention_period: int = None,
         category: str = None,
         compress_type: str = None,
@@ -15388,6 +15389,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         preferred_next_backup_time: str = None,
         released_keep_policy: str = None,
         request_id: str = None,
+        support_modify_backup_priority: bool = None,
         support_released_keep: int = None,
         support_volume_shadow_copy: int = None,
     ):
@@ -15414,6 +15416,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # 
         # > This parameter is returned only when the instance runs SQL Server and uses cloud disks.
         self.backup_method = backup_method
+        self.backup_priority = backup_priority
         # The number of days for which data backup files are retained.
         self.backup_retention_period = backup_retention_period
         # Indicates whether to enable the single-digit second backup feature. This feature allows ApsaraDB RDS to complete a backup within single-digit seconds. Valid values:
@@ -15483,6 +15486,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         self.released_keep_policy = released_keep_policy
         # The ID of the request.
         self.request_id = request_id
+        self.support_modify_backup_priority = support_modify_backup_priority
         # A reserved parameter.
         self.support_released_keep = support_released_keep
         # Indicates whether the instance supports snapshot backups. Valid values:
@@ -15514,6 +15518,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             result['BackupLog'] = self.backup_log
         if self.backup_method is not None:
             result['BackupMethod'] = self.backup_method
+        if self.backup_priority is not None:
+            result['BackupPriority'] = self.backup_priority
         if self.backup_retention_period is not None:
             result['BackupRetentionPeriod'] = self.backup_retention_period
         if self.category is not None:
@@ -15546,6 +15552,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             result['ReleasedKeepPolicy'] = self.released_keep_policy
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.support_modify_backup_priority is not None:
+            result['SupportModifyBackupPriority'] = self.support_modify_backup_priority
         if self.support_released_keep is not None:
             result['SupportReleasedKeep'] = self.support_released_keep
         if self.support_volume_shadow_copy is not None:
@@ -15566,6 +15574,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             self.backup_log = m.get('BackupLog')
         if m.get('BackupMethod') is not None:
             self.backup_method = m.get('BackupMethod')
+        if m.get('BackupPriority') is not None:
+            self.backup_priority = m.get('BackupPriority')
         if m.get('BackupRetentionPeriod') is not None:
             self.backup_retention_period = m.get('BackupRetentionPeriod')
         if m.get('Category') is not None:
@@ -15598,6 +15608,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             self.released_keep_policy = m.get('ReleasedKeepPolicy')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SupportModifyBackupPriority') is not None:
+            self.support_modify_backup_priority = m.get('SupportModifyBackupPriority')
         if m.get('SupportReleasedKeep') is not None:
             self.support_released_keep = m.get('SupportReleasedKeep')
         if m.get('SupportVolumeShadowCopy') is not None:
@@ -49613,6 +49625,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         backup_log: str = None,
         backup_method: str = None,
         backup_policy_mode: str = None,
+        backup_priority: int = None,
         backup_retention_period: str = None,
         category: str = None,
         compress_type: str = None,
@@ -49706,6 +49719,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   **DataBackupPolicy**: data backup
         # *   **LogBackupPolicy**: log backup
         self.backup_policy_mode = backup_policy_mode
+        self.backup_priority = backup_priority
         # The number of days for which you want to retain data backup files. Valid values: **7 to 730**.
         # 
         # > 
@@ -49868,6 +49882,8 @@ class ModifyBackupPolicyRequest(TeaModel):
             result['BackupMethod'] = self.backup_method
         if self.backup_policy_mode is not None:
             result['BackupPolicyMode'] = self.backup_policy_mode
+        if self.backup_priority is not None:
+            result['BackupPriority'] = self.backup_priority
         if self.backup_retention_period is not None:
             result['BackupRetentionPeriod'] = self.backup_retention_period
         if self.category is not None:
@@ -49924,6 +49940,8 @@ class ModifyBackupPolicyRequest(TeaModel):
             self.backup_method = m.get('BackupMethod')
         if m.get('BackupPolicyMode') is not None:
             self.backup_policy_mode = m.get('BackupPolicyMode')
+        if m.get('BackupPriority') is not None:
+            self.backup_priority = m.get('BackupPriority')
         if m.get('BackupRetentionPeriod') is not None:
             self.backup_retention_period = m.get('BackupRetentionPeriod')
         if m.get('Category') is not None:
