@@ -1728,6 +1728,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateDataTrackOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataTrackOrderResponse:
+        """
+        This operation is available only for instances that are managed in Security Collaboration mode.
+        
+        @param tmp_req: CreateDataTrackOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataTrackOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateDataTrackOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1768,6 +1775,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateDataTrackOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataTrackOrderResponse:
+        """
+        This operation is available only for instances that are managed in Security Collaboration mode.
+        
+        @param tmp_req: CreateDataTrackOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataTrackOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateDataTrackOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1807,6 +1821,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateDataTrackOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataTrackOrderResponse:
+        """
+        This operation is available only for instances that are managed in Security Collaboration mode.
+        
+        @param request: CreateDataTrackOrderRequest
+        @return: CreateDataTrackOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_data_track_order_with_options(request, runtime)
 
@@ -1814,6 +1834,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateDataTrackOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataTrackOrderResponse:
+        """
+        This operation is available only for instances that are managed in Security Collaboration mode.
+        
+        @param request: CreateDataTrackOrderRequest
+        @return: CreateDataTrackOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_track_order_with_options_async(request, runtime)
 

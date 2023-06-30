@@ -3845,10 +3845,15 @@ class CreateDataExportOrderRequestPluginParamWatermark(TeaModel):
         keys: List[str] = None,
         watermark_types: List[str] = None,
     ):
+        # The field into which the watermark is to be embedded.
         self.column_name = column_name
+        # The information to be embedded as a watermark into data.
         self.data_watermark = data_watermark
+        # The information to be embedded as a watermark into files.
         self.file_watermark = file_watermark
+        # One or more primary keys or unique keys.
         self.keys = keys
+        # The methods in which the watermark is embedded.
         self.watermark_types = watermark_types
 
     def validate(self):
@@ -3900,14 +3905,31 @@ class CreateDataExportOrderRequestPluginParam(TeaModel):
         logic: bool = None,
         watermark: CreateDataExportOrderRequestPluginParamWatermark = None,
     ):
+        # The estimated number of data rows to be affected.
         self.affect_rows = affect_rows
+        # The reason for the export ticket.
         self.classify = classify
+        # The database ID.
         self.db_id = db_id
+        # The SQL statements that can be executed.
         self.exe_sql = exe_sql
+        # Specifies whether to skip verification. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ignore_affect_rows = ignore_affect_rows
+        # The reason for skipping verification. This parameter is required if you set IgnoreAffectRows to true.
         self.ignore_affect_rows_reason = ignore_affect_rows_reason
+        # The instance ID.
         self.instance_id = instance_id
+        # Specifies whether the database is a logical database. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # > If you set this parameter to **true**, the database that you specify must be a logical database.
         self.logic = logic
+        # The information about the watermarks.
         self.watermark = watermark
 
     def validate(self):
@@ -3974,11 +3996,19 @@ class CreateDataExportOrderRequest(TeaModel):
         related_user_list: List[int] = None,
         tid: int = None,
     ):
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key.
         self.attachment_key = attachment_key
+        # The purpose or objective of the ticket. This parameter helps reduce unnecessary communication.
         self.comment = comment
+        # The ID of the parent ticket.
         self.parent_id = parent_id
+        # The parameters of the ticket.
         self.plugin_param = plugin_param
+        # The stakeholders involved in this operation.
         self.related_user_list = related_user_list
+        # The tenant ID.
+        # 
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -4033,11 +4063,19 @@ class CreateDataExportOrderShrinkRequest(TeaModel):
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key.
         self.attachment_key = attachment_key
+        # The purpose or objective of the ticket. This parameter helps reduce unnecessary communication.
         self.comment = comment
+        # The ID of the parent ticket.
         self.parent_id = parent_id
+        # The parameters of the ticket.
         self.plugin_param_shrink = plugin_param_shrink
+        # The stakeholders involved in this operation.
         self.related_user_list_shrink = related_user_list_shrink
+        # The tenant ID.
+        # 
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -4116,10 +4154,18 @@ class CreateDataExportOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The content of the ticket.
         self.create_order_result = create_order_result
+        # The error code.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -4627,10 +4673,17 @@ class CreateDataTrackOrderRequestParam(TeaModel):
         table_names: List[str] = None,
         track_types: List[str] = None,
     ):
+        # The ID of the database. You can call the [SearchDatabases](~~141876~~) operation to query the ID of the database.
+        # 
+        # > You can call this operation to create a data tracking ticket for only physical databases. This operation is not applicable to logical databases.
         self.db_id = db_id
+        # The end time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
         self.job_end_time = job_end_time
+        # The start time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
         self.job_start_time = job_start_time
+        # The names of the tables for which you want to track data operations.
         self.table_names = table_names
+        # The types of data operations that you want to track.
         self.track_types = track_types
 
     def validate(self):
@@ -4677,9 +4730,13 @@ class CreateDataTrackOrderRequest(TeaModel):
         related_user_list: List[str] = None,
         tid: int = None,
     ):
+        # The purpose or objective of the data tracking ticket. This parameter is used to help reduce unnecessary communication.
         self.comment = comment
+        # The parameters of the ticket.
         self.param = param
+        # The IDs of the operators that are related to the ticket.
         self.related_user_list = related_user_list
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -4724,9 +4781,13 @@ class CreateDataTrackOrderShrinkRequest(TeaModel):
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
+        # The purpose or objective of the data tracking ticket. This parameter is used to help reduce unnecessary communication.
         self.comment = comment
+        # The parameters of the ticket.
         self.param_shrink = param_shrink
+        # The IDs of the operators that are related to the ticket.
         self.related_user_list_shrink = related_user_list_shrink
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -4770,10 +4831,18 @@ class CreateDataTrackOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The IDs of the data tracking tickets.
         self.create_order_result = create_order_result
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -4867,12 +4936,27 @@ class CreateDatabaseExportOrderRequestPluginParamConfig(TeaModel):
         tables: Dict[str, str] = None,
         target_option: str = None,
     ):
+        # The export options for big data. The options are used to filter the big data to be exported. You can leave this parameter empty.
         self.data_option = data_option
+        # The type of data that you want to export. Valid values:
+        # 
+        # *   **DATA**: The data of the database is exported.
+        # *   **STRUCT**: The schema of the database is exported.
+        # *   **DATA_STRUCT**: The data and schema of the database are exported.
         self.export_content = export_content
+        # The types of schemas that you want to export.
         self.export_types = export_types
+        # The extension options of the SQL script. You can leave this parameter empty.
         self.sqlext_option = sqlext_option
+        # The tables that you want to export.
         self.selected_tables = selected_tables
+        # The conditions used to filter the tables to be exported.
         self.tables = tables
+        # The format in which the database is exported. Valid values:
+        # 
+        # *   **SQL**\
+        # *   **CSV**\
+        # *   **XLSX**\
         self.target_option = target_option
 
     def validate(self):
@@ -4929,11 +5013,20 @@ class CreateDatabaseExportOrderRequestPluginParam(TeaModel):
         logic: bool = None,
         search_name: str = None,
     ):
+        # The reason for the database export.
         self.classify = classify
+        # The configurations for database export.
         self.config = config
+        # The database ID.
         self.db_id = db_id
+        # The instance ID.
         self.instance_id = instance_id
+        # Specifies whether the database is a logical database. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.logic = logic
+        # The name that is used to search for the database.
         self.search_name = search_name
 
     def validate(self):
@@ -4988,11 +5081,19 @@ class CreateDatabaseExportOrderRequest(TeaModel):
         related_user_list: List[int] = None,
         tid: int = None,
     ):
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key.
         self.attachment_key = attachment_key
+        # The purpose or objective of the ticket. This parameter helps reduce unnecessary communication.
         self.comment = comment
+        # The ID of the parent ticket.
         self.parent_id = parent_id
+        # The parameters of the ticket.
         self.plugin_param = plugin_param
+        # The stakeholders involved in this operation.
         self.related_user_list = related_user_list
+        # The tenant ID.
+        # 
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -5047,11 +5148,19 @@ class CreateDatabaseExportOrderShrinkRequest(TeaModel):
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key.
         self.attachment_key = attachment_key
+        # The purpose or objective of the ticket. This parameter helps reduce unnecessary communication.
         self.comment = comment
+        # The ID of the parent ticket.
         self.parent_id = parent_id
+        # The parameters of the ticket.
         self.plugin_param_shrink = plugin_param_shrink
+        # The stakeholders involved in this operation.
         self.related_user_list_shrink = related_user_list_shrink
+        # The tenant ID.
+        # 
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -5130,10 +5239,18 @@ class CreateDatabaseExportOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The information about the ticket.
         self.create_order_result = create_order_result
+        # The error code returned.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -10315,11 +10432,25 @@ class DownloadDataTrackResultRequestColumnFilter(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The end value of the range used in the filter condition. This parameter takes effect only when Operator is set to BETWEEN.
         self.between_end = between_end
+        # The start value of the range used in the filter condition. This parameter takes effect only when Operator is set to BETWEEN.
         self.between_start = between_start
+        # The name of the column.
         self.column_name = column_name
+        # The IN list used in the filter condition.
         self.in_list = in_list
+        # The type of the operator used to configure the filter condition. Valid values:
+        # 
+        # *   **EQUAL**: retrieves the column whose value is equal to the specified value.
+        # *   **NOT_EQUAL**: retrieves the column whose value is not equal to the specified value.
+        # *   **IN**: retrieves the column whose value is in the IN list.
+        # *   **BETWEEN**: retrieves the column whose value is in the specified range.
+        # *   **LESS**: retrieves the column whose value is less than the specified value.
+        # *   **MORE**: retrieves the column whose value is greater than the specified value.
+        # *   **NOT_IN**: retrieves the column whose value is not in the IN list.
         self.operator = operator
+        # The value used in the filter condition.
         self.value = value
 
     def validate(self):
@@ -10375,14 +10506,26 @@ class DownloadDataTrackResultRequest(TeaModel):
         rollback_sqltype: str = None,
         tid: int = None,
     ):
+        # The condition to filter columns.
         self.column_filter = column_filter
+        # The IDs of the events.
         self.event_id_list = event_id_list
+        # The end time of the time range in which you want to track data operations. The time must be specified in the yyyy-MM-dd HH:mm:ss format.
         self.filter_end_time = filter_end_time
+        # The start time of the time range in which you want to track data operations. The time must be specified in the yyyy-MM-dd HH:mm:ss format.
         self.filter_start_time = filter_start_time
+        # The names of the tables for which you want to track data operations.
         self.filter_table_list = filter_table_list
+        # The types of data operations that you want to track.
         self.filter_type_list = filter_type_list
+        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
         self.order_id = order_id
+        # The type of the SQL statement.
+        # 
+        # *   **REVERSE**: undoes or rolls back an executed SQL statement, which is equivalent to the UNDO SQL statement.
+        # *   **FORWARD**: redoes or re-executes an SQL statement that failed to be executed, which is equivalent to the REDO SQL statement.
         self.rollback_sqltype = rollback_sqltype
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -10452,14 +10595,26 @@ class DownloadDataTrackResultShrinkRequest(TeaModel):
         rollback_sqltype: str = None,
         tid: int = None,
     ):
+        # The condition to filter columns.
         self.column_filter_shrink = column_filter_shrink
+        # The IDs of the events.
         self.event_id_list_shrink = event_id_list_shrink
+        # The end time of the time range in which you want to track data operations. The time must be specified in the yyyy-MM-dd HH:mm:ss format.
         self.filter_end_time = filter_end_time
+        # The start time of the time range in which you want to track data operations. The time must be specified in the yyyy-MM-dd HH:mm:ss format.
         self.filter_start_time = filter_start_time
+        # The names of the tables for which you want to track data operations.
         self.filter_table_list_shrink = filter_table_list_shrink
+        # The types of data operations that you want to track.
         self.filter_type_list_shrink = filter_type_list_shrink
+        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
         self.order_id = order_id
+        # The type of the SQL statement.
+        # 
+        # *   **REVERSE**: undoes or rolls back an executed SQL statement, which is equivalent to the UNDO SQL statement.
+        # *   **FORWARD**: redoes or re-executes an SQL statement that failed to be executed, which is equivalent to the REDO SQL statement.
         self.rollback_sqltype = rollback_sqltype
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -10523,10 +10678,18 @@ class DownloadDataTrackResultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the download key, which is used to download the parsing result of the data tracking task.
         self.download_key_id = download_key_id
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -16804,7 +16967,9 @@ class GetDataTrackJobDegreeRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
         self.order_id = order_id
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -16840,10 +17005,25 @@ class GetDataTrackJobDegreeResponseBodyJobDegree(TeaModel):
         list_completion_degree: float = None,
         status_desc: str = None,
     ):
+        # The progress of binary log download. Valid values: 0 to 1. A value of 1 indicates that binary log download is complete.
         self.download_completion_degree = download_completion_degree
+        # The progress of binary log parsing. Valid values: 0 to 1. A value of 1 indicates that binary log parsing is complete.
         self.filter_completion_degree = filter_completion_degree
+        # The status of the data tracking task. Valid values:
+        # 
+        # *   **INIT**: The task is being initialized.
+        # *   **LISTING**: The binary logs are being obtained.
+        # *   **LIST_SUCCESS**: The binary logs are successfully obtained.
+        # *   **DOWNLOADING**: The binary logs are being downloaded.
+        # *   **DOWNLOAD_FAIL**: The binary logs failed to be downloaded.
+        # *   **DOWNLOAD_SUCCESS**: The binary logs are successfully downloaded.
+        # *   **FILTERING**: The binary logs are being parsed.
+        # *   **FILTER_FAIL**: The binary logs failed to be parsed.
+        # *   **FILTER_SUCCESS**: The binary logs are successfully parsed.
         self.job_status = job_status
+        # The progress of binary log obtaining. Valid values: 0 to 1. A value of 1 indicates that binary log obtaining is complete.
         self.list_completion_degree = list_completion_degree
+        # The description of the task status.
         self.status_desc = status_desc
 
     def validate(self):
@@ -16891,10 +17071,18 @@ class GetDataTrackJobDegreeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The progress details of the data tracking task.
         self.job_degree = job_degree
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -16985,7 +17173,9 @@ class GetDataTrackJobTableMetaRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ID of the ticket.
         self.order_id = order_id
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -17021,10 +17211,18 @@ class GetDataTrackJobTableMetaResponseBodyTableMetaListColumns(TeaModel):
         column_type: str = None,
         fictive: bool = None,
     ):
+        # The name of the character set.
         self.charset = charset
+        # The name of the column.
         self.column_name = column_name
+        # The position of the column.
         self.column_position = column_position
+        # The data type of the column. Examples: BIGINT, INT, and VARCHAR.
         self.column_type = column_type
+        # Indicates whether the column is a virtual column. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.fictive = fictive
 
     def validate(self):
@@ -17070,8 +17268,11 @@ class GetDataTrackJobTableMetaResponseBodyTableMetaList(TeaModel):
         schema_name: str = None,
         table_name: str = None,
     ):
+        # The information about columns.
         self.columns = columns
+        # The name of the database.
         self.schema_name = schema_name
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -17119,10 +17320,18 @@ class GetDataTrackJobTableMetaResponseBody(TeaModel):
         success: bool = None,
         table_meta_list: List[GetDataTrackJobTableMetaResponseBodyTableMetaList] = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The metadata of tables.
         self.table_meta_list = table_meta_list
 
     def validate(self):
@@ -17219,7 +17428,9 @@ class GetDataTrackOrderDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
         self.order_id = order_id
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -17260,15 +17471,38 @@ class GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail(TeaModel):
         table_names: List[str] = None,
         track_types: List[str] = None,
     ):
+        # The name that is used to search for the database.
         self.database_search_name = database_search_name
+        # The ID of the database.
         self.db_id = db_id
+        # The end time of the time range in which data operations are tracked. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.job_end_time = job_end_time
+        # The start time of the time range in which data operations are tracked. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.job_start_time = job_start_time
+        # The status of the data tracking task. Valid values:
+        # 
+        # *   **INIT**: The task is being initialized.
+        # *   **LISTING**: The binary logs are being obtained.
+        # *   **LIST_SUCCESS**: The binary logs are successfully obtained.
+        # *   **DOWNLOADING**: The binary logs are being downloaded.
+        # *   **DOWNLOAD_FAIL**: The binary logs failed to be downloaded.
+        # *   **DOWNLOAD_SUCCESS**: The binary logs are successfully downloaded.
+        # *   **FILTERING**: The binary logs are being parsed.
+        # *   **FILTER_FAIL**: The binary logs failed to be parsed.
+        # *   **FILTER_SUCCESS**: The binary logs are successfully parsed.
         self.job_status = job_status
+        # Indicates whether the database is a logical database. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.logic = logic
+        # The name of the database.
         self.schema_name = schema_name
+        # The description of the task status.
         self.status_desc = status_desc
+        # The names of the tables for which data operations are tracked.
         self.table_names = table_names
+        # The types of data operations that are tracked.
         self.track_types = track_types
 
     def validate(self):
@@ -17336,10 +17570,18 @@ class GetDataTrackOrderDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the ticket.
         self.data_track_order_detail = data_track_order_detail
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -17807,7 +18049,11 @@ class GetDatabaseExportOrderDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ticket ID. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -17925,11 +18171,25 @@ class GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoCo
         selected_tables: GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSelectedTables = None,
         target_option: str = None,
     ):
+        # The database name.
         self.db_name = db_name
+        # The type of data that was exported. Valid values:
+        # 
+        # *   **DATA**: The data of the database was exported.
+        # *   **STRUCT**: The schema of the database was exported.
+        # *   **DATA_STRUCT**: The data and schema of the database were exported.
         self.export_content = export_content
+        # The type of schema that was exported.
         self.export_types = export_types
+        # The extension options of the SQL script.
         self.sqlext_option = sqlext_option
+        # The tables that were exported from the database.
         self.selected_tables = selected_tables
+        # The format in which the database was exported. Valid values:
+        # 
+        # *   **SQL**\
+        # *   **CSV**\
+        # *   **XLSX**\
         self.target_option = target_option
 
     def validate(self):
@@ -17988,9 +18248,13 @@ class GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo(T
         db_id: int = None,
         download_url: str = None,
     ):
+        # The time when the ticket was submitted.
         self.audit_date = audit_date
+        # The configuration information about the ticket.
         self.config = config
+        # The database ID.
         self.db_id = db_id
+        # The URL that is used to download the export result.
         self.download_url = download_url
 
     def validate(self):
@@ -18040,14 +18304,23 @@ class GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail(TeaModel
         status_desc: str = None,
         workflow_status_desc: str = None,
     ):
+        # The business background information of the database export ticket.
         self.comment = comment
+        # The user who submitted the ticket.
         self.committer = committer
+        # The ID of the user who submitted the ticket. This ID is a user ID and is not the ID of an Alibaba Cloud account.
         self.committer_id = committer_id
+        # The ticket ID.
         self.id = id
+        # The key information about the ticket.
         self.key_info = key_info
+        # The execution logs.
         self.log = log
+        # The name that is used to search for the database.
         self.search_name = search_name
+        # The status description of the ticket.
         self.status_desc = status_desc
+        # The status description of the workflow.
         self.workflow_status_desc = workflow_status_desc
 
     def validate(self):
@@ -18113,10 +18386,18 @@ class GetDatabaseExportOrderDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the database export ticket.
         self.database_export_order_detail = database_export_order_detail
+        # The error code.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -21393,11 +21674,11 @@ class GetPermApplyOrderDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket.
+        # The ticket ID. You can call the [ListOrders](~~465867~~) operation to query the ticket ID.
         self.order_id = order_id
-        # The ID of the tenant.
+        # The tenant ID.
         # 
-        # > To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -21430,9 +21711,9 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo
         column_name: str = None,
         table_name: str = None,
     ):
-        # The name of the table.
+        # The name of the column.
         self.column_name = column_name
-        # The information about the column.
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -21470,23 +21751,22 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseIn
         owner_nick_names: List[str] = None,
         search_name: str = None,
     ):
-        # The ID of the database.
+        # The database ID.
         self.db_id = db_id
         # The type of the database engine.
         self.db_type = db_type
-        # The nickname of the owner of the database.
+        # The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
         self.env_type = env_type
         # Indicates whether the database is a logical database. Valid values:
         # 
-        # *   **true**: The database is a logical database.
-        # *   **false**: The database is not a logical database.
+        # *   **true**\
+        # *   **false**\
         self.logic = logic
-        # test@xxxx:3306[test]
+        # The IDs of the owners of the database.
         self.owner_ids = owner_ids
-        # The ID of the owner of the database.
+        # The nicknames of the owners of the database.
         self.owner_nick_names = owner_nick_names
         # The name that is used to search for the database.
-        # > We recommend that you do not use this parameter for business development. The format of the parameter value may be modified in later versions.
         self.search_name = search_name
 
     def validate(self):
@@ -21547,25 +21827,25 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceIn
         port: int = None,
         search_name: str = None,
     ):
-        # The name that is used to search for the instance.
+        # The type of the database engine.
         self.db_type = db_type
-        # The nickname of the owner of the instance.
+        # The ID of the database administrator (DBA) of the instance.
         self.dba_id = dba_id
         # The nickname of the DBA of the instance.
         self.dba_nick_name = dba_nick_name
-        # The type of the database engine.
-        self.env_type = env_type
         # The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
-        self.host = host
-        # The information about the instance.
-        self.instance_id = instance_id
-        # The port that is used to connect to the instance.
-        self.owner_ids = owner_ids
-        # The ID of the owner of the instance.
-        self.owner_nick_name = owner_nick_name
+        self.env_type = env_type
         # The endpoint of the instance.
-        self.port = port
+        self.host = host
         # The ID of the instance.
+        self.instance_id = instance_id
+        # The IDs of the owners of the instance.
+        self.owner_ids = owner_ids
+        # The nicknames of the owners of the instance.
+        self.owner_nick_name = owner_nick_name
+        # The port that is used to connect to the instance.
+        self.port = port
+        # The name that is used to search for the instance.
         self.search_name = search_name
 
     def validate(self):
@@ -21629,7 +21909,7 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo(
         self,
         table_name: str = None,
     ):
-        # The information about the table.
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -21660,13 +21940,13 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources(TeaModel)
         instance_info: GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo = None,
         table_info: GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo = None,
     ):
-        # The name of the table.
+        # The information about the column.
         self.column_info = column_info
         # The information about the database.
         self.database_info = database_info
-        # The name of the column.
+        # The information about the instance.
         self.instance_info = instance_info
-        # The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+        # The information about the table.
         self.table_info = table_info
 
     def validate(self):
@@ -21727,15 +22007,16 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail(TeaModel):
         # *   **COL**: column
         # *   **INSTANT**: instance
         self.apply_type = apply_type
-        # The type of permissions that you apply for. Valid values:
+        # The type of the permissions that you apply for. Valid values:
         # 
-        # *   **1**: the permissions to query information
-        # *   **2**: the permissions to export information
-        # *   **3**: the permissions to query and export information
-        # *   **4**: the permissions to modify information
-        # *   **5**: the permissions to query and modify information
-        # *   **6**: the permissions to export and modify information
-        # *   **7**: the permissions to query, export, and modify information
+        # *   **1**: the permissions to query information.
+        # *   **2**: the permissions to export information.
+        # *   **3**: the permissions to query and export information.
+        # *   **4**: the permissions to modify information.
+        # *   **5**: the permissions to query and modify information.
+        # *   **6**: the permissions to export and modify information.
+        # *   **7**: the permissions to query, export, and modify information.
+        # *   **8**: the permissions to log on to the database.
         self.perm_type = perm_type
         # The list of resources.
         self.resources = resources
@@ -21797,9 +22078,12 @@ class GetPermApplyOrderDetailResponseBody(TeaModel):
         self.error_message = error_message
         # The details of the permission application ticket.
         self.perm_apply_order_detail = perm_apply_order_detail
-        # The ID of the request.
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -40788,11 +41072,13 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
         self,
         creator_id: str = None,
         creator_nick_name: str = None,
-        cron_param: str = None,
+        cron_begin_date: str = None,
+        cron_end_date: str = None,
         cron_str: str = None,
         cron_switch: bool = None,
         cron_type: int = None,
         dag_name: str = None,
+        dag_owner_id: str = None,
         dag_owner_nick_name: str = None,
         deploy_id: int = None,
         description: str = None,
@@ -40800,6 +41086,7 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
         latest_instance_status: int = None,
         latest_instance_time: str = None,
         scenario_id: str = None,
+        schedule_param: str = None,
         status: int = None,
         time_zone_id: str = None,
         trigger_type: int = None,
@@ -40808,12 +41095,14 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
         self.creator_id = creator_id
         # The username of the user who created the task flow.
         self.creator_nick_name = creator_nick_name
-        self.cron_param = cron_param
+        self.cron_begin_date = cron_begin_date
+        self.cron_end_date = cron_end_date
         self.cron_str = cron_str
         self.cron_switch = cron_switch
         self.cron_type = cron_type
         # The name of the task flow.
         self.dag_name = dag_name
+        self.dag_owner_id = dag_owner_id
         # The username of the owner of the task flow.
         self.dag_owner_nick_name = dag_owner_nick_name
         # The ID of the last deployment record of the task flow.
@@ -40831,6 +41120,7 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
         # The time when the last execution record was created.
         self.latest_instance_time = latest_instance_time
         self.scenario_id = scenario_id
+        self.schedule_param = schedule_param
         # The status of the task flow. Valid values:
         # 
         # *   **0**: invalid
@@ -40853,8 +41143,10 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
             result['CreatorId'] = self.creator_id
         if self.creator_nick_name is not None:
             result['CreatorNickName'] = self.creator_nick_name
-        if self.cron_param is not None:
-            result['CronParam'] = self.cron_param
+        if self.cron_begin_date is not None:
+            result['CronBeginDate'] = self.cron_begin_date
+        if self.cron_end_date is not None:
+            result['CronEndDate'] = self.cron_end_date
         if self.cron_str is not None:
             result['CronStr'] = self.cron_str
         if self.cron_switch is not None:
@@ -40863,6 +41155,8 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
             result['CronType'] = self.cron_type
         if self.dag_name is not None:
             result['DagName'] = self.dag_name
+        if self.dag_owner_id is not None:
+            result['DagOwnerId'] = self.dag_owner_id
         if self.dag_owner_nick_name is not None:
             result['DagOwnerNickName'] = self.dag_owner_nick_name
         if self.deploy_id is not None:
@@ -40877,6 +41171,8 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
             result['LatestInstanceTime'] = self.latest_instance_time
         if self.scenario_id is not None:
             result['ScenarioId'] = self.scenario_id
+        if self.schedule_param is not None:
+            result['ScheduleParam'] = self.schedule_param
         if self.status is not None:
             result['Status'] = self.status
         if self.time_zone_id is not None:
@@ -40891,8 +41187,10 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
             self.creator_id = m.get('CreatorId')
         if m.get('CreatorNickName') is not None:
             self.creator_nick_name = m.get('CreatorNickName')
-        if m.get('CronParam') is not None:
-            self.cron_param = m.get('CronParam')
+        if m.get('CronBeginDate') is not None:
+            self.cron_begin_date = m.get('CronBeginDate')
+        if m.get('CronEndDate') is not None:
+            self.cron_end_date = m.get('CronEndDate')
         if m.get('CronStr') is not None:
             self.cron_str = m.get('CronStr')
         if m.get('CronSwitch') is not None:
@@ -40901,6 +41199,8 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
             self.cron_type = m.get('CronType')
         if m.get('DagName') is not None:
             self.dag_name = m.get('DagName')
+        if m.get('DagOwnerId') is not None:
+            self.dag_owner_id = m.get('DagOwnerId')
         if m.get('DagOwnerNickName') is not None:
             self.dag_owner_nick_name = m.get('DagOwnerNickName')
         if m.get('DeployId') is not None:
@@ -40915,6 +41215,8 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
             self.latest_instance_time = m.get('LatestInstanceTime')
         if m.get('ScenarioId') is not None:
             self.scenario_id = m.get('ScenarioId')
+        if m.get('ScheduleParam') is not None:
+            self.schedule_param = m.get('ScheduleParam')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TimeZoneId') is not None:
@@ -44232,8 +44534,11 @@ class QueryDataTrackResultDownloadStatusRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the download key, which is used to identify the parsing progress of data tracking logs. You can call the DownloadDataTrackResult operation to query the ID of the key.
         self.download_key_id = download_key_id
+        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ID of the ticket.
         self.order_id = order_id
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -44272,9 +44577,19 @@ class QueryDataTrackResultDownloadStatusResponseBodyStatusResult(TeaModel):
         status_desc: str = None,
         total_count: int = None,
     ):
+        # The status of the download task. Valid values:
+        # 
+        # *   **INIT**: The download task is being initialized.
+        # *   **LISTING**: The download task is in a transient intermediate state during the initialization.
+        # *   **DOWNLOADING**: The download task is being processed.
+        # *   **DOWNLOAD_SUCCESS**: The download task was successfully processed.
+        # *   **DOWNLOAD_FAIL**: The download task failed.
         self.download_status = download_status
+        # The URL that is used to download data tracking logs. This parameter is returned only when the value of DownloadStatus is DOWNLOAD_SUCCESS.
         self.download_url = download_url
+        # The description of the state.
         self.status_desc = status_desc
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -44318,10 +44633,18 @@ class QueryDataTrackResultDownloadStatusResponseBody(TeaModel):
         status_result: QueryDataTrackResultDownloadStatusResponseBodyStatusResult = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the download progress.
         self.status_result = status_result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -46117,11 +46440,25 @@ class SearchDataTrackResultRequestColumnFilter(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The end value of the range used in the filter condition. This parameter takes effect only when Operator is set to BETWEEN.
         self.between_end = between_end
+        # The start value of the range used in the filter condition. This parameter takes effect only when Operator is set to BETWEEN.
         self.between_start = between_start
+        # The name of the column.
         self.column_name = column_name
+        # The IN list used in the filter condition. This parameter takes effect only when Operator is set to IN or NOT_IN.
         self.in_list = in_list
+        # The type of the operator used to configure the filter condition. Valid values:
+        # 
+        # *   **EQUAL**: retrieves the column whose value is equal to the specified value.
+        # *   **NOT_EQUAL**: retrieves the column whose value is not equal to the specified value.
+        # *   **IN**: retrieves the column whose value is in the IN list.
+        # *   **BETWEEN**: retrieves the column whose value is in the specified range.
+        # *   **LESS**: retrieves the column whose value is less than the specified value.
+        # *   **MORE**: retrieves the column whose value is greater than the specified value.
+        # *   **NOT_IN**: retrieves the column whose value is not in the IN list.
         self.operator = operator
+        # The value used in the filter condition.
         self.value = value
 
     def validate(self):
@@ -46175,12 +46512,19 @@ class SearchDataTrackResultRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The condition to filter columns.
         self.column_filter = column_filter
+        # The end time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
         self.filter_end_time = filter_end_time
+        # The start time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
         self.filter_start_time = filter_start_time
+        # The names of the tables for which you want to track data operations.
         self.filter_table_list = filter_table_list
+        # The types of data operations that you want to track.
         self.filter_type_list = filter_type_list
+        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
         self.order_id = order_id
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -46240,12 +46584,19 @@ class SearchDataTrackResultShrinkRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The condition to filter columns.
         self.column_filter_shrink = column_filter_shrink
+        # The end time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
         self.filter_end_time = filter_end_time
+        # The start time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
         self.filter_start_time = filter_start_time
+        # The names of the tables for which you want to track data operations.
         self.filter_table_list_shrink = filter_table_list_shrink
+        # The types of data operations that you want to track.
         self.filter_type_list_shrink = filter_type_list_shrink
+        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
         self.order_id = order_id
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -46303,12 +46654,26 @@ class SearchDataTrackResultResponseBodyTrackResultEventList(TeaModel):
         event_type: str = None,
         roll_sql: str = None,
     ):
+        # The data records after you perform data operations in the database.
         self.data_after = data_after
+        # The data records before you perform data operations in the database.
         self.data_before = data_before
+        # The ID of the event.
         self.event_id = event_id
+        # The length of the event content. Unit: bytes.
         self.event_length = event_length
+        # The event time.
         self.event_timestamp = event_timestamp
+        # The type of the event. Valid values:
+        # 
+        # *   **WRITE_ROWS**: indicates an INSERT operation.
+        # *   **UPDATE_ROWS**: indicates an UPDATE operation.
+        # *   **DELETE_ROWS**: indicates a DELETE operation.
+        # *   **EXT_WRITE_ROWS**: indicates an INSERT operation, which is equivalent to WRITE_ROWS.
+        # *   **EXT_UPDATE_ROWS**: indicates an UPDATE operation, which is equivalent to UPDATE_ROWS.
+        # *   **EXT_DELETE_ROWS**: indicates a DELETE operation, which is equivalent to DELETE_ROWS.
         self.event_type = event_type
+        # The SQL statements used to roll back the data change.
         self.roll_sql = roll_sql
 
     def validate(self):
@@ -46363,9 +46728,16 @@ class SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns(TeaModel)
         column_type: str = None,
         fictive: bool = None,
     ):
+        # The name of the column.
         self.column_name = column_name
+        # The position of the column.
         self.column_position = column_position
+        # The data type of the column. Examples: BIGINT, INT, and VARCHAR.
         self.column_type = column_type
+        # Indicates whether the column is a virtual column. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.fictive = fictive
 
     def validate(self):
@@ -46408,9 +46780,13 @@ class SearchDataTrackResultResponseBodyTrackResultTableInfoList(TeaModel):
         schema_name: str = None,
         table_name: str = None,
     ):
+        # The information about columns.
         self.columns = columns
+        # The description of the column.
         self.description = description
+        # The name of the database.
         self.schema_name = schema_name
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -46460,8 +46836,11 @@ class SearchDataTrackResultResponseBodyTrackResult(TeaModel):
         table_info_list: List[SearchDataTrackResultResponseBodyTrackResultTableInfoList] = None,
         total_count: int = None,
     ):
+        # The details of the event logs.
         self.event_list = event_list
+        # The metadata of tables for which you track data operations.
         self.table_info_list = table_info_list
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -46518,10 +46897,18 @@ class SearchDataTrackResultResponseBody(TeaModel):
         success: bool = None,
         track_result: SearchDataTrackResultResponseBodyTrackResult = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The parsing result of the data tracking task.
         self.track_result = track_result
 
     def validate(self):
