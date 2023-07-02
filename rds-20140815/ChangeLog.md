@@ -1,3 +1,7 @@
+2023-07-02 Version: 2.2.1
+- Fixed bugs for lack of regionId.
+- Fix error code.
+
 2023-07-01 Version: 2.2.0
 - Fixed bugs for lack of regionId.
 - Fix error code.
