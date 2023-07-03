@@ -151,6 +151,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_async_predict_with_options_async(request, runtime)
 
+    def find_user_report_4alinlp_with_options(
+        self,
+        request: nlp_automl_20191111_models.FindUserReport4AlinlpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlp_automl_20191111_models.FindUserReport4AlinlpResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.customer_user_parent_id):
+            body['CustomerUserParentId'] = request.customer_user_parent_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.model_type):
+            body['ModelType'] = request.model_type
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FindUserReport4Alinlp',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlp_automl_20191111_models.FindUserReport4AlinlpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def find_user_report_4alinlp_with_options_async(
+        self,
+        request: nlp_automl_20191111_models.FindUserReport4AlinlpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlp_automl_20191111_models.FindUserReport4AlinlpResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.customer_user_parent_id):
+            body['CustomerUserParentId'] = request.customer_user_parent_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.model_type):
+            body['ModelType'] = request.model_type
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FindUserReport4Alinlp',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlp_automl_20191111_models.FindUserReport4AlinlpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def find_user_report_4alinlp(
+        self,
+        request: nlp_automl_20191111_models.FindUserReport4AlinlpRequest,
+    ) -> nlp_automl_20191111_models.FindUserReport4AlinlpResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.find_user_report_4alinlp_with_options(request, runtime)
+
+    async def find_user_report_4alinlp_async(
+        self,
+        request: nlp_automl_20191111_models.FindUserReport4AlinlpRequest,
+    ) -> nlp_automl_20191111_models.FindUserReport4AlinlpResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.find_user_report_4alinlp_with_options_async(request, runtime)
+
     def get_async_predict_with_options(
         self,
         request: nlp_automl_20191111_models.GetAsyncPredictRequest,
@@ -380,3 +466,81 @@ class Client(OpenApiClient):
     ) -> nlp_automl_20191111_models.RunPreTrainServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.run_pre_train_service_with_options_async(request, runtime)
+
+    def run_pre_train_service_new_with_options(
+        self,
+        request: nlp_automl_20191111_models.RunPreTrainServiceNewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlp_automl_20191111_models.RunPreTrainServiceNewResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.predict_content):
+            body['PredictContent'] = request.predict_content
+        if not UtilClient.is_unset(request.service_name):
+            body['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_version):
+            body['ServiceVersion'] = request.service_version
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunPreTrainServiceNew',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlp_automl_20191111_models.RunPreTrainServiceNewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_pre_train_service_new_with_options_async(
+        self,
+        request: nlp_automl_20191111_models.RunPreTrainServiceNewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlp_automl_20191111_models.RunPreTrainServiceNewResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.predict_content):
+            body['PredictContent'] = request.predict_content
+        if not UtilClient.is_unset(request.service_name):
+            body['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_version):
+            body['ServiceVersion'] = request.service_version
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunPreTrainServiceNew',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlp_automl_20191111_models.RunPreTrainServiceNewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_pre_train_service_new(
+        self,
+        request: nlp_automl_20191111_models.RunPreTrainServiceNewRequest,
+    ) -> nlp_automl_20191111_models.RunPreTrainServiceNewResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.run_pre_train_service_new_with_options(request, runtime)
+
+    async def run_pre_train_service_new_async(
+        self,
+        request: nlp_automl_20191111_models.RunPreTrainServiceNewRequest,
+    ) -> nlp_automl_20191111_models.RunPreTrainServiceNewResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.run_pre_train_service_new_with_options_async(request, runtime)

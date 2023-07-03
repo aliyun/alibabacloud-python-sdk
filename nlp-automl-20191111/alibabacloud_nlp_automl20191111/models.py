@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict
+from typing import Dict, List
 
 
 class CreateAsyncPredictRequest(TeaModel):
@@ -164,6 +164,199 @@ class CreateAsyncPredictResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAsyncPredictResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FindUserReport4AlinlpRequest(TeaModel):
+    def __init__(
+        self,
+        begin_time: str = None,
+        customer_user_parent_id: int = None,
+        end_time: str = None,
+        model_type: str = None,
+        type: str = None,
+    ):
+        self.begin_time = begin_time
+        self.customer_user_parent_id = customer_user_parent_id
+        self.end_time = end_time
+        self.model_type = model_type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.customer_user_parent_id is not None:
+            result['CustomerUserParentId'] = self.customer_user_parent_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.model_type is not None:
+            result['ModelType'] = self.model_type
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('CustomerUserParentId') is not None:
+            self.customer_user_parent_id = m.get('CustomerUserParentId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ModelType') is not None:
+            self.model_type = m.get('ModelType')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class FindUserReport4AlinlpResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        fail_count: int = None,
+        qps_max: int = None,
+        rpt_time: str = None,
+        success_count: int = None,
+        total_count: int = None,
+    ):
+        self.fail_count = fail_count
+        self.qps_max = qps_max
+        self.rpt_time = rpt_time
+        self.success_count = success_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fail_count is not None:
+            result['FailCount'] = self.fail_count
+        if self.qps_max is not None:
+            result['QpsMax'] = self.qps_max
+        if self.rpt_time is not None:
+            result['RptTime'] = self.rpt_time
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailCount') is not None:
+            self.fail_count = m.get('FailCount')
+        if m.get('QpsMax') is not None:
+            self.qps_max = m.get('QpsMax')
+        if m.get('RptTime') is not None:
+            self.rpt_time = m.get('RptTime')
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class FindUserReport4AlinlpResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[FindUserReport4AlinlpResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = FindUserReport4AlinlpResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class FindUserReport4AlinlpResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FindUserReport4AlinlpResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FindUserReport4AlinlpResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -454,9 +647,11 @@ class RunPreTrainServiceRequest(TeaModel):
 class RunPreTrainServiceResponseBody(TeaModel):
     def __init__(
         self,
+        billing_count: int = None,
         predict_result: str = None,
         request_id: str = None,
     ):
+        self.billing_count = billing_count
         self.predict_result = predict_result
         self.request_id = request_id
 
@@ -469,6 +664,8 @@ class RunPreTrainServiceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.billing_count is not None:
+            result['BillingCount'] = self.billing_count
         if self.predict_result is not None:
             result['PredictResult'] = self.predict_result
         if self.request_id is not None:
@@ -477,6 +674,8 @@ class RunPreTrainServiceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BillingCount') is not None:
+            self.billing_count = m.get('BillingCount')
         if m.get('PredictResult') is not None:
             self.predict_result = m.get('PredictResult')
         if m.get('RequestId') is not None:
@@ -524,6 +723,128 @@ class RunPreTrainServiceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunPreTrainServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunPreTrainServiceNewRequest(TeaModel):
+    def __init__(
+        self,
+        predict_content: str = None,
+        service_name: str = None,
+        service_version: str = None,
+    ):
+        self.predict_content = predict_content
+        self.service_name = service_name
+        self.service_version = service_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.predict_content is not None:
+            result['PredictContent'] = self.predict_content
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.service_version is not None:
+            result['ServiceVersion'] = self.service_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PredictContent') is not None:
+            self.predict_content = m.get('PredictContent')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('ServiceVersion') is not None:
+            self.service_version = m.get('ServiceVersion')
+        return self
+
+
+class RunPreTrainServiceNewResponseBody(TeaModel):
+    def __init__(
+        self,
+        billing_count: int = None,
+        predict_result: str = None,
+        request_id: str = None,
+    ):
+        self.billing_count = billing_count
+        self.predict_result = predict_result
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.billing_count is not None:
+            result['BillingCount'] = self.billing_count
+        if self.predict_result is not None:
+            result['PredictResult'] = self.predict_result
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BillingCount') is not None:
+            self.billing_count = m.get('BillingCount')
+        if m.get('PredictResult') is not None:
+            self.predict_result = m.get('PredictResult')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RunPreTrainServiceNewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunPreTrainServiceNewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunPreTrainServiceNewResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

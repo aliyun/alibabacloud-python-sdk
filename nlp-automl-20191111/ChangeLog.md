@@ -1,3 +1,6 @@
+2023-07-03 Version: 1.0.3
+- Add The billingCount return value to the RunPreTrainService Api.
+
 2023-01-31 Version: 1.0.2
 - Supported parameter nepochs and lr for CreateModel Api.
 
