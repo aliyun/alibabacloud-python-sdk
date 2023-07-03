@@ -217,6 +217,7 @@ class AddTagsToResourceRequest(TeaModel):
         # 
         # >  You can enter up to 30 instance IDs in a single request. If you enter more than one instance ID, you must separate the instance IDs with commas (,).
         self.dbinstance_id = dbinstance_id
+        # The logon name of the RAM user.
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
@@ -38359,6 +38360,39 @@ class DescribePriceRequestDBNode(TeaModel):
         return self
 
 
+class DescribePriceRequestServerlessConfig(TeaModel):
+    def __init__(
+        self,
+        max_capacity: float = None,
+        min_capacity: float = None,
+    ):
+        self.max_capacity = max_capacity
+        self.min_capacity = min_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_capacity is not None:
+            result['MaxCapacity'] = self.max_capacity
+        if self.min_capacity is not None:
+            result['MinCapacity'] = self.min_capacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxCapacity') is not None:
+            self.max_capacity = m.get('MaxCapacity')
+        if m.get('MinCapacity') is not None:
+            self.min_capacity = m.get('MinCapacity')
+        return self
+
+
 class DescribePriceRequest(TeaModel):
     def __init__(
         self,
@@ -38380,6 +38414,7 @@ class DescribePriceRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        serverless_config: DescribePriceRequestServerlessConfig = None,
         time_type: str = None,
         used_time: int = None,
         zone_id: str = None,
@@ -38457,6 +38492,7 @@ class DescribePriceRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.serverless_config = serverless_config
         # The unit that is used to calculate the subscription duration of the instance. If you set the **CommodityCode** parameter to **RDS**, **rds_rordspre_public_cn**, **rds_intl**, or **rds_rordspre_public_intl**, you must also specify this parameter. Valid values:
         # 
         # *   **Year**\
@@ -38479,6 +38515,8 @@ class DescribePriceRequest(TeaModel):
             for k in self.dbnode:
                 if k:
                     k.validate()
+        if self.serverless_config:
+            self.serverless_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -38524,6 +38562,8 @@ class DescribePriceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.serverless_config is not None:
+            result['ServerlessConfig'] = self.serverless_config.to_map()
         if self.time_type is not None:
             result['TimeType'] = self.time_type
         if self.used_time is not None:
@@ -38573,6 +38613,9 @@ class DescribePriceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ServerlessConfig') is not None:
+            temp_model = DescribePriceRequestServerlessConfig()
+            self.serverless_config = temp_model.from_map(m['ServerlessConfig'])
         if m.get('TimeType') is not None:
             self.time_type = m.get('TimeType')
         if m.get('UsedTime') is not None:
@@ -38603,6 +38646,7 @@ class DescribePriceShrinkRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        serverless_config_shrink: str = None,
         time_type: str = None,
         used_time: int = None,
         zone_id: str = None,
@@ -38680,6 +38724,7 @@ class DescribePriceShrinkRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.serverless_config_shrink = serverless_config_shrink
         # The unit that is used to calculate the subscription duration of the instance. If you set the **CommodityCode** parameter to **RDS**, **rds_rordspre_public_cn**, **rds_intl**, or **rds_rordspre_public_intl**, you must also specify this parameter. Valid values:
         # 
         # *   **Year**\
@@ -38742,6 +38787,8 @@ class DescribePriceShrinkRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.serverless_config_shrink is not None:
+            result['ServerlessConfig'] = self.serverless_config_shrink
         if self.time_type is not None:
             result['TimeType'] = self.time_type
         if self.used_time is not None:
@@ -38788,6 +38835,8 @@ class DescribePriceShrinkRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ServerlessConfig') is not None:
+            self.serverless_config_shrink = m.get('ServerlessConfig')
         if m.get('TimeType') is not None:
             self.time_type = m.get('TimeType')
         if m.get('UsedTime') is not None:
@@ -39112,6 +39161,8 @@ class DescribePriceResponseBody(TeaModel):
         request_id: str = None,
         rules: DescribePriceResponseBodyRules = None,
         show_discount: bool = None,
+        trade_max_rcuamount: float = None,
+        trade_min_rcuamount: float = None,
     ):
         # The information about the price.
         self.price_info = price_info
@@ -39120,6 +39171,8 @@ class DescribePriceResponseBody(TeaModel):
         # An array that consists of the details of the promotion rule.
         self.rules = rules
         self.show_discount = show_discount
+        self.trade_max_rcuamount = trade_max_rcuamount
+        self.trade_min_rcuamount = trade_min_rcuamount
 
     def validate(self):
         if self.price_info:
@@ -39141,6 +39194,10 @@ class DescribePriceResponseBody(TeaModel):
             result['Rules'] = self.rules.to_map()
         if self.show_discount is not None:
             result['ShowDiscount'] = self.show_discount
+        if self.trade_max_rcuamount is not None:
+            result['TradeMaxRCUAmount'] = self.trade_max_rcuamount
+        if self.trade_min_rcuamount is not None:
+            result['TradeMinRCUAmount'] = self.trade_min_rcuamount
         return result
 
     def from_map(self, m: dict = None):
@@ -39155,6 +39212,10 @@ class DescribePriceResponseBody(TeaModel):
             self.rules = temp_model.from_map(m['Rules'])
         if m.get('ShowDiscount') is not None:
             self.show_discount = m.get('ShowDiscount')
+        if m.get('TradeMaxRCUAmount') is not None:
+            self.trade_max_rcuamount = m.get('TradeMaxRCUAmount')
+        if m.get('TradeMinRCUAmount') is not None:
+            self.trade_min_rcuamount = m.get('TradeMinRCUAmount')
         return self
 
 
