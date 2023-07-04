@@ -1,3 +1,7 @@
+2023-07-04 Version: 2.2.3
+- ModifyBackupPolicy API support parameter BackupPriority.
+- DescribeBackupPolicy API add return parameters: BackupPriority and SupportModifyBackupPriority.
+
 2023-07-03 Version: 2.2.2
 - Fix bugs for  DescribeDedicatedHosts.
 - Fixed bugs add ERRORCODE.
