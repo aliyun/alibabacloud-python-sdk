@@ -2505,6 +2505,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_control_policy_with_options_async(request, runtime)
 
+    def describe_default_ipsconfig_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeDefaultIPSConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefaultIPSConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeDefaultIPSConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_default_ipsconfig_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeDefaultIPSConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefaultIPSConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeDefaultIPSConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_default_ipsconfig(
+        self,
+        request: cloudfw_20171207_models.DescribeDefaultIPSConfigRequest,
+    ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_default_ipsconfig_with_options(request, runtime)
+
+    async def describe_default_ipsconfig_async(
+        self,
+        request: cloudfw_20171207_models.DescribeDefaultIPSConfigRequest,
+    ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_default_ipsconfig_with_options_async(request, runtime)
+
     def describe_domain_resolve_with_options(
         self,
         request: cloudfw_20171207_models.DescribeDomainResolveRequest,
@@ -4133,6 +4207,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_asset_iptraffic_info_with_options_async(request, runtime)
 
+    def describe_user_ipswhitelist_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeUserIPSWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeUserIPSWhitelistResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserIPSWhitelist',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeUserIPSWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_ipswhitelist_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeUserIPSWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeUserIPSWhitelistResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserIPSWhitelist',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeUserIPSWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_ipswhitelist(
+        self,
+        request: cloudfw_20171207_models.DescribeUserIPSWhitelistRequest,
+    ) -> cloudfw_20171207_models.DescribeUserIPSWhitelistResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_ipswhitelist_with_options(request, runtime)
+
+    async def describe_user_ipswhitelist_async(
+        self,
+        request: cloudfw_20171207_models.DescribeUserIPSWhitelistRequest,
+    ) -> cloudfw_20171207_models.DescribeUserIPSWhitelistResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_ipswhitelist_with_options_async(request, runtime)
+
     def describe_vpc_firewall_acl_group_list_with_options(
         self,
         request: cloudfw_20171207_models.DescribeVpcFirewallAclGroupListRequest,
@@ -5719,6 +5871,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_control_policy_position_with_options_async(request, runtime)
 
+    def modify_default_ipsconfig_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyDefaultIPSConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyDefaultIPSConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ai_rules):
+            query['AiRules'] = request.ai_rules
+        if not UtilClient.is_unset(request.basic_rules):
+            query['BasicRules'] = request.basic_rules
+        if not UtilClient.is_unset(request.cti_rules):
+            query['CtiRules'] = request.cti_rules
+        if not UtilClient.is_unset(request.enable_all_patch):
+            query['EnableAllPatch'] = request.enable_all_patch
+        if not UtilClient.is_unset(request.enable_default):
+            query['EnableDefault'] = request.enable_default
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.patch_rules):
+            query['PatchRules'] = request.patch_rules
+        if not UtilClient.is_unset(request.rule_class):
+            query['RuleClass'] = request.rule_class
+        if not UtilClient.is_unset(request.run_mode):
+            query['RunMode'] = request.run_mode
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDefaultIPSConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyDefaultIPSConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_default_ipsconfig_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyDefaultIPSConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyDefaultIPSConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ai_rules):
+            query['AiRules'] = request.ai_rules
+        if not UtilClient.is_unset(request.basic_rules):
+            query['BasicRules'] = request.basic_rules
+        if not UtilClient.is_unset(request.cti_rules):
+            query['CtiRules'] = request.cti_rules
+        if not UtilClient.is_unset(request.enable_all_patch):
+            query['EnableAllPatch'] = request.enable_all_patch
+        if not UtilClient.is_unset(request.enable_default):
+            query['EnableDefault'] = request.enable_default
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.patch_rules):
+            query['PatchRules'] = request.patch_rules
+        if not UtilClient.is_unset(request.rule_class):
+            query['RuleClass'] = request.rule_class
+        if not UtilClient.is_unset(request.run_mode):
+            query['RunMode'] = request.run_mode
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDefaultIPSConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyDefaultIPSConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_default_ipsconfig(
+        self,
+        request: cloudfw_20171207_models.ModifyDefaultIPSConfigRequest,
+    ) -> cloudfw_20171207_models.ModifyDefaultIPSConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_default_ipsconfig_with_options(request, runtime)
+
+    async def modify_default_ipsconfig_async(
+        self,
+        request: cloudfw_20171207_models.ModifyDefaultIPSConfigRequest,
+    ) -> cloudfw_20171207_models.ModifyDefaultIPSConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_default_ipsconfig_with_options_async(request, runtime)
+
     def modify_firewall_v2route_policy_switch_with_options(
         self,
         request: cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchRequest,
@@ -6196,6 +6454,104 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_tr_firewall_v2route_policy_scope_with_options_async(request, runtime)
+
+    def modify_user_ipswhitelist_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyUserIPSWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyUserIPSWhitelistResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.list_type):
+            query['ListType'] = request.list_type
+        if not UtilClient.is_unset(request.list_value):
+            query['ListValue'] = request.list_value
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.white_type):
+            query['WhiteType'] = request.white_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserIPSWhitelist',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyUserIPSWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_user_ipswhitelist_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyUserIPSWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyUserIPSWhitelistResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.list_type):
+            query['ListType'] = request.list_type
+        if not UtilClient.is_unset(request.list_value):
+            query['ListValue'] = request.list_value
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.white_type):
+            query['WhiteType'] = request.white_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserIPSWhitelist',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyUserIPSWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_user_ipswhitelist(
+        self,
+        request: cloudfw_20171207_models.ModifyUserIPSWhitelistRequest,
+    ) -> cloudfw_20171207_models.ModifyUserIPSWhitelistResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_user_ipswhitelist_with_options(request, runtime)
+
+    async def modify_user_ipswhitelist_async(
+        self,
+        request: cloudfw_20171207_models.ModifyUserIPSWhitelistRequest,
+    ) -> cloudfw_20171207_models.ModifyUserIPSWhitelistResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_user_ipswhitelist_with_options_async(request, runtime)
 
     def modify_vpc_firewall_cen_configure_with_options(
         self,

@@ -4200,6 +4200,158 @@ class DescribeControlPolicyResponse(TeaModel):
         return self
 
 
+class DescribeDefaultIPSConfigRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        source_ip: str = None,
+    ):
+        self.lang = lang
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class DescribeDefaultIPSConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        ai_rules: int = None,
+        basic_rules: int = None,
+        cti_rules: int = None,
+        enable_all_patch: int = None,
+        enable_default: int = None,
+        patch_rules: int = None,
+        request_id: str = None,
+        rule_class: int = None,
+        run_mode: int = None,
+    ):
+        self.ai_rules = ai_rules
+        self.basic_rules = basic_rules
+        self.cti_rules = cti_rules
+        self.enable_all_patch = enable_all_patch
+        self.enable_default = enable_default
+        self.patch_rules = patch_rules
+        self.request_id = request_id
+        self.rule_class = rule_class
+        self.run_mode = run_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ai_rules is not None:
+            result['AiRules'] = self.ai_rules
+        if self.basic_rules is not None:
+            result['BasicRules'] = self.basic_rules
+        if self.cti_rules is not None:
+            result['CtiRules'] = self.cti_rules
+        if self.enable_all_patch is not None:
+            result['EnableAllPatch'] = self.enable_all_patch
+        if self.enable_default is not None:
+            result['EnableDefault'] = self.enable_default
+        if self.patch_rules is not None:
+            result['PatchRules'] = self.patch_rules
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rule_class is not None:
+            result['RuleClass'] = self.rule_class
+        if self.run_mode is not None:
+            result['RunMode'] = self.run_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AiRules') is not None:
+            self.ai_rules = m.get('AiRules')
+        if m.get('BasicRules') is not None:
+            self.basic_rules = m.get('BasicRules')
+        if m.get('CtiRules') is not None:
+            self.cti_rules = m.get('CtiRules')
+        if m.get('EnableAllPatch') is not None:
+            self.enable_all_patch = m.get('EnableAllPatch')
+        if m.get('EnableDefault') is not None:
+            self.enable_default = m.get('EnableDefault')
+        if m.get('PatchRules') is not None:
+            self.patch_rules = m.get('PatchRules')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RuleClass') is not None:
+            self.rule_class = m.get('RuleClass')
+        if m.get('RunMode') is not None:
+            self.run_mode = m.get('RunMode')
+        return self
+
+
+class DescribeDefaultIPSConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDefaultIPSConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDefaultIPSConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDomainResolveRequest(TeaModel):
     def __init__(
         self,
@@ -6986,6 +7138,7 @@ class DescribeRiskEventGroupRequest(TeaModel):
         self.dst_network_instance_id = dst_network_instance_id
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # 入侵防御事件的名称。
         self.event_name = event_name
         # The type of the firewall. Valid values:
         # 
@@ -7002,7 +7155,7 @@ class DescribeRiskEventGroupRequest(TeaModel):
         # *   **true**: does not query the information about the geographical locations of IP addresses.
         # *   **false**: queries the information about the geographical locations of IP addresses. This is the default value.
         self.no_location = no_location
-        # The order in which you want to sort the query results. Valid values:
+        # The order in which you want to sort the results. Valid values:
         # 
         # *   **asc**: the ascending order.
         # *   **desc**: the descending order. This is the default value.
@@ -7259,7 +7412,7 @@ class DescribeRiskEventGroupResponseBodyDataListVpcDstInfo(TeaModel):
         network_instance_name: str = None,
         region_no: str = None,
     ):
-        # The ID of instance N on which you want to run the command.
+        # The ID of the ECS instance.
         self.ecs_instance_id = ecs_instance_id
         # The name of the ECS instance.
         self.ecs_instance_name = ecs_instance_name
@@ -7315,7 +7468,7 @@ class DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo(TeaModel):
         network_instance_name: str = None,
         region_no: str = None,
     ):
-        # The ID of instance N on which you want to run the command.
+        # The ID of the ECS instance.
         self.ecs_instance_id = ecs_instance_id
         # The name of the ECS instance.
         self.ecs_instance_name = ecs_instance_name
@@ -7606,7 +7759,7 @@ class DescribeRiskEventGroupResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The data returned.
+        # An array that consists of the details of the intrusion events.
         self.data_list = data_list
         # The ID of the request.
         self.request_id = request_id
@@ -9120,6 +9273,241 @@ class DescribeUserAssetIPTrafficInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeUserAssetIPTrafficInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeUserIPSWhitelistRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        source_ip: str = None,
+    ):
+        self.lang = lang
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class DescribeUserIPSWhitelistResponseBodyIpv6Whitelists(TeaModel):
+    def __init__(
+        self,
+        direction: int = None,
+        list_type: int = None,
+        list_value: str = None,
+        white_list_value: List[str] = None,
+        white_type: int = None,
+    ):
+        self.direction = direction
+        self.list_type = list_type
+        self.list_value = list_value
+        self.white_list_value = white_list_value
+        self.white_type = white_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.list_type is not None:
+            result['ListType'] = self.list_type
+        if self.list_value is not None:
+            result['ListValue'] = self.list_value
+        if self.white_list_value is not None:
+            result['WhiteListValue'] = self.white_list_value
+        if self.white_type is not None:
+            result['WhiteType'] = self.white_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('ListType') is not None:
+            self.list_type = m.get('ListType')
+        if m.get('ListValue') is not None:
+            self.list_value = m.get('ListValue')
+        if m.get('WhiteListValue') is not None:
+            self.white_list_value = m.get('WhiteListValue')
+        if m.get('WhiteType') is not None:
+            self.white_type = m.get('WhiteType')
+        return self
+
+
+class DescribeUserIPSWhitelistResponseBodyWhitelists(TeaModel):
+    def __init__(
+        self,
+        direction: int = None,
+        list_type: int = None,
+        list_value: str = None,
+        white_list_value: List[str] = None,
+        white_type: int = None,
+    ):
+        self.direction = direction
+        self.list_type = list_type
+        self.list_value = list_value
+        self.white_list_value = white_list_value
+        self.white_type = white_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.list_type is not None:
+            result['ListType'] = self.list_type
+        if self.list_value is not None:
+            result['ListValue'] = self.list_value
+        if self.white_list_value is not None:
+            result['WhiteListValue'] = self.white_list_value
+        if self.white_type is not None:
+            result['WhiteType'] = self.white_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('ListType') is not None:
+            self.list_type = m.get('ListType')
+        if m.get('ListValue') is not None:
+            self.list_value = m.get('ListValue')
+        if m.get('WhiteListValue') is not None:
+            self.white_list_value = m.get('WhiteListValue')
+        if m.get('WhiteType') is not None:
+            self.white_type = m.get('WhiteType')
+        return self
+
+
+class DescribeUserIPSWhitelistResponseBody(TeaModel):
+    def __init__(
+        self,
+        ipv_6whitelists: List[DescribeUserIPSWhitelistResponseBodyIpv6Whitelists] = None,
+        request_id: str = None,
+        whitelists: List[DescribeUserIPSWhitelistResponseBodyWhitelists] = None,
+    ):
+        self.ipv_6whitelists = ipv_6whitelists
+        self.request_id = request_id
+        self.whitelists = whitelists
+
+    def validate(self):
+        if self.ipv_6whitelists:
+            for k in self.ipv_6whitelists:
+                if k:
+                    k.validate()
+        if self.whitelists:
+            for k in self.whitelists:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Ipv6Whitelists'] = []
+        if self.ipv_6whitelists is not None:
+            for k in self.ipv_6whitelists:
+                result['Ipv6Whitelists'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Whitelists'] = []
+        if self.whitelists is not None:
+            for k in self.whitelists:
+                result['Whitelists'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ipv_6whitelists = []
+        if m.get('Ipv6Whitelists') is not None:
+            for k in m.get('Ipv6Whitelists'):
+                temp_model = DescribeUserIPSWhitelistResponseBodyIpv6Whitelists()
+                self.ipv_6whitelists.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.whitelists = []
+        if m.get('Whitelists') is not None:
+            for k in m.get('Whitelists'):
+                temp_model = DescribeUserIPSWhitelistResponseBodyWhitelists()
+                self.whitelists.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeUserIPSWhitelistResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeUserIPSWhitelistResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeUserIPSWhitelistResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12436,6 +12824,7 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
         # *   **zh**: Chinese (default)
         # *   **en**: English
         self.lang = lang
+        # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
         # The order in which you want to sort the queried information. Valid values:
         # 
@@ -13596,6 +13985,158 @@ class ModifyControlPolicyPositionResponse(TeaModel):
         return self
 
 
+class ModifyDefaultIPSConfigRequest(TeaModel):
+    def __init__(
+        self,
+        ai_rules: str = None,
+        basic_rules: str = None,
+        cti_rules: str = None,
+        enable_all_patch: str = None,
+        enable_default: str = None,
+        lang: str = None,
+        patch_rules: str = None,
+        rule_class: str = None,
+        run_mode: str = None,
+        source_ip: str = None,
+    ):
+        self.ai_rules = ai_rules
+        self.basic_rules = basic_rules
+        self.cti_rules = cti_rules
+        self.enable_all_patch = enable_all_patch
+        self.enable_default = enable_default
+        self.lang = lang
+        self.patch_rules = patch_rules
+        self.rule_class = rule_class
+        self.run_mode = run_mode
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ai_rules is not None:
+            result['AiRules'] = self.ai_rules
+        if self.basic_rules is not None:
+            result['BasicRules'] = self.basic_rules
+        if self.cti_rules is not None:
+            result['CtiRules'] = self.cti_rules
+        if self.enable_all_patch is not None:
+            result['EnableAllPatch'] = self.enable_all_patch
+        if self.enable_default is not None:
+            result['EnableDefault'] = self.enable_default
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.patch_rules is not None:
+            result['PatchRules'] = self.patch_rules
+        if self.rule_class is not None:
+            result['RuleClass'] = self.rule_class
+        if self.run_mode is not None:
+            result['RunMode'] = self.run_mode
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AiRules') is not None:
+            self.ai_rules = m.get('AiRules')
+        if m.get('BasicRules') is not None:
+            self.basic_rules = m.get('BasicRules')
+        if m.get('CtiRules') is not None:
+            self.cti_rules = m.get('CtiRules')
+        if m.get('EnableAllPatch') is not None:
+            self.enable_all_patch = m.get('EnableAllPatch')
+        if m.get('EnableDefault') is not None:
+            self.enable_default = m.get('EnableDefault')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PatchRules') is not None:
+            self.patch_rules = m.get('PatchRules')
+        if m.get('RuleClass') is not None:
+            self.rule_class = m.get('RuleClass')
+        if m.get('RunMode') is not None:
+            self.run_mode = m.get('RunMode')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class ModifyDefaultIPSConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDefaultIPSConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDefaultIPSConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDefaultIPSConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyFirewallV2RoutePolicySwitchRequest(TeaModel):
     def __init__(
         self,
@@ -14349,6 +14890,140 @@ class ModifyTrFirewallV2RoutePolicyScopeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyTrFirewallV2RoutePolicyScopeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyUserIPSWhitelistRequest(TeaModel):
+    def __init__(
+        self,
+        direction: int = None,
+        ip_version: str = None,
+        lang: str = None,
+        list_type: int = None,
+        list_value: str = None,
+        source_ip: str = None,
+        white_type: int = None,
+    ):
+        self.direction = direction
+        self.ip_version = ip_version
+        self.lang = lang
+        self.list_type = list_type
+        self.list_value = list_value
+        self.source_ip = source_ip
+        self.white_type = white_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.list_type is not None:
+            result['ListType'] = self.list_type
+        if self.list_value is not None:
+            result['ListValue'] = self.list_value
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.white_type is not None:
+            result['WhiteType'] = self.white_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ListType') is not None:
+            self.list_type = m.get('ListType')
+        if m.get('ListValue') is not None:
+            self.list_value = m.get('ListValue')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('WhiteType') is not None:
+            self.white_type = m.get('WhiteType')
+        return self
+
+
+class ModifyUserIPSWhitelistResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyUserIPSWhitelistResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyUserIPSWhitelistResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyUserIPSWhitelistResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
