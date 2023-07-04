@@ -806,6 +806,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AddIPv6TranslatorAclListEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse:
+        """
+        @deprecated
+        
+        @param request: AddIPv6TranslatorAclListEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddIPv6TranslatorAclListEntryResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_entry_comment):
@@ -848,6 +856,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AddIPv6TranslatorAclListEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse:
+        """
+        @deprecated
+        
+        @param request: AddIPv6TranslatorAclListEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddIPv6TranslatorAclListEntryResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_entry_comment):
@@ -889,6 +905,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.AddIPv6TranslatorAclListEntryRequest,
     ) -> vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse:
+        """
+        @deprecated
+        
+        @param request: AddIPv6TranslatorAclListEntryRequest
+        @return: AddIPv6TranslatorAclListEntryResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_ipv_6translator_acl_list_entry_with_options(request, runtime)
 
@@ -896,6 +919,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.AddIPv6TranslatorAclListEntryRequest,
     ) -> vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse:
+        """
+        @deprecated
+        
+        @param request: AddIPv6TranslatorAclListEntryRequest
+        @return: AddIPv6TranslatorAclListEntryResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_ipv_6translator_acl_list_entry_with_options_async(request, runtime)
 
@@ -1203,8 +1233,12 @@ class Client(OpenApiClient):
             query['ISP'] = request.isp
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.ip_address):
+            query['IpAddress'] = request.ip_address
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.netmode):
@@ -1282,8 +1316,12 @@ class Client(OpenApiClient):
             query['ISP'] = request.isp
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.ip_address):
+            query['IpAddress'] = request.ip_address
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.netmode):
@@ -5676,6 +5714,23 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateDefaultVpcRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateDefaultVpcResponse:
+        """
+        ## Usage notes
+        When you call this operation, take note of the following items:
+        *   After you create a default VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to it.
+        *   In each default VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
+        *   After you create a default VPC, a vRouter and a route table are automatically created for the VPC.
+        *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
+        *   **CreateDefaultVpc** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of the task:
+        *   If the default VPC is in the **Pending** state, the VPC is being configured.
+        *   If the default VPC is in the **Available** state, the VPC is available.
+        *   You cannot repeatedly call the **CreateDefaultVpc** operation within a specific time period.
+        *   You can create only one default VPC in each region.
+        
+        @param request: CreateDefaultVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDefaultVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5720,6 +5775,23 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateDefaultVpcRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateDefaultVpcResponse:
+        """
+        ## Usage notes
+        When you call this operation, take note of the following items:
+        *   After you create a default VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to it.
+        *   In each default VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
+        *   After you create a default VPC, a vRouter and a route table are automatically created for the VPC.
+        *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
+        *   **CreateDefaultVpc** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of the task:
+        *   If the default VPC is in the **Pending** state, the VPC is being configured.
+        *   If the default VPC is in the **Available** state, the VPC is available.
+        *   You cannot repeatedly call the **CreateDefaultVpc** operation within a specific time period.
+        *   You can create only one default VPC in each region.
+        
+        @param request: CreateDefaultVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDefaultVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5763,6 +5835,22 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateDefaultVpcRequest,
     ) -> vpc_20160428_models.CreateDefaultVpcResponse:
+        """
+        ## Usage notes
+        When you call this operation, take note of the following items:
+        *   After you create a default VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to it.
+        *   In each default VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
+        *   After you create a default VPC, a vRouter and a route table are automatically created for the VPC.
+        *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
+        *   **CreateDefaultVpc** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of the task:
+        *   If the default VPC is in the **Pending** state, the VPC is being configured.
+        *   If the default VPC is in the **Available** state, the VPC is available.
+        *   You cannot repeatedly call the **CreateDefaultVpc** operation within a specific time period.
+        *   You can create only one default VPC in each region.
+        
+        @param request: CreateDefaultVpcRequest
+        @return: CreateDefaultVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_default_vpc_with_options(request, runtime)
 
@@ -5770,6 +5858,22 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateDefaultVpcRequest,
     ) -> vpc_20160428_models.CreateDefaultVpcResponse:
+        """
+        ## Usage notes
+        When you call this operation, take note of the following items:
+        *   After you create a default VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to it.
+        *   In each default VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
+        *   After you create a default VPC, a vRouter and a route table are automatically created for the VPC.
+        *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
+        *   **CreateDefaultVpc** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of the task:
+        *   If the default VPC is in the **Pending** state, the VPC is being configured.
+        *   If the default VPC is in the **Available** state, the VPC is available.
+        *   You cannot repeatedly call the **CreateDefaultVpc** operation within a specific time period.
+        *   You can create only one default VPC in each region.
+        
+        @param request: CreateDefaultVpcRequest
+        @return: CreateDefaultVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_default_vpc_with_options_async(request, runtime)
 
@@ -6782,6 +6886,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateIPv6TranslatorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIPv6TranslatorResponse:
+        """
+        @deprecated
+        
+        @param request: CreateIPv6TranslatorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIPv6TranslatorResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -6834,6 +6946,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateIPv6TranslatorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIPv6TranslatorResponse:
+        """
+        @deprecated
+        
+        @param request: CreateIPv6TranslatorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIPv6TranslatorResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -6885,6 +7005,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateIPv6TranslatorRequest,
     ) -> vpc_20160428_models.CreateIPv6TranslatorResponse:
+        """
+        @deprecated
+        
+        @param request: CreateIPv6TranslatorRequest
+        @return: CreateIPv6TranslatorResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ipv_6translator_with_options(request, runtime)
 
@@ -6892,6 +7019,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateIPv6TranslatorRequest,
     ) -> vpc_20160428_models.CreateIPv6TranslatorResponse:
+        """
+        @deprecated
+        
+        @param request: CreateIPv6TranslatorRequest
+        @return: CreateIPv6TranslatorResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ipv_6translator_with_options_async(request, runtime)
 
@@ -6900,6 +7034,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateIPv6TranslatorAclListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIPv6TranslatorAclListResponse:
+        """
+        @deprecated
+        
+        @param request: CreateIPv6TranslatorAclListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIPv6TranslatorAclListResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_name):
@@ -6940,6 +7082,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateIPv6TranslatorAclListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIPv6TranslatorAclListResponse:
+        """
+        @deprecated
+        
+        @param request: CreateIPv6TranslatorAclListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIPv6TranslatorAclListResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_name):
@@ -6979,6 +7129,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateIPv6TranslatorAclListRequest,
     ) -> vpc_20160428_models.CreateIPv6TranslatorAclListResponse:
+        """
+        @deprecated
+        
+        @param request: CreateIPv6TranslatorAclListRequest
+        @return: CreateIPv6TranslatorAclListResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ipv_6translator_acl_list_with_options(request, runtime)
 
@@ -6986,6 +7143,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateIPv6TranslatorAclListRequest,
     ) -> vpc_20160428_models.CreateIPv6TranslatorAclListResponse:
+        """
+        @deprecated
+        
+        @param request: CreateIPv6TranslatorAclListRequest
+        @return: CreateIPv6TranslatorAclListResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ipv_6translator_acl_list_with_options_async(request, runtime)
 
@@ -6994,6 +7158,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateIPv6TranslatorEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIPv6TranslatorEntryResponse:
+        """
+        @deprecated
+        
+        @param request: CreateIPv6TranslatorEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIPv6TranslatorEntryResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -7052,6 +7224,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateIPv6TranslatorEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIPv6TranslatorEntryResponse:
+        """
+        @deprecated
+        
+        @param request: CreateIPv6TranslatorEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIPv6TranslatorEntryResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -7109,6 +7289,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateIPv6TranslatorEntryRequest,
     ) -> vpc_20160428_models.CreateIPv6TranslatorEntryResponse:
+        """
+        @deprecated
+        
+        @param request: CreateIPv6TranslatorEntryRequest
+        @return: CreateIPv6TranslatorEntryResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ipv_6translator_entry_with_options(request, runtime)
 
@@ -7116,6 +7303,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateIPv6TranslatorEntryRequest,
     ) -> vpc_20160428_models.CreateIPv6TranslatorEntryResponse:
+        """
+        @deprecated
+        
+        @param request: CreateIPv6TranslatorEntryRequest
+        @return: CreateIPv6TranslatorEntryResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ipv_6translator_entry_with_options_async(request, runtime)
 
@@ -7959,8 +8153,6 @@ class Client(OpenApiClient):
             query['NatIp'] = request.nat_ip
         if not UtilClient.is_unset(request.nat_ip_cidr):
             query['NatIpCidr'] = request.nat_ip_cidr
-        if not UtilClient.is_unset(request.nat_ip_cidr_id):
-            query['NatIpCidrId'] = request.nat_ip_cidr_id
         if not UtilClient.is_unset(request.nat_ip_description):
             query['NatIpDescription'] = request.nat_ip_description
         if not UtilClient.is_unset(request.nat_ip_name):
@@ -8020,8 +8212,6 @@ class Client(OpenApiClient):
             query['NatIp'] = request.nat_ip
         if not UtilClient.is_unset(request.nat_ip_cidr):
             query['NatIpCidr'] = request.nat_ip_cidr
-        if not UtilClient.is_unset(request.nat_ip_cidr_id):
-            query['NatIpCidrId'] = request.nat_ip_cidr_id
         if not UtilClient.is_unset(request.nat_ip_description):
             query['NatIpDescription'] = request.nat_ip_description
         if not UtilClient.is_unset(request.nat_ip_name):
@@ -11974,6 +12164,8 @@ class Client(OpenApiClient):
             query['EnableDpd'] = request.enable_dpd
         if not UtilClient.is_unset(request.enable_nat_traversal):
             query['EnableNatTraversal'] = request.enable_nat_traversal
+        if not UtilClient.is_unset(request.enable_tunnels_bgp):
+            query['EnableTunnelsBgp'] = request.enable_tunnels_bgp
         if not UtilClient.is_unset(request.health_check_config):
             query['HealthCheckConfig'] = request.health_check_config
         if not UtilClient.is_unset(request.ike_config):
@@ -12002,8 +12194,15 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.vpn_gateway_id):
             query['VpnGatewayId'] = request.vpn_gateway_id
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.tunnel_options_specification):
+            body_flat['TunnelOptionsSpecification'] = request.tunnel_options_specification
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateVpnConnection',
@@ -12052,6 +12251,8 @@ class Client(OpenApiClient):
             query['EnableDpd'] = request.enable_dpd
         if not UtilClient.is_unset(request.enable_nat_traversal):
             query['EnableNatTraversal'] = request.enable_nat_traversal
+        if not UtilClient.is_unset(request.enable_tunnels_bgp):
+            query['EnableTunnelsBgp'] = request.enable_tunnels_bgp
         if not UtilClient.is_unset(request.health_check_config):
             query['HealthCheckConfig'] = request.health_check_config
         if not UtilClient.is_unset(request.ike_config):
@@ -12080,8 +12281,15 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.vpn_gateway_id):
             query['VpnGatewayId'] = request.vpn_gateway_id
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.tunnel_options_specification):
+            body_flat['TunnelOptionsSpecification'] = request.tunnel_options_specification
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateVpnConnection',
@@ -12151,6 +12359,8 @@ class Client(OpenApiClient):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disaster_recovery_vswitch_id):
+            query['DisasterRecoveryVSwitchId'] = request.disaster_recovery_vswitch_id
         if not UtilClient.is_unset(request.enable_ipsec):
             query['EnableIpsec'] = request.enable_ipsec
         if not UtilClient.is_unset(request.enable_ssl):
@@ -12220,6 +12430,8 @@ class Client(OpenApiClient):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disaster_recovery_vswitch_id):
+            query['DisasterRecoveryVSwitchId'] = request.disaster_recovery_vswitch_id
         if not UtilClient.is_unset(request.enable_ipsec):
             query['EnableIpsec'] = request.enable_ipsec
         if not UtilClient.is_unset(request.enable_ssl):
@@ -14232,6 +14444,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteIPv6TranslatorAclListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorAclListResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteIPv6TranslatorAclListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIPv6TranslatorAclListResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -14272,6 +14492,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteIPv6TranslatorAclListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorAclListResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteIPv6TranslatorAclListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIPv6TranslatorAclListResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -14311,6 +14539,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DeleteIPv6TranslatorAclListRequest,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorAclListResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteIPv6TranslatorAclListRequest
+        @return: DeleteIPv6TranslatorAclListResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_ipv_6translator_acl_list_with_options(request, runtime)
 
@@ -14318,6 +14553,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DeleteIPv6TranslatorAclListRequest,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorAclListResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteIPv6TranslatorAclListRequest
+        @return: DeleteIPv6TranslatorAclListResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ipv_6translator_acl_list_with_options_async(request, runtime)
 
@@ -14326,6 +14568,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteIPv6TranslatorEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorEntryResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteIPv6TranslatorEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIPv6TranslatorEntryResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -14368,6 +14618,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteIPv6TranslatorEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorEntryResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteIPv6TranslatorEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIPv6TranslatorEntryResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -14409,6 +14667,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DeleteIPv6TranslatorEntryRequest,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorEntryResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteIPv6TranslatorEntryRequest
+        @return: DeleteIPv6TranslatorEntryResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_ipv_6translator_entry_with_options(request, runtime)
 
@@ -14416,6 +14681,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DeleteIPv6TranslatorEntryRequest,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorEntryResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteIPv6TranslatorEntryRequest
+        @return: DeleteIPv6TranslatorEntryResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ipv_6translator_entry_with_options_async(request, runtime)
 
@@ -15321,9 +15593,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         """
-        Specifies whether only to precheck this request. Valid values:
-        *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
+        You cannot repeatedly call the *DeleteNatIpCidr** operation to delete a NAT CIDR block within the specified period of time.
         
         @param request: DeleteNatIpCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15376,9 +15646,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         """
-        Specifies whether only to precheck this request. Valid values:
-        *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
+        You cannot repeatedly call the *DeleteNatIpCidr** operation to delete a NAT CIDR block within the specified period of time.
         
         @param request: DeleteNatIpCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15430,9 +15698,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteNatIpCidrRequest,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         """
-        Specifies whether only to precheck this request. Valid values:
-        *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
+        You cannot repeatedly call the *DeleteNatIpCidr** operation to delete a NAT CIDR block within the specified period of time.
         
         @param request: DeleteNatIpCidrRequest
         @return: DeleteNatIpCidrResponse
@@ -15445,9 +15711,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteNatIpCidrRequest,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         """
-        Specifies whether only to precheck this request. Valid values:
-        *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
+        You cannot repeatedly call the *DeleteNatIpCidr** operation to delete a NAT CIDR block within the specified period of time.
         
         @param request: DeleteNatIpCidrRequest
         @return: DeleteNatIpCidrResponse
@@ -16521,7 +16785,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSnatEntryResponse:
         """
-        The operation that you want to perform. Set the value to *DeleteSnatEntry**.
+        DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of SNAT entries.
+        *   If the SNAT entries are in the **Deleting** state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
+        *   If no SNAT entry is returned in the response, the SNAT entry is deleted.
+        If some SNAT entries are in the **Pending** state, you cannot delete these SNAT entries.
         
         @param request: DeleteSnatEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16570,7 +16837,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSnatEntryResponse:
         """
-        The operation that you want to perform. Set the value to *DeleteSnatEntry**.
+        DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of SNAT entries.
+        *   If the SNAT entries are in the **Deleting** state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
+        *   If no SNAT entry is returned in the response, the SNAT entry is deleted.
+        If some SNAT entries are in the **Pending** state, you cannot delete these SNAT entries.
         
         @param request: DeleteSnatEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16618,7 +16888,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteSnatEntryRequest,
     ) -> vpc_20160428_models.DeleteSnatEntryResponse:
         """
-        The operation that you want to perform. Set the value to *DeleteSnatEntry**.
+        DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of SNAT entries.
+        *   If the SNAT entries are in the **Deleting** state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
+        *   If no SNAT entry is returned in the response, the SNAT entry is deleted.
+        If some SNAT entries are in the **Pending** state, you cannot delete these SNAT entries.
         
         @param request: DeleteSnatEntryRequest
         @return: DeleteSnatEntryResponse
@@ -16631,7 +16904,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteSnatEntryRequest,
     ) -> vpc_20160428_models.DeleteSnatEntryResponse:
         """
-        The operation that you want to perform. Set the value to *DeleteSnatEntry**.
+        DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of SNAT entries.
+        *   If the SNAT entries are in the **Deleting** state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
+        *   If no SNAT entry is returned in the response, the SNAT entry is deleted.
+        If some SNAT entries are in the **Pending** state, you cannot delete these SNAT entries.
         
         @param request: DeleteSnatEntryRequest
         @return: DeleteSnatEntryResponse
@@ -19424,6 +19700,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_protection_enabled):
             query['SecurityProtectionEnabled'] = request.security_protection_enabled
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -19476,6 +19754,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_protection_enabled):
             query['SecurityProtectionEnabled'] = request.security_protection_enabled
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21132,6 +21412,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeIPv6TranslatorAclListsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeIPv6TranslatorAclListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIPv6TranslatorAclListsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -21176,6 +21464,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeIPv6TranslatorAclListsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeIPv6TranslatorAclListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIPv6TranslatorAclListsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -21219,6 +21515,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DescribeIPv6TranslatorAclListsRequest,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeIPv6TranslatorAclListsRequest
+        @return: DescribeIPv6TranslatorAclListsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ipv_6translator_acl_lists_with_options(request, runtime)
 
@@ -21226,6 +21529,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DescribeIPv6TranslatorAclListsRequest,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeIPv6TranslatorAclListsRequest
+        @return: DescribeIPv6TranslatorAclListsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ipv_6translator_acl_lists_with_options_async(request, runtime)
 
@@ -21234,6 +21544,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeIPv6TranslatorEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeIPv6TranslatorEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIPv6TranslatorEntriesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -21298,6 +21616,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeIPv6TranslatorEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeIPv6TranslatorEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIPv6TranslatorEntriesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -21361,6 +21687,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DescribeIPv6TranslatorEntriesRequest,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeIPv6TranslatorEntriesRequest
+        @return: DescribeIPv6TranslatorEntriesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ipv_6translator_entries_with_options(request, runtime)
 
@@ -21368,6 +21701,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DescribeIPv6TranslatorEntriesRequest,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeIPv6TranslatorEntriesRequest
+        @return: DescribeIPv6TranslatorEntriesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ipv_6translator_entries_with_options_async(request, runtime)
 
@@ -21376,6 +21716,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeIPv6TranslatorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeIPv6TranslatorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIPv6TranslatorsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocate_ipv_4addr):
@@ -21432,6 +21780,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeIPv6TranslatorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeIPv6TranslatorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIPv6TranslatorsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocate_ipv_4addr):
@@ -21487,6 +21843,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DescribeIPv6TranslatorsRequest,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeIPv6TranslatorsRequest
+        @return: DescribeIPv6TranslatorsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ipv_6translators_with_options(request, runtime)
 
@@ -21494,6 +21857,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.DescribeIPv6TranslatorsRequest,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeIPv6TranslatorsRequest
+        @return: DescribeIPv6TranslatorsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ipv_6translators_with_options_async(request, runtime)
 
@@ -21971,7 +22341,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNatGatewaysResponse:
         """
-        The operation that you want to perform. Set the value to *DescribeNatGateways**.
+        You can call this operation to query both Virtual Private Cloud (VPC) NAT gateways and Internet NAT gateways. NAT gateways in this topic refer to both VPC NAT gateways and Internet NAT gateways.
         
         @param request: DescribeNatGatewaysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22042,7 +22412,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNatGatewaysResponse:
         """
-        The operation that you want to perform. Set the value to *DescribeNatGateways**.
+        You can call this operation to query both Virtual Private Cloud (VPC) NAT gateways and Internet NAT gateways. NAT gateways in this topic refer to both VPC NAT gateways and Internet NAT gateways.
         
         @param request: DescribeNatGatewaysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22112,7 +22482,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeNatGatewaysRequest,
     ) -> vpc_20160428_models.DescribeNatGatewaysResponse:
         """
-        The operation that you want to perform. Set the value to *DescribeNatGateways**.
+        You can call this operation to query both Virtual Private Cloud (VPC) NAT gateways and Internet NAT gateways. NAT gateways in this topic refer to both VPC NAT gateways and Internet NAT gateways.
         
         @param request: DescribeNatGatewaysRequest
         @return: DescribeNatGatewaysResponse
@@ -22125,7 +22495,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeNatGatewaysRequest,
     ) -> vpc_20160428_models.DescribeNatGatewaysResponse:
         """
-        The operation that you want to perform. Set the value to *DescribeNatGateways**.
+        You can call this operation to query both Virtual Private Cloud (VPC) NAT gateways and Internet NAT gateways. NAT gateways in this topic refer to both VPC NAT gateways and Internet NAT gateways.
         
         @param request: DescribeNatGatewaysRequest
         @return: DescribeNatGatewaysResponse
@@ -23823,6 +24193,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ssl_vpn_client_certs_with_options_async(request, runtime)
 
+    def describe_ssl_vpn_clients_with_options(
+        self,
+        request: vpc_20160428_models.DescribeSslVpnClientsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeSslVpnClientsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSslVpnClients',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeSslVpnClientsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ssl_vpn_clients_with_options_async(
+        self,
+        request: vpc_20160428_models.DescribeSslVpnClientsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeSslVpnClientsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSslVpnClients',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeSslVpnClientsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ssl_vpn_clients(
+        self,
+        request: vpc_20160428_models.DescribeSslVpnClientsRequest,
+    ) -> vpc_20160428_models.DescribeSslVpnClientsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ssl_vpn_clients_with_options(request, runtime)
+
+    async def describe_ssl_vpn_clients_async(
+        self,
+        request: vpc_20160428_models.DescribeSslVpnClientsRequest,
+    ) -> vpc_20160428_models.DescribeSslVpnClientsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ssl_vpn_clients_with_options_async(request, runtime)
+
     def describe_ssl_vpn_servers_with_options(
         self,
         request: vpc_20160428_models.DescribeSslVpnServersRequest,
@@ -25446,6 +25914,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.to):
             query['To'] = request.to
+        if not UtilClient.is_unset(request.tunnel_id):
+            query['TunnelId'] = request.tunnel_id
         if not UtilClient.is_unset(request.vpn_connection_id):
             query['VpnConnectionId'] = request.vpn_connection_id
         req = open_api_models.OpenApiRequest(
@@ -25494,6 +25964,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.to):
             query['To'] = request.to
+        if not UtilClient.is_unset(request.tunnel_id):
+            query['TunnelId'] = request.tunnel_id
         if not UtilClient.is_unset(request.vpn_connection_id):
             query['VpnConnectionId'] = request.vpn_connection_id
         req = open_api_models.OpenApiRequest(
@@ -28250,8 +28722,20 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.GetTrafficMirrorServiceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -28278,8 +28762,20 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.GetTrafficMirrorServiceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29267,9 +29763,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse:
         """
-        The ID of the region that you want to query.
-        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-        In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
+        You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
         
         @param request: ListEnhanhcedNatGatewayAvailableZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29316,9 +29810,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse:
         """
-        The ID of the region that you want to query.
-        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-        In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
+        You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
         
         @param request: ListEnhanhcedNatGatewayAvailableZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29364,9 +29856,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesRequest,
     ) -> vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse:
         """
-        The ID of the region that you want to query.
-        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-        In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
+        You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
         
         @param request: ListEnhanhcedNatGatewayAvailableZonesRequest
         @return: ListEnhanhcedNatGatewayAvailableZonesResponse
@@ -29379,9 +29869,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesRequest,
     ) -> vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse:
         """
-        The ID of the region that you want to query.
-        You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-        In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
+        You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
         
         @param request: ListEnhanhcedNatGatewayAvailableZonesRequest
         @return: ListEnhanhcedNatGatewayAvailableZonesResponse
@@ -33416,6 +33904,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyIPv6TranslatorAclAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse:
+        """
+        @deprecated
+        
+        @param request: ModifyIPv6TranslatorAclAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIPv6TranslatorAclAttributeResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -33458,6 +33954,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyIPv6TranslatorAclAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse:
+        """
+        @deprecated
+        
+        @param request: ModifyIPv6TranslatorAclAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIPv6TranslatorAclAttributeResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -33499,6 +34003,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.ModifyIPv6TranslatorAclAttributeRequest,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse:
+        """
+        @deprecated
+        
+        @param request: ModifyIPv6TranslatorAclAttributeRequest
+        @return: ModifyIPv6TranslatorAclAttributeResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_ipv_6translator_acl_attribute_with_options(request, runtime)
 
@@ -33506,6 +34017,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.ModifyIPv6TranslatorAclAttributeRequest,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse:
+        """
+        @deprecated
+        
+        @param request: ModifyIPv6TranslatorAclAttributeRequest
+        @return: ModifyIPv6TranslatorAclAttributeResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_ipv_6translator_acl_attribute_with_options_async(request, runtime)
 
@@ -33816,6 +34334,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyIPv6TranslatorEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorEntryResponse:
+        """
+        @deprecated
+        
+        @param request: ModifyIPv6TranslatorEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIPv6TranslatorEntryResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -33874,6 +34400,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyIPv6TranslatorEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorEntryResponse:
+        """
+        @deprecated
+        
+        @param request: ModifyIPv6TranslatorEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIPv6TranslatorEntryResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -33931,6 +34465,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.ModifyIPv6TranslatorEntryRequest,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorEntryResponse:
+        """
+        @deprecated
+        
+        @param request: ModifyIPv6TranslatorEntryRequest
+        @return: ModifyIPv6TranslatorEntryResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_ipv_6translator_entry_with_options(request, runtime)
 
@@ -33938,6 +34479,13 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.ModifyIPv6TranslatorEntryRequest,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorEntryResponse:
+        """
+        @deprecated
+        
+        @param request: ModifyIPv6TranslatorEntryRequest
+        @return: ModifyIPv6TranslatorEntryResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_ipv_6translator_entry_with_options_async(request, runtime)
 
@@ -37290,6 +37838,8 @@ class Client(OpenApiClient):
             query['EnableDpd'] = request.enable_dpd
         if not UtilClient.is_unset(request.enable_nat_traversal):
             query['EnableNatTraversal'] = request.enable_nat_traversal
+        if not UtilClient.is_unset(request.enable_tunnels_bgp):
+            query['EnableTunnelsBgp'] = request.enable_tunnels_bgp
         if not UtilClient.is_unset(request.health_check_config):
             query['HealthCheckConfig'] = request.health_check_config
         if not UtilClient.is_unset(request.ike_config):
@@ -37316,8 +37866,15 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.vpn_connection_id):
             query['VpnConnectionId'] = request.vpn_connection_id
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.tunnel_options_specification):
+            body_flat['TunnelOptionsSpecification'] = request.tunnel_options_specification
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyVpnConnectionAttribute',
@@ -37364,6 +37921,8 @@ class Client(OpenApiClient):
             query['EnableDpd'] = request.enable_dpd
         if not UtilClient.is_unset(request.enable_nat_traversal):
             query['EnableNatTraversal'] = request.enable_nat_traversal
+        if not UtilClient.is_unset(request.enable_tunnels_bgp):
+            query['EnableTunnelsBgp'] = request.enable_tunnels_bgp
         if not UtilClient.is_unset(request.health_check_config):
             query['HealthCheckConfig'] = request.health_check_config
         if not UtilClient.is_unset(request.ike_config):
@@ -37390,8 +37949,15 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.vpn_connection_id):
             query['VpnConnectionId'] = request.vpn_connection_id
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.tunnel_options_specification):
+            body_flat['TunnelOptionsSpecification'] = request.tunnel_options_specification
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyVpnConnectionAttribute',
@@ -38551,8 +39117,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -38586,8 +39164,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

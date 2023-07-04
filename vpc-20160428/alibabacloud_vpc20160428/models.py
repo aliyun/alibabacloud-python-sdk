@@ -1366,7 +1366,9 @@ class AllocateEipAddressRequest(TeaModel):
         description: str = None,
         isp: str = None,
         instance_charge_type: str = None,
+        instance_id: str = None,
         internet_charge_type: str = None,
+        ip_address: str = None,
         name: str = None,
         netmode: str = None,
         owner_account: str = None,
@@ -1421,12 +1423,14 @@ class AllocateEipAddressRequest(TeaModel):
         # 
         # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request is different.
         self.instance_charge_type = instance_charge_type
+        self.instance_id = instance_id
         # The name of the EIP.
         # 
         # The name must be 1 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
         # 
         # >  This parameter is unavailable when you create a subscription EIP.
         self.internet_charge_type = internet_charge_type
+        self.ip_address = ip_address
         # The ID of the IP address pool.
         # 
         # The EIP is allocated from the IP address pool.
@@ -1500,8 +1504,12 @@ class AllocateEipAddressRequest(TeaModel):
             result['ISP'] = self.isp
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.internet_charge_type is not None:
             result['InternetChargeType'] = self.internet_charge_type
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
         if self.name is not None:
             result['Name'] = self.name
         if self.netmode is not None:
@@ -1546,8 +1554,12 @@ class AllocateEipAddressRequest(TeaModel):
             self.isp = m.get('ISP')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('InternetChargeType') is not None:
             self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Netmode') is not None:
@@ -7545,12 +7557,28 @@ class CreateDefaultVpcRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to enable IPv6. Valid values:
+        # 
+        # *   **false** (default)
+        # *   **true**\
         self.enable_ipv_6 = enable_ipv_6
+        # The IPv6 CIDR block of the default VPC.
+        # 
+        # > When **EnableIpv6** is set to **true**, this parameter is required.
         self.ipv_6cidr_block = ipv_6cidr_block
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region to which the default VPC belongs.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7615,9 +7643,13 @@ class CreateDefaultVpcResponseBody(TeaModel):
         vrouter_id: str = None,
         vpc_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The route table ID that is automatically created by the system after you create a default VPC.
         self.route_table_id = route_table_id
+        # The vRouter ID that is automatically created by the system after you create a default VPC.
         self.vrouter_id = vrouter_id
+        # The ID of the default VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -11012,7 +11044,6 @@ class CreateNatIpRequest(TeaModel):
         nat_gateway_id: str = None,
         nat_ip: str = None,
         nat_ip_cidr: str = None,
-        nat_ip_cidr_id: str = None,
         nat_ip_description: str = None,
         nat_ip_name: str = None,
         owner_account: str = None,
@@ -11035,8 +11066,6 @@ class CreateNatIpRequest(TeaModel):
         # 
         # If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
         self.nat_ip_cidr = nat_ip_cidr
-        # The operation that you want to perform. Set the value to **CreateNatIp**.
-        self.nat_ip_cidr_id = nat_ip_cidr_id
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
@@ -11076,8 +11105,6 @@ class CreateNatIpRequest(TeaModel):
             result['NatIp'] = self.nat_ip
         if self.nat_ip_cidr is not None:
             result['NatIpCidr'] = self.nat_ip_cidr
-        if self.nat_ip_cidr_id is not None:
-            result['NatIpCidrId'] = self.nat_ip_cidr_id
         if self.nat_ip_description is not None:
             result['NatIpDescription'] = self.nat_ip_description
         if self.nat_ip_name is not None:
@@ -11106,8 +11133,6 @@ class CreateNatIpRequest(TeaModel):
             self.nat_ip = m.get('NatIp')
         if m.get('NatIpCidr') is not None:
             self.nat_ip_cidr = m.get('NatIpCidr')
-        if m.get('NatIpCidrId') is not None:
-            self.nat_ip_cidr_id = m.get('NatIpCidrId')
         if m.get('NatIpDescription') is not None:
             self.nat_ip_description = m.get('NatIpDescription')
         if m.get('NatIpName') is not None:
@@ -18109,6 +18134,242 @@ class CreateVpnConnectionRequestTags(TeaModel):
         return self
 
 
+class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig(TeaModel):
+    def __init__(
+        self,
+        local_asn: int = None,
+        local_bgp_ip: str = None,
+        tunnel_cidr: str = None,
+    ):
+        self.local_asn = local_asn
+        self.local_bgp_ip = local_bgp_ip
+        self.tunnel_cidr = tunnel_cidr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.local_asn is not None:
+            result['LocalAsn'] = self.local_asn
+        if self.local_bgp_ip is not None:
+            result['LocalBgpIp'] = self.local_bgp_ip
+        if self.tunnel_cidr is not None:
+            result['TunnelCidr'] = self.tunnel_cidr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalAsn') is not None:
+            self.local_asn = m.get('LocalAsn')
+        if m.get('LocalBgpIp') is not None:
+            self.local_bgp_ip = m.get('LocalBgpIp')
+        if m.get('TunnelCidr') is not None:
+            self.tunnel_cidr = m.get('TunnelCidr')
+        return self
+
+
+class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaModel):
+    def __init__(
+        self,
+        ike_auth_alg: str = None,
+        ike_enc_alg: str = None,
+        ike_lifetime: int = None,
+        ike_mode: str = None,
+        ike_pfs: str = None,
+        ike_version: str = None,
+        local_id: str = None,
+        psk: str = None,
+        remote_id: str = None,
+    ):
+        self.ike_auth_alg = ike_auth_alg
+        self.ike_enc_alg = ike_enc_alg
+        self.ike_lifetime = ike_lifetime
+        self.ike_mode = ike_mode
+        self.ike_pfs = ike_pfs
+        self.ike_version = ike_version
+        self.local_id = local_id
+        self.psk = psk
+        self.remote_id = remote_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ike_auth_alg is not None:
+            result['IkeAuthAlg'] = self.ike_auth_alg
+        if self.ike_enc_alg is not None:
+            result['IkeEncAlg'] = self.ike_enc_alg
+        if self.ike_lifetime is not None:
+            result['IkeLifetime'] = self.ike_lifetime
+        if self.ike_mode is not None:
+            result['IkeMode'] = self.ike_mode
+        if self.ike_pfs is not None:
+            result['IkePfs'] = self.ike_pfs
+        if self.ike_version is not None:
+            result['IkeVersion'] = self.ike_version
+        if self.local_id is not None:
+            result['LocalId'] = self.local_id
+        if self.psk is not None:
+            result['Psk'] = self.psk
+        if self.remote_id is not None:
+            result['RemoteId'] = self.remote_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IkeAuthAlg') is not None:
+            self.ike_auth_alg = m.get('IkeAuthAlg')
+        if m.get('IkeEncAlg') is not None:
+            self.ike_enc_alg = m.get('IkeEncAlg')
+        if m.get('IkeLifetime') is not None:
+            self.ike_lifetime = m.get('IkeLifetime')
+        if m.get('IkeMode') is not None:
+            self.ike_mode = m.get('IkeMode')
+        if m.get('IkePfs') is not None:
+            self.ike_pfs = m.get('IkePfs')
+        if m.get('IkeVersion') is not None:
+            self.ike_version = m.get('IkeVersion')
+        if m.get('LocalId') is not None:
+            self.local_id = m.get('LocalId')
+        if m.get('Psk') is not None:
+            self.psk = m.get('Psk')
+        if m.get('RemoteId') is not None:
+            self.remote_id = m.get('RemoteId')
+        return self
+
+
+class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig(TeaModel):
+    def __init__(
+        self,
+        ipsec_auth_alg: str = None,
+        ipsec_enc_alg: str = None,
+        ipsec_lifetime: int = None,
+        ipsec_pfs: str = None,
+    ):
+        self.ipsec_auth_alg = ipsec_auth_alg
+        self.ipsec_enc_alg = ipsec_enc_alg
+        self.ipsec_lifetime = ipsec_lifetime
+        self.ipsec_pfs = ipsec_pfs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipsec_auth_alg is not None:
+            result['IpsecAuthAlg'] = self.ipsec_auth_alg
+        if self.ipsec_enc_alg is not None:
+            result['IpsecEncAlg'] = self.ipsec_enc_alg
+        if self.ipsec_lifetime is not None:
+            result['IpsecLifetime'] = self.ipsec_lifetime
+        if self.ipsec_pfs is not None:
+            result['IpsecPfs'] = self.ipsec_pfs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpsecAuthAlg') is not None:
+            self.ipsec_auth_alg = m.get('IpsecAuthAlg')
+        if m.get('IpsecEncAlg') is not None:
+            self.ipsec_enc_alg = m.get('IpsecEncAlg')
+        if m.get('IpsecLifetime') is not None:
+            self.ipsec_lifetime = m.get('IpsecLifetime')
+        if m.get('IpsecPfs') is not None:
+            self.ipsec_pfs = m.get('IpsecPfs')
+        return self
+
+
+class CreateVpnConnectionRequestTunnelOptionsSpecification(TeaModel):
+    def __init__(
+        self,
+        customer_gateway_id: str = None,
+        enable_dpd: bool = None,
+        enable_nat_traversal: bool = None,
+        remote_ca_certificate: str = None,
+        role: str = None,
+        tunnel_bgp_config: CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig = None,
+        tunnel_ike_config: CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig = None,
+        tunnel_ipsec_config: CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
+    ):
+        self.customer_gateway_id = customer_gateway_id
+        self.enable_dpd = enable_dpd
+        self.enable_nat_traversal = enable_nat_traversal
+        self.remote_ca_certificate = remote_ca_certificate
+        self.role = role
+        self.tunnel_bgp_config = tunnel_bgp_config
+        self.tunnel_ike_config = tunnel_ike_config
+        self.tunnel_ipsec_config = tunnel_ipsec_config
+
+    def validate(self):
+        if self.tunnel_bgp_config:
+            self.tunnel_bgp_config.validate()
+        if self.tunnel_ike_config:
+            self.tunnel_ike_config.validate()
+        if self.tunnel_ipsec_config:
+            self.tunnel_ipsec_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customer_gateway_id is not None:
+            result['CustomerGatewayId'] = self.customer_gateway_id
+        if self.enable_dpd is not None:
+            result['EnableDpd'] = self.enable_dpd
+        if self.enable_nat_traversal is not None:
+            result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.remote_ca_certificate is not None:
+            result['RemoteCaCertificate'] = self.remote_ca_certificate
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.tunnel_bgp_config is not None:
+            result['TunnelBgpConfig'] = self.tunnel_bgp_config.to_map()
+        if self.tunnel_ike_config is not None:
+            result['TunnelIkeConfig'] = self.tunnel_ike_config.to_map()
+        if self.tunnel_ipsec_config is not None:
+            result['TunnelIpsecConfig'] = self.tunnel_ipsec_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomerGatewayId') is not None:
+            self.customer_gateway_id = m.get('CustomerGatewayId')
+        if m.get('EnableDpd') is not None:
+            self.enable_dpd = m.get('EnableDpd')
+        if m.get('EnableNatTraversal') is not None:
+            self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('RemoteCaCertificate') is not None:
+            self.remote_ca_certificate = m.get('RemoteCaCertificate')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('TunnelBgpConfig') is not None:
+            temp_model = CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig()
+            self.tunnel_bgp_config = temp_model.from_map(m['TunnelBgpConfig'])
+        if m.get('TunnelIkeConfig') is not None:
+            temp_model = CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig()
+            self.tunnel_ike_config = temp_model.from_map(m['TunnelIkeConfig'])
+        if m.get('TunnelIpsecConfig') is not None:
+            temp_model = CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig()
+            self.tunnel_ipsec_config = temp_model.from_map(m['TunnelIpsecConfig'])
+        return self
+
+
 class CreateVpnConnectionRequest(TeaModel):
     def __init__(
         self,
@@ -18119,6 +18380,7 @@ class CreateVpnConnectionRequest(TeaModel):
         effect_immediately: bool = None,
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
+        enable_tunnels_bgp: bool = None,
         health_check_config: str = None,
         ike_config: str = None,
         ipsec_config: str = None,
@@ -18132,6 +18394,7 @@ class CreateVpnConnectionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tags: List[CreateVpnConnectionRequestTags] = None,
+        tunnel_options_specification: List[CreateVpnConnectionRequestTunnelOptionsSpecification] = None,
         vpn_gateway_id: str = None,
     ):
         # Specifies whether to automatically configure routes. Valid values:
@@ -18174,6 +18437,7 @@ class CreateVpnConnectionRequest(TeaModel):
         # *   **true** (default): yes After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the VPN tunnel.
         # *   **false**: no
         self.enable_nat_traversal = enable_nat_traversal
+        self.enable_tunnels_bgp = enable_tunnels_bgp
         # The health check configuration:
         # 
         # *   **HealthCheckConfig.enable**: specifies whether to enable health checks. Valid values: **true** and **false**. Default value: false.
@@ -18247,12 +18511,17 @@ class CreateVpnConnectionRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.tags = tags
+        self.tunnel_options_specification = tunnel_options_specification
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
         if self.tags:
             for k in self.tags:
+                if k:
+                    k.validate()
+        if self.tunnel_options_specification:
+            for k in self.tunnel_options_specification:
                 if k:
                     k.validate()
 
@@ -18276,6 +18545,8 @@ class CreateVpnConnectionRequest(TeaModel):
             result['EnableDpd'] = self.enable_dpd
         if self.enable_nat_traversal is not None:
             result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.enable_tunnels_bgp is not None:
+            result['EnableTunnelsBgp'] = self.enable_tunnels_bgp
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config
         if self.ike_config is not None:
@@ -18304,6 +18575,10 @@ class CreateVpnConnectionRequest(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        result['TunnelOptionsSpecification'] = []
+        if self.tunnel_options_specification is not None:
+            for k in self.tunnel_options_specification:
+                result['TunnelOptionsSpecification'].append(k.to_map() if k else None)
         if self.vpn_gateway_id is not None:
             result['VpnGatewayId'] = self.vpn_gateway_id
         return result
@@ -18324,6 +18599,8 @@ class CreateVpnConnectionRequest(TeaModel):
             self.enable_dpd = m.get('EnableDpd')
         if m.get('EnableNatTraversal') is not None:
             self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('EnableTunnelsBgp') is not None:
+            self.enable_tunnels_bgp = m.get('EnableTunnelsBgp')
         if m.get('HealthCheckConfig') is not None:
             self.health_check_config = m.get('HealthCheckConfig')
         if m.get('IkeConfig') is not None:
@@ -18353,6 +18630,11 @@ class CreateVpnConnectionRequest(TeaModel):
             for k in m.get('Tags'):
                 temp_model = CreateVpnConnectionRequestTags()
                 self.tags.append(temp_model.from_map(k))
+        self.tunnel_options_specification = []
+        if m.get('TunnelOptionsSpecification') is not None:
+            for k in m.get('TunnelOptionsSpecification'):
+                temp_model = CreateVpnConnectionRequestTunnelOptionsSpecification()
+                self.tunnel_options_specification.append(temp_model.from_map(k))
         if m.get('VpnGatewayId') is not None:
             self.vpn_gateway_id = m.get('VpnGatewayId')
         return self
@@ -18459,6 +18741,7 @@ class CreateVpnGatewayRequest(TeaModel):
         auto_pay: bool = None,
         bandwidth: int = None,
         client_token: str = None,
+        disaster_recovery_vswitch_id: str = None,
         enable_ipsec: bool = None,
         enable_ssl: bool = None,
         instance_charge_type: str = None,
@@ -18487,6 +18770,7 @@ class CreateVpnGatewayRequest(TeaModel):
         self.bandwidth = bandwidth
         # The ID of the VPN gateway.
         self.client_token = client_token
+        self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
         # The maximum number of clients that can be connected at the same time. Valid values: **5** (default), **10**, **20**, **50**, **100**, **200**, **500**, and **1000**.
         self.enable_ipsec = enable_ipsec
         # The ID of the vSwitch to which the VPN gateway belongs.
@@ -18546,6 +18830,8 @@ class CreateVpnGatewayRequest(TeaModel):
             result['Bandwidth'] = self.bandwidth
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.disaster_recovery_vswitch_id is not None:
+            result['DisasterRecoveryVSwitchId'] = self.disaster_recovery_vswitch_id
         if self.enable_ipsec is not None:
             result['EnableIpsec'] = self.enable_ipsec
         if self.enable_ssl is not None:
@@ -18586,6 +18872,8 @@ class CreateVpnGatewayRequest(TeaModel):
             self.bandwidth = m.get('Bandwidth')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DisasterRecoveryVSwitchId') is not None:
+            self.disaster_recovery_vswitch_id = m.get('DisasterRecoveryVSwitchId')
         if m.get('EnableIpsec') is not None:
             self.enable_ipsec = m.get('EnableIpsec')
         if m.get('EnableSsl') is not None:
@@ -22565,20 +22853,29 @@ class DeleteNatIpCidrRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the request.
-        self.client_token = client_token
-        # The operation that you want to perform. Set the value to **DeleteNatIpCidr**.
-        self.dry_run = dry_run
-        self.nat_gateway_id = nat_gateway_id
-        # The ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
-        self.nat_ip_cidr = nat_ip_cidr
-        self.owner_account = owner_account
-        self.owner_id = owner_id
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
         # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        self.client_token = client_token
+        # Specifies whether only to precheck this request. Valid values:
+        # 
+        # *   **true**: sends the precheck request but does delete the NAT CIDR block. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # *   **false**: sends the API request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the NAT CIDR block is deleted.
+        self.dry_run = dry_run
+        # The ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
+        self.nat_gateway_id = nat_gateway_id
+        # The NAT CIDR block to be deleted.
+        # 
+        # *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
+        # *   The default NAT CIDR block cannot be deleted.
+        self.nat_ip_cidr = nat_ip_cidr
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22640,6 +22937,7 @@ class DeleteNatIpCidrResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24062,21 +24360,23 @@ class DeleteSnatEntryRequest(TeaModel):
         snat_entry_id: str = None,
         snat_table_id: str = None,
     ):
-        # The ID of the request.
-        self.client_token = client_token
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # The ID of the SNAT table to which the SNAT entry belongs.
-        self.region_id = region_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
         # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-        self.snat_entry_id = snat_entry_id
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID of the NAT gateway.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # The ID of the SNAT entry that you want to delete.
+        self.snat_entry_id = snat_entry_id
+        # The ID of the SNAT table to which the SNAT entry belongs.
         self.snat_table_id = snat_table_id
 
     def validate(self):
@@ -24132,6 +24432,7 @@ class DeleteSnatEntryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -28337,6 +28638,39 @@ class DescribeBgpPeersResponse(TeaModel):
         return self
 
 
+class DescribeCommonBandwidthPackagesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeCommonBandwidthPackagesRequest(TeaModel):
     def __init__(
         self,
@@ -28353,6 +28687,7 @@ class DescribeCommonBandwidthPackagesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_protection_enabled: bool = None,
+        tag: List[DescribeCommonBandwidthPackagesRequestTag] = None,
     ):
         # The number of the page to return. Default value: **1**.
         self.bandwidth_package_id = bandwidth_package_id
@@ -28382,9 +28717,13 @@ class DescribeCommonBandwidthPackagesRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The number of the returned page.
         self.security_protection_enabled = security_protection_enabled
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -28418,6 +28757,10 @@ class DescribeCommonBandwidthPackagesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_protection_enabled is not None:
             result['SecurityProtectionEnabled'] = self.security_protection_enabled
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -28448,6 +28791,11 @@ class DescribeCommonBandwidthPackagesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityProtectionEnabled') is not None:
             self.security_protection_enabled = m.get('SecurityProtectionEnabled')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeCommonBandwidthPackagesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -37302,9 +37650,13 @@ class DescribeNatGatewaysRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The ID of the request.
+        # The tag keys of the NAT gateway. You can specify up to 20 tag keys.
+        # 
+        # Each tag key cannot exceed 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The page number of the returned page.
+        # The tag values of the NAT gateway. You can specify up to 20 tag values.
+        # 
+        # The tag value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -37354,30 +37706,44 @@ class DescribeNatGatewaysRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The type of the NAT gateway. Valid values:
-        # 
-        # *   **internet**: an Internet NAT gateway
-        # *   **intranet**: a VPC NAT gateway
-        self.dry_run = dry_run
-        # The size of the NAT gateway. Ignore this parameter.
-        self.instance_charge_type = instance_charge_type
-        # The billing method of the NAT gateway. Set the value to **PostPaid**, which specifies the pay-as-you-go billing method.
-        self.name = name
-        # The ID of the VPC to which the NAT gateway belongs.
-        self.nat_gateway_id = nat_gateway_id
-        # The number of the page to return. Default value: **1**.
-        self.nat_type = nat_type
-        # The tag values of the NAT gateway. You can specify up to 20 tag values.
-        # 
-        # The tag value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
-        self.network_type = network_type
-        self.owner_account = owner_account
-        self.owner_id = owner_id
         # Specifies whether to perform a dry run. Valid values:
         # 
         # - **true**: performs a dry run. The system prechecks whether your AccessKey pair is valid, whether the RAM user is authorized, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        self.dry_run = dry_run
+        # The billing method of the NAT gateway. Set the value to **PostPaid**, which specifies the pay-as-you-go billing method.
+        self.instance_charge_type = instance_charge_type
+        # The name of the NAT gateway. 
+        # 
+        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`. 
+        # 
+        # If this parameter is not set, the system automatically assigns a name to the NAT gateway.
+        self.name = name
+        # The ID of the NAT gateway.
+        self.nat_gateway_id = nat_gateway_id
+        # The type of NAT gateway. Set the value to **Enhanced** (enhanced NAT gateway).
+        self.nat_type = nat_type
+        # The type of the NAT gateway. Valid values:
+        # 
+        # *   **internet**: an Internet NAT gateway
+        # *   **intranet**: a VPC NAT gateway
+        self.network_type = network_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        self.page_size = page_size
+        # The region ID of the NAT gateways that you want to query.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The ID of the resource group to which the NAT gateway belongs.
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The size of the NAT gateway. Ignore this parameter.
+        self.spec = spec
         # The status of the NAT gateway. Valid values:
         # 
         # *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the **Creating** state until the operation is completed.
@@ -37385,28 +37751,12 @@ class DescribeNatGatewaysRequest(TeaModel):
         # *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the **Modifying** state until the operation is completed.
         # *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the **Deleting** state until the operation is completed.
         # *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the **Converting** state until the operation is completed.
-        self.page_size = page_size
-        # The ID of the NAT gateway.
-        self.region_id = region_id
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
-        self.resource_group_id = resource_group_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        # The type of NAT gateway. Set the value to **Enhanced** (enhanced NAT gateway).
-        self.spec = spec
-        # The tag keys of the NAT gateway. You can specify up to 20 tag keys.
-        # 
-        # Each tag key cannot exceed 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.status = status
-        # The ID of the zone to which the NAT gateway belongs.
+        # The tags.
         self.tag = tag
-        # The name of the NAT gateway. 
-        # 
-        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`. 
-        # 
-        # If this parameter is not set, the system automatically assigns a name to the NAT gateway.
+        # The ID of the VPC to which the NAT gateway belongs.
         self.vpc_id = vpc_id
-        # The number of NAT gateway entries that are returned.
+        # The ID of the zone to which the NAT gateway belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -37572,17 +37922,23 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpListsIpList(TeaModel
         snat_entry_enabled: bool = None,
         using_status: str = None,
     ):
-        # The ID of the FULLNAT table.
+        # The ID of the EIP associated with the NAT gateway.
         self.allocation_id = allocation_id
-        # The ID of the DNAT table.
+        # The IP address of the EIP associated with the NAT gateway.
         self.ip_address = ip_address
-        # The private network information about the enhanced Internet NAT gateway.
-        # 
-        # >  If **NatType** is set to **Normal**, all parameters returned in this list are empty.
-        self.private_ip_address = private_ip_address
-        # The ID of the SNAT table of the NAT gateway.
-        self.snat_entry_enabled = snat_entry_enabled
         # The private IP address of the NAT gateway.
+        self.private_ip_address = private_ip_address
+        # Indicates whether IP addresses that are used in DNAT entries can be specified in SNAT entries. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        self.snat_entry_enabled = snat_entry_enabled
+        # The association between the EIP and the Internet NAT gateway. Valid values:
+        # 
+        # *   **UsedByForwardTable**: The EIP is specified in a DNAT entry.
+        # *   **UsedBySnatTable**: The EIP is specified in an SNAT entry.
+        # *   **UsedByForwardSnatTable**: The EIP is specified in both an SNAT entry and a DNAT entry.
+        # *   **Idle**: The EIP is not specified in a DNAT or SNAT entry.
         self.using_status = using_status
 
     def validate(self):
@@ -37668,34 +38024,24 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayNatGatewayPrivateInfo(
         private_ip_address: str = None,
         vswitch_id: str = None,
     ):
-        # Indicates whether the NAT gateway supports PrivateLink. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
+        # The ID of the elastic network interface (ENI).
         self.eni_instance_id = eni_instance_id
-        self.eni_type = eni_type
-        # The tag value of the instance.
-        self.iz_no = iz_no
-        # The mode that is used by PrivateLink. Valid values:
-        # 
-        # *   **FullNat**: the FULLNAT mode
-        # *   **Geneve**: the GENEVE mode
-        self.max_bandwidth = max_bandwidth
-        # The tags that are added to the resource group.
-        self.max_session_establish_rate = max_session_establish_rate
-        # The mode in which the NAT gateway is associated with an elastic IP address (EIP). Valid values:
-        # 
-        # *   **MULTI_BINDED**: multi-EIP-to-ENI mode
-        # *   **NAT**: NAT mode, which is compatible with IPv4 addresses.
-        # 
-        # >  Note: If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with up to 50 EIPs.
-        self.max_session_quota = max_session_quota
-        # The tag key of the instance.
-        self.private_ip_address = private_ip_address
         # The mode in which the ENI is associated with the NAT gateway.
         # 
         # *   **indirect**: non-cut-through mode
         # *   If an empty value is returned, it indicates that the cut-through mode is used.
+        self.eni_type = eni_type
+        # The zone to which the NAT gateway belongs.
+        self.iz_no = iz_no
+        # The maximum bandwidth. Unit: Mbit/s.
+        self.max_bandwidth = max_bandwidth
+        # The number of new connections to the NAT gateway. Unit: connections per second.
+        self.max_session_establish_rate = max_session_establish_rate
+        # The number of concurrent connections to the NAT gateway. Unit: connections.
+        self.max_session_quota = max_session_quota
+        # The private IP address.
+        self.private_ip_address = private_ip_address
+        # The ID of the vSwitch to which the NAT gateway belongs.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -37779,7 +38125,9 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the instance.
         self.tag_key = tag_key
+        # The tag value of the instance.
         self.tag_value = tag_value
 
     def validate(self):
@@ -37874,93 +38222,108 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
         tags: DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags = None,
         vpc_id: str = None,
     ):
-        # Indicates whether the firewall feature is enabled. Valid values:
-        # 
-        # *   **false**: no
-        # *   **true**: yes
-        self.auto_pay = auto_pay
-        # The IP address of the EIP associated with the NAT gateway.
-        self.business_status = business_status
-        # The size of the NAT gateway. An empty value is returned for the parameter.
-        # 
-        # If **InternetChargeType** is set to **PayByLcu**, an empty value is returned.
-        self.creation_time = creation_time
-        # The ID of the region where the NAT gateway is deployed.
-        self.deletion_protection = deletion_protection
-        # The metering method of the NAT gateway. Valid values:
-        # 
-        # *   **PayBySpec**: pay-by-specification
-        # *   **PayByLcu**: pay-by-CU
-        self.description = description
-        # The ID of the resource group to which the contiguous EIP group belongs.
-        self.ecs_metric_enabled = ecs_metric_enabled
-        self.eip_bind_mode = eip_bind_mode
-        # The status of the NAT gateway. Valid values:
-        # 
-        # *   **Normal**: normal
-        # *   **FinancialLocked**: locked due to overdue payments
-        self.expired_time = expired_time
-        # The ID of the vSwitch to which the NAT gateway belongs.
-        self.forward_table_ids = forward_table_ids
-        # The number of new connections to the NAT gateway. Unit: connections per second.
-        self.full_nat_table_ids = full_nat_table_ids
-        # The ID of the NAT gateway.
-        self.icmp_reply_enabled = icmp_reply_enabled
-        # The description of the NAT gateway.
-        self.instance_charge_type = instance_charge_type
-        # The association between the EIP and the Internet NAT gateway. Valid values:
-        # 
-        # *   **UsedByForwardTable**: The EIP is specified in a DNAT entry.
-        # *   **UsedBySnatTable**: The EIP is specified in an SNAT entry.
-        # *   **UsedByForwardSnatTable**: The EIP is specified in both an SNAT entry and a DNAT entry.
-        # *   **Idle**: The EIP is not specified in a DNAT or SNAT entry.
-        self.internet_charge_type = internet_charge_type
-        # The ID of the EIP associated with the NAT gateway.
-        self.ip_lists = ip_lists
-        # Indicates whether IP addresses that are used in DNAT entries can be specified in SNAT entries. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        self.name = name
-        # The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
-        self.nat_gateway_id = nat_gateway_id
-        # The zone to which the NAT gateway belongs.
-        self.nat_gateway_private_info = nat_gateway_private_info
-        # The type of NAT gateway. Valid values:
-        # 
-        # *   **internet**: an Internet NAT gateway
-        # *   **intranet**: a VPC NAT gateway
-        self.nat_type = nat_type
-        # Indicates whether the traffic monitoring feature is enabled. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        self.network_type = network_type
-        self.private_link_enabled = private_link_enabled
-        self.private_link_mode = private_link_mode
-        # The time when the NAT gateway expires.
-        self.region_id = region_id
-        # The name of the NAT gateway.
-        self.resource_group_id = resource_group_id
-        # Indicates whether the ICMP non-retrieval feature is enabled. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        self.security_protection_enabled = security_protection_enabled
-        # The maximum bandwidth. Unit: Mbit/s.
-        self.snat_table_ids = snat_table_ids
-        # The billing method of the NAT gateway. The value is set to **PostPaid**, which indicates the pay-as-you-go billing method.
-        self.spec = spec
         # Indicates whether automatic payment is enabled. Valid values:
         # 
         # *   **false**: no
         # *   **true**: yes
-        self.status = status
-        self.tags = tags
+        self.auto_pay = auto_pay
+        # The status of the NAT gateway. Valid values:
+        # 
+        # *   **Normal**: normal
+        # *   **FinancialLocked**: locked due to overdue payments
+        self.business_status = business_status
+        # The time when the NAT gateway was created.
+        self.creation_time = creation_time
         # Indicates whether the deletion protection feature is enabled. Valid values:
         # 
         # *   **true**: yes
         # *   **false**: no
+        self.deletion_protection = deletion_protection
+        # The description of the NAT gateway.
+        self.description = description
+        # Indicates whether the traffic monitoring feature is enabled. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        self.ecs_metric_enabled = ecs_metric_enabled
+        # The mode in which the NAT gateway is associated with an elastic IP address (EIP). Valid values:
+        # 
+        # *   **MULTI_BINDED**: multi-EIP-to-ENI mode
+        # *   **NAT**: NAT mode, which is compatible with IPv4 addresses.
+        # 
+        # >  Note: If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with up to 50 EIPs.
+        self.eip_bind_mode = eip_bind_mode
+        # The time when the NAT gateway expires.
+        self.expired_time = expired_time
+        # The ID of the DNAT table.
+        self.forward_table_ids = forward_table_ids
+        # The ID of the FULLNAT table.
+        self.full_nat_table_ids = full_nat_table_ids
+        # Indicates whether the ICMP non-retrieval feature is enabled. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        self.icmp_reply_enabled = icmp_reply_enabled
+        # The billing method of the NAT gateway. The value is set to **PostPaid**, which indicates the pay-as-you-go billing method.
+        self.instance_charge_type = instance_charge_type
+        # The metering method of the NAT gateway. Valid values:
+        # 
+        # *   **PayBySpec**: pay-by-specification
+        # *   **PayByLcu**: pay-by-CU
+        self.internet_charge_type = internet_charge_type
+        # The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
+        self.ip_lists = ip_lists
+        # The name of the NAT gateway.
+        self.name = name
+        # The ID of the NAT gateway.
+        self.nat_gateway_id = nat_gateway_id
+        # The private network information about the enhanced Internet NAT gateway.
+        # 
+        # >  If **NatType** is set to **Normal**, all parameters returned in this list are empty.
+        self.nat_gateway_private_info = nat_gateway_private_info
+        # The type of the NAT gateway. The value is set to **Enhanced** (enhanced NAT gateway).
+        self.nat_type = nat_type
+        # The type of NAT gateway. Valid values:
+        # 
+        # *   **internet**: an Internet NAT gateway
+        # *   **intranet**: a VPC NAT gateway
+        self.network_type = network_type
+        # Indicates whether the NAT gateway supports PrivateLink. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        self.private_link_enabled = private_link_enabled
+        # The mode that is used by PrivateLink. Valid values:
+        # 
+        # *   **FullNat**: the FULLNAT mode
+        # *   **Geneve**: the GENEVE mode
+        self.private_link_mode = private_link_mode
+        # The ID of the region where the NAT gateway is deployed.
+        self.region_id = region_id
+        # The ID of the resource group to which the contiguous EIP group belongs.
+        self.resource_group_id = resource_group_id
+        # Indicates whether the firewall feature is enabled. Valid values:
+        # 
+        # *   **false**: no
+        # *   **true**: yes
+        self.security_protection_enabled = security_protection_enabled
+        # The ID of the SNAT table of the NAT gateway.
+        self.snat_table_ids = snat_table_ids
+        # The size of the NAT gateway. An empty value is returned for the parameter.
+        # 
+        # If **InternetChargeType** is set to **PayByLcu**, an empty value is returned.
+        self.spec = spec
+        # The status of the NAT gateway. Valid values:
+        # 
+        # *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is completed.
+        # *   **Available**: The NAT gateway remains in a stable state after the NAT gateway is created.
+        # *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the Modifying state until the operation is completed.
+        # *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is completed.
+        # *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the Converting state until the operation is completed.
+        self.status = status
+        # The tags that are added to the resource group.
+        self.tags = tags
+        # The ID of the VPC where the NAT gateway is deployed.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -38156,21 +38519,15 @@ class DescribeNatGatewaysResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The type of the NAT gateway. The value is set to **Enhanced** (enhanced NAT gateway).
-        self.nat_gateways = nat_gateways
-        # The time when the NAT gateway was created.
-        self.page_number = page_number
         # The details about the NAT gateway.
+        self.nat_gateways = nat_gateways
+        # The page number of the returned page.
+        self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The status of the NAT gateway. Valid values:
-        # 
-        # *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is completed.
-        # *   **Available**: The NAT gateway remains in a stable state after the NAT gateway is created.
-        # *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the Modifying state until the operation is completed.
-        # *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is completed.
-        # *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the Converting state until the operation is completed.
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of the VPC where the NAT gateway is deployed.
+        # The number of NAT gateway entries that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -45018,6 +45375,259 @@ class DescribeSslVpnClientCertsResponse(TeaModel):
         return self
 
 
+class DescribeSslVpnClientsRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        vpn_gateway_id: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.vpn_gateway_id = vpn_gateway_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.vpn_gateway_id is not None:
+            result['VpnGatewayId'] = self.vpn_gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('VpnGatewayId') is not None:
+            self.vpn_gateway_id = m.get('VpnGatewayId')
+        return self
+
+
+class DescribeSslVpnClientsResponseBodyClientInfoList(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        connected_time: int = None,
+        ip: str = None,
+        port: str = None,
+        private_ip: str = None,
+        receive_bytes: int = None,
+        send_bytes: int = None,
+        status: str = None,
+    ):
+        self.common_name = common_name
+        self.connected_time = connected_time
+        self.ip = ip
+        self.port = port
+        self.private_ip = private_ip
+        self.receive_bytes = receive_bytes
+        self.send_bytes = send_bytes
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.connected_time is not None:
+            result['ConnectedTime'] = self.connected_time
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.private_ip is not None:
+            result['PrivateIp'] = self.private_ip
+        if self.receive_bytes is not None:
+            result['ReceiveBytes'] = self.receive_bytes
+        if self.send_bytes is not None:
+            result['SendBytes'] = self.send_bytes
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('ConnectedTime') is not None:
+            self.connected_time = m.get('ConnectedTime')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('PrivateIp') is not None:
+            self.private_ip = m.get('PrivateIp')
+        if m.get('ReceiveBytes') is not None:
+            self.receive_bytes = m.get('ReceiveBytes')
+        if m.get('SendBytes') is not None:
+            self.send_bytes = m.get('SendBytes')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeSslVpnClientsResponseBody(TeaModel):
+    def __init__(
+        self,
+        client_info_list: List[DescribeSslVpnClientsResponseBodyClientInfoList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        request_id: str = None,
+        total_count: int = None,
+        vpn_gateway_id: str = None,
+    ):
+        self.client_info_list = client_info_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.request_id = request_id
+        self.total_count = total_count
+        self.vpn_gateway_id = vpn_gateway_id
+
+    def validate(self):
+        if self.client_info_list:
+            for k in self.client_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ClientInfoList'] = []
+        if self.client_info_list is not None:
+            for k in self.client_info_list:
+                result['ClientInfoList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.vpn_gateway_id is not None:
+            result['VpnGatewayId'] = self.vpn_gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.client_info_list = []
+        if m.get('ClientInfoList') is not None:
+            for k in m.get('ClientInfoList'):
+                temp_model = DescribeSslVpnClientsResponseBodyClientInfoList()
+                self.client_info_list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('VpnGatewayId') is not None:
+            self.vpn_gateway_id = m.get('VpnGatewayId')
+        return self
+
+
+class DescribeSslVpnClientsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSslVpnClientsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSslVpnClientsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSslVpnServersRequest(TeaModel):
     def __init__(
         self,
@@ -51255,6 +51865,331 @@ class DescribeVpnConnectionResponseBodyTags(TeaModel):
         return self
 
 
+class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig(TeaModel):
+    def __init__(
+        self,
+        bgp_status: str = None,
+        enable_bgp: str = None,
+        local_asn: str = None,
+        local_bgp_ip: str = None,
+        peer_asn: str = None,
+        peer_bgp_ip: str = None,
+        tunnel_cidr: str = None,
+    ):
+        self.bgp_status = bgp_status
+        self.enable_bgp = enable_bgp
+        self.local_asn = local_asn
+        self.local_bgp_ip = local_bgp_ip
+        self.peer_asn = peer_asn
+        self.peer_bgp_ip = peer_bgp_ip
+        self.tunnel_cidr = tunnel_cidr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bgp_status is not None:
+            result['BgpStatus'] = self.bgp_status
+        if self.enable_bgp is not None:
+            result['EnableBgp'] = self.enable_bgp
+        if self.local_asn is not None:
+            result['LocalAsn'] = self.local_asn
+        if self.local_bgp_ip is not None:
+            result['LocalBgpIp'] = self.local_bgp_ip
+        if self.peer_asn is not None:
+            result['PeerAsn'] = self.peer_asn
+        if self.peer_bgp_ip is not None:
+            result['PeerBgpIp'] = self.peer_bgp_ip
+        if self.tunnel_cidr is not None:
+            result['TunnelCidr'] = self.tunnel_cidr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BgpStatus') is not None:
+            self.bgp_status = m.get('BgpStatus')
+        if m.get('EnableBgp') is not None:
+            self.enable_bgp = m.get('EnableBgp')
+        if m.get('LocalAsn') is not None:
+            self.local_asn = m.get('LocalAsn')
+        if m.get('LocalBgpIp') is not None:
+            self.local_bgp_ip = m.get('LocalBgpIp')
+        if m.get('PeerAsn') is not None:
+            self.peer_asn = m.get('PeerAsn')
+        if m.get('PeerBgpIp') is not None:
+            self.peer_bgp_ip = m.get('PeerBgpIp')
+        if m.get('TunnelCidr') is not None:
+            self.tunnel_cidr = m.get('TunnelCidr')
+        return self
+
+
+class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig(TeaModel):
+    def __init__(
+        self,
+        ike_auth_alg: str = None,
+        ike_enc_alg: str = None,
+        ike_lifetime: str = None,
+        ike_mode: str = None,
+        ike_pfs: str = None,
+        ike_version: str = None,
+        local_id: str = None,
+        psk: str = None,
+        remote_id: str = None,
+    ):
+        self.ike_auth_alg = ike_auth_alg
+        self.ike_enc_alg = ike_enc_alg
+        self.ike_lifetime = ike_lifetime
+        self.ike_mode = ike_mode
+        self.ike_pfs = ike_pfs
+        self.ike_version = ike_version
+        self.local_id = local_id
+        self.psk = psk
+        self.remote_id = remote_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ike_auth_alg is not None:
+            result['IkeAuthAlg'] = self.ike_auth_alg
+        if self.ike_enc_alg is not None:
+            result['IkeEncAlg'] = self.ike_enc_alg
+        if self.ike_lifetime is not None:
+            result['IkeLifetime'] = self.ike_lifetime
+        if self.ike_mode is not None:
+            result['IkeMode'] = self.ike_mode
+        if self.ike_pfs is not None:
+            result['IkePfs'] = self.ike_pfs
+        if self.ike_version is not None:
+            result['IkeVersion'] = self.ike_version
+        if self.local_id is not None:
+            result['LocalId'] = self.local_id
+        if self.psk is not None:
+            result['Psk'] = self.psk
+        if self.remote_id is not None:
+            result['RemoteId'] = self.remote_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IkeAuthAlg') is not None:
+            self.ike_auth_alg = m.get('IkeAuthAlg')
+        if m.get('IkeEncAlg') is not None:
+            self.ike_enc_alg = m.get('IkeEncAlg')
+        if m.get('IkeLifetime') is not None:
+            self.ike_lifetime = m.get('IkeLifetime')
+        if m.get('IkeMode') is not None:
+            self.ike_mode = m.get('IkeMode')
+        if m.get('IkePfs') is not None:
+            self.ike_pfs = m.get('IkePfs')
+        if m.get('IkeVersion') is not None:
+            self.ike_version = m.get('IkeVersion')
+        if m.get('LocalId') is not None:
+            self.local_id = m.get('LocalId')
+        if m.get('Psk') is not None:
+            self.psk = m.get('Psk')
+        if m.get('RemoteId') is not None:
+            self.remote_id = m.get('RemoteId')
+        return self
+
+
+class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig(TeaModel):
+    def __init__(
+        self,
+        ipsec_auth_alg: str = None,
+        ipsec_enc_alg: str = None,
+        ipsec_lifetime: str = None,
+        ipsec_pfs: str = None,
+    ):
+        self.ipsec_auth_alg = ipsec_auth_alg
+        self.ipsec_enc_alg = ipsec_enc_alg
+        self.ipsec_lifetime = ipsec_lifetime
+        self.ipsec_pfs = ipsec_pfs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipsec_auth_alg is not None:
+            result['IpsecAuthAlg'] = self.ipsec_auth_alg
+        if self.ipsec_enc_alg is not None:
+            result['IpsecEncAlg'] = self.ipsec_enc_alg
+        if self.ipsec_lifetime is not None:
+            result['IpsecLifetime'] = self.ipsec_lifetime
+        if self.ipsec_pfs is not None:
+            result['IpsecPfs'] = self.ipsec_pfs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpsecAuthAlg') is not None:
+            self.ipsec_auth_alg = m.get('IpsecAuthAlg')
+        if m.get('IpsecEncAlg') is not None:
+            self.ipsec_enc_alg = m.get('IpsecEncAlg')
+        if m.get('IpsecLifetime') is not None:
+            self.ipsec_lifetime = m.get('IpsecLifetime')
+        if m.get('IpsecPfs') is not None:
+            self.ipsec_pfs = m.get('IpsecPfs')
+        return self
+
+
+class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions(TeaModel):
+    def __init__(
+        self,
+        customer_gateway_id: str = None,
+        enable_dpd: str = None,
+        enable_nat_traversal: str = None,
+        internet_ip: str = None,
+        remote_ca_certificate: str = None,
+        role: str = None,
+        state: str = None,
+        status: str = None,
+        tunnel_bgp_config: DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig = None,
+        tunnel_id: str = None,
+        tunnel_ike_config: DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig = None,
+        tunnel_ipsec_config: DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig = None,
+        zone_no: str = None,
+    ):
+        self.customer_gateway_id = customer_gateway_id
+        self.enable_dpd = enable_dpd
+        self.enable_nat_traversal = enable_nat_traversal
+        self.internet_ip = internet_ip
+        self.remote_ca_certificate = remote_ca_certificate
+        self.role = role
+        self.state = state
+        self.status = status
+        self.tunnel_bgp_config = tunnel_bgp_config
+        self.tunnel_id = tunnel_id
+        self.tunnel_ike_config = tunnel_ike_config
+        self.tunnel_ipsec_config = tunnel_ipsec_config
+        self.zone_no = zone_no
+
+    def validate(self):
+        if self.tunnel_bgp_config:
+            self.tunnel_bgp_config.validate()
+        if self.tunnel_ike_config:
+            self.tunnel_ike_config.validate()
+        if self.tunnel_ipsec_config:
+            self.tunnel_ipsec_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customer_gateway_id is not None:
+            result['CustomerGatewayId'] = self.customer_gateway_id
+        if self.enable_dpd is not None:
+            result['EnableDpd'] = self.enable_dpd
+        if self.enable_nat_traversal is not None:
+            result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        if self.remote_ca_certificate is not None:
+            result['RemoteCaCertificate'] = self.remote_ca_certificate
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.state is not None:
+            result['State'] = self.state
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tunnel_bgp_config is not None:
+            result['TunnelBgpConfig'] = self.tunnel_bgp_config.to_map()
+        if self.tunnel_id is not None:
+            result['TunnelId'] = self.tunnel_id
+        if self.tunnel_ike_config is not None:
+            result['TunnelIkeConfig'] = self.tunnel_ike_config.to_map()
+        if self.tunnel_ipsec_config is not None:
+            result['TunnelIpsecConfig'] = self.tunnel_ipsec_config.to_map()
+        if self.zone_no is not None:
+            result['ZoneNo'] = self.zone_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomerGatewayId') is not None:
+            self.customer_gateway_id = m.get('CustomerGatewayId')
+        if m.get('EnableDpd') is not None:
+            self.enable_dpd = m.get('EnableDpd')
+        if m.get('EnableNatTraversal') is not None:
+            self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        if m.get('RemoteCaCertificate') is not None:
+            self.remote_ca_certificate = m.get('RemoteCaCertificate')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TunnelBgpConfig') is not None:
+            temp_model = DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig()
+            self.tunnel_bgp_config = temp_model.from_map(m['TunnelBgpConfig'])
+        if m.get('TunnelId') is not None:
+            self.tunnel_id = m.get('TunnelId')
+        if m.get('TunnelIkeConfig') is not None:
+            temp_model = DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig()
+            self.tunnel_ike_config = temp_model.from_map(m['TunnelIkeConfig'])
+        if m.get('TunnelIpsecConfig') is not None:
+            temp_model = DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig()
+            self.tunnel_ipsec_config = temp_model.from_map(m['TunnelIpsecConfig'])
+        if m.get('ZoneNo') is not None:
+            self.zone_no = m.get('ZoneNo')
+        return self
+
+
+class DescribeVpnConnectionResponseBodyTunnelOptionsSpecification(TeaModel):
+    def __init__(
+        self,
+        tunnel_options: List[DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions] = None,
+    ):
+        self.tunnel_options = tunnel_options
+
+    def validate(self):
+        if self.tunnel_options:
+            for k in self.tunnel_options:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TunnelOptions'] = []
+        if self.tunnel_options is not None:
+            for k in self.tunnel_options:
+                result['TunnelOptions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tunnel_options = []
+        if m.get('TunnelOptions') is not None:
+            for k in m.get('TunnelOptions'):
+                temp_model = DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions()
+                self.tunnel_options.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeVpnConnectionResponseBodyVcoHealthCheck(TeaModel):
     def __init__(
         self,
@@ -51425,8 +52360,6 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         create_time: int = None,
         cross_account_authorized: bool = None,
         customer_gateway_id: str = None,
-        disaster_recovery_internet_ip: str = None,
-        disaster_recovery_zone_no: str = None,
         effect_immediately: bool = None,
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
@@ -51446,6 +52379,7 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         tags: DescribeVpnConnectionResponseBodyTags = None,
         transit_router_id: str = None,
         transit_router_name: str = None,
+        tunnel_options_specification: DescribeVpnConnectionResponseBodyTunnelOptionsSpecification = None,
         vco_health_check: DescribeVpnConnectionResponseBodyVcoHealthCheck = None,
         vpn_bgp_config: DescribeVpnConnectionResponseBodyVpnBgpConfig = None,
         vpn_connection_id: str = None,
@@ -51471,8 +52405,6 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         self.cross_account_authorized = cross_account_authorized
         # The ID of the customer gateway.
         self.customer_gateway_id = customer_gateway_id
-        self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
-        self.disaster_recovery_zone_no = disaster_recovery_zone_no
         # Indicates whether IPsec negotiations immediately start.
         # 
         # *   **true**: Negotiations are reinitiated after the configuration is changed.
@@ -51546,6 +52478,7 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         self.transit_router_id = transit_router_id
         # The name of the transit router.
         self.transit_router_name = transit_router_name
+        self.tunnel_options_specification = tunnel_options_specification
         # The information about health checks.
         self.vco_health_check = vco_health_check
         # The configurations of the BGP routing protocol.
@@ -51566,6 +52499,8 @@ class DescribeVpnConnectionResponseBody(TeaModel):
             self.ipsec_config.validate()
         if self.tags:
             self.tags.validate()
+        if self.tunnel_options_specification:
+            self.tunnel_options_specification.validate()
         if self.vco_health_check:
             self.vco_health_check.validate()
         if self.vpn_bgp_config:
@@ -51587,10 +52522,6 @@ class DescribeVpnConnectionResponseBody(TeaModel):
             result['CrossAccountAuthorized'] = self.cross_account_authorized
         if self.customer_gateway_id is not None:
             result['CustomerGatewayId'] = self.customer_gateway_id
-        if self.disaster_recovery_internet_ip is not None:
-            result['DisasterRecoveryInternetIp'] = self.disaster_recovery_internet_ip
-        if self.disaster_recovery_zone_no is not None:
-            result['DisasterRecoveryZoneNo'] = self.disaster_recovery_zone_no
         if self.effect_immediately is not None:
             result['EffectImmediately'] = self.effect_immediately
         if self.enable_dpd is not None:
@@ -51629,6 +52560,8 @@ class DescribeVpnConnectionResponseBody(TeaModel):
             result['TransitRouterId'] = self.transit_router_id
         if self.transit_router_name is not None:
             result['TransitRouterName'] = self.transit_router_name
+        if self.tunnel_options_specification is not None:
+            result['TunnelOptionsSpecification'] = self.tunnel_options_specification.to_map()
         if self.vco_health_check is not None:
             result['VcoHealthCheck'] = self.vco_health_check.to_map()
         if self.vpn_bgp_config is not None:
@@ -51653,10 +52586,6 @@ class DescribeVpnConnectionResponseBody(TeaModel):
             self.cross_account_authorized = m.get('CrossAccountAuthorized')
         if m.get('CustomerGatewayId') is not None:
             self.customer_gateway_id = m.get('CustomerGatewayId')
-        if m.get('DisasterRecoveryInternetIp') is not None:
-            self.disaster_recovery_internet_ip = m.get('DisasterRecoveryInternetIp')
-        if m.get('DisasterRecoveryZoneNo') is not None:
-            self.disaster_recovery_zone_no = m.get('DisasterRecoveryZoneNo')
         if m.get('EffectImmediately') is not None:
             self.effect_immediately = m.get('EffectImmediately')
         if m.get('EnableDpd') is not None:
@@ -51698,6 +52627,9 @@ class DescribeVpnConnectionResponseBody(TeaModel):
             self.transit_router_id = m.get('TransitRouterId')
         if m.get('TransitRouterName') is not None:
             self.transit_router_name = m.get('TransitRouterName')
+        if m.get('TunnelOptionsSpecification') is not None:
+            temp_model = DescribeVpnConnectionResponseBodyTunnelOptionsSpecification()
+            self.tunnel_options_specification = temp_model.from_map(m['TunnelOptionsSpecification'])
         if m.get('VcoHealthCheck') is not None:
             temp_model = DescribeVpnConnectionResponseBodyVcoHealthCheck()
             self.vco_health_check = temp_model.from_map(m['VcoHealthCheck'])
@@ -51770,6 +52702,7 @@ class DescribeVpnConnectionLogsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         to: int = None,
+        tunnel_id: str = None,
         vpn_connection_id: str = None,
     ):
         # The beginning of the time range to query. The value must be a UNIX timestamp. For example, 1671003744 specifies 15:42:24 (UTC+8) on December 14, 2022.
@@ -51796,6 +52729,7 @@ class DescribeVpnConnectionLogsRequest(TeaModel):
         # 
         # >  If you specify **To**, you must also specify **From** or **MinutePeriod**.
         self.to = to
+        self.tunnel_id = tunnel_id
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
 
@@ -51828,6 +52762,8 @@ class DescribeVpnConnectionLogsRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.to is not None:
             result['To'] = self.to
+        if self.tunnel_id is not None:
+            result['TunnelId'] = self.tunnel_id
         if self.vpn_connection_id is not None:
             result['VpnConnectionId'] = self.vpn_connection_id
         return result
@@ -51854,6 +52790,8 @@ class DescribeVpnConnectionLogsRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('To') is not None:
             self.to = m.get('To')
+        if m.get('TunnelId') is not None:
+            self.tunnel_id = m.get('TunnelId')
         if m.get('VpnConnectionId') is not None:
             self.vpn_connection_id = m.get('VpnConnectionId')
         return self
@@ -52357,6 +53295,331 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag(TeaModel)
         return self
 
 
+class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig(TeaModel):
+    def __init__(
+        self,
+        bgp_status: str = None,
+        enable_bgp: str = None,
+        local_asn: str = None,
+        local_bgp_ip: str = None,
+        peer_asn: str = None,
+        peer_bgp_ip: str = None,
+        tunnel_cidr: str = None,
+    ):
+        self.bgp_status = bgp_status
+        self.enable_bgp = enable_bgp
+        self.local_asn = local_asn
+        self.local_bgp_ip = local_bgp_ip
+        self.peer_asn = peer_asn
+        self.peer_bgp_ip = peer_bgp_ip
+        self.tunnel_cidr = tunnel_cidr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bgp_status is not None:
+            result['BgpStatus'] = self.bgp_status
+        if self.enable_bgp is not None:
+            result['EnableBgp'] = self.enable_bgp
+        if self.local_asn is not None:
+            result['LocalAsn'] = self.local_asn
+        if self.local_bgp_ip is not None:
+            result['LocalBgpIp'] = self.local_bgp_ip
+        if self.peer_asn is not None:
+            result['PeerAsn'] = self.peer_asn
+        if self.peer_bgp_ip is not None:
+            result['PeerBgpIp'] = self.peer_bgp_ip
+        if self.tunnel_cidr is not None:
+            result['TunnelCidr'] = self.tunnel_cidr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BgpStatus') is not None:
+            self.bgp_status = m.get('BgpStatus')
+        if m.get('EnableBgp') is not None:
+            self.enable_bgp = m.get('EnableBgp')
+        if m.get('LocalAsn') is not None:
+            self.local_asn = m.get('LocalAsn')
+        if m.get('LocalBgpIp') is not None:
+            self.local_bgp_ip = m.get('LocalBgpIp')
+        if m.get('PeerAsn') is not None:
+            self.peer_asn = m.get('PeerAsn')
+        if m.get('PeerBgpIp') is not None:
+            self.peer_bgp_ip = m.get('PeerBgpIp')
+        if m.get('TunnelCidr') is not None:
+            self.tunnel_cidr = m.get('TunnelCidr')
+        return self
+
+
+class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig(TeaModel):
+    def __init__(
+        self,
+        ike_auth_alg: str = None,
+        ike_enc_alg: str = None,
+        ike_lifetime: str = None,
+        ike_mode: str = None,
+        ike_pfs: str = None,
+        ike_version: str = None,
+        local_id: str = None,
+        psk: str = None,
+        remote_id: str = None,
+    ):
+        self.ike_auth_alg = ike_auth_alg
+        self.ike_enc_alg = ike_enc_alg
+        self.ike_lifetime = ike_lifetime
+        self.ike_mode = ike_mode
+        self.ike_pfs = ike_pfs
+        self.ike_version = ike_version
+        self.local_id = local_id
+        self.psk = psk
+        self.remote_id = remote_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ike_auth_alg is not None:
+            result['IkeAuthAlg'] = self.ike_auth_alg
+        if self.ike_enc_alg is not None:
+            result['IkeEncAlg'] = self.ike_enc_alg
+        if self.ike_lifetime is not None:
+            result['IkeLifetime'] = self.ike_lifetime
+        if self.ike_mode is not None:
+            result['IkeMode'] = self.ike_mode
+        if self.ike_pfs is not None:
+            result['IkePfs'] = self.ike_pfs
+        if self.ike_version is not None:
+            result['IkeVersion'] = self.ike_version
+        if self.local_id is not None:
+            result['LocalId'] = self.local_id
+        if self.psk is not None:
+            result['Psk'] = self.psk
+        if self.remote_id is not None:
+            result['RemoteId'] = self.remote_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IkeAuthAlg') is not None:
+            self.ike_auth_alg = m.get('IkeAuthAlg')
+        if m.get('IkeEncAlg') is not None:
+            self.ike_enc_alg = m.get('IkeEncAlg')
+        if m.get('IkeLifetime') is not None:
+            self.ike_lifetime = m.get('IkeLifetime')
+        if m.get('IkeMode') is not None:
+            self.ike_mode = m.get('IkeMode')
+        if m.get('IkePfs') is not None:
+            self.ike_pfs = m.get('IkePfs')
+        if m.get('IkeVersion') is not None:
+            self.ike_version = m.get('IkeVersion')
+        if m.get('LocalId') is not None:
+            self.local_id = m.get('LocalId')
+        if m.get('Psk') is not None:
+            self.psk = m.get('Psk')
+        if m.get('RemoteId') is not None:
+            self.remote_id = m.get('RemoteId')
+        return self
+
+
+class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig(TeaModel):
+    def __init__(
+        self,
+        ipsec_auth_alg: str = None,
+        ipsec_enc_alg: str = None,
+        ipsec_lifetime: str = None,
+        ipsec_pfs: str = None,
+    ):
+        self.ipsec_auth_alg = ipsec_auth_alg
+        self.ipsec_enc_alg = ipsec_enc_alg
+        self.ipsec_lifetime = ipsec_lifetime
+        self.ipsec_pfs = ipsec_pfs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipsec_auth_alg is not None:
+            result['IpsecAuthAlg'] = self.ipsec_auth_alg
+        if self.ipsec_enc_alg is not None:
+            result['IpsecEncAlg'] = self.ipsec_enc_alg
+        if self.ipsec_lifetime is not None:
+            result['IpsecLifetime'] = self.ipsec_lifetime
+        if self.ipsec_pfs is not None:
+            result['IpsecPfs'] = self.ipsec_pfs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpsecAuthAlg') is not None:
+            self.ipsec_auth_alg = m.get('IpsecAuthAlg')
+        if m.get('IpsecEncAlg') is not None:
+            self.ipsec_enc_alg = m.get('IpsecEncAlg')
+        if m.get('IpsecLifetime') is not None:
+            self.ipsec_lifetime = m.get('IpsecLifetime')
+        if m.get('IpsecPfs') is not None:
+            self.ipsec_pfs = m.get('IpsecPfs')
+        return self
+
+
+class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions(TeaModel):
+    def __init__(
+        self,
+        customer_gateway_id: str = None,
+        enable_dpd: str = None,
+        enable_nat_traversal: str = None,
+        internet_ip: str = None,
+        remote_ca_certificate: str = None,
+        role: str = None,
+        state: str = None,
+        status: str = None,
+        tunnel_bgp_config: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig = None,
+        tunnel_id: str = None,
+        tunnel_ike_config: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig = None,
+        tunnel_ipsec_config: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig = None,
+        zone_no: str = None,
+    ):
+        self.customer_gateway_id = customer_gateway_id
+        self.enable_dpd = enable_dpd
+        self.enable_nat_traversal = enable_nat_traversal
+        self.internet_ip = internet_ip
+        self.remote_ca_certificate = remote_ca_certificate
+        self.role = role
+        self.state = state
+        self.status = status
+        self.tunnel_bgp_config = tunnel_bgp_config
+        self.tunnel_id = tunnel_id
+        self.tunnel_ike_config = tunnel_ike_config
+        self.tunnel_ipsec_config = tunnel_ipsec_config
+        self.zone_no = zone_no
+
+    def validate(self):
+        if self.tunnel_bgp_config:
+            self.tunnel_bgp_config.validate()
+        if self.tunnel_ike_config:
+            self.tunnel_ike_config.validate()
+        if self.tunnel_ipsec_config:
+            self.tunnel_ipsec_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customer_gateway_id is not None:
+            result['CustomerGatewayId'] = self.customer_gateway_id
+        if self.enable_dpd is not None:
+            result['EnableDpd'] = self.enable_dpd
+        if self.enable_nat_traversal is not None:
+            result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        if self.remote_ca_certificate is not None:
+            result['RemoteCaCertificate'] = self.remote_ca_certificate
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.state is not None:
+            result['State'] = self.state
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tunnel_bgp_config is not None:
+            result['TunnelBgpConfig'] = self.tunnel_bgp_config.to_map()
+        if self.tunnel_id is not None:
+            result['TunnelId'] = self.tunnel_id
+        if self.tunnel_ike_config is not None:
+            result['TunnelIkeConfig'] = self.tunnel_ike_config.to_map()
+        if self.tunnel_ipsec_config is not None:
+            result['TunnelIpsecConfig'] = self.tunnel_ipsec_config.to_map()
+        if self.zone_no is not None:
+            result['ZoneNo'] = self.zone_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomerGatewayId') is not None:
+            self.customer_gateway_id = m.get('CustomerGatewayId')
+        if m.get('EnableDpd') is not None:
+            self.enable_dpd = m.get('EnableDpd')
+        if m.get('EnableNatTraversal') is not None:
+            self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        if m.get('RemoteCaCertificate') is not None:
+            self.remote_ca_certificate = m.get('RemoteCaCertificate')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TunnelBgpConfig') is not None:
+            temp_model = DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig()
+            self.tunnel_bgp_config = temp_model.from_map(m['TunnelBgpConfig'])
+        if m.get('TunnelId') is not None:
+            self.tunnel_id = m.get('TunnelId')
+        if m.get('TunnelIkeConfig') is not None:
+            temp_model = DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig()
+            self.tunnel_ike_config = temp_model.from_map(m['TunnelIkeConfig'])
+        if m.get('TunnelIpsecConfig') is not None:
+            temp_model = DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig()
+            self.tunnel_ipsec_config = temp_model.from_map(m['TunnelIpsecConfig'])
+        if m.get('ZoneNo') is not None:
+            self.zone_no = m.get('ZoneNo')
+        return self
+
+
+class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification(TeaModel):
+    def __init__(
+        self,
+        tunnel_options: List[DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions] = None,
+    ):
+        self.tunnel_options = tunnel_options
+
+    def validate(self):
+        if self.tunnel_options:
+            for k in self.tunnel_options:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TunnelOptions'] = []
+        if self.tunnel_options is not None:
+            for k in self.tunnel_options:
+                result['TunnelOptions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tunnel_options = []
+        if m.get('TunnelOptions') is not None:
+            for k in m.get('TunnelOptions'):
+                temp_model = DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions()
+                self.tunnel_options.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthCheck(TeaModel):
     def __init__(
         self,
@@ -52520,6 +53783,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         effect_immediately: bool = None,
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
+        enable_tunnels_bgp: bool = None,
         ike_config: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig = None,
         internet_ip: str = None,
         ipsec_config: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIpsecConfig = None,
@@ -52534,6 +53798,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         tag: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag = None,
         transit_router_id: str = None,
         transit_router_name: str = None,
+        tunnel_options_specification: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification = None,
         vco_health_check: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthCheck = None,
         vpn_bgp_config: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVpnBgpConfig = None,
         vpn_connection_id: str = None,
@@ -52579,6 +53844,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         # 
         # *   **false**: disabled
         self.enable_nat_traversal = enable_nat_traversal
+        self.enable_tunnels_bgp = enable_tunnels_bgp
         # The configurations of phase 1 negotiations.
         self.ike_config = ike_config
         # The gateway IP address of the IPsec-VPN connection.
@@ -52632,6 +53898,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         self.transit_router_id = transit_router_id
         # The name of the transit router.
         self.transit_router_name = transit_router_name
+        self.tunnel_options_specification = tunnel_options_specification
         # The health check configurations.
         self.vco_health_check = vco_health_check
         # The configurations of the BGP routing protocol.
@@ -52648,6 +53915,8 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
             self.ipsec_config.validate()
         if self.tag:
             self.tag.validate()
+        if self.tunnel_options_specification:
+            self.tunnel_options_specification.validate()
         if self.vco_health_check:
             self.vco_health_check.validate()
         if self.vpn_bgp_config:
@@ -52675,6 +53944,8 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
             result['EnableDpd'] = self.enable_dpd
         if self.enable_nat_traversal is not None:
             result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.enable_tunnels_bgp is not None:
+            result['EnableTunnelsBgp'] = self.enable_tunnels_bgp
         if self.ike_config is not None:
             result['IkeConfig'] = self.ike_config.to_map()
         if self.internet_ip is not None:
@@ -52703,6 +53974,8 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
             result['TransitRouterId'] = self.transit_router_id
         if self.transit_router_name is not None:
             result['TransitRouterName'] = self.transit_router_name
+        if self.tunnel_options_specification is not None:
+            result['TunnelOptionsSpecification'] = self.tunnel_options_specification.to_map()
         if self.vco_health_check is not None:
             result['VcoHealthCheck'] = self.vco_health_check.to_map()
         if self.vpn_bgp_config is not None:
@@ -52731,6 +54004,8 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
             self.enable_dpd = m.get('EnableDpd')
         if m.get('EnableNatTraversal') is not None:
             self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('EnableTunnelsBgp') is not None:
+            self.enable_tunnels_bgp = m.get('EnableTunnelsBgp')
         if m.get('IkeConfig') is not None:
             temp_model = DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig()
             self.ike_config = temp_model.from_map(m['IkeConfig'])
@@ -52762,6 +54037,9 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
             self.transit_router_id = m.get('TransitRouterId')
         if m.get('TransitRouterName') is not None:
             self.transit_router_name = m.get('TransitRouterName')
+        if m.get('TunnelOptionsSpecification') is not None:
+            temp_model = DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification()
+            self.tunnel_options_specification = temp_model.from_map(m['TunnelOptionsSpecification'])
         if m.get('VcoHealthCheck') is not None:
             temp_model = DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthCheck()
             self.vco_health_check = temp_model.from_map(m['VcoHealthCheck'])
@@ -53401,6 +54679,8 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         charge_type: str = None,
         create_time: int = None,
         description: str = None,
+        disaster_recovery_internet_ip: str = None,
+        disaster_recovery_vswitch_id: str = None,
         enable_bgp: bool = None,
         end_time: int = None,
         internet_ip: str = None,
@@ -53412,6 +54692,7 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         spec: str = None,
         ssl_max_connections: int = None,
         ssl_vpn: str = None,
+        ssl_vpn_internet_ip: str = None,
         status: str = None,
         tag: str = None,
         tags: DescribeVpnGatewayResponseBodyTags = None,
@@ -53441,6 +54722,8 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         # *   **true**: yes
         # *   **false**: no
         self.description = description
+        self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
+        self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
         # The payment status of the VPN gateway. Valid values:
         # 
         # *   **Normal**: The VPN gateway is normal.
@@ -53474,6 +54757,7 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         self.ssl_max_connections = ssl_max_connections
         # The name of the VPN gateway.
         self.ssl_vpn = ssl_vpn
+        self.ssl_vpn_internet_ip = ssl_vpn_internet_ip
         # The ID of the virtual private cloud (VPC) to which the VPN gateway belongs.
         self.status = status
         # Indicates whether the IPsec-VPN feature is enabled. Valid values:
@@ -53544,6 +54828,10 @@ class DescribeVpnGatewayResponseBody(TeaModel):
             result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.disaster_recovery_internet_ip is not None:
+            result['DisasterRecoveryInternetIp'] = self.disaster_recovery_internet_ip
+        if self.disaster_recovery_vswitch_id is not None:
+            result['DisasterRecoveryVSwitchId'] = self.disaster_recovery_vswitch_id
         if self.enable_bgp is not None:
             result['EnableBgp'] = self.enable_bgp
         if self.end_time is not None:
@@ -53566,6 +54854,8 @@ class DescribeVpnGatewayResponseBody(TeaModel):
             result['SslMaxConnections'] = self.ssl_max_connections
         if self.ssl_vpn is not None:
             result['SslVpn'] = self.ssl_vpn
+        if self.ssl_vpn_internet_ip is not None:
+            result['SslVpnInternetIp'] = self.ssl_vpn_internet_ip
         if self.status is not None:
             result['Status'] = self.status
         if self.tag is not None:
@@ -53594,6 +54884,10 @@ class DescribeVpnGatewayResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DisasterRecoveryInternetIp') is not None:
+            self.disaster_recovery_internet_ip = m.get('DisasterRecoveryInternetIp')
+        if m.get('DisasterRecoveryVSwitchId') is not None:
+            self.disaster_recovery_vswitch_id = m.get('DisasterRecoveryVSwitchId')
         if m.get('EnableBgp') is not None:
             self.enable_bgp = m.get('EnableBgp')
         if m.get('EndTime') is not None:
@@ -53617,6 +54911,8 @@ class DescribeVpnGatewayResponseBody(TeaModel):
             self.ssl_max_connections = m.get('SslMaxConnections')
         if m.get('SslVpn') is not None:
             self.ssl_vpn = m.get('SslVpn')
+        if m.get('SslVpnInternetIp') is not None:
+            self.ssl_vpn_internet_ip = m.get('SslVpnInternetIp')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Tag') is not None:
@@ -53985,6 +55281,8 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         charge_type: str = None,
         create_time: int = None,
         description: str = None,
+        disaster_recovery_internet_ip: str = None,
+        disaster_recovery_vswitch_id: str = None,
         enable_bgp: bool = None,
         end_time: int = None,
         internet_ip: str = None,
@@ -53995,6 +55293,7 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         spec: str = None,
         ssl_max_connections: int = None,
         ssl_vpn: str = None,
+        ssl_vpn_internet_ip: str = None,
         status: str = None,
         tag: str = None,
         tags: DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayTags = None,
@@ -54022,6 +55321,8 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         self.create_time = create_time
         # The tag value.
         self.description = description
+        self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
+        self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
         # The information about the pending orders. 
         # 
         # >  This parameter is returned only when **IncludeReservationData** is set to **true**.
@@ -54058,6 +55359,7 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         # - **TEMP_UPGRADE**: temporary upgrade
         # - **RENEW**: renewal
         self.ssl_vpn = ssl_vpn
+        self.ssl_vpn_internet_ip = ssl_vpn_internet_ip
         # The ID of the VPN gateway.
         self.status = status
         # The name of the VPN gateway.
@@ -54127,6 +55429,10 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
             result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.disaster_recovery_internet_ip is not None:
+            result['DisasterRecoveryInternetIp'] = self.disaster_recovery_internet_ip
+        if self.disaster_recovery_vswitch_id is not None:
+            result['DisasterRecoveryVSwitchId'] = self.disaster_recovery_vswitch_id
         if self.enable_bgp is not None:
             result['EnableBgp'] = self.enable_bgp
         if self.end_time is not None:
@@ -54147,6 +55453,8 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
             result['SslMaxConnections'] = self.ssl_max_connections
         if self.ssl_vpn is not None:
             result['SslVpn'] = self.ssl_vpn
+        if self.ssl_vpn_internet_ip is not None:
+            result['SslVpnInternetIp'] = self.ssl_vpn_internet_ip
         if self.status is not None:
             result['Status'] = self.status
         if self.tag is not None:
@@ -54175,6 +55483,10 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DisasterRecoveryInternetIp') is not None:
+            self.disaster_recovery_internet_ip = m.get('DisasterRecoveryInternetIp')
+        if m.get('DisasterRecoveryVSwitchId') is not None:
+            self.disaster_recovery_vswitch_id = m.get('DisasterRecoveryVSwitchId')
         if m.get('EnableBgp') is not None:
             self.enable_bgp = m.get('EnableBgp')
         if m.get('EndTime') is not None:
@@ -54196,6 +55508,8 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
             self.ssl_max_connections = m.get('SslMaxConnections')
         if m.get('SslVpn') is not None:
             self.ssl_vpn = m.get('SslVpn')
+        if m.get('SslVpnInternetIp') is not None:
+            self.ssl_vpn_internet_ip = m.get('SslVpnInternetIp')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Tag') is not None:
@@ -54436,6 +55750,7 @@ class DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry(T
         self,
         create_time: int = None,
         next_hop: str = None,
+        next_hop_tunnel_id: str = None,
         priority: int = None,
         route_dest: str = None,
         route_source: str = None,
@@ -54449,6 +55764,7 @@ class DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry(T
         self.create_time = create_time
         # The next hop of the policy-based route.
         self.next_hop = next_hop
+        self.next_hop_tunnel_id = next_hop_tunnel_id
         # The priority of the policy-based route.
         # 
         # A smaller value indicates a higher priority.
@@ -54483,6 +55799,8 @@ class DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry(T
             result['CreateTime'] = self.create_time
         if self.next_hop is not None:
             result['NextHop'] = self.next_hop
+        if self.next_hop_tunnel_id is not None:
+            result['NextHopTunnelId'] = self.next_hop_tunnel_id
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.route_dest is not None:
@@ -54503,6 +55821,8 @@ class DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry(T
             self.create_time = m.get('CreateTime')
         if m.get('NextHop') is not None:
             self.next_hop = m.get('NextHop')
+        if m.get('NextHopTunnelId') is not None:
+            self.next_hop_tunnel_id = m.get('NextHopTunnelId')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('RouteDest') is not None:
@@ -54747,6 +56067,7 @@ class DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry(TeaModel):
         community: str = None,
         create_time: int = None,
         next_hop: str = None,
+        next_hop_tunnel_id: str = None,
         route_dest: str = None,
         route_entry_type: str = None,
         source: str = None,
@@ -54762,6 +56083,7 @@ class DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry(TeaModel):
         self.create_time = create_time
         # The next hop of the route entry.
         self.next_hop = next_hop
+        self.next_hop_tunnel_id = next_hop_tunnel_id
         # The destination CIDR block of the route entry.
         self.route_dest = route_dest
         # The type of the route entry. Valid values:
@@ -54801,6 +56123,8 @@ class DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry(TeaModel):
             result['CreateTime'] = self.create_time
         if self.next_hop is not None:
             result['NextHop'] = self.next_hop
+        if self.next_hop_tunnel_id is not None:
+            result['NextHopTunnelId'] = self.next_hop_tunnel_id
         if self.route_dest is not None:
             result['RouteDest'] = self.route_dest
         if self.route_entry_type is not None:
@@ -54825,6 +56149,8 @@ class DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('NextHop') is not None:
             self.next_hop = m.get('NextHop')
+        if m.get('NextHopTunnelId') is not None:
+            self.next_hop_tunnel_id = m.get('NextHopTunnelId')
         if m.get('RouteDest') is not None:
             self.route_dest = m.get('RouteDest')
         if m.get('RouteEntryType') is not None:
@@ -56684,28 +58010,142 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig(TeaM
         return self
 
 
-class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig(TeaModel):
+class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig(TeaModel):
     def __init__(
         self,
-        ike_config: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig = None,
-        ipsec_config: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig = None,
-        local: str = None,
-        local_subnet: str = None,
-        remote: str = None,
-        remote_subnet: str = None,
+        ike_auth_alg: str = None,
+        ike_enc_alg: str = None,
+        ike_lifetime: int = None,
+        ike_mode: str = None,
+        ike_pfs: str = None,
+        ike_version: str = None,
+        local_id: str = None,
+        psk: str = None,
+        remote_id: str = None,
     ):
-        # The IKE configuration.
+        self.ike_auth_alg = ike_auth_alg
+        self.ike_enc_alg = ike_enc_alg
+        self.ike_lifetime = ike_lifetime
+        self.ike_mode = ike_mode
+        self.ike_pfs = ike_pfs
+        self.ike_version = ike_version
+        self.local_id = local_id
+        self.psk = psk
+        self.remote_id = remote_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ike_auth_alg is not None:
+            result['IkeAuthAlg'] = self.ike_auth_alg
+        if self.ike_enc_alg is not None:
+            result['IkeEncAlg'] = self.ike_enc_alg
+        if self.ike_lifetime is not None:
+            result['IkeLifetime'] = self.ike_lifetime
+        if self.ike_mode is not None:
+            result['IkeMode'] = self.ike_mode
+        if self.ike_pfs is not None:
+            result['IkePfs'] = self.ike_pfs
+        if self.ike_version is not None:
+            result['IkeVersion'] = self.ike_version
+        if self.local_id is not None:
+            result['LocalId'] = self.local_id
+        if self.psk is not None:
+            result['Psk'] = self.psk
+        if self.remote_id is not None:
+            result['RemoteId'] = self.remote_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IkeAuthAlg') is not None:
+            self.ike_auth_alg = m.get('IkeAuthAlg')
+        if m.get('IkeEncAlg') is not None:
+            self.ike_enc_alg = m.get('IkeEncAlg')
+        if m.get('IkeLifetime') is not None:
+            self.ike_lifetime = m.get('IkeLifetime')
+        if m.get('IkeMode') is not None:
+            self.ike_mode = m.get('IkeMode')
+        if m.get('IkePfs') is not None:
+            self.ike_pfs = m.get('IkePfs')
+        if m.get('IkeVersion') is not None:
+            self.ike_version = m.get('IkeVersion')
+        if m.get('LocalId') is not None:
+            self.local_id = m.get('LocalId')
+        if m.get('Psk') is not None:
+            self.psk = m.get('Psk')
+        if m.get('RemoteId') is not None:
+            self.remote_id = m.get('RemoteId')
+        return self
+
+
+class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig(TeaModel):
+    def __init__(
+        self,
+        ipsec_auth_alg: str = None,
+        ipsec_enc_alg: str = None,
+        ipsec_lifetime: int = None,
+        ipsec_pfs: str = None,
+    ):
+        self.ipsec_auth_alg = ipsec_auth_alg
+        self.ipsec_enc_alg = ipsec_enc_alg
+        self.ipsec_lifetime = ipsec_lifetime
+        self.ipsec_pfs = ipsec_pfs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipsec_auth_alg is not None:
+            result['IpsecAuthAlg'] = self.ipsec_auth_alg
+        if self.ipsec_enc_alg is not None:
+            result['IpsecEncAlg'] = self.ipsec_enc_alg
+        if self.ipsec_lifetime is not None:
+            result['IpsecLifetime'] = self.ipsec_lifetime
+        if self.ipsec_pfs is not None:
+            result['IpsecPfs'] = self.ipsec_pfs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpsecAuthAlg') is not None:
+            self.ipsec_auth_alg = m.get('IpsecAuthAlg')
+        if m.get('IpsecEncAlg') is not None:
+            self.ipsec_enc_alg = m.get('IpsecEncAlg')
+        if m.get('IpsecLifetime') is not None:
+            self.ipsec_lifetime = m.get('IpsecLifetime')
+        if m.get('IpsecPfs') is not None:
+            self.ipsec_pfs = m.get('IpsecPfs')
+        return self
+
+
+class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig(TeaModel):
+    def __init__(
+        self,
+        ike_config: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig = None,
+        ipsec_config: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig = None,
+        local: str = None,
+        remote: str = None,
+        right_ca_cert: str = None,
+        tunnel_id: str = None,
+    ):
         self.ike_config = ike_config
-        # The configuration of the IPsec-VPN connection.
         self.ipsec_config = ipsec_config
-        # The identifier of the VPN gateway.
         self.local = local
-        # The CIDR block on the virtual private cloud (VPC) side.
-        self.local_subnet = local_subnet
-        # The identifier of the customer gateway.
         self.remote = remote
-        # The CIDR block on the data center side.
-        self.remote_subnet = remote_subnet
+        self.right_ca_cert = right_ca_cert
+        self.tunnel_id = tunnel_id
 
     def validate(self):
         if self.ike_config:
@@ -56725,12 +58165,121 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig(TeaModel):
             result['IpsecConfig'] = self.ipsec_config.to_map()
         if self.local is not None:
             result['Local'] = self.local
+        if self.remote is not None:
+            result['Remote'] = self.remote
+        if self.right_ca_cert is not None:
+            result['RightCaCert'] = self.right_ca_cert
+        if self.tunnel_id is not None:
+            result['TunnelId'] = self.tunnel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IkeConfig') is not None:
+            temp_model = DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig()
+            self.ike_config = temp_model.from_map(m['IkeConfig'])
+        if m.get('IpsecConfig') is not None:
+            temp_model = DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig()
+            self.ipsec_config = temp_model.from_map(m['IpsecConfig'])
+        if m.get('Local') is not None:
+            self.local = m.get('Local')
+        if m.get('Remote') is not None:
+            self.remote = m.get('Remote')
+        if m.get('RightCaCert') is not None:
+            self.right_ca_cert = m.get('RightCaCert')
+        if m.get('TunnelId') is not None:
+            self.tunnel_id = m.get('TunnelId')
+        return self
+
+
+class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig(TeaModel):
+    def __init__(
+        self,
+        tunnel_config: List[DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig] = None,
+    ):
+        self.tunnel_config = tunnel_config
+
+    def validate(self):
+        if self.tunnel_config:
+            for k in self.tunnel_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TunnelConfig'] = []
+        if self.tunnel_config is not None:
+            for k in self.tunnel_config:
+                result['TunnelConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tunnel_config = []
+        if m.get('TunnelConfig') is not None:
+            for k in m.get('TunnelConfig'):
+                temp_model = DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig()
+                self.tunnel_config.append(temp_model.from_map(k))
+        return self
+
+
+class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig(TeaModel):
+    def __init__(
+        self,
+        ike_config: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig = None,
+        ipsec_config: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig = None,
+        local: str = None,
+        local_subnet: str = None,
+        remote: str = None,
+        remote_subnet: str = None,
+        tunnels_config: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig = None,
+    ):
+        # The IKE configuration.
+        self.ike_config = ike_config
+        # The configuration of the IPsec-VPN connection.
+        self.ipsec_config = ipsec_config
+        # The identifier of the VPN gateway.
+        self.local = local
+        # The CIDR block on the virtual private cloud (VPC) side.
+        self.local_subnet = local_subnet
+        # The identifier of the customer gateway.
+        self.remote = remote
+        # The CIDR block on the data center side.
+        self.remote_subnet = remote_subnet
+        self.tunnels_config = tunnels_config
+
+    def validate(self):
+        if self.ike_config:
+            self.ike_config.validate()
+        if self.ipsec_config:
+            self.ipsec_config.validate()
+        if self.tunnels_config:
+            self.tunnels_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ike_config is not None:
+            result['IkeConfig'] = self.ike_config.to_map()
+        if self.ipsec_config is not None:
+            result['IpsecConfig'] = self.ipsec_config.to_map()
+        if self.local is not None:
+            result['Local'] = self.local
         if self.local_subnet is not None:
             result['LocalSubnet'] = self.local_subnet
         if self.remote is not None:
             result['Remote'] = self.remote
         if self.remote_subnet is not None:
             result['RemoteSubnet'] = self.remote_subnet
+        if self.tunnels_config is not None:
+            result['TunnelsConfig'] = self.tunnels_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -56749,6 +58298,9 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig(TeaModel):
             self.remote = m.get('Remote')
         if m.get('RemoteSubnet') is not None:
             self.remote_subnet = m.get('RemoteSubnet')
+        if m.get('TunnelsConfig') is not None:
+            temp_model = DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig()
+            self.tunnels_config = temp_model.from_map(m['TunnelsConfig'])
         return self
 
 
@@ -59115,9 +60667,19 @@ class GetPhysicalConnectionServiceStatusResponse(TeaModel):
 class GetTrafficMirrorServiceStatusRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
+        owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
+        self.client_token = client_token
+        self.owner_account = owner_account
         self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -59128,14 +60690,34 @@ class GetTrafficMirrorServiceStatusRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -61552,14 +63134,18 @@ class ListEnhanhcedNatGatewayAvailableZonesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The operation that you want to perform. Set the value to **ListEnhanhcedNatGatewayAvailableZones**.
-        self.accept_language = accept_language
-        self.owner_account = owner_account
-        self.owner_id = owner_id
         # The language to display the results. Valid values:
         # 
         # *   **zh-CN** (default): Chinese
         # *   **en-US**: English
+        self.accept_language = accept_language
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the region that you want to query.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # 
+        # In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -61610,8 +63196,9 @@ class ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones(TeaModel):
         local_name: str = None,
         zone_id: str = None,
     ):
-        self.local_name = local_name
         # The name of the zone.
+        self.local_name = local_name
+        # The ID of the zone where the instance is deployed.
         self.zone_id = zone_id
 
     def validate(self):
@@ -61644,9 +63231,9 @@ class ListEnhanhcedNatGatewayAvailableZonesResponseBody(TeaModel):
         request_id: str = None,
         zones: List[ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones] = None,
     ):
-        # The list of zones.
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of the zone where the instance is deployed.
+        # The list of zones.
         self.zones = zones
 
     def validate(self):
@@ -63588,40 +65175,39 @@ class ListNatIpCidrsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The status of the CIDR block that you want to query. Set the value to **Available**.
-        self.client_token = client_token
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
         # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-        self.dry_run = dry_run
-        # The name of the CIDR block that you want to query. Valid values of **N**: **1** to **20**.
-        self.max_results = max_results
-        # The CIDR block of the NAT gateway that you want to query.
-        self.nat_gateway_id = nat_gateway_id
+        self.client_token = client_token
         # Specifies whether to only precheck this request. Valid values:
         # 
         # *   **true**: checks the API request. The CIDR blocks of the NAT gateway are not queried if the API request passes the precheck. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is authorized, and whether the required parameters are set. If the request fails to pass the precheck, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
         # *   **false**: sends the API request. If the request passes the precheck, 2xx HTTP status code is returned and the CIDR blocks of the NAT gateway are queried. This is the default value.
+        self.dry_run = dry_run
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        self.max_results = max_results
+        # The ID of the VPC NAT gateway that you want to query.
+        self.nat_gateway_id = nat_gateway_id
+        # The CIDR block of the NAT gateway that you want to query.
         self.nat_ip_cidr = nat_ip_cidr
-        # The CIDR block of the NAT gateway that you want to query. Valid values of **N**: **1** to **20**.
+        # The name of the CIDR block that you want to query. Valid values of **N**: **1** to **20**.
         self.nat_ip_cidr_name = nat_ip_cidr_name
+        # The status of the CIDR block that you want to query. Set the value to **Available**.
+        self.nat_ip_cidr_status = nat_ip_cidr_status
+        # The CIDR block of the NAT gateway that you want to query. Valid values of **N**: **1** to **20**.
+        self.nat_ip_cidrs = nat_ip_cidrs
         # The token that is used for the next query. Set the value as needed.
         # 
         # *   If this is your first query or no next query is to be sent, ignore this parameter.
         # *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
-        self.nat_ip_cidr_status = nat_ip_cidr_status
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
-        # *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
-        self.nat_ip_cidrs = nat_ip_cidrs
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the VPC NAT gateway that you want to query.
+        # The region ID of the Virtual Private Cloud (VPC) NAT gateway that you want to query.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -63710,18 +65296,24 @@ class ListNatIpCidrsResponseBodyNatIpCidrs(TeaModel):
         nat_ip_cidr_name: str = None,
         nat_ip_cidr_status: str = None,
     ):
-        # The status of the CIDR block of the NAT gateway. If **Available** is returned, it indicates that the CIDR block is available.
+        # The time when the CIDR block was created.
         self.creation_time = creation_time
-        # The CIDR block of the NAT gateway.
+        # Indicates whether the CIDR block is the default CIDR block of the NAT gateway. Valid values:
+        # 
+        # *   **true**: The CIDR block is the default CIDR block of the NAT gateway.
+        # *   **false**: The CIDR block is not the default CIDR block of the NAT gateway.
         self.is_default = is_default
-        self.nat_gateway_id = nat_gateway_id
-        self.nat_ip_cidr = nat_ip_cidr
-        self.nat_ip_cidr_description = nat_ip_cidr_description
-        # The name of the CIDR block of the NAT gateway.
-        self.nat_ip_cidr_id = nat_ip_cidr_id
-        # The description of the CIDR block of the NAT gateway.
-        self.nat_ip_cidr_name = nat_ip_cidr_name
         # The ID of the VPC NAT gateway.
+        self.nat_gateway_id = nat_gateway_id
+        # The CIDR block of the NAT gateway.
+        self.nat_ip_cidr = nat_ip_cidr
+        # The description of the CIDR block of the NAT gateway.
+        self.nat_ip_cidr_description = nat_ip_cidr_description
+        # The ID of the CIDR block of the NAT gateway.
+        self.nat_ip_cidr_id = nat_ip_cidr_id
+        # The name of the CIDR block of the NAT gateway.
+        self.nat_ip_cidr_name = nat_ip_cidr_name
+        # The status of the CIDR block of the NAT gateway. If **Available** is returned, it indicates that the CIDR block is available.
         self.nat_ip_cidr_status = nat_ip_cidr_status
 
     def validate(self):
@@ -63780,16 +65372,16 @@ class ListNatIpCidrsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # Indicates whether the CIDR block is the default CIDR block of the NAT gateway. Valid values:
-        # 
-        # *   **true**: The CIDR block is the default CIDR block of the NAT gateway.
-        # *   **false**: The CIDR block is not the default CIDR block of the NAT gateway.
-        self.nat_ip_cidrs = nat_ip_cidrs
         # The CIDR blocks of the NAT gateway.
+        self.nat_ip_cidrs = nat_ip_cidrs
+        # The token that is used for the next query. Valid values:
+        # 
+        # *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
+        # *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
-        # The time when the CIDR block was created.
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of the CIDR block of the NAT gateway.
+        # The number of CIDR blocks that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -63894,44 +65486,43 @@ class ListNatIpsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The status of the IP address. Valid values:
-        # 
-        # *   **Available**\
-        # *   **Deleting**\
-        # *   **Creating**\
-        self.client_token = client_token
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
         # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-        self.dry_run = dry_run
-        # The name of the IP address. Valid values of **N**: **1** to **20**.
-        self.max_results = max_results
-        # The CIDR block to which the IP address belongs.
-        self.nat_gateway_id = nat_gateway_id
+        self.client_token = client_token
         # Specifies whether to only precheck the request. Valid values:
         # 
         # *   **true**: checks the API request. IP addresses are not queried. The system checks the required parameters, request syntax, and limits. If the request fails to pass the precheck, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        self.dry_run = dry_run
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        self.max_results = max_results
+        # The ID of the NAT gateway.
+        self.nat_gateway_id = nat_gateway_id
+        # The CIDR block to which the IP address belongs.
         self.nat_ip_cidr = nat_ip_cidr
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
-        # *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
-        self.nat_ip_ids = nat_ip_ids
         # The ID of the IP address. Valid values of **N**: **1** to **20**.
+        self.nat_ip_ids = nat_ip_ids
+        # The name of the IP address. Valid values of **N**: **1** to **20**.
         self.nat_ip_name = nat_ip_name
+        # The status of the IP address. Valid values:
+        # 
+        # *   **Available**\
+        # *   **Deleting**\
+        # *   **Creating**\
+        self.nat_ip_status = nat_ip_status
         # The token that is used for the next query. Valid values:
         # 
         # *   If this is your first query or no next query is to be sent, ignore this parameter.
         # *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
-        self.nat_ip_status = nat_ip_status
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the NAT gateway.
+        # The ID of the region where the NAT gateway is deployed.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -64020,13 +65611,23 @@ class ListNatIpsResponseBodyNatIps(TeaModel):
         nat_ip_name: str = None,
         nat_ip_status: str = None,
     ):
-        # The ID of the IP address.
+        # Indicates whether the IP address is the default IP address of the NAT gateway. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.is_default = is_default
-        self.nat_gateway_id = nat_gateway_id
-        # The description of the IP address.
-        self.nat_ip = nat_ip
         # The ID of the Virtual Private Cloud (VPC) NAT gateway to which the IP address is assigned.
+        self.nat_gateway_id = nat_gateway_id
+        # The IP address.
+        self.nat_ip = nat_ip
+        # The CIDR block to which the IP address belongs.
         self.nat_ip_cidr = nat_ip_cidr
+        # The description of the IP address.
+        self.nat_ip_description = nat_ip_description
+        # The ID of the IP address.
+        self.nat_ip_id = nat_ip_id
+        # The name of the IP address.
+        self.nat_ip_name = nat_ip_name
         # The status of the IP address. Valid values:
         # 
         # *   **Available**: available
@@ -64035,10 +65636,6 @@ class ListNatIpsResponseBodyNatIps(TeaModel):
         # *   **Creating**: creating
         # *   **Associated**: specified in an SNAT or DNAT entry
         # *   **Associating**: being specified in an SNAT or DNAT entry
-        self.nat_ip_description = nat_ip_description
-        # The name of the IP address.
-        self.nat_ip_id = nat_ip_id
-        self.nat_ip_name = nat_ip_name
         self.nat_ip_status = nat_ip_status
 
     def validate(self):
@@ -64097,16 +65694,16 @@ class ListNatIpsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The CIDR block to which the IP address belongs.
-        self.nat_ips = nat_ips
         # The list of IP addresses of the NAT gateway.
-        self.next_token = next_token
-        # Indicates whether the IP address is the default IP address of the NAT gateway. Valid values:
+        self.nat_ips = nat_ips
+        # The token that is used for the next query. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
+        # *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
-        # The IP address.
+        # The number of IP addresses that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -66544,11 +68141,15 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters(TeaModel):
 class ListTrafficMirrorFiltersResponseBody(TeaModel):
     def __init__(
         self,
+        count: int = None,
+        max_results: int = None,
         next_token: str = None,
         request_id: str = None,
         total_count: str = None,
         traffic_mirror_filters: List[ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters] = None,
     ):
+        self.count = count
+        self.max_results = max_results
         # The token that is used for the next query. Valid values:
         # 
         # *   If no value is returned for **NextToken**, no next queries are sent.
@@ -66573,6 +68174,10 @@ class ListTrafficMirrorFiltersResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
@@ -66587,6 +68192,10 @@ class ListTrafficMirrorFiltersResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
@@ -77026,6 +78635,236 @@ class ModifyVpnAttachmentAttributeResponse(TeaModel):
         return self
 
 
+class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig(TeaModel):
+    def __init__(
+        self,
+        local_asn: int = None,
+        local_bgp_ip: str = None,
+        tunnel_cidr: str = None,
+    ):
+        self.local_asn = local_asn
+        self.local_bgp_ip = local_bgp_ip
+        self.tunnel_cidr = tunnel_cidr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.local_asn is not None:
+            result['LocalAsn'] = self.local_asn
+        if self.local_bgp_ip is not None:
+            result['LocalBgpIp'] = self.local_bgp_ip
+        if self.tunnel_cidr is not None:
+            result['TunnelCidr'] = self.tunnel_cidr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalAsn') is not None:
+            self.local_asn = m.get('LocalAsn')
+        if m.get('LocalBgpIp') is not None:
+            self.local_bgp_ip = m.get('LocalBgpIp')
+        if m.get('TunnelCidr') is not None:
+            self.tunnel_cidr = m.get('TunnelCidr')
+        return self
+
+
+class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaModel):
+    def __init__(
+        self,
+        ike_auth_alg: str = None,
+        ike_enc_alg: str = None,
+        ike_lifetime: int = None,
+        ike_mode: str = None,
+        ike_pfs: str = None,
+        ike_version: str = None,
+        local_id: str = None,
+        psk: str = None,
+        remote_id: str = None,
+    ):
+        self.ike_auth_alg = ike_auth_alg
+        self.ike_enc_alg = ike_enc_alg
+        self.ike_lifetime = ike_lifetime
+        self.ike_mode = ike_mode
+        self.ike_pfs = ike_pfs
+        self.ike_version = ike_version
+        self.local_id = local_id
+        self.psk = psk
+        self.remote_id = remote_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ike_auth_alg is not None:
+            result['IkeAuthAlg'] = self.ike_auth_alg
+        if self.ike_enc_alg is not None:
+            result['IkeEncAlg'] = self.ike_enc_alg
+        if self.ike_lifetime is not None:
+            result['IkeLifetime'] = self.ike_lifetime
+        if self.ike_mode is not None:
+            result['IkeMode'] = self.ike_mode
+        if self.ike_pfs is not None:
+            result['IkePfs'] = self.ike_pfs
+        if self.ike_version is not None:
+            result['IkeVersion'] = self.ike_version
+        if self.local_id is not None:
+            result['LocalId'] = self.local_id
+        if self.psk is not None:
+            result['Psk'] = self.psk
+        if self.remote_id is not None:
+            result['RemoteId'] = self.remote_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IkeAuthAlg') is not None:
+            self.ike_auth_alg = m.get('IkeAuthAlg')
+        if m.get('IkeEncAlg') is not None:
+            self.ike_enc_alg = m.get('IkeEncAlg')
+        if m.get('IkeLifetime') is not None:
+            self.ike_lifetime = m.get('IkeLifetime')
+        if m.get('IkeMode') is not None:
+            self.ike_mode = m.get('IkeMode')
+        if m.get('IkePfs') is not None:
+            self.ike_pfs = m.get('IkePfs')
+        if m.get('IkeVersion') is not None:
+            self.ike_version = m.get('IkeVersion')
+        if m.get('LocalId') is not None:
+            self.local_id = m.get('LocalId')
+        if m.get('Psk') is not None:
+            self.psk = m.get('Psk')
+        if m.get('RemoteId') is not None:
+            self.remote_id = m.get('RemoteId')
+        return self
+
+
+class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig(TeaModel):
+    def __init__(
+        self,
+        ipsec_auth_alg: str = None,
+        ipsec_enc_alg: str = None,
+        ipsec_lifetime: int = None,
+        ipsec_pfs: str = None,
+    ):
+        self.ipsec_auth_alg = ipsec_auth_alg
+        self.ipsec_enc_alg = ipsec_enc_alg
+        self.ipsec_lifetime = ipsec_lifetime
+        self.ipsec_pfs = ipsec_pfs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipsec_auth_alg is not None:
+            result['IpsecAuthAlg'] = self.ipsec_auth_alg
+        if self.ipsec_enc_alg is not None:
+            result['IpsecEncAlg'] = self.ipsec_enc_alg
+        if self.ipsec_lifetime is not None:
+            result['IpsecLifetime'] = self.ipsec_lifetime
+        if self.ipsec_pfs is not None:
+            result['IpsecPfs'] = self.ipsec_pfs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpsecAuthAlg') is not None:
+            self.ipsec_auth_alg = m.get('IpsecAuthAlg')
+        if m.get('IpsecEncAlg') is not None:
+            self.ipsec_enc_alg = m.get('IpsecEncAlg')
+        if m.get('IpsecLifetime') is not None:
+            self.ipsec_lifetime = m.get('IpsecLifetime')
+        if m.get('IpsecPfs') is not None:
+            self.ipsec_pfs = m.get('IpsecPfs')
+        return self
+
+
+class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification(TeaModel):
+    def __init__(
+        self,
+        enable_dpd: bool = None,
+        enable_nat_traversal: bool = None,
+        remote_ca_certificate: str = None,
+        tunnel_bgp_config: ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig = None,
+        tunnel_id: str = None,
+        tunnel_ike_config: ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig = None,
+        tunnel_ipsec_config: ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
+    ):
+        self.enable_dpd = enable_dpd
+        self.enable_nat_traversal = enable_nat_traversal
+        self.remote_ca_certificate = remote_ca_certificate
+        self.tunnel_bgp_config = tunnel_bgp_config
+        self.tunnel_id = tunnel_id
+        self.tunnel_ike_config = tunnel_ike_config
+        self.tunnel_ipsec_config = tunnel_ipsec_config
+
+    def validate(self):
+        if self.tunnel_bgp_config:
+            self.tunnel_bgp_config.validate()
+        if self.tunnel_ike_config:
+            self.tunnel_ike_config.validate()
+        if self.tunnel_ipsec_config:
+            self.tunnel_ipsec_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_dpd is not None:
+            result['EnableDpd'] = self.enable_dpd
+        if self.enable_nat_traversal is not None:
+            result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.remote_ca_certificate is not None:
+            result['RemoteCaCertificate'] = self.remote_ca_certificate
+        if self.tunnel_bgp_config is not None:
+            result['TunnelBgpConfig'] = self.tunnel_bgp_config.to_map()
+        if self.tunnel_id is not None:
+            result['TunnelId'] = self.tunnel_id
+        if self.tunnel_ike_config is not None:
+            result['TunnelIkeConfig'] = self.tunnel_ike_config.to_map()
+        if self.tunnel_ipsec_config is not None:
+            result['TunnelIpsecConfig'] = self.tunnel_ipsec_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableDpd') is not None:
+            self.enable_dpd = m.get('EnableDpd')
+        if m.get('EnableNatTraversal') is not None:
+            self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('RemoteCaCertificate') is not None:
+            self.remote_ca_certificate = m.get('RemoteCaCertificate')
+        if m.get('TunnelBgpConfig') is not None:
+            temp_model = ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig()
+            self.tunnel_bgp_config = temp_model.from_map(m['TunnelBgpConfig'])
+        if m.get('TunnelId') is not None:
+            self.tunnel_id = m.get('TunnelId')
+        if m.get('TunnelIkeConfig') is not None:
+            temp_model = ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig()
+            self.tunnel_ike_config = temp_model.from_map(m['TunnelIkeConfig'])
+        if m.get('TunnelIpsecConfig') is not None:
+            temp_model = ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig()
+            self.tunnel_ipsec_config = temp_model.from_map(m['TunnelIpsecConfig'])
+        return self
+
+
 class ModifyVpnConnectionAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -77035,6 +78874,7 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         effect_immediately: bool = None,
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
+        enable_tunnels_bgp: bool = None,
         health_check_config: str = None,
         ike_config: str = None,
         ipsec_config: str = None,
@@ -77047,6 +78887,7 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         remote_subnet: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tunnel_options_specification: List[ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification] = None,
         vpn_connection_id: str = None,
     ):
         # Specifies whether to automatically advertise routes. Valid values:
@@ -77087,6 +78928,7 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         # *   **true:** enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
         # *   **false:** disables NAT traversal.
         self.enable_nat_traversal = enable_nat_traversal
+        self.enable_tunnels_bgp = enable_tunnels_bgp
         # The health check configurations:
         # 
         # *   **HealthCheckConfig.enable:** specifies whether to enable the health check feature. Valid values: **true** and **false**.
@@ -77161,11 +79003,15 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         self.remote_subnet = remote_subnet
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tunnel_options_specification = tunnel_options_specification
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
-        pass
+        if self.tunnel_options_specification:
+            for k in self.tunnel_options_specification:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -77185,6 +79031,8 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
             result['EnableDpd'] = self.enable_dpd
         if self.enable_nat_traversal is not None:
             result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.enable_tunnels_bgp is not None:
+            result['EnableTunnelsBgp'] = self.enable_tunnels_bgp
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config
         if self.ike_config is not None:
@@ -77209,6 +79057,10 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['TunnelOptionsSpecification'] = []
+        if self.tunnel_options_specification is not None:
+            for k in self.tunnel_options_specification:
+                result['TunnelOptionsSpecification'].append(k.to_map() if k else None)
         if self.vpn_connection_id is not None:
             result['VpnConnectionId'] = self.vpn_connection_id
         return result
@@ -77227,6 +79079,8 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
             self.enable_dpd = m.get('EnableDpd')
         if m.get('EnableNatTraversal') is not None:
             self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('EnableTunnelsBgp') is not None:
+            self.enable_tunnels_bgp = m.get('EnableTunnelsBgp')
         if m.get('HealthCheckConfig') is not None:
             self.health_check_config = m.get('HealthCheckConfig')
         if m.get('IkeConfig') is not None:
@@ -77251,6 +79105,11 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tunnel_options_specification = []
+        if m.get('TunnelOptionsSpecification') is not None:
+            for k in m.get('TunnelOptionsSpecification'):
+                temp_model = ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification()
+                self.tunnel_options_specification.append(temp_model.from_map(k))
         if m.get('VpnConnectionId') is not None:
             self.vpn_connection_id = m.get('VpnConnectionId')
         return self
@@ -77394,6 +79253,331 @@ class ModifyVpnConnectionAttributeResponseBodyIpsecConfig(TeaModel):
             self.ipsec_lifetime = m.get('IpsecLifetime')
         if m.get('IpsecPfs') is not None:
             self.ipsec_pfs = m.get('IpsecPfs')
+        return self
+
+
+class ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig(TeaModel):
+    def __init__(
+        self,
+        bgp_status: str = None,
+        enable_bgp: bool = None,
+        local_asn: int = None,
+        local_bgp_ip: str = None,
+        peer_asn: int = None,
+        peer_bgp_ip: str = None,
+        tunnel_cidr: str = None,
+    ):
+        self.bgp_status = bgp_status
+        self.enable_bgp = enable_bgp
+        self.local_asn = local_asn
+        self.local_bgp_ip = local_bgp_ip
+        self.peer_asn = peer_asn
+        self.peer_bgp_ip = peer_bgp_ip
+        self.tunnel_cidr = tunnel_cidr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bgp_status is not None:
+            result['BgpStatus'] = self.bgp_status
+        if self.enable_bgp is not None:
+            result['EnableBgp'] = self.enable_bgp
+        if self.local_asn is not None:
+            result['LocalAsn'] = self.local_asn
+        if self.local_bgp_ip is not None:
+            result['LocalBgpIp'] = self.local_bgp_ip
+        if self.peer_asn is not None:
+            result['PeerAsn'] = self.peer_asn
+        if self.peer_bgp_ip is not None:
+            result['PeerBgpIp'] = self.peer_bgp_ip
+        if self.tunnel_cidr is not None:
+            result['TunnelCidr'] = self.tunnel_cidr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BgpStatus') is not None:
+            self.bgp_status = m.get('BgpStatus')
+        if m.get('EnableBgp') is not None:
+            self.enable_bgp = m.get('EnableBgp')
+        if m.get('LocalAsn') is not None:
+            self.local_asn = m.get('LocalAsn')
+        if m.get('LocalBgpIp') is not None:
+            self.local_bgp_ip = m.get('LocalBgpIp')
+        if m.get('PeerAsn') is not None:
+            self.peer_asn = m.get('PeerAsn')
+        if m.get('PeerBgpIp') is not None:
+            self.peer_bgp_ip = m.get('PeerBgpIp')
+        if m.get('TunnelCidr') is not None:
+            self.tunnel_cidr = m.get('TunnelCidr')
+        return self
+
+
+class ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig(TeaModel):
+    def __init__(
+        self,
+        ike_auth_alg: str = None,
+        ike_enc_alg: str = None,
+        ike_lifetime: int = None,
+        ike_mode: str = None,
+        ike_pfs: str = None,
+        ike_version: str = None,
+        local_id: str = None,
+        psk: str = None,
+        remote_id: str = None,
+    ):
+        self.ike_auth_alg = ike_auth_alg
+        self.ike_enc_alg = ike_enc_alg
+        self.ike_lifetime = ike_lifetime
+        self.ike_mode = ike_mode
+        self.ike_pfs = ike_pfs
+        self.ike_version = ike_version
+        self.local_id = local_id
+        self.psk = psk
+        self.remote_id = remote_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ike_auth_alg is not None:
+            result['IkeAuthAlg'] = self.ike_auth_alg
+        if self.ike_enc_alg is not None:
+            result['IkeEncAlg'] = self.ike_enc_alg
+        if self.ike_lifetime is not None:
+            result['IkeLifetime'] = self.ike_lifetime
+        if self.ike_mode is not None:
+            result['IkeMode'] = self.ike_mode
+        if self.ike_pfs is not None:
+            result['IkePfs'] = self.ike_pfs
+        if self.ike_version is not None:
+            result['IkeVersion'] = self.ike_version
+        if self.local_id is not None:
+            result['LocalId'] = self.local_id
+        if self.psk is not None:
+            result['Psk'] = self.psk
+        if self.remote_id is not None:
+            result['RemoteId'] = self.remote_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IkeAuthAlg') is not None:
+            self.ike_auth_alg = m.get('IkeAuthAlg')
+        if m.get('IkeEncAlg') is not None:
+            self.ike_enc_alg = m.get('IkeEncAlg')
+        if m.get('IkeLifetime') is not None:
+            self.ike_lifetime = m.get('IkeLifetime')
+        if m.get('IkeMode') is not None:
+            self.ike_mode = m.get('IkeMode')
+        if m.get('IkePfs') is not None:
+            self.ike_pfs = m.get('IkePfs')
+        if m.get('IkeVersion') is not None:
+            self.ike_version = m.get('IkeVersion')
+        if m.get('LocalId') is not None:
+            self.local_id = m.get('LocalId')
+        if m.get('Psk') is not None:
+            self.psk = m.get('Psk')
+        if m.get('RemoteId') is not None:
+            self.remote_id = m.get('RemoteId')
+        return self
+
+
+class ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig(TeaModel):
+    def __init__(
+        self,
+        ipsec_auth_alg: str = None,
+        ipsec_enc_alg: str = None,
+        ipsec_lifetime: int = None,
+        ipsec_pfs: str = None,
+    ):
+        self.ipsec_auth_alg = ipsec_auth_alg
+        self.ipsec_enc_alg = ipsec_enc_alg
+        self.ipsec_lifetime = ipsec_lifetime
+        self.ipsec_pfs = ipsec_pfs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipsec_auth_alg is not None:
+            result['IpsecAuthAlg'] = self.ipsec_auth_alg
+        if self.ipsec_enc_alg is not None:
+            result['IpsecEncAlg'] = self.ipsec_enc_alg
+        if self.ipsec_lifetime is not None:
+            result['IpsecLifetime'] = self.ipsec_lifetime
+        if self.ipsec_pfs is not None:
+            result['IpsecPfs'] = self.ipsec_pfs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpsecAuthAlg') is not None:
+            self.ipsec_auth_alg = m.get('IpsecAuthAlg')
+        if m.get('IpsecEncAlg') is not None:
+            self.ipsec_enc_alg = m.get('IpsecEncAlg')
+        if m.get('IpsecLifetime') is not None:
+            self.ipsec_lifetime = m.get('IpsecLifetime')
+        if m.get('IpsecPfs') is not None:
+            self.ipsec_pfs = m.get('IpsecPfs')
+        return self
+
+
+class ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions(TeaModel):
+    def __init__(
+        self,
+        customer_gateway_id: str = None,
+        enable_dpd: bool = None,
+        enable_nat_traversal: bool = None,
+        internet_ip: str = None,
+        remote_ca_certificate: str = None,
+        role: str = None,
+        state: str = None,
+        status: str = None,
+        tunnel_bgp_config: ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig = None,
+        tunnel_id: str = None,
+        tunnel_ike_config: ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig = None,
+        tunnel_ipsec_config: ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig = None,
+        zone_no: str = None,
+    ):
+        self.customer_gateway_id = customer_gateway_id
+        self.enable_dpd = enable_dpd
+        self.enable_nat_traversal = enable_nat_traversal
+        self.internet_ip = internet_ip
+        self.remote_ca_certificate = remote_ca_certificate
+        self.role = role
+        self.state = state
+        self.status = status
+        self.tunnel_bgp_config = tunnel_bgp_config
+        self.tunnel_id = tunnel_id
+        self.tunnel_ike_config = tunnel_ike_config
+        self.tunnel_ipsec_config = tunnel_ipsec_config
+        self.zone_no = zone_no
+
+    def validate(self):
+        if self.tunnel_bgp_config:
+            self.tunnel_bgp_config.validate()
+        if self.tunnel_ike_config:
+            self.tunnel_ike_config.validate()
+        if self.tunnel_ipsec_config:
+            self.tunnel_ipsec_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customer_gateway_id is not None:
+            result['CustomerGatewayId'] = self.customer_gateway_id
+        if self.enable_dpd is not None:
+            result['EnableDpd'] = self.enable_dpd
+        if self.enable_nat_traversal is not None:
+            result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        if self.remote_ca_certificate is not None:
+            result['RemoteCaCertificate'] = self.remote_ca_certificate
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.state is not None:
+            result['State'] = self.state
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tunnel_bgp_config is not None:
+            result['TunnelBgpConfig'] = self.tunnel_bgp_config.to_map()
+        if self.tunnel_id is not None:
+            result['TunnelId'] = self.tunnel_id
+        if self.tunnel_ike_config is not None:
+            result['TunnelIkeConfig'] = self.tunnel_ike_config.to_map()
+        if self.tunnel_ipsec_config is not None:
+            result['TunnelIpsecConfig'] = self.tunnel_ipsec_config.to_map()
+        if self.zone_no is not None:
+            result['ZoneNo'] = self.zone_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomerGatewayId') is not None:
+            self.customer_gateway_id = m.get('CustomerGatewayId')
+        if m.get('EnableDpd') is not None:
+            self.enable_dpd = m.get('EnableDpd')
+        if m.get('EnableNatTraversal') is not None:
+            self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        if m.get('RemoteCaCertificate') is not None:
+            self.remote_ca_certificate = m.get('RemoteCaCertificate')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TunnelBgpConfig') is not None:
+            temp_model = ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig()
+            self.tunnel_bgp_config = temp_model.from_map(m['TunnelBgpConfig'])
+        if m.get('TunnelId') is not None:
+            self.tunnel_id = m.get('TunnelId')
+        if m.get('TunnelIkeConfig') is not None:
+            temp_model = ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig()
+            self.tunnel_ike_config = temp_model.from_map(m['TunnelIkeConfig'])
+        if m.get('TunnelIpsecConfig') is not None:
+            temp_model = ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig()
+            self.tunnel_ipsec_config = temp_model.from_map(m['TunnelIpsecConfig'])
+        if m.get('ZoneNo') is not None:
+            self.zone_no = m.get('ZoneNo')
+        return self
+
+
+class ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification(TeaModel):
+    def __init__(
+        self,
+        tunnel_options: List[ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions] = None,
+    ):
+        self.tunnel_options = tunnel_options
+
+    def validate(self):
+        if self.tunnel_options:
+            for k in self.tunnel_options:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TunnelOptions'] = []
+        if self.tunnel_options is not None:
+            for k in self.tunnel_options:
+                result['TunnelOptions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tunnel_options = []
+        if m.get('TunnelOptions') is not None:
+            for k in m.get('TunnelOptions'):
+                temp_model = ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions()
+                self.tunnel_options.append(temp_model.from_map(k))
         return self
 
 
@@ -77541,12 +79725,14 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
         effect_immediately: bool = None,
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
+        enable_tunnels_bgp: bool = None,
         ike_config: ModifyVpnConnectionAttributeResponseBodyIkeConfig = None,
         ipsec_config: ModifyVpnConnectionAttributeResponseBodyIpsecConfig = None,
         local_subnet: str = None,
         name: str = None,
         remote_subnet: str = None,
         request_id: str = None,
+        tunnel_options_specification: ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification = None,
         vco_health_check: ModifyVpnConnectionAttributeResponseBodyVcoHealthCheck = None,
         vpn_bgp_config: ModifyVpnConnectionAttributeResponseBodyVpnBgpConfig = None,
         vpn_connection_id: str = None,
@@ -77575,6 +79761,7 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
         # *   **false:** NAT traversal is disabled.
         # *   **true:** NAT traversal is enabled.
         self.enable_nat_traversal = enable_nat_traversal
+        self.enable_tunnels_bgp = enable_tunnels_bgp
         # The configurations of Phase 1 negotiations.
         self.ike_config = ike_config
         # The configurations of Phase 2 negotiations.
@@ -77587,6 +79774,7 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
         self.remote_subnet = remote_subnet
         # The ID of the request.
         self.request_id = request_id
+        self.tunnel_options_specification = tunnel_options_specification
         # The health check configurations.
         self.vco_health_check = vco_health_check
         # The BGP configurations.
@@ -77601,6 +79789,8 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
             self.ike_config.validate()
         if self.ipsec_config:
             self.ipsec_config.validate()
+        if self.tunnel_options_specification:
+            self.tunnel_options_specification.validate()
         if self.vco_health_check:
             self.vco_health_check.validate()
         if self.vpn_bgp_config:
@@ -77624,6 +79814,8 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
             result['EnableDpd'] = self.enable_dpd
         if self.enable_nat_traversal is not None:
             result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.enable_tunnels_bgp is not None:
+            result['EnableTunnelsBgp'] = self.enable_tunnels_bgp
         if self.ike_config is not None:
             result['IkeConfig'] = self.ike_config.to_map()
         if self.ipsec_config is not None:
@@ -77636,6 +79828,8 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
             result['RemoteSubnet'] = self.remote_subnet
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.tunnel_options_specification is not None:
+            result['TunnelOptionsSpecification'] = self.tunnel_options_specification.to_map()
         if self.vco_health_check is not None:
             result['VcoHealthCheck'] = self.vco_health_check.to_map()
         if self.vpn_bgp_config is not None:
@@ -77660,6 +79854,8 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
             self.enable_dpd = m.get('EnableDpd')
         if m.get('EnableNatTraversal') is not None:
             self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('EnableTunnelsBgp') is not None:
+            self.enable_tunnels_bgp = m.get('EnableTunnelsBgp')
         if m.get('IkeConfig') is not None:
             temp_model = ModifyVpnConnectionAttributeResponseBodyIkeConfig()
             self.ike_config = temp_model.from_map(m['IkeConfig'])
@@ -77674,6 +79870,9 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
             self.remote_subnet = m.get('RemoteSubnet')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TunnelOptionsSpecification') is not None:
+            temp_model = ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification()
+            self.tunnel_options_specification = temp_model.from_map(m['TunnelOptionsSpecification'])
         if m.get('VcoHealthCheck') is not None:
             temp_model = ModifyVpnConnectionAttributeResponseBodyVcoHealthCheck()
             self.vco_health_check = temp_model.from_map(m['VcoHealthCheck'])
@@ -77836,6 +80035,8 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
         business_status: str = None,
         create_time: int = None,
         description: str = None,
+        disaster_recovery_internet_ip: str = None,
+        disaster_recovery_vswitch_id: str = None,
         enable_bgp: bool = None,
         end_time: int = None,
         internet_ip: str = None,
@@ -77843,6 +80044,7 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
         name: str = None,
         request_id: str = None,
         spec: str = None,
+        ssl_vpn_internet_ip: str = None,
         status: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -77864,6 +80066,8 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
         self.create_time = create_time
         # The description of the VPN gateway.
         self.description = description
+        self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
+        self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
         # The BGP status of the VPN gateway. Valid values:
         # 
         # *   **true:** enabled.
@@ -77883,6 +80087,7 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
         self.request_id = request_id
         # The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
         self.spec = spec
+        self.ssl_vpn_internet_ip = ssl_vpn_internet_ip
         # The status of the VPN gateway. Valid values:
         # 
         # *   **init:** The VPN gateway is being initialized.
@@ -77915,6 +80120,10 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
             result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.disaster_recovery_internet_ip is not None:
+            result['DisasterRecoveryInternetIp'] = self.disaster_recovery_internet_ip
+        if self.disaster_recovery_vswitch_id is not None:
+            result['DisasterRecoveryVSwitchId'] = self.disaster_recovery_vswitch_id
         if self.enable_bgp is not None:
             result['EnableBgp'] = self.enable_bgp
         if self.end_time is not None:
@@ -77929,6 +80138,8 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.spec is not None:
             result['Spec'] = self.spec
+        if self.ssl_vpn_internet_ip is not None:
+            result['SslVpnInternetIp'] = self.ssl_vpn_internet_ip
         if self.status is not None:
             result['Status'] = self.status
         if self.v_switch_id is not None:
@@ -77949,6 +80160,10 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DisasterRecoveryInternetIp') is not None:
+            self.disaster_recovery_internet_ip = m.get('DisasterRecoveryInternetIp')
+        if m.get('DisasterRecoveryVSwitchId') is not None:
+            self.disaster_recovery_vswitch_id = m.get('DisasterRecoveryVSwitchId')
         if m.get('EnableBgp') is not None:
             self.enable_bgp = m.get('EnableBgp')
         if m.get('EndTime') is not None:
@@ -77963,6 +80178,8 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
+        if m.get('SslVpnInternetIp') is not None:
+            self.ssl_vpn_internet_ip = m.get('SslVpnInternetIp')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('VSwitchId') is not None:
@@ -79234,9 +81451,19 @@ class OpenPhysicalConnectionServiceResponse(TeaModel):
 class OpenTrafficMirrorServiceRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
+        owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
+        self.client_token = client_token
+        self.owner_account = owner_account
         self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -79247,25 +81474,46 @@ class OpenTrafficMirrorServiceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
 class OpenTrafficMirrorServiceResponseBody(TeaModel):
     def __init__(
         self,
-        order_id: str = None,
+        code: str = None,
+        message: str = None,
         request_id: str = None,
     ):
-        # The ID of the order.
-        self.order_id = order_id
+        self.code = code
+        self.message = message
         # The ID of the request.
         self.request_id = request_id
 
@@ -79278,16 +81526,20 @@ class OpenTrafficMirrorServiceResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
