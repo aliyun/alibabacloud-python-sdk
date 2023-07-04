@@ -734,6 +734,140 @@ class CheckMobilesCardSupportResponse(TeaModel):
         return self
 
 
+class ConversionDataIntlRequest(TeaModel):
+    def __init__(
+        self,
+        conversion_rate: str = None,
+        owner_id: int = None,
+        report_time: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.conversion_rate = conversion_rate
+        self.owner_id = owner_id
+        self.report_time = report_time
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conversion_rate is not None:
+            result['ConversionRate'] = self.conversion_rate
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.report_time is not None:
+            result['ReportTime'] = self.report_time
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConversionRate') is not None:
+            self.conversion_rate = m.get('ConversionRate')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReportTime') is not None:
+            self.report_time = m.get('ReportTime')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ConversionDataIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ConversionDataIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConversionDataIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConversionDataIntlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCardSmsTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -938,6 +1072,217 @@ class CreateCardSmsTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateCardSmsTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSmartShortUrlRequest(TeaModel):
+    def __init__(
+        self,
+        expiration: int = None,
+        owner_id: int = None,
+        phone_numbers: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        source_name: str = None,
+        source_url: str = None,
+    ):
+        self.expiration = expiration
+        self.owner_id = owner_id
+        self.phone_numbers = phone_numbers
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.source_name = source_name
+        self.source_url = source_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_numbers is not None:
+            result['PhoneNumbers'] = self.phone_numbers
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_url is not None:
+            result['SourceUrl'] = self.source_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumbers') is not None:
+            self.phone_numbers = m.get('PhoneNumbers')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceUrl') is not None:
+            self.source_url = m.get('SourceUrl')
+        return self
+
+
+class CreateSmartShortUrlResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        expiration: int = None,
+        phone_number: str = None,
+        short_name: str = None,
+        short_url: str = None,
+    ):
+        self.domain = domain
+        self.expiration = expiration
+        self.phone_number = phone_number
+        self.short_name = short_name
+        self.short_url = short_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.short_name is not None:
+            result['ShortName'] = self.short_name
+        if self.short_url is not None:
+            result['ShortUrl'] = self.short_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('ShortName') is not None:
+            self.short_name = m.get('ShortName')
+        if m.get('ShortUrl') is not None:
+            self.short_url = m.get('ShortUrl')
+        return self
+
+
+class CreateSmartShortUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        model: List[CreateSmartShortUrlResponseBodyModel] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+
+    def validate(self):
+        if self.model:
+            for k in self.model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        result['Model'] = []
+        if self.model is not None:
+            for k in self.model:
+                result['Model'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        self.model = []
+        if m.get('Model') is not None:
+            for k in m.get('Model'):
+                temp_model = CreateSmartShortUrlResponseBodyModel()
+                self.model.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSmartShortUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSmartShortUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSmartShortUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3063,6 +3408,318 @@ class QueryMobilesCardSupportResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryMobilesCardSupportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryPageSmartShortUrlLogRequest(TeaModel):
+    def __init__(
+        self,
+        click_state: int = None,
+        create_date_end: int = None,
+        create_date_start: int = None,
+        end_id: int = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        short_name: str = None,
+        short_url: str = None,
+        start_id: int = None,
+    ):
+        self.click_state = click_state
+        self.create_date_end = create_date_end
+        self.create_date_start = create_date_start
+        self.end_id = end_id
+        self.owner_id = owner_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.short_name = short_name
+        self.short_url = short_url
+        self.start_id = start_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.click_state is not None:
+            result['ClickState'] = self.click_state
+        if self.create_date_end is not None:
+            result['CreateDateEnd'] = self.create_date_end
+        if self.create_date_start is not None:
+            result['CreateDateStart'] = self.create_date_start
+        if self.end_id is not None:
+            result['EndId'] = self.end_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.short_name is not None:
+            result['ShortName'] = self.short_name
+        if self.short_url is not None:
+            result['ShortUrl'] = self.short_url
+        if self.start_id is not None:
+            result['StartId'] = self.start_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClickState') is not None:
+            self.click_state = m.get('ClickState')
+        if m.get('CreateDateEnd') is not None:
+            self.create_date_end = m.get('CreateDateEnd')
+        if m.get('CreateDateStart') is not None:
+            self.create_date_start = m.get('CreateDateStart')
+        if m.get('EndId') is not None:
+            self.end_id = m.get('EndId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ShortName') is not None:
+            self.short_name = m.get('ShortName')
+        if m.get('ShortUrl') is not None:
+            self.short_url = m.get('ShortUrl')
+        if m.get('StartId') is not None:
+            self.start_id = m.get('StartId')
+        return self
+
+
+class QueryPageSmartShortUrlLogResponseBodyModelList(TeaModel):
+    def __init__(
+        self,
+        click_state: int = None,
+        click_time: int = None,
+        create_time: int = None,
+        phone_number: str = None,
+        short_name: str = None,
+        short_url: str = None,
+    ):
+        self.click_state = click_state
+        self.click_time = click_time
+        self.create_time = create_time
+        self.phone_number = phone_number
+        self.short_name = short_name
+        self.short_url = short_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.click_state is not None:
+            result['ClickState'] = self.click_state
+        if self.click_time is not None:
+            result['ClickTime'] = self.click_time
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.short_name is not None:
+            result['ShortName'] = self.short_name
+        if self.short_url is not None:
+            result['ShortUrl'] = self.short_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClickState') is not None:
+            self.click_state = m.get('ClickState')
+        if m.get('ClickTime') is not None:
+            self.click_time = m.get('ClickTime')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('ShortName') is not None:
+            self.short_name = m.get('ShortName')
+        if m.get('ShortUrl') is not None:
+            self.short_url = m.get('ShortUrl')
+        return self
+
+
+class QueryPageSmartShortUrlLogResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        list: List[QueryPageSmartShortUrlLogResponseBodyModelList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.list = list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = QueryPageSmartShortUrlLogResponseBodyModelList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class QueryPageSmartShortUrlLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        model: QueryPageSmartShortUrlLogResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = QueryPageSmartShortUrlLogResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryPageSmartShortUrlLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryPageSmartShortUrlLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryPageSmartShortUrlLogResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5533,6 +6190,146 @@ class SendSmsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendSmsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SmsConversionIntlRequest(TeaModel):
+    def __init__(
+        self,
+        conversion_time: int = None,
+        delivered: bool = None,
+        message_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.conversion_time = conversion_time
+        self.delivered = delivered
+        self.message_id = message_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conversion_time is not None:
+            result['ConversionTime'] = self.conversion_time
+        if self.delivered is not None:
+            result['Delivered'] = self.delivered
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConversionTime') is not None:
+            self.conversion_time = m.get('ConversionTime')
+        if m.get('Delivered') is not None:
+            self.delivered = m.get('Delivered')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class SmsConversionIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SmsConversionIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SmsConversionIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SmsConversionIntlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,6 @@
+2023-07-04 Version: 2.0.24
+- Add CreateSmartShortUrl api.
+
 2022-11-29 Version: 2.0.23
 - Add custom content for QueryCardSmsTemplateReport.
 
