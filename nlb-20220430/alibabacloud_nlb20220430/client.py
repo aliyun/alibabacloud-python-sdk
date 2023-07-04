@@ -133,6 +133,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_servers_to_server_group_with_options_async(request, runtime)
 
+    def associate_additional_certificates_with_listener_with_options(
+        self,
+        request: nlb_20220430_models.AssociateAdditionalCertificatesWithListenerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.additional_certificate_ids):
+            body['AdditionalCertificateIds'] = request.additional_certificate_ids
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            body['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssociateAdditionalCertificatesWithListener',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_additional_certificates_with_listener_with_options_async(
+        self,
+        request: nlb_20220430_models.AssociateAdditionalCertificatesWithListenerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.additional_certificate_ids):
+            body['AdditionalCertificateIds'] = request.additional_certificate_ids
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            body['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssociateAdditionalCertificatesWithListener',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_additional_certificates_with_listener(
+        self,
+        request: nlb_20220430_models.AssociateAdditionalCertificatesWithListenerRequest,
+    ) -> nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.associate_additional_certificates_with_listener_with_options(request, runtime)
+
+    async def associate_additional_certificates_with_listener_async(
+        self,
+        request: nlb_20220430_models.AssociateAdditionalCertificatesWithListenerRequest,
+    ) -> nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.associate_additional_certificates_with_listener_with_options_async(request, runtime)
+
     def attach_common_bandwidth_package_to_load_balancer_with_options(
         self,
         request: nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
@@ -268,6 +354,8 @@ class Client(OpenApiClient):
             body['ServerGroupId'] = request.server_group_id
         if not UtilClient.is_unset(request.start_port):
             body['StartPort'] = request.start_port
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -336,6 +424,8 @@ class Client(OpenApiClient):
             body['ServerGroupId'] = request.server_group_id
         if not UtilClient.is_unset(request.start_port):
             body['StartPort'] = request.start_port
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -411,6 +501,8 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_mappings):
@@ -478,6 +570,8 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_mappings):
@@ -554,6 +648,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.security_policy_name):
             body['SecurityPolicyName'] = request.security_policy_name
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.tls_versions):
             body['TlsVersions'] = request.tls_versions
         req = open_api_models.OpenApiRequest(
@@ -594,6 +690,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.security_policy_name):
             body['SecurityPolicyName'] = request.security_policy_name
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.tls_versions):
             body['TlsVersions'] = request.tls_versions
         req = open_api_models.OpenApiRequest(
@@ -676,6 +774,8 @@ class Client(OpenApiClient):
             body['ServerGroupName'] = request.server_group_name
         if not UtilClient.is_unset(request.server_group_type):
             body['ServerGroupType'] = request.server_group_type
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         body = TeaCore.merge(body,
@@ -746,6 +846,8 @@ class Client(OpenApiClient):
             body['ServerGroupName'] = request.server_group_name
         if not UtilClient.is_unset(request.server_group_type):
             body['ServerGroupType'] = request.server_group_type
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         body = TeaCore.merge(body,
@@ -1489,6 +1591,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_load_balancer_ipv_6internet_with_options_async(request, runtime)
 
+    def disassociate_additional_certificates_with_listener_with_options(
+        self,
+        request: nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.additional_certificate_ids):
+            body['AdditionalCertificateIds'] = request.additional_certificate_ids
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            body['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisassociateAdditionalCertificatesWithListener',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disassociate_additional_certificates_with_listener_with_options_async(
+        self,
+        request: nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.additional_certificate_ids):
+            body['AdditionalCertificateIds'] = request.additional_certificate_ids
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            body['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisassociateAdditionalCertificatesWithListener',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disassociate_additional_certificates_with_listener(
+        self,
+        request: nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerRequest,
+    ) -> nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disassociate_additional_certificates_with_listener_with_options(request, runtime)
+
+    async def disassociate_additional_certificates_with_listener_async(
+        self,
+        request: nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerRequest,
+    ) -> nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disassociate_additional_certificates_with_listener_with_options_async(request, runtime)
+
     def enable_load_balancer_ipv_6internet_with_options(
         self,
         request: nlb_20220430_models.EnableLoadBalancerIpv6InternetRequest,
@@ -1898,6 +2086,8 @@ class Client(OpenApiClient):
     ) -> nlb_20220430_models.ListListenerCertificatesResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.cert_type):
+            body['CertType'] = request.cert_type
         if not UtilClient.is_unset(request.listener_id):
             body['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.max_results):
@@ -1932,6 +2122,8 @@ class Client(OpenApiClient):
     ) -> nlb_20220430_models.ListListenerCertificatesResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.cert_type):
+            body['CertType'] = request.cert_type
         if not UtilClient.is_unset(request.listener_id):
             body['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.max_results):
@@ -1992,6 +2184,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2030,6 +2224,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2490,22 +2686,8 @@ class Client(OpenApiClient):
     ) -> nlb_20220430_models.ListSystemSecurityPolicyResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.caller_bid_login_email):
-            body['CallerBidLoginEmail'] = request.caller_bid_login_email
-        if not UtilClient.is_unset(request.caller_uid_login_email):
-            body['CallerUidLoginEmail'] = request.caller_uid_login_email
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
-        if not UtilClient.is_unset(request.owner_account):
-            body['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id_login_email):
-            body['OwnerIdLoginEmail'] = request.owner_id_login_email
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
-        if not UtilClient.is_unset(request.resource_owner_account):
-            body['ResourceOwnerAccount'] = request.resource_owner_account
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2532,22 +2714,8 @@ class Client(OpenApiClient):
     ) -> nlb_20220430_models.ListSystemSecurityPolicyResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.caller_bid_login_email):
-            body['CallerBidLoginEmail'] = request.caller_bid_login_email
-        if not UtilClient.is_unset(request.caller_uid_login_email):
-            body['CallerUidLoginEmail'] = request.caller_uid_login_email
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
-        if not UtilClient.is_unset(request.owner_account):
-            body['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id_login_email):
-            body['OwnerIdLoginEmail'] = request.owner_id_login_email
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
-        if not UtilClient.is_unset(request.resource_owner_account):
-            body['ResourceOwnerAccount'] = request.resource_owner_account
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2936,6 +3104,88 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.load_balancer_leave_security_group_with_options_async(request, runtime)
+
+    def move_resource_group_with_options(
+        self,
+        request: nlb_20220430_models.MoveResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.MoveResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            body['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.MoveResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_resource_group_with_options_async(
+        self,
+        request: nlb_20220430_models.MoveResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.MoveResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            body['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.MoveResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_resource_group(
+        self,
+        request: nlb_20220430_models.MoveResourceGroupRequest,
+    ) -> nlb_20220430_models.MoveResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.move_resource_group_with_options(request, runtime)
+
+    async def move_resource_group_async(
+        self,
+        request: nlb_20220430_models.MoveResourceGroupRequest,
+    ) -> nlb_20220430_models.MoveResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.move_resource_group_with_options_async(request, runtime)
 
     def remove_servers_from_server_group_with_options(
         self,

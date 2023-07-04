@@ -245,6 +245,134 @@ class AddServersToServerGroupResponse(TeaModel):
         return self
 
 
+class AssociateAdditionalCertificatesWithListenerRequest(TeaModel):
+    def __init__(
+        self,
+        additional_certificate_ids: List[str] = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        listener_id: str = None,
+        region_id: str = None,
+    ):
+        self.additional_certificate_ids = additional_certificate_ids
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.listener_id = listener_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_certificate_ids is not None:
+            result['AdditionalCertificateIds'] = self.additional_certificate_ids
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdditionalCertificateIds') is not None:
+            self.additional_certificate_ids = m.get('AdditionalCertificateIds')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AssociateAdditionalCertificatesWithListenerResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        self.job_id = job_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateAdditionalCertificatesWithListenerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateAdditionalCertificatesWithListenerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateAdditionalCertificatesWithListenerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AttachCommonBandwidthPackageToLoadBalancerRequest(TeaModel):
     def __init__(
         self,
@@ -389,6 +517,39 @@ class AttachCommonBandwidthPackageToLoadBalancerResponse(TeaModel):
         return self
 
 
+class CreateListenerRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateListenerRequest(TeaModel):
     def __init__(
         self,
@@ -413,6 +574,7 @@ class CreateListenerRequest(TeaModel):
         security_policy_id: str = None,
         server_group_id: str = None,
         start_port: int = None,
+        tag: List[CreateListenerRequestTag] = None,
     ):
         # Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
         # 
@@ -491,9 +653,13 @@ class CreateListenerRequest(TeaModel):
         self.server_group_id = server_group_id
         # The first port in the listening port range. Valid values: **0** to **65535**.
         self.start_port = start_port
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -543,6 +709,10 @@ class CreateListenerRequest(TeaModel):
             result['ServerGroupId'] = self.server_group_id
         if self.start_port is not None:
             result['StartPort'] = self.start_port
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -589,6 +759,11 @@ class CreateListenerRequest(TeaModel):
             self.server_group_id = m.get('ServerGroupId')
         if m.get('StartPort') is not None:
             self.start_port = m.get('StartPort')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateListenerRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -788,6 +963,39 @@ class CreateLoadBalancerRequestModificationProtectionConfig(TeaModel):
         return self
 
 
+class CreateLoadBalancerRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateLoadBalancerRequestZoneMappings(TeaModel):
     def __init__(
         self,
@@ -854,6 +1062,7 @@ class CreateLoadBalancerRequest(TeaModel):
         modification_protection_config: CreateLoadBalancerRequestModificationProtectionConfig = None,
         region_id: str = None,
         resource_group_id: str = None,
+        tag: List[CreateLoadBalancerRequestTag] = None,
         vpc_id: str = None,
         zone_mappings: List[CreateLoadBalancerRequestZoneMappings] = None,
     ):
@@ -900,6 +1109,7 @@ class CreateLoadBalancerRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.tag = tag
         # The ID of the VPC where the NLB instance is deployed.
         self.vpc_id = vpc_id
         # The mappings between zones and vSwitches. You must add at least two zones. You can add a maximum of 10 zones.
@@ -912,6 +1122,10 @@ class CreateLoadBalancerRequest(TeaModel):
             self.load_balancer_billing_config.validate()
         if self.modification_protection_config:
             self.modification_protection_config.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
         if self.zone_mappings:
             for k in self.zone_mappings:
                 if k:
@@ -947,6 +1161,10 @@ class CreateLoadBalancerRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         result['ZoneMappings'] = []
@@ -984,6 +1202,11 @@ class CreateLoadBalancerRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateLoadBalancerRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         self.zone_mappings = []
@@ -1080,6 +1303,39 @@ class CreateLoadBalancerResponse(TeaModel):
         return self
 
 
+class CreateSecurityPolicyRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateSecurityPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -1089,6 +1345,7 @@ class CreateSecurityPolicyRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         security_policy_name: str = None,
+        tag: List[CreateSecurityPolicyRequestTag] = None,
         tls_versions: List[str] = None,
     ):
         self.ciphers = ciphers
@@ -1113,10 +1370,14 @@ class CreateSecurityPolicyRequest(TeaModel):
         # 
         # The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         self.security_policy_name = security_policy_name
+        self.tag = tag
         self.tls_versions = tls_versions
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1136,6 +1397,10 @@ class CreateSecurityPolicyRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.security_policy_name is not None:
             result['SecurityPolicyName'] = self.security_policy_name
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.tls_versions is not None:
             result['TlsVersions'] = self.tls_versions
         return result
@@ -1154,6 +1419,11 @@ class CreateSecurityPolicyRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityPolicyName') is not None:
             self.security_policy_name = m.get('SecurityPolicyName')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateSecurityPolicyRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TlsVersions') is not None:
             self.tls_versions = m.get('TlsVersions')
         return self
@@ -1376,6 +1646,39 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         return self
 
 
+class CreateServerGroupRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateServerGroupRequest(TeaModel):
     def __init__(
         self,
@@ -1393,6 +1696,7 @@ class CreateServerGroupRequest(TeaModel):
         scheduler: str = None,
         server_group_name: str = None,
         server_group_type: str = None,
+        tag: List[CreateServerGroupRequestTag] = None,
         vpc_id: str = None,
     ):
         # The protocol version. Valid values:
@@ -1460,6 +1764,7 @@ class CreateServerGroupRequest(TeaModel):
         # *   **Instance:** allows you to add servers of the **Ecs**, **Ens**, or **Eci** type. This is the default value.
         # *   **Ip:** allows you to add servers by specifying IP addresses.
         self.server_group_type = server_group_type
+        self.tag = tag
         # The ID of the VPC to which the server group belongs.
         # 
         # >  If **ServerGroupType** is set to **Instance**, only servers in the specified VPC can be added to the server group.
@@ -1468,6 +1773,10 @@ class CreateServerGroupRequest(TeaModel):
     def validate(self):
         if self.health_check_config:
             self.health_check_config.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1503,6 +1812,10 @@ class CreateServerGroupRequest(TeaModel):
             result['ServerGroupName'] = self.server_group_name
         if self.server_group_type is not None:
             result['ServerGroupType'] = self.server_group_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -1538,6 +1851,11 @@ class CreateServerGroupRequest(TeaModel):
             self.server_group_name = m.get('ServerGroupName')
         if m.get('ServerGroupType') is not None:
             self.server_group_type = m.get('ServerGroupType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateServerGroupRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -2802,6 +3120,134 @@ class DisableLoadBalancerIpv6InternetResponse(TeaModel):
         return self
 
 
+class DisassociateAdditionalCertificatesWithListenerRequest(TeaModel):
+    def __init__(
+        self,
+        additional_certificate_ids: List[str] = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        listener_id: str = None,
+        region_id: str = None,
+    ):
+        self.additional_certificate_ids = additional_certificate_ids
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.listener_id = listener_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_certificate_ids is not None:
+            result['AdditionalCertificateIds'] = self.additional_certificate_ids
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdditionalCertificateIds') is not None:
+            self.additional_certificate_ids = m.get('AdditionalCertificateIds')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DisassociateAdditionalCertificatesWithListenerResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        self.job_id = job_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisassociateAdditionalCertificatesWithListenerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisassociateAdditionalCertificatesWithListenerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisassociateAdditionalCertificatesWithListenerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableLoadBalancerIpv6InternetRequest(TeaModel):
     def __init__(
         self,
@@ -3111,6 +3557,39 @@ class GetListenerAttributeRequest(TeaModel):
         return self
 
 
+class GetListenerAttributeResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
@@ -3136,6 +3615,7 @@ class GetListenerAttributeResponseBody(TeaModel):
         security_policy_id: str = None,
         server_group_id: str = None,
         start_port: str = None,
+        tags: List[GetListenerAttributeResponseBodyTags] = None,
     ):
         # Indicates whether Application-Layer Protocol Negotiation (ALPN) is enabled. Valid values:
         # 
@@ -3219,9 +3699,13 @@ class GetListenerAttributeResponseBody(TeaModel):
         self.server_group_id = server_group_id
         # The first port in the listening port range. Valid values: **0** to **65535**.
         self.start_port = start_port
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3273,6 +3757,10 @@ class GetListenerAttributeResponseBody(TeaModel):
             result['ServerGroupId'] = self.server_group_id
         if self.start_port is not None:
             result['StartPort'] = self.start_port
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -3321,6 +3809,11 @@ class GetListenerAttributeResponseBody(TeaModel):
             self.server_group_id = m.get('ServerGroupId')
         if m.get('StartPort') is not None:
             self.start_port = m.get('StartPort')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetListenerAttributeResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -3749,22 +4242,9 @@ class GetLoadBalancerAttributeRequest(TeaModel):
         load_balancer_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** is different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false**: performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed. This is the default value.
         self.dry_run = dry_run
-        # The ID of the NLB instance.
         self.load_balancer_id = load_balancer_id
-        # The ID of the region where the NLB instance is deployed.
-        # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -3806,14 +4286,8 @@ class GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig(TeaModel):
         enabled_time: str = None,
         reason: str = None,
     ):
-        # Indicates whether deletion protection is enabled. Valid values:
-        # 
-        # *   **true**: enabled
-        # *   **false**: disabled
         self.enabled = enabled
-        # The time when deletion protection was enabled. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
         self.enabled_time = enabled_time
-        # The reason why the deletion protection feature is enabled or disabled. The reason must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
         self.reason = reason
 
     def validate(self):
@@ -3849,7 +4323,6 @@ class GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig(TeaModel):
         self,
         pay_type: str = None,
     ):
-        # The billing method of the NLB instance. Only **PostPay** is supported, which indicates the pay-as-you-go billing method.
         self.pay_type = pay_type
 
     def validate(self):
@@ -3879,18 +4352,8 @@ class GetLoadBalancerAttributeResponseBodyModificationProtectionConfig(TeaModel)
         reason: str = None,
         status: str = None,
     ):
-        # The time when the configuration read-only mode was enabled. The time is displayed in UTC in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.enabled_time = enabled_time
-        # The reason why the configuration read-only mode is enabled. The reason must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
-        # 
-        # This parameter is valid only if the **Status** parameter is set to **ConsoleProtection**.
         self.reason = reason
-        # Indicates whether the configuration read-only mode is enabled. Valid values:
-        # 
-        # *   **NonProtection**: disabled. The **Reason** parameter cannot be set. If **Reason** is set, the value is cleared.
-        # *   **ConsoleProtection**: enabled. In this case, the **Reason** parameter is returned.
-        # 
-        # >  If you set this parameter to **ConsoleProtection**, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
         self.status = status
 
     def validate(self):
@@ -3927,14 +4390,7 @@ class GetLoadBalancerAttributeResponseBodyOperationLocks(TeaModel):
         lock_reason: str = None,
         lock_type: str = None,
     ):
-        # The reason why the NLB instance is locked.
         self.lock_reason = lock_reason
-        # The type of lock. Valid values:
-        # 
-        # *   **SecurityLocked**: The NLB instance is locked due to security reasons.
-        # *   **RelatedResourceLocked**: The NLB instance is locked due to association issues.
-        # *   **FinancialLocked**: The NLB instance is locked due to overdue payments.
-        # *   **ResidualLocked**: The NLB instance is locked because the payments of the associated resources are overdue and the resources are released.
         self.lock_type = lock_type
 
     def validate(self):
@@ -3961,6 +4417,39 @@ class GetLoadBalancerAttributeResponseBodyOperationLocks(TeaModel):
         return self
 
 
+class GetLoadBalancerAttributeResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaModel):
     def __init__(
         self,
@@ -3972,17 +4461,12 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         private_ipv_6hc_status: str = None,
         public_ipv_4address: str = None,
     ):
-        # The ID of the elastic IP address (EIP).
         self.allocation_id = allocation_id
-        # The ID of the elastic network interface (ENI).
         self.eni_id = eni_id
-        # The IPv6 address of the NLB instance.
         self.ipv_6address = ipv_6address
-        # The private IPv4 address of the NLB instance.
         self.private_ipv_4address = private_ipv_4address
         self.private_ipv_4hc_status = private_ipv_4hc_status
         self.private_ipv_6hc_status = private_ipv_6hc_status
-        # The public IPv4 address of the NLB instance.
         self.public_ipv_4address = public_ipv_4address
 
     def validate(self):
@@ -4033,14 +4517,13 @@ class GetLoadBalancerAttributeResponseBodyZoneMappings(TeaModel):
     def __init__(
         self,
         load_balancer_addresses: List[GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses] = None,
+        status: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The information about the IP addresses used by the NLB instance.
         self.load_balancer_addresses = load_balancer_addresses
-        # The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
+        self.status = status
         self.v_switch_id = v_switch_id
-        # The ID of the zone. You can call the [DescribeZones](~~443890~~) operation to query the zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4059,6 +4542,8 @@ class GetLoadBalancerAttributeResponseBodyZoneMappings(TeaModel):
         if self.load_balancer_addresses is not None:
             for k in self.load_balancer_addresses:
                 result['LoadBalancerAddresses'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
@@ -4072,6 +4557,8 @@ class GetLoadBalancerAttributeResponseBodyZoneMappings(TeaModel):
             for k in m.get('LoadBalancerAddresses'):
                 temp_model = GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses()
                 self.load_balancer_addresses.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
@@ -4103,79 +4590,33 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
         security_group_ids: List[str] = None,
+        tags: List[GetLoadBalancerAttributeResponseBodyTags] = None,
         vpc_id: str = None,
         zone_mappings: List[GetLoadBalancerAttributeResponseBodyZoneMappings] = None,
     ):
-        # The IP version. Valid values:
-        # 
-        # *   **ipv4**: IPv4
-        # *   **DualStack**: dual stack
         self.address_ip_version = address_ip_version
-        # The type of IPv4 address that is used by the NLB instance. Valid values:
-        # 
-        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
-        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
         self.address_type = address_type
-        # The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
         self.bandwidth_package_id = bandwidth_package_id
-        # The maximum number of connections that can be created per second on the NLB instance. Valid values: **0** to **1000000**.
-        # 
-        # **0** indicates that the number of connections is unlimited.
         self.cps = cps
-        # The time when the resource was created. The time is displayed in UTC in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
-        # Indicates whether cross-zone load balancing is enabled for the NLB instance. Valid values:
-        # 
-        # *   **true**: enabled
-        # *   **false**: disabled
         self.cross_zone_enabled = cross_zone_enabled
-        # The domain name of the NLB instance.
         self.dnsname = dnsname
-        # The configuration of the deletion protection feature.
         self.deletion_protection_config = deletion_protection_config
-        # The type of IPv6 address used by the NLB instance. Valid values:
-        # 
-        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
-        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
         self.ipv_6address_type = ipv_6address_type
-        # The configuration of the billing method.
         self.load_balancer_billing_config = load_balancer_billing_config
-        # The business status of the NLB instance. Valid values:
-        # 
-        # *   **Abnormal**: The NLB instance is not working as expected.
-        # *   **Normal**: The NLB instance is working as expected.
         self.load_balancer_business_status = load_balancer_business_status
-        # The ID of the NLB instance.
         self.load_balancer_id = load_balancer_id
-        # The name of the NLB instance.
-        # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
-        # The status of the NLB instance. Valid values:
-        # 
-        # *   **Inactive**: The NLB instance is disabled. Listeners of NLB instances in the Inactive state do not forward traffic.
-        # *   **Active**: The NLB instance is running.
-        # *   **Provisioning**: The NLB instance is being created.
-        # *   **Configuring**: The NLB instance is being modified.
-        # *   **CreateFailed**: The system failed to create the NLB instance. In this case, you are not charged for the NLB instance. You can only delete the NLB instance.
         self.load_balancer_status = load_balancer_status
-        # The type of the Server Load Balancer (SLB) instance. Only **network** is returned, which indicates an NLB instance.
         self.load_balancer_type = load_balancer_type
-        # The configuration of the configuration read-only mode.
         self.modification_protection_config = modification_protection_config
-        # The list of NLB instances that are locked. This parameter takes effect if the value of `LoadBalancerBussinessStatus` is **Abnormal**.
         self.operation_locks = operation_locks
-        # The ID of the region where the NLB instance is deployed.
         self.region_id = region_id
-        # The ID of the request.
         self.request_id = request_id
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the security group that is associated with the NLB instance.
         self.security_group_ids = security_group_ids
-        # The ID of the VPC where the NLB instance is deployed.
+        self.tags = tags
         self.vpc_id = vpc_id
-        # The list of zones and vSwitches in the zones. You must specify 2 to 10 zones.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -4187,6 +4628,10 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             self.modification_protection_config.validate()
         if self.operation_locks:
             for k in self.operation_locks:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
         if self.zone_mappings:
@@ -4244,6 +4689,10 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         result['ZoneMappings'] = []
@@ -4302,6 +4751,11 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetLoadBalancerAttributeResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         self.zone_mappings = []
@@ -4359,11 +4813,13 @@ class GetLoadBalancerAttributeResponse(TeaModel):
 class ListListenerCertificatesRequest(TeaModel):
     def __init__(
         self,
+        cert_type: str = None,
         listener_id: str = None,
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
     ):
+        self.cert_type = cert_type
         self.listener_id = listener_id
         self.max_results = max_results
         self.next_token = next_token
@@ -4378,6 +4834,8 @@ class ListListenerCertificatesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cert_type is not None:
+            result['CertType'] = self.cert_type
         if self.listener_id is not None:
             result['ListenerId'] = self.listener_id
         if self.max_results is not None:
@@ -4390,6 +4848,8 @@ class ListListenerCertificatesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertType') is not None:
+            self.cert_type = m.get('CertType')
         if m.get('ListenerId') is not None:
             self.listener_id = m.get('ListenerId')
         if m.get('MaxResults') is not None:
@@ -4401,20 +4861,18 @@ class ListListenerCertificatesRequest(TeaModel):
         return self
 
 
-class ListListenerCertificatesResponseBody(TeaModel):
+class ListListenerCertificatesResponseBodyCertificates(TeaModel):
     def __init__(
         self,
-        certificate_ids: List[str] = None,
-        max_results: int = None,
-        next_token: str = None,
-        request_id: str = None,
-        total_count: int = None,
+        certificate_id: str = None,
+        certificate_type: str = None,
+        is_default: bool = None,
+        status: str = None,
     ):
-        self.certificate_ids = certificate_ids
-        self.max_results = max_results
-        self.next_token = next_token
-        self.request_id = request_id
-        self.total_count = total_count
+        self.certificate_id = certificate_id
+        self.certificate_type = certificate_type
+        self.is_default = is_default
+        self.status = status
 
     def validate(self):
         pass
@@ -4425,8 +4883,64 @@ class ListListenerCertificatesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.certificate_id is not None:
+            result['CertificateId'] = self.certificate_id
+        if self.certificate_type is not None:
+            result['CertificateType'] = self.certificate_type
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateId') is not None:
+            self.certificate_id = m.get('CertificateId')
+        if m.get('CertificateType') is not None:
+            self.certificate_type = m.get('CertificateType')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListListenerCertificatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        certificate_ids: List[str] = None,
+        certificates: List[ListListenerCertificatesResponseBodyCertificates] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.certificate_ids = certificate_ids
+        self.certificates = certificates
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.certificates:
+            for k in self.certificates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.certificate_ids is not None:
             result['CertificateIds'] = self.certificate_ids
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -4441,6 +4955,11 @@ class ListListenerCertificatesResponseBody(TeaModel):
         m = m or dict()
         if m.get('CertificateIds') is not None:
             self.certificate_ids = m.get('CertificateIds')
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = ListListenerCertificatesResponseBodyCertificates()
+                self.certificates.append(temp_model.from_map(k))
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -4496,6 +5015,39 @@ class ListListenerCertificatesResponse(TeaModel):
         return self
 
 
+class ListListenersRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListListenersRequest(TeaModel):
     def __init__(
         self,
@@ -4505,6 +5057,7 @@ class ListListenersRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
+        tag: List[ListListenersRequestTag] = None,
     ):
         self.listener_ids = listener_ids
         # The listening protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
@@ -4521,9 +5074,13 @@ class ListListenersRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4543,6 +5100,10 @@ class ListListenersRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -4559,6 +5120,44 @@ class ListListenersRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListListenersRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListListenersResponseBodyListenersTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -4586,6 +5185,7 @@ class ListListenersResponseBodyListeners(TeaModel):
         security_policy_id: str = None,
         server_group_id: str = None,
         start_port: str = None,
+        tags: List[ListListenersResponseBodyListenersTags] = None,
     ):
         # Indicates whether Application-Layer Protocol Negotiation (ALPN) is enabled. Valid values:
         # 
@@ -4665,9 +5265,13 @@ class ListListenersResponseBodyListeners(TeaModel):
         self.server_group_id = server_group_id
         # The first port in the listening port range.
         self.start_port = start_port
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4717,6 +5321,10 @@ class ListListenersResponseBodyListeners(TeaModel):
             result['ServerGroupId'] = self.server_group_id
         if self.start_port is not None:
             result['StartPort'] = self.start_port
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -4763,6 +5371,11 @@ class ListListenersResponseBodyListeners(TeaModel):
             self.server_group_id = m.get('ServerGroupId')
         if m.get('StartPort') is not None:
             self.start_port = m.get('StartPort')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListListenersResponseBodyListenersTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -4883,13 +5496,7 @@ class ListLoadBalancersRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
-        # 
-        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.key = key
-        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -4936,61 +5543,21 @@ class ListLoadBalancersRequest(TeaModel):
         vpc_ids: List[str] = None,
         zone_id: str = None,
     ):
-        # The protocol version. Valid values:
-        # 
-        # *   **ipv4**: IPv4
-        # *   **DualStack**: dual stack
         self.address_ip_version = address_ip_version
-        # The type of IPv4 address used by the NLB instance. Valid values:
-        # 
-        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
-        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
         self.address_type = address_type
-        # The domain name of the NLB instance.
         self.dnsname = dnsname
-        # The type of IPv6 address used by the NLB instance. Valid values:
-        # 
-        # *   **Internet**: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
-        # *   **Intranet**: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
         self.ipv_6address_type = ipv_6address_type
-        # The business status of the NLB instance. Valid values:
-        # 
-        # *   **Abnormal**: The NLB instance is not working as expected.
-        # *   **Normal**: The NLB instance is working as expected.
         self.load_balancer_business_status = load_balancer_business_status
-        # The ID of the NLB instance. You can query up to 20 NLB instances at a time.
         self.load_balancer_ids = load_balancer_ids
-        # The name of the NLB instance. You can specify up to 20 names at a time.
         self.load_balancer_names = load_balancer_names
-        # The status of the NLB instance. Valid values:
-        # 
-        # *   **Inactive**: The NLB instance is disabled. Listeners of NLB instances in the Inactive state do not forward traffic.
-        # *   **Active**: The NLB instance is running.
-        # *   **Provisioning**: The NLB instance is being created.
-        # *   **Configuring**: The NLB instance is being modified.
-        # *   **Deleting**: The NLB instance is being deleted.
-        # *   **Deleted**: The NLB instance is deleted.
         self.load_balancer_status = load_balancer_status
-        # The type of the Server Load Balancer (SLB) instance. Set the value to **network**, which specifies NLB.
         self.load_balancer_type = load_balancer_type
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that determines the start point of the next query. Valid values:
-        # 
-        # *   If this is your first query and no subsequent queries are to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
         self.next_token = next_token
-        # The ID of the region where the NLB instance is deployed.
-        # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The tags of the NLB instance.
         self.tag = tag
-        # The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify up to 10 VPC IDs at a time.
         self.vpc_ids = vpc_ids
-        # The name of the zone. You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5088,14 +5655,8 @@ class ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig(TeaMode
         enabled_time: str = None,
         reason: str = None,
     ):
-        # Indicates whether deletion protection is enabled. Valid values:
-        # 
-        # *   **true**: enabled
-        # *   **false**: disabled
         self.enabled = enabled
-        # The time when deletion protection was enabled. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
         self.enabled_time = enabled_time
-        # The reason why the deletion protection feature is enabled or disabled. The reason must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
         self.reason = reason
 
     def validate(self):
@@ -5131,7 +5692,6 @@ class ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig(TeaMod
         self,
         pay_type: str = None,
     ):
-        # The billing method of the NLB instance. Only **PostPay** is supported, which indicates the pay-as-you-go billing method.
         self.pay_type = pay_type
 
     def validate(self):
@@ -5161,18 +5721,8 @@ class ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig(Tea
         reason: str = None,
         status: str = None,
     ):
-        # The time when the configuration read-only mode was enabled. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
         self.enabled_time = enabled_time
-        # The reason why the configuration read-only mode is enabled. The reason must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
-        # 
-        # This parameter takes effect only if **Status** is set to **ConsoleProtection**.
         self.reason = reason
-        # Indicates whether the configuration read-only mode is enabled. Valid values:
-        # 
-        # *   **NonProtection**: disabled. In this case, **Reason** is not returned. If **Reason** is set, the value is cleared.
-        # *   **ConsoleProtection**: enabled. In this case, **Reason** is returned.
-        # 
-        # >  If you set this parameter to **ConsoleProtection**, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
         self.status = status
 
     def validate(self):
@@ -5209,14 +5759,7 @@ class ListLoadBalancersResponseBodyLoadBalancersOperationLocks(TeaModel):
         lock_reason: str = None,
         lock_type: str = None,
     ):
-        # The reason why the NLB instance is locked.
         self.lock_reason = lock_reason
-        # The type of lock. Valid values:
-        # 
-        # *   **SecurityLocked**: The NLB instance is locked due to security reasons.
-        # *   **RelatedResourceLocked**: The NLB instance is locked due to association issues.
-        # *   **FinancialLocked**: The NLB instance is locked due to overdue payments.
-        # *   **ResidualLocked**: The NLB instance is locked because the payments of the associated resources are overdue and the resources are released.
         self.lock_type = lock_type
 
     def validate(self):
@@ -5249,9 +5792,7 @@ class ListLoadBalancersResponseBodyLoadBalancersTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
@@ -5289,17 +5830,12 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresse
         private_ipv_6hc_status: str = None,
         public_ipv_4address: str = None,
     ):
-        # The ID of the elastic IP address (EIP).
         self.allocation_id = allocation_id
-        # The ID of the elastic network interface (ENI) attached to the NLB instance.
         self.eni_id = eni_id
-        # The IPv6 address used by the NLB instance.
         self.ipv_6address = ipv_6address
-        # The private IPv4 address of the NLB instance.
         self.private_ipv_4address = private_ipv_4address
         self.private_ipv_4hc_status = private_ipv_4hc_status
         self.private_ipv_6hc_status = private_ipv_6hc_status
-        # The public IPv4 address of the NLB instance.
         self.public_ipv_4address = public_ipv_4address
 
     def validate(self):
@@ -5350,14 +5886,13 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappings(TeaModel):
     def __init__(
         self,
         load_balancer_addresses: List[ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses] = None,
+        status: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The information about the IP addresses used by the NLB instance.
         self.load_balancer_addresses = load_balancer_addresses
-        # The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
+        self.status = status
         self.v_switch_id = v_switch_id
-        # The name of the zone. You can call the [DescribeZones](~~443890~~) operation to query the zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5376,6 +5911,8 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappings(TeaModel):
         if self.load_balancer_addresses is not None:
             for k in self.load_balancer_addresses:
                 result['LoadBalancerAddresses'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
@@ -5389,6 +5926,8 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappings(TeaModel):
             for k in m.get('LoadBalancerAddresses'):
                 temp_model = ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses()
                 self.load_balancer_addresses.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
@@ -5422,71 +5961,27 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         vpc_id: str = None,
         zone_mappings: List[ListLoadBalancersResponseBodyLoadBalancersZoneMappings] = None,
     ):
-        # The IP version. Valid values:
-        # 
-        # *   **ipv4**: IPv4
-        # *   **DualStack**: dual stack
         self.address_ip_version = address_ip_version
-        # The type of IPv4 address used by the NLB instance. Valid values:
-        # 
-        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
-        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
         self.address_type = address_type
-        # The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
         self.bandwidth_package_id = bandwidth_package_id
-        # The time when the resource was created. The time is displayed in UTC in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
-        # Indicates whether cross-zone load balancing is enabled for the NLB instance. Valid values:
-        # 
-        # *   **true**: enabled
-        # *   **false**: disabled
         self.cross_zone_enabled = cross_zone_enabled
-        # The domain name of the NLB instance.
         self.dnsname = dnsname
-        # The configuration of the deletion protection feature.
         self.deletion_protection_config = deletion_protection_config
-        # The type of IPv6 address used by the NLB instance. Valid values:
-        # 
-        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
-        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
         self.ipv_6address_type = ipv_6address_type
-        # The billing settings of the NLB instance.
         self.load_balancer_billing_config = load_balancer_billing_config
-        # The business status of the NLB instance. Valid values:
-        # 
-        # *   **Abnormal**: The NLB instance is not working as expected.
-        # *   **Normal**: The NLB instance is working as expected.
         self.load_balancer_business_status = load_balancer_business_status
-        # The ID of the NLB instance.
         self.load_balancer_id = load_balancer_id
-        # The name of the NLB instance.
         self.load_balancer_name = load_balancer_name
-        # The status of the NLB instance. Valid values:
-        # 
-        # *   **Inactive**: The NLB instance is disabled. Listeners of NLB instances in the Inactive state do not forward traffic.
-        # *   **Active**: The NLB instance is running.
-        # *   **Provisioning**: The NLB instance is being created.
-        # *   **Configuring**: The NLB instance is being modified.
-        # *   **Deleting**: The NLB instance is being deleted.
-        # *   **Deleted**: The NLB instance is deleted.
         self.load_balancer_status = load_balancer_status
-        # The type of the SLB instance. Only **Network** is returned, which indicates NLB.
         self.load_balancer_type = load_balancer_type
-        # The configuration of the configuration read-only mode.
         self.modification_protection_config = modification_protection_config
-        # The configuration of the operation lock. This parameter takes effect if the value of `LoadBalancerBussinessStatus` is **Abnormal**.
         self.operation_locks = operation_locks
-        # The ID of the region where the NLB instance is deployed.
         self.region_id = region_id
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The security group to which the NLB instance is added.
         self.security_group_ids = security_group_ids
-        # A list of tags.
         self.tags = tags
-        # The ID of the VPC where the NLB instance is deployed.
         self.vpc_id = vpc_id
-        # The mappings between zones and vSwitches.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -5637,18 +6132,10 @@ class ListLoadBalancersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The NLB instances.
         self.load_balancers = load_balancers
-        # The number of entries returned per page.
         self.max_results = max_results
-        # The token that determines the start point of the next query. Valid values:
-        # 
-        # *   If this is your first query and no subsequent queries are to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
         self.next_token = next_token
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7072,23 +7559,9 @@ class ListServerGroupsResponse(TeaModel):
 class ListSystemSecurityPolicyRequest(TeaModel):
     def __init__(
         self,
-        caller_bid_login_email: str = None,
-        caller_uid_login_email: str = None,
-        channel: str = None,
-        owner_account: str = None,
-        owner_id_login_email: str = None,
         region_id: str = None,
-        request_content: str = None,
-        resource_owner_account: str = None,
     ):
-        self.caller_bid_login_email = caller_bid_login_email
-        self.caller_uid_login_email = caller_uid_login_email
-        self.channel = channel
-        self.owner_account = owner_account
-        self.owner_id_login_email = owner_id_login_email
         self.region_id = region_id
-        self.request_content = request_content
-        self.resource_owner_account = resource_owner_account
 
     def validate(self):
         pass
@@ -7099,42 +7572,14 @@ class ListSystemSecurityPolicyRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.caller_bid_login_email is not None:
-            result['CallerBidLoginEmail'] = self.caller_bid_login_email
-        if self.caller_uid_login_email is not None:
-            result['CallerUidLoginEmail'] = self.caller_uid_login_email
-        if self.channel is not None:
-            result['Channel'] = self.channel
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id_login_email is not None:
-            result['OwnerIdLoginEmail'] = self.owner_id_login_email
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.request_content is not None:
-            result['RequestContent'] = self.request_content
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CallerBidLoginEmail') is not None:
-            self.caller_bid_login_email = m.get('CallerBidLoginEmail')
-        if m.get('CallerUidLoginEmail') is not None:
-            self.caller_uid_login_email = m.get('CallerUidLoginEmail')
-        if m.get('Channel') is not None:
-            self.channel = m.get('Channel')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerIdLoginEmail') is not None:
-            self.owner_id_login_email = m.get('OwnerIdLoginEmail')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('RequestContent') is not None:
-            self.request_content = m.get('RequestContent')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
         return self
 
 
@@ -7832,6 +8277,169 @@ class LoadBalancerLeaveSecurityGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = LoadBalancerLeaveSecurityGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class MoveResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        new_resource_group_id: str = None,
+        region_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        self.new_resource_group_id = new_resource_group_id
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class MoveResourceGroupResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+    ):
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class MoveResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: MoveResourceGroupResponseBodyData = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = MoveResourceGroupResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class MoveResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MoveResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MoveResourceGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
