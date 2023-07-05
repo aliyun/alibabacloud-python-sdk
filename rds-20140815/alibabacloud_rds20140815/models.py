@@ -53505,6 +53505,7 @@ class ModifyDBInstanceSpecRequestServerlessConfiguration(TeaModel):
 class ModifyDBInstanceSpecRequest(TeaModel):
     def __init__(
         self,
+        auto_use_coupon: bool = None,
         bursting_enabled: bool = None,
         category: str = None,
         dbinstance_class: str = None,
@@ -53527,6 +53528,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         used_time: int = None,
         zone_id: str = None,
     ):
+        self.auto_use_coupon = auto_use_coupon
         self.bursting_enabled = bursting_enabled
         self.category = category
         # The ID of the dedicated cluster.
@@ -53589,6 +53591,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.bursting_enabled is not None:
             result['BurstingEnabled'] = self.bursting_enabled
         if self.category is not None:
@@ -53635,6 +53639,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('BurstingEnabled') is not None:
             self.bursting_enabled = m.get('BurstingEnabled')
         if m.get('Category') is not None:
@@ -53684,6 +53690,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
 class ModifyDBInstanceSpecShrinkRequest(TeaModel):
     def __init__(
         self,
+        auto_use_coupon: bool = None,
         bursting_enabled: bool = None,
         category: str = None,
         dbinstance_class: str = None,
@@ -53706,6 +53713,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         used_time: int = None,
         zone_id: str = None,
     ):
+        self.auto_use_coupon = auto_use_coupon
         self.bursting_enabled = bursting_enabled
         self.category = category
         # The ID of the dedicated cluster.
@@ -53767,6 +53775,8 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.bursting_enabled is not None:
             result['BurstingEnabled'] = self.bursting_enabled
         if self.category is not None:
@@ -53813,6 +53823,8 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('BurstingEnabled') is not None:
             self.bursting_enabled = m.get('BurstingEnabled')
         if m.get('Category') is not None:

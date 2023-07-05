@@ -1,3 +1,7 @@
+2023-07-05 Version: 2.2.5
+- Add AutoUseCoupon field.
+- Api Offline.
+
 2023-07-04 Version: 2.2.4
 - Fix bugs for  DescribeDedicatedHosts.
 - Fixed bugs add ERRORCODE.
