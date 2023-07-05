@@ -4113,13 +4113,13 @@ class UpdateTriggerInput(TeaModel):
 class CreateAliasRequest(TeaModel):
     def __init__(
         self,
-        request: CreateAliasInput = None,
+        body: CreateAliasInput = None,
     ):
-        self.request = request
+        self.body = body
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4127,15 +4127,15 @@ class CreateAliasRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.request is not None:
-            result['request'] = self.request.to_map()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('request') is not None:
+        if m.get('body') is not None:
             temp_model = CreateAliasInput()
-            self.request = temp_model.from_map(m['request'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -4186,13 +4186,13 @@ class CreateAliasResponse(TeaModel):
 class CreateCustomDomainRequest(TeaModel):
     def __init__(
         self,
-        request: CreateCustomDomainInput = None,
+        body: CreateCustomDomainInput = None,
     ):
-        self.request = request
+        self.body = body
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4200,15 +4200,15 @@ class CreateCustomDomainRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.request is not None:
-            result['request'] = self.request.to_map()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('request') is not None:
+        if m.get('body') is not None:
             temp_model = CreateCustomDomainInput()
-            self.request = temp_model.from_map(m['request'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -4259,13 +4259,13 @@ class CreateCustomDomainResponse(TeaModel):
 class CreateFunctionRequest(TeaModel):
     def __init__(
         self,
-        request: CreateFunctionInput = None,
+        body: CreateFunctionInput = None,
     ):
-        self.request = request
+        self.body = body
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4273,15 +4273,15 @@ class CreateFunctionRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.request is not None:
-            result['request'] = self.request.to_map()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('request') is not None:
+        if m.get('body') is not None:
             temp_model = CreateFunctionInput()
-            self.request = temp_model.from_map(m['request'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -4332,13 +4332,13 @@ class CreateFunctionResponse(TeaModel):
 class CreateLayerVersionRequest(TeaModel):
     def __init__(
         self,
-        request: CreateLayerVersionInput = None,
+        body: CreateLayerVersionInput = None,
     ):
-        self.request = request
+        self.body = body
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4346,15 +4346,15 @@ class CreateLayerVersionRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.request is not None:
-            result['request'] = self.request.to_map()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('request') is not None:
+        if m.get('body') is not None:
             temp_model = CreateLayerVersionInput()
-            self.request = temp_model.from_map(m['request'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -4405,13 +4405,13 @@ class CreateLayerVersionResponse(TeaModel):
 class CreateTriggerRequest(TeaModel):
     def __init__(
         self,
-        request: CreateTriggerInput = None,
+        body: CreateTriggerInput = None,
     ):
-        self.request = request
+        self.body = body
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4419,15 +4419,15 @@ class CreateTriggerRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.request is not None:
-            result['request'] = self.request.to_map()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('request') is not None:
+        if m.get('body') is not None:
             temp_model = CreateTriggerInput()
-            self.request = temp_model.from_map(m['request'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -5496,11 +5496,11 @@ class InvokeFunctionHeaders(TeaModel):
 class InvokeFunctionRequest(TeaModel):
     def __init__(
         self,
+        body: BinaryIO = None,
         qualifier: str = None,
-        request: BinaryIO = None,
     ):
+        self.body = body
         self.qualifier = qualifier
-        self.request = request
 
     def validate(self):
         pass
@@ -5511,18 +5511,18 @@ class InvokeFunctionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body
         if self.qualifier is not None:
             result['qualifier'] = self.qualifier
-        if self.request is not None:
-            result['request'] = self.request
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
         if m.get('qualifier') is not None:
             self.qualifier = m.get('qualifier')
-        if m.get('request') is not None:
-            self.request = m.get('request')
         return self
 
 
@@ -6560,13 +6560,13 @@ class ListTriggersResponse(TeaModel):
 class PublishFunctionVersionRequest(TeaModel):
     def __init__(
         self,
-        request: PublishVersionInput = None,
+        body: PublishVersionInput = None,
     ):
-        self.request = request
+        self.body = body
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6574,15 +6574,15 @@ class PublishFunctionVersionRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.request is not None:
-            result['request'] = self.request.to_map()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('request') is not None:
+        if m.get('body') is not None:
             temp_model = PublishVersionInput()
-            self.request = temp_model.from_map(m['request'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -6633,15 +6633,15 @@ class PublishFunctionVersionResponse(TeaModel):
 class PutAsyncInvokeConfigRequest(TeaModel):
     def __init__(
         self,
+        body: PutAsyncInvokeConfigInput = None,
         qualifier: str = None,
-        request: PutAsyncInvokeConfigInput = None,
     ):
+        self.body = body
         self.qualifier = qualifier
-        self.request = request
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6649,19 +6649,19 @@ class PutAsyncInvokeConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         if self.qualifier is not None:
             result['qualifier'] = self.qualifier
-        if self.request is not None:
-            result['request'] = self.request.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            temp_model = PutAsyncInvokeConfigInput()
+            self.body = temp_model.from_map(m['body'])
         if m.get('qualifier') is not None:
             self.qualifier = m.get('qualifier')
-        if m.get('request') is not None:
-            temp_model = PutAsyncInvokeConfigInput()
-            self.request = temp_model.from_map(m['request'])
         return self
 
 
@@ -6712,13 +6712,13 @@ class PutAsyncInvokeConfigResponse(TeaModel):
 class PutConcurrencyConfigRequest(TeaModel):
     def __init__(
         self,
-        request: PutConcurrencyInput = None,
+        body: PutConcurrencyInput = None,
     ):
-        self.request = request
+        self.body = body
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6726,15 +6726,15 @@ class PutConcurrencyConfigRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.request is not None:
-            result['request'] = self.request.to_map()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('request') is not None:
+        if m.get('body') is not None:
             temp_model = PutConcurrencyInput()
-            self.request = temp_model.from_map(m['request'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -6846,15 +6846,15 @@ class PutLayerACLResponse(TeaModel):
 class PutProvisionConfigRequest(TeaModel):
     def __init__(
         self,
+        body: PutProvisionConfigInput = None,
         qualifier: str = None,
-        request: PutProvisionConfigInput = None,
     ):
+        self.body = body
         self.qualifier = qualifier
-        self.request = request
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6862,19 +6862,19 @@ class PutProvisionConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         if self.qualifier is not None:
             result['qualifier'] = self.qualifier
-        if self.request is not None:
-            result['request'] = self.request.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            temp_model = PutProvisionConfigInput()
+            self.body = temp_model.from_map(m['body'])
         if m.get('qualifier') is not None:
             self.qualifier = m.get('qualifier')
-        if m.get('request') is not None:
-            temp_model = PutProvisionConfigInput()
-            self.request = temp_model.from_map(m['request'])
         return self
 
 
@@ -6925,13 +6925,13 @@ class PutProvisionConfigResponse(TeaModel):
 class TagResourceRequest(TeaModel):
     def __init__(
         self,
-        request: TagResourceInput = None,
+        body: TagResourceInput = None,
     ):
-        self.request = request
+        self.body = body
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6939,15 +6939,15 @@ class TagResourceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.request is not None:
-            result['request'] = self.request.to_map()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('request') is not None:
+        if m.get('body') is not None:
             temp_model = TagResourceInput()
-            self.request = temp_model.from_map(m['request'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -7071,13 +7071,13 @@ class UntagResourceResponse(TeaModel):
 class UpdateAliasRequest(TeaModel):
     def __init__(
         self,
-        request: UpdateAliasInput = None,
+        body: UpdateAliasInput = None,
     ):
-        self.request = request
+        self.body = body
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7085,15 +7085,15 @@ class UpdateAliasRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.request is not None:
-            result['request'] = self.request.to_map()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('request') is not None:
+        if m.get('body') is not None:
             temp_model = UpdateAliasInput()
-            self.request = temp_model.from_map(m['request'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -7144,13 +7144,13 @@ class UpdateAliasResponse(TeaModel):
 class UpdateCustomDomainRequest(TeaModel):
     def __init__(
         self,
-        request: UpdateCustomDomainInput = None,
+        body: UpdateCustomDomainInput = None,
     ):
-        self.request = request
+        self.body = body
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7158,15 +7158,15 @@ class UpdateCustomDomainRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.request is not None:
-            result['request'] = self.request.to_map()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('request') is not None:
+        if m.get('body') is not None:
             temp_model = UpdateCustomDomainInput()
-            self.request = temp_model.from_map(m['request'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -7217,13 +7217,13 @@ class UpdateCustomDomainResponse(TeaModel):
 class UpdateFunctionRequest(TeaModel):
     def __init__(
         self,
-        request: UpdateFunctionInput = None,
+        body: UpdateFunctionInput = None,
     ):
-        self.request = request
+        self.body = body
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7231,15 +7231,15 @@ class UpdateFunctionRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.request is not None:
-            result['request'] = self.request.to_map()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('request') is not None:
+        if m.get('body') is not None:
             temp_model = UpdateFunctionInput()
-            self.request = temp_model.from_map(m['request'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -7290,13 +7290,13 @@ class UpdateFunctionResponse(TeaModel):
 class UpdateTriggerRequest(TeaModel):
     def __init__(
         self,
-        request: UpdateTriggerInput = None,
+        body: UpdateTriggerInput = None,
     ):
-        self.request = request
+        self.body = body
 
     def validate(self):
-        if self.request:
-            self.request.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7304,15 +7304,15 @@ class UpdateTriggerRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.request is not None:
-            result['request'] = self.request.to_map()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('request') is not None:
+        if m.get('body') is not None:
             temp_model = UpdateTriggerInput()
-            self.request = temp_model.from_map(m['request'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 

@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_fc20230330.
 
-Created on 28/06/2023
+Created on 05/07/2023
 
 @author: Alibaba Cloud SDK
 """
