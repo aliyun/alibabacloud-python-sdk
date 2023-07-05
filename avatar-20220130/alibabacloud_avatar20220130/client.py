@@ -1511,6 +1511,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.app):
             request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app, 'App', 'json')
+        if not UtilClient.is_unset(tmp_req.audio_info):
+            request.audio_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.audio_info, 'AudioInfo', 'json')
         if not UtilClient.is_unset(tmp_req.avatar_info):
             request.avatar_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.avatar_info, 'AvatarInfo', 'json')
         if not UtilClient.is_unset(tmp_req.video_info):
@@ -1518,8 +1520,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_shrink):
             query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.audio_info_shrink):
+            query['AudioInfo'] = request.audio_info_shrink
         if not UtilClient.is_unset(request.avatar_info_shrink):
             query['AvatarInfo'] = request.avatar_info_shrink
+        if not UtilClient.is_unset(request.callback):
+            query['Callback'] = request.callback
+        if not UtilClient.is_unset(request.callback_params):
+            query['CallbackParams'] = request.callback_params
+        if not UtilClient.is_unset(request.ext_params):
+            query['ExtParams'] = request.ext_params
         if not UtilClient.is_unset(request.tenant_id):
             query['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.text):
@@ -1557,6 +1567,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.app):
             request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app, 'App', 'json')
+        if not UtilClient.is_unset(tmp_req.audio_info):
+            request.audio_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.audio_info, 'AudioInfo', 'json')
         if not UtilClient.is_unset(tmp_req.avatar_info):
             request.avatar_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.avatar_info, 'AvatarInfo', 'json')
         if not UtilClient.is_unset(tmp_req.video_info):
@@ -1564,8 +1576,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_shrink):
             query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.audio_info_shrink):
+            query['AudioInfo'] = request.audio_info_shrink
         if not UtilClient.is_unset(request.avatar_info_shrink):
             query['AvatarInfo'] = request.avatar_info_shrink
+        if not UtilClient.is_unset(request.callback):
+            query['Callback'] = request.callback
+        if not UtilClient.is_unset(request.callback_params):
+            query['CallbackParams'] = request.callback_params
+        if not UtilClient.is_unset(request.ext_params):
+            query['ExtParams'] = request.ext_params
         if not UtilClient.is_unset(request.tenant_id):
             query['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.text):
