@@ -1297,19 +1297,27 @@ class AccountFlowListResponseBodyDataList(TeaModel):
         self,
         after_available_amount: float = None,
         before_available_amount: float = None,
+        change_order_num: int = None,
         flow_id: int = None,
         gmt_create: int = None,
         gmt_modified: int = None,
         op_amount: float = None,
         op_type: int = None,
+        order_num: int = None,
+        order_type: int = None,
+        refund_order_num: int = None,
     ):
         self.after_available_amount = after_available_amount
         self.before_available_amount = before_available_amount
+        self.change_order_num = change_order_num
         self.flow_id = flow_id
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.op_amount = op_amount
         self.op_type = op_type
+        self.order_num = order_num
+        self.order_type = order_type
+        self.refund_order_num = refund_order_num
 
     def validate(self):
         pass
@@ -1324,6 +1332,8 @@ class AccountFlowListResponseBodyDataList(TeaModel):
             result['after_available_amount'] = self.after_available_amount
         if self.before_available_amount is not None:
             result['before_available_amount'] = self.before_available_amount
+        if self.change_order_num is not None:
+            result['change_order_num'] = self.change_order_num
         if self.flow_id is not None:
             result['flow_id'] = self.flow_id
         if self.gmt_create is not None:
@@ -1334,6 +1344,12 @@ class AccountFlowListResponseBodyDataList(TeaModel):
             result['op_amount'] = self.op_amount
         if self.op_type is not None:
             result['op_type'] = self.op_type
+        if self.order_num is not None:
+            result['order_num'] = self.order_num
+        if self.order_type is not None:
+            result['order_type'] = self.order_type
+        if self.refund_order_num is not None:
+            result['refund_order_num'] = self.refund_order_num
         return result
 
     def from_map(self, m: dict = None):
@@ -1342,6 +1358,8 @@ class AccountFlowListResponseBodyDataList(TeaModel):
             self.after_available_amount = m.get('after_available_amount')
         if m.get('before_available_amount') is not None:
             self.before_available_amount = m.get('before_available_amount')
+        if m.get('change_order_num') is not None:
+            self.change_order_num = m.get('change_order_num')
         if m.get('flow_id') is not None:
             self.flow_id = m.get('flow_id')
         if m.get('gmt_create') is not None:
@@ -1352,6 +1370,12 @@ class AccountFlowListResponseBodyDataList(TeaModel):
             self.op_amount = m.get('op_amount')
         if m.get('op_type') is not None:
             self.op_type = m.get('op_type')
+        if m.get('order_num') is not None:
+            self.order_num = m.get('order_num')
+        if m.get('order_type') is not None:
+            self.order_type = m.get('order_type')
+        if m.get('refund_order_num') is not None:
+            self.refund_order_num = m.get('refund_order_num')
         return self
 
 
@@ -1447,19 +1471,19 @@ class AccountFlowListResponseBodyData(TeaModel):
 class AccountFlowListResponseBody(TeaModel):
     def __init__(
         self,
+        request_id: str = None,
         data: AccountFlowListResponseBodyData = None,
         error_code: str = None,
         error_data: Any = None,
         error_msg: str = None,
-        request_id: str = None,
         status: int = None,
         success: bool = None,
     ):
+        self.request_id = request_id
         self.data = data
         self.error_code = error_code
         self.error_data = error_data
         self.error_msg = error_msg
-        self.request_id = request_id
         self.status = status
         self.success = success
 
@@ -1473,6 +1497,8 @@ class AccountFlowListResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['data'] = self.data.to_map()
         if self.error_code is not None:
@@ -1481,8 +1507,6 @@ class AccountFlowListResponseBody(TeaModel):
             result['error_data'] = self.error_data
         if self.error_msg is not None:
             result['error_msg'] = self.error_msg
-        if self.request_id is not None:
-            result['request_id'] = self.request_id
         if self.status is not None:
             result['status'] = self.status
         if self.success is not None:
@@ -1491,6 +1515,8 @@ class AccountFlowListResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('data') is not None:
             temp_model = AccountFlowListResponseBodyData()
             self.data = temp_model.from_map(m['data'])
@@ -1500,8 +1526,6 @@ class AccountFlowListResponseBody(TeaModel):
             self.error_data = m.get('error_data')
         if m.get('error_msg') is not None:
             self.error_msg = m.get('error_msg')
-        if m.get('request_id') is not None:
-            self.request_id = m.get('request_id')
         if m.get('status') is not None:
             self.status = m.get('status')
         if m.get('success') is not None:
