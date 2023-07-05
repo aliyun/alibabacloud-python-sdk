@@ -1,3 +1,6 @@
+2023-07-05 Version: 3.0.1
+- Add CreatePipeline And UpdatePipeline.
+
 2023-06-25 Version: 3.0.0
 - Add CreateUserKey.
 - Add DeleteUserKey.
