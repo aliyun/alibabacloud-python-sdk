@@ -259,6 +259,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_result_with_options_async(request, runtime)
 
+    def delete_picture_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DeletePictureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeletePictureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delete_pic_after_query):
+            query['DeletePicAfterQuery'] = request.delete_pic_after_query
+        if not UtilClient.is_unset(request.transaction_id):
+            query['TransactionId'] = request.transaction_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePicture',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DeletePictureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_picture_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeletePictureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeletePictureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delete_pic_after_query):
+            query['DeletePicAfterQuery'] = request.delete_pic_after_query
+        if not UtilClient.is_unset(request.transaction_id):
+            query['TransactionId'] = request.transaction_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePicture',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DeletePictureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_picture(
+        self,
+        request: cloudauth_intl_20220809_models.DeletePictureRequest,
+    ) -> cloudauth_intl_20220809_models.DeletePictureResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_picture_with_options(request, runtime)
+
+    async def delete_picture_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeletePictureRequest,
+    ) -> cloudauth_intl_20220809_models.DeletePictureResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_picture_with_options_async(request, runtime)
+
     def describe_address_labels_with_options(
         self,
         request: cloudauth_intl_20220809_models.DescribeAddressLabelsRequest,
@@ -962,6 +1036,8 @@ class Client(OpenApiClient):
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.authorize):
+            query['Authorize'] = request.authorize
         if not UtilClient.is_unset(request.crop):
             query['Crop'] = request.crop
         if not UtilClient.is_unset(request.doc_type):
@@ -1024,6 +1100,8 @@ class Client(OpenApiClient):
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.authorize):
+            query['Authorize'] = request.authorize
         if not UtilClient.is_unset(request.crop):
             query['Crop'] = request.crop
         if not UtilClient.is_unset(request.doc_type):

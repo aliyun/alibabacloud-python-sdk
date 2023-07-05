@@ -1,3 +1,6 @@
+2023-07-05 Version: 1.0.13
+- Support ekyc idcard.
+
 2023-06-08 Version: 1.0.12
 - Support ekyc.
 
