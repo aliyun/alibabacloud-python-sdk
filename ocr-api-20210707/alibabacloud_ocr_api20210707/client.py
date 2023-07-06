@@ -3172,6 +3172,8 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeInvoiceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
@@ -3202,6 +3204,8 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeInvoiceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
@@ -3652,6 +3656,8 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeMixedInvoicesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
@@ -3682,6 +3688,8 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeMixedInvoicesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
