@@ -1,3 +1,6 @@
+2023-07-06 Version: 2.0.0
+- Support new DescribePhoneNumberAnalysis API.
+
 2023-05-17 Version: 1.0.29
 - Account Halt Check by Default.
 

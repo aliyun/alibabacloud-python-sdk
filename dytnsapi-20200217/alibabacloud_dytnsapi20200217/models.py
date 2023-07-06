@@ -254,7 +254,7 @@ class DescribePhoneNumberAnalysisRequest(TeaModel):
         return self
 
 
-class DescribePhoneNumberAnalysisResponseBodyData(TeaModel):
+class DescribePhoneNumberAnalysisResponseBodyDataList(TeaModel):
     def __init__(
         self,
         code: str = None,
@@ -287,11 +287,46 @@ class DescribePhoneNumberAnalysisResponseBodyData(TeaModel):
         return self
 
 
+class DescribePhoneNumberAnalysisResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[DescribePhoneNumberAnalysisResponseBodyDataList] = None,
+    ):
+        self.list = list
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = DescribePhoneNumberAnalysisResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        return self
+
+
 class DescribePhoneNumberAnalysisResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
-        data: List[DescribePhoneNumberAnalysisResponseBodyData] = None,
+        data: DescribePhoneNumberAnalysisResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
@@ -302,9 +337,7 @@ class DescribePhoneNumberAnalysisResponseBody(TeaModel):
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -314,10 +347,8 @@ class DescribePhoneNumberAnalysisResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -328,11 +359,9 @@ class DescribePhoneNumberAnalysisResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = DescribePhoneNumberAnalysisResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = DescribePhoneNumberAnalysisResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
