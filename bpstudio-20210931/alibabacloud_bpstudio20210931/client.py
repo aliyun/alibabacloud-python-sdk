@@ -238,6 +238,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.DeleteApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
+        """
+        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/zh/bp-studio/latest/api-doc-bpstudio-2021-09-31-api-doc-getapplication) operation to query the status of an application.
+        
+        @param request: DeleteApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -268,6 +275,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.DeleteApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
+        """
+        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/zh/bp-studio/latest/api-doc-bpstudio-2021-09-31-api-doc-getapplication) operation to query the status of an application.
+        
+        @param request: DeleteApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -297,6 +311,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.DeleteApplicationRequest,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
+        """
+        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/zh/bp-studio/latest/api-doc-bpstudio-2021-09-31-api-doc-getapplication) operation to query the status of an application.
+        
+        @param request: DeleteApplicationRequest
+        @return: DeleteApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_application_with_options(request, runtime)
 
@@ -304,6 +324,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.DeleteApplicationRequest,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
+        """
+        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/zh/bp-studio/latest/api-doc-bpstudio-2021-09-31-api-doc-getapplication) operation to query the status of an application.
+        
+        @param request: DeleteApplicationRequest
+        @return: DeleteApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_application_with_options_async(request, runtime)
 
