@@ -604,6 +604,7 @@ class AddDesensitizationRuleRequest(TeaModel):
         rule_type: str = None,
         tid: int = None,
     ):
+        # Algorithm parameters.
         self.function_params = function_params
         # The type of the masking algorithm.
         self.function_type = function_type
@@ -1168,9 +1169,9 @@ class AddTaskFlowEdgesRequestEdges(TeaModel):
         node_end: int = None,
         node_from: int = None,
     ):
-        # The error code returned if the request failed.
+        # The ID of the node where the end node of the edge is located.
         self.node_end = node_end
-        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
+        # The ID of the node where the start node of the edge is located.
         self.node_from = node_from
 
     def validate(self):
@@ -1329,12 +1330,18 @@ class AddTaskFlowEdgesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of task flow edge IDs.
         self.edge_ids = edge_ids
-        # AddTaskFlowEdges
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
-        # Adds directed edges for an existing task node.
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -1774,11 +1781,17 @@ class AnalyzeSQLLineageResponse(TeaModel):
 class ApproveOrderRequest(TeaModel):
     def __init__(
         self,
+        approval_node_id: int = None,
+        approval_node_pos: str = None,
         approval_type: str = None,
         comment: str = None,
+        new_approver: int = None,
+        old_approver: int = None,
         tid: int = None,
         workflow_instance_id: int = None,
     ):
+        self.approval_node_id = approval_node_id
+        self.approval_node_pos = approval_node_pos
         # The action that you want to perform on the ticket. Valid values:
         # 
         # *   AGREE: approve
@@ -1787,6 +1800,8 @@ class ApproveOrderRequest(TeaModel):
         self.approval_type = approval_type
         # The description of the ticket.
         self.comment = comment
+        self.new_approver = new_approver
+        self.old_approver = old_approver
         # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
         self.tid = tid
         # The ID of the approval process. You can call the [GetOrderBaseInfo](~~144642~~) operation to obtain the ID of the approval process.
@@ -1801,10 +1816,18 @@ class ApproveOrderRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.approval_node_id is not None:
+            result['ApprovalNodeId'] = self.approval_node_id
+        if self.approval_node_pos is not None:
+            result['ApprovalNodePos'] = self.approval_node_pos
         if self.approval_type is not None:
             result['ApprovalType'] = self.approval_type
         if self.comment is not None:
             result['Comment'] = self.comment
+        if self.new_approver is not None:
+            result['NewApprover'] = self.new_approver
+        if self.old_approver is not None:
+            result['OldApprover'] = self.old_approver
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.workflow_instance_id is not None:
@@ -1813,10 +1836,18 @@ class ApproveOrderRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApprovalNodeId') is not None:
+            self.approval_node_id = m.get('ApprovalNodeId')
+        if m.get('ApprovalNodePos') is not None:
+            self.approval_node_pos = m.get('ApprovalNodePos')
         if m.get('ApprovalType') is not None:
             self.approval_type = m.get('ApprovalType')
         if m.get('Comment') is not None:
             self.comment = m.get('Comment')
+        if m.get('NewApprover') is not None:
+            self.new_approver = m.get('NewApprover')
+        if m.get('OldApprover') is not None:
+            self.old_approver = m.get('OldApprover')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('WorkflowInstanceId') is not None:
@@ -1948,6 +1979,7 @@ class BackFillRequest(TeaModel):
         self.back_fill_date_end = back_fill_date_end
         # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # Filter condition, which specifies the list of node IDs in the task flow that do not need to supplement data.
         self.filter_node_ids = filter_node_ids
         # The ID of the historical task flow.
         self.history_dag_id = history_dag_id
@@ -2050,6 +2082,7 @@ class BackFillShrinkRequest(TeaModel):
         self.back_fill_date_end = back_fill_date_end
         # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # Filter condition, which specifies the list of node IDs in the task flow that do not need to supplement data.
         self.filter_node_ids_shrink = filter_node_ids_shrink
         # The ID of the historical task flow.
         self.history_dag_id = history_dag_id
@@ -10166,9 +10199,9 @@ class DeleteUserRequest(TeaModel):
         tid: int = None,
         uid: str = None,
     ):
-        # The tenant ID.
+        # The ID of the tenant. 
         # 
-        # > To view the tenant ID, log on to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://www.alibabacloud.com/help/en/data-management-service/latest/manage-dms-tenants) topic.
         self.tid = tid
         # The unique ID (UID) of Alibaba Cloud account to delete.
         self.uid = uid
@@ -10209,10 +10242,12 @@ class DeleteUserResponseBody(TeaModel):
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # *   **true**: The account was deleted.
-        # *   **false**: The account failed to be deleted.
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -13993,6 +14028,7 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
         next_fire_time_result: GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraDataNextFireTimeResult = None,
         page_index: int = None,
         page_size: int = None,
+        temp_table_name_map: Dict[str, Any] = None,
     ):
         self.dag_info = dag_info
         self.db_base_info = db_base_info
@@ -14001,6 +14037,7 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
         self.next_fire_time_result = next_fire_time_result
         self.page_index = page_index
         self.page_size = page_size
+        self.temp_table_name_map = temp_table_name_map
 
     def validate(self):
         if self.dag_info:
@@ -14036,6 +14073,8 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
             result['PageIndex'] = self.page_index
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.temp_table_name_map is not None:
+            result['TempTableNameMap'] = self.temp_table_name_map
         return result
 
     def from_map(self, m: dict = None):
@@ -14060,6 +14099,8 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
             self.page_index = m.get('PageIndex')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('TempTableNameMap') is not None:
+            self.temp_table_name_map = m.get('TempTableNameMap')
         return self
 
 
@@ -15738,7 +15779,9 @@ class GetDataCronClearConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Data configuration.
         self.data_cron_clear_config = data_cron_clear_config
+        # The error code.
         self.error_code = error_code
         # The error message returned if the request failed.
         self.error_message = error_message
@@ -17824,6 +17867,7 @@ class GetDatabaseResponseBodyDatabase(TeaModel):
         self.env_type = env_type
         # The endpoint that is used to connect to the database.
         self.host = host
+        # The alias of the instance.
         self.instance_alias = instance_alias
         # The ID of the instance.
         self.instance_id = instance_id
@@ -18703,6 +18747,11 @@ class GetInstanceResponseBodyInstance(TeaModel):
         self.query_timeout = query_timeout
         # The ID of the security rule set for the database instance.
         self.safe_rule_id = safe_rule_id
+        # Whether sensitive data protection is enabled.  Valid values:
+        # 
+        # - **true**: Enable.
+        # 
+        # - **false**: Close.
         self.sell_sitd = sell_sitd
         # The SID of the database instance.
         self.sid = sid
@@ -20585,6 +20634,7 @@ class GetOpLogRequest(TeaModel):
         tid: int = None,
         user_nick: str = None,
     ):
+        # DatabaseName.
         self.database_name = database_name
         # The end of the time range to query. Specify the time in the yyyy-MM-DD HH:mm:ss format.
         self.end_time = end_time
@@ -20627,6 +20677,7 @@ class GetOpLogRequest(TeaModel):
         self.start_time = start_time
         # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
         self.tid = tid
+        # UserNick.
         self.user_nick = user_nick
 
     def validate(self):
@@ -37499,6 +37550,7 @@ class ListSQLReviewOriginSQLResponseBodyOriginSQLList(TeaModel):
         self.sqlcontent = sqlcontent
         # The ID of the SQL statement.
         self.sqlid = sqlid
+        # SQLName.
         self.sqlname = sqlname
         # The key that is used to query the details of optimization suggestions. You can call the [GetSQLReviewOptimizeDetail](https://icms.alibaba-inc.com/content/dms/doc?l=1\&m=61777\&n=2712723\&spm) operation to query the details of optimization suggestions based on the key.
         self.sqlreview_query_key = sqlreview_query_key
@@ -39969,7 +40021,7 @@ class ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator(TeaModel):
         self.login_name = login_name
         # The alias of the user.
         self.nick_name = nick_name
-        # 用户ID。
+        # userId.
         self.user_id = user_id
 
     def validate(self):
@@ -40407,6 +40459,19 @@ class ListTaskFlowInstanceRequest(TeaModel):
         self.start_time_begin = start_time_begin
         # The end of the time range to query the execution records of the task flow. Specify the time in the yyyy-MM-DD format.
         self.start_time_end = start_time_end
+        # The running status of the task node. Valid values:
+        # 
+        # - **0**: Waiting for scheduling
+        # 
+        # - **1**: Running
+        # 
+        # - **2**: Suspend
+        # 
+        # - **3**: Failed to run
+        # 
+        # - **4**: Run successfully
+        # 
+        # - **5**: Completed
         self.status = status
         # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
         self.tid = tid
@@ -40415,6 +40480,11 @@ class ListTaskFlowInstanceRequest(TeaModel):
         # *   **0**: The task flow is automatically triggered based on periodic scheduling.
         # *   **1**: The task flow is manually triggered.
         self.trigger_type = trigger_type
+        # Adjust filter conditions:
+        # 
+        # - true: StartTimeBegin and StartTimeEnd are the time range for filtering services.
+        # 
+        # - false: StartTimeBegin and StartTimeEnd are the time range for the task to run.
         self.use_biz_date = use_biz_date
 
     def validate(self):
@@ -40491,6 +40561,7 @@ class ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance(TeaModel):
         self.dag_id = dag_id
         # The name of the task flow.
         self.dag_name = dag_name
+        # The version of the task flow.
         self.dag_version = dag_version
         # The time when the execution of the task flow was complete. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
         self.end_time = end_time
@@ -40516,6 +40587,7 @@ class ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance(TeaModel):
         # *   **0**: The task flow is automatically triggered based on periodic scheduling.
         # *   **1**: The task flow is manually triggered.
         self.trigger_type = trigger_type
+        # The time when the execution of the task flow was start. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):
@@ -40951,11 +41023,13 @@ class ListTaskFlowsByPageRequest(TeaModel):
         search_key: str = None,
         tid: int = None,
     ):
+        # Filter condition, task flow ID list.
         self.dag_id_list = dag_id_list
         # The number of the page to return.
         self.page_index = page_index
         # The number of entries to return on each page.
         self.page_size = page_size
+        # Filter condition, application scenario ID.
         self.scenario_id = scenario_id
         # The keyword that is used to search for task flow names.
         self.search_key = search_key
@@ -41014,11 +41088,13 @@ class ListTaskFlowsByPageShrinkRequest(TeaModel):
         search_key: str = None,
         tid: int = None,
     ):
+        # Filter condition, task flow ID list.
         self.dag_id_list_shrink = dag_id_list_shrink
         # The number of the page to return.
         self.page_index = page_index
         # The number of entries to return on each page.
         self.page_size = page_size
+        # Filter condition, application scenario ID.
         self.scenario_id = scenario_id
         # The keyword that is used to search for task flow names.
         self.search_key = search_key
@@ -41095,13 +41171,23 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
         self.creator_id = creator_id
         # The username of the user who created the task flow.
         self.creator_nick_name = creator_nick_name
+        # The start time of scheduled scheduling. The task flow is not scheduled before this point in time.
         self.cron_begin_date = cron_begin_date
+        # The end time of scheduled scheduling. The task flow is not scheduled after this point in time.
         self.cron_end_date = cron_end_date
+        # Scheduled Cron.
         self.cron_str = cron_str
+        # Whether to enable scheduled scheduling.
         self.cron_switch = cron_switch
+        # Scheduling cycle type. Valid values:
+        # - **2**: Hourly scheduling
+        # - **3**: Daily scheduling
+        # - **4**: Weekly scheduling
+        # - **5**: Monthly scheduling
         self.cron_type = cron_type
         # The name of the task flow.
         self.dag_name = dag_name
+        # The user ID of the task flow owner.
         self.dag_owner_id = dag_owner_id
         # The username of the owner of the task flow.
         self.dag_owner_nick_name = dag_owner_nick_name
@@ -41119,7 +41205,9 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
         self.latest_instance_status = latest_instance_status
         # The time when the last execution record was created.
         self.latest_instance_time = latest_instance_time
+        # The ID of the application scenario.
         self.scenario_id = scenario_id
+        # Event scheduling configuration, JSON string format.
         self.schedule_param = schedule_param
         # The status of the task flow. Valid values:
         # 
@@ -41127,7 +41215,11 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
         # *   **1**: scheduling disabled
         # *   **2**: waiting to be scheduled
         self.status = status
+        # Time zone setting. Default value: East 8(Asia/Shanghai).
         self.time_zone_id = time_zone_id
+        # The trigger type. Valid values:
+        # - **0**: Periodic scheduling
+        # - **1**: Run manually
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -52290,7 +52382,7 @@ class UpdateUserRequest(TeaModel):
         self.max_result_count = max_result_count
         # The DingTalk ID or mobile number of the user.
         self.mobile = mobile
-        # The roles that the user assumes. For more information about the valid values, see the Request parameters section in the [RegisterUser](~~141565~~) topic.
+        # The roles that the user assumes. For more information about the valid values, see the Request parameters section in the [UpdateUser](~~465812~~) topic.
         self.role_names = role_names
         # The ID of the tenant.
         # 

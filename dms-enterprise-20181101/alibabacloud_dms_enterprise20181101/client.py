@@ -361,7 +361,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
         """
-        The ID of the node where the end node of the edge is located.
+        When you add directed edges for a task node, take note of the following limits:
+        1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
+        2. After a backward edge is added, the DAG does not contain loops.
         
         @param tmp_req: AddTaskFlowEdgesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -404,7 +406,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
         """
-        The ID of the node where the end node of the edge is located.
+        When you add directed edges for a task node, take note of the following limits:
+        1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
+        2. After a backward edge is added, the DAG does not contain loops.
         
         @param tmp_req: AddTaskFlowEdgesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -446,7 +450,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
     ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
         """
-        The ID of the node where the end node of the edge is located.
+        When you add directed edges for a task node, take note of the following limits:
+        1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
+        2. After a backward edge is added, the DAG does not contain loops.
         
         @param request: AddTaskFlowEdgesRequest
         @return: AddTaskFlowEdgesResponse
@@ -459,7 +465,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
     ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
         """
-        The ID of the node where the end node of the edge is located.
+        When you add directed edges for a task node, take note of the following limits:
+        1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
+        2. After a backward edge is added, the DAG does not contain loops.
         
         @param request: AddTaskFlowEdgesRequest
         @return: AddTaskFlowEdgesResponse
@@ -552,10 +560,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ApproveOrderResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.approval_node_id):
+            query['ApprovalNodeId'] = request.approval_node_id
+        if not UtilClient.is_unset(request.approval_node_pos):
+            query['ApprovalNodePos'] = request.approval_node_pos
         if not UtilClient.is_unset(request.approval_type):
             query['ApprovalType'] = request.approval_type
         if not UtilClient.is_unset(request.comment):
             query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.new_approver):
+            query['NewApprover'] = request.new_approver
+        if not UtilClient.is_unset(request.old_approver):
+            query['OldApprover'] = request.old_approver
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.workflow_instance_id):
@@ -586,10 +602,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ApproveOrderResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.approval_node_id):
+            query['ApprovalNodeId'] = request.approval_node_id
+        if not UtilClient.is_unset(request.approval_node_pos):
+            query['ApprovalNodePos'] = request.approval_node_pos
         if not UtilClient.is_unset(request.approval_type):
             query['ApprovalType'] = request.approval_type
         if not UtilClient.is_unset(request.comment):
             query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.new_approver):
+            query['NewApprover'] = request.new_approver
+        if not UtilClient.is_unset(request.old_approver):
+            query['OldApprover'] = request.old_approver
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.workflow_instance_id):
@@ -4477,8 +4501,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteUserResponse:
         """
-        This operation corresponds to the feature of deleting a user on the Users page in the Data Management (DMS) console. An administrator of DMS Enterprise can call this operation to delete an Alibaba Cloud account that is no longer used in DMS Enterprise. After an Alibaba Cloud account is deleted, the permissions that are granted to the Alibaba Cloud account are revoked. The data owner configurations and database administrator (DBA) configurations are disabled.
-        > This operation only removes the relationship between an Alibaba Cloud account and DMS Enterprise. The Alibaba Cloud account is not deleted. After you delete an Alibaba Cloud account, you cannot use this account to log on to DMS Enterprise until the account is recreated.
+        The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+        >  This operation only removes the association of the Alibaba Cloud account or RAM user with DMS Enterprise of the enterprise, rather than actually deleting the Alibaba Cloud account or RAM user. After the user is deleted, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is added to DMS Enterprise again.
         
         @param request: DeleteUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4515,8 +4539,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteUserResponse:
         """
-        This operation corresponds to the feature of deleting a user on the Users page in the Data Management (DMS) console. An administrator of DMS Enterprise can call this operation to delete an Alibaba Cloud account that is no longer used in DMS Enterprise. After an Alibaba Cloud account is deleted, the permissions that are granted to the Alibaba Cloud account are revoked. The data owner configurations and database administrator (DBA) configurations are disabled.
-        > This operation only removes the relationship between an Alibaba Cloud account and DMS Enterprise. The Alibaba Cloud account is not deleted. After you delete an Alibaba Cloud account, you cannot use this account to log on to DMS Enterprise until the account is recreated.
+        The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+        >  This operation only removes the association of the Alibaba Cloud account or RAM user with DMS Enterprise of the enterprise, rather than actually deleting the Alibaba Cloud account or RAM user. After the user is deleted, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is added to DMS Enterprise again.
         
         @param request: DeleteUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4552,8 +4576,8 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteUserRequest,
     ) -> dms_enterprise_20181101_models.DeleteUserResponse:
         """
-        This operation corresponds to the feature of deleting a user on the Users page in the Data Management (DMS) console. An administrator of DMS Enterprise can call this operation to delete an Alibaba Cloud account that is no longer used in DMS Enterprise. After an Alibaba Cloud account is deleted, the permissions that are granted to the Alibaba Cloud account are revoked. The data owner configurations and database administrator (DBA) configurations are disabled.
-        > This operation only removes the relationship between an Alibaba Cloud account and DMS Enterprise. The Alibaba Cloud account is not deleted. After you delete an Alibaba Cloud account, you cannot use this account to log on to DMS Enterprise until the account is recreated.
+        The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+        >  This operation only removes the association of the Alibaba Cloud account or RAM user with DMS Enterprise of the enterprise, rather than actually deleting the Alibaba Cloud account or RAM user. After the user is deleted, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is added to DMS Enterprise again.
         
         @param request: DeleteUserRequest
         @return: DeleteUserResponse
@@ -4566,8 +4590,8 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteUserRequest,
     ) -> dms_enterprise_20181101_models.DeleteUserResponse:
         """
-        This operation corresponds to the feature of deleting a user on the Users page in the Data Management (DMS) console. An administrator of DMS Enterprise can call this operation to delete an Alibaba Cloud account that is no longer used in DMS Enterprise. After an Alibaba Cloud account is deleted, the permissions that are granted to the Alibaba Cloud account are revoked. The data owner configurations and database administrator (DBA) configurations are disabled.
-        > This operation only removes the relationship between an Alibaba Cloud account and DMS Enterprise. The Alibaba Cloud account is not deleted. After you delete an Alibaba Cloud account, you cannot use this account to log on to DMS Enterprise until the account is recreated.
+        The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+        >  This operation only removes the association of the Alibaba Cloud account or RAM user with DMS Enterprise of the enterprise, rather than actually deleting the Alibaba Cloud account or RAM user. After the user is deleted, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is added to DMS Enterprise again.
         
         @param request: DeleteUserRequest
         @return: DeleteUserResponse
