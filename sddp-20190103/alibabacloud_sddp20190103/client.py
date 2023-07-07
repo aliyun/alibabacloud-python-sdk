@@ -1238,6 +1238,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_columns_with_options_async(request, runtime)
 
+    def describe_columns_v2with_options(
+        self,
+        request: sddp_20190103_models.DescribeColumnsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeColumnsV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.risk_level_id):
+            query['RiskLevelId'] = request.risk_level_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sens_level_name):
+            query['SensLevelName'] = request.sens_level_name
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeColumnsV2',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeColumnsV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_columns_v2with_options_async(
+        self,
+        request: sddp_20190103_models.DescribeColumnsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeColumnsV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.risk_level_id):
+            query['RiskLevelId'] = request.risk_level_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sens_level_name):
+            query['SensLevelName'] = request.sens_level_name
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeColumnsV2',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeColumnsV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_columns_v2(
+        self,
+        request: sddp_20190103_models.DescribeColumnsV2Request,
+    ) -> sddp_20190103_models.DescribeColumnsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_columns_v2with_options(request, runtime)
+
+    async def describe_columns_v2_async(
+        self,
+        request: sddp_20190103_models.DescribeColumnsV2Request,
+    ) -> sddp_20190103_models.DescribeColumnsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_columns_v2with_options_async(request, runtime)
+
     def describe_configs_with_options(
         self,
         request: sddp_20190103_models.DescribeConfigsRequest,
@@ -2072,6 +2190,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_object_column_detail_with_options_async(request, runtime)
 
+    def describe_data_object_column_detail_v2with_options(
+        self,
+        request: sddp_20190103_models.DescribeDataObjectColumnDetailV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeDataObjectColumnDetailV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDataObjectColumnDetailV2',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeDataObjectColumnDetailV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_data_object_column_detail_v2with_options_async(
+        self,
+        request: sddp_20190103_models.DescribeDataObjectColumnDetailV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeDataObjectColumnDetailV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDataObjectColumnDetailV2',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeDataObjectColumnDetailV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_data_object_column_detail_v2(
+        self,
+        request: sddp_20190103_models.DescribeDataObjectColumnDetailV2Request,
+    ) -> sddp_20190103_models.DescribeDataObjectColumnDetailV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_data_object_column_detail_v2with_options(request, runtime)
+
+    async def describe_data_object_column_detail_v2_async(
+        self,
+        request: sddp_20190103_models.DescribeDataObjectColumnDetailV2Request,
+    ) -> sddp_20190103_models.DescribeDataObjectColumnDetailV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_data_object_column_detail_v2with_options_async(request, runtime)
+
     def describe_data_objects_with_options(
         self,
         request: sddp_20190103_models.DescribeDataObjectsRequest,
@@ -2893,6 +3101,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_oss_object_detail_with_options_async(request, runtime)
+
+    def describe_oss_object_detail_v2with_options(
+        self,
+        request: sddp_20190103_models.DescribeOssObjectDetailV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeOssObjectDetailV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOssObjectDetailV2',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeOssObjectDetailV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_oss_object_detail_v2with_options_async(
+        self,
+        request: sddp_20190103_models.DescribeOssObjectDetailV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeOssObjectDetailV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOssObjectDetailV2',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeOssObjectDetailV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_oss_object_detail_v2(
+        self,
+        request: sddp_20190103_models.DescribeOssObjectDetailV2Request,
+    ) -> sddp_20190103_models.DescribeOssObjectDetailV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_oss_object_detail_v2with_options(request, runtime)
+
+    async def describe_oss_object_detail_v2_async(
+        self,
+        request: sddp_20190103_models.DescribeOssObjectDetailV2Request,
+    ) -> sddp_20190103_models.DescribeOssObjectDetailV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_oss_object_detail_v2with_options_async(request, runtime)
 
     def describe_oss_objects_with_options(
         self,

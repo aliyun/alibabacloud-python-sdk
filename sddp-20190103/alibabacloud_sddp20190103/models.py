@@ -2155,6 +2155,390 @@ class DescribeColumnsResponse(TeaModel):
         return self
 
 
+class DescribeColumnsV2Request(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        instance_id: int = None,
+        instance_name: str = None,
+        lang: str = None,
+        name: str = None,
+        page_size: int = None,
+        product_code: str = None,
+        risk_level_id: int = None,
+        rule_id: int = None,
+        rule_name: str = None,
+        sens_level_name: str = None,
+        table_id: str = None,
+        table_name: str = None,
+    ):
+        self.current_page = current_page
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.lang = lang
+        self.name = name
+        self.page_size = page_size
+        self.product_code = product_code
+        self.risk_level_id = risk_level_id
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.sens_level_name = sens_level_name
+        self.table_id = table_id
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sens_level_name is not None:
+            result['SensLevelName'] = self.sens_level_name
+        if self.table_id is not None:
+            result['TableId'] = self.table_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SensLevelName') is not None:
+            self.sens_level_name = m.get('SensLevelName')
+        if m.get('TableId') is not None:
+            self.table_id = m.get('TableId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class DescribeColumnsV2ResponseBodyItemsModelTags(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeColumnsV2ResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        creation_time: int = None,
+        data_type: str = None,
+        id: str = None,
+        instance_id: int = None,
+        instance_name: str = None,
+        model_tags: List[DescribeColumnsV2ResponseBodyItemsModelTags] = None,
+        name: str = None,
+        odps_risk_level_name: str = None,
+        odps_risk_level_value: int = None,
+        product_code: str = None,
+        revision_id: int = None,
+        revision_status: int = None,
+        risk_level_id: int = None,
+        risk_level_name: str = None,
+        rule_id: int = None,
+        rule_name: str = None,
+        sens_level_name: str = None,
+        sensitive: bool = None,
+        table_id: int = None,
+        table_name: str = None,
+    ):
+        self.creation_time = creation_time
+        self.data_type = data_type
+        self.id = id
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.model_tags = model_tags
+        self.name = name
+        self.odps_risk_level_name = odps_risk_level_name
+        self.odps_risk_level_value = odps_risk_level_value
+        self.product_code = product_code
+        self.revision_id = revision_id
+        self.revision_status = revision_status
+        self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.sens_level_name = sens_level_name
+        self.sensitive = sensitive
+        self.table_id = table_id
+        self.table_name = table_name
+
+    def validate(self):
+        if self.model_tags:
+            for k in self.model_tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        result['ModelTags'] = []
+        if self.model_tags is not None:
+            for k in self.model_tags:
+                result['ModelTags'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.odps_risk_level_name is not None:
+            result['OdpsRiskLevelName'] = self.odps_risk_level_name
+        if self.odps_risk_level_value is not None:
+            result['OdpsRiskLevelValue'] = self.odps_risk_level_value
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.revision_id is not None:
+            result['RevisionId'] = self.revision_id
+        if self.revision_status is not None:
+            result['RevisionStatus'] = self.revision_status
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sens_level_name is not None:
+            result['SensLevelName'] = self.sens_level_name
+        if self.sensitive is not None:
+            result['Sensitive'] = self.sensitive
+        if self.table_id is not None:
+            result['TableId'] = self.table_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        self.model_tags = []
+        if m.get('ModelTags') is not None:
+            for k in m.get('ModelTags'):
+                temp_model = DescribeColumnsV2ResponseBodyItemsModelTags()
+                self.model_tags.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OdpsRiskLevelName') is not None:
+            self.odps_risk_level_name = m.get('OdpsRiskLevelName')
+        if m.get('OdpsRiskLevelValue') is not None:
+            self.odps_risk_level_value = m.get('OdpsRiskLevelValue')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('RevisionId') is not None:
+            self.revision_id = m.get('RevisionId')
+        if m.get('RevisionStatus') is not None:
+            self.revision_status = m.get('RevisionStatus')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SensLevelName') is not None:
+            self.sens_level_name = m.get('SensLevelName')
+        if m.get('Sensitive') is not None:
+            self.sensitive = m.get('Sensitive')
+        if m.get('TableId') is not None:
+            self.table_id = m.get('TableId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class DescribeColumnsV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[DescribeColumnsV2ResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.items = items
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeColumnsV2ResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeColumnsV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeColumnsV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeColumnsV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeConfigsRequest(TeaModel):
     def __init__(
         self,
@@ -4987,6 +5371,294 @@ class DescribeDataObjectColumnDetailResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDataObjectColumnDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDataObjectColumnDetailV2Request(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        id: str = None,
+        lang: str = None,
+        page_size: int = None,
+        product_id: int = None,
+        template_id: int = None,
+    ):
+        self.current_page = current_page
+        self.id = id
+        self.lang = lang
+        self.page_size = page_size
+        self.product_id = product_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeDataObjectColumnDetailV2ResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        categories: List[str] = None,
+        column_comment: str = None,
+        column_name: str = None,
+        data_type: str = None,
+        id: str = None,
+        model_tags: List[DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags] = None,
+        primary_key: bool = None,
+        risk_level_id: int = None,
+        risk_level_name: str = None,
+        rule_id: int = None,
+        rule_name: str = None,
+    ):
+        self.categories = categories
+        self.column_comment = column_comment
+        self.column_name = column_name
+        self.data_type = data_type
+        self.id = id
+        self.model_tags = model_tags
+        self.primary_key = primary_key
+        self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.model_tags:
+            for k in self.model_tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.categories is not None:
+            result['Categories'] = self.categories
+        if self.column_comment is not None:
+            result['ColumnComment'] = self.column_comment
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.id is not None:
+            result['Id'] = self.id
+        result['ModelTags'] = []
+        if self.model_tags is not None:
+            for k in self.model_tags:
+                result['ModelTags'].append(k.to_map() if k else None)
+        if self.primary_key is not None:
+            result['PrimaryKey'] = self.primary_key
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Categories') is not None:
+            self.categories = m.get('Categories')
+        if m.get('ColumnComment') is not None:
+            self.column_comment = m.get('ColumnComment')
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        self.model_tags = []
+        if m.get('ModelTags') is not None:
+            for k in m.get('ModelTags'):
+                temp_model = DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags()
+                self.model_tags.append(temp_model.from_map(k))
+        if m.get('PrimaryKey') is not None:
+            self.primary_key = m.get('PrimaryKey')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class DescribeDataObjectColumnDetailV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[DescribeDataObjectColumnDetailV2ResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.items = items
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeDataObjectColumnDetailV2ResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDataObjectColumnDetailV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDataObjectColumnDetailV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDataObjectColumnDetailV2ResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7950,6 +8622,281 @@ class DescribeOssObjectDetailResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeOssObjectDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeOssObjectDetailV2Request(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        lang: str = None,
+    ):
+        self.id = id
+        self.lang = lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        return self
+
+
+class DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList(TeaModel):
+    def __init__(
+        self,
+        category_name: str = None,
+        count: int = None,
+        model_tags: List[DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags] = None,
+        risk_level_id: int = None,
+        risk_level_name: str = None,
+        rule_name: str = None,
+    ):
+        self.category_name = category_name
+        self.count = count
+        self.model_tags = model_tags
+        self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.model_tags:
+            for k in self.model_tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.count is not None:
+            result['Count'] = self.count
+        result['ModelTags'] = []
+        if self.model_tags is not None:
+            for k in self.model_tags:
+                result['ModelTags'].append(k.to_map() if k else None)
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        self.model_tags = []
+        if m.get('ModelTags') is not None:
+            for k in m.get('ModelTags'):
+                temp_model = DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleListModelTags()
+                self.model_tags.append(temp_model.from_map(k))
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class DescribeOssObjectDetailV2ResponseBodyOssObjectDetail(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        category_name: str = None,
+        name: str = None,
+        region_id: str = None,
+        risk_level_name: str = None,
+        rule_list: List[DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList] = None,
+    ):
+        self.bucket_name = bucket_name
+        self.category_name = category_name
+        self.name = name
+        self.region_id = region_id
+        self.risk_level_name = risk_level_name
+        self.rule_list = rule_list
+
+    def validate(self):
+        if self.rule_list:
+            for k in self.rule_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
+        result['RuleList'] = []
+        if self.rule_list is not None:
+            for k in self.rule_list:
+                result['RuleList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
+        self.rule_list = []
+        if m.get('RuleList') is not None:
+            for k in m.get('RuleList'):
+                temp_model = DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList()
+                self.rule_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeOssObjectDetailV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        oss_object_detail: DescribeOssObjectDetailV2ResponseBodyOssObjectDetail = None,
+        request_id: str = None,
+    ):
+        self.oss_object_detail = oss_object_detail
+        self.request_id = request_id
+
+    def validate(self):
+        if self.oss_object_detail:
+            self.oss_object_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oss_object_detail is not None:
+            result['OssObjectDetail'] = self.oss_object_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OssObjectDetail') is not None:
+            temp_model = DescribeOssObjectDetailV2ResponseBodyOssObjectDetail()
+            self.oss_object_detail = temp_model.from_map(m['OssObjectDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeOssObjectDetailV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeOssObjectDetailV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeOssObjectDetailV2ResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
