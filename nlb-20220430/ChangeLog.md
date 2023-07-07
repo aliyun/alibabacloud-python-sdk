@@ -1,3 +1,6 @@
+2023-07-07 Version: 1.0.12
+- NLB new sdk.
+
 2023-07-04 Version: 1.0.11
 - NLB new sdk.
 

@@ -2760,10 +2760,6 @@ class Client(OpenApiClient):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page):
-            body['Page'] = request.page
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         body_flat = {}
@@ -2805,10 +2801,6 @@ class Client(OpenApiClient):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page):
-            body['Page'] = request.page
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         body_flat = {}
@@ -3998,6 +3990,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
+        """
+        >  You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the details of deletion protection and the configuration read-only mode.
+        
+        @param request: UpdateLoadBalancerProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoadBalancerProtectionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4040,6 +4039,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
+        """
+        >  You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the details of deletion protection and the configuration read-only mode.
+        
+        @param request: UpdateLoadBalancerProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoadBalancerProtectionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4081,6 +4087,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateLoadBalancerProtectionRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
+        """
+        >  You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the details of deletion protection and the configuration read-only mode.
+        
+        @param request: UpdateLoadBalancerProtectionRequest
+        @return: UpdateLoadBalancerProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_load_balancer_protection_with_options(request, runtime)
 
@@ -4088,6 +4100,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateLoadBalancerProtectionRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
+        """
+        >  You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the details of deletion protection and the configuration read-only mode.
+        
+        @param request: UpdateLoadBalancerProtectionRequest
+        @return: UpdateLoadBalancerProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_load_balancer_protection_with_options_async(request, runtime)
 

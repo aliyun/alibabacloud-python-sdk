@@ -4820,9 +4820,18 @@ class ListListenerCertificatesRequest(TeaModel):
         region_id: str = None,
     ):
         self.cert_type = cert_type
+        # The ID of the listener. Specify the ID of a listener that uses SSL over TCP.
         self.listener_id = listener_id
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+        # 
+        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4916,11 +4925,19 @@ class ListListenerCertificatesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The server certificates.
         self.certificate_ids = certificate_ids
         self.certificates = certificates
+        # The number of entries returned per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7751,8 +7768,6 @@ class ListTagResourcesRequest(TeaModel):
         self,
         max_results: int = None,
         next_token: str = None,
-        page: int = None,
-        page_size: int = None,
         region_id: str = None,
         resource_id: List[str] = None,
         resource_type: str = None,
@@ -7760,8 +7775,6 @@ class ListTagResourcesRequest(TeaModel):
     ):
         self.max_results = max_results
         self.next_token = next_token
-        self.page = page
-        self.page_size = page_size
         self.region_id = region_id
         self.resource_id = resource_id
         self.resource_type = resource_type
@@ -7783,10 +7796,6 @@ class ListTagResourcesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
-        if self.page is not None:
-            result['Page'] = self.page
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_id is not None:
@@ -7805,10 +7814,6 @@ class ListTagResourcesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
-        if m.get('Page') is not None:
-            self.page = m.get('Page')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
@@ -9934,13 +9939,42 @@ class UpdateLoadBalancerProtectionRequest(TeaModel):
         modification_protection_status: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to enable deletion protection. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.deletion_protection_enabled = deletion_protection_enabled
+        # The reason for enabling deletion protection. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+        # 
+        # >  This parameter is valid only if you set **DeletionProtectionEnabled** to **true**.
         self.deletion_protection_reason = deletion_protection_reason
+        # Specifies whether to perform only a dry run without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the NLB instance.
         self.load_balancer_id = load_balancer_id
+        # The reason for enabling the configuration read-only mode. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+        # 
+        # >  This parameter takes effect only if you set **Status** to **ConsoleProtection**.
         self.modification_protection_reason = modification_protection_reason
+        # Specifies whether to enable the configuration read-only mode. Valid values:
+        # 
+        # *   **NonProtection**: disables the configuration read-only mode. In this case, you cannot specify **ModificationProtectionReason**. If you specify **ModificationProtectionReason**, the value is cleared.
+        # *   **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify **ModificationProtectionReason**.
+        # 
+        # >  If you set this parameter to **ConsoleProtection**, you cannot modify instance configurations in the NLB console. However, you can modify instance configurations by calling API operations.
         self.modification_protection_status = modification_protection_status
+        # The region ID of the NLB instance.
+        # 
+        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -9996,6 +10030,7 @@ class UpdateLoadBalancerProtectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
