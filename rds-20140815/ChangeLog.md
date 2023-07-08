@@ -1,3 +1,7 @@
+2023-07-08 Version: 2.2.8
+- Add AutoUseCoupon field.
+- Api Offline.
+
 2023-07-07 Version: 2.2.7
 - Add AutoUseCoupon field.
 - Api Offline.
