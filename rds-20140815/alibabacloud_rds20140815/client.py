@@ -9422,6 +9422,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_character_set_name_with_options_async(request, runtime)
 
+    def describe_class_details_with_options(
+        self,
+        request: rds_20140815_models.DescribeClassDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeClassDetailsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.class_code):
+            query['ClassCode'] = request.class_code
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClassDetails',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeClassDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_class_details_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeClassDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeClassDetailsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.class_code):
+            query['ClassCode'] = request.class_code
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClassDetails',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeClassDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_class_details(
+        self,
+        request: rds_20140815_models.DescribeClassDetailsRequest,
+    ) -> rds_20140815_models.DescribeClassDetailsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_class_details_with_options(request, runtime)
+
+    async def describe_class_details_async(
+        self,
+        request: rds_20140815_models.DescribeClassDetailsRequest,
+    ) -> rds_20140815_models.DescribeClassDetailsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_class_details_with_options_async(request, runtime)
+
     def describe_cloud_migration_precheck_result_with_options(
         self,
         request: rds_20140815_models.DescribeCloudMigrationPrecheckResultRequest,
