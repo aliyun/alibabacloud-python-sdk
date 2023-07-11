@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_avatar20220130.
 
-Created on 05/07/2023
+Created on 11/07/2023
 
 @author: Alibaba Cloud SDK
 """

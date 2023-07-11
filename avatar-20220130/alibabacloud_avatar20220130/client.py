@@ -779,6 +779,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_timed_reset_operate_status_with_options_async(request, runtime)
 
+    def send_command_with_options(
+        self,
+        tmp_req: avatar_20220130_models.SendCommandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SendCommandResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.SendCommandShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.content):
+            request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.content_shrink):
+            query['Content'] = request.content_shrink
+        if not UtilClient.is_unset(request.feedback):
+            query['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.unique_code):
+            query['UniqueCode'] = request.unique_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendCommand',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SendCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_command_with_options_async(
+        self,
+        tmp_req: avatar_20220130_models.SendCommandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SendCommandResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.SendCommandShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.content):
+            request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.content_shrink):
+            query['Content'] = request.content_shrink
+        if not UtilClient.is_unset(request.feedback):
+            query['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.unique_code):
+            query['UniqueCode'] = request.unique_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendCommand',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SendCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_command(
+        self,
+        request: avatar_20220130_models.SendCommandRequest,
+    ) -> avatar_20220130_models.SendCommandResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_command_with_options(request, runtime)
+
+    async def send_command_async(
+        self,
+        request: avatar_20220130_models.SendCommandRequest,
+    ) -> avatar_20220130_models.SendCommandResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_command_with_options_async(request, runtime)
+
     def send_message_with_options(
         self,
         tmp_req: avatar_20220130_models.SendMessageRequest,
@@ -884,6 +982,186 @@ class Client(OpenApiClient):
     ) -> avatar_20220130_models.SendMessageResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_message_with_options_async(request, runtime)
+
+    def send_text_with_options(
+        self,
+        tmp_req: avatar_20220130_models.SendTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SendTextResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.SendTextShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.stream_extension):
+            request.stream_extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_extension, 'StreamExtension', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.feedback):
+            query['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.interrupt):
+            query['Interrupt'] = request.interrupt
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.stream_extension_shrink):
+            query['StreamExtension'] = request.stream_extension_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.unique_code):
+            query['UniqueCode'] = request.unique_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendText',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SendTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_text_with_options_async(
+        self,
+        tmp_req: avatar_20220130_models.SendTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SendTextResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.SendTextShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.stream_extension):
+            request.stream_extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_extension, 'StreamExtension', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.feedback):
+            query['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.interrupt):
+            query['Interrupt'] = request.interrupt
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.stream_extension_shrink):
+            query['StreamExtension'] = request.stream_extension_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.unique_code):
+            query['UniqueCode'] = request.unique_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendText',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SendTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_text(
+        self,
+        request: avatar_20220130_models.SendTextRequest,
+    ) -> avatar_20220130_models.SendTextResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_text_with_options(request, runtime)
+
+    async def send_text_async(
+        self,
+        request: avatar_20220130_models.SendTextRequest,
+    ) -> avatar_20220130_models.SendTextResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_text_with_options_async(request, runtime)
+
+    def send_vaml_with_options(
+        self,
+        request: avatar_20220130_models.SendVamlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SendVamlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.vaml):
+            query['Vaml'] = request.vaml
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendVaml',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SendVamlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_vaml_with_options_async(
+        self,
+        request: avatar_20220130_models.SendVamlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SendVamlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.vaml):
+            query['Vaml'] = request.vaml
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendVaml',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SendVamlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_vaml(
+        self,
+        request: avatar_20220130_models.SendVamlRequest,
+    ) -> avatar_20220130_models.SendVamlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_vaml_with_options(request, runtime)
+
+    async def send_vaml_async(
+        self,
+        request: avatar_20220130_models.SendVamlRequest,
+    ) -> avatar_20220130_models.SendVamlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_vaml_with_options_async(request, runtime)
 
     def start_instance_with_options(
         self,
