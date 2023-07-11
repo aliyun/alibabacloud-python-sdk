@@ -289,6 +289,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.separators):
+            query['Separators'] = request.separators
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -321,6 +323,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.separators):
+            query['Separators'] = request.separators
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1167,6 +1171,72 @@ class Client(OpenApiClient):
     ) -> das20200116_models.DescribeAutoScalingConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_auto_scaling_config_with_options_async(request, runtime)
+
+    def describe_auto_scaling_history_with_options(
+        self,
+        request: das20200116_models.DescribeAutoScalingHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DescribeAutoScalingHistoryResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoScalingHistory',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DescribeAutoScalingHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_auto_scaling_history_with_options_async(
+        self,
+        request: das20200116_models.DescribeAutoScalingHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DescribeAutoScalingHistoryResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoScalingHistory',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DescribeAutoScalingHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_auto_scaling_history(
+        self,
+        request: das20200116_models.DescribeAutoScalingHistoryRequest,
+    ) -> das20200116_models.DescribeAutoScalingHistoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_auto_scaling_history_with_options(request, runtime)
+
+    async def describe_auto_scaling_history_async(
+        self,
+        request: das20200116_models.DescribeAutoScalingHistoryRequest,
+    ) -> das20200116_models.DescribeAutoScalingHistoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_auto_scaling_history_with_options_async(request, runtime)
 
     def describe_cache_analysis_job_with_options(
         self,
@@ -3251,6 +3321,80 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetAutonomousNotifyEventsInRangeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_autonomous_notify_events_in_range_with_options_async(request, runtime)
+
+    def get_dbinstance_connectivity_diagnosis_with_options(
+        self,
+        request: das20200116_models.GetDBInstanceConnectivityDiagnosisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetDBInstanceConnectivityDiagnosisResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.src_ip):
+            query['SrcIp'] = request.src_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDBInstanceConnectivityDiagnosis',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetDBInstanceConnectivityDiagnosisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dbinstance_connectivity_diagnosis_with_options_async(
+        self,
+        request: das20200116_models.GetDBInstanceConnectivityDiagnosisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetDBInstanceConnectivityDiagnosisResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.src_ip):
+            query['SrcIp'] = request.src_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDBInstanceConnectivityDiagnosis',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetDBInstanceConnectivityDiagnosisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dbinstance_connectivity_diagnosis(
+        self,
+        request: das20200116_models.GetDBInstanceConnectivityDiagnosisRequest,
+    ) -> das20200116_models.GetDBInstanceConnectivityDiagnosisResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_dbinstance_connectivity_diagnosis_with_options(request, runtime)
+
+    async def get_dbinstance_connectivity_diagnosis_async(
+        self,
+        request: das20200116_models.GetDBInstanceConnectivityDiagnosisRequest,
+    ) -> das20200116_models.GetDBInstanceConnectivityDiagnosisResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dbinstance_connectivity_diagnosis_with_options_async(request, runtime)
 
     def get_das_pro_service_usage_with_options(
         self,

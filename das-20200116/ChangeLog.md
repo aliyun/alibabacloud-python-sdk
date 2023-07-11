@@ -1,3 +1,6 @@
+2023-07-11 Version: 2.0.39
+- Add action DescribeAutoScalingHistory.
+
 2023-05-25 Version: 2.0.38
 - Add action GetDasSQLLogHotData.
 

@@ -568,10 +568,12 @@ class CreateCacheAnalysisJobRequest(TeaModel):
         backup_set_id: str = None,
         instance_id: str = None,
         node_id: str = None,
+        separators: str = None,
     ):
         self.backup_set_id = backup_set_id
         self.instance_id = instance_id
         self.node_id = node_id
+        self.separators = separators
 
     def validate(self):
         pass
@@ -588,6 +590,8 @@ class CreateCacheAnalysisJobRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+        if self.separators is not None:
+            result['Separators'] = self.separators
         return result
 
     def from_map(self, m: dict = None):
@@ -598,6 +602,8 @@ class CreateCacheAnalysisJobRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+        if m.get('Separators') is not None:
+            self.separators = m.get('Separators')
         return self
 
 
@@ -2606,6 +2612,295 @@ class DescribeAutoScalingConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAutoScalingConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAutoScalingHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        auto_scaling_task_type: str = None,
+        end_time: int = None,
+        instance_id: str = None,
+        start_time: int = None,
+    ):
+        self.auto_scaling_task_type = auto_scaling_task_type
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_scaling_task_type is not None:
+            result['AutoScalingTaskType'] = self.auto_scaling_task_type
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoScalingTaskType') is not None:
+            self.auto_scaling_task_type = m.get('AutoScalingTaskType')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeAutoScalingHistoryResponseBodyDataSpecHistory(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        origin_core: int = None,
+        origin_instance_class: str = None,
+        origin_memory: float = None,
+        scale_type: str = None,
+        target_core: int = None,
+        target_instance_class: str = None,
+        target_memory: float = None,
+        task_excute_status: bool = None,
+        task_time: int = None,
+    ):
+        self.error_code = error_code
+        self.origin_core = origin_core
+        self.origin_instance_class = origin_instance_class
+        self.origin_memory = origin_memory
+        self.scale_type = scale_type
+        self.target_core = target_core
+        self.target_instance_class = target_instance_class
+        self.target_memory = target_memory
+        self.task_excute_status = task_excute_status
+        self.task_time = task_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.origin_core is not None:
+            result['OriginCore'] = self.origin_core
+        if self.origin_instance_class is not None:
+            result['OriginInstanceClass'] = self.origin_instance_class
+        if self.origin_memory is not None:
+            result['OriginMemory'] = self.origin_memory
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        if self.target_core is not None:
+            result['TargetCore'] = self.target_core
+        if self.target_instance_class is not None:
+            result['TargetInstanceClass'] = self.target_instance_class
+        if self.target_memory is not None:
+            result['TargetMemory'] = self.target_memory
+        if self.task_excute_status is not None:
+            result['TaskExcuteStatus'] = self.task_excute_status
+        if self.task_time is not None:
+            result['TaskTime'] = self.task_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('OriginCore') is not None:
+            self.origin_core = m.get('OriginCore')
+        if m.get('OriginInstanceClass') is not None:
+            self.origin_instance_class = m.get('OriginInstanceClass')
+        if m.get('OriginMemory') is not None:
+            self.origin_memory = m.get('OriginMemory')
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        if m.get('TargetCore') is not None:
+            self.target_core = m.get('TargetCore')
+        if m.get('TargetInstanceClass') is not None:
+            self.target_instance_class = m.get('TargetInstanceClass')
+        if m.get('TargetMemory') is not None:
+            self.target_memory = m.get('TargetMemory')
+        if m.get('TaskExcuteStatus') is not None:
+            self.task_excute_status = m.get('TaskExcuteStatus')
+        if m.get('TaskTime') is not None:
+            self.task_time = m.get('TaskTime')
+        return self
+
+
+class DescribeAutoScalingHistoryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        bandwidth: List[Dict[str, Any]] = None,
+        instance_id: str = None,
+        resource: List[Dict[str, Any]] = None,
+        shard: List[Dict[str, Any]] = None,
+        spec_history: List[DescribeAutoScalingHistoryResponseBodyDataSpecHistory] = None,
+        storage: List[Dict[str, Any]] = None,
+    ):
+        self.bandwidth = bandwidth
+        self.instance_id = instance_id
+        self.resource = resource
+        self.shard = shard
+        self.spec_history = spec_history
+        self.storage = storage
+
+    def validate(self):
+        if self.spec_history:
+            for k in self.spec_history:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.shard is not None:
+            result['Shard'] = self.shard
+        result['SpecHistory'] = []
+        if self.spec_history is not None:
+            for k in self.spec_history:
+                result['SpecHistory'].append(k.to_map() if k else None)
+        if self.storage is not None:
+            result['Storage'] = self.storage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('Shard') is not None:
+            self.shard = m.get('Shard')
+        self.spec_history = []
+        if m.get('SpecHistory') is not None:
+            for k in m.get('SpecHistory'):
+                temp_model = DescribeAutoScalingHistoryResponseBodyDataSpecHistory()
+                self.spec_history.append(temp_model.from_map(k))
+        if m.get('Storage') is not None:
+            self.storage = m.get('Storage')
+        return self
+
+
+class DescribeAutoScalingHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeAutoScalingHistoryResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        # AutoScalingInstanceHistory
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeAutoScalingHistoryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeAutoScalingHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAutoScalingHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAutoScalingHistoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9513,6 +9808,187 @@ class GetAutonomousNotifyEventsInRangeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAutonomousNotifyEventsInRangeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDBInstanceConnectivityDiagnosisRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        src_ip: str = None,
+    ):
+        self.instance_id = instance_id
+        self.src_ip = src_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.src_ip is not None:
+            result['SrcIp'] = self.src_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SrcIp') is not None:
+            self.src_ip = m.get('SrcIp')
+        return self
+
+
+class GetDBInstanceConnectivityDiagnosisResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        conn_check_error_code: str = None,
+        conn_check_error_message: str = None,
+        fail_type: str = None,
+        instance_id: str = None,
+        success: bool = None,
+    ):
+        self.conn_check_error_code = conn_check_error_code
+        self.conn_check_error_message = conn_check_error_message
+        self.fail_type = fail_type
+        self.instance_id = instance_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conn_check_error_code is not None:
+            result['connCheckErrorCode'] = self.conn_check_error_code
+        if self.conn_check_error_message is not None:
+            result['connCheckErrorMessage'] = self.conn_check_error_message
+        if self.fail_type is not None:
+            result['failType'] = self.fail_type
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('connCheckErrorCode') is not None:
+            self.conn_check_error_code = m.get('connCheckErrorCode')
+        if m.get('connCheckErrorMessage') is not None:
+            self.conn_check_error_message = m.get('connCheckErrorMessage')
+        if m.get('failType') is not None:
+            self.fail_type = m.get('failType')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetDBInstanceConnectivityDiagnosisResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetDBInstanceConnectivityDiagnosisResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetDBInstanceConnectivityDiagnosisResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDBInstanceConnectivityDiagnosisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDBInstanceConnectivityDiagnosisResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDBInstanceConnectivityDiagnosisResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
