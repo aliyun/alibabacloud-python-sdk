@@ -1,3 +1,6 @@
+2023-07-11 Version: 2.2.12
+- Fixed 500 for interface.
+
 2023-07-10 Version: 2.2.11
 - Fixed 500 for interface.
 
