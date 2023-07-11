@@ -1247,6 +1247,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ChangeCheckConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cycle_days):
+            query['CycleDays'] = request.cycle_days
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.region_id):
@@ -1281,6 +1283,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ChangeCheckConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cycle_days):
+            query['CycleDays'] = request.cycle_days
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.region_id):
@@ -1695,6 +1699,84 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ConfirmVirusEventsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.confirm_virus_events_with_options_async(request, runtime)
+
+    def create_agentless_scan_task_with_options(
+        self,
+        request: sas_20181203_models.CreateAgentlessScanTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateAgentlessScanTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_delete_days):
+            query['AutoDeleteDays'] = request.auto_delete_days
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.uuid_list):
+            query['UuidList'] = request.uuid_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAgentlessScanTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateAgentlessScanTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agentless_scan_task_with_options_async(
+        self,
+        request: sas_20181203_models.CreateAgentlessScanTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateAgentlessScanTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_delete_days):
+            query['AutoDeleteDays'] = request.auto_delete_days
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.uuid_list):
+            query['UuidList'] = request.uuid_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAgentlessScanTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateAgentlessScanTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agentless_scan_task(
+        self,
+        request: sas_20181203_models.CreateAgentlessScanTaskRequest,
+    ) -> sas_20181203_models.CreateAgentlessScanTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_agentless_scan_task_with_options(request, runtime)
+
+    async def create_agentless_scan_task_async(
+        self,
+        request: sas_20181203_models.CreateAgentlessScanTaskRequest,
+    ) -> sas_20181203_models.CreateAgentlessScanTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_agentless_scan_task_with_options_async(request, runtime)
 
     def create_anti_brute_force_rule_with_options(
         self,
@@ -3562,6 +3644,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_service_linked_role_with_options_async(request, runtime)
 
+    def create_service_trail_with_options(
+        self,
+        request: sas_20181203_models.CreateServiceTrailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateServiceTrailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceTrail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateServiceTrailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_trail_with_options_async(
+        self,
+        request: sas_20181203_models.CreateServiceTrailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateServiceTrailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceTrail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateServiceTrailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_trail(
+        self,
+        request: sas_20181203_models.CreateServiceTrailRequest,
+    ) -> sas_20181203_models.CreateServiceTrailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_service_trail_with_options(request, runtime)
+
+    async def create_service_trail_async(
+        self,
+        request: sas_20181203_models.CreateServiceTrailRequest,
+    ) -> sas_20181203_models.CreateServiceTrailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_service_trail_with_options_async(request, runtime)
+
     def create_similar_security_events_query_task_with_options(
         self,
         request: sas_20181203_models.CreateSimilarSecurityEventsQueryTaskRequest,
@@ -5287,6 +5439,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DeleteSecurityEventMarkMissListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_security_event_mark_miss_list_with_options_async(request, runtime)
+
+    def delete_service_trail_with_options(
+        self,
+        request: sas_20181203_models.DeleteServiceTrailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteServiceTrailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceTrail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteServiceTrailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_trail_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteServiceTrailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteServiceTrailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceTrail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteServiceTrailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service_trail(
+        self,
+        request: sas_20181203_models.DeleteServiceTrailRequest,
+    ) -> sas_20181203_models.DeleteServiceTrailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_service_trail_with_options(request, runtime)
+
+    async def delete_service_trail_async(
+        self,
+        request: sas_20181203_models.DeleteServiceTrailRequest,
+    ) -> sas_20181203_models.DeleteServiceTrailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_service_trail_with_options_async(request, runtime)
 
     def delete_strategy_with_options(
         self,
@@ -8592,12 +8814,16 @@ class Client(OpenApiClient):
             query['LogicalExp'] = request.logical_exp
         if not UtilClient.is_unset(request.machine_types):
             query['MachineTypes'] = request.machine_types
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.no_group_trace):
             query['NoGroupTrace'] = request.no_group_trace
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8643,12 +8869,16 @@ class Client(OpenApiClient):
             query['LogicalExp'] = request.logical_exp
         if not UtilClient.is_unset(request.machine_types):
             query['MachineTypes'] = request.machine_types
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.no_group_trace):
             query['NoGroupTrace'] = request.no_group_trace
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18926,6 +19156,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_check_schedule_config_with_options_async(request, runtime)
 
+    def describe_security_event_mark_miss_list_with_options(
+        self,
+        request: sas_20181203_models.DescribeSecurityEventMarkMissListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSecurityEventMarkMissListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.event_name):
+            query['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityEventMarkMissList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecurityEventMarkMissListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_security_event_mark_miss_list_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeSecurityEventMarkMissListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSecurityEventMarkMissListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.event_name):
+            query['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecurityEventMarkMissList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecurityEventMarkMissListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_security_event_mark_miss_list(
+        self,
+        request: sas_20181203_models.DescribeSecurityEventMarkMissListRequest,
+    ) -> sas_20181203_models.DescribeSecurityEventMarkMissListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_security_event_mark_miss_list_with_options(request, runtime)
+
+    async def describe_security_event_mark_miss_list_async(
+        self,
+        request: sas_20181203_models.DescribeSecurityEventMarkMissListRequest,
+    ) -> sas_20181203_models.DescribeSecurityEventMarkMissListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_security_event_mark_miss_list_with_options_async(request, runtime)
+
     def describe_security_event_operation_status_with_options(
         self,
         request: sas_20181203_models.DescribeSecurityEventOperationStatusRequest,
@@ -25214,6 +25534,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_once_task_with_options_async(request, runtime)
 
+    def get_agentless_task_count_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetAgentlessTaskCountResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetAgentlessTaskCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetAgentlessTaskCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agentless_task_count_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetAgentlessTaskCountResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetAgentlessTaskCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetAgentlessTaskCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agentless_task_count(self) -> sas_20181203_models.GetAgentlessTaskCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_agentless_task_count_with_options(runtime)
+
+    async def get_agentless_task_count_async(self) -> sas_20181203_models.GetAgentlessTaskCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_agentless_task_count_with_options_async(runtime)
+
     def get_alarm_machine_count_with_options(
         self,
         request: sas_20181203_models.GetAlarmMachineCountRequest,
@@ -26089,6 +26459,84 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetCheckSummaryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_check_summary_with_options_async(request, runtime)
+
+    def get_client_ratio_statistic_with_options(
+        self,
+        request: sas_20181203_models.GetClientRatioStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetClientRatioStatisticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.statistic_types):
+            query['StatisticTypes'] = request.statistic_types
+        if not UtilClient.is_unset(request.time_end):
+            query['TimeEnd'] = request.time_end
+        if not UtilClient.is_unset(request.time_start):
+            query['TimeStart'] = request.time_start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientRatioStatistic',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetClientRatioStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_client_ratio_statistic_with_options_async(
+        self,
+        request: sas_20181203_models.GetClientRatioStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetClientRatioStatisticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.statistic_types):
+            query['StatisticTypes'] = request.statistic_types
+        if not UtilClient.is_unset(request.time_end):
+            query['TimeEnd'] = request.time_end
+        if not UtilClient.is_unset(request.time_start):
+            query['TimeStart'] = request.time_start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientRatioStatistic',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetClientRatioStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_client_ratio_statistic(
+        self,
+        request: sas_20181203_models.GetClientRatioStatisticRequest,
+    ) -> sas_20181203_models.GetClientRatioStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_client_ratio_statistic_with_options(request, runtime)
+
+    async def get_client_ratio_statistic_async(
+        self,
+        request: sas_20181203_models.GetClientRatioStatisticRequest,
+    ) -> sas_20181203_models.GetClientRatioStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_client_ratio_statistic_with_options_async(request, runtime)
 
     def get_client_user_define_rule_with_options(
         self,
@@ -27594,6 +28042,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_rules_count_with_options_async(runtime)
 
+    def get_service_trail_with_options(
+        self,
+        request: sas_20181203_models.GetServiceTrailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetServiceTrailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetServiceTrail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetServiceTrailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_trail_with_options_async(
+        self,
+        request: sas_20181203_models.GetServiceTrailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetServiceTrailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetServiceTrail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetServiceTrailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_trail(
+        self,
+        request: sas_20181203_models.GetServiceTrailRequest,
+    ) -> sas_20181203_models.GetServiceTrailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_service_trail_with_options(request, runtime)
+
+    async def get_service_trail_async(
+        self,
+        request: sas_20181203_models.GetServiceTrailRequest,
+    ) -> sas_20181203_models.GetServiceTrailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_service_trail_with_options_async(request, runtime)
+
     def get_suspicious_statistics_with_options(
         self,
         request: sas_20181203_models.GetSuspiciousStatisticsRequest,
@@ -27831,6 +28349,8 @@ class Client(OpenApiClient):
             query['OperationCode'] = request.operation_code
         if not UtilClient.is_unset(request.operation_params):
             query['OperationParams'] = request.operation_params
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.security_event_ids):
             query['SecurityEventIds'] = request.security_event_ids
         if not UtilClient.is_unset(request.source_ip):
@@ -27869,6 +28389,8 @@ class Client(OpenApiClient):
             query['OperationCode'] = request.operation_code
         if not UtilClient.is_unset(request.operation_params):
             query['OperationParams'] = request.operation_params
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.security_event_ids):
             query['SecurityEventIds'] = request.security_event_ids
         if not UtilClient.is_unset(request.source_ip):
@@ -27919,6 +28441,8 @@ class Client(OpenApiClient):
             query['OperationCode'] = request.operation_code
         if not UtilClient.is_unset(request.operation_params):
             query['OperationParams'] = request.operation_params
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.source_ip):
@@ -27957,6 +28481,8 @@ class Client(OpenApiClient):
             query['OperationCode'] = request.operation_code
         if not UtilClient.is_unset(request.operation_params):
             query['OperationParams'] = request.operation_params
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.source_ip):
@@ -28587,6 +29113,354 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.JoinWebLockProcessWhiteListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.join_web_lock_process_white_list_with_options_async(request, runtime)
+
+    def list_agentless_region_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAgentlessRegionResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListAgentlessRegion',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAgentlessRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agentless_region_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAgentlessRegionResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListAgentlessRegion',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAgentlessRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agentless_region(self) -> sas_20181203_models.ListAgentlessRegionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_agentless_region_with_options(runtime)
+
+    async def list_agentless_region_async(self) -> sas_20181203_models.ListAgentlessRegionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_agentless_region_with_options_async(runtime)
+
+    def list_agentless_relate_malicious_with_options(
+        self,
+        request: sas_20181203_models.ListAgentlessRelateMaliciousRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAgentlessRelateMaliciousResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAgentlessRelateMalicious',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAgentlessRelateMaliciousResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agentless_relate_malicious_with_options_async(
+        self,
+        request: sas_20181203_models.ListAgentlessRelateMaliciousRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAgentlessRelateMaliciousResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAgentlessRelateMalicious',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAgentlessRelateMaliciousResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agentless_relate_malicious(
+        self,
+        request: sas_20181203_models.ListAgentlessRelateMaliciousRequest,
+    ) -> sas_20181203_models.ListAgentlessRelateMaliciousResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_agentless_relate_malicious_with_options(request, runtime)
+
+    async def list_agentless_relate_malicious_async(
+        self,
+        request: sas_20181203_models.ListAgentlessRelateMaliciousRequest,
+    ) -> sas_20181203_models.ListAgentlessRelateMaliciousResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_agentless_relate_malicious_with_options_async(request, runtime)
+
+    def list_agentless_risk_uuid_with_options(
+        self,
+        request: sas_20181203_models.ListAgentlessRiskUuidRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAgentlessRiskUuidResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.internet_ip):
+            query['InternetIp'] = request.internet_ip
+        if not UtilClient.is_unset(request.intranet_ip):
+            query['IntranetIp'] = request.intranet_ip
+        if not UtilClient.is_unset(request.machine_name):
+            query['MachineName'] = request.machine_name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk):
+            query['Risk'] = request.risk
+        if not UtilClient.is_unset(request.target_name):
+            query['TargetName'] = request.target_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAgentlessRiskUuid',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAgentlessRiskUuidResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agentless_risk_uuid_with_options_async(
+        self,
+        request: sas_20181203_models.ListAgentlessRiskUuidRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAgentlessRiskUuidResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.internet_ip):
+            query['InternetIp'] = request.internet_ip
+        if not UtilClient.is_unset(request.intranet_ip):
+            query['IntranetIp'] = request.intranet_ip
+        if not UtilClient.is_unset(request.machine_name):
+            query['MachineName'] = request.machine_name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk):
+            query['Risk'] = request.risk
+        if not UtilClient.is_unset(request.target_name):
+            query['TargetName'] = request.target_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAgentlessRiskUuid',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAgentlessRiskUuidResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agentless_risk_uuid(
+        self,
+        request: sas_20181203_models.ListAgentlessRiskUuidRequest,
+    ) -> sas_20181203_models.ListAgentlessRiskUuidResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_agentless_risk_uuid_with_options(request, runtime)
+
+    async def list_agentless_risk_uuid_async(
+        self,
+        request: sas_20181203_models.ListAgentlessRiskUuidRequest,
+    ) -> sas_20181203_models.ListAgentlessRiskUuidResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_agentless_risk_uuid_with_options_async(request, runtime)
+
+    def list_agentless_task_with_options(
+        self,
+        request: sas_20181203_models.ListAgentlessTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAgentlessTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.internet_ip):
+            query['InternetIp'] = request.internet_ip
+        if not UtilClient.is_unset(request.intranet_ip):
+            query['IntranetIp'] = request.intranet_ip
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.machine_name):
+            query['MachineName'] = request.machine_name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.root_task):
+            query['RootTask'] = request.root_task
+        if not UtilClient.is_unset(request.root_task_id):
+            query['RootTaskId'] = request.root_task_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.target_name):
+            query['TargetName'] = request.target_name
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAgentlessTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAgentlessTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agentless_task_with_options_async(
+        self,
+        request: sas_20181203_models.ListAgentlessTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAgentlessTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.internet_ip):
+            query['InternetIp'] = request.internet_ip
+        if not UtilClient.is_unset(request.intranet_ip):
+            query['IntranetIp'] = request.intranet_ip
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.machine_name):
+            query['MachineName'] = request.machine_name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.root_task):
+            query['RootTask'] = request.root_task
+        if not UtilClient.is_unset(request.root_task_id):
+            query['RootTaskId'] = request.root_task_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.target_name):
+            query['TargetName'] = request.target_name
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAgentlessTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAgentlessTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agentless_task(
+        self,
+        request: sas_20181203_models.ListAgentlessTaskRequest,
+    ) -> sas_20181203_models.ListAgentlessTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_agentless_task_with_options(request, runtime)
+
+    async def list_agentless_task_async(
+        self,
+        request: sas_20181203_models.ListAgentlessTaskRequest,
+    ) -> sas_20181203_models.ListAgentlessTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_agentless_task_with_options_async(request, runtime)
 
     def list_asset_selection_selected_target_with_options(
         self,
@@ -36519,6 +37393,10 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.os):
+            query['Os'] = request.os
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
         if not UtilClient.is_unset(request.uuids):
             query['Uuids'] = request.uuids
         req = open_api_models.OpenApiRequest(
@@ -36551,6 +37429,10 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.os):
+            query['Os'] = request.os
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
         if not UtilClient.is_unset(request.uuids):
             query['Uuids'] = request.uuids
         req = open_api_models.OpenApiRequest(
@@ -37335,6 +38217,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.OperationCancelIgnoreSuspEventResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.security_event_ids):
             query['SecurityEventIds'] = request.security_event_ids
         req = open_api_models.OpenApiRequest(
@@ -37363,6 +38247,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.OperationCancelIgnoreSuspEventResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.security_event_ids):
             query['SecurityEventIds'] = request.security_event_ids
         req = open_api_models.OpenApiRequest(

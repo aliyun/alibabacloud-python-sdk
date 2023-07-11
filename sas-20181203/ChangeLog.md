@@ -1,3 +1,6 @@
+2023-07-11 Version: 2.1.8
+- Change ListAssetSelectionTarget Request.
+
 2023-06-05 Version: 2.1.7
 - Change ListAssetSelectionTarget Request.
 
