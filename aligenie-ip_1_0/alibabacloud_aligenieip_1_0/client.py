@@ -1281,6 +1281,120 @@ class Client(OpenApiClient):
         headers = ali_genieip__1__0_models.ChildAccountAuthHeaders()
         return await self.child_account_auth_with_options_async(request, headers, runtime)
 
+    def control_room_device_with_options(
+        self,
+        tmp_req: ali_genieip__1__0_models.ControlRoomDeviceRequest,
+        headers: ali_genieip__1__0_models.ControlRoomDeviceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ControlRoomDeviceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.ControlRoomDeviceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.properties):
+            request.properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cmd):
+            body['Cmd'] = request.cmd
+        if not UtilClient.is_unset(request.device_number):
+            body['DeviceNumber'] = request.device_number
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.properties_shrink):
+            body['Properties'] = request.properties_shrink
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ControlRoomDevice',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/controlRoomDevice',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ControlRoomDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def control_room_device_with_options_async(
+        self,
+        tmp_req: ali_genieip__1__0_models.ControlRoomDeviceRequest,
+        headers: ali_genieip__1__0_models.ControlRoomDeviceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ControlRoomDeviceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.ControlRoomDeviceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.properties):
+            request.properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cmd):
+            body['Cmd'] = request.cmd
+        if not UtilClient.is_unset(request.device_number):
+            body['DeviceNumber'] = request.device_number
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.properties_shrink):
+            body['Properties'] = request.properties_shrink
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ControlRoomDevice',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/controlRoomDevice',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ControlRoomDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def control_room_device(
+        self,
+        request: ali_genieip__1__0_models.ControlRoomDeviceRequest,
+    ) -> ali_genieip__1__0_models.ControlRoomDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ControlRoomDeviceHeaders()
+        return self.control_room_device_with_options(request, headers, runtime)
+
+    async def control_room_device_async(
+        self,
+        request: ali_genieip__1__0_models.ControlRoomDeviceRequest,
+    ) -> ali_genieip__1__0_models.ControlRoomDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ControlRoomDeviceHeaders()
+        return await self.control_room_device_with_options_async(request, headers, runtime)
+
     def create_hotel_with_options(
         self,
         tmp_req: ali_genieip__1__0_models.CreateHotelRequest,
@@ -1532,6 +1646,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.CreateHotelAlarmHeaders()
         return await self.create_hotel_alarm_with_options_async(request, headers, runtime)
+
+    def create_rcu_scene_with_options(
+        self,
+        tmp_req: ali_genieip__1__0_models.CreateRcuSceneRequest,
+        headers: ali_genieip__1__0_models.CreateRcuSceneHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.CreateRcuSceneResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.CreateRcuSceneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scene_relation_ext_dto):
+            request.scene_relation_ext_dtoshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene_relation_ext_dto, 'SceneRelationExtDTO', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_relation_ext_dtoshrink):
+            body['SceneRelationExtDTO'] = request.scene_relation_ext_dtoshrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRcuScene',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/createRcuScene',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.CreateRcuSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rcu_scene_with_options_async(
+        self,
+        tmp_req: ali_genieip__1__0_models.CreateRcuSceneRequest,
+        headers: ali_genieip__1__0_models.CreateRcuSceneHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.CreateRcuSceneResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.CreateRcuSceneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scene_relation_ext_dto):
+            request.scene_relation_ext_dtoshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene_relation_ext_dto, 'SceneRelationExtDTO', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_relation_ext_dtoshrink):
+            body['SceneRelationExtDTO'] = request.scene_relation_ext_dtoshrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRcuScene',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/createRcuScene',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.CreateRcuSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rcu_scene(
+        self,
+        request: ali_genieip__1__0_models.CreateRcuSceneRequest,
+    ) -> ali_genieip__1__0_models.CreateRcuSceneResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.CreateRcuSceneHeaders()
+        return self.create_rcu_scene_with_options(request, headers, runtime)
+
+    async def create_rcu_scene_async(
+        self,
+        request: ali_genieip__1__0_models.CreateRcuSceneRequest,
+    ) -> ali_genieip__1__0_models.CreateRcuSceneResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.CreateRcuSceneHeaders()
+        return await self.create_rcu_scene_with_options_async(request, headers, runtime)
 
     def delete_cartoon_with_options(
         self,
@@ -2104,6 +2324,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteMessageTemplateHeaders()
         return await self.delete_message_template_with_options_async(request, headers, runtime)
+
+    def delete_rcu_scene_with_options(
+        self,
+        request: ali_genieip__1__0_models.DeleteRcuSceneRequest,
+        headers: ali_genieip__1__0_models.DeleteRcuSceneHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.DeleteRcuSceneResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRcuScene',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/deleteRcuScene',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.DeleteRcuSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rcu_scene_with_options_async(
+        self,
+        request: ali_genieip__1__0_models.DeleteRcuSceneRequest,
+        headers: ali_genieip__1__0_models.DeleteRcuSceneHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.DeleteRcuSceneResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRcuScene',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/deleteRcuScene',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.DeleteRcuSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rcu_scene(
+        self,
+        request: ali_genieip__1__0_models.DeleteRcuSceneRequest,
+    ) -> ali_genieip__1__0_models.DeleteRcuSceneResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.DeleteRcuSceneHeaders()
+        return self.delete_rcu_scene_with_options(request, headers, runtime)
+
+    async def delete_rcu_scene_async(
+        self,
+        request: ali_genieip__1__0_models.DeleteRcuSceneRequest,
+    ) -> ali_genieip__1__0_models.DeleteRcuSceneResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.DeleteRcuSceneHeaders()
+        return await self.delete_rcu_scene_with_options_async(request, headers, runtime)
 
     def device_control_with_options(
         self,
@@ -3924,6 +4238,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetWelcomeTextAndMusicHeaders()
         return await self.get_welcome_text_and_music_with_options_async(request, headers, runtime)
+
+    def import_hotel_config_with_options(
+        self,
+        tmp_req: ali_genieip__1__0_models.ImportHotelConfigRequest,
+        headers: ali_genieip__1__0_models.ImportHotelConfigHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ImportHotelConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.ImportHotelConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.import_hotel_config_request):
+            request.import_hotel_config_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.import_hotel_config_request, 'ImportHotelConfigRequest', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.import_hotel_config_request_shrink):
+            query['ImportHotelConfigRequest'] = request.import_hotel_config_request_shrink
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportHotelConfig',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/importHotelConfig',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ImportHotelConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_hotel_config_with_options_async(
+        self,
+        tmp_req: ali_genieip__1__0_models.ImportHotelConfigRequest,
+        headers: ali_genieip__1__0_models.ImportHotelConfigHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ImportHotelConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.ImportHotelConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.import_hotel_config_request):
+            request.import_hotel_config_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.import_hotel_config_request, 'ImportHotelConfigRequest', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.import_hotel_config_request_shrink):
+            query['ImportHotelConfigRequest'] = request.import_hotel_config_request_shrink
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportHotelConfig',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/importHotelConfig',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ImportHotelConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_hotel_config(
+        self,
+        request: ali_genieip__1__0_models.ImportHotelConfigRequest,
+    ) -> ali_genieip__1__0_models.ImportHotelConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ImportHotelConfigHeaders()
+        return self.import_hotel_config_with_options(request, headers, runtime)
+
+    async def import_hotel_config_async(
+        self,
+        request: ali_genieip__1__0_models.ImportHotelConfigRequest,
+    ) -> ali_genieip__1__0_models.ImportHotelConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ImportHotelConfigHeaders()
+        return await self.import_hotel_config_with_options_async(request, headers, runtime)
 
     def import_room_control_devices_with_options(
         self,
@@ -6447,6 +6867,124 @@ class Client(OpenApiClient):
         headers = ali_genieip__1__0_models.QueryRoomControlDevicesHeaders()
         return await self.query_room_control_devices_with_options_async(request, headers, runtime)
 
+    def query_scene_list_with_options(
+        self,
+        tmp_req: ali_genieip__1__0_models.QuerySceneListRequest,
+        headers: ali_genieip__1__0_models.QuerySceneListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.QuerySceneListResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.QuerySceneListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scene_states):
+            request.scene_states_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene_states, 'SceneStates', 'json')
+        if not UtilClient.is_unset(tmp_req.scene_types):
+            request.scene_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene_types, 'SceneTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.template_info_ids):
+            request.template_info_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_info_ids, 'TemplateInfoIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.scene_states_shrink):
+            body['SceneStates'] = request.scene_states_shrink
+        if not UtilClient.is_unset(request.scene_types_shrink):
+            body['SceneTypes'] = request.scene_types_shrink
+        if not UtilClient.is_unset(request.template_info_ids_shrink):
+            body['TemplateInfoIds'] = request.template_info_ids_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySceneList',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/querySceneList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.QuerySceneListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_scene_list_with_options_async(
+        self,
+        tmp_req: ali_genieip__1__0_models.QuerySceneListRequest,
+        headers: ali_genieip__1__0_models.QuerySceneListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.QuerySceneListResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.QuerySceneListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scene_states):
+            request.scene_states_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene_states, 'SceneStates', 'json')
+        if not UtilClient.is_unset(tmp_req.scene_types):
+            request.scene_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene_types, 'SceneTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.template_info_ids):
+            request.template_info_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_info_ids, 'TemplateInfoIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.scene_states_shrink):
+            body['SceneStates'] = request.scene_states_shrink
+        if not UtilClient.is_unset(request.scene_types_shrink):
+            body['SceneTypes'] = request.scene_types_shrink
+        if not UtilClient.is_unset(request.template_info_ids_shrink):
+            body['TemplateInfoIds'] = request.template_info_ids_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySceneList',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/querySceneList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.QuerySceneListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_scene_list(
+        self,
+        request: ali_genieip__1__0_models.QuerySceneListRequest,
+    ) -> ali_genieip__1__0_models.QuerySceneListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.QuerySceneListHeaders()
+        return self.query_scene_list_with_options(request, headers, runtime)
+
+    async def query_scene_list_async(
+        self,
+        request: ali_genieip__1__0_models.QuerySceneListRequest,
+    ) -> ali_genieip__1__0_models.QuerySceneListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.QuerySceneListHeaders()
+        return await self.query_scene_list_with_options_async(request, headers, runtime)
+
     def remove_child_account_auth_with_options(
         self,
         request: ali_genieip__1__0_models.RemoveChildAccountAuthRequest,
@@ -7916,6 +8454,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateMessageTemplateHeaders()
         return await self.update_message_template_with_options_async(request, headers, runtime)
+
+    def update_rcu_scene_with_options(
+        self,
+        tmp_req: ali_genieip__1__0_models.UpdateRcuSceneRequest,
+        headers: ali_genieip__1__0_models.UpdateRcuSceneHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.UpdateRcuSceneResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.UpdateRcuSceneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scene_relation_ext_dto):
+            request.scene_relation_ext_dtoshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene_relation_ext_dto, 'SceneRelationExtDTO', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_relation_ext_dtoshrink):
+            body['SceneRelationExtDTO'] = request.scene_relation_ext_dtoshrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRcuScene',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/updateRcuScene',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.UpdateRcuSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_rcu_scene_with_options_async(
+        self,
+        tmp_req: ali_genieip__1__0_models.UpdateRcuSceneRequest,
+        headers: ali_genieip__1__0_models.UpdateRcuSceneHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.UpdateRcuSceneResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.UpdateRcuSceneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scene_relation_ext_dto):
+            request.scene_relation_ext_dtoshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene_relation_ext_dto, 'SceneRelationExtDTO', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_relation_ext_dtoshrink):
+            body['SceneRelationExtDTO'] = request.scene_relation_ext_dtoshrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRcuScene',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/updateRcuScene',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.UpdateRcuSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_rcu_scene(
+        self,
+        request: ali_genieip__1__0_models.UpdateRcuSceneRequest,
+    ) -> ali_genieip__1__0_models.UpdateRcuSceneResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.UpdateRcuSceneHeaders()
+        return self.update_rcu_scene_with_options(request, headers, runtime)
+
+    async def update_rcu_scene_async(
+        self,
+        request: ali_genieip__1__0_models.UpdateRcuSceneRequest,
+    ) -> ali_genieip__1__0_models.UpdateRcuSceneResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.UpdateRcuSceneHeaders()
+        return await self.update_rcu_scene_with_options_async(request, headers, runtime)
 
     def update_service_qawith_options(
         self,

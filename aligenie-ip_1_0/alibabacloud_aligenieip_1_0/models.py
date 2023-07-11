@@ -2447,6 +2447,271 @@ class ChildAccountAuthResponse(TeaModel):
         return self
 
 
+class ControlRoomDeviceHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ControlRoomDeviceRequest(TeaModel):
+    def __init__(
+        self,
+        cmd: str = None,
+        device_number: str = None,
+        hotel_id: str = None,
+        properties: Dict[str, str] = None,
+        room_no: str = None,
+    ):
+        self.cmd = cmd
+        self.device_number = device_number
+        self.hotel_id = hotel_id
+        self.properties = properties
+        self.room_no = room_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cmd is not None:
+            result['Cmd'] = self.cmd
+        if self.device_number is not None:
+            result['DeviceNumber'] = self.device_number
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.properties is not None:
+            result['Properties'] = self.properties
+        if self.room_no is not None:
+            result['RoomNo'] = self.room_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cmd') is not None:
+            self.cmd = m.get('Cmd')
+        if m.get('DeviceNumber') is not None:
+            self.device_number = m.get('DeviceNumber')
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('Properties') is not None:
+            self.properties = m.get('Properties')
+        if m.get('RoomNo') is not None:
+            self.room_no = m.get('RoomNo')
+        return self
+
+
+class ControlRoomDeviceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cmd: str = None,
+        device_number: str = None,
+        hotel_id: str = None,
+        properties_shrink: str = None,
+        room_no: str = None,
+    ):
+        self.cmd = cmd
+        self.device_number = device_number
+        self.hotel_id = hotel_id
+        self.properties_shrink = properties_shrink
+        self.room_no = room_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cmd is not None:
+            result['Cmd'] = self.cmd
+        if self.device_number is not None:
+            result['DeviceNumber'] = self.device_number
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.properties_shrink is not None:
+            result['Properties'] = self.properties_shrink
+        if self.room_no is not None:
+            result['RoomNo'] = self.room_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cmd') is not None:
+            self.cmd = m.get('Cmd')
+        if m.get('DeviceNumber') is not None:
+            self.device_number = m.get('DeviceNumber')
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('Properties') is not None:
+            self.properties_shrink = m.get('Properties')
+        if m.get('RoomNo') is not None:
+            self.room_no = m.get('RoomNo')
+        return self
+
+
+class ControlRoomDeviceResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        status: int = None,
+    ):
+        self.message = message
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ControlRoomDeviceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: ControlRoomDeviceResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = ControlRoomDeviceResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class ControlRoomDeviceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ControlRoomDeviceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ControlRoomDeviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateHotelHeaders(TeaModel):
     def __init__(
         self,
@@ -3173,6 +3438,259 @@ class CreateHotelAlarmResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateHotelAlarmResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRcuSceneHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class CreateRcuSceneRequestSceneRelationExtDTO(TeaModel):
+    def __init__(
+        self,
+        corpus_list: List[str] = None,
+        description: str = None,
+        icon: str = None,
+        name: str = None,
+    ):
+        self.corpus_list = corpus_list
+        self.description = description
+        self.icon = icon
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.corpus_list is not None:
+            result['CorpusList'] = self.corpus_list
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.icon is not None:
+            result['Icon'] = self.icon
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CorpusList') is not None:
+            self.corpus_list = m.get('CorpusList')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateRcuSceneRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        scene_id: str = None,
+        scene_relation_ext_dto: CreateRcuSceneRequestSceneRelationExtDTO = None,
+    ):
+        self.hotel_id = hotel_id
+        self.scene_id = scene_id
+        self.scene_relation_ext_dto = scene_relation_ext_dto
+
+    def validate(self):
+        if self.scene_relation_ext_dto:
+            self.scene_relation_ext_dto.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_relation_ext_dto is not None:
+            result['SceneRelationExtDTO'] = self.scene_relation_ext_dto.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneRelationExtDTO') is not None:
+            temp_model = CreateRcuSceneRequestSceneRelationExtDTO()
+            self.scene_relation_ext_dto = temp_model.from_map(m['SceneRelationExtDTO'])
+        return self
+
+
+class CreateRcuSceneShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        scene_id: str = None,
+        scene_relation_ext_dtoshrink: str = None,
+    ):
+        self.hotel_id = hotel_id
+        self.scene_id = scene_id
+        self.scene_relation_ext_dtoshrink = scene_relation_ext_dtoshrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_relation_ext_dtoshrink is not None:
+            result['SceneRelationExtDTO'] = self.scene_relation_ext_dtoshrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneRelationExtDTO') is not None:
+            self.scene_relation_ext_dtoshrink = m.get('SceneRelationExtDTO')
+        return self
+
+
+class CreateRcuSceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: bool = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class CreateRcuSceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRcuSceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRcuSceneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4253,6 +4771,167 @@ class DeleteMessageTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMessageTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRcuSceneHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class DeleteRcuSceneRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        scene_id: str = None,
+    ):
+        self.hotel_id = hotel_id
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class DeleteRcuSceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: bool = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class DeleteRcuSceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRcuSceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRcuSceneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9335,6 +10014,288 @@ class GetWelcomeTextAndMusicResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWelcomeTextAndMusicResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ImportHotelConfigHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ImportHotelConfigRequestImportHotelConfigRequestRcuCustomScenes(TeaModel):
+    def __init__(
+        self,
+        corpus_list: List[str] = None,
+        description: str = None,
+        icon: str = None,
+        name: str = None,
+        scene_id: str = None,
+    ):
+        self.corpus_list = corpus_list
+        self.description = description
+        self.icon = icon
+        self.name = name
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.corpus_list is not None:
+            result['CorpusList'] = self.corpus_list
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.icon is not None:
+            result['Icon'] = self.icon
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CorpusList') is not None:
+            self.corpus_list = m.get('CorpusList')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class ImportHotelConfigRequestImportHotelConfigRequest(TeaModel):
+    def __init__(
+        self,
+        rcu_custom_scenes: List[ImportHotelConfigRequestImportHotelConfigRequestRcuCustomScenes] = None,
+    ):
+        self.rcu_custom_scenes = rcu_custom_scenes
+
+    def validate(self):
+        if self.rcu_custom_scenes:
+            for k in self.rcu_custom_scenes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RcuCustomScenes'] = []
+        if self.rcu_custom_scenes is not None:
+            for k in self.rcu_custom_scenes:
+                result['RcuCustomScenes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.rcu_custom_scenes = []
+        if m.get('RcuCustomScenes') is not None:
+            for k in m.get('RcuCustomScenes'):
+                temp_model = ImportHotelConfigRequestImportHotelConfigRequestRcuCustomScenes()
+                self.rcu_custom_scenes.append(temp_model.from_map(k))
+        return self
+
+
+class ImportHotelConfigRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        import_hotel_config_request: ImportHotelConfigRequestImportHotelConfigRequest = None,
+    ):
+        self.hotel_id = hotel_id
+        self.import_hotel_config_request = import_hotel_config_request
+
+    def validate(self):
+        if self.import_hotel_config_request:
+            self.import_hotel_config_request.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.import_hotel_config_request is not None:
+            result['ImportHotelConfigRequest'] = self.import_hotel_config_request.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('ImportHotelConfigRequest') is not None:
+            temp_model = ImportHotelConfigRequestImportHotelConfigRequest()
+            self.import_hotel_config_request = temp_model.from_map(m['ImportHotelConfigRequest'])
+        return self
+
+
+class ImportHotelConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        import_hotel_config_request_shrink: str = None,
+    ):
+        self.hotel_id = hotel_id
+        self.import_hotel_config_request_shrink = import_hotel_config_request_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.import_hotel_config_request_shrink is not None:
+            result['ImportHotelConfigRequest'] = self.import_hotel_config_request_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('ImportHotelConfigRequest') is not None:
+            self.import_hotel_config_request_shrink = m.get('ImportHotelConfigRequest')
+        return self
+
+
+class ImportHotelConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: bool = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class ImportHotelConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportHotelConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportHotelConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17329,10 +18290,12 @@ class QueryRoomControlDevicesRequest(TeaModel):
 class QueryRoomControlDevicesResponseBodyResultDevices(TeaModel):
     def __init__(
         self,
+        connect_type: str = None,
         device_name: str = None,
         name: str = None,
         number: str = None,
     ):
+        self.connect_type = connect_type
         self.device_name = device_name
         self.name = name
         self.number = number
@@ -17346,6 +18309,8 @@ class QueryRoomControlDevicesResponseBodyResultDevices(TeaModel):
             return _map
 
         result = dict()
+        if self.connect_type is not None:
+            result['ConnectType'] = self.connect_type
         if self.device_name is not None:
             result['DeviceName'] = self.device_name
         if self.name is not None:
@@ -17356,6 +18321,8 @@ class QueryRoomControlDevicesResponseBodyResultDevices(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectType') is not None:
+            self.connect_type = m.get('ConnectType')
         if m.get('DeviceName') is not None:
             self.device_name = m.get('DeviceName')
         if m.get('Name') is not None:
@@ -17505,6 +18472,348 @@ class QueryRoomControlDevicesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryRoomControlDevicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QuerySceneListHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class QuerySceneListRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        scene_states: List[int] = None,
+        scene_types: List[str] = None,
+        template_info_ids: List[str] = None,
+    ):
+        self.hotel_id = hotel_id
+        self.scene_states = scene_states
+        self.scene_types = scene_types
+        self.template_info_ids = template_info_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.scene_states is not None:
+            result['SceneStates'] = self.scene_states
+        if self.scene_types is not None:
+            result['SceneTypes'] = self.scene_types
+        if self.template_info_ids is not None:
+            result['TemplateInfoIds'] = self.template_info_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('SceneStates') is not None:
+            self.scene_states = m.get('SceneStates')
+        if m.get('SceneTypes') is not None:
+            self.scene_types = m.get('SceneTypes')
+        if m.get('TemplateInfoIds') is not None:
+            self.template_info_ids = m.get('TemplateInfoIds')
+        return self
+
+
+class QuerySceneListShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        scene_states_shrink: str = None,
+        scene_types_shrink: str = None,
+        template_info_ids_shrink: str = None,
+    ):
+        self.hotel_id = hotel_id
+        self.scene_states_shrink = scene_states_shrink
+        self.scene_types_shrink = scene_types_shrink
+        self.template_info_ids_shrink = template_info_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.scene_states_shrink is not None:
+            result['SceneStates'] = self.scene_states_shrink
+        if self.scene_types_shrink is not None:
+            result['SceneTypes'] = self.scene_types_shrink
+        if self.template_info_ids_shrink is not None:
+            result['TemplateInfoIds'] = self.template_info_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('SceneStates') is not None:
+            self.scene_states_shrink = m.get('SceneStates')
+        if m.get('SceneTypes') is not None:
+            self.scene_types_shrink = m.get('SceneTypes')
+        if m.get('TemplateInfoIds') is not None:
+            self.template_info_ids_shrink = m.get('TemplateInfoIds')
+        return self
+
+
+class QuerySceneListResponseBodyResultsTemplateInfoDTOList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: int = None,
+        name: str = None,
+    ):
+        self.description = description
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class QuerySceneListResponseBodyResults(TeaModel):
+    def __init__(
+        self,
+        icon: str = None,
+        scene_id: str = None,
+        scene_name: str = None,
+        scene_source: str = None,
+        scene_state: int = None,
+        scene_type: str = None,
+        template_info_dtolist: List[QuerySceneListResponseBodyResultsTemplateInfoDTOList] = None,
+        unavailable_reason: str = None,
+    ):
+        self.icon = icon
+        self.scene_id = scene_id
+        self.scene_name = scene_name
+        self.scene_source = scene_source
+        self.scene_state = scene_state
+        self.scene_type = scene_type
+        self.template_info_dtolist = template_info_dtolist
+        self.unavailable_reason = unavailable_reason
+
+    def validate(self):
+        if self.template_info_dtolist:
+            for k in self.template_info_dtolist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.icon is not None:
+            result['Icon'] = self.icon
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.scene_source is not None:
+            result['SceneSource'] = self.scene_source
+        if self.scene_state is not None:
+            result['SceneState'] = self.scene_state
+        if self.scene_type is not None:
+            result['SceneType'] = self.scene_type
+        result['TemplateInfoDTOList'] = []
+        if self.template_info_dtolist is not None:
+            for k in self.template_info_dtolist:
+                result['TemplateInfoDTOList'].append(k.to_map() if k else None)
+        if self.unavailable_reason is not None:
+            result['UnavailableReason'] = self.unavailable_reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('SceneSource') is not None:
+            self.scene_source = m.get('SceneSource')
+        if m.get('SceneState') is not None:
+            self.scene_state = m.get('SceneState')
+        if m.get('SceneType') is not None:
+            self.scene_type = m.get('SceneType')
+        self.template_info_dtolist = []
+        if m.get('TemplateInfoDTOList') is not None:
+            for k in m.get('TemplateInfoDTOList'):
+                temp_model = QuerySceneListResponseBodyResultsTemplateInfoDTOList()
+                self.template_info_dtolist.append(temp_model.from_map(k))
+        if m.get('UnavailableReason') is not None:
+            self.unavailable_reason = m.get('UnavailableReason')
+        return self
+
+
+class QuerySceneListResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        results: List[QuerySceneListResponseBodyResults] = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.results = results
+        self.status_code = status_code
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = QuerySceneListResponseBodyResults()
+                self.results.append(temp_model.from_map(k))
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class QuerySceneListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySceneListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySceneListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20841,6 +22150,259 @@ class UpdateMessageTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateMessageTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRcuSceneHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class UpdateRcuSceneRequestSceneRelationExtDTO(TeaModel):
+    def __init__(
+        self,
+        corpus_list: List[str] = None,
+        description: str = None,
+        icon: str = None,
+        name: str = None,
+    ):
+        self.corpus_list = corpus_list
+        self.description = description
+        self.icon = icon
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.corpus_list is not None:
+            result['CorpusList'] = self.corpus_list
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.icon is not None:
+            result['Icon'] = self.icon
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CorpusList') is not None:
+            self.corpus_list = m.get('CorpusList')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class UpdateRcuSceneRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        scene_id: str = None,
+        scene_relation_ext_dto: UpdateRcuSceneRequestSceneRelationExtDTO = None,
+    ):
+        self.hotel_id = hotel_id
+        self.scene_id = scene_id
+        self.scene_relation_ext_dto = scene_relation_ext_dto
+
+    def validate(self):
+        if self.scene_relation_ext_dto:
+            self.scene_relation_ext_dto.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_relation_ext_dto is not None:
+            result['SceneRelationExtDTO'] = self.scene_relation_ext_dto.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneRelationExtDTO') is not None:
+            temp_model = UpdateRcuSceneRequestSceneRelationExtDTO()
+            self.scene_relation_ext_dto = temp_model.from_map(m['SceneRelationExtDTO'])
+        return self
+
+
+class UpdateRcuSceneShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        scene_id: str = None,
+        scene_relation_ext_dtoshrink: str = None,
+    ):
+        self.hotel_id = hotel_id
+        self.scene_id = scene_id
+        self.scene_relation_ext_dtoshrink = scene_relation_ext_dtoshrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_relation_ext_dtoshrink is not None:
+            result['SceneRelationExtDTO'] = self.scene_relation_ext_dtoshrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneRelationExtDTO') is not None:
+            self.scene_relation_ext_dtoshrink = m.get('SceneRelationExtDTO')
+        return self
+
+
+class UpdateRcuSceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: bool = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class UpdateRcuSceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRcuSceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRcuSceneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

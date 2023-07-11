@@ -1,3 +1,6 @@
+2023-07-11 Version: 1.0.24
+- Add rcu scene api.
+
 2023-05-23 Version: 1.0.22
 - Add query hotel room detail api.
 
