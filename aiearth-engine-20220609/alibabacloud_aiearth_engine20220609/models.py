@@ -575,6 +575,268 @@ class DeleteJobsResponse(TeaModel):
         return self
 
 
+class DeleteUserRasterDatasRequest(TeaModel):
+    def __init__(
+        self,
+        data_ids: List[str] = None,
+    ):
+        self.data_ids = data_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_ids is not None:
+            result['DataIds'] = self.data_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataIds') is not None:
+            self.data_ids = m.get('DataIds')
+        return self
+
+
+class DeleteUserRasterDatasShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        data_ids_shrink: str = None,
+    ):
+        self.data_ids_shrink = data_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_ids_shrink is not None:
+            result['DataIds'] = self.data_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataIds') is not None:
+            self.data_ids_shrink = m.get('DataIds')
+        return self
+
+
+class DeleteUserRasterDatasResponseBody(TeaModel):
+    def __init__(
+        self,
+        num: int = None,
+        request_id: str = None,
+    ):
+        self.num = num
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.num is not None:
+            result['Num'] = self.num
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Num') is not None:
+            self.num = m.get('Num')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteUserRasterDatasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteUserRasterDatasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteUserRasterDatasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteUserVectorDatasRequest(TeaModel):
+    def __init__(
+        self,
+        data_ids: List[str] = None,
+    ):
+        self.data_ids = data_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_ids is not None:
+            result['DataIds'] = self.data_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataIds') is not None:
+            self.data_ids = m.get('DataIds')
+        return self
+
+
+class DeleteUserVectorDatasShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        data_ids_shrink: str = None,
+    ):
+        self.data_ids_shrink = data_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_ids_shrink is not None:
+            result['DataIds'] = self.data_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataIds') is not None:
+            self.data_ids_shrink = m.get('DataIds')
+        return self
+
+
+class DeleteUserVectorDatasResponseBody(TeaModel):
+    def __init__(
+        self,
+        num: int = None,
+        request_id: str = None,
+    ):
+        self.num = num
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.num is not None:
+            result['Num'] = self.num
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Num') is not None:
+            self.num = m.get('Num')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteUserVectorDatasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteUserVectorDatasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteUserVectorDatasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DownloadDataRequest(TeaModel):
     def __init__(
         self,
@@ -712,9 +974,19 @@ class DownloadDataResponse(TeaModel):
 class GetJobsRequest(TeaModel):
     def __init__(
         self,
+        app_name: str = None,
         job_ids: List[int] = None,
+        job_type: str = None,
+        name_like: str = None,
+        page_no: int = None,
+        page_size: int = None,
     ):
+        self.app_name = app_name
         self.job_ids = job_ids
+        self.job_type = job_type
+        self.name_like = name_like
+        self.page_no = page_no
+        self.page_size = page_size
 
     def validate(self):
         pass
@@ -725,23 +997,53 @@ class GetJobsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
         if self.job_ids is not None:
             result['JobIds'] = self.job_ids
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.name_like is not None:
+            result['NameLike'] = self.name_like
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
         if m.get('JobIds') is not None:
             self.job_ids = m.get('JobIds')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('NameLike') is not None:
+            self.name_like = m.get('NameLike')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class GetJobsShrinkRequest(TeaModel):
     def __init__(
         self,
+        app_name: str = None,
         job_ids_shrink: str = None,
+        job_type: str = None,
+        name_like: str = None,
+        page_no: int = None,
+        page_size: int = None,
     ):
+        self.app_name = app_name
         self.job_ids_shrink = job_ids_shrink
+        self.job_type = job_type
+        self.name_like = name_like
+        self.page_no = page_no
+        self.page_size = page_size
 
     def validate(self):
         pass
@@ -752,14 +1054,34 @@ class GetJobsShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
         if self.job_ids_shrink is not None:
             result['JobIds'] = self.job_ids_shrink
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.name_like is not None:
+            result['NameLike'] = self.name_like
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
         if m.get('JobIds') is not None:
             self.job_ids_shrink = m.get('JobIds')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('NameLike') is not None:
+            self.name_like = m.get('NameLike')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 

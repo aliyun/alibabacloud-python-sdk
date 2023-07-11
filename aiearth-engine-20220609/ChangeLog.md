@@ -1,3 +1,8 @@
+2023-07-11 Version: 1.0.6
+- Added delete API for raster.
+- Added delete API for vector.
+- Added jobName for listJobs.
+
 2023-05-25 Version: 1.0.5
 - Added user token get.
 - Added compress param for download.

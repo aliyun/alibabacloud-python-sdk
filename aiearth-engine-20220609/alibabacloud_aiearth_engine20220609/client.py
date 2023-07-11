@@ -233,6 +233,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_jobs_with_options_async(request, runtime)
 
+    def delete_user_raster_datas_with_options(
+        self,
+        tmp_req: aiearth__engine_20220609_models.DeleteUserRasterDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.DeleteUserRasterDatasResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aiearth__engine_20220609_models.DeleteUserRasterDatasShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_ids):
+            request.data_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_ids, 'DataIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_ids_shrink):
+            body['DataIds'] = request.data_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserRasterDatas',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.DeleteUserRasterDatasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_user_raster_datas_with_options_async(
+        self,
+        tmp_req: aiearth__engine_20220609_models.DeleteUserRasterDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.DeleteUserRasterDatasResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aiearth__engine_20220609_models.DeleteUserRasterDatasShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_ids):
+            request.data_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_ids, 'DataIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_ids_shrink):
+            body['DataIds'] = request.data_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserRasterDatas',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.DeleteUserRasterDatasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_user_raster_datas(
+        self,
+        request: aiearth__engine_20220609_models.DeleteUserRasterDatasRequest,
+    ) -> aiearth__engine_20220609_models.DeleteUserRasterDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_user_raster_datas_with_options(request, runtime)
+
+    async def delete_user_raster_datas_async(
+        self,
+        request: aiearth__engine_20220609_models.DeleteUserRasterDatasRequest,
+    ) -> aiearth__engine_20220609_models.DeleteUserRasterDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_user_raster_datas_with_options_async(request, runtime)
+
+    def delete_user_vector_datas_with_options(
+        self,
+        tmp_req: aiearth__engine_20220609_models.DeleteUserVectorDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.DeleteUserVectorDatasResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aiearth__engine_20220609_models.DeleteUserVectorDatasShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_ids):
+            request.data_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_ids, 'DataIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_ids_shrink):
+            body['DataIds'] = request.data_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserVectorDatas',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.DeleteUserVectorDatasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_user_vector_datas_with_options_async(
+        self,
+        tmp_req: aiearth__engine_20220609_models.DeleteUserVectorDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.DeleteUserVectorDatasResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aiearth__engine_20220609_models.DeleteUserVectorDatasShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_ids):
+            request.data_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_ids, 'DataIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_ids_shrink):
+            body['DataIds'] = request.data_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserVectorDatas',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.DeleteUserVectorDatasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_user_vector_datas(
+        self,
+        request: aiearth__engine_20220609_models.DeleteUserVectorDatasRequest,
+    ) -> aiearth__engine_20220609_models.DeleteUserVectorDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_user_vector_datas_with_options(request, runtime)
+
+    async def delete_user_vector_datas_async(
+        self,
+        request: aiearth__engine_20220609_models.DeleteUserVectorDatasRequest,
+    ) -> aiearth__engine_20220609_models.DeleteUserVectorDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_user_vector_datas_with_options_async(request, runtime)
+
     def download_data_with_options(
         self,
         request: aiearth__engine_20220609_models.DownloadDataRequest,
@@ -322,8 +478,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.job_ids):
             request.job_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_ids, 'JobIds', 'json')
         body = {}
+        if not UtilClient.is_unset(request.app_name):
+            body['AppName'] = request.app_name
         if not UtilClient.is_unset(request.job_ids_shrink):
             body['JobIds'] = request.job_ids_shrink
+        if not UtilClient.is_unset(request.job_type):
+            body['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.name_like):
+            body['NameLike'] = request.name_like
+        if not UtilClient.is_unset(request.page_no):
+            body['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -354,8 +520,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.job_ids):
             request.job_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_ids, 'JobIds', 'json')
         body = {}
+        if not UtilClient.is_unset(request.app_name):
+            body['AppName'] = request.app_name
         if not UtilClient.is_unset(request.job_ids_shrink):
             body['JobIds'] = request.job_ids_shrink
+        if not UtilClient.is_unset(request.job_type):
+            body['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.name_like):
+            body['NameLike'] = request.name_like
+        if not UtilClient.is_unset(request.page_no):
+            body['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
