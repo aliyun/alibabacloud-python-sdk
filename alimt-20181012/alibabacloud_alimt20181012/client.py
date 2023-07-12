@@ -1693,6 +1693,14 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateECommerceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateECommerceResponse:
+        """
+        @deprecated : TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
+        
+        @param request: TranslateECommerceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateECommerceResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.context):
@@ -1733,6 +1741,14 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateECommerceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateECommerceResponse:
+        """
+        @deprecated : TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
+        
+        @param request: TranslateECommerceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateECommerceResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.context):
@@ -1772,6 +1788,13 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.TranslateECommerceRequest,
     ) -> alimt_20181012_models.TranslateECommerceResponse:
+        """
+        @deprecated : TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
+        
+        @param request: TranslateECommerceRequest
+        @return: TranslateECommerceResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.translate_ecommerce_with_options(request, runtime)
 
@@ -1779,6 +1802,13 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.TranslateECommerceRequest,
     ) -> alimt_20181012_models.TranslateECommerceResponse:
+        """
+        @deprecated : TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
+        
+        @param request: TranslateECommerceRequest
+        @return: TranslateECommerceResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.translate_ecommerce_with_options_async(request, runtime)
 

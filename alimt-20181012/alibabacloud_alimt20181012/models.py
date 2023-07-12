@@ -2324,9 +2324,11 @@ class TranslateRequest(TeaModel):
 class TranslateResponseBodyData(TeaModel):
     def __init__(
         self,
+        detected_language: str = None,
         translated: str = None,
         word_count: str = None,
     ):
+        self.detected_language = detected_language
         self.translated = translated
         self.word_count = word_count
 
@@ -2339,6 +2341,8 @@ class TranslateResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.detected_language is not None:
+            result['DetectedLanguage'] = self.detected_language
         if self.translated is not None:
             result['Translated'] = self.translated
         if self.word_count is not None:
@@ -2347,6 +2351,8 @@ class TranslateResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DetectedLanguage') is not None:
+            self.detected_language = m.get('DetectedLanguage')
         if m.get('Translated') is not None:
             self.translated = m.get('Translated')
         if m.get('WordCount') is not None:
@@ -2947,9 +2953,11 @@ class TranslateGeneralRequest(TeaModel):
 class TranslateGeneralResponseBodyData(TeaModel):
     def __init__(
         self,
+        detected_language: str = None,
         translated: str = None,
         word_count: str = None,
     ):
+        self.detected_language = detected_language
         self.translated = translated
         self.word_count = word_count
 
@@ -2962,6 +2970,8 @@ class TranslateGeneralResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.detected_language is not None:
+            result['DetectedLanguage'] = self.detected_language
         if self.translated is not None:
             result['Translated'] = self.translated
         if self.word_count is not None:
@@ -2970,6 +2980,8 @@ class TranslateGeneralResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DetectedLanguage') is not None:
+            self.detected_language = m.get('DetectedLanguage')
         if m.get('Translated') is not None:
             self.translated = m.get('Translated')
         if m.get('WordCount') is not None:
