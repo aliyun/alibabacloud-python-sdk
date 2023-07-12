@@ -1269,6 +1269,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_authority_template_with_options_async(request, runtime)
 
+    def create_data_archive_order_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataArchiveOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataArchiveOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataArchiveOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.plugin_type):
+            query['PluginType'] = request.plugin_type
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataArchiveOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataArchiveOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_archive_order_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataArchiveOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataArchiveOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataArchiveOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.plugin_type):
+            query['PluginType'] = request.plugin_type
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataArchiveOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataArchiveOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_archive_order(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataArchiveOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataArchiveOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_archive_order_with_options(request, runtime)
+
+    async def create_data_archive_order_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataArchiveOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataArchiveOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_archive_order_with_options_async(request, runtime)
+
     def create_data_correct_order_with_options(
         self,
         tmp_req: dms_enterprise_20181101_models.CreateDataCorrectOrderRequest,
@@ -5824,6 +5926,88 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDBTopologyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_dbtopology_with_options_async(request, runtime)
+
+    def get_data_archive_count_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataArchiveCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataArchiveCountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_result_type):
+            query['OrderResultType'] = request.order_result_type
+        if not UtilClient.is_unset(request.plugin_type):
+            query['PluginType'] = request.plugin_type
+        if not UtilClient.is_unset(request.search_date_type):
+            query['SearchDateType'] = request.search_date_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataArchiveCount',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataArchiveCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_archive_count_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataArchiveCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataArchiveCountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_result_type):
+            query['OrderResultType'] = request.order_result_type
+        if not UtilClient.is_unset(request.plugin_type):
+            query['PluginType'] = request.plugin_type
+        if not UtilClient.is_unset(request.search_date_type):
+            query['SearchDateType'] = request.search_date_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataArchiveCount',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataArchiveCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_archive_count(
+        self,
+        request: dms_enterprise_20181101_models.GetDataArchiveCountRequest,
+    ) -> dms_enterprise_20181101_models.GetDataArchiveCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_archive_count_with_options(request, runtime)
+
+    async def get_data_archive_count_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataArchiveCountRequest,
+    ) -> dms_enterprise_20181101_models.GetDataArchiveCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_archive_count_with_options_async(request, runtime)
 
     def get_data_archive_order_detail_with_options(
         self,
