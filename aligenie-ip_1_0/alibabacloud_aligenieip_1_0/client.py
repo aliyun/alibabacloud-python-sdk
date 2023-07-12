@@ -4250,12 +4250,11 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.import_hotel_config_request):
             request.import_hotel_config_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.import_hotel_config_request, 'ImportHotelConfigRequest', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.import_hotel_config_request_shrink):
-            query['ImportHotelConfigRequest'] = request.import_hotel_config_request_shrink
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
             body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.import_hotel_config_request_shrink):
+            body['ImportHotelConfigRequest'] = request.import_hotel_config_request_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4265,7 +4264,6 @@ class Client(OpenApiClient):
             real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4295,12 +4293,11 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.import_hotel_config_request):
             request.import_hotel_config_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.import_hotel_config_request, 'ImportHotelConfigRequest', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.import_hotel_config_request_shrink):
-            query['ImportHotelConfigRequest'] = request.import_hotel_config_request_shrink
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
             body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.import_hotel_config_request_shrink):
+            body['ImportHotelConfigRequest'] = request.import_hotel_config_request_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4310,7 +4307,6 @@ class Client(OpenApiClient):
             real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
