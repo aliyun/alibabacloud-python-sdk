@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddContainerAppResponse:
         """
-        If you select an image for a new containerized application, the image is pulled from Docker Hub by default. However, the version of the image may not be up to date. You can call the [PullImage](~~159052~~) operation to pull the latest image.
+        The operation that you want to perform. Set the value to AddContainerApp.
         
         @param request: AddContainerAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -80,7 +80,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddContainerAppResponse:
         """
-        If you select an image for a new containerized application, the image is pulled from Docker Hub by default. However, the version of the image may not be up to date. You can call the [PullImage](~~159052~~) operation to pull the latest image.
+        The operation that you want to perform. Set the value to AddContainerApp.
         
         @param request: AddContainerAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -112,7 +112,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddContainerAppRequest,
     ) -> ehpc20180412_models.AddContainerAppResponse:
         """
-        If you select an image for a new containerized application, the image is pulled from Docker Hub by default. However, the version of the image may not be up to date. You can call the [PullImage](~~159052~~) operation to pull the latest image.
+        The operation that you want to perform. Set the value to AddContainerApp.
         
         @param request: AddContainerAppRequest
         @return: AddContainerAppResponse
@@ -125,7 +125,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddContainerAppRequest,
     ) -> ehpc20180412_models.AddContainerAppResponse:
         """
-        If you select an image for a new containerized application, the image is pulled from Docker Hub by default. However, the version of the image may not be up to date. You can call the [PullImage](~~159052~~) operation to pull the latest image.
+        The operation that you want to perform. Set the value to AddContainerApp.
         
         @param request: AddContainerAppRequest
         @return: AddContainerAppResponse
@@ -661,7 +661,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.CreateClusterResponse:
         """
-        After you create an Elastic High Performance Computing (E-HPC) cluster, you are charged for the cluster resources that you use. We recommend that you learn about the billing methods of E-HPC in advance. For more information, see [Billing overview](~~57844~~).
+        The ID of the zone.
+        You can call the [ListRegions](~~188593~~) and [DescribeZones](~~25610~~) operations to query IDs of the zones where E-HPC is supported.
         
         @param request: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -694,7 +695,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.CreateClusterResponse:
         """
-        After you create an Elastic High Performance Computing (E-HPC) cluster, you are charged for the cluster resources that you use. We recommend that you learn about the billing methods of E-HPC in advance. For more information, see [Billing overview](~~57844~~).
+        The ID of the zone.
+        You can call the [ListRegions](~~188593~~) and [DescribeZones](~~25610~~) operations to query IDs of the zones where E-HPC is supported.
         
         @param request: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -726,7 +728,8 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.CreateClusterRequest,
     ) -> ehpc20180412_models.CreateClusterResponse:
         """
-        After you create an Elastic High Performance Computing (E-HPC) cluster, you are charged for the cluster resources that you use. We recommend that you learn about the billing methods of E-HPC in advance. For more information, see [Billing overview](~~57844~~).
+        The ID of the zone.
+        You can call the [ListRegions](~~188593~~) and [DescribeZones](~~25610~~) operations to query IDs of the zones where E-HPC is supported.
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -739,7 +742,8 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.CreateClusterRequest,
     ) -> ehpc20180412_models.CreateClusterResponse:
         """
-        After you create an Elastic High Performance Computing (E-HPC) cluster, you are charged for the cluster resources that you use. We recommend that you learn about the billing methods of E-HPC in advance. For more information, see [Billing overview](~~57844~~).
+        The ID of the zone.
+        You can call the [ListRegions](~~188593~~) and [DescribeZones](~~25610~~) operations to query IDs of the zones where E-HPC is supported.
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -1927,7 +1931,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteUsersResponse:
         """
-        If you delete a user, only its information is deleted. The files stored in the /home directory for the user are still retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data that was retained for the deleted user is not reused.
+        ## Description
+        If you delete a user, only its information is deleted. The files stored in the /home directory for the user are retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data retained for the deleted user is not reused.
         
         @param request: DeleteUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1960,7 +1965,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DeleteUsersResponse:
         """
-        If you delete a user, only its information is deleted. The files stored in the /home directory for the user are still retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data that was retained for the deleted user is not reused.
+        ## Description
+        If you delete a user, only its information is deleted. The files stored in the /home directory for the user are retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data retained for the deleted user is not reused.
         
         @param request: DeleteUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1992,7 +1998,8 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteUsersRequest,
     ) -> ehpc20180412_models.DeleteUsersResponse:
         """
-        If you delete a user, only its information is deleted. The files stored in the /home directory for the user are still retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data that was retained for the deleted user is not reused.
+        ## Description
+        If you delete a user, only its information is deleted. The files stored in the /home directory for the user are retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data retained for the deleted user is not reused.
         
         @param request: DeleteUsersRequest
         @return: DeleteUsersResponse
@@ -2005,7 +2012,8 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DeleteUsersRequest,
     ) -> ehpc20180412_models.DeleteUsersResponse:
         """
-        If you delete a user, only its information is deleted. The files stored in the /home directory for the user are still retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data that was retained for the deleted user is not reused.
+        ## Description
+        If you delete a user, only its information is deleted. The files stored in the /home directory for the user are retained. For example, if you delete a user named user1, the files in the `/home/user1/` directory of the cluster are not deleted. However, a deleted user cannot be recovered. Even if you create another user that has the same name, the data retained for the deleted user is not reused.
         
         @param request: DeleteUsersRequest
         @return: DeleteUsersResponse
@@ -2888,13 +2896,6 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribePriceResponse:
-        """
-        ***\
-        
-        @param request: DescribePriceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePriceResponse
-        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2921,13 +2922,6 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribePriceResponse:
-        """
-        ***\
-        
-        @param request: DescribePriceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePriceResponse
-        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2953,12 +2947,6 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribePriceRequest,
     ) -> ehpc20180412_models.DescribePriceResponse:
-        """
-        ***\
-        
-        @param request: DescribePriceRequest
-        @return: DescribePriceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_price_with_options(request, runtime)
 
@@ -2966,14 +2954,82 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribePriceRequest,
     ) -> ehpc20180412_models.DescribePriceResponse:
-        """
-        ***\
-        
-        @param request: DescribePriceRequest
-        @return: DescribePriceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_with_options_async(request, runtime)
+
+    def describe_serverless_jobs_with_options(
+        self,
+        request: ehpc20180412_models.DescribeServerlessJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.DescribeServerlessJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServerlessJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeServerlessJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_serverless_jobs_with_options_async(
+        self,
+        request: ehpc20180412_models.DescribeServerlessJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.DescribeServerlessJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServerlessJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeServerlessJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_serverless_jobs(
+        self,
+        request: ehpc20180412_models.DescribeServerlessJobsRequest,
+    ) -> ehpc20180412_models.DescribeServerlessJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_serverless_jobs_with_options(request, runtime)
+
+    async def describe_serverless_jobs_async(
+        self,
+        request: ehpc20180412_models.DescribeServerlessJobsRequest,
+    ) -> ehpc20180412_models.DescribeServerlessJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_serverless_jobs_with_options_async(request, runtime)
 
     def edit_job_template_with_options(
         self,
@@ -5979,6 +6035,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_security_groups_with_options_async(request, runtime)
 
+    def list_serverless_jobs_with_options(
+        self,
+        request: ehpc20180412_models.ListServerlessJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.ListServerlessJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.job_names):
+            query['JobNames'] = request.job_names
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.queues):
+            query['Queues'] = request.queues
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_order):
+            query['StartOrder'] = request.start_order
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.submit_order):
+            query['SubmitOrder'] = request.submit_order
+        if not UtilClient.is_unset(request.submit_time_end):
+            query['SubmitTimeEnd'] = request.submit_time_end
+        if not UtilClient.is_unset(request.submit_time_start):
+            query['SubmitTimeStart'] = request.submit_time_start
+        if not UtilClient.is_unset(request.users):
+            query['Users'] = request.users
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServerlessJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListServerlessJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_serverless_jobs_with_options_async(
+        self,
+        request: ehpc20180412_models.ListServerlessJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.ListServerlessJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.job_names):
+            query['JobNames'] = request.job_names
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.queues):
+            query['Queues'] = request.queues
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_order):
+            query['StartOrder'] = request.start_order
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.submit_order):
+            query['SubmitOrder'] = request.submit_order
+        if not UtilClient.is_unset(request.submit_time_end):
+            query['SubmitTimeEnd'] = request.submit_time_end
+        if not UtilClient.is_unset(request.submit_time_start):
+            query['SubmitTimeStart'] = request.submit_time_start
+        if not UtilClient.is_unset(request.users):
+            query['Users'] = request.users
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServerlessJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListServerlessJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_serverless_jobs(
+        self,
+        request: ehpc20180412_models.ListServerlessJobsRequest,
+    ) -> ehpc20180412_models.ListServerlessJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_serverless_jobs_with_options(request, runtime)
+
+    async def list_serverless_jobs_async(
+        self,
+        request: ehpc20180412_models.ListServerlessJobsRequest,
+    ) -> ehpc20180412_models.ListServerlessJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_serverless_jobs_with_options_async(request, runtime)
+
     def list_softwares_with_options(
         self,
         request: ehpc20180412_models.ListSoftwaresRequest,
@@ -6493,7 +6667,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ModifyClusterAttributesResponse:
         """
-        Before you modify the basic information of a cluster, you can call the [DescribeCluster](~~87126~~) operation to query details of the selected cluster.
+        The new cluster name.
         
         @param request: ModifyClusterAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6526,7 +6700,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ModifyClusterAttributesResponse:
         """
-        Before you modify the basic information of a cluster, you can call the [DescribeCluster](~~87126~~) operation to query details of the selected cluster.
+        The new cluster name.
         
         @param request: ModifyClusterAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6558,7 +6732,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ModifyClusterAttributesRequest,
     ) -> ehpc20180412_models.ModifyClusterAttributesResponse:
         """
-        Before you modify the basic information of a cluster, you can call the [DescribeCluster](~~87126~~) operation to query details of the selected cluster.
+        The new cluster name.
         
         @param request: ModifyClusterAttributesRequest
         @return: ModifyClusterAttributesResponse
@@ -6571,7 +6745,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.ModifyClusterAttributesRequest,
     ) -> ehpc20180412_models.ModifyClusterAttributesResponse:
         """
-        Before you modify the basic information of a cluster, you can call the [DescribeCluster](~~87126~~) operation to query details of the selected cluster.
+        The new cluster name.
         
         @param request: ModifyClusterAttributesRequest
         @return: ModifyClusterAttributesResponse
@@ -7429,7 +7603,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SetAutoScaleConfigResponse:
         """
-        If you specify different auto scaling settings in the Queue Configuration section and Global Configurations section on the Auto Scale page, the settings in the Queue Configuration section prevail.
+        Configures the auto scaling settings of a cluster.
         
         @param request: SetAutoScaleConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7462,7 +7636,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SetAutoScaleConfigResponse:
         """
-        If you specify different auto scaling settings in the Queue Configuration section and Global Configurations section on the Auto Scale page, the settings in the Queue Configuration section prevail.
+        Configures the auto scaling settings of a cluster.
         
         @param request: SetAutoScaleConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7494,7 +7668,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SetAutoScaleConfigRequest,
     ) -> ehpc20180412_models.SetAutoScaleConfigResponse:
         """
-        If you specify different auto scaling settings in the Queue Configuration section and Global Configurations section on the Auto Scale page, the settings in the Queue Configuration section prevail.
+        Configures the auto scaling settings of a cluster.
         
         @param request: SetAutoScaleConfigRequest
         @return: SetAutoScaleConfigResponse
@@ -7507,7 +7681,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SetAutoScaleConfigRequest,
     ) -> ehpc20180412_models.SetAutoScaleConfigResponse:
         """
-        If you specify different auto scaling settings in the Queue Configuration section and Global Configurations section on the Auto Scale page, the settings in the Queue Configuration section prevail.
+        Configures the auto scaling settings of a cluster.
         
         @param request: SetAutoScaleConfigRequest
         @return: SetAutoScaleConfigResponse
@@ -8493,6 +8667,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_nodes_with_options_async(request, runtime)
 
+    def stop_serverless_jobs_with_options(
+        self,
+        request: ehpc20180412_models.StopServerlessJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.StopServerlessJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopServerlessJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StopServerlessJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_serverless_jobs_with_options_async(
+        self,
+        request: ehpc20180412_models.StopServerlessJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.StopServerlessJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopServerlessJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StopServerlessJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_serverless_jobs(
+        self,
+        request: ehpc20180412_models.StopServerlessJobsRequest,
+    ) -> ehpc20180412_models.StopServerlessJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_serverless_jobs_with_options(request, runtime)
+
+    async def stop_serverless_jobs_async(
+        self,
+        request: ehpc20180412_models.StopServerlessJobsRequest,
+    ) -> ehpc20180412_models.StopServerlessJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_serverless_jobs_with_options_async(request, runtime)
+
     def stop_visual_service_with_options(
         self,
         request: ehpc20180412_models.StopVisualServiceRequest,
@@ -8654,6 +8902,156 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_job_with_options_async(request, runtime)
+
+    def submit_serverless_job_with_options(
+        self,
+        tmp_req: ehpc20180412_models.SubmitServerlessJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.SubmitServerlessJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ehpc20180412_models.SubmitServerlessJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.array_properties):
+            request.array_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.array_properties, 'ArrayProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.container):
+            request.container_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.container, 'Container', 'json')
+        if not UtilClient.is_unset(tmp_req.depends_on):
+            request.depends_on_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.depends_on, 'DependsOn', 'json')
+        if not UtilClient.is_unset(tmp_req.instance_type):
+            request.instance_type_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_type, 'InstanceType', 'simple')
+        if not UtilClient.is_unset(tmp_req.v_switch_id):
+            request.v_switch_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.v_switch_id, 'VSwitchId', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.array_properties_shrink):
+            query['ArrayProperties'] = request.array_properties_shrink
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.container_shrink):
+            query['Container'] = request.container_shrink
+        if not UtilClient.is_unset(request.cpu):
+            query['Cpu'] = request.cpu
+        if not UtilClient.is_unset(request.depends_on_shrink):
+            query['DependsOn'] = request.depends_on_shrink
+        if not UtilClient.is_unset(request.ephemeral_storage):
+            query['EphemeralStorage'] = request.ephemeral_storage
+        if not UtilClient.is_unset(request.instance_type_shrink):
+            query['InstanceType'] = request.instance_type_shrink
+        if not UtilClient.is_unset(request.job_name):
+            query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.job_priority):
+            query['JobPriority'] = request.job_priority
+        if not UtilClient.is_unset(request.memory):
+            query['Memory'] = request.memory
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.spot_price_limit):
+            query['SpotPriceLimit'] = request.spot_price_limit
+        if not UtilClient.is_unset(request.spot_strategy):
+            query['SpotStrategy'] = request.spot_strategy
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        if not UtilClient.is_unset(request.v_switch_id_shrink):
+            query['VSwitchId'] = request.v_switch_id_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitServerlessJob',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SubmitServerlessJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_serverless_job_with_options_async(
+        self,
+        tmp_req: ehpc20180412_models.SubmitServerlessJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.SubmitServerlessJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ehpc20180412_models.SubmitServerlessJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.array_properties):
+            request.array_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.array_properties, 'ArrayProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.container):
+            request.container_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.container, 'Container', 'json')
+        if not UtilClient.is_unset(tmp_req.depends_on):
+            request.depends_on_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.depends_on, 'DependsOn', 'json')
+        if not UtilClient.is_unset(tmp_req.instance_type):
+            request.instance_type_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_type, 'InstanceType', 'simple')
+        if not UtilClient.is_unset(tmp_req.v_switch_id):
+            request.v_switch_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.v_switch_id, 'VSwitchId', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.array_properties_shrink):
+            query['ArrayProperties'] = request.array_properties_shrink
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.container_shrink):
+            query['Container'] = request.container_shrink
+        if not UtilClient.is_unset(request.cpu):
+            query['Cpu'] = request.cpu
+        if not UtilClient.is_unset(request.depends_on_shrink):
+            query['DependsOn'] = request.depends_on_shrink
+        if not UtilClient.is_unset(request.ephemeral_storage):
+            query['EphemeralStorage'] = request.ephemeral_storage
+        if not UtilClient.is_unset(request.instance_type_shrink):
+            query['InstanceType'] = request.instance_type_shrink
+        if not UtilClient.is_unset(request.job_name):
+            query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.job_priority):
+            query['JobPriority'] = request.job_priority
+        if not UtilClient.is_unset(request.memory):
+            query['Memory'] = request.memory
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.spot_price_limit):
+            query['SpotPriceLimit'] = request.spot_price_limit
+        if not UtilClient.is_unset(request.spot_strategy):
+            query['SpotStrategy'] = request.spot_strategy
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        if not UtilClient.is_unset(request.v_switch_id_shrink):
+            query['VSwitchId'] = request.v_switch_id_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitServerlessJob',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SubmitServerlessJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_serverless_job(
+        self,
+        request: ehpc20180412_models.SubmitServerlessJobRequest,
+    ) -> ehpc20180412_models.SubmitServerlessJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_serverless_job_with_options(request, runtime)
+
+    async def submit_serverless_job_async(
+        self,
+        request: ehpc20180412_models.SubmitServerlessJobRequest,
+    ) -> ehpc20180412_models.SubmitServerlessJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_serverless_job_with_options_async(request, runtime)
 
     def summary_images_with_options(
         self,

@@ -1,3 +1,6 @@
+2023-07-13 Version: 1.14.24
+- Support Serverless Job API.
+
 2023-03-16 Version: 1.14.23
 - Support JobRetry parameters in SubmitJob API.
 
