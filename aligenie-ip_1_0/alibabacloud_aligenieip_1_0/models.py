@@ -10057,7 +10057,7 @@ class ImportHotelConfigHeaders(TeaModel):
         return self
 
 
-class ImportHotelConfigRequestImportHotelConfigRequestRcuCustomScenes(TeaModel):
+class ImportHotelConfigRequestImportHotelConfigRcuCustomScenes(TeaModel):
     def __init__(
         self,
         corpus_list: List[str] = None,
@@ -10108,10 +10108,10 @@ class ImportHotelConfigRequestImportHotelConfigRequestRcuCustomScenes(TeaModel):
         return self
 
 
-class ImportHotelConfigRequestImportHotelConfigRequest(TeaModel):
+class ImportHotelConfigRequestImportHotelConfig(TeaModel):
     def __init__(
         self,
-        rcu_custom_scenes: List[ImportHotelConfigRequestImportHotelConfigRequestRcuCustomScenes] = None,
+        rcu_custom_scenes: List[ImportHotelConfigRequestImportHotelConfigRcuCustomScenes] = None,
     ):
         self.rcu_custom_scenes = rcu_custom_scenes
 
@@ -10138,7 +10138,7 @@ class ImportHotelConfigRequestImportHotelConfigRequest(TeaModel):
         self.rcu_custom_scenes = []
         if m.get('RcuCustomScenes') is not None:
             for k in m.get('RcuCustomScenes'):
-                temp_model = ImportHotelConfigRequestImportHotelConfigRequestRcuCustomScenes()
+                temp_model = ImportHotelConfigRequestImportHotelConfigRcuCustomScenes()
                 self.rcu_custom_scenes.append(temp_model.from_map(k))
         return self
 
@@ -10147,14 +10147,14 @@ class ImportHotelConfigRequest(TeaModel):
     def __init__(
         self,
         hotel_id: str = None,
-        import_hotel_config_request: ImportHotelConfigRequestImportHotelConfigRequest = None,
+        import_hotel_config: ImportHotelConfigRequestImportHotelConfig = None,
     ):
         self.hotel_id = hotel_id
-        self.import_hotel_config_request = import_hotel_config_request
+        self.import_hotel_config = import_hotel_config
 
     def validate(self):
-        if self.import_hotel_config_request:
-            self.import_hotel_config_request.validate()
+        if self.import_hotel_config:
+            self.import_hotel_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10164,17 +10164,17 @@ class ImportHotelConfigRequest(TeaModel):
         result = dict()
         if self.hotel_id is not None:
             result['HotelId'] = self.hotel_id
-        if self.import_hotel_config_request is not None:
-            result['ImportHotelConfigRequest'] = self.import_hotel_config_request.to_map()
+        if self.import_hotel_config is not None:
+            result['ImportHotelConfig'] = self.import_hotel_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('HotelId') is not None:
             self.hotel_id = m.get('HotelId')
-        if m.get('ImportHotelConfigRequest') is not None:
-            temp_model = ImportHotelConfigRequestImportHotelConfigRequest()
-            self.import_hotel_config_request = temp_model.from_map(m['ImportHotelConfigRequest'])
+        if m.get('ImportHotelConfig') is not None:
+            temp_model = ImportHotelConfigRequestImportHotelConfig()
+            self.import_hotel_config = temp_model.from_map(m['ImportHotelConfig'])
         return self
 
 
@@ -10182,10 +10182,10 @@ class ImportHotelConfigShrinkRequest(TeaModel):
     def __init__(
         self,
         hotel_id: str = None,
-        import_hotel_config_request_shrink: str = None,
+        import_hotel_config_shrink: str = None,
     ):
         self.hotel_id = hotel_id
-        self.import_hotel_config_request_shrink = import_hotel_config_request_shrink
+        self.import_hotel_config_shrink = import_hotel_config_shrink
 
     def validate(self):
         pass
@@ -10198,16 +10198,16 @@ class ImportHotelConfigShrinkRequest(TeaModel):
         result = dict()
         if self.hotel_id is not None:
             result['HotelId'] = self.hotel_id
-        if self.import_hotel_config_request_shrink is not None:
-            result['ImportHotelConfigRequest'] = self.import_hotel_config_request_shrink
+        if self.import_hotel_config_shrink is not None:
+            result['ImportHotelConfig'] = self.import_hotel_config_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('HotelId') is not None:
             self.hotel_id = m.get('HotelId')
-        if m.get('ImportHotelConfigRequest') is not None:
-            self.import_hotel_config_request_shrink = m.get('ImportHotelConfigRequest')
+        if m.get('ImportHotelConfig') is not None:
+            self.import_hotel_config_shrink = m.get('ImportHotelConfig')
         return self
 
 
@@ -10342,13 +10342,29 @@ class ImportRoomControlDevicesHeaders(TeaModel):
 class ImportRoomControlDevicesRequestLocationDevicesDevices(TeaModel):
     def __init__(
         self,
+        brand: str = None,
+        city: str = None,
+        connect_type: str = None,
         device_name: str = None,
+        infrared_id: str = None,
+        infrared_index: str = None,
+        infrared_version: str = None,
         name: str = None,
         number: str = None,
+        province: str = None,
+        service_provider: str = None,
     ):
+        self.brand = brand
+        self.city = city
+        self.connect_type = connect_type
         self.device_name = device_name
+        self.infrared_id = infrared_id
+        self.infrared_index = infrared_index
+        self.infrared_version = infrared_version
         self.name = name
         self.number = number
+        self.province = province
+        self.service_provider = service_provider
 
     def validate(self):
         pass
@@ -10359,22 +10375,54 @@ class ImportRoomControlDevicesRequestLocationDevicesDevices(TeaModel):
             return _map
 
         result = dict()
+        if self.brand is not None:
+            result['Brand'] = self.brand
+        if self.city is not None:
+            result['City'] = self.city
+        if self.connect_type is not None:
+            result['ConnectType'] = self.connect_type
         if self.device_name is not None:
             result['DeviceName'] = self.device_name
+        if self.infrared_id is not None:
+            result['InfraredId'] = self.infrared_id
+        if self.infrared_index is not None:
+            result['InfraredIndex'] = self.infrared_index
+        if self.infrared_version is not None:
+            result['InfraredVersion'] = self.infrared_version
         if self.name is not None:
             result['Name'] = self.name
         if self.number is not None:
             result['Number'] = self.number
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.service_provider is not None:
+            result['ServiceProvider'] = self.service_provider
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Brand') is not None:
+            self.brand = m.get('Brand')
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('ConnectType') is not None:
+            self.connect_type = m.get('ConnectType')
         if m.get('DeviceName') is not None:
             self.device_name = m.get('DeviceName')
+        if m.get('InfraredId') is not None:
+            self.infrared_id = m.get('InfraredId')
+        if m.get('InfraredIndex') is not None:
+            self.infrared_index = m.get('InfraredIndex')
+        if m.get('InfraredVersion') is not None:
+            self.infrared_version = m.get('InfraredVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Number') is not None:
             self.number = m.get('Number')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('ServiceProvider') is not None:
+            self.service_provider = m.get('ServiceProvider')
         return self
 
 
@@ -10428,10 +10476,12 @@ class ImportRoomControlDevicesRequestLocationDevices(TeaModel):
 class ImportRoomControlDevicesRequest(TeaModel):
     def __init__(
         self,
+        enable_infrared_device_import: str = None,
         hotel_id: str = None,
         location_devices: List[ImportRoomControlDevicesRequestLocationDevices] = None,
         room_no: str = None,
     ):
+        self.enable_infrared_device_import = enable_infrared_device_import
         self.hotel_id = hotel_id
         self.location_devices = location_devices
         self.room_no = room_no
@@ -10448,6 +10498,8 @@ class ImportRoomControlDevicesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_infrared_device_import is not None:
+            result['EnableInfraredDeviceImport'] = self.enable_infrared_device_import
         if self.hotel_id is not None:
             result['HotelId'] = self.hotel_id
         result['LocationDevices'] = []
@@ -10460,6 +10512,8 @@ class ImportRoomControlDevicesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableInfraredDeviceImport') is not None:
+            self.enable_infrared_device_import = m.get('EnableInfraredDeviceImport')
         if m.get('HotelId') is not None:
             self.hotel_id = m.get('HotelId')
         self.location_devices = []
@@ -10475,10 +10529,12 @@ class ImportRoomControlDevicesRequest(TeaModel):
 class ImportRoomControlDevicesShrinkRequest(TeaModel):
     def __init__(
         self,
+        enable_infrared_device_import: str = None,
         hotel_id: str = None,
         location_devices_shrink: str = None,
         room_no: str = None,
     ):
+        self.enable_infrared_device_import = enable_infrared_device_import
         self.hotel_id = hotel_id
         self.location_devices_shrink = location_devices_shrink
         self.room_no = room_no
@@ -10492,6 +10548,8 @@ class ImportRoomControlDevicesShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_infrared_device_import is not None:
+            result['EnableInfraredDeviceImport'] = self.enable_infrared_device_import
         if self.hotel_id is not None:
             result['HotelId'] = self.hotel_id
         if self.location_devices_shrink is not None:
@@ -10502,6 +10560,8 @@ class ImportRoomControlDevicesShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableInfraredDeviceImport') is not None:
+            self.enable_infrared_device_import = m.get('EnableInfraredDeviceImport')
         if m.get('HotelId') is not None:
             self.hotel_id = m.get('HotelId')
         if m.get('LocationDevices') is not None:
@@ -11016,6 +11076,289 @@ class InvokeRobotPushResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = InvokeRobotPushResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAllProvincesHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ListAllProvincesResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: List[str] = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class ListAllProvincesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAllProvincesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAllProvincesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCitiesByProvinceHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ListCitiesByProvinceRequest(TeaModel):
+    def __init__(
+        self,
+        province: str = None,
+    ):
+        self.province = province
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.province is not None:
+            result['Province'] = self.province
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        return self
+
+
+class ListCitiesByProvinceResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: List[str] = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class ListCitiesByProvinceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCitiesByProvinceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCitiesByProvinceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15407,6 +15750,560 @@ class ListHotelsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListHotelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListInfraredDeviceBrandsHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ListInfraredDeviceBrandsRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        service_provider: str = None,
+    ):
+        self.category = category
+        self.service_provider = service_provider
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.service_provider is not None:
+            result['ServiceProvider'] = self.service_provider
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('ServiceProvider') is not None:
+            self.service_provider = m.get('ServiceProvider')
+        return self
+
+
+class ListInfraredDeviceBrandsResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: Dict[str, List[str]] = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class ListInfraredDeviceBrandsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListInfraredDeviceBrandsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListInfraredDeviceBrandsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListInfraredRemoteControllersHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ListInfraredRemoteControllersRequest(TeaModel):
+    def __init__(
+        self,
+        brand: str = None,
+        category: str = None,
+        city: str = None,
+        hotel_id: str = None,
+        province: str = None,
+        service_provider: str = None,
+    ):
+        self.brand = brand
+        self.category = category
+        self.city = city
+        self.hotel_id = hotel_id
+        self.province = province
+        self.service_provider = service_provider
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand is not None:
+            result['Brand'] = self.brand
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.city is not None:
+            result['City'] = self.city
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.service_provider is not None:
+            result['ServiceProvider'] = self.service_provider
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Brand') is not None:
+            self.brand = m.get('Brand')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('ServiceProvider') is not None:
+            self.service_provider = m.get('ServiceProvider')
+        return self
+
+
+class ListInfraredRemoteControllersResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        index: int = None,
+        rid: int = None,
+        version: str = None,
+    ):
+        self.index = index
+        self.rid = rid
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.rid is not None:
+            result['Rid'] = self.rid
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Rid') is not None:
+            self.rid = m.get('Rid')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListInfraredRemoteControllersResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: List[ListInfraredRemoteControllersResponseBodyResult] = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListInfraredRemoteControllersResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class ListInfraredRemoteControllersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListInfraredRemoteControllersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListInfraredRemoteControllersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSTBServiceProvidersHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ListSTBServiceProvidersRequest(TeaModel):
+    def __init__(
+        self,
+        city: str = None,
+        province: str = None,
+    ):
+        self.city = city
+        self.province = province
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city is not None:
+            result['City'] = self.city
+        if self.province is not None:
+            result['Province'] = self.province
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        return self
+
+
+class ListSTBServiceProvidersResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: Dict[str, List[str]] = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class ListSTBServiceProvidersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSTBServiceProvidersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSTBServiceProvidersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

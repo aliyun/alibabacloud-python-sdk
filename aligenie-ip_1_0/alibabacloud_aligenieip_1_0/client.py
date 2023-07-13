@@ -4248,13 +4248,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ImportHotelConfigShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.import_hotel_config_request):
-            request.import_hotel_config_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.import_hotel_config_request, 'ImportHotelConfigRequest', 'json')
+        if not UtilClient.is_unset(tmp_req.import_hotel_config):
+            request.import_hotel_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.import_hotel_config, 'ImportHotelConfig', 'json')
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
             body['HotelId'] = request.hotel_id
-        if not UtilClient.is_unset(request.import_hotel_config_request_shrink):
-            body['ImportHotelConfigRequest'] = request.import_hotel_config_request_shrink
+        if not UtilClient.is_unset(request.import_hotel_config_shrink):
+            body['ImportHotelConfig'] = request.import_hotel_config_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4291,13 +4291,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ImportHotelConfigShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.import_hotel_config_request):
-            request.import_hotel_config_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.import_hotel_config_request, 'ImportHotelConfigRequest', 'json')
+        if not UtilClient.is_unset(tmp_req.import_hotel_config):
+            request.import_hotel_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.import_hotel_config, 'ImportHotelConfig', 'json')
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
             body['HotelId'] = request.hotel_id
-        if not UtilClient.is_unset(request.import_hotel_config_request_shrink):
-            body['ImportHotelConfigRequest'] = request.import_hotel_config_request_shrink
+        if not UtilClient.is_unset(request.import_hotel_config_shrink):
+            body['ImportHotelConfig'] = request.import_hotel_config_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4353,6 +4353,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.location_devices):
             request.location_devices_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location_devices, 'LocationDevices', 'json')
         body = {}
+        if not UtilClient.is_unset(request.enable_infrared_device_import):
+            body['EnableInfraredDeviceImport'] = request.enable_infrared_device_import
         if not UtilClient.is_unset(request.hotel_id):
             body['HotelId'] = request.hotel_id
         if not UtilClient.is_unset(request.location_devices_shrink):
@@ -4398,6 +4400,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.location_devices):
             request.location_devices_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location_devices, 'LocationDevices', 'json')
         body = {}
+        if not UtilClient.is_unset(request.enable_infrared_device_import):
+            body['EnableInfraredDeviceImport'] = request.enable_infrared_device_import
         if not UtilClient.is_unset(request.hotel_id):
             body['HotelId'] = request.hotel_id
         if not UtilClient.is_unset(request.location_devices_shrink):
@@ -4650,6 +4654,168 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.InvokeRobotPushHeaders()
         return await self.invoke_robot_push_with_options_async(request, headers, runtime)
+
+    def list_all_provinces_with_options(
+        self,
+        headers: ali_genieip__1__0_models.ListAllProvincesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ListAllProvincesResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='ListAllProvinces',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/listAllProvinces',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ListAllProvincesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_all_provinces_with_options_async(
+        self,
+        headers: ali_genieip__1__0_models.ListAllProvincesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ListAllProvincesResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='ListAllProvinces',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/listAllProvinces',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ListAllProvincesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_all_provinces(self) -> ali_genieip__1__0_models.ListAllProvincesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ListAllProvincesHeaders()
+        return self.list_all_provinces_with_options(headers, runtime)
+
+    async def list_all_provinces_async(self) -> ali_genieip__1__0_models.ListAllProvincesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ListAllProvincesHeaders()
+        return await self.list_all_provinces_with_options_async(headers, runtime)
+
+    def list_cities_by_province_with_options(
+        self,
+        request: ali_genieip__1__0_models.ListCitiesByProvinceRequest,
+        headers: ali_genieip__1__0_models.ListCitiesByProvinceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ListCitiesByProvinceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.province):
+            body['Province'] = request.province
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCitiesByProvince',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/listCitiesByProvince',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ListCitiesByProvinceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cities_by_province_with_options_async(
+        self,
+        request: ali_genieip__1__0_models.ListCitiesByProvinceRequest,
+        headers: ali_genieip__1__0_models.ListCitiesByProvinceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ListCitiesByProvinceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.province):
+            body['Province'] = request.province
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCitiesByProvince',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/listCitiesByProvince',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ListCitiesByProvinceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cities_by_province(
+        self,
+        request: ali_genieip__1__0_models.ListCitiesByProvinceRequest,
+    ) -> ali_genieip__1__0_models.ListCitiesByProvinceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ListCitiesByProvinceHeaders()
+        return self.list_cities_by_province_with_options(request, headers, runtime)
+
+    async def list_cities_by_province_async(
+        self,
+        request: ali_genieip__1__0_models.ListCitiesByProvinceRequest,
+    ) -> ali_genieip__1__0_models.ListCitiesByProvinceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ListCitiesByProvinceHeaders()
+        return await self.list_cities_by_province_with_options_async(request, headers, runtime)
 
     def list_custom_qawith_options(
         self,
@@ -5912,6 +6078,304 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelsHeaders()
         return await self.list_hotels_with_options_async(request, headers, runtime)
+
+    def list_infrared_device_brands_with_options(
+        self,
+        request: ali_genieip__1__0_models.ListInfraredDeviceBrandsRequest,
+        headers: ali_genieip__1__0_models.ListInfraredDeviceBrandsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.service_provider):
+            body['ServiceProvider'] = request.service_provider
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInfraredDeviceBrands',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/listInfraredDeviceBrands',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_infrared_device_brands_with_options_async(
+        self,
+        request: ali_genieip__1__0_models.ListInfraredDeviceBrandsRequest,
+        headers: ali_genieip__1__0_models.ListInfraredDeviceBrandsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.service_provider):
+            body['ServiceProvider'] = request.service_provider
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInfraredDeviceBrands',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/listInfraredDeviceBrands',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_infrared_device_brands(
+        self,
+        request: ali_genieip__1__0_models.ListInfraredDeviceBrandsRequest,
+    ) -> ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ListInfraredDeviceBrandsHeaders()
+        return self.list_infrared_device_brands_with_options(request, headers, runtime)
+
+    async def list_infrared_device_brands_async(
+        self,
+        request: ali_genieip__1__0_models.ListInfraredDeviceBrandsRequest,
+    ) -> ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ListInfraredDeviceBrandsHeaders()
+        return await self.list_infrared_device_brands_with_options_async(request, headers, runtime)
+
+    def list_infrared_remote_controllers_with_options(
+        self,
+        request: ali_genieip__1__0_models.ListInfraredRemoteControllersRequest,
+        headers: ali_genieip__1__0_models.ListInfraredRemoteControllersHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ListInfraredRemoteControllersResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.brand):
+            body['Brand'] = request.brand
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.city):
+            body['City'] = request.city
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.province):
+            body['Province'] = request.province
+        if not UtilClient.is_unset(request.service_provider):
+            body['ServiceProvider'] = request.service_provider
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInfraredRemoteControllers',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/listInfraredRemoteControllers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ListInfraredRemoteControllersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_infrared_remote_controllers_with_options_async(
+        self,
+        request: ali_genieip__1__0_models.ListInfraredRemoteControllersRequest,
+        headers: ali_genieip__1__0_models.ListInfraredRemoteControllersHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ListInfraredRemoteControllersResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.brand):
+            body['Brand'] = request.brand
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.city):
+            body['City'] = request.city
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.province):
+            body['Province'] = request.province
+        if not UtilClient.is_unset(request.service_provider):
+            body['ServiceProvider'] = request.service_provider
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInfraredRemoteControllers',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/listInfraredRemoteControllers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ListInfraredRemoteControllersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_infrared_remote_controllers(
+        self,
+        request: ali_genieip__1__0_models.ListInfraredRemoteControllersRequest,
+    ) -> ali_genieip__1__0_models.ListInfraredRemoteControllersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ListInfraredRemoteControllersHeaders()
+        return self.list_infrared_remote_controllers_with_options(request, headers, runtime)
+
+    async def list_infrared_remote_controllers_async(
+        self,
+        request: ali_genieip__1__0_models.ListInfraredRemoteControllersRequest,
+    ) -> ali_genieip__1__0_models.ListInfraredRemoteControllersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ListInfraredRemoteControllersHeaders()
+        return await self.list_infrared_remote_controllers_with_options_async(request, headers, runtime)
+
+    def list_stbservice_providers_with_options(
+        self,
+        request: ali_genieip__1__0_models.ListSTBServiceProvidersRequest,
+        headers: ali_genieip__1__0_models.ListSTBServiceProvidersHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ListSTBServiceProvidersResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.city):
+            body['City'] = request.city
+        if not UtilClient.is_unset(request.province):
+            body['Province'] = request.province
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSTBServiceProviders',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/listSTBServiceProviders',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ListSTBServiceProvidersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_stbservice_providers_with_options_async(
+        self,
+        request: ali_genieip__1__0_models.ListSTBServiceProvidersRequest,
+        headers: ali_genieip__1__0_models.ListSTBServiceProvidersHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ListSTBServiceProvidersResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.city):
+            body['City'] = request.city
+        if not UtilClient.is_unset(request.province):
+            body['Province'] = request.province
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSTBServiceProviders',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/listSTBServiceProviders',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ListSTBServiceProvidersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_stbservice_providers(
+        self,
+        request: ali_genieip__1__0_models.ListSTBServiceProvidersRequest,
+    ) -> ali_genieip__1__0_models.ListSTBServiceProvidersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ListSTBServiceProvidersHeaders()
+        return self.list_stbservice_providers_with_options(request, headers, runtime)
+
+    async def list_stbservice_providers_async(
+        self,
+        request: ali_genieip__1__0_models.ListSTBServiceProvidersRequest,
+    ) -> ali_genieip__1__0_models.ListSTBServiceProvidersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ListSTBServiceProvidersHeaders()
+        return await self.list_stbservice_providers_with_options_async(request, headers, runtime)
 
     def list_scene_category_with_options(
         self,

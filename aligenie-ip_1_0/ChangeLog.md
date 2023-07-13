@@ -1,3 +1,6 @@
+2023-07-13 Version: 2.0.0
+- Add c sharp sdk.
+
 2023-07-12 Version: 1.0.25
 - Add hotel scene import api.
 
