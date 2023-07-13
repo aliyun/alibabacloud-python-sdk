@@ -4906,6 +4906,7 @@ class Client(OpenApiClient):
     ) -> cms_20190101_models.DescribeAlertHistoryListResponse:
         """
         @deprecated : DescribeAlertHistoryList is deprecated, please use Cms::2019-01-01::DescribeAlertLogList instead.
+        This API operation is no longer maintained. We recommend that you call the [DescribeAlertLogList](~~201087~~) operation.
         
         @param request: DescribeAlertHistoryListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4964,6 +4965,7 @@ class Client(OpenApiClient):
     ) -> cms_20190101_models.DescribeAlertHistoryListResponse:
         """
         @deprecated : DescribeAlertHistoryList is deprecated, please use Cms::2019-01-01::DescribeAlertLogList instead.
+        This API operation is no longer maintained. We recommend that you call the [DescribeAlertLogList](~~201087~~) operation.
         
         @param request: DescribeAlertHistoryListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5021,6 +5023,7 @@ class Client(OpenApiClient):
     ) -> cms_20190101_models.DescribeAlertHistoryListResponse:
         """
         @deprecated : DescribeAlertHistoryList is deprecated, please use Cms::2019-01-01::DescribeAlertLogList instead.
+        This API operation is no longer maintained. We recommend that you call the [DescribeAlertLogList](~~201087~~) operation.
         
         @param request: DescribeAlertHistoryListRequest
         @return: DescribeAlertHistoryListResponse
@@ -5035,6 +5038,7 @@ class Client(OpenApiClient):
     ) -> cms_20190101_models.DescribeAlertHistoryListResponse:
         """
         @deprecated : DescribeAlertHistoryList is deprecated, please use Cms::2019-01-01::DescribeAlertLogList instead.
+        This API operation is no longer maintained. We recommend that you call the [DescribeAlertLogList](~~201087~~) operation.
         
         @param request: DescribeAlertHistoryListRequest
         @return: DescribeAlertHistoryListResponse
@@ -8196,6 +8200,12 @@ class Client(OpenApiClient):
             query['Category'] = request.category
         if not UtilClient.is_unset(request.ids):
             query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.is_enable):
+            query['IsEnable'] = request.is_enable
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.order):
@@ -8204,6 +8214,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scope_type):
+            query['ScopeType'] = request.scope_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8234,6 +8246,12 @@ class Client(OpenApiClient):
             query['Category'] = request.category
         if not UtilClient.is_unset(request.ids):
             query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.is_enable):
+            query['IsEnable'] = request.is_enable
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.order):
@@ -8242,6 +8260,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scope_type):
+            query['ScopeType'] = request.scope_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10225,7 +10245,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeProjectMetaResponse:
         """
-        The description of the cloud service.
+        The information obtained by this operation includes the service description, namespace, and tags.
         
         @param request: DescribeProjectMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10264,7 +10284,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeProjectMetaResponse:
         """
-        The description of the cloud service.
+        The information obtained by this operation includes the service description, namespace, and tags.
         
         @param request: DescribeProjectMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10302,7 +10322,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeProjectMetaRequest,
     ) -> cms_20190101_models.DescribeProjectMetaResponse:
         """
-        The description of the cloud service.
+        The information obtained by this operation includes the service description, namespace, and tags.
         
         @param request: DescribeProjectMetaRequest
         @return: DescribeProjectMetaResponse
@@ -10315,7 +10335,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeProjectMetaRequest,
     ) -> cms_20190101_models.DescribeProjectMetaResponse:
         """
-        The description of the cloud service.
+        The information obtained by this operation includes the service description, namespace, and tags.
         
         @param request: DescribeProjectMetaRequest
         @return: DescribeProjectMetaResponse
@@ -10527,7 +10547,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorISPCityListResponse:
         """
-        The code of the province.
+        This topic provides an example on how to query the detection points that are provided by China Unicom in Guiyang.
         
         @param request: DescribeSiteMonitorISPCityListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10570,7 +10590,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorISPCityListResponse:
         """
-        The code of the province.
+        This topic provides an example on how to query the detection points that are provided by China Unicom in Guiyang.
         
         @param request: DescribeSiteMonitorISPCityListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10612,7 +10632,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorISPCityListRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorISPCityListResponse:
         """
-        The code of the province.
+        This topic provides an example on how to query the detection points that are provided by China Unicom in Guiyang.
         
         @param request: DescribeSiteMonitorISPCityListRequest
         @return: DescribeSiteMonitorISPCityListResponse
@@ -10625,7 +10645,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorISPCityListRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorISPCityListResponse:
         """
-        The code of the province.
+        This topic provides an example on how to query the detection points that are provided by China Unicom in Guiyang.
         
         @param request: DescribeSiteMonitorISPCityListRequest
         @return: DescribeSiteMonitorISPCityListResponse
