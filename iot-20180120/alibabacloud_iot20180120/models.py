@@ -138,6 +138,298 @@ class AddDataForApiSourceResponse(TeaModel):
         return self
 
 
+class AddDeviceToSharePromotionRequestDeviceSimpleInfoList(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        product_key: str = None,
+    ):
+        self.device_name = device_name
+        self.product_key = product_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        return self
+
+
+class AddDeviceToSharePromotionRequest(TeaModel):
+    def __init__(
+        self,
+        device_simple_info_list: List[AddDeviceToSharePromotionRequestDeviceSimpleInfoList] = None,
+        iot_instance_id: str = None,
+        share_promotion_activity_id: str = None,
+        share_task_code: str = None,
+    ):
+        self.device_simple_info_list = device_simple_info_list
+        self.iot_instance_id = iot_instance_id
+        self.share_promotion_activity_id = share_promotion_activity_id
+        self.share_task_code = share_task_code
+
+    def validate(self):
+        if self.device_simple_info_list:
+            for k in self.device_simple_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DeviceSimpleInfoList'] = []
+        if self.device_simple_info_list is not None:
+            for k in self.device_simple_info_list:
+                result['DeviceSimpleInfoList'].append(k.to_map() if k else None)
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.share_promotion_activity_id is not None:
+            result['SharePromotionActivityId'] = self.share_promotion_activity_id
+        if self.share_task_code is not None:
+            result['ShareTaskCode'] = self.share_task_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.device_simple_info_list = []
+        if m.get('DeviceSimpleInfoList') is not None:
+            for k in m.get('DeviceSimpleInfoList'):
+                temp_model = AddDeviceToSharePromotionRequestDeviceSimpleInfoList()
+                self.device_simple_info_list.append(temp_model.from_map(k))
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('SharePromotionActivityId') is not None:
+            self.share_promotion_activity_id = m.get('SharePromotionActivityId')
+        if m.get('ShareTaskCode') is not None:
+            self.share_task_code = m.get('ShareTaskCode')
+        return self
+
+
+class AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        fail_code: int = None,
+        fail_reason: str = None,
+        product_key: str = None,
+    ):
+        self.device_name = device_name
+        self.fail_code = fail_code
+        self.fail_reason = fail_reason
+        self.product_key = product_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.fail_code is not None:
+            result['FailCode'] = self.fail_code
+        if self.fail_reason is not None:
+            result['FailReason'] = self.fail_reason
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('FailCode') is not None:
+            self.fail_code = m.get('FailCode')
+        if m.get('FailReason') is not None:
+            self.fail_reason = m.get('FailReason')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        return self
+
+
+class AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoList(TeaModel):
+    def __init__(
+        self,
+        item: List[AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem] = None,
+    ):
+        self.item = item
+
+    def validate(self):
+        if self.item:
+            for k in self.item:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['item'] = []
+        if self.item is not None:
+            for k in self.item:
+                result['item'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.item = []
+        if m.get('item') is not None:
+            for k in m.get('item'):
+                temp_model = AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoListItem()
+                self.item.append(temp_model.from_map(k))
+        return self
+
+
+class AddDeviceToSharePromotionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        fail_device_simple_info_list: AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoList = None,
+    ):
+        self.fail_device_simple_info_list = fail_device_simple_info_list
+
+    def validate(self):
+        if self.fail_device_simple_info_list:
+            self.fail_device_simple_info_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fail_device_simple_info_list is not None:
+            result['FailDeviceSimpleInfoList'] = self.fail_device_simple_info_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailDeviceSimpleInfoList') is not None:
+            temp_model = AddDeviceToSharePromotionResponseBodyDataFailDeviceSimpleInfoList()
+            self.fail_device_simple_info_list = temp_model.from_map(m['FailDeviceSimpleInfoList'])
+        return self
+
+
+class AddDeviceToSharePromotionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: AddDeviceToSharePromotionResponseBodyData = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = AddDeviceToSharePromotionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddDeviceToSharePromotionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddDeviceToSharePromotionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddDeviceToSharePromotionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddShareTaskDeviceRequest(TeaModel):
     def __init__(
         self,
@@ -2274,7 +2566,13 @@ class BatchCheckImportDeviceRequest(TeaModel):
         product_key: str = None,
     ):
         self.device_list = device_list
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The **ProductKey** of the gateway product to which the devices belong.
         self.product_key = product_key
 
     def validate(self):
@@ -2426,10 +2724,18 @@ class BatchCheckImportDeviceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The data returned if the request succeeds. The data includes the information about devices that failed to be verified.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -5682,7 +5988,13 @@ class BatchImportDeviceRequest(TeaModel):
         product_key: str = None,
     ):
         self.device_list = device_list
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The **ProductKey** of the gateway product to which the devices belong.
         self.product_key = product_key
 
     def validate(self):
@@ -5919,6 +6231,7 @@ class BatchImportDeviceResponseBodyData(TeaModel):
         invalid_sn_list: BatchImportDeviceResponseBodyDataInvalidSnList = None,
         repeated_device_name_list: BatchImportDeviceResponseBodyDataRepeatedDeviceNameList = None,
     ):
+        # The application ID returned if the request is successful.
         self.apply_id = apply_id
         self.invalid_detail_list = invalid_detail_list
         self.invalid_device_name_list = invalid_device_name_list
@@ -5989,10 +6302,18 @@ class BatchImportDeviceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -8872,8 +9193,13 @@ class BindLicenseDeviceRequest(TeaModel):
     ):
         self.device_name_list = device_name_list
         self.iot_id_list = iot_id_list
+        # The ID of the Enterprise Edition instance. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
         self.iot_instance_id = iot_instance_id
+        # The license type that specifies the audio and video specifications. Valid values: **480P** and **720P**.
         self.license_code = license_code
+        # The **ProductKey** of the product to which the devices belong.
+        # 
+        # You can go to the IoT Platform console or call the [QueryProductList](~~69271~~) operation to view the information about all products of the instance.
         self.product_key = product_key
 
     def validate(self):
@@ -8921,10 +9247,15 @@ class BindLicenseDeviceResponseBodyData(TeaModel):
         result_csv_file: str = None,
         success_sum: int = None,
     ):
+        # The unique ID that can be used to query the progress of the batch binding operation.
         self.check_progress_id = check_progress_id
+        # The number of devices that failed to be bound to the license.
         self.fail_sum = fail_sum
+        # The progress of the batch binding operation. The progress is a percentage. Valid values: 1 to 100.
         self.progress = progress
+        # The URL of the file that contains unbound devices. The devices failed to be bound to the license.
         self.result_csv_file = result_csv_file
+        # The number of devices to which the license is successfully bound.
         self.success_sum = success_sum
 
     def validate(self):
@@ -8972,10 +9303,18 @@ class BindLicenseDeviceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see the "Error codes" section in this topic.
         self.code = code
+        # The result of the batch binding operation.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -11292,8 +11631,17 @@ class CountSpeechBroadcastHourRequest(TeaModel):
         query_date_time_hour: str = None,
         share_task_code: str = None,
     ):
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The end time of the hour in which you want to query the number of broadcasted speeches. Example: 2020090919, which indicates 19:00 on September 9, 2020.
         self.query_date_time_hour = query_date_time_hour
+        # The code that is used to share the speeches.
+        # 
+        # You can obtain the **code** on the **Shared Corpus Management** page of **Speech Sending Voice Broadcasting Service**.
         self.share_task_code = share_task_code
 
     def validate(self):
@@ -11333,10 +11681,18 @@ class CountSpeechBroadcastHourResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The number of shared speeches that were broadcasted in the specific hour.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -12053,9 +12409,50 @@ class CreateDataSourceItemRequest(TeaModel):
     ):
         self.data_source_id = data_source_id
         self.device_name = device_name
+        # The instance ID. You can view the instance **ID** on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
         self.product_key = product_key
         self.scope_type = scope_type
+        # The topic that you want to add to the data source in the rules engine. Format: `/${productKey}/${deviceName}/topicShortName`. `${productKey}` specifies the **ProductKey** of the product to which a device belongs. `${deviceName}` specifies the name of the device. `topicShortName` specifies the custom name of the topic.
+        # 
+        # *   Basic communication topics or Thing Specification Language (TSL) communication topics are in the `/${productKey}/${deviceName}/topicShortName` format. You can replace `${deviceName}` with the plus sign (`+`) wildcard character. The wildcard character specifies that the topic applies to all devices in the product. Valid values of `topicShortName`:
+        # 
+        #     *   `/thing/event/property/post`: submits the property data of a device.
+        #     *   `/thing/event/${tsl.event.identifier}/post`: submits the event data of a device. `${tsl.event.identifier}` specifies the identifier of an event in the TSL model.
+        #     *   `/thing/lifecycle`: submits device lifecycle changes.
+        #     *   `/thing/downlink/reply/message`: sends a response to a request from IoT Platform.
+        #     *   `/thing/list/found`: submits data when a gateway detects a new sub-device.
+        #     *   `/thing/topo/lifecycle`: submits device topology changes.
+        #     *   `/thing/event/property/history/post`: submits the historical property data of a device.
+        #     *   `/thing/event/${tsl.event.identifier}/post`: submits the historical event data of a device. `${tsl.event.identifier}` specifies the identifier of an event in the TSL model.
+        #     *   `/ota/upgrade`: submits the over-the-air (OTA) update status.
+        #     *   `/ota/version/post`: submits OTA module versions.
+        #     *   `/thing/deviceinfo/update`: submits device tag changes.
+        # 
+        #     `/${productKey}/${packageId}/${jobId}/ota/job/status`: submits the status of each OTA update batch. This topic is a basic communication topic. `${packageId}` specifies the ID of the update package. `${jobId}` specifies the ID of the update batch.
+        # 
+        # *   Custom topics are in the `/${productKey}/${deviceName}/user/#` format. Example: `/${productKey}/${deviceName}/user/get`.
+        # 
+        #     You can call the [QueryProductTopic](~~69647~~) operation to view all custom topics of a product.
+        # 
+        #     When you specify a custom topic, you can use the plus sign (`+`) and number sign (`#`) wildcard characters.
+        # 
+        #     *   You can replace `${deviceName}` with the plus sign (`+`) wildcard character. The wildcard character specifies that the topic applies to all devices in the product.
+        #     *   You can replace the fields that follow ${deviceName} with `/user/#`. The number sign (`#`) wildcard character specifies that the topic applies to all fields that follow `/user`.
+        # 
+        # *   Topics that are used to submit device status changes are in the `/as/mqtt/status/${productKey}/${deviceName}` format.
+        # 
+        # You can use the plus sign (`+`) wildcard character to specify that the status changes of all devices in the product are submitted.
+        # 
+        # For more information about how to use wildcard characters, see the "Custom topics with wildcard characters" section in [Use custom topics](~~85539~~).
+        # 
+        # For more information about the data formats of topics, see [Data formats](~~73736~~).
+        # 
+        # > You can add only the following topics to the data source in the rules engine for MQTT gateways, devices of MQTT gateways, and products and devices that use the open source MQTT protocol: custom topics, topics that are used to submit device status changes, and topics that are used to submit device lifecycle changes. For more information about custom topics, see the "Messaging" topic. If you set this parameter to a custom topic, you must specify ScopeType and ProductKey. If you set ScopeType to DEVICE, you must specify DeviceName.
         self.topic = topic
 
     def validate(self):
@@ -15025,7 +15422,9 @@ class CreateLoRaNodesTaskRequestDeviceInfo(TeaModel):
         dev_eui: str = None,
         pin_code: str = None,
     ):
+        # The DevEUI of the LoRaWAN device.
         self.dev_eui = dev_eui
+        # The PIN code of the LoRaWAN device. The value of the parameter is used to verify the DevEUI.
         self.pin_code = pin_code
 
     def validate(self):
@@ -15059,8 +15458,15 @@ class CreateLoRaNodesTaskRequest(TeaModel):
         iot_instance_id: str = None,
         product_key: str = None,
     ):
+        # The LoRaWAN devices.
         self.device_info = device_info
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The ProductKey of the product to which the devices belong.
         self.product_key = product_key
 
     def validate(self):
@@ -15108,10 +15514,20 @@ class CreateLoRaNodesTaskResponseBody(TeaModel):
         success: bool = None,
         task_id: str = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The task ID returned if the request was successful.
+        # 
+        # > Record the ID. You must use the ID to query the status of the device creation task.
         self.task_id = task_id
 
     def validate(self):
@@ -18993,6 +19409,316 @@ class CreateSchedulePeriodResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSchedulePeriodResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSharePromotionActivityRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        iot_instance_id: str = None,
+        share_promotion_activity_name: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.iot_instance_id = iot_instance_id
+        self.share_promotion_activity_name = share_promotion_activity_name
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.share_promotion_activity_name is not None:
+            result['SharePromotionActivityName'] = self.share_promotion_activity_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('SharePromotionActivityName') is not None:
+            self.share_promotion_activity_name = m.get('SharePromotionActivityName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class CreateSharePromotionActivityResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateSharePromotionActivityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSharePromotionActivityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSharePromotionActivityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSharePromotionSpeechModelRequest(TeaModel):
+    def __init__(
+        self,
+        audio_format: str = None,
+        biz_code: str = None,
+        iot_instance_id: str = None,
+        share_promotion_activity_id: str = None,
+        share_task_code: str = None,
+        speech_model_type: str = None,
+        speech_rate: int = None,
+        text: str = None,
+        voice: str = None,
+        volume: int = None,
+    ):
+        self.audio_format = audio_format
+        self.biz_code = biz_code
+        self.iot_instance_id = iot_instance_id
+        self.share_promotion_activity_id = share_promotion_activity_id
+        self.share_task_code = share_task_code
+        self.speech_model_type = speech_model_type
+        self.speech_rate = speech_rate
+        self.text = text
+        self.voice = voice
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_format is not None:
+            result['AudioFormat'] = self.audio_format
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.share_promotion_activity_id is not None:
+            result['SharePromotionActivityId'] = self.share_promotion_activity_id
+        if self.share_task_code is not None:
+            result['ShareTaskCode'] = self.share_task_code
+        if self.speech_model_type is not None:
+            result['SpeechModelType'] = self.speech_model_type
+        if self.speech_rate is not None:
+            result['SpeechRate'] = self.speech_rate
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.voice is not None:
+            result['Voice'] = self.voice
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioFormat') is not None:
+            self.audio_format = m.get('AudioFormat')
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('SharePromotionActivityId') is not None:
+            self.share_promotion_activity_id = m.get('SharePromotionActivityId')
+        if m.get('ShareTaskCode') is not None:
+            self.share_task_code = m.get('ShareTaskCode')
+        if m.get('SpeechModelType') is not None:
+            self.speech_model_type = m.get('SpeechModelType')
+        if m.get('SpeechRate') is not None:
+            self.speech_rate = m.get('SpeechRate')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Voice') is not None:
+            self.voice = m.get('Voice')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class CreateSharePromotionSpeechModelResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateSharePromotionSpeechModelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSharePromotionSpeechModelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSharePromotionSpeechModelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28784,12 +29510,31 @@ class GetDestinationResponseBodyDestination(TeaModel):
         type: str = None,
         utc_created: str = None,
     ):
+        # The configuration data of the data destination.
         self.configuration = configuration
+        # The ID of the data destination.
         self.destination_id = destination_id
+        # Indicates whether the data destination is configured to receive error operation data. Error operation data is data that failed to be forwarded for two consecutive times.
+        # 
+        # *   **true**: The data destination is configured to receive error operation data.
+        # *   **false**: The data destination is configured to receive regular data instead of error operation data.
+        # 
+        # Default value: **false**.
         self.is_failover = is_failover
+        # The name of the data destination.
         self.name = name
         self.status = status
+        # The operation that is performed on the data of the data destination.
+        # 
+        # *   **REPUBLISH**: forwards topic data that is processed by a parser script to an IoT Platform communication topic.
+        # *   **AMQP**: forwards topic data that is processed by a parser script to an Advanced Message Queuing Protocol (AMQP) consumer group.
+        # *   **DATAHUB**: forwards topic data to Alibaba Cloud DataHub for stream data processing.
+        # *   **ONS**: forwards topic data that is processed by a parser script to Message Queue for Apache RocketMQ for message distribution.
+        # *   **MNS**: forwards topic data to Message Service (MNS) for message transmission.
+        # *   **FC**: forwards topic data to Function Compute for event computing.
+        # *   **OTS**: forwards topic data to Tablestore for NoSQL data storage.
         self.type = type
+        # The time when the data destination was created. The time is displayed in UTC. Format: `yyyy-MM-dd\"T\"HH:mm:ss.SSS\"Z\"`.
         self.utc_created = utc_created
 
     def validate(self):
@@ -28845,10 +29590,18 @@ class GetDestinationResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The information about the data destination.
         self.destination = destination
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -31776,7 +32529,13 @@ class GetLoraNodesTaskRequest(TeaModel):
         iot_instance_id: str = None,
         task_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # You can obtain the **ID** of the instance on the **Overview** page in the IoT Platform console. If your instance has an ID, you must specify this parameter. Otherwise, the request fails.
+        # 
+        # > The ID of a public instance may not be displayed on the Overview page. For more information about how to obtain the instance ID, see [How do I obtain an instance ID?](~~267533~~)
         self.iot_instance_id = iot_instance_id
+        # The ID of the task for creating the LoRaWAN devices. You can call the [CreateLoRaNodesTask](~~109299~~) operation and obtain the task ID from the value of the **TaskId** response parameter.
         self.task_id = task_id
 
     def validate(self):
@@ -31843,14 +32602,28 @@ class GetLoraNodesTaskResponseBody(TeaModel):
         task_state: str = None,
         total_count: int = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The number of devices that were created.
         self.success_count = success_count
         self.success_dev_euis = success_dev_euis
+        # The task ID returned if the request is successful.
         self.task_id = task_id
+        # The task status.
+        # 
+        # *   **RUNNING**: The task is in progress.
+        # *   **FINISH**: The task is completed.
         self.task_state = task_state
+        # The total number of devices that you want to create.
         self.total_count = total_count
 
     def validate(self):
@@ -33894,6 +34667,11 @@ class GetSpeechLicenseDeviceStatisticsRequest(TeaModel):
         self,
         iot_instance_id: str = None,
     ):
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
 
     def validate(self):
@@ -33923,8 +34701,11 @@ class GetSpeechLicenseDeviceStatisticsResponseBodyData(TeaModel):
         expired_quota: int = None,
         expiring_quota: int = None,
     ):
+        # The number of available licenses.
         self.available_quota = available_quota
+        # The number of expired licenses.
         self.expired_quota = expired_quota
+        # The number of licenses that are about to expire.
         self.expiring_quota = expiring_quota
 
     def validate(self):
@@ -33964,10 +34745,18 @@ class GetSpeechLicenseDeviceStatisticsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The response parameters.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -36241,11 +37030,35 @@ class ImportDeviceRequest(TeaModel):
         product_key: str = None,
         sn: str = None,
     ):
+        # The DeviceName of the device.
+        # 
+        # The DeviceName must be 4 to 32 characters in length, and can contain letters, digits, hyphens (-), underscores (\_), at signs (@), periods (.), and colons (:).
+        # 
+        # The DeviceName must be unique in the product.
         self.device_name = device_name
+        # The DeviceSecret of the device.
+        # 
+        # The DeviceSecret must be 1 to 32 characters in length, and can contain letters, digits, hyphens (-), underscores (\_), at signs (@), periods (.), and colons (:).
         self.device_secret = device_secret
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see [Overview](~~356505~~) of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The alias of the device.
+        # 
+        # The alias must be 1 to 64 characters in length, and can contain letters, digits, and underscores (\_).
+        # 
+        # > If you do not specify this parameter, IoT Platform does not generate an alias for the device.
         self.nickname = nickname
+        # The **ProductKey** of the gateway product to which the device belongs.
         self.product_key = product_key
+        # The serial number (SN) of the device.
+        # 
+        # The SN must be 1 to 64 characters in length, and can contain letters, digits, and underscores (\_).
+        # 
+        # > If you do not specify this parameter, IoT Platform does not generate an SN for the device.
         self.sn = sn
 
     def validate(self):
@@ -36298,11 +37111,27 @@ class ImportDeviceResponseBodyData(TeaModel):
         product_key: str = None,
         sn: str = None,
     ):
+        # The DeviceName of the device.
+        # 
+        # >  Keep the information confidential.
         self.device_name = device_name
+        # The DeviceSecret of the device.
+        # 
+        # >  Keep the information confidential.
         self.device_secret = device_secret
+        # The ID of the device. The ID is a unique identifier that is issued by IoT Platform to the device.
+        # 
+        # >  Keep the information confidential.
         self.iot_id = iot_id
+        # The alias of the device.
+        # 
+        # > If you did not specify an alias for the device, the response parameter is empty.
         self.nickname = nickname
+        # The **ProductKey** of the product to which the device belongs.
         self.product_key = product_key
+        # The SN of the device.
+        # 
+        # > If you did not specify an SN for the device, the response parameter is empty.
         self.sn = sn
 
     def validate(self):
@@ -36354,10 +37183,18 @@ class ImportDeviceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The device information returned if the request is successful.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -37605,7 +38442,15 @@ class ListDataSourceItemRequest(TeaModel):
         page_size: int = None,
         search_name: str = None,
     ):
+        # The data source ID.
+        # 
+        # You can call the [ListParserDataSource](~~432676~~) operation to obtain the IDs of all data sources of the instance.
         self.data_source_id = data_source_id
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
         self.page = page
         self.page_size = page_size
@@ -37656,10 +38501,12 @@ class ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem(TeaModel):
         scope_type: str = None,
         topic: str = None,
     ):
+        # The ID of the topic of the data source.
         self.data_source_item_id = data_source_item_id
         self.device_name = device_name
         self.product_key = product_key
         self.scope_type = scope_type
+        # The name of the topic of the data source.
         self.topic = topic
 
     def validate(self):
@@ -37745,13 +38592,24 @@ class ListDataSourceItemResponseBody(TeaModel):
         success: bool = None,
         total: int = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The information about the topics that are returned.
         self.data_source_items = data_source_items
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The page number.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -37861,6 +38719,15 @@ class ListDestinationRequest(TeaModel):
         self.page = page
         self.page_size = page_size
         self.search_name = search_name
+        # The actions of forwarding data to data destinations. Data is processed by using a parser script before the data is forwarded. Valid values:
+        # 
+        # *   **REPUBLISH**: forwards topic data to an IoT Platform communication topic.
+        # *   **AMQP**: forwards topic data to an Advanced Message Queuing Protocol (AMQP) consumer group.
+        # *   **DATAHUB**: forwards topic data to Alibaba Cloud DataHub for stream data processing.
+        # *   **ONS**: forwards topic data to Message Queue for Apache RocketMQ for message distribution.
+        # *   **MNS**: forwards topic data to Message Service (MNS) for message transmission.
+        # *   **FC**: forwards topic data to Function Compute for event computing.
+        # *   **OTS**: forwards topic data to Tablestore for NoSQL data storage.
         self.types = types
 
     def validate(self):
@@ -37911,13 +38778,25 @@ class ListDestinationResponseBodyDestinationsDestinations(TeaModel):
         type: str = None,
         utc_created: str = None,
     ):
+        # The configuration data of the data destination.
         self.configuration = configuration
+        # The description of the data destination.
         self.description = description
+        # The ID of the data destination.
         self.destination_id = destination_id
+        # Indicates whether the data destination is configured to receive error operation data. Error operation data is the data that failed to be forwarded for two consecutive times.
+        # 
+        # *   **true**: The data destination is configured to receive error operation data.
+        # *   **false**: The data destination is configured to receive regular data instead of error operation data.
+        # 
+        # Default value: **false**.
         self.is_failover = is_failover
+        # The name of the data destination.
         self.name = name
         self.status = status
+        # The action of forwarding data to the data destination.
         self.type = type
+        # The time when the data destination was created. The time is displayed in UTC. The time follows the ISO 8601 standard in the `yyyy-MM-dd\"T\"HH:mm:ss.SSS\"Z\"` format.
         self.utc_created = utc_created
 
     def validate(self):
@@ -38015,13 +38894,24 @@ class ListDestinationResponseBody(TeaModel):
         success: bool = None,
         total: int = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The data destinations.
         self.destinations = destinations
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The page number.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -44619,6 +45509,152 @@ class ListThingTemplatesResponse(TeaModel):
         return self
 
 
+class ModifyOTAFirmwareRequest(TeaModel):
+    def __init__(
+        self,
+        firmware_desc: str = None,
+        firmware_id: str = None,
+        firmware_name: str = None,
+        firmware_udi: str = None,
+        iot_instance_id: str = None,
+        product_key: str = None,
+    ):
+        self.firmware_desc = firmware_desc
+        self.firmware_id = firmware_id
+        self.firmware_name = firmware_name
+        self.firmware_udi = firmware_udi
+        self.iot_instance_id = iot_instance_id
+        self.product_key = product_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.firmware_desc is not None:
+            result['FirmwareDesc'] = self.firmware_desc
+        if self.firmware_id is not None:
+            result['FirmwareId'] = self.firmware_id
+        if self.firmware_name is not None:
+            result['FirmwareName'] = self.firmware_name
+        if self.firmware_udi is not None:
+            result['FirmwareUdi'] = self.firmware_udi
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FirmwareDesc') is not None:
+            self.firmware_desc = m.get('FirmwareDesc')
+        if m.get('FirmwareId') is not None:
+            self.firmware_id = m.get('FirmwareId')
+        if m.get('FirmwareName') is not None:
+            self.firmware_name = m.get('FirmwareName')
+        if m.get('FirmwareUdi') is not None:
+            self.firmware_udi = m.get('FirmwareUdi')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        return self
+
+
+class ModifyOTAFirmwareResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyOTAFirmwareResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyOTAFirmwareResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyOTAFirmwareResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class NotifyAddThingTopoRequest(TeaModel):
     def __init__(
         self,
@@ -45063,13 +46099,33 @@ class PageQuerySharedSpeechOpenRequest(TeaModel):
         share_task_code: str = None,
         status: int = None,
     ):
+        # The DeviceName of the device.
         self.device_name = device_name
+        # The ID of the device.
+        # 
+        # > If you specify this parameter, you do not need to specify **ProductKey** and **DeviceName**. **IotId** specifies the GUID of the device. The value of the IotId parameter is a combination of the values of the **ProductKey** and **DeviceName** parameters. If you specify the **IotId**, **ProductKey**, and **DeviceName** parameters, the value of the **IotId** parameter takes precedence.
         self.iot_id = iot_id
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The page number.
         self.page_id = page_id
+        # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
+        # The **ProductKey** of the product to which the device belongs.
         self.product_key = product_key
+        # The code that is used to share the speeches.
+        # 
+        # You can obtain the **code** on the **Shared Corpus Management** page of **Speech Sending Voice Broadcasting Service**.
         self.share_task_code = share_task_code
+        # The status of the speeches that you want to query. Valid values:
+        # 
+        # *   **1**: The speeches are pending approval.
+        # *   **2**: The speeches are approved.
+        # *   **3**: The speeches are rejected.
         self.status = status
 
     def validate(self):
@@ -45132,13 +46188,25 @@ class PageQuerySharedSpeechOpenResponseBodyDataResultDataData(TeaModel):
         voice: str = None,
         volume: int = None,
     ):
+        # The audio format. Valid values: **wav**, **mp3**, and **amr**.
         self.audio_format = audio_format
+        # The unique identifier of the speech in the project.
         self.biz_code = biz_code
+        # The unique identifier of the template.
         self.code = code
+        # The broadcasting speed. Valid values: -500 to 500.
         self.speech_rate = speech_rate
+        # The status of the speeches. Valid values:
+        # 
+        # *   **1**: The speeches are pending approval.
+        # *   **2**: The speeches are approved.
+        # *   **3**: The speeches are rejected.
         self.status = status
+        # The content of the speech.
         self.text = text
+        # The sound effect that is used to broadcast speeches.
         self.voice = voice
+        # The volume. Valid values: 0 to 100.
         self.volume = volume
 
     def validate(self):
@@ -45232,9 +46300,13 @@ class PageQuerySharedSpeechOpenResponseBodyData(TeaModel):
         result_data: PageQuerySharedSpeechOpenResponseBodyDataResultData = None,
         total: int = None,
     ):
+        # The page number.
         self.page_id = page_id
+        # The number of entries per page.
         self.page_size = page_size
+        # The information about shared speeches.
         self.result_data = result_data
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -45280,10 +46352,18 @@ class PageQuerySharedSpeechOpenResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The result returned if the request was successful.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -45377,10 +46457,23 @@ class PageQuerySpeechBroadcastHourRequest(TeaModel):
         query_date_time_hour: str = None,
         share_task_code: str = None,
     ):
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see [Overview](~~356505~~) of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The number of entries per page. Default value: 10. Valid values: 1 to 2000.
         self.page_size = page_size
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of **PageToken**.
+        # 
+        # For example, if you want to query the results on Page n, you must set PageToken to the token that you obtained when you queried the results on Page n - 1.
         self.page_token = page_token
+        # The end time of the hour in which you want to query data. Example: 2020090919, which specifies 19:00 on September 9, 2020.
         self.query_date_time_hour = query_date_time_hour
+        # The code of the speech sharing task.
+        # 
+        # You can obtain the **code** on the **Shared Corpus Management** page of **Speech Sending Voice Broadcasting Service**.
         self.share_task_code = share_task_code
 
     def validate(self):
@@ -45431,13 +46524,25 @@ class PageQuerySpeechBroadcastHourResponseBodyDataResultDataData(TeaModel):
         speechs: str = None,
         start_time: int = None,
     ):
+        # Indicates whether the speech was successfully broadcasted. Valid values:
+        # 
+        # *   **0**: The speech was successfully broadcasted.
+        # *   **1**: The speech was repeatedly broadcasted.
+        # *   **2**: The speech does not exist.
         self.code = code
+        # The DeviceName of the device.
         self.device_name = device_name
+        # The message that indicates the speech broadcasting result.
         self.msg = msg
+        # The **ProductKey** of the product to which the device belongs.
         self.product_key = product_key
+        # The code of the sharing task.
         self.share_task_code = share_task_code
+        # The ID of the speech that was broadcasted.
         self.speech_id = speech_id
+        # The content of the broadcasted speech. The parameter value is a JSON array.
         self.speechs = speechs
+        # The start time of speech broadcasting. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -45532,10 +46637,17 @@ class PageQuerySpeechBroadcastHourResponseBodyData(TeaModel):
         result_data: PageQuerySpeechBroadcastHourResponseBodyDataResultData = None,
         total: int = None,
     ):
+        # The page number.
         self.page_id = page_id
+        # The number of entries per page.
         self.page_size = page_size
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # 
+        # If **PageToken** is empty, no next page exists.
         self.page_token = page_token
+        # The shared speech broadcasting data returned.
         self.result_data = result_data
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -45585,10 +46697,18 @@ class PageQuerySpeechBroadcastHourResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The result returned if the call is successful.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -45684,12 +46804,24 @@ class PrintByTemplateRequest(TeaModel):
         product_key: str = None,
         template_biz_code: str = None,
     ):
+        # The DeviceName of the device.
         self.device_name = device_name
         self.history_print_topic = history_print_topic
+        # The device ID.
+        # 
+        # > If you specify this parameter, you do not need to specify the **ProductKey** and **DeviceName** parameters. **IotId** specifies a globally unique identifier (GUID) of the device, which corresponds to a combination of **ProductKey** and **DeviceName**. If you specify the **IotId**, **ProductKey**, and **DeviceName** parameters, the value of the **IotId** parameter takes precedence.
         self.iot_id = iot_id
+        # The instance ID.
+        # 
+        # You do not need to specify this parameter.
         self.iot_instance_id = iot_instance_id
+        # The template parameters. You can obtain the template of receipts in the Letter Sending Service console, and configure parameters in the template to create a custom receipt that you want to print.
         self.params_json_string = params_json_string
+        # The unique identifier of the product to which the device belongs.
+        # 
+        # > If you specify the **ProductKey** parameter, you must also specify the **DeviceName** parameter.
         self.product_key = product_key
+        # The template identifier. You can obtain the template identifier in the Letter Sending Service console.
         self.template_biz_code = template_biz_code
 
     def validate(self):
@@ -45746,11 +46878,25 @@ class PrintByTemplateResponseBodyData(TeaModel):
         retry_count: int = None,
         success: bool = None,
     ):
+        # The error code returned by the printer. Valid values:
+        # 
+        # *   2: The printer ran out of paper.
+        # *   3: A paper jam occurred in the printer.
         self.device_error_code = device_error_code
+        # The error message returned by the printer.
         self.device_error_message = device_error_message
+        # The ID of the printing operation.
         self.id = id
+        # The maximum number of retries. The value is fixed at 2, which indicates that up to two printing retries are supported.
+        # 
+        # If the printer responds to the printing command with a failure or timeout error, IoT Platform delivers the printing command to the printer.
         self.max_retry_count = max_retry_count
+        # The actual number of retries.
         self.retry_count = retry_count
+        # Indicates whether the printing operation was successful.
+        # 
+        # *   **true**: The printing operation was successful.
+        # *   **false**: The printing operation failed.
         self.success = success
 
     def validate(self):
@@ -45802,10 +46948,18 @@ class PrintByTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The result of the printing operation.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -47308,7 +48462,13 @@ class QueryCertUrlByApplyIdRequest(TeaModel):
         apply_id: int = None,
         iot_instance_id: str = None,
     ):
+        # The application ID. You can view the application ID in the result that is returned by the [BatchRegisterDeviceWithApplyId](~~69514~~) or [BatchRegisterDevice](~~69473~~) operation.
         self.apply_id = apply_id
+        # The instance ID.
+        # 
+        # You can obtain the **ID** of the instance on the **Overview** page in the IoT Platform console. If your instance has an ID, you must specify this parameter. Otherwise, the request fails.
+        # 
+        # > The ID of a public instance may not be displayed on the Overview page. For information about how to obtain the instance ID, see [How do I obtain an instance ID?](~~267533~~)
         self.iot_instance_id = iot_instance_id
 
     def validate(self):
@@ -47344,10 +48504,18 @@ class QueryCertUrlByApplyIdResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The URL from which you can download the X.509 certificates of created devices.
         self.cert_url = cert_url
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -58535,14 +59703,35 @@ class QueryDynamicGroupDevicesRequest(TeaModel):
         product_key: str = None,
         status: str = None,
     ):
+        # The page number. Default value: 1.
         self.current_page = current_page
+        # The DeviceName of the device.
+        # 
+        # If you specify this parameter and set **FuzzyName** to **true**, the value you specified is used as the prefix to fuzzy match the DeviceName. The value must be at least 4 characters in length.
         self.device_name = device_name
+        # Specifies whether to fuzzy match devices by the value of the **DeviceName** parameter. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.fuzzy_name = fuzzy_name
+        # The ID of the group. The ID is the globally unique identifier (GUID) for the group.
+        # 
+        # You can call the [QueryDeviceGroupList](~~93356~~) operation to query the **GroupId** parameter.
         self.group_id = group_id
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
         self.iot_instance_id = iot_instance_id
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_token = next_token
+        # The number of entries per page. Valid values: 1 to 200. Default value: 10.
         self.page_size = page_size
+        # The **ProductKey** of the product to which the devices belong.
         self.product_key = product_key
+        # The device status. Valid values:
+        # 
+        # *   **ONLINE**: The device is online.
+        # *   **OFFLINE**: The device is offline.
+        # *   **UNACTIVE**: The device is not activated.
+        # *   **DISABLE**: The device is deactivated.
         self.status = status
 
     def validate(self):
@@ -58613,17 +59802,39 @@ class QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo(TeaModel):
         utc_active_time: str = None,
         utc_last_online_time: str = None,
     ):
+        # The time when the device was activated.
         self.active_time = active_time
+        # The identifier of the category to which the product belongs.
+        # 
+        # This parameter is returned if the product uses the Thing Specification Language (TSL) model of a standard category that is pre-defined by IoT Platform.
         self.category_key = category_key
+        # The DeviceName of the device.
         self.device_name = device_name
+        # The ID of the device. The ID is a unique identifier that is issued by IoT Platform to the device.
         self.iot_id = iot_id
+        # The last time when the device went online.
         self.last_online_time = last_online_time
+        # The alias of the device.
         self.nickname = nickname
+        # The node type of the product. Valid values:
+        # 
+        # *   **0**: device. A device can connect to IoT Platform directly, or be attached to a gateway as a sub-device and then connect to IoT Platform. Sub-devices cannot be attached to a device.
+        # *   **1**: gateway. Sub-devices can be attached to a gateway. A gateway can manage sub-devices, maintain topological relationships with sub-devices, and synchronize topological relationships to IoT Platform.
         self.node_type = node_type
+        # The **ProductKey** of the product to which the device belongs.
         self.product_key = product_key
+        # The ProductName of the product to which the device belongs.
         self.product_name = product_name
+        # The device status. Valid values:
+        # 
+        # *   **ONLINE**: The device is online.
+        # *   **OFFLINE**: The device is offline.
+        # *   **UNACTIVE**: The device is not activated.
+        # *   **DISABLE**: The device is deactivated.
         self.status = status
+        # The time when the device was activated. The time is in the UTC format.
         self.utc_active_time = utc_active_time
+        # The last time when the device went online. The time is in the UTC format.
         self.utc_last_online_time = utc_last_online_time
 
     def validate(self):
@@ -58739,15 +59950,30 @@ class QueryDynamicGroupDevicesResponseBody(TeaModel):
         success: bool = None,
         total: int = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The devices returned after the request succeeds. The information is included in the **SimpleDeviceInfo** field.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # 
+        # If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The page number.
         self.page = page
+        # The total number of pages returned.
         self.page_count = page_count
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The total number of devices.
         self.total = total
 
     def validate(self):
@@ -62179,9 +63405,17 @@ class QueryImportedDeviceByApplyIdRequest(TeaModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The application ID. You can call the [BatchImportDevice](~~433878~~) operation to obtain the application ID.
         self.apply_id = apply_id
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The page number. Valid values: 1 to 10000.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Valid values: 1 to 50.
         self.page_size = page_size
 
     def validate(self):
@@ -62224,9 +63458,19 @@ class QueryImportedDeviceByApplyIdResponseBodyDeviceListDevice(TeaModel):
         product_key: str = None,
         sn: str = None,
     ):
+        # The DeviceName of the device.
+        # 
+        # >  Keep the information confidential.
         self.device_name = device_name
+        # The DeviceSecret of the device.
+        # 
+        # >  Keep the information confidential.
         self.device_secret = device_secret
+        # The **ProductKey** of the product to which the device belongs.
         self.product_key = product_key
+        # The serial number (SN) of the device.
+        # 
+        # > If you did not specify an SN for the device, this parameter is empty.
         self.sn = sn
 
     def validate(self):
@@ -62309,14 +63553,26 @@ class QueryImportedDeviceByApplyIdResponseBody(TeaModel):
         success: bool = None,
         total_page: int = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The queried devices.
         self.device_list = device_list
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The **ProductKey** of the product to which the devices belong.
         self.product_key = product_key
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):
@@ -63088,13 +64344,29 @@ class QueryLicenseDeviceListRequest(TeaModel):
         product_key: str = None,
         start_time: int = None,
     ):
+        # The end time of the time range in which the license is bound to the devices.The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, January 1, 1970.
         self.end_time = end_time
+        # The ID of the device.
+        # 
+        # You can call the [QueryDevice](~~69905~~) operation to query the **IotId** values of all devices that belong to a specific product.
         self.iot_id = iot_id
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  You must specify this parameter for a public instance of the new version or an Enterprise Edition instance. You do not need to specify this parameter for a public instance of the previous version.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The license type that specifies the audio and video specifications. Valid values: **480P** and **720P**.
         self.license_code = license_code
+        # The page number.
         self.page_id = page_id
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.page_size = page_size
+        # The **ProductKey** of the product to which the devices belong.
+        # 
+        # You can go to the IoT Platform console or call the [QueryProductList](~~69271~~) operation to view the information about all products of the instance.
         self.product_key = product_key
+        # The start time of the time range in which the license is bound to the devices. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, January 1, 1970.
         self.start_time = start_time
 
     def validate(self):
@@ -63156,12 +64428,19 @@ class QueryLicenseDeviceListResponseBodyDataDeviceListItem(TeaModel):
         product_key: str = None,
         product_name: str = None,
     ):
+        # The DeviceName of the device.
         self.device_name = device_name
+        # The expiration time of the license.
         self.expiry_time = expiry_time
+        # The time when the license was bound to the device.
         self.gmt_create = gmt_create
+        # The device ID.
         self.iot_id = iot_id
+        # The license type that indicates the audio and video specifications. Valid values: **480P** and **720P**.
         self.license_code = license_code
+        # The **ProductKey** of the product to which the device belongs.
         self.product_key = product_key
+        # The ProductName of the product.
         self.product_name = product_name
 
     def validate(self):
@@ -63251,9 +64530,13 @@ class QueryLicenseDeviceListResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The information about the devices.
         self.device_list = device_list
+        # The page number.
         self.page_id = page_id
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -63299,10 +64582,18 @@ class QueryLicenseDeviceListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see the **"Error codes"** section in this topic.
         self.code = code
+        # The response message.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -65387,7 +66678,13 @@ class QueryProductCertInfoRequest(TeaModel):
         iot_instance_id: str = None,
         product_key: str = None,
     ):
+        # The ID of the instance. You can view the ID of the instance on the **Overview** page in the IoT Platform console.****\
+        # 
+        # >  If your instance has an ID, you must specify the ID for this parameter. If you do not specify the instance ID, the call fails. If no Overview page or ID is generated for your instance, you do not need to configure this parameter.
+        # 
+        # For more information, see [Overview](~~356505~~).
         self.iot_instance_id = iot_instance_id
+        # The ProductKey of the product.
         self.product_key = product_key
 
     def validate(self):
@@ -65419,6 +66716,10 @@ class QueryProductCertInfoResponseBodyProductCertInfo(TeaModel):
         self,
         issue_model: int = None,
     ):
+        # The source from which the X.509 certificate is issued.
+        # 
+        # *   **1**: The X.509 certificate is issued by IoT Platform.
+        # *   **3**: The X.509 certificate is issued by a third-party platform.
         self.issue_model = issue_model
 
     def validate(self):
@@ -65450,10 +66751,18 @@ class QueryProductCertInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the call fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The returned certificate information that includes the value of the **IssueModel** parameter.
         self.product_cert_info = product_cert_info
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The call was successful.
+        # *   **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -66159,10 +67468,19 @@ class QueryProjectShareDeviceListRequest(TeaModel):
         page_size: int = None,
         product_key: str = None,
     ):
+        # The keyword in the DeviceName of the devices that you want to query. Fuzzy match is supported.
         self.device_name = device_name
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The page number. Valid values: 1 to 10000.
         self.page_id = page_id
+        # The number of entries per page. Valid values: 1 to 50. Default value: 20.
         self.page_size = page_size
+        # The **ProductKey** of the product to which the devices belong.
         self.product_key = product_key
 
     def validate(self):
@@ -66209,9 +67527,16 @@ class QueryProjectShareDeviceListResponseBodyDataDeviceListItems(TeaModel):
         product_key: str = None,
         sharable: int = None,
     ):
+        # The DeviceName of the device.
         self.device_name = device_name
+        # The ID of the device. The ID is the unique identifier that is issued by IoT Platform to the device.
         self.iot_id = iot_id
+        # The **ProductKey** of the product to which the device belongs.
         self.product_key = product_key
+        # Indicates whether the project was shared to the device.
+        # 
+        # *   **1**: The project was shared.
+        # *   **0**: The project failed to be shared.
         self.sharable = sharable
 
     def validate(self):
@@ -66289,9 +67614,13 @@ class QueryProjectShareDeviceListResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The information about devices that you queried.
         self.device_list = device_list
+        # The page number.
         self.page_id = page_id
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -66337,10 +67666,18 @@ class QueryProjectShareDeviceListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The result of the request.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -66952,6 +68289,169 @@ class QuerySchedulePeriodListResponse(TeaModel):
         return self
 
 
+class QuerySharePromotionActivityAuditResultRequest(TeaModel):
+    def __init__(
+        self,
+        iot_instance_id: str = None,
+        share_promotion_activity_id: str = None,
+        share_task_code: str = None,
+    ):
+        self.iot_instance_id = iot_instance_id
+        self.share_promotion_activity_id = share_promotion_activity_id
+        self.share_task_code = share_task_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.share_promotion_activity_id is not None:
+            result['SharePromotionActivityId'] = self.share_promotion_activity_id
+        if self.share_task_code is not None:
+            result['ShareTaskCode'] = self.share_task_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('SharePromotionActivityId') is not None:
+            self.share_promotion_activity_id = m.get('SharePromotionActivityId')
+        if m.get('ShareTaskCode') is not None:
+            self.share_task_code = m.get('ShareTaskCode')
+        return self
+
+
+class QuerySharePromotionActivityAuditResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        audit_result: int = None,
+    ):
+        self.audit_result = audit_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_result is not None:
+            result['AuditResult'] = self.audit_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditResult') is not None:
+            self.audit_result = m.get('AuditResult')
+        return self
+
+
+class QuerySharePromotionActivityAuditResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QuerySharePromotionActivityAuditResultResponseBodyData = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QuerySharePromotionActivityAuditResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QuerySharePromotionActivityAuditResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySharePromotionActivityAuditResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySharePromotionActivityAuditResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryShareTaskDeviceListRequest(TeaModel):
     def __init__(
         self,
@@ -66961,10 +68461,19 @@ class QueryShareTaskDeviceListRequest(TeaModel):
         page_size: int = None,
         share_task_id: str = None,
     ):
+        # The keyword in the DeviceName of the device that you want to query. Fuzzy match is supported.
         self.device_name = device_name
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see [Overview](~~356505~~) of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The page number. Valid values: 1 to 10000.
         self.page_id = page_id
+        # The number of entries per page. Valid values: 1 to 50. Default value: 20.
         self.page_size = page_size
+        # The ID of the sharing task.
         self.share_task_id = share_task_id
 
     def validate(self):
@@ -67011,9 +68520,13 @@ class QueryShareTaskDeviceListResponseBodyDataDeviceListItems(TeaModel):
         iot_id: str = None,
         product_key: str = None,
     ):
+        # The DeviceName of the device.
         self.device_name = device_name
+        # The time when the device was added to the sharing task.
         self.gmt_added = gmt_added
+        # The ID of the device. The ID is the unique identifier that is issued by IoT Platform to the device.
         self.iot_id = iot_id
+        # The **ProductKey** of the product to which the device belongs.
         self.product_key = product_key
 
     def validate(self):
@@ -67091,9 +68604,13 @@ class QueryShareTaskDeviceListResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The devices in the sharing task.
         self.device_list = device_list
+        # The page number.
         self.page_id = page_id
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -67139,10 +68656,18 @@ class QueryShareTaskDeviceListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The result of the request.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -69496,12 +71021,27 @@ class QuerySpeechLicenseDeviceListRequest(TeaModel):
         page_size: int = None,
         product_key: str = None,
     ):
+        # The ID of a device group. The InSpecifiedGroup response parameter indicates whether the devices belong to the specified group.
         self.check_group_id = check_group_id
+        # The keyword in the DeviceName of the device whose information you want to query. Fuzzy match is supported.
         self.device_name = device_name
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  You must specify this parameter for a public instance of the new version or an Enterprise Edition instance. You do not need to specify this parameter for a public instance of the previous version.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The license status.
+        # 
+        # *   **NORMAL**: The license is valid.
+        # *   **EXPIRE**: The license is expired.
+        # *   **EXPIRING**: The license is about to expire.
         self.license_status_list = license_status_list
+        # The page number. Valid values: 1 to 10000.
         self.page_id = page_id
+        # The number of entries per page. Valid values: 1 to 50. Default value: 20.
         self.page_size = page_size
+        # The **ProductKey** of the product to which the devices belong.
         self.product_key = product_key
 
     def validate(self):
@@ -69560,13 +71100,31 @@ class QuerySpeechLicenseDeviceListResponseBodyDataDeviceListItem(TeaModel):
         product_key: str = None,
         product_name: str = None,
     ):
+        # The DeviceName of the device.
         self.device_name = device_name
+        # The status of the device.
+        # 
+        # *   **ONLINE**: The device is online.
+        # *   **OFFLINE**: The device is offline.
+        # *   **UNACTIVE**: The device is not activated.
+        # *   **DISABLE**: The device is disabled.
+        # *   **DELETE**: The device is deleted.
         self.device_status = device_status
+        # The expiration time of the license.
         self.expiry_time = expiry_time
+        # Indicates whether the device belongs to the specified device group.
         self.in_specified_group = in_specified_group
+        # The ID of the device. The ID is the unique identifier that is issued by IoT Platform to the device.
         self.iot_id = iot_id
+        # The license status.
+        # 
+        # *   **NORMAL**: The license is valid.
+        # *   **EXPIRE**: The license is expired.
+        # *   **EXPIRING**: The license is about to expire.
         self.license_status = license_status
+        # The **ProductKey** of the product to which the device belongs.
         self.product_key = product_key
+        # The ProductName of the product to which the device belongs.
         self.product_name = product_name
 
     def validate(self):
@@ -69660,9 +71218,13 @@ class QuerySpeechLicenseDeviceListResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The information about devices.
         self.device_list = device_list
+        # The page number.
         self.page_id = page_id
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -69708,10 +71270,18 @@ class QuerySpeechLicenseDeviceListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The result of the request.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -75299,9 +76869,21 @@ class ReBindLicenseDeviceRequest(TeaModel):
         license_code: str = None,
         product_key: str = None,
     ):
+        # The **DeviceNames** of all devices to which you want to rebind a license.
+        # 
+        # You can call the [QueryDevice](~~69905~~) operation to query the **DeviceNames** of all devices that belong to a specific product.
         self.device_name_list = device_name_list
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  You must specify the ID of a public instance of the new version or an Enterprise Edition instance. Otherwise, the request fails. You do not need to specify the ID of a public instance of the previous version.
+        # 
+        # For more information, see [Overview](~~356505~~) of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The license type. Set the value to **LINK_SPEECH_COMMON_LICENSE**.
         self.license_code = license_code
+        # The **ProductKey** of the product to which the devices belong.
+        # 
+        # You can go to the IoT Platform console or call the [QueryProductList](~~69271~~) operation to view the information about all products of the instance.
         self.product_key = product_key
 
     def validate(self):
@@ -75345,10 +76927,15 @@ class ReBindLicenseDeviceResponseBodyData(TeaModel):
         result_csv_file: str = None,
         success_sum: int = None,
     ):
+        # The unique ID that can be used to query the progress of the batch rebinding operation.
         self.check_progress_id = check_progress_id
+        # The number of devices that failed to be rebound to the license.
         self.fail_sum = fail_sum
+        # The progress of the batch rebinding operation. The progress is a percentage. Valid values: 1 to 100.
         self.progress = progress
+        # The URL of the file that contains unbound devices. The devices failed to be rebound with the license.
         self.result_csv_file = result_csv_file
+        # The number of devices to which the license is rebound.
         self.success_sum = success_sum
 
     def validate(self):
@@ -75396,10 +76983,18 @@ class ReBindLicenseDeviceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The result of the batch rebinding operation.
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -78860,8 +80455,18 @@ class SetProductCertInfoRequest(TeaModel):
         issue_model: int = None,
         product_key: str = None,
     ):
+        # The ID of the instance. You can view the ID of the instance on the **Overview** page in the IoT Platform console.****\
+        # 
+        # >  If your instance has an ID, you must specify the ID for the parameter. Otherwise, the call fails. If no Overview page or ID is generated for your instance, you do not need configure this parameter.
+        # 
+        # For more information, see [Overview](~~356505~~).
         self.iot_instance_id = iot_instance_id
+        # The source from which the X.509 certificate is issued.
+        # 
+        # *   **1**: The X.509 certificate is issued by IoT Platform.
+        # *   **3**: The X.509 certificate is issued by a third-party platform.
         self.issue_model = issue_model
+        # The **ProductKey** of the product.
         self.product_key = product_key
 
     def validate(self):
@@ -78900,9 +80505,16 @@ class SetProductCertInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the call fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The error message returned if the call fails.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The call was successful.
+        # *   **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -79348,12 +80960,35 @@ class ShareSpeechByCombinationRequest(TeaModel):
         product_key: str = None,
         speech_id: str = None,
     ):
+        # The audio format. Valid values: **wav**, **mp3**, and **amr**.
         self.audio_format = audio_format
+        # The combined content that you want to broadcast. The following types of content can be broadcasted:
+        # 
+        # *   The speeches that are pushed to the device. You must specify the identifiers of the speeches.
+        # 
+        # *   The custom content that you specify based on the supported format of the device.
+        # 
+        #     For example, you can create a custom speech about the amount of money in the format of `{$xxx}`. xxx is the specific amount. If you specify `{$1000}`, the device broadcasts **CNY 1000**.
+        # 
+        # The device broadcasts the audio files in the sequence of the values that you specify in CombinationList.
         self.combination_list = combination_list
+        # The **DeviceName** of the device. If you specify this parameter, you must also specify the **ProductKey** parameter.
         self.device_name = device_name
+        # The ID of the device. You can call the [QuerySpeechDevice](~~280408~~) operation to obtain the ID.
+        # 
+        # > If you specify this parameter, you do not need to specify the **ProductKey** and **DeviceName** parameters. **IotId** specifies a globally unique identifier (GUID) of the device, which corresponds to a combination of **ProductKey** and **DeviceName**. If you specify the **IotId**, **ProductKey**, and **DeviceName** parameters, the value of the **IotId** parameter takes precedence.
         self.iot_id = iot_id
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
+        # The **ProductKey** of the product to which the device belongs. If you specify this parameter, you must also specify the **DeviceName** parameter.
         self.product_key = product_key
+        # The unique ID of the combined speech that you want to broadcast. This ID is issued by IoT Platform to the device.
+        # 
+        # >  If you do not specify this parameter, IoT Platform automatically generates an ID. If you need to retry broadcasting the speech, you must specify the ID to prevent repeated broadcasting.
         self.speech_id = speech_id
 
     def validate(self):
@@ -79408,9 +81043,16 @@ class ShareSpeechByCombinationResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -81676,8 +83318,15 @@ class UnbindLicenseProductRequest(TeaModel):
         license_code: str = None,
         product_key: str = None,
     ):
+        # The ID of the Enterprise Edition instance. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
         self.iot_instance_id = iot_instance_id
+        # The license type that specifies the audio and video specifications. Valid values: **480P** and **720P**.
+        # 
+        # To view the license type of a product, choose **License Management > Product Authorization** in the **Real-time Communication Service** console.
         self.license_code = license_code
+        # The ProductKey of the product from which you want to unbind the license.
+        # 
+        # You can choose **License Management > Product Authorization** in the **Real-Time Communication Service** console to view the **ProductKey** of the product.
         self.product_key = product_key
 
     def validate(self):
@@ -81717,10 +83366,21 @@ class UnbindLicenseProductResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see the **Error codes** section of this topic.
         self.code = code
+        # Indicates whether the license was unbound from the product.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.data = data
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -86789,11 +88449,27 @@ class UpdateTopicConfigRequest(TeaModel):
     ):
         self.codec = codec
         self.description = description
+        # Specifies whether to enable the retained message broadcasting feature for a custom topic.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable_broadcast = enable_broadcast
         self.enable_proxy_subscribe = enable_proxy_subscribe
+        # The instance ID. You can view the **ID** of the instance on the **Overview** page in the IoT Platform console.
+        # 
+        # >  If your instance has an ID, you must specify this parameter. Otherwise, the request fails. If no Overview page exists or no instance ID is displayed, you do not need to specify this parameter.
+        # 
+        # For more information, see the [Overview](~~356505~~) topic of IoT instances.
         self.iot_instance_id = iot_instance_id
         self.operation = operation
+        # The **ProductKey** of the product to which the device belongs. The device receives the retained message.
         self.product_key = product_key
+        # The custom topic for which you want to enable the retained message broadcasting feature.
+        # 
+        # *   If you use an MQTT gateway device, set this parameter to the original custom topic of the device. For more information, see [Topics](~~433806~~).
+        # *   If you use a non-MQTT gateway device, set this parameter to a custom topic in the following format: `/broadcast/${productKey}/${Custom field}`. `${productKey}` is the value of the **ProductKey** request parameter. You can specify `${Custom field}` based on your business requirements.
+        # 
+        # >  When you develop devices, use code to define a broadcast topic. You do not need to create a topic in the IoT Platform console. You must grant devices the Subscribe permission or the Publish and Subscribe permission on the topic.
         self.topic_full_name = topic_full_name
 
     def validate(self):
@@ -86852,9 +88528,15 @@ class UpdateTopicConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails. For more information, see [Error codes](~~87387~~).
         self.code = code
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):

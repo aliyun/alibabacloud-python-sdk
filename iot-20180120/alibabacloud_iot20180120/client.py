@@ -168,6 +168,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_data_for_api_source_with_options_async(request, runtime)
 
+    def add_device_to_share_promotion_with_options(
+        self,
+        request: iot_20180120_models.AddDeviceToSharePromotionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.AddDeviceToSharePromotionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.device_simple_info_list):
+            body['DeviceSimpleInfoList'] = request.device_simple_info_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.share_promotion_activity_id):
+            body['SharePromotionActivityId'] = request.share_promotion_activity_id
+        if not UtilClient.is_unset(request.share_task_code):
+            body['ShareTaskCode'] = request.share_task_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDeviceToSharePromotion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.AddDeviceToSharePromotionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_device_to_share_promotion_with_options_async(
+        self,
+        request: iot_20180120_models.AddDeviceToSharePromotionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.AddDeviceToSharePromotionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.device_simple_info_list):
+            body['DeviceSimpleInfoList'] = request.device_simple_info_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.share_promotion_activity_id):
+            body['SharePromotionActivityId'] = request.share_promotion_activity_id
+        if not UtilClient.is_unset(request.share_task_code):
+            body['ShareTaskCode'] = request.share_task_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDeviceToSharePromotion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.AddDeviceToSharePromotionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_device_to_share_promotion(
+        self,
+        request: iot_20180120_models.AddDeviceToSharePromotionRequest,
+    ) -> iot_20180120_models.AddDeviceToSharePromotionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_device_to_share_promotion_with_options(request, runtime)
+
+    async def add_device_to_share_promotion_async(
+        self,
+        request: iot_20180120_models.AddDeviceToSharePromotionRequest,
+    ) -> iot_20180120_models.AddDeviceToSharePromotionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_device_to_share_promotion_with_options_async(request, runtime)
+
     def add_share_task_device_with_options(
         self,
         request: iot_20180120_models.AddShareTaskDeviceRequest,
@@ -1247,6 +1329,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchCheckImportDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchCheckImportDeviceResponse:
+        """
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchCheckImportDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCheckImportDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -1281,6 +1372,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchCheckImportDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchCheckImportDeviceResponse:
+        """
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchCheckImportDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCheckImportDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -1314,6 +1414,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchCheckImportDeviceRequest,
     ) -> iot_20180120_models.BatchCheckImportDeviceResponse:
+        """
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchCheckImportDeviceRequest
+        @return: BatchCheckImportDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_check_import_device_with_options(request, runtime)
 
@@ -1321,6 +1429,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchCheckImportDeviceRequest,
     ) -> iot_20180120_models.BatchCheckImportDeviceResponse:
+        """
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchCheckImportDeviceRequest
+        @return: BatchCheckImportDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_check_import_device_with_options_async(request, runtime)
 
@@ -2765,6 +2881,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchImportDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchImportDeviceResponse:
+        """
+        ## Usage notes
+        Before you call this operation, make sure that an MQTT gateway and the related product are created and the **ProductKey** of the product is obtained. For more information, see [Create an MQTT gateway](~~433804~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchImportDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchImportDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -2799,6 +2926,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BatchImportDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchImportDeviceResponse:
+        """
+        ## Usage notes
+        Before you call this operation, make sure that an MQTT gateway and the related product are created and the **ProductKey** of the product is obtained. For more information, see [Create an MQTT gateway](~~433804~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchImportDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchImportDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -2832,6 +2970,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchImportDeviceRequest,
     ) -> iot_20180120_models.BatchImportDeviceResponse:
+        """
+        ## Usage notes
+        Before you call this operation, make sure that an MQTT gateway and the related product are created and the **ProductKey** of the product is obtained. For more information, see [Create an MQTT gateway](~~433804~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchImportDeviceRequest
+        @return: BatchImportDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_import_device_with_options(request, runtime)
 
@@ -2839,6 +2987,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BatchImportDeviceRequest,
     ) -> iot_20180120_models.BatchImportDeviceResponse:
+        """
+        ## Usage notes
+        Before you call this operation, make sure that an MQTT gateway and the related product are created and the **ProductKey** of the product is obtained. For more information, see [Create an MQTT gateway](~~433804~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BatchImportDeviceRequest
+        @return: BatchImportDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_import_device_with_options_async(request, runtime)
 
@@ -4361,6 +4519,19 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BindLicenseDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindLicenseDeviceResponse:
+        """
+        ## Usage notes
+        Before you call this operation, make sure that the following steps are complete:
+        1.  A license is purchased. For more information, see [Purchase a license](~~427935~~).
+        2.  The license is bound to a product. The devices to which you want to bind the license belong to the product. For more information, see [BindLicenseProduct](~~427956~~) or [Bind a license to a product](~~427937~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BindLicenseDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindLicenseDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -4399,6 +4570,19 @@ class Client(OpenApiClient):
         request: iot_20180120_models.BindLicenseDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindLicenseDeviceResponse:
+        """
+        ## Usage notes
+        Before you call this operation, make sure that the following steps are complete:
+        1.  A license is purchased. For more information, see [Purchase a license](~~427935~~).
+        2.  The license is bound to a product. The devices to which you want to bind the license belong to the product. For more information, see [BindLicenseProduct](~~427956~~) or [Bind a license to a product](~~427937~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BindLicenseDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindLicenseDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -4436,6 +4620,18 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BindLicenseDeviceRequest,
     ) -> iot_20180120_models.BindLicenseDeviceResponse:
+        """
+        ## Usage notes
+        Before you call this operation, make sure that the following steps are complete:
+        1.  A license is purchased. For more information, see [Purchase a license](~~427935~~).
+        2.  The license is bound to a product. The devices to which you want to bind the license belong to the product. For more information, see [BindLicenseProduct](~~427956~~) or [Bind a license to a product](~~427937~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BindLicenseDeviceRequest
+        @return: BindLicenseDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_license_device_with_options(request, runtime)
 
@@ -4443,6 +4639,18 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.BindLicenseDeviceRequest,
     ) -> iot_20180120_models.BindLicenseDeviceResponse:
+        """
+        ## Usage notes
+        Before you call this operation, make sure that the following steps are complete:
+        1.  A license is purchased. For more information, see [Purchase a license](~~427935~~).
+        2.  The license is bound to a product. The devices to which you want to bind the license belong to the product. For more information, see [BindLicenseProduct](~~427956~~) or [Bind a license to a product](~~427937~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: BindLicenseDeviceRequest
+        @return: BindLicenseDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_license_device_with_options_async(request, runtime)
 
@@ -5995,6 +6203,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CountSpeechBroadcastHourRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CountSpeechBroadcastHourResponse:
+        """
+        ## Usage notes
+        You can call this operation to query the shared speeches that were broadcasted six hours ago. For example, if a speech was broadcasted at 07:15, you can query the speech after 13:15.
+        ## QPS limits
+        You can call this API operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CountSpeechBroadcastHourRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CountSpeechBroadcastHourResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.query_date_time_hour):
@@ -6029,6 +6248,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CountSpeechBroadcastHourRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CountSpeechBroadcastHourResponse:
+        """
+        ## Usage notes
+        You can call this operation to query the shared speeches that were broadcasted six hours ago. For example, if a speech was broadcasted at 07:15, you can query the speech after 13:15.
+        ## QPS limits
+        You can call this API operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CountSpeechBroadcastHourRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CountSpeechBroadcastHourResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.query_date_time_hour):
@@ -6062,6 +6292,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CountSpeechBroadcastHourRequest,
     ) -> iot_20180120_models.CountSpeechBroadcastHourResponse:
+        """
+        ## Usage notes
+        You can call this operation to query the shared speeches that were broadcasted six hours ago. For example, if a speech was broadcasted at 07:15, you can query the speech after 13:15.
+        ## QPS limits
+        You can call this API operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CountSpeechBroadcastHourRequest
+        @return: CountSpeechBroadcastHourResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.count_speech_broadcast_hour_with_options(request, runtime)
 
@@ -6069,6 +6309,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CountSpeechBroadcastHourRequest,
     ) -> iot_20180120_models.CountSpeechBroadcastHourResponse:
+        """
+        ## Usage notes
+        You can call this operation to query the shared speeches that were broadcasted six hours ago. For example, if a speech was broadcasted at 07:15, you can query the speech after 13:15.
+        ## QPS limits
+        You can call this API operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CountSpeechBroadcastHourRequest
+        @return: CountSpeechBroadcastHourResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.count_speech_broadcast_hour_with_options_async(request, runtime)
 
@@ -6403,6 +6653,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateDataSourceItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateDataSourceItemResponse:
+        """
+        ## Usage notes
+        Before you call this operation, perform the following steps: First, create a data source. For information about how to create a data source, see Step 1 to Step 6 in the [Create a data source](~~270932~~) topic. Second, go to the **Data Source** tab on the **Message Forwarding** page of the instance that you want to manage in the IoT Platform console. Then, view and record the ID of the **data source** that you created.
+        >  If you set Topic to a custom topic for a product or device that uses the open source Message Queuing Telemetry Transport (MQTT) protocol, you must specify ScopeType and ProductKey. If ScopeType is set to DEVICE, you must also specify DeviceName.
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateDataSourceItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataSourceItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_source_id):
@@ -6441,6 +6703,18 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateDataSourceItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateDataSourceItemResponse:
+        """
+        ## Usage notes
+        Before you call this operation, perform the following steps: First, create a data source. For information about how to create a data source, see Step 1 to Step 6 in the [Create a data source](~~270932~~) topic. Second, go to the **Data Source** tab on the **Message Forwarding** page of the instance that you want to manage in the IoT Platform console. Then, view and record the ID of the **data source** that you created.
+        >  If you set Topic to a custom topic for a product or device that uses the open source Message Queuing Telemetry Transport (MQTT) protocol, you must specify ScopeType and ProductKey. If ScopeType is set to DEVICE, you must also specify DeviceName.
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateDataSourceItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataSourceItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_source_id):
@@ -6478,6 +6752,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateDataSourceItemRequest,
     ) -> iot_20180120_models.CreateDataSourceItemResponse:
+        """
+        ## Usage notes
+        Before you call this operation, perform the following steps: First, create a data source. For information about how to create a data source, see Step 1 to Step 6 in the [Create a data source](~~270932~~) topic. Second, go to the **Data Source** tab on the **Message Forwarding** page of the instance that you want to manage in the IoT Platform console. Then, view and record the ID of the **data source** that you created.
+        >  If you set Topic to a custom topic for a product or device that uses the open source Message Queuing Telemetry Transport (MQTT) protocol, you must specify ScopeType and ProductKey. If ScopeType is set to DEVICE, you must also specify DeviceName.
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateDataSourceItemRequest
+        @return: CreateDataSourceItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_data_source_item_with_options(request, runtime)
 
@@ -6485,6 +6770,17 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateDataSourceItemRequest,
     ) -> iot_20180120_models.CreateDataSourceItemResponse:
+        """
+        ## Usage notes
+        Before you call this operation, perform the following steps: First, create a data source. For information about how to create a data source, see Step 1 to Step 6 in the [Create a data source](~~270932~~) topic. Second, go to the **Data Source** tab on the **Message Forwarding** page of the instance that you want to manage in the IoT Platform console. Then, view and record the ID of the **data source** that you created.
+        >  If you set Topic to a custom topic for a product or device that uses the open source Message Queuing Telemetry Transport (MQTT) protocol, you must specify ScopeType and ProductKey. If ScopeType is set to DEVICE, you must also specify DeviceName.
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateDataSourceItemRequest
+        @return: CreateDataSourceItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_source_item_with_options_async(request, runtime)
 
@@ -8079,6 +8375,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateLoRaNodesTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateLoRaNodesTaskResponse:
+        """
+        ## Usage notes
+        You can call this operation to create up to 500 devices.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateLoRaNodesTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoRaNodesTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_info):
@@ -8111,6 +8418,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.CreateLoRaNodesTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateLoRaNodesTaskResponse:
+        """
+        ## Usage notes
+        You can call this operation to create up to 500 devices.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateLoRaNodesTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoRaNodesTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_info):
@@ -8142,6 +8460,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateLoRaNodesTaskRequest,
     ) -> iot_20180120_models.CreateLoRaNodesTaskResponse:
+        """
+        ## Usage notes
+        You can call this operation to create up to 500 devices.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateLoRaNodesTaskRequest
+        @return: CreateLoRaNodesTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_lo_ra_nodes_task_with_options(request, runtime)
 
@@ -8149,6 +8477,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.CreateLoRaNodesTaskRequest,
     ) -> iot_20180120_models.CreateLoRaNodesTaskResponse:
+        """
+        ## Usage notes
+        You can call this operation to create up to 500 devices.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: CreateLoRaNodesTaskRequest
+        @return: CreateLoRaNodesTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_lo_ra_nodes_task_with_options_async(request, runtime)
 
@@ -10139,6 +10477,194 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CreateSchedulePeriodResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_schedule_period_with_options_async(request, runtime)
+
+    def create_share_promotion_activity_with_options(
+        self,
+        request: iot_20180120_models.CreateSharePromotionActivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateSharePromotionActivityResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.share_promotion_activity_name):
+            body['SharePromotionActivityName'] = request.share_promotion_activity_name
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSharePromotionActivity',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateSharePromotionActivityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_share_promotion_activity_with_options_async(
+        self,
+        request: iot_20180120_models.CreateSharePromotionActivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateSharePromotionActivityResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.share_promotion_activity_name):
+            body['SharePromotionActivityName'] = request.share_promotion_activity_name
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSharePromotionActivity',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateSharePromotionActivityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_share_promotion_activity(
+        self,
+        request: iot_20180120_models.CreateSharePromotionActivityRequest,
+    ) -> iot_20180120_models.CreateSharePromotionActivityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_share_promotion_activity_with_options(request, runtime)
+
+    async def create_share_promotion_activity_async(
+        self,
+        request: iot_20180120_models.CreateSharePromotionActivityRequest,
+    ) -> iot_20180120_models.CreateSharePromotionActivityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_share_promotion_activity_with_options_async(request, runtime)
+
+    def create_share_promotion_speech_model_with_options(
+        self,
+        request: iot_20180120_models.CreateSharePromotionSpeechModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateSharePromotionSpeechModelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.audio_format):
+            body['AudioFormat'] = request.audio_format
+        if not UtilClient.is_unset(request.biz_code):
+            body['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.share_promotion_activity_id):
+            body['SharePromotionActivityId'] = request.share_promotion_activity_id
+        if not UtilClient.is_unset(request.share_task_code):
+            body['ShareTaskCode'] = request.share_task_code
+        if not UtilClient.is_unset(request.speech_model_type):
+            body['SpeechModelType'] = request.speech_model_type
+        if not UtilClient.is_unset(request.speech_rate):
+            body['SpeechRate'] = request.speech_rate
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.voice):
+            body['Voice'] = request.voice
+        if not UtilClient.is_unset(request.volume):
+            body['Volume'] = request.volume
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSharePromotionSpeechModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateSharePromotionSpeechModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_share_promotion_speech_model_with_options_async(
+        self,
+        request: iot_20180120_models.CreateSharePromotionSpeechModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateSharePromotionSpeechModelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.audio_format):
+            body['AudioFormat'] = request.audio_format
+        if not UtilClient.is_unset(request.biz_code):
+            body['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.share_promotion_activity_id):
+            body['SharePromotionActivityId'] = request.share_promotion_activity_id
+        if not UtilClient.is_unset(request.share_task_code):
+            body['ShareTaskCode'] = request.share_task_code
+        if not UtilClient.is_unset(request.speech_model_type):
+            body['SpeechModelType'] = request.speech_model_type
+        if not UtilClient.is_unset(request.speech_rate):
+            body['SpeechRate'] = request.speech_rate
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.voice):
+            body['Voice'] = request.voice
+        if not UtilClient.is_unset(request.volume):
+            body['Volume'] = request.volume
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSharePromotionSpeechModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateSharePromotionSpeechModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_share_promotion_speech_model(
+        self,
+        request: iot_20180120_models.CreateSharePromotionSpeechModelRequest,
+    ) -> iot_20180120_models.CreateSharePromotionSpeechModelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_share_promotion_speech_model_with_options(request, runtime)
+
+    async def create_share_promotion_speech_model_async(
+        self,
+        request: iot_20180120_models.CreateSharePromotionSpeechModelRequest,
+    ) -> iot_20180120_models.CreateSharePromotionSpeechModelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_share_promotion_speech_model_with_options_async(request, runtime)
 
     def create_sound_code_with_options(
         self,
@@ -17489,6 +18015,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetLoraNodesTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetLoraNodesTaskResponse:
+        """
+        ## Limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetLoraNodesTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoraNodesTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -17519,6 +18054,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetLoraNodesTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetLoraNodesTaskResponse:
+        """
+        ## Limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetLoraNodesTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoraNodesTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -17548,6 +18092,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetLoraNodesTaskRequest,
     ) -> iot_20180120_models.GetLoraNodesTaskResponse:
+        """
+        ## Limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetLoraNodesTaskRequest
+        @return: GetLoraNodesTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_lora_nodes_task_with_options(request, runtime)
 
@@ -17555,6 +18107,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetLoraNodesTaskRequest,
     ) -> iot_20180120_models.GetLoraNodesTaskResponse:
+        """
+        ## Limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetLoraNodesTaskRequest
+        @return: GetLoraNodesTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_lora_nodes_task_with_options_async(request, runtime)
 
@@ -18375,6 +18935,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetSpeechLicenseDeviceStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetSpeechLicenseDeviceStatisticsResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetSpeechLicenseDeviceStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSpeechLicenseDeviceStatisticsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -18403,6 +18972,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.GetSpeechLicenseDeviceStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetSpeechLicenseDeviceStatisticsResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetSpeechLicenseDeviceStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSpeechLicenseDeviceStatisticsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -18430,6 +19008,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetSpeechLicenseDeviceStatisticsRequest,
     ) -> iot_20180120_models.GetSpeechLicenseDeviceStatisticsResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetSpeechLicenseDeviceStatisticsRequest
+        @return: GetSpeechLicenseDeviceStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_speech_license_device_statistics_with_options(request, runtime)
 
@@ -18437,6 +19023,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.GetSpeechLicenseDeviceStatisticsRequest,
     ) -> iot_20180120_models.GetSpeechLicenseDeviceStatisticsResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: GetSpeechLicenseDeviceStatisticsRequest
+        @return: GetSpeechLicenseDeviceStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_speech_license_device_statistics_with_options_async(request, runtime)
 
@@ -19403,6 +19997,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ImportDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ImportDeviceResponse:
+        """
+        ## Usage notes
+        Before you call this operation, make sure that an MQTT gateway and the related product are created and the **ProductKey** of the product is obtained. For more information, see [Create an MQTT gateway](~~433804~~).
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ImportDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -19441,6 +20046,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ImportDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ImportDeviceResponse:
+        """
+        ## Usage notes
+        Before you call this operation, make sure that an MQTT gateway and the related product are created and the **ProductKey** of the product is obtained. For more information, see [Create an MQTT gateway](~~433804~~).
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ImportDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_name):
@@ -19478,6 +20094,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ImportDeviceRequest,
     ) -> iot_20180120_models.ImportDeviceResponse:
+        """
+        ## Usage notes
+        Before you call this operation, make sure that an MQTT gateway and the related product are created and the **ProductKey** of the product is obtained. For more information, see [Create an MQTT gateway](~~433804~~).
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ImportDeviceRequest
+        @return: ImportDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_device_with_options(request, runtime)
 
@@ -19485,6 +20111,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ImportDeviceRequest,
     ) -> iot_20180120_models.ImportDeviceResponse:
+        """
+        ## Usage notes
+        Before you call this operation, make sure that an MQTT gateway and the related product are created and the **ProductKey** of the product is obtained. For more information, see [Create an MQTT gateway](~~433804~~).
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ImportDeviceRequest
+        @return: ImportDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_device_with_options_async(request, runtime)
 
@@ -20185,6 +20821,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListDataSourceItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDataSourceItemResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListDataSourceItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_source_id):
@@ -20221,6 +20866,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ListDataSourceItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDataSourceItemResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListDataSourceItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_source_id):
@@ -20256,6 +20910,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListDataSourceItemRequest,
     ) -> iot_20180120_models.ListDataSourceItemResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListDataSourceItemRequest
+        @return: ListDataSourceItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_source_item_with_options(request, runtime)
 
@@ -20263,6 +20925,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ListDataSourceItemRequest,
     ) -> iot_20180120_models.ListDataSourceItemResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ListDataSourceItemRequest
+        @return: ListDataSourceItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_source_item_with_options_async(request, runtime)
 
@@ -22678,6 +23348,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_thing_templates_with_options_async(request, runtime)
 
+    def modify_otafirmware_with_options(
+        self,
+        request: iot_20180120_models.ModifyOTAFirmwareRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ModifyOTAFirmwareResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firmware_desc):
+            query['FirmwareDesc'] = request.firmware_desc
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.firmware_name):
+            query['FirmwareName'] = request.firmware_name
+        if not UtilClient.is_unset(request.firmware_udi):
+            query['FirmwareUdi'] = request.firmware_udi
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyOTAFirmware',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ModifyOTAFirmwareResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_otafirmware_with_options_async(
+        self,
+        request: iot_20180120_models.ModifyOTAFirmwareRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ModifyOTAFirmwareResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firmware_desc):
+            query['FirmwareDesc'] = request.firmware_desc
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.firmware_name):
+            query['FirmwareName'] = request.firmware_name
+        if not UtilClient.is_unset(request.firmware_udi):
+            query['FirmwareUdi'] = request.firmware_udi
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyOTAFirmware',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ModifyOTAFirmwareResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_otafirmware(
+        self,
+        request: iot_20180120_models.ModifyOTAFirmwareRequest,
+    ) -> iot_20180120_models.ModifyOTAFirmwareResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_otafirmware_with_options(request, runtime)
+
+    async def modify_otafirmware_async(
+        self,
+        request: iot_20180120_models.ModifyOTAFirmwareRequest,
+    ) -> iot_20180120_models.ModifyOTAFirmwareResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_otafirmware_with_options_async(request, runtime)
+
     def notify_add_thing_topo_with_options(
         self,
         request: iot_20180120_models.NotifyAddThingTopoRequest,
@@ -22955,6 +23715,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.PageQuerySharedSpeechOpenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PageQuerySharedSpeechOpenResponse:
+        """
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PageQuerySharedSpeechOpenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageQuerySharedSpeechOpenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_name):
@@ -22997,6 +23766,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.PageQuerySharedSpeechOpenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PageQuerySharedSpeechOpenResponse:
+        """
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PageQuerySharedSpeechOpenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageQuerySharedSpeechOpenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_name):
@@ -23038,6 +23816,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.PageQuerySharedSpeechOpenRequest,
     ) -> iot_20180120_models.PageQuerySharedSpeechOpenResponse:
+        """
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PageQuerySharedSpeechOpenRequest
+        @return: PageQuerySharedSpeechOpenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.page_query_shared_speech_open_with_options(request, runtime)
 
@@ -23045,6 +23831,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.PageQuerySharedSpeechOpenRequest,
     ) -> iot_20180120_models.PageQuerySharedSpeechOpenResponse:
+        """
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PageQuerySharedSpeechOpenRequest
+        @return: PageQuerySharedSpeechOpenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.page_query_shared_speech_open_with_options_async(request, runtime)
 
@@ -23053,6 +23847,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.PageQuerySpeechBroadcastHourRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PageQuerySpeechBroadcastHourResponse:
+        """
+        ## Usage notes
+        You can call this operation to query only shared speech broadcasting data six hours ago. For example, if a shared speech was broadcasted at 07:15, you can query the speech after 13:15.
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PageQuerySpeechBroadcastHourRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageQuerySpeechBroadcastHourResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.query_date_time_hour):
@@ -23091,6 +23896,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.PageQuerySpeechBroadcastHourRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PageQuerySpeechBroadcastHourResponse:
+        """
+        ## Usage notes
+        You can call this operation to query only shared speech broadcasting data six hours ago. For example, if a shared speech was broadcasted at 07:15, you can query the speech after 13:15.
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PageQuerySpeechBroadcastHourRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageQuerySpeechBroadcastHourResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.query_date_time_hour):
@@ -23128,6 +23944,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.PageQuerySpeechBroadcastHourRequest,
     ) -> iot_20180120_models.PageQuerySpeechBroadcastHourResponse:
+        """
+        ## Usage notes
+        You can call this operation to query only shared speech broadcasting data six hours ago. For example, if a shared speech was broadcasted at 07:15, you can query the speech after 13:15.
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PageQuerySpeechBroadcastHourRequest
+        @return: PageQuerySpeechBroadcastHourResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.page_query_speech_broadcast_hour_with_options(request, runtime)
 
@@ -23135,6 +23961,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.PageQuerySpeechBroadcastHourRequest,
     ) -> iot_20180120_models.PageQuerySpeechBroadcastHourResponse:
+        """
+        ## Usage notes
+        You can call this operation to query only shared speech broadcasting data six hours ago. For example, if a shared speech was broadcasted at 07:15, you can query the speech after 13:15.
+        ## QPS limits
+        You can call this operation up to 100 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PageQuerySpeechBroadcastHourRequest
+        @return: PageQuerySpeechBroadcastHourResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.page_query_speech_broadcast_hour_with_options_async(request, runtime)
 
@@ -23143,6 +23979,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.PrintByTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PrintByTemplateResponse:
+        """
+        ## Limits
+        Before you call this operation, a receipt template must be available in the Letter Sending Service console. Otherwise, the request fails.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PrintByTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PrintByTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_name):
@@ -23183,6 +24030,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.PrintByTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PrintByTemplateResponse:
+        """
+        ## Limits
+        Before you call this operation, a receipt template must be available in the Letter Sending Service console. Otherwise, the request fails.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PrintByTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PrintByTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_name):
@@ -23222,6 +24080,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.PrintByTemplateRequest,
     ) -> iot_20180120_models.PrintByTemplateResponse:
+        """
+        ## Limits
+        Before you call this operation, a receipt template must be available in the Letter Sending Service console. Otherwise, the request fails.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PrintByTemplateRequest
+        @return: PrintByTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.print_by_template_with_options(request, runtime)
 
@@ -23229,6 +24097,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.PrintByTemplateRequest,
     ) -> iot_20180120_models.PrintByTemplateResponse:
+        """
+        ## Limits
+        Before you call this operation, a receipt template must be available in the Letter Sending Service console. Otherwise, the request fails.
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: PrintByTemplateRequest
+        @return: PrintByTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.print_by_template_with_options_async(request, runtime)
 
@@ -24019,6 +24897,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryCertUrlByApplyIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryCertUrlByApplyIdResponse:
+        """
+        ## Limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryCertUrlByApplyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCertUrlByApplyIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -24049,6 +24936,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryCertUrlByApplyIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryCertUrlByApplyIdResponse:
+        """
+        ## Limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryCertUrlByApplyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCertUrlByApplyIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -24078,6 +24974,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryCertUrlByApplyIdRequest,
     ) -> iot_20180120_models.QueryCertUrlByApplyIdResponse:
+        """
+        ## Limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryCertUrlByApplyIdRequest
+        @return: QueryCertUrlByApplyIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_cert_url_by_apply_id_with_options(request, runtime)
 
@@ -24085,6 +24989,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryCertUrlByApplyIdRequest,
     ) -> iot_20180120_models.QueryCertUrlByApplyIdResponse:
+        """
+        ## Limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryCertUrlByApplyIdRequest
+        @return: QueryCertUrlByApplyIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_cert_url_by_apply_id_with_options_async(request, runtime)
 
@@ -28807,6 +29719,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDynamicGroupDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDynamicGroupDevicesResponse:
+        """
+        ## Limits
+        *   The dynamic group feature is available for public instances and Enterprise Edition instances in the China (Shanghai) region. For more information, see [Manage instances](~~147356~~).
+        *   Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        **\
+        **Note**The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDynamicGroupDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDynamicGroupDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -28851,6 +29774,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryDynamicGroupDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDynamicGroupDevicesResponse:
+        """
+        ## Limits
+        *   The dynamic group feature is available for public instances and Enterprise Edition instances in the China (Shanghai) region. For more information, see [Manage instances](~~147356~~).
+        *   Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        **\
+        **Note**The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDynamicGroupDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDynamicGroupDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -28894,6 +29828,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDynamicGroupDevicesRequest,
     ) -> iot_20180120_models.QueryDynamicGroupDevicesResponse:
+        """
+        ## Limits
+        *   The dynamic group feature is available for public instances and Enterprise Edition instances in the China (Shanghai) region. For more information, see [Manage instances](~~147356~~).
+        *   Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        **\
+        **Note**The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDynamicGroupDevicesRequest
+        @return: QueryDynamicGroupDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_dynamic_group_devices_with_options(request, runtime)
 
@@ -28901,6 +29845,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryDynamicGroupDevicesRequest,
     ) -> iot_20180120_models.QueryDynamicGroupDevicesResponse:
+        """
+        ## Limits
+        *   The dynamic group feature is available for public instances and Enterprise Edition instances in the China (Shanghai) region. For more information, see [Manage instances](~~147356~~).
+        *   Each Alibaba Cloud account can run up to 50 queries per second (QPS).
+        **\
+        **Note**The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryDynamicGroupDevicesRequest
+        @return: QueryDynamicGroupDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_dynamic_group_devices_with_options_async(request, runtime)
 
@@ -30069,6 +31023,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryImportedDeviceByApplyIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryImportedDeviceByApplyIdResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryImportedDeviceByApplyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryImportedDeviceByApplyIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -30103,6 +31066,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryImportedDeviceByApplyIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryImportedDeviceByApplyIdResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryImportedDeviceByApplyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryImportedDeviceByApplyIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -30136,6 +31108,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryImportedDeviceByApplyIdRequest,
     ) -> iot_20180120_models.QueryImportedDeviceByApplyIdResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryImportedDeviceByApplyIdRequest
+        @return: QueryImportedDeviceByApplyIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_imported_device_by_apply_id_with_options(request, runtime)
 
@@ -30143,6 +31123,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryImportedDeviceByApplyIdRequest,
     ) -> iot_20180120_models.QueryImportedDeviceByApplyIdResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryImportedDeviceByApplyIdRequest
+        @return: QueryImportedDeviceByApplyIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_imported_device_by_apply_id_with_options_async(request, runtime)
 
@@ -30291,6 +31279,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryLicenseDeviceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryLicenseDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryLicenseDeviceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLicenseDeviceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -30333,6 +31330,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryLicenseDeviceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryLicenseDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryLicenseDeviceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLicenseDeviceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -30374,6 +31380,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryLicenseDeviceListRequest,
     ) -> iot_20180120_models.QueryLicenseDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryLicenseDeviceListRequest
+        @return: QueryLicenseDeviceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_license_device_list_with_options(request, runtime)
 
@@ -30381,6 +31395,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryLicenseDeviceListRequest,
     ) -> iot_20180120_models.QueryLicenseDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryLicenseDeviceListRequest
+        @return: QueryLicenseDeviceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_license_device_list_with_options_async(request, runtime)
 
@@ -30977,6 +31999,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryProductCertInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductCertInfoResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 30 times per second per account.
+        >The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProductCertInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProductCertInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -31007,6 +32038,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryProductCertInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductCertInfoResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 30 times per second per account.
+        >The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProductCertInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProductCertInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -31036,6 +32076,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryProductCertInfoRequest,
     ) -> iot_20180120_models.QueryProductCertInfoResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 30 times per second per account.
+        >The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProductCertInfoRequest
+        @return: QueryProductCertInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_product_cert_info_with_options(request, runtime)
 
@@ -31043,6 +32091,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryProductCertInfoRequest,
     ) -> iot_20180120_models.QueryProductCertInfoResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 30 times per second per account.
+        >The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProductCertInfoRequest
+        @return: QueryProductCertInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_product_cert_info_with_options_async(request, runtime)
 
@@ -31287,6 +32343,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryProjectShareDeviceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProjectShareDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProjectShareDeviceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProjectShareDeviceListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_name):
@@ -31323,6 +32388,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryProjectShareDeviceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProjectShareDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProjectShareDeviceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProjectShareDeviceListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_name):
@@ -31358,6 +32432,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryProjectShareDeviceListRequest,
     ) -> iot_20180120_models.QueryProjectShareDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProjectShareDeviceListRequest
+        @return: QueryProjectShareDeviceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_project_share_device_list_with_options(request, runtime)
 
@@ -31365,6 +32447,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryProjectShareDeviceListRequest,
     ) -> iot_20180120_models.QueryProjectShareDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryProjectShareDeviceListRequest
+        @return: QueryProjectShareDeviceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_project_share_device_list_with_options_async(request, runtime)
 
@@ -31532,11 +32622,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_schedule_period_list_with_options_async(request, runtime)
 
+    def query_share_promotion_activity_audit_result_with_options(
+        self,
+        request: iot_20180120_models.QuerySharePromotionActivityAuditResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySharePromotionActivityAuditResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.share_promotion_activity_id):
+            body['SharePromotionActivityId'] = request.share_promotion_activity_id
+        if not UtilClient.is_unset(request.share_task_code):
+            body['ShareTaskCode'] = request.share_task_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySharePromotionActivityAuditResult',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySharePromotionActivityAuditResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_share_promotion_activity_audit_result_with_options_async(
+        self,
+        request: iot_20180120_models.QuerySharePromotionActivityAuditResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySharePromotionActivityAuditResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.share_promotion_activity_id):
+            body['SharePromotionActivityId'] = request.share_promotion_activity_id
+        if not UtilClient.is_unset(request.share_task_code):
+            body['ShareTaskCode'] = request.share_task_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySharePromotionActivityAuditResult',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySharePromotionActivityAuditResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_share_promotion_activity_audit_result(
+        self,
+        request: iot_20180120_models.QuerySharePromotionActivityAuditResultRequest,
+    ) -> iot_20180120_models.QuerySharePromotionActivityAuditResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_share_promotion_activity_audit_result_with_options(request, runtime)
+
+    async def query_share_promotion_activity_audit_result_async(
+        self,
+        request: iot_20180120_models.QuerySharePromotionActivityAuditResultRequest,
+    ) -> iot_20180120_models.QuerySharePromotionActivityAuditResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_share_promotion_activity_audit_result_with_options_async(request, runtime)
+
     def query_share_task_device_list_with_options(
         self,
         request: iot_20180120_models.QueryShareTaskDeviceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryShareTaskDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryShareTaskDeviceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryShareTaskDeviceListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_name):
@@ -31573,6 +32750,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QueryShareTaskDeviceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryShareTaskDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryShareTaskDeviceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryShareTaskDeviceListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_name):
@@ -31608,6 +32794,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryShareTaskDeviceListRequest,
     ) -> iot_20180120_models.QueryShareTaskDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryShareTaskDeviceListRequest
+        @return: QueryShareTaskDeviceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_share_task_device_list_with_options(request, runtime)
 
@@ -31615,6 +32809,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QueryShareTaskDeviceListRequest,
     ) -> iot_20180120_models.QueryShareTaskDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QueryShareTaskDeviceListRequest
+        @return: QueryShareTaskDeviceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_share_task_device_list_with_options_async(request, runtime)
 
@@ -32341,6 +33543,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QuerySpeechLicenseDeviceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySpeechLicenseDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QuerySpeechLicenseDeviceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySpeechLicenseDeviceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -32383,6 +33594,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.QuerySpeechLicenseDeviceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySpeechLicenseDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QuerySpeechLicenseDeviceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySpeechLicenseDeviceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -32424,6 +33644,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QuerySpeechLicenseDeviceListRequest,
     ) -> iot_20180120_models.QuerySpeechLicenseDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QuerySpeechLicenseDeviceListRequest
+        @return: QuerySpeechLicenseDeviceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_speech_license_device_list_with_options(request, runtime)
 
@@ -32431,6 +33659,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.QuerySpeechLicenseDeviceListRequest,
     ) -> iot_20180120_models.QuerySpeechLicenseDeviceListResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to three times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: QuerySpeechLicenseDeviceListRequest
+        @return: QuerySpeechLicenseDeviceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_speech_license_device_list_with_options_async(request, runtime)
 
@@ -34549,6 +35785,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ReBindLicenseDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ReBindLicenseDeviceResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ReBindLicenseDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReBindLicenseDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -34585,6 +35830,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ReBindLicenseDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ReBindLicenseDeviceResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ReBindLicenseDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReBindLicenseDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -34620,6 +35874,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ReBindLicenseDeviceRequest,
     ) -> iot_20180120_models.ReBindLicenseDeviceResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ReBindLicenseDeviceRequest
+        @return: ReBindLicenseDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.re_bind_license_device_with_options(request, runtime)
 
@@ -34627,6 +35889,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ReBindLicenseDeviceRequest,
     ) -> iot_20180120_models.ReBindLicenseDeviceResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to five times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ReBindLicenseDeviceRequest
+        @return: ReBindLicenseDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.re_bind_license_device_with_options_async(request, runtime)
 
@@ -36767,6 +38037,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SetProductCertInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetProductCertInfoResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 30 times per second per account.
+        >The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetProductCertInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetProductCertInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -36799,6 +38078,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.SetProductCertInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetProductCertInfoResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 30 times per second per account.
+        >The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetProductCertInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetProductCertInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -36830,6 +38118,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SetProductCertInfoRequest,
     ) -> iot_20180120_models.SetProductCertInfoResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 30 times per second per account.
+        >The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetProductCertInfoRequest
+        @return: SetProductCertInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_product_cert_info_with_options(request, runtime)
 
@@ -36837,6 +38133,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.SetProductCertInfoRequest,
     ) -> iot_20180120_models.SetProductCertInfoResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 30 times per second per account.
+        >The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: SetProductCertInfoRequest
+        @return: SetProductCertInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_product_cert_info_with_options_async(request, runtime)
 
@@ -37001,6 +38305,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ShareSpeechByCombinationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ShareSpeechByCombinationResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ShareSpeechByCombinationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ShareSpeechByCombinationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.audio_format):
@@ -37041,6 +38354,15 @@ class Client(OpenApiClient):
         request: iot_20180120_models.ShareSpeechByCombinationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ShareSpeechByCombinationResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ShareSpeechByCombinationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ShareSpeechByCombinationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.audio_format):
@@ -37080,6 +38402,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ShareSpeechByCombinationRequest,
     ) -> iot_20180120_models.ShareSpeechByCombinationResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ShareSpeechByCombinationRequest
+        @return: ShareSpeechByCombinationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.share_speech_by_combination_with_options(request, runtime)
 
@@ -37087,6 +38417,14 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.ShareSpeechByCombinationRequest,
     ) -> iot_20180120_models.ShareSpeechByCombinationResponse:
+        """
+        ## QPS limits
+        You can call this API operation up to 50 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: ShareSpeechByCombinationRequest
+        @return: ShareSpeechByCombinationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.share_speech_by_combination_with_options_async(request, runtime)
 
@@ -38465,6 +39803,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UnbindLicenseProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UnbindLicenseProductResponse:
+        """
+        ## Usage notes
+        A license is bound with a product. For more information, see [BindLicenseProduct](~~427956~~) or [Bind a license to a product](~~427937~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UnbindLicenseProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindLicenseProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -38497,6 +39846,17 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UnbindLicenseProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UnbindLicenseProductResponse:
+        """
+        ## Usage notes
+        A license is bound with a product. For more information, see [BindLicenseProduct](~~427956~~) or [Bind a license to a product](~~427937~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UnbindLicenseProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindLicenseProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -38528,6 +39888,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UnbindLicenseProductRequest,
     ) -> iot_20180120_models.UnbindLicenseProductResponse:
+        """
+        ## Usage notes
+        A license is bound with a product. For more information, see [BindLicenseProduct](~~427956~~) or [Bind a license to a product](~~427937~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UnbindLicenseProductRequest
+        @return: UnbindLicenseProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_license_product_with_options(request, runtime)
 
@@ -38535,6 +39905,16 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UnbindLicenseProductRequest,
     ) -> iot_20180120_models.UnbindLicenseProductResponse:
+        """
+        ## Usage notes
+        A license is bound with a product. For more information, see [BindLicenseProduct](~~427956~~) or [Bind a license to a product](~~427937~~).
+        ## QPS limits
+        You can call this API operation up to 10 times per second per account.
+        > The RAM users of an Alibaba Cloud account share the quota of the account.
+        
+        @param request: UnbindLicenseProductRequest
+        @return: UnbindLicenseProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_license_product_with_options_async(request, runtime)
 
@@ -41699,6 +43079,12 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateTopicConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateTopicConfigResponse:
+        """
+        
+        @param request: UpdateTopicConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTopicConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.codec):
@@ -41741,6 +43127,12 @@ class Client(OpenApiClient):
         request: iot_20180120_models.UpdateTopicConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateTopicConfigResponse:
+        """
+        
+        @param request: UpdateTopicConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTopicConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.codec):
@@ -41782,6 +43174,11 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateTopicConfigRequest,
     ) -> iot_20180120_models.UpdateTopicConfigResponse:
+        """
+        
+        @param request: UpdateTopicConfigRequest
+        @return: UpdateTopicConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_topic_config_with_options(request, runtime)
 
@@ -41789,6 +43186,11 @@ class Client(OpenApiClient):
         self,
         request: iot_20180120_models.UpdateTopicConfigRequest,
     ) -> iot_20180120_models.UpdateTopicConfigResponse:
+        """
+        
+        @param request: UpdateTopicConfigRequest
+        @return: UpdateTopicConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_topic_config_with_options_async(request, runtime)
 
