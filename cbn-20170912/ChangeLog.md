@@ -1,3 +1,6 @@
+2023-07-13 Version: 1.0.30
+- Update API ListTransitRouterRouteEntries to support PathAttributes.
+
 2023-05-23 Version: 1.0.29
 - Update API DescribeGrantRulesToCen support ChildInstanceOwnerId and ChildInstanceId.
 

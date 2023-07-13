@@ -4712,25 +4712,17 @@ class CreateTransitRouterPeerAttachmentRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # master
+        # The tag key.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys.
         self.key = key
-        # ## Background information
+        # The tag value.
         # 
-        # By default, 1 Kbit/s of bandwidth is provided for inter-region communication between transit routers. This allows you to test the connectivity of inter-region IPv4 networks. To allow services that are deployed in different regions to communicate with each other, you must create an inter-region connection and allocate bandwidth resources to the connection.  
+        # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods: 
-        # 
-        # - **Allocate bandwidth resources from a bandwidth plan**:  You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information, see [CreateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createcenbandwidthpackage).
-        # 
-        # - **Use pay-by-data-transfer bandwidth resources**:  You can set a maximum bandwidth value for an inter-region connection. Then, you are charged for the amount of data transfer over the connection. For more information, see [Cross-region data transfers](https://www.alibabacloud.com/help/en/cloud-data-transmission/latest/cross-region-data-transfers).
-        # 
-        # 
-        # ## Usage notes
-        # 
-        # **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns the inter-region connection ID but the operation is still being performed in the system background. You can call **ListTransitRouterPeerAttachments** to query the status of an inter-region connection.  
-        # 
-        # - If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
-        # - If an inter-region connection is in the **Attached** state, the inter-region connection is created.
+        # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -4779,65 +4771,59 @@ class CreateTransitRouterPeerAttachmentRequest(TeaModel):
         transit_router_attachment_name: str = None,
         transit_router_id: str = None,
     ):
-        # The tags.
+        # Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
+        # 
+        # *   **false** (default): no
+        # *   **true**: yes
         self.auto_publish_route_enabled = auto_publish_route_enabled
-        # The tag keys of the resources. 
-        # 
-        # The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.  
-        # 
-        # You can specify at most 20 tag keys.
+        # The maximum bandwidth value of the inter-region connection. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The ID of the request.
-        self.bandwidth_type = bandwidth_type
-        # The tag values of the resources. 
-        # 
-        # The tag values can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.  
-        # 
-        # Each tag key has a unique tag value. You can specify at most 20 tag values in each call.
-        self.cen_bandwidth_package_id = cen_bandwidth_package_id
-        # The ID of the peer transit router.
-        self.cen_id = cen_id
-        # The description of the inter-region connection.
-        # 
-        # The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-        self.client_token = client_token
-        # The ID of the inter-region connection.
-        self.dry_run = dry_run
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # Specifies whether to check the request but not perform the operation. The system checks the permissions and the status of the specified instances. Valid values:
-        # 
-        # *   **false** (default): checks the request. If the request passes the check, the inter-region connection is created.
-        # *   **true**: checks the request but does not perform the operation. The inter-region connection is not created after the request passes the check. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
-        self.peer_transit_router_id = peer_transit_router_id
         # The method that is used to allocate bandwidth to the inter-region connection. Valid values:
         # 
         # **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
+        self.bandwidth_type = bandwidth_type
+        # The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
         # 
-        # **DataTransfer**: uses pay-by-data-transfer bandwidth.
+        # If this parameter is not set, the system allocates bandwidth that is used for testing purposes to the inter-region connection. The default bandwidth for testing purpose is 1 Kbit/s. You can use the bandwidth to test the connectivity of IPv4 networks.
+        self.cen_bandwidth_package_id = cen_bandwidth_package_id
+        # The ID of the Cloud Enterprise Network (CEN) instance.
+        self.cen_id = cen_id
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        self.client_token = client_token
+        # Specifies whether to perform a dry run. Default values:
+        # 
+        # *   **false** (default): performs a dry run and sends the request.
+        # *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the peer transit router.
+        self.peer_transit_router_id = peer_transit_router_id
+        # The ID of the region where the peer transit router is deployed.
         self.peer_transit_router_region_id = peer_transit_router_region_id
-        # Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
+        # The ID of the region where the local Enterprise Edition transit router is deployed.
         # 
-        # *   **false** (default): no.
-        # *   **true**: yes.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 614519
+        # The information about the tags.
+        # 
+        # You can specify at most 20 tags in each call.
         self.tag = tag
-        # The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+        # The description of the inter-region connection.
         # 
-        # >  If you set **BandwidthType** to **DataTransfer**, you do not need to set this parameter.
+        # The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         self.transit_router_attachment_description = transit_router_attachment_description
-        # The bandwidth value of the inter-region connection. Unit: Mbit/s.
+        # The name of the inter-region connection.
         # 
-        # *   If you set **BandwidthType** to **BandwidthPackage**, this parameter specifies the bandwidth that is available for the inter-region connection.
-        # 
-        # <!---->
-        # 
-        # *   If you set **BandwidthType** to **DataTransfer**, this parameter specifies the bandwidth limit of the inter-region connection.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
         self.transit_router_attachment_name = transit_router_attachment_name
-        # The ID of the region where the peer transit router is deployed.
+        # The ID of the local Enterprise Edition transit router.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -4942,12 +4928,9 @@ class CreateTransitRouterPeerAttachmentResponseBody(TeaModel):
         request_id: str = None,
         transit_router_attachment_id: str = None,
     ):
-        # The ID of the region where the peer transit router is deployed.
+        # The ID of the request.
         self.request_id = request_id
-        # Specifies whether to check the request but not perform the operation. The system checks the permissions and the status of the specified instances. Valid values:
-        # 
-        # *   **false** (default): checks the request. If the request passes the check, the inter-region connection is created.
-        # *   **true**: checks the request but does not perform the operation. The inter-region connection is not created after the request passes the check. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
+        # The ID of the inter-region connection.
         self.transit_router_attachment_id = transit_router_attachment_id
 
     def validate(self):
@@ -5230,17 +5213,39 @@ class CreateTransitRouterRouteEntryRequest(TeaModel):
         transit_router_route_entry_next_hop_type: str = None,
         transit_router_route_table_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # 
+        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
+        # Specifies whether to perform a precheck to check information such as the permissions and instance status. Valid values:
+        # 
+        # *   **false** (default): sends the request. If the request passes the precheck, the route entry is added.
+        # *   **true**: sends a precheck request but does not add the route. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The description of the route.
+        # 
+        # The description must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the description empty.
         self.transit_router_route_entry_description = transit_router_route_entry_description
+        # The destination CIDR block of the route.
         self.transit_router_route_entry_destination_cidr_block = transit_router_route_entry_destination_cidr_block
+        # The name of the route.
+        # 
+        # The name must be 0 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -.
         self.transit_router_route_entry_name = transit_router_route_entry_name
+        # The ID of the network instance connection that you want to specify as the next hop.
         self.transit_router_route_entry_next_hop_id = transit_router_route_entry_next_hop_id
+        # The type of the next hop. Valid values:
+        # 
+        # *   **BlackHole**: routes network traffic to a black hole. All packets that match this route are dropped. If you select this option, you do not need to specify the next hop information.
+        # *   **Attachment**: routes network traffic to a network instance connection. If you select this option, you must specify the ID of the network instance connection. All packets that match this route are routed to the specified network instance connection.
         self.transit_router_route_entry_next_hop_type = transit_router_route_entry_next_hop_type
+        # The ID of the route table of the Enterprise Edition transit router.
         self.transit_router_route_table_id = transit_router_route_table_id
 
     def validate(self):
@@ -5313,7 +5318,9 @@ class CreateTransitRouterRouteEntryResponseBody(TeaModel):
         request_id: str = None,
         transit_router_route_entry_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the route.
         self.transit_router_route_entry_id = transit_router_route_entry_id
 
     def validate(self):
@@ -6729,6 +6736,7 @@ class DeleteCenRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the CEN instance.
         self.cen_id = cen_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -6776,6 +6784,7 @@ class DeleteCenResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12561,6 +12570,7 @@ class DescribeCenInterRegionBandwidthLimitsRequest(TeaModel):
         page_size: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tr_region_id: str = None,
     ):
         # The operation that you want to perform. Set the value to **DescribeCenInterRegionBandwidthLimits**.
         self.cen_id = cen_id
@@ -12574,6 +12584,7 @@ class DescribeCenInterRegionBandwidthLimitsRequest(TeaModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tr_region_id = tr_region_id
 
     def validate(self):
         pass
@@ -12598,6 +12609,8 @@ class DescribeCenInterRegionBandwidthLimitsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.tr_region_id is not None:
+            result['TrRegionId'] = self.tr_region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -12616,6 +12629,8 @@ class DescribeCenInterRegionBandwidthLimitsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TrRegionId') is not None:
+            self.tr_region_id = m.get('TrRegionId')
         return self
 
 
@@ -23088,6 +23103,8 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
 class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains(TeaModel):
     def __init__(
         self,
+        cen_id: str = None,
+        region_id: str = None,
         status: str = None,
         tags: List[ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsTags] = None,
         transit_router_id: str = None,
@@ -23095,6 +23112,8 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
         transit_router_multicast_domain_id: str = None,
         transit_router_multicast_domain_name: str = None,
     ):
+        self.cen_id = cen_id
+        self.region_id = region_id
         # WB656982
         self.status = status
         self.tags = tags
@@ -23129,6 +23148,10 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
             return _map
 
         result = dict()
+        if self.cen_id is not None:
+            result['CenId'] = self.cen_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
         result['Tags'] = []
@@ -23147,6 +23170,10 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CenId') is not None:
+            self.cen_id = m.get('CenId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         self.tags = []
@@ -24702,11 +24729,69 @@ class ListTransitRouterRouteEntriesRequest(TeaModel):
         return self
 
 
+class ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes(TeaModel):
+    def __init__(
+        self,
+        as_paths: List[str] = None,
+        communities: List[str] = None,
+        origin_instance_id: str = None,
+        origin_instance_type: str = None,
+        origin_route_type: str = None,
+        preference: int = None,
+    ):
+        self.as_paths = as_paths
+        self.communities = communities
+        self.origin_instance_id = origin_instance_id
+        self.origin_instance_type = origin_instance_type
+        self.origin_route_type = origin_route_type
+        self.preference = preference
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.as_paths is not None:
+            result['AsPaths'] = self.as_paths
+        if self.communities is not None:
+            result['Communities'] = self.communities
+        if self.origin_instance_id is not None:
+            result['OriginInstanceId'] = self.origin_instance_id
+        if self.origin_instance_type is not None:
+            result['OriginInstanceType'] = self.origin_instance_type
+        if self.origin_route_type is not None:
+            result['OriginRouteType'] = self.origin_route_type
+        if self.preference is not None:
+            result['Preference'] = self.preference
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsPaths') is not None:
+            self.as_paths = m.get('AsPaths')
+        if m.get('Communities') is not None:
+            self.communities = m.get('Communities')
+        if m.get('OriginInstanceId') is not None:
+            self.origin_instance_id = m.get('OriginInstanceId')
+        if m.get('OriginInstanceType') is not None:
+            self.origin_instance_type = m.get('OriginInstanceType')
+        if m.get('OriginRouteType') is not None:
+            self.origin_route_type = m.get('OriginRouteType')
+        if m.get('Preference') is not None:
+            self.preference = m.get('Preference')
+        return self
+
+
 class ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries(TeaModel):
     def __init__(
         self,
         create_time: str = None,
         operational_mode: bool = None,
+        path_attributes: ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes = None,
         prefix_list_id: str = None,
         tag: str = None,
         transit_router_route_entry_description: str = None,
@@ -24733,6 +24818,7 @@ class ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries(TeaMode
         # *   **true**: The route can be managed. You can delete the route.
         # *   **false**: The route cannot be managed because it is automatically generated by the system.
         self.operational_mode = operational_mode
+        self.path_attributes = path_attributes
         self.prefix_list_id = prefix_list_id
         # The tag of the route.
         # 
@@ -24778,7 +24864,8 @@ class ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries(TeaMode
         self.transit_router_route_entry_type = transit_router_route_entry_type
 
     def validate(self):
-        pass
+        if self.path_attributes:
+            self.path_attributes.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -24790,6 +24877,8 @@ class ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries(TeaMode
             result['CreateTime'] = self.create_time
         if self.operational_mode is not None:
             result['OperationalMode'] = self.operational_mode
+        if self.path_attributes is not None:
+            result['PathAttributes'] = self.path_attributes.to_map()
         if self.prefix_list_id is not None:
             result['PrefixListId'] = self.prefix_list_id
         if self.tag is not None:
@@ -24826,6 +24915,9 @@ class ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries(TeaMode
             self.create_time = m.get('CreateTime')
         if m.get('OperationalMode') is not None:
             self.operational_mode = m.get('OperationalMode')
+        if m.get('PathAttributes') is not None:
+            temp_model = ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntriesPathAttributes()
+            self.path_attributes = temp_model.from_map(m['PathAttributes'])
         if m.get('PrefixListId') is not None:
             self.prefix_list_id = m.get('PrefixListId')
         if m.get('Tag') is not None:
@@ -30768,13 +30860,23 @@ class RevokeInstanceFromTransitRouterRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Revokes the permissions that a transit router uses to connect to network instances that belong to another Alibaba Cloud account.
+        # Enter the ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
         self.cen_id = cen_id
+        # The ID of the Alibaba Cloud account to which the CEN instance belongs.
         self.cen_owner_id = cen_owner_id
+        # The ID of the network instance.
         self.instance_id = instance_id
+        # The type of the network instance. Valid values:
+        # 
+        # *   **VPC**: VPC
+        # *   **ExpressConnect**: VBR
+        # *   **VPN**: IPsec-VPN connection
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the network instance is deployed.
+        # 
+        # You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -30836,6 +30938,7 @@ class RevokeInstanceFromTransitRouterResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
