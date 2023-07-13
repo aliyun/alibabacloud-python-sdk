@@ -1,7 +1,408 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import Dict, List
+
+
+class CreateInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        charge_type: str = None,
+        cold_storage_size: int = None,
+        cpu: int = None,
+        duration: int = None,
+        gateway_count: int = None,
+        instance_name: str = None,
+        instance_type: str = None,
+        leader_instance_id: str = None,
+        pricing_cycle: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        storage_size: int = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        self.charge_type = charge_type
+        self.cold_storage_size = cold_storage_size
+        self.cpu = cpu
+        self.duration = duration
+        self.gateway_count = gateway_count
+        self.instance_name = instance_name
+        self.instance_type = instance_type
+        self.leader_instance_id = leader_instance_id
+        self.pricing_cycle = pricing_cycle
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.storage_size = storage_size
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['autoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['autoRenew'] = self.auto_renew
+        if self.charge_type is not None:
+            result['chargeType'] = self.charge_type
+        if self.cold_storage_size is not None:
+            result['coldStorageSize'] = self.cold_storage_size
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.gateway_count is not None:
+            result['gatewayCount'] = self.gateway_count
+        if self.instance_name is not None:
+            result['instanceName'] = self.instance_name
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.leader_instance_id is not None:
+            result['leaderInstanceId'] = self.leader_instance_id
+        if self.pricing_cycle is not None:
+            result['pricingCycle'] = self.pricing_cycle
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.storage_size is not None:
+            result['storageSize'] = self.storage_size
+        if self.v_switch_id is not None:
+            result['vSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['zoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoPay') is not None:
+            self.auto_pay = m.get('autoPay')
+        if m.get('autoRenew') is not None:
+            self.auto_renew = m.get('autoRenew')
+        if m.get('chargeType') is not None:
+            self.charge_type = m.get('chargeType')
+        if m.get('coldStorageSize') is not None:
+            self.cold_storage_size = m.get('coldStorageSize')
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('gatewayCount') is not None:
+            self.gateway_count = m.get('gatewayCount')
+        if m.get('instanceName') is not None:
+            self.instance_name = m.get('instanceName')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('leaderInstanceId') is not None:
+            self.leader_instance_id = m.get('leaderInstanceId')
+        if m.get('pricingCycle') is not None:
+            self.pricing_cycle = m.get('pricingCycle')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('storageSize') is not None:
+            self.storage_size = m.get('storageSize')
+        if m.get('vSwitchId') is not None:
+            self.v_switch_id = m.get('vSwitchId')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        if m.get('zoneId') is not None:
+            self.zone_id = m.get('zoneId')
+        return self
+
+
+class CreateInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        instance_id: str = None,
+        message: str = None,
+        order_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.instance_id = instance_id
+        self.message = message
+        self.order_id = order_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateInstanceResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class GetInstanceResponseBodyInstanceEndpoints(TeaModel):
@@ -15,13 +416,93 @@ class GetInstanceResponseBodyInstanceEndpoints(TeaModel):
         vpc_id: str = None,
         vpc_instance_id: str = None,
     ):
+        # The endpoint. This parameter is returned if both the AnyTunnel and SingleTunnel modes are enabled for an instance, and the instance is switched from the AnyTunnel mode to the SingleTunnel mode. In this case, two endpoints are returned.
         self.alternative_endpoints = alternative_endpoints
+        # Indicates whether the network is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.enabled = enabled
+        # The endpoint.
         self.endpoint = endpoint
+        # The network type.
+        # 
+        # Valid values:
+        # 
+        # *   VPCSingleTunnel
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     virtual private cloud (VPC)
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Intranet
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     internal network
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   VPCAnyTunnel
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     not supported by new instances
+        # 
+        #     <!-- -->
+        # 
+        # *   Internet
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     Internet
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.type = type
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # VPC ID
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The ID of VPC to which the instance belongs.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -74,7 +555,9 @@ class GetInstanceResponseBodyInstanceTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -131,31 +614,281 @@ class GetInstanceResponseBodyInstance(TeaModel):
         version: str = None,
         zone_id: str = None,
     ):
+        # Indicates whether auto-renewal is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.auto_renewal = auto_renewal
+        # The cold storage capacity of the instance. Unit: GB. Standard SSD is used for hot storage, and HDD is used for cold storage.
         self.cold_storage = cold_storage
+        # The commodity code.
+        # 
+        # Valid values:
+        # 
+        # *   hologram_maxcomputeAccelerate_public_cn
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     China site/Lakehouse Acceleration Edition
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   hologram_combo_public_cn
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     China site/Subscription
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   hologram_prepay_public_intl
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     International site/Subscription
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   hologram_storage_dp_cn
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     China site/Storage plan
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   hologram_postpay_public_cn
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     China site/Pay-as-you-go
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   hologram_postpay_public_intl
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     International site/Pay-as-you-go
+        # 
+        #     <!-- -->
+        # 
+        # *   hologram_maxcomputeAccelerate_public_intl
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     International site/Lakehouse Acceleration Edition
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   hologram_cu_dp_cn
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     China site/Compute plan
+        # 
+        #     <!-- -->
         self.commodity_code = commodity_code
+        # The number of compute nodes. In a typical configuration, a node has 16 vCPUs and 32 GB of memory.
         self.compute_node_count = compute_node_count
+        # The number of vCPUs.
         self.cpu = cpu
+        # The creation time.
         self.creation_time = creation_time
+        # The amount of data that can be stored in the disk of the Standard storage class. Unit: GB.
         self.disk = disk
+        # Indicates whether data lake acceleration is enabled.
         self.enable_hive_access = enable_hive_access
+        # The list of endpoints.
         self.endpoints = endpoints
+        # The expiration time. This parameter is invalid for pay-as-you-go instances.
         self.expiration_time = expiration_time
+        # 网关节点数量。
         self.gateway_count = gateway_count
+        # 网关cpu资源。
+        # 单位：core。
         self.gateway_cpu = gateway_cpu
+        # 网关内存资源。
+        # 单位：GB。
         self.gateway_memory = gateway_memory
+        # The billing method of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     pay-as-you-go
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   PrePaid
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     subscription
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.instance_charge_type = instance_charge_type
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name. The instance name must be 2 to 64 characters in length.
         self.instance_name = instance_name
+        # The owner of the instance.
         self.instance_owner = instance_owner
+        # The status of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Running
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Suspended
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Allocating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.instance_status = instance_status
+        # The type of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   Follower
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     read-only secondary instance
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Standard
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     normal instance
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.instance_type = instance_type
+        # The ID of the primary instance.
         self.leader_instance_id = leader_instance_id
+        # The memory size. Unit: GB.
         self.memory = memory
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The reason for the suspension.
         self.suspend_reason = suspend_reason
+        # The instance tag.
         self.tags = tags
+        # The instance version.
         self.version = version
+        # The ID of the zone where the instance resides.
         self.zone_id = zone_id
 
     def validate(self):
@@ -305,12 +1038,17 @@ class GetInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the instance.
         self.instance = instance
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The request result, which indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -405,7 +1143,9 @@ class ListInstancesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -435,10 +1175,14 @@ class ListInstancesRequestTag(TeaModel):
 class ListInstancesRequest(TeaModel):
     def __init__(
         self,
+        cms_instance_type: str = None,
         resource_group_id: str = None,
         tag: List[ListInstancesRequestTag] = None,
     ):
+        self.cms_instance_type = cms_instance_type
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags to add to the resource.
         self.tag = tag
 
     def validate(self):
@@ -453,6 +1197,8 @@ class ListInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cms_instance_type is not None:
+            result['cmsInstanceType'] = self.cms_instance_type
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
         result['tag'] = []
@@ -463,6 +1209,8 @@ class ListInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('cmsInstanceType') is not None:
+            self.cms_instance_type = m.get('cmsInstanceType')
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
         self.tag = []
@@ -483,12 +1231,89 @@ class ListInstancesResponseBodyInstanceListEndpoints(TeaModel):
         vpc_id: str = None,
         vpc_instance_id: str = None,
     ):
+        # Indicates whether the endpoint is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.enabled = enabled
+        # The endpoint.
         self.endpoint = endpoint
+        # The network type.
+        # 
+        # Valid values:
+        # 
+        # *   VPCSingleTunnel
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     virtual private cloud (VPC)
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Intranet
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     internal network
+        # 
+        #     <!-- -->
+        # 
+        # *   VPCAnyTunnel
+        # 
+        #     <!-- -->
+        # 
+        #     : This value is not supported by new instances
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Internet
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     Internet
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.type = type
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The ID of the VPC to which the instance belongs.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -537,7 +1362,9 @@ class ListInstancesResponseBodyInstanceListTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -583,20 +1410,147 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
         tags: List[ListInstancesResponseBodyInstanceListTags] = None,
         version: str = None,
     ):
+        # The commodity code, which is the same as that on the Billing Management page.
         self.commodity_code = commodity_code
+        # The time when the cluster was created.
         self.creation_time = creation_time
+        # Indicates whether lakehouse acceleration is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.enable_hive_access = enable_hive_access
+        # The list of endpoints.
         self.endpoints = endpoints
+        # The time when the cluster expires.
         self.expiration_time = expiration_time
+        # The billing method of the instance. Valid values:
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     pay-as-you-go
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   PrePaid
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     subscription
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.instance_charge_type = instance_charge_type
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the instance.
         self.instance_name = instance_name
+        # The status of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Running
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Suspended
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Allocating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.instance_status = instance_status
+        # The type of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   Follower
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     read-only secondary instance
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Standard
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     normal instance
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.instance_type = instance_type
+        # The ID of the primary instance.
         self.leader_instance_id = leader_instance_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The reason for the suspension.
         self.suspend_reason = suspend_reason
+        # The tags that are added to the resource.
         self.tags = tags
+        # The version of the cluster.
         self.version = version
 
     def validate(self):
@@ -702,12 +1656,17 @@ class ListInstancesResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The list of queried instances.
         self.instance_list = instance_list
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -802,6 +1761,188 @@ class ListInstancesResponse(TeaModel):
         return self
 
 
+class RenewInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        duration: int = None,
+    ):
+        self.auto_renew = auto_renew
+        self.duration = duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['autoRenew'] = self.auto_renew
+        if self.duration is not None:
+            result['duration'] = self.duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoRenew') is not None:
+            self.auto_renew = m.get('autoRenew')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        return self
+
+
+class RenewInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        order_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.order_id = order_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RenewInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: RenewInstanceResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = RenewInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RenewInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RenewInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RenewInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RestartInstanceResponseBody(TeaModel):
     def __init__(
         self,
@@ -812,12 +1953,35 @@ class RestartInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the operation was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The request result, which indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -914,12 +2078,17 @@ class ResumeInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned result, which indicates whether the operation was successful.
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The request result, which indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1006,6 +2175,194 @@ class ResumeInstanceResponse(TeaModel):
         return self
 
 
+class ScaleInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        cold_storage_size: int = None,
+        cpu: int = None,
+        scale_type: str = None,
+        storage_size: int = None,
+    ):
+        self.cold_storage_size = cold_storage_size
+        self.cpu = cpu
+        self.scale_type = scale_type
+        self.storage_size = storage_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cold_storage_size is not None:
+            result['coldStorageSize'] = self.cold_storage_size
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.scale_type is not None:
+            result['scaleType'] = self.scale_type
+        if self.storage_size is not None:
+            result['storageSize'] = self.storage_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('coldStorageSize') is not None:
+            self.cold_storage_size = m.get('coldStorageSize')
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('scaleType') is not None:
+            self.scale_type = m.get('scaleType')
+        if m.get('storageSize') is not None:
+            self.storage_size = m.get('storageSize')
+        return self
+
+
+class ScaleInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        order_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.order_id = order_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ScaleInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ScaleInstanceResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ScaleInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ScaleInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ScaleInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ScaleInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopInstanceResponseBody(TeaModel):
     def __init__(
         self,
@@ -1016,12 +2373,53 @@ class StopInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned result, which indicates whether the operation was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The request result, which indicates whether the request was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.success = success
 
     def validate(self):
@@ -1113,6 +2511,7 @@ class UpdateInstanceNameRequest(TeaModel):
         self,
         instance_name: str = None,
     ):
+        # The new name of the instance.
         self.instance_name = instance_name
 
     def validate(self):
@@ -1145,12 +2544,53 @@ class UpdateInstanceNameResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned result, which indicates whether the operation was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The request result, which indicates whether the request was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.success = success
 
     def validate(self):
@@ -1247,13 +2687,35 @@ class UpdateInstanceNetworkTypeRequest(TeaModel):
         vpc_owner_id: str = None,
         vpc_region_id: str = None,
     ):
+        # Specifies whether to change the network type from AnyTunnel to SingleTunnel. This parameter is invalid for new instances. For new instances, this parameter is set to null by default.
+        # 
+        # Valid values:
+        # 
+        # *   others/null
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.any_tunnel_to_single_tunnel = any_tunnel_to_single_tunnel
+        # A list of network types that you want to enable. The list of enabled network types is randomly ordered. For example, the Internet, internal network, and VPCSingleTunnel network types are enabled. If you want to disable the Internet type, set this parameter to Intranet,VPCSingleTunnel.
         self.network_types = network_types
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The ID of the VPC to which the instance belongs.
         self.vpc_id = vpc_id
+        # The owner ID of the VPC, which is the ID of the Alibaba Cloud account.
         self.vpc_owner_id = vpc_owner_id
-        # vpc regionId。
+        # The region ID of the VPC.
         self.vpc_region_id = vpc_region_id
 
     def validate(self):
@@ -1306,12 +2768,53 @@ class UpdateInstanceNetworkTypeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned result, which indicates whether the operation was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.success = success
 
     def validate(self):
