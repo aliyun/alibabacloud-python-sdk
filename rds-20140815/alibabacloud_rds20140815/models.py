@@ -13405,6 +13405,7 @@ class DescribeActiveOperationTasksResponseBodyItems(TeaModel):
         status: int = None,
         sub_ins_names: List[str] = None,
         switch_time: str = None,
+        task_params: str = None,
         task_type: str = None,
         task_type_en: str = None,
         task_type_zh: str = None,
@@ -13463,6 +13464,7 @@ class DescribeActiveOperationTasksResponseBodyItems(TeaModel):
         self.sub_ins_names = sub_ins_names
         # The switching time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.switch_time = switch_time
+        self.task_params = task_params
         # The type of the task. Valid values:
         # 
         # *   **rds_apsaradb_ha**: primary/secondary switchover
@@ -13532,6 +13534,8 @@ class DescribeActiveOperationTasksResponseBodyItems(TeaModel):
             result['SubInsNames'] = self.sub_ins_names
         if self.switch_time is not None:
             result['SwitchTime'] = self.switch_time
+        if self.task_params is not None:
+            result['TaskParams'] = self.task_params
         if self.task_type is not None:
             result['TaskType'] = self.task_type
         if self.task_type_en is not None:
@@ -13590,6 +13594,8 @@ class DescribeActiveOperationTasksResponseBodyItems(TeaModel):
             self.sub_ins_names = m.get('SubInsNames')
         if m.get('SwitchTime') is not None:
             self.switch_time = m.get('SwitchTime')
+        if m.get('TaskParams') is not None:
+            self.task_params = m.get('TaskParams')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
         if m.get('TaskTypeEn') is not None:
@@ -60189,6 +60195,7 @@ class RestartDBInstanceRequest(TeaModel):
         self,
         client_token: str = None,
         dbinstance_id: str = None,
+        node_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -60198,6 +60205,7 @@ class RestartDBInstanceRequest(TeaModel):
         self.client_token = client_token
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
+        self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -60216,6 +60224,8 @@ class RestartDBInstanceRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -60232,6 +60242,8 @@ class RestartDBInstanceRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
