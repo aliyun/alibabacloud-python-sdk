@@ -37274,6 +37274,7 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanInfo(TeaModel):
         btrip_hotel_cancel_policy_dto: HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPolicyDTO = None,
         earliest_check_in_time: str = None,
         latest_check_out_time: str = None,
+        max_booking_num: int = None,
         max_occupancy_num: int = None,
         need_certificate: bool = None,
         need_email: bool = None,
@@ -37285,6 +37286,7 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanInfo(TeaModel):
         self.btrip_hotel_cancel_policy_dto = btrip_hotel_cancel_policy_dto
         self.earliest_check_in_time = earliest_check_in_time
         self.latest_check_out_time = latest_check_out_time
+        self.max_booking_num = max_booking_num
         self.max_occupancy_num = max_occupancy_num
         self.need_certificate = need_certificate
         self.need_email = need_email
@@ -37310,6 +37312,8 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanInfo(TeaModel):
             result['earliest_check_in_time'] = self.earliest_check_in_time
         if self.latest_check_out_time is not None:
             result['latest_check_out_time'] = self.latest_check_out_time
+        if self.max_booking_num is not None:
+            result['max_booking_num'] = self.max_booking_num
         if self.max_occupancy_num is not None:
             result['max_occupancy_num'] = self.max_occupancy_num
         if self.need_certificate is not None:
@@ -37335,6 +37339,8 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanInfo(TeaModel):
             self.earliest_check_in_time = m.get('earliest_check_in_time')
         if m.get('latest_check_out_time') is not None:
             self.latest_check_out_time = m.get('latest_check_out_time')
+        if m.get('max_booking_num') is not None:
+            self.max_booking_num = m.get('max_booking_num')
         if m.get('max_occupancy_num') is not None:
             self.max_occupancy_num = m.get('max_occupancy_num')
         if m.get('need_certificate') is not None:
