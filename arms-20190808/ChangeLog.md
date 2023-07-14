@@ -1,3 +1,6 @@
+2023-07-14 Version: 2.0.0
+- Api update.
+
 2023-03-07 Version: 1.0.4
 - Fixed bugs for getClusterAllUrl pop interface.
 
