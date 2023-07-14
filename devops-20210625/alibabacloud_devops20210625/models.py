@@ -7517,6 +7517,247 @@ class CreateWorkitemRecordResponse(TeaModel):
         return self
 
 
+class CreateWorkitemV2RequestFieldValueList(TeaModel):
+    def __init__(
+        self,
+        field_identifier: str = None,
+        value: str = None,
+    ):
+        self.field_identifier = field_identifier
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_identifier is not None:
+            result['fieldIdentifier'] = self.field_identifier
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fieldIdentifier') is not None:
+            self.field_identifier = m.get('fieldIdentifier')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CreateWorkitemV2Request(TeaModel):
+    def __init__(
+        self,
+        assigned_to: str = None,
+        category: str = None,
+        description: str = None,
+        field_value_list: List[CreateWorkitemV2RequestFieldValueList] = None,
+        parent_identifier: str = None,
+        participants: List[str] = None,
+        space_identifier: str = None,
+        sprint_identifier: str = None,
+        subject: str = None,
+        tags: List[str] = None,
+        trackers: List[str] = None,
+        verifier: str = None,
+        versions: List[str] = None,
+        workitem_type_identifier: str = None,
+    ):
+        self.assigned_to = assigned_to
+        self.category = category
+        self.description = description
+        self.field_value_list = field_value_list
+        self.parent_identifier = parent_identifier
+        self.participants = participants
+        self.space_identifier = space_identifier
+        self.sprint_identifier = sprint_identifier
+        self.subject = subject
+        self.tags = tags
+        self.trackers = trackers
+        self.verifier = verifier
+        self.versions = versions
+        self.workitem_type_identifier = workitem_type_identifier
+
+    def validate(self):
+        if self.field_value_list:
+            for k in self.field_value_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assigned_to is not None:
+            result['assignedTo'] = self.assigned_to
+        if self.category is not None:
+            result['category'] = self.category
+        if self.description is not None:
+            result['description'] = self.description
+        result['fieldValueList'] = []
+        if self.field_value_list is not None:
+            for k in self.field_value_list:
+                result['fieldValueList'].append(k.to_map() if k else None)
+        if self.parent_identifier is not None:
+            result['parentIdentifier'] = self.parent_identifier
+        if self.participants is not None:
+            result['participants'] = self.participants
+        if self.space_identifier is not None:
+            result['spaceIdentifier'] = self.space_identifier
+        if self.sprint_identifier is not None:
+            result['sprintIdentifier'] = self.sprint_identifier
+        if self.subject is not None:
+            result['subject'] = self.subject
+        if self.tags is not None:
+            result['tags'] = self.tags
+        if self.trackers is not None:
+            result['trackers'] = self.trackers
+        if self.verifier is not None:
+            result['verifier'] = self.verifier
+        if self.versions is not None:
+            result['versions'] = self.versions
+        if self.workitem_type_identifier is not None:
+            result['workitemTypeIdentifier'] = self.workitem_type_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assignedTo') is not None:
+            self.assigned_to = m.get('assignedTo')
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        self.field_value_list = []
+        if m.get('fieldValueList') is not None:
+            for k in m.get('fieldValueList'):
+                temp_model = CreateWorkitemV2RequestFieldValueList()
+                self.field_value_list.append(temp_model.from_map(k))
+        if m.get('parentIdentifier') is not None:
+            self.parent_identifier = m.get('parentIdentifier')
+        if m.get('participants') is not None:
+            self.participants = m.get('participants')
+        if m.get('spaceIdentifier') is not None:
+            self.space_identifier = m.get('spaceIdentifier')
+        if m.get('sprintIdentifier') is not None:
+            self.sprint_identifier = m.get('sprintIdentifier')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
+        if m.get('trackers') is not None:
+            self.trackers = m.get('trackers')
+        if m.get('verifier') is not None:
+            self.verifier = m.get('verifier')
+        if m.get('versions') is not None:
+            self.versions = m.get('versions')
+        if m.get('workitemTypeIdentifier') is not None:
+            self.workitem_type_identifier = m.get('workitemTypeIdentifier')
+        return self
+
+
+class CreateWorkitemV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: str = None,
+        workitem_identifier: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+        self.workitem_identifier = workitem_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.workitem_identifier is not None:
+            result['workitemIdentifier'] = self.workitem_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('workitemIdentifier') is not None:
+            self.workitem_identifier = m.get('workitemIdentifier')
+        return self
+
+
+class CreateWorkitemV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWorkitemV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWorkitemV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateWorkspaceRequest(TeaModel):
     def __init__(
         self,
@@ -20133,6 +20374,181 @@ class GetWorkItemWorkFlowInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWorkItemWorkFlowInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWorkitemAttachmentCreatemetaRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+    ):
+        self.file_name = file_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        return self
+
+
+class GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo(TeaModel):
+    def __init__(
+        self,
+        accessid: str = None,
+        dir: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.accessid = accessid
+        self.dir = dir
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accessid is not None:
+            result['accessid'] = self.accessid
+        if self.dir is not None:
+            result['dir'] = self.dir
+        if self.host is not None:
+            result['host'] = self.host
+        if self.policy is not None:
+            result['policy'] = self.policy
+        if self.signature is not None:
+            result['signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessid') is not None:
+            self.accessid = m.get('accessid')
+        if m.get('dir') is not None:
+            self.dir = m.get('dir')
+        if m.get('host') is not None:
+            self.host = m.get('host')
+        if m.get('policy') is not None:
+            self.policy = m.get('policy')
+        if m.get('signature') is not None:
+            self.signature = m.get('signature')
+        return self
+
+
+class GetWorkitemAttachmentCreatemetaResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: str = None,
+        upload_info: GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+        self.upload_info = upload_info
+
+    def validate(self):
+        if self.upload_info:
+            self.upload_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.upload_info is not None:
+            result['uploadInfo'] = self.upload_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('uploadInfo') is not None:
+            temp_model = GetWorkitemAttachmentCreatemetaResponseBodyUploadInfo()
+            self.upload_info = temp_model.from_map(m['uploadInfo'])
+        return self
+
+
+class GetWorkitemAttachmentCreatemetaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetWorkitemAttachmentCreatemetaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetWorkitemAttachmentCreatemetaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -39784,6 +40200,128 @@ class UpdateWorkitemFieldResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateWorkitemFieldResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class WorkitemAttachmentCreateRequest(TeaModel):
+    def __init__(
+        self,
+        file_key: str = None,
+        original_filename: str = None,
+    ):
+        self.file_key = file_key
+        self.original_filename = original_filename
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_key is not None:
+            result['fileKey'] = self.file_key
+        if self.original_filename is not None:
+            result['originalFilename'] = self.original_filename
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileKey') is not None:
+            self.file_key = m.get('fileKey')
+        if m.get('originalFilename') is not None:
+            self.original_filename = m.get('originalFilename')
+        return self
+
+
+class WorkitemAttachmentCreateResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class WorkitemAttachmentCreateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WorkitemAttachmentCreateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WorkitemAttachmentCreateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

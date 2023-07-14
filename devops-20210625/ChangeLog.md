@@ -1,3 +1,6 @@
+2023-07-14 Version: 3.0.2
+- Add GetWorkitemAttachmentCreatemeta And WorkitemAttachmentCreate.
+
 2023-07-05 Version: 3.0.1
 - Add CreatePipeline And UpdatePipeline.
 
