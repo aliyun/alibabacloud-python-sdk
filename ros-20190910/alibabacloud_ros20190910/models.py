@@ -8282,6 +8282,8 @@ class GetStackResponseBodyResourceProgress(TeaModel):
         in_progress_resource_count: int = None,
         in_progress_resource_details: List[GetStackResponseBodyResourceProgressInProgressResourceDetails] = None,
         pending_resource_count: int = None,
+        stack_action_progress: float = None,
+        stack_operation_progress: float = None,
         success_resource_count: int = None,
         total_resource_count: int = None,
     ):
@@ -8293,6 +8295,8 @@ class GetStackResponseBodyResourceProgress(TeaModel):
         self.in_progress_resource_details = in_progress_resource_details
         # The number of resources to be created.
         self.pending_resource_count = pending_resource_count
+        self.stack_action_progress = stack_action_progress
+        self.stack_operation_progress = stack_operation_progress
         # The number of resources that are created.
         self.success_resource_count = success_resource_count
         # The total number of resources.
@@ -8320,6 +8324,10 @@ class GetStackResponseBodyResourceProgress(TeaModel):
                 result['InProgressResourceDetails'].append(k.to_map() if k else None)
         if self.pending_resource_count is not None:
             result['PendingResourceCount'] = self.pending_resource_count
+        if self.stack_action_progress is not None:
+            result['StackActionProgress'] = self.stack_action_progress
+        if self.stack_operation_progress is not None:
+            result['StackOperationProgress'] = self.stack_operation_progress
         if self.success_resource_count is not None:
             result['SuccessResourceCount'] = self.success_resource_count
         if self.total_resource_count is not None:
@@ -8339,6 +8347,10 @@ class GetStackResponseBodyResourceProgress(TeaModel):
                 self.in_progress_resource_details.append(temp_model.from_map(k))
         if m.get('PendingResourceCount') is not None:
             self.pending_resource_count = m.get('PendingResourceCount')
+        if m.get('StackActionProgress') is not None:
+            self.stack_action_progress = m.get('StackActionProgress')
+        if m.get('StackOperationProgress') is not None:
+            self.stack_operation_progress = m.get('StackOperationProgress')
         if m.get('SuccessResourceCount') is not None:
             self.success_resource_count = m.get('SuccessResourceCount')
         if m.get('TotalResourceCount') is not None:
