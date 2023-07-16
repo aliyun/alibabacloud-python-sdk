@@ -1,3 +1,6 @@
+2023-07-16 Version: 2.2.16
+- Add error code.
+
 2023-07-15 Version: 2.2.15
 - Add error code.
 
