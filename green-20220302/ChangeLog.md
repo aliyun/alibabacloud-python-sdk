@@ -1,3 +1,6 @@
+2023-07-17 Version: 1.0.7
+- Add Query Upload Token API.
+
 2023-06-20 Version: 1.0.6
 - Add Riskwords in Image Result Query API.
 

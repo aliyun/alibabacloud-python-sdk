@@ -135,6 +135,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_result_ext_with_options_async(request, runtime)
 
+    def describe_upload_token_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.DescribeUploadTokenResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeUploadToken',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeUploadTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_upload_token_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.DescribeUploadTokenResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeUploadToken',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeUploadTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_upload_token(self) -> green_20220302_models.DescribeUploadTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_upload_token_with_options(runtime)
+
+    async def describe_upload_token_async(self) -> green_20220302_models.DescribeUploadTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_upload_token_with_options_async(runtime)
+
     def image_moderation_with_options(
         self,
         request: green_20220302_models.ImageModerationRequest,
