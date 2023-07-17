@@ -17801,11 +17801,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.SetDcdnDomainCertificateResponse:
         """
+        @deprecated : SetDcdnDomainCertificate is deprecated, please use dcdn::2018-01-15::SetDcdnDomainSSLCertificate instead.
         The name of the certificate.
         
         @param request: SetDcdnDomainCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetDcdnDomainCertificateResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -17854,11 +17856,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.SetDcdnDomainCertificateResponse:
         """
+        @deprecated : SetDcdnDomainCertificate is deprecated, please use dcdn::2018-01-15::SetDcdnDomainSSLCertificate instead.
         The name of the certificate.
         
         @param request: SetDcdnDomainCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetDcdnDomainCertificateResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -17906,10 +17910,12 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.SetDcdnDomainCertificateRequest,
     ) -> dcdn_20180115_models.SetDcdnDomainCertificateResponse:
         """
+        @deprecated : SetDcdnDomainCertificate is deprecated, please use dcdn::2018-01-15::SetDcdnDomainSSLCertificate instead.
         The name of the certificate.
         
         @param request: SetDcdnDomainCertificateRequest
         @return: SetDcdnDomainCertificateResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.set_dcdn_domain_certificate_with_options(request, runtime)
@@ -17919,10 +17925,12 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.SetDcdnDomainCertificateRequest,
     ) -> dcdn_20180115_models.SetDcdnDomainCertificateResponse:
         """
+        @deprecated : SetDcdnDomainCertificate is deprecated, please use dcdn::2018-01-15::SetDcdnDomainSSLCertificate instead.
         The name of the certificate.
         
         @param request: SetDcdnDomainCertificateRequest
         @return: SetDcdnDomainCertificateResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_dcdn_domain_certificate_with_options_async(request, runtime)
@@ -18038,6 +18046,112 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_dcdn_domain_smcertificate_with_options_async(request, runtime)
+
+    def set_dcdn_domain_sslcertificate_with_options(
+        self,
+        request: dcdn_20180115_models.SetDcdnDomainSSLCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.SetDcdnDomainSSLCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.cert_region):
+            query['CertRegion'] = request.cert_region
+        if not UtilClient.is_unset(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sslpri):
+            query['SSLPri'] = request.sslpri
+        if not UtilClient.is_unset(request.sslprotocol):
+            query['SSLProtocol'] = request.sslprotocol
+        if not UtilClient.is_unset(request.sslpub):
+            query['SSLPub'] = request.sslpub
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDcdnDomainSSLCertificate',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnDomainSSLCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_dcdn_domain_sslcertificate_with_options_async(
+        self,
+        request: dcdn_20180115_models.SetDcdnDomainSSLCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.SetDcdnDomainSSLCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.cert_region):
+            query['CertRegion'] = request.cert_region
+        if not UtilClient.is_unset(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sslpri):
+            query['SSLPri'] = request.sslpri
+        if not UtilClient.is_unset(request.sslprotocol):
+            query['SSLProtocol'] = request.sslprotocol
+        if not UtilClient.is_unset(request.sslpub):
+            query['SSLPub'] = request.sslpub
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDcdnDomainSSLCertificate',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnDomainSSLCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_dcdn_domain_sslcertificate(
+        self,
+        request: dcdn_20180115_models.SetDcdnDomainSSLCertificateRequest,
+    ) -> dcdn_20180115_models.SetDcdnDomainSSLCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_dcdn_domain_sslcertificate_with_options(request, runtime)
+
+    async def set_dcdn_domain_sslcertificate_async(
+        self,
+        request: dcdn_20180115_models.SetDcdnDomainSSLCertificateRequest,
+    ) -> dcdn_20180115_models.SetDcdnDomainSSLCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_dcdn_domain_sslcertificate_with_options_async(request, runtime)
 
     def set_dcdn_domain_staging_config_with_options(
         self,
