@@ -23295,7 +23295,6 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.ModifyDBInstanceConnectionStringResponse:
         """
         ApsaraDB RDS provides the internal and public endpoints. ApsaraDB RDS also allows hybrid access by using both a virtual private cloud (VPC) endpoint and a classic network endpoint.
-        >
         *   You can change only the prefix of an endpoint.
         *   The read/write splitting endpoint cannot be changed.
         
@@ -23353,7 +23352,6 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.ModifyDBInstanceConnectionStringResponse:
         """
         ApsaraDB RDS provides the internal and public endpoints. ApsaraDB RDS also allows hybrid access by using both a virtual private cloud (VPC) endpoint and a classic network endpoint.
-        >
         *   You can change only the prefix of an endpoint.
         *   The read/write splitting endpoint cannot be changed.
         
@@ -23410,7 +23408,6 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.ModifyDBInstanceConnectionStringResponse:
         """
         ApsaraDB RDS provides the internal and public endpoints. ApsaraDB RDS also allows hybrid access by using both a virtual private cloud (VPC) endpoint and a classic network endpoint.
-        >
         *   You can change only the prefix of an endpoint.
         *   The read/write splitting endpoint cannot be changed.
         
@@ -23426,7 +23423,6 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.ModifyDBInstanceConnectionStringResponse:
         """
         ApsaraDB RDS provides the internal and public endpoints. ApsaraDB RDS also allows hybrid access by using both a virtual private cloud (VPC) endpoint and a classic network endpoint.
-        >
         *   You can change only the prefix of an endpoint.
         *   The read/write splitting endpoint cannot be changed.
         
