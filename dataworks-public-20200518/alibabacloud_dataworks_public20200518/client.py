@@ -2104,6 +2104,8 @@ class Client(OpenApiClient):
             body['ConnectionName'] = request.connection_name
         if not UtilClient.is_unset(request.content):
             body['Content'] = request.content
+        if not UtilClient.is_unset(request.create_folder_if_not_exists):
+            body['CreateFolderIfNotExists'] = request.create_folder_if_not_exists
         if not UtilClient.is_unset(request.cron_express):
             body['CronExpress'] = request.cron_express
         if not UtilClient.is_unset(request.cycle_type):
@@ -2190,6 +2192,8 @@ class Client(OpenApiClient):
             body['ConnectionName'] = request.connection_name
         if not UtilClient.is_unset(request.content):
             body['Content'] = request.content
+        if not UtilClient.is_unset(request.create_folder_if_not_exists):
+            body['CreateFolderIfNotExists'] = request.create_folder_if_not_exists
         if not UtilClient.is_unset(request.cron_express):
             body['CronExpress'] = request.cron_express
         if not UtilClient.is_unset(request.cycle_type):
@@ -3719,6 +3723,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_remind_with_options_async(request, runtime)
 
+    def create_resource_file_with_options(
+        self,
+        request: dataworks_public_20200518_models.CreateResourceFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateResourceFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.file_description):
+            body['FileDescription'] = request.file_description
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.origin_resource_name):
+            body['OriginResourceName'] = request.origin_resource_name
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.register_to_calc_engine):
+            body['RegisterToCalcEngine'] = request.register_to_calc_engine
+        if not UtilClient.is_unset(request.resource_file):
+            body['ResourceFile'] = request.resource_file
+        if not UtilClient.is_unset(request.storage_url):
+            body['StorageURL'] = request.storage_url
+        if not UtilClient.is_unset(request.upload_mode):
+            body['UploadMode'] = request.upload_mode
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateResourceFile',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateResourceFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_resource_file_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.CreateResourceFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateResourceFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.file_description):
+            body['FileDescription'] = request.file_description
+        if not UtilClient.is_unset(request.file_folder_path):
+            body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.origin_resource_name):
+            body['OriginResourceName'] = request.origin_resource_name
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.register_to_calc_engine):
+            body['RegisterToCalcEngine'] = request.register_to_calc_engine
+        if not UtilClient.is_unset(request.resource_file):
+            body['ResourceFile'] = request.resource_file
+        if not UtilClient.is_unset(request.storage_url):
+            body['StorageURL'] = request.storage_url
+        if not UtilClient.is_unset(request.upload_mode):
+            body['UploadMode'] = request.upload_mode
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateResourceFile',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateResourceFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_resource_file(
+        self,
+        request: dataworks_public_20200518_models.CreateResourceFileRequest,
+    ) -> dataworks_public_20200518_models.CreateResourceFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_resource_file_with_options(request, runtime)
+
+    async def create_resource_file_async(
+        self,
+        request: dataworks_public_20200518_models.CreateResourceFileRequest,
+    ) -> dataworks_public_20200518_models.CreateResourceFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_resource_file_with_options_async(request, runtime)
+
     def create_table_with_options(
         self,
         request: dataworks_public_20200518_models.CreateTableRequest,
@@ -4044,6 +4162,8 @@ class Client(OpenApiClient):
             body['ClassName'] = request.class_name
         if not UtilClient.is_unset(request.cmd_description):
             body['CmdDescription'] = request.cmd_description
+        if not UtilClient.is_unset(request.create_folder_if_not_exists):
+            body['CreateFolderIfNotExists'] = request.create_folder_if_not_exists
         if not UtilClient.is_unset(request.example):
             body['Example'] = request.example
         if not UtilClient.is_unset(request.file_folder_path):
@@ -4094,6 +4214,8 @@ class Client(OpenApiClient):
             body['ClassName'] = request.class_name
         if not UtilClient.is_unset(request.cmd_description):
             body['CmdDescription'] = request.cmd_description
+        if not UtilClient.is_unset(request.create_folder_if_not_exists):
+            body['CreateFolderIfNotExists'] = request.create_folder_if_not_exists
         if not UtilClient.is_unset(request.example):
             body['Example'] = request.example
         if not UtilClient.is_unset(request.file_folder_path):
@@ -14490,12 +14612,20 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListFilesResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.exact_file_name):
+            body['ExactFileName'] = request.exact_file_name
         if not UtilClient.is_unset(request.file_folder_path):
             body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_id_in):
+            body['FileIdIn'] = request.file_id_in
         if not UtilClient.is_unset(request.file_types):
             body['FileTypes'] = request.file_types
         if not UtilClient.is_unset(request.keyword):
             body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.need_absolute_folder_path):
+            body['NeedAbsoluteFolderPath'] = request.need_absolute_folder_path
+        if not UtilClient.is_unset(request.need_content):
+            body['NeedContent'] = request.need_content
         if not UtilClient.is_unset(request.node_id):
             body['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.owner):
@@ -14536,12 +14666,20 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListFilesResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.exact_file_name):
+            body['ExactFileName'] = request.exact_file_name
         if not UtilClient.is_unset(request.file_folder_path):
             body['FileFolderPath'] = request.file_folder_path
+        if not UtilClient.is_unset(request.file_id_in):
+            body['FileIdIn'] = request.file_id_in
         if not UtilClient.is_unset(request.file_types):
             body['FileTypes'] = request.file_types
         if not UtilClient.is_unset(request.keyword):
             body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.need_absolute_folder_path):
+            body['NeedAbsoluteFolderPath'] = request.need_absolute_folder_path
+        if not UtilClient.is_unset(request.need_content):
+            body['NeedContent'] = request.need_content
         if not UtilClient.is_unset(request.node_id):
             body['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.owner):
