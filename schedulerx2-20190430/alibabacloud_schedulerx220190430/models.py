@@ -6627,6 +6627,7 @@ class GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes(TeaModel):
         end_time: str = None,
         job_id: int = None,
         job_instance_id: int = None,
+        job_name: str = None,
         result: str = None,
         schedule_time: str = None,
         start_time: str = None,
@@ -6643,6 +6644,7 @@ class GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes(TeaModel):
         self.job_id = job_id
         # The job instance ID.
         self.job_instance_id = job_instance_id
+        self.job_name = job_name
         # The state of the job instance.
         self.result = result
         # The time when the job instance was scheduled to run.
@@ -6672,6 +6674,8 @@ class GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes(TeaModel):
             result['JobId'] = self.job_id
         if self.job_instance_id is not None:
             result['JobInstanceId'] = self.job_instance_id
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
         if self.result is not None:
             result['Result'] = self.result
         if self.schedule_time is not None:
@@ -6696,6 +6700,8 @@ class GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes(TeaModel):
             self.job_id = m.get('JobId')
         if m.get('JobInstanceId') is not None:
             self.job_instance_id = m.get('JobInstanceId')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
         if m.get('Result') is not None:
             self.result = m.get('Result')
         if m.get('ScheduleTime') is not None:
