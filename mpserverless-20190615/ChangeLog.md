@@ -1,3 +1,7 @@
+2023-07-18 Version: 1.0.10
+- Publish SDK.
+- Support cdn config.
+
 2023-06-02 Version: 1.0.9
 - Publish SDK.
 - Support api CreateSpaceWithOrder.

@@ -1889,6 +1889,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.deploy_function_with_options_async(request, runtime)
 
+    def describe_cdn_domain_with_options(
+        self,
+        request: mpserverless_20190615_models.DescribeCdnDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mpserverless_20190615_models.DescribeCdnDomainResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomain',
+            version='2019-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mpserverless_20190615_models.DescribeCdnDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_domain_with_options_async(
+        self,
+        request: mpserverless_20190615_models.DescribeCdnDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mpserverless_20190615_models.DescribeCdnDomainResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomain',
+            version='2019-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mpserverless_20190615_models.DescribeCdnDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_domain(
+        self,
+        request: mpserverless_20190615_models.DescribeCdnDomainRequest,
+    ) -> mpserverless_20190615_models.DescribeCdnDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_domain_with_options(request, runtime)
+
+    async def describe_cdn_domain_async(
+        self,
+        request: mpserverless_20190615_models.DescribeCdnDomainRequest,
+    ) -> mpserverless_20190615_models.DescribeCdnDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_domain_with_options_async(request, runtime)
+
     def describe_fcopen_status_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -3387,6 +3465,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
         body = {}
+        if not UtilClient.is_unset(request.auth_delta):
+            body['AuthDelta'] = request.auth_delta
         if not UtilClient.is_unset(request.file_id):
             body['FileId'] = request.file_id
         if not UtilClient.is_unset(request.keyword):
@@ -3429,6 +3509,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
         body = {}
+        if not UtilClient.is_unset(request.auth_delta):
+            body['AuthDelta'] = request.auth_delta
         if not UtilClient.is_unset(request.file_id):
             body['FileId'] = request.file_id
         if not UtilClient.is_unset(request.keyword):
@@ -5572,6 +5654,104 @@ class Client(OpenApiClient):
     ) -> mpserverless_20190615_models.SaveAppAuthTokenResponse:
         runtime = util_models.RuntimeOptions()
         return await self.save_app_auth_token_with_options_async(request, runtime)
+
+    def save_cdn_domain_config_with_options(
+        self,
+        request: mpserverless_20190615_models.SaveCdnDomainConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mpserverless_20190615_models.SaveCdnDomainConfigResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_config):
+            body['AuthConfig'] = request.auth_config
+        if not UtilClient.is_unset(request.cors_config):
+            body['CorsConfig'] = request.cors_config
+        if not UtilClient.is_unset(request.ip_config):
+            body['IpConfig'] = request.ip_config
+        if not UtilClient.is_unset(request.referer_config):
+            body['RefererConfig'] = request.referer_config
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.ua_config):
+            body['UaConfig'] = request.ua_config
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SaveCdnDomainConfig',
+            version='2019-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mpserverless_20190615_models.SaveCdnDomainConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_cdn_domain_config_with_options_async(
+        self,
+        request: mpserverless_20190615_models.SaveCdnDomainConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mpserverless_20190615_models.SaveCdnDomainConfigResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_config):
+            body['AuthConfig'] = request.auth_config
+        if not UtilClient.is_unset(request.cors_config):
+            body['CorsConfig'] = request.cors_config
+        if not UtilClient.is_unset(request.ip_config):
+            body['IpConfig'] = request.ip_config
+        if not UtilClient.is_unset(request.referer_config):
+            body['RefererConfig'] = request.referer_config
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.ua_config):
+            body['UaConfig'] = request.ua_config
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SaveCdnDomainConfig',
+            version='2019-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mpserverless_20190615_models.SaveCdnDomainConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_cdn_domain_config(
+        self,
+        request: mpserverless_20190615_models.SaveCdnDomainConfigRequest,
+    ) -> mpserverless_20190615_models.SaveCdnDomainConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.save_cdn_domain_config_with_options(request, runtime)
+
+    async def save_cdn_domain_config_async(
+        self,
+        request: mpserverless_20190615_models.SaveCdnDomainConfigRequest,
+    ) -> mpserverless_20190615_models.SaveCdnDomainConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.save_cdn_domain_config_with_options_async(request, runtime)
 
     def save_web_hosting_custom_domain_config_with_options(
         self,
