@@ -1,3 +1,6 @@
+2023-07-18 Version: 2.2.18
+- Supported RDS PostgreSQL manage extensions.
+
 2023-07-17 Version: 2.2.17
 - Add TimeOut.
 

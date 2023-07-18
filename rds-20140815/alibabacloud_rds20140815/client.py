@@ -5068,6 +5068,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_parameter_group_with_options_async(request, runtime)
 
+    def create_postgres_extensions_with_options(
+        self,
+        request: rds_20140815_models.CreatePostgresExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreatePostgresExtensionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbnames):
+            query['DBNames'] = request.dbnames
+        if not UtilClient.is_unset(request.extensions):
+            query['Extensions'] = request.extensions
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_database):
+            query['SourceDatabase'] = request.source_database
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePostgresExtensions',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreatePostgresExtensionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_postgres_extensions_with_options_async(
+        self,
+        request: rds_20140815_models.CreatePostgresExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreatePostgresExtensionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbnames):
+            query['DBNames'] = request.dbnames
+        if not UtilClient.is_unset(request.extensions):
+            query['Extensions'] = request.extensions
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_database):
+            query['SourceDatabase'] = request.source_database
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePostgresExtensions',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreatePostgresExtensionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_postgres_extensions(
+        self,
+        request: rds_20140815_models.CreatePostgresExtensionsRequest,
+    ) -> rds_20140815_models.CreatePostgresExtensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_postgres_extensions_with_options(request, runtime)
+
+    async def create_postgres_extensions_async(
+        self,
+        request: rds_20140815_models.CreatePostgresExtensionsRequest,
+    ) -> rds_20140815_models.CreatePostgresExtensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_postgres_extensions_with_options_async(request, runtime)
+
     def create_read_only_dbinstance_with_options(
         self,
         request: rds_20140815_models.CreateReadOnlyDBInstanceRequest,
@@ -7087,6 +7197,108 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_parameter_group_with_options_async(request, runtime)
+
+    def delete_postgres_extensions_with_options(
+        self,
+        request: rds_20140815_models.DeletePostgresExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeletePostgresExtensionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbnames):
+            query['DBNames'] = request.dbnames
+        if not UtilClient.is_unset(request.extensions):
+            query['Extensions'] = request.extensions
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePostgresExtensions',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeletePostgresExtensionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_postgres_extensions_with_options_async(
+        self,
+        request: rds_20140815_models.DeletePostgresExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeletePostgresExtensionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbnames):
+            query['DBNames'] = request.dbnames
+        if not UtilClient.is_unset(request.extensions):
+            query['Extensions'] = request.extensions
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePostgresExtensions',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeletePostgresExtensionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_postgres_extensions(
+        self,
+        request: rds_20140815_models.DeletePostgresExtensionsRequest,
+    ) -> rds_20140815_models.DeletePostgresExtensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_postgres_extensions_with_options(request, runtime)
+
+    async def delete_postgres_extensions_async(
+        self,
+        request: rds_20140815_models.DeletePostgresExtensionsRequest,
+    ) -> rds_20140815_models.DeletePostgresExtensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_postgres_extensions_with_options_async(request, runtime)
 
     def delete_secret_with_options(
         self,
@@ -17183,6 +17395,104 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameters_with_options_async(request, runtime)
+
+    def describe_postgres_extensions_with_options(
+        self,
+        request: rds_20140815_models.DescribePostgresExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribePostgresExtensionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePostgresExtensions',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribePostgresExtensionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_postgres_extensions_with_options_async(
+        self,
+        request: rds_20140815_models.DescribePostgresExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribePostgresExtensionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePostgresExtensions',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribePostgresExtensionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_postgres_extensions(
+        self,
+        request: rds_20140815_models.DescribePostgresExtensionsRequest,
+    ) -> rds_20140815_models.DescribePostgresExtensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_postgres_extensions_with_options(request, runtime)
+
+    async def describe_postgres_extensions_async(
+        self,
+        request: rds_20140815_models.DescribePostgresExtensionsRequest,
+    ) -> rds_20140815_models.DescribePostgresExtensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_postgres_extensions_with_options_async(request, runtime)
 
     def describe_price_with_options(
         self,
@@ -32051,6 +32361,108 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_postgres_extensions_with_options(
+        self,
+        request: rds_20140815_models.UpdatePostgresExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.UpdatePostgresExtensionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbnames):
+            query['DBNames'] = request.dbnames
+        if not UtilClient.is_unset(request.extensions):
+            query['Extensions'] = request.extensions
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePostgresExtensions',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.UpdatePostgresExtensionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_postgres_extensions_with_options_async(
+        self,
+        request: rds_20140815_models.UpdatePostgresExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.UpdatePostgresExtensionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbnames):
+            query['DBNames'] = request.dbnames
+        if not UtilClient.is_unset(request.extensions):
+            query['Extensions'] = request.extensions
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePostgresExtensions',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.UpdatePostgresExtensionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_postgres_extensions(
+        self,
+        request: rds_20140815_models.UpdatePostgresExtensionsRequest,
+    ) -> rds_20140815_models.UpdatePostgresExtensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_postgres_extensions_with_options(request, runtime)
+
+    async def update_postgres_extensions_async(
+        self,
+        request: rds_20140815_models.UpdatePostgresExtensionsRequest,
+    ) -> rds_20140815_models.UpdatePostgresExtensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_postgres_extensions_with_options_async(request, runtime)
 
     def update_user_backup_file_with_options(
         self,
