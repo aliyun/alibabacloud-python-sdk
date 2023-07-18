@@ -1190,3 +1190,77 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopObjectProjectDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pop_object_project_detail_with_options_async(request, runtime)
+
+    def pop_video_save_source_with_options(
+        self,
+        request: xr_engine_20230313_models.PopVideoSaveSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopVideoSaveSourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopVideoSaveSource',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopVideoSaveSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_video_save_source_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopVideoSaveSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopVideoSaveSourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopVideoSaveSource',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopVideoSaveSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_video_save_source(
+        self,
+        request: xr_engine_20230313_models.PopVideoSaveSourceRequest,
+    ) -> xr_engine_20230313_models.PopVideoSaveSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_video_save_source_with_options(request, runtime)
+
+    async def pop_video_save_source_async(
+        self,
+        request: xr_engine_20230313_models.PopVideoSaveSourceRequest,
+    ) -> xr_engine_20230313_models.PopVideoSaveSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_video_save_source_with_options_async(request, runtime)
