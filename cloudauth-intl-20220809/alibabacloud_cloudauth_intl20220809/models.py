@@ -2309,11 +2309,140 @@ class FaceLivenessResponse(TeaModel):
         return self
 
 
+class FraudResultCallBackRequest(TeaModel):
+    def __init__(
+        self,
+        certify_id: str = None,
+        result_code: str = None,
+        verify_deploy_env: str = None,
+    ):
+        self.certify_id = certify_id
+        self.result_code = result_code
+        self.verify_deploy_env = verify_deploy_env
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.result_code is not None:
+            result['ResultCode'] = self.result_code
+        if self.verify_deploy_env is not None:
+            result['VerifyDeployEnv'] = self.verify_deploy_env
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('ResultCode') is not None:
+            self.result_code = m.get('ResultCode')
+        if m.get('VerifyDeployEnv') is not None:
+            self.verify_deploy_env = m.get('VerifyDeployEnv')
+        return self
+
+
+class FraudResultCallBackResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class FraudResultCallBackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FraudResultCallBackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FraudResultCallBackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InitializeRequest(TeaModel):
     def __init__(
         self,
         authorize: str = None,
         crop: str = None,
+        doc_scan_mode: str = None,
         doc_type: str = None,
         face_picture_base_64: str = None,
         face_picture_url: str = None,
@@ -2334,6 +2463,7 @@ class InitializeRequest(TeaModel):
     ):
         self.authorize = authorize
         self.crop = crop
+        self.doc_scan_mode = doc_scan_mode
         self.doc_type = doc_type
         self.face_picture_base_64 = face_picture_base_64
         self.face_picture_url = face_picture_url
@@ -2366,6 +2496,8 @@ class InitializeRequest(TeaModel):
             result['Authorize'] = self.authorize
         if self.crop is not None:
             result['Crop'] = self.crop
+        if self.doc_scan_mode is not None:
+            result['DocScanMode'] = self.doc_scan_mode
         if self.doc_type is not None:
             result['DocType'] = self.doc_type
         if self.face_picture_base_64 is not None:
@@ -2408,6 +2540,8 @@ class InitializeRequest(TeaModel):
             self.authorize = m.get('Authorize')
         if m.get('Crop') is not None:
             self.crop = m.get('Crop')
+        if m.get('DocScanMode') is not None:
+            self.doc_scan_mode = m.get('DocScanMode')
         if m.get('DocType') is not None:
             self.doc_type = m.get('DocType')
         if m.get('FacePictureBase64') is not None:

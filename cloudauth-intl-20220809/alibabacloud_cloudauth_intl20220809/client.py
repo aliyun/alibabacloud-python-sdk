@@ -1029,6 +1029,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.face_liveness_with_options_async(request, runtime)
 
+    def fraud_result_call_back_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.FraudResultCallBackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.FraudResultCallBackResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.result_code):
+            query['ResultCode'] = request.result_code
+        if not UtilClient.is_unset(request.verify_deploy_env):
+            query['VerifyDeployEnv'] = request.verify_deploy_env
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FraudResultCallBack',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.FraudResultCallBackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def fraud_result_call_back_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.FraudResultCallBackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.FraudResultCallBackResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.result_code):
+            query['ResultCode'] = request.result_code
+        if not UtilClient.is_unset(request.verify_deploy_env):
+            query['VerifyDeployEnv'] = request.verify_deploy_env
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FraudResultCallBack',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.FraudResultCallBackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def fraud_result_call_back(
+        self,
+        request: cloudauth_intl_20220809_models.FraudResultCallBackRequest,
+    ) -> cloudauth_intl_20220809_models.FraudResultCallBackResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.fraud_result_call_back_with_options(request, runtime)
+
+    async def fraud_result_call_back_async(
+        self,
+        request: cloudauth_intl_20220809_models.FraudResultCallBackRequest,
+    ) -> cloudauth_intl_20220809_models.FraudResultCallBackResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.fraud_result_call_back_with_options_async(request, runtime)
+
     def initialize_with_options(
         self,
         request: cloudauth_intl_20220809_models.InitializeRequest,
@@ -1040,6 +1118,8 @@ class Client(OpenApiClient):
             query['Authorize'] = request.authorize
         if not UtilClient.is_unset(request.crop):
             query['Crop'] = request.crop
+        if not UtilClient.is_unset(request.doc_scan_mode):
+            query['DocScanMode'] = request.doc_scan_mode
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.face_picture_base_64):
@@ -1104,6 +1184,8 @@ class Client(OpenApiClient):
             query['Authorize'] = request.authorize
         if not UtilClient.is_unset(request.crop):
             query['Crop'] = request.crop
+        if not UtilClient.is_unset(request.doc_scan_mode):
+            query['DocScanMode'] = request.doc_scan_mode
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.face_picture_base_64):
