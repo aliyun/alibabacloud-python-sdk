@@ -83,11 +83,13 @@ class EntElementVerifyResponseBodyResult(TeaModel):
     def __init__(
         self,
         biz_code: str = None,
+        open_time: str = None,
         reason_code: str = None,
         reason_detail: str = None,
         status: str = None,
     ):
         self.biz_code = biz_code
+        self.open_time = open_time
         self.reason_code = reason_code
         self.reason_detail = reason_detail
         self.status = status
@@ -103,6 +105,8 @@ class EntElementVerifyResponseBodyResult(TeaModel):
         result = dict()
         if self.biz_code is not None:
             result['BizCode'] = self.biz_code
+        if self.open_time is not None:
+            result['OpenTime'] = self.open_time
         if self.reason_code is not None:
             result['ReasonCode'] = self.reason_code
         if self.reason_detail is not None:
@@ -115,6 +119,8 @@ class EntElementVerifyResponseBodyResult(TeaModel):
         m = m or dict()
         if m.get('BizCode') is not None:
             self.biz_code = m.get('BizCode')
+        if m.get('OpenTime') is not None:
+            self.open_time = m.get('OpenTime')
         if m.get('ReasonCode') is not None:
             self.reason_code = m.get('ReasonCode')
         if m.get('ReasonDetail') is not None:
