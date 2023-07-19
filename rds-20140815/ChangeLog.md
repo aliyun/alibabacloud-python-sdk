@@ -1,3 +1,6 @@
+2023-07-19 Version: 2.2.19
+- Add openapis for whitelist template.
+
 2023-07-18 Version: 2.2.18
 - Supported RDS PostgreSQL manage extensions.
 

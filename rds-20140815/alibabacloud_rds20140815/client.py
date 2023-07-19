@@ -664,6 +664,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.allocate_read_write_splitting_connection_with_options_async(request, runtime)
 
+    def attach_whitelist_template_to_instance_with_options(
+        self,
+        request: rds_20140815_models.AttachWhitelistTemplateToInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.AttachWhitelistTemplateToInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ins_name):
+            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachWhitelistTemplateToInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.AttachWhitelistTemplateToInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_whitelist_template_to_instance_with_options_async(
+        self,
+        request: rds_20140815_models.AttachWhitelistTemplateToInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.AttachWhitelistTemplateToInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ins_name):
+            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachWhitelistTemplateToInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.AttachWhitelistTemplateToInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_whitelist_template_to_instance(
+        self,
+        request: rds_20140815_models.AttachWhitelistTemplateToInstanceRequest,
+    ) -> rds_20140815_models.AttachWhitelistTemplateToInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.attach_whitelist_template_to_instance_with_options(request, runtime)
+
+    async def attach_whitelist_template_to_instance_async(
+        self,
+        request: rds_20140815_models.AttachWhitelistTemplateToInstanceRequest,
+    ) -> rds_20140815_models.AttachWhitelistTemplateToInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_whitelist_template_to_instance_with_options_async(request, runtime)
+
     def calculate_dbinstance_weight_with_options(
         self,
         request: rds_20140815_models.CalculateDBInstanceWeightRequest,
@@ -8290,6 +8372,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_active_operation_tasks_with_options_async(request, runtime)
 
+    def describe_all_whitelist_template_with_options(
+        self,
+        request: rds_20140815_models.DescribeAllWhitelistTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeAllWhitelistTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fuzzy_search):
+            query['FuzzySearch'] = request.fuzzy_search
+        if not UtilClient.is_unset(request.max_records_per_page):
+            query['MaxRecordsPerPage'] = request.max_records_per_page
+        if not UtilClient.is_unset(request.page_numbers):
+            query['PageNumbers'] = request.page_numbers
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAllWhitelistTemplate',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeAllWhitelistTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_all_whitelist_template_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeAllWhitelistTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeAllWhitelistTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fuzzy_search):
+            query['FuzzySearch'] = request.fuzzy_search
+        if not UtilClient.is_unset(request.max_records_per_page):
+            query['MaxRecordsPerPage'] = request.max_records_per_page
+        if not UtilClient.is_unset(request.page_numbers):
+            query['PageNumbers'] = request.page_numbers
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAllWhitelistTemplate',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeAllWhitelistTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_all_whitelist_template(
+        self,
+        request: rds_20140815_models.DescribeAllWhitelistTemplateRequest,
+    ) -> rds_20140815_models.DescribeAllWhitelistTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_all_whitelist_template_with_options(request, runtime)
+
+    async def describe_all_whitelist_template_async(
+        self,
+        request: rds_20140815_models.DescribeAllWhitelistTemplateRequest,
+    ) -> rds_20140815_models.DescribeAllWhitelistTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_all_whitelist_template_with_options_async(request, runtime)
+
     def describe_analyticdb_by_primary_dbinstance_with_options(
         self,
         request: rds_20140815_models.DescribeAnalyticdbByPrimaryDBInstanceRequest,
@@ -15900,6 +16072,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_keywords_with_options_async(request, runtime)
 
+    def describe_instance_linked_whitelist_template_with_options(
+        self,
+        request: rds_20140815_models.DescribeInstanceLinkedWhitelistTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeInstanceLinkedWhitelistTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ins_name):
+            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceLinkedWhitelistTemplate',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeInstanceLinkedWhitelistTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_linked_whitelist_template_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeInstanceLinkedWhitelistTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeInstanceLinkedWhitelistTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ins_name):
+            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceLinkedWhitelistTemplate',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeInstanceLinkedWhitelistTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_linked_whitelist_template(
+        self,
+        request: rds_20140815_models.DescribeInstanceLinkedWhitelistTemplateRequest,
+    ) -> rds_20140815_models.DescribeInstanceLinkedWhitelistTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_linked_whitelist_template_with_options(request, runtime)
+
+    async def describe_instance_linked_whitelist_template_async(
+        self,
+        request: rds_20140815_models.DescribeInstanceLinkedWhitelistTemplateRequest,
+    ) -> rds_20140815_models.DescribeInstanceLinkedWhitelistTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_linked_whitelist_template_with_options_async(request, runtime)
+
     def describe_local_available_recovery_time_with_options(
         self,
         request: rds_20140815_models.DescribeLocalAvailableRecoveryTimeRequest,
@@ -20372,6 +20622,166 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vswitches_with_options_async(request, runtime)
 
+    def describe_whitelist_template_with_options(
+        self,
+        request: rds_20140815_models.DescribeWhitelistTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeWhitelistTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhitelistTemplate',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeWhitelistTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_whitelist_template_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeWhitelistTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeWhitelistTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhitelistTemplate',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeWhitelistTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_whitelist_template(
+        self,
+        request: rds_20140815_models.DescribeWhitelistTemplateRequest,
+    ) -> rds_20140815_models.DescribeWhitelistTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_whitelist_template_with_options(request, runtime)
+
+    async def describe_whitelist_template_async(
+        self,
+        request: rds_20140815_models.DescribeWhitelistTemplateRequest,
+    ) -> rds_20140815_models.DescribeWhitelistTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_whitelist_template_with_options_async(request, runtime)
+
+    def describe_whitelist_template_linked_instance_with_options(
+        self,
+        request: rds_20140815_models.DescribeWhitelistTemplateLinkedInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeWhitelistTemplateLinkedInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhitelistTemplateLinkedInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeWhitelistTemplateLinkedInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_whitelist_template_linked_instance_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeWhitelistTemplateLinkedInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeWhitelistTemplateLinkedInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhitelistTemplateLinkedInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeWhitelistTemplateLinkedInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_whitelist_template_linked_instance(
+        self,
+        request: rds_20140815_models.DescribeWhitelistTemplateLinkedInstanceRequest,
+    ) -> rds_20140815_models.DescribeWhitelistTemplateLinkedInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_whitelist_template_linked_instance_with_options(request, runtime)
+
+    async def describe_whitelist_template_linked_instance_async(
+        self,
+        request: rds_20140815_models.DescribeWhitelistTemplateLinkedInstanceRequest,
+    ) -> rds_20140815_models.DescribeWhitelistTemplateLinkedInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_whitelist_template_linked_instance_with_options_async(request, runtime)
+
     def destroy_dbinstance_with_options(
         self,
         request: rds_20140815_models.DestroyDBInstanceRequest,
@@ -20595,6 +21005,88 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.detach_gad_instance_member_with_options_async(request, runtime)
+
+    def detach_whitelist_template_to_instance_with_options(
+        self,
+        request: rds_20140815_models.DetachWhitelistTemplateToInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DetachWhitelistTemplateToInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ins_name):
+            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachWhitelistTemplateToInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DetachWhitelistTemplateToInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_whitelist_template_to_instance_with_options_async(
+        self,
+        request: rds_20140815_models.DetachWhitelistTemplateToInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DetachWhitelistTemplateToInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ins_name):
+            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachWhitelistTemplateToInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DetachWhitelistTemplateToInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_whitelist_template_to_instance(
+        self,
+        request: rds_20140815_models.DetachWhitelistTemplateToInstanceRequest,
+    ) -> rds_20140815_models.DetachWhitelistTemplateToInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detach_whitelist_template_to_instance_with_options(request, runtime)
+
+    async def detach_whitelist_template_to_instance_async(
+        self,
+        request: rds_20140815_models.DetachWhitelistTemplateToInstanceRequest,
+    ) -> rds_20140815_models.DetachWhitelistTemplateToInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_whitelist_template_to_instance_with_options_async(request, runtime)
 
     def get_dbinstance_topology_with_options(
         self,
@@ -28731,6 +29223,92 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_ips_with_options_async(request, runtime)
+
+    def modify_whitelist_template_with_options(
+        self,
+        request: rds_20140815_models.ModifyWhitelistTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyWhitelistTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip_whitelist):
+            query['IpWhitelist'] = request.ip_whitelist
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyWhitelistTemplate',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyWhitelistTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_whitelist_template_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyWhitelistTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyWhitelistTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip_whitelist):
+            query['IpWhitelist'] = request.ip_whitelist
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyWhitelistTemplate',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyWhitelistTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_whitelist_template(
+        self,
+        request: rds_20140815_models.ModifyWhitelistTemplateRequest,
+    ) -> rds_20140815_models.ModifyWhitelistTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_whitelist_template_with_options(request, runtime)
+
+    async def modify_whitelist_template_async(
+        self,
+        request: rds_20140815_models.ModifyWhitelistTemplateRequest,
+    ) -> rds_20140815_models.ModifyWhitelistTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_whitelist_template_with_options_async(request, runtime)
 
     def purge_dbinstance_log_with_options(
         self,
