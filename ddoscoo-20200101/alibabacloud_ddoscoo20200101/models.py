@@ -121,8 +121,17 @@ class AddAutoCcWhitelistRequest(TeaModel):
         instance_id: str = None,
         whitelist: str = None,
     ):
+        # This parameter is deprecated.
+        # 
+        # > This parameter indicates the validity period of the IP address blacklist. By default, the traffic from the IP addresses that you add to the whitelist is always allowed. You do not need to set this parameter.
         self.expire_time = expire_time
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The configuration of the IP addresses that you want to add to the whitelist. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # 
+        # *   **src**: the IP address that you want to add. This parameter is required. Data type: string.
         self.whitelist = whitelist
 
     def validate(self):
@@ -158,6 +167,7 @@ class AddAutoCcWhitelistResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -229,16 +239,36 @@ class AssociateWebCertRequest(TeaModel):
         self,
         cert: str = None,
         cert_id: int = None,
+        cert_identifier: str = None,
         cert_name: str = None,
+        cert_region: str = None,
         domain: str = None,
         key: str = None,
         resource_group_id: str = None,
     ):
+        # The public key of the certificate that you want to associate. This parameter must be used together with **CertName** and **Key**.
+        # 
+        # > If you specify **CertName**, **Cert**, and **Key**, you do not need to specify **CertId**.
         self.cert = cert
+        # The ID of the certificate that you want to associate. If the certificate that you want to associate has been issued in Certificate Management Service, you can specify the certificate ID to associate the certificate.
+        # 
+        # > If you specify the certificate ID, you do not need to specify a value for the **CertName**, **Cert**, and **Key** parameters.
         self.cert_id = cert_id
+        self.cert_identifier = cert_identifier
+        # The name of the certificate that you want to associate. This parameter must be used together with the **Cert** and **Key** parameters.
+        # 
+        # > If you specify a value for the **CertName**, **Cert**, and **Key** parameters, you do not need to specify a value for the **CertId** parameter.
         self.cert_name = cert_name
+        self.cert_region = cert_region
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The private key of the certificate that you want to associate. This parameter must be used together with **CertName** and **Cert**.
+        # 
+        # > If you specify **CertName**, **Cert**, and **Key**, you do not need to specify **CertId**.
         self.key = key
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -254,8 +284,12 @@ class AssociateWebCertRequest(TeaModel):
             result['Cert'] = self.cert
         if self.cert_id is not None:
             result['CertId'] = self.cert_id
+        if self.cert_identifier is not None:
+            result['CertIdentifier'] = self.cert_identifier
         if self.cert_name is not None:
             result['CertName'] = self.cert_name
+        if self.cert_region is not None:
+            result['CertRegion'] = self.cert_region
         if self.domain is not None:
             result['Domain'] = self.domain
         if self.key is not None:
@@ -270,8 +304,12 @@ class AssociateWebCertRequest(TeaModel):
             self.cert = m.get('Cert')
         if m.get('CertId') is not None:
             self.cert_id = m.get('CertId')
+        if m.get('CertIdentifier') is not None:
+            self.cert_identifier = m.get('CertIdentifier')
         if m.get('CertName') is not None:
             self.cert_name = m.get('CertName')
+        if m.get('CertRegion') is not None:
+            self.cert_region = m.get('CertRegion')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
         if m.get('Key') is not None:
@@ -286,6 +324,7 @@ class AssociateWebCertResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -359,8 +398,13 @@ class AttachSceneDefenseObjectRequest(TeaModel):
         objects: str = None,
         policy_id: str = None,
     ):
+        # The type of the object. Set the value to **Domain**, which indicates a domain name.
         self.object_type = object_type
+        # The object that you want to add to the policy. Separate multiple objects with commas (,).
         self.objects = objects
+        # The ID of the policy.
+        # 
+        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
         self.policy_id = policy_id
 
     def validate(self):
@@ -397,7 +441,12 @@ class AttachSceneDefenseObjectResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -475,8 +524,29 @@ class ConfigL7RsPolicyRequest(TeaModel):
         policy: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query the domain names for which forwarding rules are configured.
         self.domain = domain
+        # The back-to-origin policy. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # 
+        # *   **ProxyMode**: The load balancing algorithm for back-to-origin traffic. This field is required and must be a string. Valid values:
+        # 
+        #     *   **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
+        #     *   **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn. If you use this algorithm, you can specify a weight for each server based on server performance.
+        #     *   **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
+        # 
+        # *   **Attributes**: the parameters for back-to-origin. This field is optional and must be a JSON array. Each element in the array contains the following fields:
+        # 
+        #     *   **RealServer**: the address of the origin server. This field is optional and must be a string.
+        # 
+        #     *   **Attribute**: the parameter for back-to-origin. This field is optional and must be a JSON object. The value contains the following field:
+        # 
+        #         *   **Weight**: the weight of the server. This field is optional and must be an integer. This field takes effect only when **ProxyMode** is set to **rr**. Valid values: **1** to **100**. Default value: **100**. An origin server with a higher weight receives more requests.
         self.policy = policy
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -512,6 +582,7 @@ class ConfigL7RsPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -578,11 +649,132 @@ class ConfigL7RsPolicyResponse(TeaModel):
         return self
 
 
+class ConfigLayer4RealLimitRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        limit_value: int = None,
+    ):
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        self.instance_id = instance_id
+        # Specifies the threshold of the clean bandwidth. Valid values: 0 to 15360. The value 0 indicates that rate limiting is never triggered. Unit: Mbit/s
+        self.limit_value = limit_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.limit_value is not None:
+            result['LimitValue'] = self.limit_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LimitValue') is not None:
+            self.limit_value = m.get('LimitValue')
+        return self
+
+
+class ConfigLayer4RealLimitResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ConfigLayer4RealLimitResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConfigLayer4RealLimitResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConfigLayer4RealLimitResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ConfigLayer4RemarkRequest(TeaModel):
     def __init__(
         self,
         listeners: str = None,
     ):
+        # The port forwarding rule that you want to manage.
+        # 
+        # This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can perform this operation only on one port forwarding rule at a time.
+        # 
+        # > You can call the [DescribeNetworkRules](~~157484~~) to query existing port forwarding rules.
+        # 
+        # Each port forwarding rule contains the following fields:
+        # 
+        # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+        # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
+        # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+        # *   **Remark**: the remarks of the port forwarding rule. This field is required and must be of the STRING type. The value can contain letters, digits, and some special characters, such as `, . + - * / _`. The value can be up to 200 characters in length.
         self.listeners = listeners
 
     def validate(self):
@@ -610,6 +802,7 @@ class ConfigLayer4RemarkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -682,7 +875,22 @@ class ConfigLayer4RuleBakModeRequest(TeaModel):
         bak_mode: str = None,
         listeners: str = None,
     ):
+        # The mode that you want to use to forward service traffic. Valid values:
+        # 
+        # *   **0**: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](~~157482~~) operation to create a port forwarding rule.
+        # *   **1**: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](~~312684~~) operation to configure IP addresses.
         self.bak_mode = bak_mode
+        # The port forwarding rule that you want to manage.
+        # 
+        # This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can perform this operation only on one port forwarding rule at a time.
+        # 
+        # > You can call the [DescribeNetworkRules](~~157484~~) to query existing port forwarding rules.
+        # 
+        # Each port forwarding rule contains the following fields:
+        # 
+        # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+        # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
+        # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
         self.listeners = listeners
 
     def validate(self):
@@ -714,6 +922,7 @@ class ConfigLayer4RuleBakModeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -785,6 +994,38 @@ class ConfigLayer4RulePolicyRequest(TeaModel):
         self,
         listeners: str = None,
     ):
+        # The port forwarding rule that you want to manage.
+        # 
+        # This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can perform this operation only on one port forwarding rule at a time.
+        # 
+        # > You can call the [DescribeNetworkRules](~~157484~~) to query existing port forwarding rules.
+        # 
+        # Each port forwarding rule contains the following fields:
+        # 
+        # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+        # 
+        # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
+        # 
+        # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+        # 
+        # *   **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
+        # 
+        # *   **PriRealServers**: the IP addresses of the primary origin server. This field is required and must be a JSON array. Each element in a JSON array indicates an IP address of the primary origin server. You can configure a maximum of 20 IP addresses.
+        # 
+        #     Each element in the JSON array contains the following field:
+        # 
+        #     *   **RealServer**: the IP address of the primary origin server. This field is required and must be of the STRING type.
+        # 
+        # *   **SecRealServers**: the IP addresses of the secondary origin server. This field is required and must be a JSON array. Each element in a JSON array indicates an IP address of the secondary origin server. You can configure a maximum of 20 IP addresses.
+        # 
+        #     Each element in the JSON array contains the following field:
+        # 
+        #     *   **RealServer**: the IP address of the secondary origin server. This field is required and must be of the STRING type.
+        # 
+        # *   **CurrentRsIndex**: the origin server that you want to use to receive service traffic. This field is required and must be of the INTEGER type. Valid values:
+        # 
+        #     *   **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
+        #     *   **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
         self.listeners = listeners
 
     def validate(self):
@@ -812,6 +1053,7 @@ class ConfigLayer4RulePolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -884,7 +1126,32 @@ class ConfigNetworkRegionBlockRequest(TeaModel):
         config: str = None,
         instance_id: str = None,
     ):
+        # The details of the configurations of blocked locations. This parameter is a JSON string. The value consists of the following fields:
+        # 
+        # *   **RegionBlockSwitch**: the status of the Location Blacklist policy. This field is required and must be of the string type. Valid values:
+        # 
+        #     *   **on**: enables the policy.
+        #     *   **off**: disables the policy.
+        # 
+        # *   **Countries**: the codes of the countries or areas from which you want to block requests. This field is optional and must be of the array type.
+        # 
+        #     **\
+        # 
+        #     **Note**For more information, see the **Codes of countries and areas** section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic.
+        # 
+        #     For example, `[1,2]` specifies China and Australia.
+        # 
+        # *   **Provinces**: the codes of the administrative regions in China from which you want to block requests. This field is optional and must be of the array type.
+        # 
+        #     **\
+        # 
+        #     **Note**For more information, see the **Codes of administrative regions in China** section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic.
+        # 
+        #     For example, `[11,12]` specifies Beijing and Tianjin.
         self.config = config
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -916,6 +1183,7 @@ class ConfigNetworkRegionBlockResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -987,6 +1255,15 @@ class ConfigNetworkRulesRequest(TeaModel):
         self,
         network_rules: str = None,
     ):
+        # The details of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+        # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
+        # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+        # *   **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
+        # *   **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
+        # 
+        # > You can modify only the value of **RealServers** when you modify a port forwarding rule.
         self.network_rules = network_rules
 
     def validate(self):
@@ -1014,6 +1291,7 @@ class ConfigNetworkRulesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1087,8 +1365,35 @@ class ConfigUdpReflectRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The configuration of the filtering policy for UDP reflection attacks.
+        # 
+        # The value is a string that consists of a JSON struct. The JSON struct contains the following field:
+        # 
+        # *   **UdpSports**: the source ports of the UDP traffic that you want to block. This field is required and must be of the ARRAY type. Example: `[17,19]`.
+        # 
+        #     We recommend that you block the following source ports of UDP traffic:
+        # 
+        #     *   UDP 17: QOTD reflection attacks
+        #     *   UDP 19: CharGEN reflection attacks
+        #     *   UDP 69: TFTP reflection attacks
+        #     *   UDP 111: Portmap reflection attacks
+        #     *   UDP 123: NTP reflection attacks
+        #     *   UDP 137: NetBIOS reflection attacks
+        #     *   UDP 161: SNMPv2 reflection attacks
+        #     *   UDP 389: CLDAP reflection attacks
+        #     *   UDP 1194: OpenVPN reflection attacks
+        #     *   UDP 1900: SSDP reflection attacks
+        #     *   UDP 3389: RDP reflection attacks
+        #     *   UDP 11211: memcached reflection attacks
         self.config = config
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The region ID of the instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland, which indicates Anti-DDoS Pro instances. This is the default value.
+        # *   **ap-southeast-1**: outside the Chinese mainland, which indicates Anti-DDoS Premium instances.
         self.region_id = region_id
 
     def validate(self):
@@ -1124,6 +1429,7 @@ class ConfigUdpReflectResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1197,8 +1503,18 @@ class ConfigWebCCTemplateRequest(TeaModel):
         resource_group_id: str = None,
         template: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The mode of the Frequency Control policy. Valid values:
+        # 
+        # *   **default**: Normal
+        # *   **gf_under_attack**: Emergency
+        # *   **gf_sos_verify**: Strict
+        # *   **gf_sos_enhance**: Super Strict
         self.template = template
 
     def validate(self):
@@ -1234,6 +1550,7 @@ class ConfigWebCCTemplateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1308,9 +1625,15 @@ class ConfigWebIpSetRequest(TeaModel):
         resource_group_id: str = None,
         white_list: List[str] = None,
     ):
+        # IP address N or CIDR block N that you want to add to the blacklist. The maximum value of N is 200. You can add up to 200 IP addresses or CIDR blocks to the blacklist.
         self.black_list = black_list
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # IP address N or CIDR block N that you want to add to the whitelist. The maximum value of N is 200. You can add up to 200 IP addresses or CIDR blocks to the whitelist.
         self.white_list = white_list
 
     def validate(self):
@@ -1350,6 +1673,7 @@ class ConfigWebIpSetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1423,8 +1747,26 @@ class CreateAsyncTaskRequest(TeaModel):
         task_params: str = None,
         task_type: int = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The details of the asynchronous export task. The value is a JSON string. The field in the value varies with **TaskType**.
+        # 
+        # If **TaskType** is set to **1**, **3**, **4**, **5**, or **6**, the following filed is returned:
+        # 
+        # *   **instanceId**: the ID of the instance. This field is required and must be of the STRING type.
+        # 
+        # If **TaskType** is set to **2**, the following field is returned:
+        # 
+        # *   **domain**: the domain name of the website, which must be of the STRING type. If you do not specify this field, the forwarding rules of all websites are exported.
         self.task_params = task_params
+        # The type of the asynchronous export task that you want to create. Valid values:
+        # 
+        # *   **1**: the task to export the port forwarding rules of an instance
+        # *   **2**: the task to export the forwarding rules of a website protected by an instance
+        # *   **3**: the task to export the session persistence and health check settings of an instance
+        # *   **4**: the task to export the anti-DDoS mitigation policies of an instance
+        # *   **5**: the task to download the blacklist for destination IP addresses of an instance
+        # *   **6**: the task to download the whitelist for destination IP addresses of an instance
         self.task_type = task_type
 
     def validate(self):
@@ -1460,6 +1802,7 @@ class CreateAsyncTaskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1532,7 +1875,14 @@ class CreateDomainResourceRequestProxyTypes(TeaModel):
         proxy_ports: List[int] = None,
         proxy_type: str = None,
     ):
+        # An array that consists of port numbers.
         self.proxy_ports = proxy_ports
+        # The type of the protocol. Valid values:
+        # 
+        # *   **http**\
+        # *   **https**\
+        # *   **websocket**\
+        # *   **websockets**\
         self.proxy_type = proxy_type
 
     def validate(self):
@@ -1569,11 +1919,35 @@ class CreateDomainResourceRequest(TeaModel):
         real_servers: List[str] = None,
         rs_type: int = None,
     ):
+        # The domain name of the website that you want to add to the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.domain = domain
+        # The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # 
+        # *   **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+        # 
+        #     If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+        # 
+        # *   **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+        # 
+        #     If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+        # 
+        # *   **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+        # 
+        #     After you turn on the switch, HTTP/2 is used.
         self.https_ext = https_ext
+        # An array consisting of the IDs of instances that you want to associate.
         self.instance_ids = instance_ids
+        # An array that consists of the details of the protocol type and port number.
         self.proxy_types = proxy_types
+        # An array that consists of the addresses of origin servers.
         self.real_servers = real_servers
+        # The address type of the origin server. Valid values:
+        # 
+        # *   **0**: IP address
+        # 
+        # *   **1**: domain name
+        # 
+        #     If you deploy proxies, such as a Web Application Firewall (WAF) instance, between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance, set the value to 1. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
         self.rs_type = rs_type
 
     def validate(self):
@@ -1629,6 +2003,7 @@ class CreateDomainResourceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1700,6 +2075,13 @@ class CreateNetworkRulesRequest(TeaModel):
         self,
         network_rules: str = None,
     ):
+        # The details of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+        # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
+        # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+        # *   **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
+        # *   **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
         self.network_rules = network_rules
 
     def validate(self):
@@ -1727,6 +2109,7 @@ class CreateNetworkRulesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1802,10 +2185,20 @@ class CreatePortRequest(TeaModel):
         instance_id: str = None,
         real_servers: List[str] = None,
     ):
+        # The port of the origin server. Valid values: **0** to **65535**.
         self.backend_port = backend_port
+        # The forwarding port. Valid values: **0** to **65535**.
         self.frontend_port = frontend_port
+        # The type of the protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.frontend_protocol = frontend_protocol
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # An array that consists of the IP addresses of origin servers.
         self.real_servers = real_servers
 
     def validate(self):
@@ -1849,6 +2242,7 @@ class CreatePortResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -1923,9 +2317,16 @@ class CreateSceneDefensePolicyRequest(TeaModel):
         start_time: int = None,
         template: str = None,
     ):
+        # The end time of the policy. This value is a UNIX timestamp. Units: milliseconds.
         self.end_time = end_time
+        # The name of the policy.
         self.name = name
+        # The start time of the policy. This value is a UNIX timestamp. Units: milliseconds.
         self.start_time = start_time
+        # The template of the policy. Valid values:
+        # 
+        # *   **promotion**: important activity
+        # *   **bypass**: all traffic forwarded
         self.template = template
 
     def validate(self):
@@ -1966,7 +2367,12 @@ class CreateSceneDefensePolicyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -2046,10 +2452,48 @@ class CreateSchedulerRuleRequest(TeaModel):
         rule_type: int = None,
         rules: str = None,
     ):
+        # The details of the CDN interaction rule. This parameter is a JSON string. The following list describes the fields in the value of the parameter:
+        # 
+        # *   **ParamType**: the type of the scheduling rule. This field is required and must be of the string type. Set the value to **cdn**. This indicates that you want to modify a CDN interaction rule.
+        # 
+        # *   **ParamData**: the values of parameters that you want to modify for the CDN interaction rule. This field is required and must be of the map type. ParamData contains the following parameters:
+        # 
+        #     *   **Domain**: the accelerated domain in CDN. This parameter is required and must be of the string type.
+        #     *   **Cname**: the CNAME that is assigned to the accelerated domain. This parameter is required and must be of the string type.
+        #     *   **AccessQps**: the queries per second (QPS) threshold that is used to switch service traffic to Anti-DDoS Pro or Anti-DDoS Premium. This parameter is required and must be of the integer type.
+        #     *   **UpstreamQps**: the QPS threshold that is used to switch service traffic to CDN. This parameter is optional and must be of the integer type.
         self.param = param
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The name of the rule.
         self.rule_name = rule_name
+        # The type of the custom defense rule. Valid values:
+        # 
+        # *   **2**: tiered protection
+        # *   **3**: network acceleration
+        # *   **5**: CDN interaction
+        # *   **6**: cloud service interaction
         self.rule_type = rule_type
+        # The details of the scheduling rule. This parameter is a JSON string. The following list describes the fields in the value of the parameter:
+        # 
+        # *   **Type**: the address type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type. Valid values:
+        # 
+        #     *   **A**: IP address
+        #     *   **CNAME**: domain name
+        # 
+        # *   **Value**: the address of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type.
+        # 
+        # *   **Priority**: the priority of the scheduling rule. This field is required and must be of the integer type. Valid values: **0** to **100**. A larger value indicates a higher priority.
+        # 
+        # *   **ValueType**: the type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the integer type. Valid values:
+        # 
+        #     *   **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
+        #     *   **2**: the IP address of the interaction resource in the tiered protection scenario
+        #     *   **3**: the IP address that is used to accelerate access in the network acceleration scenario
+        #     *   **5**: the domain name that is configured in Alibaba Cloud CDN (CDN) in the CDN interaction scenario
+        #     *   **6** the IP address of the interaction resource in the cloud service interaction scenario
+        # 
+        # *   **RegionId**: the region where the interaction resource is deployed. This parameter must be specified when **ValueType** is set to **2**. The value must be of the string type.
         self.rules = rules
 
     def validate(self):
@@ -2095,8 +2539,13 @@ class CreateSchedulerRuleResponseBody(TeaModel):
         request_id: str = None,
         rule_name: str = None,
     ):
+        # The CNAME that is assigned by Sec-Traffic Manager for the scheduling rule.
+        # 
+        # > To enable the scheduling rule, you must map the domain name of the service to the CNAME.
         self.cname = cname
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The name of the rule.
         self.rule_name = rule_name
 
     def validate(self):
@@ -2177,7 +2626,9 @@ class CreateTagResourcesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag to add.
         self.key = key
+        # The value of the tag to add.
         self.value = value
 
     def validate(self):
@@ -2213,10 +2664,17 @@ class CreateTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: List[CreateTagResourcesRequestTags] = None,
     ):
+        # The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
         self.region_id = region_id
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # An array consisting of the IDs of the Anti-DDoS Pro instances to which you want to add the tag.
         self.resource_ids = resource_ids
+        # The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
         self.resource_type = resource_type
+        # An array that consists of the tags to add.
         self.tags = tags
 
     def validate(self):
@@ -2268,6 +2726,7 @@ class CreateTagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2491,12 +2950,49 @@ class CreateWebRuleRequest(TeaModel):
         rs_type: int = None,
         rules: str = None,
     ):
+        # The ID of the associated defense. This parameter applies to scenarios in which other cloud services, such as Object Storage Service (OSS), are integrated with Anti-DDoS Pro or Anti-DDoS Premium.
+        # 
+        # > This parameter is in internal preview. Do not use this parameter.
+        # 
+        # For example, if you integrate OSS with Anti-DDoS Pro or Anti-DDoS Premium, Anti-DDoS Pro or Anti-DDoS Premium allocates an IP address pool for the OSS production account. Each IP address corresponds to a unique defense ID. A defense ID is a CNAME, which is automatically resolved to the IP address of the required Anti-DDoS Pro or Anti-DDoS Premium instance. A defense ID can be resolved to the same IP address to facilitate scheduling.
+        # 
+        # > You can specify only one of the following parameters: **InstanceIds** and **DefenseId**.
         self.defense_id = defense_id
+        # The domain name of the website that you want to add to the instance.
         self.domain = domain
+        # The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # 
+        # *   **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+        # 
+        #     If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+        # 
+        # *   **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+        # 
+        #     If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+        # 
+        # *   **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+        # 
+        #     After you turn on Enable HTTP/2, the protocol type is HTTP/2.
         self.https_ext = https_ext
+        # An array consisting of the IDs of instances that you want to associate.
         self.instance_ids = instance_ids
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
+        # The address type of the origin server. Valid values:
+        # 
+        # *   **0**: IP address
+        # *   **1**: domain name The domain name of the origin server is returned if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the instance. In this case, the address of the proxy, such as the CNAME provided by WAF, is returned.
         self.rs_type = rs_type
+        # The details of the forwarding rule. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # 
+        # *   **ProxyRules**: the information about the origin server. The information includes the port number and IP address. This field is required and must be a JSON array. Each element in a JSON array is a JSON struct that contains the following fields:
+        # 
+        #     *   **ProxyPort**: the port number. This field is required and must be an integer.
+        #     *   **RealServers**: the IP address. This field is required and must be a string array.
+        # 
+        # *   **ProxyType**: the protocol type. This field is required and must be a string. Valid values: **http**, **https**, **websocket**, and **websockets**.
         self.rules = rules
 
     def validate(self):
@@ -2548,6 +3044,7 @@ class CreateWebRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -2620,7 +3117,11 @@ class DeleteAsyncTaskRequest(TeaModel):
         resource_group_id: str = None,
         task_id: int = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the task that you want to delete.
+        # 
+        # > You can call the [DescribeAsyncTasks](~~159405~~) operation to query the IDs of all asynchronous export tasks.
         self.task_id = task_id
 
     def validate(self):
@@ -2652,6 +3153,7 @@ class DeleteAsyncTaskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2724,7 +3226,13 @@ class DeleteAutoCcBlacklistRequest(TeaModel):
         blacklist: str = None,
         instance_id: str = None,
     ):
+        # The IP addresses that you want to manage. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **src**: the IP address. This field is required and must be of the STRING type.
         self.blacklist = blacklist
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2756,6 +3264,7 @@ class DeleteAutoCcBlacklistResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -2828,7 +3337,13 @@ class DeleteAutoCcWhitelistRequest(TeaModel):
         instance_id: str = None,
         whitelist: str = None,
     ):
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The IP addresses that you want to manage. This parameter is a JSON string. This parameter is a JSON string. The string contains the following field:
+        # 
+        # *   **src**: the IP address. This field is required and must be of the string type.
         self.whitelist = whitelist
 
     def validate(self):
@@ -2860,6 +3375,7 @@ class DeleteAutoCcWhitelistResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2931,6 +3447,7 @@ class DeleteDomainResourceRequest(TeaModel):
         self,
         domain: str = None,
     ):
+        # The domain name for which the forwarding rule is configured.
         self.domain = domain
 
     def validate(self):
@@ -2958,6 +3475,7 @@ class DeleteDomainResourceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3029,6 +3547,11 @@ class DeleteNetworkRuleRequest(TeaModel):
         self,
         network_rule: str = None,
     ):
+        # An array that consists of the information about the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+        # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
+        # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
         self.network_rule = network_rule
 
     def validate(self):
@@ -3056,6 +3579,7 @@ class DeleteNetworkRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3131,10 +3655,20 @@ class DeletePortRequest(TeaModel):
         instance_id: str = None,
         real_servers: List[str] = None,
     ):
+        # The port of the origin server. Valid values: **0** to **65535**.
         self.backend_port = backend_port
+        # The forwarding port. Valid values: **0** to **65535**.
         self.frontend_port = frontend_port
+        # The type of the protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.frontend_protocol = frontend_protocol
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # An array that consists of the IP addresses of origin servers.
         self.real_servers = real_servers
 
     def validate(self):
@@ -3178,6 +3712,7 @@ class DeletePortResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3249,6 +3784,9 @@ class DeleteSceneDefensePolicyRequest(TeaModel):
         self,
         policy_id: str = None,
     ):
+        # The ID of the policy that you want to delete.
+        # 
+        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
         self.policy_id = policy_id
 
     def validate(self):
@@ -3277,7 +3815,12 @@ class DeleteSceneDefensePolicyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -3354,7 +3897,9 @@ class DeleteSchedulerRuleRequest(TeaModel):
         resource_group_id: str = None,
         rule_name: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The name of the scheduling rule that you want to delete.
         self.rule_name = rule_name
 
     def validate(self):
@@ -3386,6 +3931,7 @@ class DeleteSchedulerRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3462,11 +4008,22 @@ class DeleteTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the specified resource. Valid values:
+        # 
+        # *   **true**: yes.
+        # *   **false** no. This is the default value.
         self.all = all
+        # The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
         self.region_id = region_id
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # An array consisting of the IDs of instances from which you want to remove tags.
         self.resource_ids = resource_ids
+        # The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
         self.resource_type = resource_type
+        # An array consisting of the keys of the tags that you want to remove.
         self.tag_key = tag_key
 
     def validate(self):
@@ -3514,6 +4071,7 @@ class DeleteTagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3587,8 +4145,13 @@ class DeleteWebCCRuleRequest(TeaModel):
         name: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The name of the custom frequency control rule that you want to delete.
         self.name = name
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3624,6 +4187,7 @@ class DeleteWebCCRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3697,8 +4261,15 @@ class DeleteWebCacheCustomRuleRequest(TeaModel):
         resource_group_id: str = None,
         rule_names: List[str] = None,
     ):
+        # The domain name for which you want to delete the custom rules of the Static Page Caching policy.
+        # 
+        # > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # An array consisting of the names of the rules that you want to delete.
         self.rule_names = rule_names
 
     def validate(self):
@@ -3734,6 +4305,7 @@ class DeleteWebCacheCustomRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3807,8 +4379,13 @@ class DeleteWebPreciseAccessRuleRequest(TeaModel):
         resource_group_id: str = None,
         rule_names: List[str] = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # An array that consists of the names of rules to delete.
         self.rule_names = rule_names
 
     def validate(self):
@@ -3844,6 +4421,7 @@ class DeleteWebPreciseAccessRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3916,7 +4494,13 @@ class DeleteWebRuleRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website from which you want to delete the forwarding rule.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query the domain names for which forwarding rules are configured.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3948,6 +4532,7 @@ class DeleteWebRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4021,8 +4606,13 @@ class DescribeAsyncTasksRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -4064,12 +4654,49 @@ class DescribeAsyncTasksResponseBodyAsyncTasks(TeaModel):
         task_status: int = None,
         task_type: int = None,
     ):
+        # The end time of the task. This value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
+        # The start time of the task. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
+        # The ID of the job.
         self.task_id = task_id
+        # The task parameter. The value is a JSON string. The returned field in the value varies based on the value of **TaskType**.
+        # 
+        # If **TaskType** is set to **1**, **3**, **4**, **5**, or **6**, the following filed is returned:
+        # 
+        # *   **instanceId**: the ID of the instance. Data type: string.
+        # 
+        # If **TaskType** is set to **2**, the following field is returned:
+        # 
+        # *   **domain**: the domain name of the website. Data type: string.
         self.task_params = task_params
+        # The execution result of the task. The value is a JSON string. The returned fields in the value vary based on the value of **TaskType**.
+        # 
+        # If **TaskType** is set to **1**, **3**, **4**, **5**, or **6**, the following fields are returned:
+        # 
+        # *   **instanceId**: the ID of the instance. Data type: string.
+        # *   **url**: the URL to download the exported file from Object Storage Service (OSS). Data type: string.
+        # 
+        # If **TaskType** is set to **2**, the following fields are returned:
+        # 
+        # *   **domain**: the domain name of the website. Data type: string.
+        # *   **url**: the URL to download the exported file from OSS. Data type: string.
         self.task_result = task_result
+        # The status of the task. Valid values:
+        # 
+        # *   **0**: indicates that the task is being initialized.
+        # *   **1**: indicates that the task is in progress.
+        # *   **2**: indicates that the task is successful.
+        # *   **3**: indicates that the task failed.
         self.task_status = task_status
+        # The type of the task. Valid values:
+        # 
+        # *   **1**: the task to export the port forwarding rules of an instance
+        # *   **2**: the task to export the forwarding rules of a website protected by an instance
+        # *   **3**: the task to export the sessions and health check settings of an instance
+        # *   **4**: the task to export the mitigation policies of an instance
+        # *   **5**: the task to download the blacklist for destination IP addresses of an instance
+        # *   **6**: the task to download the whitelist for destination IP addresses of an instance
         self.task_type = task_type
 
     def validate(self):
@@ -4123,8 +4750,11 @@ class DescribeAsyncTasksResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of the details of the asynchronous export tasks.
         self.async_tasks = async_tasks
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of asynchronous export tasks that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4213,7 +4843,9 @@ class DescribeAttackAnalysisMaxQpsRequest(TeaModel):
         end_time: int = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -4246,7 +4878,9 @@ class DescribeAttackAnalysisMaxQpsResponseBody(TeaModel):
         qps: int = None,
         request_id: str = None,
     ):
+        # The peak queries per second (QPS) of DDoS attacks. Units: QPS.
         self.qps = qps
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4325,9 +4959,17 @@ class DescribeAutoCcBlacklistRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The keyword for the query. This keyword is used to specify the prefix of the source IP address that you want to query.
+        # 
+        # > The keyword must be greater than three characters in length.
         self.key_word = key_word
+        # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -4370,9 +5012,16 @@ class DescribeAutoCcBlacklistResponseBodyAutoCcBlacklist(TeaModel):
         source_ip: str = None,
         type: str = None,
     ):
+        # The IP address of the instance.
         self.dest_ip = dest_ip
+        # The validity period of the IP address in the blacklist. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The IP address in the blacklist.
         self.source_ip = source_ip
+        # The mode of how the IP address is added to the blacklist. Valid values:
+        # 
+        # *   **manual**: manually added
+        # *   **auto**: automatically added
         self.type = type
 
     def validate(self):
@@ -4414,8 +5063,11 @@ class DescribeAutoCcBlacklistResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of the details of the IP addresses in the blacklist of the instance.
         self.auto_cc_blacklist = auto_cc_blacklist
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of returned IP addresses in the blacklist.
         self.total_count = total_count
 
     def validate(self):
@@ -4504,7 +5156,14 @@ class DescribeAutoCcListCountRequest(TeaModel):
         instance_id: str = None,
         query_type: str = None,
     ):
+        # The ID of the instance.
+        # 
+        # > You can call the **DescribeInstanceIds** operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The mode of how an IP address is added to the whitelist or blacklist. Valid values:
+        # 
+        # *   **manual**: manually added
+        # *   **auto**: automatically added
         self.query_type = query_type
 
     def validate(self):
@@ -4538,8 +5197,11 @@ class DescribeAutoCcListCountResponseBody(TeaModel):
         request_id: str = None,
         white_count: int = None,
     ):
+        # The total number of IP addresses in the blacklist.
         self.black_count = black_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of IP addresses in the whitelist.
         self.white_count = white_count
 
     def validate(self):
@@ -4622,9 +5284,17 @@ class DescribeAutoCcWhitelistRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The keyword for the query. This keyword is used to specify the prefix of the source IP address that you want to query.
+        # 
+        # > The keyword must be greater than three characters in length.
         self.key_word = key_word
+        # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -4667,9 +5337,16 @@ class DescribeAutoCcWhitelistResponseBodyAutoCcWhitelist(TeaModel):
         source_ip: str = None,
         type: str = None,
     ):
+        # The IP address of the instance.
         self.dest_ip = dest_ip
+        # The validity period of the IP address in the whitelist. Unit: seconds. **0** indicates that the IP address in the whitelist never expires.
         self.end_time = end_time
+        # The IP addresses that is contained in the IP address whitelist.
         self.source_ip = source_ip
+        # The mode of how an IP address is added to the whitelist. Valid values:
+        # 
+        # *   **manual**: manually added
+        # *   **auto**: automatically added
         self.type = type
 
     def validate(self):
@@ -4711,8 +5388,11 @@ class DescribeAutoCcWhitelistResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of details of the IP address in the whitelist of the instance.
         self.auto_cc_whitelist = auto_cc_whitelist
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned IP addresses in the whitelist.
         self.total_count = total_count
 
     def validate(self):
@@ -4798,10 +5478,18 @@ class DescribeAutoCcWhitelistResponse(TeaModel):
 class DescribeBackSourceCidrRequest(TeaModel):
     def __init__(
         self,
+        ip_version: str = None,
         line: str = None,
         resource_group_id: str = None,
     ):
+        # The IP version of the back-to-origin CIDR block.
+        # 
+        # *   **Ipv4**\
+        # *   **Ipv6**\
+        self.ip_version = ip_version
+        # The Internet service provider (ISP) line that you want to query.
         self.line = line
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -4813,6 +5501,8 @@ class DescribeBackSourceCidrRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         if self.line is not None:
             result['Line'] = self.line
         if self.resource_group_id is not None:
@@ -4821,6 +5511,8 @@ class DescribeBackSourceCidrRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         if m.get('Line') is not None:
             self.line = m.get('Line')
         if m.get('ResourceGroupId') is not None:
@@ -4834,7 +5526,9 @@ class DescribeBackSourceCidrResponseBody(TeaModel):
         cidrs: List[str] = None,
         request_id: str = None,
     ):
+        # An array that consists of the back-to-origin CIDR blocks of the instance.
         self.cidrs = cidrs
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -4910,6 +5604,9 @@ class DescribeBlackholeStatusRequest(TeaModel):
         self,
         instance_ids: List[str] = None,
     ):
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -4940,9 +5637,16 @@ class DescribeBlackholeStatusResponseBodyBlackholeStatus(TeaModel):
         ip: str = None,
         start_time: int = None,
     ):
+        # Indicates whether blackhole filtering is triggered for the instance. Valid values:
+        # 
+        # *   **blackhole**: yes
+        # *   **normal**: no
         self.black_status = black_status
+        # The end time of blackhole filtering. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The IP address of the instance.
         self.ip = ip
+        # The start time of blackhole filtering. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -4983,7 +5687,9 @@ class DescribeBlackholeStatusResponseBody(TeaModel):
         blackhole_status: List[DescribeBlackholeStatusResponseBodyBlackholeStatus] = None,
         request_id: str = None,
     ):
+        # An array that consists of the blackhole filtering status of the instance.
         self.blackhole_status = blackhole_status
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5068,7 +5774,13 @@ class DescribeBlockStatusRequest(TeaModel):
         instance_ids: List[str] = None,
         resource_group_id: str = None,
     ):
+        # An array consisting of information about the IDs of the instances that you want to query.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_ids = instance_ids
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -5103,9 +5815,19 @@ class DescribeBlockStatusResponseBodyStatusListBlockStatusList(TeaModel):
         line: str = None,
         start_time: int = None,
     ):
+        # The blocking status of the network traffic. Valid values:
+        # 
+        # *   **areablock**: Network traffic is blocked.
+        # *   **normal**: Network traffic is not blocked.
         self.block_status = block_status
+        # The end time of the blocking. This value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The Internet service provider (ISP) line from which the traffic is blocked. Valid values:
+        # 
+        # *   **ct**: China Telecom (International)
+        # *   **cut**: China Unicom (International)
         self.line = line
+        # The start time of the blocking. This value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -5146,7 +5868,9 @@ class DescribeBlockStatusResponseBodyStatusList(TeaModel):
         block_status_list: List[DescribeBlockStatusResponseBodyStatusListBlockStatusList] = None,
         ip: str = None,
     ):
+        # An array that consists of details of the Diversion from Origin Server configuration.
         self.block_status_list = block_status_list
+        # The IP address of the instance.
         self.ip = ip
 
     def validate(self):
@@ -5187,7 +5911,9 @@ class DescribeBlockStatusResponseBody(TeaModel):
         request_id: str = None,
         status_list: List[DescribeBlockStatusResponseBodyStatusList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # An array that consists of details of the Diversion from Origin Server configurations of the instance.
         self.status_list = status_list
 
     def validate(self):
@@ -5272,7 +5998,11 @@ class DescribeCertsRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -5302,6 +6032,7 @@ class DescribeCertsRequest(TeaModel):
 class DescribeCertsResponseBodyCerts(TeaModel):
     def __init__(
         self,
+        cert_identifier: str = None,
         common: str = None,
         domain_related: bool = None,
         end_date: str = None,
@@ -5310,12 +6041,23 @@ class DescribeCertsResponseBodyCerts(TeaModel):
         name: str = None,
         start_date: str = None,
     ):
+        self.cert_identifier = cert_identifier
+        # The domain name that is associated with the certificate.
         self.common = common
+        # Indicates whether the certificate is associated with the domain name. Valid values:
+        # 
+        # *   **true**: The certificate is associated with the domain name.
+        # *   **false**: The certificate is not associated with the domain name.
         self.domain_related = domain_related
+        # The expiration date of the certificate. string
         self.end_date = end_date
+        # The ID of the certificate.
         self.id = id
+        # The certificate authority (CA) that issued the certificate.
         self.issuer = issuer
+        # The name of the certificate.
         self.name = name
+        # The issuance date of the certificate. string
         self.start_date = start_date
 
     def validate(self):
@@ -5327,6 +6069,8 @@ class DescribeCertsResponseBodyCerts(TeaModel):
             return _map
 
         result = dict()
+        if self.cert_identifier is not None:
+            result['CertIdentifier'] = self.cert_identifier
         if self.common is not None:
             result['Common'] = self.common
         if self.domain_related is not None:
@@ -5345,6 +6089,8 @@ class DescribeCertsResponseBodyCerts(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertIdentifier') is not None:
+            self.cert_identifier = m.get('CertIdentifier')
         if m.get('Common') is not None:
             self.common = m.get('Common')
         if m.get('DomainRelated') is not None:
@@ -5368,7 +6114,9 @@ class DescribeCertsResponseBody(TeaModel):
         certs: List[DescribeCertsResponseBodyCerts] = None,
         request_id: str = None,
     ):
+        # The certificate information about the website.
         self.certs = certs
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5614,11 +6362,23 @@ class DescribeDDoSEventsRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_ids = instance_ids
+        # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -5673,13 +6433,33 @@ class DescribeDDoSEventsResponseBodyDDoSEvents(TeaModel):
         region: str = None,
         start_time: int = None,
     ):
+        # The bandwidth of attack traffic. Unit: bit/s.
         self.bps = bps
+        # The time when the DDoS attack stopped. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The type of the attack event. Valid values:
+        # 
+        # *   **defense**: traffic scrubbing events
+        # *   **blackhole**: blackhole filtering events
         self.event_type = event_type
+        # The attacked IP address.
         self.ip = ip
+        # The attacked port.
         self.port = port
+        # The packet forwarding rate of attack traffic. Unit: packets per second (pps).
         self.pps = pps
+        # The region from which the attack was launched. Valid values:
+        # 
+        # *   **cn**: a region in the Chinese mainland
+        # *   **alb-ap-northeast-1-gf-x**: Japan (Tokyo)
+        # *   **alb-ap-southeast-gf-x**: Singapore
+        # *   **alb-cn-hongkong-gf-x**: Hong Kong (China)
+        # *   **alb-eu-central-1-gf-x**: Germany (Frankfurt)
+        # *   **alb-us-west-1-gf-x**: US (Silicon Valley)
+        # 
+        # > The values except **cn** are returned only when **RegionId** is set to **ap-southeast-1**.
         self.region = region
+        # The time when the DDoS attack started. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -5737,8 +6517,11 @@ class DescribeDDoSEventsResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The DDoS attack events.
         self.ddo_sevents = ddo_sevents
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned attack events.
         self.total = total
 
     def validate(self):
@@ -5830,10 +6613,24 @@ class DescribeDDosAllEventListRequest(TeaModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The DDoS attack events occur before **EndTime** are queried. This value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The type of the DDoS attack events you want to query. Valid values:
+        # 
+        # *   **web-cc**: resource exhaustion attacks
+        # *   **cc**: connection flood attacks
+        # *   **defense**: DDoS attacks that trigger traffic scrubbing
+        # *   **blackhole**: DDoS attacks that trigger blackhole filtering
+        # 
+        # If you want to query multiple types of DDoS attack events, separate them with commas (,).
+        # 
+        # If you do not configure this parameter, DDoS attack events of all types are queried.
         self.event_type = event_type
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The beginning of the time range to query. The DDoS attack events occur after **StartTime** are queried. This value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -5884,13 +6681,42 @@ class DescribeDDosAllEventListResponseBodyAttackEvents(TeaModel):
         pps: int = None,
         start_time: int = None,
     ):
+        # The source location or region from which the attack was initiated. Valid values:
+        # 
+        # *   **cn**: Chinese mainland
+        # *   **alb-cn-hongkong-gf-2**: China (Hongkong)
+        # *   **alb-us-west-1-gf-2**: US (Silicon Valley)
+        # *   **alb-ap-northeast-1-gf-1**: Japan (Tokyo)
+        # *   **alb-ap-southeast-gf-1**: Singapore
+        # *   **alb-eu-central-1-gf-1**: Germany (Frankfurt)
+        # *   **alb-eu-central-1-gf-1** or **selb-eu-west-1-gf-1a**: UK (London)
+        # *   **alb-us-east-gf-1**: US (Virginia)
+        # *   **CT-yundi**: China (Hongkong) This value is returned only for Anti-DDoS Premium instances of the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan.
         self.area = area
+        # The time when the DDoS attack stopped. This value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The type of the DDoS attack event. Valid values:
+        # 
+        # *   **web-cc**: resource exhaustion attacks
+        # *   **cc**: connection flood attacks
+        # *   **defense**: DDoS attacks that trigger traffic scrubbing
+        # *   **blackhole**: DDoS attacks that trigger blackhole filtering
         self.event_type = event_type
+        # The attacked object. The attacked object varies based on the attack event type. The following list describes different attacked objects of different attack event types:
+        # 
+        # *   If **EventType** is set to **web-cc**, the value of this parameter indicates the domain name of the attacked website.
+        # *   If **EventType** is set to **cc**, the value of this parameter indicates the IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # *   If **EventType** is set to **defense** or **blackhole**, the value of this parameter indicates the IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.ip = ip
+        # The peak bandwidth of the attack traffic. Unit: Mbit/s.
         self.mbps = mbps
+        # The attacked port.
+        # 
+        # > If **EventType** is set to **web-cc**, this parameter is not returned.
         self.port = port
+        # The peak packet forwarding rate of attack traffic. Unit: packets per second (pps).
         self.pps = pps
+        # The time when the DDoS attack started. This value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -5948,8 +6774,11 @@ class DescribeDDosAllEventListResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # An array that consists of attack events.
         self.attack_events = attack_events
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of DDoS attack events.
         self.total = total
 
     def validate(self):
@@ -6039,8 +6868,16 @@ class DescribeDDosEventAreaRequest(TeaModel):
         ip: str = None,
         start_time: int = None,
     ):
+        # The type of the attack event that you want to query. Valid values:
+        # 
+        # *   **defense**: attack events that trigger traffic scrubbing
+        # *   **blackhole**: attack events that trigger blackhole filtering
         self.event_type = event_type
+        # The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.ip = ip
+        # The UNIX timestamp when the query starts. Unit: seconds.
+        # 
+        # > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
         self.start_time = start_time
 
     def validate(self):
@@ -6077,7 +6914,9 @@ class DescribeDDosEventAreaResponseBodyAreas(TeaModel):
         area: str = None,
         in_pkts: int = None,
     ):
+        # The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](~~167926~~). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
         self.area = area
+        # The number of request packets that were sent from the source region.
         self.in_pkts = in_pkts
 
     def validate(self):
@@ -6110,7 +6949,9 @@ class DescribeDDosEventAreaResponseBody(TeaModel):
         areas: List[DescribeDDosEventAreaResponseBodyAreas] = None,
         request_id: str = None,
     ):
+        # The information about the source region from which the volumetric attack was initiated.
         self.areas = areas
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6196,8 +7037,16 @@ class DescribeDDosEventAttackTypeRequest(TeaModel):
         ip: str = None,
         start_time: int = None,
     ):
+        # The type of the attack event that you want to query. Valid values:
+        # 
+        # *   **defense**: attack events that trigger traffic scrubbing
+        # *   **blackhole**: attack events that trigger blackhole filtering
         self.event_type = event_type
+        # The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.ip = ip
+        # The UNIX timestamp when the query starts. Unit: seconds.
+        # 
+        # > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
         self.start_time = start_time
 
     def validate(self):
@@ -6234,7 +7083,51 @@ class DescribeDDosEventAttackTypeResponseBodyAttackTypes(TeaModel):
         attack_type: str = None,
         in_pkts: int = None,
     ):
+        # The type of the attack Valid values:
+        # 
+        # *   **QOTD-Reflect-Flood**: QOTD reflection attacks
+        # *   **CharGEN-Reflect-Flood**: CHARGEN reflection attacks
+        # *   **DNS-Reflect-Flood**: DNS reflection attacks
+        # *   **TFTP-Reflect-Flood**: TFTP reflection attacks
+        # *   **Portmap-Reflect-Flood**: Portmap reflection attacks
+        # *   **NTP-Reflect-Flood**: NTP reflection attacks
+        # *   **NetBIOS-Reflect-Flood**: NetBIOS reflection attacks
+        # *   **SNMPv2-Reflect-Flood**: SNMPv2 reflection attacks
+        # *   **CLDAP-Reflect-Flood**: CLDAP reflection attacks
+        # *   **Ripv1-Reflect-Flood**: RIPv1 reflection attacks
+        # *   **OpenVPN-Reflect-Flood**: OpenVPN reflection attacks
+        # *   **SSDP-Reflect-Flood**: SSDP reflection attacks
+        # *   **NetAssistant-Reflect-Flood**: NetAssistant reflection attacks
+        # *   **WSDiscovery-Reflect-Flood**: WS-Discovery reflection attacks
+        # *   **Kad-Reflect-Flood**: Kad reflection attacks
+        # *   **mDNS-Reflect-Flood**: mDNS reflection attacks
+        # *   **10001-Reflect-Flood**: reflection attacks over port 10001
+        # *   **Memcached-Reflect-Flood**: Memcached reflection attacks
+        # *   **QNP-Reflect-Flood**: QNP reflection attacks
+        # *   **DVR-Reflect-Flood**: DVR reflection attacks
+        # *   **CoAP-Reflect-Flood**: CoAP reflection attacks
+        # *   **ADDP-Reflect-Flood**: ADDP reflection attacks
+        # *   **Tcp-Syn**: TCP SYN flood attacks
+        # *   **Tcp-Fin**: TCP FIN flood attacks
+        # *   **Tcp-Ack**: TCP ACK flood attacks
+        # *   **Tcp-Rst**: TCP RST flood attacks
+        # *   **Tcp-Pushack**: TCP PSH-ACK flood attacks
+        # *   **Tcp-Synack**: TCP SYN-ACK flood attacks
+        # *   **Udp-None**: UDP attacks
+        # *   **Udp-Ssh**: UDP-based SSH attacks
+        # *   **Udp-Dns**: UDP-based DNS attacks
+        # *   **Udp-Http**: UDP-based HTTP attacks
+        # *   **Udp-Https**: UDP-based HTTPS attacks
+        # *   **Udp-Ntp**: UDP-based NTP attacks
+        # *   **Udp-Ldap**: UDP-based LDAP attacks
+        # *   **Udp-Ssdp**: UDP-based SSDP attacks
+        # *   **Udp-Memcached**: Memcached UDP reflection attacks
+        # *   **Tcp-Other**: other TCP attacks
+        # *   **Icmp**: ICMP flood attacks
+        # *   **Igmp**: IGMP flood attacks
+        # *   **Ipv6**: IPv6 attacks
         self.attack_type = attack_type
+        # The number of request packets of the attack type.
         self.in_pkts = in_pkts
 
     def validate(self):
@@ -6267,7 +7160,9 @@ class DescribeDDosEventAttackTypeResponseBody(TeaModel):
         attack_types: List[DescribeDDosEventAttackTypeResponseBodyAttackTypes] = None,
         request_id: str = None,
     ):
+        # The information about the attack types.
         self.attack_types = attack_types
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6353,8 +7248,16 @@ class DescribeDDosEventIspRequest(TeaModel):
         ip: str = None,
         start_time: int = None,
     ):
+        # The type of the attack event that you want to query. Valid values:
+        # 
+        # *   **defense**: attack events that trigger traffic scrubbing
+        # *   **blackhole**: attack events that trigger blackhole filtering
         self.event_type = event_type
+        # The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.ip = ip
+        # The UNIX timestamp when the query starts. Unit: seconds.
+        # 
+        # > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
         self.start_time = start_time
 
     def validate(self):
@@ -6391,7 +7294,28 @@ class DescribeDDosEventIspResponseBodyIsps(TeaModel):
         in_pkts: int = None,
         isp: str = None,
     ):
+        # The number of request packets that were sent from the ISP.
         self.in_pkts = in_pkts
+        # The code of the ISP. Valid values:
+        # 
+        # *   **100017**: China Telecom
+        # *   **100026**: China Unicom
+        # *   **100025**: China Mobile
+        # *   **100027**: China Education and Research Network
+        # *   **100020**: China Mobile Tietong
+        # *   **1000143**: Dr.Peng Telecom & Media Group
+        # *   **100080**: Beijing Gehua CATV Network
+        # *   **1000139**: National Radio and Television Administration
+        # *   **100023**: Oriental Cable Network
+        # *   **100063**: Founder Broadband
+        # *   **1000337**: China Internet Exchange
+        # *   **100021**: 21Vianet Group
+        # *   **1000333**: Wasu Media Holding
+        # *   **100093**: Wangsu Science & Technology
+        # *   **1000401**: Tencent
+        # *   **100099**: Baidu
+        # *   **1000323**: Alibaba Cloud
+        # *   **100098**: Alibaba
         self.isp = isp
 
     def validate(self):
@@ -6424,7 +7348,9 @@ class DescribeDDosEventIspResponseBody(TeaModel):
         isps: List[DescribeDDosEventIspResponseBodyIsps] = None,
         request_id: str = None,
     ):
+        # An array that consists of the ISPs for the volumetric attack.
         self.isps = isps
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6509,7 +7435,9 @@ class DescribeDDosEventMaxRequest(TeaModel):
         end_time: int = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -6544,9 +7472,13 @@ class DescribeDDosEventMaxResponseBody(TeaModel):
         qps: int = None,
         request_id: str = None,
     ):
+        # The peak of connection flood attacks. Unit: connections per seconds (CPS).
         self.cps = cps
+        # The peak of volumetric attacks. Unit: Mbit/s.
         self.mbps = mbps
+        # The peak of resource exhaustion attacks. Unit: queries per second (QPS).
         self.qps = qps
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6633,9 +7565,18 @@ class DescribeDDosEventSrcIpRequest(TeaModel):
         range: int = None,
         start_time: int = None,
     ):
+        # The type of the attack event that you want to query. Valid values:
+        # 
+        # *   **defense**: attack events that trigger traffic scrubbing
+        # *   **blackhole**: attack events that trigger blackhole filtering
         self.event_type = event_type
+        # The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.ip = ip
+        # The number of source IP addresses that you want to return. The source IP addresses are returned in descending order of attack traffic. By default, the top **five** source IP addresses are returned.
         self.range = range
+        # The UNIX timestamp when the query starts. Unit: seconds.
+        # 
+        # > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
         self.start_time = start_time
 
     def validate(self):
@@ -6677,8 +7618,30 @@ class DescribeDDosEventSrcIpResponseBodyIps(TeaModel):
         isp: str = None,
         src_ip: str = None,
     ):
+        # The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](~~167926~~). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
         self.area_id = area_id
+        # The Internet service provider (ISP) for the volumetric attack. Valid values:
+        # 
+        # *   **100017**: China Telecom
+        # *   **100026**: China Unicom
+        # *   **100025**: China Mobile
+        # *   **100027**: China Education and Research Network
+        # *   **100020**: China Mobile Tietong
+        # *   **1000143**: Dr.Peng Telecom & Media Group
+        # *   **100080**: Beijing Gehua CATV Network
+        # *   **1000139**: National Radio and Television Administration
+        # *   **100023**: Oriental Cable Network
+        # *   **100063**: Founder Broadband
+        # *   **1000337**: China Internet Exchange
+        # *   **100021**: 21Vianet Group
+        # *   **1000333**: Wasu Media Holding
+        # *   **100093**: Wangsu Science & Technology
+        # *   **1000401**: Tencent
+        # *   **100099**: Baidu
+        # *   **1000323**: Alibaba Cloud
+        # *   **100098**: Alibaba
         self.isp = isp
+        # The source IP address of the volumetric attack.
         self.src_ip = src_ip
 
     def validate(self):
@@ -6715,7 +7678,9 @@ class DescribeDDosEventSrcIpResponseBody(TeaModel):
         ips: List[DescribeDDosEventSrcIpResponseBodyIps] = None,
         request_id: str = None,
     ):
+        # An array that consists of information about the source IP address of the volumetric attack.
         self.ips = ips
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6799,6 +7764,9 @@ class DescribeDefenseCountStatisticsRequest(TeaModel):
         self,
         resource_group_id: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -6829,9 +7797,13 @@ class DescribeDefenseCountStatisticsResponseBodyDefenseCountStatistics(TeaModel)
         max_usable_defense_count_current_month: int = None,
         sec_high_speed_count_remain: int = None,
     ):
+        # The number of advanced mitigation sessions that are used within the current calendar month.
         self.defense_count_total_usage_of_current_month = defense_count_total_usage_of_current_month
+        # The number of available global advanced mitigation sessions for the Insurance mitigation plan.
         self.flow_pack_count_remain = flow_pack_count_remain
+        # The maximum number of advanced mitigation sessions available for the current calendar month. The advanced mitigation sessions include the advanced mitigation sessions that are provided free of charge and the global advanced mitigation sessions that you purchase.
         self.max_usable_defense_count_current_month = max_usable_defense_count_current_month
+        # The number of available global advanced mitigation sessions for the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan.
         self.sec_high_speed_count_remain = sec_high_speed_count_remain
 
     def validate(self):
@@ -6872,7 +7844,9 @@ class DescribeDefenseCountStatisticsResponseBody(TeaModel):
         defense_count_statistics: DescribeDefenseCountStatisticsResponseBodyDefenseCountStatistics = None,
         request_id: str = None,
     ):
+        # The statistics on the number of advanced mitigation sessions.
         self.defense_count_statistics = defense_count_statistics
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6955,11 +7929,23 @@ class DescribeDefenseRecordsRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. This value is a UNIX timestamp. Units: miliseconds.
+        # 
+        # > The time must be in the latest 90 days.
         self.end_time = end_time
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Maximum value: **50**.
         self.page_size = page_size
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. This value is a UNIX timestamp. Units: miliseconds.
+        # 
+        # > The time must be in the latest 90 days.
         self.start_time = start_time
 
     def validate(self):
@@ -7012,11 +7998,20 @@ class DescribeDefenseRecordsResponseBodyDefenseRecords(TeaModel):
         start_time: int = None,
         status: int = None,
     ):
+        # The peak attack traffic. Unit: bit/s.
         self.attack_peak = attack_peak
+        # The end time of the advanced mitigation session. This value is a UNIX timestamp. Units: miliseconds.
         self.end_time = end_time
+        # The number of attacks.
         self.event_count = event_count
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The start time of the advanced mitigation session. This value is a UNIX timestamp. Units: miliseconds.
         self.start_time = start_time
+        # The status of the advanced mitigation session. Valid values:
+        # 
+        # *   **0**: The advanced mitigation session is being used.
+        # *   **1**: The advanced mitigation session is used.
         self.status = status
 
     def validate(self):
@@ -7066,8 +8061,11 @@ class DescribeDefenseRecordsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of details of the log of an advanced mitigation session.
         self.defense_records = defense_records
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of advanced mitigation sessions.
         self.total_count = total_count
 
     def validate(self):
@@ -7160,11 +8158,23 @@ class DescribeDomainAttackEventsRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -7215,9 +8225,13 @@ class DescribeDomainAttackEventsResponseBodyDomainAttackEvents(TeaModel):
         max_qps: int = None,
         start_time: int = None,
     ):
+        # The attacked domain name.
         self.domain = domain
+        # The time when the DDoS attack stopped. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The peak attack QPS.
         self.max_qps = max_qps
+        # The time when the DDoS attack started. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -7259,8 +8273,11 @@ class DescribeDomainAttackEventsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of the details of the DDoS attack event.
         self.domain_attack_events = domain_attack_events
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned DDoS attack events.
         self.total_count = total_count
 
     def validate(self):
@@ -7351,9 +8368,21 @@ class DescribeDomainOverviewRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website that you want to query. If you leave this parameter unspecified, the statistics on all domain names are queried.
+        # 
+        # > The domain name must be added to Anti-DDoS Pro or Anti-DDoS Premium. You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you leave this parameter unspecified, the current system time is used as the end time.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -7395,8 +8424,11 @@ class DescribeDomainOverviewResponseBody(TeaModel):
         max_https: int = None,
         request_id: str = None,
     ):
+        # The peak queries per second (QPS) during HTTP traffic scrubbing. Unit: QPS.
         self.max_http = max_http
+        # The peak QPS during HTTPS traffic scrubbing. Unit: QPS.
         self.max_https = max_https
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -7480,10 +8512,21 @@ class DescribeDomainQPSListRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website. If you do not specify this parameter, the statistics on the QPS of all domain names are queried.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The interval for returning data. Unit: seconds.
         self.interval = interval
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -7535,14 +8578,23 @@ class DescribeDomainQPSListResponseBodyDomainQPSList(TeaModel):
         total_count: int = None,
         total_qps: int = None,
     ):
+        # The attack QPS.
         self.attack_qps = attack_qps
+        # The number of cache hits.
         self.cache_hits = cache_hits
+        # The index number of the returned data.
         self.index = index
+        # The peak attack QPS.
         self.max_attack_qps = max_attack_qps
+        # The peak of normal QPS.
         self.max_normal_qps = max_normal_qps
+        # The peak of total QPS.
         self.max_qps = max_qps
+        # The time when the data was collected. The value is a UNIX timestamp. Unit: seconds.
         self.time = time
+        # The total number of requests.
         self.total_count = total_count
+        # The total QPS.
         self.total_qps = total_qps
 
     def validate(self):
@@ -7603,7 +8655,9 @@ class DescribeDomainQPSListResponseBody(TeaModel):
         domain_qpslist: List[DescribeDomainQPSListResponseBodyDomainQPSList] = None,
         request_id: str = None,
     ):
+        # An array that consists of the statistics on the QPS of the website.
         self.domain_qpslist = domain_qpslist
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7690,9 +8744,19 @@ class DescribeDomainQpsWithCacheRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -7743,17 +8807,29 @@ class DescribeDomainQpsWithCacheResponseBody(TeaModel):
         start_time: int = None,
         totals: List[str] = None,
     ):
+        # An array that consists of the attack QPS.
         self.blocks = blocks
+        # An array consisting of cache hit ratios.
         self.cache_hits = cache_hits
+        # An array consisting of the QPS that is blocked by the Frequency Control policy.
         self.cc_block_qps = cc_block_qps
+        # An array consisting of the QPS for which the Frequency Control policy triggers Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA).
         self.cc_js_qps = cc_js_qps
+        # The intervals between every two adjacent records. Unit: seconds.
         self.interval = interval
+        # An array consisting of the QPS that is blocked by the blacklist for domain names.
         self.ip_block_qps = ip_block_qps
+        # An array consisting of the QPS that is blocked by the Accurate Access Control policy.
         self.precise_blocks = precise_blocks
+        # An array consisting of the QPS for which the Accurate Access Control policy triggers the JavaScript challenge.
         self.precise_js_qps = precise_js_qps
+        # An array consisting of the QPS that is blocked by the Location Blacklist policy.
         self.region_blocks = region_blocks
+        # The ID of the request.
         self.request_id = request_id
+        # The start time. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
+        # An array consisting of the total QPS.
         self.totals = totals
 
     def validate(self):
@@ -7873,10 +8949,18 @@ class DescribeDomainResourceRequest(TeaModel):
         page_size: int = None,
         query_domain_pattern: str = None,
     ):
+        # The domain name of the website that you want to query.
         self.domain = domain
+        # An array that consists of the IDs of instances to query.
         self.instance_ids = instance_ids
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The match mode. Valid values:
+        # 
+        # *   **fuzzy**: fuzzy match. This is the default value.
+        # *   **exact**: exact match.
         self.query_domain_pattern = query_domain_pattern
 
     def validate(self):
@@ -7921,7 +9005,14 @@ class DescribeDomainResourceResponseBodyWebRulesProxyTypes(TeaModel):
         proxy_ports: List[str] = None,
         proxy_type: str = None,
     ):
+        # The port numbers.
         self.proxy_ports = proxy_ports
+        # The type of the protocol. Valid values:
+        # 
+        # *   **http**\
+        # *   **https**\
+        # *   **websocket**\
+        # *   **websockets**\
         self.proxy_type = proxy_type
 
     def validate(self):
@@ -7964,6 +9055,7 @@ class DescribeDomainResourceResponseBodyWebRules(TeaModel):
         https_2http_enable: bool = None,
         https_ext: str = None,
         instance_ids: List[str] = None,
+        ocsp_enabled: bool = None,
         policy_mode: str = None,
         proxy_enabled: bool = None,
         proxy_types: List[DescribeDomainResourceResponseBodyWebRulesProxyTypes] = None,
@@ -7976,29 +9068,110 @@ class DescribeDomainResourceResponseBodyWebRules(TeaModel):
         ssl_protocols: str = None,
         white_list: List[str] = None,
     ):
+        # The IP addresses that are included in the blacklist of the domain name.
         self.black_list = black_list
+        # Indicates whether the Frequency Control policy is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.cc_enabled = cc_enabled
+        # Indicates whether the Custom Rule switch of the Frequency Control policy is turned on. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.cc_rule_enabled = cc_rule_enabled
+        # The mode of the Frequency Control policy. Valid values:
+        # 
+        # *   **default**: the Normal mode
+        # *   **gf_under_attack**: the Emergency mode
+        # *   **gf_sos_verify**: the Strict mode
+        # *   **gf_sos_verify**: the Super Strict mode
         self.cc_template = cc_template
+        # The name of the SSL certificate used by the domain name.
         self.cert_name = cert_name
+        # The CNAME provided by the instance to which the domain name is added.
         self.cname = cname
+        # The custom cipher suites.
         self.custom_ciphers = custom_ciphers
+        # The domain name of the website.
         self.domain = domain
+        # Indicates whether Enable HTTP/2 is turned on. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.http_2enable = http_2enable
+        # Indicates whether Enforce HTTPS Routing is turned on. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.http_2https_enable = http_2https_enable
+        # Indicates whether Enable HTTP is turned on. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.https_2http_enable = https_2http_enable
+        # The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # 
+        # *   **Http2https**: indicates whether the feature of redirecting HTTP requests to HTTPS requests is enabled. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
+        # *   **Https2http**: indicates whether the feature of redirecting HTTPS requests to HTTP requests is enabled. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
+        # *   **Http2**: indicates whether HTTP/2 is supported. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that HTTP/2 is not supported. The value 1 indicates that HTTP/2 is supported.
         self.https_ext = https_ext
+        # The IDs of the instances to which the domain name is added.
         self.instance_ids = instance_ids
+        # Indicates whether the Online Certificate Status Protocol (OCSP) feature is enabled. Valid values:
+        # - **true**: yes
+        # - **false**: no
+        self.ocsp_enabled = ocsp_enabled
+        # The load balancing algorithm for back-to-origin traffic. Valid values:
+        # 
+        # *   **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
+        # *   **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
+        # *   **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
         self.policy_mode = policy_mode
+        # Indicates whether the instance forwards the traffic that is destined for the website. Valid values:
+        # 
+        # *   **true**: Anti-DDoS Pro or Anti-DDoS Premium forwards the traffic that is destined for the website.
+        # *   **false**: no
         self.proxy_enabled = proxy_enabled
+        # The details about the protocol type and port number.
         self.proxy_types = proxy_types
+        # The reason why the domain name is invalid. Valid values:
+        # 
+        # *   **1**: No Content Provider (ICP) filing is completed for the domain name.
+        # *   **2**: The business for which you registered the domain name does not meet regulatory requirements.
+        # 
+        # If the two reasons are both involved, the value **2** is returned.
         self.punish_reason = punish_reason
+        # Indicates whether the domain name is invalid. Valid values:
+        # 
+        # *   **true**: The domain name is invalid. You can view the specific reasons from the **PunishReason** parameter.
+        # *   **false**: The domain name is valid.
         self.punish_status = punish_status
+        # The addresses of origin servers.
         self.real_servers = real_servers
+        # The address type of the origin server. Valid values:
+        # 
+        # *   **0**: IP address
+        # *   **1**: domain name
         self.rs_type = rs_type
+        # Indicates whether TLS 1.3 is supported. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ssl_13enabled = ssl_13enabled
+        # The type of the cipher suite. Valid values:
+        # 
+        # *   **default**: custom cipher suite
+        # *   **all**: all cipher suites
+        # *   **strong**: strong cipher suites
         self.ssl_ciphers = ssl_ciphers
+        # The version of the TLS protocol. Valid values:
+        # 
+        # *   **tls1.0**: TLS 1.0 or later
+        # *   **tls1.1**: TLS 1.1 or later
+        # *   **tls1.2**: TLS 1.2 or later
         self.ssl_protocols = ssl_protocols
+        # The IP addresses that are included in the whitelist of the domain name.
         self.white_list = white_list
 
     def validate(self):
@@ -8039,6 +9212,8 @@ class DescribeDomainResourceResponseBodyWebRules(TeaModel):
             result['HttpsExt'] = self.https_ext
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
+        if self.ocsp_enabled is not None:
+            result['OcspEnabled'] = self.ocsp_enabled
         if self.policy_mode is not None:
             result['PolicyMode'] = self.policy_mode
         if self.proxy_enabled is not None:
@@ -8093,6 +9268,8 @@ class DescribeDomainResourceResponseBodyWebRules(TeaModel):
             self.https_ext = m.get('HttpsExt')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
+        if m.get('OcspEnabled') is not None:
+            self.ocsp_enabled = m.get('OcspEnabled')
         if m.get('PolicyMode') is not None:
             self.policy_mode = m.get('PolicyMode')
         if m.get('ProxyEnabled') is not None:
@@ -8128,8 +9305,11 @@ class DescribeDomainResourceResponseBody(TeaModel):
         total_count: int = None,
         web_rules: List[DescribeDomainResourceResponseBodyWebRules] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of forwarding rules.
         self.total_count = total_count
+        # The configurations of the forwarding rule.
         self.web_rules = web_rules
 
     def validate(self):
@@ -8212,6 +9392,165 @@ class DescribeDomainResourceResponse(TeaModel):
         return self
 
 
+class DescribeDomainSecurityProfileRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+    ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        self.domain = domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        return self
+
+
+class DescribeDomainSecurityProfileResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        global_enable: bool = None,
+        global_mode: str = None,
+    ):
+        # Indicates whether the global mitigation policy is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.global_enable = global_enable
+        # The mode of the global mitigation policy. Valid values:
+        # 
+        # *   **weak**: the Low mode
+        # *   **default**: the Normal mode
+        # *   **hard**: the Strict mode
+        self.global_mode = global_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.global_enable is not None:
+            result['GlobalEnable'] = self.global_enable
+        if self.global_mode is not None:
+            result['GlobalMode'] = self.global_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GlobalEnable') is not None:
+            self.global_enable = m.get('GlobalEnable')
+        if m.get('GlobalMode') is not None:
+            self.global_mode = m.get('GlobalMode')
+        return self
+
+
+class DescribeDomainSecurityProfileResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[DescribeDomainSecurityProfileResponseBodyResult] = None,
+    ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.request_id = request_id
+        # The returned results.
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = DescribeDomainSecurityProfileResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDomainSecurityProfileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDomainSecurityProfileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDomainSecurityProfileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDomainStatusCodeCountRequest(TeaModel):
     def __init__(
         self,
@@ -8220,9 +9559,19 @@ class DescribeDomainStatusCodeCountRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -8274,18 +9623,31 @@ class DescribeDomainStatusCodeCountResponseBody(TeaModel):
         status_504: int = None,
         status_5xx: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The number of 200 status codes within the specified period of time.
         self.status_200 = status_200
+        # The number of 2xx status codes within the specified period of time.
         self.status_2xx = status_2xx
+        # The number of 3xx status codes within the specified period of time.
         self.status_3xx = status_3xx
+        # The number of 403 status codes within the specified period of time.
         self.status_403 = status_403
+        # The number of 404 status codes within the specified period of time.
         self.status_404 = status_404
+        # The number of 405 status codes within the specified period of time.
         self.status_405 = status_405
+        # The number of 4xx status codes within the specified period of time.
         self.status_4xx = status_4xx
+        # The number of 501 status codes within the specified period of time.
         self.status_501 = status_501
+        # The number of 502 status codes within the specified period of time.
         self.status_502 = status_502
+        # The number of 503 status codes within the specified period of time.
         self.status_503 = status_503
+        # The number of 504 status codes within the specified period of time.
         self.status_504 = status_504
+        # The number of 5xx status codes within the specified period of time.
         self.status_5xx = status_5xx
 
     def validate(self):
@@ -8410,11 +9772,26 @@ class DescribeDomainStatusCodeListRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website. If you do not specify this parameter, the statistics on response status codes of all domain names are queried.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The interval for returning data. Unit: seconds.
         self.interval = interval
+        # The source of the statistics. Valid values:
+        # 
+        # *   **gf**: Anti-DDoS Pro or Anti-DDoS Premium
+        # *   **upstrem**: origin server
         self.query_type = query_type
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The start time of the event. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -8475,19 +9852,33 @@ class DescribeDomainStatusCodeListResponseBodyStatusCodeList(TeaModel):
         status_5xx: int = None,
         time: int = None,
     ):
+        # The index number of the returned data.
         self.index = index
+        # The number of 200 status codes.
         self.status_200 = status_200
+        # The number of 2xx status codes.
         self.status_2xx = status_2xx
+        # The number of 3xx status codes.
         self.status_3xx = status_3xx
+        # The number of 403 status codes.
         self.status_403 = status_403
+        # The number of 404 status codes.
         self.status_404 = status_404
+        # The number of 405 status codes.
         self.status_405 = status_405
+        # The number of 4xx status codes.
         self.status_4xx = status_4xx
+        # The number of 501 status codes.
         self.status_501 = status_501
+        # The number of 502 status codes.
         self.status_502 = status_502
+        # The number of 503 status codes.
         self.status_503 = status_503
+        # The number of 504 status codes.
         self.status_504 = status_504
+        # The number of 5xx status codes.
         self.status_5xx = status_5xx
+        # The time when the data was collected. The value is a UNIX timestamp. Unit: seconds.
         self.time = time
 
     def validate(self):
@@ -8568,7 +9959,9 @@ class DescribeDomainStatusCodeListResponseBody(TeaModel):
         request_id: str = None,
         status_code_list: List[DescribeDomainStatusCodeListResponseBodyStatusCodeList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The statistics on response status codes.
         self.status_code_list = status_code_list
 
     def validate(self):
@@ -8654,8 +10047,15 @@ class DescribeDomainTopAttackListRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -8693,8 +10093,11 @@ class DescribeDomainTopAttackListResponseBodyAttackList(TeaModel):
         count: int = None,
         domain: str = None,
     ):
+        # The attack QPS. Unit: QPS
         self.attack = attack
+        # The number of all QPS, which includes normal and attack QPS. Unit: QPS.
         self.count = count
+        # The domain name of the website.
         self.domain = domain
 
     def validate(self):
@@ -8731,7 +10134,9 @@ class DescribeDomainTopAttackListResponseBody(TeaModel):
         attack_list: List[DescribeDomainTopAttackListResponseBodyAttackList] = None,
         request_id: str = None,
     ):
+        # The peak QPS of the website.
         self.attack_list = attack_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8818,9 +10223,19 @@ class DescribeDomainViewSourceCountriesRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -8861,7 +10276,9 @@ class DescribeDomainViewSourceCountriesResponseBodySourceCountrys(TeaModel):
         count: int = None,
         country_id: str = None,
     ):
+        # The total number of requests.
         self.count = count
+        # The abbreviation of the country or area. For more information, see the **Codes of countries and areas** section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic. For example, **cn** indicates China, and **us** indicates the United States.
         self.country_id = country_id
 
     def validate(self):
@@ -8894,7 +10311,9 @@ class DescribeDomainViewSourceCountriesResponseBody(TeaModel):
         request_id: str = None,
         source_countrys: List[DescribeDomainViewSourceCountriesResponseBodySourceCountrys] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # An array consisting of the country or area from which the requests are sent.
         self.source_countrys = source_countrys
 
     def validate(self):
@@ -8981,9 +10400,19 @@ class DescribeDomainViewSourceProvincesRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -9024,7 +10453,9 @@ class DescribeDomainViewSourceProvincesResponseBodySourceProvinces(TeaModel):
         count: int = None,
         province_id: str = None,
     ):
+        # The total number of requests.
         self.count = count
+        # The ID of the region inside China. For more information, see the **Codes of administrative regions in China** section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic. For example, **110000** indicates Beijing, and **120000** indicates Tianjin.
         self.province_id = province_id
 
     def validate(self):
@@ -9057,7 +10488,9 @@ class DescribeDomainViewSourceProvincesResponseBody(TeaModel):
         request_id: str = None,
         source_provinces: List[DescribeDomainViewSourceProvincesResponseBodySourceProvinces] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # An array consisting of the details of the administrative region in China from which the requests are sent.
         self.source_provinces = source_provinces
 
     def validate(self):
@@ -9145,10 +10578,21 @@ class DescribeDomainViewTopCostTimeRequest(TeaModel):
         start_time: int = None,
         top: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
+        # The number of URLs to query. Valid values: **1** to **100**.
         self.top = top
 
     def validate(self):
@@ -9194,8 +10638,11 @@ class DescribeDomainViewTopCostTimeResponseBodyUrlList(TeaModel):
         domain: str = None,
         url: str = None,
     ):
+        # The response duration. Unit: milliseconds.
         self.cost_time = cost_time
+        # The domain name of the website.
         self.domain = domain
+        # The URL that is Base64-encoded.
         self.url = url
 
     def validate(self):
@@ -9232,7 +10679,9 @@ class DescribeDomainViewTopCostTimeResponseBody(TeaModel):
         request_id: str = None,
         url_list: List[DescribeDomainViewTopCostTimeResponseBodyUrlList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The URLs which require the longest time to respond to requests.
         self.url_list = url_list
 
     def validate(self):
@@ -9320,10 +10769,21 @@ class DescribeDomainViewTopUrlRequest(TeaModel):
         start_time: int = None,
         top: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
+        # The number of URLs to query. Valid values: **1** to **100**.
         self.top = top
 
     def validate(self):
@@ -9369,8 +10829,11 @@ class DescribeDomainViewTopUrlResponseBodyUrlList(TeaModel):
         domain: str = None,
         url: str = None,
     ):
+        # The total number of requests.
         self.count = count
+        # The domain name of the website.
         self.domain = domain
+        # The URL that is Base64-encoded.
         self.url = url
 
     def validate(self):
@@ -9407,7 +10870,9 @@ class DescribeDomainViewTopUrlResponseBody(TeaModel):
         request_id: str = None,
         url_list: List[DescribeDomainViewTopUrlResponseBodyUrlList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # An array consisting of the URLs that receive the most requests.
         self.url_list = url_list
 
     def validate(self):
@@ -9492,7 +10957,13 @@ class DescribeDomainsRequest(TeaModel):
         instance_ids: List[str] = None,
         resource_group_id: str = None,
     ):
+        # The ID of the instance that you want to query.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_ids = instance_ids
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -9525,7 +10996,9 @@ class DescribeDomainsResponseBody(TeaModel):
         domains: List[str] = None,
         request_id: str = None,
     ):
+        # An array consisting of details of the domain name for which the forwarding rules are configured.
         self.domains = domains
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9601,6 +11074,9 @@ class DescribeElasticBandwidthSpecRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -9629,7 +11105,9 @@ class DescribeElasticBandwidthSpecResponseBody(TeaModel):
         elastic_bandwidth_spec: List[str] = None,
         request_id: str = None,
     ):
+        # An array that consists of the available burstable protection bandwidths. Unit: Gbit/s.
         self.elastic_bandwidth_spec = elastic_bandwidth_spec
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9700,11 +11178,169 @@ class DescribeElasticBandwidthSpecResponse(TeaModel):
         return self
 
 
+class DescribeHeadersRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        resource_group_id: str = None,
+    ):
+        # The domain name that you want to query.
+        # 
+        # > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class DescribeHeadersResponseBodyCustomHeader(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        headers: str = None,
+    ):
+        # The domain name of the website.
+        self.domain = domain
+        # The header of the response.
+        self.headers = headers
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.headers is not None:
+            result['Headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Headers') is not None:
+            self.headers = m.get('Headers')
+        return self
+
+
+class DescribeHeadersResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_header: DescribeHeadersResponseBodyCustomHeader = None,
+        request_id: str = None,
+    ):
+        # The information about the custom header.
+        self.custom_header = custom_header
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.custom_header:
+            self.custom_header.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_header is not None:
+            result['CustomHeader'] = self.custom_header.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomHeader') is not None:
+            temp_model = DescribeHeadersResponseBodyCustomHeader()
+            self.custom_header = temp_model.from_map(m['CustomHeader'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeHeadersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHeadersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHeadersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeHealthCheckListRequest(TeaModel):
     def __init__(
         self,
         network_rules: str = None,
     ):
+        # The information about the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+        # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
+        # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
         self.network_rules = network_rules
 
     def validate(self):
@@ -9739,13 +11375,28 @@ class DescribeHealthCheckListResponseBodyHealthCheckListHealthCheck(TeaModel):
         up: int = None,
         uri: str = None,
     ):
+        # The domain name.
+        # 
+        # > This parameter is returned only when the Layer 7 health check configuration is queried.
         self.domain = domain
+        # The number of consecutive failed health checks that must occur before a port is declared unhealthy. Valid values: **1** to **10**.
         self.down = down
+        # The interval at which checks are performed. Valid values: **1** to **30**. Unit: seconds.
         self.interval = interval
+        # The port that was checked.
         self.port = port
+        # The response timeout period. Valid values: **1** to **30**. Unit: seconds.
         self.timeout = timeout
+        # The type of the protocol. Valid values:
+        # 
+        # *   **tcp**: The Layer 4 health check configuration was queried.
+        # *   **http**: The Layer 7 health check configuration was queried.
         self.type = type
+        # The number of consecutive successful health checks that must occur before a port is declared healthy. Valid values: **1** to **10**.
         self.up = up
+        # The check path.
+        # 
+        # > This parameter is returned only when the Layer 7 health check configuration is queried.
         self.uri = uri
 
     def validate(self):
@@ -9804,9 +11455,16 @@ class DescribeHealthCheckListResponseBodyHealthCheckList(TeaModel):
         instance_id: str = None,
         protocol: str = None,
     ):
+        # The forwarding port.
         self.frontend_port = frontend_port
+        # The health check configuration.
         self.health_check = health_check
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The forwarding protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.protocol = protocol
 
     def validate(self):
@@ -9849,7 +11507,9 @@ class DescribeHealthCheckListResponseBody(TeaModel):
         health_check_list: List[DescribeHealthCheckListResponseBodyHealthCheckList] = None,
         request_id: str = None,
     ):
+        # An array that consists of information about the health check configuration.
         self.health_check_list = health_check_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9933,6 +11593,11 @@ class DescribeHealthCheckStatusRequest(TeaModel):
         self,
         network_rules: str = None,
     ):
+        # An array that consists of the details of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+        # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
+        # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
         self.network_rules = network_rules
 
     def validate(self):
@@ -9961,7 +11626,12 @@ class DescribeHealthCheckStatusResponseBodyHealthCheckStatusRealServerStatusList
         address: str = None,
         status: str = None,
     ):
+        # The IP address of the origin server.
         self.address = address
+        # The health state of the IP address. Valid values:
+        # 
+        # *   **normal**: healthy
+        # *   **abnormal**: unhealthy
         self.status = status
 
     def validate(self):
@@ -9997,10 +11667,21 @@ class DescribeHealthCheckStatusResponseBodyHealthCheckStatus(TeaModel):
         real_server_status_list: List[DescribeHealthCheckStatusResponseBodyHealthCheckStatusRealServerStatusList] = None,
         status: str = None,
     ):
+        # The forwarding port.
         self.frontend_port = frontend_port
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The forwarding protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.protocol = protocol
+        # An array that consists of the health states of the IP addresses of the origin server.
         self.real_server_status_list = real_server_status_list
+        # The health status of the origin server. Valid values:
+        # 
+        # *   **normal**: healthy
+        # *   **abnormal**: unhealthy
         self.status = status
 
     def validate(self):
@@ -10053,7 +11734,9 @@ class DescribeHealthCheckStatusResponseBody(TeaModel):
         health_check_status: List[DescribeHealthCheckStatusResponseBodyHealthCheckStatus] = None,
         request_id: str = None,
     ):
+        # An array that consists of the details of the health status of the origin server.
         self.health_check_status = health_check_status
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -10137,6 +11820,7 @@ class DescribeInstanceDetailsRequest(TeaModel):
         self,
         instance_ids: List[str] = None,
     ):
+        # An array that consists of the IDs of instances to query.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -10167,9 +11851,25 @@ class DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos(TeaModel):
         ip_version: str = None,
         status: str = None,
     ):
+        # The IP address of the instance.
         self.eip = eip
+        # The IP address-based forwarding mode of the instance. Valid values:
+        # 
+        # *   **fnat**: Requests from IPv4 addresses are forwarded to origin servers that use IPv4 addresses and requests from IPv6 addresses are forwarded to origin servers that use IPv6 addresses.
+        # *   **v6tov4**: All requests are forwarded to origin servers that use IPv4 addresses.
         self.ip_mode = ip_mode
+        # The IP version of the protocol. Valid values:
+        # 
+        # *   **Ipv4**: IPv4
+        # *   **Ipv6**: IPv6
         self.ip_version = ip_version
+        # The status of the instance. Valid values:
+        # 
+        # *   **normal**: indicates that the instance is normal.
+        # *   **expired**: indicates that the instance expired.
+        # *   **defense**: indicates that traffic scrubbing is performed on the asset that is protected by the instance.
+        # *   **blackhole**: indicates that blackhole filtering is triggered for the asset that is protected by the instance.
+        # *   **punished**: indicates that the instance is in penalty.
         self.status = status
 
     def validate(self):
@@ -10211,8 +11911,11 @@ class DescribeInstanceDetailsResponseBodyInstanceDetails(TeaModel):
         instance_id: str = None,
         line: str = None,
     ):
+        # The information about the IP address of the instance.
         self.eip_infos = eip_infos
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The protection line of the instance.
         self.line = line
 
     def validate(self):
@@ -10257,7 +11960,9 @@ class DescribeInstanceDetailsResponseBody(TeaModel):
         instance_details: List[DescribeInstanceDetailsResponseBodyInstanceDetails] = None,
         request_id: str = None,
     ):
+        # The IP address and ISP line information about the instance.
         self.instance_details = instance_details
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10516,6 +12221,7 @@ class DescribeInstanceSpecsRequest(TeaModel):
         self,
         instance_ids: List[str] = None,
     ):
+        # An array that consists of the IDs of instances to query.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -10543,26 +12249,64 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
         self,
         bandwidth_mbps: int = None,
         base_bandwidth: int = None,
+        conn_limit: int = None,
+        cps_limit: int = None,
         defense_count: int = None,
         domain_limit: int = None,
         elastic_bandwidth: int = None,
         elastic_bw: int = None,
+        elastic_bw_model: str = None,
+        elastic_qps: int = None,
+        elastic_qps_mode: str = None,
         function_version: str = None,
         instance_id: str = None,
         port_limit: int = None,
         qps_limit: int = None,
+        real_limit_bw: int = None,
         site_limit: int = None,
     ):
+        # The clean bandwidth of normal services. Unit: Mbit/s.
         self.bandwidth_mbps = bandwidth_mbps
+        # The basic protection bandwidth. Unit: Gbit/s.
         self.base_bandwidth = base_bandwidth
+        # The specification of concurrent connections of the instance.
+        self.conn_limit = conn_limit
+        # The specification of new connections of the instance.
+        self.cps_limit = cps_limit
+        # The number of available advanced mitigation sessions for this month. If **-1** is returned, advanced mitigation capabilities are unlimited.
+        # 
+        # > This parameter is returned only when **RegionId** is set to **ap-southeast-1**. If RegionId is set to ap-southeast-1, the specifications of Anti-DDoS Premium instances are queried.
         self.defense_count = defense_count
+        # The number of domain names that can be protected by the instance.
         self.domain_limit = domain_limit
+        # The burstable protection bandwidth. Unit: Gbit/s.
         self.elastic_bandwidth = elastic_bandwidth
+        # The burstable clean bandwidth. Unit: Mbit/s.
         self.elastic_bw = elastic_bw
+        # The metering method of the burstable clean bandwidth. Valid values:
+        # 
+        # *   **day**: the metering method of daily 95th percentile
+        # *   **month**: the metering method of monthly 95th percentile
+        self.elastic_bw_model = elastic_bw_model
+        self.elastic_qps = elastic_qps
+        self.elastic_qps_mode = elastic_qps_mode
+        # The function plan of the instance. Valid values:
+        # 
+        # *   **default**: Standard
+        # *   **enhance**: Enhanced
+        # *   **cnhk**: Chinese Mainland Acceleration (CMA)
+        # *   **cnhk_default**: Secure Chinese Mainland Acceleration (Sec-CMA) standard function plan
+        # *   **cnhk_enhance**: Sec-CMA enhanced function plan
         self.function_version = function_version
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The number of ports that can be protected by the instance.
         self.port_limit = port_limit
+        # The clean queries per second (QPS) of normal services.
         self.qps_limit = qps_limit
+        # 实例业务带宽限速值。取值：0～15360，0表示不限速。单位：mbps。
+        self.real_limit_bw = real_limit_bw
+        # The number of sites that can be protected by the instance.
         self.site_limit = site_limit
 
     def validate(self):
@@ -10578,6 +12322,10 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
             result['BandwidthMbps'] = self.bandwidth_mbps
         if self.base_bandwidth is not None:
             result['BaseBandwidth'] = self.base_bandwidth
+        if self.conn_limit is not None:
+            result['ConnLimit'] = self.conn_limit
+        if self.cps_limit is not None:
+            result['CpsLimit'] = self.cps_limit
         if self.defense_count is not None:
             result['DefenseCount'] = self.defense_count
         if self.domain_limit is not None:
@@ -10586,6 +12334,12 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
             result['ElasticBandwidth'] = self.elastic_bandwidth
         if self.elastic_bw is not None:
             result['ElasticBw'] = self.elastic_bw
+        if self.elastic_bw_model is not None:
+            result['ElasticBwModel'] = self.elastic_bw_model
+        if self.elastic_qps is not None:
+            result['ElasticQps'] = self.elastic_qps
+        if self.elastic_qps_mode is not None:
+            result['ElasticQpsMode'] = self.elastic_qps_mode
         if self.function_version is not None:
             result['FunctionVersion'] = self.function_version
         if self.instance_id is not None:
@@ -10594,6 +12348,8 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
             result['PortLimit'] = self.port_limit
         if self.qps_limit is not None:
             result['QpsLimit'] = self.qps_limit
+        if self.real_limit_bw is not None:
+            result['RealLimitBw'] = self.real_limit_bw
         if self.site_limit is not None:
             result['SiteLimit'] = self.site_limit
         return result
@@ -10604,6 +12360,10 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
             self.bandwidth_mbps = m.get('BandwidthMbps')
         if m.get('BaseBandwidth') is not None:
             self.base_bandwidth = m.get('BaseBandwidth')
+        if m.get('ConnLimit') is not None:
+            self.conn_limit = m.get('ConnLimit')
+        if m.get('CpsLimit') is not None:
+            self.cps_limit = m.get('CpsLimit')
         if m.get('DefenseCount') is not None:
             self.defense_count = m.get('DefenseCount')
         if m.get('DomainLimit') is not None:
@@ -10612,6 +12372,12 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
             self.elastic_bandwidth = m.get('ElasticBandwidth')
         if m.get('ElasticBw') is not None:
             self.elastic_bw = m.get('ElasticBw')
+        if m.get('ElasticBwModel') is not None:
+            self.elastic_bw_model = m.get('ElasticBwModel')
+        if m.get('ElasticQps') is not None:
+            self.elastic_qps = m.get('ElasticQps')
+        if m.get('ElasticQpsMode') is not None:
+            self.elastic_qps_mode = m.get('ElasticQpsMode')
         if m.get('FunctionVersion') is not None:
             self.function_version = m.get('FunctionVersion')
         if m.get('InstanceId') is not None:
@@ -10620,6 +12386,8 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
             self.port_limit = m.get('PortLimit')
         if m.get('QpsLimit') is not None:
             self.qps_limit = m.get('QpsLimit')
+        if m.get('RealLimitBw') is not None:
+            self.real_limit_bw = m.get('RealLimitBw')
         if m.get('SiteLimit') is not None:
             self.site_limit = m.get('SiteLimit')
         return self
@@ -10631,7 +12399,9 @@ class DescribeInstanceSpecsResponseBody(TeaModel):
         instance_specs: List[DescribeInstanceSpecsResponseBodyInstanceSpecs] = None,
         request_id: str = None,
     ):
+        # An array that consists of the specifications of instances.
         self.instance_specs = instance_specs
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -10715,6 +12485,9 @@ class DescribeInstanceStatisticsRequest(TeaModel):
         self,
         instance_ids: List[str] = None,
     ):
+        # The ID of the instance that you want to query.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -10746,10 +12519,17 @@ class DescribeInstanceStatisticsResponseBodyInstanceStatistics(TeaModel):
         port_usage: int = None,
         site_usage: int = None,
     ):
+        # The number of advanced mitigation sessions that are used in this month.
+        # 
+        # > This parameter is returned only if Anti-DDoS Premium instances are queried.
         self.defense_count_usage = defense_count_usage
+        # The number of domain names that are protected by the instance.
         self.domain_usage = domain_usage
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The number of ports that are protected by the instance.
         self.port_usage = port_usage
+        # The number of websites that are protected by the instance.
         self.site_usage = site_usage
 
     def validate(self):
@@ -10794,7 +12574,9 @@ class DescribeInstanceStatisticsResponseBody(TeaModel):
         instance_statistics: List[DescribeInstanceStatisticsResponseBodyInstanceStatistics] = None,
         request_id: str = None,
     ):
+        # The statistics on the instances.
         self.instance_statistics = instance_statistics
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -10879,7 +12661,14 @@ class DescribeInstanceStatusRequest(TeaModel):
         instance_id: str = None,
         product_type: int = None,
     ):
+        # The ID of the instance to query.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
         self.instance_id = instance_id
+        # The type of the instance to query. Valid values:
+        # 
+        # *   **1**: an Anti-DDoS Pro instance
+        # *   **2**: an Anti-DDoS Premium instance
         self.product_type = product_type
 
     def validate(self):
@@ -10913,8 +12702,16 @@ class DescribeInstanceStatusResponseBody(TeaModel):
         instance_status: int = None,
         request_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The status of the instance. Valid values:
+        # 
+        # *   **1**: normal
+        # *   **2**: expired
+        # *   **3**: overdue
+        # *   **4**: released
         self.instance_status = instance_status
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10995,7 +12792,19 @@ class DescribeInstancesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that is added to the instance to query. The maximum value of N is 200. You can specify up to 200 tags. When you specify tags, take note of the following rules:
+        # 
+        # *   Each tag consists of a key (**Key**) and a value (**Value**), which are separated by a comma (,).
+        # *   Separate multiple tags with commas (,).
+        # 
+        # >  The tag key (**Key**) and tag value (**Value**) must be specified in pairs.
         self.key = key
+        # The value of tag N that is added to the instance to query. The maximum value of N is 200. You can specify up to 200 tags. When you specify tags, take note of the following rules:
+        # 
+        # *   Each tag consists of a key (**Key**) and a value (**Value**), which are separated by a comma (,).
+        # *   Separate multiple tags with commas (,).
+        # 
+        # >  The tag key (**Key**) and tag value (**Value**) must be specified in pairs.
         self.value = value
 
     def validate(self):
@@ -11038,15 +12847,34 @@ class DescribeInstancesRequest(TeaModel):
         status: List[int] = None,
         tag: List[DescribeInstancesRequestTag] = None,
     ):
+        # The mitigation plan of the instance to query. Valid values:
+        # 
+        # *   **0**: Anti-DDoS Premium instance of the Insurance mitigation plan
+        # *   **1**: Anti-DDoS Premium instance of the Unlimited mitigation plan
+        # *   **2**: Anti-DDoS Premium instance of the Mainland China Acceleration (MCA) mitigation plan
+        # *   **9**: Anti-DDoS Pro instance of the Profession mitigation plan
         self.edition = edition
+        # The traffic forwarding status of the instance to query. Valid values:
+        # 
+        # *   **0**: The instance no longer forwards service traffic.
+        # *   **1**: The instance forwards service traffic as expected.
         self.enabled = enabled
+        # The end of the time range to query. Instances whose expiration time is earlier than the point in time are queried. This value is a UNIX timestamp. Unit: milliseconds.
         self.expire_end_time = expire_end_time
+        # The beginning of the time range to query. Instances whose expiration time is later than the point in time are queried. This value is a UNIX timestamp. Unit: milliseconds.
         self.expire_start_time = expire_start_time
         self.instance_ids = instance_ids
+        # The IP address of the instance to query.
         self.ip = ip
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The remarks of the instance to query. Fuzzy match is supported.
         self.remark = remark
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         self.status = status
         self.tag = tag
@@ -11132,20 +12960,62 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         enabled: int = None,
         expire_time: int = None,
         instance_id: str = None,
+        ip: str = None,
         ip_mode: str = None,
         ip_version: str = None,
+        is_first_open_bw: int = None,
+        is_first_open_qps: int = None,
         remark: str = None,
         status: int = None,
     ):
+        # The time when the instance is created. This value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
+        # The overdue status of the instance. The value is fixed as **0**, which indicates that your Alibaba Cloud account does not have overdue payments. The instance supports only the subscription billing method.
         self.debt_status = debt_status
+        # The mitigation plan of the instance. Valid values:
+        # 
+        # *   **0**: Anti-DDoS Premium instance of the Insurance mitigation plan
+        # *   **1**: Anti-DDoS Premium instance of the Unlimited mitigation plan
+        # *   **2**: Anti-DDoS Premium instance of the MCA mitigation plan
+        # *   **9**: Anti-DDoS Pro instance of the Profession mitigation plan
         self.edition = edition
+        # The forwarding status of the instance. Valid values:
+        # 
+        # *   **0**: The instance no longer forwards service traffic.
+        # *   **1**: The instance forwards service traffic as expected.
         self.enabled = enabled
+        # The time when the instance expires. This value is a UNIX timestamp. Unit: milliseconds.
         self.expire_time = expire_time
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The IP address of the instance.
+        self.ip = ip
+        # The IP address-based forwarding mode of the instance. Valid values:
+        # 
+        # *   **fnat**: Requests from IPv4 addresses are forwarded to origin servers that use IPv4 addresses and requests from IPv6 addresses are forwarded to origin servers that use IPv6 addresses.
+        # *   **v6tov4**: All requests are forwarded to origin servers that use IPv4 addresses.
         self.ip_mode = ip_mode
+        # The IP version of the instance. Valid values:
+        # 
+        # *   **Ipv4**: IPv4
+        # *   **Ipv6**: IPv6
         self.ip_version = ip_version
+        # Indicates whether the 95th percentile metering method has been enabled for the instance. Valid values:
+        # 
+        # *   0: The 95th percentile metering method has not been enabled for the instance.
+        # *   1: The 95th percentile metering method has been enabled for the instance.
+        self.is_first_open_bw = is_first_open_bw
+        # Indicates whether the metering method of the 95th percentile burstable QPS is enabled for the instance. Valid values:
+        # 
+        # - 0: no
+        # - 1: yes
+        self.is_first_open_qps = is_first_open_qps
+        # The remarks of the instance.
         self.remark = remark
+        # The status of the instance. Valid values:
+        # 
+        # *   **1**: normal
+        # *   **2**: expired
         self.status = status
 
     def validate(self):
@@ -11169,10 +13039,16 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['ExpireTime'] = self.expire_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.ip is not None:
+            result['Ip'] = self.ip
         if self.ip_mode is not None:
             result['IpMode'] = self.ip_mode
         if self.ip_version is not None:
             result['IpVersion'] = self.ip_version
+        if self.is_first_open_bw is not None:
+            result['IsFirstOpenBw'] = self.is_first_open_bw
+        if self.is_first_open_qps is not None:
+            result['IsFirstOpenQps'] = self.is_first_open_qps
         if self.remark is not None:
             result['Remark'] = self.remark
         if self.status is not None:
@@ -11193,10 +13069,16 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.expire_time = m.get('ExpireTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
         if m.get('IpMode') is not None:
             self.ip_mode = m.get('IpMode')
         if m.get('IpVersion') is not None:
             self.ip_version = m.get('IpVersion')
+        if m.get('IsFirstOpenBw') is not None:
+            self.is_first_open_bw = m.get('IsFirstOpenBw')
+        if m.get('IsFirstOpenQps') is not None:
+            self.is_first_open_qps = m.get('IsFirstOpenQps')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
         if m.get('Status') is not None:
@@ -11211,8 +13093,11 @@ class DescribeInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of the details of the instances.
         self.instances = instances
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of the instances.
         self.total_count = total_count
 
     def validate(self):
@@ -11302,8 +13187,15 @@ class DescribeL7RsPolicyRequest(TeaModel):
         real_servers: List[str] = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website to query.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query the domain names for which forwarding rules are configured.
         self.domain = domain
+        # An array that consists of N addresses of origin servers to query. The maximum value of N is 200. You can specify up to 200 addresses.
         self.real_servers = real_servers
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -11339,6 +13231,9 @@ class DescribeL7RsPolicyResponseBodyAttributesAttribute(TeaModel):
         self,
         weight: int = None,
     ):
+        # The weight of the origin server. This parameter takes effect only when **ProxyMode** is set to **rr**.
+        # 
+        # Valid values: **1** to **100**. Default value: **100**. A server with a higher weight receives more requests.
         self.weight = weight
 
     def validate(self):
@@ -11368,8 +13263,14 @@ class DescribeL7RsPolicyResponseBodyAttributes(TeaModel):
         real_server: str = None,
         rs_type: int = None,
     ):
+        # The parameter for back-to-origin.
         self.attribute = attribute
+        # The address of the origin server.
         self.real_server = real_server
+        # The address type of the origin server. Valid values:
+        # 
+        # *   **0**: IP address
+        # *   **1**: domain name
         self.rs_type = rs_type
 
     def validate(self):
@@ -11409,8 +13310,15 @@ class DescribeL7RsPolicyResponseBody(TeaModel):
         proxy_mode: str = None,
         request_id: str = None,
     ):
+        # The details of the parameters for back-to-origin.
         self.attributes = attributes
+        # The scheduling algorithm for back-to-origin traffic. Valid values:
+        # 
+        # *   **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
+        # *   **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
+        # *   **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
         self.proxy_mode = proxy_mode
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -11498,6 +13406,17 @@ class DescribeLayer4RulePolicyRequest(TeaModel):
         self,
         listeners: str = None,
     ):
+        # The port forwarding rule that you want to query.
+        # 
+        # This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can query only one port forwarding rule at a time.
+        # 
+        # > You can call the [DescribeNetworkRules](~~157484~~) to query existing port forwarding rules.
+        # 
+        # Each port forwarding rule contains the following fields:
+        # 
+        # *   **InstanceId**: the ID of the instance. This field is required and must be of the string type.
+        # *   **Protocol**: the forwarding protocol. This field is required and must be of the string type. Valid values: **tcp** and **udp**.
+        # *   **FrontendPort**: the forwarding port. This field is required and must be of the integer type.
         self.listeners = listeners
 
     def validate(self):
@@ -11530,11 +13449,20 @@ class DescribeLayer4RulePolicyResponseBodyPriRealServers(TeaModel):
         protocol: str = None,
         real_server: str = None,
     ):
+        # The origin server that is used to receive service traffic. Valid values:
+        # 
+        # *   **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
+        # *   **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
         self.current_index = current_index
+        # The IP address of the instance.
         self.eip = eip
+        # The forwarding port.
         self.frontend_port = frontend_port
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The type of the protocol.
         self.protocol = protocol
+        # The IP address of the primary origin server.
         self.real_server = real_server
 
     def validate(self):
@@ -11587,11 +13515,20 @@ class DescribeLayer4RulePolicyResponseBodySecRealServers(TeaModel):
         protocol: str = None,
         real_server: str = None,
     ):
+        # The origin server that is used to receive service traffic. Valid values:
+        # 
+        # *   **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
+        # *   **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
         self.current_index = current_index
+        # The IP address of the instance.
         self.eip = eip
+        # The forwarding port.
         self.frontend_port = frontend_port
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The type of the protocol.
         self.protocol = protocol
+        # The IP address of the secondary origin server.
         self.real_server = real_server
 
     def validate(self):
@@ -11647,14 +13584,29 @@ class DescribeLayer4RulePolicyResponseBody(TeaModel):
         request_id: str = None,
         sec_real_servers: List[DescribeLayer4RulePolicyResponseBodySecRealServers] = None,
     ):
+        # The port of the origin server.
         self.backend_port = backend_port
+        # The mode that is used to forward service traffic. Valid values:
+        # 
+        # *   0: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](~~157482~~) operation to create a port forwarding rule.
+        # *   1: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](~~312684~~) operation to configure IP addresses.
         self.bak_mode = bak_mode
+        # The origin server that is used to receive service traffic. Valid values:
+        # 
+        # *   **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
+        # *   **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
         self.current_index = current_index
+        # The type of the protocol.
         self.forward_protocol = forward_protocol
+        # The forwarding port.
         self.frontend_port = frontend_port
+        # The ID of the instance.
         self.instance_id = instance_id
+        # An array that consists of the information about the primary origin server, including the IP addresses, forwarding protocol, and forwarding port.
         self.pri_real_servers = pri_real_servers
+        # The ID of the request.
         self.request_id = request_id
+        # An array that consists of the information about the secondary origin server, including the IP addresses, forwarding protocol, and forwarding port.
         self.sec_real_servers = sec_real_servers
 
     def validate(self):
@@ -11775,6 +13727,7 @@ class DescribeLogStoreExistStatusRequest(TeaModel):
         self,
         resource_group_id: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -11803,7 +13756,12 @@ class DescribeLogStoreExistStatusResponseBody(TeaModel):
         exist_status: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether a Logstore is created for Anti-DDoS Pro or Anti-DDoS Premium. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.exist_status = exist_status
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11879,6 +13837,9 @@ class DescribeNetworkRegionBlockRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -11908,8 +13869,14 @@ class DescribeNetworkRegionBlockResponseBodyConfig(TeaModel):
         provinces: List[str] = None,
         region_block_switch: str = None,
     ):
+        # An array consisting of the codes of the countries or areas from which the requests are blocked.
         self.countries = countries
+        # An array consisting of the codes of the administrative regions in China from which the requests are blocked.
         self.provinces = provinces
+        # The status of the Location Blacklist policy. Valid values:
+        # 
+        # *   **on**: enabled
+        # *   **off**: disabled
         self.region_block_switch = region_block_switch
 
     def validate(self):
@@ -11946,7 +13913,9 @@ class DescribeNetworkRegionBlockResponseBody(TeaModel):
         config: DescribeNetworkRegionBlockResponseBodyConfig = None,
         request_id: str = None,
     ):
+        # The configuration of blocked locations.
         self.config = config
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12024,6 +13993,11 @@ class DescribeNetworkRuleAttributesRequest(TeaModel):
         self,
         network_rules: str = None,
     ):
+        # The details of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+        # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
+        # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
         self.network_rules = network_rules
 
     def validate(self):
@@ -12054,9 +14028,18 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCcSbla
         expires: int = None,
         type: int = None,
     ):
+        # The threshold that the number of connections initiated from a source IP address can exceed the limit. Set the value to **5**. If the number of connections initiated from a source IP address exceeds the limit five times during the check, the source IP address is added to the blacklist.
         self.cnt = cnt
+        # The interval at which checks are performed. Set the value to **60**. Unit: seconds.
         self.during = during
+        # The validity period of the IP address in the blacklist. Valid values: **60** to **604800**. Unit: seconds.
         self.expires = expires
+        # The type of the limit that causes a source IP address to be added to the blacklist. Valid values:
+        # 
+        # *   **1**: Source New Connection Rate Limit
+        # *   **2**: Source Concurrent Connection Rate Limit
+        # *   **3**: PPS Limit for Source
+        # *   **4**: Bandwidth Limit for Source
         self.type = type
 
     def validate(self):
@@ -12096,6 +14079,7 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCc(Tea
         self,
         sblack: List[DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCcSblack] = None,
     ):
+        # The protection policy that a source IP address is added to the blacklist when the number of connections initiated from the IP address frequently exceeds the limit.
         self.sblack = sblack
 
     def validate(self):
@@ -12132,7 +14116,9 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigPayloa
         max: int = None,
         min: int = None,
     ):
+        # The maximum length of a packet. Valid values: **0** to **6000**. Unit: bytes.
         self.max = max
+        # The minimum length of a packet. Valid values: **0** to **6000**. Unit: bytes.
         self.min = min
 
     def validate(self):
@@ -12167,9 +14153,19 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSla(Te
         maxconn: int = None,
         maxconn_enable: int = None,
     ):
+        # The maximum number of new connections per second that can be established over the port of the destination instance. Valid values: **100** to **100000**.
         self.cps = cps
+        # The status of the Destination New Connection Rate Limit switch. Valid values:
+        # 
+        # *   **0**: The switch is turned off.
+        # *   **1**: The switch is turned on.
         self.cps_enable = cps_enable
+        # The maximum number of concurrent connections that can be established over the port of the destination instance. Valid values: **1000** to **1000000**.
         self.maxconn = maxconn
+        # The status of the Destination Concurrent Connection Rate Limit switch. Valid values:
+        # 
+        # *   **0**: The switch is turned off.
+        # *   **1**: The switch is turned on.
         self.maxconn_enable = maxconn_enable
 
     def validate(self):
@@ -12215,12 +14211,28 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSlimit
         maxconn_enable: int = None,
         pps: int = None,
     ):
+        # The bandwidth limit for a source IP address. Valid values: **1024** to **268435456**. Unit: bytes/s. Default value: **0**, which indicates that the bandwidth for a source IP address is unlimited.
         self.bps = bps
+        # The maximum number of new connections per second that can be initiated from a source IP address. Valid values: **1** to **500000**.
         self.cps = cps
+        # The status of the Source New Connection Rate Limit switch. Valid values:
+        # 
+        # *   **0**: The switch is turned off.
+        # *   **1**: The switch is turned on.
         self.cps_enable = cps_enable
+        # The mode of the Source New Connection Rate Limit switch. Valid values:
+        # 
+        # *   **1**: the manual mode
+        # *   **2**: the automatic mode
         self.cps_mode = cps_mode
+        # The maximum number of concurrent connections initiated from a source IP address. Valid values: **1** to **500000**.
         self.maxconn = maxconn
+        # The status of the Source Concurrent Connection Rate Limit switch. Valid values:
+        # 
+        # *   **0**: The switch is turned off.
+        # *   **1**: The switch is turned on.
         self.maxconn_enable = maxconn_enable
+        # The packets per second (pps) limit for a source IP address. Valid values: **1** to **100000**. Unit: packets/s. Default value: **0**, which indicates that the pps for a source IP address is unlimited.
         self.pps = pps
 
     def validate(self):
@@ -12278,12 +14290,25 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfig(TeaMo
         slimit: DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSlimit = None,
         synproxy: str = None,
     ):
+        # The protection policy applied when the number of connections initiated from a source IP address frequently exceeds the limit.
         self.cc = cc
+        # The status of the Empty Connection switch. Valid values:
+        # 
+        # *   **on**: The switch is turned on.
+        # *   **off**: The switch is turned off.
         self.nodata_conn = nodata_conn
+        # The settings of the Packet Length Limit policy.
         self.payload_len = payload_len
+        # The timeout period of session persistence. Valid values: **30** to **3600**. Unit: seconds. Default value: **0**, which indicates that session persistence is disabled.
         self.persistence_timeout = persistence_timeout
+        # The settings of the Speed Limit for Destination policy.
         self.sla = sla
+        # The settings of the Speed Limit for Source policy.
         self.slimit = slimit
+        # The status of the False Source switch. Valid values:
+        # 
+        # *   **on**: The switch is turned on.
+        # *   **off**: The switch is turned off.
         self.synproxy = synproxy
 
     def validate(self):
@@ -12349,9 +14374,16 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes(TeaModel):
         instance_id: str = None,
         protocol: str = None,
     ):
+        # The mitigation settings of the port forwarding rule.
         self.config = config
+        # The forwarding port.
         self.frontend_port = frontend_port
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The forwarding protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.protocol = protocol
 
     def validate(self):
@@ -12394,7 +14426,9 @@ class DescribeNetworkRuleAttributesResponseBody(TeaModel):
         network_rule_attributes: List[DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes] = None,
         request_id: str = None,
     ):
+        # An array that consists of the mitigation settings of the port forwarding rule for a non-website service. The mitigation settings include session persistence and DDoS mitigation policies.
         self.network_rule_attributes = network_rule_attributes
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12482,10 +14516,20 @@ class DescribeNetworkRulesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The forwarding protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.forward_protocol = forward_protocol
+        # The forwarding port.
         self.frontend_port = frontend_port
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -12534,11 +14578,23 @@ class DescribeNetworkRulesResponseBodyNetworkRules(TeaModel):
         protocol: str = None,
         real_servers: List[str] = None,
     ):
+        # The port of the origin server.
         self.backend_port = backend_port
+        # The forwarding port.
         self.frontend_port = frontend_port
+        # The ID of the instance.
         self.instance_id = instance_id
+        # Indicates whether the port forwarding rule is automatically created. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.is_auto_create = is_auto_create
+        # The forwarding protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.protocol = protocol
+        # An array that consists of IP addresses of origin servers.
         self.real_servers = real_servers
 
     def validate(self):
@@ -12588,8 +14644,11 @@ class DescribeNetworkRulesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of the details of a port forwarding rule.
         self.network_rules = network_rules
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of returned port forwarding rules.
         self.total_count = total_count
 
     def validate(self):
@@ -12683,12 +14742,28 @@ class DescribeOpEntitiesRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # > The time must be in the latest 30 days.
         self.end_time = end_time
+        # The operation object that you want to query.
         self.entity_object = entity_object
+        # The type of the operation object that you want to query. Valid values:
+        # 
+        # *   **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
+        # *   **2**: Anti-DDoS plans
+        # *   **3**: ECS instances
+        # *   **4**: all logs
         self.entity_type = entity_type
+        # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Maximum value: **50**.
         self.page_size = page_size
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # > The time must be in the latest 30 days.
         self.start_time = start_time
 
     def validate(self):
@@ -12745,11 +14820,86 @@ class DescribeOpEntitiesResponseBodyOpEntities(TeaModel):
         op_action: int = None,
         op_desc: str = None,
     ):
+        # The operation object.
         self.entity_object = entity_object
+        # The type of the operation object. Valid values:
+        # 
+        # *   **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
+        # *   **2**: Anti-DDoS plans
+        # *   **3**: ECS instances
+        # *   **4**: all logs
         self.entity_type = entity_type
+        # The time when the operation was performed. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
+        # The ID of the Alibaba Cloud account that is used to call the API operation.
         self.op_account = op_account
+        # The type of the operation. Valid values:
+        # 
+        # *   **1**: configuring burstable protection bandwidth.
+        # *   **5**: using Anti-DDoS plans.
+        # *   **8**: changing IP addresses of ECS instances.
+        # *   **9**: deactivating blackhole filtering.
+        # *   **10**: configuring the Diversion from Origin Server policy.
+        # *   **11**: clearing all logs.
+        # *   **12**: downgrading the specifications of instances. If the instance expires or the account has overdue payments, this operation is performed to downgrade the burstable protection bandwidth.
+        # *   **13**: restoring the specifications of instances. If the instance is renewed or you have paid the overdue payments within your account, this operation is performed to restore the burstable protection bandwidth.
         self.op_action = op_action
+        # The details of the operation. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **newEntity**: the values of the parameters after the operation. This field must be of the STRING type.
+        # *   **oldEntity**: the values of the parameters before the operation. This field must be of the STRING type.
+        # 
+        # Both **newEntity** and **oldEntity** are JSON strings. The returned parameters vary with **OpAtion**.
+        # 
+        # If **OpAction** is **1**, **12**, or **13**, the following parameter is returned:
+        # 
+        # *   **elasticBandwidth**: the burstable protection bandwidth. The value is of the INTEGER type.
+        # 
+        #     For example: `{"newEntity":{"elasticBandwidth":300},"oldEntity":{"elasticBandwidth":300}}`
+        # 
+        # If **OpAction** is **5**, the following parameters are returned:
+        # 
+        # *   **bandwidth**: the burstable protection bandwidth. The value is of the INTEGER type. Unit: Gbit/s.
+        # 
+        # *   **count**: the number of Anti-DDoS plans. The value is of the INTEGER type.
+        # 
+        # *   **deductCount**: the number of used Anti-DDoS plans. The value is of the INTEGER type.
+        # 
+        # *   **expireTime**: the expiration time of the Anti-DDoS plans. The value is of the LONG type. The value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # *   **instanceId**: the ID of the instance. The value is of the STRING type.
+        # 
+        # *   **peakFlow**: the peak throughput on the instance. The value is of the INTEGER type. Unit: bit/s.
+        # 
+        #     For example: `{"newEntity":{"bandwidth":100,"count":4,"deductCount":1,"expireTime":1616299196000,"instanceId":"ddoscoo-cn-v641kpmq****","peakFlow":751427000}}`
+        # 
+        # If **OpAction** is **8**, the following parameter is returned:
+        # 
+        # *   **instanceId**: the ID of the ECS instance whose IP address is changed. The value is of the STRING type.
+        # 
+        #     For example: `{"newEntity":{"instanceId":"i-wz9h6nc313zptbqn****"}}`
+        # 
+        # If **OpAction** is **9**, the following parameter is returned:
+        # 
+        # *   **actionMethod**: the operation method. The value is of the STRING type. Valid value: **undo**, which indicates that you deactivated blackhole filtering.
+        # 
+        #     For example: `{"newEntity":{"actionMethod":"undo"}}`
+        # 
+        # If **OpAction** is **10**, the following parameters are returned:
+        # 
+        # *   **actionMethod**: the operation method. The value is of the STRING type. Valid values:
+        # 
+        #     *   **do**: The Diversion from Origin Server policy is enabled.
+        #     *   **undo**: The Diversion from Origin Server policy is disabled.
+        # 
+        # *   **lines**: The Internet service provider (ISP) line from which the traffic is blocked. Valid values:
+        # 
+        #     *   **ct**: China Telecom (International)
+        #     *   **cut**: China Unicom (International)
+        # 
+        #     For example: `{"newEntity":{"actionMethod":"undo","lines":["ct"]}}`
+        # 
+        # If **OpAction** is **11**, no parameter is returned, and the description is empty.
         self.op_desc = op_desc
 
     def validate(self):
@@ -12799,8 +14949,11 @@ class DescribeOpEntitiesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of the details of the operation log.
         self.op_entities = op_entities
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned operation records.
         self.total_count = total_count
 
     def validate(self):
@@ -12892,10 +15045,20 @@ class DescribePortRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The forwarding port to query. Valid values: **0** to **65535**.
         self.frontend_port = frontend_port
+        # The type of the forwarding protocol to query. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.frontend_protocol = frontend_protocol
+        # The ID of the instance to query.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The number of the page to return. For example, if you want to obtain results on the first page, set the value to **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -12944,11 +15107,23 @@ class DescribePortResponseBodyNetworkRules(TeaModel):
         is_auto_create: bool = None,
         real_servers: List[str] = None,
     ):
+        # The port of the origin server.
         self.backend_port = backend_port
+        # The forwarding port.
         self.frontend_port = frontend_port
+        # The type of the protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.frontend_protocol = frontend_protocol
+        # The ID of the instance to which the port forwarding rule is applied.
         self.instance_id = instance_id
+        # Indicates whether the port forwarding rule is automatically created by the instance. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.is_auto_create = is_auto_create
+        # An array that consists of IP addresses of origin servers.
         self.real_servers = real_servers
 
     def validate(self):
@@ -12998,8 +15173,11 @@ class DescribePortResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of port forwarding rules.
         self.network_rules = network_rules
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The number of port forwarding rules returned.
         self.total_count = total_count
 
     def validate(self):
@@ -13090,9 +15268,19 @@ class DescribePortAttackMaxFlowRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # An array that consists of the IDs of instances to query.
         self.instance_ids = instance_ids
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -13134,8 +15322,11 @@ class DescribePortAttackMaxFlowResponseBody(TeaModel):
         pps: int = None,
         request_id: str = None,
     ):
+        # The peak bandwidth of attack traffic. Unit: bit/s.
         self.bps = bps
+        # The peak packet rate of attack traffic . Unit: packets per second (pps).
         self.pps = pps
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13215,6 +15406,9 @@ class DescribePortAutoCcStatusRequest(TeaModel):
         self,
         instance_ids: List[str] = None,
     ):
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -13245,9 +15439,27 @@ class DescribePortAutoCcStatusResponseBodyPortAutoCcStatus(TeaModel):
         web_mode: str = None,
         web_switch: str = None,
     ):
+        # The mode of the Intelligent Protection policy. Valid values:
+        # 
+        # *   **normal**\
+        # *   **loose**\
+        # *   **strict**\
         self.mode = mode
+        # The status of the Intelligent Protection policy. Valid values:
+        # 
+        # *   **on**: enabled
+        # *   **off**: disabled
         self.switch = switch
+        # The protection mode for ports 80 and 443. Valid values:
+        # 
+        # *   **normal**\
+        # *   **loose**\
+        # *   **strict**\
         self.web_mode = web_mode
+        # The status of the Intelligent Protection policy for ports 80 and 443. Valid values:
+        # 
+        # *   **on**: enabled
+        # *   **off**: disabled
         self.web_switch = web_switch
 
     def validate(self):
@@ -13288,7 +15500,9 @@ class DescribePortAutoCcStatusResponseBody(TeaModel):
         port_auto_cc_status: List[DescribePortAutoCcStatusResponseBodyPortAutoCcStatus] = None,
         request_id: str = None,
     ):
+        # An array that consists of the configurations of the Intelligent Protection policy.
         self.port_auto_cc_status = port_auto_cc_status
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13376,10 +15590,21 @@ class DescribePortConnsCountRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # An array that consists of the IDs of instances.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_ids = instance_ids
+        # The number of port that you want to query. If you do not specify this parameter, all ports are queried.
         self.port = port
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -13427,10 +15652,15 @@ class DescribePortConnsCountResponseBody(TeaModel):
         in_act_conns: int = None,
         request_id: str = None,
     ):
+        # The number of active connections.
         self.act_conns = act_conns
+        # The number of concurrent connections.
         self.conns = conns
+        # The number of new connections.
         self.cps = cps
+        # The number of inactive connections.
         self.in_act_conns = in_act_conns
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13523,11 +15753,23 @@ class DescribePortConnsListRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_ids = instance_ids
+        # The interval for returning data. Unit: seconds.
         self.interval = interval
+        # The number of port that you want to query. If you do not specify this parameter, all ports are queried.
         self.port = port
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -13579,10 +15821,15 @@ class DescribePortConnsListResponseBodyConnsList(TeaModel):
         in_act_conns: int = None,
         index: int = None,
     ):
+        # The number of active connections.
         self.act_conns = act_conns
+        # The number of concurrent connections.
         self.conns = conns
+        # The new connection creation rate.
         self.cps = cps
+        # The number of inactive connections.
         self.in_act_conns = in_act_conns
+        # The index number of the returned data.
         self.index = index
 
     def validate(self):
@@ -13627,7 +15874,9 @@ class DescribePortConnsListResponseBody(TeaModel):
         conns_list: List[DescribePortConnsListResponseBodyConnsList] = None,
         request_id: str = None,
     ):
+        # An array that consists of the connections established over the port.
         self.conns_list = conns_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -13715,10 +15964,32 @@ class DescribePortFlowListRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # **\
+        # 
+        # **This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # An array that consists of the IDs of instances.
         self.instance_ids = instance_ids
+        # The interval for returning data. Unit: seconds. The interval that you can specify varies based on the time range to query. The time range to query is determined by the values of **StartTime** and **EndTime**.
+        # 
+        # *   If the time range to query is no greater than 1 hour, we recommend that you specify the interval from 60 seconds to the time range to query.
+        # *   If the time range to query is greater than 1 hour but no greater than 6 hours, we recommend that you specify the interval from 600 seconds to the time range to query.
+        # *   If the time range to query is greater than 6 hours but no greater than 24 hours, we recommend that you specify the interval from 1,800 seconds to the time range to query.
+        # *   If the time range to query is greater than 24 hours but no greater than 7 days, we recommend that you specify the interval from 3,600 seconds to the time range to query.
+        # *   If the time range to query is greater than 7 days but no greater than 15 days, we recommend that you specify the interval from 14,400 seconds to the time range to query.
+        # *   If the time range to query is greater than 15 days, we recommend that you specify the interval from 43,200 seconds to the time range to query.
         self.interval = interval
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # **\
+        # 
+        # **This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -13768,16 +16039,50 @@ class DescribePortFlowListResponseBodyPortFlowList(TeaModel):
         out_bps: int = None,
         out_pps: int = None,
         region: str = None,
+        sla_bps_drop_bps: int = None,
+        sla_bps_drop_pps: int = None,
+        sla_conn_drop_bps: int = None,
+        sla_conn_drop_pps: int = None,
+        sla_cps_drop_bps: int = None,
+        sla_cps_drop_pps: int = None,
+        sla_pps_drop_bps: int = None,
+        sla_pps_drop_pps: int = None,
         time: int = None,
     ):
+        # The bandwidth of attack traffic. Unit: bit/s.
         self.attack_bps = attack_bps
+        # The packet forwarding rate of attack traffic. Unit: pps.
         self.attack_pps = attack_pps
+        # The inbound bandwidth. Unit: bit/s.
         self.in_bps = in_bps
+        # The packet forwarding rate of inbound traffic. Unit: packets per second.
         self.in_pps = in_pps
+        # The index number of the returned data.
         self.index = index
+        # The outbound bandwidth. Unit: bit/s.
         self.out_bps = out_bps
+        # The packet forwarding rate of outbound traffic. Unit: packets per second (pps).
         self.out_pps = out_pps
+        # The source region of the traffic. Valid values:
+        # 
+        # *   **cn**: mainland China
+        # *   **alb-ap-northeast-1-gf-x**: Japan (Tokyo)
+        # *   **alb-ap-southeast-gf-x**: Singapore
+        # *   **alb-cn-hongkong-gf-x**: Hong Kong (China)
+        # *   **alb-eu-central-1-gf-x**: Germany (Frankfurt)
+        # *   **alb-us-west-1-gf-x**: US (Silicon Valley)
+        # 
+        # > The values except **cn** are returned only when **RegionId** is set to **ap-southeast-1**.
         self.region = region
+        self.sla_bps_drop_bps = sla_bps_drop_bps
+        self.sla_bps_drop_pps = sla_bps_drop_pps
+        self.sla_conn_drop_bps = sla_conn_drop_bps
+        self.sla_conn_drop_pps = sla_conn_drop_pps
+        self.sla_cps_drop_bps = sla_cps_drop_bps
+        self.sla_cps_drop_pps = sla_cps_drop_pps
+        self.sla_pps_drop_bps = sla_pps_drop_bps
+        self.sla_pps_drop_pps = sla_pps_drop_pps
+        # The time when the data was collected. The value is a UNIX timestamp. Unit: seconds.
         self.time = time
 
     def validate(self):
@@ -13805,6 +16110,22 @@ class DescribePortFlowListResponseBodyPortFlowList(TeaModel):
             result['OutPps'] = self.out_pps
         if self.region is not None:
             result['Region'] = self.region
+        if self.sla_bps_drop_bps is not None:
+            result['SlaBpsDropBps'] = self.sla_bps_drop_bps
+        if self.sla_bps_drop_pps is not None:
+            result['SlaBpsDropPps'] = self.sla_bps_drop_pps
+        if self.sla_conn_drop_bps is not None:
+            result['SlaConnDropBps'] = self.sla_conn_drop_bps
+        if self.sla_conn_drop_pps is not None:
+            result['SlaConnDropPps'] = self.sla_conn_drop_pps
+        if self.sla_cps_drop_bps is not None:
+            result['SlaCpsDropBps'] = self.sla_cps_drop_bps
+        if self.sla_cps_drop_pps is not None:
+            result['SlaCpsDropPps'] = self.sla_cps_drop_pps
+        if self.sla_pps_drop_bps is not None:
+            result['SlaPpsDropBps'] = self.sla_pps_drop_bps
+        if self.sla_pps_drop_pps is not None:
+            result['SlaPpsDropPps'] = self.sla_pps_drop_pps
         if self.time is not None:
             result['Time'] = self.time
         return result
@@ -13827,6 +16148,22 @@ class DescribePortFlowListResponseBodyPortFlowList(TeaModel):
             self.out_pps = m.get('OutPps')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('SlaBpsDropBps') is not None:
+            self.sla_bps_drop_bps = m.get('SlaBpsDropBps')
+        if m.get('SlaBpsDropPps') is not None:
+            self.sla_bps_drop_pps = m.get('SlaBpsDropPps')
+        if m.get('SlaConnDropBps') is not None:
+            self.sla_conn_drop_bps = m.get('SlaConnDropBps')
+        if m.get('SlaConnDropPps') is not None:
+            self.sla_conn_drop_pps = m.get('SlaConnDropPps')
+        if m.get('SlaCpsDropBps') is not None:
+            self.sla_cps_drop_bps = m.get('SlaCpsDropBps')
+        if m.get('SlaCpsDropPps') is not None:
+            self.sla_cps_drop_pps = m.get('SlaCpsDropPps')
+        if m.get('SlaPpsDropBps') is not None:
+            self.sla_pps_drop_bps = m.get('SlaPpsDropBps')
+        if m.get('SlaPpsDropPps') is not None:
+            self.sla_pps_drop_pps = m.get('SlaPpsDropPps')
         if m.get('Time') is not None:
             self.time = m.get('Time')
         return self
@@ -13838,7 +16175,9 @@ class DescribePortFlowListResponseBody(TeaModel):
         port_flow_list: List[DescribePortFlowListResponseBodyPortFlowList] = None,
         request_id: str = None,
     ):
+        # The returned traffic data.
         self.port_flow_list = port_flow_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13925,9 +16264,19 @@ class DescribePortMaxConnsRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_ids = instance_ids
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -13969,8 +16318,11 @@ class DescribePortMaxConnsResponseBodyPortMaxConns(TeaModel):
         ip: str = None,
         port: str = None,
     ):
+        # The maximum number of connections per second (CPS).
         self.cps = cps
+        # The IP address of the instance.
         self.ip = ip
+        # The port of the instance.
         self.port = port
 
     def validate(self):
@@ -14007,7 +16359,9 @@ class DescribePortMaxConnsResponseBody(TeaModel):
         port_max_conns: List[DescribePortMaxConnsResponseBodyPortMaxConns] = None,
         request_id: str = None,
     ):
+        # An array consisting of the details of the maximum number of connections that are established over a port of the instance.
         self.port_max_conns = port_max_conns
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14094,9 +16448,19 @@ class DescribePortViewSourceCountriesRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # An array that consists of the IDs of instances to query.
         self.instance_ids = instance_ids
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -14137,7 +16501,11 @@ class DescribePortViewSourceCountriesResponseBodySourceCountrys(TeaModel):
         count: int = None,
         country_id: str = None,
     ):
+        # The number of requests.
         self.count = count
+        # The abbreviation of the country or area. For example, **cn** indicates China and **us** indicates the United States.
+        # 
+        # > For more information, see [Location parameters](~~167926~~).
         self.country_id = country_id
 
     def validate(self):
@@ -14170,7 +16538,9 @@ class DescribePortViewSourceCountriesResponseBody(TeaModel):
         request_id: str = None,
         source_countrys: List[DescribePortViewSourceCountriesResponseBodySourceCountrys] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # An array consisting of countries or areas from which the requests are sent.
         self.source_countrys = source_countrys
 
     def validate(self):
@@ -14257,9 +16627,19 @@ class DescribePortViewSourceIspsRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # An array that consists of the IDs of instances to query.
         self.instance_ids = instance_ids
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -14300,7 +16680,11 @@ class DescribePortViewSourceIspsResponseBodyIsps(TeaModel):
         count: int = None,
         isp_id: str = None,
     ):
+        # The total number of requests that are sent from the ISP.
+        # 
+        # > This parameter does not indicate the accurate number of requests. You can use this parameter to calculate the proportion of requests from different ISPs.
         self.count = count
+        # The ID of the ISP. For more information, see the ISP codes table.
         self.isp_id = isp_id
 
     def validate(self):
@@ -14333,7 +16717,9 @@ class DescribePortViewSourceIspsResponseBody(TeaModel):
         isps: List[DescribePortViewSourceIspsResponseBodyIsps] = None,
         request_id: str = None,
     ):
+        # An array that consists of the details of the ISP.
         self.isps = isps
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14420,9 +16806,19 @@ class DescribePortViewSourceProvincesRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you do not configure this parameter, the current system time is used as the end time.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The IDs of instances to query.
         self.instance_ids = instance_ids
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -14463,7 +16859,13 @@ class DescribePortViewSourceProvincesResponseBodySourceProvinces(TeaModel):
         count: int = None,
         province_id: str = None,
     ):
+        # The total number of requests that are sent from the ISP.
+        # 
+        # > This parameter does not indicate the accurate number of requests. You can use this parameter to calculate the proportion of requests from different administrative regions in China.
         self.count = count
+        # The ID of the administrative region in China from which the requests are sent. For example, **110000** indicates Beijing, and **120000** indicates Tianjin.
+        # 
+        # > For more information, see [Location parameters](~~167926~~).
         self.province_id = province_id
 
     def validate(self):
@@ -14496,7 +16898,9 @@ class DescribePortViewSourceProvincesResponseBody(TeaModel):
         request_id: str = None,
         source_provinces: List[DescribePortViewSourceProvincesResponseBodySourceProvinces] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Details about the administrative region in China from which the requests are sent.
         self.source_provinces = source_provinces
 
     def validate(self):
@@ -14581,7 +16985,13 @@ class DescribeSceneDefenseObjectsRequest(TeaModel):
         policy_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the policy that you want to query.
+        # 
+        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
         self.policy_id = policy_id
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -14615,8 +17025,11 @@ class DescribeSceneDefenseObjectsResponseBodyObjects(TeaModel):
         policy_id: str = None,
         vip: str = None,
     ):
+        # The domain name that is protected by the policy.
         self.domain = domain
+        # The ID of the policy.
         self.policy_id = policy_id
+        # The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance that is protected by the policy.
         self.vip = vip
 
     def validate(self):
@@ -14654,8 +17067,14 @@ class DescribeSceneDefenseObjectsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The information about the protected assets.
         self.objects = objects
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -14745,8 +17164,21 @@ class DescribeSceneDefensePoliciesRequest(TeaModel):
         status: str = None,
         template: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The status of the policy. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: pending enabling
+        # *   **2**: enabled
+        # *   **3**: expired
         self.status = status
+        # The type of the template that is used to create the policy. Valid values:
+        # 
+        # *   **promotion**: the Important Activity template
+        # *   **bypass**: the Forward All template
         self.template = template
 
     def validate(self):
@@ -14785,9 +17217,32 @@ class DescribeSceneDefensePoliciesResponseBodyPoliciesRuntimePolicies(TeaModel):
         status: int = None,
         old_value: str = None,
     ):
+        # The protection rule that is applied when the policy takes effect.
+        # 
+        # If you set **PolicyType** to **1**, the value is **{"cc_rule_enable": false }**. The value indicates that the Frequency Control policy is disabled.
+        # 
+        # If you set **PolicyType** to **2**, the value is **{"ai_rule_enable": 0}**. The value indicates that the Intelligent Protection policy is disabled.
         self.new_value = new_value
+        # The protection policy whose status is changed when the policy takes effect. Valid values:
+        # 
+        # *   **1**: indicates that the Frequency Control policy is changed.
+        # *   **2**: indicates that the Intelligent Protection policy is changed.
         self.policy_type = policy_type
+        # The running status of the policy. Valid values:
+        # 
+        # *   **0**: The policy has not been issued or is restored.
+        # *   **1**: The policy is pending.
+        # *   **2**: The policy is being restored.
+        # *   **3**: The policy takes effect.
+        # *   **4**: The policy fails to take effect.
+        # *   **5**:The policy fails to be restored.
+        # *   **6**: The configurations of the protected objects for the policy does not exist because the configurations may be deleted.
         self.status = status
+        # The protection rule that is applied before the policy takes effect.
+        # 
+        # If you set **PolicyType** to **1**, the value is **{"cc_rule_enable": true}**. The value indicates that the Frequency Control policy is enabled.
+        # 
+        # If you set **PolicyType** to **2**, the value is **{"ai_rule_enable": 1}**. The value indicates that the Intelligent Protection policy is enabled.
         self.old_value = old_value
 
     def validate(self):
@@ -14835,14 +17290,35 @@ class DescribeSceneDefensePoliciesResponseBodyPolicies(TeaModel):
         status: int = None,
         template: str = None,
     ):
+        # The execution status of the policy. Valid values:
+        # 
+        # *   **1**: not executed or execution completed
+        # *   **0**: being executed
+        # *   **-1**: execution failed
         self.done = done
+        # The time at which the policy expires. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
+        # The name of the policy.
         self.name = name
+        # The number of objects that are protected by the policy.
         self.object_count = object_count
+        # The ID of the policy.
         self.policy_id = policy_id
+        # The running rules of the policy.
         self.runtime_policies = runtime_policies
+        # The time at which the policy takes effect. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
+        # The status of the policy. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: pending enabling
+        # *   **2**: enabled
+        # *   **3**: expired
         self.status = status
+        # The type of the template that is used to create the policy. Valid values:
+        # 
+        # *   **promotion**: the Important Activity template
+        # *   **bypass**: the Forward All template
         self.template = template
 
     def validate(self):
@@ -14912,8 +17388,14 @@ class DescribeSceneDefensePoliciesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # An array that consists of the configurations of the scenario-specific custom policy.
         self.policies = policies
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -15319,11 +17801,205 @@ class DescribeSchedulerRulesResponse(TeaModel):
         return self
 
 
+class DescribeSlaEventListRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        ip: str = None,
+        page: int = None,
+        page_size: int = None,
+        region: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.ip = ip
+        self.page = page
+        self.page_size = page_size
+        self.region = region
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeSlaEventListResponseBodySlaEvent(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        ip: str = None,
+        region: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.ip = ip
+        self.region = region
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeSlaEventListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        sla_event: List[DescribeSlaEventListResponseBodySlaEvent] = None,
+        total: int = None,
+    ):
+        self.request_id = request_id
+        self.sla_event = sla_event
+        self.total = total
+
+    def validate(self):
+        if self.sla_event:
+            for k in self.sla_event:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SlaEvent'] = []
+        if self.sla_event is not None:
+            for k in self.sla_event:
+                result['SlaEvent'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.sla_event = []
+        if m.get('SlaEvent') is not None:
+            for k in m.get('SlaEvent'):
+                temp_model = DescribeSlaEventListResponseBodySlaEvent()
+                self.sla_event.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeSlaEventListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSlaEventListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSlaEventListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSlsAuthStatusRequest(TeaModel):
     def __init__(
         self,
         resource_group_id: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -15352,7 +18028,12 @@ class DescribeSlsAuthStatusResponseBody(TeaModel):
         request_id: str = None,
         sls_auth_status: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access Log Service. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.sls_auth_status = sls_auth_status
 
     def validate(self):
@@ -15428,6 +18109,7 @@ class DescribeSlsLogstoreInfoRequest(TeaModel):
         self,
         resource_group_id: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -15460,11 +18142,19 @@ class DescribeSlsLogstoreInfoResponseBody(TeaModel):
         ttl: int = None,
         used: int = None,
     ):
+        # The Logstore of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.log_store = log_store
+        # The Logstore project of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.project = project
+        # The available log storage capacity. Unit: bytes.
         self.quota = quota
+        # The ID of the request.
         self.request_id = request_id
+        # The log storage duration. Unit: days.
         self.ttl = ttl
+        # The used log storage capacity. Unit: bytes.
+        # 
+        # > The statistics on Log Service are delayed for about two hours.
         self.used = used
 
     def validate(self):
@@ -15556,6 +18246,7 @@ class DescribeSlsOpenStatusRequest(TeaModel):
         self,
         resource_group_id: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -15584,7 +18275,12 @@ class DescribeSlsOpenStatusResponseBody(TeaModel):
         request_id: str = None,
         sls_open_status: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether Log Service is activated. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.sls_open_status = sls_open_status
 
     def validate(self):
@@ -15661,7 +18357,13 @@ class DescribeStsGrantStatusRequest(TeaModel):
         resource_group_id: str = None,
         role: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The name of the RAM role to query. Set the value to **AliyunDDoSCOODefaultRole**, which indicates the default role of Anti-DDoS Pro or Anti-DDoS Premium.
+        # 
+        # > Anti-DDoS Pro or Anti-DDoS Premium uses the default role to access other cloud services.
         self.role = role
 
     def validate(self):
@@ -15693,6 +18395,10 @@ class DescribeStsGrantStatusResponseBodyStsGrant(TeaModel):
         self,
         status: int = None,
     ):
+        # The authorization status. Valid values:
+        # 
+        # *   **0**: Anti-DDoS Pro or Anti-DDoS Premium is not authorized to access other cloud services.
+        # *   **1**: Anti-DDoS Pro or Anti-DDoS Premium is authorized to access other cloud services.
         self.status = status
 
     def validate(self):
@@ -15721,7 +18427,9 @@ class DescribeStsGrantStatusResponseBody(TeaModel):
         request_id: str = None,
         sts_grant: DescribeStsGrantStatusResponseBodyStsGrant = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The authorization status of Anti-DDoS Pro or Anti-DDoS Premium.
         self.sts_grant = sts_grant
 
     def validate(self):
@@ -15804,11 +18512,21 @@ class DescribeSystemLogRequest(TeaModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The bills of the burstable clean bandwidth that are issued before this point in time are queried. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
+        # The IP address of the instance.
+        # 
+        # > You can call the [DescribeInstanceDetails](~~91490~~) operation to query the IP addresses of all instances.
         self.entity_object = entity_object
+        # The type of the system log. Set the value to **20**, which indicates the billing logs for the burstable clean bandwidth.
+        # 
+        # > You must specify this parameter. Otherwise, the call fails.
         self.entity_type = entity_type
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The beginning of the time range to query. The bills of the burstable clean bandwidth that are issued after this point in time are queried. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -15863,13 +18581,36 @@ class DescribeSystemLogResponseBodySystemLog(TeaModel):
         op_desc: str = None,
         status: int = None,
     ):
+        # The IP address of the instance.
         self.entity_object = entity_object
+        # The type of the system log. The value is fixed as **20**, which indicates the billing logs for burstable clean bandwidth.
         self.entity_type = entity_type
+        # The time when the bill was generated. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
+        # The time when the bill was last modified. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_modified = gmt_modified
+        # The ID of the Alibaba Cloud account to which the bill belongs.
         self.op_account = op_account
+        # The operation type. The value is fixed as **100**, which indicates the billing logs for the burstable clean bandwidth that you increased.
         self.op_action = op_action
+        # The details of the bill. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # 
+        # *   **newEntity**: the bill record, which contains the following fields. Data type: object.
+        # 
+        #     *   **billValue**: the usage of the burstable clean bandwidth within a month. Unit: Mbit/s. Data type: integer.
+        #     *   **instanceId**: the ID of the instance. Data type: string.
+        #     *   **ip**: the IP address of the instance. Data type: string.
+        #     *   **maxBw**: the peak service traffic (monthly 95th percentile bandwidth) within a month. Unit: Mbit/s. Data type: string.
+        #     *   **month**: the month in which the bill of the previous calendar month is issued. This value is a UNIX timestamp. Unit: milliseconds. Data type: long.
+        #     *   **overBandwidth**: the peak service traffic minus the clean bandwidth of the instance. Unit: Mbit/s. Data type: integer.
+        #     *   **peakTime**: the time in point of the peak service traffic that is measured for billing. This value is a UNIX timestamp. Unit: seconds. Data type: long.
+        #     *   **startTimestamp**: the beginning of the time range for the peak service traffic range. This value is a UNIX timestamp. Unit: seconds. Data type: long.
         self.op_desc = op_desc
+        # The status of the bill. Valid values:
+        # 
+        # *   **0**: to be billed
+        # *   **1**: billed
+        # *   **2**: terminated
         self.status = status
 
     def validate(self):
@@ -15927,8 +18668,11 @@ class DescribeSystemLogResponseBody(TeaModel):
         system_log: List[DescribeSystemLogResponseBodySystemLog] = None,
         total: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # An array that consists of details of the billing logs for the burstable clean bandwidth.
         self.system_log = system_log
+        # The total number of billing logs for the burstable clean bandwidth.
         self.total = total
 
     def validate(self):
@@ -16020,10 +18764,17 @@ class DescribeTagKeysRequest(TeaModel):
         resource_group_id: str = None,
         resource_type: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
         self.region_id = region_id
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
         self.resource_type = resource_type
 
     def validate(self):
@@ -16068,7 +18819,9 @@ class DescribeTagKeysResponseBodyTagKeys(TeaModel):
         tag_count: int = None,
         tag_key: str = None,
     ):
+        # The number of Anti-DDoS Pro instances to which the tag key is added.
         self.tag_count = tag_count
+        # The tag key.
         self.tag_key = tag_key
 
     def validate(self):
@@ -16104,10 +18857,15 @@ class DescribeTagKeysResponseBody(TeaModel):
         tag_keys: List[DescribeTagKeysResponseBodyTagKeys] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # An array that consists of the details of the tag key.
         self.tag_keys = tag_keys
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -16204,7 +18962,15 @@ class DescribeTagResourcesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag that you want to query.
+        # 
+        # > 
+        # 
+        # *   You must specify at least one of the **ResourceIds.N** and **Tags.N.Key** parameters.
+        # 
+        # *   You can call the [DescribeTagKeys](~~159785~~) operation to query all tag keys.
         self.key = key
+        # The value of the tag that you want to query.
         self.value = value
 
     def validate(self):
@@ -16241,11 +19007,21 @@ class DescribeTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: List[DescribeTagResourcesRequestTags] = None,
     ):
+        # The query token. Set the value to the value of **NextToken** that is returned in the last call.
+        # 
+        # > You do not need to configure this parameter if you call this operation for the first time.
         self.next_token = next_token
+        # The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
         self.region_id = region_id
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # An array consisting of IDs of the Anti-DDoS Pro instances that you want to query.
         self.resource_ids = resource_ids
+        # The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
         self.resource_type = resource_type
+        # An array consisting of tags that you want to query. Each tag consists of a tag **key** and a tag **value**.
         self.tags = tags
 
     def validate(self):
@@ -16304,9 +19080,13 @@ class DescribeTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the Anti-DDoS Pro instance.
         self.resource_id = resource_id
+        # The type of the resource. The value is fixed as **INSTANCE**, which indicates an Anti-DDoS Pro instance.
         self.resource_type = resource_type
+        # The key of the tag that is added to the Anti-DDoS Pro instance.
         self.tag_key = tag_key
+        # The value of the tag that is added to the Anti-DDoS Pro instance.
         self.tag_value = tag_value
 
     def validate(self):
@@ -16383,8 +19163,11 @@ class DescribeTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: DescribeTagResourcesResponseBodyTagResources = None,
     ):
+        # The query token that is returned in this call.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # An array consisting of the details of the tags that are added to the Anti-DDoS Pro instance.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -16461,13 +19244,159 @@ class DescribeTagResourcesResponse(TeaModel):
         return self
 
 
+class DescribeTotalAttackMaxFlowRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        instance_ids: List[str] = None,
+        resource_group_id: str = None,
+        start_time: int = None,
+    ):
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        self.end_time = end_time
+        # The IDs of the instances. Separate multiple instance IDs with commas (,). Example: InstanceIds.1, InstanceIds.2, InstanceIds.3.
+        self.instance_ids = instance_ids
+        # The ID of the resource group to which the instance belongs in Resource Management. If you do not configure this parameter, the instance belongs to the default resource group.
+        self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeTotalAttackMaxFlowResponseBody(TeaModel):
+    def __init__(
+        self,
+        bps: int = None,
+        pps: int = None,
+        request_id: str = None,
+    ):
+        # The peak bandwidth of attack traffic. Unit: bit/s.
+        self.bps = bps
+        # The peak packet rate of attack traffic . Unit: packets per second (pps).
+        self.pps = pps
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bps is not None:
+            result['Bps'] = self.bps
+        if self.pps is not None:
+            result['Pps'] = self.pps
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bps') is not None:
+            self.bps = m.get('Bps')
+        if m.get('Pps') is not None:
+            self.pps = m.get('Pps')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeTotalAttackMaxFlowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTotalAttackMaxFlowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTotalAttackMaxFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeUdpReflectRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the instance to query.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The region ID of the instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland, which indicates an Anti-DDoS Pro instance. This is the default value.
+        # *   **ap-southeast-1**: outside the Chinese mainland, which indicates an Anti-DDoS Premium instance.
         self.region_id = region_id
 
     def validate(self):
@@ -16500,7 +19429,9 @@ class DescribeUdpReflectResponseBody(TeaModel):
         request_id: str = None,
         udp_sports: List[str] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # An array consisting of the source ports of the UDP traffic that are filtered out by the filtering policies for UDP reflection attacks.
         self.udp_sports = udp_sports
 
     def validate(self):
@@ -16576,6 +19507,7 @@ class DescribeUnBlackholeCountRequest(TeaModel):
         self,
         resource_group_id: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -16605,8 +19537,11 @@ class DescribeUnBlackholeCountResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The remaining quota that you can deactivate blackhole filtering.
         self.remain_count = remain_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total quota that you can deactivate blackhole filtering.
         self.total_count = total_count
 
     def validate(self):
@@ -16686,6 +19621,7 @@ class DescribeUnBlockCountRequest(TeaModel):
         self,
         resource_group_id: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -16715,8 +19651,11 @@ class DescribeUnBlockCountResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The remaining quota that you can use the Diversion from Origin Server policy.
         self.remain_count = remain_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total quota that you can use the Diversion from Origin Server policy.
         self.total_count = total_count
 
     def validate(self):
@@ -16798,8 +19737,13 @@ class DescribeWebAccessLogDispatchStatusRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -16836,7 +19780,12 @@ class DescribeWebAccessLogDispatchStatusResponseBodySlsConfigStatus(TeaModel):
         domain: str = None,
         enable: bool = None,
     ):
+        # The domain name.
         self.domain = domain
+        # Indicates whether the log analysis feature is enabled. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.enable = enable
 
     def validate(self):
@@ -16870,8 +19819,11 @@ class DescribeWebAccessLogDispatchStatusResponseBody(TeaModel):
         sls_config_status: List[DescribeWebAccessLogDispatchStatusResponseBodySlsConfigStatus] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the log analysis feature is enabled for domain names.
         self.sls_config_status = sls_config_status
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -16959,6 +19911,7 @@ class DescribeWebAccessLogEmptyCountRequest(TeaModel):
         self,
         resource_group_id: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -16987,7 +19940,9 @@ class DescribeWebAccessLogEmptyCountResponseBody(TeaModel):
         available_count: int = None,
         request_id: str = None,
     ):
+        # The remaining quota that you can clear the Logstore.
         self.available_count = available_count
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -17064,7 +20019,11 @@ class DescribeWebAccessLogStatusRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -17099,9 +20058,16 @@ class DescribeWebAccessLogStatusResponseBody(TeaModel):
         sls_project: str = None,
         sls_status: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The Logstore of the instance.
         self.sls_logstore = sls_logstore
+        # The Log Service project of the instance.
         self.sls_project = sls_project
+        # Indicates whether the Log Analysis feature is enabled for the website. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.sls_status = sls_status
 
     def validate(self):
@@ -17185,6 +20151,9 @@ class DescribeWebAccessModeRequest(TeaModel):
         self,
         domains: List[str] = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domains = domains
 
     def validate(self):
@@ -17213,7 +20182,13 @@ class DescribeWebAccessModeResponseBodyDomainModes(TeaModel):
         access_mode: int = None,
         domain: str = None,
     ):
+        # The mode in which the website service is added. Valid values:
+        # 
+        # *   **0**: A record
+        # *   **1**: anti-DDoS mode
+        # *   **2**: origin redundancy mode
         self.access_mode = access_mode
+        # The domain name of the website.
         self.domain = domain
 
     def validate(self):
@@ -17246,7 +20221,9 @@ class DescribeWebAccessModeResponseBody(TeaModel):
         domain_modes: List[DescribeWebAccessModeResponseBodyDomainModes] = None,
         request_id: str = None,
     ):
+        # An array consisting of the modes in which the website service is added.
         self.domain_modes = domain_modes
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -17331,7 +20308,11 @@ class DescribeWebAreaBlockConfigsRequest(TeaModel):
         domains: List[str] = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domains = domains
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -17364,7 +20345,12 @@ class DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigsRegionList(TeaModel
         block: int = None,
         region: str = None,
     ):
+        # Indicates whether the location is blocked. Valid values:
+        # 
+        # *   **0**: yes
+        # *   **1**: no
         self.block = block
+        # The name of the location.
         self.region = region
 
     def validate(self):
@@ -17397,7 +20383,9 @@ class DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs(TeaModel):
         domain: str = None,
         region_list: List[DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigsRegionList] = None,
     ):
+        # The domain name of the website.
         self.domain = domain
+        # The configuration of the blocked locations.
         self.region_list = region_list
 
     def validate(self):
@@ -17438,7 +20426,9 @@ class DescribeWebAreaBlockConfigsResponseBody(TeaModel):
         area_block_configs: List[DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs] = None,
         request_id: str = None,
     ):
+        # An array that consists of the configurations of the Location Blacklist (Domain Names) policy.
         self.area_block_configs = area_block_configs
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -17525,9 +20515,15 @@ class DescribeWebCCRulesRequest(TeaModel):
         page_size: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -17573,12 +20569,25 @@ class DescribeWebCCRulesResponseBodyWebCCRules(TeaModel):
         ttl: int = None,
         uri: str = None,
     ):
+        # The blocking type. Valid values:
+        # 
+        # *   **close**: blocks requests.
+        # *   **captcha**: enables Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification.
         self.act = act
+        # The number of requests that are allowed from an individual IP address. Valid values: **2** to **2000**.
         self.count = count
+        # The check intervals. Valid values: **5** to **10800**. Unit: seconds.
         self.interval = interval
+        # The match mode. Valid values:
+        # 
+        # *   **prefix**: prefix match
+        # *   **match**: exact match
         self.mode = mode
+        # The name of the rule.
         self.name = name
+        # The blocking duration. Valid values: **1** to **1440**. Unit: minutes.
         self.ttl = ttl
+        # The check path.
         self.uri = uri
 
     def validate(self):
@@ -17632,8 +20641,11 @@ class DescribeWebCCRulesResponseBody(TeaModel):
         total_count: int = None,
         web_ccrules: List[DescribeWebCCRulesResponseBodyWebCCRules] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned custom frequency control rules.
         self.total_count = total_count
+        # An array that consists of the details of the custom frequency control rule.
         self.web_ccrules = web_ccrules
 
     def validate(self):
@@ -17722,7 +20734,11 @@ class DescribeWebCacheConfigsRequest(TeaModel):
         domains: List[str] = None,
         resource_group_id: str = None,
     ):
+        # An array consisting of domain names for which you want to query the Static Page Caching configurations.
         self.domains = domains
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -17757,9 +20773,17 @@ class DescribeWebCacheConfigsResponseBodyDomainCacheConfigsCustomRules(TeaModel)
         name: str = None,
         uri: str = None,
     ):
+        # The expiration time of the page cache. Unit: seconds.
         self.cache_ttl = cache_ttl
+        # The cache mode. Valid values:
+        # 
+        # *   **standard**: The standard cache mode is used.
+        # *   **aggressive**: The enhanced cache mode is used.
+        # *   **bypass**: No data is cached.
         self.mode = mode
+        # The name of the rule.
         self.name = name
+        # The path to the cached page.
         self.uri = uri
 
     def validate(self):
@@ -17802,9 +20826,20 @@ class DescribeWebCacheConfigsResponseBodyDomainCacheConfigs(TeaModel):
         enable: int = None,
         mode: str = None,
     ):
+        # An array that consists of custom caching rules.
         self.custom_rules = custom_rules
+        # The domain name of the website.
         self.domain = domain
+        # The status of the Static Page Caching policy. Valid values:
+        # 
+        # *   **1**: enabled
+        # *   **0**: disabled
         self.enable = enable
+        # The cache mode. Valid values:
+        # 
+        # *   **standard**: The standard cache mode is used.
+        # *   **aggressive**: The enhanced cache mode is used.
+        # *   **bypass**: No data is cached.
         self.mode = mode
 
     def validate(self):
@@ -17853,7 +20888,9 @@ class DescribeWebCacheConfigsResponseBody(TeaModel):
         domain_cache_configs: List[DescribeWebCacheConfigsResponseBodyDomainCacheConfigs] = None,
         request_id: str = None,
     ):
+        # An array that consists of Static Page Caching configurations.
         self.domain_cache_configs = domain_cache_configs
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -17938,7 +20975,11 @@ class DescribeWebCcProtectSwitchRequest(TeaModel):
         domains: List[str] = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domains = domains
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -17979,15 +21020,55 @@ class DescribeWebCcProtectSwitchResponseBodyProtectSwitchList(TeaModel):
         precise_rule_enable: int = None,
         region_block_enable: int = None,
     ):
+        # The mode of the Intelligent Protection policy. Valid values:
+        # 
+        # *   **watch**: the Warning mode
+        # *   **defense**: the Defense mode
         self.ai_mode = ai_mode
+        # The status of the Intelligent Protection policy. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
         self.ai_rule_enable = ai_rule_enable
+        # The level of the Intelligent Protection policy. Valid values:
+        # 
+        # *   **level30**: the Low level
+        # *   **level60**: the Normal level
+        # *   **level90**: the Strict level
         self.ai_template = ai_template
+        # The status of the Black Lists and White Lists (Domain Names) policy. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
         self.black_white_list_enable = black_white_list_enable
+        # The status of the Custom Rule switch for the Frequency Control policy. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
         self.cc_custom_rule_enable = cc_custom_rule_enable
+        # The status of the Frequency Control policy. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
         self.cc_enable = cc_enable
+        # The mode of the Frequency Control policy. Valid values:
+        # 
+        # *   **default**: Normal
+        # *   **gf_under_attack**: Emergency
+        # *   **gf_sos_verify**: Strict
+        # *   **gf_sos_enhance**: Super Strict
         self.cc_template = cc_template
+        # The domain name of the website.
         self.domain = domain
+        # The status of the Accurate Access Control policy. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
         self.precise_rule_enable = precise_rule_enable
+        # The status of the Location Blacklist (Domain Names) policy. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
         self.region_block_enable = region_block_enable
 
     def validate(self):
@@ -18052,7 +21133,9 @@ class DescribeWebCcProtectSwitchResponseBody(TeaModel):
         protect_switch_list: List[DescribeWebCcProtectSwitchResponseBodyProtectSwitchList] = None,
         request_id: str = None,
     ):
+        # The status of each protection policy for a website.
         self.protect_switch_list = protect_switch_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18136,6 +21219,7 @@ class DescribeWebCustomPortsRequest(TeaModel):
         self,
         resource_group_id: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -18164,7 +21248,12 @@ class DescribeWebCustomPortsResponseBodyWebCustomPorts(TeaModel):
         proxy_ports: List[str] = None,
         proxy_type: str = None,
     ):
+        # An array that consists of supported custom ports.
         self.proxy_ports = proxy_ports
+        # The type of the protocol. Valid values:
+        # 
+        # *   **http**\
+        # *   **https**\
         self.proxy_type = proxy_type
 
     def validate(self):
@@ -18197,7 +21286,9 @@ class DescribeWebCustomPortsResponseBody(TeaModel):
         request_id: str = None,
         web_custom_ports: List[DescribeWebCustomPortsResponseBodyWebCustomPorts] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # An array consisting of information about supported custom ports that are used by a website.
         self.web_custom_ports = web_custom_ports
 
     def validate(self):
@@ -18282,7 +21373,11 @@ class DescribeWebInstanceRelationsRequest(TeaModel):
         domains: List[str] = None,
         resource_group_id: str = None,
     ):
+        # The domain names of the website. list
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domains = domains
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -18316,8 +21411,14 @@ class DescribeWebInstanceRelationsResponseBodyWebInstanceRelationsInstanceDetail
         function_version: str = None,
         instance_id: str = None,
     ):
+        # The IP addresses of the instance.
         self.eip_list = eip_list
+        # The function plan of the instance. Valid values:
+        # 
+        # *   **default**: Standard function plan
+        # *   **enhance**: Enhanced function plan
         self.function_version = function_version
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -18354,7 +21455,9 @@ class DescribeWebInstanceRelationsResponseBodyWebInstanceRelations(TeaModel):
         domain: str = None,
         instance_details: List[DescribeWebInstanceRelationsResponseBodyWebInstanceRelationsInstanceDetails] = None,
     ):
+        # The domain name of the website.
         self.domain = domain
+        # The information about the instance to which a website service is added.
         self.instance_details = instance_details
 
     def validate(self):
@@ -18395,7 +21498,9 @@ class DescribeWebInstanceRelationsResponseBody(TeaModel):
         request_id: str = None,
         web_instance_relations: List[DescribeWebInstanceRelationsResponseBodyWebInstanceRelations] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the instances to which a website service is added.
         self.web_instance_relations = web_instance_relations
 
     def validate(self):
@@ -18480,7 +21585,11 @@ class DescribeWebPreciseAccessRuleRequest(TeaModel):
         domains: List[str] = None,
         resource_group_id: str = None,
     ):
+        # An array that consists of the domain names of websites.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domains = domains
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -18515,9 +21624,15 @@ class DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListCon
         header_name: str = None,
         match_method: str = None,
     ):
+        # The match content.
         self.content = content
+        # The match field.
         self.field = field
+        # The custom HTTP header.
+        # 
+        # > This parameter takes effect only when **Field** is set to **header**.
         self.header_name = header_name
+        # The logical operator.
         self.match_method = match_method
 
     def validate(self):
@@ -18561,10 +21676,22 @@ class DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList(Te
         name: str = None,
         owner: str = None,
     ):
+        # The action triggered if the rule is matched. Valid values:
+        # 
+        # *   **accept**: allows the requests that match the rule.
+        # *   **block**: blocks the requests that match the rule.
+        # *   **challenge**: implements Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule.
         self.action = action
+        # The match conditions.
         self.condition_list = condition_list
+        # The validity period of the rule. Unit: seconds. This parameter takes effect only when **action** of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. **0** indicates that the rule takes effect all the time.
         self.expires = expires
+        # The name of the rule.
         self.name = name
+        # The source of the rule. Valid values:
+        # 
+        # *   **manual**: manually created. This is the default value.
+        # *   **auto**: automatically generated.
         self.owner = owner
 
     def validate(self):
@@ -18617,7 +21744,9 @@ class DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList(TeaModel):
         domain: str = None,
         rule_list: List[DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList] = None,
     ):
+        # The domain name of the website.
         self.domain = domain
+        # An array that consists of the rules.
         self.rule_list = rule_list
 
     def validate(self):
@@ -18658,7 +21787,9 @@ class DescribeWebPreciseAccessRuleResponseBody(TeaModel):
         precise_access_config_list: List[DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList] = None,
         request_id: str = None,
     ):
+        # An array consisting of the configuration of the accurate access control rule that is created for the website.
         self.precise_access_config_list = precise_access_config_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18913,6 +22044,7 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
         cc_rule_enabled: bool = None,
         cc_template: str = None,
         cert_name: str = None,
+        cert_region: str = None,
         cname: str = None,
         custom_ciphers: List[str] = None,
         domain: str = None,
@@ -18937,6 +22069,7 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
         self.cc_rule_enabled = cc_rule_enabled
         self.cc_template = cc_template
         self.cert_name = cert_name
+        self.cert_region = cert_region
         self.cname = cname
         self.custom_ciphers = custom_ciphers
         self.domain = domain
@@ -18984,6 +22117,8 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
             result['CcTemplate'] = self.cc_template
         if self.cert_name is not None:
             result['CertName'] = self.cert_name
+        if self.cert_region is not None:
+            result['CertRegion'] = self.cert_region
         if self.cname is not None:
             result['Cname'] = self.cname
         if self.custom_ciphers is not None:
@@ -19038,6 +22173,8 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
             self.cc_template = m.get('CcTemplate')
         if m.get('CertName') is not None:
             self.cert_name = m.get('CertName')
+        if m.get('CertRegion') is not None:
+            self.cert_region = m.get('CertRegion')
         if m.get('Cname') is not None:
             self.cname = m.get('Cname')
         if m.get('CustomCiphers') is not None:
@@ -19182,8 +22319,13 @@ class DetachSceneDefenseObjectRequest(TeaModel):
         objects: str = None,
         policy_id: str = None,
     ):
+        # The type of the object. Set the value to **Domain**, which indicates a domain name.
         self.object_type = object_type
+        # The protection asset that you want to remove from a policy. Separate multiple protection assets with commas (,).
         self.objects = objects
+        # The ID of the policy.
+        # 
+        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
         self.policy_id = policy_id
 
     def validate(self):
@@ -19220,7 +22362,12 @@ class DetachSceneDefenseObjectResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -19296,6 +22443,9 @@ class DisableSceneDefensePolicyRequest(TeaModel):
         self,
         policy_id: str = None,
     ):
+        # The ID of the policy that you want to disable.
+        # 
+        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
         self.policy_id = policy_id
 
     def validate(self):
@@ -19324,7 +22474,12 @@ class DisableSceneDefensePolicyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -19401,7 +22556,11 @@ class DisableWebAccessLogConfigRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -19433,6 +22592,7 @@ class DisableWebAccessLogConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19505,7 +22665,11 @@ class DisableWebCCRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -19537,6 +22701,7 @@ class DisableWebCCResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19609,7 +22774,11 @@ class DisableWebCCRuleRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -19641,6 +22810,7 @@ class DisableWebCCRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19712,6 +22882,9 @@ class EmptyAutoCcBlacklistRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -19739,6 +22912,7 @@ class EmptyAutoCcBlacklistResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19810,6 +22984,9 @@ class EmptyAutoCcWhitelistRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -19837,6 +23014,7 @@ class EmptyAutoCcWhitelistResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19908,6 +23086,7 @@ class EmptySlsLogstoreRequest(TeaModel):
         self,
         resource_group_id: str = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -19935,6 +23114,7 @@ class EmptySlsLogstoreResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20006,6 +23186,9 @@ class EnableSceneDefensePolicyRequest(TeaModel):
         self,
         policy_id: str = None,
     ):
+        # The ID of the policy that you want to enable.
+        # 
+        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
         self.policy_id = policy_id
 
     def validate(self):
@@ -20034,7 +23217,12 @@ class EnableSceneDefensePolicyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -20111,7 +23299,11 @@ class EnableWebAccessLogConfigRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -20143,6 +23335,7 @@ class EnableWebAccessLogConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20215,7 +23408,11 @@ class EnableWebCCRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -20247,6 +23444,7 @@ class EnableWebCCResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20319,7 +23517,11 @@ class EnableWebCCRuleRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -20351,6 +23553,7 @@ class EnableWebCCRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20417,13 +23620,129 @@ class EnableWebCCRuleResponse(TeaModel):
         return self
 
 
+class ModifyBizBandWidthModeRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        mode: str = None,
+    ):
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        self.instance_id = instance_id
+        # The metering method of the burstable clean bandwidth feature. Valid values:
+        # 
+        # *   **month**: the metering method of monthly 95th percentile
+        # *   **day**: the metering method of daily 95th percentile
+        self.mode = mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        return self
+
+
+class ModifyBizBandWidthModeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyBizBandWidthModeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyBizBandWidthModeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyBizBandWidthModeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyBlackholeStatusRequest(TeaModel):
     def __init__(
         self,
         blackhole_status: str = None,
         instance_id: str = None,
     ):
+        # The action that you want to perform on the instance. Set the value to **undo**, which indicates that you want to deactivate blackhole filtering.
         self.blackhole_status = blackhole_status
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -20455,6 +23774,7 @@ class ModifyBlackholeStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20529,9 +23849,20 @@ class ModifyBlockStatusRequest(TeaModel):
         lines: List[str] = None,
         status: str = None,
     ):
+        # The blocking period. Valid values: **15** to **43200**. Unit: minutes.
+        # 
+        # > If you set **Status** to **do**, you must also specify this parameter.
         self.duration = duration
+        # The ID of the Anti-DDoS Pro instance to manage.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # An array consisting of the Internet service provider (ISP) lines from which traffic is blocked.
         self.lines = lines
+        # Specifies the status of the Diversion from Origin Server policy. Valid values:
+        # 
+        # *   **do**: enables the policy.
+        # *   **undo**: disables the policy.
         self.status = status
 
     def validate(self):
@@ -20571,6 +23902,7 @@ class ModifyBlockStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20645,9 +23977,18 @@ class ModifyCnameReuseRequest(TeaModel):
         enable: int = None,
         resource_group_id: str = None,
     ):
+        # The CNAME record that you want to reuse for the website.
         self.cname = cname
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # Specifies whether to enable CNAME reuse. Valid values:
+        # 
+        # *   **1**: enables CNAME reuse.
+        # *   **2**: disables CNAME reuse.
         self.enable = enable
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -20687,6 +24028,7 @@ class ModifyCnameReuseResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20759,7 +24101,14 @@ class ModifyDomainResourceRequestProxyTypes(TeaModel):
         proxy_ports: List[int] = None,
         proxy_type: str = None,
     ):
+        # An array that consists of port numbers.
         self.proxy_ports = proxy_ports
+        # The type of the protocol. Valid values:
+        # 
+        # *   **http**\
+        # *   **https**\
+        # *   **websocket**\
+        # *   **websockets**\
         self.proxy_type = proxy_type
 
     def validate(self):
@@ -20796,11 +24145,35 @@ class ModifyDomainResourceRequest(TeaModel):
         real_servers: List[str] = None,
         rs_type: int = None,
     ):
+        # The domain name that is added to the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.domain = domain
+        # The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # 
+        # *   **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+        # 
+        #     If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+        # 
+        # *   **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+        # 
+        #     If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+        # 
+        # *   **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+        # 
+        #     After you turn on the switch, HTTP/2 is used.
         self.https_ext = https_ext
+        # An array consisting of the IDs of instances that you want to associate.
         self.instance_ids = instance_ids
+        # An array that consists of the details of the protocol type and port number.
         self.proxy_types = proxy_types
+        # An array that consists of the addresses of origin servers.
         self.real_servers = real_servers
+        # The address type of the origin server. Valid values:
+        # 
+        # *   **0**: IP address
+        # 
+        # *   **1**: domain name
+        # 
+        #     If you deploy proxies, such as a Web Application Firewall (WAF) instance, between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance, set the value to 1. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
         self.rs_type = rs_type
 
     def validate(self):
@@ -20856,6 +24229,7 @@ class ModifyDomainResourceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20928,7 +24302,13 @@ class ModifyElasticBandWidthRequest(TeaModel):
         elastic_bandwidth: int = None,
         instance_id: str = None,
     ):
+        # The new burstable protection bandwidth that you want to use. Unit: Gbit/s.
+        # 
+        # > You can call the [DescribeElasticBandwidthSpec](~~91502~~) operation to query the available burstable protection bandwidth of the instance.
         self.elastic_bandwidth = elastic_bandwidth
+        # The ID of the instance.
+        # 
+        # >  The instance must be in a normal state. You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -20960,6 +24340,7 @@ class ModifyElasticBandWidthResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21026,13 +24407,134 @@ class ModifyElasticBandWidthResponse(TeaModel):
         return self
 
 
+class ModifyElasticBizBandWidthRequest(TeaModel):
+    def __init__(
+        self,
+        elastic_biz_bandwidth: int = None,
+        instance_id: str = None,
+        mode: str = None,
+    ):
+        # The burstable clean bandwidth. Unit: Mbit/s. The burstable clean bandwidth cannot exceed nine times the clean bandwidth of your Anti-DDoS Pro or Anti-DDoS Premium instance, and the sum of the clean bandwidth and the burstable clean bandwidth cannot exceed the maximum clean bandwidth that is supported by your instance. The value 0 indicates that the burstable clean bandwidth feature is disabled. You can disable the burstable clean bandwidth feature once a month.
+        self.elastic_biz_bandwidth = elastic_biz_bandwidth
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        self.instance_id = instance_id
+        # The metering method of the burstable clean bandwidth feature. Valid values:
+        # 
+        # *   **month**: the metering method of monthly 95th percentile
+        # *   **day**: the metering method of daily 95th percentile
+        self.mode = mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.elastic_biz_bandwidth is not None:
+            result['ElasticBizBandwidth'] = self.elastic_biz_bandwidth
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ElasticBizBandwidth') is not None:
+            self.elastic_biz_bandwidth = m.get('ElasticBizBandwidth')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        return self
+
+
+class ModifyElasticBizBandWidthResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyElasticBizBandWidthResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyElasticBizBandWidthResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyElasticBizBandWidthResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyFullLogTtlRequest(TeaModel):
     def __init__(
         self,
         resource_group_id: str = None,
         ttl: int = None,
     ):
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The log storage duration of a website. Valid values: **30** to **180**. Unit: days.
         self.ttl = ttl
 
     def validate(self):
@@ -21064,6 +24566,7 @@ class ModifyFullLogTtlResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21130,6 +24633,135 @@ class ModifyFullLogTtlResponse(TeaModel):
         return self
 
 
+class ModifyHeadersRequest(TeaModel):
+    def __init__(
+        self,
+        custom_headers: str = None,
+        domain: str = None,
+        resource_group_id: str = None,
+    ):
+        # The key-value pair of the custom header. Key indicates the header name and Value indicates the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
+        # 
+        # Take note of the following items:
+        # 
+        # *   Do not use X-Forwarded-ClientSrcPort as a custom header.
+        # *   Do not use a standard HTTP header such as User-Agent. If you use a standard HTTP header, the original header may be overwritten.
+        # 
+        # > If you set Key to X-Forwarded-ClientSrcPort, the actual source port of the client that accesses Anti-DDoS Pro or Anti-DDoS Premium (a Layer 7 proxy) is obtained. In this case, the Value is "".
+        self.custom_headers = custom_headers
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        self.domain = domain
+        # The ID of the resource group to which the instance belongs.
+        # 
+        # > 
+        # 
+        # *   You can query resource group IDs in the Anti-DDoS Pro or Anti-DDoS Premium console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+        # 
+        # *   Before you modify the resource group to which an instance belongs, you can call the [ListResources](~~158866~~) operation to view the current resource group of the instance.
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_headers is not None:
+            result['CustomHeaders'] = self.custom_headers
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomHeaders') is not None:
+            self.custom_headers = m.get('CustomHeaders')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ModifyHeadersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The unique ID of the request, which is used to locate and troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyHeadersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyHeadersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyHeadersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyHealthCheckConfigRequest(TeaModel):
     def __init__(
         self,
@@ -21138,9 +24770,42 @@ class ModifyHealthCheckConfigRequest(TeaModel):
         health_check: str = None,
         instance_id: str = None,
     ):
+        # The forwarding protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.forward_protocol = forward_protocol
+        # The forwarding port.
         self.frontend_port = frontend_port
+        # The details of the health check configuration. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **Type**: the protocol type. This field is required and must be of the STRING type. Valid values: **tcp** (Layer 4) and **http** (Layer 7).
+        # 
+        # *   **Domain**: the domain name, which must be of the STRING type.
+        # 
+        #     **\
+        # 
+        #     **Note**This parameter is returned only when the Layer 7 health check configuration is queried.
+        # 
+        # *   **Uri**: the check path, which must be of the STRING type.
+        # 
+        #     **\
+        # 
+        #     **Note**This parameter is returned only when the Layer 7 health check configuration is queried.
+        # 
+        # *   **Timeout**: the response timeout period, which must be of the INTEGER type. Valid values: **1** to **30**. Unit: seconds.
+        # 
+        # *   **Port**: the port on which you want to perform the health check, which must be of the INTEGER type.
+        # 
+        # *   **Interval**: the health check interval, which must be of the INTEGER type. Valid values: **1** to **30**. Unit: seconds.
+        # 
+        # *   **Up**: the number of consecutive successful health checks that must occur before declaring a port healthy, which must be of the INTEGER type. Valid values: **1** to **10**.
+        # 
+        # *   **Down**: the number of consecutive failed health checks that must occur before declaring a port unhealthy, which must be of the INTEGER type. Valid values: **1** to **10**.
         self.health_check = health_check
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -21180,6 +24845,7 @@ class ModifyHealthCheckConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21253,8 +24919,16 @@ class ModifyHttp2EnableRequest(TeaModel):
         enable: int = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # Specifies whether to enable HTTP/2. Valid values:
+        # 
+        # *   **0**: disables HTTP/2.
+        # *   **1**: enables HTTP/2.
         self.enable = enable
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -21290,6 +24964,7 @@ class ModifyHttp2EnableResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21362,7 +25037,13 @@ class ModifyInstanceRemarkRequest(TeaModel):
         instance_id: str = None,
         remark: str = None,
     ):
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The description of the instance.
+        # 
+        # The value can contain letters, digits, and some special characters, such as`, . + - * / _` The value can be up to 500 characters in length.
         self.remark = remark
 
     def validate(self):
@@ -21394,6 +25075,7 @@ class ModifyInstanceRemarkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -21468,9 +25150,20 @@ class ModifyNetworkRuleAttributeRequest(TeaModel):
         frontend_port: int = None,
         instance_id: str = None,
     ):
+        # The session persistence settings of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **PersistenceTimeout**: The timeout period of session persistence. This field is required and must be of the integer type. Valid values: **30** to **3600**. Unit: seconds. Default value: **0**. A value of 0 indicates that session persistence is disabled.
         self.config = config
+        # The forwarding protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.forward_protocol = forward_protocol
+        # The forwarding port.
         self.frontend_port = frontend_port
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -21510,6 +25203,7 @@ class ModifyNetworkRuleAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21576,6 +25270,118 @@ class ModifyNetworkRuleAttributeResponse(TeaModel):
         return self
 
 
+class ModifyOcspStatusRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        enable: int = None,
+    ):
+        # The domain name for which you want to configure the Static Page Caching policy.
+        # 
+        # > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        self.domain = domain
+        # Specifies whether to enable the OCSP feature. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class ModifyOcspStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyOcspStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyOcspStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyOcspStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyPortRequest(TeaModel):
     def __init__(
         self,
@@ -21585,10 +25391,20 @@ class ModifyPortRequest(TeaModel):
         instance_id: str = None,
         real_servers: List[str] = None,
     ):
+        # The port of the origin server. Valid values: **0** to **65535**.
         self.backend_port = backend_port
+        # The forwarding port. Valid values: **0** to **65535**.
         self.frontend_port = frontend_port
+        # The type of the protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.frontend_protocol = frontend_protocol
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # An array that consists of the IP addresses of origin servers.
         self.real_servers = real_servers
 
     def validate(self):
@@ -21632,6 +25448,7 @@ class ModifyPortResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -21705,8 +25522,20 @@ class ModifyPortAutoCcStatusRequest(TeaModel):
         mode: str = None,
         switch: str = None,
     ):
+        # The ID of the instance.
+        # 
+        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The mode of the Intelligent Protection policy. Valid values:
+        # 
+        # *   **normal**\
+        # *   **loose**\
+        # *   **strict**\
         self.mode = mode
+        # Specifies the status of the Intelligent Protection policy. Valid values:
+        # 
+        # *   **on**: enables the policy.
+        # *   **off**: disables the policy.
         self.switch = switch
 
     def validate(self):
@@ -21742,6 +25571,7 @@ class ModifyPortAutoCcStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21817,10 +25647,20 @@ class ModifySceneDefensePolicyRequest(TeaModel):
         start_time: int = None,
         template: str = None,
     ):
+        # The end time of the policy. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
+        # The name of the policy.
         self.name = name
+        # The ID of the policy that you want to modify.
+        # 
+        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
         self.policy_id = policy_id
+        # The start time of the policy. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
+        # The template of the policy. Valid values:
+        # 
+        # *   **promotion**: important activity
+        # *   **bypass**: all traffic forwarded
         self.template = template
 
     def validate(self):
@@ -21865,7 +25705,12 @@ class ModifySceneDefensePolicyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -21945,10 +25790,48 @@ class ModifySchedulerRuleRequest(TeaModel):
         rule_type: int = None,
         rules: str = None,
     ):
+        # The details of the CDN interaction rule. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **ParamType**: the type of the scheduling rule. This field is required and must be of the string type. Set the value to **cdn**. This indicates that you want to modify a CDN interaction rule.
+        # 
+        # *   **ParamData**: the values of parameters that you want to modify for the CDN interaction rule. This field is required and must be of the map type. The ParamData parameter contains the following parameters:
+        # 
+        #     *   **Domain**: the accelerated domain in CDN. This parameter is required and must be of the string type.
+        #     *   **Cname**: the CNAME that is assigned to the accelerated domain. This parameter is required and must be of the string type.
+        #     *   **AccessQps**: the queries per second (QPS) threshold that is used to switch service traffic to Anti-DDoS Pro or Anti-DDoS Premium. This parameter is required and must be of the integer type.
+        #     *   **UpstreamQps**: the QPS threshold that is used to switch service traffic to CDN. This parameter is optional and must be of the integer type.
         self.param = param
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The name of the rule that you want to modify.
         self.rule_name = rule_name
+        # The type of the rule. Valid values:
+        # 
+        # *   **2**: tiered protection
+        # *   **3**: network acceleration
+        # *   **5**: Alibaba Cloud CDN (CDN) interaction
+        # *   **6**: cloud service interaction
         self.rule_type = rule_type
+        # The details of the scheduling rule. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **Type**: the address type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type. Valid values:
+        # 
+        #     *   **A**: IP address
+        #     *   **CNAME**: domain name
+        # 
+        # *   **Value**: the address of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type.
+        # 
+        # *   **Priority**: the priority of the scheduling rule. This field is required and must be of the integer type. Valid values: **0** to **100**. A larger value indicates a higher priority.
+        # 
+        # *   **ValueType**: the type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the integer type. Valid values:
+        # 
+        #     *   **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
+        #     *   **2**: the IP address of the interaction resource in the tiered protection scenario
+        #     *   **3**: the IP address that is used to accelerate access in the network acceleration scenario
+        #     *   **5**: the domain name that is configured in Alibaba Cloud CDN (CDN) in the CDN interaction scenario
+        #     *   **6** the IP address of the interaction resource in the cloud service interaction scenario
+        # 
+        # *   **RegionId**: the region where the interaction resource is deployed. This parameter must be specified when **ValueType** is set to **2**. The value must be of the string type.
         self.rules = rules
 
     def validate(self):
@@ -21994,8 +25877,13 @@ class ModifySchedulerRuleResponseBody(TeaModel):
         request_id: str = None,
         rule_name: str = None,
     ):
+        # The CNAME that is assigned by Sec-Traffic Manager for the scheduling rule.
+        # 
+        # > To enable the scheduling rule, you must map the domain name of the service to the CNAME.
         self.cname = cname
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The name of the rule.
         self.rule_name = rule_name
 
     def validate(self):
@@ -22077,8 +25965,26 @@ class ModifyTlsConfigRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The details of the TLS policy. The value is a JSON string that contains the following fields:
+        # 
+        # *   **ssl_protocols**: the version of TLS. This field is required. Data type: string. Valid values:
+        # 
+        #     *   **tls1.0**: TLS 1.0 and later
+        #     *   **tls1.1**: TLS 1.1 and later
+        #     *   **tls1.2**: TLS 1.2 and later
+        # 
+        # *   **ssl_ciphers**: the type of the cipher suite. This field is required. Data type: string. Valid values:
+        # 
+        #     *   **all**: all cipher suites, which include strong and weak cipher suites
+        #     *   **improved**: enhanced cipher suites
+        #     *   **strong**: strong cipher suites
+        #     *   **default**: default cipher suites, which include only strong cipher suites
         self.config = config
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -22114,6 +26020,7 @@ class ModifyTlsConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -22187,8 +26094,24 @@ class ModifyWebAIProtectModeRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The details of the Intelligent Protection policy. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **AiTemplate**: the level of the Intelligent Protection policy. This field is required and must be of the STRING type. Valid values:
+        # 
+        #     *   **level30**: the Low level
+        #     *   **level60**: the Normal level
+        #     *   **level90**: the Strict level
+        # 
+        # *   **AiMode**: the mode of the Intelligent Protection policy. This field is required and must be of the string type. Valid values:
+        # 
+        #     *   **watch**: the Warning mode
+        #     *   **defense**: the Defense mode
         self.config = config
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -22224,6 +26147,7 @@ class ModifyWebAIProtectModeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22297,8 +26221,18 @@ class ModifyWebAIProtectSwitchRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The details of the Intelligent Protection policy. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **AiRuleEnable**: the status of the Intelligent Protection policy. This field is required and must be of the integer type. Valid values:
+        # 
+        #     *   **0**: disabled
+        #     *   **1**: enabled
         self.config = config
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -22334,6 +26268,7 @@ class ModifyWebAIProtectSwitchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22406,7 +26341,15 @@ class ModifyWebAccessModeRequest(TeaModel):
         access_mode: int = None,
         domain: str = None,
     ):
+        # The mode in which a website service is added to Anti-DDoS Pro or Anti-DDoS Premium. Valid values:
+        # 
+        # *   **0**: A record mode
+        # *   **1**: anti-DDoS mode
+        # *   **2**: origin redundancy mode
         self.access_mode = access_mode
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
 
     def validate(self):
@@ -22438,6 +26381,7 @@ class ModifyWebAccessModeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22511,8 +26455,17 @@ class ModifyWebAreaBlockRequest(TeaModel):
         regions: List[str] = None,
         resource_group_id: str = None,
     ):
+        # The domain name whose configurations you want to modify.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The regions from which you block requests.
+        # 
+        # > If you do not configure this parameter, the Blocked Regions (Domain Names) policy is disabled.
         self.regions = regions
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -22548,6 +26501,7 @@ class ModifyWebAreaBlockResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22621,8 +26575,20 @@ class ModifyWebAreaBlockSwitchRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # Specifies whether to enable or disable the Location Blacklist (Domain Names) policy for a domain name. The value is a string that consists of a JSON struct. The JSON struct contains the following parameters:
+        # 
+        # *   **RegionblockEnable**: the status of the Location Blacklist (Domain Names) policy. This parameter is required and must be of the INTEGER type. Valid values:
+        # 
+        #     *   **1**: enables the policy.
+        #     *   **0**: disables the policy.
         self.config = config
+        # The domain name for which you want to enable or disable the Location Blacklist policy.
+        # 
+        # > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -22658,6 +26624,7 @@ class ModifyWebAreaBlockSwitchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22877,8 +26844,25 @@ class ModifyWebCacheCustomRuleRequest(TeaModel):
         resource_group_id: str = None,
         rules: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The details of the custom rule. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **Name**: the name of the rule. This field is required and must be of the string type.
+        # 
+        # *   **Uri**: the path to the cached page. This field is required and must be of the STRING type.
+        # 
+        # *   **Mode**: the cache mode. This field is required and must be of the STRING type. Valid values:
+        # 
+        #     *   **standard**: uses the standard mode.
+        #     *   **aggressive**: uses the enhanced mode.
+        #     *   **bypass**: No data is cached.
+        # 
+        # *   **CacheTtl**: the expiration time of the page cache. This field is required and must be of the INTEGER type. Unit: seconds.
         self.rules = rules
 
     def validate(self):
@@ -22914,6 +26898,7 @@ class ModifyWebCacheCustomRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22987,8 +26972,17 @@ class ModifyWebCacheModeRequest(TeaModel):
         mode: str = None,
         resource_group_id: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The cache mode of the Static Page Caching policy. Valid values:
+        # 
+        # *   **standard**: uses the standard cache mode.
+        # *   **aggressive**: uses the enhanced cache mode.
+        # *   **bypass**: caches no data.
         self.mode = mode
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -23024,6 +27018,7 @@ class ModifyWebCacheModeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23097,8 +27092,18 @@ class ModifyWebCacheSwitchRequest(TeaModel):
         enable: int = None,
         resource_group_id: str = None,
     ):
+        # The domain name for which you want to configure the Static Page Caching policy.
+        # 
+        # > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
         self.domain = domain
+        # Specifies whether to enable or disable the Static Page Caching policy for a website. Valid values:
+        # 
+        # *   **1**: enables the policy.
+        # *   **0**: disables the policy.
         self.enable = enable
+        # The ID of the resource group to which the instance belongs in Resource Management.
+        # 
+        # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -23134,6 +27139,7 @@ class ModifyWebCacheSwitchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23207,8 +27213,18 @@ class ModifyWebIpSetSwitchRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The details of the Black Lists and White Lists (Domain Names) policy. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **Bwlist_Enable**: the status of the Black Lists and White Lists (Domain Names) policy. This field is required and must be of the integer type. Valid values:
+        # 
+        #     *   **0**: disabled
+        #     *   **1**: enabled
         self.config = config
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -23244,6 +27260,7 @@ class ModifyWebIpSetSwitchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23318,9 +27335,41 @@ class ModifyWebPreciseAccessRuleRequest(TeaModel):
         resource_group_id: str = None,
         rules: str = None,
     ):
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The validity period of the rule. Unit: seconds. This parameter takes effect only when **action** of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. If you do not specify this parameter, this rule takes effect all the time.
         self.expires = expires
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The settings of the accurate access control rule. This parameter is a JSON string. The following list describes the fields in the value of the parameter:
+        # 
+        # *   **action**: the action that is performed if the rule is matched. This field is required and must be of the string type. Valid values:
+        # 
+        #     *   **accept**: allows the requests that match the rule.
+        #     *   **block**: blocks the requests that match the rule.
+        #     *   **challenge**: implements a CAPTCHA for the requests that match the rule.
+        # 
+        # *   **name**: the name of the rule. This field is required and must be of the string type.
+        # 
+        # *   **condition**: the match conditions. This field is required and must be of the map type. A match condition contains the following parameters.
+        # 
+        #     **\
+        # 
+        #     **Note**The AND logical operator is used to define the relationship among multiple match conditions.
+        # 
+        #     *   **field**: the match field. This parameter is required and must be of the string type.
+        # 
+        #     *   **match_method**: the logical relation. This parameter is required and must be of the string type.
+        # 
+        #         **\
+        # 
+        #         **Note**For information about the mappings between the **field** and **match_method** parameters, see the Mappings between the field and match_method parameters table in this topic.
+        # 
+        #     *   **content**: the match content. This parameter is required and must be of the string type.
+        # 
+        # *   **header_name**: the HTTP header. This parameter is optional and must be of the string type. This parameter takes effect only when **field** is **header**.
         self.rules = rules
 
     def validate(self):
@@ -23360,6 +27409,7 @@ class ModifyWebPreciseAccessRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -23433,8 +27483,18 @@ class ModifyWebPreciseAccessSwitchRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
+        # The configuration of the Accurate Access Control policy. This parameter is a JSON string. The string contains the following fields:
+        # 
+        # *   **PreciseRuleEnable**: the status of the Accurate Access Control policy. This field is required and must be of the INTEGER type. Valid values:
+        # 
+        #     *   **0**: disables the policy.
+        #     *   **1**: enables the policy.
         self.config = config
+        # The domain name of the website.
+        # 
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
         self.domain = domain
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -23470,6 +27530,7 @@ class ModifyWebPreciseAccessSwitchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23775,8 +27836,30 @@ class SwitchSchedulerRuleRequest(TeaModel):
         rule_type: int = None,
         switch_data: str = None,
     ):
+        # The name of the scheduling rule to manage.
+        # 
+        # > You can call the [DescribeSchedulerRules](~~157481~~) operation to query the names of all scheduling rules.
         self.rule_name = rule_name
+        # The type of the scheduling rule. Valid values:
+        # 
+        # *   **2**: tiered protection rule
+        # *   **3**: network acceleration rule
+        # *   **5**: Alibaba Cloud CDN (CDN) interaction rule
+        # *   **6**: cloud service interaction rule
         self.rule_type = rule_type
+        # The configuration that is used to switch service traffic. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that includes the following parameters:
+        # 
+        # *   **Value**: required. The IP address of the associated resource. Data type: string.
+        # 
+        # *   **State**: required. The operation type. Data type: integer. Valid values:
+        # 
+        #     *   **0**: switches service traffic from the associated resource to your Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing.
+        #     *   **1**: switches service traffic back to the associated cloud resource.
+        # 
+        # *   **Interval**: optional. The waiting time that is required before the service traffic is switched back. Unit: minutes. Data type: integer. Usage notes:
+        # 
+        #     *   If the **State** parameter is set to **0**, you must set this parameter to \*\*-1\*\*. Otherwise, the call fails.
+        #     *   If the **State** parameter is set to **1**, you do not need to set this parameter.
         self.switch_data = switch_data
 
     def validate(self):
@@ -23812,6 +27895,7 @@ class SwitchSchedulerRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
