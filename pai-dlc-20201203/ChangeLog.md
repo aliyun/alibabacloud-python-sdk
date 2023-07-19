@@ -1,3 +1,6 @@
+2023-07-19 Version: 1.2.7
+- Open the API.
+
 2023-05-26 Version: 1.2.6
 - Add parameter in JobElasticSpec.
 

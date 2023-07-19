@@ -1063,6 +1063,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
 
+    def get_web_terminal_with_options(
+        self,
+        job_id: str,
+        pod_id: str,
+        request: pai_dlc_20201203_models.GetWebTerminalRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pod_uid):
+            query['PodUid'] = request.pod_uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWebTerminal',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/pods/{OpenApiUtilClient.get_encode_param(pod_id)}/webterminal',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.GetWebTerminalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_web_terminal_with_options_async(
+        self,
+        job_id: str,
+        pod_id: str,
+        request: pai_dlc_20201203_models.GetWebTerminalRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pod_uid):
+            query['PodUid'] = request.pod_uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWebTerminal',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/pods/{OpenApiUtilClient.get_encode_param(pod_id)}/webterminal',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.GetWebTerminalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_web_terminal(
+        self,
+        job_id: str,
+        pod_id: str,
+        request: pai_dlc_20201203_models.GetWebTerminalRequest,
+    ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_web_terminal_with_options(job_id, pod_id, request, headers, runtime)
+
+    async def get_web_terminal_async(
+        self,
+        job_id: str,
+        pod_id: str,
+        request: pai_dlc_20201203_models.GetWebTerminalRequest,
+    ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_web_terminal_with_options_async(job_id, pod_id, request, headers, runtime)
+
     def list_ecs_specs_with_options(
         self,
         request: pai_dlc_20201203_models.ListEcsSpecsRequest,
