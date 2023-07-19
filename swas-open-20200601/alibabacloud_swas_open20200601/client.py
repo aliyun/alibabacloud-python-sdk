@@ -3087,9 +3087,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.ListDisksResponse:
         """
+        ## Usage notes
         You can specify multiple request parameters such as `InstanceId` and `DiskIds`. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        ## QPS limits
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
         
         @param request: ListDisksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3134,9 +3133,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.ListDisksResponse:
         """
+        ## Usage notes
         You can specify multiple request parameters such as `InstanceId` and `DiskIds`. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        ## QPS limits
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
         
         @param request: ListDisksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3180,9 +3178,8 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.ListDisksRequest,
     ) -> swas__open20200601_models.ListDisksResponse:
         """
+        ## Usage notes
         You can specify multiple request parameters such as `InstanceId` and `DiskIds`. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        ## QPS limits
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
         
         @param request: ListDisksRequest
         @return: ListDisksResponse
@@ -3195,9 +3192,8 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.ListDisksRequest,
     ) -> swas__open20200601_models.ListDisksResponse:
         """
+        ## Usage notes
         You can specify multiple request parameters such as `InstanceId` and `DiskIds`. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        ## QPS limits
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](/help/en/simple-application-server/latest/qps-limit-1).
         
         @param request: ListDisksRequest
         @return: ListDisksResponse
@@ -3659,6 +3655,8 @@ class Client(OpenApiClient):
             query['PublicIpAddresses'] = request.public_ip_addresses
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3706,6 +3704,8 @@ class Client(OpenApiClient):
             query['PublicIpAddresses'] = request.public_ip_addresses
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4075,9 +4075,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.ListSnapshotsResponse:
         """
-        You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        ## QPS limits
-        The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+        ## Description
+        You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
+        ### QPS limits
+        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](~~347607~~).
         
         @param request: ListSnapshotsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4124,9 +4125,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.ListSnapshotsResponse:
         """
-        You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        ## QPS limits
-        The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+        ## Description
+        You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
+        ### QPS limits
+        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](~~347607~~).
         
         @param request: ListSnapshotsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4172,9 +4174,10 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.ListSnapshotsRequest,
     ) -> swas__open20200601_models.ListSnapshotsResponse:
         """
-        You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        ## QPS limits
-        The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+        ## Description
+        You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
+        ### QPS limits
+        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](~~347607~~).
         
         @param request: ListSnapshotsRequest
         @return: ListSnapshotsResponse
@@ -4187,9 +4190,10 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.ListSnapshotsRequest,
     ) -> swas__open20200601_models.ListSnapshotsResponse:
         """
-        You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        ## QPS limits
-        The queries per second (QPS) limit for a single user for the API operation is 10 calls per minute. If the number of calls to the API operation per minute exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](/help/en/simple-application-server/latest/qps-limit-1).
+        ## Description
+        You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
+        ### QPS limits
+        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](~~347607~~).
         
         @param request: ListSnapshotsRequest
         @return: ListSnapshotsResponse
@@ -6080,6 +6084,80 @@ class Client(OpenApiClient):
     ) -> swas__open20200601_models.StartInstancesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.start_instances_with_options_async(request, runtime)
+
+    def start_terminal_session_with_options(
+        self,
+        request: swas__open20200601_models.StartTerminalSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> swas__open20200601_models.StartTerminalSessionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartTerminalSession',
+            version='2020-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            swas__open20200601_models.StartTerminalSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_terminal_session_with_options_async(
+        self,
+        request: swas__open20200601_models.StartTerminalSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> swas__open20200601_models.StartTerminalSessionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartTerminalSession',
+            version='2020-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            swas__open20200601_models.StartTerminalSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_terminal_session(
+        self,
+        request: swas__open20200601_models.StartTerminalSessionRequest,
+    ) -> swas__open20200601_models.StartTerminalSessionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_terminal_session_with_options(request, runtime)
+
+    async def start_terminal_session_async(
+        self,
+        request: swas__open20200601_models.StartTerminalSessionRequest,
+    ) -> swas__open20200601_models.StartTerminalSessionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_terminal_session_with_options_async(request, runtime)
 
     def stop_database_instance_with_options(
         self,
