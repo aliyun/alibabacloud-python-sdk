@@ -8353,10 +8353,14 @@ class DescribeTrFirewallsV2DetailResponseBody(TeaModel):
         firewall_id: str = None,
         firewall_name: str = None,
         firewall_status: str = None,
+        firewall_subnet_cidr: str = None,
         firewall_switch_status: str = None,
+        firewall_vpc_cidr: str = None,
         region_no: str = None,
         request_id: str = None,
         route_mode: str = None,
+        tr_attachment_master_cidr: str = None,
+        tr_attachment_slave_cidr: str = None,
         transit_router_id: str = None,
     ):
         self.cen_id = cen_id
@@ -8367,10 +8371,14 @@ class DescribeTrFirewallsV2DetailResponseBody(TeaModel):
         self.firewall_id = firewall_id
         self.firewall_name = firewall_name
         self.firewall_status = firewall_status
+        self.firewall_subnet_cidr = firewall_subnet_cidr
         self.firewall_switch_status = firewall_switch_status
+        self.firewall_vpc_cidr = firewall_vpc_cidr
         self.region_no = region_no
         self.request_id = request_id
         self.route_mode = route_mode
+        self.tr_attachment_master_cidr = tr_attachment_master_cidr
+        self.tr_attachment_slave_cidr = tr_attachment_slave_cidr
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -8398,14 +8406,22 @@ class DescribeTrFirewallsV2DetailResponseBody(TeaModel):
             result['FirewallName'] = self.firewall_name
         if self.firewall_status is not None:
             result['FirewallStatus'] = self.firewall_status
+        if self.firewall_subnet_cidr is not None:
+            result['FirewallSubnetCidr'] = self.firewall_subnet_cidr
         if self.firewall_switch_status is not None:
             result['FirewallSwitchStatus'] = self.firewall_switch_status
+        if self.firewall_vpc_cidr is not None:
+            result['FirewallVpcCidr'] = self.firewall_vpc_cidr
         if self.region_no is not None:
             result['RegionNo'] = self.region_no
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.route_mode is not None:
             result['RouteMode'] = self.route_mode
+        if self.tr_attachment_master_cidr is not None:
+            result['TrAttachmentMasterCidr'] = self.tr_attachment_master_cidr
+        if self.tr_attachment_slave_cidr is not None:
+            result['TrAttachmentSlaveCidr'] = self.tr_attachment_slave_cidr
         if self.transit_router_id is not None:
             result['TransitRouterId'] = self.transit_router_id
         return result
@@ -8428,14 +8444,22 @@ class DescribeTrFirewallsV2DetailResponseBody(TeaModel):
             self.firewall_name = m.get('FirewallName')
         if m.get('FirewallStatus') is not None:
             self.firewall_status = m.get('FirewallStatus')
+        if m.get('FirewallSubnetCidr') is not None:
+            self.firewall_subnet_cidr = m.get('FirewallSubnetCidr')
         if m.get('FirewallSwitchStatus') is not None:
             self.firewall_switch_status = m.get('FirewallSwitchStatus')
+        if m.get('FirewallVpcCidr') is not None:
+            self.firewall_vpc_cidr = m.get('FirewallVpcCidr')
         if m.get('RegionNo') is not None:
             self.region_no = m.get('RegionNo')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('RouteMode') is not None:
             self.route_mode = m.get('RouteMode')
+        if m.get('TrAttachmentMasterCidr') is not None:
+            self.tr_attachment_master_cidr = m.get('TrAttachmentMasterCidr')
+        if m.get('TrAttachmentSlaveCidr') is not None:
+            self.tr_attachment_slave_cidr = m.get('TrAttachmentSlaveCidr')
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
         return self
@@ -15720,11 +15744,13 @@ class ModifyVpcFirewallControlPolicyResponse(TeaModel):
 class ModifyVpcFirewallControlPolicyPositionRequest(TeaModel):
     def __init__(
         self,
+        acl_uuid: str = None,
         lang: str = None,
         new_order: str = None,
         old_order: str = None,
         vpc_firewall_id: str = None,
     ):
+        self.acl_uuid = acl_uuid
         # The natural language of the request and response. 
         # 
         # Valid values:
@@ -15757,6 +15783,8 @@ class ModifyVpcFirewallControlPolicyPositionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.acl_uuid is not None:
+            result['AclUuid'] = self.acl_uuid
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.new_order is not None:
@@ -15769,6 +15797,8 @@ class ModifyVpcFirewallControlPolicyPositionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AclUuid') is not None:
+            self.acl_uuid = m.get('AclUuid')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('NewOrder') is not None:

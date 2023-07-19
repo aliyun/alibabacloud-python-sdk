@@ -1,3 +1,10 @@
+2023-07-19 Version: 1.3.1
+- Add new api DescribeSignatureLibVersion to support describe IPS lib version.
+- Support DescribePostpayTrafficTotal for postpay user flow detail.
+- Support DescribePostpayTrafficDetail for postpay user flow detail.
+- Support MoveAcl Uuid.
+- DescribeTrFirewallsV2Detail show firewall VPC and firewall Vswitch CIDR configuration.
+
 2023-07-04 Version: 1.3.0
 - Support vpc firewall summary info.
 - Support IPS whitelist and IPS config.
