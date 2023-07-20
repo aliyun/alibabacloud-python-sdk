@@ -92,13 +92,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.AttachAlbServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.AttachAlbServerGroupsResponse:
-        """
-        Associates one or more Application Load Balancer (ALB) server groups with a scaling group.
-        
-        @param request: AttachAlbServerGroupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachAlbServerGroupsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alb_server_groups):
@@ -139,13 +132,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.AttachAlbServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.AttachAlbServerGroupsResponse:
-        """
-        Associates one or more Application Load Balancer (ALB) server groups with a scaling group.
-        
-        @param request: AttachAlbServerGroupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachAlbServerGroupsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alb_server_groups):
@@ -185,12 +171,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.AttachAlbServerGroupsRequest,
     ) -> ess_20220222_models.AttachAlbServerGroupsResponse:
-        """
-        Associates one or more Application Load Balancer (ALB) server groups with a scaling group.
-        
-        @param request: AttachAlbServerGroupsRequest
-        @return: AttachAlbServerGroupsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.attach_alb_server_groups_with_options(request, runtime)
 
@@ -198,12 +178,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.AttachAlbServerGroupsRequest,
     ) -> ess_20220222_models.AttachAlbServerGroupsResponse:
-        """
-        Associates one or more Application Load Balancer (ALB) server groups with a scaling group.
-        
-        @param request: AttachAlbServerGroupsRequest
-        @return: AttachAlbServerGroupsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_alb_server_groups_with_options_async(request, runtime)
 
@@ -212,13 +186,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.AttachDBInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.AttachDBInstancesResponse:
-        """
-        Associates one or more ApsaraDB RDS instances with a scaling group.
-        
-        @param request: AttachDBInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachDBInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -259,13 +226,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.AttachDBInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.AttachDBInstancesResponse:
-        """
-        Associates one or more ApsaraDB RDS instances with a scaling group.
-        
-        @param request: AttachDBInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachDBInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -305,12 +265,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.AttachDBInstancesRequest,
     ) -> ess_20220222_models.AttachDBInstancesResponse:
-        """
-        Associates one or more ApsaraDB RDS instances with a scaling group.
-        
-        @param request: AttachDBInstancesRequest
-        @return: AttachDBInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.attach_dbinstances_with_options(request, runtime)
 
@@ -318,12 +272,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.AttachDBInstancesRequest,
     ) -> ess_20220222_models.AttachDBInstancesResponse:
-        """
-        Associates one or more ApsaraDB RDS instances with a scaling group.
-        
-        @param request: AttachDBInstancesRequest
-        @return: AttachDBInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_dbinstances_with_options_async(request, runtime)
 
@@ -332,13 +280,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.AttachInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.AttachInstancesResponse:
-        """
-        Manually adds Elastic Compute Service (ECS) instances or elastic container instances to a scaling group.
-        
-        @param request: AttachInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entrusted):
@@ -385,13 +326,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.AttachInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.AttachInstancesResponse:
-        """
-        Manually adds Elastic Compute Service (ECS) instances or elastic container instances to a scaling group.
-        
-        @param request: AttachInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entrusted):
@@ -437,12 +371,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.AttachInstancesRequest,
     ) -> ess_20220222_models.AttachInstancesResponse:
-        """
-        Manually adds Elastic Compute Service (ECS) instances or elastic container instances to a scaling group.
-        
-        @param request: AttachInstancesRequest
-        @return: AttachInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.attach_instances_with_options(request, runtime)
 
@@ -450,12 +378,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.AttachInstancesRequest,
     ) -> ess_20220222_models.AttachInstancesResponse:
-        """
-        Manually adds Elastic Compute Service (ECS) instances or elastic container instances to a scaling group.
-        
-        @param request: AttachInstancesRequest
-        @return: AttachInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_instances_with_options_async(request, runtime)
 
@@ -464,13 +386,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.AttachLoadBalancersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.AttachLoadBalancersResponse:
-        """
-        Attaches one or more Classic Load Balancer (CLB) instances to a scaling group.
-        
-        @param request: AttachLoadBalancersRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachLoadBalancersResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.async_):
@@ -513,13 +428,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.AttachLoadBalancersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.AttachLoadBalancersResponse:
-        """
-        Attaches one or more Classic Load Balancer (CLB) instances to a scaling group.
-        
-        @param request: AttachLoadBalancersRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachLoadBalancersResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.async_):
@@ -561,12 +469,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.AttachLoadBalancersRequest,
     ) -> ess_20220222_models.AttachLoadBalancersResponse:
-        """
-        Attaches one or more Classic Load Balancer (CLB) instances to a scaling group.
-        
-        @param request: AttachLoadBalancersRequest
-        @return: AttachLoadBalancersResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.attach_load_balancers_with_options(request, runtime)
 
@@ -574,12 +476,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.AttachLoadBalancersRequest,
     ) -> ess_20220222_models.AttachLoadBalancersResponse:
-        """
-        Attaches one or more Classic Load Balancer (CLB) instances to a scaling group.
-        
-        @param request: AttachLoadBalancersRequest
-        @return: AttachLoadBalancersResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_load_balancers_with_options_async(request, runtime)
 
@@ -682,13 +578,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.AttachVServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.AttachVServerGroupsResponse:
-        """
-        Attaches one or more vServer groups of a Classic Load Balancer (CLB) instance to a scaling group.
-        
-        @param request: AttachVServerGroupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachVServerGroupsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -729,13 +618,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.AttachVServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.AttachVServerGroupsResponse:
-        """
-        Attaches one or more vServer groups of a Classic Load Balancer (CLB) instance to a scaling group.
-        
-        @param request: AttachVServerGroupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachVServerGroupsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -775,12 +657,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.AttachVServerGroupsRequest,
     ) -> ess_20220222_models.AttachVServerGroupsResponse:
-        """
-        Attaches one or more vServer groups of a Classic Load Balancer (CLB) instance to a scaling group.
-        
-        @param request: AttachVServerGroupsRequest
-        @return: AttachVServerGroupsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.attach_vserver_groups_with_options(request, runtime)
 
@@ -788,12 +664,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.AttachVServerGroupsRequest,
     ) -> ess_20220222_models.AttachVServerGroupsResponse:
-        """
-        Attaches one or more vServer groups of a Classic Load Balancer (CLB) instance to a scaling group.
-        
-        @param request: AttachVServerGroupsRequest
-        @return: AttachVServerGroupsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_vserver_groups_with_options_async(request, runtime)
 
@@ -802,13 +672,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ChangeResourceGroupResponse:
-        """
-        A resource is an entity of cloud services that you create on Alibaba Cloud. For example, a scaling group is a resource. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources, monitor resources, and perform operations in a centralized manner. This way, you do not need to view and check your Alibaba Cloud resources in each Alibaba Cloud service.
-        
-        @param request: ChangeResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ChangeResourceGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -847,13 +710,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ChangeResourceGroupResponse:
-        """
-        A resource is an entity of cloud services that you create on Alibaba Cloud. For example, a scaling group is a resource. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources, monitor resources, and perform operations in a centralized manner. This way, you do not need to view and check your Alibaba Cloud resources in each Alibaba Cloud service.
-        
-        @param request: ChangeResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ChangeResourceGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -891,12 +747,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.ChangeResourceGroupRequest,
     ) -> ess_20220222_models.ChangeResourceGroupResponse:
-        """
-        A resource is an entity of cloud services that you create on Alibaba Cloud. For example, a scaling group is a resource. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources, monitor resources, and perform operations in a centralized manner. This way, you do not need to view and check your Alibaba Cloud resources in each Alibaba Cloud service.
-        
-        @param request: ChangeResourceGroupRequest
-        @return: ChangeResourceGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.change_resource_group_with_options(request, runtime)
 
@@ -904,12 +754,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.ChangeResourceGroupRequest,
     ) -> ess_20220222_models.ChangeResourceGroupResponse:
-        """
-        A resource is an entity of cloud services that you create on Alibaba Cloud. For example, a scaling group is a resource. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources, monitor resources, and perform operations in a centralized manner. This way, you do not need to view and check your Alibaba Cloud resources in each Alibaba Cloud service.
-        
-        @param request: ChangeResourceGroupRequest
-        @return: ChangeResourceGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
@@ -1042,17 +886,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateAlarmResponse:
-        """
-        If you set the MetricType parameter to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using custom metrics. For more information, see [Custom monitoring event-triggered tasks](~~74861~~).
-        *   When you create an event-triggered task, you must specify the MetricName, DimensionKey, and DimensionValue parameters to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances or elastic container instances in a scaling group within an Alibaba Cloud account.
-        *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
-        *   For information about the supported metrics when you set the MetricType parameter to system, see [Event-triggered task for system monitoring](~~74854~~).
-        > The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see the `DimensionKey` and `DimensionValue` parameters in the "Request parameters" section of this topic.
-        
-        @param request: CreateAlarmRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAlarmResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm_actions):
@@ -1117,17 +950,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateAlarmResponse:
-        """
-        If you set the MetricType parameter to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using custom metrics. For more information, see [Custom monitoring event-triggered tasks](~~74861~~).
-        *   When you create an event-triggered task, you must specify the MetricName, DimensionKey, and DimensionValue parameters to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances or elastic container instances in a scaling group within an Alibaba Cloud account.
-        *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
-        *   For information about the supported metrics when you set the MetricType parameter to system, see [Event-triggered task for system monitoring](~~74854~~).
-        > The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see the `DimensionKey` and `DimensionValue` parameters in the "Request parameters" section of this topic.
-        
-        @param request: CreateAlarmRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAlarmResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm_actions):
@@ -1191,16 +1013,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.CreateAlarmRequest,
     ) -> ess_20220222_models.CreateAlarmResponse:
-        """
-        If you set the MetricType parameter to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using custom metrics. For more information, see [Custom monitoring event-triggered tasks](~~74861~~).
-        *   When you create an event-triggered task, you must specify the MetricName, DimensionKey, and DimensionValue parameters to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances or elastic container instances in a scaling group within an Alibaba Cloud account.
-        *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
-        *   For information about the supported metrics when you set the MetricType parameter to system, see [Event-triggered task for system monitoring](~~74854~~).
-        > The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see the `DimensionKey` and `DimensionValue` parameters in the "Request parameters" section of this topic.
-        
-        @param request: CreateAlarmRequest
-        @return: CreateAlarmResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.create_alarm_with_options(request, runtime)
 
@@ -1208,16 +1020,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.CreateAlarmRequest,
     ) -> ess_20220222_models.CreateAlarmResponse:
-        """
-        If you set the MetricType parameter to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using custom metrics. For more information, see [Custom monitoring event-triggered tasks](~~74861~~).
-        *   When you create an event-triggered task, you must specify the MetricName, DimensionKey, and DimensionValue parameters to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances or elastic container instances in a scaling group within an Alibaba Cloud account.
-        *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
-        *   For information about the supported metrics when you set the MetricType parameter to system, see [Event-triggered task for system monitoring](~~74854~~).
-        > The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see the `DimensionKey` and `DimensionValue` parameters in the "Request parameters" section of this topic.
-        
-        @param request: CreateAlarmRequest
-        @return: CreateAlarmResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.create_alarm_with_options_async(request, runtime)
 
@@ -1642,13 +1444,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateNotificationConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateNotificationConfigurationResponse:
-        """
-        Creates a notification.
-        
-        @param request: CreateNotificationConfigurationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateNotificationConfigurationResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.notification_arn):
@@ -1687,13 +1482,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateNotificationConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateNotificationConfigurationResponse:
-        """
-        Creates a notification.
-        
-        @param request: CreateNotificationConfigurationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateNotificationConfigurationResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.notification_arn):
@@ -1731,12 +1519,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.CreateNotificationConfigurationRequest,
     ) -> ess_20220222_models.CreateNotificationConfigurationResponse:
-        """
-        Creates a notification.
-        
-        @param request: CreateNotificationConfigurationRequest
-        @return: CreateNotificationConfigurationResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.create_notification_configuration_with_options(request, runtime)
 
@@ -1744,12 +1526,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.CreateNotificationConfigurationRequest,
     ) -> ess_20220222_models.CreateNotificationConfigurationResponse:
-        """
-        Creates a notification.
-        
-        @param request: CreateNotificationConfigurationRequest
-        @return: CreateNotificationConfigurationResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.create_notification_configuration_with_options_async(request, runtime)
 
@@ -1760,12 +1536,12 @@ class Client(OpenApiClient):
     ) -> ess_20220222_models.CreateScalingConfigurationResponse:
         """
         Auto Scaling automatically creates Elastic Compute Service (ECS) instances based on the specified scaling configuration. ECS instances can be created in the following modes:
-        *   InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the lowest-priced instance type based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces the failures of scale-outs caused by insufficient inventory of instance types.
+        *   InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the instance type that has the lowest price based on the configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces scale-out failures caused by insufficient inventory of instance types.
         *   InstanceType: In this mode, you must specify one instance type.
         *   InstanceTypes: In this mode, you can specify more than one instance type.
         *   InstanceTypeOverrides: In this mode, you can specify multiple instance types and weights for the instance types.
-        *   Cpu and Memory: In this mode, you must specify the number of vCPUs and the memory size. Auto Scaling determines the range of available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling creates ECS instances of the lowest-priced instance type. This mode is available only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
-        > You cannot specify InstanceType, InstanceTypes, InstanceTypeOverrides, and Cpu and Memory parameters at the same time. You can specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfo at the same time. If you specify the InstanceType and InstancePatternInfos parameters or specify the InstanceTypes and InstancePatternInfos parameters at the same time, Auto Scaling preferentially uses the instance types that are specified by the InstanceType or InstanceTypes parameter for scale-outs. If the instance types that are specified by the InstanceType or InstanceTypes parameter do not have sufficient inventory, Auto Scaling uses the instance types that are specified by the InstancePatternInfos parameter for scale-outs.
+        *   Cpu and Memory: In this mode, you must specify the number of vCPUs and the memory size. Auto Scaling determines the range of available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling creates ECS instances by using the lowest-priced instance type. This mode is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+        > You cannot specify InstanceType, InstanceTypes, InstanceTypeOverrides, and Cpu and Memory at the same time. You can specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfo at the same time. If you specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfos at the same time, Auto Scaling preferentially uses the instance types that are specified by InstanceType or InstanceTypes for scale-outs. If the instance types that are specified by InstanceType or InstanceTypes do not have sufficient inventory, Auto Scaling uses the instance types that are specified by InstancePatternInfos for scale-outs.
         
         @param tmp_req: CreateScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1905,12 +1681,12 @@ class Client(OpenApiClient):
     ) -> ess_20220222_models.CreateScalingConfigurationResponse:
         """
         Auto Scaling automatically creates Elastic Compute Service (ECS) instances based on the specified scaling configuration. ECS instances can be created in the following modes:
-        *   InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the lowest-priced instance type based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces the failures of scale-outs caused by insufficient inventory of instance types.
+        *   InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the instance type that has the lowest price based on the configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces scale-out failures caused by insufficient inventory of instance types.
         *   InstanceType: In this mode, you must specify one instance type.
         *   InstanceTypes: In this mode, you can specify more than one instance type.
         *   InstanceTypeOverrides: In this mode, you can specify multiple instance types and weights for the instance types.
-        *   Cpu and Memory: In this mode, you must specify the number of vCPUs and the memory size. Auto Scaling determines the range of available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling creates ECS instances of the lowest-priced instance type. This mode is available only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
-        > You cannot specify InstanceType, InstanceTypes, InstanceTypeOverrides, and Cpu and Memory parameters at the same time. You can specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfo at the same time. If you specify the InstanceType and InstancePatternInfos parameters or specify the InstanceTypes and InstancePatternInfos parameters at the same time, Auto Scaling preferentially uses the instance types that are specified by the InstanceType or InstanceTypes parameter for scale-outs. If the instance types that are specified by the InstanceType or InstanceTypes parameter do not have sufficient inventory, Auto Scaling uses the instance types that are specified by the InstancePatternInfos parameter for scale-outs.
+        *   Cpu and Memory: In this mode, you must specify the number of vCPUs and the memory size. Auto Scaling determines the range of available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling creates ECS instances by using the lowest-priced instance type. This mode is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+        > You cannot specify InstanceType, InstanceTypes, InstanceTypeOverrides, and Cpu and Memory at the same time. You can specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfo at the same time. If you specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfos at the same time, Auto Scaling preferentially uses the instance types that are specified by InstanceType or InstanceTypes for scale-outs. If the instance types that are specified by InstanceType or InstanceTypes do not have sufficient inventory, Auto Scaling uses the instance types that are specified by InstancePatternInfos for scale-outs.
         
         @param tmp_req: CreateScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2049,12 +1825,12 @@ class Client(OpenApiClient):
     ) -> ess_20220222_models.CreateScalingConfigurationResponse:
         """
         Auto Scaling automatically creates Elastic Compute Service (ECS) instances based on the specified scaling configuration. ECS instances can be created in the following modes:
-        *   InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the lowest-priced instance type based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces the failures of scale-outs caused by insufficient inventory of instance types.
+        *   InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the instance type that has the lowest price based on the configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces scale-out failures caused by insufficient inventory of instance types.
         *   InstanceType: In this mode, you must specify one instance type.
         *   InstanceTypes: In this mode, you can specify more than one instance type.
         *   InstanceTypeOverrides: In this mode, you can specify multiple instance types and weights for the instance types.
-        *   Cpu and Memory: In this mode, you must specify the number of vCPUs and the memory size. Auto Scaling determines the range of available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling creates ECS instances of the lowest-priced instance type. This mode is available only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
-        > You cannot specify InstanceType, InstanceTypes, InstanceTypeOverrides, and Cpu and Memory parameters at the same time. You can specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfo at the same time. If you specify the InstanceType and InstancePatternInfos parameters or specify the InstanceTypes and InstancePatternInfos parameters at the same time, Auto Scaling preferentially uses the instance types that are specified by the InstanceType or InstanceTypes parameter for scale-outs. If the instance types that are specified by the InstanceType or InstanceTypes parameter do not have sufficient inventory, Auto Scaling uses the instance types that are specified by the InstancePatternInfos parameter for scale-outs.
+        *   Cpu and Memory: In this mode, you must specify the number of vCPUs and the memory size. Auto Scaling determines the range of available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling creates ECS instances by using the lowest-priced instance type. This mode is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+        > You cannot specify InstanceType, InstanceTypes, InstanceTypeOverrides, and Cpu and Memory at the same time. You can specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfo at the same time. If you specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfos at the same time, Auto Scaling preferentially uses the instance types that are specified by InstanceType or InstanceTypes for scale-outs. If the instance types that are specified by InstanceType or InstanceTypes do not have sufficient inventory, Auto Scaling uses the instance types that are specified by InstancePatternInfos for scale-outs.
         
         @param request: CreateScalingConfigurationRequest
         @return: CreateScalingConfigurationResponse
@@ -2068,12 +1844,12 @@ class Client(OpenApiClient):
     ) -> ess_20220222_models.CreateScalingConfigurationResponse:
         """
         Auto Scaling automatically creates Elastic Compute Service (ECS) instances based on the specified scaling configuration. ECS instances can be created in the following modes:
-        *   InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the lowest-priced instance type based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces the failures of scale-outs caused by insufficient inventory of instance types.
+        *   InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the instance type that has the lowest price based on the configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces scale-out failures caused by insufficient inventory of instance types.
         *   InstanceType: In this mode, you must specify one instance type.
         *   InstanceTypes: In this mode, you can specify more than one instance type.
         *   InstanceTypeOverrides: In this mode, you can specify multiple instance types and weights for the instance types.
-        *   Cpu and Memory: In this mode, you must specify the number of vCPUs and the memory size. Auto Scaling determines the range of available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling creates ECS instances of the lowest-priced instance type. This mode is available only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
-        > You cannot specify InstanceType, InstanceTypes, InstanceTypeOverrides, and Cpu and Memory parameters at the same time. You can specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfo at the same time. If you specify the InstanceType and InstancePatternInfos parameters or specify the InstanceTypes and InstancePatternInfos parameters at the same time, Auto Scaling preferentially uses the instance types that are specified by the InstanceType or InstanceTypes parameter for scale-outs. If the instance types that are specified by the InstanceType or InstanceTypes parameter do not have sufficient inventory, Auto Scaling uses the instance types that are specified by the InstancePatternInfos parameter for scale-outs.
+        *   Cpu and Memory: In this mode, you must specify the number of vCPUs and the memory size. Auto Scaling determines the range of available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling creates ECS instances by using the lowest-priced instance type. This mode is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+        > You cannot specify InstanceType, InstanceTypes, InstanceTypeOverrides, and Cpu and Memory at the same time. You can specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfo at the same time. If you specify InstanceType and InstancePatternInfos or specify InstanceTypes and InstancePatternInfos at the same time, Auto Scaling preferentially uses the instance types that are specified by InstanceType or InstanceTypes for scale-outs. If the instance types that are specified by InstanceType or InstanceTypes do not have sufficient inventory, Auto Scaling uses the instance types that are specified by InstancePatternInfos for scale-outs.
         
         @param request: CreateScalingConfigurationRequest
         @return: CreateScalingConfigurationResponse
@@ -2435,7 +2211,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateScalingRuleResponse:
         """
-        Creates a scaling rule.
+        A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling calculates the number of ECS instances that need to be added or removed. This ensures that the number of ECS instances can be maintained within the valid range after the scaling rule is executed. Examples:
+        *   If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified.
+        *   If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified.
+        Before you call this operation, take note of the following items:
+        *   If you set AdjustmentType to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of AdjustmentValue must be greater than or equal to 0.
+        *   If you set AdjustmentType to QuantityChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group.
+        *   If you set AdjustmentType to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that need to be scaled: Value of TotalCapacity × Value of AdjustmentValue/100.
+        *   If you specify a cooldown period for the scaling rule, the specified cooldown period takes effect after the rule is executed. Otherwise, the value of DefaultCooldown of the scaling group takes effect.
+        *   You can create only a limited number of scaling rules for a scaling group. For more information, see the "Limits" topic.
+        *   The unique identifier (ScalingRuleAri) of a scaling rule can be used by the following operations:
+        *   ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to execute.
+        *   CreateScheduledTask: You can call this operation to create a scheduled task. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to associate with the scheduled task.
         
         @param request: CreateScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2516,7 +2303,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateScalingRuleResponse:
         """
-        Creates a scaling rule.
+        A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling calculates the number of ECS instances that need to be added or removed. This ensures that the number of ECS instances can be maintained within the valid range after the scaling rule is executed. Examples:
+        *   If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified.
+        *   If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified.
+        Before you call this operation, take note of the following items:
+        *   If you set AdjustmentType to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of AdjustmentValue must be greater than or equal to 0.
+        *   If you set AdjustmentType to QuantityChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group.
+        *   If you set AdjustmentType to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that need to be scaled: Value of TotalCapacity × Value of AdjustmentValue/100.
+        *   If you specify a cooldown period for the scaling rule, the specified cooldown period takes effect after the rule is executed. Otherwise, the value of DefaultCooldown of the scaling group takes effect.
+        *   You can create only a limited number of scaling rules for a scaling group. For more information, see the "Limits" topic.
+        *   The unique identifier (ScalingRuleAri) of a scaling rule can be used by the following operations:
+        *   ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to execute.
+        *   CreateScheduledTask: You can call this operation to create a scheduled task. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to associate with the scheduled task.
         
         @param request: CreateScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2596,7 +2394,18 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateScalingRuleRequest,
     ) -> ess_20220222_models.CreateScalingRuleResponse:
         """
-        Creates a scaling rule.
+        A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling calculates the number of ECS instances that need to be added or removed. This ensures that the number of ECS instances can be maintained within the valid range after the scaling rule is executed. Examples:
+        *   If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified.
+        *   If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified.
+        Before you call this operation, take note of the following items:
+        *   If you set AdjustmentType to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of AdjustmentValue must be greater than or equal to 0.
+        *   If you set AdjustmentType to QuantityChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group.
+        *   If you set AdjustmentType to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that need to be scaled: Value of TotalCapacity × Value of AdjustmentValue/100.
+        *   If you specify a cooldown period for the scaling rule, the specified cooldown period takes effect after the rule is executed. Otherwise, the value of DefaultCooldown of the scaling group takes effect.
+        *   You can create only a limited number of scaling rules for a scaling group. For more information, see the "Limits" topic.
+        *   The unique identifier (ScalingRuleAri) of a scaling rule can be used by the following operations:
+        *   ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to execute.
+        *   CreateScheduledTask: You can call this operation to create a scheduled task. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to associate with the scheduled task.
         
         @param request: CreateScalingRuleRequest
         @return: CreateScalingRuleResponse
@@ -2609,7 +2418,18 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateScalingRuleRequest,
     ) -> ess_20220222_models.CreateScalingRuleResponse:
         """
-        Creates a scaling rule.
+        A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling calculates the number of ECS instances that need to be added or removed. This ensures that the number of ECS instances can be maintained within the valid range after the scaling rule is executed. Examples:
+        *   If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified.
+        *   If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified.
+        Before you call this operation, take note of the following items:
+        *   If you set AdjustmentType to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of AdjustmentValue must be greater than or equal to 0.
+        *   If you set AdjustmentType to QuantityChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group.
+        *   If you set AdjustmentType to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that need to be scaled: Value of TotalCapacity × Value of AdjustmentValue/100.
+        *   If you specify a cooldown period for the scaling rule, the specified cooldown period takes effect after the rule is executed. Otherwise, the value of DefaultCooldown of the scaling group takes effect.
+        *   You can create only a limited number of scaling rules for a scaling group. For more information, see the "Limits" topic.
+        *   The unique identifier (ScalingRuleAri) of a scaling rule can be used by the following operations:
+        *   ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to execute.
+        *   CreateScheduledTask: You can call this operation to create a scheduled task. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to associate with the scheduled task.
         
         @param request: CreateScalingRuleRequest
         @return: CreateScalingRuleResponse
@@ -2622,13 +2442,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateScheduledTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateScheduledTaskResponse:
-        """
-        Creates a scheduled task.
-        
-        @param request: CreateScheduledTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateScheduledTaskResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2689,13 +2502,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateScheduledTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateScheduledTaskResponse:
-        """
-        Creates a scheduled task.
-        
-        @param request: CreateScheduledTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateScheduledTaskResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2755,12 +2561,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.CreateScheduledTaskRequest,
     ) -> ess_20220222_models.CreateScheduledTaskResponse:
-        """
-        Creates a scheduled task.
-        
-        @param request: CreateScheduledTaskRequest
-        @return: CreateScheduledTaskResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.create_scheduled_task_with_options(request, runtime)
 
@@ -2768,12 +2568,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.CreateScheduledTaskRequest,
     ) -> ess_20220222_models.CreateScheduledTaskResponse:
-        """
-        Creates a scheduled task.
-        
-        @param request: CreateScheduledTaskRequest
-        @return: CreateScheduledTaskResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.create_scheduled_task_with_options_async(request, runtime)
 
@@ -2946,13 +2740,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteEciScalingConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteEciScalingConfigurationResponse:
-        """
-        Deletes a scaling configuration that is used to create elastic container instances.
-        
-        @param request: DeleteEciScalingConfigurationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteEciScalingConfigurationResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -2989,13 +2776,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteEciScalingConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteEciScalingConfigurationResponse:
-        """
-        Deletes a scaling configuration that is used to create elastic container instances.
-        
-        @param request: DeleteEciScalingConfigurationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteEciScalingConfigurationResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -3031,12 +2811,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DeleteEciScalingConfigurationRequest,
     ) -> ess_20220222_models.DeleteEciScalingConfigurationResponse:
-        """
-        Deletes a scaling configuration that is used to create elastic container instances.
-        
-        @param request: DeleteEciScalingConfigurationRequest
-        @return: DeleteEciScalingConfigurationResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.delete_eci_scaling_configuration_with_options(request, runtime)
 
@@ -3044,12 +2818,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DeleteEciScalingConfigurationRequest,
     ) -> ess_20220222_models.DeleteEciScalingConfigurationResponse:
-        """
-        Deletes a scaling configuration that is used to create elastic container instances.
-        
-        @param request: DeleteEciScalingConfigurationRequest
-        @return: DeleteEciScalingConfigurationResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_eci_scaling_configuration_with_options_async(request, runtime)
 
@@ -3058,15 +2826,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteLifecycleHookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteLifecycleHookResponse:
-        """
-        If you delete a lifecycle hook that is in effect in a scaling group, instances exit the Pending state in advance. You can use one of the following methods to specify the lifecycle hooks that you want to delete:
-        *   Specify the scaling group ID of the lifecycle hook that you want to delete by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
-        *   Specify the lifecycle hook ID by using the LifecycleHookId parameter. In this case, the ScalingGroupId parameter and the LifecycleHookName parameter are ignored.
-        
-        @param request: DeleteLifecycleHookRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteLifecycleHookResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lifecycle_hook_id):
@@ -3107,15 +2866,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteLifecycleHookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteLifecycleHookResponse:
-        """
-        If you delete a lifecycle hook that is in effect in a scaling group, instances exit the Pending state in advance. You can use one of the following methods to specify the lifecycle hooks that you want to delete:
-        *   Specify the scaling group ID of the lifecycle hook that you want to delete by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
-        *   Specify the lifecycle hook ID by using the LifecycleHookId parameter. In this case, the ScalingGroupId parameter and the LifecycleHookName parameter are ignored.
-        
-        @param request: DeleteLifecycleHookRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteLifecycleHookResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lifecycle_hook_id):
@@ -3155,14 +2905,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DeleteLifecycleHookRequest,
     ) -> ess_20220222_models.DeleteLifecycleHookResponse:
-        """
-        If you delete a lifecycle hook that is in effect in a scaling group, instances exit the Pending state in advance. You can use one of the following methods to specify the lifecycle hooks that you want to delete:
-        *   Specify the scaling group ID of the lifecycle hook that you want to delete by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
-        *   Specify the lifecycle hook ID by using the LifecycleHookId parameter. In this case, the ScalingGroupId parameter and the LifecycleHookName parameter are ignored.
-        
-        @param request: DeleteLifecycleHookRequest
-        @return: DeleteLifecycleHookResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.delete_lifecycle_hook_with_options(request, runtime)
 
@@ -3170,14 +2912,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DeleteLifecycleHookRequest,
     ) -> ess_20220222_models.DeleteLifecycleHookResponse:
-        """
-        If you delete a lifecycle hook that is in effect in a scaling group, instances exit the Pending state in advance. You can use one of the following methods to specify the lifecycle hooks that you want to delete:
-        *   Specify the scaling group ID of the lifecycle hook that you want to delete by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
-        *   Specify the lifecycle hook ID by using the LifecycleHookId parameter. In this case, the ScalingGroupId parameter and the LifecycleHookName parameter are ignored.
-        
-        @param request: DeleteLifecycleHookRequest
-        @return: DeleteLifecycleHookResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_lifecycle_hook_with_options_async(request, runtime)
 
@@ -3272,13 +3006,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteScalingConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteScalingConfigurationResponse:
-        """
-        Deletes a scaling configuration that is used to create Elastic Compute Service (ECS) instances.
-        
-        @param request: DeleteScalingConfigurationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteScalingConfigurationResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -3313,13 +3040,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteScalingConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteScalingConfigurationResponse:
-        """
-        Deletes a scaling configuration that is used to create Elastic Compute Service (ECS) instances.
-        
-        @param request: DeleteScalingConfigurationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteScalingConfigurationResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -3353,12 +3073,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DeleteScalingConfigurationRequest,
     ) -> ess_20220222_models.DeleteScalingConfigurationResponse:
-        """
-        Deletes a scaling configuration that is used to create Elastic Compute Service (ECS) instances.
-        
-        @param request: DeleteScalingConfigurationRequest
-        @return: DeleteScalingConfigurationResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.delete_scaling_configuration_with_options(request, runtime)
 
@@ -3366,12 +3080,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DeleteScalingConfigurationRequest,
     ) -> ess_20220222_models.DeleteScalingConfigurationResponse:
-        """
-        Deletes a scaling configuration that is used to create Elastic Compute Service (ECS) instances.
-        
-        @param request: DeleteScalingConfigurationRequest
-        @return: DeleteScalingConfigurationResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_scaling_configuration_with_options_async(request, runtime)
 
@@ -3380,13 +3088,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteScalingGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteScalingGroupResponse:
-        """
-        Deletes a scaling group.
-        
-        @param request: DeleteScalingGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteScalingGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force_delete):
@@ -3425,13 +3126,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteScalingGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteScalingGroupResponse:
-        """
-        Deletes a scaling group.
-        
-        @param request: DeleteScalingGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteScalingGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force_delete):
@@ -3469,12 +3163,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DeleteScalingGroupRequest,
     ) -> ess_20220222_models.DeleteScalingGroupResponse:
-        """
-        Deletes a scaling group.
-        
-        @param request: DeleteScalingGroupRequest
-        @return: DeleteScalingGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.delete_scaling_group_with_options(request, runtime)
 
@@ -3482,12 +3170,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DeleteScalingGroupRequest,
     ) -> ess_20220222_models.DeleteScalingGroupResponse:
-        """
-        Deletes a scaling group.
-        
-        @param request: DeleteScalingGroupRequest
-        @return: DeleteScalingGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_scaling_group_with_options_async(request, runtime)
 
@@ -3884,13 +3566,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeLifecycleActionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeLifecycleActionsResponse:
-        """
-        Queries lifecycle actions.
-        
-        @param request: DescribeLifecycleActionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeLifecycleActionsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lifecycle_action_status):
@@ -3931,13 +3606,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeLifecycleActionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeLifecycleActionsResponse:
-        """
-        Queries lifecycle actions.
-        
-        @param request: DescribeLifecycleActionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeLifecycleActionsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lifecycle_action_status):
@@ -3977,12 +3645,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DescribeLifecycleActionsRequest,
     ) -> ess_20220222_models.DescribeLifecycleActionsResponse:
-        """
-        Queries lifecycle actions.
-        
-        @param request: DescribeLifecycleActionsRequest
-        @return: DescribeLifecycleActionsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_lifecycle_actions_with_options(request, runtime)
 
@@ -3990,12 +3652,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DescribeLifecycleActionsRequest,
     ) -> ess_20220222_models.DescribeLifecycleActionsResponse:
-        """
-        Queries lifecycle actions.
-        
-        @param request: DescribeLifecycleActionsRequest
-        @return: DescribeLifecycleActionsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_lifecycle_actions_with_options_async(request, runtime)
 
@@ -4004,16 +3660,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeLifecycleHooksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeLifecycleHooksResponse:
-        """
-        You can use one of the following methods to query lifecycle hooks:
-        *   Specify a list of lifecycle hook IDs by using the LifecycleHookIds parameter. In this case, you do not need to specify the ScalingGroupId and LifecycleHookName parameters.
-        *   Specify the scaling group ID by using the ScalingGroupId parameter.
-        *   Specify the scaling group ID by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter at the same time.
-        
-        @param request: DescribeLifecycleHooksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeLifecycleHooksResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lifecycle_hook_ids):
@@ -4058,16 +3704,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeLifecycleHooksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeLifecycleHooksResponse:
-        """
-        You can use one of the following methods to query lifecycle hooks:
-        *   Specify a list of lifecycle hook IDs by using the LifecycleHookIds parameter. In this case, you do not need to specify the ScalingGroupId and LifecycleHookName parameters.
-        *   Specify the scaling group ID by using the ScalingGroupId parameter.
-        *   Specify the scaling group ID by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter at the same time.
-        
-        @param request: DescribeLifecycleHooksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeLifecycleHooksResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lifecycle_hook_ids):
@@ -4111,15 +3747,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DescribeLifecycleHooksRequest,
     ) -> ess_20220222_models.DescribeLifecycleHooksResponse:
-        """
-        You can use one of the following methods to query lifecycle hooks:
-        *   Specify a list of lifecycle hook IDs by using the LifecycleHookIds parameter. In this case, you do not need to specify the ScalingGroupId and LifecycleHookName parameters.
-        *   Specify the scaling group ID by using the ScalingGroupId parameter.
-        *   Specify the scaling group ID by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter at the same time.
-        
-        @param request: DescribeLifecycleHooksRequest
-        @return: DescribeLifecycleHooksResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_lifecycle_hooks_with_options(request, runtime)
 
@@ -4127,15 +3754,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DescribeLifecycleHooksRequest,
     ) -> ess_20220222_models.DescribeLifecycleHooksResponse:
-        """
-        You can use one of the following methods to query lifecycle hooks:
-        *   Specify a list of lifecycle hook IDs by using the LifecycleHookIds parameter. In this case, you do not need to specify the ScalingGroupId and LifecycleHookName parameters.
-        *   Specify the scaling group ID by using the ScalingGroupId parameter.
-        *   Specify the scaling group ID by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter at the same time.
-        
-        @param request: DescribeLifecycleHooksRequest
-        @return: DescribeLifecycleHooksResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_lifecycle_hooks_with_options_async(request, runtime)
 
@@ -4898,17 +4516,12 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingInstancesResponse:
-        """
-        You can query ECS instances by scaling group ID, scaling configuration ID, health status, lifecycle status, and instance creation method.
-        
-        @param request: DescribeScalingInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeScalingInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.creation_type):
             query['CreationType'] = request.creation_type
+        if not UtilClient.is_unset(request.creation_types):
+            query['CreationTypes'] = request.creation_types
         if not UtilClient.is_unset(request.health_status):
             query['HealthStatus'] = request.health_status
         if not UtilClient.is_unset(request.instance_ids):
@@ -4959,17 +4572,12 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingInstancesResponse:
-        """
-        You can query ECS instances by scaling group ID, scaling configuration ID, health status, lifecycle status, and instance creation method.
-        
-        @param request: DescribeScalingInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeScalingInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.creation_type):
             query['CreationType'] = request.creation_type
+        if not UtilClient.is_unset(request.creation_types):
+            query['CreationTypes'] = request.creation_types
         if not UtilClient.is_unset(request.health_status):
             query['HealthStatus'] = request.health_status
         if not UtilClient.is_unset(request.instance_ids):
@@ -5019,12 +4627,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DescribeScalingInstancesRequest,
     ) -> ess_20220222_models.DescribeScalingInstancesResponse:
-        """
-        You can query ECS instances by scaling group ID, scaling configuration ID, health status, lifecycle status, and instance creation method.
-        
-        @param request: DescribeScalingInstancesRequest
-        @return: DescribeScalingInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_scaling_instances_with_options(request, runtime)
 
@@ -5032,12 +4634,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DescribeScalingInstancesRequest,
     ) -> ess_20220222_models.DescribeScalingInstancesResponse:
-        """
-        You can query ECS instances by scaling group ID, scaling configuration ID, health status, lifecycle status, and instance creation method.
-        
-        @param request: DescribeScalingInstancesRequest
-        @return: DescribeScalingInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_scaling_instances_with_options_async(request, runtime)
 
@@ -5047,7 +4643,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingRulesResponse:
         """
-        Queries all scaling rules in a scaling group.
+        You can specify a scaling group ID to query the information about all scaling rules in a scaling group. You can also specify the scaling rule ID, name, unique identifier, or type in the request parameters as filter conditions.
         
         @param request: DescribeScalingRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5106,7 +4702,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingRulesResponse:
         """
-        Queries all scaling rules in a scaling group.
+        You can specify a scaling group ID to query the information about all scaling rules in a scaling group. You can also specify the scaling rule ID, name, unique identifier, or type in the request parameters as filter conditions.
         
         @param request: DescribeScalingRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5164,7 +4760,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingRulesRequest,
     ) -> ess_20220222_models.DescribeScalingRulesResponse:
         """
-        Queries all scaling rules in a scaling group.
+        You can specify a scaling group ID to query the information about all scaling rules in a scaling group. You can also specify the scaling rule ID, name, unique identifier, or type in the request parameters as filter conditions.
         
         @param request: DescribeScalingRulesRequest
         @return: DescribeScalingRulesResponse
@@ -5177,7 +4773,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingRulesRequest,
     ) -> ess_20220222_models.DescribeScalingRulesResponse:
         """
-        Queries all scaling rules in a scaling group.
+        You can specify a scaling group ID to query the information about all scaling rules in a scaling group. You can also specify the scaling rule ID, name, unique identifier, or type in the request parameters as filter conditions.
         
         @param request: DescribeScalingRulesRequest
         @return: DescribeScalingRulesResponse
@@ -5190,13 +4786,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScheduledTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScheduledTasksResponse:
-        """
-        You can query scheduled tasks by scaling rule, task ID, or task name.
-        
-        @param request: DescribeScheduledTasksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeScheduledTasksResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -5245,13 +4834,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScheduledTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScheduledTasksResponse:
-        """
-        You can query scheduled tasks by scaling rule, task ID, or task name.
-        
-        @param request: DescribeScheduledTasksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeScheduledTasksResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -5299,12 +4881,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DescribeScheduledTasksRequest,
     ) -> ess_20220222_models.DescribeScheduledTasksResponse:
-        """
-        You can query scheduled tasks by scaling rule, task ID, or task name.
-        
-        @param request: DescribeScheduledTasksRequest
-        @return: DescribeScheduledTasksResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_scheduled_tasks_with_options(request, runtime)
 
@@ -5312,12 +4888,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DescribeScheduledTasksRequest,
     ) -> ess_20220222_models.DescribeScheduledTasksResponse:
-        """
-        You can query scheduled tasks by scaling rule, task ID, or task name.
-        
-        @param request: DescribeScheduledTasksRequest
-        @return: DescribeScheduledTasksResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_scheduled_tasks_with_options_async(request, runtime)
 
@@ -5514,13 +5084,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DetachInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DetachInstancesResponse:
-        """
-        Removes one or more Elastic Compute Service (ECS) instances or elastic container instances from a scaling group.
-        
-        @param request: DetachInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.decrease_desired_capacity):
@@ -5565,13 +5128,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DetachInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DetachInstancesResponse:
-        """
-        Removes one or more Elastic Compute Service (ECS) instances or elastic container instances from a scaling group.
-        
-        @param request: DetachInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.decrease_desired_capacity):
@@ -5615,12 +5171,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DetachInstancesRequest,
     ) -> ess_20220222_models.DetachInstancesResponse:
-        """
-        Removes one or more Elastic Compute Service (ECS) instances or elastic container instances from a scaling group.
-        
-        @param request: DetachInstancesRequest
-        @return: DetachInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.detach_instances_with_options(request, runtime)
 
@@ -5628,12 +5178,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DetachInstancesRequest,
     ) -> ess_20220222_models.DetachInstancesResponse:
-        """
-        Removes one or more Elastic Compute Service (ECS) instances or elastic container instances from a scaling group.
-        
-        @param request: DetachInstancesRequest
-        @return: DetachInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_instances_with_options_async(request, runtime)
 
@@ -5834,13 +5378,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DetachVServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DetachVServerGroupsResponse:
-        """
-        Detaches one or more vServer groups of a Classic Load Balancer (CLB) instance from a scaling group.
-        
-        @param request: DetachVServerGroupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachVServerGroupsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5881,13 +5418,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DetachVServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DetachVServerGroupsResponse:
-        """
-        Detaches one or more vServer groups of a Classic Load Balancer (CLB) instance from a scaling group.
-        
-        @param request: DetachVServerGroupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachVServerGroupsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5927,12 +5457,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DetachVServerGroupsRequest,
     ) -> ess_20220222_models.DetachVServerGroupsResponse:
-        """
-        Detaches one or more vServer groups of a Classic Load Balancer (CLB) instance from a scaling group.
-        
-        @param request: DetachVServerGroupsRequest
-        @return: DetachVServerGroupsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.detach_vserver_groups_with_options(request, runtime)
 
@@ -5940,12 +5464,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DetachVServerGroupsRequest,
     ) -> ess_20220222_models.DetachVServerGroupsResponse:
-        """
-        Detaches one or more vServer groups of a Classic Load Balancer (CLB) instance from a scaling group.
-        
-        @param request: DetachVServerGroupsRequest
-        @return: DetachVServerGroupsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_vserver_groups_with_options_async(request, runtime)
 
@@ -6036,13 +5554,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DisableScalingGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DisableScalingGroupResponse:
-        """
-        Disables a scaling group.
-        
-        @param request: DisableScalingGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableScalingGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -6079,13 +5590,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DisableScalingGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DisableScalingGroupResponse:
-        """
-        Disables a scaling group.
-        
-        @param request: DisableScalingGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableScalingGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -6121,12 +5625,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DisableScalingGroupRequest,
     ) -> ess_20220222_models.DisableScalingGroupResponse:
-        """
-        Disables a scaling group.
-        
-        @param request: DisableScalingGroupRequest
-        @return: DisableScalingGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.disable_scaling_group_with_options(request, runtime)
 
@@ -6134,12 +5632,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.DisableScalingGroupRequest,
     ) -> ess_20220222_models.DisableScalingGroupResponse:
-        """
-        Disables a scaling group.
-        
-        @param request: DisableScalingGroupRequest
-        @return: DisableScalingGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_scaling_group_with_options_async(request, runtime)
 
@@ -6386,16 +5878,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.EnterStandbyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.EnterStandbyResponse:
-        """
-        If you call the operation to set an Elastic Compute Service (ECS) instance in a scaling group that is associated with a Server Load Balancer (SLB) instance to the Standby state, the weight of the ECS instance as a backend server of the SLB instance is set to 0.
-        *   You can remove an ECS instance that is in the Standby state from a scaling group and release the instance.
-        *   When scale-in activities are triggered by changes in the number of scaling groups or by event-triggered tasks, the ECS instances that are in the Standby state are not removed from the scaling groups.
-        *   If Auto Scaling considers an ECS instance that is in the Standby state unhealthy, such as in the Stopping or Restarting state, Auto Scaling does not update the health check status of the ECS instance or trigger scale-in activities to remove the ECS instance from the scaling group. Auto Scaling updates the health check status of the ECS instance only when the ECS instance is no longer in the Standby state.
-        
-        @param request: EnterStandbyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnterStandbyResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.async_):
@@ -6434,16 +5916,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.EnterStandbyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.EnterStandbyResponse:
-        """
-        If you call the operation to set an Elastic Compute Service (ECS) instance in a scaling group that is associated with a Server Load Balancer (SLB) instance to the Standby state, the weight of the ECS instance as a backend server of the SLB instance is set to 0.
-        *   You can remove an ECS instance that is in the Standby state from a scaling group and release the instance.
-        *   When scale-in activities are triggered by changes in the number of scaling groups or by event-triggered tasks, the ECS instances that are in the Standby state are not removed from the scaling groups.
-        *   If Auto Scaling considers an ECS instance that is in the Standby state unhealthy, such as in the Stopping or Restarting state, Auto Scaling does not update the health check status of the ECS instance or trigger scale-in activities to remove the ECS instance from the scaling group. Auto Scaling updates the health check status of the ECS instance only when the ECS instance is no longer in the Standby state.
-        
-        @param request: EnterStandbyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnterStandbyResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.async_):
@@ -6481,15 +5953,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.EnterStandbyRequest,
     ) -> ess_20220222_models.EnterStandbyResponse:
-        """
-        If you call the operation to set an Elastic Compute Service (ECS) instance in a scaling group that is associated with a Server Load Balancer (SLB) instance to the Standby state, the weight of the ECS instance as a backend server of the SLB instance is set to 0.
-        *   You can remove an ECS instance that is in the Standby state from a scaling group and release the instance.
-        *   When scale-in activities are triggered by changes in the number of scaling groups or by event-triggered tasks, the ECS instances that are in the Standby state are not removed from the scaling groups.
-        *   If Auto Scaling considers an ECS instance that is in the Standby state unhealthy, such as in the Stopping or Restarting state, Auto Scaling does not update the health check status of the ECS instance or trigger scale-in activities to remove the ECS instance from the scaling group. Auto Scaling updates the health check status of the ECS instance only when the ECS instance is no longer in the Standby state.
-        
-        @param request: EnterStandbyRequest
-        @return: EnterStandbyResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.enter_standby_with_options(request, runtime)
 
@@ -6497,15 +5960,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.EnterStandbyRequest,
     ) -> ess_20220222_models.EnterStandbyResponse:
-        """
-        If you call the operation to set an Elastic Compute Service (ECS) instance in a scaling group that is associated with a Server Load Balancer (SLB) instance to the Standby state, the weight of the ECS instance as a backend server of the SLB instance is set to 0.
-        *   You can remove an ECS instance that is in the Standby state from a scaling group and release the instance.
-        *   When scale-in activities are triggered by changes in the number of scaling groups or by event-triggered tasks, the ECS instances that are in the Standby state are not removed from the scaling groups.
-        *   If Auto Scaling considers an ECS instance that is in the Standby state unhealthy, such as in the Stopping or Restarting state, Auto Scaling does not update the health check status of the ECS instance or trigger scale-in activities to remove the ECS instance from the scaling group. Auto Scaling updates the health check status of the ECS instance only when the ECS instance is no longer in the Standby state.
-        
-        @param request: EnterStandbyRequest
-        @return: EnterStandbyResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.enter_standby_with_options_async(request, runtime)
 
@@ -6514,13 +5968,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ExecuteScalingRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ExecuteScalingRuleResponse:
-        """
-        Executes a scaling rule.
-        
-        @param request: ExecuteScalingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExecuteScalingRuleResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.breach_threshold):
@@ -6565,13 +6012,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ExecuteScalingRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ExecuteScalingRuleResponse:
-        """
-        Executes a scaling rule.
-        
-        @param request: ExecuteScalingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExecuteScalingRuleResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.breach_threshold):
@@ -6615,12 +6055,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.ExecuteScalingRuleRequest,
     ) -> ess_20220222_models.ExecuteScalingRuleResponse:
-        """
-        Executes a scaling rule.
-        
-        @param request: ExecuteScalingRuleRequest
-        @return: ExecuteScalingRuleResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.execute_scaling_rule_with_options(request, runtime)
 
@@ -6628,12 +6062,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.ExecuteScalingRuleRequest,
     ) -> ess_20220222_models.ExecuteScalingRuleResponse:
-        """
-        Executes a scaling rule.
-        
-        @param request: ExecuteScalingRuleRequest
-        @return: ExecuteScalingRuleResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.execute_scaling_rule_with_options_async(request, runtime)
 
@@ -6643,7 +6071,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ExitStandbyResponse:
         """
-        If the scaling group is associated with a load balancing instance, the ECS instance weight will be set to the weight value defined in the scaling configuration.
+        The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
         
         @param request: ExitStandbyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6690,7 +6118,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ExitStandbyResponse:
         """
-        If the scaling group is associated with a load balancing instance, the ECS instance weight will be set to the weight value defined in the scaling configuration.
+        The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
         
         @param request: ExitStandbyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6736,7 +6164,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ExitStandbyRequest,
     ) -> ess_20220222_models.ExitStandbyResponse:
         """
-        If the scaling group is associated with a load balancing instance, the ECS instance weight will be set to the weight value defined in the scaling configuration.
+        The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
         
         @param request: ExitStandbyRequest
         @return: ExitStandbyResponse
@@ -6749,7 +6177,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ExitStandbyRequest,
     ) -> ess_20220222_models.ExitStandbyResponse:
         """
-        If the scaling group is associated with a load balancing instance, the ECS instance weight will be set to the weight value defined in the scaling configuration.
+        The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
         
         @param request: ExitStandbyRequest
         @return: ExitStandbyResponse
@@ -7041,7 +6469,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyAlarmResponse:
         """
-        Modifies an event-triggered task.
+        If you set MetricType to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using the custom metrics. For more information, see [Custom monitoring event-triggered tasks](~~74861~~).
+        *   When you create an event-triggered task, you must specify MetricName, DimensionKey, and DimensionValue to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances in a scaling group within an Alibaba Cloud account.
+        *   If you set MetricType to custom, the valid values are your custom metrics.
+        *   For information about the metrics that are supported if you set MetricType to system, see [Event-triggered task for system monitoring](~~74854~~).
+        > The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see `DimensionKey` and `DimensionValue` in the "Request parameters" section of this topic.
         
         @param request: ModifyAlarmRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7112,7 +6544,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyAlarmResponse:
         """
-        Modifies an event-triggered task.
+        If you set MetricType to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using the custom metrics. For more information, see [Custom monitoring event-triggered tasks](~~74861~~).
+        *   When you create an event-triggered task, you must specify MetricName, DimensionKey, and DimensionValue to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances in a scaling group within an Alibaba Cloud account.
+        *   If you set MetricType to custom, the valid values are your custom metrics.
+        *   For information about the metrics that are supported if you set MetricType to system, see [Event-triggered task for system monitoring](~~74854~~).
+        > The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see `DimensionKey` and `DimensionValue` in the "Request parameters" section of this topic.
         
         @param request: ModifyAlarmRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7182,7 +6618,11 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyAlarmRequest,
     ) -> ess_20220222_models.ModifyAlarmResponse:
         """
-        Modifies an event-triggered task.
+        If you set MetricType to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using the custom metrics. For more information, see [Custom monitoring event-triggered tasks](~~74861~~).
+        *   When you create an event-triggered task, you must specify MetricName, DimensionKey, and DimensionValue to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances in a scaling group within an Alibaba Cloud account.
+        *   If you set MetricType to custom, the valid values are your custom metrics.
+        *   For information about the metrics that are supported if you set MetricType to system, see [Event-triggered task for system monitoring](~~74854~~).
+        > The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see `DimensionKey` and `DimensionValue` in the "Request parameters" section of this topic.
         
         @param request: ModifyAlarmRequest
         @return: ModifyAlarmResponse
@@ -7195,7 +6635,11 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyAlarmRequest,
     ) -> ess_20220222_models.ModifyAlarmResponse:
         """
-        Modifies an event-triggered task.
+        If you set MetricType to custom, you must report your custom metrics to CloudMonitor before you can create event-triggered tasks by using the custom metrics. For more information, see [Custom monitoring event-triggered tasks](~~74861~~).
+        *   When you create an event-triggered task, you must specify MetricName, DimensionKey, and DimensionValue to determine the range of statistics that you want to aggregate for the metrics of the scaling group. For example, you can specify the user_id and scaling_group dimensions for an event-triggered task to aggregate monitoring data of all Elastic Compute Service (ECS) instances in a scaling group within an Alibaba Cloud account.
+        *   If you set MetricType to custom, the valid values are your custom metrics.
+        *   For information about the metrics that are supported if you set MetricType to system, see [Event-triggered task for system monitoring](~~74854~~).
+        > The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see `DimensionKey` and `DimensionValue` in the "Request parameters" section of this topic.
         
         @param request: ModifyAlarmRequest
         @return: ModifyAlarmResponse
@@ -7723,7 +7167,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyScalingConfigurationResponse:
         """
-        If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+        You can change the name of a scaling configuration in a scaling group. The name must be unique within the scaling group.
         
         @param tmp_req: ModifyScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7854,7 +7298,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyScalingConfigurationResponse:
         """
-        If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+        You can change the name of a scaling configuration in a scaling group. The name must be unique within the scaling group.
         
         @param tmp_req: ModifyScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7984,7 +7428,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyScalingConfigurationRequest,
     ) -> ess_20220222_models.ModifyScalingConfigurationResponse:
         """
-        If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+        You can change the name of a scaling configuration in a scaling group. The name must be unique within the scaling group.
         
         @param request: ModifyScalingConfigurationRequest
         @return: ModifyScalingConfigurationResponse
@@ -7997,7 +7441,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyScalingConfigurationRequest,
     ) -> ess_20220222_models.ModifyScalingConfigurationResponse:
         """
-        If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+        You can change the name of a scaling configuration in a scaling group. The name must be unique within the scaling group.
         
         @param request: ModifyScalingConfigurationRequest
         @return: ModifyScalingConfigurationResponse
@@ -8010,13 +7454,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyScalingGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyScalingGroupResponse:
-        """
-        Modifies a scaling group.
-        
-        @param request: ModifyScalingGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyScalingGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.active_scaling_configuration_id):
@@ -8101,13 +7538,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyScalingGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyScalingGroupResponse:
-        """
-        Modifies a scaling group.
-        
-        @param request: ModifyScalingGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyScalingGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.active_scaling_configuration_id):
@@ -8191,12 +7621,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.ModifyScalingGroupRequest,
     ) -> ess_20220222_models.ModifyScalingGroupResponse:
-        """
-        Modifies a scaling group.
-        
-        @param request: ModifyScalingGroupRequest
-        @return: ModifyScalingGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_scaling_group_with_options(request, runtime)
 
@@ -8204,12 +7628,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.ModifyScalingGroupRequest,
     ) -> ess_20220222_models.ModifyScalingGroupResponse:
-        """
-        Modifies a scaling group.
-        
-        @param request: ModifyScalingGroupRequest
-        @return: ModifyScalingGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_scaling_group_with_options_async(request, runtime)
 
@@ -8376,13 +7794,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyScheduledTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyScheduledTaskResponse:
-        """
-        Modifies a scheduled task.
-        
-        @param request: ModifyScheduledTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyScheduledTaskResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -8445,13 +7856,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyScheduledTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyScheduledTaskResponse:
-        """
-        Modifies a scheduled task.
-        
-        @param request: ModifyScheduledTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyScheduledTaskResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -8513,12 +7917,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.ModifyScheduledTaskRequest,
     ) -> ess_20220222_models.ModifyScheduledTaskResponse:
-        """
-        Modifies a scheduled task.
-        
-        @param request: ModifyScheduledTaskRequest
-        @return: ModifyScheduledTaskResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_scheduled_task_with_options(request, runtime)
 
@@ -8526,12 +7924,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.ModifyScheduledTaskRequest,
     ) -> ess_20220222_models.ModifyScheduledTaskResponse:
-        """
-        Modifies a scheduled task.
-        
-        @param request: ModifyScheduledTaskRequest
-        @return: ModifyScheduledTaskResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_scheduled_task_with_options_async(request, runtime)
 
@@ -8540,13 +7932,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.RebalanceInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.RebalanceInstancesResponse:
-        """
-        Rebalances Elastic Compute Service (ECS) instances in a multi-zone scaling group across zones.
-        
-        @param request: RebalanceInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RebalanceInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -8585,13 +7970,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.RebalanceInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.RebalanceInstancesResponse:
-        """
-        Rebalances Elastic Compute Service (ECS) instances in a multi-zone scaling group across zones.
-        
-        @param request: RebalanceInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RebalanceInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -8629,12 +8007,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.RebalanceInstancesRequest,
     ) -> ess_20220222_models.RebalanceInstancesResponse:
-        """
-        Rebalances Elastic Compute Service (ECS) instances in a multi-zone scaling group across zones.
-        
-        @param request: RebalanceInstancesRequest
-        @return: RebalanceInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.rebalance_instances_with_options(request, runtime)
 
@@ -8642,12 +8014,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.RebalanceInstancesRequest,
     ) -> ess_20220222_models.RebalanceInstancesResponse:
-        """
-        Rebalances Elastic Compute Service (ECS) instances in a multi-zone scaling group across zones.
-        
-        @param request: RebalanceInstancesRequest
-        @return: RebalanceInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.rebalance_instances_with_options_async(request, runtime)
 
@@ -8656,13 +8022,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.RecordLifecycleActionHeartbeatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.RecordLifecycleActionHeartbeatResponse:
-        """
-        Prolongs a lifecycle hook for Elastic Compute Service (ECS) instances.
-        
-        @param request: RecordLifecycleActionHeartbeatRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RecordLifecycleActionHeartbeatResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -8703,13 +8062,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.RecordLifecycleActionHeartbeatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.RecordLifecycleActionHeartbeatResponse:
-        """
-        Prolongs a lifecycle hook for Elastic Compute Service (ECS) instances.
-        
-        @param request: RecordLifecycleActionHeartbeatRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RecordLifecycleActionHeartbeatResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -8749,12 +8101,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.RecordLifecycleActionHeartbeatRequest,
     ) -> ess_20220222_models.RecordLifecycleActionHeartbeatResponse:
-        """
-        Prolongs a lifecycle hook for Elastic Compute Service (ECS) instances.
-        
-        @param request: RecordLifecycleActionHeartbeatRequest
-        @return: RecordLifecycleActionHeartbeatResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.record_lifecycle_action_heartbeat_with_options(request, runtime)
 
@@ -8762,12 +8108,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.RecordLifecycleActionHeartbeatRequest,
     ) -> ess_20220222_models.RecordLifecycleActionHeartbeatResponse:
-        """
-        Prolongs a lifecycle hook for Elastic Compute Service (ECS) instances.
-        
-        @param request: RecordLifecycleActionHeartbeatRequest
-        @return: RecordLifecycleActionHeartbeatResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.record_lifecycle_action_heartbeat_with_options_async(request, runtime)
 
@@ -8776,20 +8116,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.RemoveInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.RemoveInstancesResponse:
-        """
-        Before you call this operation, make sure that the following requirements are met:
-        *   The scaling group is in the Active state.
-        *   No scaling activity is in progress within the scaling group.
-        > If no scaling activity is in progress within the scaling group, you can call the operation even within the cooldown period.
-        *   If an ECS instance is automatically created by Auto Scaling, or if an ECS instance is manually added to a scaling group and managed by the scaling group, the ECS instance is stopped in economical mode or is released after the instance is removed from the scaling group.
-        *   If an ECS instance is manually added to a scaling group and is not managed by the scaling group, the ECS instance is not stopped or released after the instance is removed from the scaling group.
-        *   If the difference between the number of existing ECS instances specified by the TotalCapacity parameter and the number of ECS instances that you call this operation to remove is less than the value of the MinSize parameter, the call fails.
-        A successful call only means that Auto Scaling accepts the request. The scaling activity may still fail. You can obtain the status of a scaling activity based on the value of the ScalingActivityId parameter in the response.
-        
-        @param request: RemoveInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RemoveInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.decrease_desired_capacity):
@@ -8834,20 +8160,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.RemoveInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.RemoveInstancesResponse:
-        """
-        Before you call this operation, make sure that the following requirements are met:
-        *   The scaling group is in the Active state.
-        *   No scaling activity is in progress within the scaling group.
-        > If no scaling activity is in progress within the scaling group, you can call the operation even within the cooldown period.
-        *   If an ECS instance is automatically created by Auto Scaling, or if an ECS instance is manually added to a scaling group and managed by the scaling group, the ECS instance is stopped in economical mode or is released after the instance is removed from the scaling group.
-        *   If an ECS instance is manually added to a scaling group and is not managed by the scaling group, the ECS instance is not stopped or released after the instance is removed from the scaling group.
-        *   If the difference between the number of existing ECS instances specified by the TotalCapacity parameter and the number of ECS instances that you call this operation to remove is less than the value of the MinSize parameter, the call fails.
-        A successful call only means that Auto Scaling accepts the request. The scaling activity may still fail. You can obtain the status of a scaling activity based on the value of the ScalingActivityId parameter in the response.
-        
-        @param request: RemoveInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RemoveInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.decrease_desired_capacity):
@@ -8891,19 +8203,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.RemoveInstancesRequest,
     ) -> ess_20220222_models.RemoveInstancesResponse:
-        """
-        Before you call this operation, make sure that the following requirements are met:
-        *   The scaling group is in the Active state.
-        *   No scaling activity is in progress within the scaling group.
-        > If no scaling activity is in progress within the scaling group, you can call the operation even within the cooldown period.
-        *   If an ECS instance is automatically created by Auto Scaling, or if an ECS instance is manually added to a scaling group and managed by the scaling group, the ECS instance is stopped in economical mode or is released after the instance is removed from the scaling group.
-        *   If an ECS instance is manually added to a scaling group and is not managed by the scaling group, the ECS instance is not stopped or released after the instance is removed from the scaling group.
-        *   If the difference between the number of existing ECS instances specified by the TotalCapacity parameter and the number of ECS instances that you call this operation to remove is less than the value of the MinSize parameter, the call fails.
-        A successful call only means that Auto Scaling accepts the request. The scaling activity may still fail. You can obtain the status of a scaling activity based on the value of the ScalingActivityId parameter in the response.
-        
-        @param request: RemoveInstancesRequest
-        @return: RemoveInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.remove_instances_with_options(request, runtime)
 
@@ -8911,19 +8210,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.RemoveInstancesRequest,
     ) -> ess_20220222_models.RemoveInstancesResponse:
-        """
-        Before you call this operation, make sure that the following requirements are met:
-        *   The scaling group is in the Active state.
-        *   No scaling activity is in progress within the scaling group.
-        > If no scaling activity is in progress within the scaling group, you can call the operation even within the cooldown period.
-        *   If an ECS instance is automatically created by Auto Scaling, or if an ECS instance is manually added to a scaling group and managed by the scaling group, the ECS instance is stopped in economical mode or is released after the instance is removed from the scaling group.
-        *   If an ECS instance is manually added to a scaling group and is not managed by the scaling group, the ECS instance is not stopped or released after the instance is removed from the scaling group.
-        *   If the difference between the number of existing ECS instances specified by the TotalCapacity parameter and the number of ECS instances that you call this operation to remove is less than the value of the MinSize parameter, the call fails.
-        A successful call only means that Auto Scaling accepts the request. The scaling activity may still fail. You can obtain the status of a scaling activity based on the value of the ScalingActivityId parameter in the response.
-        
-        @param request: RemoveInstancesRequest
-        @return: RemoveInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_instances_with_options_async(request, runtime)
 
@@ -9023,14 +8309,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ScaleWithAdjustmentResponse:
         """
-        Compared with the ExecuteScalingRule operation, the ScaleWithAdjustment operation does not require a scaling rule to be created in advance. Before you call the ScaleWithAdjustment operation, take note of the following items:
-        *   The following conditions must be met:
-        *   The scaling group is in the Active state.
-        *   No scaling activities in the scaling group are in progress.
-        *   If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires.
-        *   If the addition of a specified number of Elastic Compute Service (ECS) instances to a scaling group causes the total number of ECS instances in the scaling group to exceed the maximum number of instances allowed, Auto Scaling adds only a specific number of ECS instances to ensure that the total number of instances is equal to the maximum number of instances.
-        *   If the removal of a specified number of ECS instances from a scaling group causes the total number of ECS instances in the scaling group to drop below the minimum number of instances allowed, Auto Scaling removes only a specific number of ECS instances to ensure that the total number of instances is equal to the minimum number of instances.
-        A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the `ScalingActivityId` parameter in the response.
+        The ID of the scaling activity.
         
         @param request: ScaleWithAdjustmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9079,14 +8358,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ScaleWithAdjustmentResponse:
         """
-        Compared with the ExecuteScalingRule operation, the ScaleWithAdjustment operation does not require a scaling rule to be created in advance. Before you call the ScaleWithAdjustment operation, take note of the following items:
-        *   The following conditions must be met:
-        *   The scaling group is in the Active state.
-        *   No scaling activities in the scaling group are in progress.
-        *   If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires.
-        *   If the addition of a specified number of Elastic Compute Service (ECS) instances to a scaling group causes the total number of ECS instances in the scaling group to exceed the maximum number of instances allowed, Auto Scaling adds only a specific number of ECS instances to ensure that the total number of instances is equal to the maximum number of instances.
-        *   If the removal of a specified number of ECS instances from a scaling group causes the total number of ECS instances in the scaling group to drop below the minimum number of instances allowed, Auto Scaling removes only a specific number of ECS instances to ensure that the total number of instances is equal to the minimum number of instances.
-        A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the `ScalingActivityId` parameter in the response.
+        The ID of the scaling activity.
         
         @param request: ScaleWithAdjustmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9134,14 +8406,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ScaleWithAdjustmentRequest,
     ) -> ess_20220222_models.ScaleWithAdjustmentResponse:
         """
-        Compared with the ExecuteScalingRule operation, the ScaleWithAdjustment operation does not require a scaling rule to be created in advance. Before you call the ScaleWithAdjustment operation, take note of the following items:
-        *   The following conditions must be met:
-        *   The scaling group is in the Active state.
-        *   No scaling activities in the scaling group are in progress.
-        *   If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires.
-        *   If the addition of a specified number of Elastic Compute Service (ECS) instances to a scaling group causes the total number of ECS instances in the scaling group to exceed the maximum number of instances allowed, Auto Scaling adds only a specific number of ECS instances to ensure that the total number of instances is equal to the maximum number of instances.
-        *   If the removal of a specified number of ECS instances from a scaling group causes the total number of ECS instances in the scaling group to drop below the minimum number of instances allowed, Auto Scaling removes only a specific number of ECS instances to ensure that the total number of instances is equal to the minimum number of instances.
-        A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the `ScalingActivityId` parameter in the response.
+        The ID of the scaling activity.
         
         @param request: ScaleWithAdjustmentRequest
         @return: ScaleWithAdjustmentResponse
@@ -9154,14 +8419,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ScaleWithAdjustmentRequest,
     ) -> ess_20220222_models.ScaleWithAdjustmentResponse:
         """
-        Compared with the ExecuteScalingRule operation, the ScaleWithAdjustment operation does not require a scaling rule to be created in advance. Before you call the ScaleWithAdjustment operation, take note of the following items:
-        *   The following conditions must be met:
-        *   The scaling group is in the Active state.
-        *   No scaling activities in the scaling group are in progress.
-        *   If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires.
-        *   If the addition of a specified number of Elastic Compute Service (ECS) instances to a scaling group causes the total number of ECS instances in the scaling group to exceed the maximum number of instances allowed, Auto Scaling adds only a specific number of ECS instances to ensure that the total number of instances is equal to the maximum number of instances.
-        *   If the removal of a specified number of ECS instances from a scaling group causes the total number of ECS instances in the scaling group to drop below the minimum number of instances allowed, Auto Scaling removes only a specific number of ECS instances to ensure that the total number of instances is equal to the minimum number of instances.
-        A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the `ScalingActivityId` parameter in the response.
+        The ID of the scaling activity.
         
         @param request: ScaleWithAdjustmentRequest
         @return: ScaleWithAdjustmentResponse
@@ -9260,13 +8518,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SetInstanceHealthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SetInstanceHealthResponse:
-        """
-        Configures the health check feature for Elastic Compute Service (ECS) instances.
-        
-        @param request: SetInstanceHealthRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetInstanceHealthResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.health_status):
@@ -9301,13 +8552,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SetInstanceHealthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SetInstanceHealthResponse:
-        """
-        Configures the health check feature for Elastic Compute Service (ECS) instances.
-        
-        @param request: SetInstanceHealthRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetInstanceHealthResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.health_status):
@@ -9341,12 +8585,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.SetInstanceHealthRequest,
     ) -> ess_20220222_models.SetInstanceHealthResponse:
-        """
-        Configures the health check feature for Elastic Compute Service (ECS) instances.
-        
-        @param request: SetInstanceHealthRequest
-        @return: SetInstanceHealthResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.set_instance_health_with_options(request, runtime)
 
@@ -9354,12 +8592,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.SetInstanceHealthRequest,
     ) -> ess_20220222_models.SetInstanceHealthResponse:
-        """
-        Configures the health check feature for Elastic Compute Service (ECS) instances.
-        
-        @param request: SetInstanceHealthRequest
-        @return: SetInstanceHealthResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.set_instance_health_with_options_async(request, runtime)
 
@@ -9368,13 +8600,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SetInstancesProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
-        """
-        Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
-        
-        @param request: SetInstancesProtectionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetInstancesProtectionResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -9411,13 +8636,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SetInstancesProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
-        """
-        Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
-        
-        @param request: SetInstancesProtectionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetInstancesProtectionResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -9453,12 +8671,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.SetInstancesProtectionRequest,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
-        """
-        Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
-        
-        @param request: SetInstancesProtectionRequest
-        @return: SetInstancesProtectionResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.set_instances_protection_with_options(request, runtime)
 
@@ -9466,12 +8678,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.SetInstancesProtectionRequest,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
-        """
-        Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
-        
-        @param request: SetInstancesProtectionRequest
-        @return: SetInstancesProtectionResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.set_instances_protection_with_options_async(request, runtime)
 
@@ -9844,6 +9050,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -9876,6 +9084,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):

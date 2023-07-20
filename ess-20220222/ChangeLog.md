@@ -1,3 +1,6 @@
+2023-07-20 Version: 1.0.7
+- DescribeScalingInstances support creationTypes.
+
 2023-04-19 Version: 1.0.6
 - Configuration support LoginAsNonRoot .
 
