@@ -460,6 +460,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_client_user_define_rule_with_options_async(request, runtime)
 
+    def add_image_vul_white_list_with_options(
+        self,
+        request: sas_20181203_models.AddImageVulWhiteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddImageVulWhiteListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.whitelist):
+            query['Whitelist'] = request.whitelist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddImageVulWhiteList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddImageVulWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_image_vul_white_list_with_options_async(
+        self,
+        request: sas_20181203_models.AddImageVulWhiteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddImageVulWhiteListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.whitelist):
+            query['Whitelist'] = request.whitelist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddImageVulWhiteList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddImageVulWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_image_vul_white_list(
+        self,
+        request: sas_20181203_models.AddImageVulWhiteListRequest,
+    ) -> sas_20181203_models.AddImageVulWhiteListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_image_vul_white_list_with_options(request, runtime)
+
+    async def add_image_vul_white_list_async(
+        self,
+        request: sas_20181203_models.AddImageVulWhiteListRequest,
+    ) -> sas_20181203_models.AddImageVulWhiteListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_image_vul_white_list_with_options_async(request, runtime)
+
     def add_install_code_with_options(
         self,
         request: sas_20181203_models.AddInstallCodeRequest,
@@ -1240,6 +1326,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_once_task_with_options_async(request, runtime)
 
+    def change_asset_refresh_task_config_with_options(
+        self,
+        request: sas_20181203_models.ChangeAssetRefreshTaskConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ChangeAssetRefreshTaskConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asset_refresh_configs):
+            query['AssetRefreshConfigs'] = request.asset_refresh_configs
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeAssetRefreshTaskConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ChangeAssetRefreshTaskConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_asset_refresh_task_config_with_options_async(
+        self,
+        request: sas_20181203_models.ChangeAssetRefreshTaskConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ChangeAssetRefreshTaskConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asset_refresh_configs):
+            query['AssetRefreshConfigs'] = request.asset_refresh_configs
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeAssetRefreshTaskConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ChangeAssetRefreshTaskConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_asset_refresh_task_config(
+        self,
+        request: sas_20181203_models.ChangeAssetRefreshTaskConfigRequest,
+    ) -> sas_20181203_models.ChangeAssetRefreshTaskConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_asset_refresh_task_config_with_options(request, runtime)
+
+    async def change_asset_refresh_task_config_async(
+        self,
+        request: sas_20181203_models.ChangeAssetRefreshTaskConfigRequest,
+    ) -> sas_20181203_models.ChangeAssetRefreshTaskConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_asset_refresh_task_config_with_options_async(request, runtime)
+
     def change_check_config_with_options(
         self,
         request: sas_20181203_models.ChangeCheckConfigRequest,
@@ -1247,12 +1407,20 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ChangeCheckConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.added_check):
+            query['AddedCheck'] = request.added_check
         if not UtilClient.is_unset(request.cycle_days):
             query['CycleDays'] = request.cycle_days
+        if not UtilClient.is_unset(request.enable_add_check):
+            query['EnableAddCheck'] = request.enable_add_check
+        if not UtilClient.is_unset(request.enable_auto_check):
+            query['EnableAutoCheck'] = request.enable_auto_check
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.removed_check):
+            query['RemovedCheck'] = request.removed_check
         if not UtilClient.is_unset(request.standard_ids):
             query['StandardIds'] = request.standard_ids
         if not UtilClient.is_unset(request.start_time):
@@ -1283,12 +1451,20 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ChangeCheckConfigResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.added_check):
+            query['AddedCheck'] = request.added_check
         if not UtilClient.is_unset(request.cycle_days):
             query['CycleDays'] = request.cycle_days
+        if not UtilClient.is_unset(request.enable_add_check):
+            query['EnableAddCheck'] = request.enable_add_check
+        if not UtilClient.is_unset(request.enable_auto_check):
+            query['EnableAutoCheck'] = request.enable_auto_check
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.removed_check):
+            query['RemovedCheck'] = request.removed_check
         if not UtilClient.is_unset(request.standard_ids):
             query['StandardIds'] = request.standard_ids
         if not UtilClient.is_unset(request.start_time):
@@ -1709,6 +1885,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_delete_days):
             query['AutoDeleteDays'] = request.auto_delete_days
+        if not UtilClient.is_unset(request.release_after_scan):
+            query['ReleaseAfterScan'] = request.release_after_scan
+        if not UtilClient.is_unset(request.scan_data_disk):
+            query['ScanDataDisk'] = request.scan_data_disk
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
         if not UtilClient.is_unset(request.uuid_list):
@@ -1741,6 +1921,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_delete_days):
             query['AutoDeleteDays'] = request.auto_delete_days
+        if not UtilClient.is_unset(request.release_after_scan):
+            query['ReleaseAfterScan'] = request.release_after_scan
+        if not UtilClient.is_unset(request.scan_data_disk):
+            query['ScanDataDisk'] = request.scan_data_disk
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
         if not UtilClient.is_unset(request.uuid_list):
@@ -2321,7 +2505,10 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.CreateFileDetectResponse:
         """
         You can call this operation to push a file to the cloud for detection. Before you call this operation, make sure that the file is uploaded. You can call the CreateFileDetectUploadUrl operation to upload the file.
-        The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
+        The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only hexadecimal MD5 hash values of complete file content are supported. You must calculate the MD5 hash value before you call this operation.
+        To calculate the hexadecimal MD5 hash value for a file, you can perform the following steps:
+        1\\. Use the MD5 algorithm to encrypt data and generate a 128-bit hash value. You can use a tool such as MessageDigest for Java and the hashlib module for Python.
+        2\\. Convert the hash value to a hexadecimal string. You can use a tool such as Codec for Java and the hex() function for Python.
         
         @param request: CreateFileDetectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2365,7 +2552,10 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.CreateFileDetectResponse:
         """
         You can call this operation to push a file to the cloud for detection. Before you call this operation, make sure that the file is uploaded. You can call the CreateFileDetectUploadUrl operation to upload the file.
-        The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
+        The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only hexadecimal MD5 hash values of complete file content are supported. You must calculate the MD5 hash value before you call this operation.
+        To calculate the hexadecimal MD5 hash value for a file, you can perform the following steps:
+        1\\. Use the MD5 algorithm to encrypt data and generate a 128-bit hash value. You can use a tool such as MessageDigest for Java and the hashlib module for Python.
+        2\\. Convert the hash value to a hexadecimal string. You can use a tool such as Codec for Java and the hex() function for Python.
         
         @param request: CreateFileDetectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2408,7 +2598,10 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.CreateFileDetectResponse:
         """
         You can call this operation to push a file to the cloud for detection. Before you call this operation, make sure that the file is uploaded. You can call the CreateFileDetectUploadUrl operation to upload the file.
-        The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
+        The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only hexadecimal MD5 hash values of complete file content are supported. You must calculate the MD5 hash value before you call this operation.
+        To calculate the hexadecimal MD5 hash value for a file, you can perform the following steps:
+        1\\. Use the MD5 algorithm to encrypt data and generate a 128-bit hash value. You can use a tool such as MessageDigest for Java and the hashlib module for Python.
+        2\\. Convert the hash value to a hexadecimal string. You can use a tool such as Codec for Java and the hex() function for Python.
         
         @param request: CreateFileDetectRequest
         @return: CreateFileDetectResponse
@@ -2422,7 +2615,10 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.CreateFileDetectResponse:
         """
         You can call this operation to push a file to the cloud for detection. Before you call this operation, make sure that the file is uploaded. You can call the CreateFileDetectUploadUrl operation to upload the file.
-        The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
+        The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only hexadecimal MD5 hash values of complete file content are supported. You must calculate the MD5 hash value before you call this operation.
+        To calculate the hexadecimal MD5 hash value for a file, you can perform the following steps:
+        1\\. Use the MD5 algorithm to encrypt data and generate a 128-bit hash value. You can use a tool such as MessageDigest for Java and the hashlib module for Python.
+        2\\. Convert the hash value to a hexadecimal string. You can use a tool such as Codec for Java and the hex() function for Python.
         
         @param request: CreateFileDetectRequest
         @return: CreateFileDetectResponse
@@ -4393,6 +4589,84 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DeleteBackupPolicyMachineResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_backup_policy_machine_with_options_async(request, runtime)
+
+    def delete_binary_security_policy_with_options(
+        self,
+        request: sas_20181203_models.DeleteBinarySecurityPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteBinarySecurityPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBinarySecurityPolicy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteBinarySecurityPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_binary_security_policy_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteBinarySecurityPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteBinarySecurityPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBinarySecurityPolicy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteBinarySecurityPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_binary_security_policy(
+        self,
+        request: sas_20181203_models.DeleteBinarySecurityPolicyRequest,
+    ) -> sas_20181203_models.DeleteBinarySecurityPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_binary_security_policy_with_options(request, runtime)
+
+    async def delete_binary_security_policy_async(
+        self,
+        request: sas_20181203_models.DeleteBinarySecurityPolicyRequest,
+    ) -> sas_20181203_models.DeleteBinarySecurityPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_binary_security_policy_with_options_async(request, runtime)
 
     def delete_client_user_define_rule_with_options(
         self,
@@ -6527,6 +6801,8 @@ class Client(OpenApiClient):
             query['EventName'] = request.event_name
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.unique_info):
@@ -6563,6 +6839,8 @@ class Client(OpenApiClient):
             query['EventName'] = request.event_name
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.unique_info):
@@ -7019,6 +7297,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.uuids):
             query['Uuids'] = request.uuids
         req = open_api_models.OpenApiRequest(
@@ -7049,6 +7329,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.uuids):
             query['Uuids'] = request.uuids
         req = open_api_models.OpenApiRequest(
@@ -8822,6 +9104,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.use_next_token):
             query['UseNextToken'] = request.use_next_token
         req = open_api_models.OpenApiRequest(
@@ -8877,6 +9161,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.use_next_token):
             query['UseNextToken'] = request.use_next_token
         req = open_api_models.OpenApiRequest(
@@ -11559,6 +11845,8 @@ class Client(OpenApiClient):
             query['MachineTypes'] = request.machine_types
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11589,6 +11877,8 @@ class Client(OpenApiClient):
             query['MachineTypes'] = request.machine_types
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12197,6 +12487,8 @@ class Client(OpenApiClient):
             query['Necessity'] = request.necessity
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.search_tags):
             query['SearchTags'] = request.search_tags
         if not UtilClient.is_unset(request.target_type):
@@ -12251,6 +12543,8 @@ class Client(OpenApiClient):
             query['Necessity'] = request.necessity
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.search_tags):
             query['SearchTags'] = request.search_tags
         if not UtilClient.is_unset(request.target_type):
@@ -14670,6 +14964,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_vul_list_with_options_async(request, runtime)
 
+    def describe_image_vul_white_list_with_options(
+        self,
+        request: sas_20181203_models.DescribeImageVulWhiteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageVulWhiteListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageVulWhiteList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageVulWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_image_vul_white_list_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeImageVulWhiteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageVulWhiteListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageVulWhiteList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageVulWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_image_vul_white_list(
+        self,
+        request: sas_20181203_models.DescribeImageVulWhiteListRequest,
+    ) -> sas_20181203_models.DescribeImageVulWhiteListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_vul_white_list_with_options(request, runtime)
+
+    async def describe_image_vul_white_list_async(
+        self,
+        request: sas_20181203_models.DescribeImageVulWhiteListRequest,
+    ) -> sas_20181203_models.DescribeImageVulWhiteListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_vul_white_list_with_options_async(request, runtime)
+
     def describe_install_captcha_with_options(
         self,
         request: sas_20181203_models.DescribeInstallCaptchaRequest,
@@ -15719,6 +16095,56 @@ class Client(OpenApiClient):
     async def describe_module_config_async(self) -> sas_20181203_models.DescribeModuleConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_module_config_with_options_async(runtime)
+
+    def describe_monitor_accounts_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeMonitorAccountsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeMonitorAccounts',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeMonitorAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_monitor_accounts_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeMonitorAccountsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeMonitorAccounts',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeMonitorAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_monitor_accounts(self) -> sas_20181203_models.DescribeMonitorAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_monitor_accounts_with_options(runtime)
+
+    async def describe_monitor_accounts_async(self) -> sas_20181203_models.DescribeMonitorAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_monitor_accounts_with_options_async(runtime)
 
     def describe_notice_config_with_options(
         self,
@@ -20283,6 +20709,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.suspicious_event_id):
@@ -20317,6 +20745,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.suspicious_event_id):
@@ -20647,6 +21077,8 @@ class Client(OpenApiClient):
             query['ParentEventTypes'] = request.parent_event_types
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.sort_column):
             query['SortColumn'] = request.sort_column
         if not UtilClient.is_unset(request.sort_type):
@@ -20737,6 +21169,8 @@ class Client(OpenApiClient):
             query['ParentEventTypes'] = request.parent_event_types
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.sort_column):
             query['SortColumn'] = request.sort_column
         if not UtilClient.is_unset(request.sort_type):
@@ -22579,6 +23013,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -22613,6 +23049,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -22821,6 +23259,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.uuids):
@@ -22873,6 +23313,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.uuids):
@@ -26467,6 +26909,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetClientRatioStatisticResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.statistic_types):
             query['StatisticTypes'] = request.statistic_types
         if not UtilClient.is_unset(request.time_end):
@@ -26499,6 +26943,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetClientRatioStatisticResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.statistic_types):
             query['StatisticTypes'] = request.statistic_types
         if not UtilClient.is_unset(request.time_end):
@@ -29462,6 +29908,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_agentless_task_with_options_async(request, runtime)
 
+    def list_asset_refresh_task_config_with_options(
+        self,
+        request: sas_20181203_models.ListAssetRefreshTaskConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAssetRefreshTaskConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAssetRefreshTaskConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAssetRefreshTaskConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_asset_refresh_task_config_with_options_async(
+        self,
+        request: sas_20181203_models.ListAssetRefreshTaskConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAssetRefreshTaskConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAssetRefreshTaskConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAssetRefreshTaskConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_asset_refresh_task_config(
+        self,
+        request: sas_20181203_models.ListAssetRefreshTaskConfigRequest,
+    ) -> sas_20181203_models.ListAssetRefreshTaskConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_asset_refresh_task_config_with_options(request, runtime)
+
+    async def list_asset_refresh_task_config_async(
+        self,
+        request: sas_20181203_models.ListAssetRefreshTaskConfigRequest,
+    ) -> sas_20181203_models.ListAssetRefreshTaskConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_asset_refresh_task_config_with_options_async(request, runtime)
+
     def list_asset_selection_selected_target_with_options(
         self,
         request: sas_20181203_models.ListAssetSelectionSelectedTargetRequest,
@@ -30017,6 +30533,8 @@ class Client(OpenApiClient):
             query['CheckKey'] = request.check_key
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.custom_param):
+            query['CustomParam'] = request.custom_param
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.instance_types):
@@ -30071,6 +30589,8 @@ class Client(OpenApiClient):
             query['CheckKey'] = request.check_key
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.custom_param):
+            query['CustomParam'] = request.custom_param
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.instance_types):
@@ -40412,9 +40932,16 @@ class Client(OpenApiClient):
 
     def submit_check_with_options(
         self,
+        request: sas_20181203_models.SubmitCheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.SubmitCheckResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scan_range):
+            query['ScanRange'] = request.scan_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='SubmitCheck',
             version='2018-12-03',
@@ -40433,9 +40960,16 @@ class Client(OpenApiClient):
 
     async def submit_check_with_options_async(
         self,
+        request: sas_20181203_models.SubmitCheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.SubmitCheckResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scan_range):
+            query['ScanRange'] = request.scan_range
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='SubmitCheck',
             version='2018-12-03',
@@ -40452,13 +40986,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def submit_check(self) -> sas_20181203_models.SubmitCheckResponse:
+    def submit_check(
+        self,
+        request: sas_20181203_models.SubmitCheckRequest,
+    ) -> sas_20181203_models.SubmitCheckResponse:
         runtime = util_models.RuntimeOptions()
-        return self.submit_check_with_options(runtime)
+        return self.submit_check_with_options(request, runtime)
 
-    async def submit_check_async(self) -> sas_20181203_models.SubmitCheckResponse:
+    async def submit_check_async(
+        self,
+        request: sas_20181203_models.SubmitCheckRequest,
+    ) -> sas_20181203_models.SubmitCheckResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.submit_check_with_options_async(runtime)
+        return await self.submit_check_with_options_async(request, runtime)
 
     def unbind_aegis_with_options(
         self,
