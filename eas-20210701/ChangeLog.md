@@ -1,3 +1,6 @@
+2023-07-20 Version: 2.1.0
+- Add diagnosis api.
+
 2023-05-17 Version: 2.0.4
 - Update autoscaler api.
 
