@@ -8424,7 +8424,9 @@ class CarOrderQueryResponseBodyModuleCarInfo(TeaModel):
         cancel_time: int = None,
         car_info: str = None,
         car_level: int = None,
+        driver_card: str = None,
         driver_confirm_time: int = None,
+        driver_name: str = None,
         estimate_price: int = None,
         from_address: str = None,
         from_city_name: str = None,
@@ -8447,7 +8449,9 @@ class CarOrderQueryResponseBodyModuleCarInfo(TeaModel):
         self.cancel_time = cancel_time
         self.car_info = car_info
         self.car_level = car_level
+        self.driver_card = driver_card
         self.driver_confirm_time = driver_confirm_time
+        self.driver_name = driver_name
         self.estimate_price = estimate_price
         self.from_address = from_address
         self.from_city_name = from_city_name
@@ -8483,8 +8487,12 @@ class CarOrderQueryResponseBodyModuleCarInfo(TeaModel):
             result['car_info'] = self.car_info
         if self.car_level is not None:
             result['car_level'] = self.car_level
+        if self.driver_card is not None:
+            result['driver_card'] = self.driver_card
         if self.driver_confirm_time is not None:
             result['driver_confirm_time'] = self.driver_confirm_time
+        if self.driver_name is not None:
+            result['driver_name'] = self.driver_name
         if self.estimate_price is not None:
             result['estimate_price'] = self.estimate_price
         if self.from_address is not None:
@@ -8531,8 +8539,12 @@ class CarOrderQueryResponseBodyModuleCarInfo(TeaModel):
             self.car_info = m.get('car_info')
         if m.get('car_level') is not None:
             self.car_level = m.get('car_level')
+        if m.get('driver_card') is not None:
+            self.driver_card = m.get('driver_card')
         if m.get('driver_confirm_time') is not None:
             self.driver_confirm_time = m.get('driver_confirm_time')
+        if m.get('driver_name') is not None:
+            self.driver_name = m.get('driver_name')
         if m.get('estimate_price') is not None:
             self.estimate_price = m.get('estimate_price')
         if m.get('from_address') is not None:
@@ -43731,6 +43743,7 @@ class MonthBillGetRequest(TeaModel):
 class MonthBillGetResponseBodyModuleMonthAccountBillDetail(TeaModel):
     def __init__(
         self,
+        bill_confirmed: int = None,
         car_amount: float = None,
         damage_amount: float = None,
         flight_amount: float = None,
@@ -43741,6 +43754,7 @@ class MonthBillGetResponseBodyModuleMonthAccountBillDetail(TeaModel):
         service_amount: float = None,
         train_amount: float = None,
     ):
+        self.bill_confirmed = bill_confirmed
         # 用车金额（单位：元）
         self.car_amount = car_amount
         # 违约金金额（单位：元）
@@ -43769,6 +43783,8 @@ class MonthBillGetResponseBodyModuleMonthAccountBillDetail(TeaModel):
             return _map
 
         result = dict()
+        if self.bill_confirmed is not None:
+            result['billConfirmed'] = self.bill_confirmed
         if self.car_amount is not None:
             result['carAmount'] = self.car_amount
         if self.damage_amount is not None:
@@ -43791,6 +43807,8 @@ class MonthBillGetResponseBodyModuleMonthAccountBillDetail(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('billConfirmed') is not None:
+            self.bill_confirmed = m.get('billConfirmed')
         if m.get('carAmount') is not None:
             self.car_amount = m.get('carAmount')
         if m.get('damageAmount') is not None:
