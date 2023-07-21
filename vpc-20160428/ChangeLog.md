@@ -1,3 +1,20 @@
+2023-07-21 Version: 3.0.1
+- Add error code.
+- Add Deliver Param.
+- Add errorcode.
+- Support tags for CreateTrafficMirrorSession and CreatePublicIpAddressPool.
+- VBR and RI support resource group and tags.
+- Api Type Tag.
+- Add Error Code.
+- Update doc required of Tag API.
+- Supported Coip.
+- Add reeor code.
+- Add ErrorCode.
+- Increased errorCode NotSupportLinkrole for API ActivateRouterInterface.
+- Fixed IncorrectStatus bug for APIs, ActivateRouterInterface, ConnectRouterInterface and DeactivateRouterInterface.
+- Add new errorcode.
+- Support source ip ram for GetVpcRouteEntrySummary.
+
 2023-07-04 Version: 3.0.0
 - Interface modification with parameter deletion is incompatible.
 - Remove CreateNatIp remove useless parameter NatIpCidrId, must specify NatIpCidr.
