@@ -3152,10 +3152,12 @@ class CopyDatabaseRequest(TeaModel):
     def __init__(
         self,
         owner_id: int = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -3170,6 +3172,8 @@ class CopyDatabaseRequest(TeaModel):
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -3180,6 +3184,8 @@ class CopyDatabaseRequest(TeaModel):
         m = m or dict()
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -11313,6 +11319,7 @@ class DeleteDBNodesRequest(TeaModel):
         dbnode_id: List[str] = None,
         owner_account: str = None,
         owner_id: int = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -11326,6 +11333,7 @@ class DeleteDBNodesRequest(TeaModel):
         self.dbnode_id = dbnode_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -11348,6 +11356,8 @@ class DeleteDBNodesRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -11366,6 +11376,8 @@ class DeleteDBNodesRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -11381,6 +11393,7 @@ class DeleteDBNodesShrinkRequest(TeaModel):
         dbnode_id_shrink: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -11394,6 +11407,7 @@ class DeleteDBNodesShrinkRequest(TeaModel):
         self.dbnode_id_shrink = dbnode_id_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -11416,6 +11430,8 @@ class DeleteDBNodesShrinkRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -11434,6 +11450,8 @@ class DeleteDBNodesShrinkRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -17622,6 +17640,7 @@ class DescribeCharacterSetNameRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -17636,6 +17655,7 @@ class DescribeCharacterSetNameRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -17656,6 +17676,8 @@ class DescribeCharacterSetNameRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -17672,6 +17694,8 @@ class DescribeCharacterSetNameRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -41888,6 +41912,7 @@ class DescribeRenewalPriceRequest(TeaModel):
         pay_type: str = None,
         quantity: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         time_type: str = None,
@@ -41914,6 +41939,7 @@ class DescribeRenewalPriceRequest(TeaModel):
         self.quantity = quantity
         # The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The renewal cycle of the instance. Valid values:
@@ -41956,6 +41982,8 @@ class DescribeRenewalPriceRequest(TeaModel):
             result['Quantity'] = self.quantity
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -41988,6 +42016,8 @@ class DescribeRenewalPriceRequest(TeaModel):
             self.quantity = m.get('Quantity')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
