@@ -4594,11 +4594,11 @@ class GetWebTerminalRequest(TeaModel):
 class GetWebTerminalResponseBody(TeaModel):
     def __init__(
         self,
-        url: str = None,
         request_id: str = None,
+        web_terminal_url: str = None,
     ):
-        self.url = url
         self.request_id = request_id
+        self.web_terminal_url = web_terminal_url
 
     def validate(self):
         pass
@@ -4609,18 +4609,18 @@ class GetWebTerminalResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.url is not None:
-            result['URL'] = self.url
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
+        if self.web_terminal_url is not None:
+            result['WebTerminalUrl'] = self.web_terminal_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('URL') is not None:
-            self.url = m.get('URL')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('WebTerminalUrl') is not None:
+            self.web_terminal_url = m.get('WebTerminalUrl')
         return self
 
 
