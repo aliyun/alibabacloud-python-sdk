@@ -34321,11 +34321,16 @@ class DescribeHostWebShellRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The username of the account that is used to log on to the host of the instance.
         self.account_name = account_name
+        # The password of the account.
         self.account_password = account_password
+        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
+        # The hostname of the instance. You can call the [DescribeDBInstanceIpHostname](~~610525~~) operation to query the hostname.
         self.host_name = host_name
         self.owner_id = owner_id
+        # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~610394~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -34384,7 +34389,9 @@ class DescribeHostWebShellResponseBody(TeaModel):
         login_url: str = None,
         request_id: str = None,
     ):
+        # The URL of the webshell.
         self.login_url = login_url
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
