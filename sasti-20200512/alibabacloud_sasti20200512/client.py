@@ -52,6 +52,8 @@ class Client(OpenApiClient):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.field):
             query['Field'] = request.field
+        if not UtilClient.is_unset(request.service_lang):
+            query['ServiceLang'] = request.service_lang
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -82,6 +84,8 @@ class Client(OpenApiClient):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.field):
             query['Field'] = request.field
+        if not UtilClient.is_unset(request.service_lang):
+            query['ServiceLang'] = request.service_lang
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -114,3 +118,233 @@ class Client(OpenApiClient):
     ) -> sasti_20200512_models.DescribeDomainReportResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_report_with_options_async(request, runtime)
+
+    def describe_file_report_with_options(
+        self,
+        request: sasti_20200512_models.DescribeFileReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sasti_20200512_models.DescribeFileReportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.field):
+            query['Field'] = request.field
+        if not UtilClient.is_unset(request.file_hash):
+            query['FileHash'] = request.file_hash
+        if not UtilClient.is_unset(request.service_lang):
+            query['ServiceLang'] = request.service_lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFileReport',
+            version='2020-05-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sasti_20200512_models.DescribeFileReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_file_report_with_options_async(
+        self,
+        request: sasti_20200512_models.DescribeFileReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sasti_20200512_models.DescribeFileReportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.field):
+            query['Field'] = request.field
+        if not UtilClient.is_unset(request.file_hash):
+            query['FileHash'] = request.file_hash
+        if not UtilClient.is_unset(request.service_lang):
+            query['ServiceLang'] = request.service_lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFileReport',
+            version='2020-05-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sasti_20200512_models.DescribeFileReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_file_report(
+        self,
+        request: sasti_20200512_models.DescribeFileReportRequest,
+    ) -> sasti_20200512_models.DescribeFileReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_file_report_with_options(request, runtime)
+
+    async def describe_file_report_async(
+        self,
+        request: sasti_20200512_models.DescribeFileReportRequest,
+    ) -> sasti_20200512_models.DescribeFileReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_file_report_with_options_async(request, runtime)
+
+    def describe_ip_report_with_options(
+        self,
+        request: sasti_20200512_models.DescribeIpReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sasti_20200512_models.DescribeIpReportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.field):
+            query['Field'] = request.field
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.service_lang):
+            query['ServiceLang'] = request.service_lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIpReport',
+            version='2020-05-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sasti_20200512_models.DescribeIpReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ip_report_with_options_async(
+        self,
+        request: sasti_20200512_models.DescribeIpReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sasti_20200512_models.DescribeIpReportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.field):
+            query['Field'] = request.field
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.service_lang):
+            query['ServiceLang'] = request.service_lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIpReport',
+            version='2020-05-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sasti_20200512_models.DescribeIpReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ip_report(
+        self,
+        request: sasti_20200512_models.DescribeIpReportRequest,
+    ) -> sasti_20200512_models.DescribeIpReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ip_report_with_options(request, runtime)
+
+    async def describe_ip_report_async(
+        self,
+        request: sasti_20200512_models.DescribeIpReportRequest,
+    ) -> sasti_20200512_models.DescribeIpReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ip_report_with_options_async(request, runtime)
+
+    def get_graph_query_templates_with_options(
+        self,
+        request: sasti_20200512_models.GetGraphQueryTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sasti_20200512_models.GetGraphQueryTemplatesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.env):
+            body['Env'] = request.env
+        if not UtilClient.is_unset(request.service_unit):
+            body['ServiceUnit'] = request.service_unit
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetGraphQueryTemplates',
+            version='2020-05-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sasti_20200512_models.GetGraphQueryTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_graph_query_templates_with_options_async(
+        self,
+        request: sasti_20200512_models.GetGraphQueryTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sasti_20200512_models.GetGraphQueryTemplatesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.env):
+            body['Env'] = request.env
+        if not UtilClient.is_unset(request.service_unit):
+            body['ServiceUnit'] = request.service_unit
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetGraphQueryTemplates',
+            version='2020-05-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sasti_20200512_models.GetGraphQueryTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_graph_query_templates(
+        self,
+        request: sasti_20200512_models.GetGraphQueryTemplatesRequest,
+    ) -> sasti_20200512_models.GetGraphQueryTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_graph_query_templates_with_options(request, runtime)
+
+    async def get_graph_query_templates_async(
+        self,
+        request: sasti_20200512_models.GetGraphQueryTemplatesRequest,
+    ) -> sasti_20200512_models.GetGraphQueryTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_graph_query_templates_with_options_async(request, runtime)
