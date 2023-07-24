@@ -1,3 +1,6 @@
+2023-07-24 Version: 1.1.14
+- Add SetDcdnDomainCertificate.
+
 2023-07-17 Version: 1.1.13
 - Add SetDcdnDomainSSLCertificate.
 
