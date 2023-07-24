@@ -7759,12 +7759,6 @@ class DescribeCdnUserBillPredictionRequest(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The ID of the request.
-        self.area = area
-        # The start time of the estimation.
-        self.dimension = dimension
-        # The end time of the estimation.
-        self.end_time = end_time
         # The billable region. Valid values:
         # 
         # *   **CN**: the Chinese mainland
@@ -7780,6 +7774,14 @@ class DescribeCdnUserBillPredictionRequest(TeaModel):
         # By default, the value of this parameter is determined by the metering method that is currently used. Regions inside and outside the Chinese mainland are classified into the **CN** and **OverSeas** billable regions. Billable regions inside the Chinese mainland include **CN**. Billable regions outside the Chinese mainland include **AP1**, **AP2**, **AP3**, **NA**, **SA**, **EU**, and **MEAA**.
         # 
         # > For more information about billable regions, see [Billable regions](~~142221~~).
+        self.area = area
+        # The billable item. A value of flow specifies bandwidth.
+        self.dimension = dimension
+        # The end time of the estimation. The default value is the current time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # > The end time must be later than the start time.
+        self.end_time = end_time
+        # The start time of the estimation. The default value is 00:00 on the first day of the current month. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -7821,8 +7823,11 @@ class DescribeCdnUserBillPredictionResponseBodyBillPredictionDataBillPredictionD
         time_stp: str = None,
         value: float = None,
     ):
+        # The billable region.
         self.area = area
+        # The time when the value used as the estimated value is generated. This parameter is returned only if the metering method is pay by 95th percentile, pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00, or pay by 4th peak bandwidth per month.
         self.time_stp = time_stp
+        # The estimated value.
         self.value = value
 
     def validate(self):
@@ -7897,10 +7902,8 @@ class DescribeCdnUserBillPredictionResponseBody(TeaModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The billable region.
+        # The estimated bill data.
         self.bill_prediction_data = bill_prediction_data
-        # The time when the value used as the estimated value is generated. This parameter is returned only if the metering method is pay by 95th percentile, pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00, or pay by 4th peak bandwidth per month.
-        self.bill_type = bill_type
         # The metering method.
         # 
         # > If the metering method ends with \_overseas, the billable region is outside the Chinese mainland. For example, BillType": "month_avg_day_bandwidth_overseas specifies a billable region outside the Chinese mainland and that the metering method is pay by daily peak bandwidth per month.
@@ -7916,10 +7919,12 @@ class DescribeCdnUserBillPredictionResponseBody(TeaModel):
         # *   month\_95\_night_half: pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00.
         # *   hour_vas: pay by value-added services per hour
         # *   day_count: pay by daily requests
+        self.bill_type = bill_type
+        # The end time of the estimation.
         self.end_time = end_time
-        # The estimated value.
+        # The ID of the request.
         self.request_id = request_id
-        # The estimated bill data.
+        # The start time of the estimation.
         self.start_time = start_time
 
     def validate(self):
@@ -11743,27 +11748,27 @@ class DescribeDomainDetailDataByLayerRequest(TeaModel):
         location_name_en: str = None,
         start_time: str = None,
     ):
-        # The domain name that you want to query. You can specify multiple domain names and separate them with commas (,). You can specify up to 30 domain names in each call.
-        self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        # 
-        # >  The end time must be later than the start time. The maximum time range that can be specified is 1 hour.
-        self.end_time = end_time
-        # The metric that you want to query. You can specify one or more metrics and separate them with commas (,). Valid values: **bps**, **qps**, **traf**, **acc**, **ipv6\_traf**, **ipv6\_bps**, **ipv6\_acc**, **ipv6\_qps**, and **http_code**.
-        self.field = field
-        # The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
+        # The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
         # 
         # If you do not specify an ISP, data of all ISPs is queried.
-        self.isp_name_en = isp_name_en
+        self.domain_name = domain_name
         # The protocol by which you want to query data. Valid values: **http**, **https**, **quic**, and **all**.
         # 
-        # Default value: **all**.
+        # The default value is **all**.
+        self.end_time = end_time
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # >  The end time must be later than the start time.
+        self.field = field
+        # The ID of the request.
+        self.isp_name_en = isp_name_en
+        # The amount of network traffic. Unit: bytes.
         self.layer = layer
-        # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query region names.
+        # The detailed data of the accelerated domain names.
+        self.location_name_en = location_name_en
+        # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
         # 
         # If you do not specify a region, data in all regions is queried.
-        self.location_name_en = location_name_en
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -11825,27 +11830,38 @@ class DescribeDomainDetailDataByLayerResponseBodyDataDataModule(TeaModel):
         time_stamp: str = None,
         traf: int = None,
     ):
-        # The number of requests.
+        # The timestamp of the data returned.
         self.acc = acc
-        # The bandwidth. Unit: bit/s.
+        # The bandwidth of IPv6 requests. Unit: bit/s.
         self.bps = bps
-        # The domain name.
+        # The number of requests.
         self.domain_name = domain_name
-        # The distribution of HTTP status codes.
+        # - You can call this operation up to 20 times per second per account.
+        # - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+        # 
+        # **Time granularity**\
+        # 
+        # The following table describes the time granularity, the time period within which historical data is available, and the data delay, which vary with the maximum time range per query. 
+        # 
+        # | Time granularity | Maximum time range per query | Historical data available | Data delay |
+        # | ---------------- | ---------------------------- | ------------------------- | ---------- |
+        # | 5 minutes | 3 days | 93 days | 15 minutes |
+        # | 1 hour | 31 days | 186 days | 4 hours |
+        # | 1 days | 366 days | 366 days | 04:00 on the next day |
         self.http_code = http_code
-        # The number of IPv6 requests.
+        # The bandwidth. Unit: bit/s.
         self.ipv_6acc = ipv_6acc
-        # The IPv6 bandwidth. Unit: bit/s.
+        # The number of IPv6 requests.
         self.ipv_6bps = ipv_6bps
-        # The QPS over IPv6.
+        # The amount of network traffic generated by IPv6 requests. Unit: bytes.
         self.ipv_6qps = ipv_6qps
-        # The IPv6 traffic. Unit: bytes.
+        # The proportions of HTTP status codes.
         self.ipv_6traf = ipv_6traf
-        # The QPS.
+        # The number of requests.
         self.qps = qps
-        # The timestamp of the returned data.
+        # The domain name.
         self.time_stamp = time_stamp
-        # The amount of network traffic. Unit: bytes.
+        # The bandwidth of IPv6 requests. Unit: bit/s.
         self.traf = traf
 
     def validate(self):
@@ -11949,9 +11965,9 @@ class DescribeDomainDetailDataByLayerResponseBody(TeaModel):
         data: DescribeDomainDetailDataByLayerResponseBodyData = None,
         request_id: str = None,
     ):
-        # Details about the accelerated domain names.
+        # The number of IPv6 requests per second.
         self.data = data
-        # The ID of the request.
+        # The number of queries per second.
         self.request_id = request_id
 
     def validate(self):
@@ -12020,6 +12036,313 @@ class DescribeDomainDetailDataByLayerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDomainDetailDataByLayerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDomainFileSizeProportionDataRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        owner_id: int = None,
+        security_token: str = None,
+        start_time: str = None,
+    ):
+        # The accelerated domain name. You can specify only one domain name in each request.
+        self.domain_name = domain_name
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # The end time must be later than the start time.
+        self.end_time = end_time
+        self.owner_id = owner_id
+        self.security_token = security_token
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData(TeaModel):
+    def __init__(
+        self,
+        file_size: str = None,
+        proportion: str = None,
+    ):
+        # The size of the file.
+        self.file_size = file_size
+        # The proportion of the file.
+        self.proportion = proportion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_size is not None:
+            result['FileSize'] = self.file_size
+        if self.proportion is not None:
+            result['Proportion'] = self.proportion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSize') is not None:
+            self.file_size = m.get('FileSize')
+        if m.get('Proportion') is not None:
+            self.proportion = m.get('Proportion')
+        return self
+
+
+class DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue(TeaModel):
+    def __init__(
+        self,
+        file_size_proportion_data: List[DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData] = None,
+    ):
+        self.file_size_proportion_data = file_size_proportion_data
+
+    def validate(self):
+        if self.file_size_proportion_data:
+            for k in self.file_size_proportion_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FileSizeProportionData'] = []
+        if self.file_size_proportion_data is not None:
+            for k in self.file_size_proportion_data:
+                result['FileSizeProportionData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.file_size_proportion_data = []
+        if m.get('FileSizeProportionData') is not None:
+            for k in m.get('FileSizeProportionData'):
+                temp_model = DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData()
+                self.file_size_proportion_data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData(TeaModel):
+    def __init__(
+        self,
+        time_stamp: str = None,
+        value: DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue = None,
+    ):
+        # The timestamp of the returned data.
+        self.time_stamp = time_stamp
+        # The proportions of files in different sizes.
+        self.value = value
+
+    def validate(self):
+        if self.value:
+            self.value.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.value is not None:
+            result['Value'] = self.value.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('Value') is not None:
+            temp_model = DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue()
+            self.value = temp_model.from_map(m['Value'])
+        return self
+
+
+class DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval(TeaModel):
+    def __init__(
+        self,
+        usage_data: List[DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData] = None,
+    ):
+        self.usage_data = usage_data
+
+    def validate(self):
+        if self.usage_data:
+            for k in self.usage_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['UsageData'] = []
+        if self.usage_data is not None:
+            for k in self.usage_data:
+                result['UsageData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.usage_data = []
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
+                temp_model = DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData()
+                self.usage_data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDomainFileSizeProportionDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_interval: str = None,
+        domain_name: str = None,
+        end_time: str = None,
+        file_size_proportion_data_interval: DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        # The time interval between the data entries returned. Unit: seconds.
+        self.data_interval = data_interval
+        # The accelerated domain name.
+        self.domain_name = domain_name
+        # The end of the time range during which data was queried.
+        self.end_time = end_time
+        # The proportions of files in different sizes.
+        self.file_size_proportion_data_interval = file_size_proportion_data_interval
+        # The ID of the request.
+        self.request_id = request_id
+        # The beginning of the time range that was queried.
+        self.start_time = start_time
+
+    def validate(self):
+        if self.file_size_proportion_data_interval:
+            self.file_size_proportion_data_interval.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.file_size_proportion_data_interval is not None:
+            result['FileSizeProportionDataInterval'] = self.file_size_proportion_data_interval.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('FileSizeProportionDataInterval') is not None:
+            temp_model = DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval()
+            self.file_size_proportion_data_interval = temp_model.from_map(m['FileSizeProportionDataInterval'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDomainFileSizeProportionDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDomainFileSizeProportionDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDomainFileSizeProportionDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20993,7 +21316,7 @@ class DescribeDomainUsageDataRequest(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The ID of the billable region. Valid values:
+        # The billable region. Valid values:
         # 
         # *   **CN** (default): inside the Chinese mainland
         # *   **OverSeas**: outside the Chinese mainland
@@ -21008,8 +21331,8 @@ class DescribeDomainUsageDataRequest(TeaModel):
         self.area = area
         # The protocol of the data that you want to query. Valid values:
         # 
-        # *   **http**: HTTP
-        # *   **https**: HTTPS
+        # *   **http:** HTTP
+        # *   **https:** HTTPS
         # *   **quic**: QUIC
         # *   **all** (default): HTTP, HTTPS, and QUIC
         self.data_protocol = data_protocol

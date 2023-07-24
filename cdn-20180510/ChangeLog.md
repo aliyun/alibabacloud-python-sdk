@@ -1,3 +1,6 @@
+2023-07-24 Version: 1.2.13
+- Add BlockObjectCaches.
+
 2023-06-28 Version: 1.2.12
 - Add DescribeDomainPidData.
 
