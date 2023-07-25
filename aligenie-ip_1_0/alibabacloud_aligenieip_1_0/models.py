@@ -4341,10 +4341,12 @@ class DeleteHotelSceneBookItemRequest(TeaModel):
         self,
         hotel_id: str = None,
         id: int = None,
+        name: str = None,
     ):
         # hotelID
         self.hotel_id = hotel_id
         self.id = id
+        self.name = name
 
     def validate(self):
         pass
@@ -4359,6 +4361,8 @@ class DeleteHotelSceneBookItemRequest(TeaModel):
             result['HotelId'] = self.hotel_id
         if self.id is not None:
             result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
@@ -4367,6 +4371,8 @@ class DeleteHotelSceneBookItemRequest(TeaModel):
             self.hotel_id = m.get('HotelId')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         return self
 
 
@@ -8336,10 +8342,12 @@ class GetHotelSceneItemDetailRequest(TeaModel):
         self,
         hotel_id: str = None,
         item_id: int = None,
+        name: str = None,
     ):
         # hotelID
         self.hotel_id = hotel_id
         self.item_id = item_id
+        self.name = name
 
     def validate(self):
         pass
@@ -8354,6 +8362,8 @@ class GetHotelSceneItemDetailRequest(TeaModel):
             result['HotelId'] = self.hotel_id
         if self.item_id is not None:
             result['ItemId'] = self.item_id
+        if self.name is not None:
+            result['Name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
@@ -8362,6 +8372,8 @@ class GetHotelSceneItemDetailRequest(TeaModel):
             self.hotel_id = m.get('HotelId')
         if m.get('ItemId') is not None:
             self.item_id = m.get('ItemId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         return self
 
 
@@ -14875,20 +14887,26 @@ class ListHotelSceneItemsResponseBodyResultSceneItemList(TeaModel):
     def __init__(
         self,
         category: str = None,
+        delivery_method: str = None,
         icon: str = None,
         id: int = None,
         name: str = None,
+        payment_method: str = None,
         price: int = None,
+        robot_name: str = None,
         status: str = None,
         type: str = None,
         update_time: int = None,
     ):
         self.category = category
+        self.delivery_method = delivery_method
         self.icon = icon
         # id
         self.id = id
         self.name = name
+        self.payment_method = payment_method
         self.price = price
+        self.robot_name = robot_name
         self.status = status
         self.type = type
         self.update_time = update_time
@@ -14904,14 +14922,20 @@ class ListHotelSceneItemsResponseBodyResultSceneItemList(TeaModel):
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
+        if self.delivery_method is not None:
+            result['DeliveryMethod'] = self.delivery_method
         if self.icon is not None:
             result['Icon'] = self.icon
         if self.id is not None:
             result['Id'] = self.id
         if self.name is not None:
             result['Name'] = self.name
+        if self.payment_method is not None:
+            result['PaymentMethod'] = self.payment_method
         if self.price is not None:
             result['Price'] = self.price
+        if self.robot_name is not None:
+            result['RobotName'] = self.robot_name
         if self.status is not None:
             result['Status'] = self.status
         if self.type is not None:
@@ -14924,14 +14948,20 @@ class ListHotelSceneItemsResponseBodyResultSceneItemList(TeaModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('DeliveryMethod') is not None:
+            self.delivery_method = m.get('DeliveryMethod')
         if m.get('Icon') is not None:
             self.icon = m.get('Icon')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PaymentMethod') is not None:
+            self.payment_method = m.get('PaymentMethod')
         if m.get('Price') is not None:
             self.price = m.get('Price')
+        if m.get('RobotName') is not None:
+            self.robot_name = m.get('RobotName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Type') is not None:
@@ -22648,18 +22678,26 @@ class UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList(TeaModel):
 class UpdateHotelSceneItemRequestUpdateHotelSceneReq(TeaModel):
     def __init__(
         self,
+        delivery_method: str = None,
         dialogue_list: List[UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList] = None,
         icon: str = None,
         id: int = None,
+        name: str = None,
+        payment_method: str = None,
         price: int = None,
+        robot_name: str = None,
         status: str = None,
     ):
+        self.delivery_method = delivery_method
         self.dialogue_list = dialogue_list
         # icon
         self.icon = icon
         # itemID
         self.id = id
+        self.name = name
+        self.payment_method = payment_method
         self.price = price
+        self.robot_name = robot_name
         self.status = status
 
     def validate(self):
@@ -22674,6 +22712,8 @@ class UpdateHotelSceneItemRequestUpdateHotelSceneReq(TeaModel):
             return _map
 
         result = dict()
+        if self.delivery_method is not None:
+            result['DeliveryMethod'] = self.delivery_method
         result['DialogueList'] = []
         if self.dialogue_list is not None:
             for k in self.dialogue_list:
@@ -22682,14 +22722,22 @@ class UpdateHotelSceneItemRequestUpdateHotelSceneReq(TeaModel):
             result['Icon'] = self.icon
         if self.id is not None:
             result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.payment_method is not None:
+            result['PaymentMethod'] = self.payment_method
         if self.price is not None:
             result['Price'] = self.price
+        if self.robot_name is not None:
+            result['RobotName'] = self.robot_name
         if self.status is not None:
             result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DeliveryMethod') is not None:
+            self.delivery_method = m.get('DeliveryMethod')
         self.dialogue_list = []
         if m.get('DialogueList') is not None:
             for k in m.get('DialogueList'):
@@ -22699,8 +22747,14 @@ class UpdateHotelSceneItemRequestUpdateHotelSceneReq(TeaModel):
             self.icon = m.get('Icon')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PaymentMethod') is not None:
+            self.payment_method = m.get('PaymentMethod')
         if m.get('Price') is not None:
             self.price = m.get('Price')
+        if m.get('RobotName') is not None:
+            self.robot_name = m.get('RobotName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
