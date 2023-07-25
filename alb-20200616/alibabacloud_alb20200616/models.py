@@ -51,19 +51,20 @@ class AddEntriesToAclRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
     ):
+        # The IP entries that you want to add. You can add up to 20 IP entries in each call.
         self.acl_entries = acl_entries
-        # The ID of the ACL.
+        # The ACL ID.
         self.acl_id = acl_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
 
     def validate(self):
@@ -112,9 +113,9 @@ class AddEntriesToAclResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
+        # The asynchronous task ID.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -198,40 +199,40 @@ class AddServersToServerGroupRequestServers(TeaModel):
     ):
         # The description of the backend server. The description must be 2 to 256 characters in length and can contain letters, digits, periods (.), underscores (\_), hyphens (-), commas (,), semicolons (;), forward slashes (/), and at signs (@). You can specify up to 40 servers in each call.
         self.description = description
-        # The port used by the backend server. Valid values: **1** to **65535**. You can specify up to 40 servers in each call.
+        # The port used by the backend server. Valid values: **1** to **65535**. You can specify up to 40 server IDs in each call.
         # 
-        # >  This parameter is required if the **ServerType** parameter is set to **Ecs**, **Eni**, **Eci**, or **Ip**. You do not need to configure this parameter if you set **ServerType** to **Fc**.
+        # > This parameter is required if the **ServerType** parameter is set to **Ecs**, **Eni**, **Eci**, or **Ip**. You do not need to set this parameter if **ServerType** is set to **Fc**.
         self.port = port
-        # Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. Valid values:
+        # Specifies whether to enable the remote IP address feature. You can specify up to 40 server IDs in each call. Valid values:
         # 
-        # *   **true**: enables the feature.
-        # *   **false**: disables the feature.
+        # *   **true**\
+        # *   **false**\
         # 
         # Regions that support the remote IP address feature: China (Hangzhou), China (Shenzhen), China (Qingdao), China (Beijing), China (Zhangjiakou), China (Ulanqab), China (Shanghai), China (Chengdu), China (Guangzhou), China (Hong Kong), US (Virginia), Japan (Tokyo), UK (London), US (Silicon Valley), Germany (Frankfurt), Indonesia (Jakarta), Singapore, Malaysia (Kuala Lumpur), Australia (Sydney), and India (Mumbai).
         # 
-        # >  If **ServerType** is set to **Ip**, this parameter is available.
+        # > If **ServerType** is set to **Ip**, this parameter is available.
         self.remote_ip_enabled = remote_ip_enabled
-        # The ID of the backend server. You can specify up to 40 server IDs in each call.
+        # The backend server ID. You can specify up to 40 server IDs in each call.
         # 
         # *   If ServerType is set to **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
         # *   If ServerType is set to **Ip**, set the ServerId parameter to an IP address specified in the server group.
-        # *   If ServerType is set to **Fc**, set the ServerId parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+        # *   If the backend server group is of the **Fc** type, set this parameter to the Alibaba Cloud Resource Name (ARN) of a function.
         self.server_id = server_id
-        # The IP address in inclusive ENI mode. You can specify up to 40 servers in each call.
+        # The IP address in inclusive ENI mode. You can specify up to 40 server IDs in each call.
         # 
-        # >  You do not need to configure the parameter if you set **ServerType** to **Fc**.
+        # > You do not need to set this parameter if **ServerType** is set to **Fc**.
         self.server_ip = server_ip
-        # The type of the backend server that you want to add to the server group. You can specify up to 40 servers in each call. Valid values:
+        # The type of the backend server that you want to add to the server group. You can specify up to 40 server IDs in each call. Valid values:
         # 
-        # *   **Ecs**: an ECS instance
-        # *   **Eni**: an ENI
-        # *   **Eci**: an elastic container instance
-        # *   **Ip**: an IP address
-        # *   **fc**: a function
+        # *   **Ecs**\
+        # *   **Eni**\
+        # *   **Eci**\
+        # *   **Ip**\
+        # *   **fc**\
         self.server_type = server_type
-        # The weight of the backend server that you want to add to the server group. Valid values: **0** to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server. You can specify up to 40 servers in each call.
+        # The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server. You can specify up to 40 server IDs in each call.
         # 
-        # >  You do not need to set this parameter if you set **ServerType** to **Fc**.
+        # > You do not need to set this parameter if **ServerType** is set to **Fc**.
         self.weight = weight
 
     def validate(self):
@@ -288,17 +289,18 @@ class AddServersToServerGroupRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that the value is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically sets **ClientToken** to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specify whether to perform only a precheck. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request, but does not add a backend server to a server group. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the system proceeds to perform the operation.
+        # *   **true**: prechecks the request, but does not add a backend server to a server group. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
+        # The backend servers that you want to add to the server group. You can specify up to 40 backend servers in each call.
         self.servers = servers
 
     def validate(self):
@@ -347,9 +349,9 @@ class AddServersToServerGroupResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
+        # The ID of the asynchronous job.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -428,20 +430,20 @@ class ApplyHealthCheckTemplateToServerGroupRequest(TeaModel):
         health_check_template_id: str = None,
         server_group_id: str = None,
     ):
+        # The ID of the asynchronous task.
+        self.client_token = client_token
+        # The ID of the request.
+        self.dry_run = dry_run
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
         # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-        self.client_token = client_token
+        self.health_check_template_id = health_check_template_id
         # Specifies whether to check the request without applying the template. Valid values:
         # 
         # *   **true**: checks the request without applying the template. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the API request. If the request passes the check, a 2xx HTTP status code is returned and the template is applied.
-        self.dry_run = dry_run
-        # The ID of the template.
-        self.health_check_template_id = health_check_template_id
-        # The ID of the server group.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -482,9 +484,7 @@ class ApplyHealthCheckTemplateToServerGroupResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -565,23 +565,10 @@ class AssociateAclsWithListenerRequest(TeaModel):
         listener_id: str = None,
     ):
         self.acl_ids = acl_ids
-        # The type of the ACL. Valid values:
-        # 
-        # *   **White**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener. If a whitelist is configured but no IP address is added to the whitelist, the listener forwards all requests.
-        # *   **Black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
         self.acl_type = acl_type
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
-        # Specifies whether only to precheck this request. Valid values:
-        # 
-        # *   **true**: sends the precheck request but does not associate the ACLs with the listener. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the listener.
+        # The ID of the request.
         self.listener_id = listener_id
 
     def validate(self):
@@ -626,9 +613,7 @@ class AssociateAclsWithListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -878,24 +863,11 @@ class AttachCommonBandwidthPackageToLoadBalancerRequest(TeaModel):
         load_balancer_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the EIP bandwidth plan.
         self.bandwidth_package_id = bandwidth_package_id
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** in each API request may be different.
+        # The ID of the asynchronous task.
         self.client_token = client_token
-        # Specifies whether only to precheck the request. Valid values:
-        # 
-        # *   **true**: sends the precheck request but does not associate the EIP bandwidth plan with the ALB instance. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the API request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the ALB instance.
         self.load_balancer_id = load_balancer_id
-        # The ID of the region where the ALB instance is deployed.
-        # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -940,9 +912,7 @@ class AttachCommonBandwidthPackageToLoadBalancerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1020,16 +990,9 @@ class CreateAScriptsRequestAScripts(TeaModel):
         enabled: bool = None,
         script_content: str = None,
     ):
-        # The name of the AScript rule.
-        # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The ID of the AScript rule.
         self.ascript_name = ascript_name
-        # Specifies whether to enable the AScript rule. Valid values:
-        # 
-        # *   **true**: enables the AScript rule.
-        # *   **false** (default): disables the AScript rule.
         self.enabled = enabled
-        # The content of the AScript rule.
         self.script_content = script_content
 
     def validate(self):
@@ -1069,16 +1032,11 @@ class CreateAScriptsRequest(TeaModel):
         listener_id: str = None,
     ):
         self.ascripts = ascripts
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can only contain ASCII characters.
+        # The ID of the asynchronous task.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # The ID of the request.
         self.dry_run = dry_run
-        # The ID of the listener.
+        # The IDs of AScript rules.
         self.listener_id = listener_id
 
     def validate(self):
@@ -1126,7 +1084,6 @@ class CreateAScriptsResponseBodyAScriptIds(TeaModel):
         self,
         ascript_id: str = None,
     ):
-        # The ID of the AScript rule.
         self.ascript_id = ascript_id
 
     def validate(self):
@@ -1156,11 +1113,8 @@ class CreateAScriptsResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The IDs of AScript rules.
         self.ascript_ids = ascript_ids
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1251,20 +1205,12 @@ class CreateAclRequest(TeaModel):
         dry_run: bool = None,
         resource_group_id: str = None,
     ):
-        # The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The ID of the ACL.
         self.acl_name = acl_name
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+        # The ID of the asynchronous task.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
-        # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        # The ID of the request.
         self.dry_run = dry_run
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1306,11 +1252,8 @@ class CreateAclResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the ACL.
         self.acl_id = acl_id
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1405,30 +1348,35 @@ class CreateHealthCheckTemplateRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses RequestId as ClientToken. The ID of each request may be different.
+        # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
-        # Specifies whether to only precheck this request. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request without creating a forwarding rule. The system prechecks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: prechecks the request and performs the requested operation. After the request passes the precheck, an **HTTP 2xx** status code is returned and the system performs the operation. This is the default value.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a **2xx** HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The interval at which health checks are performed.
+        # 
+        # Valid values: **1 to 50**.
+        # 
+        # Default value: **2**.
         self.health_check_codes = health_check_codes
         # The port that is used for health checks.
         # 
         # Valid values: **0 to 65535**.
         # 
-        # Default value: **0**. This value indicates that the port on a backend server is used for health checks.
+        # Default value: **0**. If you set the value to 0, the port of a backend server is used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The domain name that is used for health checks.
+        # The domain name that you want to use for the health check.
         # 
-        # Default value: **$SERVER_IP**. The domain name is 1 to 80 characters in length. Make sure that the destination CIDR block meets the following requirements:
+        # Default value: **$SERVER_IP**. The domain name must be 1 to 80 characters in length. The domain name must meet the following requirements:
         # 
         # *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
-        # *   The domain name contains at least one period (.) but does not start or end with a period (.).
-        # *   The rightmost domain label can contain only letters, and cannot contain digits or hyphens (-).
-        # *   Other domain labels cannot start or end with a hyphen (-).
+        # *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
+        # *   The rightmost domain label can contain only letters but cannot contain digits or hyphens (-).
+        # *   Other fields cannot start or end with a hyphen (-).
         # 
         # This parameter is required only if the **HealthCheckProtocol** parameter is set to **HTTP**.
         self.health_check_host = health_check_host
@@ -1438,55 +1386,55 @@ class CreateHealthCheckTemplateRequest(TeaModel):
         # 
         # Default value: **HTTP 1.1**.
         # 
-        # >  This parameter is required only if the `HealthCheckProtocol` parameter is set to **HTTP**.
+        # > This parameter is valid only if the `HealthCheckProtocol` parameter is set to **HTTP**.
         self.health_check_http_version = health_check_http_version
-        # The interval between two consecutive health checks. Unit: seconds.
+        # The interval at which health checks are performed.
         # 
         # Valid values: **1 to 50**.
         # 
         # Default value: **2**.
         self.health_check_interval = health_check_interval
-        # The HTTP method that is used for health checks. Valid values:
+        # The method that you want to use for the health check. Valid values:
         # 
         # *   **HEAD**: By default, the ALB instance sends HEAD requests to a backend server to perform HTTP health checks.
-        # *   **POST**: By default, gRPC health checks use the POST method.
+        # *   **POST**: gRPC health checks automatically use the POST method.
         # *   **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
         # 
-        # >  This parameter is required only if the **HealthCheckProtocol** parameter is set to **HTTP**.
+        # > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
         self.health_check_method = health_check_method
-        # The URL path that is used for health checks.
+        # The URL that is used for health checks.
         # 
-        # It must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The URL path must start with a forward slash (/).
+        # It must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The URL must start with a forward slash (/).
         # 
-        # >  This parameter is required only if the `HealthCheckProtocol` parameter is set to **HTTP**.
+        # > This parameter is valid only if the `HealthCheckProtocol` parameter is set to **HTTP**.
         self.health_check_path = health_check_path
-        # The protocol that is used for health checks. Valid values:
+        # The protocol that you want to use for health checks. Valid values:
         # 
-        # *   **HTTP**: The ALB instance sends HEAD or GET requests to a backend server to simulate access from a browser and check whether the backend server is healthy. This is the default protocol.
+        # *   **HTTP** (default): To perform HTTP health checks, ALB sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
         # *   **TCP**: To perform TCP health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
-        # *   **GRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+        # *   **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
         self.health_check_protocol = health_check_protocol
         # The name of the health check template.
         # 
         # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.health_check_template_name = health_check_template_name
-        # The timeout period of a health check. Unit: seconds. If a backend server does not respond within the specified timeout period, the backend server fails the health check.
+        # The timeout period of a health check. If a backend server does not respond within the specified timeout period, the backend server fails the health check.
         # 
         # Valid values: **1 to 300**.
         # 
         # Default value: **5**.
         # 
-        # >  If the value of the `HealthCheckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the timeout period specified by the `HealthCheckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is used as the timeout period.
+        # > If the value of the `HealthCheckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the timeout period specified by the `HealthCheckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is used as the timeout period.
         self.health_check_timeout = health_check_timeout
         # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
         # 
-        # Valid values: 2 to 10.
+        # Valid values: **2 to 10**.
         # 
         # Default value: **3**.
         self.healthy_threshold = healthy_threshold
         # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
         # 
-        # Valid values: 2 to 10.
+        # Valid values: **2 to 10**.
         # 
         # Default value: **3**.
         self.unhealthy_threshold = unhealthy_threshold
@@ -1571,7 +1519,7 @@ class CreateHealthCheckTemplateResponseBody(TeaModel):
     ):
         # The ID of the health check template.
         self.health_check_template_id = health_check_template_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1667,7 +1615,9 @@ class CreateListenerRequestCertificates(TeaModel):
         self,
         certificate_id: str = None,
     ):
-        # The ID of the certificate. Only server certificates are supported. You can specify up to 20 certificate IDs.
+        # The ID of the certificate. Only server certificates are supported. You can specify a maximum of 20 certificate IDs.
+        # 
+        # > This parameter is required if **ListenerProtocol** is set to **HTTPS** or **QUIC**.
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -1723,6 +1673,7 @@ class CreateListenerRequestDefaultActionsForwardGroupConfig(TeaModel):
         self,
         server_group_tuples: List[CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples] = None,
     ):
+        # The server group to which requests are forwarded.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -1759,10 +1710,11 @@ class CreateListenerRequestDefaultActions(TeaModel):
         forward_group_config: CreateListenerRequestDefaultActionsForwardGroupConfig = None,
         type: str = None,
     ):
+        # Specifies the configurations of the forwarding action. You can specify a maximum of 20 configurations.
         self.forward_group_config = forward_group_config
-        # The action type. You can specify only one action type. Valid value:
+        # The type of the action. You can specify only one action type.
         # 
-        # **ForwardGroup**: forwards requests to multiple vServer groups.
+        # Set the value to **ForwardGroup** to forward requests to multiple vServer groups.
         self.type = type
 
     def validate(self):
@@ -1799,14 +1751,14 @@ class CreateListenerRequestQuicConfig(TeaModel):
     ):
         # The ID of the QUIC listener that you want to associate with the HTTPS listener. Only HTTPS listeners support this parameter. This parameter is required when **QuicUpgradeEnabled** is set to **true**.
         # 
-        # >  The HTTPS listener and the QUIC listener must be added to the same ALB instance. Make sure that the QUIC listener is not associated with any other listeners.
+        # > You must add the HTTPS listener and the QUIC listener to the same ALB instance. In addition, make sure that the QUIC listener has never been associated with another listener.
         self.quic_listener_id = quic_listener_id
         # Specifies whether to enable QUIC upgrade. Valid values:
         # 
-        # *   **true**: enables QUIC upgrade.
-        # *   **false** (default): disables QUIC upgrade.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.quic_upgrade_enabled = quic_upgrade_enabled
 
     def validate(self):
@@ -1854,101 +1806,101 @@ class CreateListenerRequestXForwardedForConfig(TeaModel):
     ):
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+        # The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (\_), and digits.
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
         # Specifies whether to use the `X-Forwarded-Clientcert-clientverify` header to retrieve the verification result of the client certificate. Valid values:
         # 
-        # *   **true**: uses the X-Forwarded-Clientcert-clientverify header.
-        # *   **false** (default): does not use the X-Forwarded-Clientcert-clientverify header.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertFingerprintEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+        # The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (\_), and digits.
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
         # Specifies whether to use the `X-Forwarded-Clientcert-fingerprint` header to retrieve the fingerprint of the client certificate. Valid values:
         # 
-        # *   **true**: uses the X-Forwarded-Clientcert-fingerprint header.
-        # *   **false** (default): does not use the X-Forwarded-Clientcert-fingerprint header.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+        # The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (\_), and digits.
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
         # Specifies whether to use the `X-Forwarded-Clientcert-issuerdn` header to retrieve information about the authority that issues the client certificate. Valid values:
         # 
-        # *   **true**: uses the X-Forwarded-Clientcert-issuerdn header.
-        # *   **false** (default): does not use the X-Forwarded-Clientcert-issuerdn header.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+        # The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (\_), and digits.
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
         # Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header to retrieve information about the owner of the client certificate. Valid values:
         # 
-        # *   **true**: uses the X-Forwarded-Clientcert-subjectdn header.
-        # *   **false** (default): does not use the X-Forwarded-Clientcert-subjectdn header.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
         # Specifies whether to use the `X-Forwarded-Client-Ip` header to obtain the source IP address of the ALB instance. Valid values:
         # 
-        # *   **true**: uses the X-Forwarded-Client-Ip header.
-        # *   **false** (default): does not use the X-Forwarded-Client-Ip header.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter. The feature corresponding to this parameter is not available by default. If you want to use this feature, submit a ticket.
+        # > This parameter is available only when you create an HTTP, HTTPS, or QUIC listener. The feature specified by this parameter is unavailable by default. To use the feature, contact your account manager.
         self.xforwarded_for_client_source_ips_enabled = xforwarded_for_client_source_ips_enabled
         # The trusted proxy IP address.
         # 
-        # ALB traverses `X-Forwarded-For` backwards and selects the first IP address that is not in the trusted IP list as the originating IP address of the client, which will be throttled if source IP address throttling is enabled.
+        # ALB traverses `X-Forwarded-For` backward and selects the first IP address that is not in the trusted IP address list as the real IP address of the client. The IP address is used in source IP address throttling.
         self.xforwarded_for_client_source_ips_trusted = xforwarded_for_client_source_ips_trusted
         # Specifies whether to use the `X-Forwarded-Client-Port` header to retrieve the client port. Valid values:
         # 
-        # *   **true**: uses the X-Forwarded-Client-Port header.
-        # *   **false** (default): does not use the X-Forwarded-Client-Port header.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # >  HTTP and HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTP or HTTPS listener.
         self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
         # Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
         # 
-        # *   **true** (default): uses the X-Forwarded-For header.
-        # *   **false**: does not use the X-Forwarded-For header.
+        # *   **true** (default)
+        # *   **false**\
         # 
-        # >  HTTP and HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTP or HTTPS listener.
         self.xforwarded_for_enabled = xforwarded_for_enabled
-        # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listening protocol of the ALB instance. Valid values:
+        # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
         # 
-        # *   **true**: uses the X-Forwarded-Proto header.
-        # *   **false** (default): does not use the X-Forwarded-Proto header.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # > This parameter is available only when you create an HTTP, HTTPS, or QUIC listener.
         self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
-        # Specifies whether to use the `SLB-ID` header to retrieve the ID of the ALB instance. Valid values:
+        # Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
         # 
-        # *   **true**: uses the SLB-ID header.
-        # *   **false** (default): does not use the SLB-ID header.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # > This parameter is available only when you create an HTTP, HTTPS, or QUIC listener.
         self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
-        # Specifies whether to use the `X-Forwarded-Port` header to retrieve the listening port of the ALB instance. Valid values:
+        # Specifies whether to use the `X-Forwarded-Port` header to retrieve the listener port of the ALB instance. Valid values:
         # 
-        # *   **true**: uses the X-Forwarded-Port header.
-        # *   **false** (default): does not use the X-Forwarded-Port header.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # > This parameter is available only when you create an HTTP, HTTPS, or QUIC listener.
         self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
 
     def validate(self):
@@ -2048,36 +2000,39 @@ class CreateListenerRequest(TeaModel):
         security_policy_id: str = None,
         xforwarded_for_config: CreateListenerRequestXForwardedForConfig = None,
     ):
+        # A list of certificates.
         self.ca_certificates = ca_certificates
         # Specifies whether to enable mutual authentication. Valid values:
         # 
-        # *   **true**: enables mutual authentication.
-        # *   **false** (default): disables mutual authentication.
+        # *   **true**\
+        # *   **false** (default):
         self.ca_enabled = ca_enabled
+        # A list of certificates.
         self.certificates = certificates
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The actions of the forwarding rule.
         self.default_actions = default_actions
-        # Specifies whether to perform only a precheck. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request without creating a listener. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error code is returned based on the cause of the failure. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the API request. If the request passes the precheck, a 2xx HTTP status code is returned and the system proceeds to create a listener.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # Specifies whether to enable `Gzip` compression to compress specific types of files. Valid values:
+        # Specifies whether to enable `GZIP` compression to compress specific types of files. Valid values:
         # 
-        # *   **true** (default): enables Gzip compression.
-        # *   **false**: disables Gzip compression.
+        # *   **true** (default)
+        # *   **false**\
         self.gzip_enabled = gzip_enabled
         # Specifies whether to enable `HTTP/2`. Valid values:
         # 
-        # *   **true** (default): enables HTTP/2.
-        # *   **false**: disables HTTP/2.
+        # *   **true** (default)
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.http_2enabled = http_2enabled
         # The timeout period of an idle connection. Unit: seconds.
         # 
@@ -2099,8 +2054,9 @@ class CreateListenerRequest(TeaModel):
         # 
         # Valid values: **HTTP**, **HTTPS**, and **QUIC**.
         self.listener_protocol = listener_protocol
-        # The ID of the ALB instance.
+        # The ID of the Application Load Balancer (ALB) instance.
         self.load_balancer_id = load_balancer_id
+        # Selects a QUIC listener and associates it with the HTTPS listener of the ALB instance.
         self.quic_config = quic_config
         # The timeout period of a request. Unit: seconds.
         # 
@@ -2114,8 +2070,9 @@ class CreateListenerRequest(TeaModel):
         # 
         # Default value: **tls_cipher_policy\_1\_0** (system security policy).
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.security_policy_id = security_policy_id
+        # The configuration of the XForward header.
         self.xforwarded_for_config = xforwarded_for_config
 
     def validate(self):
@@ -2241,11 +2198,11 @@ class CreateListenerResponseBody(TeaModel):
         listener_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
+        # The asynchronous task ID.
         self.job_id = job_id
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2484,6 +2441,7 @@ class CreateLoadBalancerRequest(TeaModel):
         # *   **true:** performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false:** performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The configuration of the billing method of the ALB instance.
         self.load_balancer_billing_config = load_balancer_billing_config
         # The edition of the ALB instance. The features and billing rules vary based on the edition of the ALB instance. Valid values:
         # 
@@ -2495,11 +2453,13 @@ class CreateLoadBalancerRequest(TeaModel):
         # 
         # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
+        # The configuration of the configuration read-only mode.
         self.modification_protection_config = modification_protection_config
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the virtual private cloud (VPC) in which you want to create the ALB instance.
         self.vpc_id = vpc_id
+        # The zones and the vSwitches. You must specify at least two zones.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -2675,14 +2635,18 @@ class CreateRuleRequestRuleActionsCorsConfig(TeaModel):
     ):
         # Specifies whether credentials can be carried in CORS requests. Valid values:
         # 
-        # *   **on:** Credentials can be included in CORS requests.
-        # *   **off:** Credentials cannot be included in CORS requests.
+        # *   **on**: yes
+        # *   **off**: no
         self.allow_credentials = allow_credentials
+        # The allowed headers for CORS requests.
         self.allow_headers = allow_headers
+        # The allowed HTTP methods for CORS requests.
         self.allow_methods = allow_methods
+        # The allowed origins of CORS requests.
         self.allow_origin = allow_origin
+        # The headers that can be exposed.
         self.expose_headers = expose_headers
-        # The maximum cache time of preflight requests in the browser. Unit: seconds.
+        # The maximum cache time of dry run requests in the browser. Unit: seconds.
         # 
         # Valid values: **-1** to **172800**.
         self.max_age = max_age
@@ -2736,7 +2700,7 @@ class CreateRuleRequestRuleActionsFixedResponseConfig(TeaModel):
     ):
         # The content of the custom response. The content can be up to 1 KB in size and can contain only ASCII characters.
         self.content = content
-        # The content type.
+        # The format of the response.
         # 
         # Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
         self.content_type = content_type
@@ -2779,10 +2743,10 @@ class CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession(Tea
     ):
         # Specifies whether to enable session persistence. Valid values:
         # 
-        # *   **true:** enables session persistence.
-        # *   **false** (default): disables session persistence.
+        # *   **true**\
+        # *   **false** (default)
         self.enabled = enabled
-        # The timeout period. Unit: seconds. Valid values: **1** to **86400**. Default value: **1000**.
+        # The timeout period of sessions. Unit: seconds. Valid values: **1** to **86400**. Default value: **1000**.
         self.timeout = timeout
 
     def validate(self):
@@ -2817,10 +2781,10 @@ class CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
     ):
         # The server group to which requests are distributed.
         self.server_group_id = server_group_id
-        # The weight of the server group. A server group with a higher weight receives more requests. Valid values: **1** to **100**.
+        # The weight of the server group. A larger value specifies a higher weight. A server group with a higher weight receives more requests. Valid values: **0** to **100**.
         # 
-        # *   When **N** is 1, the default value **100** is used.
-        # *   When **N** is greater than 1, you must specify the **weight** value for each server group.
+        # *   If only one destination server group exists and you do not specify a weight, the default value **100** is used.
+        # *   If more than one destination server group exists, you must specify weights.
         self.weight = weight
 
     def validate(self):
@@ -2853,7 +2817,9 @@ class CreateRuleRequestRuleActionsForwardGroupConfig(TeaModel):
         server_group_sticky_session: CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession = None,
         server_group_tuples: List[CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
+        # The configuration of session persistence for server groups.
         self.server_group_sticky_session = server_group_sticky_session
+        # The server groups to which requests are distributed. Each forwarding rule supports at most five server groups.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -2898,9 +2864,9 @@ class CreateRuleRequestRuleActionsInsertHeaderConfig(TeaModel):
         value: str = None,
         value_type: str = None,
     ):
-        # The name of the header to be inserted. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The header key specified by **InsertHeaderConfig** must be unique.
+        # The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The header key specified by **InsertHeaderConfig** must be unique.
         # 
-        # >  You cannot specify the following header keys (not case-sensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`.
+        # > You cannot specify the following header keys (case-insensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`.
         self.key = key
         # The value of the header to be inserted.
         # 
@@ -2914,12 +2880,12 @@ class CreateRuleRequestRuleActionsInsertHeaderConfig(TeaModel):
         # 
         # *   If **ValueType** is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcards. The value cannot start or end with a space character.
         # 
-        # *   If **ValueType** is set to **ReferenceHeader**, you can reference the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
+        # *   If **ValueType** is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
         self.value = value
         # The type of header. Valid values:
         # 
         # *   **UserDefined**: a custom header
-        # *   **ReferenceHeader**: a header that is referenced from one of the request headers
+        # *   **ReferenceHeader**: a header that references one of the request headers
         # *   **SystemDefined**: a header predefined by the system
         self.value_type = value_type
 
@@ -2970,19 +2936,19 @@ class CreateRuleRequestRuleActionsRedirectConfig(TeaModel):
         #     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \* = ~ \_ + \ ^ ! $ & | ( ) \[ ] ?.
         #     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
         #     *   The rightmost domain label can contain only letters and wildcards, and cannot contain digits or hyphens (-). The leftmost `domain label` can be an asterisk (\*).
-        #     *   The domain labels cannot start or end with hyphens (-).
-        #     *   You can use an asterisk (\*) and question mark (?) anywhere in a domain label as wildcards.
+        #     *   The domain labels cannot start or end with a hyphen (-).
+        #     *   You can use asterisks (\*) and question marks (?) anywhere in a domain label as wildcard characters.
         self.host = host
         # The redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
         self.http_code = http_code
         # The path to which requests are redirected. Valid values:
         # 
-        # *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also concatenate them with the following characters.
+        # *   Default value: **${path}**. \*\*${host}**, **${protocol}**, and **${port}\*\* are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
         # 
-        # *   A custom value. Make sure that the custom value meets the following requirements:
+        # *   A custom value. You must make sure that the custom value meets the following requirements:
         # 
-        #     *   The value must be 1 to 128 characters in length and can contain asterisks (\*) and question marks (?) as wildcards. The value is case-sensitive.
-        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcard characters.
+        #     *   The value must be 1 to 128 characters in length, and can contain asterisks (\*) and question marks (?) as wildcards. The value is case-sensitive.
+        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\*) and question marks (?) as wildcard characters.
         self.path = path
         # The port to which requests are redirected.
         # 
@@ -2994,15 +2960,15 @@ class CreateRuleRequestRuleActionsRedirectConfig(TeaModel):
         # *   **${protocol}** (default): If you set the value to ${protocol}, you cannot add other characters to the value.
         # *   **HTTP** or **HTTPS**.
         # 
-        # >  HTTPS listeners do not support HTTPS to HTTP redirects.
+        # > HTTPS listeners support only HTTPS to HTTPS redirects.
         self.protocol = protocol
         # The query string of the URL to which requests are redirected.
         # 
-        # *   Default value: **${query}**. **${host}**, **${protocol}**, and **${port}** can be referenced. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also concatenate them with the following characters.
+        # *   Default value: **${query}**. \*\*${host}**, **${protocol}**, and **${port}\*\* are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
         # 
         # *   A custom value. You must make sure that the custom value meets the following requirements:
         # 
-        #     *   The value is 1 to 128 characters in length.
+        #     *   The value must be 1 to 128 characters in length.
         #     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
         self.query = query
 
@@ -3062,20 +3028,20 @@ class CreateRuleRequestRuleActionsRewriteConfig(TeaModel):
         #     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \* = ~ \_ + \ ^ ! $ & | ( ) \[ ] ?.
         #     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
         #     *   The rightmost domain label can contain only letters and wildcards, and cannot contain digits or hyphens (-). The leftmost `domain label` can be an asterisk (\*).
-        #     *   The domain labels cannot start or end with hyphens (-). You can place an asterisk (\*) or a question mark (?) anywhere in a domain label as the wildcard character.
+        #     *   The domain labels cannot start or end with a hyphen (-). You can use asterisks (\*) and question marks (?) anywhere in a domain label as wildcard characters.
         self.host = host
         # The path to which requests are redirected. Valid values:
         # 
-        # *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
+        # *   Default value: **${path}**. \*\*${host}**, **${protocol}**, and **${port}\*\* are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
         # 
         # *   A custom value. You must make sure that the custom value meets the following requirements:
         # 
-        #     *   The value must be 1 to 128 characters in length and can contain asterisks (\*) and question marks (?) as wildcards. The value is case-sensitive.
-        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcard characters.
+        #     *   The value must be 1 to 128 characters in length, and can contain asterisks (\*) and question marks (?) as wildcards. The value is case-sensitive.
+        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\*) and question marks (?) as wildcard characters.
         self.path = path
         # The query string of the URL to which requests are redirected.
         # 
-        # *   Default value: **${query}**. **${host}**, **${protocol}**, and **${port}** can be referenced. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
+        # *   Default value: **${query}**. \*\*${host}**, **${protocol}**, and **${port}\*\* are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
         # 
         # *   A custom value. You must make sure that the custom value meets the following requirements:
         # 
@@ -3119,7 +3085,7 @@ class CreateRuleRequestRuleActionsTrafficLimitConfig(TeaModel):
     ):
         # The QPS of each IP address. Valid values: **1 to 100000**.
         # 
-        # >  If both **QPS** and **PerIpQps** are set, make sure that the **QPS** value is smaller than the PerIpQps value.
+        # > If both the **QPS** and **PerIpQps** properties are specified, make sure that the value of the **QPS** property is smaller than the value of the PerIpQps property.
         self.per_ip_qps = per_ip_qps
         # The queries per second (QPS). Valid values: **1 to 100000**.
         self.qps = qps
@@ -3181,6 +3147,7 @@ class CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig(TeaModel)
         self,
         server_group_tuples: List[CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples] = None,
     ):
+        # The configuration of the server group to which traffic is mirrored.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -3217,6 +3184,7 @@ class CreateRuleRequestRuleActionsTrafficMirrorConfig(TeaModel):
         mirror_group_config: CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
         target_type: str = None,
     ):
+        # The configuration of the server group to which traffic is mirrored.
         self.mirror_group_config = mirror_group_config
         # The type of destination to which network traffic is mirrored. Valid values:
         # 
@@ -3264,15 +3232,27 @@ class CreateRuleRequestRuleActions(TeaModel):
         traffic_mirror_config: CreateRuleRequestRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
+        # The origins allowed.
         self.cors_config = cors_config
+        # The configuration of the custom response.
         self.fixed_response_config = fixed_response_config
+        # The server groups to which requests are distributed. Each forwarding rule supports at most five server groups.
         self.forward_group_config = forward_group_config
+        # The configuration of the header to be inserted.
         self.insert_header_config = insert_header_config
-        # The priority of the action. Valid values: **1 to 50000**. A lower value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is required. The priority of each action within a forwarding rule must be unique.
+        # The priority of the action. Valid values: **1 to 50000**. A smaller value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is required. The priority of each action within a forwarding rule must be unique.
         self.order = order
+        # The redirect configuration.
+        # 
+        # > When you configure the **RedirectConfig** action, you can use the default value only for the **httpCode** parameter. Do not use the default values for the other parameters.
         self.redirect_config = redirect_config
+        # The rewrite configuration.
+        # 
+        # > If multiple actions are configured within a forwarding rule, you must set **RewriteConfig** to the value of **ForwardGroup**.
         self.rewrite_config = rewrite_config
+        # The action to throttle traffic.
         self.traffic_limit_config = traffic_limit_config
+        # The action to mirror traffic.
         self.traffic_mirror_config = traffic_mirror_config
         # The action type. Valid values:
         # 
@@ -3288,8 +3268,8 @@ class CreateRuleRequestRuleActions(TeaModel):
         # 
         # The following action types are supported:
         # 
-        # *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
-        # *   **ExtType**: the action to be performed before the FinalType action. A forwarding rule can contain one or more ExtType actions. To set this parameter, you must also specify FinalType. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
+        # *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify the **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
+        # *   **ExtType**: the action or the actions to be performed before the **FinalType** action. A forwarding rule can contain one or more **ExtType** actions. To specify this parameter, you must also specify **FinalType**. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
         self.type = type
 
     def validate(self):
@@ -3379,15 +3359,15 @@ class CreateRuleRequestRuleConditionsCookieConfigValues(TeaModel):
     ):
         # The key of the cookie.
         # 
-        # *   It must be 1 to 100 characters in length.
+        # *   The key must be 1 to 100 characters in length.
         # *   You can use asterisks (\*) and question marks (?) as wildcard characters.
-        # *   It can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \ | < > &`.
+        # *   The key can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \ | < > &`.
         self.key = key
         # The value of the cookie.
         # 
-        # *   It must be 1 to 100 characters in length.
+        # *   The value must be 1 to 100 characters in length.
         # *   You can use asterisks (\*) and question marks (?) as wildcard characters.
-        # *   It can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \ | < > &`.
+        # *   The value can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \ | < > &`.
         self.value = value
 
     def validate(self):
@@ -3419,6 +3399,7 @@ class CreateRuleRequestRuleConditionsCookieConfig(TeaModel):
         self,
         values: List[CreateRuleRequestRuleConditionsCookieConfigValues] = None,
     ):
+        # The cookie values.
         self.values = values
 
     def validate(self):
@@ -3459,8 +3440,9 @@ class CreateRuleRequestRuleConditionsHeaderConfig(TeaModel):
         # 
         # *   The key must be 1 to 40 characters in length.
         # *   It can contain lowercase letters, digits, hyphens (-), and underscores (\_).
-        # *   You cannot set Cookie or Host.
+        # *   Cookie and Host are not supported.
         self.key = key
+        # The value of the header.
         self.values = values
 
     def validate(self):
@@ -3492,6 +3474,7 @@ class CreateRuleRequestRuleConditionsHostConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
+        # The hostname.
         self.values = values
 
     def validate(self):
@@ -3519,6 +3502,7 @@ class CreateRuleRequestRuleConditionsMethodConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
+        # The request methods.
         self.values = values
 
     def validate(self):
@@ -3546,6 +3530,7 @@ class CreateRuleRequestRuleConditionsPathConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
+        # The path.
         self.values = values
 
     def validate(self):
@@ -3576,12 +3561,12 @@ class CreateRuleRequestRuleConditionsQueryStringConfigValues(TeaModel):
     ):
         # The key of the query string.
         # 
-        # *   It must be 1 to 100 characters in length.
-        # *   You can use asterisks (\*) and question marks (?) as wildcards. It can contain printable characters, except uppercase letters, space characters, and the following special characters: `# [ ] { } \ | < > &`.
+        # *   The key must be 1 to 100 characters in length.
+        # *   You can use asterisks (\*) and question marks (?) as wildcards. The key can contain printable characters, except uppercase letters, space characters, and the following special characters: `# [ ] { } \ | < > &`.
         self.key = key
         # The value of the query string.
         # 
-        # *   It must be 1 to 128 characters in length.
+        # *   The value must be 1 to 128 characters in length.
         # *   It can contain printable characters, except uppercase letters, space characters, and the following special characters: `# [ ] { } \ | < > &`. You can use asterisks (\*) and question marks (?) as wildcard characters.
         self.value = value
 
@@ -3614,6 +3599,7 @@ class CreateRuleRequestRuleConditionsQueryStringConfig(TeaModel):
         self,
         values: List[CreateRuleRequestRuleConditionsQueryStringConfigValues] = None,
     ):
+        # The query strings.
         self.values = values
 
     def validate(self):
@@ -3649,6 +3635,7 @@ class CreateRuleRequestRuleConditionsSourceIpConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
+        # The configuration of the source IP-based forwarding rule.
         self.values = values
 
     def validate(self):
@@ -3683,12 +3670,19 @@ class CreateRuleRequestRuleConditions(TeaModel):
         source_ip_config: CreateRuleRequestRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
+        # The configurations of the cookies.
         self.cookie_config = cookie_config
+        # The configuration of the header.
         self.header_config = header_config
+        # The configurations of the host.
         self.host_config = host_config
+        # The configurations of the request methods.
         self.method_config = method_config
+        # The configurations of the URLs.
         self.path_config = path_config
+        # The configurations of the query strings.
         self.query_string_config = query_string_config
+        # The configuration of the source IP-based forwarding rule. This parameter is required and takes effect only when **Type** is set to **SourceIP**.
         self.source_ip_config = source_ip_config
         # The type of forwarding rule. Valid values:
         # 
@@ -3783,29 +3777,41 @@ class CreateRuleRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The direction to which the forwarding rule is applied. Valid values:
         # 
         # *   **Request** (default): The forwarding rule is applied to the client requests received by ALB.
         # *   **Response**: The forwarding rule is applied to the responses returned by backend servers.
         # 
-        # >  You cannot set the value to **Response** if you use a basic ALB instance.
+        # > Basic ALB instances do not support the **Response** value.
         self.direction = direction
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+        # *   **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the listener of the ALB instance.
         self.listener_id = listener_id
-        # The priority of the forwarding rule. Valid values: **1 to 10000**. A lower value indicates a higher priority.
+        # The priority of the forwarding rule. Valid values: **1 to 10000**. A smaller value indicates a higher priority.
         # 
-        # >  The priority of each forwarding rule within a listener must be unique.
+        # > The priorities of the forwarding rules created for the same listener must be unique.
         self.priority = priority
+        # The actions of the forwarding rule.
+        # 
+        # The maximum number of actions that can be specified for a forwarding rule.
+        # 
+        # *   Basic ALB instances: You can specify at most three actions for a forwarding rule.
+        # *   Standard ALB instances: You can specify at most five actions for a forwarding rule.
         self.rule_actions = rule_actions
+        # The match conditions of the forwarding rule.
+        # 
+        # The maximum number of conditions supported by a forwarding rule.
+        # 
+        # *   Basic ALB instances: You can specify at most five conditions for a forwarding rule.
+        # *   Standard ALB instances: You can specify at most 10 conditions for a forwarding rule.
         self.rule_conditions = rule_conditions
         # The name of the forwarding rule.
         # 
@@ -3885,9 +3891,9 @@ class CreateRuleResponseBody(TeaModel):
         request_id: str = None,
         rule_id: str = None,
     ):
-        # The ID of the asynchronous task.
+        # The asynchronous task ID.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the forwarding rule.
         self.rule_id = rule_id
@@ -3974,18 +3980,21 @@ class CreateRulesRequestRulesRuleActionsCorsConfig(TeaModel):
         expose_headers: List[str] = None,
         max_age: int = None,
     ):
-        # Specifies whether credentials can be carried in CORS requests. Valid values:
+        # The key of the header.
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   The key must be 1 to 40 characters in length.
+        # *   It can contain letters, digits, hyphens (-), and underscores (\_).
+        # *   You cannot set Cookie or Host.
         self.allow_credentials = allow_credentials
         self.allow_headers = allow_headers
         self.allow_methods = allow_methods
         self.allow_origin = allow_origin
         self.expose_headers = expose_headers
-        # The time-to-live (TTL) of the precheck request cached in the browser. Unit: seconds.
+        # The value of the header. The header values within a forwarding rule must be unique.
         # 
-        # Valid values: **-1** to **172800**.
+        # *   The value must be 1 to 128 characters in length.
+        # *   It can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcard characters.
+        # *   The value cannot start or end with a space character.
         self.max_age = max_age
 
     def validate(self):
@@ -4035,17 +4044,14 @@ class CreateRulesRequestRulesRuleActionsFixedResponseConfig(TeaModel):
         content_type: str = None,
         http_code: str = None,
     ):
-        # The content of the custom response. The content can be up to 1 KB in size and can contain only ASCII characters.
+        # The weight of the server group. A larger value indicates a higher weight. A server group with a higher weight receives more requests. Valid values: **1 to 100**. Default value: **100**.
         self.content = content
-        # The format of the response. Valid values:
+        # Specifies whether to enable session persistence. Valid values:
         # 
-        # *   **text/plain**\
-        # *   **text/css**\
-        # *   **text/html**\
-        # *   **application/javascript**\
-        # *   **application/json**\
+        # *   **true**: enables session persistence.
+        # *   **false** (default): disables session persistence.
         self.content_type = content_type
-        # The HTTP status code in the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** must be a digit.
+        # The timeout period of sessions. Unit: seconds. Valid values: **1 to 86400**.
         self.http_code = http_code
 
     def validate(self):
@@ -4082,12 +4088,13 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySessi
         enabled: bool = None,
         timeout: int = None,
     ):
-        # Specifies whether to enable session persistence. Valid values:
+        # The type of header. Valid values:
         # 
-        # *   **true**: enables session persistence.
-        # *   **false** (default): disables session persistence.
+        # *   **UserDefined**: a custom header.
+        # *   **ReferenceHeader**: a header that is referenced from one of the request headers.
+        # *   **SystemDefined**: a header predefined by the system.
         self.enabled = enabled
-        # The timeout period of sessions. Unit: seconds. Valid values: **1 to 86400**.
+        # The priority of the action within the forwarding rule. Valid values: **1 to 50000**. A lower value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is required. The priority of each action within a forwarding rule must be unique. You can specify priorities for at most 20 actions.
         self.timeout = timeout
 
     def validate(self):
@@ -4120,9 +4127,23 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples(TeaM
         server_group_id: str = None,
         weight: int = None,
     ):
-        # The server group to which requests are distributed.
+        # The name of the header to insert. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The header names specified by **InsertHeaderConfig** must be unique.
+        # 
+        # >  You cannot set the name of the header to any of the following values (case-insensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`.
         self.server_group_id = server_group_id
-        # The weight of the server group. A larger value indicates a higher weight. A server group with a higher weight receives more requests. Valid values: **1 to 100**. Default value: **100**.
+        # The value of the header to insert.
+        # 
+        # *   If **ValueType** is set to **SystemDefined**, you can set one of the following header values:
+        # 
+        #     *   **ClientSrcPort**: the client port.
+        #     *   **ClientSrcIp**: the client IP address.
+        #     *   **Protocol**: the request protocol (HTTP or HTTPS).
+        #     *   **SLBId**: the ID of the ALB instance.
+        #     *   **SLBPort**: the listening port.
+        # 
+        # *   If **ValueType** is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length and can contain printable characters whose ASCII character values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcards. The value cannot start or end with a space character.
+        # 
+        # *   If **ValueType** is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
         self.weight = weight
 
     def validate(self):
@@ -4200,29 +4221,29 @@ class CreateRulesRequestRulesRuleActionsInsertHeaderConfig(TeaModel):
         value: str = None,
         value_type: str = None,
     ):
-        # The name of the header to insert. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The header names specified by **InsertHeaderConfig** must be unique.
+        # The hostname to which requests are distributed. Valid values:
         # 
-        # >  You cannot set the name of the header to any of the following values (case-insensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`.
+        # *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
+        # 
+        # *   If you want to specify a custom value, make sure that the following requirements are met:
+        # 
+        #     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). You can use asterisks (\*) and question marks (?) as wildcard characters.
+        #     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
+        #     *   The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
+        #     *   The domain labels cannot start or end with a hyphen (-).
+        #     *   You can use asterisks (\*) and question marks (?) as wildcards anywhere in a domain label.
         self.key = key
-        # The value of the header to insert.
-        # 
-        # *   If **ValueType** is set to **SystemDefined**, you can set one of the following header values:
-        # 
-        #     *   **ClientSrcPort**: the client port.
-        #     *   **ClientSrcIp**: the client IP address.
-        #     *   **Protocol**: the request protocol (HTTP or HTTPS).
-        #     *   **SLBId**: the ID of the ALB instance.
-        #     *   **SLBPort**: the listening port.
-        # 
-        # *   If **ValueType** is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length and can contain printable characters whose ASCII character values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcards. The value cannot start or end with a space character.
-        # 
-        # *   If **ValueType** is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
+        # The HTTP status code that indicates the redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
         self.value = value
-        # The type of header. Valid values:
+        # The path to which requests are redirected. Valid values:
         # 
-        # *   **UserDefined**: a custom header.
-        # *   **ReferenceHeader**: a header that is referenced from one of the request headers.
-        # *   **SystemDefined**: a header predefined by the system.
+        # *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
+        # 
+        # *   If you want to specify a custom value, make sure that the following requirements are met:
+        # 
+        #     *   The value is 1 to 128 characters in length.
+        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcards.
+        #     *   The value is case-sensitive.
         self.value_type = value_type
 
     def validate(self):
@@ -4263,7 +4284,23 @@ class CreateRulesRequestRulesRuleActionsRedirectConfig(TeaModel):
         protocol: str = None,
         query: str = None,
     ):
-        # The hostname to which requests are distributed. Valid values:
+        # The redirect protocol. Valid values:
+        # 
+        # *   **${protocol}** (default): If you set the value to ${protocol}, you cannot append other characters.
+        # *   You can set the protocol to **HTTP** or **HTTPS**.
+        # 
+        # >  HTTPS listeners do not support HTTPS-to-HTTP redirects.
+        self.host = host
+        # The query string of the URL to which requests are redirected.
+        # 
+        # *   Default value: **${query}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
+        # 
+        # *   If you want to specify a custom value, make sure that the following requirements are met:
+        # 
+        #     *   The value is 1 to 128 characters in length.
+        #     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
+        self.http_code = http_code
+        # The hostname to which requests are redirected. Valid values:
         # 
         # *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
         # 
@@ -4272,11 +4309,8 @@ class CreateRulesRequestRulesRuleActionsRedirectConfig(TeaModel):
         #     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). You can use asterisks (\*) and question marks (?) as wildcard characters.
         #     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
         #     *   The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
-        #     *   The domain labels cannot start or end with a hyphen (-).
-        #     *   You can use asterisks (\*) and question marks (?) as wildcards anywhere in a domain label.
-        self.host = host
-        # The HTTP status code that indicates the redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
-        self.http_code = http_code
+        #     *   The domain labels cannot start or end with a hyphen (-). You can use an asterisk (\*) and question mark (?) as wildcards anywhere in a domain label.
+        self.path = path
         # The path to which requests are redirected. Valid values:
         # 
         # *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
@@ -4286,19 +4320,7 @@ class CreateRulesRequestRulesRuleActionsRedirectConfig(TeaModel):
         #     *   The value is 1 to 128 characters in length.
         #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcards.
         #     *   The value is case-sensitive.
-        self.path = path
-        # The port to which requests are redirected.
-        # 
-        # *   **${port}** (default): If you set the value to ${port}, you cannot append other characters.
-        # *   You can also enter a port number. Valid values: **1 to 63335**.
         self.port = port
-        # The redirect protocol. Valid values:
-        # 
-        # *   **${protocol}** (default): If you set the value to ${protocol}, you cannot append other characters.
-        # *   You can set the protocol to **HTTP** or **HTTPS**.
-        # 
-        # >  HTTPS listeners do not support HTTPS-to-HTTP redirects.
-        self.protocol = protocol
         # The query string of the URL to which requests are redirected.
         # 
         # *   Default value: **${query}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
@@ -4307,6 +4329,23 @@ class CreateRulesRequestRulesRuleActionsRedirectConfig(TeaModel):
         # 
         #     *   The value is 1 to 128 characters in length.
         #     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
+        self.protocol = protocol
+        # The action type. You can specify at most 11 types of action. Valid values:
+        # 
+        # *   **ForwardGroup**: forwards a request to multiple vServer groups.
+        # *   **Redirect**: redirects a request.
+        # *   **FixedResponse**: returns a custom response.
+        # *   **Rewrite**: rewrites a request.
+        # *   **InsertHeader**: inserts a header.
+        # *   **RemoveHeaderConfig**: deletes a header.
+        # *   **TrafficLimitConfig**: throttles network traffic.
+        # *   **TrafficMirrorConfig**: mirrors network traffic.
+        # *   **CORS**: enables cross-origin resource sharing (CORS).
+        # 
+        # You can specify the last action and the actions that you want to perform before the last action:
+        # 
+        # *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
+        # *   **ExtType**: the action to be performed before the FinalType action. A forwarding rule can contain one or more ExtType actions. To specify this parameter, you must also specify FinalType. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
         self.query = query
 
     def validate(self):
@@ -4356,35 +4395,16 @@ class CreateRulesRequestRulesRuleActionsRewriteConfig(TeaModel):
         path: str = None,
         query: str = None,
     ):
-        # The hostname to which requests are redirected. Valid values:
-        # 
-        # *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
-        # 
-        # *   If you want to specify a custom value, make sure that the following requirements are met:
-        # 
-        #     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). You can use asterisks (\*) and question marks (?) as wildcard characters.
-        #     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
-        #     *   The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
-        #     *   The domain labels cannot start or end with a hyphen (-). You can use an asterisk (\*) and question mark (?) as wildcards anywhere in a domain label.
+        # Queries per second (QPS). Valid values: **1 to 100000**.
         self.host = host
-        # The path to which requests are redirected. Valid values:
+        # The QPS of each IP address. Valid values: **1 to 100000**.
         # 
-        # *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
-        # 
-        # *   If you want to specify a custom value, make sure that the following requirements are met:
-        # 
-        #     *   The value is 1 to 128 characters in length.
-        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcards.
-        #     *   The value is case-sensitive.
+        # >  If **QPS** and PerIpQps are configured at the same time, the value of the **PerIpQps** parameter must be smaller than that of the **QPS** parameter.
         self.path = path
-        # The query string of the URL to which requests are redirected.
+        # The type of destination to which network traffic is mirrored. Valid values:
         # 
-        # *   Default value: **${query}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
-        # 
-        # *   If you want to specify a custom value, make sure that the following requirements are met:
-        # 
-        #     *   The value is 1 to 128 characters in length.
-        #     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
+        # *   **ForwardGroupMirror**: a server group.
+        # *   **SlsMirror**: Log Service.
         self.query = query
 
     def validate(self):
@@ -4421,11 +4441,20 @@ class CreateRulesRequestRulesRuleActionsTrafficLimitConfig(TeaModel):
         per_ip_qps: int = None,
         qps: int = None,
     ):
-        # The QPS of each IP address. Valid values: **1 to 100000**.
+        # The allowed HTTP methods for CORS requests. Valid values:
         # 
-        # >  If **QPS** and PerIpQps are configured at the same time, the value of the **PerIpQps** parameter must be smaller than that of the **QPS** parameter.
+        # *   **GET**\
+        # *   **POST**\
+        # *   **PUT**\
+        # *   **DELETE**\
+        # *   **HEAD**\
+        # *   **OPTIONS**\
+        # *   **PATCH**\
         self.per_ip_qps = per_ip_qps
-        # Queries per second (QPS). Valid values: **1 to 100000**.
+        # The origin site that is allowed to access. You can specify an asterisk (`*`) or one or more values. The value cannot be an asterisk (`*`).
+        # 
+        # *   The value must start with `http://` or `https://` and include a valid domain name or top-level wildcard domain name, such as `*.test.abc.example.com`.
+        # *   You can choose to include a port number from **1** to **65535** in each value based on your business requirement.
         self.qps = qps
 
     def validate(self):
@@ -4457,7 +4486,7 @@ class CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServ
         self,
         server_group_id: str = None,
     ):
-        # The ID of the vServer group.
+        # The headers that are allowed to expose. You can specify an asterisk (`*`) or one or more values. Separate multiple values with commas (,). The value must be 1 to 32 characters in length, and can contain letters and digits. The value cannot start or end with an underscore (\_) or hyphen (-).
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -4522,10 +4551,7 @@ class CreateRulesRequestRulesRuleActionsTrafficMirrorConfig(TeaModel):
         target_type: str = None,
     ):
         self.mirror_group_config = mirror_group_config
-        # The type of destination to which network traffic is mirrored. Valid values:
-        # 
-        # *   **ForwardGroupMirror**: a server group.
-        # *   **SlsMirror**: Log Service.
+        # The allowed headers for CORS requests. You can specify an asterisk (`*`) or one or more values. Separate multiple values with commas (,). The value must be 1 to 32 characters in length, and can contain letters and digits. The value cannot start or end with an underscore (\_) or hyphen (-).
         self.target_type = target_type
 
     def validate(self):
@@ -4572,28 +4598,16 @@ class CreateRulesRequestRulesRuleActions(TeaModel):
         self.fixed_response_config = fixed_response_config
         self.forward_group_config = forward_group_config
         self.insert_header_config = insert_header_config
-        # The priority of the action within the forwarding rule. Valid values: **1 to 50000**. A lower value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is required. The priority of each action within a forwarding rule must be unique. You can specify priorities for at most 20 actions.
+        # The port to which requests are redirected.
+        # 
+        # *   **${port}** (default): If you set the value to ${port}, you cannot append other characters.
+        # *   You can also enter a port number. Valid values: **1 to 63335**.
         self.order = order
         self.redirect_config = redirect_config
         self.rewrite_config = rewrite_config
         self.traffic_limit_config = traffic_limit_config
         self.traffic_mirror_config = traffic_mirror_config
-        # The action type. You can specify at most 11 types of action. Valid values:
-        # 
-        # *   **ForwardGroup**: forwards a request to multiple vServer groups.
-        # *   **Redirect**: redirects a request.
-        # *   **FixedResponse**: returns a custom response.
-        # *   **Rewrite**: rewrites a request.
-        # *   **InsertHeader**: inserts a header.
-        # *   **RemoveHeaderConfig**: deletes a header.
-        # *   **TrafficLimitConfig**: throttles network traffic.
-        # *   **TrafficMirrorConfig**: mirrors network traffic.
-        # *   **CORS**: enables cross-origin resource sharing (CORS).
-        # 
-        # You can specify the last action and the actions that you want to perform before the last action:
-        # 
-        # *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
-        # *   **ExtType**: the action to be performed before the FinalType action. A forwarding rule can contain one or more ExtType actions. To specify this parameter, you must also specify FinalType. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
+        # The ID of the vServer group.
         self.type = type
 
     def validate(self):
@@ -4681,17 +4695,14 @@ class CreateRulesRequestRulesRuleConditionsCookieConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the cookie.
+        # The hostname. A forwarding rule can contain only one unique hostname.
         # 
-        # *   The key must be 1 to 100 characters in length.
-        # *   You can use asterisks (\*) and question marks (?) as wildcard characters.
-        # *   The value can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \ | < > &`.
+        # *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (\*), and question marks (?).
+        # *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
+        # *   The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
+        # *   The domain labels do not start or end with hyphens (-). You can use an asterisk (\*) and question mark (?) as wildcards anywhere in a domain label.
         self.key = key
-        # The value of the cookie.
-        # 
-        # *   The value must be 1 to 100 characters in length.
-        # *   You can use asterisks (\*) and question marks (?) as wildcard characters.
-        # *   The value can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \ | < > &`.
+        # The request methods. Valid values: **HEAD**, **GET**, **POST**, **OPTIONS**, **PUT**, **PATCH**, and **DELETE**.
         self.value = value
 
     def validate(self):
@@ -4759,11 +4770,11 @@ class CreateRulesRequestRulesRuleConditionsHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of the header.
+        # The path to which requests are forwarded. Limits:
         # 
-        # *   The key must be 1 to 40 characters in length.
-        # *   It can contain letters, digits, hyphens (-), and underscores (\_).
-        # *   You cannot set Cookie or Host.
+        # *   The path must be 1 to 128 characters in length.
+        # *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcards.
+        # *   The value is case-sensitive.
         self.key = key
         self.values = values
 
@@ -4878,15 +4889,19 @@ class CreateRulesRequestRulesRuleConditionsQueryStringConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the query string.
+        # The type of forwarding rule. You can specify at most seven types. Valid values:
         # 
-        # *   It must be 1 to 100 characters in length.
-        # *   You can use asterisks (\*) and question marks (?) as wildcards. The key can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \ | < > &`.
+        # *   **Host**: Requests are forwarded based on hosts.
+        # *   **Path**: Requests are forwarded based on paths.
+        # *   **Header**: Requests are forwarded based on HTTP headers.
+        # *   **QueryString**: Requests are forwarded based on query strings.
+        # *   **Method**: Requests are forwarded based on request methods.
+        # *   **Cookie**: Requests are forwarded based on cookies.
+        # *   **SourceIp**: Requests are forwarded based on source IP addresses.
         self.key = key
-        # The value of the query string.
+        # The IP addresses or CIDR blocks.
         # 
-        # *   The value must be 1 to 128 characters in length.
-        # *   It can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \ | < > &`. You can use asterisks (\*) and question marks (?) as wildcards.
+        # You can specify at most five values for **SourceIp**.
         self.value = value
 
     def validate(self):
@@ -4954,11 +4969,10 @@ class CreateRulesRequestRulesRuleConditionsResponseHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of the response header.
+        # The name of the forwarding rule. You can name at most 20 forwarding rules.
         # 
-        # *   The key must be 1 to 40 characters in length.
-        # *   It can contain letters, digits, hyphens (-), and underscores (\_).
-        # *   You cannot set Cookie or Host.
+        # *   The name must be 2 to 128 characters in length.
+        # *   It can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
         self.key = key
         self.values = values
 
@@ -5034,15 +5048,7 @@ class CreateRulesRequestRulesRuleConditions(TeaModel):
         self.query_string_config = query_string_config
         self.response_header_config = response_header_config
         self.source_ip_config = source_ip_config
-        # The type of forwarding rule. You can specify at most seven types. Valid values:
-        # 
-        # *   **Host**: Requests are forwarded based on hosts.
-        # *   **Path**: Requests are forwarded based on paths.
-        # *   **Header**: Requests are forwarded based on HTTP headers.
-        # *   **QueryString**: Requests are forwarded based on query strings.
-        # *   **Method**: Requests are forwarded based on request methods.
-        # *   **Cookie**: Requests are forwarded based on cookies.
-        # *   **SourceIp**: Requests are forwarded based on source IP addresses.
+        # The ID of the asynchronous task.
         self.type = type
 
     def validate(self):
@@ -5129,23 +5135,13 @@ class CreateRulesRequestRules(TeaModel):
         rule_conditions: List[CreateRulesRequestRulesRuleConditions] = None,
         rule_name: str = None,
     ):
-        # The direction to which the forwarding rule is applied. You can specify only one direction. Valid values:
-        # 
-        # *   **Request** (default): The forwarding rule is applied to the requests received by ALB.
-        # *   **Response**: The forwarding rule is applied to the responses returned by backend servers.
-        # 
-        # >  You cannot set the value to **Response** if you use a basic ALB instance.
+        # The ID of the forwarding rule.
         self.direction = direction
-        # The priority of the forwarding rule. Valid values: **1** to **10000**. A smaller value indicates a higher priority. You can specify priorities for at most 10 forwarding rules.
-        # 
-        # >  The priority of each forwarding rule added to a listener must be unique.
+        # The server group to which requests are distributed.
         self.priority = priority
         self.rule_actions = rule_actions
         self.rule_conditions = rule_conditions
-        # The name of the forwarding rule. You can name at most 20 forwarding rules.
-        # 
-        # *   The name must be 2 to 128 characters in length.
-        # *   It can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+        # The list of forwarding rules.
         self.rule_name = rule_name
 
     def validate(self):
@@ -5209,18 +5205,17 @@ class CreateRulesRequest(TeaModel):
         listener_id: str = None,
         rules: List[CreateRulesRequestRules] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # The format of the response. Valid values:
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
+        # *   **text/plain**\
+        # *   **text/css**\
+        # *   **text/html**\
+        # *   **application/javascript**\
+        # *   **application/json**\
         self.client_token = client_token
-        # Specifies whether to precheck the request without performing the operation. Valid values:
-        # 
-        # *   **true**: prechecks the request but does not create the forwarding rule. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, the system returns an `HTTP 2xx` status code and creates the forwarding rule.
+        # The HTTP status code in the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** must be a digit.
         self.dry_run = dry_run
-        # The ID of the listener of the ALB instance.
+        # The content of the custom response. The content can be up to 1 KB in size and can contain only ASCII characters.
         self.listener_id = listener_id
         self.rules = rules
 
@@ -5270,11 +5265,7 @@ class CreateRulesResponseBodyRuleIds(TeaModel):
         priority: int = None,
         rule_id: str = None,
     ):
-        # The priority of the forwarding rule. Valid values: **1 to 10000**. A smaller value indicates a higher priority.
-        # 
-        # >  The priority of each forwarding rule added to a listener is unique.
         self.priority = priority
-        # The ID of the forwarding rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -5308,11 +5299,11 @@ class CreateRulesResponseBody(TeaModel):
         request_id: str = None,
         rule_ids: List[CreateRulesResponseBodyRuleIds] = None,
     ):
-        # The ID of the asynchronous task.
+        # The priority of the forwarding rule. Valid values: **1 to 10000**. A smaller value indicates a higher priority.
+        # 
+        # >  The priority of each forwarding rule added to a listener is unique.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
-        # The list of forwarding rules.
         self.rule_ids = rule_ids
 
     def validate(self):
@@ -5605,24 +5596,19 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         unhealthy_threshold: int = None,
     ):
         # The HTTP status codes that are used to determine whether the backend server passes the health check.
-        # 
-        # *   If **HealthCheckProtocol** is set to **HTTP**, **HealthCheckCodes** can be set to **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**. Separate multiple HTTP status codes with a comma (,).
-        # *   If **HealthCheckProtocol** is set to **gRPC**, **HealthCheckCodes** can be set to **0 to 99**. Default value: **0**. Value ranges are supported. You can enter at most 20 value ranges. Separate multiple value ranges with commas (,).
-        # 
-        # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
         self.health_check_codes = health_check_codes
-        # The backend port that is used for health checks.
+        # The port that you want to use for health checks on backend servers.
         # 
         # Valid values: **0** to **65535**.
         # 
         # Default value: **0**. If you set the value to 0, the port of a backend server is used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # Specifies whether to enable the health check feature. Valid values:
+        # Indicates whether the health check feature is enabled. Valid values:
         # 
-        # *   **true**: enables the health check feature.
-        # *   **false**: disables the health check feature.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  If the **ServerGroupType** parameter is set to **Instance** or **Ip**, the health check feature is enabled by default. If the **ServerGroupType** parameter is set to **Fc**, the health check feature is disabled by default.
+        # > If the **ServerGroupType** parameter is set to **Instance** or **Ip**, the health check feature is enabled by default. If the **ServerGroupType** parameter is set to **Fc**, the health check feature is disabled by default.
         self.health_check_enabled = health_check_enabled
         # The domain name that is used for health checks. The domain name must meet the following requirements:
         # 
@@ -5632,13 +5618,13 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         # *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
         # *   The domain name cannot start or end with a hyphen (-).
         # 
-        # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP**.
+        # > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP**.
         self.health_check_host = health_check_host
         # The HTTP version. Valid values: **HTTP1.0** and **HTTP1.1**. Default value: HTTP1.1.
         # 
-        # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP**.
+        # > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP**.
         self.health_check_http_version = health_check_http_version
-        # The interval between two consecutive health checks. Unit: seconds.
+        # The interval at which health checks are performed. Unit: seconds.
         # 
         # Valid values: **1** to **50**.
         # 
@@ -5647,16 +5633,16 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         # The HTTP method that is used for health checks. Valid values:
         # 
         # *   **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
-        # *   **POST**: By default, gRPC health checks use the POST method.
+        # *   **POST**: gRPC health checks automatically use the POST method.
         # *   **HEAD**: By default, HTTP health checks use the HEAD method.
         # 
-        # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+        # > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
         self.health_check_method = health_check_method
         # The path that is used for health checks.
         # 
-        # The path must be 1 to 80 characters in length and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The path must start with a forward slash (/).
+        # The path must be 1 to 80 characters in length and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The URL must start with a forward slash (/).
         # 
-        # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP**.
+        # > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP**.
         self.health_check_path = health_check_path
         # The protocol that is used for health checks. Valid values:
         # 
@@ -5664,13 +5650,13 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         # *   **HTTPS**: To perform HTTPS health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
         # *   **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
         self.health_check_protocol = health_check_protocol
-        # The timeout period of a health check. Unit: seconds. If a backend server, such as an Elastic Compute Service (ECS) instance, does not return a health check response within the specified timeout period, the server fails the health check. Unit: seconds.
+        # Specify the timeout period of a health check response. If a backend server, such as an Elastic Compute Service (ECS) instance, does not return a health check response within the specified timeout period, the server fails the health check. Unit: seconds.
         # 
         # Valid values: **1** to **300**.
         # 
         # Default value: **5**.
         # 
-        # >  If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the value of the **HealthCheckInterval** parameter is used as the timeout period.
+        # > If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the value of the **HealthCheckInterval** parameter is used as the timeout period.
         self.health_check_timeout = health_check_timeout
         # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
         # 
@@ -5761,7 +5747,7 @@ class CreateServerGroupRequestStickySessionConfig(TeaModel):
         # 
         # The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
         # 
-        # >  This parameter takes effect when the **StickySessionEnabled** parameter is set to **true** and the **StickySessionType** parameter is set to **Server**.
+        # > This parameter takes effect when the **StickySessionEnabled** parameter is set to **true** and the **StickySessionType** parameter is set to **Server**.
         self.cookie = cookie
         # The timeout period of a cookie. Unit: seconds.
         # 
@@ -5769,26 +5755,26 @@ class CreateServerGroupRequestStickySessionConfig(TeaModel):
         # 
         # Default value: **1000**.
         # 
-        # >  This parameter takes effect only when the **StickySessionEnabled** parameter is set to **true** and the **StickySessionType** parameter is set to **Insert**.
+        # > This parameter takes effect only when the **StickySessionEnabled** parameter is set to **true** and the **StickySessionType** parameter is set to **Insert**.
         self.cookie_timeout = cookie_timeout
         # Specifies whether to enable session persistence. Valid values:
         # 
-        # *   **true**: enables session persistence.
-        # *   **false** (default): disables session persistence.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # >  This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
+        # > This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
         self.sticky_session_enabled = sticky_session_enabled
         # The method that is used to handle a cookie. Valid values:
         # 
         # *   **Insert** (default): inserts a cookie.
         # 
-        #     ALB inserts a session cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. Subsequent requests to ALB carry this cookie, and ALB determines the destination servers of the requests based on the cookies.
+        # ALB inserts a session cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. Subsequent requests to ALB carry this cookie, and ALB determines the destination servers of the requests based on the cookies.
         # 
         # *   **Server**: rewrites a cookie.
         # 
-        #     When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+        # When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
         # 
-        # >  This parameter takes effect when the **StickySessionEnabled** parameter is set to **true**.
+        # > This parameter takes effect when the **StickySessionEnabled** parameter is set to **true**.
         self.sticky_session_type = sticky_session_type
 
     def validate(self):
@@ -5829,7 +5815,9 @@ class CreateServerGroupRequestUchConfig(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # Type
         self.type = type
+        # The setting of consistent hashing.
         self.value = value
 
     def validate(self):
@@ -5874,14 +5862,14 @@ class CreateServerGroupRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the server group is created.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The configuration of health checks.
         self.health_check_config = health_check_config
@@ -5891,7 +5879,7 @@ class CreateServerGroupRequest(TeaModel):
         # *   **HTTPS**: The server group can be associated with HTTPS listeners.
         # *   **gRPC**: The server group can be associated with HTTPS and QUIC listeners.
         # 
-        # >  If the **ServerGroupType** parameter is set to **Fc**, you can set Protocol only to **HTTP**.
+        # > If the **ServerGroupType** parameter is set to **Fc**, you can set Protocol only to **HTTP**.
         self.protocol = protocol
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -5901,13 +5889,13 @@ class CreateServerGroupRequest(TeaModel):
         # *   **Wlc**: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
         # *   **Sch**: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
         # 
-        # >  This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
+        # > This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
         self.scheduler = scheduler
-        # The name of the server group. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.server_group_name = server_group_name
-        # The type of the server group. Valid values:
+        # The type of server group. Valid values:
         # 
-        # *   **Instance** (default): allows you add servers by specifying **Ecs**, **Ens**, or **Eci**.
+        # *   **Instance** (default): allows you to add servers by specifying **Ecs**, **Ens**, or **Eci**.
         # *   **Ip**: allows you to add servers by specifying IP addresses.
         # *   **Fc**: allows you to add servers by specifying functions of Function Compute.
         self.server_group_type = server_group_type
@@ -5915,12 +5903,13 @@ class CreateServerGroupRequest(TeaModel):
         self.service_name = service_name
         # The configuration of session persistence.
         # 
-        # >  This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
+        # > This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
         self.sticky_session_config = sticky_session_config
+        # The setting of consistent hashing based on URLs.
         self.uch_config = uch_config
         # The ID of the virtual private cloud (VPC). You can add only backend servers that are deployed in the specified VPC to the server group.
         # 
-        # >  This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
+        # > This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6002,9 +5991,9 @@ class CreateServerGroupResponseBody(TeaModel):
         request_id: str = None,
         server_group_id: str = None,
     ):
-        # The ID of the asynchronous task.
+        # The ID of the asynchronous job.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the server group.
         self.server_group_id = server_group_id
@@ -6089,14 +6078,7 @@ class DeleteAScriptsRequest(TeaModel):
         dry_run: bool = None,
     ):
         self.ascript_ids = ascript_ids
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can only contain ASCII characters.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
 
     def validate(self):
@@ -6133,9 +6115,7 @@ class DeleteAScriptsResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6213,18 +6193,8 @@ class DeleteAclRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
     ):
-        # The ID of the ACL.
         self.acl_id = acl_id
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
-        # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
 
     def validate(self):
@@ -6261,9 +6231,7 @@ class DeleteAclResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6586,16 +6554,8 @@ class DeleteLoadBalancerRequest(TeaModel):
         dry_run: bool = None,
         load_balancer_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
-        # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request format, and service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. If the request passes the check, the system returns an `HTTP 2xx` status code and performs the operation. This is the default value.
         self.dry_run = dry_run
-        # The ID of the ALB instance.
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -6632,9 +6592,7 @@ class DeleteLoadBalancerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6712,18 +6670,8 @@ class DeleteRuleRequest(TeaModel):
         dry_run: bool = None,
         rule_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
-        # 
-        # *   **true**: sends the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, the `HTTP_2xx` status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the forwarding rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -6760,9 +6708,7 @@ class DeleteRuleResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6851,6 +6797,9 @@ class DeleteRulesRequest(TeaModel):
         # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the request. If the request passes the check, the system returns an `HTTP 2xx` status code and performs the operation.
         self.dry_run = dry_run
+        # The list of forwarding rules that you want to delete.
+        # 
+        # >  The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
         self.rule_ids = rule_ids
 
     def validate(self):
@@ -6967,16 +6916,10 @@ class DeleteSecurityPolicyRequest(TeaModel):
         dry_run: bool = None,
         security_policy_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        # 
-        # >  If you do not set this parameter, the system automatically uses the request ID as the client token. The ID of each request may be unique.
-        self.client_token = client_token
-        # Specifies whether to precheck the API request. Valid values:
-        # 
-        # *   **true**: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): checks the request. After the request passes the check, an HTTP\_2xx status code is returned and the operation is performed.
-        self.dry_run = dry_run
         # The ID of the security policy.
+        self.client_token = client_token
+        # The ID of the request.
+        self.dry_run = dry_run
         self.security_policy_id = security_policy_id
 
     def validate(self):
@@ -7012,7 +6955,6 @@ class DeleteSecurityPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7086,18 +7028,8 @@ class DeleteServerGroupRequest(TeaModel):
         dry_run: bool = None,
         server_group_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specify whether to perform only a precheck. Valid values:
-        # 
-        # *   **true**: prechecks the request, but does not delete the server group. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the system proceeds to delete the server group.
         self.dry_run = dry_run
-        # The ID of the server group.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -7134,9 +7066,7 @@ class DeleteServerGroupResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7531,24 +7461,11 @@ class DetachCommonBandwidthPackageFromLoadBalancerRequest(TeaModel):
         load_balancer_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the EIP bandwidth plan.
         self.bandwidth_package_id = bandwidth_package_id
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+        # The ID of the asynchronous task.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
-        # 
-        # *   **true**: checks the request without perform the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the ALB instance.
         self.load_balancer_id = load_balancer_id
-        # The ID of the region where the ALB instance is deployed.
-        # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -7593,9 +7510,7 @@ class DetachCommonBandwidthPackageFromLoadBalancerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7673,14 +7588,10 @@ class DisableDeletionProtectionRequest(TeaModel):
         dry_run: bool = None,
         resource_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        self.client_token = client_token
-        # Specify whether to precheck this request. Valid values:
-        # 
-        # *   **true**: prechecks the API request. Resources are not created. The system checks the required parameters, request format, and service limits. If the request fails the check, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): checks the request. After the request passes the check, an `HTTP_2xx` status code is returned and the operation is performed.
-        self.dry_run = dry_run
         # The ID of the Application Load Balancer (ALB) instance.
+        self.client_token = client_token
+        # The ID of the request.
+        self.dry_run = dry_run
         self.resource_id = resource_id
 
     def validate(self):
@@ -7716,7 +7627,6 @@ class DisableDeletionProtectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7790,16 +7700,10 @@ class DisableLoadBalancerAccessLogRequest(TeaModel):
         dry_run: bool = None,
         load_balancer_id: str = None,
     ):
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        # 
-        # *   If you do not specify this parameter, the system automatically uses the request ID as the client token. The ID of each request may be unique.
-        self.client_token = client_token
-        # Specifies whether to precheck this request. Valid values:
-        # 
-        # *   **true**: prechecks the API request. Resources are not created. The system checks the required parameters, request format and service limits. If the request fails the check, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. This is the default value. If the request passes the precheck, a 2XX HTTP status code is returned and the operation is performed.
-        self.dry_run = dry_run
         # The ID of the ALB instance.
+        self.client_token = client_token
+        # The ID of the request.
+        self.dry_run = dry_run
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -7835,7 +7739,6 @@ class DisableLoadBalancerAccessLogResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8039,18 +7942,18 @@ class DissociateAclsFromListenerRequest(TeaModel):
         listener_id: str = None,
     ):
         self.acl_ids = acl_ids
+        # The ID of the asynchronous task.
+        self.client_token = client_token
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
         # 
         # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-        self.client_token = client_token
+        self.dry_run = dry_run
         # Specifies whether only to precheck this request. Valid values:
         # 
         # *   **true**: prechecks the request but does not disassociate the network ACL from the listener. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the NAT CIDR block is created.
-        self.dry_run = dry_run
-        # The ID of the listener.
         self.listener_id = listener_id
 
     def validate(self):
@@ -8091,9 +7994,8 @@ class DissociateAclsFromListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
-        self.job_id = job_id
         # The ID of the request.
+        self.job_id = job_id
         self.request_id = request_id
 
     def validate(self):
@@ -8169,7 +8071,7 @@ class DissociateAdditionalCertificatesFromListenerRequestCertificates(TeaModel):
         self,
         certificate_id: str = None,
     ):
-        # The ID of the certificate. Only server certificates are supported. A maximum of 20 certificate IDs are supported.
+        # The ID of the request.
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -8200,19 +8102,14 @@ class DissociateAdditionalCertificatesFromListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
     ):
+        # The ID of the asynchronous task.
         self.certificates = certificates
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
+        self.dry_run = dry_run
         # Specifies whether to check the request without performing the operation. Valid values:
         # 
         # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the request. If the request passes the check, the system returns an **HTTP 2xx** status code and performs the operation.
-        self.dry_run = dry_run
-        # The ID of the listener. You must specify the ID of an HTTPS listener or a QUIC listener.
         self.listener_id = listener_id
 
     def validate(self):
@@ -8261,9 +8158,7 @@ class DissociateAdditionalCertificatesFromListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8341,14 +8236,10 @@ class EnableDeletionProtectionRequest(TeaModel):
         dry_run: bool = None,
         resource_id: str = None,
     ):
-        # The client token that is used to ensure the idempotency. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        self.client_token = client_token
-        # Specify whether to precheck this request. Valid values:
-        # 
-        # *   **true**: prechecks the API request. Resources are not created. The system checks the required parameters, request format and service limits. If the request fails the check, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): checks the request. After the request passes the check, an `HTTP_2xx` status code is returned and the operation is performed.
-        self.dry_run = dry_run
         # The ID of the Application Load Balancer (ALB) instance.
+        self.client_token = client_token
+        # The ID of the request.
+        self.dry_run = dry_run
         self.resource_id = resource_id
 
     def validate(self):
@@ -8384,7 +8275,6 @@ class EnableDeletionProtectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8460,20 +8350,10 @@ class EnableLoadBalancerAccessLogRequest(TeaModel):
         log_project: str = None,
         log_store: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        # 
-        # >  If you do not set this parameter, the system automatically uses the request ID as the client token. The ID of each request may be unique.
         self.client_token = client_token
-        # Specifies whether to precheck the API request. Valid values:
-        # 
-        # *   **true**: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): checks the request. After the request passes the check, an HTTP\_2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the SLB instance.
         self.load_balancer_id = load_balancer_id
-        # The log service that access logs are shipped to.
         self.log_project = log_project
-        # The logstore that access logs are shipped to.
         self.log_store = log_store
 
     def validate(self):
@@ -8517,7 +8397,6 @@ class EnableLoadBalancerAccessLogResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8717,7 +8596,12 @@ class GetHealthCheckTemplateAttributeRequest(TeaModel):
         self,
         health_check_template_id: str = None,
     ):
-        # The ID of the health check template.
+        # The domain name that is used for health checks. Valid values:
+        # 
+        # *   **$SERVER_IP**: the private IP addresses of backend servers. If you do not set the HealthCheckHost parameter or set the parameter to $SERVER_IP, the Application Load Balancer (ALB) instance uses the private IP addresses of backend servers for health checks.
+        # *   **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+        # 
+        # >  This parameter takes effect only when the `HealthCheckProtocol` parameter is set to **HTTP**.
         self.health_check_template_id = health_check_template_id
 
     def validate(self):
@@ -8758,40 +8642,23 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
         request_id: str = None,
         unhealthy_threshold: int = None,
     ):
+        # The ID of the health check template.
+        self.health_check_codes = health_check_codes
         # The HTTP status codes that are used to determine whether the backend server passes the health check.
         # 
         # *   If **HealthCheckProtocol** is set to **HTTP**, **HealthCheckCodes** can be set to **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**. Separate multiple HTTP status codes with a comma (,).
         # *   If **HealthCheckProtocol** is set to **gRPC**, **HealthCheckCodes** can be set to **0 to 99**. Default value: **0**. Value ranges are supported. You can enter 20 value ranges at most and must separate each range with a comma (,).
         # 
         # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
-        self.health_check_codes = health_check_codes
-        # The port that is used for health checks.
-        # 
-        # Valid values: **0** to **65535**.
         self.health_check_connect_port = health_check_connect_port
-        # The domain name that is used for health checks. Valid values:
-        # 
-        # *   **$SERVER_IP**: the private IP addresses of backend servers. If you do not set the HealthCheckHost parameter or set the parameter to $SERVER_IP, the Application Load Balancer (ALB) instance uses the private IP addresses of backend servers for health checks.
-        # *   **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
-        # 
-        # >  This parameter takes effect only when the `HealthCheckProtocol` parameter is set to **HTTP**.
-        self.health_check_host = health_check_host
         # The HTTP version that is used for health checks.
         # 
         # Valid values: **HTTP1.0** and **HTTP1.1**.
         # 
         # >  This parameter takes effect only when the `HealthCheckProtocol` parameter is set to **HTTP**.
-        self.health_check_http_version = health_check_http_version
+        self.health_check_host = health_check_host
         # The interval between two consecutive health checks. Unit: seconds. Valid values: **1 to 50**.
-        self.health_check_interval = health_check_interval
-        # The HTTP method that is used for health checks. Valid values:
-        # 
-        # *   **HEAD**: By default, HTTP health checks use the HEAD method.
-        # *   **GET**: If the size of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
-        # *   **POST**: By default, gRPC health checks use the POST method.
-        # 
-        # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
-        self.health_check_method = health_check_method
+        self.health_check_http_version = health_check_http_version
         # The URL that is used for health checks.
         # 
         # The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`.
@@ -8799,34 +8666,42 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
         # The URL path must start with a forward slash (/).
         # 
         # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
-        self.health_check_path = health_check_path
+        self.health_check_interval = health_check_interval
         # The protocol that is used for health checks. Valid values:
         # 
         # *   **HTTP** (default): To perform HTTP health checks, ALB sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
         # *   **TCP**: To perform TCP health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
         # *   **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
-        self.health_check_protocol = health_check_protocol
-        # The ID of the health check template.
-        self.health_check_template_id = health_check_template_id
+        self.health_check_method = health_check_method
         # The name of the health check template.
         # 
         # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
-        self.health_check_template_name = health_check_template_name
+        self.health_check_path = health_check_path
         # The timeout period of a health check. If a backend server does not return a health check response within the specified timeout period, the server fails the health check. Unit: seconds.
         # 
         # Valid values: **1** to **300**.
         # 
         # >  If the value of the `HealthCheckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the timeout period specified by the `HealthCheckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is used as the timeout period.
-        self.health_check_timeout = health_check_timeout
+        self.health_check_protocol = health_check_protocol
+        # The HTTP method that is used for health checks. Valid values:
+        # 
+        # *   **HEAD**: By default, HTTP health checks use the HEAD method.
+        # *   **GET**: If the size of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+        # *   **POST**: By default, gRPC health checks use the POST method.
+        # 
+        # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+        self.health_check_template_id = health_check_template_id
         # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
         # 
         # Valid values: **2** to **10**.
-        self.healthy_threshold = healthy_threshold
+        self.health_check_template_name = health_check_template_name
         # The ID of the request.
-        self.request_id = request_id
+        self.health_check_timeout = health_check_timeout
         # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
         # 
         # Valid values: **2** to **10**.
+        self.healthy_threshold = healthy_threshold
+        self.request_id = request_id
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -8950,7 +8825,7 @@ class GetListenerAttributeRequest(TeaModel):
         self,
         listener_id: str = None,
     ):
-        # The ID of the listener.
+        # The configuration of the action. This parameter is returned and takes effect when the Type parameter is set to **FowardGroup**.
         self.listener_id = listener_id
 
     def validate(self):
@@ -8979,13 +8854,14 @@ class GetListenerAttributeResponseBodyAclConfigAclRelations(TeaModel):
         acl_id: str = None,
         status: str = None,
     ):
-        # The IDs of the network ACLs that are associated with the listener.
-        self.acl_id = acl_id
-        # Indicates whether the network ACL is associated with the listener. Valid values:
+        # The action type. 
         # 
-        # *   **Associating**: The network ACL is being associated with the listener.
-        # *   **Associated**: The network ACL is associated with the listener.
-        # *   **Dissociating**: The network ACL is being disassociated from the listener.
+        # If **ForwardGroup** is returned, it indicates that requests are forwarded to multiple vServer groups.
+        self.acl_id = acl_id
+        # Indicates whether gzip compression is enabled to compress specific types of files. Valid values:
+        # 
+        # - **true**: enabled
+        # - **false**: disabled
         self.status = status
 
     def validate(self):
@@ -9018,17 +8894,14 @@ class GetListenerAttributeResponseBodyAclConfig(TeaModel):
         acl_relations: List[GetListenerAttributeResponseBodyAclConfigAclRelations] = None,
         acl_type: str = None,
     ):
-        # The IDs of the network ACLs that are associated with the listener.
+        # The ID of the server group to which requests are forwarded.
         self.acl_relations = acl_relations
-        # The type of network ACL. Valid values:
+        # Indicates whether HTTP/2 is enabled. Valid values:
         # 
-        # *   **White**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists are applicable to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
+        # *   **true**: enabled
+        # *   **false**: disabled
         # 
-        #     If you enable a whitelist but do not add an IP address to the ACL, the listener forwards all requests.
-        # 
-        # *   **Black**: a blacklist. Requests from the IP addresses or CIDR blocks in the network ACL are denied. A blacklist is suitable for scenarios in which you want to deny access from specific IP addresses or CIDR blocks to an application.
-        # 
-        #     If a blacklist is configured for a listener but no IP addresses are added to the blacklist, the listener forwards all requests.
+        # >  Only HTTPS listeners support this parameter.
         self.acl_type = acl_type
 
     def validate(self):
@@ -9070,14 +8943,16 @@ class GetListenerAttributeResponseBodyCaCertificates(TeaModel):
         is_default: bool = None,
         status: str = None,
     ):
-        # The ID of the default CA certificate.
+        # The frontend port that is used by the ALB instance.
         self.certificate_id = certificate_id
-        # Indicates whether the certificate is a default one: Valid values:
+        # The status of the listener. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **Provisioning**: The listener is being created.
+        # *   **Running**: The listener is running.
+        # *   **Configuring**: The listener is being configured.
+        # *   **Stopped**: The listener is stopped.
         self.is_default = is_default
-        # The status of the certificate.
+        # The listener protocol. Valid values: **HTTP**, **HTTPS**, and **QUIC**.
         self.status = status
 
     def validate(self):
@@ -9113,7 +8988,7 @@ class GetListenerAttributeResponseBodyCertificates(TeaModel):
         self,
         certificate_id: str = None,
     ):
-        # The ID of the certificate. Only server certificates are supported.
+        # The description of the listener.
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -9141,7 +9016,12 @@ class GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfigServerGrou
         self,
         server_group_id: str = None,
     ):
-        # The ID of the server group to which requests are forwarded.
+        # Indicates whether Xtrace is enabled. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
+        # 
+        # >  **true** is returned only if the access log feature is enabled.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -9169,7 +9049,7 @@ class GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfig(TeaModel)
         self,
         server_group_tuples: List[GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfigServerGroupTuples] = None,
     ):
-        # The server groups to which requests are forwarded.
+        # The configuration of Xtrace. Xtrace is used to record the requests sent to ALB.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -9206,11 +9086,14 @@ class GetListenerAttributeResponseBodyDefaultActions(TeaModel):
         forward_group_config: GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfig = None,
         type: str = None,
     ):
-        # The configuration of the action. This parameter is returned and takes effect when the Type parameter is set to **FowardGroup**.
-        self.forward_group_config = forward_group_config
-        # The action type. 
+        # Indicates whether custom headers are recorded in the access log. Valid values:
         # 
-        # If **ForwardGroup** is returned, it indicates that requests are forwarded to multiple vServer groups.
+        # *   **true**: yes
+        # *   **false**: no
+        self.forward_group_config = forward_group_config
+        # The sampling rate of Xtrace. Valid values: 1 to 10000.
+        # 
+        # >  This parameter takes effect when **TracingEnabled** is set to **true**.
         self.type = type
 
     def validate(self):
@@ -9246,20 +9129,25 @@ class GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig(TeaModel):
         tracing_sample: int = None,
         tracing_type: str = None,
     ):
-        # Indicates whether Xtrace is enabled. Valid values:
+        # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled** is set to **true**.
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
         # 
-        # >  **true** is returned only if the access log feature is enabled.
+        # >  Only HTTPS listeners support this parameter.
         self.tracing_enabled = tracing_enabled
-        # The sampling rate of Xtrace. Valid values: 1 to 10000.
+        # Indicates whether the `X-Forwarded-Clientcert-subjectdn` header is used to retrieve information about the owner of the client certificate. Valid values:
         # 
-        # >  This parameter takes effect when **TracingEnabled** is set to **true**.
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  Only HTTPS listeners support this parameter.
         self.tracing_sample = tracing_sample
-        # The Xtrace type. Supported Xtrace type: **Zipkin**.
+        # Indicates whether the `X-Forwarded-Client-Port` header is used to retrieve the client port. Valid values:
         # 
-        # >  This parameter takes effect when **TracingEnabled** is set to **true**.
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  HTTP and HTTPS listeners support this parameter.
         self.tracing_type = tracing_type
 
     def validate(self):
@@ -9296,12 +9184,18 @@ class GetListenerAttributeResponseBodyLogConfig(TeaModel):
         access_log_record_customized_headers_enabled: bool = None,
         access_log_tracing_config: GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig = None,
     ):
-        # Indicates whether custom headers are recorded in the access log. Valid values:
+        # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled** is set to **true**.
+        # 
+        # The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+        # 
+        # >  Only HTTPS listeners support this parameter.
+        self.access_log_record_customized_headers_enabled = access_log_record_customized_headers_enabled
+        # Indicates whether the `X-Forwarded-Clientcert-issuerdn` header is used to retrieve information about the authority that issues the client certificate. Valid values:
         # 
         # *   **true**: yes
         # *   **false**: no
-        self.access_log_record_customized_headers_enabled = access_log_record_customized_headers_enabled
-        # The configuration of Xtrace. Xtrace is used to record the requests sent to ALB.
+        # 
+        # >  Only HTTPS listeners support this parameter.
         self.access_log_tracing_config = access_log_tracing_config
 
     def validate(self):
@@ -9336,16 +9230,19 @@ class GetListenerAttributeResponseBodyQuicConfig(TeaModel):
         quic_listener_id: str = None,
         quic_upgrade_enabled: bool = None,
     ):
-        # The ID of the QUIC listener. This parameter is returned when **QuicUpgradeEnabled** is set to **true**. Only HTTPS listeners support this parameter. 
+        # Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listener protocol. Valid values:
         # 
-        # >  The HTTPS listener and the QUIC listener must be added to the same ALB instance. In addition, make sure that the QUIC listener is not associated with another listener.
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
         self.quic_listener_id = quic_listener_id
-        # Indicates whether QUIC upgrade is enabled. Valid values:
+        # Indicates whether the `SLB-ID` header is used to retrieve the ID of the ALB instance. Valid values:
         # 
-        # - **true**: enabled
-        # - **false**: disabled
+        # *   **true**: yes
+        # *   **false**: no
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
         self.quic_upgrade_enabled = quic_upgrade_enabled
 
     def validate(self):
@@ -9391,103 +9288,20 @@ class GetListenerAttributeResponseBodyXForwardedForConfig(TeaModel):
         xforwarded_for_slbid_enabled: bool = None,
         xforwarded_for_slbport_enabled: bool = None,
     ):
-        # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled** is set to **true**.
-        # 
-        # The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
-        # 
-        # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
-        # Indicates whether the `X-Forwarded-Clientcert-clientverify` header is used to retrieve the verification result of the client certificate. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
-        # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertFingerprintEnabled** is set to **true**.
-        # 
-        # The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
-        # 
-        # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
-        # Indicates whether the `X-Forwarded-Clientcert-fingerprint` header is used to retrieve the fingerprint of the client certificate. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
-        # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled** is set to **true**.
-        # 
-        # The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
-        # 
-        # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
-        # Indicates whether the `X-Forwarded-Clientcert-issuerdn` header is used to retrieve information about the authority that issues the client certificate. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
-        # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled** is set to **true**.
-        # 
-        # The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
-        # 
-        # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
-        # Indicates whether the `X-Forwarded-Clientcert-subjectdn` header is used to retrieve information about the owner of the client certificate. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
-        # Indicates whether the `X-Forwarded-Client-Ip` header is used to retrieve the source port of the ALB instance. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_client_source_ips_enabled = xforwarded_for_client_source_ips_enabled
-        # The trusted proxy IP address.
-        # 
-        # ALB traverses `X-Forwarded-For` backwards and selects the first IP address that is not in the trusted IP list as the originating IP address of the client, which will be throttled if source IP address throttling is enabled.
         self.xforwarded_for_client_source_ips_trusted = xforwarded_for_client_source_ips_trusted
-        # Indicates whether the `X-Forwarded-Client-Port` header is used to retrieve the client port. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # >  HTTP and HTTPS listeners support this parameter.
         self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
-        # Indicates whether the `X-Forwarded-For` header is used to retrieve the client IP address. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # >  HTTP and HTTPS listeners support this parameter.
         self.xforwarded_for_enabled = xforwarded_for_enabled
-        # Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listener protocol. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
-        # Indicates whether the `SLB-ID` header is used to retrieve the ID of the ALB instance. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
-        # Indicates whether the `X-Forwarded-Port` header is used to retrieve the listening port of the ALB instance. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
 
     def validate(self):
@@ -9590,67 +9404,90 @@ class GetListenerAttributeResponseBody(TeaModel):
         security_policy_id: str = None,
         xforwarded_for_config: GetListenerAttributeResponseBodyXForwardedForConfig = None,
     ):
-        # The configurations of the network access control lists (ACLs).
+        # The server groups to which requests are forwarded.
         self.acl_config = acl_config
-        # The list of default CA certificates.
+        # The ID of the listener.
         self.ca_certificates = ca_certificates
-        # Indicates whether mutual authentication is enabled. Valid values:
-        # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # The ID of the ALB instance.
         self.ca_enabled = ca_enabled
-        # The list of certificates.
-        self.certificates = certificates
-        # The actions of the default forwarding rule.
-        self.default_actions = default_actions
-        # Indicates whether gzip compression is enabled to compress specific types of files. Valid values:
-        # 
-        # - **true**: enabled
-        # - **false**: disabled
-        self.gzip_enabled = gzip_enabled
-        # Indicates whether HTTP/2 is enabled. Valid values:
-        # 
-        # *   **true**: enabled
-        # *   **false**: disabled
-        # 
-        # >  Only HTTPS listeners support this parameter.
-        self.http_2enabled = http_2enabled
         # The timeout period of an idle connection. Unit: seconds.
         # 
         # If no requests are received within the specified timeout period, Application Load Balancer (ALB) closes the current connection. When another request is received, ALB establishes a new connection.
-        self.idle_timeout = idle_timeout
-        # The description of the listener.
-        self.listener_description = listener_description
-        # The ID of the listener.
-        self.listener_id = listener_id
-        # The frontend port that is used by the ALB instance.
-        self.listener_port = listener_port
-        # The listener protocol. Valid values: **HTTP**, **HTTPS**, and **QUIC**.
-        self.listener_protocol = listener_protocol
-        # The status of the listener. Valid values:
-        # 
-        # *   **Provisioning**: The listener is being created.
-        # *   **Running**: The listener is running.
-        # *   **Configuring**: The listener is being configured.
-        # *   **Stopped**: The listener is stopped.
-        self.listener_status = listener_status
-        # The ID of the ALB instance.
-        self.load_balancer_id = load_balancer_id
+        self.certificates = certificates
         # The configuration of the access log.
-        self.log_config = log_config
+        self.default_actions = default_actions
+        # The Xtrace type. Supported Xtrace type: **Zipkin**.
+        # 
+        # >  This parameter takes effect when **TracingEnabled** is set to **true**.
+        self.gzip_enabled = gzip_enabled
         # The configuration information when the listener is associated with a QUIC listener.
-        self.quic_config = quic_config
-        # The ID of the request.
-        self.request_id = request_id
+        self.http_2enabled = http_2enabled
+        # The ID of the QUIC listener. This parameter is returned when **QuicUpgradeEnabled** is set to **true**. Only HTTPS listeners support this parameter. 
+        # 
+        # >  The HTTPS listener and the QUIC listener must be added to the same ALB instance. In addition, make sure that the QUIC listener is not associated with another listener.
+        self.idle_timeout = idle_timeout
+        # Indicates whether QUIC upgrade is enabled. Valid values:
+        # 
+        # - **true**: enabled
+        # - **false**: disabled
+        # 
+        # >  Only HTTPS listeners support this parameter.
+        self.listener_description = listener_description
         # The timeout period of a request. Unit: seconds.
         # 
         # If no responses are received from the backend server within the specified timeout period, ALB returns an `HTTP 504` error code to the client.
-        self.request_timeout = request_timeout
+        self.listener_id = listener_id
         # The security policy.
         # 
         # >  Only HTTPS listeners support this parameter.
-        self.security_policy_id = security_policy_id
+        self.listener_port = listener_port
         # The configuration of the XForward headers.
+        self.listener_protocol = listener_protocol
+        # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled** is set to **true**.
+        # 
+        # The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+        # 
+        # >  Only HTTPS listeners support this parameter.
+        self.listener_status = listener_status
+        # Indicates whether the `X-Forwarded-Clientcert-clientverify` header is used to retrieve the verification result of the client certificate. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  Only HTTPS listeners support this parameter.
+        self.load_balancer_id = load_balancer_id
+        # Indicates whether the `X-Forwarded-Clientcert-fingerprint` header is used to retrieve the fingerprint of the client certificate. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  Only HTTPS listeners support this parameter.
+        self.log_config = log_config
+        # Indicates whether the `X-Forwarded-For` header is used to retrieve the client IP address. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  HTTP and HTTPS listeners support this parameter.
+        self.quic_config = quic_config
+        # Indicates whether the `X-Forwarded-Port` header is used to retrieve the listening port of the ALB instance. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        self.request_id = request_id
+        # Indicates whether the `X-Forwarded-Client-Ip` header is used to retrieve the source port of the ALB instance. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        self.request_timeout = request_timeout
+        # The trusted proxy IP address.
+        # 
+        # ALB traverses `X-Forwarded-For` backwards and selects the first IP address that is not in the trusted IP list as the originating IP address of the client, which will be throttled if source IP address throttling is enabled.
+        self.security_policy_id = security_policy_id
         self.xforwarded_for_config = xforwarded_for_config
 
     def validate(self):
@@ -9839,19 +9676,13 @@ class GetListenerHealthStatusRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # Specifies whether to return the health check results of forwarding rules. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false** (default): no
-        self.include_rule = include_rule
         # The ID of the listener.
+        self.include_rule = include_rule
+        # The health check status of the server groups that are associated with the listener.
         self.listener_id = listener_id
-        # The number of entries to return on each page. Valid values: **1** to **30**. Default value: **20**.
+        # The listening protocol.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If this is your first query or no next query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+        # The listening port.
         self.next_token = next_token
 
     def validate(self):
@@ -9893,26 +9724,16 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNon
         expected_response: str = None,
         reason_code: str = None,
     ):
-        # The HTTP status code returned from the backend server. For example, **302**.
-        # 
-        # >  This value is returned only if the return value of `ReasonCode` is **RESPONSE_MISMATCH**.
+        # The IP address of the backend server.
         self.actual_response = actual_response
-        # The HTTP status code returned after backend servers pass health checks.
+        # The health check status. Valid values:
         # 
-        # Valid values: **HTTP\_2xx**, **HTTP\_3xx**, **HTTP\_4xx**, and **HTTP\_5xx**. Multiple status codes are separated by commas (,).
-        # 
-        # >  This value is returned only if the return value of **ReasonCode** is **RESPONSE_MISMATCH**.
+        # *   **Initial**: indicates that health checks are configured for the ALB instance, but no data was found.
+        # *   **Unhealthy**: indicates that the backend server consecutively fails health checks.
+        # *   **Unused**: indicates that the weight of the backend server is 0.
+        # *   **Unavailable**: indicates that health checks are disabled.
         self.expected_response = expected_response
-        # The reason why **Status** is Unhealthy. Only HTTP and HTTPS listeners support this parameter.
-        # 
-        # *   **CONNECT_TIMEOUT**: Application Load Balancer (ALB) failed to connect to the backend server within the specified period of time.
-        # *   **CONNECT_FAILED**: ALB failed to connect to the backend server.
-        # *   **RECV_RESPONSE_FAILED**: ALB failed to receive a response from the backend server.
-        # *   **RECV_RESPONSE_TIMEOUT**: ALB failed to receive a response from the backend server within the specified period of time.
-        # *   **SEND_REQUEST_FAILED**: ALB failed to send a request to the backend server.
-        # *   **SEND_REQUEST_TIMEOUT**: ALB failed to send a request to the backend server within the specified period of time.
-        # *   **RESPONSE_FORMAT_ERROR**: The format of the response from the backend server is invalid.
-        # *   **RESPONSE_FORMAT_ERROR**: The HTTP status code returned from the backend server is not the expected one.
+        # The ID of the server group that is associated with the listener.
         self.reason_code = reason_code
 
     def validate(self):
@@ -9952,20 +9773,24 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNon
         server_ip: str = None,
         status: str = None,
     ):
-        # The backend port.
-        self.port = port
-        # The cause of the health check failure.
-        self.reason = reason
-        # The ID of the backend server.
-        self.server_id = server_id
-        # The IP address of the backend server.
-        self.server_ip = server_ip
-        # The health check status. Valid values:
+        # The reason why **Status** is Unhealthy. Only HTTP and HTTPS listeners support this parameter.
         # 
-        # *   **Initial**: indicates that health checks are configured for the ALB instance, but no data was found.
-        # *   **Unhealthy**: indicates that the backend server consecutively fails health checks.
-        # *   **Unused**: indicates that the weight of the backend server is 0.
-        # *   **Unavailable**: indicates that health checks are disabled.
+        # *   **CONNECT_TIMEOUT**: Application Load Balancer (ALB) failed to connect to the backend server within the specified period of time.
+        # *   **CONNECT_FAILED**: ALB failed to connect to the backend server.
+        # *   **RECV_RESPONSE_FAILED**: ALB failed to receive a response from the backend server.
+        # *   **RECV_RESPONSE_TIMEOUT**: ALB failed to receive a response from the backend server within the specified period of time.
+        # *   **SEND_REQUEST_FAILED**: ALB failed to send a request to the backend server.
+        # *   **SEND_REQUEST_TIMEOUT**: ALB failed to send a request to the backend server within the specified period of time.
+        # *   **RESPONSE_FORMAT_ERROR**: The format of the response from the backend server is invalid.
+        # *   **RESPONSE_FORMAT_ERROR**: The HTTP status code returned from the backend server is not the expected one.
+        self.port = port
+        # The ID of the backend server.
+        self.reason = reason
+        # The action specified for the server group.
+        self.server_id = server_id
+        # The ID of the request.
+        self.server_ip = server_ip
+        # The health check status of the forwarding rules.
         self.status = status
 
     def validate(self):
@@ -10014,13 +9839,19 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos(Te
         non_normal_servers: List[GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers] = None,
         server_group_id: str = None,
     ):
-        # The action specified for the server group.
+        # The list of server groups.
         self.action_type = action_type
-        # Indicates whether health checks are enabled. If **on** is returned, it indicates that health checks are enabled.
+        # The HTTP status code returned from the backend server. For example, **302**.
+        # 
+        # >  This value is returned only if the return value of `ReasonCode` is **RESPONSE_MISMATCH**.
         self.health_check_enabled = health_check_enabled
-        # The list of unhealthy backend servers.
+        # The HTTP status code returned after backend servers pass health checks.
+        # 
+        # Valid values: **HTTP\_2xx**, **HTTP\_3xx**, **HTTP\_4xx**, and **HTTP\_5xx**. Multiple status codes are separated by commas (,).
+        # 
+        # >  This value is returned only if the return value of **ReasonCode** is **RESPONSE_MISMATCH**.
         self.non_normal_servers = non_normal_servers
-        # The ID of the server group that is associated with the listener.
+        # The ID of the forwarding rule.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -10071,13 +9902,13 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatus(TeaModel):
         listener_protocol: str = None,
         server_group_infos: List[GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos] = None,
     ):
-        # The ID of the listener.
+        # Indicates whether health checks are enabled. If **on** is returned, it indicates that health checks are enabled.
         self.listener_id = listener_id
-        # The listening port.
+        # The list of unhealthy backend servers.
         self.listener_port = listener_port
-        # The listening protocol.
+        # The backend port.
         self.listener_protocol = listener_protocol
-        # The information about server groups.
+        # The cause of the health check failure.
         self.server_group_infos = server_group_infos
 
     def validate(self):
@@ -10127,26 +9958,16 @@ class GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNorm
         expected_response: str = None,
         reason_code: str = None,
     ):
-        # The HTTP status code returned from the backend server. For example, **302**.
-        # 
-        # >  A value is returned only if the return value of **ReasonCode** is **RESPONSE_MISMATCH**.
+        # The IP address of the server group.
         self.actual_response = actual_response
-        # The HTTP status code returned after backend servers pass health checks.
+        # The health check status. Valid values:
         # 
-        # Valid values: **HTTP\_2xx**, **HTTP\_3xx**, **HTTP\_4xx**, and **HTTP\_5xx**. Multiple status codes are separated by commas (,).
-        # 
-        # >  A value is returned only if the return value of **ReasonCode** is **RESPONSE_MISMATCH**.
+        # *   **Initial**: indicates that health checks are configured for the ALB instance, but no data was found.
+        # *   **Unhealthy**: indicates that the backend server consecutively fails health checks.
+        # *   **Unused**: indicates that the weight of the backend server is 0.
+        # *   **Unavailable**: indicates that health checks are disabled.
         self.expected_response = expected_response
-        # The reason why **Status** is Unhealthy. Only HTTP and HTTPS listeners support this parameter.
-        # 
-        # *   **CONNECT_TIMEOUT**: ALB failed to connect to the backend server within the specified period of time.
-        # *   **CONNECT_FAILED**: ALB failed to connect to the backend server.
-        # *   **RECV_RESPONSE_FAILED**: ALB failed to receive a response from the backend server.
-        # *   **RECV_RESPONSE_TIMEOUT**: ALB failed to receive a response from the backend server within the specified period of time.
-        # *   **SEND_REQUEST_FAILED**: ALB failed to send a request to the backend server.
-        # *   **SEND_REQUEST_TIMEOUT**: ALB failed to send a request to the backend server within the specified period of time.
-        # *   **RESPONSE_FORMAT_ERROR**: The format of the response from the backend server is invalid.
-        # *   **RESPONSE_FORMAT_ERROR**: The HTTP status code returned from the backend server is not the expected one.
+        # The ID of the server group that is associated with the listener.
         self.reason_code = reason_code
 
     def validate(self):
@@ -10186,20 +10007,26 @@ class GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNorm
         server_ip: str = None,
         status: str = None,
     ):
-        # The backend port.
-        self.port = port
-        # The cause of the health check failure.
-        self.reason = reason
-        # The ID of the backend server.
-        self.server_id = server_id
-        # The IP address of the server group.
-        self.server_ip = server_ip
-        # The health check status. Valid values:
+        # The reason why **Status** is Unhealthy. Only HTTP and HTTPS listeners support this parameter.
         # 
-        # *   **Initial**: indicates that health checks are configured for the ALB instance, but no data was found.
-        # *   **Unhealthy**: indicates that the backend server consecutively fails health checks.
-        # *   **Unused**: indicates that the weight of the backend server is 0.
-        # *   **Unavailable**: indicates that health checks are disabled.
+        # *   **CONNECT_TIMEOUT**: ALB failed to connect to the backend server within the specified period of time.
+        # *   **CONNECT_FAILED**: ALB failed to connect to the backend server.
+        # *   **RECV_RESPONSE_FAILED**: ALB failed to receive a response from the backend server.
+        # *   **RECV_RESPONSE_TIMEOUT**: ALB failed to receive a response from the backend server within the specified period of time.
+        # *   **SEND_REQUEST_FAILED**: ALB failed to send a request to the backend server.
+        # *   **SEND_REQUEST_TIMEOUT**: ALB failed to send a request to the backend server within the specified period of time.
+        # *   **RESPONSE_FORMAT_ERROR**: The format of the response from the backend server is invalid.
+        # *   **RESPONSE_FORMAT_ERROR**: The HTTP status code returned from the backend server is not the expected one.
+        self.port = port
+        # The ID of the backend server.
+        self.reason = reason
+        # The action specified for the server group.
+        self.server_id = server_id
+        # The token that is used for the next query. Valid values:
+        # 
+        # - If **NextToken** is empty, it indicates that no next query is to be sent.
+        # - If a value of **NextToken** is returned, the value is the token that is used for the next query.
+        self.server_ip = server_ip
         self.status = status
 
     def validate(self):
@@ -10248,13 +10075,17 @@ class GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos(TeaMod
         non_normal_servers: List[GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers] = None,
         server_group_id: str = None,
     ):
-        # The action specified for the server group.
         self.action_type = action_type
-        # Indicates whether health checks are enabled. If **on** is returned, it indicates that health checks are enabled.
+        # The HTTP status code returned from the backend server. For example, **302**.
+        # 
+        # >  A value is returned only if the return value of **ReasonCode** is **RESPONSE_MISMATCH**.
         self.health_check_enabled = health_check_enabled
-        # The list of unhealthy backend servers.
+        # The HTTP status code returned after backend servers pass health checks.
+        # 
+        # Valid values: **HTTP\_2xx**, **HTTP\_3xx**, **HTTP\_4xx**, and **HTTP\_5xx**. Multiple status codes are separated by commas (,).
+        # 
+        # >  A value is returned only if the return value of **ReasonCode** is **RESPONSE_MISMATCH**.
         self.non_normal_servers = non_normal_servers
-        # The ID of the server group that is associated with the listener.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -10303,9 +10134,9 @@ class GetListenerHealthStatusResponseBodyRuleHealthStatus(TeaModel):
         rule_id: str = None,
         server_group_infos: List[GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos] = None,
     ):
-        # The ID of the forwarding rule.
+        # The backend port.
         self.rule_id = rule_id
-        # The list of server groups.
+        # The cause of the health check failure.
         self.server_group_infos = server_group_infos
 
     def validate(self):
@@ -10348,16 +10179,12 @@ class GetListenerHealthStatusResponseBody(TeaModel):
         request_id: str = None,
         rule_health_status: List[GetListenerHealthStatusResponseBodyRuleHealthStatus] = None,
     ):
-        # The health check status of the server groups that are associated with the listener.
+        # The information about server groups.
         self.listener_health_status = listener_health_status
-        # The token that is used for the next query. Valid values:
-        # 
-        # - If **NextToken** is empty, it indicates that no next query is to be sent.
-        # - If a value of **NextToken** is returned, the value is the token that is used for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # Indicates whether health checks are enabled. If **on** is returned, it indicates that health checks are enabled.
         self.request_id = request_id
-        # The health check status of the forwarding rules.
+        # The list of unhealthy backend servers.
         self.rule_health_status = rule_health_status
 
     def validate(self):
@@ -10458,7 +10285,7 @@ class GetLoadBalancerAttributeRequest(TeaModel):
         self,
         load_balancer_id: str = None,
     ):
-        # The ID of the ALB instance.
+        # The Logstore.
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -10487,9 +10314,12 @@ class GetLoadBalancerAttributeResponseBodyAccessLogConfig(TeaModel):
         log_project: str = None,
         log_store: str = None,
     ):
-        # The log project.
+        # The type of the IPv4 address that is used by the ALB instance. Valid values:
+        # 
+        # *   **Internet:** The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. In this case, the ALB instance can be accessed over the Internet.
+        # *   **Intranet:** The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the virtual private cloud (VPC) where the ALB instance is deployed.
         self.log_project = log_project
-        # The Logstore.
+        # The ID of the Elastic IP Address (EIP) bandwidth plan which is associated with the ALB instance if the ALB instance uses a public IP address.
         self.log_store = log_store
 
     def validate(self):
@@ -10522,12 +10352,14 @@ class GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig(TeaModel):
         enabled: bool = None,
         enabled_time: str = None,
     ):
-        # Indicates whether the deletion protection feature is enabled. Valid values:
+        # The billing method.
         # 
-        # *   **true:** The deletion protection feature is enabled.
-        # *   **false:** The deletion protection feature is disabled.
+        # The value **PostPay** is returned. The value indicates the pay-as-you-go billing method.
         self.enabled = enabled
-        # The time when the deletion protection feature was enabled. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The status of the ALB instance. Valid values:
+        # 
+        # *   **Abnormal:** The ALB instance is not working as expected.
+        # *   **Normal:** The ALB instance is working as expected.
         self.enabled_time = enabled_time
 
     def validate(self):
@@ -10559,9 +10391,7 @@ class GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig(TeaModel):
         self,
         pay_type: str = None,
     ):
-        # The billing method.
-        # 
-        # The value **PostPay** is returned. The value indicates the pay-as-you-go billing method.
+        # The ID of the ALB instance.
         self.pay_type = pay_type
 
     def validate(self):
@@ -10590,14 +10420,11 @@ class GetLoadBalancerAttributeResponseBodyLoadBalancerOperationLocks(TeaModel):
         lock_reason: str = None,
         lock_type: str = None,
     ):
-        # The reason why the ALB instance was locked. This parameter is available only if you specify the **LoadBalancerBussinessStatus** parameter to **Abnormal**.
+        # The configuration of the configuration read-only mode.
         self.lock_reason = lock_reason
-        # The type of the lock. Valid values:
+        # The reason why the configuration read-only mode was enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
         # 
-        # *   **SecurityLocked:** The ALB instance was locked due to security reasons.
-        # *   **RelatedResourceLocked:** The ALB instance was locked due to association issues.
-        # *   **FinancialLocked:** The ALB instance was locked due to overdue payments.
-        # *   **ResidualLocked:** The ALB instance was locked because the associated EIP bandwidth plans were released.
+        # This parameter is valid only if you set the **ModificationProtectionStatus** parameter to **ConsoleProtection**.
         self.lock_type = lock_type
 
     def validate(self):
@@ -10630,16 +10457,9 @@ class GetLoadBalancerAttributeResponseBodyModificationProtectionConfig(TeaModel)
         reason: str = None,
         status: str = None,
     ):
-        # The reason why the configuration read-only mode was enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
-        # 
-        # This parameter is valid only if you set the **ModificationProtectionStatus** parameter to **ConsoleProtection**.
+        # The ID of the request.
         self.reason = reason
-        # The status of the configuration read-only mode. Valid values:
-        # 
-        # *   **NonProtection:** The configuration read-only mode is disabled. In this case, you cannot specify the ModificationProtectionReason parameter. If you specify the ModificationProtectionReason parameter, the value of the parameter is cleared.
-        # *   **ConsoleProtection:** The configuration read-only mode is enabled. In this case, you can specify the ModificationProtectionReason parameter.
-        # 
-        # >  If you set this parameter to **ConsoleProtection**, you cannot modify the configurations of the instance in the ALB console. However, you can call API operations to modify the configurations of the instance.
+        # The ID of the resource group.
         self.status = status
 
     def validate(self):
@@ -10672,13 +10492,9 @@ class GetLoadBalancerAttributeResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
-        # 
-        # The key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The key cannot contain `http://` or `https://`.
+        # The zones and the vSwitches. You must specify at least two zones.
         self.key = key
-        # The value of tag N.
-        # 
-        # The value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The value cannot contain `http://` or `https://`.
+        # The IP addresses that are used by the ALB instance.
         self.value = value
 
     def validate(self):
@@ -10709,15 +10525,20 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
     def __init__(
         self,
         address: str = None,
+        allocation_id: str = None,
+        eip_type: str = None,
         ipv_6address: str = None,
     ):
-        # The IPv4 address that is used by the ALB instance.
+        # The ID of the zone where the ALB instance was deployed.
         # 
-        # This parameter is available only if you set the **AddressIPVersion** parameter to **IPv4**. The AddressType parameter determines whether the IPv4 address is public or private.
+        # You can call the [DescribeZones](~~189196~~) operation to query the zones of the ALB instance.
         self.address = address
-        # The IPv6 address that is used by the ALB instance.
+        self.allocation_id = allocation_id
+        self.eip_type = eip_type
+        # The protocol version. Valid values:
         # 
-        # This parameter is available only if you set the **AddressIPVersion** parameter to **DualStack**. The AddressType parameter determines whether the IPv6 address is public or private.
+        # *   **IPv4:** IPv4.
+        # *   **DualStack:** dual stack.
         self.ipv_6address = ipv_6address
 
     def validate(self):
@@ -10731,6 +10552,10 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         result = dict()
         if self.address is not None:
             result['Address'] = self.address
+        if self.allocation_id is not None:
+            result['AllocationId'] = self.allocation_id
+        if self.eip_type is not None:
+            result['EipType'] = self.eip_type
         if self.ipv_6address is not None:
             result['Ipv6Address'] = self.ipv_6address
         return result
@@ -10739,6 +10564,10 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         m = m or dict()
         if m.get('Address') is not None:
             self.address = m.get('Address')
+        if m.get('AllocationId') is not None:
+            self.allocation_id = m.get('AllocationId')
+        if m.get('EipType') is not None:
+            self.eip_type = m.get('EipType')
         if m.get('Ipv6Address') is not None:
             self.ipv_6address = m.get('Ipv6Address')
         return self
@@ -10751,13 +10580,13 @@ class GetLoadBalancerAttributeResponseBodyZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The IP addresses that are used by the ALB instance.
-        self.load_balancer_addresses = load_balancer_addresses
         # The ID of the vSwitch in the zone. Each zone can contain only one vSwitch and one subnet.
-        self.v_switch_id = v_switch_id
-        # The ID of the zone where the ALB instance was deployed.
+        self.load_balancer_addresses = load_balancer_addresses
+        # The type of IPv6 address that is used by the ALB instance. Valid values:
         # 
-        # You can call the [DescribeZones](~~189196~~) operation to query the zones of the ALB instance.
+        # *   **Internet:** The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
+        # *   **Intranet:** The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC in which the ALB instance is deployed.
+        self.v_switch_id = v_switch_id
         self.zone_id = zone_id
 
     def validate(self):
@@ -10819,62 +10648,53 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         region_id: str = None,
         request_id: str = None,
         resource_group_id: str = None,
-        security_group_ids: List[str] = None,
         tags: List[GetLoadBalancerAttributeResponseBodyTags] = None,
         vpc_id: str = None,
         zone_mappings: List[GetLoadBalancerAttributeResponseBodyZoneMappings] = None,
     ):
-        # The configuration of the access log feature.
-        self.access_log_config = access_log_config
         # The mode used to assign IP addresses to zones of the ALB instance. Valid values:
         # 
         # *   **Fixed:** assigns a static IP address to the ALB instance.
         # *   **Dynamic:** dynamically assigns an IP address to each zone of the ALB instance.
-        self.address_allocated_mode = address_allocated_mode
-        # The protocol version. Valid values:
-        # 
-        # *   **IPv4:** IPv4.
-        # *   **DualStack:** dual stack.
-        self.address_ip_version = address_ip_version
-        # The type of the IPv4 address that is used by the ALB instance. Valid values:
-        # 
-        # *   **Internet:** The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. In this case, the ALB instance can be accessed over the Internet.
-        # *   **Intranet:** The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the virtual private cloud (VPC) where the ALB instance is deployed.
-        self.address_type = address_type
-        # The ID of the Elastic IP Address (EIP) bandwidth plan which is associated with the ALB instance if the ALB instance uses a public IP address.
-        self.bandwidth_package_id = bandwidth_package_id
+        self.access_log_config = access_log_config
         # The time when the resource was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
-        self.create_time = create_time
+        self.address_allocated_mode = address_allocated_mode
+        self.address_ip_version = address_ip_version
         # The domain name of the ALB instance.
-        self.dnsname = dnsname
+        self.address_type = address_type
         # The configuration of the deletion protection feature.
-        self.deletion_protection_config = deletion_protection_config
-        # The type of IPv6 address that is used by the ALB instance. Valid values:
+        self.bandwidth_package_id = bandwidth_package_id
+        # Indicates whether the deletion protection feature is enabled. Valid values:
         # 
-        # *   **Internet:** The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
-        # *   **Intranet:** The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC in which the ALB instance is deployed.
-        self.ipv_6address_type = ipv_6address_type
+        # *   **true:** The deletion protection feature is enabled.
+        # *   **false:** The deletion protection feature is disabled.
+        self.create_time = create_time
+        # The time when the deletion protection feature was enabled. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        self.dnsname = dnsname
         # The configuration of the billing method of the ALB instance.
-        self.load_balancer_billing_config = load_balancer_billing_config
-        # The status of the ALB instance. Valid values:
-        # 
-        # *   **Abnormal:** The ALB instance is not working as expected.
-        # *   **Normal:** The ALB instance is working as expected.
-        self.load_balancer_bussiness_status = load_balancer_bussiness_status
+        self.deletion_protection_config = deletion_protection_config
+        self.ipv_6address_type = ipv_6address_type
         # The edition of the ALB instance. The features and billing rules vary based on the edition of the ALB instance. Valid values:
         # 
         # *   **Basic:** basic.
         # *   **Standard:** standard.
         # *   **StandardWithWaf:** WAF-enabled.
-        self.load_balancer_edition = load_balancer_edition
-        # The ID of the ALB instance.
-        self.load_balancer_id = load_balancer_id
+        self.load_balancer_billing_config = load_balancer_billing_config
         # The name of the ALB instance.
         # 
         # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
-        self.load_balancer_name = load_balancer_name
+        self.load_balancer_bussiness_status = load_balancer_bussiness_status
         # The configuration of the operation lock.
-        self.load_balancer_operation_locks = load_balancer_operation_locks
+        self.load_balancer_edition = load_balancer_edition
+        # The reason why the ALB instance was locked. This parameter is available only if you specify the **LoadBalancerBussinessStatus** parameter to **Abnormal**.
+        self.load_balancer_id = load_balancer_id
+        # The type of the lock. Valid values:
+        # 
+        # *   **SecurityLocked:** The ALB instance was locked due to security reasons.
+        # *   **RelatedResourceLocked:** The ALB instance was locked due to association issues.
+        # *   **FinancialLocked:** The ALB instance was locked due to overdue payments.
+        # *   **ResidualLocked:** The ALB instance was locked because the associated EIP bandwidth plans were released.
+        self.load_balancer_name = load_balancer_name
         # The status of the ALB instance. Valid values:
         # 
         # *   **Inactive:** The ALB instance is disabled. ALB instances in the Inactive state do not forward traffic.
@@ -10882,21 +10702,35 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         # *   **Provisioning:** The ALB instance is being created.
         # *   **Configuring:** The ALB instance is being modified.
         # *   **CreateFailed:** The system failed to create the ALB instance. In this case, you are not charged for the ALB instance.
+        self.load_balancer_operation_locks = load_balancer_operation_locks
+        # The status of the configuration read-only mode. Valid values:
+        # 
+        # *   **NonProtection:** The configuration read-only mode is disabled. In this case, you cannot specify the ModificationProtectionReason parameter. If you specify the ModificationProtectionReason parameter, the value of the parameter is cleared.
+        # *   **ConsoleProtection:** The configuration read-only mode is enabled. In this case, you can specify the ModificationProtectionReason parameter.
+        # 
+        # >  If you set this parameter to **ConsoleProtection**, you cannot modify the configurations of the instance in the ALB console. However, you can call API operations to modify the configurations of the instance.
         self.load_balancer_status = load_balancer_status
-        # The configuration of the configuration read-only mode.
-        self.modification_protection_config = modification_protection_config
         # The ID of the region where the ALB instance was deployed.
-        self.region_id = region_id
-        # The ID of the request.
-        self.request_id = request_id
-        # The ID of the resource group.
-        self.resource_group_id = resource_group_id
-        self.security_group_ids = security_group_ids
+        self.modification_protection_config = modification_protection_config
         # The tags that were added to the ALB instance.
-        self.tags = tags
+        self.region_id = region_id
+        # The key of tag N.
+        # 
+        # The key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The key cannot contain `http://` or `https://`.
+        self.request_id = request_id
+        # The value of tag N.
+        # 
+        # The value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The value cannot contain `http://` or `https://`.
+        self.resource_group_id = resource_group_id
         # The ID of the VPC in which the ALB instance was deployed.
+        self.tags = tags
+        # The IPv4 address that is used by the ALB instance.
+        # 
+        # This parameter is available only if you set the **AddressIPVersion** parameter to **IPv4**. The AddressType parameter determines whether the IPv4 address is public or private.
         self.vpc_id = vpc_id
-        # The zones and the vSwitches. You must specify at least two zones.
+        # The IPv6 address that is used by the ALB instance.
+        # 
+        # This parameter is available only if you set the **AddressIPVersion** parameter to **DualStack**. The AddressType parameter determines whether the IPv6 address is public or private.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -10969,8 +10803,6 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        if self.security_group_ids is not None:
-            result['SecurityGroupIds'] = self.security_group_ids
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -11032,8 +10864,6 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('SecurityGroupIds') is not None:
-            self.security_group_ids = m.get('SecurityGroupIds')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -11102,8 +10932,11 @@ class ListAScriptsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The IDs of the AScript rules. You can specify at most 20 IDs at a time.
         self.ascript_ids = ascript_ids
+        # The names of the AScript rules. You can specify at most 10 names at a time.
         self.ascript_names = ascript_names
+        # The IDs of the listeners. You can specify at most 20 IDs in each request.
         self.listener_ids = listener_ids
         # The maximum number of entries to return.
         # 
@@ -11351,14 +11184,14 @@ class ListAclEntriesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The ID of the ACL.
+        # The ACL ID.
         self.acl_id = acl_id
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
 
     def validate(self):
@@ -11398,13 +11231,13 @@ class ListAclEntriesResponseBodyAclEntries(TeaModel):
     ):
         # The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
         self.description = description
-        # The CIDR block for the ACL entry.
+        # The CIDR block of the ACL entry.
         self.entry = entry
         # The status of the ACL entry. Valid values:
         # 
-        # *   **Adding**: The ACL entry is being added.
-        # *   **Available**: The ACL entry is added and available.
-        # *   **Removing**: The ACL entry is being removed.
+        # *   **Adding**\
+        # *   **Available**\
+        # *   **Removing**\
         self.status = status
 
     def validate(self):
@@ -11446,16 +11279,16 @@ class ListAclEntriesResponseBody(TeaModel):
     ):
         # The ACL entries.
         self.acl_entries = acl_entries
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If **NextToken** was not returned, it indicates that no additional results exist.
-        # *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -11551,7 +11384,7 @@ class ListAclRelationsRequest(TeaModel):
         self,
         acl_ids: List[str] = None,
     ):
-        # The IDs of the ACLs to be queried. You can specify up to 5 ACLs at a time.
+        # The listeners associated with the specified ACL.
         self.acl_ids = acl_ids
 
     def validate(self):
@@ -11583,19 +11416,17 @@ class ListAclRelationsResponseBodyAclRelationsRelatedListeners(TeaModel):
         load_balancer_id: str = None,
         status: str = None,
     ):
-        # The ID of the listener.
-        self.listener_id = listener_id
-        # The port of the listener.
-        self.listener_port = listener_port
-        # The protocol used by the listener.
-        self.listener_protocol = listener_protocol
         # The ID of the SLB instance.
-        self.load_balancer_id = load_balancer_id
+        self.listener_id = listener_id
         # The status of association between the listener and the ACL.
         # 
         # *   **Associating**: The listener is being associated with the ACL.
         # *   **Associated**: The listener is associated with the ACL.
         # *   **Dissociating**: The listener is being disassociated from the ACL.
+        self.listener_port = listener_port
+        # The ID of the request.
+        self.listener_protocol = listener_protocol
+        self.load_balancer_id = load_balancer_id
         self.status = status
 
     def validate(self):
@@ -11640,9 +11471,9 @@ class ListAclRelationsResponseBodyAclRelations(TeaModel):
         acl_id: str = None,
         related_listeners: List[ListAclRelationsResponseBodyAclRelationsRelatedListeners] = None,
     ):
-        # ACL ID
+        # The port of the listener.
         self.acl_id = acl_id
-        # The listeners associated with the specified ACL.
+        # The protocol used by the listener.
         self.related_listeners = related_listeners
 
     def validate(self):
@@ -11683,9 +11514,8 @@ class ListAclRelationsResponseBody(TeaModel):
         acl_relations: List[ListAclRelationsResponseBodyAclRelations] = None,
         request_id: str = None,
     ):
-        # The relations between the specified ACL and the listeners.
+        # The ID of the listener.
         self.acl_relations = acl_relations
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11773,18 +11603,15 @@ class ListAclsRequest(TeaModel):
         next_token: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the network ACL. You can specify at most 20 network ACL IDs in each request.
-        self.acl_ids = acl_ids
         # The names of the network ACLs. You can specify at most 10 network ACL names in each request.
+        self.acl_ids = acl_ids
+        # The ID of the resource group. You can filter the query results based on the specified ID.
         self.acl_names = acl_names
         # The maximum number of entries to return. This parameter is optional. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If this is your first query or no next query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+        # The operation that you want to perform. Set the value to **ListAcls**.
         self.next_token = next_token
-        # The ID of the resource group. You can filter the query results based on the specified ID.
+        # The IP version. **IPv4** is returned.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -11836,23 +11663,22 @@ class ListAclsResponseBodyAcls(TeaModel):
     ):
         # The ID of the network ACL.
         self.acl_id = acl_id
-        # The name of the network ACL.
+        # The ID of the network ACL. You can specify at most 20 network ACL IDs in each request.
         self.acl_name = acl_name
-        # The status of the network ACL. Valid values:
-        # 
-        # *   **Creating**: The network ACL is being created.
-        # *   **Available**: The network ACL is available.
-        # *   **Configuring**: The network ACL is being configured.
+        # The name of the network ACL.
         self.acl_status = acl_status
-        # The IP version. **IPv4** is returned.
-        self.address_ipversion = address_ipversion
         # The status of configuration management. Valid values:
         # 
         # *   **true**: configuration management is enabled.
         # *   **false**: configuration management is disabled.
+        self.address_ipversion = address_ipversion
+        # The network ACLs.
         self.config_managed_enabled = config_managed_enabled
         self.create_time = create_time
-        # The ID of the resource group.
+        # The token that is used for the next query. Valid values:
+        # 
+        # *   If this is your first query or no next query is to be sent, ignore this parameter.
+        # *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -11908,18 +11734,19 @@ class ListAclsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The network ACLs.
-        self.acls = acls
-        # The maximum number of network ACLs returned. This parameter is optional. Valid values: **1** to **100**. If this parameter is not set, the default value **20** is returned.
-        self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # The status of the network ACL. Valid values:
         # 
-        # *   If **NextToken** is empty, it indicates that no next query is to be sent.
-        # *   If **NextToken** is returned, the value indicates the token that is used for the next query.
-        self.next_token = next_token
+        # *   **Creating**: The network ACL is being created.
+        # *   **Available**: The network ACL is available.
+        # *   **Configuring**: The network ACL is being configured.
+        self.acls = acls
         # The ID of the request.
+        self.max_results = max_results
+        # The ID of the resource group.
+        self.next_token = next_token
+        # The operation that you want to perform. Set the value to **ListAcls**.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The ID of the network ACL. You can specify at most 20 network ACL IDs in each request.
         self.total_count = total_count
 
     def validate(self):
@@ -12326,14 +12153,16 @@ class ListHealthCheckTemplatesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The IDs of health check templates.
         self.health_check_template_ids = health_check_template_ids
+        # The health check templates.
         self.health_check_template_names = health_check_template_names
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the value to the value of **NextToken** that was returned from the last call.
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
 
     def validate(self):
@@ -12385,18 +12214,13 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
-        # The HTTP status codes that are used to determine whether the backend server passes the health check.
-        # 
-        # *   If **HealthCheckProtocol** is set to **HTTP**, **HealthCheckCodes** can be set to **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**. Separate multiple HTTP status codes with a comma (,).
-        # *   If **HealthCheckProtocol** is set to **gRPC**, **HealthCheckCodes** can be set to **0 to 99**. Default value: **0**. Value ranges are supported. You can enter 20 value ranges at most and must separate each range with a comma (,).
-        # 
-        # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+        # The status code.
         self.health_check_codes = health_check_codes
         # The port that is used for health checks.
         # 
-        # Valid values: **0 to 65535**.
+        # Valid values: \*\* 0 to 65535\*\*.
         # 
-        # Default value: **0**. This value indicates that the port on a backend server is used for health checks.
+        # Default value: **0**. If you set the value to 0, the port of a backend server is used for health checks.
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks. Valid values:
         # 
@@ -12404,7 +12228,7 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
         # 
         # **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
         # 
-        # >  This parameter takes effect only when the `HealthCheckProtocol` parameter is set to **HTTP**.
+        # > This parameter is valid only if the `HealthCheckProtocol` parameter is set to **HTTP**.
         self.health_check_host = health_check_host
         # The HTTP version that is used for health checks.
         # 
@@ -12412,23 +12236,23 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
         # 
         # Default value: **HTTP 1.1**.
         # 
-        # >  This parameter takes effect only when the `HealthCheckProtocol` parameter is set to **HTTP**.
+        # > This parameter is valid only if the `HealthCheckProtocol` parameter is set to **HTTP**.
         self.health_check_http_version = health_check_http_version
-        # The interval between two consecutive health checks. Unit: seconds. Valid values: **1 to 50**. Default value: **2**.
+        # The interval at which health checks are performed. Unit: seconds. Valid values: **1 to 50**. Default value: **2**.
         self.health_check_interval = health_check_interval
-        # The HTTP method that is used for health checks. Valid values:
+        # The method that you want to use for the health check. Valid values:
         # 
-        # *   **HEAD**: By default, HTTP health checks use the HEAD method.
-        # *   **GET**: If the size of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
-        # *   **POST**: By default, gRPC health checks use the POST method.
+        # *   **HEAD**: By default, the ALB instance sends HEAD requests to a backend server to perform HTTP health checks.
+        # *   **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+        # *   **POST**: gRPC health checks automatically use the POST method.
         # 
-        # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+        # > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
         self.health_check_method = health_check_method
         # The URL that is used for health checks.
         # 
-        # The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The URL path must start with a forward slash (/).
+        # The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The URL must start with a forward slash (/).
         self.health_check_path = health_check_path
-        # The protocol that is used for health checks. Valid values:
+        # The protocol that you want to use for health checks. Valid values:
         # 
         # *   **HTTP** (default): To perform HTTP health checks, ALB sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
         # *   **TCP**: To perform TCP health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
@@ -12438,15 +12262,15 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
         self.health_check_template_id = health_check_template_id
         # The name of the health check template.
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.health_check_template_name = health_check_template_name
-        # The timeout period of a health check. If a backend server, such as an Elastic Compute Service (ECS) instance, does not return a health check response within the specified timeout period, the server fails the health check.
+        # The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not return a health check response within the specified timeout period, the server fails the health check.
         # 
         # Valid values: **1 to 300**. Unit: seconds.
         # 
         # Default value: **5**.
         # 
-        # >  If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the value of the **HealthCheckInterval** parameter is used as the timeout period.
+        # > If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the value of the **HealthCheckInterval** parameter is used as the timeout period.
         self.health_check_timeout = health_check_timeout
         # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
         # 
@@ -12542,14 +12366,14 @@ class ListHealthCheckTemplatesResponseBody(TeaModel):
         self.health_check_templates = health_check_templates
         # The number of entries returned per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If **NextToken** is empty, it indicates that no subsequent query is to be sent.
-        # *   If a value of **NextToken** is returned, the value is the token that is used for the subsequent query.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -12648,16 +12472,16 @@ class ListListenerCertificatesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The type of the certificate. Valid values: **Ca** and **Server**.
-        self.certificate_type = certificate_type
-        # The ID of the listener. You must specify the ID of an HTTPS listener or a QUIC listener.
-        self.listener_id = listener_id
-        # The maximum number of entries to return. Valid values: **1 to 100**. If you do not specify this parameter, the default value **20** is used.
-        self.max_results = max_results
         # The token that is used for the next query. Valid values:
         # 
-        # *   If this is your first query or no next query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+        # *   If **NextToken** is empty, it indicates that no next query is to be sent.
+        # *   If **NextToken** is not empty, the value indicates the token that is used for the next query.
+        self.certificate_type = certificate_type
+        # The maximum number of entries returned.
+        self.listener_id = listener_id
+        # The type of the certificate. Valid values: **Ca** and **Server**.
+        self.max_results = max_results
+        # The ID of the listener. You must specify the ID of an HTTPS listener or a QUIC listener.
         self.next_token = next_token
 
     def validate(self):
@@ -12700,20 +12524,15 @@ class ListListenerCertificatesResponseBodyCertificates(TeaModel):
         is_default: bool = None,
         status: str = None,
     ):
-        # The ID of the certificate. Only server certificates are supported.
-        self.certificate_id = certificate_id
-        # The type of the certificate.
-        self.certificate_type = certificate_type
-        # Indicates whether the certificate is the default certificate of the listener. Valid values:
-        # 
-        # *   **true**: the default certificate
-        # *   **false**: an additional certificate
-        self.is_default = is_default
         # Indicates whether the certificate is associated with the listener. Valid values:
         # 
         # *   **Associating**: The certificate is being associated with the listener.
         # *   **Associated**: The certificate is associated with the listener.
         # *   **Diassociating**: The certificate is being disassociated from the listener.
+        self.certificate_id = certificate_id
+        self.certificate_type = certificate_type
+        # The type of the certificate.
+        self.is_default = is_default
         self.status = status
 
     def validate(self):
@@ -12757,18 +12576,18 @@ class ListListenerCertificatesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of certificates.
-        self.certificates = certificates
-        # The maximum number of entries returned.
-        self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # Indicates whether the certificate is the default certificate of the listener. Valid values:
         # 
-        # *   If **NextToken** is empty, it indicates that no next query is to be sent.
-        # *   If **NextToken** is not empty, the value indicates the token that is used for the next query.
-        self.next_token = next_token
+        # *   **true**: the default certificate
+        # *   **false**: an additional certificate
+        self.certificates = certificates
         # The ID of the request.
-        self.request_id = request_id
+        self.max_results = max_results
         # The total number of entries returned.
+        self.next_token = next_token
+        # The list of certificates.
+        self.request_id = request_id
+        # The ID of the certificate. Only server certificates are supported.
         self.total_count = total_count
 
     def validate(self):
@@ -12868,20 +12687,22 @@ class ListListenersRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The listener IDs. You can specify up to 20 IDs.
         self.listener_ids = listener_ids
-        # The listening protocol. Valid values:
+        # The listener protocol. Valid values:
         # 
         # *   **HTTP**\
         # *   **HTTPS**\
         # *   **QUIC**\
         self.listener_protocol = listener_protocol
+        # The Server Load Balancer (SLB) instance IDs. You can specify up to 20 IDs.
         self.load_balancer_ids = load_balancer_ids
-        # The maximum number of entries to return. This parameter is optional. Valid values: **1 to 100**. If you do not set this parameter, the default value **20** is used.
+        # The maximum number of entries to return. This parameter is optional. Valid values: **1 to 100**. If you do not specify this parameter, the default value **20** is used.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
 
     def validate(self):
@@ -12990,9 +12811,9 @@ class ListListenersResponseBodyListenersDefaultActions(TeaModel):
         forward_group_config: ListListenersResponseBodyListenersDefaultActionsForwardGroupConfig = None,
         type: str = None,
     ):
-        # The configuration of the forwarding rule action. This parameter is returned and takes effect only if the action type is **FowardGroup**.
+        # The configuration of the forwarding action. This parameter is returned and takes effect only if the action type is **FowardGroup**.
         self.forward_group_config = forward_group_config
-        # The action type. If **ForwardGroup** is returned, it indicates that requests are forwarded to multiple vServer groups.
+        # The type of the action. If **ForwardGroup** is returned, requests are forwarded to multiple vServer groups.
         self.type = type
 
     def validate(self):
@@ -13030,18 +12851,18 @@ class ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig(TeaModel
     ):
         # Indicates whether Xtrace is enabled. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  **true** is returned only when the access log feature of ALB is enabled by specifying **AccessLogEnabled**.
+        # > You can set this parameter to **true** only if the access log feature is enabled by specifying **AccessLogEnabled**.
         self.tracing_enabled = tracing_enabled
         # The sampling rate of Xtrace. Valid values: **1 to 10000**.
         # 
-        # >  This parameter takes effect when **TracingEnabled** is set to **true**.
+        # > This parameter takes effect only if **TracingEnabled** is set to **true**.
         self.tracing_sample = tracing_sample
         # The Xtrace type. This parameter can be set to **Zipkin**.
         # 
-        # >  This parameter takes effect when **TracingEnabled** is set to **true**.
+        # > This parameter takes effect only if **TracingEnabled** is set to **true**.
         self.tracing_type = tracing_type
 
     def validate(self):
@@ -13080,10 +12901,10 @@ class ListListenersResponseBodyListenersLogConfig(TeaModel):
     ):
         # Indicates whether custom headers are carried in the access log. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.access_log_record_customized_headers_enabled = access_log_record_customized_headers_enabled
-        # The configuration of Xtrace that is used to record the requests sent to ALB.
+        # The configuration of Xtrace that is used to record the requests sent to SLB.
         self.access_log_tracing_config = access_log_tracing_config
 
     def validate(self):
@@ -13118,16 +12939,16 @@ class ListListenersResponseBodyListenersQuicConfig(TeaModel):
         quic_listener_id: str = None,
         quic_upgrade_enabled: bool = None,
     ):
-        # The ID of the QUIC listener. This parameter is returned when **QuicUpgradeEnabled** is set to **true**. Only HTTPS listeners support this parameter.  
+        # The QUIC listener ID. This parameter is returned when **QuicUpgradeEnabled** is set to **true**. Only HTTPS listeners support this parameter.
         # 
-        # >  The HTTPS listener and the QUIC listener must be added to the same ALB instance. In addition, make sure that the QUIC listener is not associated with other listeners.
+        # > You must add the HTTPS listener and the QUIC listener to the same ALB instance. In addition, make sure that the QUIC listener has never been associated with another listener.
         self.quic_listener_id = quic_listener_id
         # Indicates whether QUIC upgrade is enabled. Valid values:
         # 
-        # - **true**: yes
-        # - **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > Only HTTPS listeners support this parameter.
         self.quic_upgrade_enabled = quic_upgrade_enabled
 
     def validate(self):
@@ -13175,101 +12996,101 @@ class ListListenersResponseBodyListenersXForwardedForConfig(TeaModel):
     ):
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
         # Indicates whether the `X-Forwarded-Clientcert-clientverify` header is used to obtain the verification result of the client certificate. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertFingerprintEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
         # Indicates whether the `X-Forwarded-Clientcert-fingerprint` header is used to retrieve the fingerprint of the client certificate. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
         # Indicates whether the `X-Forwarded-Clientcert-issuerdn` header is used to retrieve information about the authority that issues the client certificate. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
         # Indicates whether the `X-Forwarded-Clientcert-subjectdn` header is used to retrieve information about the owner of the client certificate. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
-        # Indicates whether the `X-Forwarded-Client-Ip` header is used to retrieve the source port of the ALB instance. Valid values:
+        # Indicates whether the `X-Forwarded-Client-Ip` header is used to retrieve the source port of the SLB instance. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # > HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_client_source_ips_enabled = xforwarded_for_client_source_ips_enabled
         # The trusted proxy IP address.
         # 
-        # ALB traverses `X-Forwarded-For` backwards and selects the first IP that is not in the trusted IP list as the originating IP address of the client, which will be throttled if source IP address throttling is enabled.
+        # ALB traverses `X-Forwarded-For` backward and selects the first IP address that is not in the trusted IP address list as the real IP address of the client. The IP address is used in source IP address throttling.
         self.xforwarded_for_client_source_ips_trusted = xforwarded_for_client_source_ips_trusted
         # Indicates whether the `X-Forwarded-Client-Port` header is used to retrieve the client port. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  HTTP and HTTPS listeners support this parameter.
+        # > HTTP and HTTPS listeners support this parameter.
         self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
         # Indicates whether the `X-Forwarded-For` header is used to retrieve the client IP address. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  HTTP and HTTPS listeners support this parameter.
+        # > HTTP and HTTPS listeners support this parameter.
         self.xforwarded_for_enabled = xforwarded_for_enabled
         # Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listener protocol. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # > HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
-        # Indicates whether the `SLB-ID` header is used to retrieve the ID of the ALB instance. Valid values:
+        # Indicates whether the `SLB-ID` header is used to retrieve the ID of the SLB instance. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # > HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
-        # Indicates whether the `X-Forwarded-Port` header is used to retrieve the listening port of the ALB instance. Valid values:
+        # Indicates whether the `X-Forwarded-Port` header is used to retrieve the listener port of the SLB instance. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # > HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
 
     def validate(self):
@@ -13367,31 +13188,31 @@ class ListListenersResponseBodyListeners(TeaModel):
         security_policy_id: str = None,
         xforwarded_for_config: ListListenersResponseBodyListenersXForwardedForConfig = None,
     ):
-        # The list of default actions in the forwarding rules.
+        # The actions of the default forwarding rule.
         self.default_actions = default_actions
-        # Indicates whether gzip compression is enabled to compress specific types of files. Valid values: 
+        # Indicates whether GZIP compression is enabled to compress specific types of files. Valid values:
         # 
-        # - **true**: yes
-        # - **false**: no
+        # *   **true**\
+        # *   **false**\
         self.gzip_enabled = gzip_enabled
         # Indicates whether HTTP/2 is enabled. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.http_2enabled = http_2enabled
         # The timeout period of an idle connection. Unit: seconds. Valid values: **1 to 60**.
         # 
-        # If no request is received within the specified timeout period, ALB closes the connection. ALB establishes the connection again when a new connection request is received.
+        # If no request is received within the specified timeout period, SLB closes the connection. SLB establishes the connection again when a new connection request is received.
         self.idle_timeout = idle_timeout
         # The description of the listener. The description must be 2 to 256 characters in length.
         self.listener_description = listener_description
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The frontend port that is used by the ALB instance. Valid values: **1 to 65535**.
+        # The frontend port that is used by the SLB instance. Valid values: **1 to 65535**.
         self.listener_port = listener_port
-        # The listening protocol. Valid values:
+        # The listener protocol. Valid values:
         # 
         # *   **HTTP**\
         # *   **HTTPS**\
@@ -13399,24 +13220,24 @@ class ListListenersResponseBodyListeners(TeaModel):
         self.listener_protocol = listener_protocol
         # The status of the listener. Valid values:
         # 
-        # *   **Provisioning**: The listener is being created.
-        # *   **Running**: The listener is running.
-        # *   **Configuring**: The listener is being configured.
-        # *   **Stopped**: The listener is stopped.
+        # *   **Provisioning**\
+        # *   **Running**\
+        # *   **Configuring**\
+        # *   **Stopped**\
         self.listener_status = listener_status
-        # The ID of the ALB instance.
+        # The SLB instance ID.
         self.load_balancer_id = load_balancer_id
-        # The configuration of logs.
+        # The logging configuration.
         self.log_config = log_config
         # The configuration information when the listener is associated with a QUIC listener.
         self.quic_config = quic_config
         # The timeout period of a request. Unit: seconds. Valid values: **1 to 180**.
         # 
-        # If no responses are received from the backend server within the specified timeout period, ALB returns an `HTTP 504` error code to the client.
+        # If no responses are received from the backend server within the specified timeout period, SLB returns an `HTTP 504` error code to the client.
         self.request_timeout = request_timeout
         # The security policy.
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.security_policy_id = security_policy_id
         # The configuration of the `XForward` headers.
         self.xforwarded_for_config = xforwarded_for_config
@@ -13523,13 +13344,13 @@ class ListListenersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of listeners.
+        # The listeners.
         self.listeners = listeners
         # The maximum number of entries returned.
         self.max_results = max_results
-        # The position where the query stopped. If this parameter is not returned, all data has been queried.
+        # The position where the query stopped. If this parameter is not returned, all data is queried.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -13628,13 +13449,13 @@ class ListLoadBalancersRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # It can be at most 64 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.key = key
-        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -13680,18 +13501,20 @@ class ListLoadBalancersRequest(TeaModel):
         # The network type. Valid values:
         # 
         # *   **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
-        # *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC where the ALB instance is deployed.
+        # *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the VPC where the ALB instance is deployed.
         self.address_type = address_type
-        # The business status of the ALB instance. Valid values:
+        # The service status of the ALB instance. Valid values:
         # 
         # *   **Abnormal**\
         # *   **Normal**\
         self.load_balancer_bussiness_status = load_balancer_bussiness_status
+        # The instance IDs. You can specify at most 20 ALB instance IDs.
         self.load_balancer_ids = load_balancer_ids
+        # The names of the instances. You can specify at most 10 names.
         self.load_balancer_names = load_balancer_names
         # The status of the ALB instance. Valid values:
         # 
-        # *   **Inactive**: The ALB instance is disabled. ALB instances in the Inactive state do not forward traffic.
+        # *   **Inactive**: The ALB instance is disabled. The listeners do not forward traffic.
         # *   **Active**: The ALB instance is running.
         # *   **Provisioning**: The ALB instance is being created.
         # *   **Configuring**: The ALB instance is being modified.
@@ -13699,10 +13522,10 @@ class ListLoadBalancersRequest(TeaModel):
         self.load_balancer_status = load_balancer_status
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that determines the start point of the next query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
         # The billing method of the ALB instance. Set the value to
         # 
@@ -13710,7 +13533,9 @@ class ListLoadBalancersRequest(TeaModel):
         self.pay_type = pay_type
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags added to the ALB instance.
         self.tag = tag
+        # The ID of the virtual private cloud (VPC) to which the ALB instance belongs. You can specify at most 10 IDs.
         self.vpc_ids = vpc_ids
         # The ID of the zone where the ALB instance is deployed.
         # 
@@ -13832,8 +13657,8 @@ class ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig(TeaMode
     ):
         # Indicates whether deletion protection is enabled. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         self.enabled = enabled
         # The time when deletion protection is enabled.
         self.enabled_time = enabled_time
@@ -13867,9 +13692,9 @@ class ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig(TeaMod
         self,
         pay_type: str = None,
     ):
-        # The billing method.
+        # The billing method. Valid values:
         # 
-        # **PostPay** is returned, which indicates the pay-as-you-go billing method.
+        # Only **PostPay** may be returned, which indicates the pay-as-you-go billing method.
         self.pay_type = pay_type
 
     def validate(self):
@@ -13898,14 +13723,14 @@ class ListLoadBalancersResponseBodyLoadBalancersLoadBalancerOperationLocks(TeaMo
         lock_reason: str = None,
         lock_type: str = None,
     ):
-        # The reason why the ALB instance is locked. This parameter is available only if **LoadBalancerBussinessStatus** is set to **Abnormal**.
+        # The reason why the ALB instance is locked. This parameter is available only when **LoadBalancerBussinessStatus** is set to **Abnormal**.
         self.lock_reason = lock_reason
-        # The type of lock. Valid values:
+        # The lock type. Valid values:
         # 
         # *   **SecurityLocked**: The ALB instance is locked due to security reasons.
         # *   **RelatedResourceLocked**: The ALB instance is locked due to association issues.
         # *   **FinancialLocked**: The ALB instance is locked due to overdue payments.
-        # *   **ResidualLocked**: The ALB instance is locked because the payments of the associated resources are overdue and the resources are released.
+        # *   **ResidualLocked**: The ALB instance is locked because the associated resources have overdue payments and the resources are released.
         self.lock_type = lock_type
 
     def validate(self):
@@ -13940,16 +13765,16 @@ class ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig(Tea
     ):
         # The reason why deletion protection is enabled.
         # 
-        # The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+        # It must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
         # 
-        # This parameter takes effect only if the **ModificationProtectionStatus** parameter is set to **ConsoleProtection**.
+        # This parameter takes effect only when **ModificationProtectionStatus** is set to **ConsoleProtection**.
         self.reason = reason
         # Indicates whether the configuration read-only mode is enabled for the ALB instance. Valid values:
         # 
-        # *   **NonProtection**: The configuration read-only mode is disabled. In this case, you cannot set the ModificationProtectionReason parameter. If you set the ModificationProtectionReason parameter, the value of the parameter is cleared.
-        # *   **ConsoleProtection**: The configuration read-only mode is enabled. In this case, you can set the ModificationProtectionReason parameter.
+        # *   **NonProtection**: The configuration read-only mode is disabled. In this case, you cannot specify ModificationProtectionReason. If you specify ModificationProtectionReason, the value of the parameter is cleared.
+        # *   **ConsoleProtection**: The configuration read-only mode is enabled. In this case, you can specify ModificationProtectionReason.
         # 
-        # >  If you set this parameter to **ConsoleProtection**, you cannot modify instance configurations in the ALB console. However, you can modify instance configurations by calling API operations.
+        # > If you set this parameter to **ConsoleProtection**, you cannot use the ALB console to modify instance configurations. However, you can call API operations to modify instance configurations.
         self.status = status
 
     def validate(self):
@@ -13982,9 +13807,9 @@ class ListLoadBalancersResponseBodyLoadBalancersTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -14037,33 +13862,33 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
     ):
         # The configuration of the access log.
         self.access_log_config = access_log_config
-        # The mode in which IP addresses are assigned. Valid values:
+        # The mode in which IP addresses are allocated. Valid values:
         # 
         # *   **Fixed**: allocates a static IP address to the ALB instance.
         # *   **Dynamic**: dynamically allocates an IP address to each zone of the ALB instance.
         self.address_allocated_mode = address_allocated_mode
-        # The protocol version. Valid values:
+        # The IP version. Valid values:
         # 
-        # *   **IPv4**: IPv4
-        # *   **DualStack**: dual stack
+        # *   **IPv4**\
+        # *   **DualStack**\
         self.address_ip_version = address_ip_version
         # The type of IP address that the ALB instance uses to provide services. Valid values:
         # 
         # *   **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
-        # *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC where the ALB instance is deployed.
+        # *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the VPC where the ALB instance is deployed.
         self.address_type = address_type
-        # The ID of the EIP bandwidth plan that is associated with the Internet-facing ALB instance.
+        # The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
         self.bandwidth_package_id = bandwidth_package_id
         # The time when the resource was created.
         self.create_time = create_time
         # The domain name of the ALB instance.
         self.dnsname = dnsname
-        # The configuration of the deletion protection feature.
+        # The configuration of deletion protection.
         self.deletion_protection_config = deletion_protection_config
         # The type of IPv6 address that is used by the ALB instance. Valid values:
         # 
         # *   **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
-        # *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC where the ALB instance is deployed.
+        # *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC in which the ALB instance is deployed.
         self.ipv_6address_type = ipv_6address_type
         # The configuration of the billing method.
         self.load_balancer_billing_config = load_balancer_billing_config
@@ -14080,23 +13905,23 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         self.load_balancer_edition = load_balancer_edition
         # The ID of the ALB instance.
         self.load_balancer_id = load_balancer_id
-        # The name of the ALB instance.
+        # The name of the NLB instance.
         self.load_balancer_name = load_balancer_name
         # The configuration of the operation lock.
         self.load_balancer_operation_locks = load_balancer_operation_locks
         # The status of the ALB instance. Valid values:
         # 
-        # *   **Inactive**: The ALB instance is disabled. ALB instances in the Inactive state do not forward traffic.
+        # *   **Inactive**: The ALB instance is disabled. The listeners do not forward traffic.
         # *   **Active**: The ALB instance is running.
         # *   **Provisioning**: The ALB instance is being created.
         # *   **Configuring**: The ALB instance is being modified.
         # *   **CreateFailed**: The system failed to create the ALB instance.
         self.load_balancer_status = load_balancer_status
-        # The configuration of the configuration read-only mode.
+        # The configuration read-only mode.
         self.modification_protection_config = modification_protection_config
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The tags that are added to the instance.
         self.tags = tags
         # The ID of the VPC to which the ALB instance belongs.
         self.vpc_id = vpc_id
@@ -14239,14 +14064,14 @@ class ListLoadBalancersResponseBody(TeaModel):
         self.load_balancers = load_balancers
         # The number of entries returned per page.
         self.max_results = max_results
-        # The token that determines the start point of the next query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If **NextToken** is empty, it indicates that no subsequent query is to be sent.
-        # *   If a value is returned for **NextToken**, the value is the token that is used for the next query.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -14352,9 +14177,11 @@ class ListRulesRequest(TeaModel):
         # *   **Request** (default): The forwarding rule is applied to the client requests received by ALB.
         # *   **Response**: The forwarding rule is applied to the responses returned by backend servers.
         # 
-        # >  You cannot set the value to Response if you use a basic ALB instance.
+        # > You cannot set this parameter to Response if you use basic ALB instances.
         self.direction = direction
+        # The listener IDs.
         self.listener_ids = listener_ids
+        # The Application Load Balancer (ALB) instance IDs.
         self.load_balancer_ids = load_balancer_ids
         # The maximum number of entries to return.
         # 
@@ -14362,10 +14189,11 @@ class ListRulesRequest(TeaModel):
         # 
         # Default value: **20**. If you do not specify this parameter, the default value is used.
         # 
-        # >  This parameter is optional.
+        # > This parameter is optional.
         self.max_results = max_results
         # The starting point of the current query. If you do not specify this parameter, the query starts from the beginning.
         self.next_token = next_token
+        # The forwarding rules.
         self.rule_ids = rule_ids
 
     def validate(self):
@@ -14418,29 +14246,18 @@ class ListRulesResponseBodyRulesRuleActionsCorsConfig(TeaModel):
         expose_headers: List[str] = None,
         max_age: int = None,
     ):
-        # Specifies whether credentials can be passed during CORS operations. Valid values:
+        # Indicates whether credentials can be carried in CORS requests. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.allow_credentials = allow_credentials
-        # The allowed headers for CORS requests. You can specify `*` or specify one or more values. Separate multiple values with commas (,). A value can contain only letters and digits. It cannot start or end with underscores (\_) or hyphens (-). It can be up to 32 characters in length.
+        # The allowed headers for CORS requests.
         self.allow_headers = allow_headers
-        # The allowed HTTP methods for CORS requests. Valid values:
-        # 
-        # *   **GET**\
-        # *   **POST**\
-        # *   **PUT**\
-        # *   **DELETE**\
-        # *   **HEAD**\
-        # *   **OPTIONS**\
-        # *   **PATCH**\
+        # The allowed HTTP methods for CORS requests.
         self.allow_methods = allow_methods
-        # The allowed origins of CORS requests. You can set this parameter to `*` or one or more values. A value cannot be `*`.
-        # 
-        # *   A value must start with a `http://` or `https://`, followed by a valid domain name or a first-level wildcard domain name, such as `*.test.abc.example.com`.
-        # *   You can specify a port in a value. Port range: **1** to **65535**.
+        # The origin sites that are allowed.
         self.allow_origin = allow_origin
-        # The headers that can be exposed. You can specify `*` or specify one or more values. Separate multiple values with commas (,). A value can contain only letters and digits. It cannot start or end with underscores (\_) or hyphens (-). It can be up to 32 characters in length.
+        # The headers that can be exposed.
         self.expose_headers = expose_headers
         # The maximum cache time of preflight requests in the browser. Unit: seconds.
         # 
@@ -14496,11 +14313,11 @@ class ListRulesResponseBodyRulesRuleActionsFixedResponseConfig(TeaModel):
     ):
         # The content of the custom response. The content is up to 1 KB in size, and can contain only ASCII characters.
         self.content = content
-        # The content type.
+        # The format of the response.
         # 
         # Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
         self.content_type = content_type
-        # The HTTP status code of the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** is a digit.
+        # The HTTP status code in the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** must be a digit.
         self.http_code = http_code
 
     def validate(self):
@@ -14539,7 +14356,7 @@ class ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples(T
     ):
         # The server group to which requests are forwarded.
         self.server_group_id = server_group_id
-        # The weight of the server group. Valid values: **0** to **100**.
+        # The weight. Valid values: **0** to **100**.
         self.weight = weight
 
     def validate(self):
@@ -14571,7 +14388,7 @@ class ListRulesResponseBodyRulesRuleActionsForwardGroupConfig(TeaModel):
         self,
         server_group_tuples: List[ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
-        # The list of server groups to which requests are forwarded.
+        # The server groups to which requests are forwarded.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -14609,25 +14426,29 @@ class ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig(TeaModel):
         value: str = None,
         value_type: str = None,
     ):
-        # The key of the header. The key is 1 to 40 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). The header key specified by `InsertHeader` is unique.  
+        # The key of the header to be inserted. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The key specified in `InsertHeader` must be unique.
         # 
-        # >  You cannot use **Cookie** or **Host** as the header name.
+        # > : **Cookie** and **Host** are not supported.
         self.key = key
-        # The value of the header to be inserted. 
+        # The value of the header to be inserted.
         # 
-        # - If **ValueType** is set to **SystemDefined**, the system returns one of the following header values:   - **ClientSrcPort**: the client port.
-        #   - **ClientSrcIp**: the client IP address.
-        #   - **Protocol**: the request protocol (HTTP or HTTPS).
-        #   - **SLBId**: the ID of the ALB instance.
-        #   - **SLBPort**: the listening port.
-        # - If **ValueType** is set to **UserDefined**, a custom header value is returned. The header value is 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. Asterisks (*) and question marks (?) can be used as wildcards. The header value does not start or end with a space character.
-        # - If **ValueType** is set to **ReferenceHeader**, the value of a request header is referenced. The header value is 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
+        # *   If **ValueType** is set to **SystemDefined**, one of the following header values is supported:
+        # 
+        #     *   **ClientSrcPort**: the client port.
+        #     *   **ClientSrcIp**: the client IP address.
+        #     *   **Protocol**: the request protocol (HTTP or HTTPS).
+        #     *   **SLBId**: the ALB instance ID.
+        #     *   **SLBPort**: the listener port.
+        # 
+        # *   If **ValueType** is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcards. The value cannot start or end with a space character.
+        # 
+        # *   If **ValueType** is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
         self.value = value
         # The type of the header. Valid values:
         # 
-        # - **UserDefined**: a user-defined header
-        # - **ReferenceHeader**: referenced from a request header
-        # - **SystemDefined**: a system-defined header
+        # *   **UserDefined:** a user-defined header.
+        # *   **ReferenceHeader:** a header that is referenced from a request header.
+        # *   **SystemDefined:** a system-defined header.
         self.value_type = value_type
 
     def validate(self):
@@ -14670,40 +14491,40 @@ class ListRulesResponseBodyRulesRuleActionsRedirectConfig(TeaModel):
     ):
         # The hostname to which requests are redirected. Valid values:
         # 
-        # *   **${host}** (default): If ${host} is returned, no other character is appended.
+        # *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
         # 
-        # *   Limits on the value:
+        # *   A custom value that meets the following requirements:
         # 
         #     *   The hostname is 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\*) and question marks (?) can be used as wildcards.
         #     *   The hostname contains at least one period (.) but does not start or end with a period (.).
-        #     *   The rightmost domain label can contain only letters and wildcard characters. It does not contain digits or hyphens (-).
+        #     *   The rightmost domain label contains only letters and wildcard characters. It does not contain digits or hyphens (-).
         #     *   The domain labels do not start or end with hyphens (-).
-        #     *   You can use an asterisk (\*) and question mark (?) as wildcards anywhere in a domain label.
+        #     *   You can use asterisks (\*) and question marks (?) anywhere in a domain label as wildcard characters.
         self.host = host
         # The redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
         self.http_code = http_code
         # The path to which requests are redirected. Valid values:
         # 
-        # *   Default value: **${path}**. You can also combine the variable with **${host}**, **${protocol}**, and **${port}**. Then, the path is the combination of **${host}**, **${protocol}**, and **${port}**. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
+        # *   **${path}** (default): You can reference \*\*${host}**, **${protocol}**, and**${port}**. The path can consist of **${host}**,**${protocol}**, and **${port}\*\*. Each variable can be used only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
         # 
-        # *   Limits on the value:
+        # *   A custom value that meets the following requirements:
         # 
         #     *   The value is 1 to 128 characters in length.
-        #     *   It starts with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It does not contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. Asterisks (\*) and question marks (?) can be used as wildcards.
+        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\*) and question marks (?) as wildcards.
         self.path = path
-        # The port to which requests are distributed. Valid values:
+        # The port to which requests are redirected. Valid values:
         # 
-        # *   **${port}** (default): If ${port} is returned, no other character is appended.
-        # *   Other valid values: **1 to 63335**.
+        # *   **${port}** (default): If you set the value to ${port}, you cannot append other characters.
+        # *   You can also enter a port number. Valid values: **1 to 63335**.
         self.port = port
         # The redirect protocol. Valid values:
         # 
-        # *   **${protocol}** (default): If ${protocol} is returned, no other character is appended.
-        # *   Valid values: **HTTP** and **HTTPS**.
+        # *   **${protocol}** (default): If you set the value to ${protocol}, you cannot append other characters.
+        # *   **HTTP** or **HTTPS**.
         # 
-        # >  HTTPS listeners do not support HTTPS-to-HTTP redirects.
+        # > HTTPS listeners support only HTTP to HTTPS redirection.
         self.protocol = protocol
-        # The query string to which requests are redirected. The query string is 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \ | < > &`.
+        # The query string to which requests are forwarded. The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \ | < > &`.
         self.query = query
 
     def validate(self):
@@ -14746,6 +14567,37 @@ class ListRulesResponseBodyRulesRuleActionsRedirectConfig(TeaModel):
         return self
 
 
+class ListRulesResponseBodyRulesRuleActionsRemoveHeaderConfig(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+    ):
+        # 去除的头字段名称，长度为1\~40个字符，支持大小写字母a~z、数字、下划线（_）和短划线（-）。头字段名称不能重复用于RemoveHeader中。
+        # 
+        # * 请求方向（Direction取值为Request）：不允许将头名称设置为以下字段（不区分大小写）：`slb-id`、`slb-ip`、`x-forwarded-for`、`x-forwarded-proto`、`x-forwarded-eip`、`x-forwarded-port`、`x-forwarded-client-srcport`、`connection`、`upgrade`、`content-length`、`transfer-encoding`、`keep-alive`、`te`、`host`、`cookie`、`remoteip`、`authority`。
+        # * 响应方向（Direction取值为Response）：响应方向不允许将头名称设置为以下字段（不区分大小写）：`connection`、`upgrade`、`content-length`、`transfer-encoding`。
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        return self
+
+
 class ListRulesResponseBodyRulesRuleActionsRewriteConfig(TeaModel):
     def __init__(
         self,
@@ -14753,21 +14605,21 @@ class ListRulesResponseBodyRulesRuleActionsRewriteConfig(TeaModel):
         path: str = None,
         query: str = None,
     ):
-        # The hostname to which requests are forwarded. Valid values:
+        # The hostname to which requests are redirected. Valid values:
         # 
-        # *   **${host}** (default): If ${host} is returned, no other character is appended.
+        # *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
         # 
-        # *   Limits on the value:
+        # *   A custom value that meets the following requirements:
         # 
         #     *   The hostname is 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\*) and question marks (?) can be used as wildcards.
         #     *   The hostname contains at least one period (.) but does not start or end with a period (.).
-        #     *   The rightmost domain label can contain only letters and wildcard characters. It does not contain digits or hyphens (-).
+        #     *   The rightmost domain label contains only letters and wildcard characters. It does not contain digits or hyphens (-).
         #     *   The domain labels do not start or end with hyphens (-).
-        #     *   You can use an asterisk (\*) and question mark (?) as wildcards anywhere in a domain label.
+        #     *   You can use asterisks (\*) and question marks (?) anywhere in a domain label as wildcard characters.
         self.host = host
         # The path to which requests are forwarded. The path is 1 to 128 characters in length and starts with a forward slash (/). The path can contain letters, digits, asterisks (\*), question marks (?), and the following special characters: `$ - _ . + / & ~ @ :`. The path does not contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`.
         self.path = path
-        # The query string of the URL to which requests are forwarded. The query string is 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \ | < > &`.
+        # The query string to which requests are forwarded. The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \ | < > &`.
         self.query = query
 
     def validate(self):
@@ -14804,11 +14656,11 @@ class ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig(TeaModel):
         per_ip_qps: int = None,
         qps: int = None,
     ):
-        # QPS per IP address.  Valid values: **1 to 100000**.  
+        # The QPS of each IP address. Valid values: **1 to 100000**.
         # 
-        # >  If both **QPS** and **PerIpQps** are set, make sure that the **QPS** value is smaller than the PerIpQps value.
+        # > If you specify this parameter and **QPS**, the value of **PerIpQps** must be smaller than the value of **QPS**.
         self.per_ip_qps = per_ip_qps
-        # Queries per second (QPS). Valid values: **1** to **100000**.
+        # The number of queries per second (QPS). Valid values: **1** to **100000**.
         self.qps = qps
 
     def validate(self):
@@ -14841,9 +14693,9 @@ class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigS
         server_group_id: str = None,
         weight: int = None,
     ):
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
-        # The weight of the server group. Valid values: **0** to **100**.
+        # The weight. Valid values: **0** to **100**.
         self.weight = weight
 
     def validate(self):
@@ -14911,7 +14763,7 @@ class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig(TeaModel):
         self,
         mirror_group_config: ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
     ):
-        # The list of server groups to which network traffic is mirrored.
+        # The server groups to which network traffic is mirrored.
         self.mirror_group_config = mirror_group_config
 
     def validate(self):
@@ -14945,12 +14797,13 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
         insert_header_config: ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig = None,
         order: int = None,
         redirect_config: ListRulesResponseBodyRulesRuleActionsRedirectConfig = None,
+        remove_header_config: ListRulesResponseBodyRulesRuleActionsRemoveHeaderConfig = None,
         rewrite_config: ListRulesResponseBodyRulesRuleActionsRewriteConfig = None,
         traffic_limit_config: ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig = None,
         traffic_mirror_config: ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
-        # Request forwarding based on CORS.
+        # The CORS configuration.
         self.cors_config = cors_config
         # The configuration of the custom response.
         self.fixed_response_config = fixed_response_config
@@ -14962,13 +14815,15 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
         self.order = order
         # The configuration of the redirect action.
         self.redirect_config = redirect_config
+        # 去除HTTP头部配置。
+        self.remove_header_config = remove_header_config
         # The configuration of the rewrite action.
         self.rewrite_config = rewrite_config
         # The configuration of the action to throttle traffic.
         self.traffic_limit_config = traffic_limit_config
         # The configuration of the action to mirror traffic.
         self.traffic_mirror_config = traffic_mirror_config
-        # The action. Valid values:
+        # The action type. Valid values:
         # 
         # *   **ForwardGroup**: forwards a request to multiple vServer groups.
         # *   **Redirect**: redirects a request.
@@ -14980,10 +14835,10 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
         # *   **TrafficMirrorConfig**: mirrors traffic.
         # *   **CorsConfig**: forwards requests based on CORS.
         # 
-        # A forwarding rule contains one last action and the actions that you want to perform before the last action:
+        # The following action types are supported:
         # 
-        # *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. The FinalType action can be a **ForwardGroup**, **Redirect**, or **FixedResponse** action.
-        # *   **ExtType**: the action to be performed before the FinalType action. A forwarding rule can contain one or more ExtType actions. To specify this parameter, you must also specify FinalType. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
+        # *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
+        # *   **ExtType**: the action or the actions to be performed before the **FinalType** action. A forwarding rule can contain one or more **ExtType** actions. To specify an ExtType action, you must specify a **FinalType** action. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
         self.type = type
 
     def validate(self):
@@ -14997,6 +14852,8 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
             self.insert_header_config.validate()
         if self.redirect_config:
             self.redirect_config.validate()
+        if self.remove_header_config:
+            self.remove_header_config.validate()
         if self.rewrite_config:
             self.rewrite_config.validate()
         if self.traffic_limit_config:
@@ -15022,6 +14879,8 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
             result['Order'] = self.order
         if self.redirect_config is not None:
             result['RedirectConfig'] = self.redirect_config.to_map()
+        if self.remove_header_config is not None:
+            result['RemoveHeaderConfig'] = self.remove_header_config.to_map()
         if self.rewrite_config is not None:
             result['RewriteConfig'] = self.rewrite_config.to_map()
         if self.traffic_limit_config is not None:
@@ -15051,6 +14910,9 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
         if m.get('RedirectConfig') is not None:
             temp_model = ListRulesResponseBodyRulesRuleActionsRedirectConfig()
             self.redirect_config = temp_model.from_map(m['RedirectConfig'])
+        if m.get('RemoveHeaderConfig') is not None:
+            temp_model = ListRulesResponseBodyRulesRuleActionsRemoveHeaderConfig()
+            self.remove_header_config = temp_model.from_map(m['RemoveHeaderConfig'])
         if m.get('RewriteConfig') is not None:
             temp_model = ListRulesResponseBodyRulesRuleActionsRewriteConfig()
             self.rewrite_config = temp_model.from_map(m['RewriteConfig'])
@@ -15071,9 +14933,9 @@ class ListRulesResponseBodyRulesRuleConditionsCookieConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the cookie. The key is 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
+        # The key of the cookie. The key is 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
         self.key = key
-        # The value of the cookie. The value is 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
+        # The value of the cookie. The value is 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). Uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
         self.value = value
 
     def validate(self):
@@ -15105,7 +14967,7 @@ class ListRulesResponseBodyRulesRuleConditionsCookieConfig(TeaModel):
         self,
         values: List[ListRulesResponseBodyRulesRuleConditionsCookieConfigValues] = None,
     ):
-        # The key-value pair of the cookie.
+        # The values of the cookie.
         self.values = values
 
     def validate(self):
@@ -15142,9 +15004,9 @@ class ListRulesResponseBodyRulesRuleConditionsHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of the header. The key is 1 to 40 characters in length. It can contain letters, digits, hyphens (-), and underscores (_). Cookie and Host are not supported.
+        # The key of the header. The key must be 1 to 40 characters in length. It can contain letters, digits, hyphens (-), and underscores (\_). Cookie and Host are not supported.
         self.key = key
-        # The value of the header. The value is 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. For example, lowercase letters, asterisks (*), and question marks (?). However, uppercase letters are not supported. The value does not start or end with a space character.
+        # The values of the header.
         self.values = values
 
     def validate(self):
@@ -15176,12 +15038,7 @@ class ListRulesResponseBodyRulesRuleConditionsHostConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # The hostname. Limits on the value:
-        # 
-        # - The hostname is 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?).
-        # - The hostname contains at least one period (.) but does not start or end with a period (.).
-        # - The rightmost domain label can contain only letters, asterisks (*), and question marks (?), and does not contain digits or hyphens (-).
-        # - The domain labels do not start or end with hyphens (-). You can specify asterisks (∗) and question marks (?) anywhere in a domain label.
+        # The hostnames.
         self.values = values
 
     def validate(self):
@@ -15209,9 +15066,7 @@ class ListRulesResponseBodyRulesRuleConditionsMethodConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # The request method. 
-        # 
-        # Valid values: **HEAD**, **GET**, **POST**, **OPTIONS**, **PUT**, **PATCH**, and **DELETE**.
+        # The request methods.
         self.values = values
 
     def validate(self):
@@ -15239,7 +15094,7 @@ class ListRulesResponseBodyRulesRuleConditionsPathConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # The path. The path is 1 to 128 characters in length and starts with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?), and the following special characters: `$ - _ . + / & ~ @ :`. The path does not contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`.
+        # The paths.
         self.values = values
 
     def validate(self):
@@ -15268,9 +15123,9 @@ class ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # They key of the query string. The key is 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
+        # They key of the query string. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
         self.key = key
-        # The value of the query string. The value is 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
+        # The value of the query string. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
         self.value = value
 
     def validate(self):
@@ -15302,7 +15157,7 @@ class ListRulesResponseBodyRulesRuleConditionsQueryStringConfig(TeaModel):
         self,
         values: List[ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues] = None,
     ):
-        # The list of query strings.
+        # The query strings.
         self.values = values
 
     def validate(self):
@@ -15333,14 +15188,75 @@ class ListRulesResponseBodyRulesRuleConditionsQueryStringConfig(TeaModel):
         return self
 
 
+class ListRulesResponseBodyRulesRuleConditionsResponseHeaderConfig(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        values: List[str] = None,
+    ):
+        # 响应HTTP头部键。长度为1\~40个字符。支持字母a~z、数字、短划线（-）和下划线（_）。不支持Cookie和Host。
+        self.key = key
+        # 响应HTTP头部值列表。
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class ListRulesResponseBodyRulesRuleConditionsResponseStatusCodeConfig(TeaModel):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
+        # 响应状态码列表。
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class ListRulesResponseBodyRulesRuleConditionsSourceIpConfig(TeaModel):
     def __init__(
         self,
         values: List[str] = None,
     ):
-        # The IP address or CIDR block based on which user traffic is matched. You can specify multiple IP addresses or CIDR blocks.  
-        # 
-        # A forwarding rule contains up to five IP addresses or CIDR blocks.
+        # The source IP addresses.
         self.values = values
 
     def validate(self):
@@ -15372,6 +15288,8 @@ class ListRulesResponseBodyRulesRuleConditions(TeaModel):
         method_config: ListRulesResponseBodyRulesRuleConditionsMethodConfig = None,
         path_config: ListRulesResponseBodyRulesRuleConditionsPathConfig = None,
         query_string_config: ListRulesResponseBodyRulesRuleConditionsQueryStringConfig = None,
+        response_header_config: ListRulesResponseBodyRulesRuleConditionsResponseHeaderConfig = None,
+        response_status_code_config: ListRulesResponseBodyRulesRuleConditionsResponseStatusCodeConfig = None,
         source_ip_config: ListRulesResponseBodyRulesRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
@@ -15379,25 +15297,29 @@ class ListRulesResponseBodyRulesRuleConditions(TeaModel):
         self.cookie_config = cookie_config
         # The configuration of the header.
         self.header_config = header_config
-        # The configuration of the host.
+        # The configurations of the hosts.
         self.host_config = host_config
-        # The configuration of the request method.
+        # The configurations of the request methods.
         self.method_config = method_config
-        # The configuration of the URL.
+        # The configurations of the paths.
         self.path_config = path_config
-        # The configuration of the query string.
+        # The configurations of the query strings.
         self.query_string_config = query_string_config
-        # The source IP address based on which user traffic is matched.
+        # 响应HTTP头部配置。
+        self.response_header_config = response_header_config
+        # 响应状态码配置。
+        self.response_status_code_config = response_status_code_config
+        # The configuration of the source IP addresses based on which user traffic is matched.
         self.source_ip_config = source_ip_config
-        # The type of the forwarding rule. Valid values:
+        # The type of forwarding rule. Valid values:
         # 
-        # - **Host**: Requests are distributed based on hosts.
-        # - **Path**: Requests are distributed based on paths.
-        # - **Header**: Requests are distributed based on HTTP headers.
-        # - **QueryString**: Requests are distributed based on query strings.
-        # - **Method**: Requests are distributed based on request methods.
-        # - **Cookie**: Requests are distributed based on cookies.
-        # - **SourceIp**: Requests are distributed based on source IP addresses.
+        # *   **Host**: Requests are distributed based on hosts.
+        # *   **Path**: Requests are distributed based on paths.
+        # *   **Header**: Requests are distributed based on HTTP headers.
+        # *   **QueryString**: Requests are distributed based on query strings.
+        # *   **Method**: Requests are distributed based on request methods.
+        # *   **Cookie**: Requests are distributed based on cookies.
+        # *   **SourceIp**: Requests are distributed based on source IP addresses.
         self.type = type
 
     def validate(self):
@@ -15413,6 +15335,10 @@ class ListRulesResponseBodyRulesRuleConditions(TeaModel):
             self.path_config.validate()
         if self.query_string_config:
             self.query_string_config.validate()
+        if self.response_header_config:
+            self.response_header_config.validate()
+        if self.response_status_code_config:
+            self.response_status_code_config.validate()
         if self.source_ip_config:
             self.source_ip_config.validate()
 
@@ -15434,6 +15360,10 @@ class ListRulesResponseBodyRulesRuleConditions(TeaModel):
             result['PathConfig'] = self.path_config.to_map()
         if self.query_string_config is not None:
             result['QueryStringConfig'] = self.query_string_config.to_map()
+        if self.response_header_config is not None:
+            result['ResponseHeaderConfig'] = self.response_header_config.to_map()
+        if self.response_status_code_config is not None:
+            result['ResponseStatusCodeConfig'] = self.response_status_code_config.to_map()
         if self.source_ip_config is not None:
             result['SourceIpConfig'] = self.source_ip_config.to_map()
         if self.type is not None:
@@ -15460,6 +15390,12 @@ class ListRulesResponseBodyRulesRuleConditions(TeaModel):
         if m.get('QueryStringConfig') is not None:
             temp_model = ListRulesResponseBodyRulesRuleConditionsQueryStringConfig()
             self.query_string_config = temp_model.from_map(m['QueryStringConfig'])
+        if m.get('ResponseHeaderConfig') is not None:
+            temp_model = ListRulesResponseBodyRulesRuleConditionsResponseHeaderConfig()
+            self.response_header_config = temp_model.from_map(m['ResponseHeaderConfig'])
+        if m.get('ResponseStatusCodeConfig') is not None:
+            temp_model = ListRulesResponseBodyRulesRuleConditionsResponseStatusCodeConfig()
+            self.response_status_code_config = temp_model.from_map(m['ResponseStatusCodeConfig'])
         if m.get('SourceIpConfig') is not None:
             temp_model = ListRulesResponseBodyRulesRuleConditionsSourceIpConfig()
             self.source_ip_config = temp_model.from_map(m['SourceIpConfig'])
@@ -15471,6 +15407,7 @@ class ListRulesResponseBodyRulesRuleConditions(TeaModel):
 class ListRulesResponseBodyRules(TeaModel):
     def __init__(
         self,
+        direction: str = None,
         listener_id: str = None,
         load_balancer_id: str = None,
         priority: int = None,
@@ -15480,27 +15417,35 @@ class ListRulesResponseBodyRules(TeaModel):
         rule_name: str = None,
         rule_status: str = None,
     ):
+        # 转发规则的方向。取值：
+        # 
+        # * Request（默认值）：请求类型，对从客户端发送到ALB的报文进行条件匹配并进行相应的处理。
+        # 
+        # * Response：响应类型，对从后端服务器组返回到ALB的报文进行条件匹配并进行相应的处理。
+        # 
+        # > 基础版的ALB实例不支持Response类型。
+        self.direction = direction
         # The ID of the listener to which the forwarding rule belongs.
         self.listener_id = listener_id
         # The ID of the ALB instance to which the forwarding rule belongs.
         self.load_balancer_id = load_balancer_id
         # The priority of the forwarding rule. Valid values: **1 to 10000**. A lower value indicates a higher priority.
         # 
-        # >  The priority of each forwarding rule within a listener is unique.
+        # > The priority of each forwarding rule added to a listener must be unique.
         self.priority = priority
         # The actions of the forwarding rule.
         self.rule_actions = rule_actions
         # The match conditions of the forwarding rule.
         self.rule_conditions = rule_conditions
-        # The ID of the forwarding rule.
+        # The forwarding rule ID.
         self.rule_id = rule_id
-        # The name of the forwarding rule.  The name is 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name starts with a letter.
+        # The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.rule_name = rule_name
         # The status of the forwarding rule. Valid values:
         # 
-        # - **Provisioning**: The forwarding rule is being created.
-        # - **Configuring**: The forwarding rule is being modified.
-        # - **Available**: The forwarding rule is available.
+        # *   **Provisioning**\
+        # *   **Configuring**\
+        # *   **Available**\
         self.rule_status = rule_status
 
     def validate(self):
@@ -15519,6 +15464,8 @@ class ListRulesResponseBodyRules(TeaModel):
             return _map
 
         result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
         if self.listener_id is not None:
             result['ListenerId'] = self.listener_id
         if self.load_balancer_id is not None:
@@ -15543,6 +15490,8 @@ class ListRulesResponseBodyRules(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
         if m.get('ListenerId') is not None:
             self.listener_id = m.get('ListenerId')
         if m.get('LoadBalancerId') is not None:
@@ -15579,14 +15528,14 @@ class ListRulesResponseBody(TeaModel):
     ):
         # The maximum number of entries returned.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If **NextToken** is empty, it indicates that no subsequent query is to be sent.
-        # *   If a value is returned for **NextToken**, the value is the token that is used for the next query.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of forwarding rules.
+        # The forwarding rules.
         self.rules = rules
         # The total number of entries returned.
         self.total_count = total_count
@@ -15688,16 +15637,18 @@ class ListSecurityPoliciesRequest(TeaModel):
         security_policy_ids: List[str] = None,
         security_policy_names: List[str] = None,
     ):
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The security policy IDs. You can specify up to 20 IDs.
         self.security_policy_ids = security_policy_ids
+        # The names of the security policies. You can specify up to 10 names.
         self.security_policy_names = security_policy_names
 
     def validate(self):
@@ -15747,64 +15698,21 @@ class ListSecurityPoliciesResponseBodySecurityPolicies(TeaModel):
         security_policy_status: str = None,
         tlsversions: List[str] = None,
     ):
-        # The supported cipher suites, which are determined by the TLS protocol version.****\
-        # 
-        # *   TLS 1.0 and TLS 1.1 support the following cipher suites:
-        # 
-        #     *   ECDHE-ECDSA-AES128-SHA
-        #     *   ECDHE-ECDSA-AES256-SHA
-        #     *   ECDHE-RSA-AES128-SHA
-        #     *   ECDHE-RSA-AES256-SHA
-        #     *   AES128-SHA
-        #     *   AES256-SHA
-        # 
-        #     <!---->
-        # 
-        #     *   DES-CBC3-SHA
-        # 
-        # *   TLS 1.2 supports the following cipher suites:
-        # 
-        #     *   ECDHE-ECDSA-AES128-SHA
-        #     *   ECDHE-ECDSA-AES256-SHA
-        #     *   ECDHE-RSA-AES128-SHA
-        #     *   ECDHE-RSA-AES256-SHA
-        #     *   AES128-SHA
-        #     *   AES256-SHA
-        #     *   DES-CBC3-SHA
-        #     *   ECDHE-ECDSA-AES128-GCM-SHA256
-        #     *   ECDHE-ECDSA-AES256-GCM-SHA384
-        #     *   ECDHE-ECDSA-AES128-SHA256
-        #     *   ECDHE-ECDSA-AES256-SHA384
-        #     *   ECDHE-RSA-AES128-GCM-SHA256
-        #     *   ECDHE-RSA-AES256-GCM-SHA384
-        #     *   ECDHE-RSA-AES128-SHA256
-        #     *   ECDHE-RSA-AES256-SHA384
-        #     *   AES128-GCM-SHA256
-        #     *   AES256-GCM-SHA384
-        #     *   AES128-SHA256
-        #     *   AES256-SHA256
-        # 
-        # *   TLS 1.3 supports the following cipher suites:
-        # 
-        #     *   TLS_AES\_128\_GCM_SHA256
-        #     *   TLS_AES\_256\_GCM_SHA384
-        #     *   TLS_CHACHA20\_POLY1305\_SHA256
-        #     *   TLS_AES\_128\_CCM_SHA256
-        #     *   TLS_AES\_128\_CCM\_8\_SHA256
+        # The supported cipher suites.
         self.ciphers = ciphers
         self.create_time = create_time
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the security policy.
+        # The security policy ID.
         self.security_policy_id = security_policy_id
         # The name of the security policy.
         self.security_policy_name = security_policy_name
         # The status of the security policy. Valid values:
         # 
-        # *   **Configuring**: The security policy is being configured.
-        # *   **Available**: The security policy is available.
+        # *   **Configuring**\
+        # *   **Available**\
         self.security_policy_status = security_policy_status
-        # The supported versions of the TLS protocol. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
+        # The supported TLS protocol versions.
         self.tlsversions = tlsversions
 
     def validate(self):
@@ -15860,18 +15768,18 @@ class ListSecurityPoliciesResponseBody(TeaModel):
         security_policies: List[ListSecurityPoliciesResponseBodySecurityPolicies] = None,
         total_count: int = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If **NextToken** was not returned, it indicates that no additional results exist.
-        # *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # A list of supported security policies.
+        # The supported security policies.
         self.security_policies = security_policies
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -15967,7 +15875,7 @@ class ListSecurityPolicyRelationsRequest(TeaModel):
         self,
         security_policy_ids: List[str] = None,
     ):
-        # The IDs of the security policies. You can specify up to 5 security policies at a time.
+        # The listeners that associated with the security policy.
         self.security_policy_ids = security_policy_ids
 
     def validate(self):
@@ -15998,13 +15906,11 @@ class ListSecurityPolicyRelationsResponseBodySecrityPolicyRelationsRelatedListen
         listener_protocol: str = None,
         load_balancer_id: str = None,
     ):
-        # The ID of the listener.
-        self.listener_id = listener_id
-        # The port that is used by the listener.
-        self.listener_port = listener_port
-        # The protocol that is used by the listener.
-        self.listener_protocol = listener_protocol
         # The ID of the SLB instance.
+        self.listener_id = listener_id
+        # The ID of the security policy.
+        self.listener_port = listener_port
+        self.listener_protocol = listener_protocol
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -16045,9 +15951,8 @@ class ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations(TeaModel):
         related_listeners: List[ListSecurityPolicyRelationsResponseBodySecrityPolicyRelationsRelatedListeners] = None,
         security_policy_id: str = None,
     ):
-        # The listeners that associated with the security policy.
+        # The protocol that is used by the listener.
         self.related_listeners = related_listeners
-        # The ID of the security policy.
         self.security_policy_id = security_policy_id
 
     def validate(self):
@@ -16088,9 +15993,9 @@ class ListSecurityPolicyRelationsResponseBody(TeaModel):
         request_id: str = None,
         secrity_policy_relations: List[ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations] = None,
     ):
-        # The ID of the request.
+        # The ID of the listener.
         self.request_id = request_id
-        # The relations between the security policies and the listeners that are associated with them.
+        # The port that is used by the listener.
         self.secrity_policy_relations = secrity_policy_relations
 
     def validate(self):
@@ -16837,7 +16742,9 @@ class ListServerGroupsResponseBodyServerGroupsUchConfig(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # 参数类型
         self.type = type
+        # 一致性hash参数值
         self.value = value
 
     def validate(self):
@@ -16937,6 +16844,7 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         self.sticky_session_config = sticky_session_config
         # The tags that are added to the server group.
         self.tags = tags
+        # url一致性hash参数配置
         self.uch_config = uch_config
         # Indicates whether persistent TCP connections are enabled. Valid values:
         # 
@@ -17560,9 +17468,12 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The number of entries returned per page.
         self.key = key
-        # The tag value. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The token that is used for the next query. Valid values:
+        # 
+        # *   If **NextToken** is empty, it indicates that no next query is to be sent.
+        # *   If a value of **NextToken** is returned, the value is the token that is used for the next query.
         self.value = value
 
     def validate(self):
@@ -17598,23 +17509,20 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
-        self.max_results = max_results
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If this is your first query or no next query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
-        self.next_token = next_token
         # The ID of the resource.
-        self.resource_id = resource_id
+        self.max_results = max_results
         # The type of the resource. Valid values:
         # 
         # *   **acl**: a network access control list (ACL)
         # *   **loadbalancer**: an Application Load Balancer (ALB) instance
         # *   **securitypolicy**: a security policy
         # *   **servergroup**: a server group
-        self.resource_type = resource_type
+        self.next_token = next_token
+        # The tag key. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        self.resource_id = resource_id
         # The tags.
+        self.resource_type = resource_type
+        # The tag value. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.tag = tag
 
     def validate(self):
@@ -17669,18 +17577,11 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The ID of the resource.
-        self.resource_id = resource_id
-        # The type of the resource. Valid values:
-        # 
-        # *   **acl**: a network ACL
-        # *   **loadbalancer**: an ALB instance
-        # *   **securitypolicy**: a security policy
-        # *   **servergroup**: a server group
-        self.resource_type = resource_type
         # The tag key.
-        self.tag_key = tag_key
+        self.resource_id = resource_id
         # The tag value.
+        self.resource_type = resource_type
+        self.tag_key = tag_key
         self.tag_value = tag_value
 
     def validate(self):
@@ -17723,16 +17624,18 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The number of entries returned per page.
-        self.max_results = max_results
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If **NextToken** is empty, it indicates that no next query is to be sent.
-        # *   If a value of **NextToken** is returned, the value is the token that is used for the next query.
-        self.next_token = next_token
         # The ID of the request.
-        self.request_id = request_id
+        self.max_results = max_results
         # The tags that match the specified keys and values.
+        self.next_token = next_token
+        # The ID of the resource.
+        self.request_id = request_id
+        # The type of the resource. Valid values:
+        # 
+        # *   **acl**: a network ACL
+        # *   **loadbalancer**: an ALB instance
+        # *   **securitypolicy**: a security policy
+        # *   **servergroup**: a server group
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -17828,23 +17731,23 @@ class ListTagValuesRequest(TeaModel):
         resource_type: str = None,
         tag_key: str = None,
     ):
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
-        self.max_results = max_results
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If this is your first query or no next query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
-        self.next_token = next_token
         # The ID of the resource.
-        self.resource_id = resource_id
+        self.max_results = max_results
         # The type of the resource. Valid values:
         # 
         # *   **loadbalancer**: an ALB instance
         # *   **acl**: a network access control list (ACL)
         # *   **securitypolicy**: a security policy
         # *   **servergroup**: a server group
-        self.resource_type = resource_type
+        self.next_token = next_token
+        # The number of entries returned per page.
+        self.resource_id = resource_id
         # The tag key. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        self.resource_type = resource_type
+        # The token that is used for the next query. Valid values:
+        # 
+        # *   If **NextToken** is empty, it indicates that no next query is to be sent.
+        # *   If a value of **NextToken** is returned, the value is the token that is used for the next query.
         self.tag_key = tag_key
 
     def validate(self):
@@ -17892,18 +17795,13 @@ class ListTagValuesResponseBody(TeaModel):
         tag_values: List[str] = None,
         total_count: int = None,
     ):
-        # The number of entries returned per page.
-        self.max_results = max_results
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If **NextToken** is empty, it indicates that no next query is to be sent.
-        # *   If a value of **NextToken** is returned, the value is the token that is used for the next query.
-        self.next_token = next_token
         # The ID of the request.
-        self.request_id = request_id
+        self.max_results = max_results
         # The tags that match all the filter conditions.
-        self.tag_values = tag_values
+        self.next_token = next_token
         # The number of entries returned.
+        self.request_id = request_id
+        self.tag_values = tag_values
         self.total_count = total_count
 
     def validate(self):
@@ -18128,6 +18026,7 @@ class RemoveEntriesFromAclRequest(TeaModel):
         # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # A list of removed access control entries.
         self.entries = entries
 
     def validate(self):
@@ -18249,27 +18148,15 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
         server_ip: str = None,
         server_type: str = None,
     ):
-        # The port used by the backend server. Valid values: **1** to **65535**. You can specify at most 40 servers in each call.
+        # Specifies whether only to precheck this request. Valid values:
         # 
-        # >  This parameter is required if the **ServerType** parameter is set to **Ecs**, **Eni**, **Eci**, or **Ip**.
+        # *   **trues**: prechecks the request but does not remove the server from the server group. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.port = port
-        # The ID of the server. You can specify at most 40 server IDs in each call.
-        # 
-        # *   If the server group type is **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
-        # *   If the server group type is **Ip**, set the ServerId parameter to an IP address specified in the server group.
-        # *   If the server group type is **Fc**, set the ServerId parameter to the ARN of a function specified in the server group.
-        # 
-        # >  You can call the [ListServerGroups](~~213627~~) operation to query information about the server group so that you can set ServerId to a proper value.
+        # The ID of the asynchronous task.
         self.server_id = server_id
-        # The IP address in inclusive ENI mode. You can specify at most 40 servers in each call.
+        # The ID of the request.
         self.server_ip = server_ip
-        # The type of the backend server. You can specify at most 40 servers in each call. Valid values:
-        # 
-        # *   **Ecs**: an ECS instance
-        # *   **Eni**: an ENI
-        # *   **Eci**: an elastic container instance
-        # *   **Ip**: an IP address
-        # *   **Fc**: a function
         self.server_type = server_type
 
     def validate(self):
@@ -18312,18 +18199,13 @@ class RemoveServersFromServerGroupRequest(TeaModel):
         server_group_id: str = None,
         servers: List[RemoveServersFromServerGroupRequestServers] = None,
     ):
+        self.client_token = client_token
+        self.dry_run = dry_run
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
         # 
         # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
-        self.client_token = client_token
-        # Specifies whether only to precheck this request. Valid values:
-        # 
-        # *   **trues**: prechecks the request but does not remove the server from the server group. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
-        self.dry_run = dry_run
-        # The ID of the server group.
         self.server_group_id = server_group_id
         self.servers = servers
 
@@ -18373,9 +18255,7 @@ class RemoveServersFromServerGroupResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18456,24 +18336,24 @@ class ReplaceServersInServerGroupRequestAddedServers(TeaModel):
         server_type: str = None,
         weight: int = None,
     ):
-        # The description of the backend server. The description must be 2 to 256 characters in length and can contain letters, digits, periods (.), underscores (\_), hyphens (-), commas (,), semicolons (;), forward slashes (/), and at signs (@). You can specify up to 40 servers in each call.
+        # The description of the backend server. The description must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), hyphens (-), commas (,), semicolons (;), forward slashes (/), and at signs (@). You can specify at most 40 servers in each call.
         self.description = description
-        # The port used by the backend server in the server group. Valid values: **1** to **65535**. You can specify up to 40 servers in each call.
+        # The port used by the server group. Valid values: **1** to **65535**. You can specify at most 40 servers in each call.
         self.port = port
         # The ID of the backend server. You can specify up to 40 server IDs in each call.
         # 
-        # *   If the server group type is **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
+        # *   If the server group type is **Instance**, set the ServerId parameter to the ID of an ECS instance, an ENI, or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
         # *   If the server group type is **Ip**, set the ServerId parameter to an IP address specified in the server group.
         # 
-        # >  You cannot perform this operation on a server group of the Function type. You can call the [ListServerGroups](~~213627~~) operation to query information about the server group type so that you can set ServerId to a proper value.
+        # > You cannot perform this operation on a server group of the Function type. You can call the [ListServerGroups](~~213627~~) operation to query information about the server group type so that you can set ServerId to a proper value.
         self.server_id = server_id
-        # The IP address in inclusive ENI mode. You can specify up to 40 servers in each call.
+        # The IP address in inclusive ENI mode. You can specify at most 40 servers in each call.
         self.server_ip = server_ip
-        # The type of the backend server that you want to add to the server group. You can specify up to 40 backend servers in each call. Valid values:
+        # The type of the backend server that you want to remove from the server group. You can specify up to 40 backend servers in each call. Valid values:
         # 
-        # *   **Ecs**: an ECS instance.
-        # *   **Eni**: an ENI.
-        # *   **Eci**: an elastic container instance.
+        # *   **Ecs**\
+        # *   **Eni**\
+        # *   **Eci**\
         self.server_type = server_type
         # The weight of the backend server that you want to add to the server group. You can specify up to 40 backend servers in each call.
         # 
@@ -18528,22 +18408,22 @@ class ReplaceServersInServerGroupRequestRemovedServers(TeaModel):
         server_ip: str = None,
         server_type: str = None,
     ):
-        # The port used by the backend server. Valid values: **1** to **65535**. You can specify up to 40 servers in each call.
+        # The port that is used by the backend server. Valid values: **1** to **65535**. You can specify at most 40 servers in each call.
         self.port = port
         # The ID of the backend server. You can specify up to 40 server IDs in each call.
         # 
         # *   If the server group type is **Instance**, set the ServerId parameter to the ID of an ECS instance, an ENI, or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
         # *   If the server group type is **Ip**, set the ServerId parameter to an IP address specified in the server group.
         # 
-        # >  You cannot perform this operation on a server group of the Function type. You can call the [ListServerGroups](~~213627~~) operation to query information about the server group type so that you can set ServerId to a proper value.
+        # > You cannot perform this operation on a server group of the Function type. You can call the [ListServerGroups](~~213627~~) operation to query information about the server group type so that you can set ServerId to a proper value.
         self.server_id = server_id
-        # The IP address in inclusive ENI mode. You can specify up to 40 servers in each call.
+        # The IP address in inclusive ENI mode. You can specify at most 40 servers in each call.
         self.server_ip = server_ip
         # The type of the backend server that you want to remove from the server group. You can specify up to 40 backend servers in each call. Valid values:
         # 
-        # *   **Ecs**: an ECS instance.
-        # *   **Eni**: an ENI.
-        # *   **Eci**: an elastic container instance.
+        # *   **Ecs**\
+        # *   **Eni**\
+        # *   **Eci**\
         self.server_type = server_type
 
     def validate(self):
@@ -18587,22 +18467,24 @@ class ReplaceServersInServerGroupRequest(TeaModel):
         removed_servers: List[ReplaceServersInServerGroupRequestRemovedServers] = None,
         server_group_id: str = None,
     ):
+        # The backend servers that you want to add to the server group. You can specify up to 40 backend servers in each call.
         self.added_servers = added_servers
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specify whether to perform only a precheck. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request, but does not replace the backend servers in the server group. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, a `2xx HTTP` status code is returned and the system proceeds to replace the backend servers in the server group.
+        # *   **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx` HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The backend servers that you want to remove.
         self.removed_servers = removed_servers
         # The ID of the server group.
         # 
-        # >  You cannot perform this operation on a server group of the Function type.
+        # > You cannot perform this operation on a server group of the Function type.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -18664,9 +18546,9 @@ class ReplaceServersInServerGroupResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
+        # The asynchronous task ID.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18744,18 +18626,8 @@ class StartListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether only to precheck this request. Valid values:
-        # 
-        # *   **true**: prechecks the request but does not enable the listener. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the **DryRunOperation** error code is returned.
-        # *   **false**: sends the API request. This is the default value. If the request passes the precheck, an `HTTP_2xx` status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the listener.
         self.listener_id = listener_id
 
     def validate(self):
@@ -18792,9 +18664,7 @@ class StartListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18872,18 +18742,8 @@ class StopListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
-        # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, the system returns an `HTTP 2xx` status code and performs the operation.
         self.dry_run = dry_run
-        # The ID of the listener.
         self.listener_id = listener_id
 
     def validate(self):
@@ -18920,9 +18780,7 @@ class StopListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18999,9 +18857,8 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The ID of the request.
         self.key = key
-        # The tag value. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -19035,16 +18892,11 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # The ID of the resource.
+        # The tag key. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.resource_id = resource_id
-        # The type of the resource. Valid values:
-        # 
-        # *   **acl**: a network access control list (ACL)
-        # *   **loadbalancer**: an Application Load Balancer (ALB) instance
-        # *   **securitypolicy**: a security policy
-        # *   **servergroup**: a server group
-        self.resource_type = resource_type
         # The tags.
+        self.resource_type = resource_type
+        # The tag value. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.tag = tag
 
     def validate(self):
@@ -19088,7 +18940,6 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19161,9 +19012,12 @@ class UnTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that you want to remove. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag keys. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag that you want to remove. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # Specifies whether to remove all tags from the specified resource. Valid values:
+        # 
+        # *   **true**: removes all tags from the resource.
+        # *   **false**: does not remove all tags from the specified resource. This is the default value.
         self.value = value
 
     def validate(self):
@@ -19199,23 +19053,14 @@ class UnTagResourcesRequest(TeaModel):
         tag: List[UnTagResourcesRequestTag] = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the specified resource. Valid values:
-        # 
-        # *   **true**: removes all tags from the resource.
-        # *   **false**: does not remove all tags from the specified resource. This is the default value.
         self.all = all
-        # The ID of the resource from which you want to remove tags.
+        # The key of the tag that you want to remove. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.resource_id = resource_id
-        # The type of the resource. Valid values:
-        # 
-        # *   **acl**: a network access control list (ACL)
-        # *   **loadbalancer**: an Application Load Balancer (ALB) instance
-        # *   **securitypolicy**: a security policy
-        # *   **servergroup**: a server group
-        self.resource_type = resource_type
         # The tags that you want to remove.
+        self.resource_type = resource_type
+        # The value of the tag that you want to remove. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.tag = tag
-        # The tag keys. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The ID of the request.
         self.tag_key = tag_key
 
     def validate(self):
@@ -19267,7 +19112,6 @@ class UnTagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19342,7 +19186,7 @@ class UpdateAScriptsRequestAScripts(TeaModel):
         enabled: bool = None,
         script_content: str = None,
     ):
-        # The ID of the AScript rule.
+        # The AScript rule ID.
         self.ascript_id = ascript_id
         # The name of the AScript rule.
         # 
@@ -19350,8 +19194,8 @@ class UpdateAScriptsRequestAScripts(TeaModel):
         self.ascript_name = ascript_name
         # Specifies whether to enable the AScript rule. Valid values:
         # 
-        # *   **true**: enables the AScript rule.
-        # *   **false** (default): disables the AScript rule.
+        # *   **true**\
+        # *   **false** (default)
         self.enabled = enabled
         # The content of the AScript rule.
         self.script_content = script_content
@@ -19395,17 +19239,18 @@ class UpdateAScriptsRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
     ):
+        # The AScript rules.
         self.ascripts = ascripts
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can only contain ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically sets **ClientToken** to the value of **RequestId**. **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
 
     def validate(self):
@@ -19450,9 +19295,9 @@ class UpdateAScriptsResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
+        # The asynchronous task ID.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19531,18 +19376,15 @@ class UpdateAclAttributeRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
     ):
-        # The ID of the ACL.
-        self.acl_id = acl_id
-        # The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
-        self.acl_name = acl_name
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The ID of each request is unique.
-        self.client_token = client_token
         # Specifies whether only to precheck the request. Valid values:
         # 
         # *   **true**: only prechecks the request and does not perform the requested operation. The system checks the required parameters, request format, and service limits. If the request fails the precheck, an error code is returned based on the cause of the failure. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # *   **false**: prechecks the request and performs the requested operation. After the request passes the precheck, an `HTTP 2xx` status code is returned and the system performs the operation. This is the default value.
+        self.acl_id = acl_id
+        # The ID of the request.
+        self.acl_name = acl_name
+        # The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        self.client_token = client_token
         self.dry_run = dry_run
 
     def validate(self):
@@ -19582,7 +19424,6 @@ class UpdateAclAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19668,47 +19509,28 @@ class UpdateHealthCheckTemplateAttributeRequest(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, the system automatically sets ClientToken to the value of RequestId. The value of RequestId may be different for each API request.
-        self.client_token = client_token
-        # Specifies whether to only precheck this request. Valid values:
-        # 
-        # *   **true**: prechecks the request without modifying the attributes of the health check template. The system checks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the health check template is modified.
-        self.dry_run = dry_run
-        self.health_check_codes = health_check_codes
         # The port that is used for health checks. Valid values: **0 to 65535**.
         # 
         # Default value: **0**. If you set the value to 0, the port of the backend server is used for health checks.
-        self.health_check_connect_port = health_check_connect_port
-        # The domain name that is used for health checks. Valid values:
+        self.client_token = client_token
+        # The ID of the request.
+        self.dry_run = dry_run
+        self.health_check_codes = health_check_codes
+        # The HTTP status codes that are used to determine whether the backend server passes the health check.
         # 
-        # *   **$SERVER_IP** (default): the private IP addresses of backend servers. If you do not set the HealthCheckHost parameter or set the parameter to $SERVER_IP, the Application Load Balancer (ALB) uses the private IP addresses of backend servers for health checks.
-        # *   **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
-        # 
-        # >  This parameter takes effect only when the `HealthCheckProtocol` parameter is set to **HTTP**.
-        self.health_check_host = health_check_host
-        # The HTTP version that is used for health checks.
-        # 
-        # Valid values: **HTTP1.0** and **HTTP1.1**.
-        # 
-        # Default value: **HTTP1.1**.
-        # 
-        # >  This parameter takes effect only when the `HealthCheckProtocol` parameter is set to **HTTP**.
-        self.health_check_http_version = health_check_http_version
-        # The interval between two consecutive health checks. Unit: seconds. Valid values: **1 to 50**. Default value: **2**.
-        self.health_check_interval = health_check_interval
-        # The HTTP method that is used for health checks. Valid values:
-        # 
-        # *   **HEAD**: By default, HTTP health checks use the HEAD method.
-        # *   **GET**: If the size of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
-        # *   **POST**: By default, gRPC health checks use the POST method.
+        # *   If **HealthCheckProtocol** is set to **HTTP**, **HealthCheckCodes** can be set to **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**. Separate multiple HTTP status codes with a comma (,).
+        # *   If **HealthCheckProtocol** is set to **gRPC**, **HealthCheckCodes** can be set to **0 to 99**. Default value: **0**. Value ranges are supported. You can enter 20 value ranges at most and must separate each range with a comma (,).
         # 
         # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
-        self.health_check_method = health_check_method
+        self.health_check_connect_port = health_check_connect_port
+        # The interval between two consecutive health checks. Unit: seconds. Valid values: **1 to 50**. Default value: **2**.
+        self.health_check_host = health_check_host
+        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+        # 
+        # Valid values: **2 to 10**.
+        # 
+        # Default value: **3**.
+        self.health_check_http_version = health_check_http_version
         # The URL path that is used for health checks.
         # 
         # The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`.
@@ -19716,36 +19538,49 @@ class UpdateHealthCheckTemplateAttributeRequest(TeaModel):
         # The URL path must start with a forward slash (/).
         # 
         # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
-        self.health_check_path = health_check_path
+        self.health_check_interval = health_check_interval
+        # The HTTP version that is used for health checks.
+        # 
+        # Valid values: **HTTP1.0** and **HTTP1.1**.
+        # 
+        # Default value: **HTTP1.1**.
+        # 
+        # >  This parameter takes effect only when the `HealthCheckProtocol` parameter is set to **HTTP**.
+        self.health_check_method = health_check_method
         # The protocol that is used for health checks. Valid values:
         # 
         # *   **HTTP** (default): To perform HTTP health checks, ALB sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
         # *   **TCP**: To perform TCP health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
         # *   **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
-        self.health_check_protocol = health_check_protocol
-        # The ID of the template.
-        self.health_check_template_id = health_check_template_id
-        # The name of the health check template.
-        # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
-        self.health_check_template_name = health_check_template_name
-        # The timeout period of a health check. If a backend server does not return a health check response within the specified timeout period, the server fails the health check.
-        # 
-        # Unit: seconds. Valid values: **1 to 300**. Default value: **5**.
-        # 
-        # >  If the value of the `HealthCheckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the timeout period specified by the `HealthCheckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is used as the timeout period.
-        self.health_check_timeout = health_check_timeout
+        self.health_check_path = health_check_path
         # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
         # 
         # Valid values: **2 to 10**.
         # 
         # Default value: **3**.
+        self.health_check_protocol = health_check_protocol
+        self.health_check_template_id = health_check_template_id
+        # The domain name that is used for health checks. Valid values:
+        # 
+        # *   **$SERVER_IP** (default): the private IP addresses of backend servers. If you do not set the HealthCheckHost parameter or set the parameter to $SERVER_IP, the Application Load Balancer (ALB) uses the private IP addresses of backend servers for health checks.
+        # *   **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+        # 
+        # >  This parameter takes effect only when the `HealthCheckProtocol` parameter is set to **HTTP**.
+        self.health_check_template_name = health_check_template_name
+        # The HTTP method that is used for health checks. Valid values:
+        # 
+        # *   **HEAD**: By default, HTTP health checks use the HEAD method.
+        # *   **GET**: If the size of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+        # *   **POST**: By default, gRPC health checks use the POST method.
+        # 
+        # >  This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+        self.health_check_timeout = health_check_timeout
+        # Specifies whether to only precheck this request. Valid values:
+        # 
+        # *   **true**: prechecks the request without modifying the attributes of the health check template. The system checks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the health check template is modified.
         self.healthy_threshold = healthy_threshold
-        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
-        # 
-        # Valid values: **2 to 10**.
-        # 
-        # Default value: **3**.
+        # The ID of the template.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -19829,7 +19664,6 @@ class UpdateHealthCheckTemplateAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19921,7 +19755,7 @@ class UpdateListenerAttributeRequestCertificates(TeaModel):
         self,
         certificate_id: str = None,
     ):
-        # The ID of the certificate. Only server certificates are supported. You can specify a maximum of 20 certificate IDs.
+        # The certificate ID. Only server certificates are supported. You can specify up to 20 certificate IDs.
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -19949,6 +19783,7 @@ class UpdateListenerAttributeRequestDefaultActionsForwardGroupConfigServerGroupT
         self,
         server_group_id: str = None,
     ):
+        # The server group to which requests are forwarded.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -19976,6 +19811,7 @@ class UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig(TeaModel):
         self,
         server_group_tuples: List[UpdateListenerAttributeRequestDefaultActionsForwardGroupConfigServerGroupTuples] = None,
     ):
+        # The server groups to which requests are forwarded.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -20012,9 +19848,9 @@ class UpdateListenerAttributeRequestDefaultActions(TeaModel):
         forward_group_config: UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig = None,
         type: str = None,
     ):
-        # The configuration of the forwarding action. This parameter is required and takes effect when the **Type** parameter is set to **FowardGroup**. You can specify configurations for up to 20 forwarding actions.
+        # The configuration of the forwarding action. This parameter is required and takes effect when **Type** is set to **FowardGroup**. You can specify configurations for up to 20 forwarding actions.
         self.forward_group_config = forward_group_config
-        # The action type. You can specify only one action type.
+        # The type of the action. You can specify only one action type.
         # 
         # Set the value to **ForwardGroup** to forward requests to multiple vServer groups.
         self.type = type
@@ -20051,16 +19887,16 @@ class UpdateListenerAttributeRequestQuicConfig(TeaModel):
         quic_listener_id: str = None,
         quic_upgrade_enabled: bool = None,
     ):
-        # The ID of the QUIC listener. This parameter is required if the **QuicUpgradeEnabled** parameter is set to **true**. Only HTTPS listeners support this parameter.
+        # The QUIC listener ID. This parameter is required if **QuicUpgradeEnabled** is set to **true**. Only HTTPS listeners support this parameter.
         # 
-        # >  The HTTPS listener and the associated QUIC listener must be added to the same ALB instance. In addition, make sure that the QUIC listener is not associated with another listener.
+        # > You must add the HTTPS listener and the QUIC listener to the same ALB instance. In addition, make sure that the QUIC listener has never been associated with another listener.
         self.quic_listener_id = quic_listener_id
         # Specifies whether to enable QUIC upgrade. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > Only HTTPS listeners support this parameter.
         self.quic_upgrade_enabled = quic_upgrade_enabled
 
     def validate(self):
@@ -20106,103 +19942,103 @@ class UpdateListenerAttributeRequestXForwardedForConfig(TeaModel):
         xforwarded_for_slbid_enabled: bool = None,
         xforwarded_for_slbport_enabled: bool = None,
     ):
-        # The name of the custom header. This parameter takes effect only when the **XForwardedForClientCertClientVerifyEnabled** parameter is set to **true**.
+        # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+        # The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (\_), and digits.
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
         # Specifies whether to use the `X-Forwarded-Clientcert-clientverify` header to retrieve the verification result of the client certificate. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
-        # The name of the custom header. This parameter takes effect only when the **XForwardedForClientCertFingerprintEnabled** parameter is set to **true**.
+        # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertFingerprintEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+        # The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (\_), and digits.
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
         # Specifies whether to use the `X-Forwarded-Clientcert-fingerprint` header to retrieve the fingerprint of the client certificate. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+        # The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (\_), and digits.
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
         # Specifies whether to use the `X-Forwarded-Clientcert-issuerdn` header to retrieve information about the authority that issues the client certificate. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+        # The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (\_), and digits.
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
         # Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header to retrieve information about the owner of the client certificate. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
-        # Specifies whether to use the `X-Forwarded-Client-Ip` header to retrieve the source IP addresses. Valid values:
+        # Specifies whether to use the `X-Forwarded-Client-Ip` header to retrieve the source IP address. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter. This feature is disabled by default. To use this feature, contact your account manager.
+        # > HTTP, HTTPS, and QUIC listeners support this parameter. By default, the feature that corresponds to this parameter is unavailable. If you want to use this feature, contact your account manager.
         self.xforwarded_for_client_source_ips_enabled = xforwarded_for_client_source_ips_enabled
         # The trusted proxy IP address.
         # 
-        # ALB traverses `X-Forwarded-For` backwards and selects the first IP that is not in the trusted IP list as the originating IP address of the client, which will be throttled if source IP address throttling is enabled.
+        # ALB traverses `X-Forwarded-For` backward and selects the first IP address that is not in the trusted IP address list as the real IP address of the client. The IP address is used in source IP address throttling.
         self.xforwarded_for_client_source_ips_trusted = xforwarded_for_client_source_ips_trusted
         # Specifies whether to use the `X-Forwarded-Client-Port` header to retrieve the client port. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  HTTP and HTTPS listeners support this parameter.
+        # > HTTP and HTTPS listeners support this parameter.
         self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
-        # Indicates whether the `X-Forwarded-For` header is used to retrieve the client IP address. Valid values:
+        # Specifies whether to use the `X-Forwarded-For` header to retrieve the client IP address. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  HTTP and HTTPS listeners support this parameter.
+        # > HTTP and HTTPS listeners support this parameter.
         self.xforwarded_for_enabled = xforwarded_for_enabled
-        # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol of the ALB instance. Valid values:
+        # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # > HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
         # Specifies whether to use the `SLB-ID` header to retrieve the ID of the ALB instance. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # > HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
         # Specifies whether to use the `X-Forwarded-Port` header to retrieve the listener port. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # > HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
 
     def validate(self):
@@ -20300,36 +20136,39 @@ class UpdateListenerAttributeRequest(TeaModel):
         security_policy_id: str = None,
         xforwarded_for_config: UpdateListenerAttributeRequestXForwardedForConfig = None,
     ):
+        # The certificate authority (CA) certificates.
         self.ca_certificates = ca_certificates
         # Specifies whether to enable mutual authentication. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         self.ca_enabled = ca_enabled
+        # The certificates.
         self.certificates = certificates
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The actions of the default forwarding rule.
         self.default_actions = default_actions
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false**: checks the request. If the request passes the check, the system returns an `HTTP 2xx` status code and performs the operation. This is the default value.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # Specifies whether to enable gzip compression for specific types of files. Valid values:
+        # Specifies whether to enable GZIP compression for specific types of files. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         self.gzip_enabled = gzip_enabled
         # Specifies whether to enable HTTP/2. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.http_2enabled = http_2enabled
         # The timeout period of an idle connection. Unit: seconds. Valid values: **1 to 60**.
         # 
@@ -20339,7 +20178,7 @@ class UpdateListenerAttributeRequest(TeaModel):
         # 
         # The name must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -.
         self.listener_description = listener_description
-        # The ID of the listener of the ALB instance.
+        # The ID of the Application Load Balancer (ALB) listener.
         self.listener_id = listener_id
         # The configuration information when the listener is associated with a QUIC listener.
         self.quic_config = quic_config
@@ -20347,9 +20186,9 @@ class UpdateListenerAttributeRequest(TeaModel):
         # 
         # If no response is received from the backend server within the specified timeout period, ALB returns an `HTTP 504` error code to the client.
         self.request_timeout = request_timeout
-        # The ID of the security policy. System security policies and custom security policies are supported.
+        # The security policy ID. System security policies and custom security policies are supported.
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # > This parameter is available only when you create an HTTPS listener.
         self.security_policy_id = security_policy_id
         # The configuration of the XForwardFor headers.
         self.xforwarded_for_config = xforwarded_for_config
@@ -20468,9 +20307,9 @@ class UpdateListenerAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
+        # The asynchronous task ID.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20750,15 +20589,13 @@ class UpdateLoadBalancerAddressTypeConfigRequestZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the asynchronous task.
+        self.allocation_id = allocation_id
         # The ID of the elastic IP address (EIP). You can specify up to 10 zones for an ALB instance.
         # 
         # >  This parameter is required if you want to change the network type from internal-facing to Internet-facing.
-        self.allocation_id = allocation_id
-        # The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an ALB instance. You can specify up to 10 zones for an ALB instance.
         self.v_switch_id = v_switch_id
-        # The ID of the zone where the ALB instance is deployed. You can specify up to 10 zones for an ALB instance.
-        # 
-        # You can call the [DescribeZones](~~189196~~) operation to query the most recent zone list.
+        # The ID of the request.
         self.zone_id = zone_id
 
     def validate(self):
@@ -20798,23 +20635,18 @@ class UpdateLoadBalancerAddressTypeConfigRequest(TeaModel):
         load_balancer_id: str = None,
         zone_mappings: List[UpdateLoadBalancerAddressTypeConfigRequestZoneMappings] = None,
     ):
+        # The ID of the zone where the ALB instance is deployed. You can specify up to 10 zones for an ALB instance.
+        # 
+        # You can call the [DescribeZones](~~189196~~) operation to query the most recent zone list.
+        self.address_type = address_type
+        # The ID of the ALB instance.
+        self.client_token = client_token
         # The new network type of the ALB instance. Valid values:
         # 
         # *   **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
         # *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the virtual private cloud (VPC) where the ALB instance is deployed.
-        self.address_type = address_type
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
-        self.client_token = client_token
-        # Specifies whether only to check the request. Valid values:
-        # 
-        # *   **true**: prechecks the request but does not change the network type of the ALB instance. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the ALB instance.
+        # The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an ALB instance. You can specify up to 10 zones for an ALB instance.
         self.load_balancer_id = load_balancer_id
         self.zone_mappings = zone_mappings
 
@@ -20868,9 +20700,7 @@ class UpdateLoadBalancerAddressTypeConfigResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20947,16 +20777,7 @@ class UpdateLoadBalancerAttributeRequestModificationProtectionConfig(TeaModel):
         reason: str = None,
         status: str = None,
     ):
-        # The reason why the configuration read-only mode is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
-        # 
-        # This parameter takes effect only if the **ModificationProtectionStatus** parameter is set to **ConsoleProtection**.
         self.reason = reason
-        # The status of the configuration read-only mode. Valid values:
-        # 
-        # *   **NonProtection**: disables the configuration read-only mode. In this case, you cannot set the **ModificationProtectionReason** parameter. If you set the **ModificationProtectionReason** parameter, the value of the parameter is cleared.
-        # *   **ConsoleProtection**: enables the configuration read-only mode. In this case, you can set the **ModificationProtectionReason** parameter.
-        # 
-        # >  If you set this parameter to **ConsoleProtection**, you cannot modify instance configurations in the ALB console. However, you can modify instance configurations by calling API operations.
         self.status = status
 
     def validate(self):
@@ -20992,20 +20813,17 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
         load_balancer_name: str = None,
         modification_protection_config: UpdateLoadBalancerAttributeRequestModificationProtectionConfig = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # The status of the configuration read-only mode. Valid values:
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among all requests. The token can only contain ASCII characters.
+        # *   **NonProtection**: disables the configuration read-only mode. In this case, you cannot set the **ModificationProtectionReason** parameter. If you set the **ModificationProtectionReason** parameter, the value of the parameter is cleared.
+        # *   **ConsoleProtection**: enables the configuration read-only mode. In this case, you can set the **ModificationProtectionReason** parameter.
         # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+        # >  If you set this parameter to **ConsoleProtection**, you cannot modify instance configurations in the ALB console. However, you can modify instance configurations by calling API operations.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false**: performs a dry run and sends the request. If the request passes the dry run, the `HTTP_2xx` status code is returned and the operation is performed. This is the default value.
+        # The ID of the synchronous task.
         self.dry_run = dry_run
-        # The ID of the ALB instance.
+        # The ID of the request.
         self.load_balancer_id = load_balancer_id
-        # The name of the ALB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
         self.modification_protection_config = modification_protection_config
 
@@ -21053,9 +20871,7 @@ class UpdateLoadBalancerAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the synchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21134,24 +20950,16 @@ class UpdateLoadBalancerEditionRequest(TeaModel):
         load_balancer_edition: str = None,
         load_balancer_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # The ID of the ALB instance.
         self.client_token = client_token
-        # Specifies whether only to precheck this request. Valid values:
-        # 
-        # *   **true**: prechecks the request but does not change the edition. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the API request. If the request passes the precheck, the `HTTP_2xx` status code is returned and the operation is performed.
-        self.dry_run = dry_run
         # The edition of the ALB instance. Different editions have different limits and support different billing methods.
         # 
         # *   **Basic**: basic
         # *   **Standard**: standard
         # *   **StandardWithWaf**: WAF-enabled
+        self.dry_run = dry_run
         self.load_balancer_edition = load_balancer_edition
-        # The ID of the ALB instance.
+        # The ID of the request.
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -21191,7 +20999,6 @@ class UpdateLoadBalancerEditionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21264,9 +21071,9 @@ class UpdateLoadBalancerZonesRequestZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the vSwitch in the zone. By default, you can specify only one vSwitch (subnet) for each zone of an ALB instance. You can specify up to 10 zones.
+        # The ID of the vSwitch in the zone. By default, you can specify only one vSwitch (subnet) for each zone of an ALB instance. You can specify up to 10 zone IDs.
         self.v_switch_id = v_switch_id
-        # The name of the zone. You can call the [DescribeZones](~~189196~~) operation to query the zones. You can specify up to 10 zones.
+        # The name of the zone. You can call the [DescribeZones](~~189196~~) operation to query the zones. You can specify up to 10 zone IDs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -21303,17 +21110,18 @@ class UpdateLoadBalancerZonesRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether only to precheck this request. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request but does not modify the zones. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the API request. This is the default value. If the request passes the precheck, an `HTTP_2xx` status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the ALB instance.
         self.load_balancer_id = load_balancer_id
+        # The zones and the vSwitches. You must specify at least two zones. The specified zones overwrite the existing configurations.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -21364,7 +21172,7 @@ class UpdateLoadBalancerZonesResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21445,18 +21253,13 @@ class UpdateRuleAttributeRequestRuleActionsCorsConfig(TeaModel):
         expose_headers: List[str] = None,
         max_age: int = None,
     ):
-        # Specifies whether credentials can be passed during CORS operations. Valid values:
-        # 
-        # *   **on**: yes
-        # *   **off**: no
+        # The ID of the asynchronous task.
         self.allow_credentials = allow_credentials
         self.allow_headers = allow_headers
         self.allow_methods = allow_methods
         self.allow_origin = allow_origin
         self.expose_headers = expose_headers
-        # The maximum cache time of preflight requests in the browser. Unit: seconds.
-        # 
-        # Valid values: **-1** to **172800**.
+        # The ID of the request.
         self.max_age = max_age
 
     def validate(self):
@@ -21506,13 +21309,17 @@ class UpdateRuleAttributeRequestRuleActionsFixedResponseConfig(TeaModel):
         content_type: str = None,
         http_code: str = None,
     ):
-        # The content of the custom response. The content can be up to 1 KB in size, and can contain only ASCII characters.
-        self.content = content
-        # The content type.
+        # The weight of the server group. A larger value specifies a higher weight. A server group with a higher weight receives more requests. Valid values: **1** to **100**.
         # 
-        # Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
+        # *   If only one destination server group exists, the weight is **100** by default.
+        # *   If more than one destination server group exists, you must specify weights.
+        self.content = content
+        # Specifies whether to enable session persistence. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false** (default): no
         self.content_type = content_type
-        # The HTTP status code in the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** must be a digit.
+        # The timeout period. Unit: seconds. Valid values: 1 to 86400.
         self.http_code = http_code
 
     def validate(self):
@@ -21549,12 +21356,13 @@ class UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySe
         enabled: bool = None,
         timeout: int = None,
     ):
-        # Specifies whether to enable session persistence. Valid values:
+        # The type of the header. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # *   **UserDefined**: a custom header
+        # *   **ReferenceHeader**: a header that references the request headers
+        # *   **SystemDefined**: a system-defined header
         self.enabled = enabled
-        # The timeout period. Unit: seconds. Valid values: 1 to 86400.
+        # The priority of the action. Valid values: **1 to 50000**. A lower value specifies a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter cannot be left empty. The priority of each action within a forwarding rule must be unique. You can specify priorities for at most 20 actions.
         self.timeout = timeout
 
     def validate(self):
@@ -21587,12 +21395,23 @@ class UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples(T
         server_group_id: str = None,
         weight: int = None,
     ):
-        # The ID of the server group to which requests are forwarded.
-        self.server_group_id = server_group_id
-        # The weight of the server group. A larger value specifies a higher weight. A server group with a higher weight receives more requests. Valid values: **1** to **100**.
+        # The key of the header to be inserted. The key must be 1 to 40 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-). The header key specified by **InsertHeaderConfig** must be unique.
         # 
-        # *   If only one destination server group exists, the weight is **100** by default.
-        # *   If more than one destination server group exists, you must specify weights.
+        # >  You cannot set one of the following header keys (case-insensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`.
+        self.server_group_id = server_group_id
+        # The value of the header to be inserted.
+        # 
+        # *   If **ValueType** is set to **SystemDefined**, you can specify one of the following header values:
+        # 
+        #     *   **ClientSrcPort**: the client port.
+        #     *   **ClientSrcIp**: the client IP address.
+        #     *   **Protocol**: the request protocol. You can set the protocol to HTTP or HTTPS.
+        #     *   **SLBId**: the ID of the Application Load Balancer (ALB) instance.
+        #     *   **SLBPort**: the listening port.
+        # 
+        # *   If **ValueType** is set to **UserDefined**, you can specify a custom header. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcards. The header value cannot start or end with a space character.
+        # 
+        # *   If **ValueType** is set to **ReferenceHeader**, you can reference the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
         self.weight = weight
 
     def validate(self):
@@ -21670,29 +21489,28 @@ class UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig(TeaModel):
         value: str = None,
         value_type: str = None,
     ):
-        # The key of the header to be inserted. The key must be 1 to 40 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-). The header key specified by **InsertHeaderConfig** must be unique.
+        # The hostname to which requests are distributed. Valid values:
         # 
-        # >  You cannot set one of the following header keys (case-insensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`.
+        # *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
+        # 
+        # *   If you want to specify a custom value, make sure that the following requirements are met:
+        # 
+        #     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). You can use asterisks (\*) and question marks (?) as wildcard characters.
+        #     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
+        #     *   The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
+        #     *   The domain labels cannot start or end with a hyphen (-).
+        #     *   You can use an asterisk (\*) and question mark (?) anywhere in a domain label as wildcards.
         self.key = key
-        # The value of the header to be inserted.
-        # 
-        # *   If **ValueType** is set to **SystemDefined**, you can specify one of the following header values:
-        # 
-        #     *   **ClientSrcPort**: the client port.
-        #     *   **ClientSrcIp**: the client IP address.
-        #     *   **Protocol**: the request protocol. You can set the protocol to HTTP or HTTPS.
-        #     *   **SLBId**: the ID of the Application Load Balancer (ALB) instance.
-        #     *   **SLBPort**: the listening port.
-        # 
-        # *   If **ValueType** is set to **UserDefined**, you can specify a custom header. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcards. The header value cannot start or end with a space character.
-        # 
-        # *   If **ValueType** is set to **ReferenceHeader**, you can reference the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
+        # The redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
         self.value = value
-        # The type of the header. Valid values:
+        # The path to which requests are forwarded. Valid values:
         # 
-        # *   **UserDefined**: a custom header
-        # *   **ReferenceHeader**: a header that references the request headers
-        # *   **SystemDefined**: a system-defined header
+        # *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
+        # 
+        # *   A custom value. You must make sure that the custom value meets the following requirements:
+        # 
+        #     *   The value is 1 to 128 characters in length.
+        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcards.
         self.value_type = value_type
 
     def validate(self):
@@ -21733,41 +21551,13 @@ class UpdateRuleAttributeRequestRuleActionsRedirectConfig(TeaModel):
         protocol: str = None,
         query: str = None,
     ):
-        # The hostname to which requests are distributed. Valid values:
-        # 
-        # *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
-        # 
-        # *   If you want to specify a custom value, make sure that the following requirements are met:
-        # 
-        #     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). You can use asterisks (\*) and question marks (?) as wildcard characters.
-        #     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
-        #     *   The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
-        #     *   The domain labels cannot start or end with a hyphen (-).
-        #     *   You can use an asterisk (\*) and question mark (?) anywhere in a domain label as wildcards.
-        self.host = host
-        # The redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
-        self.http_code = http_code
-        # The path to which requests are forwarded. Valid values:
-        # 
-        # *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
-        # 
-        # *   A custom value. You must make sure that the custom value meets the following requirements:
-        # 
-        #     *   The value is 1 to 128 characters in length.
-        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcards.
-        self.path = path
-        # The port to which requests are distributed. Valid values:
-        # 
-        # *   **${port}** (default): If you set the value to ${port}, you cannot append other characters.
-        # *   Other valid values: **1 to 63335**.
-        self.port = port
         # The redirect protocol. Valid values:
         # 
         # *   **${protocol}** (default): If you set the value to ${protocol}, you cannot append other characters.
         # *   Valid values: **HTTP** and **HTTPS**.
         # 
         # >  HTTPS listeners do not support HTTPS to HTTP redirects.
-        self.protocol = protocol
+        self.host = host
         # The query string of the URL to which requests are distributed. Valid values:
         # 
         # *   Default value: **${query}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
@@ -21776,6 +21566,52 @@ class UpdateRuleAttributeRequestRuleActionsRedirectConfig(TeaModel):
         # 
         #     *   The value is 1 to 128 characters in length.
         #     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
+        self.http_code = http_code
+        # The hostname to which requests are forwarded. Valid values:
+        # 
+        # *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
+        # 
+        # *   If you want to specify a custom value, make sure that the following requirements are met:
+        # 
+        #     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). You can use asterisks (\*) and question marks (?) as wildcard characters.
+        #     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
+        #     *   The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
+        #     *   The domain labels cannot start or end with a hyphen (-). You can use an asterisk (\*) and question mark (?) anywhere in a domain label as wildcards.
+        self.path = path
+        # The path to which requests are forwarded. Valid values:
+        # 
+        # *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
+        # 
+        # *   A custom value. You must make sure that the custom value meets the following requirements:
+        # 
+        #     *   The value is 1 to 128 characters in length.
+        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcards.
+        self.port = port
+        # The query string of the URL to which requests are distributed. Valid values:
+        # 
+        # *   Default value: **${query}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
+        # 
+        # *   A custom value. You must make sure that the custom value meets the following requirements:
+        # 
+        #     *   The value is 1 to 128 characters in length.
+        #     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
+        self.protocol = protocol
+        # The action type. You can specify at most 11 types of action. Valid values:
+        # 
+        # *   **ForwardGroup**: forwards a request to multiple vServer groups.
+        # *   **Redirect**: redirects a request.
+        # *   **FixedResponse**: returns a custom response.
+        # *   **Rewrite**: rewrites a request.
+        # *   **InsertHeader**: inserts a header.
+        # *   **RemoveHeaderConfig**: deletes a header.
+        # *   **TrafficLimitConfig**: throttles network traffic.
+        # *   **TrafficMirrorConfig**: mirrors traffic.
+        # *   **CorsConfig**: forwards requests based on CORS.
+        # 
+        # You can specify the final action and the actions that you want to perform before the final action:
+        # 
+        # *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
+        # *   **ExtType**: the action to be performed before the FinalType action. A forwarding rule can contain one or more ExtType actions. To specify this parameter, you must also specify FinalType. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
         self.query = query
 
     def validate(self):
@@ -21825,34 +21661,16 @@ class UpdateRuleAttributeRequestRuleActionsRewriteConfig(TeaModel):
         path: str = None,
         query: str = None,
     ):
-        # The hostname to which requests are forwarded. Valid values:
-        # 
-        # *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
-        # 
-        # *   If you want to specify a custom value, make sure that the following requirements are met:
-        # 
-        #     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). You can use asterisks (\*) and question marks (?) as wildcard characters.
-        #     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
-        #     *   The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
-        #     *   The domain labels cannot start or end with a hyphen (-). You can use an asterisk (\*) and question mark (?) anywhere in a domain label as wildcards.
+        # The queries per second (QPS). Valid values: **1 to 100000**.
         self.host = host
-        # The path to which requests are forwarded. Valid values:
+        # The QPS per IP address. Valid values: **1 to 100000**.
         # 
-        # *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
-        # 
-        # *   A custom value. You must make sure that the custom value meets the following requirements:
-        # 
-        #     *   The value is 1 to 128 characters in length.
-        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcards.
+        # >  If both **QPS** and **PerIpQps** are set, make sure that the **QPS** value is smaller than the PerIpQps value.
         self.path = path
-        # The query string of the URL to which requests are distributed. Valid values:
+        # The type of destination to which network traffic is mirrored. Valid values:
         # 
-        # *   Default value: **${query}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable cannot be specified more than once. You can specify one or more of the preceding variables in each request. You can also combine them with the following characters.
-        # 
-        # *   A custom value. You must make sure that the custom value meets the following requirements:
-        # 
-        #     *   The value is 1 to 128 characters in length.
-        #     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
+        # *   **ForwardGroupMirror**: a server group
+        # *   **SlsMirror**: Log Service
         self.query = query
 
     def validate(self):
@@ -21889,11 +21707,20 @@ class UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig(TeaModel):
         per_ip_qps: int = None,
         qps: int = None,
     ):
-        # The QPS per IP address. Valid values: **1 to 100000**.
+        # The allowed HTTP methods for CORS requests. Valid values:
         # 
-        # >  If both **QPS** and **PerIpQps** are set, make sure that the **QPS** value is smaller than the PerIpQps value.
+        # *   **GET**\
+        # *   **POST**\
+        # *   **PUT**\
+        # *   **DELETE**\
+        # *   **HEAD**\
+        # *   **OPTIONS**\
+        # *   **PATCH**\
         self.per_ip_qps = per_ip_qps
-        # The queries per second (QPS). Valid values: **1 to 100000**.
+        # The allowed origins of CORS requests. You can set this parameter to `*` or one or more values. A value cannot be `*`.
+        # 
+        # *   A value must start with a `http://` or `https://`, followed by a valid domain name or a first-level wildcard domain name, such as `*.test.abc.example.com`.
+        # *   You can specify a port in a value. Port range: **1** to **65535**.
         self.qps = qps
 
     def validate(self):
@@ -21925,7 +21752,7 @@ class UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigS
         self,
         server_group_id: str = None,
     ):
-        # The ID of the vServer group.
+        # The headers that can be exposed. You can specify `*` or specify one or more values. Separate multiple values with commas (,). A value can contain only letters and digits. It cannot start or end with underscores (\_) or hyphens (-). It can be up to 32 characters in length.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -21990,10 +21817,7 @@ class UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig(TeaModel):
         target_type: str = None,
     ):
         self.mirror_group_config = mirror_group_config
-        # The type of destination to which network traffic is mirrored. Valid values:
-        # 
-        # *   **ForwardGroupMirror**: a server group
-        # *   **SlsMirror**: Log Service
+        # The allowed headers for CORS requests. You can specify `*` or specify one or more values. Separate multiple values with commas (,). A value can contain only letters and digits. It cannot start or end with underscores (\_) or hyphens (-). It can be up to 32 characters in length.
         self.target_type = target_type
 
     def validate(self):
@@ -22040,28 +21864,16 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
         self.fixed_response_config = fixed_response_config
         self.forward_group_config = forward_group_config
         self.insert_header_config = insert_header_config
-        # The priority of the action. Valid values: **1 to 50000**. A lower value specifies a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter cannot be left empty. The priority of each action within a forwarding rule must be unique. You can specify priorities for at most 20 actions.
+        # The port to which requests are distributed. Valid values:
+        # 
+        # *   **${port}** (default): If you set the value to ${port}, you cannot append other characters.
+        # *   Other valid values: **1 to 63335**.
         self.order = order
         self.redirect_config = redirect_config
         self.rewrite_config = rewrite_config
         self.traffic_limit_config = traffic_limit_config
         self.traffic_mirror_config = traffic_mirror_config
-        # The action type. You can specify at most 11 types of action. Valid values:
-        # 
-        # *   **ForwardGroup**: forwards a request to multiple vServer groups.
-        # *   **Redirect**: redirects a request.
-        # *   **FixedResponse**: returns a custom response.
-        # *   **Rewrite**: rewrites a request.
-        # *   **InsertHeader**: inserts a header.
-        # *   **RemoveHeaderConfig**: deletes a header.
-        # *   **TrafficLimitConfig**: throttles network traffic.
-        # *   **TrafficMirrorConfig**: mirrors traffic.
-        # *   **CorsConfig**: forwards requests based on CORS.
-        # 
-        # You can specify the final action and the actions that you want to perform before the final action:
-        # 
-        # *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
-        # *   **ExtType**: the action to be performed before the FinalType action. A forwarding rule can contain one or more ExtType actions. To specify this parameter, you must also specify FinalType. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
+        # The ID of the vServer group.
         self.type = type
 
     def validate(self):
@@ -22149,9 +21961,16 @@ class UpdateRuleAttributeRequestRuleConditionsCookieConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the cookie. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, the key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
+        # The hostname. The hostname must meet the following requirements:
+        # 
+        # *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (\*), and question marks (?).
+        # *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
+        # *   The rightmost domain label can contain only letters, asterisks (\*), and question marks (?), and cannot contain digits or hyphens (-).
+        # *   The domain labels cannot start or end with a hyphen (-). You can specify asterisks (∗) and question marks (?) anywhere in a domain label.
         self.key = key
-        # The value of the cookie. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
+        # The request method.
+        # 
+        # Valid values: **HEAD**, **GET**, **POST**, **OPTIONS**, **PUT**, **PATCH**, and **DELETE**.
         self.value = value
 
     def validate(self):
@@ -22219,7 +22038,10 @@ class UpdateRuleAttributeRequestRuleConditionsHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of the header. The key must be 1 to 40 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). You cannot set Cookie or Host.
+        # The path. The path must meet the following requirements:
+        # 
+        # *   It must be 1 to 128 characters in length.
+        # *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcards.
         self.key = key
         self.values = values
 
@@ -22334,9 +22156,11 @@ class UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # They key of the query string. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, the key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
+        # The content of the custom response. The content can be up to 1 KB in size, and can contain only ASCII characters.
         self.key = key
-        # The value of the query string. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
+        # The content type.
+        # 
+        # Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
         self.value = value
 
     def validate(self):
@@ -22444,15 +22268,7 @@ class UpdateRuleAttributeRequestRuleConditions(TeaModel):
         self.path_config = path_config
         self.query_string_config = query_string_config
         self.source_ip_config = source_ip_config
-        # The type of the forwarding rule. You can specify at most seven types. Valid values:
-        # 
-        # *   **Host**: Requests are distributed based on hosts.
-        # *   **Path**: Requests are distributed based on paths.
-        # *   **Header**: Requests are distributed based on HTTP headers.
-        # *   **QueryString**: Requests are distributed based on query strings.
-        # *   **Method**: Requests are distributed based on request methods.
-        # *   **Cookie**: Requests are distributed based on cookies.
-        # *   **SourceIp**: Requests are distributed based on source IP addresses.
+        # The HTTP status code in the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** must be a digit.
         self.type = type
 
     def validate(self):
@@ -22534,26 +22350,19 @@ class UpdateRuleAttributeRequest(TeaModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
+        # The key of the header. The key must be 1 to 40 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). You cannot set Cookie or Host.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # The value of the header. The header values within a forwarding rule must be unique. The header must meet the following requirements:
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error code is returned based on the cause of the failure. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false**: checks the request. If the request passes the check, the system returns an `HTTP 2xx` status code and performs the operation. This is the default value.
+        # *   The value must be 1 to 128 characters in length.
+        # *   It can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcard characters.
+        # *   The header value cannot start or end with a space character.
         self.dry_run = dry_run
-        # The priority of the forwarding rule. Valid values: **1 to 10000**. A lower value specifies a higher priority.
-        # 
-        # >  The priority of each forwarding rule within a listener is unique.
         self.priority = priority
         self.rule_actions = rule_actions
         self.rule_conditions = rule_conditions
-        # The ID of the forwarding rule.
+        # The value of the cookie. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
         self.rule_id = rule_id
-        # The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.rule_name = rule_name
 
     def validate(self):
@@ -22623,9 +22432,7 @@ class UpdateRuleAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22706,18 +22513,13 @@ class UpdateRulesAttributeRequestRulesRuleActionsCorsConfig(TeaModel):
         expose_headers: List[str] = None,
         max_age: int = None,
     ):
-        # Specifies whether credentials can be included in CORS requests. Valid values:
-        # 
-        # *   **on:** Credentials can be included in CORS requests.
-        # *   **off:** Credentials cannot be included in CORS requests.
+        # The value of the cookie. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, the value cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
         self.allow_credentials = allow_credentials
         self.allow_headers = allow_headers
         self.allow_methods = allow_methods
         self.allow_origin = allow_origin
         self.expose_headers = expose_headers
-        # The maximum cache time of preflight requests in the browser. Unit: seconds.
-        # 
-        # Valid values: **-1** to **172800**.
+        # The key of the header. The key must be 1 to 40 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (\_). Cookie and Host are not supported.
         self.max_age = max_age
 
     def validate(self):
@@ -22767,13 +22569,17 @@ class UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig(TeaModel):
         content_type: str = None,
         http_code: str = None,
     ):
-        # The content of the custom response. The content can be up to 1 KB in size and can contain only ASCII characters.
+        # The server group to which requests are forwarded.
         self.content = content
-        # The format of the response.
+        # The weight of the server group. A larger value indicates a higher weight. A server group with a higher weight receives more requests. Valid values: **1** to **100**.
         # 
-        # Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
+        # *   When **N** is 1, the default value **100** is used.
+        # *   When **N** is greater than 1, you must specify the **weight** for each server group.
         self.content_type = content_type
-        # The HTTP status code in the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** must be a digit.
+        # Specifies whether to enable session persistence. Valid values:
+        # 
+        # *   **true**: enables session persistence.
+        # *   **false** (default): disables session persistence.
         self.http_code = http_code
 
     def validate(self):
@@ -22810,12 +22616,23 @@ class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupSt
         enabled: bool = None,
         timeout: int = None,
     ):
-        # Specifies whether to enable session persistence. Valid values:
+        # The key of the header to be inserted. The key must be 1 to 40 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-). The key specified in the `InsertHeader` parameter must be unique.
         # 
-        # *   **true**: enables session persistence.
-        # *   **false** (default): disables session persistence.
+        # >  You cannot set one of the following keys (case-insensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te, host`, `cookie`, `remoteip`, and `authority`.
         self.enabled = enabled
-        # The timeout period of sessions. Unit: seconds. Valid values: **1** to **86400**.
+        # The value of the header to be inserted.
+        # 
+        # *   If **ValueType** is set to **SystemDefined**, you can set one of the following values:
+        # 
+        #     *   **ClientSrcPort:** the port of the client.
+        #     *   **ClientSrcIp:** the IP address of the client.
+        #     *   **Protocol:** the request protocol. You can set the protocol to HTTP or HTTPS.
+        #     *   **SLBId:** the ID of the ALB instance.
+        #     *   **SLBPort:** the listening port of the ALB instance.
+        # 
+        # *   If **ValueType** is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcard characters. The value cannot start or end with a space character.
+        # 
+        # *   If **ValueType** is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
         self.timeout = timeout
 
     def validate(self):
@@ -22848,12 +22665,12 @@ class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTu
         server_group_id: str = None,
         weight: int = None,
     ):
-        # The server group to which requests are forwarded.
+        # The timeout period of sessions. Unit: seconds. Valid values: **1** to **86400**.
         self.server_group_id = server_group_id
-        # The weight of the server group. A larger value indicates a higher weight. A server group with a higher weight receives more requests. Valid values: **1** to **100**.
+        # Specifies whether to overwrite the request header. Valid values:
         # 
-        # *   When **N** is 1, the default value **100** is used.
-        # *   When **N** is greater than 1, you must specify the **weight** for each server group.
+        # *   **true** overwrites the request header.
+        # *   **false** (default): does not overwrite the request header.
         self.weight = weight
 
     def validate(self):
@@ -22932,34 +22749,24 @@ class UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig(TeaModel):
         value: str = None,
         value_type: str = None,
     ):
-        # Specifies whether to overwrite the request header. Valid values:
-        # 
-        # *   **true** overwrites the request header.
-        # *   **false** (default): does not overwrite the request header.
-        self.cover_enabled = cover_enabled
-        # The key of the header to be inserted. The key must be 1 to 40 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-). The key specified in the `InsertHeader` parameter must be unique.
-        # 
-        # >  You cannot set one of the following keys (case-insensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te, host`, `cookie`, `remoteip`, and `authority`.
-        self.key = key
-        # The value of the header to be inserted.
-        # 
-        # *   If **ValueType** is set to **SystemDefined**, you can set one of the following values:
-        # 
-        #     *   **ClientSrcPort:** the port of the client.
-        #     *   **ClientSrcIp:** the IP address of the client.
-        #     *   **Protocol:** the request protocol. You can set the protocol to HTTP or HTTPS.
-        #     *   **SLBId:** the ID of the ALB instance.
-        #     *   **SLBPort:** the listening port of the ALB instance.
-        # 
-        # *   If **ValueType** is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcard characters. The value cannot start or end with a space character.
-        # 
-        # *   If **ValueType** is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
-        self.value = value
         # The type of header. Valid values:
         # 
         # *   **UserDefined:** a user-defined header.
         # *   **ReferenceHeader:** a header that references a field of a request header.
         # *   **SystemDefined:** a system-defined header.
+        self.cover_enabled = cover_enabled
+        # The priority of the action. Valid values: **1** to **50000**. A lower value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter cannot be left empty. The priority of each action within a forwarding rule must be unique. You can specify priorities for at most 20 actions.
+        self.key = key
+        # The hostname to which requests are forwarded.
+        # 
+        # Take note of the following rules when you specify a hostname:
+        # 
+        # *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \* = ~ \_ + \ ^ ! $ & | ( ) \[ ] ?.
+        # *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
+        # *   The rightmost domain label can contain only letters, asterisks (\*), and question marks (?), and cannot contain digits or hyphens (-). The leftmost `domain label` can be an asterisk (\*).
+        # *   The domain labels cannot start or end with a hyphen (-). You can specify asterisks (∗) and question marks (?) anywhere in a domain label.
+        self.value = value
+        # The HTTP status code that indicates the redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
         self.value_type = value_type
 
     def validate(self):
@@ -23004,6 +22811,20 @@ class UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig(TeaModel):
         protocol: str = None,
         query: str = None,
     ):
+        # The port to which requests are forwarded.
+        # 
+        # Valid values: **1** to **63335**.
+        self.host = host
+        # The redirect protocol.
+        # 
+        # Valid values: **HTTP** and **HTTPS**.
+        # 
+        # >  HTTPS listeners do not support HTTPS to HTTP redirection.
+        self.http_code = http_code
+        # The query string to which requests are forwarded.
+        # 
+        # The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \ | < > &`.
+        self.path = path
         # The hostname to which requests are forwarded.
         # 
         # Take note of the following rules when you specify a hostname:
@@ -23012,9 +22833,7 @@ class UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig(TeaModel):
         # *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
         # *   The rightmost domain label can contain only letters, asterisks (\*), and question marks (?), and cannot contain digits or hyphens (-). The leftmost `domain label` can be an asterisk (\*).
         # *   The domain labels cannot start or end with a hyphen (-). You can specify asterisks (∗) and question marks (?) anywhere in a domain label.
-        self.host = host
-        # The HTTP status code that indicates the redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
-        self.http_code = http_code
+        self.port = port
         # The path to which requests are forwarded.
         # 
         # *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also concatenate them with the following characters.
@@ -23023,16 +22842,6 @@ class UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig(TeaModel):
         # 
         #     *   The custom value must be 1 to 128 characters in length. You can use asterisks (\*) and question marks (?) as wildcards.
         #     *   The custom value can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ : \" * ?`. The custom value must start with a forward slash (/) and cannot contain the following characters: `" % # ; ! ( ) [ ] ^ , "`.
-        self.path = path
-        # The port to which requests are forwarded.
-        # 
-        # Valid values: **1** to **63335**.
-        self.port = port
-        # The redirect protocol.
-        # 
-        # Valid values: **HTTP** and **HTTPS**.
-        # 
-        # >  HTTPS listeners do not support HTTPS to HTTP redirection.
         self.protocol = protocol
         # The query string to which requests are forwarded.
         # 
@@ -23084,11 +22893,7 @@ class UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig(TeaModel):
         self,
         key: str = None,
     ):
-        # The key of the header.
-        # 
-        # *   The key must be 1 to 40 characters in length,
-        # *   and can contain lowercase letters, digits, hyphens (-), and underscores (\_).
-        # *   Cookie and Host are not supported.
+        # The allowed headers for CORS requests. You can specify an asterisk (`*`) or one or more values. Separate multiple values with commas (,). A value can contain only letters and digits. It cannot start or end with underscores (\_) or hyphens (-). It can be up to 32 characters in length.
         self.key = key
 
     def validate(self):
@@ -23118,27 +22923,21 @@ class UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig(TeaModel):
         path: str = None,
         query: str = None,
     ):
-        # The hostname to which requests are forwarded.
+        # The type of forwarding rule. You can specify at most seven types. Valid values:
         # 
-        # Take note of the following rules when you specify a hostname:
-        # 
-        # *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \* = ~ \_ + \ ^ ! $ & | ( ) \[ ] ?.
-        # *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
-        # *   The rightmost domain label can contain only letters, asterisks (\*), and question marks (?), and cannot contain digits or hyphens (-). The leftmost `domain label` can be an asterisk (\*).
-        # *   The domain labels cannot start or end with a hyphen (-). You can specify asterisks (∗) and question marks (?) anywhere in a domain label.
+        # *   **Host**: Requests are forwarded based on hosts.
+        # *   **Path**: Requests are forwarded based on paths.
+        # *   **Header**: Requests are forwarded based on HTTP headers.
+        # *   **QueryString**: Requests are forwarded based on query strings.
+        # *   **Method**: Requests are forwarded based on request methods.
+        # *   **Cookie**: Requests are forwarded based on cookies.
+        # *   **SourceIp**: Requests are forwarded based on source IP addresses.
         self.host = host
-        # The path to which requests are forwarded.
-        # 
-        # *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also concatenate them with the following characters.
-        # 
-        # *   A custom value. You must ensure that the custom value meets the following requirements:
-        # 
-        #     *   The custom value must be 1 to 128 characters in length. You can use asterisks (\*) and question marks (?) as wildcards.
-        #     *   The custom value can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ : \" * ?`. The custom value must start with a forward slash (/) and cannot contain the following characters: `" % # ; ! ( ) [ ] ^ , "`.
+        # The number of queries per second (QPS). Valid values: **1** to **100000**.
         self.path = path
-        # The query string to which requests are forwarded.
+        # The QPS per IP address. Valid values: **1** to **100000**.
         # 
-        # The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \ | < > &`.
+        # >  If both the QPS and PerIpQps properties are specified, make sure that the value of the QPS property is smaller than the value of the PerIpQps property.
         self.query = query
 
     def validate(self):
@@ -23175,11 +22974,13 @@ class UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig(TeaModel):
         per_ip_qps: int = None,
         qps: int = None,
     ):
-        # The QPS per IP address. Valid values: **1** to **100000**.
+        # The key of the header.
         # 
-        # >  If both the QPS and PerIpQps properties are specified, make sure that the value of the QPS property is smaller than the value of the PerIpQps property.
+        # *   The key must be 1 to 40 characters in length,
+        # *   and can contain lowercase letters, digits, hyphens (-), and underscores (\_).
+        # *   Cookie and Host are not supported.
         self.per_ip_qps = per_ip_qps
-        # The number of queries per second (QPS). Valid values: **1** to **100000**.
+        # The ID of the server group.
         self.qps = qps
 
     def validate(self):
@@ -23211,7 +23012,15 @@ class UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupC
         self,
         server_group_id: str = None,
     ):
-        # The ID of the server group.
+        # The allowed HTTP methods for CORS requests. Valid values:
+        # 
+        # *   **GET**\
+        # *   **POST**\
+        # *   **PUT**\
+        # *   **DELETE**\
+        # *   **HEAD**\
+        # *   **OPTIONS**\
+        # *   **PATCH**\
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -23276,10 +23085,10 @@ class UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig(TeaModel):
         target_type: str = None,
     ):
         self.mirror_group_config = mirror_group_config
-        # The type of destination to which network traffic is mirrored. Valid values:
+        # The allowed origins of CORS requests. You can set this parameter to an asterisk (`*`) or one or more values. The values cannot be asterisks (`*`).
         # 
-        # *   **ForwardGroupMirror:** a server group.
-        # *   **SlsMirror:** Log Service.
+        # *   Each value must start with `http://` or `https://`, followed by a valid domain name or a first-level wildcard domain name, such as `*.test.abc.example.com`.
+        # *   You can specify a port in a value. Port range: **1** to **65535**.
         self.target_type = target_type
 
     def validate(self):
@@ -23327,22 +23136,24 @@ class UpdateRulesAttributeRequestRulesRuleActions(TeaModel):
         self.fixed_response_config = fixed_response_config
         self.forward_group_config = forward_group_config
         self.insert_header_config = insert_header_config
-        # The priority of the action. Valid values: **1** to **50000**. A lower value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter cannot be left empty. The priority of each action within a forwarding rule must be unique. You can specify priorities for at most 20 actions.
+        # The path to which requests are forwarded.
+        # 
+        # *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also concatenate them with the following characters.
+        # 
+        # *   A custom value. You must ensure that the custom value meets the following requirements:
+        # 
+        #     *   The custom value must be 1 to 128 characters in length. You can use asterisks (\*) and question marks (?) as wildcards.
+        #     *   The custom value can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ : \" * ?`. The custom value must start with a forward slash (/) and cannot contain the following characters: `" % # ; ! ( ) [ ] ^ , "`.
         self.order = order
         self.redirect_config = redirect_config
         self.remove_header_config = remove_header_config
         self.rewrite_config = rewrite_config
         self.traffic_limit_config = traffic_limit_config
         self.traffic_mirror_config = traffic_mirror_config
-        # The type of forwarding rule. You can specify at most seven types. Valid values:
+        # The type of destination to which network traffic is mirrored. Valid values:
         # 
-        # *   **Host**: Requests are forwarded based on hosts.
-        # *   **Path**: Requests are forwarded based on paths.
-        # *   **Header**: Requests are forwarded based on HTTP headers.
-        # *   **QueryString**: Requests are forwarded based on query strings.
-        # *   **Method**: Requests are forwarded based on request methods.
-        # *   **Cookie**: Requests are forwarded based on cookies.
-        # *   **SourceIp**: Requests are forwarded based on source IP addresses.
+        # *   **ForwardGroupMirror:** a server group.
+        # *   **SlsMirror:** Log Service.
         self.type = type
 
     def validate(self):
@@ -23437,9 +23248,18 @@ class UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues(TeaModel)
         key: str = None,
         value: str = None,
     ):
-        # The key of the cookie. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, the key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
+        # The value of the response header. The value must be 1 to 128 characters in length. It can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. For example, lowercase letters, asterisks (\*), and question marks (?). The value cannot start or end with a space character.
         self.key = key
-        # The value of the cookie. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, the value cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
+        # The hostname.
+        # 
+        # Take note of the following rules when you specify a hostname:
+        # 
+        # *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \* = ~ \_ + \ ^ ! $ & | ( ) \[ ] ?.
+        # *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
+        # *   The rightmost domain label can contain only letters, asterisks (\*), and question marks (?), and cannot contain digits or hyphens (-). The leftmost `domain label` can be an asterisk (\*).
+        # *   The domain labels cannot start or end with a hyphen (-). You can specify asterisks (∗) and question marks (?) anywhere in a domain label.
+        # *   If you specify an exact hostname or a wildcard hostname, the hostname cannot start with a tilde (~).
+        # *   If you specify a regular expression, the regular expression cannot start with an asterisk (\*). The regular expression is not case-sensitive.
         self.value = value
 
     def validate(self):
@@ -23507,7 +23327,9 @@ class UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of the header. The key must be 1 to 40 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (\_). Cookie and Host are not supported.
+        # The request methods.
+        # 
+        # Valid values: **HEAD**, **GET**, **POST**, **OPTIONS**, **PUT**, **PATCH**, and **DELETE**.
         self.key = key
         self.values = values
 
@@ -23622,13 +23444,13 @@ class UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues(TeaM
         key: str = None,
         value: str = None,
     ):
-        # They key of the query string.
+        # The value of the response header.
         # 
-        # The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
+        # *   The value must be 1 to 128 characters in length.
+        # *   It can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. For example, lowercase letters, asterisks (\*), and question marks (?).
+        # *   The value cannot start or end with a space character.
         self.key = key
-        # The value of the query string.
-        # 
-        # The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). The value cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
+        # The status code in responses. Valid values: **100** to **599**.
         self.value = value
 
     def validate(self):
@@ -23696,11 +23518,22 @@ class UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig(TeaMode
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of the response header.
+        # The type of action specified in the forwarding rule. You can specify at most 11 types of actions. Valid values:
         # 
-        # *   The key must be 1 to 40 characters in length,
-        # *   and can contain lowercase letters, digits, hyphens (-), and underscores (\_).
-        # *   Cookie and Host are not supported.
+        # *   **ForwardGroup:** forwards a request to multiple vServer groups.
+        # *   **Redirect:** redirects a request.
+        # *   **FixedResponse:** returns a custom response.
+        # *   **Rewrite:** rewrites a request.
+        # *   **InsertHeader:** adds a header to a request.
+        # *   **RemoveHeaderConfig:** deletes the header of a request.
+        # *   **TrafficLimitConfig:** throttles traffic.
+        # *   **TrafficMirrorConfig:** mirrors traffic.
+        # *   **CorsConfig:** forwards requests based on CORS.
+        # 
+        # The preceding actions can be classified into two broad types:
+        # 
+        # *   **FinalType:** the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
+        # *   **ExtType:** the actions to be performed before the FinalType action. A forwarding rule can contain one or more ExtType actions. To specify this parameter, you must also specify FinalType. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
         self.key = key
         self.values = values
 
@@ -23805,22 +23638,10 @@ class UpdateRulesAttributeRequestRulesRuleConditions(TeaModel):
         self.response_header_config = response_header_config
         self.response_status_code_config = response_status_code_config
         self.source_ip_config = source_ip_config
-        # The type of action specified in the forwarding rule. You can specify at most 11 types of actions. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **ForwardGroup:** forwards a request to multiple vServer groups.
-        # *   **Redirect:** redirects a request.
-        # *   **FixedResponse:** returns a custom response.
-        # *   **Rewrite:** rewrites a request.
-        # *   **InsertHeader:** adds a header to a request.
-        # *   **RemoveHeaderConfig:** deletes the header of a request.
-        # *   **TrafficLimitConfig:** throttles traffic.
-        # *   **TrafficMirrorConfig:** mirrors traffic.
-        # *   **CorsConfig:** forwards requests based on CORS.
-        # 
-        # The preceding actions can be classified into two broad types:
-        # 
-        # *   **FinalType:** the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
-        # *   **ExtType:** the actions to be performed before the FinalType action. A forwarding rule can contain one or more ExtType actions. To specify this parameter, you must also specify FinalType. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
+        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**: sends the request. If the request passes the dry run, the system returns an `HTTP 2xx` status code and performs the operation. This is the default value.
         self.type = type
 
     def validate(self):
@@ -23914,15 +23735,15 @@ class UpdateRulesAttributeRequestRules(TeaModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
-        # The priority of the forwarding rule. Valid values: **1 to 10000**. A lower value specifies a higher priority. You can specify at most 20 forwarding rules.
+        # The format of the response.
         # 
-        # >  The priority of each forwarding rule within a listener is unique.
+        # Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
         self.priority = priority
         self.rule_actions = rule_actions
         self.rule_conditions = rule_conditions
-        # The ID of the forwarding rule. You can specify at most 20 IDs.
+        # The ID of the asynchronous task.
         self.rule_id = rule_id
-        # The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter. You can specify at most 20 forwarding rules.
+        # The HTTP status code in the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** must be a digit.
         self.rule_name = rule_name
 
     def validate(self):
@@ -23985,16 +23806,8 @@ class UpdateRulesAttributeRequest(TeaModel):
         dry_run: bool = None,
         rules: List[UpdateRulesAttributeRequestRules] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The ClientToken value can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. **RequestId** of each API request may be different.
+        # The content of the custom response. The content can be up to 1 KB in size and can contain only ASCII characters.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. If the request passes the dry run, the system returns an `HTTP 2xx` status code and performs the operation. This is the default value.
         self.dry_run = dry_run
         self.rules = rules
 
@@ -24040,9 +23853,7 @@ class UpdateRulesAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24123,24 +23934,26 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
         security_policy_name: str = None,
         tlsversions: List[str] = None,
     ):
+        # The supported cipher suites.
         self.ciphers = ciphers
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether only to precheck this request. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request but does not modify the attributes of the security policy. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the security policy.
+        # The security policy ID.
         self.security_policy_id = security_policy_id
         # The name of the security policy.
         # 
         # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.security_policy_name = security_policy_name
+        # The supported TLS protocol versions.
         self.tlsversions = tlsversions
 
     def validate(self):
@@ -24189,9 +24002,9 @@ class UpdateSecurityPolicyAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
+        # The asynchronous task ID.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24278,26 +24091,12 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
-        # The HTTP status codes that indicate a successful health check.
+        # The interval between two consecutive health checks. Unit: seconds.
         # 
-        # *   If **HealthCheckProtocol** is set to **HTTP**, **HealthCheckCodes** can be set to **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**. Separate multiple HTTP status codes with commas (,).
-        # *   If **HealthCheckProtocol** is set to **gRPC**, **HealthCheckCodes** can be set to **0 to 99**. Default value: **0**. Value ranges are supported. You can enter up to 20 value ranges. Separate multiple value ranges with commas (,).
-        # 
-        # >  This parameter takes effect when the **HealthCheckEnabled** parameter is set to **true** and the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
-        self.health_check_codes = health_check_codes
-        # The backend port that is used for health checks.
-        # 
-        # Valid values: **0** to **65535**.
-        # 
-        # If you set the value to **0**, the ports of backend servers are used for health checks.
+        # Valid values: **1** to **50**.
         # 
         # >  This parameter takes effect when the **HealthCheckEnabled** parameter is set to **true**.
-        self.health_check_connect_port = health_check_connect_port
-        # Specifies whether to enable the health check feature. Valid values:
-        # 
-        # *   **true** (default): enables the feature.
-        # *   **false**: disables the feature.
-        self.health_check_enabled = health_check_enabled
+        self.health_check_codes = health_check_codes
         # The domain name that is used for health checks. The domain name must meet the following requirements:
         # 
         # *   The domain name must be 1 to 80 characters in length.
@@ -24307,20 +24106,21 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         # *   Other fields cannot start or end with a hyphen (-).
         # 
         # >  This parameter takes effect when the **HealthCheckEnabled** parameter is set to true and the **HealthCheckProtocol** parameter is set to **HTTP**.
-        self.health_check_host = health_check_host
+        self.health_check_connect_port = health_check_connect_port
+        # The HTTP status codes that indicate a successful health check.
+        # 
+        # *   If **HealthCheckProtocol** is set to **HTTP**, **HealthCheckCodes** can be set to **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**. Separate multiple HTTP status codes with commas (,).
+        # *   If **HealthCheckProtocol** is set to **gRPC**, **HealthCheckCodes** can be set to **0 to 99**. Default value: **0**. Value ranges are supported. You can enter up to 20 value ranges. Separate multiple value ranges with commas (,).
+        # 
+        # >  This parameter takes effect when the **HealthCheckEnabled** parameter is set to **true** and the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+        self.health_check_enabled = health_check_enabled
         # The version of HTTP that is used for health checks. Valid values:
         # 
         # *   **HTTP1.0**\
         # *   **HTTP1.1**\
         # 
         # >  This parameter takes effect when the **HealthCheckEnabled** parameter is set to true and the **HealthCheckProtocol** parameter is set to **HTTP**.
-        self.health_check_http_version = health_check_http_version
-        # The interval between two consecutive health checks. Unit: seconds.
-        # 
-        # Valid values: **1** to **50**.
-        # 
-        # >  This parameter takes effect when the **HealthCheckEnabled** parameter is set to **true**.
-        self.health_check_interval = health_check_interval
+        self.health_check_host = health_check_host
         # The HTTP method that is used for health checks. Valid values:
         # 
         # *   **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
@@ -24328,19 +24128,19 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         # *   **HEAD**: By default, HTTP health checks use the HEAD method.
         # 
         # >  This parameter takes effect when the **HealthCheckEnabled** parameter is set to true and the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
-        self.health_check_method = health_check_method
+        self.health_check_http_version = health_check_http_version
         # The path that is used for health checks.
         # 
         # The path must be 1 to 80 characters in length and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The path must start with a forward slash (`/`).
         # 
         # >  This parameter takes effect when the **HealthCheckEnabled** parameter is set to **true** and the **HealthCheckProtocol** parameter is set to **HTTP**.
-        self.health_check_path = health_check_path
+        self.health_check_interval = health_check_interval
         # The protocol that is used for health checks. Valid values:
         # 
         # *   **HTTP**: To perform HTTP health checks, Application Load Balancer (ALB) sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
         # *   **TCP**: To perform TCP health checks, ALB sends SYN packets to the backend server to check whether the port of the backend server is available to receive requests.
         # *   **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
-        self.health_check_protocol = health_check_protocol
+        self.health_check_method = health_check_method
         # The timeout period of a health check response. If a backend server, such as an Elastic Compute Service (ECS) instance, does not return a health check response within the specified timeout period, the server fails the health check. Unit: seconds.
         # 
         # Valid values: **1** to **300**.
@@ -24348,14 +24148,22 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         # > 
         # *   If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the value of the **HealthCheckInterval** parameter is used as the timeout period.
         # *   This parameter takes effect when the **HealthCheckEnabled** parameter is set to **true**.
-        self.health_check_timeout = health_check_timeout
+        self.health_check_path = health_check_path
         # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
         # 
         # Valid values: **2** to **10**.
-        self.healthy_threshold = healthy_threshold
+        self.health_check_protocol = health_check_protocol
         # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
         # 
         # Valid values: **2** to **10**.
+        self.health_check_timeout = health_check_timeout
+        # The configuration of session persistence.
+        self.healthy_threshold = healthy_threshold
+        # The cookie that is configured on the server.
+        # 
+        # The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+        # 
+        # >  This parameter takes effect when the **StickySessionEnabled** parameter is set to **true** and the **StickySessionType** parameter is set to **Server**.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -24430,23 +24238,11 @@ class UpdateServerGroupAttributeRequestStickySessionConfig(TeaModel):
         sticky_session_enabled: bool = None,
         sticky_session_type: str = None,
     ):
-        # The cookie that is configured on the server.
-        # 
-        # The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
-        # 
-        # >  This parameter takes effect when the **StickySessionEnabled** parameter is set to **true** and the **StickySessionType** parameter is set to **Server**.
-        self.cookie = cookie
-        # The timeout period of a cookie. Unit: seconds.
-        # 
-        # Valid values: **1** to **86400**.
-        # 
-        # >  This parameter takes effect when the **StickySessionEnabled** parameter is set to **true** and the **StickySessionType** parameter is set to **Insert**.
-        self.cookie_timeout = cookie_timeout
         # Specifies whether to enable session persistence. Valid values:
         # 
         # *   **true**: enables session persistence.
         # *   **false** (default): disables session persistence.
-        self.sticky_session_enabled = sticky_session_enabled
+        self.cookie = cookie
         # The method that is used to handle a cookie. Valid values:
         # 
         # *   **Insert**: inserts a cookie.
@@ -24458,6 +24254,10 @@ class UpdateServerGroupAttributeRequestStickySessionConfig(TeaModel):
         #     When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
         # 
         # >  This parameter takes effect when the **StickySessionEnabled** parameter is set to **true**.
+        self.cookie_timeout = cookie_timeout
+        # The ID of the server group.
+        self.sticky_session_enabled = sticky_session_enabled
+        # This parameter is available only if the ALB Ingress controller is used. In this case, set this parameter to the name of the `Kubernetes Service` that is associated with the server group.
         self.sticky_session_type = sticky_session_type
 
     def validate(self):
@@ -24498,7 +24298,9 @@ class UpdateServerGroupAttributeRequestUchConfig(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # 参数类型
         self.type = type
+        # 一致性hash参数值
         self.value = value
 
     def validate(self):
@@ -24538,35 +24340,43 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         sticky_session_config: UpdateServerGroupAttributeRequestStickySessionConfig = None,
         uch_config: UpdateServerGroupAttributeRequestUchConfig = None,
     ):
+        # The configuration of health checks.
+        self.client_token = client_token
+        # The backend port that is used for health checks.
+        # 
+        # Valid values: **0** to **65535**.
+        # 
+        # If you set the value to **0**, the ports of backend servers are used for health checks.
+        # 
+        # >  This parameter takes effect when the **HealthCheckEnabled** parameter is set to **true**.
+        self.dry_run = dry_run
+        # Specifies whether to enable the health check feature. Valid values:
+        # 
+        # *   **true** (default): enables the feature.
+        # *   **false**: disables the feature.
+        self.health_check_config = health_check_config
+        # Specifies whether to check the request without performing the operation. Valid values:
+        # 
+        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the request. If the request passes the check, an HTTP `2xx` status code is returned and the operation is performed.
+        self.scheduler = scheduler
+        # The ID of the asynchronous task.
+        self.server_group_id = server_group_id
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
         # 
         # >  If you do not set this parameter, the system automatically uses RequestId as ClientToken. The value of RequestId for each API request may be different.
-        self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
-        # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, an HTTP `2xx` status code is returned and the operation is performed.
-        self.dry_run = dry_run
-        # The configuration of health checks.
-        self.health_check_config = health_check_config
-        # The scheduling algorithm. Valid values:
-        # 
-        # *   **Wrr**: the weighted round robin algorithm. Backend servers that have higher weights receive more requests than those that have lower weights.
-        # *   **Wlc**: the weighted least connections algorithm. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
-        # *   **Sch**: the consistent hashing algorithm. Requests from the same source IP address are distributed to the same backend server.
-        self.scheduler = scheduler
-        # The ID of the server group.
-        self.server_group_id = server_group_id
-        # The name of the server group.
-        # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.server_group_name = server_group_name
-        # This parameter is available only if the ALB Ingress controller is used. In this case, set this parameter to the name of the `Kubernetes Service` that is associated with the server group.
+        # The ID of the request.
         self.service_name = service_name
-        # The configuration of session persistence.
+        # The timeout period of a cookie. Unit: seconds.
+        # 
+        # Valid values: **1** to **86400**.
+        # 
+        # >  This parameter takes effect when the **StickySessionEnabled** parameter is set to **true** and the **StickySessionType** parameter is set to **Insert**.
         self.sticky_session_config = sticky_session_config
+        # url一致性hash参数配置
         self.uch_config = uch_config
 
     def validate(self):
@@ -24635,9 +24445,7 @@ class UpdateServerGroupAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24718,31 +24526,25 @@ class UpdateServerGroupServersAttributeRequestServers(TeaModel):
         server_type: str = None,
         weight: int = None,
     ):
-        # The description of the backend server. The description must be 2 to 256 characters in length and can contain letters, digits, periods (.), underscores (\_), hyphens (-), commas (,), semicolons (;), forward slashes (/), and at signs (@). You can specify at most 40 servers in each call.
-        self.description = description
-        # The port used by the backend server. Valid values: **1** to **65535**. You can specify at most 40 servers in each call.
-        # 
-        # >  You do not need to set this parameter if **ServerType** is set to **Fc**.
-        self.port = port
-        # The ID of the server. You can specify at most 40 servers in each call.
-        # 
-        # *   If **ServerType** is set to **Ecs**, **Eni**, or **Eci**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance.
-        # *   If **ServerType** is set to **Ip**, set the ServerId parameter to an IP address.
-        # *   If **ServerType** is set to **Fc**, set the ServerId parameter to the Alibaba Cloud Resource Name (ARN) of a function.
-        self.server_id = server_id
-        # The IP address in inclusive ENI mode. You can specify at most 40 servers in each call.
-        self.server_ip = server_ip
-        # The type of the backend server. You can specify at most 40 servers in each call. Valid values:
-        # 
-        # *   **Ecs**: an ECS instance
-        # *   **Eni**: an ENI
-        # *   **Eci**: an elastic container instance
-        # *   **Ip**: an IP address
-        # *   **Fc**: a function
-        self.server_type = server_type
         # The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server. You can specify at most 40 servers in each call.
         # 
         # >  You do not need to set this parameter if **ServerType** is set to **Fc**.
+        self.description = description
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # 
+        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+        self.port = port
+        # Specifies whether to check the request without performing the operation. Valid values:
+        # 
+        # *   **true**: checks the request without performing the operation The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
+        self.server_id = server_id
+        # The ID of the asynchronous task.
+        self.server_ip = server_ip
+        # The ID of the request.
+        self.server_type = server_type
         self.weight = weight
 
     def validate(self):
@@ -24793,18 +24595,15 @@ class UpdateServerGroupServersAttributeRequest(TeaModel):
         server_group_id: str = None,
         servers: List[UpdateServerGroupServersAttributeRequestServers] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
-        # 
-        # *   **true**: checks the request without performing the operation The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the server group.
+        # The type of the backend server. You can specify at most 40 servers in each call. Valid values:
+        # 
+        # *   **Ecs**: an ECS instance
+        # *   **Eni**: an ENI
+        # *   **Eci**: an elastic container instance
+        # *   **Ip**: an IP address
+        # *   **Fc**: a function
         self.server_group_id = server_group_id
         self.servers = servers
 
@@ -24854,9 +24653,7 @@ class UpdateServerGroupServersAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
