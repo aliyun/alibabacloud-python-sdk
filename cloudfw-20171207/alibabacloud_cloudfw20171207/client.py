@@ -585,6 +585,144 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_copy_vpc_firewall_control_policy_with_options_async(request, runtime)
 
+    def create_nat_firewall_control_policy_with_options(
+        self,
+        request: cloudfw_20171207_models.CreateNatFirewallControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.application_name_list):
+            query['ApplicationNameList'] = request.application_name_list
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dest_port):
+            query['DestPort'] = request.dest_port
+        if not UtilClient.is_unset(request.dest_port_group):
+            query['DestPortGroup'] = request.dest_port_group
+        if not UtilClient.is_unset(request.dest_port_type):
+            query['DestPortType'] = request.dest_port_type
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.domain_resolve_type):
+            query['DomainResolveType'] = request.domain_resolve_type
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.new_order):
+            query['NewOrder'] = request.new_order
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNatFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_nat_firewall_control_policy_with_options_async(
+        self,
+        request: cloudfw_20171207_models.CreateNatFirewallControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.application_name_list):
+            query['ApplicationNameList'] = request.application_name_list
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dest_port):
+            query['DestPort'] = request.dest_port
+        if not UtilClient.is_unset(request.dest_port_group):
+            query['DestPortGroup'] = request.dest_port_group
+        if not UtilClient.is_unset(request.dest_port_type):
+            query['DestPortType'] = request.dest_port_type
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.domain_resolve_type):
+            query['DomainResolveType'] = request.domain_resolve_type
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.new_order):
+            query['NewOrder'] = request.new_order
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNatFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_nat_firewall_control_policy(
+        self,
+        request: cloudfw_20171207_models.CreateNatFirewallControlPolicyRequest,
+    ) -> cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_nat_firewall_control_policy_with_options(request, runtime)
+
+    async def create_nat_firewall_control_policy_async(
+        self,
+        request: cloudfw_20171207_models.CreateNatFirewallControlPolicyRequest,
+    ) -> cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_nat_firewall_control_policy_with_options_async(request, runtime)
+
     def create_tr_firewall_v2with_options(
         self,
         request: cloudfw_20171207_models.CreateTrFirewallV2Request,
@@ -1666,6 +1804,88 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_instance_members_with_options_async(request, runtime)
+
+    def delete_nat_firewall_control_policy_with_options(
+        self,
+        request: cloudfw_20171207_models.DeleteNatFirewallControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteNatFirewallControlPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNatFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteNatFirewallControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_nat_firewall_control_policy_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DeleteNatFirewallControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteNatFirewallControlPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNatFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteNatFirewallControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_nat_firewall_control_policy(
+        self,
+        request: cloudfw_20171207_models.DeleteNatFirewallControlPolicyRequest,
+    ) -> cloudfw_20171207_models.DeleteNatFirewallControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_nat_firewall_control_policy_with_options(request, runtime)
+
+    async def delete_nat_firewall_control_policy_async(
+        self,
+        request: cloudfw_20171207_models.DeleteNatFirewallControlPolicyRequest,
+    ) -> cloudfw_20171207_models.DeleteNatFirewallControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_nat_firewall_control_policy_with_options_async(request, runtime)
 
     def delete_tr_firewall_v2with_options(
         self,
@@ -3054,6 +3274,120 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeInvadeEventListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_invade_event_list_with_options_async(request, runtime)
+
+    def describe_nat_firewall_control_policy_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallControlPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNatFirewallControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nat_firewall_control_policy_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallControlPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNatFirewallControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nat_firewall_control_policy(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallControlPolicyRequest,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nat_firewall_control_policy_with_options(request, runtime)
+
+    async def describe_nat_firewall_control_policy_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallControlPolicyRequest,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nat_firewall_control_policy_with_options_async(request, runtime)
 
     def describe_outgoing_destination_ipwith_options(
         self,
@@ -6166,6 +6500,218 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_member_attributes_with_options_async(request, runtime)
+
+    def modify_nat_firewall_control_policy_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.application_name_list):
+            query['ApplicationNameList'] = request.application_name_list
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dest_port):
+            query['DestPort'] = request.dest_port
+        if not UtilClient.is_unset(request.dest_port_group):
+            query['DestPortGroup'] = request.dest_port_group
+        if not UtilClient.is_unset(request.dest_port_type):
+            query['DestPortType'] = request.dest_port_type
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.domain_resolve_type):
+            query['DomainResolveType'] = request.domain_resolve_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyNatFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyNatFirewallControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_nat_firewall_control_policy_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.application_name_list):
+            query['ApplicationNameList'] = request.application_name_list
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dest_port):
+            query['DestPort'] = request.dest_port
+        if not UtilClient.is_unset(request.dest_port_group):
+            query['DestPortGroup'] = request.dest_port_group
+        if not UtilClient.is_unset(request.dest_port_type):
+            query['DestPortType'] = request.dest_port_type
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.domain_resolve_type):
+            query['DomainResolveType'] = request.domain_resolve_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyNatFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyNatFirewallControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_nat_firewall_control_policy(
+        self,
+        request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyRequest,
+    ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_nat_firewall_control_policy_with_options(request, runtime)
+
+    async def modify_nat_firewall_control_policy_async(
+        self,
+        request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyRequest,
+    ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_nat_firewall_control_policy_with_options_async(request, runtime)
+
+    def modify_nat_firewall_control_policy_position_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.new_order):
+            query['NewOrder'] = request.new_order
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyNatFirewallControlPolicyPosition',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_nat_firewall_control_policy_position_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.new_order):
+            query['NewOrder'] = request.new_order
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyNatFirewallControlPolicyPosition',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_nat_firewall_control_policy_position(
+        self,
+        request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionRequest,
+    ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_nat_firewall_control_policy_position_with_options(request, runtime)
+
+    async def modify_nat_firewall_control_policy_position_async(
+        self,
+        request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionRequest,
+    ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_nat_firewall_control_policy_position_with_options_async(request, runtime)
 
     def modify_policy_advanced_config_with_options(
         self,

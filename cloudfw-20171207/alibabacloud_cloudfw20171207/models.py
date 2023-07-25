@@ -831,6 +831,212 @@ class BatchCopyVpcFirewallControlPolicyResponse(TeaModel):
         return self
 
 
+class CreateNatFirewallControlPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        acl_action: str = None,
+        application_name_list: List[str] = None,
+        description: str = None,
+        dest_port: str = None,
+        dest_port_group: str = None,
+        dest_port_type: str = None,
+        destination: str = None,
+        destination_type: str = None,
+        direction: str = None,
+        domain_resolve_type: int = None,
+        ip_version: str = None,
+        lang: str = None,
+        nat_gateway_id: str = None,
+        new_order: str = None,
+        proto: str = None,
+        release: str = None,
+        source: str = None,
+        source_type: str = None,
+    ):
+        self.acl_action = acl_action
+        self.application_name_list = application_name_list
+        self.description = description
+        self.dest_port = dest_port
+        self.dest_port_group = dest_port_group
+        self.dest_port_type = dest_port_type
+        self.destination = destination
+        self.destination_type = destination_type
+        self.direction = direction
+        self.domain_resolve_type = domain_resolve_type
+        self.ip_version = ip_version
+        self.lang = lang
+        self.nat_gateway_id = nat_gateway_id
+        self.new_order = new_order
+        self.proto = proto
+        self.release = release
+        self.source = source
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_action is not None:
+            result['AclAction'] = self.acl_action
+        if self.application_name_list is not None:
+            result['ApplicationNameList'] = self.application_name_list
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_port is not None:
+            result['DestPort'] = self.dest_port
+        if self.dest_port_group is not None:
+            result['DestPortGroup'] = self.dest_port_group
+        if self.dest_port_type is not None:
+            result['DestPortType'] = self.dest_port_type
+        if self.destination is not None:
+            result['Destination'] = self.destination
+        if self.destination_type is not None:
+            result['DestinationType'] = self.destination_type
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.domain_resolve_type is not None:
+            result['DomainResolveType'] = self.domain_resolve_type
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.new_order is not None:
+            result['NewOrder'] = self.new_order
+        if self.proto is not None:
+            result['Proto'] = self.proto
+        if self.release is not None:
+            result['Release'] = self.release
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclAction') is not None:
+            self.acl_action = m.get('AclAction')
+        if m.get('ApplicationNameList') is not None:
+            self.application_name_list = m.get('ApplicationNameList')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestPort') is not None:
+            self.dest_port = m.get('DestPort')
+        if m.get('DestPortGroup') is not None:
+            self.dest_port_group = m.get('DestPortGroup')
+        if m.get('DestPortType') is not None:
+            self.dest_port_type = m.get('DestPortType')
+        if m.get('Destination') is not None:
+            self.destination = m.get('Destination')
+        if m.get('DestinationType') is not None:
+            self.destination_type = m.get('DestinationType')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('DomainResolveType') is not None:
+            self.domain_resolve_type = m.get('DomainResolveType')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NewOrder') is not None:
+            self.new_order = m.get('NewOrder')
+        if m.get('Proto') is not None:
+            self.proto = m.get('Proto')
+        if m.get('Release') is not None:
+            self.release = m.get('Release')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class CreateNatFirewallControlPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        acl_uuid: str = None,
+        request_id: str = None,
+    ):
+        self.acl_uuid = acl_uuid
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_uuid is not None:
+            result['AclUuid'] = self.acl_uuid
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclUuid') is not None:
+            self.acl_uuid = m.get('AclUuid')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateNatFirewallControlPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNatFirewallControlPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNatFirewallControlPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateTrFirewallV2Request(TeaModel):
     def __init__(
         self,
@@ -2389,6 +2595,122 @@ class DeleteInstanceMembersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteInstanceMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteNatFirewallControlPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        acl_uuid: str = None,
+        direction: str = None,
+        lang: str = None,
+        nat_gateway_id: str = None,
+    ):
+        self.acl_uuid = acl_uuid
+        self.direction = direction
+        self.lang = lang
+        self.nat_gateway_id = nat_gateway_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_uuid is not None:
+            result['AclUuid'] = self.acl_uuid
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclUuid') is not None:
+            self.acl_uuid = m.get('AclUuid')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        return self
+
+
+class DeleteNatFirewallControlPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteNatFirewallControlPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNatFirewallControlPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNatFirewallControlPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5578,6 +5900,379 @@ class DescribeInvadeEventListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInvadeEventListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNatFirewallControlPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        acl_action: str = None,
+        acl_uuid: str = None,
+        current_page: str = None,
+        description: str = None,
+        destination: str = None,
+        direction: str = None,
+        lang: str = None,
+        nat_gateway_id: str = None,
+        page_size: str = None,
+        proto: str = None,
+        release: str = None,
+        source: str = None,
+    ):
+        self.acl_action = acl_action
+        self.acl_uuid = acl_uuid
+        self.current_page = current_page
+        self.description = description
+        self.destination = destination
+        self.direction = direction
+        self.lang = lang
+        self.nat_gateway_id = nat_gateway_id
+        self.page_size = page_size
+        self.proto = proto
+        self.release = release
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_action is not None:
+            result['AclAction'] = self.acl_action
+        if self.acl_uuid is not None:
+            result['AclUuid'] = self.acl_uuid
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.destination is not None:
+            result['Destination'] = self.destination
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.proto is not None:
+            result['Proto'] = self.proto
+        if self.release is not None:
+            result['Release'] = self.release
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclAction') is not None:
+            self.acl_action = m.get('AclAction')
+        if m.get('AclUuid') is not None:
+            self.acl_uuid = m.get('AclUuid')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Destination') is not None:
+            self.destination = m.get('Destination')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Proto') is not None:
+            self.proto = m.get('Proto')
+        if m.get('Release') is not None:
+            self.release = m.get('Release')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
+    def __init__(
+        self,
+        acl_action: str = None,
+        acl_uuid: str = None,
+        application_name_list: List[str] = None,
+        create_time: int = None,
+        description: str = None,
+        dest_port: str = None,
+        dest_port_group: str = None,
+        dest_port_group_ports: List[str] = None,
+        dest_port_type: str = None,
+        destination: str = None,
+        destination_group_cidrs: List[str] = None,
+        destination_group_type: str = None,
+        destination_type: str = None,
+        dns_result: str = None,
+        dns_result_time: int = None,
+        domain_resolve_type: int = None,
+        hit_last_time: int = None,
+        hit_times: int = None,
+        modify_time: int = None,
+        nat_gateway_id: str = None,
+        order: int = None,
+        proto: str = None,
+        release: str = None,
+        source: str = None,
+        source_group_cidrs: List[str] = None,
+        source_group_type: str = None,
+        source_type: str = None,
+        spread_cnt: str = None,
+    ):
+        self.acl_action = acl_action
+        self.acl_uuid = acl_uuid
+        self.application_name_list = application_name_list
+        self.create_time = create_time
+        self.description = description
+        self.dest_port = dest_port
+        self.dest_port_group = dest_port_group
+        self.dest_port_group_ports = dest_port_group_ports
+        self.dest_port_type = dest_port_type
+        self.destination = destination
+        self.destination_group_cidrs = destination_group_cidrs
+        self.destination_group_type = destination_group_type
+        self.destination_type = destination_type
+        self.dns_result = dns_result
+        self.dns_result_time = dns_result_time
+        self.domain_resolve_type = domain_resolve_type
+        self.hit_last_time = hit_last_time
+        self.hit_times = hit_times
+        self.modify_time = modify_time
+        self.nat_gateway_id = nat_gateway_id
+        self.order = order
+        self.proto = proto
+        self.release = release
+        self.source = source
+        self.source_group_cidrs = source_group_cidrs
+        self.source_group_type = source_group_type
+        self.source_type = source_type
+        self.spread_cnt = spread_cnt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_action is not None:
+            result['AclAction'] = self.acl_action
+        if self.acl_uuid is not None:
+            result['AclUuid'] = self.acl_uuid
+        if self.application_name_list is not None:
+            result['ApplicationNameList'] = self.application_name_list
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_port is not None:
+            result['DestPort'] = self.dest_port
+        if self.dest_port_group is not None:
+            result['DestPortGroup'] = self.dest_port_group
+        if self.dest_port_group_ports is not None:
+            result['DestPortGroupPorts'] = self.dest_port_group_ports
+        if self.dest_port_type is not None:
+            result['DestPortType'] = self.dest_port_type
+        if self.destination is not None:
+            result['Destination'] = self.destination
+        if self.destination_group_cidrs is not None:
+            result['DestinationGroupCidrs'] = self.destination_group_cidrs
+        if self.destination_group_type is not None:
+            result['DestinationGroupType'] = self.destination_group_type
+        if self.destination_type is not None:
+            result['DestinationType'] = self.destination_type
+        if self.dns_result is not None:
+            result['DnsResult'] = self.dns_result
+        if self.dns_result_time is not None:
+            result['DnsResultTime'] = self.dns_result_time
+        if self.domain_resolve_type is not None:
+            result['DomainResolveType'] = self.domain_resolve_type
+        if self.hit_last_time is not None:
+            result['HitLastTime'] = self.hit_last_time
+        if self.hit_times is not None:
+            result['HitTimes'] = self.hit_times
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.proto is not None:
+            result['Proto'] = self.proto
+        if self.release is not None:
+            result['Release'] = self.release
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_group_cidrs is not None:
+            result['SourceGroupCidrs'] = self.source_group_cidrs
+        if self.source_group_type is not None:
+            result['SourceGroupType'] = self.source_group_type
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.spread_cnt is not None:
+            result['SpreadCnt'] = self.spread_cnt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclAction') is not None:
+            self.acl_action = m.get('AclAction')
+        if m.get('AclUuid') is not None:
+            self.acl_uuid = m.get('AclUuid')
+        if m.get('ApplicationNameList') is not None:
+            self.application_name_list = m.get('ApplicationNameList')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestPort') is not None:
+            self.dest_port = m.get('DestPort')
+        if m.get('DestPortGroup') is not None:
+            self.dest_port_group = m.get('DestPortGroup')
+        if m.get('DestPortGroupPorts') is not None:
+            self.dest_port_group_ports = m.get('DestPortGroupPorts')
+        if m.get('DestPortType') is not None:
+            self.dest_port_type = m.get('DestPortType')
+        if m.get('Destination') is not None:
+            self.destination = m.get('Destination')
+        if m.get('DestinationGroupCidrs') is not None:
+            self.destination_group_cidrs = m.get('DestinationGroupCidrs')
+        if m.get('DestinationGroupType') is not None:
+            self.destination_group_type = m.get('DestinationGroupType')
+        if m.get('DestinationType') is not None:
+            self.destination_type = m.get('DestinationType')
+        if m.get('DnsResult') is not None:
+            self.dns_result = m.get('DnsResult')
+        if m.get('DnsResultTime') is not None:
+            self.dns_result_time = m.get('DnsResultTime')
+        if m.get('DomainResolveType') is not None:
+            self.domain_resolve_type = m.get('DomainResolveType')
+        if m.get('HitLastTime') is not None:
+            self.hit_last_time = m.get('HitLastTime')
+        if m.get('HitTimes') is not None:
+            self.hit_times = m.get('HitTimes')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('Proto') is not None:
+            self.proto = m.get('Proto')
+        if m.get('Release') is not None:
+            self.release = m.get('Release')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourceGroupCidrs') is not None:
+            self.source_group_cidrs = m.get('SourceGroupCidrs')
+        if m.get('SourceGroupType') is not None:
+            self.source_group_type = m.get('SourceGroupType')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('SpreadCnt') is not None:
+            self.spread_cnt = m.get('SpreadCnt')
+        return self
+
+
+class DescribeNatFirewallControlPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        policys: List[DescribeNatFirewallControlPolicyResponseBodyPolicys] = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.policys = policys
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.policys:
+            for k in self.policys:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Policys'] = []
+        if self.policys is not None:
+            for k in self.policys:
+                result['Policys'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.policys = []
+        if m.get('Policys') is not None:
+            for k in m.get('Policys'):
+                temp_model = DescribeNatFirewallControlPolicyResponseBodyPolicys()
+                self.policys.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeNatFirewallControlPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNatFirewallControlPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNatFirewallControlPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14422,6 +15117,310 @@ class ModifyInstanceMemberAttributesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyInstanceMemberAttributesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyNatFirewallControlPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        acl_action: str = None,
+        acl_uuid: str = None,
+        application_name_list: List[str] = None,
+        description: str = None,
+        dest_port: str = None,
+        dest_port_group: str = None,
+        dest_port_type: str = None,
+        destination: str = None,
+        destination_type: str = None,
+        domain_resolve_type: str = None,
+        lang: str = None,
+        nat_gateway_id: str = None,
+        proto: str = None,
+        release: str = None,
+        source: str = None,
+        source_type: str = None,
+    ):
+        self.acl_action = acl_action
+        self.acl_uuid = acl_uuid
+        self.application_name_list = application_name_list
+        self.description = description
+        self.dest_port = dest_port
+        self.dest_port_group = dest_port_group
+        self.dest_port_type = dest_port_type
+        self.destination = destination
+        self.destination_type = destination_type
+        self.domain_resolve_type = domain_resolve_type
+        self.lang = lang
+        self.nat_gateway_id = nat_gateway_id
+        self.proto = proto
+        self.release = release
+        self.source = source
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_action is not None:
+            result['AclAction'] = self.acl_action
+        if self.acl_uuid is not None:
+            result['AclUuid'] = self.acl_uuid
+        if self.application_name_list is not None:
+            result['ApplicationNameList'] = self.application_name_list
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_port is not None:
+            result['DestPort'] = self.dest_port
+        if self.dest_port_group is not None:
+            result['DestPortGroup'] = self.dest_port_group
+        if self.dest_port_type is not None:
+            result['DestPortType'] = self.dest_port_type
+        if self.destination is not None:
+            result['Destination'] = self.destination
+        if self.destination_type is not None:
+            result['DestinationType'] = self.destination_type
+        if self.domain_resolve_type is not None:
+            result['DomainResolveType'] = self.domain_resolve_type
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.proto is not None:
+            result['Proto'] = self.proto
+        if self.release is not None:
+            result['Release'] = self.release
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclAction') is not None:
+            self.acl_action = m.get('AclAction')
+        if m.get('AclUuid') is not None:
+            self.acl_uuid = m.get('AclUuid')
+        if m.get('ApplicationNameList') is not None:
+            self.application_name_list = m.get('ApplicationNameList')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestPort') is not None:
+            self.dest_port = m.get('DestPort')
+        if m.get('DestPortGroup') is not None:
+            self.dest_port_group = m.get('DestPortGroup')
+        if m.get('DestPortType') is not None:
+            self.dest_port_type = m.get('DestPortType')
+        if m.get('Destination') is not None:
+            self.destination = m.get('Destination')
+        if m.get('DestinationType') is not None:
+            self.destination_type = m.get('DestinationType')
+        if m.get('DomainResolveType') is not None:
+            self.domain_resolve_type = m.get('DomainResolveType')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('Proto') is not None:
+            self.proto = m.get('Proto')
+        if m.get('Release') is not None:
+            self.release = m.get('Release')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class ModifyNatFirewallControlPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyNatFirewallControlPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyNatFirewallControlPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyNatFirewallControlPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyNatFirewallControlPolicyPositionRequest(TeaModel):
+    def __init__(
+        self,
+        acl_uuid: str = None,
+        lang: str = None,
+        nat_gateway_id: str = None,
+        new_order: int = None,
+    ):
+        self.acl_uuid = acl_uuid
+        self.lang = lang
+        self.nat_gateway_id = nat_gateway_id
+        self.new_order = new_order
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_uuid is not None:
+            result['AclUuid'] = self.acl_uuid
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.new_order is not None:
+            result['NewOrder'] = self.new_order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclUuid') is not None:
+            self.acl_uuid = m.get('AclUuid')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NewOrder') is not None:
+            self.new_order = m.get('NewOrder')
+        return self
+
+
+class ModifyNatFirewallControlPolicyPositionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyNatFirewallControlPolicyPositionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyNatFirewallControlPolicyPositionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyNatFirewallControlPolicyPositionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

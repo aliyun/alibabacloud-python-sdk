@@ -1,3 +1,6 @@
+2023-07-25 Version: 1.3.2
+- Support NAT ACL interfaces.
+
 2023-07-19 Version: 1.3.1
 - Add new api DescribeSignatureLibVersion to support describe IPS lib version.
 - Support DescribePostpayTrafficTotal for postpay user flow detail.
