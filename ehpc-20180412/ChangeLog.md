@@ -1,3 +1,6 @@
+2023-07-25 Version: 2.0.0
+- Parameter changes in SubmitServerlessJob.
+
 2023-07-13 Version: 1.14.24
 - Support Serverless Job API.
 

@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddContainerAppResponse:
         """
-        The operation that you want to perform. Set the value to AddContainerApp.
+        If you select an image for a new containerized application, the image is pulled from Docker Hub by default. However, the version of the image may not be up to date. You can call the [PullImage](~~159052~~) operation to pull the latest image.
         
         @param request: AddContainerAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -80,7 +80,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.AddContainerAppResponse:
         """
-        The operation that you want to perform. Set the value to AddContainerApp.
+        If you select an image for a new containerized application, the image is pulled from Docker Hub by default. However, the version of the image may not be up to date. You can call the [PullImage](~~159052~~) operation to pull the latest image.
         
         @param request: AddContainerAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -112,7 +112,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddContainerAppRequest,
     ) -> ehpc20180412_models.AddContainerAppResponse:
         """
-        The operation that you want to perform. Set the value to AddContainerApp.
+        If you select an image for a new containerized application, the image is pulled from Docker Hub by default. However, the version of the image may not be up to date. You can call the [PullImage](~~159052~~) operation to pull the latest image.
         
         @param request: AddContainerAppRequest
         @return: AddContainerAppResponse
@@ -125,7 +125,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.AddContainerAppRequest,
     ) -> ehpc20180412_models.AddContainerAppResponse:
         """
-        The operation that you want to perform. Set the value to AddContainerApp.
+        If you select an image for a new containerized application, the image is pulled from Docker Hub by default. However, the version of the image may not be up to date. You can call the [PullImage](~~159052~~) operation to pull the latest image.
         
         @param request: AddContainerAppRequest
         @return: AddContainerAppResponse
@@ -6052,8 +6052,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.queues):
-            query['Queues'] = request.queues
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.start_order):
@@ -6066,8 +6064,6 @@ class Client(OpenApiClient):
             query['SubmitTimeEnd'] = request.submit_time_end
         if not UtilClient.is_unset(request.submit_time_start):
             query['SubmitTimeStart'] = request.submit_time_start
-        if not UtilClient.is_unset(request.users):
-            query['Users'] = request.users
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6104,8 +6100,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.queues):
-            query['Queues'] = request.queues
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.start_order):
@@ -6118,8 +6112,6 @@ class Client(OpenApiClient):
             query['SubmitTimeEnd'] = request.submit_time_end
         if not UtilClient.is_unset(request.submit_time_start):
             query['SubmitTimeStart'] = request.submit_time_start
-        if not UtilClient.is_unset(request.users):
-            query['Users'] = request.users
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
