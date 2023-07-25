@@ -32716,6 +32716,7 @@ class HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO(TeaMode
         breakfast: str = None,
         discount_price: int = None,
         last_discounts_price: int = None,
+        last_discounts_rounding_price: int = None,
         last_num: int = None,
         rate_start_time: str = None,
         status: int = None,
@@ -32724,6 +32725,7 @@ class HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO(TeaMode
         self.breakfast = breakfast
         self.discount_price = discount_price
         self.last_discounts_price = last_discounts_price
+        self.last_discounts_rounding_price = last_discounts_rounding_price
         self.last_num = last_num
         self.rate_start_time = rate_start_time
         self.status = status
@@ -32745,6 +32747,8 @@ class HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO(TeaMode
             result['discount_price'] = self.discount_price
         if self.last_discounts_price is not None:
             result['last_discounts_price'] = self.last_discounts_price
+        if self.last_discounts_rounding_price is not None:
+            result['last_discounts_rounding_price'] = self.last_discounts_rounding_price
         if self.last_num is not None:
             result['last_num'] = self.last_num
         if self.rate_start_time is not None:
@@ -32763,6 +32767,8 @@ class HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO(TeaMode
             self.discount_price = m.get('discount_price')
         if m.get('last_discounts_price') is not None:
             self.last_discounts_price = m.get('last_discounts_price')
+        if m.get('last_discounts_rounding_price') is not None:
+            self.last_discounts_rounding_price = m.get('last_discounts_rounding_price')
         if m.get('last_num') is not None:
             self.last_num = m.get('last_num')
         if m.get('rate_start_time') is not None:
