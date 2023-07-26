@@ -1,3 +1,7 @@
+2023-07-26 Version: 1.0.3
+- Support for inviting account to a specified folder.
+- The invitation link supports folder authentication.
+
 2023-05-04 Version: 1.0.2
 - Support for inviting account to a specified folder.
 - The invitation link supports folder authentication.
