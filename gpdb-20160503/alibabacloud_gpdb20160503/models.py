@@ -2014,6 +2014,7 @@ class DeleteCollectionDataRequest(TeaModel):
         self,
         collection: str = None,
         collection_data: str = None,
+        collection_data_filter: str = None,
         dbinstance_id: str = None,
         namespace: str = None,
         namespace_password: str = None,
@@ -2022,6 +2023,7 @@ class DeleteCollectionDataRequest(TeaModel):
     ):
         self.collection = collection
         self.collection_data = collection_data
+        self.collection_data_filter = collection_data_filter
         self.dbinstance_id = dbinstance_id
         self.namespace = namespace
         self.namespace_password = namespace_password
@@ -2041,6 +2043,8 @@ class DeleteCollectionDataRequest(TeaModel):
             result['Collection'] = self.collection
         if self.collection_data is not None:
             result['CollectionData'] = self.collection_data
+        if self.collection_data_filter is not None:
+            result['CollectionDataFilter'] = self.collection_data_filter
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.namespace is not None:
@@ -2059,6 +2063,8 @@ class DeleteCollectionDataRequest(TeaModel):
             self.collection = m.get('Collection')
         if m.get('CollectionData') is not None:
             self.collection_data = m.get('CollectionData')
+        if m.get('CollectionDataFilter') is not None:
+            self.collection_data_filter = m.get('CollectionDataFilter')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('Namespace') is not None:
