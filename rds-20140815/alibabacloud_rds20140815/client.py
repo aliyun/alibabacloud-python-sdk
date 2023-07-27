@@ -26166,6 +26166,8 @@ class Client(OpenApiClient):
             query['SourceBiz'] = request.source_biz
         if not UtilClient.is_unset(request.switch_time):
             query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.target_minor_version):
+            query['TargetMinorVersion'] = request.target_minor_version
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.zone_id):
@@ -26253,6 +26255,8 @@ class Client(OpenApiClient):
             query['SourceBiz'] = request.source_biz
         if not UtilClient.is_unset(request.switch_time):
             query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.target_minor_version):
+            query['TargetMinorVersion'] = request.target_minor_version
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.zone_id):

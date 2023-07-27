@@ -55744,6 +55744,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         serverless_configuration: ModifyDBInstanceSpecRequestServerlessConfiguration = None,
         source_biz: str = None,
         switch_time: str = None,
+        target_minor_version: str = None,
         used_time: int = None,
         zone_id: str = None,
     ):
@@ -55788,6 +55789,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.source_biz = source_biz
         # The response parameters.
         self.switch_time = switch_time
+        self.target_minor_version = target_minor_version
         # The ID of the order.
         self.used_time = used_time
         # The RDS edition of the instance. Valid values:
@@ -55850,6 +55852,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             result['SourceBiz'] = self.source_biz
         if self.switch_time is not None:
             result['SwitchTime'] = self.switch_time
+        if self.target_minor_version is not None:
+            result['TargetMinorVersion'] = self.target_minor_version
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
         if self.zone_id is not None:
@@ -55899,6 +55903,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             self.source_biz = m.get('SourceBiz')
         if m.get('SwitchTime') is not None:
             self.switch_time = m.get('SwitchTime')
+        if m.get('TargetMinorVersion') is not None:
+            self.target_minor_version = m.get('TargetMinorVersion')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
         if m.get('ZoneId') is not None:
@@ -55929,6 +55935,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         serverless_configuration_shrink: str = None,
         source_biz: str = None,
         switch_time: str = None,
+        target_minor_version: str = None,
         used_time: int = None,
         zone_id: str = None,
     ):
@@ -55973,6 +55980,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         self.source_biz = source_biz
         # The response parameters.
         self.switch_time = switch_time
+        self.target_minor_version = target_minor_version
         # The ID of the order.
         self.used_time = used_time
         # The RDS edition of the instance. Valid values:
@@ -56034,6 +56042,8 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
             result['SourceBiz'] = self.source_biz
         if self.switch_time is not None:
             result['SwitchTime'] = self.switch_time
+        if self.target_minor_version is not None:
+            result['TargetMinorVersion'] = self.target_minor_version
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
         if self.zone_id is not None:
@@ -56082,6 +56092,8 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
             self.source_biz = m.get('SourceBiz')
         if m.get('SwitchTime') is not None:
             self.switch_time = m.get('SwitchTime')
+        if m.get('TargetMinorVersion') is not None:
+            self.target_minor_version = m.get('TargetMinorVersion')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
         if m.get('ZoneId') is not None:
