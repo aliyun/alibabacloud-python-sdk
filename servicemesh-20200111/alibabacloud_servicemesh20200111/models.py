@@ -831,7 +831,9 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate(Tea
         name: str = None,
         namespace: str = None,
     ):
+        # The name of the virtual service.
         self.name = name
+        # The namespace to which the virtual service belongs.
         self.namespace = namespace
 
     def validate(self):
@@ -863,6 +865,7 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPe
         self,
         value: float = None,
     ):
+        # The percentage of requests that are aborted with the specified error code, which is expressed as a decimal.
         self.value = value
 
     def validate(self):
@@ -891,7 +894,9 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort(T
         http_status: int = None,
         percentage: CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage = None,
     ):
+        # The HTTP status code.
         self.http_status = http_status
+        # The percentage of requests that are aborted with the specified error code.
         self.percentage = percentage
 
     def validate(self):
@@ -925,6 +930,7 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPe
         self,
         value: float = None,
     ):
+        # The percentage of requests to which the delay fault is injected, which is expressed as a decimal.
         self.value = value
 
     def validate(self):
@@ -953,7 +959,9 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay(T
         fixed_delay: str = None,
         percentage: CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage = None,
     ):
+        # The fixed duration for request delay.
         self.fixed_delay = fixed_delay
+        # The percentage of requests to which the delay fault is injected.
         self.percentage = percentage
 
     def validate(self):
@@ -988,7 +996,9 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault(TeaMod
         abort: CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort = None,
         delay: CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay = None,
     ):
+        # The configurations for aborting requests with specified error codes.
         self.abort = abort
+        # The duration to delay a request.
         self.delay = delay
 
     def validate(self):
@@ -1027,8 +1037,11 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect
         redirect_code: int = None,
         uri: str = None,
     ):
+        # The value to be used to overwrite the value of the Authority or Host header during redirection.``
         self.authority = authority
+        # The HTTP status code to be used to indicate URL redirection. Default value: 301.
         self.redirect_code = redirect_code
+        # The value to be used to overwrite the URL path during redirection.
         self.uri = uri
 
     def validate(self):
@@ -1065,7 +1078,9 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror(TeaMo
         host: str = None,
         subset: str = None,
     ):
+        # The name of the service defined in the service registry.
         self.host = host
+        # The name of the service subset.
         self.subset = subset
 
     def validate(self):
@@ -1097,6 +1112,7 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercen
         self,
         value: float = None,
     ):
+        # The percentage of requests that are mirrored to another destination except for the original destination, which is expressed as a decimal.
         self.value = value
 
     def validate(self):
@@ -1124,6 +1140,12 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetry
         self,
         value: bool = None,
     ):
+        # Specifies whether to allow retries to other localities. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
         self.value = value
 
     def validate(self):
@@ -1154,9 +1176,13 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries(TeaM
         retry_on: str = None,
         retry_remote_localities: CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities = None,
     ):
+        # The number of retries allowed for a request.
         self.attempts = attempts
+        # The timeout period for each retry. Example: `5s`.
         self.per_try_timeout = per_try_timeout
+        # The condition for retries. Example: `connect-failure,refused-stream,503`.
         self.retry_on = retry_on
+        # Specifies whether to allow retries to other localities.
         self.retry_remote_localities = retry_remote_localities
 
     def validate(self):
@@ -1199,7 +1225,9 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite(TeaM
         authority: str = None,
         uri: str = None,
     ):
+        # The value to be used to overwrite the value of the Authority or Host header.
         self.authority = authority
+        # The value to be used to overwrite the path or prefix of the URI.
         self.uri = uri
 
     def validate(self):
@@ -1238,13 +1266,21 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions(TeaModel):
         rewrite: CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite = None,
         timeout: str = None,
     ):
+        # The virtual service that defines traffic routing.
         self.delegate = delegate
+        # The configurations of fault injection.
         self.fault = fault
+        # The HTTP redirect rule.
         self.httpredirect = httpredirect
+        # The configurations for mirroring HTTP traffic to another destination in addition to forwarding requests to the specified destination.
         self.mirror = mirror
+        # The percentage of requests that are mirrored to another destination except for the original destination.
         self.mirror_percentage = mirror_percentage
+        # The configurations of retries for failed requests.
         self.retries = retries
+        # The configurations for rewriting the virtual service.
         self.rewrite = rewrite
+        # The timeout period for requests.
         self.timeout = timeout
 
     def validate(self):
@@ -1322,8 +1358,15 @@ class CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders(TeaModel):
         matching_mode: str = None,
         name: str = None,
     ):
+        # The header value to be matched.
         self.matching_content = matching_content
+        # The matching mode for the header value. Valid values:
+        # 
+        # *   `exact`: exact match
+        # *   `prefix`: match by prefix
+        # *   `regex`: match by regular expression
         self.matching_mode = matching_mode
+        # The header key to be matched.
         self.name = name
 
     def validate(self):
@@ -1360,7 +1403,9 @@ class CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes(
         snihosts: List[str] = None,
         tlsport: int = None,
     ):
+        # The Server Name Indication (SNI) values to be matched.
         self.snihosts = snihosts
+        # The TLS port.
         self.tlsport = tlsport
 
     def validate(self):
@@ -1393,7 +1438,13 @@ class CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI(TeaModel):
         matching_content: str = None,
         matching_mode: str = None,
     ):
+        # The content to be matched.
         self.matching_content = matching_content
+        # The matching mode for the routing rule. Valid values:
+        # 
+        # *   `exact`: exact match
+        # *   `prefix`: match by prefix
+        # *   `regex`: match by regular expression
         self.matching_mode = matching_mode
 
     def validate(self):
@@ -1428,9 +1479,13 @@ class CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest(TeaModel):
         tlsmatch_attributes: List[CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes] = None,
         uri: CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI = None,
     ):
+        # The request headers to be matched.
         self.headers = headers
+        # The ports of destination services for Layer 4 weighted routing.
         self.ports = ports
+        # The matching rule for Transport Layer Security (TLS) traffic.
         self.tlsmatch_attributes = tlsmatch_attributes
+        # The matching rule for URIs.
         self.uri = uri
 
     def validate(self):
@@ -1519,8 +1574,10 @@ class CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination(Te
         port: CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestinationPort = None,
         subset: str = None,
     ):
+        # The name of the service defined in the service registry.
         self.host = host
         self.port = port
+        # The name of the service subset.
         self.subset = subset
 
     def validate(self):
@@ -1559,7 +1616,9 @@ class CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations(TeaModel):
         destination: CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination = None,
         weight: int = None,
     ):
+        # The unique endpoint of the destination service to which the specified requests are sent.
         self.destination = destination
+        # The weight of the service subset.
         self.weight = weight
 
     def validate(self):
@@ -1595,16 +1654,24 @@ class CreateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
         httpadvanced_options: CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions = None,
         match_request: CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest = None,
         namespace: str = None,
+        raw_vsroute: Any = None,
         route_destinations: List[CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations] = None,
         route_name: str = None,
         route_type: str = None,
     ):
         self.domains = domains
+        # The advanced settings for routing HTTP traffic.
         self.httpadvanced_options = httpadvanced_options
+        # The matching rules for traffic routing.
         self.match_request = match_request
+        # The name of the namespace.
         self.namespace = namespace
+        self.raw_vsroute = raw_vsroute
+        # The endpoints of destination services for Layer 4 weighted routing.
         self.route_destinations = route_destinations
+        # The name of the routing rule.
         self.route_name = route_name
+        # The type of the traffic to be routed. Valid values: `HTTP`, `TLS`, and `TCP`.
         self.route_type = route_type
 
     def validate(self):
@@ -1631,6 +1698,8 @@ class CreateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
             result['MatchRequest'] = self.match_request.to_map()
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.raw_vsroute is not None:
+            result['RawVSRoute'] = self.raw_vsroute
         result['RouteDestinations'] = []
         if self.route_destinations is not None:
             for k in self.route_destinations:
@@ -1653,6 +1722,8 @@ class CreateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
             self.match_request = temp_model.from_map(m['MatchRequest'])
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('RawVSRoute') is not None:
+            self.raw_vsroute = m.get('RawVSRoute')
         self.route_destinations = []
         if m.get('RouteDestinations') is not None:
             for k in m.get('RouteDestinations'):
@@ -1675,11 +1746,21 @@ class CreateIstioGatewayRoutesRequest(TeaModel):
         service_mesh_id: str = None,
         status: int = None,
     ):
+        # The description of the routing rule.
         self.description = description
+        # The information about the routing rule to be created for the ASM gateway.
         self.gateway_route = gateway_route
+        # The name of the ASM gateway.
         self.istio_gateway_name = istio_gateway_name
+        # The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
         self.priority = priority
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
+        # The status of the routing rule. Valid values:
+        # 
+        # *   `0`: The routing rule is valid.
+        # *   `1`: The routing rule is invalid.
+        # *   `2`: An error occurs during the creation or update of the routing rule.
         self.status = status
 
     def validate(self):
@@ -1734,11 +1815,21 @@ class CreateIstioGatewayRoutesShrinkRequest(TeaModel):
         service_mesh_id: str = None,
         status: int = None,
     ):
+        # The description of the routing rule.
         self.description = description
+        # The information about the routing rule to be created for the ASM gateway.
         self.gateway_route_shrink = gateway_route_shrink
+        # The name of the ASM gateway.
         self.istio_gateway_name = istio_gateway_name
+        # The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
         self.priority = priority
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
+        # The status of the routing rule. Valid values:
+        # 
+        # *   `0`: The routing rule is valid.
+        # *   `1`: The routing rule is invalid.
+        # *   `2`: An error occurs during the creation or update of the routing rule.
         self.status = status
 
     def validate(self):
@@ -1786,6 +1877,7 @@ class CreateIstioGatewayRoutesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1927,305 +2019,304 @@ class CreateServiceMeshRequest(TeaModel):
         vpc_id: str = None,
         web_assembly_filter_enabled: bool = None,
     ):
-        # Specifies whether to use a custom Prometheus instance. Valid values:
+        # Specifies whether to enable access log collection. Valid values:
         # 
-        # *   `true`: uses a custom Prometheus instance.
-        # *   `false`: does not use a custom Prometheus instance.
+        # *   `true`
+        # *   `false`
         # 
         # Default value: `false`.
         self.access_log_enabled = access_log_enabled
-        # The name of the Log Service project that is used to collect access logs.
+        # Specifies whether to enable access log collection. Valid values:
+        # 
+        # *   "": disables access log collection.
+        # *   `/dev/stdout`: enables access log collection. Access logs are written to /dev/stdout.
         self.access_log_file = access_log_file
-        # Specifies whether to enable access logging. Valid values:
-        # 
-        # *   "": disables access logging.
-        # *   `/dev/stdout`: enables access logging. Access logs are written to /dev/stdout.
+        # Custom fields of access logs. To set this parameter, you must enable access log collection. Otherwise, you cannot set this parameter. The value must be a JSON string. The following key values must be contained: authority_for, bytes_received, bytes_sent, downstream_local_address, downstream_remote_address, duration, istio_policy_status, method, path, protocol, requested_server_name, response_code, response_flags, route_name, start_time, trace_id, upstream_cluster, upstream_host, upstream_local_address, upstream_service_time, upstream_transport_failure_reason, user_agent, and x_forwarded_for.
         self.access_log_format = access_log_format
-        # Specifies whether to enable the rollback feature for Istio resources. Valid values:
-        # 
-        # *   `true`: enables the rollback feature for Istio resources.
-        # *   `false`: disables the rollback feature for Istio resources.
-        # 
-        # Default value: `false`.
+        # The SLS project from which access logs are collected.
         self.access_log_project = access_log_project
-        # The endpoint of gRPC ALS for Envoy.
+        # Specifies whether to enable gRPC Access Log Service (ALS) of Envoy. gRPC is short for Google Remote Procedure Call. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
         self.access_log_service_enabled = access_log_service_enabled
-        # The port of gRPC ALS for Envoy.
+        # The endpoint of Envoy\"s gRPC ALS.
         self.access_log_service_host = access_log_service_host
-        # Specifies whether to enable Gateway API. Valid values:
-        # 
-        # *   `true`: enables Gateway API.
-        # *   `false`: disables Gateway API.
-        # 
-        # Default value: `false`.
+        # The port of Envoy\"s gRPC ALS.
         self.access_log_service_port = access_log_service_port
-        # The instance type of the SLB instance bound to Istio Pilot. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`, `slb.s3.small`, `slb.s3.medium`, and `slb.s3.large`.
+        # The type of the SLB instance that is bound to Istio Pilot. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`, `slb.s3.small`, `slb.s3.medium`, and `slb.s3.large`.
         self.api_server_load_balancer_spec = api_server_load_balancer_spec
-        # Specifies whether to enable the Tracing Analysis feature. Valid values:
+        # Specifies whether to expose the API server to the Internet. Valid values:
         # 
-        # *   `true`: enables the Tracing Analysis feature.
-        # *   `false`: disables the Tracing Analysis feature.
+        # *   `true`
+        # *   `false`
         # 
         # Default value: `false`.
+        # 
+        # > If you set this parameter to `false`, the API server cannot be accessed over the Internet.
         self.api_server_public_eip = api_server_public_eip
-        # The number of CPU cores that are requested by the proxy container.
-        self.audit_project = audit_project
-        # The auto-renewal period of the SLB instance. This parameter is valid only if the `ChargeType` parameter is set to `PrePaid`. If the subscription period of the SLB instance is less than one year, the value of this parameter indicates the number of months for auto-renewal. If the subscription period of the SLB instance is more than one year, the value of this parameter indicates the number of years for auto-renewal.
-        self.auto_renew = auto_renew
-        # The specification of the ASM instance. Valid values:
-        # 
-        # *   `standard`: Standard Edition
-        # *   `enterprise`: Enterprise Edition
-        # *   `ultimate`: Ultimate Edition
-        self.auto_renew_period = auto_renew_period
-        # Specifies whether to enable Application High Availability Service (AHAS)-based throttling. Valid values:
-        # 
-        # *   `true`: enables AHAS-based throttling.
-        # *   `false`: disables AHAS-based throttling.
-        # 
-        # Default value: `false`.
-        self.craggregation_enabled = craggregation_enabled
-        # The subscription period of the SLB instance. Unit: month. This parameter is valid only if the ChargeType parameter is set to PrePaid. For example, if the subscription period is one year, set this parameter to 12.
-        self.charge_type = charge_type
-        # Specifies whether to enable MultiBuffer-based Transport Layer Security (TLS) acceleration. Valid values:
-        # 
-        # *   `true`: enables MultiBuffer-based TLS acceleration.
-        # *   `false`: disables MultiBuffer-based TLS acceleration.
-        # 
-        # Default value: `true`
-        self.cluster_spec = cluster_spec
-        # The instance ID of the Nacos registry.
-        self.config_source_enabled = config_source_enabled
-        # Specifies whether to enable Dubbo Filter. Valid values:
-        # 
-        # *   `true`: enables Dubbo Filter.
-        # *   `false`: disables Dubbo Filter.
-        # 
-        # Default value: `false`.
-        self.config_source_nacos_id = config_source_nacos_id
-        # The name of the Log Service project that is used to collect the logs of the control plane.
-        self.control_plane_log_enabled = control_plane_log_enabled
-        # The custom format of access logs. To set this parameter, you must enable access log collection. Otherwise, you cannot set this parameter. The value must be a JSON string. The following key names must be contained: authority_for, bytes_received, bytes_sent, downstream_local_address, downstream_remote_address, duration, istio_policy_status, method, path, protocol, requested_server_name, response_code, response_flags, route_name, start_time, trace_id, upstream_cluster, upstream_host, upstream_local_address, upstream_service_time, upstream_transport_failure_reason, user_agent, and x_forwarded_for.
-        self.control_plane_log_project = control_plane_log_project
-        # The endpoint of the custom Prometheus instance.
-        self.customized_prometheus = customized_prometheus
-        # Specifies whether to route traffic to the nearest instance. Valid values:
-        # 
-        # *   `true`: routes traffic to the nearest instance.
-        # *   `false`: does not route traffic to the nearest instance.
-        # 
-        # Default value: `false`.
-        self.customized_zipkin = customized_zipkin
-        # The edition of the ASM instance.
-        self.dnsproxying_enabled = dnsproxying_enabled
-        # Specifies whether to enable gateway configuration filtering. Valid values:
-        # 
-        # *   `true`: enables gateway configuration filtering.
-        # *   `false`: disables gateway configuration filtering.
-        # 
-        # Default value: `false`.
-        self.dubbo_filter_enabled = dubbo_filter_enabled
-        # Specifies whether to enable the external service registry. Valid values:
-        # 
-        # *   `true`: enables the external service registry.
-        # *   `false`: disables the external service registry.
-        # 
-        # Default value: `false`.
-        self.edition = edition
         # The name of the Log Service project that is used for mesh audit.
         # 
         # Default value: mesh-log-{ASM instance ID}.
-        self.enable_audit = enable_audit
-        # Specifies whether to allow the Kubernetes API of clusters on the data plane to access Istio resources. To use this feature, the version of the ASM instance must be V1.9.7.93 or later. Valid values:
-        # 
-        # *   `true`: allows the Kubernetes API of clusters on the data plane to access Istio resources.
-        # *   `false`: does not allow the Kubernetes API of clusters on the data plane to access Istio resources.
-        # 
-        # Default value: `false`.
-        self.enable_crhistory = enable_crhistory
-        # Specifies whether to enable gRPC Access Log Service (ALS) for Envoy. Valid values:
-        # 
-        # *   `true`: enables gRPC ALS.
-        # *   `false`: disables gRPC ALS.
-        # 
-        # Default value: `false`.
-        self.enable_sdsserver = enable_sdsserver
-        # The outbound ports to be excluded from redirection to the sidecar proxies in the ASM instance. Separate multiple port numbers with commas (,).
-        self.exclude_ipranges = exclude_ipranges
-        # Specifies whether to enable the OPA plug-in. Valid values:
-        # 
-        # *   `true`: enables the OPA plug-in.
-        # *   `false`: disables the OPA plug-in.
-        # 
-        # Default value: `false`.
-        self.exclude_inbound_ports = exclude_inbound_ports
-        # The inbound ports to be excluded from redirection to the sidecar proxies in the ASM instance. Separate multiple port numbers with commas (,).
-        self.exclude_outbound_ports = exclude_outbound_ports
-        # The existing CA key, which is encoded in Base64. This parameter is used in scenarios where you migrate open source Istio to ASM. It specifies the content of the ca-key.pem file in the istio-ca-secret secret. The secret is in the istio-system namespace of the Kubernetes cluster where the open source Istio is installed.
-        self.existing_ca_cert = existing_ca_cert
-        # The type of the existing CA certificate. Valid values:
-        # 
-        # *   1: Self-signed certificate generated by Istiod. The certificate corresponds to the secret named istio-ca-secret in the istio-system namespace. If you use this type of certificate, you must set `ExistingCaCert` and `ExsitingCaKey` parameters.
-        # *   2: Administrator-specified certificate. For more information, see [plugin ca cert](https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/). In most cases, the certificate corresponds to the secret named cacerts in the istio-system namespace. If you use this type of certificate, you must set `ExisingRootCaCert` and `ExisingRootCaKey` parameters.
-        self.existing_ca_key = existing_ca_key
-        # The existing root certificate, which is encoded in Base64.
-        self.existing_ca_type = existing_ca_type
-        # The private key that corresponds to the root certificate, which is encoded in Base64.
-        self.existing_root_ca_cert = existing_root_ca_cert
-        # The ID of the request.
-        self.existing_root_ca_key = existing_root_ca_key
-        # Specifies whether to enable Secret Discovery Service (SDS). Valid values:
-        # 
-        # *   `true`: enables SDS.
-        # *   `false`: disables SDS.
-        # 
-        # Default value: `false`.
-        self.filter_gateway_cluster_config = filter_gateway_cluster_config
-        # Specifies whether to enable the collection of control-plane logs. Valid values:
-        # 
-        # *   `true`: enables the collection of control-plane logs.
-        # *   `false`: disables the collection of control-plane logs.
-        # 
-        # Default value: `false`.
-        self.gateway_apienabled = gateway_apienabled
-        # The IP ranges in CIDR form to be excluded from redirection to sidecar proxies in the ASM instance.
-        self.include_ipranges = include_ipranges
-        # The ID of the virtual private cloud (VPC).
-        self.istio_version = istio_version
-        # Specifies whether to enable access log collection. Valid values:
-        # 
-        # *   `true`: enables access log collection.
-        # *   `false`: disables access log collection.
-        # 
-        # Default value: `false`.
-        self.kiali_enabled = kiali_enabled
-        # Specifies whether to enable Prometheus monitoring. We recommend that you use Prometheus Service of [Application Real-Time Monitoring Service (ARMS)](https://arms.console.aliyun.com/). Valid values:
-        # 
-        # *   `true`: enables Prometheus monitoring.
-        # *   `false`: does not enable Prometheus monitoring.
-        # 
-        # Default value: `false`.
-        self.locality_lbconf = locality_lbconf
-        # The configurations for the access to the nearest instance.
-        self.locality_load_balancing = locality_load_balancing
-        # Specifies whether to enable the DNS proxy feature. Valid values:
-        # 
-        # *   `true`: enables the DNS proxy feature.
-        # *   `false`: disables the DNS proxy feature.
-        # 
-        # Default value: `false`.
-        self.mseenabled = mseenabled
-        # The pull-request latency. Default value: `30`. Unit: seconds.
-        self.multi_buffer_enabled = multi_buffer_enabled
-        # Specifies whether to use an existing CA certificate and private key.
-        self.multi_buffer_poll_delay = multi_buffer_poll_delay
-        # Specifies whether to enable Thrift Filter. Valid values:
-        # 
-        # *   `true`: enables Thrift Filter.
-        # *   `false`: disables Thrift Filter.
-        # 
-        # Default value: `false`.
-        self.mysql_filter_enabled = mysql_filter_enabled
-        # The ID of the vSwitch to which the ASM instance is connected.
-        self.name = name
-        # The maximum size of the memory that is available for OPA. You can specify the parameter value in the standard quantity representation used by Kubernetes. For example, a value of 1 Mi represents a memory size of 1,024 KB.
-        self.opalimit_cpu = opalimit_cpu
-        # Specifies whether to enable the mesh audit feature. To enable this feature, make sure that you have activated [Log Service](https://sls.console.aliyun.com/). Valid values:
-        # 
-        # *   `true`: enables the mesh audit feature.
-        # *   `false`: disables the mesh audit feature.
-        # 
-        # Default value: `false`.
-        self.opalimit_memory = opalimit_memory
-        # The number of CPU cores that are requested by OPA. You can specify the parameter value in the standard representation form of CPUs in Kubernetes. For example, a value of 1 represents one CPU core.
-        self.opalog_level = opalog_level
-        # The size of the memory that is requested by OPA. You can specify the parameter value in the standard quantity representation used by Kubernetes. For example, a value of 1 Mi represents a memory size of 1,024 KB.
-        self.oparequest_cpu = oparequest_cpu
-        # The maximum number of CPU cores that are available for OPA.
-        self.oparequest_memory = oparequest_memory
-        # Specifies whether to enable the mesh topology feature. To enable this feature, make sure that you have enabled Prometheus monitoring. If Prometheus monitoring is disabled, you must set this parameter to `false`. Valid values:
-        # 
-        # *   `true`: enables the mesh topology feature.
-        # *   `false`: disables the mesh topology feature.
-        # 
-        # Default value: `false`.
-        self.opa_enabled = opa_enabled
-        # The log level of OPA.
-        self.open_agent_policy = open_agent_policy
+        self.audit_project = audit_project
         # Specifies whether to enable auto-renewal for the SLB instance if the SLB instance uses the subscription billing method. Valid values:
         # 
-        # *   `true`: enables auto-renewal.
-        # *   `false`: disables auto-renewal.
-        self.period = period
+        # - true
+        # 
+        # - false
+        self.auto_renew = auto_renew
+        # The auto-renewal period of the SLB instance. This parameter is valid only if the `ChargeType` parameter is set to `PrePay`. If the original subscription period of the SLB instance is less than one year, the value of this parameter indicates the number of months for auto-renewal. If the original subscription period of the SLB instance is more than one year, the value of this parameter indicates the number of years for auto-renewal.
+        self.auto_renew_period = auto_renew_period
+        # Specifies whether to allow the Kubernetes API of clusters on the data plane to access Istio resources. The version of the ASM instance must be V1.9.7.93 or later. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.craggregation_enabled = craggregation_enabled
         # The billing method of the SLB instance. Valid values:
-        # 
         # *   `PayOnDemand`: pay-as-you-go.
-        # *   `PrePaid`: subscription.
-        self.pilot_load_balancer_spec = pilot_load_balancer_spec
-        # Specifies whether to enable Redis Filter. Valid values:
+        # *   `PrePay`: subscription.
+        self.charge_type = charge_type
+        # The edition of the ASM instance. Valid values:
         # 
-        # *   `true`: enables Redis Filter.
-        # *   `false`: disables Redis Filter.
+        # - `standard`: Standard Edition
         # 
-        # Default value: `false`.
-        self.prometheus_url = prometheus_url
-        # The maximum size of the memory that is available for the proxy container.
-        self.proxy_limit_cpu = proxy_limit_cpu
-        # The IP ranges in CIDR form to redirect to sidecar proxies in the ASM instance.
-        self.proxy_limit_memory = proxy_limit_memory
-        # The size of the memory that is requested by the proxy container.
-        self.proxy_request_cpu = proxy_request_cpu
-        # The maximum number of CPU cores that are available for the proxy container.
-        self.proxy_request_memory = proxy_request_memory
-        # Specifies whether to enable MySQL Filter. Valid values:
+        # - `enterprise`: Enterprise Edition
         # 
-        # *   `true`: enables MySQL Filter.
-        # *   `false`: disables MySQL Filter.
+        # - `ultimate`: Ultimate Edition
+        self.cluster_spec = cluster_spec
+        # Specifies whether to enable the external service registry. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         # 
         # Default value: `false`.
-        self.redis_filter_enabled = redis_filter_enabled
-        # The Istio version of the ASM instance.
-        self.region_id = region_id
-        # Specifies whether to install the Open Policy Agent (OPA) plug-in. Valid values:
+        self.config_source_enabled = config_source_enabled
+        # The instance ID of the Nacos registry.
+        self.config_source_nacos_id = config_source_nacos_id
+        # Specifies whether to enable the collection of control plane logs. Valid values:
         # 
-        # *   `true`: installs the OPA plug-in.
-        # *   `false`: does not install the OPA plug-in.
-        # 
-        # Default value: `false`.
-        self.telemetry = telemetry
-        # Specifies whether to enable WebAssembly Filter. Valid values:
-        # 
-        # *   `true`: enables WebAssembly Filter.
-        # *   `false`: disables WebAssembly Filter.
+        # *   `true`
+        # *   `false`
         # 
         # Default value: `false`.
-        self.thrift_filter_enabled = thrift_filter_enabled
+        self.control_plane_log_enabled = control_plane_log_enabled
+        # The name of the Log Service project that is used to collect the logs of the control plane.
+        self.control_plane_log_project = control_plane_log_project
+        # Specifies whether to use a custom Prometheus instance. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.customized_prometheus = customized_prometheus
         # Specifies whether to use a self-managed Zipkin system to collect tracing data. Valid values:
         # 
         # *   `true`: uses a self-managed Zipkin system to collect tracing data.
         # *   `false`: uses Alibaba Cloud Tracing Analysis to collect tracing data.
         # 
         # Default value: `false`.
-        self.trace_sampling = trace_sampling
-        # The name of the ASM instance.
-        self.tracing = tracing
-        # The existing CA certificate, which is encoded in Base64. This parameter is used in scenarios where you migrate open source Istio to ASM. It specifies the content of the ca-cert.pem file in the istio-ca-secret secret. The secret is in the istio-system namespace of the Kubernetes cluster where the open source Istio is installed.
-        self.use_existing_ca = use_existing_ca
-        # The sampling percentage of tracing analysis.
-        self.v_switches = v_switches
-        # Specifies whether to expose the API server to the Internet. Valid values:
+        self.customized_zipkin = customized_zipkin
+        # Specifies whether to enable the DNS proxy feature. Valid values:
         # 
-        # *   `true`: exposes the API server to the Internet.
-        # *   `false`: does not expose the API server to the Internet.
+        # *   `true`
+        # *   `false`
         # 
         # Default value: `false`.
+        self.dnsproxying_enabled = dnsproxying_enabled
+        # Specifies whether to enable Dubbo Filter. Valid values:
         # 
-        # >  If you set this parameter to `false`, the API server cannot be accessed over the Internet.
-        self.vpc_id = vpc_id
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.dubbo_filter_enabled = dubbo_filter_enabled
+        # The edition of the ASM instance.
+        self.edition = edition
+        # Specifies whether to enable the mesh audit feature. To enable this feature, make sure that you have activated [Log Service](https://sls.console.aliyun.com/). Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.enable_audit = enable_audit
+        # Specifies whether to enable the rollback feature for Istio resources. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.enable_crhistory = enable_crhistory
+        # Specifies whether to enable Secret Discovery Service (SDS). Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.enable_sdsserver = enable_sdsserver
+        # The IP ranges in CIDR form to be excluded from redirection to the sidecar proxy in the ASM instance.
+        self.exclude_ipranges = exclude_ipranges
+        # The inbound ports to be excluded from redirection to the sidecar proxy in the ASM instance. Separate multiple port numbers with commas (,).
+        self.exclude_inbound_ports = exclude_inbound_ports
+        # The outbound ports to be excluded from redirection to the sidecar proxy in the ASM instance. Separate multiple port numbers with commas (,).
+        self.exclude_outbound_ports = exclude_outbound_ports
+        # The existing CA certificate, which is encoded in Base64. This parameter is used in scenarios where you migrate open source Istio to ASM. It specifies the content of the ca-cert.pem file in the istio-ca-secret secret. The secret is in the istio-system namespace of the Kubernetes cluster where the open source Istio is installed.
+        self.existing_ca_cert = existing_ca_cert
+        # The existing CA key, which is encoded in Base64. This parameter is used in scenarios where you migrate open source Istio to ASM. It specifies the content of the ca-key.pem file in the istio-ca-secret secret. The secret is in the istio-system namespace of the Kubernetes cluster where the open source Istio is installed.
+        self.existing_ca_key = existing_ca_key
+        # The type of the existing CA certificate. Valid values:
+        # 
+        # *   1: Self-signed certificate generated by istiod. The certificate corresponds to the secret named istio-ca-secret in the istio-system namespace. If you use this type of certificate, you must set the `ExistingCaCert` and `ExsitingCaKey` parameters.
+        # *   2: Administrator-specified certificate. For more information, see [plugin ca cert](https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/). In most cases, the certificate corresponds to the secret named cacerts in the istio-system namespace. If you use this type of certificate, you must set the `ExisingRootCaCert` and `ExisingRootCaKey` parameters.
+        self.existing_ca_type = existing_ca_type
+        # The existing root certificate, which is encoded in Base64.
+        self.existing_root_ca_cert = existing_root_ca_cert
+        # The private key that corresponds to the root certificate, which is encoded in Base64.
+        self.existing_root_ca_key = existing_root_ca_key
+        # Specifies whether to enable gateway configuration filtering. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.filter_gateway_cluster_config = filter_gateway_cluster_config
+        # Specifies whether to enable Gateway API. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.gateway_apienabled = gateway_apienabled
+        # The IP ranges in CIDR form for which traffic is to be redirected to the sidecar proxy in the ASM instance.
+        self.include_ipranges = include_ipranges
+        # The Istio version of the ASM instance.
+        self.istio_version = istio_version
+        # Specifies whether to enable the mesh topology feature. To enable this feature, make sure that you have enabled Prometheus monitoring. If Prometheus monitoring is disabled, you must set this parameter to `false`.`` Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.kiali_enabled = kiali_enabled
+        # The configurations for the access to the nearest instance.
+        self.locality_lbconf = locality_lbconf
+        # Specifies whether to route traffic to the nearest instance. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.locality_load_balancing = locality_load_balancing
         # Specifies whether to enable Microservices Engine (MSE). Valid values:
         # 
-        # *   `true`: enables MSE.
-        # *   `false`: disables MSE.
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.mseenabled = mseenabled
+        # Specifies whether to enable MultiBuffer-based Transport Layer Security (TLS) acceleration. Valid values:
+        # 
+        # - `true`
+        # 
+        # - `false`
+        # 
+        # 
+        # Default value: `true`
+        self.multi_buffer_enabled = multi_buffer_enabled
+        # The pull-request latency. Default value: 30. Unit: seconds.
+        self.multi_buffer_poll_delay = multi_buffer_poll_delay
+        # Specifies whether to enable MySQL Filter. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.mysql_filter_enabled = mysql_filter_enabled
+        # The name of the ASM instance.
+        self.name = name
+        # The maximum number of CPU cores that are available to the OPA container.
+        self.opalimit_cpu = opalimit_cpu
+        # The maximum size of the memory that is available to the OPA container. You can specify the parameter value in the standard quantity representation form used by Kubernetes. 1 Mi equals 1,024 KB.
+        self.opalimit_memory = opalimit_memory
+        # The log level of the OPA container.
+        self.opalog_level = opalog_level
+        # The minimum number of CPU cores that are required by the OPA container. You can specify the parameter value in the standard representation form of CPUs in Kubernetes. For example, if you set the value to 1, one CPU core is required.
+        self.oparequest_cpu = oparequest_cpu
+        # The minimum size of the memory that is required by the OPA container. You can specify the parameter value in the standard quantity representation form used by Kubernetes. 1 Mi equals 1,024 KB.
+        self.oparequest_memory = oparequest_memory
+        # Specifies whether to enable the OPA plug-in. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.opa_enabled = opa_enabled
+        # Specifies whether to install the Open Policy Agent (OPA) plug-in. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.open_agent_policy = open_agent_policy
+        # The subscription period of the SLB instance. Unit: month. This parameter is valid only if the ChargeType parameter is set to PrePay. For example, if the subscription period is one year, set this parameter to 12.
+        self.period = period
+        # The type of the SLB instance that is bound to Istio Pilot. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`, `slb.s3.small`, `slb.s3.medium`, and `slb.s3.large`.
+        self.pilot_load_balancer_spec = pilot_load_balancer_spec
+        # The endpoint of the custom Prometheus instance.
+        self.prometheus_url = prometheus_url
+        # The maximum number of CPU cores that are available to the proxy container.
+        self.proxy_limit_cpu = proxy_limit_cpu
+        # The maximum size of the memory that is available to the proxy container.
+        self.proxy_limit_memory = proxy_limit_memory
+        # The minimum number of CPU cores that are required by the proxy container.
+        self.proxy_request_cpu = proxy_request_cpu
+        # The minimum size of the memory that is required by the proxy container.
+        self.proxy_request_memory = proxy_request_memory
+        # Specifies whether to enable Redis Filter. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.redis_filter_enabled = redis_filter_enabled
+        # The ID of the region in which the ASM instance resides.
+        self.region_id = region_id
+        # Specifies whether to enable Prometheus monitoring. We recommend that you use Prometheus Service of [Application Real-Time Monitoring Service (ARMS)](https://arms.console.aliyun.com/). Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.telemetry = telemetry
+        # Specifies whether to enable Thrift Filter. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.thrift_filter_enabled = thrift_filter_enabled
+        # The sampling percentage of Tracing Analysis.
+        self.trace_sampling = trace_sampling
+        # Specifies whether to enable the Tracing Analysis feature. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
+        self.tracing = tracing
+        # Specifies whether to use an existing CA certificate and private key.
+        self.use_existing_ca = use_existing_ca
+        # The ID of the vSwitch to which the ASM instance is connected.
+        self.v_switches = v_switches
+        # The ID of the virtual private cloud (VPC) in which the ASM instance resides.
+        self.vpc_id = vpc_id
+        # Specifies whether to enable WebAssembly Filter. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         # 
         # Default value: `false`.
         self.web_assembly_filter_enabled = web_assembly_filter_enabled
@@ -2536,8 +2627,9 @@ class CreateServiceMeshResponseBody(TeaModel):
         request_id: str = None,
         service_mesh_id: str = None,
     ):
-        # The ID of the ASM instance.
+        # The request ID.
         self.request_id = request_id
+        # The ID of the ASM instance.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -2752,13 +2844,15 @@ class CreateSwimLaneGroupRequest(TeaModel):
         service_mesh_id: str = None,
         services_list: str = None,
     ):
-        # The ID of the request.
+        # The name of the lane group.
         self.group_name = group_name
-        self.ingress_gateway_name = ingress_gateway_name
-        self.ingress_type = ingress_type
-        # The type of the ingress. Only ingress gateways are supported. Set the value to ASM.
-        self.service_mesh_id = service_mesh_id
         # The name of the ingress gateway.
+        self.ingress_gateway_name = ingress_gateway_name
+        # The type of the gateway for ingress traffic. Only ASM ingress gateways are supported.
+        self.ingress_type = ingress_type
+        # The ID of the Alibaba Cloud Service Mesh (ASM) instance.
+        self.service_mesh_id = service_mesh_id
+        # A list of services associated with the lane group. The value is a JSON array. The format of a service is `$Cluster name/$Cluster ID/$Namespace/$Service name`.
         self.services_list = services_list
 
     def validate(self):
@@ -2802,6 +2896,7 @@ class CreateSwimLaneGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3253,16 +3348,16 @@ class DeleteServiceMeshRequest(TeaModel):
         retain_resources: str = None,
         service_mesh_id: str = None,
     ):
-        # A JSON string that can be parsed into a string array. You can use this JSON string to specify the IDs of the resource instances that need to be retained when the ASM instance is deleted.
-        self.force = force
-        # The ID of the request.
-        self.retain_resources = retain_resources
         # Specifies whether to forcibly delete the ASM instance. Valid values:
         # 
         # *   `true`: forcibly deletes the ASM instance.
         # *   `false`: does not forcibly delete the ASM instance.
         # 
         # Default value: false.
+        self.force = force
+        # A JSON string that can be parsed into a string array. You can use this JSON string to specify the IDs of the resource instances that need to be retained when the ASM instance is deleted.
+        self.retain_resources = retain_resources
+        # The ID of the ASM instance.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -3298,6 +3393,7 @@ class DeleteServiceMeshResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4626,7 +4722,7 @@ class DescribeCrTemplatesResponseBody(TeaModel):
         request_id: str = None,
         templates: List[DescribeCrTemplatesResponseBodyTemplates] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The common YAML templates for the specified type of Istio resource.
         self.templates = templates
@@ -5559,9 +5655,9 @@ class DescribeImportedServicesDetailRequest(TeaModel):
         service_mesh_id: str = None,
         service_namespace: str = None,
     ):
-        # The name of the ASM gateway.
+        # The name of the service.
         self.asmgateway_name = asmgateway_name
-        # The ID of the ASM instance.
+        # The details of the services.
         self.service_mesh_id = service_mesh_id
         # The namespace in which the service resides.
         self.service_namespace = service_namespace
@@ -5603,15 +5699,12 @@ class DescribeImportedServicesDetailResponseBodyDetailsPorts(TeaModel):
         protocol: str = None,
         target_port: int = None,
     ):
-        # The name of the port.
-        self.name = name
-        # The node port.
-        self.node_port = node_port
-        # The port number.
-        self.port = port
-        # The protocol of the port.
-        self.protocol = protocol
         # The container port.
+        self.name = name
+        self.node_port = node_port
+        self.port = port
+        # The node port.
+        self.protocol = protocol
         self.target_port = target_port
 
     def validate(self):
@@ -5660,17 +5753,17 @@ class DescribeImportedServicesDetailResponseBodyDetails(TeaModel):
         service_name: str = None,
         service_type: str = None,
     ):
-        # The IDs of the clusters to which the service belongs.
+        # The name of the port.
         self.cluster_ids = cluster_ids
-        # The labels of the service.
-        self.labels = labels
-        # The namespace in which the service resides.
-        self.namespace = namespace
         # The ports declared for the service.
+        self.labels = labels
+        # Kubernetes
+        self.namespace = namespace
+        # The port number.
         self.ports = ports
-        # The name of the service.
-        self.service_name = service_name
         # The type of the service.
+        self.service_name = service_name
+        # The protocol of the port.
         self.service_type = service_type
 
     def validate(self):
@@ -5727,9 +5820,9 @@ class DescribeImportedServicesDetailResponseBody(TeaModel):
         details: List[DescribeImportedServicesDetailResponseBodyDetails] = None,
         request_id: str = None,
     ):
-        # The details of the services.
+        # The IDs of the clusters to which the service belongs.
         self.details = details
-        # The ID of the request.
+        # The labels of the service.
         self.request_id = request_id
 
     def validate(self):
@@ -5808,113 +5901,6 @@ class DescribeImportedServicesDetailResponse(TeaModel):
         return self
 
 
-class DescribeIngressGatewaysRequest(TeaModel):
-    def __init__(
-        self,
-        service_mesh_id: str = None,
-    ):
-        # The ID of the ASM instance.
-        self.service_mesh_id = service_mesh_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_mesh_id is not None:
-            result['ServiceMeshId'] = self.service_mesh_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceMeshId') is not None:
-            self.service_mesh_id = m.get('ServiceMeshId')
-        return self
-
-
-class DescribeIngressGatewaysResponseBody(TeaModel):
-    def __init__(
-        self,
-        ingress_gateways: List[Dict[str, Any]] = None,
-        request_id: str = None,
-    ):
-        # The information about the ingress gateways of the ASM instance.
-        self.ingress_gateways = ingress_gateways
-        # The ID of the request.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ingress_gateways is not None:
-            result['IngressGateways'] = self.ingress_gateways
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('IngressGateways') is not None:
-            self.ingress_gateways = m.get('IngressGateways')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeIngressGatewaysResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeIngressGatewaysResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeIngressGatewaysResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeIstioGatewayDomainsRequest(TeaModel):
     def __init__(
         self,
@@ -5970,6 +5956,7 @@ class DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails(TeaModel):
         credential_name: str = None,
         detail: str = None,
         domains: List[str] = None,
+        gateway_crname: str = None,
         namespace: str = None,
         port_name: str = None,
         protocol: str = None,
@@ -5980,6 +5967,7 @@ class DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails(TeaModel):
         self.detail = detail
         # The domain name.
         self.domains = domains
+        self.gateway_crname = gateway_crname
         # The namespace in which the ASM gateway resides.
         self.namespace = namespace
         # The name of the port.
@@ -6002,6 +5990,8 @@ class DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails(TeaModel):
             result['Detail'] = self.detail
         if self.domains is not None:
             result['Domains'] = self.domains
+        if self.gateway_crname is not None:
+            result['GatewayCRName'] = self.gateway_crname
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.port_name is not None:
@@ -6018,6 +6008,8 @@ class DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails(TeaModel):
             self.detail = m.get('Detail')
         if m.get('Domains') is not None:
             self.domains = m.get('Domains')
+        if m.get('GatewayCRName') is not None:
+            self.gateway_crname = m.get('GatewayCRName')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('PortName') is not None:
@@ -6121,11 +6113,11 @@ class DescribeIstioGatewayRouteDetailRequest(TeaModel):
         route_name: str = None,
         service_mesh_id: str = None,
     ):
-        # The fixed duration for request delay.
+        # The name of the ASM gateway.
         self.istio_gateway_name = istio_gateway_name
-        # The duration for request delay is expressed as 2 raised to the power of x. You must specify the value of x.
+        # The name of the routing rule.
         self.route_name = route_name
-        # The duration to delay a request.
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -6162,9 +6154,9 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsD
         name: str = None,
         namespace: str = None,
     ):
-        # The values to be added to the header key.
+        # The name of the virtual service.
         self.name = name
-        # The key to be deleted.
+        # The namespace to which the virtual service belongs.
         self.namespace = namespace
 
     def validate(self):
@@ -6196,6 +6188,7 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsF
         self,
         value: float = None,
     ):
+        # The percentage of requests that are mirrored to another destination except for the original destination, which is expressed as a decimal.
         self.value = value
 
     def validate(self):
@@ -6224,7 +6217,9 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsF
         http_status: int = None,
         percentage: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbortPercentage = None,
     ):
+        # The HTTP status code.
         self.http_status = http_status
+        # The percentage of requests that are aborted with the specified error code.
         self.percentage = percentage
 
     def validate(self):
@@ -6258,6 +6253,7 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsF
         self,
         value: float = None,
     ):
+        # The percentage of requests that are aborted with the specified error code, which is expressed as a decimal.
         self.value = value
 
     def validate(self):
@@ -6287,8 +6283,11 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsF
         fixed_delay: str = None,
         percentage: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelayPercentage = None,
     ):
+        # The duration for request delay is expressed as 2 raised to the power of x. You must specify the value of x.
         self.exponential_delay = exponential_delay
+        # The fixed duration for request delay.
         self.fixed_delay = fixed_delay
+        # The percentage of requests to which the delay fault is injected.
         self.percentage = percentage
 
     def validate(self):
@@ -6327,7 +6326,9 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsF
         abort: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbort = None,
         delay: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay = None,
     ):
+        # The configurations for aborting requests with specified error codes.
         self.abort = abort
+        # The duration to delay a request.
         self.delay = delay
 
     def validate(self):
@@ -6366,11 +6367,11 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsH
         redirect_code: int = None,
         uri: str = None,
     ):
-        # The request headers to be matched.
+        # The value to be used to overwrite the value of the Authority or Host header during redirection.
         self.authority = authority
-        # The request header to be matched.
+        # The HTTP status code to be used to indicate URL redirection. Default value: 301.
         self.redirect_code = redirect_code
-        # The traffic weight. Valid values: 1 to 100.
+        # The value to be used to overwrite the URL path during redirection.
         self.uri = uri
 
     def validate(self):
@@ -6407,7 +6408,9 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsM
         host: str = None,
         subset: str = None,
     ):
+        # The name of the service defined in the service registry.
         self.host = host
+        # The name of the service subset.
         self.subset = subset
 
     def validate(self):
@@ -6439,6 +6442,7 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsM
         self,
         value: float = None,
     ):
+        # The percentage of requests that are aborted with the specified error code, which is expressed as a decimal.
         self.value = value
 
     def validate(self):
@@ -6466,6 +6470,12 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsR
         self,
         value: bool = None,
     ):
+        # Specifies whether to allow retries to other localities. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
         self.value = value
 
     def validate(self):
@@ -6496,16 +6506,13 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsR
         retry_on: str = None,
         retry_remote_localities: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetriesRetryRemoteLocalities = None,
     ):
-        # The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
+        # The number of retries that are allowed for a request.
         self.attempts = attempts
-        # The status of the routing rule. Valid values:
-        # 
-        # - `0`: The routing rule is valid.
-        # - `1`: The routing rule is invalid.
-        # - `2`: An error occurs during the creation or update of the routing rule.
+        # The timeout period for each retry.
         self.per_try_timeout = per_try_timeout
-        # The description of the routing rule.
+        # The condition for retries. Example: `connect-failure,refused-stream,503`.
         self.retry_on = retry_on
+        # Specifies whether to allow retries to other localities.
         self.retry_remote_localities = retry_remote_localities
 
     def validate(self):
@@ -6548,9 +6555,9 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsR
         authority: str = None,
         uri: str = None,
     ):
-        # The values to be added to the header key.
+        # The value to be used to overwrite the value of the Authority or Host header.
         self.authority = authority
-        # The header key to be used to overwrite the original header key.
+        # The value to be used to overwrite the path or prefix of the URI.
         self.uri = uri
 
     def validate(self):
@@ -6589,18 +6596,21 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions(
         rewrite: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRewrite = None,
         timeout: str = None,
     ):
-        # The header key to be used to overwrite the original header key.
+        # The virtual service that defines traffic routing.
         self.delegate = delegate
+        # The configurations of fault injection.
         self.fault = fault
-        # The port of the specified host to which the traffic is routed.
+        # The HTTP redirection rule.
         self.httpredirect = httpredirect
+        # The configurations for mirroring HTTP traffic to another destination in addition to forwarding requests to the specified destination.
         self.mirror = mirror
+        # The percentage of requests that are aborted with the specified error code.
         self.mirror_percentage = mirror_percentage
-        # The ID of the request.
+        # The configurations of retries for failed requests.
         self.retries = retries
-        # The processing of the headers of the response that is to be returned.
+        # The configurations for rewriting the virtual service.
         self.rewrite = rewrite
-        # The key to be deleted.
+        # The timeout period for requests.
         self.timeout = timeout
 
     def validate(self):
@@ -6678,11 +6688,15 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders(
         matching_mode: str = None,
         name: str = None,
     ):
-        # The percentage of requests that are mirrored to another destination except for the original destination, expressed as a decimal.
+        # The header value to be matched.
         self.matching_content = matching_content
-        # The percentage of requests that are mirrored to another destination except for the original destination.
+        # The matching mode for the header value. Valid values:
+        # 
+        # *   `exact`: exact match
+        # *   `prefix`: match by prefix
+        # *   `regex`: match by regular expression
         self.matching_mode = matching_mode
-        # The name of the service subset.
+        # The header key to be matched.
         self.name = name
 
     def validate(self):
@@ -6719,9 +6733,9 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatch
         snihosts: List[str] = None,
         tlsport: int = None,
     ):
-        # The name of the service defined in the service registry.
+        # The Server Name Indication (SNI) values to be matched.
         self.snihosts = snihosts
-        # The unique endpoint of the service instance to which the specified requests are sent.
+        # The TLS port.
         self.tlsport = tlsport
 
     def validate(self):
@@ -6754,9 +6768,13 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI(TeaM
         matching_content: str = None,
         matching_mode: str = None,
     ):
-        # The configurations for mirroring HTTP traffic to another destination in addition to forwarding requests to the specified destination.
+        # The content to be matched.
         self.matching_content = matching_content
-        # The percentage of requests that are aborted with the specified error code, expressed as a decimal.
+        # The matching mode. Valid values:
+        # 
+        # *   `exact`: exact match
+        # *   `prefix`: match by prefix
+        # *   `regex`: match by regular expression
         self.matching_mode = matching_mode
 
     def validate(self):
@@ -6791,13 +6809,13 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest(TeaMode
         tlsmatch_attributes: List[DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatchAttributes] = None,
         uri: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI = None,
     ):
-        # The name of the service defined in the service registry.
+        # The request headers to be matched.
         self.headers = headers
-        # The name of the service subset.
+        # The ports.
         self.ports = ports
-        # The endpoints of service instances for Layer 4 weighted routing.
+        # The matching rules for Transport Layer Security (TLS) traffic.
         self.tlsmatch_attributes = tlsmatch_attributes
-        # The percentage of requests that are aborted with the specified error code.
+        # The matching rule for URIs.
         self.uri = uri
 
     def validate(self):
@@ -6857,6 +6875,7 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDes
         self,
         number: int = None,
     ):
+        # The ports of the specified hosts to which the traffic is routed.
         self.number = number
 
     def validate(self):
@@ -6886,8 +6905,11 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDes
         port: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestinationPort = None,
         subset: str = None,
     ):
+        # The name of the service defined in the service registry.
         self.host = host
+        # The ports.
         self.port = port
+        # The name of the service subset.
         self.subset = subset
 
     def validate(self):
@@ -6927,8 +6949,11 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHea
         remove: List[str] = None,
         set: Dict[str, str] = None,
     ):
+        # The values to be added to the header key.
         self.add = add
+        # The header value to be deleted.
         self.remove = remove
+        # The header key to be used to overwrite the original header key.
         self.set = set
 
     def validate(self):
@@ -6966,8 +6991,11 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHea
         remove: List[str] = None,
         set: Dict[str, Any] = None,
     ):
+        # The values to be added to the header key.
         self.add = add
+        # The header value to be deleted.
         self.remove = remove
+        # The header key to be used to overwrite the original header key.
         self.set = set
 
     def validate(self):
@@ -7004,7 +7032,9 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHea
         request: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest = None,
         response: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse = None,
     ):
+        # The request header to be matched.
         self.request = request
+        # The processing of the headers of the response that is to be returned.
         self.response = response
 
     def validate(self):
@@ -7043,8 +7073,11 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations(Te
         headers: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders = None,
         weight: int = None,
     ):
+        # The unique endpoint of the destination service to which the specified requests are sent.
         self.destination = destination
+        # The request headers to be matched.
         self.headers = headers
+        # The traffic weight. Valid values: 1 to 100.
         self.weight = weight
 
     def validate(self):
@@ -7085,20 +7118,25 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetail(TeaModel):
         self,
         domains: List[str] = None,
         httpadvanced_options: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions = None,
+        has_unsafe_features: bool = None,
         match_request: DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest = None,
+        raw_vsroute: str = None,
         route_destinations: List[DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations] = None,
         route_name: str = None,
         route_type: str = None,
     ):
         self.domains = domains
-        # The ports of the specified hosts from which the traffic is routed.
+        # The advanced settings for routing HTTP traffic.
         self.httpadvanced_options = httpadvanced_options
-        # The specified HTTP error code.
+        self.has_unsafe_features = has_unsafe_features
+        # The matching rules for traffic routing.
         self.match_request = match_request
+        self.raw_vsroute = raw_vsroute
+        # The endpoints of destination services for Layer 4 weighted routing.
         self.route_destinations = route_destinations
-        # The percentage of requests that are aborted with specified error codes, expressed as a decimal.
+        # The name of the routing rule.
         self.route_name = route_name
-        # The configurations for aborting requests with specified error codes.
+        # The type of the traffic to be routed. Valid values: `HTTP`, `TLS`, and `TCP`.
         self.route_type = route_type
 
     def validate(self):
@@ -7121,8 +7159,12 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetail(TeaModel):
             result['Domains'] = self.domains
         if self.httpadvanced_options is not None:
             result['HTTPAdvancedOptions'] = self.httpadvanced_options.to_map()
+        if self.has_unsafe_features is not None:
+            result['HasUnsafeFeatures'] = self.has_unsafe_features
         if self.match_request is not None:
             result['MatchRequest'] = self.match_request.to_map()
+        if self.raw_vsroute is not None:
+            result['RawVSRoute'] = self.raw_vsroute
         result['RouteDestinations'] = []
         if self.route_destinations is not None:
             for k in self.route_destinations:
@@ -7140,9 +7182,13 @@ class DescribeIstioGatewayRouteDetailResponseBodyRouteDetail(TeaModel):
         if m.get('HTTPAdvancedOptions') is not None:
             temp_model = DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions()
             self.httpadvanced_options = temp_model.from_map(m['HTTPAdvancedOptions'])
+        if m.get('HasUnsafeFeatures') is not None:
+            self.has_unsafe_features = m.get('HasUnsafeFeatures')
         if m.get('MatchRequest') is not None:
             temp_model = DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest()
             self.match_request = temp_model.from_map(m['MatchRequest'])
+        if m.get('RawVSRoute') is not None:
+            self.raw_vsroute = m.get('RawVSRoute')
         self.route_destinations = []
         if m.get('RouteDestinations') is not None:
             for k in m.get('RouteDestinations'):
@@ -7165,12 +7211,21 @@ class DescribeIstioGatewayRouteDetailResponseBody(TeaModel):
         route_detail: DescribeIstioGatewayRouteDetailResponseBodyRouteDetail = None,
         status: int = None,
     ):
+        # The description of the routing rule.
         self.description = description
+        # The namespace.
         self.namespace = namespace
+        # The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
         self.priority = priority
+        # The request ID.
         self.request_id = request_id
-        # The percentage of requests to which the delay fault is injected.
+        # The detailed information about the routing rule.
         self.route_detail = route_detail
+        # The status of the routing rule. Valid values:
+        # 
+        # *   `0`: The routing rule is valid.
+        # *   `1`: The routing rule is invalid.
+        # *   `2`: An error occurs during the creation or update of the routing rule.
         self.status = status
 
     def validate(self):
@@ -7267,7 +7322,7 @@ class DescribeIstioGatewayRoutesRequest(TeaModel):
     ):
         # The name of the ASM gateway.
         self.istio_gateway_name = istio_gateway_name
-        # The routing rules.
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -7307,23 +7362,25 @@ class DescribeIstioGatewayRoutesResponseBodyManagementRoutes(TeaModel):
         route_path: str = None,
         status: int = None,
     ):
-        # The path that is used to match request URLs.
+        # The name of the ASM gateway.
         self.asmgateway_name = asmgateway_name
+        # The description of the routing rule.
         self.description = description
         self.destination_host = destination_host
         self.destination_sub_set = destination_sub_set
+        # The namespace.
         self.namespace = namespace
-        # The ID of the request.
+        # The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
         self.priority = priority
+        # The name of the routing rule.
+        self.route_name = route_name
+        # The path that is used to match request URLs.
+        self.route_path = route_path
         # The status of the routing rule. Valid values:
         # 
         # *   `0`: The routing rule is valid.
         # *   `1`: The routing rule is invalid.
         # *   `2`: An error occurs during the creation or update of the routing rule.
-        self.route_name = route_name
-        # The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
-        self.route_path = route_path
-        # The description of the routing rule.
         self.status = status
 
     def validate(self):
@@ -7384,8 +7441,9 @@ class DescribeIstioGatewayRoutesResponseBody(TeaModel):
         management_routes: List[DescribeIstioGatewayRoutesResponseBodyManagementRoutes] = None,
         request_id: str = None,
     ):
-        # The name of the routing rule.
+        # The routing rules.
         self.management_routes = management_routes
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7665,7 +7723,7 @@ class DescribeNamespaceScopeSidecarConfigRequest(TeaModel):
         namespace: str = None,
         service_mesh_id: str = None,
     ):
-        # The name of the namespace.
+        # The namespace.
         self.namespace = namespace
         # The ID of the ASM instance.
         self.service_mesh_id = service_mesh_id
@@ -7701,11 +7759,11 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesProxyStatsMatc
         inclusion_regexps: List[str] = None,
         inclusion_suffixes: List[str] = None,
     ):
-        # The prefix of the monitoring metrics for data collected by Envoy proxies.
+        # The prefixes of the custom Envoy statistics that are reported by the sidecar proxy.
         self.inclusion_prefixes = inclusion_prefixes
-        # The regular expression of the monitoring metrics for data collected by Envoy proxies.
+        # The regular expressions for specifying the custom Envoy statistics that are reported by the sidecar proxy.
         self.inclusion_regexps = inclusion_regexps
-        # The suffix of the monitoring metrics for data collected by Envoy proxies.
+        # The suffixes of the custom Envoy statistics that are reported by the sidecar proxy.
         self.inclusion_suffixes = inclusion_suffixes
 
     def validate(self):
@@ -7952,11 +8010,8 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing(TeaMod
         # The custom tags added to reported spans. The key of a tag is of the string type. The value of a tag is in the JSON format. A custom tag can belong to one of the following types:
         # 
         # *   `literal`: The tag value is a fixed value in the JSON format. This tag must contain the `value` field that specifies a literal. Example: `{"value":"test"}`.
-        # 
-        # <!---->
-        # 
-        # *   `header`: The tag value is a request header in the JSON format. This tag must contain the `name` field and `defaultValue` field.The name field indicates the name of the request header. The defaultValue field indicates the default value that is used when no request header is available. Example: `{"name":"test","defaultValue":"test"}`.
-        # *   `environment`: The tag value is an environment variable in the JSON format. This tag must contain the `name` field and `defaultValue` field. The name field indicates the name of the environment variable. The defaultValue field indicates the environment variable that is used when no environment variable is available. Example: `{"name":"test","defaultValue":"test"}`.
+        # *   `header`: The tag value is a request header in the JSON format. This tag must contain the `name` field and the `defaultValue` field. The name field indicates the name of the request header. The defaultValue field indicates the default value that is used when no request header is available. Example: `{"name":"test","defaultValue":"test"}`.
+        # *   `environment`: The tag value is an environment variable in the JSON format. This tag must contain the `name` field and the `defaultValue` field. The name field indicates the name of the environment variable. The defaultValue field indicates the environment variable that is used when no environment variable is available. Example: `{"name":"test","defaultValue":"test"}`.
         self.custom_tags = custom_tags
         # The maximum tag length.
         self.max_path_tag_length = max_path_tag_length
@@ -8017,53 +8072,53 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
         termination_drain_duration: str = None,
         tracing: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing = None,
     ):
-        # The number of worker threads running in the sidecar proxy.
+        # The number of worker threads to run in the istio-proxy container.
         self.concurrency = concurrency
-        # The port that the inbound traffic of the sidecar proxy does not pass through.
+        # The inbound ports to be excluded from redirection to the sidecar proxy in the ASM instance.
         self.exclude_inbound_ports = exclude_inbound_ports
-        # The IP address from which the outbound traffic does not pass through the sidecar proxy.
+        # The outbound IP ranges in CIDR form to be excluded from redirection to the sidecar proxy in the ASM instance.
         self.exclude_outbound_ipranges = exclude_outbound_ipranges
-        # The port that the outbound traffic of the sidecar proxy does not pass through.
+        # The outbound ports to be excluded from redirection to the sidecar proxy in the ASM instance.
         self.exclude_outbound_ports = exclude_outbound_ports
-        # Indicates whether applications can be started only after Istio Proxy starts. Valid values:
+        # Indicates whether applications can be started only after the istio-proxy container starts. Valid values:
         # 
-        # *   `true`: Applications can be started only after Istio Proxy starts.
-        # *   false: Applications can be started before Istio Proxy starts.
+        # *   `true`
+        # *   false
         self.hold_application_until_proxy_starts = hold_application_until_proxy_starts
-        # The port that the inbound traffic of the sidecar proxy passes through.
+        # The inbound ports for which traffic is to be redirected to the sidecar proxy in the ASM instance.
         self.include_inbound_ports = include_inbound_ports
-        # The IP address from which the outbound traffic passes through the sidecar proxy.
+        # The outbound IP ranges in CIDR form for which traffic is to be redirected to the sidecar proxy in the ASM instance.
         self.include_outbound_ipranges = include_outbound_ipranges
-        # The port that the outbound traffic of the sidecar proxy passes through.
+        # The outbound ports for which traffic is to be redirected to the sidecar proxy in the ASM instance.
         self.include_outbound_ports = include_outbound_ports
         # The mode in which the sidecar proxy intercepts inbound traffic. Valid values:
         # 
-        # *   `REDIRECT`: The sidecar proxy intercepts inbound traffic in the REDIRECT mode.
-        # *   `TPROXY`: The sidecar proxy intercepts inbound traffic in the TPROXY mode.
+        # *   `REDIRECT` (default): In this mode, source IP addresses are lost during traffic redirection to the sidecar proxy.
+        # *   `TPROXY`: In this mode, both the source and destination IP addresses and ports are preserved.
         self.interception_mode = interception_mode
         # Indicates whether the Domain Name System (DNS) proxy feature is enabled. Valid values:
         # 
-        # *   `true`: The DNS proxy feature is enabled.
-        # *   `false`: The DNS proxy feature is disabled.
+        # *   `true`
+        # *   `false`
         self.istio_dnsproxy_enabled = istio_dnsproxy_enabled
         # The JSON string that describes the lifecycle of the sidecar proxy.
         self.lifecycle_str = lifecycle_str
         # The log level. Valid values: `info`, `debug`, `trace`, and `error`.
         self.log_level = log_level
         self.proxy_metadata = proxy_metadata
-        # The monitoring metrics for data collected by Envoy proxies.
+        # The custom Envoy statistics that are reported by the sidecar proxy.
         self.proxy_stats_matcher = proxy_stats_matcher
         self.sidecar_proxy_ack_slo_resource = sidecar_proxy_ack_slo_resource
         self.sidecar_proxy_init_ack_slo_resource = sidecar_proxy_init_ack_slo_resource
-        # The maximum size of resources that are available to the sidecar proxy init container.
+        # The maximum size of resources that are available to the istio-init container in the pod into which the sidecar proxy is injected. The istio-init container is used in this topic.
         self.sidecar_proxy_init_resource_limit = sidecar_proxy_init_resource_limit
-        # The minimum size of resources that are requested by the sidecar proxy init container.
+        # The minimum size of resources that are required by the istio-init container.
         self.sidecar_proxy_init_resource_request = sidecar_proxy_init_resource_request
         # The maximum size of resources that are available to the sidecar proxy container.
         self.sidecar_proxy_resource_limit = sidecar_proxy_resource_limit
-        # The minimum size of resources that are requested by the sidecar proxy container.
+        # The minimum size of resources that are required by the sidecar proxy container.
         self.sidecar_proxy_resource_request = sidecar_proxy_resource_request
-        # The maximum period of time that the sidecar proxy waits for a request to end.
+        # The maximum period of time allowed for connections to complete on sidecar proxy shutdown.
         self.termination_drain_duration = termination_drain_duration
         # The custom configurations of Tracing Analysis.
         self.tracing = tracing
@@ -8201,9 +8256,9 @@ class DescribeNamespaceScopeSidecarConfigResponseBody(TeaModel):
         config_patches: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches = None,
         request_id: str = None,
     ):
-        # The namespace-level sidecar configurations.
+        # The namespace-level sidecar proxy configurations.
         self.config_patches = config_patches
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8281,7 +8336,7 @@ class DescribeNodesInstanceTypeRequest(TeaModel):
         self,
         service_mesh_id: str = None,
     ):
-        # The ID of the request.
+        # The ID of the Alibaba Cloud Service Mesh (ASM) instance.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -8313,7 +8368,12 @@ class DescribeNodesInstanceTypeResponseBodyInstanceTypes(TeaModel):
         value: str = None,
     ):
         self.key = key
+        # Indicates whether the instance type supports Multi-Buffer acceleration. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.multi_buffer_enabled = multi_buffer_enabled
+        # The instance type of the node.
         self.node_type = node_type
         self.value = value
 
@@ -8355,7 +8415,9 @@ class DescribeNodesInstanceTypeResponseBody(TeaModel):
         instance_types: List[DescribeNodesInstanceTypeResponseBodyInstanceTypes] = None,
         request_id: str = None,
     ):
+        # The instance types of the nodes.
         self.instance_types = instance_types
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8600,15 +8662,12 @@ class DescribeServiceMeshAdditionalStatusRequest(TeaModel):
         check_mode: str = None,
         service_mesh_id: str = None,
     ):
-        # The check result of the SLB instance. Valid values:
+        # The check mode of the ASM instance. Valid values:
         # 
-        # *   `exist`: The SLB instance exists.
-        # *   `not_exist`: The SLB instance does not exist.
-        # *   `conflict`: Conflicts are detected.
-        # *   `failed`: The check fails.
-        # *   `time_out`: The check times out.
+        # *   `normal`: checks the Server Load Balancer (SLB) instances created for exposing the API server and Istio Pilot, audit logs, and installation of Logtail for clusters on the data plane.
+        # *   `full`: checks control plane logs, access logs, security groups, and the elastic IP addresses (EIPs) of the API server in addition to the check items in normal mode.
         self.check_mode = check_mode
-        # The check results of the SLB instances created for exposing the API server.
+        # The ID of the ASM instance.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -8644,17 +8703,27 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadB
         slbback_end_server_num_status: str = None,
         slbexist_status: str = None,
     ):
-        # The check result of the number of SLB instances created for exposing Istio Pilot. Valid values:
+        # Indicates whether the SLB instance is locked. Valid values:
         # 
-        # *   `too_much`: An excessive number of SLB instances are created.
-        # *   `num_exact`: A proper number of SLB instances are created.
-        # *   `too_little`: The number of SLB instances falls short.
+        # *   `true`
+        # *   `false`
         self.locked = locked
+        # The billing method of the SLB instance. Valid values:
+        # 
+        # *   `PrePay`: subscription
+        # *   `PayOnDemand`: pay-as-you-go
+        self.pay_type = pay_type
         # Indicates whether the SLB instance is reused. Valid values:
         # 
-        # *   `true`: The SLB instance is reused.
-        # *   `false`: The SLB instance is not reused.
-        self.pay_type = pay_type
+        # *   `true`
+        # *   `false`
+        self.reused = reused
+        # The check result of the number of the backend servers of the SLB instance created for exposing Istio Pilot. Valid values:
+        # 
+        # *   `too_much`: An excessive number of backend servers are created.
+        # *   `num_exact`: A proper number of backend servers are created.
+        # *   `too_little`: The number of backend servers falls short.
+        self.slbback_end_server_num_status = slbback_end_server_num_status
         # The check result of the SLB instance. Valid values:
         # 
         # *   `exist`: The SLB instance exists.
@@ -8662,13 +8731,6 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadB
         # *   `conflict`: Conflicts are detected.
         # *   `failed`: The check fails.
         # *   `time_out`: The check times out.
-        self.reused = reused
-        # The check results of the SLB instances created for exposing Istio Pilot.
-        self.slbback_end_server_num_status = slbback_end_server_num_status
-        # The billing method of the SLB instance. Valid values:
-        # 
-        # *   `PrePay`: subscription
-        # *   `PayOnDemand`: pay-as-you-go
         self.slbexist_status = slbexist_status
 
     def validate(self):
@@ -8767,31 +8829,34 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalan
         slbback_end_server_num_status: str = None,
         slbexist_status: str = None,
     ):
-        # The check result of control plane logs. Valid values:
+        # Indicates whether the SLB instance is locked. Valid values:
         # 
-        # *   `exist`: Control plane logs exist.
-        # *   `not_exist`: Control plane logs do not exist.
-        # *   `failed`: The check fails.
-        # *   `time_out`: The check times out.
+        # *   `true`
+        # *   `false`
         self.locked = locked
-        # Indicates whether the security group is reused. Valid values:
-        # 
-        # *   `reused`: The security group is reused.
-        # *   `not_reused`: The security group is not reused.
-        # *   `failed`: The check fails.
-        # *   `time_out`: The check times out.
-        self.pay_type = pay_type
-        # The check results of the Logtail installation for clusters on the data plane.
-        self.reused = reused
-        # The check result of audit logs. Valid values:
-        # 
-        # *   `exist`: Audit logs exist.
-        # *   `not exist`: Audit logs do not exist.
-        self.slbback_end_server_num_status = slbback_end_server_num_status
         # The billing method of the SLB instance. Valid values:
         # 
         # *   `PrePay`: subscription
         # *   `PayOnDemand`: pay-as-you-go
+        self.pay_type = pay_type
+        # Indicates whether the SLB instance is reused. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        self.reused = reused
+        # The check result of the number of the backend servers of the SLB instance created for exposing Istio Pilot. Valid values:
+        # 
+        # *   `too_much`: An excessive number of backend servers are created.
+        # *   `num_exact`: A proper number of backend servers are created.
+        # *   `too_little`: The number of backend servers falls short.
+        self.slbback_end_server_num_status = slbback_end_server_num_status
+        # The check result of the SLB instance. Valid values:
+        # 
+        # *   `exist`: The SLB instance exists.
+        # *   `not_exist`: The SLB instance does not exist.
+        # *   `conflict`: Conflicts are detected.
+        # *   `failed`: The check fails.
+        # *   `time_out`: The check times out.
         self.slbexist_status = slbexist_status
 
     def validate(self):
@@ -8841,15 +8906,16 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
         control_plane_project_status: str = None,
         logtail_status_record: Dict[str, Any] = None,
         pilot_load_balancer_status: DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus = None,
+        ramapplication_status: str = None,
         sg_status: str = None,
     ):
-        self.access_log_project_status = access_log_project_status
-        self.api_server_eipstatus = api_server_eipstatus
-        # Indicates whether the SLB instance is locked. Valid values:
+        # Indicates whether access logs exist. Valid values:
         # 
-        # *   `true`: The SLB instance is locked.
-        # *   `false`: The SLB instance is not locked.
-        self.api_server_load_balancer_status = api_server_load_balancer_status
+        # *   `exist`: Access logs exist.
+        # *   `not_exist`: Access logs do not exist.
+        # *   `failed`: The check fails.
+        # *   `time_out`: The check times out.
+        self.access_log_project_status = access_log_project_status
         # The check result of the EIP associated with the API server. Valid values:
         # 
         # *   `exist`: The EIP exists.
@@ -8858,21 +8924,33 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
         # *   `time_out`: The check times out.
         # *   `not_in_use`: The EIP is not associated with the API Server.
         # *   `locked`: The EIP is locked.
+        self.api_server_eipstatus = api_server_eipstatus
+        # The check results of the SLB instance created for exposing the API server.
+        self.api_server_load_balancer_status = api_server_load_balancer_status
+        # Indicates whether audit logs exist. Valid values:
+        # 
+        # *   `exist`
+        # *   `not exist`
         self.audit_project_status = audit_project_status
         self.canary_pilot_load_balancer_status = canary_pilot_load_balancer_status
-        self.control_plane_project_status = control_plane_project_status
-        # The check result of access logs. Valid values:
+        # Indicates whether control plane logs exist. Valid values:
         # 
-        # *   `exist`: Access logs exist.
-        # *   `not_exist`: Access logs do not exist.
+        # *   `exist`: Control plane logs exist.
+        # *   `not_exist`: Control plane logs do not exist.
         # *   `failed`: The check fails.
         # *   `time_out`: The check times out.
+        self.control_plane_project_status = control_plane_project_status
+        # Indicates whether Logtail is installed in clusters on the data plane.
         self.logtail_status_record = logtail_status_record
-        # Indicates whether the SLB instance is locked. Valid values:
-        # 
-        # *   `true`: The SLB instance is locked.
-        # *   `false`: The SLB instance is not locked.
+        # The check results of the SLB instance created for exposing Istio Pilot.
         self.pilot_load_balancer_status = pilot_load_balancer_status
+        self.ramapplication_status = ramapplication_status
+        # Indicates whether the security group is reused. Valid values:
+        # 
+        # *   `reused`: The security group is reused.
+        # *   `not_reused`: The security group is not reused.
+        # *   `failed`: The check fails.
+        # *   `time_out`: The check times out.
         self.sg_status = sg_status
 
     def validate(self):
@@ -8905,6 +8983,8 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
             result['LogtailStatusRecord'] = self.logtail_status_record
         if self.pilot_load_balancer_status is not None:
             result['PilotLoadBalancerStatus'] = self.pilot_load_balancer_status.to_map()
+        if self.ramapplication_status is not None:
+            result['RAMApplicationStatus'] = self.ramapplication_status
         if self.sg_status is not None:
             result['SgStatus'] = self.sg_status
         return result
@@ -8930,6 +9010,8 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
         if m.get('PilotLoadBalancerStatus') is not None:
             temp_model = DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus()
             self.pilot_load_balancer_status = temp_model.from_map(m['PilotLoadBalancerStatus'])
+        if m.get('RAMApplicationStatus') is not None:
+            self.ramapplication_status = m.get('RAMApplicationStatus')
         if m.get('SgStatus') is not None:
             self.sg_status = m.get('SgStatus')
         return self
@@ -8941,16 +9023,9 @@ class DescribeServiceMeshAdditionalStatusResponseBody(TeaModel):
         cluster_status: DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus = None,
         request_id: str = None,
     ):
-        # Indicates whether the SLB instance is reused. Valid values:
-        # 
-        # *   `true`: The SLB instance is reused.
-        # *   `false`: The SLB instance is not reused.
+        # The status of the cluster.
         self.cluster_status = cluster_status
-        # The check result of the number of SLB instances created for exposing the API server. Valid values:
-        # 
-        # *   `too_much`: An excessive number of SLB instances are created.
-        # *   `num_exact`: A proper number of SLB instances are created.
-        # *   `too_little`: The number of SLB instances falls short.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9030,9 +9105,11 @@ class DescribeServiceMeshClustersRequest(TeaModel):
         offset: int = None,
         service_mesh_id: str = None,
     ):
+        # The maximum number of clusters in a cluster list.
         self.limit = limit
+        # The position where the query starts.
         self.offset = offset
-        # The ID of the virtual private cloud (VPC).
+        # The ID of the ASM instance.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -9082,27 +9159,16 @@ class DescribeServiceMeshClustersResponseBodyClusters(TeaModel):
         version: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the cluster.
-        self.cluster_domain = cluster_domain
-        self.cluster_id = cluster_id
-        self.cluster_type = cluster_type
-        # The ID of the ASM instance.
-        self.creation_time = creation_time
         # The domain name of the cluster.
-        self.error_message = error_message
-        self.forbidden_flag = forbidden_flag
-        self.forbidden_info = forbidden_info
-        self.name = name
-        # The name of the cluster.
-        self.region_id = region_id
-        # The type of the cluster.
-        self.service_mesh_id = service_mesh_id
+        self.cluster_domain = cluster_domain
+        # The cluster ID.
+        self.cluster_id = cluster_id
+        # The cluster type.
+        self.cluster_type = cluster_type
+        # The time when the cluster was created.
+        self.creation_time = creation_time
         # The error message about the cluster.
-        self.sg_id = sg_id
-        # The version number of the cluster.
-        self.state = state
-        # The ID of the region in which the cluster resides.
-        self.update_time = update_time
+        self.error_message = error_message
         # Indicates that the cluster is available or the reason why the cluster cannot be added to the ASM instance. Valid values:
         # 
         # *   `0`: The cluster can be added to the ASM instance.
@@ -9110,14 +9176,29 @@ class DescribeServiceMeshClustersResponseBodyClusters(TeaModel):
         # *   `2`: The cluster cannot be added to the ASM instance because the cluster and the ASM instance reside in different VPCs between which no private connections are built.
         # *   `3`: The CIDR block of the cluster conflicts with that of the ASM instance.
         # *   `4`: The cluster has a namespace that is named istio system.
-        self.version = version
-        # The status of the cluster. Valid values:
+        self.forbidden_flag = forbidden_flag
+        self.forbidden_info = forbidden_info
+        # The name of the cluster.
+        self.name = name
+        # The ID of the region in which the cluster resides.
+        self.region_id = region_id
+        # The ID of the ASM instance.
+        self.service_mesh_id = service_mesh_id
+        # The ID of the security group.
+        self.sg_id = sg_id
+        # The state of the cluster. Valid values:
         # 
         # *   `running`: The cluster is running.
         # *   `starting`: The cluster is starting.
         # *   `stopping`: The cluster is being stopped.
         # *   `stopped`: The cluster is stopped.
         # *   `failed`: The cluster fails to be run.
+        self.state = state
+        # The time when the cluster was last modified.
+        self.update_time = update_time
+        # The version number of the cluster.
+        self.version = version
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -9203,10 +9284,10 @@ class DescribeServiceMeshClustersResponseBody(TeaModel):
         number_of_clusters: int = None,
         request_id: str = None,
     ):
-        # The point in time when the cluster was last modified.
+        # The queried clusters.
         self.clusters = clusters
         self.number_of_clusters = number_of_clusters
-        # The point in time when the cluster was created.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14171,9 +14252,9 @@ class DescribeVSwitchesRequest(TeaModel):
         region_id: str = None,
         vpc_id: str = None,
     ):
-        # The maximum number of entries returned on a single page.
+        # The region ID.
         self.region_id = region_id
-        # The list of the queried vSwitches.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -14210,11 +14291,23 @@ class DescribeVSwitchesResponseBodyVSwitches(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # Indicates whether the vSwitch is the default vSwitch. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.is_default = is_default
+        # The state of the vSwitch. Valid values:
+        # 
+        # *   `Pending`: The vSwitch is being configured.
+        # *   `Available`: The vSwitch is available.
         self.status = status
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
+        # The ID of the VPC to which the vSwitch belongs.
         self.vpc_id = vpc_id
+        # 交换机所属的可用区。
         self.zone_id = zone_id
 
     def validate(self):
@@ -14266,21 +14359,15 @@ class DescribeVSwitchesResponseBody(TeaModel):
         total_count: int = None,
         v_switches: List[DescribeVSwitchesResponseBodyVSwitches] = None,
     ):
-        # Indicates whether the vSwitch is the default vSwitch. Valid values:
-        # 
-        # *   `true`: yes
-        # *   `false`: no
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # The status of the vSwitch. Valid values:
-        # 
-        # *   `Pending`: The vSwitch is being configured.
-        # *   `Available`: The vSwitch is available for use.
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
-        # The ID of the vSwitch.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the VPC in which the vSwitch is deployed.
+        # The total number of vSwitches that are deployed in the VPC in the region. This parameter is optional and is not returned by default.
         self.total_count = total_count
-        # The name of the vSwitch.
+        # The available vSwitches.
         self.v_switches = v_switches
 
     def validate(self):
@@ -14804,11 +14891,17 @@ class GetDeploymentBySelectorRequest(TeaModel):
         name_space: str = None,
         service_mesh_id: str = None,
     ):
+        # The name of the cluster.
         self.guest_cluster = guest_cluster
+        # The label selector information.
         self.label_selector = label_selector
+        # The maximum number of returned data entries.
         self.limit = limit
+        # The marker of data queried last time.
         self.mark = mark
+        # The namespace.
         self.name_space = name_space
+        # The ID of the Alibaba Cloud Service Mesh (ASM) instance.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -14861,11 +14954,17 @@ class GetDeploymentBySelectorShrinkRequest(TeaModel):
         name_space: str = None,
         service_mesh_id: str = None,
     ):
+        # The name of the cluster.
         self.guest_cluster = guest_cluster
+        # The label selector information.
         self.label_selector_shrink = label_selector_shrink
+        # The maximum number of returned data entries.
         self.limit = limit
+        # The marker of data queried last time.
         self.mark = mark
+        # The namespace.
         self.name_space = name_space
+        # The ID of the Alibaba Cloud Service Mesh (ASM) instance.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -14915,8 +15014,11 @@ class GetDeploymentBySelectorResponseBody(TeaModel):
         mark: str = None,
         request_id: str = None,
     ):
+        # The queried workloads.
         self.deployment_name_list = deployment_name_list
+        # The end-of-data marker.
         self.mark = mark
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15732,7 +15834,7 @@ class GetSwimLaneGroupListRequest(TeaModel):
         self,
         service_mesh_id: str = None,
     ):
-        # A list of services associated with the lane group.
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -15763,10 +15865,13 @@ class GetSwimLaneGroupListResponseBodySwimLaneGroupList(TeaModel):
         ingress_type: str = None,
         service_list: str = None,
     ):
-        # The name of the ingress gateway.
+        # The name of the lane group.
         self.group_name = group_name
+        # The name of the ingress gateway.
         self.ingress_gateway_name = ingress_gateway_name
+        # The ingress type. Traffic routing rules can be configured only in an ingress gateway.
         self.ingress_type = ingress_type
+        # A list of services associated with the lane group.
         self.service_list = service_list
 
     def validate(self):
@@ -15807,8 +15912,9 @@ class GetSwimLaneGroupListResponseBody(TeaModel):
         request_id: str = None,
         swim_lane_group_list: List[GetSwimLaneGroupListResponseBodySwimLaneGroupList] = None,
     ):
-        # The ingress type. Traffic routing rules can be configured only in an ingress gateway. Fixed value: ASM.
+        # The request ID.
         self.request_id = request_id
+        # The information about the lane groups.
         self.swim_lane_group_list = swim_lane_group_list
 
     def validate(self):
@@ -16363,6 +16469,7 @@ class GrantUserPermissionsRequest(TeaModel):
         self,
         permissions: str = None,
         sub_account_user_id: str = None,
+        sub_account_user_ids: List[str] = None,
     ):
         # The permissions that are granted to an entity. The content is a string that consists of JSON arrays. You must specify all permissions that you want to grant to an entity. You can add or remove permissions by modifying the content. Field definition of the sample code:
         # 
@@ -16373,6 +16480,8 @@ class GrantUserPermissionsRequest(TeaModel):
         self.permissions = permissions
         # The ID of the RAM user or RAM role.
         self.sub_account_user_id = sub_account_user_id
+        # The ID list of the RAM user or RAM role.
+        self.sub_account_user_ids = sub_account_user_ids
 
     def validate(self):
         pass
@@ -16387,6 +16496,8 @@ class GrantUserPermissionsRequest(TeaModel):
             result['Permissions'] = self.permissions
         if self.sub_account_user_id is not None:
             result['SubAccountUserId'] = self.sub_account_user_id
+        if self.sub_account_user_ids is not None:
+            result['SubAccountUserIds'] = self.sub_account_user_ids
         return result
 
     def from_map(self, m: dict = None):
@@ -16395,6 +16506,55 @@ class GrantUserPermissionsRequest(TeaModel):
             self.permissions = m.get('Permissions')
         if m.get('SubAccountUserId') is not None:
             self.sub_account_user_id = m.get('SubAccountUserId')
+        if m.get('SubAccountUserIds') is not None:
+            self.sub_account_user_ids = m.get('SubAccountUserIds')
+        return self
+
+
+class GrantUserPermissionsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        permissions: str = None,
+        sub_account_user_id: str = None,
+        sub_account_user_ids_shrink: str = None,
+    ):
+        # The permissions that are granted to an entity. The content is a string that consists of JSON arrays. You must specify all permissions that you want to grant to an entity. You can add or remove permissions by modifying the content. Field definition of the sample code:
+        # 
+        # *   `IsCustom`: a parameter that is required by the system. Set the value to `true`.
+        # *   `Cluster`: the ID of the Alibaba Cloud Service Mesh (ASM) instance.
+        # *   `RoleName`: the name of the permissions. Valid values: `istio-admin`, `istio-ops`, and `istio-readonly`. A value of istio-admin indicates the permissions of ASM administrators. A value of istio-ops indicates the permissions of ASM restricted users. A value of istio-readonly indicates the read-only permissions.
+        # *   `IsRamRole`: the entity to which you want to grant the permissions. To grant the permissions to a RAM role, set the value to `true`. Otherwise, set the value to `false`.
+        self.permissions = permissions
+        # The ID of the RAM user or RAM role.
+        self.sub_account_user_id = sub_account_user_id
+        # The ID list of the RAM user or RAM role.
+        self.sub_account_user_ids_shrink = sub_account_user_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permissions is not None:
+            result['Permissions'] = self.permissions
+        if self.sub_account_user_id is not None:
+            result['SubAccountUserId'] = self.sub_account_user_id
+        if self.sub_account_user_ids_shrink is not None:
+            result['SubAccountUserIds'] = self.sub_account_user_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Permissions') is not None:
+            self.permissions = m.get('Permissions')
+        if m.get('SubAccountUserId') is not None:
+            self.sub_account_user_id = m.get('SubAccountUserId')
+        if m.get('SubAccountUserIds') is not None:
+            self.sub_account_user_ids_shrink = m.get('SubAccountUserIds')
         return self
 
 
@@ -17399,7 +17559,9 @@ class UpdateASMNamespaceFromGuestClusterRequest(TeaModel):
         k_8s_cluster_id: str = None,
         service_mesh_id: str = None,
     ):
+        # The ID of the Kubernetes cluster whose namespace information you want to synchronize to ASM. The Kubernetes cluster is added to the ASM instance that is specified by the ServiceMeshId parameter.
         self.k_8s_cluster_id = k_8s_cluster_id
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -17431,6 +17593,7 @@ class UpdateASMNamespaceFromGuestClusterResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17503,7 +17666,9 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate(Tea
         name: str = None,
         namespace: str = None,
     ):
+        # The name of the virtual service.
         self.name = name
+        # The namespace to which the virtual service belongs.
         self.namespace = namespace
 
     def validate(self):
@@ -17535,6 +17700,7 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPe
         self,
         value: float = None,
     ):
+        # The percentage of requests that are aborted with the specified error code, which is expressed as a decimal.
         self.value = value
 
     def validate(self):
@@ -17563,7 +17729,9 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort(T
         http_status: int = None,
         percentage: UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage = None,
     ):
+        # The HTTP status code.
         self.http_status = http_status
+        # The percentage of requests that are aborted with the specified error code.
         self.percentage = percentage
 
     def validate(self):
@@ -17597,6 +17765,7 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPe
         self,
         value: float = None,
     ):
+        # The percentage of requests to which the delay fault is injected, which is expressed as a decimal.
         self.value = value
 
     def validate(self):
@@ -17625,7 +17794,9 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay(T
         fixed_delay: str = None,
         percentage: UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage = None,
     ):
+        # The fixed duration for request delay.
         self.fixed_delay = fixed_delay
+        # The percentage of requests to which the delay fault is injected.
         self.percentage = percentage
 
     def validate(self):
@@ -17660,7 +17831,9 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault(TeaMod
         abort: UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort = None,
         delay: UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay = None,
     ):
+        # The configurations for aborting requests with specified error codes.
         self.abort = abort
+        # The duration to delay a request.
         self.delay = delay
 
     def validate(self):
@@ -17699,8 +17872,11 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect
         redirect_code: int = None,
         uri: str = None,
     ):
+        # The value to be used to overwrite the value of the Authority or Host header during redirection.
         self.authority = authority
+        # The HTTP status code to be used to indicate URL redirection. Default value: 301.
         self.redirect_code = redirect_code
+        # The value to be used to overwrite the URL path during redirection.
         self.uri = uri
 
     def validate(self):
@@ -17737,7 +17913,9 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror(TeaMo
         host: str = None,
         subset: str = None,
     ):
+        # The name of the service defined in the service registry.
         self.host = host
+        # The name of the service subset.
         self.subset = subset
 
     def validate(self):
@@ -17769,6 +17947,7 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercen
         self,
         value: float = None,
     ):
+        # The percentage of requests that are mirrored to another destination except for the original destination, which is expressed as a decimal.
         self.value = value
 
     def validate(self):
@@ -17796,6 +17975,12 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetry
         self,
         value: bool = None,
     ):
+        # Specifies whether to allow retries to other localities. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        # 
+        # Default value: `false`.
         self.value = value
 
     def validate(self):
@@ -17826,9 +18011,13 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries(TeaM
         retry_on: str = None,
         retry_remote_localities: UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities = None,
     ):
+        # The number of retries allowed for a request.
         self.attempts = attempts
+        # The timeout period for each retry.
         self.per_try_timeout = per_try_timeout
+        # The condition for retries. Example: `connect-failure,refused-stream,503`.
         self.retry_on = retry_on
+        # Specifies whether to allow retries to other localities.
         self.retry_remote_localities = retry_remote_localities
 
     def validate(self):
@@ -17871,7 +18060,9 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite(TeaM
         authority: str = None,
         uri: str = None,
     ):
+        # The value to be used to overwrite the value of the Authority or Host header.
         self.authority = authority
+        # The value to be used to overwrite the path or prefix of the URI.
         self.uri = uri
 
     def validate(self):
@@ -17910,13 +18101,21 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions(TeaModel):
         rewrite: UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite = None,
         timeout: str = None,
     ):
+        # The virtual service that defines traffic routing.
         self.delegate = delegate
+        # The configurations of fault injection.
         self.fault = fault
+        # The HTTP redirection rule.
         self.httpredirect = httpredirect
+        # The configurations for mirroring HTTP traffic to another destination in addition to forwarding requests to the specified destination.
         self.mirror = mirror
+        # The percentage of requests that are mirrored to another destination except for the original destination.
         self.mirror_percentage = mirror_percentage
+        # The configurations of retries for failed requests.
         self.retries = retries
+        # The configurations for rewriting the virtual service.
         self.rewrite = rewrite
+        # The timeout period for requests.
         self.timeout = timeout
 
     def validate(self):
@@ -17994,8 +18193,15 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders(TeaModel):
         matching_mode: str = None,
         name: str = None,
     ):
+        # The header value to be matched.
         self.matching_content = matching_content
+        # The matching mode for the header value. Valid values:
+        # 
+        # *   `exact`: exact match
+        # *   `prefix`: match by prefix
+        # *   `regex`: match by regular expression
         self.matching_mode = matching_mode
+        # The header key to be matched.
         self.name = name
 
     def validate(self):
@@ -18032,7 +18238,9 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes(
         snihosts: List[str] = None,
         tlsport: int = None,
     ):
+        # The Server Name Indication (SNI) values to be matched.
         self.snihosts = snihosts
+        # The TLS port.
         self.tlsport = tlsport
 
     def validate(self):
@@ -18065,7 +18273,13 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI(TeaModel):
         matching_content: str = None,
         matching_mode: str = None,
     ):
+        # The content to be matched.
         self.matching_content = matching_content
+        # The matching mode for the routing rule. Valid values:
+        # 
+        # *   `exact`: exact match
+        # *   `prefix`: match by prefix
+        # *   `regex`: match by regular expression
         self.matching_mode = matching_mode
 
     def validate(self):
@@ -18100,9 +18314,13 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest(TeaModel):
         tlsmatch_attributes: List[UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes] = None,
         uri: UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI = None,
     ):
+        # The request headers to be matched.
         self.headers = headers
+        # The ports.
         self.ports = ports
+        # The matching rule for Transport Layer Security (TLS) traffic.
         self.tlsmatch_attributes = tlsmatch_attributes
+        # The matching rule for URIs.
         self.uri = uri
 
     def validate(self):
@@ -18191,8 +18409,10 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination(Te
         port: UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestinationPort = None,
         subset: str = None,
     ):
+        # The name of the service defined in the service registry.
         self.host = host
         self.port = port
+        # The name of the service subset.
         self.subset = subset
 
     def validate(self):
@@ -18231,7 +18451,9 @@ class UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations(TeaModel):
         destination: UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination = None,
         weight: int = None,
     ):
+        # The unique endpoint of the destination service to which the specified requests are sent.
         self.destination = destination
+        # The weight of the service subset.
         self.weight = weight
 
     def validate(self):
@@ -18267,16 +18489,24 @@ class UpdateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
         httpadvanced_options: UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions = None,
         match_request: UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest = None,
         namespace: str = None,
+        raw_vsroute: Any = None,
         route_destinations: List[UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations] = None,
         route_name: str = None,
         route_type: str = None,
     ):
         self.domains = domains
+        # The advanced settings for routing HTTP traffic.
         self.httpadvanced_options = httpadvanced_options
+        # The matching rules for traffic routing.
         self.match_request = match_request
+        # The namespace in which the destination service resides.
         self.namespace = namespace
+        self.raw_vsroute = raw_vsroute
+        # The endpoints of destination services for Layer 4 weighted routing.
         self.route_destinations = route_destinations
+        # The name of the routing rule.
         self.route_name = route_name
+        # The type of the traffic to be routed. Valid values: `HTTP`, `TLS`, and `TCP`.
         self.route_type = route_type
 
     def validate(self):
@@ -18303,6 +18533,8 @@ class UpdateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
             result['MatchRequest'] = self.match_request.to_map()
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.raw_vsroute is not None:
+            result['RawVSRoute'] = self.raw_vsroute
         result['RouteDestinations'] = []
         if self.route_destinations is not None:
             for k in self.route_destinations:
@@ -18325,6 +18557,8 @@ class UpdateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
             self.match_request = temp_model.from_map(m['MatchRequest'])
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('RawVSRoute') is not None:
+            self.raw_vsroute = m.get('RawVSRoute')
         self.route_destinations = []
         if m.get('RouteDestinations') is not None:
             for k in m.get('RouteDestinations'):
@@ -18347,11 +18581,21 @@ class UpdateIstioGatewayRoutesRequest(TeaModel):
         service_mesh_id: str = None,
         status: int = None,
     ):
+        # The description of the routing rule.
         self.description = description
+        # The information about the routing rule to be updated for the ASM gateway.
         self.gateway_route = gateway_route
+        # The name of the ASM gateway.
         self.istio_gateway_name = istio_gateway_name
+        # The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
         self.priority = priority
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
+        # The status of the routing rule. Valid values:
+        # 
+        # *   `0`: The routing rule is valid.
+        # *   `1`: The routing rule is invalid.
+        # *   `2`: An error occurs during the creation or update of the routing rule.
         self.status = status
 
     def validate(self):
@@ -18406,11 +18650,21 @@ class UpdateIstioGatewayRoutesShrinkRequest(TeaModel):
         service_mesh_id: str = None,
         status: int = None,
     ):
+        # The description of the routing rule.
         self.description = description
+        # The information about the routing rule to be updated for the ASM gateway.
         self.gateway_route_shrink = gateway_route_shrink
+        # The name of the ASM gateway.
         self.istio_gateway_name = istio_gateway_name
+        # The priority of the routing rule. The value of this parameter is an integer. A smaller value indicates a higher priority.
         self.priority = priority
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
+        # The status of the routing rule. Valid values:
+        # 
+        # *   `0`: The routing rule is valid.
+        # *   `1`: The routing rule is invalid.
+        # *   `2`: An error occurs during the creation or update of the routing rule.
         self.status = status
 
     def validate(self):
@@ -18458,6 +18712,7 @@ class UpdateIstioGatewayRoutesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18529,6 +18784,7 @@ class UpdateIstioInjectionConfigRequest(TeaModel):
         self,
         enable_istio_injection: bool = None,
         enable_sidecar_set_injection: bool = None,
+        istio_rev: str = None,
         namespace: str = None,
         service_mesh_id: str = None,
     ):
@@ -18536,6 +18792,7 @@ class UpdateIstioInjectionConfigRequest(TeaModel):
         self.enable_istio_injection = enable_istio_injection
         # Specifies whether to enable automatic sidecar injection by using SidecarSet.
         self.enable_sidecar_set_injection = enable_sidecar_set_injection
+        self.istio_rev = istio_rev
         # The namespace for which you want to modify the sidecar injection setting.
         self.namespace = namespace
         # The ID of the ASM instance.
@@ -18554,6 +18811,8 @@ class UpdateIstioInjectionConfigRequest(TeaModel):
             result['EnableIstioInjection'] = self.enable_istio_injection
         if self.enable_sidecar_set_injection is not None:
             result['EnableSidecarSetInjection'] = self.enable_sidecar_set_injection
+        if self.istio_rev is not None:
+            result['IstioRev'] = self.istio_rev
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.service_mesh_id is not None:
@@ -18566,6 +18825,8 @@ class UpdateIstioInjectionConfigRequest(TeaModel):
             self.enable_istio_injection = m.get('EnableIstioInjection')
         if m.get('EnableSidecarSetInjection') is not None:
             self.enable_sidecar_set_injection = m.get('EnableSidecarSetInjection')
+        if m.get('IstioRev') is not None:
+            self.istio_rev = m.get('IstioRev')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('ServiceMeshId') is not None:
@@ -18981,6 +19242,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         interception_mode: str = None,
         kiali_arms_auth_tokens: str = None,
         kiali_enabled: bool = None,
+        kiali_service_annotations: str = None,
         lifecycle: str = None,
         locality_lbconf: str = None,
         locality_load_balancing: bool = None,
@@ -19034,230 +19296,250 @@ class UpdateMeshFeatureRequest(TeaModel):
         tracing_on_ext_zipkin_request_memory: str = None,
         web_assembly_filter_enabled: bool = None,
     ):
-        # Specifies whether to enable Microservice Engine (MSE). Valid values:
+        # Specifies whether to enable access log collection. Valid values:
         # 
-        # *   `true`: MSE is enabled.
-        # *   `false`: MSE is disabled.
+        # *   `true`: enables access log collection.
+        # *   `false`: disables access log collection.
         # 
         # Default value: `false`.
         self.access_log_enabled = access_log_enabled
-        # The custom project on which the Log Service collects logs.
-        self.access_log_file = access_log_file
         # Specifies whether to enable access logging. Valid values:
         # 
-        # *   `""`: Access logging is disabled.
-        # *   `/dev/stdout`: Access logging is enabled. Access logs are written to /dev/stdout.
-        self.access_log_format = access_log_format
-        # The retention period for the access logs of the sidecar proxy. Unit: day. The logs are collected by using the Log Service. For example, `30` indicates 30 days.
-        self.access_log_gateway_lifecycle = access_log_gateway_lifecycle
-        # Specifies whether to enable the rollback feature for Istio resources.
-        self.access_log_project = access_log_project
-        # The endpoint of gRPC ALS for Envoy.
-        self.access_log_service_enabled = access_log_service_enabled
-        # The port of gRPC ALS for Envoy.
-        self.access_log_service_host = access_log_service_host
-        # Specifies whether to enable Gateway API. Valid values:
-        # 
-        # *   `true`: Gateway API is enabled.
-        # *   `false`: Gateway API is disabled.
-        # 
-        # Default value: `false`.
-        self.access_log_service_port = access_log_service_port
-        # Specifies whether to enable automatic diagnosis for the ASM instance. If you enable this feature, the ASM instance is automatically diagnosed when you modify Istio resources in the ASM instance.
-        self.access_log_sidecar_lifecycle = access_log_sidecar_lifecycle
-        # Specifies whether to use a self-managed Zipkin system to collect tracing data. Valid values:
-        # 
-        # *   `true`: A self-managed Zipkin system is used.
-        # *   `false`: No self-managed Zipkin system is used.
-        # 
-        # Default value: `false`.
-        self.audit_project = audit_project
-        # The number of CPU cores that are requested by the sidecar injector pod.
-        self.auto_injection_policy_enabled = auto_injection_policy_enabled
-        # The maximum period of time that the sidecar proxy waits for requests to be processed before the proxy is stopped. For example, if you want to specify a period of 5 seconds, set this parameter to 5s.
-        self.craggregation_enabled = craggregation_enabled
-        # Specifies whether to enable the feature of controlling the OPA injection scope. Valid values:
-        # 
-        # *   `true`: The feature is enabled.
-        # *   `false`: The feature is disabled.
-        self.cluster_spec = cluster_spec
-        # The namespaces to be excluded for the CNI plug-in.
-        self.cni_enabled = cni_enabled
-        # Specifies whether to enable the OPA plug-in. Valid values:
-        # 
-        # *   `true`: The OPA plug-in is enabled.
-        # *   `false`: The OPA plug-in is disabled.
-        # 
-        # Default value: `false`.
-        self.cni_exclude_namespaces = cni_exclude_namespaces
-        # Specifies whether to delay application container startup until the sidecar proxy container is started in a pod.
-        self.concurrency = concurrency
-        # The instance ID of the Nacos registry.
-        self.config_source_enabled = config_source_enabled
+        # *   `""`: disables access logging.
+        # *   `/dev/stdout`: enables access logging. Access logs are written to /dev/stdout.
+        self.access_log_file = access_log_file
         # The custom format of access logs. To set this parameter, make sure that you have enabled access log collection. The value must be a JSON string. The following key names must be contained: authority_for, bytes_received, bytes_sent, downstream_local_address, downstream_remote_address, duration, istio_policy_status, method, path, protocol, requested_server_name, response_code, response_flags, route_name, start_time, trace_id, upstream_cluster, upstream_host, upstream_local_address, upstream_service_time, upstream_transport_failure_reason, user_agent, and x_forwarded_for.
-        self.config_source_nacos_id = config_source_nacos_id
-        # The endpoint of Prometheus monitoring. If you use ARMS Prometheus, set this parameter to the endpoint of Prometheus provided by ARMS.
-        self.customized_prometheus = customized_prometheus
-        # The policy of handling outbound traffic. Valid values:
+        self.access_log_format = access_log_format
+        # The retention period for the access logs of the sidecar proxy. Unit: day. The logs are collected by using Log Service. For example, `30` indicates 30 days.
+        self.access_log_gateway_lifecycle = access_log_gateway_lifecycle
+        # The custom project on which the Log Service collects logs.
+        self.access_log_project = access_log_project
+        # Specifies whether to enable gRPC Access Log Service (ALS) for Envoy. Valid values:
         # 
-        # *   `ALLOW_ANY`: Outbound traffic to all external services is allowed.
-        # *   `REGISTRY_ONLY`: Outbound traffic is allowed to only external services that are defined in the service registry of the ASM instance.
-        self.customized_zipkin = customized_zipkin
-        # Specifies whether to enable Dubbo Filter. Valid values:
-        # 
-        # *   `true`: Dubbo Filter is enabled.
-        # *   `false`: Dubbo Filter is disabled.
+        # *   `true`: enables gRPC ALS for Envoy.
+        # *   `false`: disables gRPC ALS for Envoy.
         # 
         # Default value: `false`.
-        self.dnsproxying_enabled = dnsproxying_enabled
-        self.default_components_schedule_config = default_components_schedule_config
-        # Specifies whether to enable Application High Availability Service (AHAS)-based throttling. Valid values:
-        # 
-        # *   `true`: AHAS-based throttling is enabled.
-        # *   `false`: AHAS-based throttling is disabled.
-        # 
-        # Default value: `false`.
-        self.discovery_selectors = discovery_selectors
-        # Specifies whether to enable gateway configuration filtering. Valid values:
-        # 
-        # *   `true`: Gateway configuration filtering is enabled.
-        # *   `false`: Gateway configuration filtering is disabled.
-        # 
-        # Default value: `false`.
-        self.dubbo_filter_enabled = dubbo_filter_enabled
+        self.access_log_service_enabled = access_log_service_enabled
+        # The endpoint of gRPC ALS for Envoy.
+        self.access_log_service_host = access_log_service_host
+        # The port of gRPC ALS for Envoy.
+        self.access_log_service_port = access_log_service_port
+        # Specifies whether to enable automatic diagnostics for the ASM instance. If you enable this feature, the ASM instance is automatically diagnosed when you modify Istio resources in the ASM instance.
+        self.access_log_sidecar_lifecycle = access_log_sidecar_lifecycle
         # The name of the Log Service project that is used for mesh audit.
         # 
         # Default value: `mesh-log-{ASM instance ID}`.
-        self.enable_audit = enable_audit
-        # The outbound ports for which traffic is to be redirected to the sidecar proxy.
-        self.enable_auto_diagnosis = enable_auto_diagnosis
-        self.enable_bootstrap_xds_agent = enable_bootstrap_xds_agent
-        # Specifies whether to use the Kubernetes API of clusters on the data plane to access Istio resources. To use this feature, the version of the ASM instance must be V1.9.7.93 or later.
-        self.enable_crhistory = enable_crhistory
-        # Specifies whether automatic sidecar injection can be enabled by using pod annotations. Valid values:
+        self.audit_project = audit_project
+        # Specifies whether to enable automatic sidecar proxy injection by using pod annotations. Valid values:
         # 
-        # *   `true`: Automatic sidecar injection can be enabled by using pod annotations.
-        # *   `false`: Automatic sidecar injection cannot be enabled by using pod annotations.
+        # *   `true`: enables automatic sidecar proxy injection by using pod annotations.
+        # *   `false`: disables automatic sidecar proxy injection by using pod annotations.
+        # 
+        # Default value: `false`.
+        self.auto_injection_policy_enabled = auto_injection_policy_enabled
+        # Specifies whether to use the Kubernetes API of clusters on the data plane to access Istio resources. To use this feature, the version of the ASM instance must be V1.9.7.93 or later.
+        self.craggregation_enabled = craggregation_enabled
+        # Specifies whether to enable the feature of controlling the OPA injection scope. Valid values:
+        # 
+        # *   `true`: enables the feature.
+        # *   `false`: disables the feature.
+        self.cluster_spec = cluster_spec
+        # Specifies whether to enable the Container Network Interface (CNI) plug-in. Valid values:
+        # 
+        # *   `true`: enables the CNI plug-in.
+        # *   `false`: disables the CNI plug-in.
+        # 
+        # Default value: `false`.
+        self.cni_enabled = cni_enabled
+        # The namespaces to be excluded for the CNI plug-in.
+        self.cni_exclude_namespaces = cni_exclude_namespaces
+        # Specifies whether to delay application container startup until the sidecar proxy container is started in a pod.
+        self.concurrency = concurrency
+        # Specifies whether to enable the external service registry. Valid values:
+        # 
+        # *   `true`: enables the external service registry.
+        # *   `false`: disables the external service registry.
+        # 
+        # Default value: `false`.
+        self.config_source_enabled = config_source_enabled
+        # The instance ID of the Nacos registry.
+        self.config_source_nacos_id = config_source_nacos_id
+        # Specifies whether to use a custom Prometheus instance. Valid values:
+        # 
+        # *   `true`: uses a custom Prometheus instance.
+        # *   `false`: does not use a custom Prometheus instance.
+        # 
+        # Default value: `false`.
+        self.customized_prometheus = customized_prometheus
+        # Specifies whether to use a self-managed Zipkin system to collect tracing data. Valid values:
+        # 
+        # *   `true`: uses a self-managed Zipkin system.
+        # *   `false`: does not use a self-managed Zipkin system.
+        # 
+        # Default value: `false`.
+        self.customized_zipkin = customized_zipkin
+        # Specifies whether to enable DNS proxy. Valid values:
+        # 
+        # *   `true`: enables the DNS proxy feature.
+        # *   `false`: disables the DNS proxy feature.
+        # 
+        # Default value: `false`.
+        self.dnsproxying_enabled = dnsproxying_enabled
+        # Specifies the default scheduling configurations that ASM delivers to components on the data plane. You can configure nodeSelector and tolerations in the JSON format. 
+        # 
+        # 
+        # >* Modifying the value of this parameter is a high-risk operation. The modification will cause all components on the data plane of ASM to restart. Exercise caution before modifying the value of this parameter. 
+        # >* The configurations specified by this parameter do not apply to the ASM gateway. You can configure scheduling on the ASM gateway.
+        self.default_components_schedule_config = default_components_schedule_config
+        # The label selectors used to specify the namespaces of the clusters on the data plane for selective service discovery.
+        self.discovery_selectors = discovery_selectors
+        # Specifies whether to enable Dubbo Filter. Valid values:
+        # 
+        # *   `true`: enables Dubbo Filter.
+        # *   `false`: disables Dubbo Filter.
+        # 
+        # Default value: `false`.
+        self.dubbo_filter_enabled = dubbo_filter_enabled
+        # Specifies whether to enable the mesh audit feature. To enable this feature, make sure that you have activated [Log Service](https://sls.console.aliyun.com/). Valid values:
+        # 
+        # *   `true`: enables the mesh audit feature.
+        # *   `false`: disables the mesh audit feature.
+        # 
+        # Default value: `false`.
+        self.enable_audit = enable_audit
+        # The ports for which outbound traffic is redirected to the sidecar proxy.
+        self.enable_auto_diagnosis = enable_auto_diagnosis
+        # Specifies the authentication token of an ARMS Prometheus instance when the Mesh Topology feature is enabled and ARMS Prometheus is used to collect monitoring metrics. The token is used to allow Mesh Topology to access the ARMS Prometheus instance. The token is in the JSON format. The key in the JSON object is the ID of the cluster on the data plane, and the value is the authentication token of the ARMS Prometheus instance deployed in the cluster.
+        self.enable_bootstrap_xds_agent = enable_bootstrap_xds_agent
+        # Specifies whether to enable the rollback feature for Istio resources.
+        self.enable_crhistory = enable_crhistory
+        # Specifies whether to enable automatic sidecar proxy injection for all namespaces. Valid values:
+        # 
+        # *   `true`: enables automatic sidecar proxy injection for all namespaces.
+        # *   `false`: disables automatic sidecar proxy injection for all namespaces.
         # 
         # Default value: `false`.
         self.enable_namespaces_by_default = enable_namespaces_by_default
-        # Specifies whether to enable gRPC Access Log Service (ALS) for Envoy. Valid values:
+        # Specifies whether to enable Secret Discovery Service (SDS). Valid values:
         # 
-        # *   `true`: gRPC ALS for Envoy is enabled.
-        # *   `false`: gRPC ALS for Envoy is disabled.
+        # *   `true`: enables SDS.
+        # *   `false`: disables SDS.
         # 
         # Default value: `false`.
         self.enable_sdsserver = enable_sdsserver
-        # The outbound ports. Separate multiple port numbers with commas (,).
+        # The IP addresses of external services to which traffic is not intercepted.
         self.exclude_ipranges = exclude_ipranges
-        # Specifies whether to enable automatic sidecar injection for all namespaces. Valid values:
-        # 
-        # *   `true`: Automatic sidecar injection for all namespaces is enabled.
-        # *   `false`: Automatic sidecar injection for all namespaces is disabled.
-        # 
-        # Default value: `false`.
+        # The ports for which inbound traffic is not redirected to the sidecar proxy. Separate multiple ports with commas (,).
         self.exclude_inbound_ports = exclude_inbound_ports
-        # The inbound ports for which traffic is to be redirected to the sidecar proxy.
+        # The ports for which outbound traffic is not redirected to the sidecar proxy. Separate multiple ports with commas (,).
         self.exclude_outbound_ports = exclude_outbound_ports
-        # Specifies whether to enable Secret Discovery Service (SDS). Valid values:
+        # Specifies whether to enable gateway configuration filtering. Valid values:
         # 
-        # *   `true`: SDS is enabled.
-        # *   `false`: SDS is disabled.
+        # *   `true`: enables gateway configuration filtering.
+        # *   `false`: disables gateway configuration filtering.
         # 
         # Default value: `false`.
         self.filter_gateway_cluster_config = filter_gateway_cluster_config
-        # Specifies whether to enable the external service registry. Valid values:
+        # Specifies whether to enable Gateway API. Valid values:
         # 
-        # *   `true`: The external service registry is enabled.
-        # *   `false`: The external service registry is disabled.
+        # *   `true`: enables Gateway API.
+        # *   `false`: disables Gateway API.
         # 
         # Default value: `false`.
         self.gateway_apienabled = gateway_apienabled
         # Other metrics of the sidecar proxy on the data plane.
         self.hold_application_until_proxy_starts = hold_application_until_proxy_starts
-        # Specifies whether to enable Mesh Topology. To enable this feature, make sure that you have enabled Prometheus monitoring. If Prometheus monitoring is disabled, the value of this parameter must be `false`. Valid values:``
+        # Specifies whether to support HTTP 1.0. Valid values:
         # 
-        # *   `true`: Mesh Topology is enabled.
-        # *   `false`: Mesh Topology is disabled.
+        # *   `true`: supports HTTP 1.0.
+        # *   `false`: does not support HTTP 1.0.
         # 
         # Default value: `false`.
         self.http_10enabled = http_10enabled
-        # The IP addresses of external services to which traffic is not intercepted.
+        # The IP addresses of external services to which traffic is intercepted.
         self.include_ipranges = include_ipranges
-        # The inbound ports. Separate multiple port numbers with commas (,).
+        # The ports for which inbound traffic is redirected to the sidecar proxy.
         self.include_inbound_ports = include_inbound_ports
-        # The log level of the sidecar proxy on the data plane. Log levels include `none`, `error`, `warn`, `info`, and `debug`. The levels correspond to different amounts of information reported by the logs. For example, none-level logs report the least information while debug-level logs report the most information.
+        # The log level of the sidecar proxy on the data plane. Log levels include `none`, `error`, `warn`, `info`, and `debug`. The levels correspond to different amounts of information reported by the logs. For example, none-level logs report the least information, while debug-level logs report the most information.
         self.include_outbound_ports = include_outbound_ports
         # Specifies whether to enable Node Feature Discovery (NFD).
         self.integrate_kiali = integrate_kiali
-        # The ID of the request.
+        # Specifies whether to load the bootstrap configuration before the sidecar proxy is started.
         self.interception_mode = interception_mode
-        self.kiali_arms_auth_tokens = kiali_arms_auth_tokens
-        # Specifies whether to use a custom Prometheus instance. Valid values:
+        # Specifies the default scheduling configurations that ASM delivers to components on the data plane. You can configure `nodeSelector` and tolerations in the JSON format.
         # 
-        # *   `true`: A custom Prometheus instance is used.
-        # *   `false`: No custom Prometheus instance is used.
+        # > *   Modifying the value of this parameter is a high-risk operation. The modification will cause all components on the data plane of ASM to restart. Exercise caution before modifying the value of this parameter.
+        # >*   The configurations specified by this parameter do not apply to the ASM gateway. You can configure gateway-specific scheduling on the ASM gateway.
+        self.kiali_arms_auth_tokens = kiali_arms_auth_tokens
+        # Specifies whether to enable the Mesh Topology feature. To enable this feature, make sure that you have enabled Prometheus monitoring. If Prometheus monitoring is disabled, the Mesh Topology feature must be disabled. Valid values:````
+        # 
+        # *   `true`: enables the Mesh Topology feature.
+        # *   `false`: disables the Mesh Topology feature.
         # 
         # Default value: `false`.
         self.kiali_enabled = kiali_enabled
-        # Specifies whether to enable Transport Layer Security (TLS) acceleration based on MultiBuffer.
+        # 当开启网格拓扑且为访问网格拓扑创建CLB时，通过此参数使用Annotation配置不同集群中网格拓扑服务的CLB。
+        # 
+        # 参数格式为JSON编码的字符串，JSON对象中的键为数据面集群的集群ID，值为数据面集群中网格拓扑服务的Annotation内容。
+        # 
+        # 有关如何通过注解配置CLB，参考 [通过Annotation配置传统型负载均衡CLB](https://help.aliyun.com/document_detail/86531.html)。
+        self.kiali_service_annotations = kiali_service_annotations
+        # The lifecycle of the sidecar proxy.
         self.lifecycle = lifecycle
-        # Specifies whether to enable Prometheus monitoring. We recommend that you enable [ARMS Prometheus](https://arms.console.aliyun.com/). Valid values:
-        # 
-        # *   `true`: Prometheus monitoring is enabled.
-        # *   `false`: Prometheus monitoring is disabled.
-        # 
-        # Default value: `false`.
-        self.locality_lbconf = locality_lbconf
         # The configurations of cross-region load balancing. Valid values:
         # 
         # *   `failover`: the configurations of cross-region failover. Example:
         # 
-        #     ```
+        # <!---->
         # 
-        #         failover: [// The struct that indicates the configurations of cross-region failover. 
+        #     failover: [// Cross-region failover configurations of the struct type. 
         #             {
         #                 // If a service fails in the China (Beijing) region, the traffic is redirected to the same service in the China (Hangzhou) region. 
         #                 from: "cn-beijing", 
         #                 to: "cn-hangzhou",
         #             }
         #         ]
-        #     ```
         # 
         # *   `distribute`: the configurations of cross-region traffic distribution. Example:
         # 
-        # ```
+        # <!---->
         # 
-        # distribute: [ // The struct that indicates the configurations of cross-region traffic distribution. 
-        #         {
-        #             // For traffic that is routed to the China (Beijing) region, 70% of the traffic is allocated to the China (Beijing) region and the rest of the traffic is redirected to the China (Hangzhou) region. 
-        #             "from": "cn-beijing",
-        #             "to": {
-        #                 "cn-beijing": 70,
-        #                 "cn-hangzhou": 30,
+        #     distribute: [// Cross-region traffic distribution configurations of the struct type. 
+        #             {
+        #                 // For traffic that is routed to the China (Beijing) region, 70% of the traffic is allocated to the China (Beijing) region and the rest of the traffic is redirected to the China (Hangzhou) region. 
+        #                 "from": "cn-beijing",
+        #                 "to": {
+        #                     "cn-beijing": 70,
+        #                     "cn-hangzhou": 30,
+        #                 }
         #             }
-        #         }
-        #     ]
-        # ```
+        #         ]
+        self.locality_lbconf = locality_lbconf
+        # Specifies whether to enable cross-region load balancing. Valid values:
+        # 
+        # *   `true`: enables cross-region load balancing.
+        # *   `false`: disables cross-region load balancing.
+        # 
+        # Default value: `false`.
         self.locality_load_balancing = locality_load_balancing
         # The number of worker threads used by the sidecar proxy on the data plane.
         self.log_level = log_level
-        # Specifies whether to enable Redis Filter. Valid values:
+        # Specifies whether to enable Microservice Engine (MSE). Valid values:
         # 
-        # *   `true`: Redis Filter is enabled.
+        # *   `true`: enables MSE.
+        # *   `false`: disables MSE.
         # 
-        # *   `false`: Redis Filter is disabled.
-        # 
-        #     Default value: `false`.
+        # Default value: `false`.
         self.mseenabled = mseenabled
-        # The pull-request latency. By default, this parameter is left empty.
+        # Specifies whether to enable Transport Layer Security (TLS) acceleration based on MultiBuffer.
         self.multi_buffer_enabled = multi_buffer_enabled
-        # The label selectors used to specify the namespaces of the clusters on the data plane for selective service discovery.
+        # The pull-request latency. By default, this parameter is left empty.
         self.multi_buffer_poll_delay = multi_buffer_poll_delay
-        # Specifies whether to enable Thrift Filter. Valid values:
+        # Specifies whether to enable MySQL Filter. Valid values:
         # 
-        # *   `true`: Thrift Filter is enabled.
-        # *   `false`: Thrift Filter is disabled.
+        # *   `true`: enables MySQL Filter.
+        # *   `false`: disables MySQL Filter.
         # 
         # Default value: `false`.
         self.mysql_filter_enabled = mysql_filter_enabled
@@ -19265,173 +19547,155 @@ class UpdateMeshFeatureRequest(TeaModel):
         # 
         # This parameter is valid only when the `NFDEnabled` parameter is set to `false`.
         self.nfdenabled = nfdenabled
-        # The minimum number of CPU cores requested by the proxy that exports trace data. For example, `1000m` indicates one CPU core.
+        # The minimum number of CPU cores requested by the proxy service that exports Tracing Analysis data. For example, `1000m` indicates one CPU core.
         self.nfdlabel_pruned = nfdlabel_pruned
-        # The maximum size of the memory that is available to the pod to which the OPA proxy container is injected. For example, `1024Mi` indicates 1024 MB.
+        # The maximum size of the memory that is available to the pod that injects OPA proxies into application pods. For example, `1024Mi` indicates 1024 MB.
         self.opainjector_cpulimit = opainjector_cpulimit
-        # The minimum size of the memory requested by the pod to which the OPA proxy container is injected. For example, `50 Mi` indicates 50 MB.
+        # The minimum size of the memory requested by the pod that injects OPA proxies into application pods. For example, `50 Mi` indicates 50 MB.
         self.opainjector_cpurequirement = opainjector_cpurequirement
         # Specifies whether to create an SLB instance for accessing the ASM mesh topology.
         self.opainjector_memory_limit = opainjector_memory_limit
-        # The maximum number of CPU cores that are available to the pod to which the OPA proxy container is injected. For example, `1000m` indicates one CPU core.
+        # The maximum number of CPU cores that are available to the pod that injects OPA proxies into application pods. For example, `1000m` indicates one CPU core.
         self.opainjector_memory_requirement = opainjector_memory_requirement
-        # The maximum size of the memory that is available to the OPA proxy container.
-        self.opalimit_cpu = opalimit_cpu
-        # Specifies whether to enable the mesh audit feature. To enable this feature, make sure that you have activated [Log Service](https://sls.console.aliyun.com/). Valid values:
-        # 
-        # *   `true`: The mesh audit feature is enabled.
-        # *   `false`: The mesh audit feature is disabled.
-        # 
-        # Default value: `false`.
-        self.opalimit_memory = opalimit_memory
-        # The number of CPU cores that are requested by the OPA proxy container.
-        self.opalog_level = opalog_level
-        # The size of the memory that is requested by the OPA proxy container.
-        self.oparequest_cpu = oparequest_cpu
         # The maximum number of CPU cores that are available to the OPA proxy container.
-        self.oparequest_memory = oparequest_memory
-        # The minimum number of CPU cores requested by the pod to which the OPA proxy container is injected. For example, `1000m` indicates one CPU core.
-        self.opascope_injected = opascope_injected
-        # Specifies whether to enable the support for HTTP 1.0. Valid values:
+        self.opalimit_cpu = opalimit_cpu
+        # The maximum size of the memory that is available to the OPA proxy container.
+        self.opalimit_memory = opalimit_memory
+        # The log level of the OPA proxy container.
         # 
-        # *   `true`: HTTP 1.0 is supported.
-        # *   `false`: HTTP 1.0 is not supported.
+        # *   `info`: outputs all information.
+        # *   `debug`: outputs debugging and error information.
+        # *   `error`: outputs only error information.
+        self.opalog_level = opalog_level
+        # The number of CPU cores that are requested by the OPA proxy container.
+        self.oparequest_cpu = oparequest_cpu
+        # The size of the memory that is requested by the OPA proxy container.
+        self.oparequest_memory = oparequest_memory
+        # The minimum number of CPU cores requested by the pod that injects OPA proxies into application pods. For example, `1000m` indicates one CPU core.
+        self.opascope_injected = opascope_injected
+        # Specifies whether to enable the OPA plug-in. Valid values:
+        # 
+        # *   `true`: enables the OPA plug-in.
+        # *   `false`: disables the OPA plug-in.
         # 
         # Default value: `false`.
         self.opa_enabled = opa_enabled
-        # The log level of the OPA proxy container.
+        # Specifies whether to install the Open Policy Agent (OPA) plug-in. Valid values:
         # 
-        # *   `info`: All information is reported.
-        # *   `debug`: Debugging and error information is reported.
-        # *   `error`: Only error information is reported.
-        self.open_agent_policy = open_agent_policy
-        # The number of CPU cores that are requested by the sidecar proxy container.
-        self.outbound_traffic_policy = outbound_traffic_policy
-        # Specifies whether to enable access log collection. Valid values:
-        # 
-        # *   `true`: Access log collection is enabled.
-        # *   `false`: Access log collection is disabled.
+        # *   `true`: installs the OPA plug-in.
+        # *   `false`: does not install the OPA plug-in.
         # 
         # Default value: `false`.
+        self.open_agent_policy = open_agent_policy
+        # The policy for accessing external services. Valid values:
+        # 
+        # *   `ALLOW_ANY`: allows access to all external services.
+        # *   `REGISTRY_ONLY`: allows access to only the external services that are defined in the ServiceEntry of the ASM instance.
+        self.outbound_traffic_policy = outbound_traffic_policy
+        # The endpoint of Prometheus monitoring. If you use ARMS Prometheus, set this parameter to the endpoint of Prometheus provided by ARMS.
         self.prometheus_url = prometheus_url
-        # The maximum size of the memory that is available to the istio-init container.
+        # The maximum number of CPU cores that are available to the istio-init container.
         self.proxy_init_cpuresource_limit = proxy_init_cpuresource_limit
-        # The size of the memory that is requested by the istio-init container.
-        self.proxy_init_cpuresource_request = proxy_init_cpuresource_request
         # The number of CPU cores that are requested by the istio-init container.
+        self.proxy_init_cpuresource_request = proxy_init_cpuresource_request
+        # The maximum size of the memory that is available to the istio-init container.
         self.proxy_init_memory_resource_limit = proxy_init_memory_resource_limit
-        # The lifecycle of the sidecar proxy.
+        # The size of the memory that is requested by the istio-init container.
         self.proxy_init_memory_resource_request = proxy_init_memory_resource_request
-        # The maximum size of the memory that is available to the sidecar proxy container.
-        self.proxy_limit_cpu = proxy_limit_cpu
-        # The IP addresses of external services to which traffic is intercepted.
-        self.proxy_limit_memory = proxy_limit_memory
-        # The size of the memory that is requested by the sidecar proxy container.
-        self.proxy_request_cpu = proxy_request_cpu
         # The maximum number of CPU cores that are available to the sidecar proxy container.
+        self.proxy_limit_cpu = proxy_limit_cpu
+        # The maximum size of the memory that is available to the sidecar proxy container.
+        self.proxy_limit_memory = proxy_limit_memory
+        # The number of CPU cores that are requested by the sidecar proxy container.
+        self.proxy_request_cpu = proxy_request_cpu
+        # The size of the memory that is requested by the sidecar proxy container.
         self.proxy_request_memory = proxy_request_memory
         # The mode in which the sidecar proxy intercepts inbound traffic. Valid values:
         # 
         # *   `REDIRECT`: The sidecar proxy intercepts inbound traffic in the REDIRECT mode.
         # *   `TPROXY`: The sidecar proxy intercepts inbound traffic in the TPROXY mode.
         self.proxy_stats_matcher = proxy_stats_matcher
-        # Specifies whether to enable MySQL Filter. Valid values:
+        # Specifies whether to enable Redis Filter. Valid values:
         # 
-        # *   `true`: MySQL Filter is enabled.
-        # *   `false`: MySQL Filter is disabled.
+        # *   `true`: enables Redis Filter.
+        # *   `false`: disables Redis Filter.
         # 
         # Default value: `false`.
         self.redis_filter_enabled = redis_filter_enabled
-        # Specifies whether to enable the Tracing Analysis feature. To enable this feature, make sure that you have activated [Tracing Analysis](https://tracing-analysis.console.aliyun.com/). Valid values:
-        # 
-        # *   `true`: The Tracing Analysis feature is enabled.
-        # *   `false`: The Tracing Analysis feature is disabled.
-        # 
-        # Default value: `false`.
+        # The ID of the ASM instance.
         self.service_mesh_id = service_mesh_id
-        # The maximum size of the memory that is available to the sidecar injector pod.
+        # The maximum number of CPU cores that are available to the pod where a sidecar proxy injector resides.
         self.sidecar_injector_limit_cpu = sidecar_injector_limit_cpu
-        # Other configurations of automatic sidecar injection, in the YAML format.
+        # The maximum size of the memory that is available to the pod where a sidecar proxy injector resides.
         self.sidecar_injector_limit_memory = sidecar_injector_limit_memory
-        # The size of the memory that is requested by the sidecar injector pod.
+        # The number of CPU cores that are requested by the pod where a sidecar proxy injector resides.
         self.sidecar_injector_request_cpu = sidecar_injector_request_cpu
-        # The maximum number of CPU cores that are available to the sidecar injector pod.
+        # The size of the memory that is requested by the pod where a sidecar proxy injector resides.
         self.sidecar_injector_request_memory = sidecar_injector_request_memory
-        # Specifies whether to enable the Container Network Interface (CNI) plug-in. Valid values:
-        # 
-        # *   `true`: The CNI plug-in is enabled.
-        # *   `false`: The CNI plug-in is disabled.
-        # 
-        # Default value: `false`.
+        # Other configurations of automatic sidecar proxy injection, in the YAML format.
         self.sidecar_injector_webhook_as_yaml = sidecar_injector_webhook_as_yaml
-        # Specifies whether to install the Open Policy Agent (OPA) plug-in. Valid values:
+        # Specifies whether to enable Prometheus monitoring. We recommend that you enable [ARMS Prometheus](https://arms.console.aliyun.com/). Valid values:
         # 
-        # *   `true`: The OPA plug-in is installed.
-        # *   `false`: The OPA plug-in is not installed.
+        # *   `true`: enables Prometheus monitoring.
+        # *   `false`: disables Prometheus monitoring.
         # 
         # Default value: `false`.
         self.telemetry = telemetry
-        # The maximum number of CPU cores that are available to the istio-init container.
+        # The maximum period of time that the sidecar proxy waits for requests to be processed before the proxy is stopped. For example, if you want to specify a period of 5 seconds, set this parameter to 5s.
         self.termination_drain_duration = termination_drain_duration
-        # Specifies whether to enable WebAssembly Filter. Valid values:
+        # Specifies whether to enable Thrift Filter. Valid values:
         # 
-        # *   `true`:WebAssembly Filter is enabled.
-        # *   `false`: WebAssembly Filter is disabled.
+        # *   `true`: enables Thrift Filter.
+        # *   `false`: disables Thrift Filter.
         # 
         # Default value: `false`.
         self.thrift_filter_enabled = thrift_filter_enabled
-        # The maximum length of the request path contained in the HttpUrl span tag. Default value: `256`.
-        self.trace_custom_tags = trace_custom_tags
-        # Specifies whether to enable cross-region load balancing. Valid values:
+        # The custom tag of Tracing Analysis. Specify this parameter in the JSON format.
         # 
-        # *   `true`: Cross-region load balancing is enabled.
-        # *   `false`: Cross-region load balancing is disabled.
+        #     {
+        #         "name1": CustomTag,
+        #         "name2": CustomTag
+        #     }
+        # 
+        # Tag key: literal, header, or environment.
+        # 
+        #     {
+        #         "literal": {
+        #             "value": "Fixed value"
+        #         }
+        #         "header": {
+        #             "name": "Header name"
+        #             "defaultValue": "Default value that is used if the specified header does not exist"
+        #         }
+        #         "environment": {
+        #             "name": "Environment variable name"
+        #             "defaultValue": "Default value that is used if the specified environment variable does not exist"
+        #         }
+        #     }
+        self.trace_custom_tags = trace_custom_tags
+        # The maximum length of the request path contained in the HttpUrl span tag. Default value: `256`.
+        self.trace_max_path_tag_length = trace_max_path_tag_length
+        # The sampling percentage of Tracing Analysis.
+        self.trace_sampling = trace_sampling
+        # Specifies whether to enable the Tracing Analysis feature. To enable this feature, make sure that you have activated [Tracing Analysis](https://tracing-analysis.console.aliyun.com/). Valid values:
+        # 
+        # *   `true`: enables the Tracing Analysis feature.
+        # *   `false`: disables the Tracing Analysis feature.
         # 
         # Default value: `false`.
-        self.trace_max_path_tag_length = trace_max_path_tag_length
-        # The custom tag of Tracing Analysis. The value is in the JSON format.
-        # 
-        # ```
-        # 
-        # {
-        #     "name1": CustomTag,
-        #     "name2": CustomTag
-        # }
-        # ```
-        # 
-        # Tag structure: literal, header, or environment.
-        # 
-        # ```
-        # 
-        # {
-        #     "literal": {
-        #         "value": "Fixed value"
-        #     }
-        #     "header": {
-        #         "name": "Header name"
-        #         "defaultValue": "Default value that is used if the specified header does not exist"
-        #     }
-        #     "environment": {
-        #         "name": "Environment variable name"
-        #         "defaultValue": "Default value that is used if the specified environment variable does not exist"
-        #     }
-        # }
-        # ```
-        self.trace_sampling = trace_sampling
-        # The sampling percentage of Tracing Analysis.
         self.tracing = tracing
-        # The maximum size of the memory that is available to the proxy that exports trace data. For example, `1Mi` indicates 1 MB.
+        # The maximum size of the memory that is available to the proxy service that exports Tracing Analysis data. For example, `1Mi` indicates 1 MB.
         self.tracing_on_ext_zipkin_limit_cpu = tracing_on_ext_zipkin_limit_cpu
-        # The retention period for the access logs of the ingress gateway. Unit: day. The logs are collected by using the Log Service. For example, `30` indicates 30 days.
+        # The retention period for the access logs of the ingress gateway. Unit: day. The logs are collected by using Log Service. For example, `30` indicates 30 days.
         self.tracing_on_ext_zipkin_limit_memory = tracing_on_ext_zipkin_limit_memory
-        # The minimum size of the memory requested by the proxy that exports trace data. For example, `1Mi` indicates 1 MB.
+        # The minimum size of the memory requested by the proxy service that exports Tracing Analysis data. For example, `1Mi` indicates 1 MB.
         self.tracing_on_ext_zipkin_request_cpu = tracing_on_ext_zipkin_request_cpu
-        # The maximum number of CPU cores that are available to the proxy that exports trace data. For example, `1000m` indicates one CPU core.
+        # The maximum number of CPU cores that are available to the proxy service that exports Tracing Analysis data. For example, `1000m` indicates one CPU core.
         self.tracing_on_ext_zipkin_request_memory = tracing_on_ext_zipkin_request_memory
-        # Specifies whether to enable DNS proxying. Valid values:
+        # Specifies whether to enable WebAssembly Filter. Valid values:
         # 
-        # *   `true`: DNS proxying is enabled.
-        # *   `false`: DNS proxying is disabled.
+        # *   `true`: enables WebAssembly Filter.
+        # *   `false`: disables WebAssembly Filter.
         # 
         # Default value: `false`.
         self.web_assembly_filter_enabled = web_assembly_filter_enabled
@@ -19533,6 +19797,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['KialiArmsAuthTokens'] = self.kiali_arms_auth_tokens
         if self.kiali_enabled is not None:
             result['KialiEnabled'] = self.kiali_enabled
+        if self.kiali_service_annotations is not None:
+            result['KialiServiceAnnotations'] = self.kiali_service_annotations
         if self.lifecycle is not None:
             result['Lifecycle'] = self.lifecycle
         if self.locality_lbconf is not None:
@@ -19729,6 +19995,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.kiali_arms_auth_tokens = m.get('KialiArmsAuthTokens')
         if m.get('KialiEnabled') is not None:
             self.kiali_enabled = m.get('KialiEnabled')
+        if m.get('KialiServiceAnnotations') is not None:
+            self.kiali_service_annotations = m.get('KialiServiceAnnotations')
         if m.get('Lifecycle') is not None:
             self.lifecycle = m.get('Lifecycle')
         if m.get('LocalityLBConf') is not None:
@@ -19841,6 +20109,7 @@ class UpdateMeshFeatureResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20514,15 +20783,25 @@ class UpgradeMeshEditionPartiallyRequest(TeaModel):
         self,
         asmgateway_continue: bool = None,
         expected_version: str = None,
+        pre_check: bool = None,
         service_mesh_id: str = None,
         switch_to_pro: bool = None,
         upgrade_gateway_records: str = None,
     ):
+        # Specifies whether to upgrade the ASM gateways for the ASM instance. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.asmgateway_continue = asmgateway_continue
         self.expected_version = expected_version
-        # The ID of the request.
+        # 执行升级检查。如果该值设置为true，则只会执行升级检查，并不会实际升级。
+        self.pre_check = pre_check
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
+        # *   ``
+        # *   ``
         self.switch_to_pro = switch_to_pro
+        # Specifies the ASM gateways to be upgraded. Separate multiple ASM gateways with commas (,).
         self.upgrade_gateway_records = upgrade_gateway_records
 
     def validate(self):
@@ -20538,6 +20817,8 @@ class UpgradeMeshEditionPartiallyRequest(TeaModel):
             result['ASMGatewayContinue'] = self.asmgateway_continue
         if self.expected_version is not None:
             result['ExpectedVersion'] = self.expected_version
+        if self.pre_check is not None:
+            result['PreCheck'] = self.pre_check
         if self.service_mesh_id is not None:
             result['ServiceMeshId'] = self.service_mesh_id
         if self.switch_to_pro is not None:
@@ -20552,6 +20833,8 @@ class UpgradeMeshEditionPartiallyRequest(TeaModel):
             self.asmgateway_continue = m.get('ASMGatewayContinue')
         if m.get('ExpectedVersion') is not None:
             self.expected_version = m.get('ExpectedVersion')
+        if m.get('PreCheck') is not None:
+            self.pre_check = m.get('PreCheck')
         if m.get('ServiceMeshId') is not None:
             self.service_mesh_id = m.get('ServiceMeshId')
         if m.get('SwitchToPro') is not None:
@@ -20566,6 +20849,7 @@ class UpgradeMeshEditionPartiallyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20635,8 +20919,10 @@ class UpgradeMeshEditionPartiallyResponse(TeaModel):
 class UpgradeMeshVersionRequest(TeaModel):
     def __init__(
         self,
+        pre_check: bool = None,
         service_mesh_id: str = None,
     ):
+        self.pre_check = pre_check
         # The ID of the ASM instance.
         self.service_mesh_id = service_mesh_id
 
@@ -20649,12 +20935,16 @@ class UpgradeMeshVersionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.pre_check is not None:
+            result['PreCheck'] = self.pre_check
         if self.service_mesh_id is not None:
             result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PreCheck') is not None:
+            self.pre_check = m.get('PreCheck')
         if m.get('ServiceMeshId') is not None:
             self.service_mesh_id = m.get('ServiceMeshId')
         return self

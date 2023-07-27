@@ -125,6 +125,14 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.AddVMIntoServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.AddVMIntoServiceMeshResponse:
+        """
+        @deprecated
+        
+        @param request: AddVMIntoServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddVMIntoServiceMeshResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ecs_id):
@@ -155,6 +163,14 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.AddVMIntoServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.AddVMIntoServiceMeshResponse:
+        """
+        @deprecated
+        
+        @param request: AddVMIntoServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddVMIntoServiceMeshResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ecs_id):
@@ -184,6 +200,13 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.AddVMIntoServiceMeshRequest,
     ) -> servicemesh_20200111_models.AddVMIntoServiceMeshResponse:
+        """
+        @deprecated
+        
+        @param request: AddVMIntoServiceMeshRequest
+        @return: AddVMIntoServiceMeshResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_vminto_service_mesh_with_options(request, runtime)
 
@@ -191,6 +214,13 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.AddVMIntoServiceMeshRequest,
     ) -> servicemesh_20200111_models.AddVMIntoServiceMeshResponse:
+        """
+        @deprecated
+        
+        @param request: AddVMIntoServiceMeshRequest
+        @return: AddVMIntoServiceMeshResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_vminto_service_mesh_with_options_async(request, runtime)
 
@@ -2534,72 +2564,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_imported_services_detail_with_options_async(request, runtime)
 
-    def describe_ingress_gateways_with_options(
-        self,
-        request: servicemesh_20200111_models.DescribeIngressGatewaysRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeIngressGatewaysResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeIngressGateways',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeIngressGatewaysResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_ingress_gateways_with_options_async(
-        self,
-        request: servicemesh_20200111_models.DescribeIngressGatewaysRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeIngressGatewaysResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeIngressGateways',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeIngressGatewaysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_ingress_gateways(
-        self,
-        request: servicemesh_20200111_models.DescribeIngressGatewaysRequest,
-    ) -> servicemesh_20200111_models.DescribeIngressGatewaysResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_ingress_gateways_with_options(request, runtime)
-
-    async def describe_ingress_gateways_async(
-        self,
-        request: servicemesh_20200111_models.DescribeIngressGatewaysRequest,
-    ) -> servicemesh_20200111_models.DescribeIngressGatewaysResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_ingress_gateways_with_options_async(request, runtime)
-
     def describe_istio_gateway_domains_with_options(
         self,
         request: servicemesh_20200111_models.DescribeIstioGatewayDomainsRequest,
@@ -3629,6 +3593,14 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshVMsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshVMsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeServiceMeshVMsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshVMsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3657,6 +3629,14 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshVMsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshVMsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeServiceMeshVMsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshVMsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3684,6 +3664,13 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshVMsRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshVMsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeServiceMeshVMsRequest
+        @return: DescribeServiceMeshVMsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_service_mesh_vms_with_options(request, runtime)
 
@@ -3691,6 +3678,13 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshVMsRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshVMsResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeServiceMeshVMsRequest
+        @return: DescribeServiceMeshVMsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_mesh_vms_with_options_async(request, runtime)
 
@@ -3959,6 +3953,14 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeVMsInServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeVMsInServiceMeshResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeVMsInServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVMsInServiceMeshResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3987,6 +3989,14 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeVMsInServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeVMsInServiceMeshResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeVMsInServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVMsInServiceMeshResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -4014,6 +4024,13 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeVMsInServiceMeshRequest,
     ) -> servicemesh_20200111_models.DescribeVMsInServiceMeshResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeVMsInServiceMeshRequest
+        @return: DescribeVMsInServiceMeshResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vms_in_service_mesh_with_options(request, runtime)
 
@@ -4021,6 +4038,13 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeVMsInServiceMeshRequest,
     ) -> servicemesh_20200111_models.DescribeVMsInServiceMeshResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeVMsInServiceMeshRequest
+        @return: DescribeVMsInServiceMeshResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vms_in_service_mesh_with_options_async(request, runtime)
 
@@ -4847,6 +4871,14 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetVmAppMeshInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetVmAppMeshInfoResponse:
+        """
+        @deprecated
+        
+        @param request: GetVmAppMeshInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVmAppMeshInfoResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4873,6 +4905,14 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetVmAppMeshInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetVmAppMeshInfoResponse:
+        """
+        @deprecated
+        
+        @param request: GetVmAppMeshInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVmAppMeshInfoResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4898,6 +4938,13 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetVmAppMeshInfoRequest,
     ) -> servicemesh_20200111_models.GetVmAppMeshInfoResponse:
+        """
+        @deprecated
+        
+        @param request: GetVmAppMeshInfoRequest
+        @return: GetVmAppMeshInfoResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_vm_app_mesh_info_with_options(request, runtime)
 
@@ -4905,6 +4952,13 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetVmAppMeshInfoRequest,
     ) -> servicemesh_20200111_models.GetVmAppMeshInfoResponse:
+        """
+        @deprecated
+        
+        @param request: GetVmAppMeshInfoRequest
+        @return: GetVmAppMeshInfoResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_vm_app_mesh_info_with_options_async(request, runtime)
 
@@ -4913,6 +4967,14 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetVmMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetVmMetaResponse:
+        """
+        @deprecated
+        
+        @param request: GetVmMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVmMetaResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4939,6 +5001,14 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetVmMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetVmMetaResponse:
+        """
+        @deprecated
+        
+        @param request: GetVmMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVmMetaResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4964,6 +5034,13 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetVmMetaRequest,
     ) -> servicemesh_20200111_models.GetVmMetaResponse:
+        """
+        @deprecated
+        
+        @param request: GetVmMetaRequest
+        @return: GetVmMetaResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_vm_meta_with_options(request, runtime)
 
@@ -4971,20 +5048,33 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetVmMetaRequest,
     ) -> servicemesh_20200111_models.GetVmMetaResponse:
+        """
+        @deprecated
+        
+        @param request: GetVmMetaRequest
+        @return: GetVmMetaResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_vm_meta_with_options_async(request, runtime)
 
     def grant_user_permissions_with_options(
         self,
-        request: servicemesh_20200111_models.GrantUserPermissionsRequest,
+        tmp_req: servicemesh_20200111_models.GrantUserPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GrantUserPermissionsResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = servicemesh_20200111_models.GrantUserPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_account_user_ids):
+            request.sub_account_user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_account_user_ids, 'SubAccountUserIds', 'json')
         body = {}
         if not UtilClient.is_unset(request.permissions):
             body['Permissions'] = request.permissions
         if not UtilClient.is_unset(request.sub_account_user_id):
             body['SubAccountUserId'] = request.sub_account_user_id
+        if not UtilClient.is_unset(request.sub_account_user_ids_shrink):
+            body['SubAccountUserIds'] = request.sub_account_user_ids_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5006,15 +5096,21 @@ class Client(OpenApiClient):
 
     async def grant_user_permissions_with_options_async(
         self,
-        request: servicemesh_20200111_models.GrantUserPermissionsRequest,
+        tmp_req: servicemesh_20200111_models.GrantUserPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GrantUserPermissionsResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = servicemesh_20200111_models.GrantUserPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_account_user_ids):
+            request.sub_account_user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_account_user_ids, 'SubAccountUserIds', 'json')
         body = {}
         if not UtilClient.is_unset(request.permissions):
             body['Permissions'] = request.permissions
         if not UtilClient.is_unset(request.sub_account_user_id):
             body['SubAccountUserId'] = request.sub_account_user_id
+        if not UtilClient.is_unset(request.sub_account_user_ids_shrink):
+            body['SubAccountUserIds'] = request.sub_account_user_ids_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5383,6 +5479,14 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.RemoveVMFromServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.RemoveVMFromServiceMeshResponse:
+        """
+        @deprecated
+        
+        @param request: RemoveVMFromServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveVMFromServiceMeshResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ecs_id):
@@ -5413,6 +5517,14 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.RemoveVMFromServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.RemoveVMFromServiceMeshResponse:
+        """
+        @deprecated
+        
+        @param request: RemoveVMFromServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveVMFromServiceMeshResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ecs_id):
@@ -5442,6 +5554,13 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.RemoveVMFromServiceMeshRequest,
     ) -> servicemesh_20200111_models.RemoveVMFromServiceMeshResponse:
+        """
+        @deprecated
+        
+        @param request: RemoveVMFromServiceMeshRequest
+        @return: RemoveVMFromServiceMeshResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_vmfrom_service_mesh_with_options(request, runtime)
 
@@ -5449,6 +5568,13 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.RemoveVMFromServiceMeshRequest,
     ) -> servicemesh_20200111_models.RemoveVMFromServiceMeshResponse:
+        """
+        @deprecated
+        
+        @param request: RemoveVMFromServiceMeshRequest
+        @return: RemoveVMFromServiceMeshResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_vmfrom_service_mesh_with_options_async(request, runtime)
 
@@ -5869,6 +5995,8 @@ class Client(OpenApiClient):
             body['EnableIstioInjection'] = request.enable_istio_injection
         if not UtilClient.is_unset(request.enable_sidecar_set_injection):
             body['EnableSidecarSetInjection'] = request.enable_sidecar_set_injection
+        if not UtilClient.is_unset(request.istio_rev):
+            body['IstioRev'] = request.istio_rev
         if not UtilClient.is_unset(request.namespace):
             body['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -5903,6 +6031,8 @@ class Client(OpenApiClient):
             body['EnableIstioInjection'] = request.enable_istio_injection
         if not UtilClient.is_unset(request.enable_sidecar_set_injection):
             body['EnableSidecarSetInjection'] = request.enable_sidecar_set_injection
+        if not UtilClient.is_unset(request.istio_rev):
+            body['IstioRev'] = request.istio_rev
         if not UtilClient.is_unset(request.namespace):
             body['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -6223,6 +6353,8 @@ class Client(OpenApiClient):
             body['KialiArmsAuthTokens'] = request.kiali_arms_auth_tokens
         if not UtilClient.is_unset(request.kiali_enabled):
             body['KialiEnabled'] = request.kiali_enabled
+        if not UtilClient.is_unset(request.kiali_service_annotations):
+            body['KialiServiceAnnotations'] = request.kiali_service_annotations
         if not UtilClient.is_unset(request.lifecycle):
             body['Lifecycle'] = request.lifecycle
         if not UtilClient.is_unset(request.locality_lbconf):
@@ -6441,6 +6573,8 @@ class Client(OpenApiClient):
             body['KialiArmsAuthTokens'] = request.kiali_arms_auth_tokens
         if not UtilClient.is_unset(request.kiali_enabled):
             body['KialiEnabled'] = request.kiali_enabled
+        if not UtilClient.is_unset(request.kiali_service_annotations):
+            body['KialiServiceAnnotations'] = request.kiali_service_annotations
         if not UtilClient.is_unset(request.lifecycle):
             body['Lifecycle'] = request.lifecycle
         if not UtilClient.is_unset(request.locality_lbconf):
@@ -6967,6 +7101,8 @@ class Client(OpenApiClient):
             body['ASMGatewayContinue'] = request.asmgateway_continue
         if not UtilClient.is_unset(request.expected_version):
             body['ExpectedVersion'] = request.expected_version
+        if not UtilClient.is_unset(request.pre_check):
+            body['PreCheck'] = request.pre_check
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.switch_to_pro):
@@ -7003,6 +7139,8 @@ class Client(OpenApiClient):
             body['ASMGatewayContinue'] = request.asmgateway_continue
         if not UtilClient.is_unset(request.expected_version):
             body['ExpectedVersion'] = request.expected_version
+        if not UtilClient.is_unset(request.pre_check):
+            body['PreCheck'] = request.pre_check
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.switch_to_pro):
@@ -7049,6 +7187,8 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.UpgradeMeshVersionResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.pre_check):
+            query['PreCheck'] = request.pre_check
         if not UtilClient.is_unset(request.service_mesh_id):
             query['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
@@ -7077,6 +7217,8 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.UpgradeMeshVersionResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.pre_check):
+            query['PreCheck'] = request.pre_check
         if not UtilClient.is_unset(request.service_mesh_id):
             query['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(

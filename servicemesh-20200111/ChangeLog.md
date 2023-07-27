@@ -1,3 +1,7 @@
+2023-07-27 Version: 3.0.0
+- Support setting revision for UpdateIstioInjectionConfig.
+- Remove DescribeIngressGateways.
+
 2023-05-08 Version: 2.0.27
 - Support setting TPROXY mode.
 
