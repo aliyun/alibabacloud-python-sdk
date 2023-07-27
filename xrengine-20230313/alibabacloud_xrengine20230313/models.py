@@ -1,7 +1,176 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import Dict, List, Any
+
+
+class AuthUserRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+    ):
+        self.jwt_token = jwt_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        return self
+
+
+class AuthUserResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+        type: str = None,
+    ):
+        self.jwt_token = jwt_token
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class AuthUserResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: AuthUserResponseBodyData = None,
+        error_name: str = None,
+        http_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_name = error_name
+        self.http_code = http_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_name is not None:
+            result['ErrorName'] = self.error_name
+        if self.http_code is not None:
+            result['HttpCode'] = self.http_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = AuthUserResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorName') is not None:
+            self.error_name = m.get('ErrorName')
+        if m.get('HttpCode') is not None:
+            self.http_code = m.get('HttpCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AuthUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AuthUserResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AuthUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class GetMapDataRequest(TeaModel):
@@ -847,11 +1016,206 @@ class LocateResponse(TeaModel):
         return self
 
 
+class LoginModelScopeRequest(TeaModel):
+    def __init__(
+        self,
+        emp_id: str = None,
+        emp_name: str = None,
+        token: str = None,
+        type: str = None,
+    ):
+        self.emp_id = emp_id
+        self.emp_name = emp_name
+        self.token = token
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.emp_id is not None:
+            result['EmpId'] = self.emp_id
+        if self.emp_name is not None:
+            result['EmpName'] = self.emp_name
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EmpId') is not None:
+            self.emp_id = m.get('EmpId')
+        if m.get('EmpName') is not None:
+            self.emp_name = m.get('EmpName')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class LoginModelScopeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+        nickname: str = None,
+        uid: str = None,
+    ):
+        self.jwt_token = jwt_token
+        self.nickname = nickname
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.nickname is not None:
+            result['Nickname'] = self.nickname
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('Nickname') is not None:
+            self.nickname = m.get('Nickname')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class LoginModelScopeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: LoginModelScopeResponseBodyData = None,
+        error_name: str = None,
+        http_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_name = error_name
+        self.http_code = http_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_name is not None:
+            result['ErrorName'] = self.error_name
+        if self.http_code is not None:
+            result['HttpCode'] = self.http_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = LoginModelScopeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorName') is not None:
+            self.error_name = m.get('ErrorName')
+        if m.get('HttpCode') is not None:
+            self.http_code = m.get('HttpCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class LoginModelScopeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: LoginModelScopeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = LoginModelScopeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PopBatchQueryObjectProjectStatusRequest(TeaModel):
     def __init__(
         self,
+        jwt_token: str = None,
         project_ids: str = None,
     ):
+        self.jwt_token = jwt_token
         self.project_ids = project_ids
 
     def validate(self):
@@ -863,12 +1227,16 @@ class PopBatchQueryObjectProjectStatusRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
         if self.project_ids is not None:
             result['ProjectIds'] = self.project_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
         if m.get('ProjectIds') is not None:
             self.project_ids = m.get('ProjectIds')
         return self
@@ -1147,8 +1515,10 @@ class PopBuildFeatureToAvatarProjectResponse(TeaModel):
 class PopBuildObjectProjectRequest(TeaModel):
     def __init__(
         self,
+        jwt_token: str = None,
         project_id: str = None,
     ):
+        self.jwt_token = jwt_token
         self.project_id = project_id
 
     def validate(self):
@@ -1160,12 +1530,16 @@ class PopBuildObjectProjectRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         return self
@@ -1780,16 +2154,22 @@ class PopCreateObjectProjectRequest(TeaModel):
         self,
         auto_build: bool = None,
         biz_usage: str = None,
+        custom_source: str = None,
         dependencies: str = None,
         intro: str = None,
+        jwt_token: str = None,
         mode: str = None,
+        recommend_status: str = None,
         title: str = None,
     ):
         self.auto_build = auto_build
         self.biz_usage = biz_usage
+        self.custom_source = custom_source
         self.dependencies = dependencies
         self.intro = intro
+        self.jwt_token = jwt_token
         self.mode = mode
+        self.recommend_status = recommend_status
         self.title = title
 
     def validate(self):
@@ -1805,12 +2185,18 @@ class PopCreateObjectProjectRequest(TeaModel):
             result['AutoBuild'] = self.auto_build
         if self.biz_usage is not None:
             result['BizUsage'] = self.biz_usage
+        if self.custom_source is not None:
+            result['CustomSource'] = self.custom_source
         if self.dependencies is not None:
             result['Dependencies'] = self.dependencies
         if self.intro is not None:
             result['Intro'] = self.intro
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
         if self.mode is not None:
             result['Mode'] = self.mode
+        if self.recommend_status is not None:
+            result['RecommendStatus'] = self.recommend_status
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -1821,12 +2207,18 @@ class PopCreateObjectProjectRequest(TeaModel):
             self.auto_build = m.get('AutoBuild')
         if m.get('BizUsage') is not None:
             self.biz_usage = m.get('BizUsage')
+        if m.get('CustomSource') is not None:
+            self.custom_source = m.get('CustomSource')
         if m.get('Dependencies') is not None:
             self.dependencies = m.get('Dependencies')
         if m.get('Intro') is not None:
             self.intro = m.get('Intro')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
+        if m.get('RecommendStatus') is not None:
+            self.recommend_status = m.get('RecommendStatus')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -2254,6 +2646,63 @@ class PopCreateObjectProjectResponseBodyDataSourceSourceFiles(TeaModel):
         return self
 
 
+class PopCreateObjectProjectResponseBodyDataSourceToken(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        access_key_secret: str = None,
+        dir: str = None,
+        expiration: str = None,
+        host: str = None,
+        security_token: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.access_key_secret = access_key_secret
+        self.dir = dir
+        self.expiration = expiration
+        self.host = host
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.access_key_secret is not None:
+            result['AccessKeySecret'] = self.access_key_secret
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('AccessKeySecret') is not None:
+            self.access_key_secret = m.get('AccessKeySecret')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
 class PopCreateObjectProjectResponseBodyDataSource(TeaModel):
     def __init__(
         self,
@@ -2264,6 +2713,7 @@ class PopCreateObjectProjectResponseBodyDataSource(TeaModel):
         oss_key: str = None,
         policy: PopCreateObjectProjectResponseBodyDataSourcePolicy = None,
         source_files: List[PopCreateObjectProjectResponseBodyDataSourceSourceFiles] = None,
+        token: PopCreateObjectProjectResponseBodyDataSourceToken = None,
     ):
         self.clothes = clothes
         self.create_time = create_time
@@ -2272,6 +2722,7 @@ class PopCreateObjectProjectResponseBodyDataSource(TeaModel):
         self.oss_key = oss_key
         self.policy = policy
         self.source_files = source_files
+        self.token = token
 
     def validate(self):
         if self.clothes:
@@ -2284,6 +2735,8 @@ class PopCreateObjectProjectResponseBodyDataSource(TeaModel):
             for k in self.source_files:
                 if k:
                     k.validate()
+        if self.token:
+            self.token.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2309,6 +2762,8 @@ class PopCreateObjectProjectResponseBodyDataSource(TeaModel):
         if self.source_files is not None:
             for k in self.source_files:
                 result['SourceFiles'].append(k.to_map() if k else None)
+        if self.token is not None:
+            result['Token'] = self.token.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -2334,18 +2789,23 @@ class PopCreateObjectProjectResponseBodyDataSource(TeaModel):
             for k in m.get('SourceFiles'):
                 temp_model = PopCreateObjectProjectResponseBodyDataSourceSourceFiles()
                 self.source_files.append(temp_model.from_map(k))
+        if m.get('Token') is not None:
+            temp_model = PopCreateObjectProjectResponseBodyDataSourceToken()
+            self.token = temp_model.from_map(m['Token'])
         return self
 
 
 class PopCreateObjectProjectResponseBodyData(TeaModel):
     def __init__(
         self,
+        audit_status: str = None,
         auto_build: bool = None,
         biz_usage: str = None,
         build_detail: PopCreateObjectProjectResponseBodyDataBuildDetail = None,
         check_status: str = None,
         create_mode: str = None,
         create_time: str = None,
+        custom_source: str = None,
         dataset: PopCreateObjectProjectResponseBodyDataDataset = None,
         deleted: bool = None,
         dependencies: str = None,
@@ -2353,17 +2813,20 @@ class PopCreateObjectProjectResponseBodyData(TeaModel):
         id: str = None,
         intro: str = None,
         modified_time: str = None,
+        recommend_status: str = None,
         source: PopCreateObjectProjectResponseBodyDataSource = None,
         status: str = None,
         title: str = None,
         type: str = None,
     ):
+        self.audit_status = audit_status
         self.auto_build = auto_build
         self.biz_usage = biz_usage
         self.build_detail = build_detail
         self.check_status = check_status
         self.create_mode = create_mode
         self.create_time = create_time
+        self.custom_source = custom_source
         self.dataset = dataset
         self.deleted = deleted
         self.dependencies = dependencies
@@ -2371,6 +2834,7 @@ class PopCreateObjectProjectResponseBodyData(TeaModel):
         self.id = id
         self.intro = intro
         self.modified_time = modified_time
+        self.recommend_status = recommend_status
         self.source = source
         self.status = status
         self.title = title
@@ -2390,6 +2854,8 @@ class PopCreateObjectProjectResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
         if self.auto_build is not None:
             result['AutoBuild'] = self.auto_build
         if self.biz_usage is not None:
@@ -2402,6 +2868,8 @@ class PopCreateObjectProjectResponseBodyData(TeaModel):
             result['CreateMode'] = self.create_mode
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.custom_source is not None:
+            result['CustomSource'] = self.custom_source
         if self.dataset is not None:
             result['Dataset'] = self.dataset.to_map()
         if self.deleted is not None:
@@ -2416,6 +2884,8 @@ class PopCreateObjectProjectResponseBodyData(TeaModel):
             result['Intro'] = self.intro
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
+        if self.recommend_status is not None:
+            result['RecommendStatus'] = self.recommend_status
         if self.source is not None:
             result['Source'] = self.source.to_map()
         if self.status is not None:
@@ -2428,6 +2898,8 @@ class PopCreateObjectProjectResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
         if m.get('AutoBuild') is not None:
             self.auto_build = m.get('AutoBuild')
         if m.get('BizUsage') is not None:
@@ -2441,6 +2913,8 @@ class PopCreateObjectProjectResponseBodyData(TeaModel):
             self.create_mode = m.get('CreateMode')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('CustomSource') is not None:
+            self.custom_source = m.get('CustomSource')
         if m.get('Dataset') is not None:
             temp_model = PopCreateObjectProjectResponseBodyDataDataset()
             self.dataset = temp_model.from_map(m['Dataset'])
@@ -2456,6 +2930,8 @@ class PopCreateObjectProjectResponseBodyData(TeaModel):
             self.intro = m.get('Intro')
         if m.get('ModifiedTime') is not None:
             self.modified_time = m.get('ModifiedTime')
+        if m.get('RecommendStatus') is not None:
+            self.recommend_status = m.get('RecommendStatus')
         if m.get('Source') is not None:
             temp_model = PopCreateObjectProjectResponseBodyDataSource()
             self.source = temp_model.from_map(m['Source'])
@@ -3381,17 +3857,849 @@ class PopListFeatureToAvatarProjectResponse(TeaModel):
         return self
 
 
-class PopListObjectProjectRequest(TeaModel):
+class PopListObjectCaseRequest(TeaModel):
     def __init__(
         self,
         current: int = None,
+        jwt_token: str = None,
+        size: int = None,
+    ):
+        self.current = current
+        self.jwt_token = jwt_token
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['Current'] = self.current
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class PopListObjectCaseResponseBodyDataBuildDetail(TeaModel):
+    def __init__(
+        self,
+        completed_time: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        error_message: str = None,
+        estimated_duration: int = None,
+        modified_time: str = None,
+        running_time: str = None,
+        submit_time: str = None,
+    ):
+        self.completed_time = completed_time
+        self.create_time = create_time
+        self.deleted = deleted
+        self.error_message = error_message
+        self.estimated_duration = estimated_duration
+        self.modified_time = modified_time
+        self.running_time = running_time
+        self.submit_time = submit_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed_time is not None:
+            result['CompletedTime'] = self.completed_time
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.estimated_duration is not None:
+            result['EstimatedDuration'] = self.estimated_duration
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.running_time is not None:
+            result['RunningTime'] = self.running_time
+        if self.submit_time is not None:
+            result['SubmitTime'] = self.submit_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletedTime') is not None:
+            self.completed_time = m.get('CompletedTime')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('EstimatedDuration') is not None:
+            self.estimated_duration = m.get('EstimatedDuration')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('RunningTime') is not None:
+            self.running_time = m.get('RunningTime')
+        if m.get('SubmitTime') is not None:
+            self.submit_time = m.get('SubmitTime')
+        return self
+
+
+class PopListObjectCaseResponseBodyDataDatasetPolicy(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class PopListObjectCaseResponseBodyDataDataset(TeaModel):
+    def __init__(
+        self,
+        build_result_url: Dict[str, Any] = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        error_message: str = None,
+        glb_model_url: str = None,
+        model_url: str = None,
+        modified_time: str = None,
+        origin_result_url: str = None,
+        oss_key: str = None,
+        policy: PopListObjectCaseResponseBodyDataDatasetPolicy = None,
+        pose_url: str = None,
+        preview_url: str = None,
+    ):
+        self.build_result_url = build_result_url
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.error_message = error_message
+        self.glb_model_url = glb_model_url
+        self.model_url = model_url
+        self.modified_time = modified_time
+        self.origin_result_url = origin_result_url
+        self.oss_key = oss_key
+        self.policy = policy
+        self.pose_url = pose_url
+        self.preview_url = preview_url
+
+    def validate(self):
+        if self.policy:
+            self.policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_result_url is not None:
+            result['BuildResultUrl'] = self.build_result_url
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.glb_model_url is not None:
+            result['GlbModelUrl'] = self.glb_model_url
+        if self.model_url is not None:
+            result['ModelUrl'] = self.model_url
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.origin_result_url is not None:
+            result['OriginResultUrl'] = self.origin_result_url
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        if self.pose_url is not None:
+            result['PoseUrl'] = self.pose_url
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildResultUrl') is not None:
+            self.build_result_url = m.get('BuildResultUrl')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('GlbModelUrl') is not None:
+            self.glb_model_url = m.get('GlbModelUrl')
+        if m.get('ModelUrl') is not None:
+            self.model_url = m.get('ModelUrl')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OriginResultUrl') is not None:
+            self.origin_result_url = m.get('OriginResultUrl')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Policy') is not None:
+            temp_model = PopListObjectCaseResponseBodyDataDatasetPolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        if m.get('PoseUrl') is not None:
+            self.pose_url = m.get('PoseUrl')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        return self
+
+
+class PopListObjectCaseResponseBodyDataSourceClothes(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        type: str = None,
+    ):
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopListObjectCaseResponseBodyDataSourcePolicy(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class PopListObjectCaseResponseBodyDataSourceSourceFiles(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        file_name: str = None,
+        filesize: int = None,
+        modified_time: str = None,
+        oss_key: str = None,
+        type: str = None,
+        url: str = None,
+    ):
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.file_name = file_name
+        self.filesize = filesize
+        self.modified_time = modified_time
+        self.oss_key = oss_key
+        self.type = type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.filesize is not None:
+            result['Filesize'] = self.filesize
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Filesize') is not None:
+            self.filesize = m.get('Filesize')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class PopListObjectCaseResponseBodyDataSource(TeaModel):
+    def __init__(
+        self,
+        clothes: List[PopListObjectCaseResponseBodyDataSourceClothes] = None,
+        create_time: str = None,
+        deleted: bool = None,
+        modified_time: str = None,
+        oss_key: str = None,
+        policy: PopListObjectCaseResponseBodyDataSourcePolicy = None,
+        source_files: List[PopListObjectCaseResponseBodyDataSourceSourceFiles] = None,
+    ):
+        self.clothes = clothes
+        self.create_time = create_time
+        self.deleted = deleted
+        self.modified_time = modified_time
+        self.oss_key = oss_key
+        self.policy = policy
+        self.source_files = source_files
+
+    def validate(self):
+        if self.clothes:
+            for k in self.clothes:
+                if k:
+                    k.validate()
+        if self.policy:
+            self.policy.validate()
+        if self.source_files:
+            for k in self.source_files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Clothes'] = []
+        if self.clothes is not None:
+            for k in self.clothes:
+                result['Clothes'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        result['SourceFiles'] = []
+        if self.source_files is not None:
+            for k in self.source_files:
+                result['SourceFiles'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clothes = []
+        if m.get('Clothes') is not None:
+            for k in m.get('Clothes'):
+                temp_model = PopListObjectCaseResponseBodyDataSourceClothes()
+                self.clothes.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Policy') is not None:
+            temp_model = PopListObjectCaseResponseBodyDataSourcePolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        self.source_files = []
+        if m.get('SourceFiles') is not None:
+            for k in m.get('SourceFiles'):
+                temp_model = PopListObjectCaseResponseBodyDataSourceSourceFiles()
+                self.source_files.append(temp_model.from_map(k))
+        return self
+
+
+class PopListObjectCaseResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        audit_status: str = None,
+        auto_build: bool = None,
+        biz_usage: str = None,
+        build_detail: PopListObjectCaseResponseBodyDataBuildDetail = None,
+        check_status: str = None,
+        create_mode: str = None,
+        create_time: str = None,
+        custom_source: str = None,
+        dataset: PopListObjectCaseResponseBodyDataDataset = None,
+        deleted: bool = None,
+        dependencies: str = None,
+        ext: str = None,
+        id: str = None,
+        intro: str = None,
+        modified_time: str = None,
+        source: PopListObjectCaseResponseBodyDataSource = None,
+        status: str = None,
+        title: str = None,
+        type: str = None,
+    ):
+        self.audit_status = audit_status
+        self.auto_build = auto_build
+        self.biz_usage = biz_usage
+        self.build_detail = build_detail
+        self.check_status = check_status
+        self.create_mode = create_mode
+        self.create_time = create_time
+        self.custom_source = custom_source
+        self.dataset = dataset
+        self.deleted = deleted
+        self.dependencies = dependencies
+        self.ext = ext
+        self.id = id
+        self.intro = intro
+        self.modified_time = modified_time
+        self.source = source
+        self.status = status
+        self.title = title
+        self.type = type
+
+    def validate(self):
+        if self.build_detail:
+            self.build_detail.validate()
+        if self.dataset:
+            self.dataset.validate()
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+        if self.auto_build is not None:
+            result['AutoBuild'] = self.auto_build
+        if self.biz_usage is not None:
+            result['BizUsage'] = self.biz_usage
+        if self.build_detail is not None:
+            result['BuildDetail'] = self.build_detail.to_map()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.create_mode is not None:
+            result['CreateMode'] = self.create_mode
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.custom_source is not None:
+            result['CustomSource'] = self.custom_source
+        if self.dataset is not None:
+            result['Dataset'] = self.dataset.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.dependencies is not None:
+            result['Dependencies'] = self.dependencies
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.source is not None:
+            result['Source'] = self.source.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+        if m.get('AutoBuild') is not None:
+            self.auto_build = m.get('AutoBuild')
+        if m.get('BizUsage') is not None:
+            self.biz_usage = m.get('BizUsage')
+        if m.get('BuildDetail') is not None:
+            temp_model = PopListObjectCaseResponseBodyDataBuildDetail()
+            self.build_detail = temp_model.from_map(m['BuildDetail'])
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('CreateMode') is not None:
+            self.create_mode = m.get('CreateMode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CustomSource') is not None:
+            self.custom_source = m.get('CustomSource')
+        if m.get('Dataset') is not None:
+            temp_model = PopListObjectCaseResponseBodyDataDataset()
+            self.dataset = temp_model.from_map(m['Dataset'])
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Dependencies') is not None:
+            self.dependencies = m.get('Dependencies')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Source') is not None:
+            temp_model = PopListObjectCaseResponseBodyDataSource()
+            self.source = temp_model.from_map(m['Source'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopListObjectCaseResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        current: int = None,
+        data: List[PopListObjectCaseResponseBodyData] = None,
+        error_name: str = None,
+        http_code: int = None,
+        message: str = None,
+        pages: int = None,
+        request_id: str = None,
+        size: int = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.current = current
+        self.data = data
+        self.error_name = error_name
+        self.http_code = http_code
+        self.message = message
+        self.pages = pages
+        self.request_id = request_id
+        self.size = size
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.current is not None:
+            result['Current'] = self.current
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_name is not None:
+            result['ErrorName'] = self.error_name
+        if self.http_code is not None:
+            result['HttpCode'] = self.http_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.pages is not None:
+            result['Pages'] = self.pages
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = PopListObjectCaseResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorName') is not None:
+            self.error_name = m.get('ErrorName')
+        if m.get('HttpCode') is not None:
+            self.http_code = m.get('HttpCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class PopListObjectCaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopListObjectCaseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopListObjectCaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopListObjectProjectRequest(TeaModel):
+    def __init__(
+        self,
+        audit_status: str = None,
+        current: int = None,
+        custom_source: str = None,
+        jwt_token: str = None,
         size: int = None,
         sort_field: str = None,
         status: str = None,
         title: str = None,
         with_source: bool = None,
     ):
+        self.audit_status = audit_status
         self.current = current
+        self.custom_source = custom_source
+        self.jwt_token = jwt_token
         self.size = size
         self.sort_field = sort_field
         self.status = status
@@ -3407,8 +4715,14 @@ class PopListObjectProjectRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
         if self.current is not None:
             result['Current'] = self.current
+        if self.custom_source is not None:
+            result['CustomSource'] = self.custom_source
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
         if self.size is not None:
             result['Size'] = self.size
         if self.sort_field is not None:
@@ -3423,8 +4737,14 @@ class PopListObjectProjectRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
         if m.get('Current') is not None:
             self.current = m.get('Current')
+        if m.get('CustomSource') is not None:
+            self.custom_source = m.get('CustomSource')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         if m.get('SortField') is not None:
@@ -3946,12 +5266,14 @@ class PopListObjectProjectResponseBodyDataSource(TeaModel):
 class PopListObjectProjectResponseBodyData(TeaModel):
     def __init__(
         self,
+        audit_status: str = None,
         auto_build: bool = None,
         biz_usage: str = None,
         build_detail: PopListObjectProjectResponseBodyDataBuildDetail = None,
         check_status: str = None,
         create_mode: str = None,
         create_time: str = None,
+        custom_source: str = None,
         dataset: PopListObjectProjectResponseBodyDataDataset = None,
         deleted: bool = None,
         dependencies: str = None,
@@ -3964,12 +5286,14 @@ class PopListObjectProjectResponseBodyData(TeaModel):
         title: str = None,
         type: str = None,
     ):
+        self.audit_status = audit_status
         self.auto_build = auto_build
         self.biz_usage = biz_usage
         self.build_detail = build_detail
         self.check_status = check_status
         self.create_mode = create_mode
         self.create_time = create_time
+        self.custom_source = custom_source
         self.dataset = dataset
         self.deleted = deleted
         self.dependencies = dependencies
@@ -3996,6 +5320,8 @@ class PopListObjectProjectResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
         if self.auto_build is not None:
             result['AutoBuild'] = self.auto_build
         if self.biz_usage is not None:
@@ -4008,6 +5334,8 @@ class PopListObjectProjectResponseBodyData(TeaModel):
             result['CreateMode'] = self.create_mode
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.custom_source is not None:
+            result['CustomSource'] = self.custom_source
         if self.dataset is not None:
             result['Dataset'] = self.dataset.to_map()
         if self.deleted is not None:
@@ -4034,6 +5362,8 @@ class PopListObjectProjectResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
         if m.get('AutoBuild') is not None:
             self.auto_build = m.get('AutoBuild')
         if m.get('BizUsage') is not None:
@@ -4047,6 +5377,8 @@ class PopListObjectProjectResponseBodyData(TeaModel):
             self.create_mode = m.get('CreateMode')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('CustomSource') is not None:
+            self.custom_source = m.get('CustomSource')
         if m.get('Dataset') is not None:
             temp_model = PopListObjectProjectResponseBodyDataDataset()
             self.dataset = temp_model.from_map(m['Dataset'])
@@ -4216,8 +5548,10 @@ class PopListObjectProjectResponse(TeaModel):
 class PopObjectProjectDetailRequest(TeaModel):
     def __init__(
         self,
+        jwt_token: str = None,
         project_id: str = None,
     ):
+        self.jwt_token = jwt_token
         self.project_id = project_id
 
     def validate(self):
@@ -4229,12 +5563,16 @@ class PopObjectProjectDetailRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         return self
@@ -4988,9 +6326,11 @@ class PopObjectProjectDetailResponse(TeaModel):
 class PopVideoSaveSourceRequest(TeaModel):
     def __init__(
         self,
+        jwt_token: str = None,
         project_id: str = None,
         source_type: str = None,
     ):
+        self.jwt_token = jwt_token
         self.project_id = project_id
         self.source_type = source_type
 
@@ -5003,6 +6343,8 @@ class PopVideoSaveSourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.source_type is not None:
@@ -5011,6 +6353,8 @@ class PopVideoSaveSourceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('SourceType') is not None:

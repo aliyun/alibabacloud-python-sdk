@@ -99,6 +99,76 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def auth_user_with_options(
+        self,
+        request: xr_engine_20230313_models.AuthUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.AuthUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AuthUser',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.AuthUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def auth_user_with_options_async(
+        self,
+        request: xr_engine_20230313_models.AuthUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.AuthUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AuthUser',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.AuthUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def auth_user(
+        self,
+        request: xr_engine_20230313_models.AuthUserRequest,
+    ) -> xr_engine_20230313_models.AuthUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.auth_user_with_options(request, runtime)
+
+    async def auth_user_async(
+        self,
+        request: xr_engine_20230313_models.AuthUserRequest,
+    ) -> xr_engine_20230313_models.AuthUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.auth_user_with_options_async(request, runtime)
+
     def get_map_data_with_options(
         self,
         request: xr_engine_20230313_models.GetMapDataRequest,
@@ -485,6 +555,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.locate_with_options_async(request, runtime)
 
+    def login_model_scope_with_options(
+        self,
+        request: xr_engine_20230313_models.LoginModelScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.LoginModelScopeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.emp_id):
+            body['EmpId'] = request.emp_id
+        if not UtilClient.is_unset(request.emp_name):
+            body['EmpName'] = request.emp_name
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LoginModelScope',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.LoginModelScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def login_model_scope_with_options_async(
+        self,
+        request: xr_engine_20230313_models.LoginModelScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.LoginModelScopeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.emp_id):
+            body['EmpId'] = request.emp_id
+        if not UtilClient.is_unset(request.emp_name):
+            body['EmpName'] = request.emp_name
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LoginModelScope',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.LoginModelScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def login_model_scope(
+        self,
+        request: xr_engine_20230313_models.LoginModelScopeRequest,
+    ) -> xr_engine_20230313_models.LoginModelScopeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.login_model_scope_with_options(request, runtime)
+
+    async def login_model_scope_async(
+        self,
+        request: xr_engine_20230313_models.LoginModelScopeRequest,
+    ) -> xr_engine_20230313_models.LoginModelScopeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.login_model_scope_with_options_async(request, runtime)
+
     def pop_batch_query_object_project_status_with_options(
         self,
         request: xr_engine_20230313_models.PopBatchQueryObjectProjectStatusRequest,
@@ -492,6 +644,8 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopBatchQueryObjectProjectStatusResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
         if not UtilClient.is_unset(request.project_ids):
             body['ProjectIds'] = request.project_ids
         req = open_api_models.OpenApiRequest(
@@ -520,6 +674,8 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopBatchQueryObjectProjectStatusResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
         if not UtilClient.is_unset(request.project_ids):
             body['ProjectIds'] = request.project_ids
         req = open_api_models.OpenApiRequest(
@@ -634,8 +790,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PopBuildObjectProject',
@@ -662,8 +822,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PopBuildObjectProject',
@@ -784,12 +948,18 @@ class Client(OpenApiClient):
             body['AutoBuild'] = request.auto_build
         if not UtilClient.is_unset(request.biz_usage):
             body['BizUsage'] = request.biz_usage
+        if not UtilClient.is_unset(request.custom_source):
+            body['CustomSource'] = request.custom_source
         if not UtilClient.is_unset(request.dependencies):
             body['Dependencies'] = request.dependencies
         if not UtilClient.is_unset(request.intro):
             body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
         if not UtilClient.is_unset(request.mode):
             body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.recommend_status):
+            body['RecommendStatus'] = request.recommend_status
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
@@ -822,12 +992,18 @@ class Client(OpenApiClient):
             body['AutoBuild'] = request.auto_build
         if not UtilClient.is_unset(request.biz_usage):
             body['BizUsage'] = request.biz_usage
+        if not UtilClient.is_unset(request.custom_source):
+            body['CustomSource'] = request.custom_source
         if not UtilClient.is_unset(request.dependencies):
             body['Dependencies'] = request.dependencies
         if not UtilClient.is_unset(request.intro):
             body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
         if not UtilClient.is_unset(request.mode):
             body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.recommend_status):
+            body['RecommendStatus'] = request.recommend_status
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
@@ -1031,6 +1207,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pop_list_feature_to_avatar_project_with_options_async(request, runtime)
 
+    def pop_list_object_case_with_options(
+        self,
+        request: xr_engine_20230313_models.PopListObjectCaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopListObjectCaseResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopListObjectCase',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopListObjectCaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_list_object_case_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopListObjectCaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopListObjectCaseResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopListObjectCase',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopListObjectCaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_list_object_case(
+        self,
+        request: xr_engine_20230313_models.PopListObjectCaseRequest,
+    ) -> xr_engine_20230313_models.PopListObjectCaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_list_object_case_with_options(request, runtime)
+
+    async def pop_list_object_case_async(
+        self,
+        request: xr_engine_20230313_models.PopListObjectCaseRequest,
+    ) -> xr_engine_20230313_models.PopListObjectCaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_list_object_case_with_options_async(request, runtime)
+
     def pop_list_object_project_with_options(
         self,
         request: xr_engine_20230313_models.PopListObjectProjectRequest,
@@ -1038,8 +1292,14 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopListObjectProjectResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.audit_status):
+            body['AuditStatus'] = request.audit_status
         if not UtilClient.is_unset(request.current):
             body['Current'] = request.current
+        if not UtilClient.is_unset(request.custom_source):
+            body['CustomSource'] = request.custom_source
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
         if not UtilClient.is_unset(request.size):
             body['Size'] = request.size
         if not UtilClient.is_unset(request.sort_field):
@@ -1076,8 +1336,14 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopListObjectProjectResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.audit_status):
+            body['AuditStatus'] = request.audit_status
         if not UtilClient.is_unset(request.current):
             body['Current'] = request.current
+        if not UtilClient.is_unset(request.custom_source):
+            body['CustomSource'] = request.custom_source
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
         if not UtilClient.is_unset(request.size):
             body['Size'] = request.size
         if not UtilClient.is_unset(request.sort_field):
@@ -1130,8 +1396,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PopObjectProjectDetail',
@@ -1158,8 +1428,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PopObjectProjectDetail',
@@ -1202,8 +1476,12 @@ class Client(OpenApiClient):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        body = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PopVideoSaveSource',
@@ -1232,8 +1510,12 @@ class Client(OpenApiClient):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        body = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PopVideoSaveSource',

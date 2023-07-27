@@ -1,3 +1,6 @@
+2023-07-27 Version: 1.0.2
+- Add video listcase api.
+
 2023-07-18 Version: 1.0.1
 - Add video saveSource api.
 
