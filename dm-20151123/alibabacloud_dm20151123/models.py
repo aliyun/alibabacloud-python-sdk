@@ -414,6 +414,7 @@ class CheckDomainRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the domain name.
         self.domain_id = domain_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -457,7 +458,15 @@ class CheckDomainResponseBody(TeaModel):
         domain_status: int = None,
         request_id: str = None,
     ):
+        # The status of the domain name. Indicates whether the domain name is verified and available.
+        # 
+        # *   0: indicates that the domain name is verified and available.
+        # *   1: indicates that the domain name fails to be verified and is unavailable.
+        # *   2: indicates that the domain name is available, but not filed or configured with a CNAME record.
+        # *   3: indicates that the domain name is available but not filed.
+        # *   4: indicates that the domain name is available but not configured with a CNAME record.
         self.domain_status = domain_status
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1284,6 +1293,122 @@ class DeleteDomainResponse(TeaModel):
         return self
 
 
+class DeleteInvalidAddressRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        to_address: str = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.to_address = to_address
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.to_address is not None:
+            result['ToAddress'] = self.to_address
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ToAddress') is not None:
+            self.to_address = m.get('ToAddress')
+        return self
+
+
+class DeleteInvalidAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteInvalidAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteInvalidAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteInvalidAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteIpfilterByEdmIdRequest(TeaModel):
     def __init__(
         self,
@@ -1531,6 +1656,7 @@ class DeleteReceiverRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
+        # The ID of the recipient list.
         self.receiver_id = receiver_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1572,6 +1698,7 @@ class DeleteReceiverResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1771,6 +1898,7 @@ class DeleteTagRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the tag.
         self.tag_id = tag_id
 
     def validate(self):
@@ -1810,6 +1938,7 @@ class DeleteTagResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2129,6 +2258,9 @@ class DescDomainResponseBody(TeaModel):
         cname_record: str = None,
         create_time: str = None,
         default_domain: str = None,
+        dkim_auth_status: str = None,
+        dkim_public_key: str = None,
+        dkim_rr: str = None,
         dns_mx: str = None,
         dns_spf: str = None,
         dns_txt: str = None,
@@ -2142,6 +2274,7 @@ class DescDomainResponseBody(TeaModel):
         request_id: str = None,
         spf_auth_status: str = None,
         spf_record: str = None,
+        spf_record_v2: str = None,
         tl_domain_name: str = None,
         tracef_record: str = None,
     ):
@@ -2150,6 +2283,9 @@ class DescDomainResponseBody(TeaModel):
         self.cname_record = cname_record
         self.create_time = create_time
         self.default_domain = default_domain
+        self.dkim_auth_status = dkim_auth_status
+        self.dkim_public_key = dkim_public_key
+        self.dkim_rr = dkim_rr
         self.dns_mx = dns_mx
         self.dns_spf = dns_spf
         self.dns_txt = dns_txt
@@ -2163,6 +2299,7 @@ class DescDomainResponseBody(TeaModel):
         self.request_id = request_id
         self.spf_auth_status = spf_auth_status
         self.spf_record = spf_record
+        self.spf_record_v2 = spf_record_v2
         self.tl_domain_name = tl_domain_name
         self.tracef_record = tracef_record
 
@@ -2185,6 +2322,12 @@ class DescDomainResponseBody(TeaModel):
             result['CreateTime'] = self.create_time
         if self.default_domain is not None:
             result['DefaultDomain'] = self.default_domain
+        if self.dkim_auth_status is not None:
+            result['DkimAuthStatus'] = self.dkim_auth_status
+        if self.dkim_public_key is not None:
+            result['DkimPublicKey'] = self.dkim_public_key
+        if self.dkim_rr is not None:
+            result['DkimRR'] = self.dkim_rr
         if self.dns_mx is not None:
             result['DnsMx'] = self.dns_mx
         if self.dns_spf is not None:
@@ -2211,6 +2354,8 @@ class DescDomainResponseBody(TeaModel):
             result['SpfAuthStatus'] = self.spf_auth_status
         if self.spf_record is not None:
             result['SpfRecord'] = self.spf_record
+        if self.spf_record_v2 is not None:
+            result['SpfRecordV2'] = self.spf_record_v2
         if self.tl_domain_name is not None:
             result['TlDomainName'] = self.tl_domain_name
         if self.tracef_record is not None:
@@ -2229,6 +2374,12 @@ class DescDomainResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('DefaultDomain') is not None:
             self.default_domain = m.get('DefaultDomain')
+        if m.get('DkimAuthStatus') is not None:
+            self.dkim_auth_status = m.get('DkimAuthStatus')
+        if m.get('DkimPublicKey') is not None:
+            self.dkim_public_key = m.get('DkimPublicKey')
+        if m.get('DkimRR') is not None:
+            self.dkim_rr = m.get('DkimRR')
         if m.get('DnsMx') is not None:
             self.dns_mx = m.get('DnsMx')
         if m.get('DnsSpf') is not None:
@@ -2255,6 +2406,8 @@ class DescDomainResponseBody(TeaModel):
             self.spf_auth_status = m.get('SpfAuthStatus')
         if m.get('SpfRecord') is not None:
             self.spf_record = m.get('SpfRecord')
+        if m.get('SpfRecordV2') is not None:
+            self.spf_record_v2 = m.get('SpfRecordV2')
         if m.get('TlDomainName') is not None:
             self.tl_domain_name = m.get('TlDomainName')
         if m.get('TracefRecord') is not None:
@@ -3400,11 +3553,15 @@ class ModifyPWByDomainRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
+        owner_id: int = None,
         password: str = None,
-        resource_owner_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
         self.domain_name = domain_name
+        self.owner_id = owner_id
         self.password = password
+        self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
     def validate(self):
@@ -3418,8 +3575,12 @@ class ModifyPWByDomainRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.password is not None:
             result['Password'] = self.password
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
         return result
@@ -3428,8 +3589,12 @@ class ModifyPWByDomainRequest(TeaModel):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('Password') is not None:
             self.password = m.get('Password')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
         return self
@@ -3536,7 +3701,9 @@ class ModifyTagRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the tag.
         self.tag_id = tag_id
+        # The name of the tag.
         self.tag_name = tag_name
 
     def validate(self):
@@ -3580,6 +3747,7 @@ class ModifyTagResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

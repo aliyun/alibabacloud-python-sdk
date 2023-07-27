@@ -1,3 +1,8 @@
+2023-07-27 Version: 1.0.6
+- Fix bugs for GetTrackList and GetTrackListByMailFromAndTagName.
+- Fixed bugs for GetTrackListByMailFromAndTagName.
+- Add field SpfRecordV2, DkimRR, DkimPublicKey, DkimAuthStatus.
+
 2022-09-29 Version: 1.0.5
 - Automatically generate sdk tasks.
 
