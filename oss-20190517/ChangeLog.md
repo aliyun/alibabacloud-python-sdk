@@ -1,3 +1,6 @@
+2023-07-27 Version: 1.0.6
+- Update client.
+
 2022-08-09 Version: 1.0.5
 - Generated python 2019-05-17 for Oss.
 

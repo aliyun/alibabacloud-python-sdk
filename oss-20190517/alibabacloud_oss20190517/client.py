@@ -7,8 +7,8 @@ from alibabacloud_gateway_spi.client import Client as SPIClient
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_gateway_oss.client import Client as GatewayClientClient
-from alibabacloud_oss20190517 import models as oss_20190517_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_oss20190517 import models as oss_20190517_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
@@ -27,22 +27,6 @@ class Client(OpenApiClient):
         self._client = GatewayClientClient()
         self._spi = self._client
         self._endpoint_rule = ''
-
-    def abort_bucket_worm(
-        self,
-        bucket: str,
-    ) -> oss_20190517_models.AbortBucketWormResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.abort_bucket_worm_with_options(bucket, headers, runtime)
-
-    async def abort_bucket_worm_async(
-        self,
-        bucket: str,
-    ) -> oss_20190517_models.AbortBucketWormResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.abort_bucket_worm_with_options_async(bucket, headers, runtime)
 
     def abort_bucket_worm_with_options(
         self,
@@ -100,25 +84,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def abort_multipart_upload(
+    def abort_bucket_worm(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.AbortMultipartUploadRequest,
-    ) -> oss_20190517_models.AbortMultipartUploadResponse:
+    ) -> oss_20190517_models.AbortBucketWormResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.abort_multipart_upload_with_options(bucket, key, request, headers, runtime)
+        return self.abort_bucket_worm_with_options(bucket, headers, runtime)
 
-    async def abort_multipart_upload_async(
+    async def abort_bucket_worm_async(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.AbortMultipartUploadRequest,
-    ) -> oss_20190517_models.AbortMultipartUploadResponse:
+    ) -> oss_20190517_models.AbortBucketWormResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.abort_multipart_upload_with_options_async(bucket, key, request, headers, runtime)
+        return await self.abort_bucket_worm_with_options_async(bucket, headers, runtime)
 
     def abort_multipart_upload_with_options(
         self,
@@ -190,25 +170,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def append_object(
+    def abort_multipart_upload(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.AppendObjectRequest,
-    ) -> oss_20190517_models.AppendObjectResponse:
+        request: oss_20190517_models.AbortMultipartUploadRequest,
+    ) -> oss_20190517_models.AbortMultipartUploadResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.AppendObjectHeaders()
-        return self.append_object_with_options(bucket, key, request, headers, runtime)
+        headers = {}
+        return self.abort_multipart_upload_with_options(bucket, key, request, headers, runtime)
 
-    async def append_object_async(
+    async def abort_multipart_upload_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.AppendObjectRequest,
-    ) -> oss_20190517_models.AppendObjectResponse:
+        request: oss_20190517_models.AbortMultipartUploadRequest,
+    ) -> oss_20190517_models.AbortMultipartUploadResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.AppendObjectHeaders()
-        return await self.append_object_with_options_async(bucket, key, request, headers, runtime)
+        headers = {}
+        return await self.abort_multipart_upload_with_options_async(bucket, key, request, headers, runtime)
 
     def append_object_with_options(
         self,
@@ -326,23 +306,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def complete_bucket_worm(
+    def append_object(
         self,
         bucket: str,
-        request: oss_20190517_models.CompleteBucketWormRequest,
-    ) -> oss_20190517_models.CompleteBucketWormResponse:
+        key: str,
+        request: oss_20190517_models.AppendObjectRequest,
+    ) -> oss_20190517_models.AppendObjectResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.complete_bucket_worm_with_options(bucket, request, headers, runtime)
+        headers = oss_20190517_models.AppendObjectHeaders()
+        return self.append_object_with_options(bucket, key, request, headers, runtime)
 
-    async def complete_bucket_worm_async(
+    async def append_object_async(
         self,
         bucket: str,
-        request: oss_20190517_models.CompleteBucketWormRequest,
-    ) -> oss_20190517_models.CompleteBucketWormResponse:
+        key: str,
+        request: oss_20190517_models.AppendObjectRequest,
+    ) -> oss_20190517_models.AppendObjectResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.complete_bucket_worm_with_options_async(bucket, request, headers, runtime)
+        headers = oss_20190517_models.AppendObjectHeaders()
+        return await self.append_object_with_options_async(bucket, key, request, headers, runtime)
 
     def complete_bucket_worm_with_options(
         self,
@@ -412,25 +394,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def complete_multipart_upload(
+    def complete_bucket_worm(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.CompleteMultipartUploadRequest,
-    ) -> oss_20190517_models.CompleteMultipartUploadResponse:
+        request: oss_20190517_models.CompleteBucketWormRequest,
+    ) -> oss_20190517_models.CompleteBucketWormResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.CompleteMultipartUploadHeaders()
-        return self.complete_multipart_upload_with_options(bucket, key, request, headers, runtime)
+        headers = {}
+        return self.complete_bucket_worm_with_options(bucket, request, headers, runtime)
 
-    async def complete_multipart_upload_async(
+    async def complete_bucket_worm_async(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.CompleteMultipartUploadRequest,
-    ) -> oss_20190517_models.CompleteMultipartUploadResponse:
+        request: oss_20190517_models.CompleteBucketWormRequest,
+    ) -> oss_20190517_models.CompleteBucketWormResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.CompleteMultipartUploadHeaders()
-        return await self.complete_multipart_upload_with_options_async(bucket, key, request, headers, runtime)
+        headers = {}
+        return await self.complete_bucket_worm_with_options_async(bucket, request, headers, runtime)
 
     def complete_multipart_upload_with_options(
         self,
@@ -448,9 +428,6 @@ class Client(OpenApiClient):
             query['encoding-type'] = request.encoding_type
         if not UtilClient.is_unset(request.upload_id):
             query['uploadId'] = request.upload_id
-        body = {}
-        if not UtilClient.is_unset(request.complete_multipart_upload):
-            body['completeMultipartUpload'] = request.complete_multipart_upload
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -462,7 +439,7 @@ class Client(OpenApiClient):
             host_map=host_map,
             headers=real_headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CompleteMultipartUpload',
@@ -496,9 +473,6 @@ class Client(OpenApiClient):
             query['encoding-type'] = request.encoding_type
         if not UtilClient.is_unset(request.upload_id):
             query['uploadId'] = request.upload_id
-        body = {}
-        if not UtilClient.is_unset(request.complete_multipart_upload):
-            body['completeMultipartUpload'] = request.complete_multipart_upload
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -510,7 +484,7 @@ class Client(OpenApiClient):
             host_map=host_map,
             headers=real_headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CompleteMultipartUpload',
@@ -528,23 +502,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def copy_object(
+    def complete_multipart_upload(
         self,
         bucket: str,
         key: str,
-    ) -> oss_20190517_models.CopyObjectResponse:
+        request: oss_20190517_models.CompleteMultipartUploadRequest,
+    ) -> oss_20190517_models.CompleteMultipartUploadResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.CopyObjectHeaders()
-        return self.copy_object_with_options(bucket, key, headers, runtime)
+        headers = oss_20190517_models.CompleteMultipartUploadHeaders()
+        return self.complete_multipart_upload_with_options(bucket, key, request, headers, runtime)
 
-    async def copy_object_async(
+    async def complete_multipart_upload_async(
         self,
         bucket: str,
         key: str,
-    ) -> oss_20190517_models.CopyObjectResponse:
+        request: oss_20190517_models.CompleteMultipartUploadRequest,
+    ) -> oss_20190517_models.CompleteMultipartUploadResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.CopyObjectHeaders()
-        return await self.copy_object_with_options_async(bucket, key, headers, runtime)
+        headers = oss_20190517_models.CompleteMultipartUploadHeaders()
+        return await self.complete_multipart_upload_with_options_async(bucket, key, request, headers, runtime)
 
     def copy_object_with_options(
         self,
@@ -666,25 +642,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_select_object_meta(
+    def copy_object(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.CreateSelectObjectMetaRequest,
-    ) -> oss_20190517_models.CreateSelectObjectMetaResponse:
+    ) -> oss_20190517_models.CopyObjectResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_select_object_meta_with_options(bucket, key, request, headers, runtime)
+        headers = oss_20190517_models.CopyObjectHeaders()
+        return self.copy_object_with_options(bucket, key, headers, runtime)
 
-    async def create_select_object_meta_async(
+    async def copy_object_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.CreateSelectObjectMetaRequest,
-    ) -> oss_20190517_models.CreateSelectObjectMetaResponse:
+    ) -> oss_20190517_models.CopyObjectResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_select_object_meta_with_options_async(bucket, key, request, headers, runtime)
+        headers = oss_20190517_models.CopyObjectHeaders()
+        return await self.copy_object_with_options_async(bucket, key, headers, runtime)
 
     def create_select_object_meta_with_options(
         self,
@@ -700,7 +674,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.select_meta_request))
+            body=OpenApiUtilClient.parse_to_map(request.select_meta_request)
         )
         params = open_api_models.Params(
             action='CreateSelectObjectMeta',
@@ -732,7 +706,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.select_meta_request))
+            body=OpenApiUtilClient.parse_to_map(request.select_meta_request)
         )
         params = open_api_models.Params(
             action='CreateSelectObjectMeta',
@@ -750,21 +724,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_bucket(
+    def create_select_object_meta(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketResponse:
+        key: str,
+        request: oss_20190517_models.CreateSelectObjectMetaRequest,
+    ) -> oss_20190517_models.CreateSelectObjectMetaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_bucket_with_options(bucket, headers, runtime)
+        return self.create_select_object_meta_with_options(bucket, key, request, headers, runtime)
 
-    async def delete_bucket_async(
+    async def create_select_object_meta_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketResponse:
+        key: str,
+        request: oss_20190517_models.CreateSelectObjectMetaRequest,
+    ) -> oss_20190517_models.CreateSelectObjectMetaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_bucket_with_options_async(bucket, headers, runtime)
+        return await self.create_select_object_meta_with_options_async(bucket, key, request, headers, runtime)
 
     def delete_bucket_with_options(
         self,
@@ -822,21 +800,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_bucket_cors(
+    def delete_bucket(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketCorsResponse:
+    ) -> oss_20190517_models.DeleteBucketResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_bucket_cors_with_options(bucket, headers, runtime)
+        return self.delete_bucket_with_options(bucket, headers, runtime)
 
-    async def delete_bucket_cors_async(
+    async def delete_bucket_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketCorsResponse:
+    ) -> oss_20190517_models.DeleteBucketResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_bucket_cors_with_options_async(bucket, headers, runtime)
+        return await self.delete_bucket_with_options_async(bucket, headers, runtime)
 
     def delete_bucket_cors_with_options(
         self,
@@ -894,21 +872,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_bucket_encryption(
+    def delete_bucket_cors(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketEncryptionResponse:
+    ) -> oss_20190517_models.DeleteBucketCorsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_bucket_encryption_with_options(bucket, headers, runtime)
+        return self.delete_bucket_cors_with_options(bucket, headers, runtime)
 
-    async def delete_bucket_encryption_async(
+    async def delete_bucket_cors_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketEncryptionResponse:
+    ) -> oss_20190517_models.DeleteBucketCorsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_bucket_encryption_with_options_async(bucket, headers, runtime)
+        return await self.delete_bucket_cors_with_options_async(bucket, headers, runtime)
 
     def delete_bucket_encryption_with_options(
         self,
@@ -966,23 +944,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_bucket_inventory(
+    def delete_bucket_encryption(
         self,
         bucket: str,
-        request: oss_20190517_models.DeleteBucketInventoryRequest,
-    ) -> oss_20190517_models.DeleteBucketInventoryResponse:
+    ) -> oss_20190517_models.DeleteBucketEncryptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_bucket_inventory_with_options(bucket, request, headers, runtime)
+        return self.delete_bucket_encryption_with_options(bucket, headers, runtime)
 
-    async def delete_bucket_inventory_async(
+    async def delete_bucket_encryption_async(
         self,
         bucket: str,
-        request: oss_20190517_models.DeleteBucketInventoryRequest,
-    ) -> oss_20190517_models.DeleteBucketInventoryResponse:
+    ) -> oss_20190517_models.DeleteBucketEncryptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_bucket_inventory_with_options_async(bucket, request, headers, runtime)
+        return await self.delete_bucket_encryption_with_options_async(bucket, headers, runtime)
 
     def delete_bucket_inventory_with_options(
         self,
@@ -1052,21 +1028,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_bucket_lifecycle(
+    def delete_bucket_inventory(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketLifecycleResponse:
+        request: oss_20190517_models.DeleteBucketInventoryRequest,
+    ) -> oss_20190517_models.DeleteBucketInventoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_bucket_lifecycle_with_options(bucket, headers, runtime)
+        return self.delete_bucket_inventory_with_options(bucket, request, headers, runtime)
 
-    async def delete_bucket_lifecycle_async(
+    async def delete_bucket_inventory_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketLifecycleResponse:
+        request: oss_20190517_models.DeleteBucketInventoryRequest,
+    ) -> oss_20190517_models.DeleteBucketInventoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_bucket_lifecycle_with_options_async(bucket, headers, runtime)
+        return await self.delete_bucket_inventory_with_options_async(bucket, request, headers, runtime)
 
     def delete_bucket_lifecycle_with_options(
         self,
@@ -1124,21 +1102,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_bucket_logging(
+    def delete_bucket_lifecycle(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketLoggingResponse:
+    ) -> oss_20190517_models.DeleteBucketLifecycleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_bucket_logging_with_options(bucket, headers, runtime)
+        return self.delete_bucket_lifecycle_with_options(bucket, headers, runtime)
 
-    async def delete_bucket_logging_async(
+    async def delete_bucket_lifecycle_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketLoggingResponse:
+    ) -> oss_20190517_models.DeleteBucketLifecycleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_bucket_logging_with_options_async(bucket, headers, runtime)
+        return await self.delete_bucket_lifecycle_with_options_async(bucket, headers, runtime)
 
     def delete_bucket_logging_with_options(
         self,
@@ -1196,21 +1174,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_bucket_policy(
+    def delete_bucket_logging(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketPolicyResponse:
+    ) -> oss_20190517_models.DeleteBucketLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_bucket_policy_with_options(bucket, headers, runtime)
+        return self.delete_bucket_logging_with_options(bucket, headers, runtime)
 
-    async def delete_bucket_policy_async(
+    async def delete_bucket_logging_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketPolicyResponse:
+    ) -> oss_20190517_models.DeleteBucketLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_bucket_policy_with_options_async(bucket, headers, runtime)
+        return await self.delete_bucket_logging_with_options_async(bucket, headers, runtime)
 
     def delete_bucket_policy_with_options(
         self,
@@ -1268,23 +1246,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_bucket_replication(
+    def delete_bucket_policy(
         self,
         bucket: str,
-        request: oss_20190517_models.DeleteBucketReplicationRequest,
-    ) -> oss_20190517_models.DeleteBucketReplicationResponse:
+    ) -> oss_20190517_models.DeleteBucketPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_bucket_replication_with_options(bucket, request, headers, runtime)
+        return self.delete_bucket_policy_with_options(bucket, headers, runtime)
 
-    async def delete_bucket_replication_async(
+    async def delete_bucket_policy_async(
         self,
         bucket: str,
-        request: oss_20190517_models.DeleteBucketReplicationRequest,
-    ) -> oss_20190517_models.DeleteBucketReplicationResponse:
+    ) -> oss_20190517_models.DeleteBucketPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_bucket_replication_with_options_async(bucket, request, headers, runtime)
+        return await self.delete_bucket_policy_with_options_async(bucket, headers, runtime)
 
     def delete_bucket_replication_with_options(
         self,
@@ -1299,7 +1275,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='DeleteBucketReplication',
@@ -1330,7 +1306,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='DeleteBucketReplication',
@@ -1348,21 +1324,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_bucket_tags(
+    def delete_bucket_replication(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketTagsResponse:
+        request: oss_20190517_models.DeleteBucketReplicationRequest,
+    ) -> oss_20190517_models.DeleteBucketReplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_bucket_tags_with_options(bucket, headers, runtime)
+        return self.delete_bucket_replication_with_options(bucket, request, headers, runtime)
 
-    async def delete_bucket_tags_async(
+    async def delete_bucket_replication_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketTagsResponse:
+        request: oss_20190517_models.DeleteBucketReplicationRequest,
+    ) -> oss_20190517_models.DeleteBucketReplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_bucket_tags_with_options_async(bucket, headers, runtime)
+        return await self.delete_bucket_replication_with_options_async(bucket, request, headers, runtime)
 
     def delete_bucket_tags_with_options(
         self,
@@ -1420,21 +1398,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_bucket_website(
+    def delete_bucket_tags(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketWebsiteResponse:
+    ) -> oss_20190517_models.DeleteBucketTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_bucket_website_with_options(bucket, headers, runtime)
+        return self.delete_bucket_tags_with_options(bucket, headers, runtime)
 
-    async def delete_bucket_website_async(
+    async def delete_bucket_tags_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.DeleteBucketWebsiteResponse:
+    ) -> oss_20190517_models.DeleteBucketTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_bucket_website_with_options_async(bucket, headers, runtime)
+        return await self.delete_bucket_tags_with_options_async(bucket, headers, runtime)
 
     def delete_bucket_website_with_options(
         self,
@@ -1492,23 +1470,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_live_channel(
+    def delete_bucket_website(
         self,
         bucket: str,
-        channel: str,
-    ) -> oss_20190517_models.DeleteLiveChannelResponse:
+    ) -> oss_20190517_models.DeleteBucketWebsiteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_live_channel_with_options(bucket, channel, headers, runtime)
+        return self.delete_bucket_website_with_options(bucket, headers, runtime)
 
-    async def delete_live_channel_async(
+    async def delete_bucket_website_async(
         self,
         bucket: str,
-        channel: str,
-    ) -> oss_20190517_models.DeleteLiveChannelResponse:
+    ) -> oss_20190517_models.DeleteBucketWebsiteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_live_channel_with_options_async(bucket, channel, headers, runtime)
+        return await self.delete_bucket_website_with_options_async(bucket, headers, runtime)
 
     def delete_live_channel_with_options(
         self,
@@ -1568,29 +1544,29 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_multiple_objects(
+    def delete_live_channel(
         self,
         bucket: str,
-        request: oss_20190517_models.DeleteMultipleObjectsRequest,
-    ) -> oss_20190517_models.DeleteMultipleObjectsResponse:
+        channel: str,
+    ) -> oss_20190517_models.DeleteLiveChannelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_multiple_objects_with_options(bucket, request, headers, runtime)
+        return self.delete_live_channel_with_options(bucket, channel, headers, runtime)
 
-    async def delete_multiple_objects_async(
+    async def delete_live_channel_async(
         self,
         bucket: str,
-        request: oss_20190517_models.DeleteMultipleObjectsRequest,
-    ) -> oss_20190517_models.DeleteMultipleObjectsResponse:
+        channel: str,
+    ) -> oss_20190517_models.DeleteLiveChannelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_multiple_objects_with_options_async(bucket, request, headers, runtime)
+        return await self.delete_live_channel_with_options_async(bucket, channel, headers, runtime)
 
     def delete_multiple_objects_with_options(
         self,
         bucket: str,
         request: oss_20190517_models.DeleteMultipleObjectsRequest,
-        headers: Dict[str, str],
+        headers: oss_20190517_models.DeleteMultipleObjectsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> oss_20190517_models.DeleteMultipleObjectsResponse:
         UtilClient.validate_model(request)
@@ -1599,11 +1575,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.encoding_type):
             query['encoding-type'] = request.encoding_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.content_md_5):
+            real_headers['content-md5'] = UtilClient.to_jsonstring(headers.content_md_5)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
-            headers=headers,
+            headers=real_headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.delete))
+            body=OpenApiUtilClient.parse_to_map(request.delete)
         )
         params = open_api_models.Params(
             action='DeleteMultipleObjects',
@@ -1625,7 +1606,7 @@ class Client(OpenApiClient):
         self,
         bucket: str,
         request: oss_20190517_models.DeleteMultipleObjectsRequest,
-        headers: Dict[str, str],
+        headers: oss_20190517_models.DeleteMultipleObjectsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> oss_20190517_models.DeleteMultipleObjectsResponse:
         UtilClient.validate_model(request)
@@ -1634,11 +1615,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.encoding_type):
             query['encoding-type'] = request.encoding_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.content_md_5):
+            real_headers['content-md5'] = UtilClient.to_jsonstring(headers.content_md_5)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
-            headers=headers,
+            headers=real_headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.delete))
+            body=OpenApiUtilClient.parse_to_map(request.delete)
         )
         params = open_api_models.Params(
             action='DeleteMultipleObjects',
@@ -1656,25 +1642,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_object(
+    def delete_multiple_objects(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.DeleteObjectRequest,
-    ) -> oss_20190517_models.DeleteObjectResponse:
+        request: oss_20190517_models.DeleteMultipleObjectsRequest,
+    ) -> oss_20190517_models.DeleteMultipleObjectsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_object_with_options(bucket, key, request, headers, runtime)
+        headers = oss_20190517_models.DeleteMultipleObjectsHeaders()
+        return self.delete_multiple_objects_with_options(bucket, request, headers, runtime)
 
-    async def delete_object_async(
+    async def delete_multiple_objects_async(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.DeleteObjectRequest,
-    ) -> oss_20190517_models.DeleteObjectResponse:
+        request: oss_20190517_models.DeleteMultipleObjectsRequest,
+    ) -> oss_20190517_models.DeleteMultipleObjectsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_object_with_options_async(bucket, key, request, headers, runtime)
+        headers = oss_20190517_models.DeleteMultipleObjectsHeaders()
+        return await self.delete_multiple_objects_with_options_async(bucket, request, headers, runtime)
 
     def delete_object_with_options(
         self,
@@ -1746,25 +1730,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_object_tagging(
+    def delete_object(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.DeleteObjectTaggingRequest,
-    ) -> oss_20190517_models.DeleteObjectTaggingResponse:
+        request: oss_20190517_models.DeleteObjectRequest,
+    ) -> oss_20190517_models.DeleteObjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_object_tagging_with_options(bucket, key, request, headers, runtime)
+        return self.delete_object_with_options(bucket, key, request, headers, runtime)
 
-    async def delete_object_tagging_async(
+    async def delete_object_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.DeleteObjectTaggingRequest,
-    ) -> oss_20190517_models.DeleteObjectTaggingResponse:
+        request: oss_20190517_models.DeleteObjectRequest,
+    ) -> oss_20190517_models.DeleteObjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_object_tagging_with_options_async(bucket, key, request, headers, runtime)
+        return await self.delete_object_with_options_async(bucket, key, request, headers, runtime)
 
     def delete_object_tagging_with_options(
         self,
@@ -1836,21 +1820,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def describe_regions(
+    def delete_object_tagging(
         self,
-        request: oss_20190517_models.DescribeRegionsRequest,
-    ) -> oss_20190517_models.DescribeRegionsResponse:
+        bucket: str,
+        key: str,
+        request: oss_20190517_models.DeleteObjectTaggingRequest,
+    ) -> oss_20190517_models.DeleteObjectTaggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_regions_with_options(request, headers, runtime)
+        return self.delete_object_tagging_with_options(bucket, key, request, headers, runtime)
 
-    async def describe_regions_async(
+    async def delete_object_tagging_async(
         self,
-        request: oss_20190517_models.DescribeRegionsRequest,
-    ) -> oss_20190517_models.DescribeRegionsResponse:
+        bucket: str,
+        key: str,
+        request: oss_20190517_models.DeleteObjectTaggingRequest,
+    ) -> oss_20190517_models.DeleteObjectTaggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_regions_with_options_async(request, headers, runtime)
+        return await self.delete_object_tagging_with_options_async(bucket, key, request, headers, runtime)
 
     def describe_regions_with_options(
         self,
@@ -1912,23 +1900,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def extend_bucket_worm(
+    def describe_regions(
         self,
-        bucket: str,
-        request: oss_20190517_models.ExtendBucketWormRequest,
-    ) -> oss_20190517_models.ExtendBucketWormResponse:
+        request: oss_20190517_models.DescribeRegionsRequest,
+    ) -> oss_20190517_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.extend_bucket_worm_with_options(bucket, request, headers, runtime)
+        return self.describe_regions_with_options(request, headers, runtime)
 
-    async def extend_bucket_worm_async(
+    async def describe_regions_async(
         self,
-        bucket: str,
-        request: oss_20190517_models.ExtendBucketWormRequest,
-    ) -> oss_20190517_models.ExtendBucketWormResponse:
+        request: oss_20190517_models.DescribeRegionsRequest,
+    ) -> oss_20190517_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.extend_bucket_worm_with_options_async(bucket, request, headers, runtime)
+        return await self.describe_regions_with_options_async(request, headers, runtime)
 
     def extend_bucket_worm_with_options(
         self,
@@ -1943,14 +1929,11 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.worm_id):
             query['wormId'] = request.worm_id
-        body = {}
-        if not UtilClient.is_unset(request.extend_worm_configuration):
-            body['extendWormConfiguration'] = request.extend_worm_configuration
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='ExtendBucketWorm',
@@ -1981,14 +1964,11 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.worm_id):
             query['wormId'] = request.worm_id
-        body = {}
-        if not UtilClient.is_unset(request.extend_worm_configuration):
-            body['extendWormConfiguration'] = request.extend_worm_configuration
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='ExtendBucketWorm',
@@ -2006,21 +1986,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_acl(
+    def extend_bucket_worm(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketAclResponse:
+        request: oss_20190517_models.ExtendBucketWormRequest,
+    ) -> oss_20190517_models.ExtendBucketWormResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_acl_with_options(bucket, headers, runtime)
+        return self.extend_bucket_worm_with_options(bucket, request, headers, runtime)
 
-    async def get_bucket_acl_async(
+    async def extend_bucket_worm_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketAclResponse:
+        request: oss_20190517_models.ExtendBucketWormRequest,
+    ) -> oss_20190517_models.ExtendBucketWormResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_acl_with_options_async(bucket, headers, runtime)
+        return await self.extend_bucket_worm_with_options_async(bucket, request, headers, runtime)
 
     def get_bucket_acl_with_options(
         self,
@@ -2078,21 +2060,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_cors(
+    def get_bucket_acl(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketCorsResponse:
+    ) -> oss_20190517_models.GetBucketAclResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_cors_with_options(bucket, headers, runtime)
+        return self.get_bucket_acl_with_options(bucket, headers, runtime)
 
-    async def get_bucket_cors_async(
+    async def get_bucket_acl_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketCorsResponse:
+    ) -> oss_20190517_models.GetBucketAclResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_cors_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_acl_with_options_async(bucket, headers, runtime)
 
     def get_bucket_cors_with_options(
         self,
@@ -2150,21 +2132,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_encryption(
+    def get_bucket_cors(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketEncryptionResponse:
+    ) -> oss_20190517_models.GetBucketCorsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_encryption_with_options(bucket, headers, runtime)
+        return self.get_bucket_cors_with_options(bucket, headers, runtime)
 
-    async def get_bucket_encryption_async(
+    async def get_bucket_cors_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketEncryptionResponse:
+    ) -> oss_20190517_models.GetBucketCorsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_encryption_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_cors_with_options_async(bucket, headers, runtime)
 
     def get_bucket_encryption_with_options(
         self,
@@ -2222,21 +2204,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_info(
+    def get_bucket_encryption(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketInfoResponse:
+    ) -> oss_20190517_models.GetBucketEncryptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_info_with_options(bucket, headers, runtime)
+        return self.get_bucket_encryption_with_options(bucket, headers, runtime)
 
-    async def get_bucket_info_async(
+    async def get_bucket_encryption_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketInfoResponse:
+    ) -> oss_20190517_models.GetBucketEncryptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_info_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_encryption_with_options_async(bucket, headers, runtime)
 
     def get_bucket_info_with_options(
         self,
@@ -2294,23 +2276,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_inventory(
+    def get_bucket_info(
         self,
         bucket: str,
-        request: oss_20190517_models.GetBucketInventoryRequest,
-    ) -> oss_20190517_models.GetBucketInventoryResponse:
+    ) -> oss_20190517_models.GetBucketInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_inventory_with_options(bucket, request, headers, runtime)
+        return self.get_bucket_info_with_options(bucket, headers, runtime)
 
-    async def get_bucket_inventory_async(
+    async def get_bucket_info_async(
         self,
         bucket: str,
-        request: oss_20190517_models.GetBucketInventoryRequest,
-    ) -> oss_20190517_models.GetBucketInventoryResponse:
+    ) -> oss_20190517_models.GetBucketInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_inventory_with_options_async(bucket, request, headers, runtime)
+        return await self.get_bucket_info_with_options_async(bucket, headers, runtime)
 
     def get_bucket_inventory_with_options(
         self,
@@ -2380,21 +2360,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_lifecycle(
+    def get_bucket_inventory(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketLifecycleResponse:
+        request: oss_20190517_models.GetBucketInventoryRequest,
+    ) -> oss_20190517_models.GetBucketInventoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_lifecycle_with_options(bucket, headers, runtime)
+        return self.get_bucket_inventory_with_options(bucket, request, headers, runtime)
 
-    async def get_bucket_lifecycle_async(
+    async def get_bucket_inventory_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketLifecycleResponse:
+        request: oss_20190517_models.GetBucketInventoryRequest,
+    ) -> oss_20190517_models.GetBucketInventoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_lifecycle_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_inventory_with_options_async(bucket, request, headers, runtime)
 
     def get_bucket_lifecycle_with_options(
         self,
@@ -2452,21 +2434,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_location(
+    def get_bucket_lifecycle(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketLocationResponse:
+    ) -> oss_20190517_models.GetBucketLifecycleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_location_with_options(bucket, headers, runtime)
+        return self.get_bucket_lifecycle_with_options(bucket, headers, runtime)
 
-    async def get_bucket_location_async(
+    async def get_bucket_lifecycle_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketLocationResponse:
+    ) -> oss_20190517_models.GetBucketLifecycleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_location_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_lifecycle_with_options_async(bucket, headers, runtime)
 
     def get_bucket_location_with_options(
         self,
@@ -2524,21 +2506,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_logging(
+    def get_bucket_location(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketLoggingResponse:
+    ) -> oss_20190517_models.GetBucketLocationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_logging_with_options(bucket, headers, runtime)
+        return self.get_bucket_location_with_options(bucket, headers, runtime)
 
-    async def get_bucket_logging_async(
+    async def get_bucket_location_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketLoggingResponse:
+    ) -> oss_20190517_models.GetBucketLocationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_logging_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_location_with_options_async(bucket, headers, runtime)
 
     def get_bucket_logging_with_options(
         self,
@@ -2596,21 +2578,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_policy(
+    def get_bucket_logging(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketPolicyResponse:
+    ) -> oss_20190517_models.GetBucketLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_policy_with_options(bucket, headers, runtime)
+        return self.get_bucket_logging_with_options(bucket, headers, runtime)
 
-    async def get_bucket_policy_async(
+    async def get_bucket_logging_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketPolicyResponse:
+    ) -> oss_20190517_models.GetBucketLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_policy_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_logging_with_options_async(bucket, headers, runtime)
 
     def get_bucket_policy_with_options(
         self,
@@ -2668,21 +2650,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_referer(
+    def get_bucket_policy(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketRefererResponse:
+    ) -> oss_20190517_models.GetBucketPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_referer_with_options(bucket, headers, runtime)
+        return self.get_bucket_policy_with_options(bucket, headers, runtime)
 
-    async def get_bucket_referer_async(
+    async def get_bucket_policy_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketRefererResponse:
+    ) -> oss_20190517_models.GetBucketPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_referer_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_policy_with_options_async(bucket, headers, runtime)
 
     def get_bucket_referer_with_options(
         self,
@@ -2705,7 +2687,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='json'
         )
         return TeaCore.from_map(
             oss_20190517_models.GetBucketRefererResponse(),
@@ -2733,28 +2715,28 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='json'
         )
         return TeaCore.from_map(
             oss_20190517_models.GetBucketRefererResponse(),
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_replication(
+    def get_bucket_referer(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketReplicationResponse:
+    ) -> oss_20190517_models.GetBucketRefererResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_replication_with_options(bucket, headers, runtime)
+        return self.get_bucket_referer_with_options(bucket, headers, runtime)
 
-    async def get_bucket_replication_async(
+    async def get_bucket_referer_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketReplicationResponse:
+    ) -> oss_20190517_models.GetBucketRefererResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_replication_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_referer_with_options_async(bucket, headers, runtime)
 
     def get_bucket_replication_with_options(
         self,
@@ -2812,21 +2794,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_replication_location(
+    def get_bucket_replication(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketReplicationLocationResponse:
+    ) -> oss_20190517_models.GetBucketReplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_replication_location_with_options(bucket, headers, runtime)
+        return self.get_bucket_replication_with_options(bucket, headers, runtime)
 
-    async def get_bucket_replication_location_async(
+    async def get_bucket_replication_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketReplicationLocationResponse:
+    ) -> oss_20190517_models.GetBucketReplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_replication_location_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_replication_with_options_async(bucket, headers, runtime)
 
     def get_bucket_replication_location_with_options(
         self,
@@ -2884,23 +2866,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_replication_progress(
+    def get_bucket_replication_location(
         self,
         bucket: str,
-        request: oss_20190517_models.GetBucketReplicationProgressRequest,
-    ) -> oss_20190517_models.GetBucketReplicationProgressResponse:
+    ) -> oss_20190517_models.GetBucketReplicationLocationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_replication_progress_with_options(bucket, request, headers, runtime)
+        return self.get_bucket_replication_location_with_options(bucket, headers, runtime)
 
-    async def get_bucket_replication_progress_async(
+    async def get_bucket_replication_location_async(
         self,
         bucket: str,
-        request: oss_20190517_models.GetBucketReplicationProgressRequest,
-    ) -> oss_20190517_models.GetBucketReplicationProgressResponse:
+    ) -> oss_20190517_models.GetBucketReplicationLocationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_replication_progress_with_options_async(bucket, request, headers, runtime)
+        return await self.get_bucket_replication_location_with_options_async(bucket, headers, runtime)
 
     def get_bucket_replication_progress_with_options(
         self,
@@ -2970,21 +2950,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_request_payment(
+    def get_bucket_replication_progress(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketRequestPaymentResponse:
+        request: oss_20190517_models.GetBucketReplicationProgressRequest,
+    ) -> oss_20190517_models.GetBucketReplicationProgressResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_request_payment_with_options(bucket, headers, runtime)
+        return self.get_bucket_replication_progress_with_options(bucket, request, headers, runtime)
 
-    async def get_bucket_request_payment_async(
+    async def get_bucket_replication_progress_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketRequestPaymentResponse:
+        request: oss_20190517_models.GetBucketReplicationProgressRequest,
+    ) -> oss_20190517_models.GetBucketReplicationProgressResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_request_payment_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_replication_progress_with_options_async(bucket, request, headers, runtime)
 
     def get_bucket_request_payment_with_options(
         self,
@@ -3042,21 +3024,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_tags(
+    def get_bucket_request_payment(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketTagsResponse:
+    ) -> oss_20190517_models.GetBucketRequestPaymentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_tags_with_options(bucket, headers, runtime)
+        return self.get_bucket_request_payment_with_options(bucket, headers, runtime)
 
-    async def get_bucket_tags_async(
+    async def get_bucket_request_payment_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketTagsResponse:
+    ) -> oss_20190517_models.GetBucketRequestPaymentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_tags_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_request_payment_with_options_async(bucket, headers, runtime)
 
     def get_bucket_tags_with_options(
         self,
@@ -3114,21 +3096,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_transfer_acceleration(
+    def get_bucket_tags(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketTransferAccelerationResponse:
+    ) -> oss_20190517_models.GetBucketTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_transfer_acceleration_with_options(bucket, headers, runtime)
+        return self.get_bucket_tags_with_options(bucket, headers, runtime)
 
-    async def get_bucket_transfer_acceleration_async(
+    async def get_bucket_tags_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketTransferAccelerationResponse:
+    ) -> oss_20190517_models.GetBucketTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_transfer_acceleration_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_tags_with_options_async(bucket, headers, runtime)
 
     def get_bucket_transfer_acceleration_with_options(
         self,
@@ -3186,21 +3168,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_versioning(
+    def get_bucket_transfer_acceleration(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketVersioningResponse:
+    ) -> oss_20190517_models.GetBucketTransferAccelerationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_versioning_with_options(bucket, headers, runtime)
+        return self.get_bucket_transfer_acceleration_with_options(bucket, headers, runtime)
 
-    async def get_bucket_versioning_async(
+    async def get_bucket_transfer_acceleration_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketVersioningResponse:
+    ) -> oss_20190517_models.GetBucketTransferAccelerationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_versioning_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_transfer_acceleration_with_options_async(bucket, headers, runtime)
 
     def get_bucket_versioning_with_options(
         self,
@@ -3258,21 +3240,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_website(
+    def get_bucket_versioning(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketWebsiteResponse:
+    ) -> oss_20190517_models.GetBucketVersioningResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_website_with_options(bucket, headers, runtime)
+        return self.get_bucket_versioning_with_options(bucket, headers, runtime)
 
-    async def get_bucket_website_async(
+    async def get_bucket_versioning_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketWebsiteResponse:
+    ) -> oss_20190517_models.GetBucketVersioningResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_website_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_versioning_with_options_async(bucket, headers, runtime)
 
     def get_bucket_website_with_options(
         self,
@@ -3330,21 +3312,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_bucket_worm(
+    def get_bucket_website(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketWormResponse:
+    ) -> oss_20190517_models.GetBucketWebsiteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_bucket_worm_with_options(bucket, headers, runtime)
+        return self.get_bucket_website_with_options(bucket, headers, runtime)
 
-    async def get_bucket_worm_async(
+    async def get_bucket_website_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.GetBucketWormResponse:
+    ) -> oss_20190517_models.GetBucketWebsiteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_bucket_worm_with_options_async(bucket, headers, runtime)
+        return await self.get_bucket_website_with_options_async(bucket, headers, runtime)
 
     def get_bucket_worm_with_options(
         self,
@@ -3402,23 +3384,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_live_channel_history(
+    def get_bucket_worm(
         self,
         bucket: str,
-        channel: str,
-    ) -> oss_20190517_models.GetLiveChannelHistoryResponse:
+    ) -> oss_20190517_models.GetBucketWormResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_live_channel_history_with_options(bucket, channel, headers, runtime)
+        return self.get_bucket_worm_with_options(bucket, headers, runtime)
 
-    async def get_live_channel_history_async(
+    async def get_bucket_worm_async(
         self,
         bucket: str,
-        channel: str,
-    ) -> oss_20190517_models.GetLiveChannelHistoryResponse:
+    ) -> oss_20190517_models.GetBucketWormResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_live_channel_history_with_options_async(bucket, channel, headers, runtime)
+        return await self.get_bucket_worm_with_options_async(bucket, headers, runtime)
 
     def get_live_channel_history_with_options(
         self,
@@ -3478,23 +3458,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_live_channel_info(
+    def get_live_channel_history(
         self,
         bucket: str,
         channel: str,
-    ) -> oss_20190517_models.GetLiveChannelInfoResponse:
+    ) -> oss_20190517_models.GetLiveChannelHistoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_live_channel_info_with_options(bucket, channel, headers, runtime)
+        return self.get_live_channel_history_with_options(bucket, channel, headers, runtime)
 
-    async def get_live_channel_info_async(
+    async def get_live_channel_history_async(
         self,
         bucket: str,
         channel: str,
-    ) -> oss_20190517_models.GetLiveChannelInfoResponse:
+    ) -> oss_20190517_models.GetLiveChannelHistoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_live_channel_info_with_options_async(bucket, channel, headers, runtime)
+        return await self.get_live_channel_history_with_options_async(bucket, channel, headers, runtime)
 
     def get_live_channel_info_with_options(
         self,
@@ -3554,23 +3534,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_live_channel_stat(
+    def get_live_channel_info(
         self,
         bucket: str,
         channel: str,
-    ) -> oss_20190517_models.GetLiveChannelStatResponse:
+    ) -> oss_20190517_models.GetLiveChannelInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_live_channel_stat_with_options(bucket, channel, headers, runtime)
+        return self.get_live_channel_info_with_options(bucket, channel, headers, runtime)
 
-    async def get_live_channel_stat_async(
+    async def get_live_channel_info_async(
         self,
         bucket: str,
         channel: str,
-    ) -> oss_20190517_models.GetLiveChannelStatResponse:
+    ) -> oss_20190517_models.GetLiveChannelInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_live_channel_stat_with_options_async(bucket, channel, headers, runtime)
+        return await self.get_live_channel_info_with_options_async(bucket, channel, headers, runtime)
 
     def get_live_channel_stat_with_options(
         self,
@@ -3630,25 +3610,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_object(
+    def get_live_channel_stat(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.GetObjectRequest,
-    ) -> oss_20190517_models.GetObjectResponse:
+        channel: str,
+    ) -> oss_20190517_models.GetLiveChannelStatResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.GetObjectHeaders()
-        return self.get_object_with_options(bucket, key, request, headers, runtime)
+        headers = {}
+        return self.get_live_channel_stat_with_options(bucket, channel, headers, runtime)
 
-    async def get_object_async(
+    async def get_live_channel_stat_async(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.GetObjectRequest,
-    ) -> oss_20190517_models.GetObjectResponse:
+        channel: str,
+    ) -> oss_20190517_models.GetLiveChannelStatResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.GetObjectHeaders()
-        return await self.get_object_with_options_async(bucket, key, request, headers, runtime)
+        headers = {}
+        return await self.get_live_channel_stat_with_options_async(bucket, channel, headers, runtime)
 
     def get_object_with_options(
         self,
@@ -3658,6 +3636,19 @@ class Client(OpenApiClient):
         headers: oss_20190517_models.GetObjectHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> oss_20190517_models.GetObjectResponse:
+        """
+        *Usage notes**\
+        - By default, the GetObject operation supports access over HTTP and HTTPS. To impose a limit on access to a bucket only over HTTPS, configure a bucket policy for the bucket to specify the access method. For more information, see [Configure bucket policies to authorize other users to access OSS resources](~~85111~~).
+        - If the storage class of the object that you want to query is Archive, you must send a RestoreObject request to restore the object before you call the GetObject operation.
+        **Versioning**\
+        By default, only the current version of an object is returned after GetObject is called.
+        If the version ID of the object is specified in the request, OSS returns the specified version of the object. If the version ID is set to null in the request, OSS returns the version of the object whose version ID is null.
+        
+        @param request: GetObjectRequest
+        @param headers: GetObjectHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetObjectResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
@@ -3718,6 +3709,19 @@ class Client(OpenApiClient):
         headers: oss_20190517_models.GetObjectHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> oss_20190517_models.GetObjectResponse:
+        """
+        *Usage notes**\
+        - By default, the GetObject operation supports access over HTTP and HTTPS. To impose a limit on access to a bucket only over HTTPS, configure a bucket policy for the bucket to specify the access method. For more information, see [Configure bucket policies to authorize other users to access OSS resources](~~85111~~).
+        - If the storage class of the object that you want to query is Archive, you must send a RestoreObject request to restore the object before you call the GetObject operation.
+        **Versioning**\
+        By default, only the current version of an object is returned after GetObject is called.
+        If the version ID of the object is specified in the request, OSS returns the specified version of the object. If the version ID is set to null in the request, OSS returns the version of the object whose version ID is null.
+        
+        @param request: GetObjectRequest
+        @param headers: GetObjectHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetObjectResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
@@ -3770,25 +3774,47 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_object_acl(
+    def get_object(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.GetObjectAclRequest,
-    ) -> oss_20190517_models.GetObjectAclResponse:
+        request: oss_20190517_models.GetObjectRequest,
+    ) -> oss_20190517_models.GetObjectResponse:
+        """
+        *Usage notes**\
+        - By default, the GetObject operation supports access over HTTP and HTTPS. To impose a limit on access to a bucket only over HTTPS, configure a bucket policy for the bucket to specify the access method. For more information, see [Configure bucket policies to authorize other users to access OSS resources](~~85111~~).
+        - If the storage class of the object that you want to query is Archive, you must send a RestoreObject request to restore the object before you call the GetObject operation.
+        **Versioning**\
+        By default, only the current version of an object is returned after GetObject is called.
+        If the version ID of the object is specified in the request, OSS returns the specified version of the object. If the version ID is set to null in the request, OSS returns the version of the object whose version ID is null.
+        
+        @param request: GetObjectRequest
+        @return: GetObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_object_acl_with_options(bucket, key, request, headers, runtime)
+        headers = oss_20190517_models.GetObjectHeaders()
+        return self.get_object_with_options(bucket, key, request, headers, runtime)
 
-    async def get_object_acl_async(
+    async def get_object_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.GetObjectAclRequest,
-    ) -> oss_20190517_models.GetObjectAclResponse:
+        request: oss_20190517_models.GetObjectRequest,
+    ) -> oss_20190517_models.GetObjectResponse:
+        """
+        *Usage notes**\
+        - By default, the GetObject operation supports access over HTTP and HTTPS. To impose a limit on access to a bucket only over HTTPS, configure a bucket policy for the bucket to specify the access method. For more information, see [Configure bucket policies to authorize other users to access OSS resources](~~85111~~).
+        - If the storage class of the object that you want to query is Archive, you must send a RestoreObject request to restore the object before you call the GetObject operation.
+        **Versioning**\
+        By default, only the current version of an object is returned after GetObject is called.
+        If the version ID of the object is specified in the request, OSS returns the specified version of the object. If the version ID is set to null in the request, OSS returns the version of the object whose version ID is null.
+        
+        @param request: GetObjectRequest
+        @return: GetObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_object_acl_with_options_async(bucket, key, request, headers, runtime)
+        headers = oss_20190517_models.GetObjectHeaders()
+        return await self.get_object_with_options_async(bucket, key, request, headers, runtime)
 
     def get_object_acl_with_options(
         self,
@@ -3860,25 +3886,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_object_meta(
+    def get_object_acl(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.GetObjectMetaRequest,
-    ) -> oss_20190517_models.GetObjectMetaResponse:
+        request: oss_20190517_models.GetObjectAclRequest,
+    ) -> oss_20190517_models.GetObjectAclResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_object_meta_with_options(bucket, key, request, headers, runtime)
+        return self.get_object_acl_with_options(bucket, key, request, headers, runtime)
 
-    async def get_object_meta_async(
+    async def get_object_acl_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.GetObjectMetaRequest,
-    ) -> oss_20190517_models.GetObjectMetaResponse:
+        request: oss_20190517_models.GetObjectAclRequest,
+    ) -> oss_20190517_models.GetObjectAclResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_object_meta_with_options_async(bucket, key, request, headers, runtime)
+        return await self.get_object_acl_with_options_async(bucket, key, request, headers, runtime)
 
     def get_object_meta_with_options(
         self,
@@ -3950,25 +3976,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_object_tagging(
+    def get_object_meta(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.GetObjectTaggingRequest,
-    ) -> oss_20190517_models.GetObjectTaggingResponse:
+        request: oss_20190517_models.GetObjectMetaRequest,
+    ) -> oss_20190517_models.GetObjectMetaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_object_tagging_with_options(bucket, key, request, headers, runtime)
+        return self.get_object_meta_with_options(bucket, key, request, headers, runtime)
 
-    async def get_object_tagging_async(
+    async def get_object_meta_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.GetObjectTaggingRequest,
-    ) -> oss_20190517_models.GetObjectTaggingResponse:
+        request: oss_20190517_models.GetObjectMetaRequest,
+    ) -> oss_20190517_models.GetObjectMetaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_object_tagging_with_options_async(bucket, key, request, headers, runtime)
+        return await self.get_object_meta_with_options_async(bucket, key, request, headers, runtime)
 
     def get_object_tagging_with_options(
         self,
@@ -4040,25 +4066,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_symlink(
+    def get_object_tagging(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.GetSymlinkRequest,
-    ) -> oss_20190517_models.GetSymlinkResponse:
+        request: oss_20190517_models.GetObjectTaggingRequest,
+    ) -> oss_20190517_models.GetObjectTaggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_symlink_with_options(bucket, key, request, headers, runtime)
+        return self.get_object_tagging_with_options(bucket, key, request, headers, runtime)
 
-    async def get_symlink_async(
+    async def get_object_tagging_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.GetSymlinkRequest,
-    ) -> oss_20190517_models.GetSymlinkResponse:
+        request: oss_20190517_models.GetObjectTaggingRequest,
+    ) -> oss_20190517_models.GetObjectTaggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_symlink_with_options_async(bucket, key, request, headers, runtime)
+        return await self.get_object_tagging_with_options_async(bucket, key, request, headers, runtime)
 
     def get_symlink_with_options(
         self,
@@ -4130,25 +4156,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_vod_playlist(
+    def get_symlink(
         self,
         bucket: str,
-        channel: str,
-        request: oss_20190517_models.GetVodPlaylistRequest,
-    ) -> oss_20190517_models.GetVodPlaylistResponse:
+        key: str,
+        request: oss_20190517_models.GetSymlinkRequest,
+    ) -> oss_20190517_models.GetSymlinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_vod_playlist_with_options(bucket, channel, request, headers, runtime)
+        return self.get_symlink_with_options(bucket, key, request, headers, runtime)
 
-    async def get_vod_playlist_async(
+    async def get_symlink_async(
         self,
         bucket: str,
-        channel: str,
-        request: oss_20190517_models.GetVodPlaylistRequest,
-    ) -> oss_20190517_models.GetVodPlaylistResponse:
+        key: str,
+        request: oss_20190517_models.GetSymlinkRequest,
+    ) -> oss_20190517_models.GetSymlinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_vod_playlist_with_options_async(bucket, channel, request, headers, runtime)
+        return await self.get_symlink_with_options_async(bucket, key, request, headers, runtime)
 
     def get_vod_playlist_with_options(
         self,
@@ -4224,25 +4250,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def head_object(
+    def get_vod_playlist(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.HeadObjectRequest,
-    ) -> oss_20190517_models.HeadObjectResponse:
+        channel: str,
+        request: oss_20190517_models.GetVodPlaylistRequest,
+    ) -> oss_20190517_models.GetVodPlaylistResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.HeadObjectHeaders()
-        return self.head_object_with_options(bucket, key, request, headers, runtime)
+        headers = {}
+        return self.get_vod_playlist_with_options(bucket, channel, request, headers, runtime)
 
-    async def head_object_async(
+    async def get_vod_playlist_async(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.HeadObjectRequest,
-    ) -> oss_20190517_models.HeadObjectResponse:
+        channel: str,
+        request: oss_20190517_models.GetVodPlaylistRequest,
+    ) -> oss_20190517_models.GetVodPlaylistResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.HeadObjectHeaders()
-        return await self.head_object_with_options_async(bucket, key, request, headers, runtime)
+        headers = {}
+        return await self.get_vod_playlist_with_options_async(bucket, channel, request, headers, runtime)
 
     def head_object_with_options(
         self,
@@ -4252,6 +4278,15 @@ class Client(OpenApiClient):
         headers: oss_20190517_models.HeadObjectHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> oss_20190517_models.HeadObjectResponse:
+        """
+        - When you call this operation, the object content is not returned in the results.
+        - By default, you can call the HeadObject operation to query the metadata of the object of the current version. If the current version of the object is a delete marker, OSS returns 404 Not Found. If you specify a version ID in the request, OSS returns the metadata of the object of the specified version.
+        
+        @param request: HeadObjectRequest
+        @param headers: HeadObjectHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HeadObjectResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
@@ -4298,6 +4333,15 @@ class Client(OpenApiClient):
         headers: oss_20190517_models.HeadObjectHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> oss_20190517_models.HeadObjectResponse:
+        """
+        - When you call this operation, the object content is not returned in the results.
+        - By default, you can call the HeadObject operation to query the metadata of the object of the current version. If the current version of the object is a delete marker, OSS returns 404 Not Found. If you specify a version ID in the request, OSS returns the metadata of the object of the specified version.
+        
+        @param request: HeadObjectRequest
+        @param headers: HeadObjectHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HeadObjectResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
@@ -4336,23 +4380,39 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def initiate_bucket_worm(
+    def head_object(
         self,
         bucket: str,
-        request: oss_20190517_models.InitiateBucketWormRequest,
-    ) -> oss_20190517_models.InitiateBucketWormResponse:
+        key: str,
+        request: oss_20190517_models.HeadObjectRequest,
+    ) -> oss_20190517_models.HeadObjectResponse:
+        """
+        - When you call this operation, the object content is not returned in the results.
+        - By default, you can call the HeadObject operation to query the metadata of the object of the current version. If the current version of the object is a delete marker, OSS returns 404 Not Found. If you specify a version ID in the request, OSS returns the metadata of the object of the specified version.
+        
+        @param request: HeadObjectRequest
+        @return: HeadObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.initiate_bucket_worm_with_options(bucket, request, headers, runtime)
+        headers = oss_20190517_models.HeadObjectHeaders()
+        return self.head_object_with_options(bucket, key, request, headers, runtime)
 
-    async def initiate_bucket_worm_async(
+    async def head_object_async(
         self,
         bucket: str,
-        request: oss_20190517_models.InitiateBucketWormRequest,
-    ) -> oss_20190517_models.InitiateBucketWormResponse:
+        key: str,
+        request: oss_20190517_models.HeadObjectRequest,
+    ) -> oss_20190517_models.HeadObjectResponse:
+        """
+        - When you call this operation, the object content is not returned in the results.
+        - By default, you can call the HeadObject operation to query the metadata of the object of the current version. If the current version of the object is a delete marker, OSS returns 404 Not Found. If you specify a version ID in the request, OSS returns the metadata of the object of the specified version.
+        
+        @param request: HeadObjectRequest
+        @return: HeadObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.initiate_bucket_worm_with_options_async(bucket, request, headers, runtime)
+        headers = oss_20190517_models.HeadObjectHeaders()
+        return await self.head_object_with_options_async(bucket, key, request, headers, runtime)
 
     def initiate_bucket_worm_with_options(
         self,
@@ -4367,7 +4427,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.initiate_worm_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.initiate_worm_configuration)
         )
         params = open_api_models.Params(
             action='InitiateBucketWorm',
@@ -4398,7 +4458,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.initiate_worm_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.initiate_worm_configuration)
         )
         params = open_api_models.Params(
             action='InitiateBucketWorm',
@@ -4416,25 +4476,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def initiate_multipart_upload(
+    def initiate_bucket_worm(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.InitiateMultipartUploadRequest,
-    ) -> oss_20190517_models.InitiateMultipartUploadResponse:
+        request: oss_20190517_models.InitiateBucketWormRequest,
+    ) -> oss_20190517_models.InitiateBucketWormResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.InitiateMultipartUploadHeaders()
-        return self.initiate_multipart_upload_with_options(bucket, key, request, headers, runtime)
+        headers = {}
+        return self.initiate_bucket_worm_with_options(bucket, request, headers, runtime)
 
-    async def initiate_multipart_upload_async(
+    async def initiate_bucket_worm_async(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.InitiateMultipartUploadRequest,
-    ) -> oss_20190517_models.InitiateMultipartUploadResponse:
+        request: oss_20190517_models.InitiateBucketWormRequest,
+    ) -> oss_20190517_models.InitiateBucketWormResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.InitiateMultipartUploadHeaders()
-        return await self.initiate_multipart_upload_with_options_async(bucket, key, request, headers, runtime)
+        headers = {}
+        return await self.initiate_bucket_worm_with_options_async(bucket, request, headers, runtime)
 
     def initiate_multipart_upload_with_options(
         self,
@@ -4444,6 +4502,16 @@ class Client(OpenApiClient):
         headers: oss_20190517_models.InitiateMultipartUploadHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> oss_20190517_models.InitiateMultipartUploadResponse:
+        """
+        - When you call the InitiateMultipartUpload operation, OSS creates and returns a unique upload ID to identify the multipart upload task. You can initiate operations such as stopping or querying the multipart upload task by using this upload ID.
+        - When you initiate a multipart upload request to upload an object, the existing object that has the same name is not affected.
+        - If you want to calculate the signature for authentication when you call this operation, you must add `?uploads` to `CanonicalizedResource`.
+        
+        @param request: InitiateMultipartUploadRequest
+        @param headers: InitiateMultipartUploadHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitiateMultipartUploadResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
@@ -4502,6 +4570,16 @@ class Client(OpenApiClient):
         headers: oss_20190517_models.InitiateMultipartUploadHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> oss_20190517_models.InitiateMultipartUploadResponse:
+        """
+        - When you call the InitiateMultipartUpload operation, OSS creates and returns a unique upload ID to identify the multipart upload task. You can initiate operations such as stopping or querying the multipart upload task by using this upload ID.
+        - When you initiate a multipart upload request to upload an object, the existing object that has the same name is not affected.
+        - If you want to calculate the signature for authentication when you call this operation, you must add `?uploads` to `CanonicalizedResource`.
+        
+        @param request: InitiateMultipartUploadRequest
+        @param headers: InitiateMultipartUploadHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitiateMultipartUploadResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
@@ -4552,23 +4630,41 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_bucket_inventory(
+    def initiate_multipart_upload(
         self,
         bucket: str,
-        request: oss_20190517_models.ListBucketInventoryRequest,
-    ) -> oss_20190517_models.ListBucketInventoryResponse:
+        key: str,
+        request: oss_20190517_models.InitiateMultipartUploadRequest,
+    ) -> oss_20190517_models.InitiateMultipartUploadResponse:
+        """
+        - When you call the InitiateMultipartUpload operation, OSS creates and returns a unique upload ID to identify the multipart upload task. You can initiate operations such as stopping or querying the multipart upload task by using this upload ID.
+        - When you initiate a multipart upload request to upload an object, the existing object that has the same name is not affected.
+        - If you want to calculate the signature for authentication when you call this operation, you must add `?uploads` to `CanonicalizedResource`.
+        
+        @param request: InitiateMultipartUploadRequest
+        @return: InitiateMultipartUploadResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_bucket_inventory_with_options(bucket, request, headers, runtime)
+        headers = oss_20190517_models.InitiateMultipartUploadHeaders()
+        return self.initiate_multipart_upload_with_options(bucket, key, request, headers, runtime)
 
-    async def list_bucket_inventory_async(
+    async def initiate_multipart_upload_async(
         self,
         bucket: str,
-        request: oss_20190517_models.ListBucketInventoryRequest,
-    ) -> oss_20190517_models.ListBucketInventoryResponse:
+        key: str,
+        request: oss_20190517_models.InitiateMultipartUploadRequest,
+    ) -> oss_20190517_models.InitiateMultipartUploadResponse:
+        """
+        - When you call the InitiateMultipartUpload operation, OSS creates and returns a unique upload ID to identify the multipart upload task. You can initiate operations such as stopping or querying the multipart upload task by using this upload ID.
+        - When you initiate a multipart upload request to upload an object, the existing object that has the same name is not affected.
+        - If you want to calculate the signature for authentication when you call this operation, you must add `?uploads` to `CanonicalizedResource`.
+        
+        @param request: InitiateMultipartUploadRequest
+        @return: InitiateMultipartUploadResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_bucket_inventory_with_options_async(bucket, request, headers, runtime)
+        headers = oss_20190517_models.InitiateMultipartUploadHeaders()
+        return await self.initiate_multipart_upload_with_options_async(bucket, key, request, headers, runtime)
 
     def list_bucket_inventory_with_options(
         self,
@@ -4638,26 +4734,28 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_buckets(
+    def list_bucket_inventory(
         self,
-        request: oss_20190517_models.ListBucketsRequest,
-    ) -> oss_20190517_models.ListBucketsResponse:
+        bucket: str,
+        request: oss_20190517_models.ListBucketInventoryRequest,
+    ) -> oss_20190517_models.ListBucketInventoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_buckets_with_options(request, headers, runtime)
+        return self.list_bucket_inventory_with_options(bucket, request, headers, runtime)
 
-    async def list_buckets_async(
+    async def list_bucket_inventory_async(
         self,
-        request: oss_20190517_models.ListBucketsRequest,
-    ) -> oss_20190517_models.ListBucketsResponse:
+        bucket: str,
+        request: oss_20190517_models.ListBucketInventoryRequest,
+    ) -> oss_20190517_models.ListBucketInventoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_buckets_with_options_async(request, headers, runtime)
+        return await self.list_bucket_inventory_with_options_async(bucket, request, headers, runtime)
 
     def list_buckets_with_options(
         self,
         request: oss_20190517_models.ListBucketsRequest,
-        headers: Dict[str, str],
+        headers: oss_20190517_models.ListBucketsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> oss_20190517_models.ListBucketsResponse:
         UtilClient.validate_model(request)
@@ -4668,8 +4766,13 @@ class Client(OpenApiClient):
             query['max-keys'] = request.max_keys
         if not UtilClient.is_unset(request.prefix):
             query['prefix'] = request.prefix
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_oss_resource_group_id):
+            real_headers['x-oss-resource-group-id'] = UtilClient.to_jsonstring(headers.x_oss_resource_group_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
+            headers=real_headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
@@ -4691,7 +4794,7 @@ class Client(OpenApiClient):
     async def list_buckets_with_options_async(
         self,
         request: oss_20190517_models.ListBucketsRequest,
-        headers: Dict[str, str],
+        headers: oss_20190517_models.ListBucketsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> oss_20190517_models.ListBucketsResponse:
         UtilClient.validate_model(request)
@@ -4702,8 +4805,13 @@ class Client(OpenApiClient):
             query['max-keys'] = request.max_keys
         if not UtilClient.is_unset(request.prefix):
             query['prefix'] = request.prefix
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_oss_resource_group_id):
+            real_headers['x-oss-resource-group-id'] = UtilClient.to_jsonstring(headers.x_oss_resource_group_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
+            headers=real_headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
@@ -4722,23 +4830,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_live_channel(
+    def list_buckets(
         self,
-        bucket: str,
-        request: oss_20190517_models.ListLiveChannelRequest,
-    ) -> oss_20190517_models.ListLiveChannelResponse:
+        request: oss_20190517_models.ListBucketsRequest,
+    ) -> oss_20190517_models.ListBucketsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_live_channel_with_options(bucket, request, headers, runtime)
+        headers = oss_20190517_models.ListBucketsHeaders()
+        return self.list_buckets_with_options(request, headers, runtime)
 
-    async def list_live_channel_async(
+    async def list_buckets_async(
         self,
-        bucket: str,
-        request: oss_20190517_models.ListLiveChannelRequest,
-    ) -> oss_20190517_models.ListLiveChannelResponse:
+        request: oss_20190517_models.ListBucketsRequest,
+    ) -> oss_20190517_models.ListBucketsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_live_channel_with_options_async(bucket, request, headers, runtime)
+        headers = oss_20190517_models.ListBucketsHeaders()
+        return await self.list_buckets_with_options_async(request, headers, runtime)
 
     def list_live_channel_with_options(
         self,
@@ -4816,23 +4922,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_multipart_uploads(
+    def list_live_channel(
         self,
         bucket: str,
-        request: oss_20190517_models.ListMultipartUploadsRequest,
-    ) -> oss_20190517_models.ListMultipartUploadsResponse:
+        request: oss_20190517_models.ListLiveChannelRequest,
+    ) -> oss_20190517_models.ListLiveChannelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_multipart_uploads_with_options(bucket, request, headers, runtime)
+        return self.list_live_channel_with_options(bucket, request, headers, runtime)
 
-    async def list_multipart_uploads_async(
+    async def list_live_channel_async(
         self,
         bucket: str,
-        request: oss_20190517_models.ListMultipartUploadsRequest,
-    ) -> oss_20190517_models.ListMultipartUploadsResponse:
+        request: oss_20190517_models.ListLiveChannelRequest,
+    ) -> oss_20190517_models.ListLiveChannelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_multipart_uploads_with_options_async(bucket, request, headers, runtime)
+        return await self.list_live_channel_with_options_async(bucket, request, headers, runtime)
 
     def list_multipart_uploads_with_options(
         self,
@@ -4922,23 +5028,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_object_versions(
+    def list_multipart_uploads(
         self,
         bucket: str,
-        request: oss_20190517_models.ListObjectVersionsRequest,
-    ) -> oss_20190517_models.ListObjectVersionsResponse:
+        request: oss_20190517_models.ListMultipartUploadsRequest,
+    ) -> oss_20190517_models.ListMultipartUploadsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_object_versions_with_options(bucket, request, headers, runtime)
+        return self.list_multipart_uploads_with_options(bucket, request, headers, runtime)
 
-    async def list_object_versions_async(
+    async def list_multipart_uploads_async(
         self,
         bucket: str,
-        request: oss_20190517_models.ListObjectVersionsRequest,
-    ) -> oss_20190517_models.ListObjectVersionsResponse:
+        request: oss_20190517_models.ListMultipartUploadsRequest,
+    ) -> oss_20190517_models.ListMultipartUploadsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_object_versions_with_options_async(bucket, request, headers, runtime)
+        return await self.list_multipart_uploads_with_options_async(bucket, request, headers, runtime)
 
     def list_object_versions_with_options(
         self,
@@ -5028,23 +5134,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_objects(
+    def list_object_versions(
         self,
         bucket: str,
-        request: oss_20190517_models.ListObjectsRequest,
-    ) -> oss_20190517_models.ListObjectsResponse:
+        request: oss_20190517_models.ListObjectVersionsRequest,
+    ) -> oss_20190517_models.ListObjectVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_objects_with_options(bucket, request, headers, runtime)
+        return self.list_object_versions_with_options(bucket, request, headers, runtime)
 
-    async def list_objects_async(
+    async def list_object_versions_async(
         self,
         bucket: str,
-        request: oss_20190517_models.ListObjectsRequest,
-    ) -> oss_20190517_models.ListObjectsResponse:
+        request: oss_20190517_models.ListObjectVersionsRequest,
+    ) -> oss_20190517_models.ListObjectVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_objects_with_options_async(bucket, request, headers, runtime)
+        return await self.list_object_versions_with_options_async(bucket, request, headers, runtime)
 
     def list_objects_with_options(
         self,
@@ -5130,23 +5236,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_objects_v2(
+    def list_objects(
         self,
         bucket: str,
-        request: oss_20190517_models.ListObjectsV2Request,
-    ) -> oss_20190517_models.ListObjectsV2Response:
+        request: oss_20190517_models.ListObjectsRequest,
+    ) -> oss_20190517_models.ListObjectsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_objects_v2with_options(bucket, request, headers, runtime)
+        return self.list_objects_with_options(bucket, request, headers, runtime)
 
-    async def list_objects_v2_async(
+    async def list_objects_async(
         self,
         bucket: str,
-        request: oss_20190517_models.ListObjectsV2Request,
-    ) -> oss_20190517_models.ListObjectsV2Response:
+        request: oss_20190517_models.ListObjectsRequest,
+    ) -> oss_20190517_models.ListObjectsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_objects_v2with_options_async(bucket, request, headers, runtime)
+        return await self.list_objects_with_options_async(bucket, request, headers, runtime)
 
     def list_objects_v2with_options(
         self,
@@ -5240,25 +5346,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_parts(
+    def list_objects_v2(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.ListPartsRequest,
-    ) -> oss_20190517_models.ListPartsResponse:
+        request: oss_20190517_models.ListObjectsV2Request,
+    ) -> oss_20190517_models.ListObjectsV2Response:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_parts_with_options(bucket, key, request, headers, runtime)
+        return self.list_objects_v2with_options(bucket, request, headers, runtime)
 
-    async def list_parts_async(
+    async def list_objects_v2_async(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.ListPartsRequest,
-    ) -> oss_20190517_models.ListPartsResponse:
+        request: oss_20190517_models.ListObjectsV2Request,
+    ) -> oss_20190517_models.ListObjectsV2Response:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_parts_with_options_async(bucket, key, request, headers, runtime)
+        return await self.list_objects_v2with_options_async(bucket, request, headers, runtime)
 
     def list_parts_with_options(
         self,
@@ -5350,23 +5454,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def option_object(
+    def list_parts(
         self,
         bucket: str,
         key: str,
-    ) -> oss_20190517_models.OptionObjectResponse:
+        request: oss_20190517_models.ListPartsRequest,
+    ) -> oss_20190517_models.ListPartsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.OptionObjectHeaders()
-        return self.option_object_with_options(bucket, key, headers, runtime)
+        headers = {}
+        return self.list_parts_with_options(bucket, key, request, headers, runtime)
 
-    async def option_object_async(
+    async def list_parts_async(
         self,
         bucket: str,
         key: str,
-    ) -> oss_20190517_models.OptionObjectResponse:
+        request: oss_20190517_models.ListPartsRequest,
+    ) -> oss_20190517_models.ListPartsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.OptionObjectHeaders()
-        return await self.option_object_with_options_async(bucket, key, headers, runtime)
+        headers = {}
+        return await self.list_parts_with_options_async(bucket, key, request, headers, runtime)
 
     def option_object_with_options(
         self,
@@ -5444,21 +5550,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def post_object(
+    def option_object(
         self,
         bucket: str,
-    ) -> oss_20190517_models.PostObjectResponse:
+        key: str,
+    ) -> oss_20190517_models.OptionObjectResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.post_object_with_options(bucket, headers, runtime)
+        headers = oss_20190517_models.OptionObjectHeaders()
+        return self.option_object_with_options(bucket, key, headers, runtime)
 
-    async def post_object_async(
+    async def option_object_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.PostObjectResponse:
+        key: str,
+    ) -> oss_20190517_models.OptionObjectResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.post_object_with_options_async(bucket, headers, runtime)
+        headers = oss_20190517_models.OptionObjectHeaders()
+        return await self.option_object_with_options_async(bucket, key, headers, runtime)
 
     def post_object_with_options(
         self,
@@ -5466,6 +5574,34 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> oss_20190517_models.PostObjectResponse:
+        """
+        -\
+        The object that is uploaded by calling the PostObject operation cannot be
+        larger than 5 GB in size.
+        -\
+        To initiate a PostObject request to a bucket, you must have write permissions
+        on the bucket. If the ACL of the bucket to which you want to initiate a
+        PostObject request is public-read-write, you do not need to sign the
+        PostObject request. In other cases, Object Storage Service (OSS) verifies the
+        signature information contained in the request.
+        -\
+        Unlike the PutObject operation, the PostObject operation uses an AccessKey
+        secret to calculate the signature for the policy form field. The calculated
+        signature string is used as the value of the Signature form field. OSS checks
+        this value to verify the validity of the signature.
+        -\
+        The URL of the submitted form is the domain name of the bucket. You do not
+        need to specify the object that you want to upload in the URL. In other words,
+        the request line is in the format of `POST T/ HTTP/1.1` instead of `POST
+        /ObjectName HTTP/1.1`.
+        -\
+        OSS does not check the signature information that is contained in headers or
+        URLs in PostObject requests.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostObjectResponse
+        """
         host_map = {}
         host_map['bucket'] = bucket
         req = open_api_models.OpenApiRequest(
@@ -5494,6 +5630,34 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> oss_20190517_models.PostObjectResponse:
+        """
+        -\
+        The object that is uploaded by calling the PostObject operation cannot be
+        larger than 5 GB in size.
+        -\
+        To initiate a PostObject request to a bucket, you must have write permissions
+        on the bucket. If the ACL of the bucket to which you want to initiate a
+        PostObject request is public-read-write, you do not need to sign the
+        PostObject request. In other cases, Object Storage Service (OSS) verifies the
+        signature information contained in the request.
+        -\
+        Unlike the PutObject operation, the PostObject operation uses an AccessKey
+        secret to calculate the signature for the policy form field. The calculated
+        signature string is used as the value of the Signature form field. OSS checks
+        this value to verify the validity of the signature.
+        -\
+        The URL of the submitted form is the domain name of the bucket. You do not
+        need to specify the object that you want to upload in the URL. In other words,
+        the request line is in the format of `POST T/ HTTP/1.1` instead of `POST
+        /ObjectName HTTP/1.1`.
+        -\
+        OSS does not check the signature information that is contained in headers or
+        URLs in PostObject requests.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostObjectResponse
+        """
         host_map = {}
         host_map['bucket'] = bucket
         req = open_api_models.OpenApiRequest(
@@ -5516,27 +5680,73 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def post_vod_playlist(
+    def post_object(
         self,
         bucket: str,
-        channel: str,
-        playlist: str,
-        request: oss_20190517_models.PostVodPlaylistRequest,
-    ) -> oss_20190517_models.PostVodPlaylistResponse:
+    ) -> oss_20190517_models.PostObjectResponse:
+        """
+        -\
+        The object that is uploaded by calling the PostObject operation cannot be
+        larger than 5 GB in size.
+        -\
+        To initiate a PostObject request to a bucket, you must have write permissions
+        on the bucket. If the ACL of the bucket to which you want to initiate a
+        PostObject request is public-read-write, you do not need to sign the
+        PostObject request. In other cases, Object Storage Service (OSS) verifies the
+        signature information contained in the request.
+        -\
+        Unlike the PutObject operation, the PostObject operation uses an AccessKey
+        secret to calculate the signature for the policy form field. The calculated
+        signature string is used as the value of the Signature form field. OSS checks
+        this value to verify the validity of the signature.
+        -\
+        The URL of the submitted form is the domain name of the bucket. You do not
+        need to specify the object that you want to upload in the URL. In other words,
+        the request line is in the format of `POST T/ HTTP/1.1` instead of `POST
+        /ObjectName HTTP/1.1`.
+        -\
+        OSS does not check the signature information that is contained in headers or
+        URLs in PostObject requests.
+        
+        @return: PostObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.post_vod_playlist_with_options(bucket, channel, playlist, request, headers, runtime)
+        return self.post_object_with_options(bucket, headers, runtime)
 
-    async def post_vod_playlist_async(
+    async def post_object_async(
         self,
         bucket: str,
-        channel: str,
-        playlist: str,
-        request: oss_20190517_models.PostVodPlaylistRequest,
-    ) -> oss_20190517_models.PostVodPlaylistResponse:
+    ) -> oss_20190517_models.PostObjectResponse:
+        """
+        -\
+        The object that is uploaded by calling the PostObject operation cannot be
+        larger than 5 GB in size.
+        -\
+        To initiate a PostObject request to a bucket, you must have write permissions
+        on the bucket. If the ACL of the bucket to which you want to initiate a
+        PostObject request is public-read-write, you do not need to sign the
+        PostObject request. In other cases, Object Storage Service (OSS) verifies the
+        signature information contained in the request.
+        -\
+        Unlike the PutObject operation, the PostObject operation uses an AccessKey
+        secret to calculate the signature for the policy form field. The calculated
+        signature string is used as the value of the Signature form field. OSS checks
+        this value to verify the validity of the signature.
+        -\
+        The URL of the submitted form is the domain name of the bucket. You do not
+        need to specify the object that you want to upload in the URL. In other words,
+        the request line is in the format of `POST T/ HTTP/1.1` instead of `POST
+        /ObjectName HTTP/1.1`.
+        -\
+        OSS does not check the signature information that is contained in headers or
+        URLs in PostObject requests.
+        
+        @return: PostObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.post_vod_playlist_with_options_async(bucket, channel, playlist, request, headers, runtime)
+        return await self.post_object_with_options_async(bucket, headers, runtime)
 
     def post_vod_playlist_with_options(
         self,
@@ -5614,23 +5824,27 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket(
+    def post_vod_playlist(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketRequest,
-    ) -> oss_20190517_models.PutBucketResponse:
+        channel: str,
+        playlist: str,
+        request: oss_20190517_models.PostVodPlaylistRequest,
+    ) -> oss_20190517_models.PostVodPlaylistResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.PutBucketHeaders()
-        return self.put_bucket_with_options(bucket, request, headers, runtime)
+        headers = {}
+        return self.post_vod_playlist_with_options(bucket, channel, playlist, request, headers, runtime)
 
-    async def put_bucket_async(
+    async def post_vod_playlist_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketRequest,
-    ) -> oss_20190517_models.PutBucketResponse:
+        channel: str,
+        playlist: str,
+        request: oss_20190517_models.PostVodPlaylistRequest,
+    ) -> oss_20190517_models.PostVodPlaylistResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.PutBucketHeaders()
-        return await self.put_bucket_with_options_async(bucket, request, headers, runtime)
+        headers = {}
+        return await self.post_vod_playlist_with_options_async(bucket, channel, playlist, request, headers, runtime)
 
     def put_bucket_with_options(
         self,
@@ -5647,10 +5861,12 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.acl):
             real_headers['x-oss-acl'] = UtilClient.to_jsonstring(headers.acl)
+        if not UtilClient.is_unset(headers.x_oss_resource_group_id):
+            real_headers['x-oss-resource-group-id'] = UtilClient.to_jsonstring(headers.x_oss_resource_group_id)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.create_bucket_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.create_bucket_configuration)
         )
         params = open_api_models.Params(
             action='PutBucket',
@@ -5683,10 +5899,12 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.acl):
             real_headers['x-oss-acl'] = UtilClient.to_jsonstring(headers.acl)
+        if not UtilClient.is_unset(headers.x_oss_resource_group_id):
+            real_headers['x-oss-resource-group-id'] = UtilClient.to_jsonstring(headers.x_oss_resource_group_id)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.create_bucket_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.create_bucket_configuration)
         )
         params = open_api_models.Params(
             action='PutBucket',
@@ -5704,21 +5922,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_acl(
+    def put_bucket(
         self,
         bucket: str,
-    ) -> oss_20190517_models.PutBucketAclResponse:
+        request: oss_20190517_models.PutBucketRequest,
+    ) -> oss_20190517_models.PutBucketResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.PutBucketAclHeaders()
-        return self.put_bucket_acl_with_options(bucket, headers, runtime)
+        headers = oss_20190517_models.PutBucketHeaders()
+        return self.put_bucket_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_acl_async(
+    async def put_bucket_async(
         self,
         bucket: str,
-    ) -> oss_20190517_models.PutBucketAclResponse:
+        request: oss_20190517_models.PutBucketRequest,
+    ) -> oss_20190517_models.PutBucketResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.PutBucketAclHeaders()
-        return await self.put_bucket_acl_with_options_async(bucket, headers, runtime)
+        headers = oss_20190517_models.PutBucketHeaders()
+        return await self.put_bucket_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_acl_with_options(
         self,
@@ -5786,23 +6006,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_cors(
+    def put_bucket_acl(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketCorsRequest,
-    ) -> oss_20190517_models.PutBucketCorsResponse:
+    ) -> oss_20190517_models.PutBucketAclResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.put_bucket_cors_with_options(bucket, request, headers, runtime)
+        headers = oss_20190517_models.PutBucketAclHeaders()
+        return self.put_bucket_acl_with_options(bucket, headers, runtime)
 
-    async def put_bucket_cors_async(
+    async def put_bucket_acl_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketCorsRequest,
-    ) -> oss_20190517_models.PutBucketCorsResponse:
+    ) -> oss_20190517_models.PutBucketAclResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.put_bucket_cors_with_options_async(bucket, request, headers, runtime)
+        headers = oss_20190517_models.PutBucketAclHeaders()
+        return await self.put_bucket_acl_with_options_async(bucket, headers, runtime)
 
     def put_bucket_cors_with_options(
         self,
@@ -5817,7 +6035,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.c_orsconfiguration))
+            body=OpenApiUtilClient.parse_to_map(request.c_orsconfiguration)
         )
         params = open_api_models.Params(
             action='PutBucketCors',
@@ -5848,7 +6066,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.c_orsconfiguration))
+            body=OpenApiUtilClient.parse_to_map(request.c_orsconfiguration)
         )
         params = open_api_models.Params(
             action='PutBucketCors',
@@ -5866,23 +6084,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_encryption(
+    def put_bucket_cors(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketEncryptionRequest,
-    ) -> oss_20190517_models.PutBucketEncryptionResponse:
+        request: oss_20190517_models.PutBucketCorsRequest,
+    ) -> oss_20190517_models.PutBucketCorsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_bucket_encryption_with_options(bucket, request, headers, runtime)
+        return self.put_bucket_cors_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_encryption_async(
+    async def put_bucket_cors_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketEncryptionRequest,
-    ) -> oss_20190517_models.PutBucketEncryptionResponse:
+        request: oss_20190517_models.PutBucketCorsRequest,
+    ) -> oss_20190517_models.PutBucketCorsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_bucket_encryption_with_options_async(bucket, request, headers, runtime)
+        return await self.put_bucket_cors_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_encryption_with_options(
         self,
@@ -5897,7 +6115,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.server_side_encryption_rule))
+            body=OpenApiUtilClient.parse_to_map(request.server_side_encryption_rule)
         )
         params = open_api_models.Params(
             action='PutBucketEncryption',
@@ -5928,7 +6146,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.server_side_encryption_rule))
+            body=OpenApiUtilClient.parse_to_map(request.server_side_encryption_rule)
         )
         params = open_api_models.Params(
             action='PutBucketEncryption',
@@ -5946,23 +6164,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_inventory(
+    def put_bucket_encryption(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketInventoryRequest,
-    ) -> oss_20190517_models.PutBucketInventoryResponse:
+        request: oss_20190517_models.PutBucketEncryptionRequest,
+    ) -> oss_20190517_models.PutBucketEncryptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_bucket_inventory_with_options(bucket, request, headers, runtime)
+        return self.put_bucket_encryption_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_inventory_async(
+    async def put_bucket_encryption_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketInventoryRequest,
-    ) -> oss_20190517_models.PutBucketInventoryResponse:
+        request: oss_20190517_models.PutBucketEncryptionRequest,
+    ) -> oss_20190517_models.PutBucketEncryptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_bucket_inventory_with_options_async(bucket, request, headers, runtime)
+        return await self.put_bucket_encryption_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_inventory_with_options(
         self,
@@ -5981,7 +6199,7 @@ class Client(OpenApiClient):
             host_map=host_map,
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.inventory_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.inventory_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketInventory',
@@ -6016,7 +6234,7 @@ class Client(OpenApiClient):
             host_map=host_map,
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.inventory_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.inventory_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketInventory',
@@ -6034,23 +6252,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_lifecycle(
+    def put_bucket_inventory(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketLifecycleRequest,
-    ) -> oss_20190517_models.PutBucketLifecycleResponse:
+        request: oss_20190517_models.PutBucketInventoryRequest,
+    ) -> oss_20190517_models.PutBucketInventoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_bucket_lifecycle_with_options(bucket, request, headers, runtime)
+        return self.put_bucket_inventory_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_lifecycle_async(
+    async def put_bucket_inventory_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketLifecycleRequest,
-    ) -> oss_20190517_models.PutBucketLifecycleResponse:
+        request: oss_20190517_models.PutBucketInventoryRequest,
+    ) -> oss_20190517_models.PutBucketInventoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_bucket_lifecycle_with_options_async(bucket, request, headers, runtime)
+        return await self.put_bucket_inventory_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_lifecycle_with_options(
         self,
@@ -6065,7 +6283,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.lifecycle_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.lifecycle_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketLifecycle',
@@ -6096,7 +6314,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.lifecycle_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.lifecycle_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketLifecycle',
@@ -6114,23 +6332,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_logging(
+    def put_bucket_lifecycle(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketLoggingRequest,
-    ) -> oss_20190517_models.PutBucketLoggingResponse:
+        request: oss_20190517_models.PutBucketLifecycleRequest,
+    ) -> oss_20190517_models.PutBucketLifecycleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_bucket_logging_with_options(bucket, request, headers, runtime)
+        return self.put_bucket_lifecycle_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_logging_async(
+    async def put_bucket_lifecycle_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketLoggingRequest,
-    ) -> oss_20190517_models.PutBucketLoggingResponse:
+        request: oss_20190517_models.PutBucketLifecycleRequest,
+    ) -> oss_20190517_models.PutBucketLifecycleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_bucket_logging_with_options_async(bucket, request, headers, runtime)
+        return await self.put_bucket_lifecycle_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_logging_with_options(
         self,
@@ -6145,7 +6363,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.bucket_logging_status))
+            body=OpenApiUtilClient.parse_to_map(request.bucket_logging_status)
         )
         params = open_api_models.Params(
             action='PutBucketLogging',
@@ -6176,7 +6394,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.bucket_logging_status))
+            body=OpenApiUtilClient.parse_to_map(request.bucket_logging_status)
         )
         params = open_api_models.Params(
             action='PutBucketLogging',
@@ -6194,23 +6412,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_policy(
+    def put_bucket_logging(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketPolicyRequest,
-    ) -> oss_20190517_models.PutBucketPolicyResponse:
+        request: oss_20190517_models.PutBucketLoggingRequest,
+    ) -> oss_20190517_models.PutBucketLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_bucket_policy_with_options(bucket, request, headers, runtime)
+        return self.put_bucket_logging_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_policy_async(
+    async def put_bucket_logging_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketPolicyRequest,
-    ) -> oss_20190517_models.PutBucketPolicyResponse:
+        request: oss_20190517_models.PutBucketLoggingRequest,
+    ) -> oss_20190517_models.PutBucketLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_bucket_policy_with_options_async(bucket, request, headers, runtime)
+        return await self.put_bucket_logging_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_policy_with_options(
         self,
@@ -6274,23 +6492,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_referer(
+    def put_bucket_policy(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketRefererRequest,
-    ) -> oss_20190517_models.PutBucketRefererResponse:
+        request: oss_20190517_models.PutBucketPolicyRequest,
+    ) -> oss_20190517_models.PutBucketPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_bucket_referer_with_options(bucket, request, headers, runtime)
+        return self.put_bucket_policy_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_referer_async(
+    async def put_bucket_policy_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketRefererRequest,
-    ) -> oss_20190517_models.PutBucketRefererResponse:
+        request: oss_20190517_models.PutBucketPolicyRequest,
+    ) -> oss_20190517_models.PutBucketPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_bucket_referer_with_options_async(bucket, request, headers, runtime)
+        return await self.put_bucket_policy_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_referer_with_options(
         self,
@@ -6305,7 +6523,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.referer_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.referer_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketReferer',
@@ -6336,7 +6554,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.referer_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.referer_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketReferer',
@@ -6354,23 +6572,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_replication(
+    def put_bucket_referer(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketReplicationRequest,
-    ) -> oss_20190517_models.PutBucketReplicationResponse:
+        request: oss_20190517_models.PutBucketRefererRequest,
+    ) -> oss_20190517_models.PutBucketRefererResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_bucket_replication_with_options(bucket, request, headers, runtime)
+        return self.put_bucket_referer_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_replication_async(
+    async def put_bucket_referer_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketReplicationRequest,
-    ) -> oss_20190517_models.PutBucketReplicationResponse:
+        request: oss_20190517_models.PutBucketRefererRequest,
+    ) -> oss_20190517_models.PutBucketRefererResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_bucket_replication_with_options_async(bucket, request, headers, runtime)
+        return await self.put_bucket_referer_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_replication_with_options(
         self,
@@ -6385,7 +6603,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.replication_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.replication_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketReplication',
@@ -6416,7 +6634,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.replication_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.replication_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketReplication',
@@ -6434,23 +6652,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_request_payment(
+    def put_bucket_replication(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketRequestPaymentRequest,
-    ) -> oss_20190517_models.PutBucketRequestPaymentResponse:
+        request: oss_20190517_models.PutBucketReplicationRequest,
+    ) -> oss_20190517_models.PutBucketReplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_bucket_request_payment_with_options(bucket, request, headers, runtime)
+        return self.put_bucket_replication_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_request_payment_async(
+    async def put_bucket_replication_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketRequestPaymentRequest,
-    ) -> oss_20190517_models.PutBucketRequestPaymentResponse:
+        request: oss_20190517_models.PutBucketReplicationRequest,
+    ) -> oss_20190517_models.PutBucketReplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_bucket_request_payment_with_options_async(bucket, request, headers, runtime)
+        return await self.put_bucket_replication_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_request_payment_with_options(
         self,
@@ -6465,7 +6683,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.request_payment_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.request_payment_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketRequestPayment',
@@ -6496,7 +6714,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.request_payment_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.request_payment_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketRequestPayment',
@@ -6514,23 +6732,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_tags(
+    def put_bucket_request_payment(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketTagsRequest,
-    ) -> oss_20190517_models.PutBucketTagsResponse:
+        request: oss_20190517_models.PutBucketRequestPaymentRequest,
+    ) -> oss_20190517_models.PutBucketRequestPaymentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_bucket_tags_with_options(bucket, request, headers, runtime)
+        return self.put_bucket_request_payment_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_tags_async(
+    async def put_bucket_request_payment_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketTagsRequest,
-    ) -> oss_20190517_models.PutBucketTagsResponse:
+        request: oss_20190517_models.PutBucketRequestPaymentRequest,
+    ) -> oss_20190517_models.PutBucketRequestPaymentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_bucket_tags_with_options_async(bucket, request, headers, runtime)
+        return await self.put_bucket_request_payment_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_tags_with_options(
         self,
@@ -6545,7 +6763,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.tagging))
+            body=OpenApiUtilClient.parse_to_map(request.tagging)
         )
         params = open_api_models.Params(
             action='PutBucketTags',
@@ -6576,7 +6794,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.tagging))
+            body=OpenApiUtilClient.parse_to_map(request.tagging)
         )
         params = open_api_models.Params(
             action='PutBucketTags',
@@ -6594,23 +6812,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_transfer_acceleration(
+    def put_bucket_tags(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketTransferAccelerationRequest,
-    ) -> oss_20190517_models.PutBucketTransferAccelerationResponse:
+        request: oss_20190517_models.PutBucketTagsRequest,
+    ) -> oss_20190517_models.PutBucketTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_bucket_transfer_acceleration_with_options(bucket, request, headers, runtime)
+        return self.put_bucket_tags_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_transfer_acceleration_async(
+    async def put_bucket_tags_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketTransferAccelerationRequest,
-    ) -> oss_20190517_models.PutBucketTransferAccelerationResponse:
+        request: oss_20190517_models.PutBucketTagsRequest,
+    ) -> oss_20190517_models.PutBucketTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_bucket_transfer_acceleration_with_options_async(bucket, request, headers, runtime)
+        return await self.put_bucket_tags_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_transfer_acceleration_with_options(
         self,
@@ -6625,7 +6843,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.transfer_acceleration_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.transfer_acceleration_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketTransferAcceleration',
@@ -6656,7 +6874,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.transfer_acceleration_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.transfer_acceleration_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketTransferAcceleration',
@@ -6674,23 +6892,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_versioning(
+    def put_bucket_transfer_acceleration(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketVersioningRequest,
-    ) -> oss_20190517_models.PutBucketVersioningResponse:
+        request: oss_20190517_models.PutBucketTransferAccelerationRequest,
+    ) -> oss_20190517_models.PutBucketTransferAccelerationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_bucket_versioning_with_options(bucket, request, headers, runtime)
+        return self.put_bucket_transfer_acceleration_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_versioning_async(
+    async def put_bucket_transfer_acceleration_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketVersioningRequest,
-    ) -> oss_20190517_models.PutBucketVersioningResponse:
+        request: oss_20190517_models.PutBucketTransferAccelerationRequest,
+    ) -> oss_20190517_models.PutBucketTransferAccelerationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_bucket_versioning_with_options_async(bucket, request, headers, runtime)
+        return await self.put_bucket_transfer_acceleration_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_versioning_with_options(
         self,
@@ -6705,7 +6923,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.versioning_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.versioning_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketVersioning',
@@ -6736,7 +6954,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.versioning_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.versioning_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketVersioning',
@@ -6754,23 +6972,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_bucket_website(
+    def put_bucket_versioning(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketWebsiteRequest,
-    ) -> oss_20190517_models.PutBucketWebsiteResponse:
+        request: oss_20190517_models.PutBucketVersioningRequest,
+    ) -> oss_20190517_models.PutBucketVersioningResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_bucket_website_with_options(bucket, request, headers, runtime)
+        return self.put_bucket_versioning_with_options(bucket, request, headers, runtime)
 
-    async def put_bucket_website_async(
+    async def put_bucket_versioning_async(
         self,
         bucket: str,
-        request: oss_20190517_models.PutBucketWebsiteRequest,
-    ) -> oss_20190517_models.PutBucketWebsiteResponse:
+        request: oss_20190517_models.PutBucketVersioningRequest,
+    ) -> oss_20190517_models.PutBucketVersioningResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_bucket_website_with_options_async(bucket, request, headers, runtime)
+        return await self.put_bucket_versioning_with_options_async(bucket, request, headers, runtime)
 
     def put_bucket_website_with_options(
         self,
@@ -6785,7 +7003,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.website_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.website_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketWebsite',
@@ -6816,7 +7034,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.website_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.website_configuration)
         )
         params = open_api_models.Params(
             action='PutBucketWebsite',
@@ -6834,25 +7052,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_live_channel(
+    def put_bucket_website(
         self,
         bucket: str,
-        channel: str,
-        request: oss_20190517_models.PutLiveChannelRequest,
-    ) -> oss_20190517_models.PutLiveChannelResponse:
+        request: oss_20190517_models.PutBucketWebsiteRequest,
+    ) -> oss_20190517_models.PutBucketWebsiteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_live_channel_with_options(bucket, channel, request, headers, runtime)
+        return self.put_bucket_website_with_options(bucket, request, headers, runtime)
 
-    async def put_live_channel_async(
+    async def put_bucket_website_async(
         self,
         bucket: str,
-        channel: str,
-        request: oss_20190517_models.PutLiveChannelRequest,
-    ) -> oss_20190517_models.PutLiveChannelResponse:
+        request: oss_20190517_models.PutBucketWebsiteRequest,
+    ) -> oss_20190517_models.PutBucketWebsiteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_live_channel_with_options_async(bucket, channel, request, headers, runtime)
+        return await self.put_bucket_website_with_options_async(bucket, request, headers, runtime)
 
     def put_live_channel_with_options(
         self,
@@ -6868,7 +7084,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.live_channel_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.live_channel_configuration)
         )
         params = open_api_models.Params(
             action='PutLiveChannel',
@@ -6900,7 +7116,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.live_channel_configuration))
+            body=OpenApiUtilClient.parse_to_map(request.live_channel_configuration)
         )
         params = open_api_models.Params(
             action='PutLiveChannel',
@@ -6918,25 +7134,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_live_channel_status(
+    def put_live_channel(
         self,
         bucket: str,
         channel: str,
-        request: oss_20190517_models.PutLiveChannelStatusRequest,
-    ) -> oss_20190517_models.PutLiveChannelStatusResponse:
+        request: oss_20190517_models.PutLiveChannelRequest,
+    ) -> oss_20190517_models.PutLiveChannelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_live_channel_status_with_options(bucket, channel, request, headers, runtime)
+        return self.put_live_channel_with_options(bucket, channel, request, headers, runtime)
 
-    async def put_live_channel_status_async(
+    async def put_live_channel_async(
         self,
         bucket: str,
         channel: str,
-        request: oss_20190517_models.PutLiveChannelStatusRequest,
-    ) -> oss_20190517_models.PutLiveChannelStatusResponse:
+        request: oss_20190517_models.PutLiveChannelRequest,
+    ) -> oss_20190517_models.PutLiveChannelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_live_channel_status_with_options_async(bucket, channel, request, headers, runtime)
+        return await self.put_live_channel_with_options_async(bucket, channel, request, headers, runtime)
 
     def put_live_channel_status_with_options(
         self,
@@ -7008,25 +7224,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_object(
+    def put_live_channel_status(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.PutObjectRequest,
-    ) -> oss_20190517_models.PutObjectResponse:
+        channel: str,
+        request: oss_20190517_models.PutLiveChannelStatusRequest,
+    ) -> oss_20190517_models.PutLiveChannelStatusResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.PutObjectHeaders()
-        return self.put_object_with_options(bucket, key, request, headers, runtime)
+        headers = {}
+        return self.put_live_channel_status_with_options(bucket, channel, request, headers, runtime)
 
-    async def put_object_async(
+    async def put_live_channel_status_async(
         self,
         bucket: str,
-        key: str,
-        request: oss_20190517_models.PutObjectRequest,
-    ) -> oss_20190517_models.PutObjectResponse:
+        channel: str,
+        request: oss_20190517_models.PutLiveChannelStatusRequest,
+    ) -> oss_20190517_models.PutLiveChannelStatusResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.PutObjectHeaders()
-        return await self.put_object_with_options_async(bucket, key, request, headers, runtime)
+        headers = {}
+        return await self.put_live_channel_status_with_options_async(bucket, channel, request, headers, runtime)
 
     def put_object_with_options(
         self,
@@ -7132,25 +7348,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_object_acl(
+    def put_object(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.PutObjectAclRequest,
-    ) -> oss_20190517_models.PutObjectAclResponse:
+        request: oss_20190517_models.PutObjectRequest,
+    ) -> oss_20190517_models.PutObjectResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.PutObjectAclHeaders()
-        return self.put_object_acl_with_options(bucket, key, request, headers, runtime)
+        headers = oss_20190517_models.PutObjectHeaders()
+        return self.put_object_with_options(bucket, key, request, headers, runtime)
 
-    async def put_object_acl_async(
+    async def put_object_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.PutObjectAclRequest,
-    ) -> oss_20190517_models.PutObjectAclResponse:
+        request: oss_20190517_models.PutObjectRequest,
+    ) -> oss_20190517_models.PutObjectResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.PutObjectAclHeaders()
-        return await self.put_object_acl_with_options_async(bucket, key, request, headers, runtime)
+        headers = oss_20190517_models.PutObjectHeaders()
+        return await self.put_object_with_options_async(bucket, key, request, headers, runtime)
 
     def put_object_acl_with_options(
         self,
@@ -7232,25 +7448,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_object_tagging(
+    def put_object_acl(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.PutObjectTaggingRequest,
-    ) -> oss_20190517_models.PutObjectTaggingResponse:
+        request: oss_20190517_models.PutObjectAclRequest,
+    ) -> oss_20190517_models.PutObjectAclResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.put_object_tagging_with_options(bucket, key, request, headers, runtime)
+        headers = oss_20190517_models.PutObjectAclHeaders()
+        return self.put_object_acl_with_options(bucket, key, request, headers, runtime)
 
-    async def put_object_tagging_async(
+    async def put_object_acl_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.PutObjectTaggingRequest,
-    ) -> oss_20190517_models.PutObjectTaggingResponse:
+        request: oss_20190517_models.PutObjectAclRequest,
+    ) -> oss_20190517_models.PutObjectAclResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.put_object_tagging_with_options_async(bucket, key, request, headers, runtime)
+        headers = oss_20190517_models.PutObjectAclHeaders()
+        return await self.put_object_acl_with_options_async(bucket, key, request, headers, runtime)
 
     def put_object_tagging_with_options(
         self,
@@ -7270,7 +7486,7 @@ class Client(OpenApiClient):
             host_map=host_map,
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.tagging))
+            body=OpenApiUtilClient.parse_to_map(request.tagging)
         )
         params = open_api_models.Params(
             action='PutObjectTagging',
@@ -7306,7 +7522,7 @@ class Client(OpenApiClient):
             host_map=host_map,
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.tagging))
+            body=OpenApiUtilClient.parse_to_map(request.tagging)
         )
         params = open_api_models.Params(
             action='PutObjectTagging',
@@ -7324,23 +7540,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_symlink(
+    def put_object_tagging(
         self,
         bucket: str,
         key: str,
-    ) -> oss_20190517_models.PutSymlinkResponse:
+        request: oss_20190517_models.PutObjectTaggingRequest,
+    ) -> oss_20190517_models.PutObjectTaggingResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.PutSymlinkHeaders()
-        return self.put_symlink_with_options(bucket, key, headers, runtime)
+        headers = {}
+        return self.put_object_tagging_with_options(bucket, key, request, headers, runtime)
 
-    async def put_symlink_async(
+    async def put_object_tagging_async(
         self,
         bucket: str,
         key: str,
-    ) -> oss_20190517_models.PutSymlinkResponse:
+        request: oss_20190517_models.PutObjectTaggingRequest,
+    ) -> oss_20190517_models.PutObjectTaggingResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.PutSymlinkHeaders()
-        return await self.put_symlink_with_options_async(bucket, key, headers, runtime)
+        headers = {}
+        return await self.put_object_tagging_with_options_async(bucket, key, request, headers, runtime)
 
     def put_symlink_with_options(
         self,
@@ -7422,25 +7640,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def restore_object(
+    def put_symlink(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.RestoreObjectRequest,
-    ) -> oss_20190517_models.RestoreObjectResponse:
+    ) -> oss_20190517_models.PutSymlinkResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.restore_object_with_options(bucket, key, request, headers, runtime)
+        headers = oss_20190517_models.PutSymlinkHeaders()
+        return self.put_symlink_with_options(bucket, key, headers, runtime)
 
-    async def restore_object_async(
+    async def put_symlink_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.RestoreObjectRequest,
-    ) -> oss_20190517_models.RestoreObjectResponse:
+    ) -> oss_20190517_models.PutSymlinkResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.restore_object_with_options_async(bucket, key, request, headers, runtime)
+        headers = oss_20190517_models.PutSymlinkHeaders()
+        return await self.put_symlink_with_options_async(bucket, key, headers, runtime)
 
     def restore_object_with_options(
         self,
@@ -7460,7 +7676,7 @@ class Client(OpenApiClient):
             host_map=host_map,
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.restore_request))
+            body=OpenApiUtilClient.parse_to_map(request.restore_request)
         )
         params = open_api_models.Params(
             action='RestoreObject',
@@ -7496,7 +7712,7 @@ class Client(OpenApiClient):
             host_map=host_map,
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.restore_request))
+            body=OpenApiUtilClient.parse_to_map(request.restore_request)
         )
         params = open_api_models.Params(
             action='RestoreObject',
@@ -7514,25 +7730,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def select_object(
+    def restore_object(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.SelectObjectRequest,
-    ) -> oss_20190517_models.SelectObjectResponse:
+        request: oss_20190517_models.RestoreObjectRequest,
+    ) -> oss_20190517_models.RestoreObjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.select_object_with_options(bucket, key, request, headers, runtime)
+        return self.restore_object_with_options(bucket, key, request, headers, runtime)
 
-    async def select_object_async(
+    async def restore_object_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.SelectObjectRequest,
-    ) -> oss_20190517_models.SelectObjectResponse:
+        request: oss_20190517_models.RestoreObjectRequest,
+    ) -> oss_20190517_models.RestoreObjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.select_object_with_options_async(bucket, key, request, headers, runtime)
+        return await self.restore_object_with_options_async(bucket, key, request, headers, runtime)
 
     def select_object_with_options(
         self,
@@ -7548,7 +7764,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.select_request))
+            body=OpenApiUtilClient.parse_to_map(request.select_request)
         )
         params = open_api_models.Params(
             action='SelectObject',
@@ -7580,7 +7796,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.select_request))
+            body=OpenApiUtilClient.parse_to_map(request.select_request)
         )
         params = open_api_models.Params(
             action='SelectObject',
@@ -7598,25 +7814,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def upload_part(
+    def select_object(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.UploadPartRequest,
-    ) -> oss_20190517_models.UploadPartResponse:
+        request: oss_20190517_models.SelectObjectRequest,
+    ) -> oss_20190517_models.SelectObjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.upload_part_with_options(bucket, key, request, headers, runtime)
+        return self.select_object_with_options(bucket, key, request, headers, runtime)
 
-    async def upload_part_async(
+    async def select_object_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.UploadPartRequest,
-    ) -> oss_20190517_models.UploadPartResponse:
+        request: oss_20190517_models.SelectObjectRequest,
+    ) -> oss_20190517_models.SelectObjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.upload_part_with_options_async(bucket, key, request, headers, runtime)
+        return await self.select_object_with_options_async(bucket, key, request, headers, runtime)
 
     def upload_part_with_options(
         self,
@@ -7696,25 +7912,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def upload_part_copy(
+    def upload_part(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.UploadPartCopyRequest,
-    ) -> oss_20190517_models.UploadPartCopyResponse:
+        request: oss_20190517_models.UploadPartRequest,
+    ) -> oss_20190517_models.UploadPartResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.UploadPartCopyHeaders()
-        return self.upload_part_copy_with_options(bucket, key, request, headers, runtime)
+        headers = {}
+        return self.upload_part_with_options(bucket, key, request, headers, runtime)
 
-    async def upload_part_copy_async(
+    async def upload_part_async(
         self,
         bucket: str,
         key: str,
-        request: oss_20190517_models.UploadPartCopyRequest,
-    ) -> oss_20190517_models.UploadPartCopyResponse:
+        request: oss_20190517_models.UploadPartRequest,
+    ) -> oss_20190517_models.UploadPartResponse:
         runtime = util_models.RuntimeOptions()
-        headers = oss_20190517_models.UploadPartCopyHeaders()
-        return await self.upload_part_copy_with_options_async(bucket, key, request, headers, runtime)
+        headers = {}
+        return await self.upload_part_with_options_async(bucket, key, request, headers, runtime)
 
     def upload_part_copy_with_options(
         self,
@@ -7819,3 +8035,23 @@ class Client(OpenApiClient):
             oss_20190517_models.UploadPartCopyResponse(),
             await self.execute_async(params, req, runtime)
         )
+
+    def upload_part_copy(
+        self,
+        bucket: str,
+        key: str,
+        request: oss_20190517_models.UploadPartCopyRequest,
+    ) -> oss_20190517_models.UploadPartCopyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = oss_20190517_models.UploadPartCopyHeaders()
+        return self.upload_part_copy_with_options(bucket, key, request, headers, runtime)
+
+    async def upload_part_copy_async(
+        self,
+        bucket: str,
+        key: str,
+        request: oss_20190517_models.UploadPartCopyRequest,
+    ) -> oss_20190517_models.UploadPartCopyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = oss_20190517_models.UploadPartCopyHeaders()
+        return await self.upload_part_copy_with_options_async(bucket, key, request, headers, runtime)
