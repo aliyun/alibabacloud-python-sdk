@@ -12787,6 +12787,39 @@ class ListResourceGroupsResponse(TeaModel):
         return self
 
 
+class ListResourcesRequestResourceTypes(TeaModel):
+    def __init__(
+        self,
+        resource_type: str = None,
+        service: str = None,
+    ):
+        self.resource_type = resource_type
+        self.service = service
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service is not None:
+            result['Service'] = self.service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        return self
+
+
 class ListResourcesRequest(TeaModel):
     def __init__(
         self,
@@ -12796,6 +12829,7 @@ class ListResourcesRequest(TeaModel):
         resource_group_id: str = None,
         resource_id: str = None,
         resource_type: str = None,
+        resource_types: List[ListResourcesRequestResourceTypes] = None,
         service: str = None,
     ):
         # The number of the page to return.
@@ -12816,13 +12850,17 @@ class ListResourcesRequest(TeaModel):
         # 
         # For more information about the supported resource types, see the **Resource type** column in [Alibaba Cloud services that support resource groups](~~94479~~).
         self.resource_type = resource_type
+        self.resource_types = resource_types
         # The ID of the Alibaba Cloud service.
         # 
         # You can obtain the ID from the **Service code** column in [Alibaba Cloud services that support resource groups](~~94479~~).
         self.service = service
 
     def validate(self):
-        pass
+        if self.resource_types:
+            for k in self.resource_types:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12842,6 +12880,10 @@ class ListResourcesRequest(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        result['ResourceTypes'] = []
+        if self.resource_types is not None:
+            for k in self.resource_types:
+                result['ResourceTypes'].append(k.to_map() if k else None)
         if self.service is not None:
             result['Service'] = self.service
         return result
@@ -12860,6 +12902,11 @@ class ListResourcesRequest(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        self.resource_types = []
+        if m.get('ResourceTypes') is not None:
+            for k in m.get('ResourceTypes'):
+                temp_model = ListResourcesRequestResourceTypes()
+                self.resource_types.append(temp_model.from_map(k))
         if m.get('Service') is not None:
             self.service = m.get('Service')
         return self
@@ -16320,6 +16367,7 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The ID of a resource group or member.
         self.resource_id = resource_id
         # The type of the objects to which you want to add tags. Valid values:
         # 
@@ -16328,6 +16376,7 @@ class TagResourcesRequest(TeaModel):
         # 
         # >  This parameter is required if you add tags to members in a resource directory.
         self.resource_type = resource_type
+        # The tags.
         self.tag = tag
 
     def validate(self):

@@ -6046,6 +6046,8 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.service):
             query['Service'] = request.service
         req = open_api_models.OpenApiRequest(
@@ -6094,6 +6096,8 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.service):
             query['Service'] = request.service
         req = open_api_models.OpenApiRequest(
