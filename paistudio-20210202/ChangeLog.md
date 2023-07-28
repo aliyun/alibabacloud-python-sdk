@@ -1,3 +1,6 @@
+2023-07-28 Version: 1.0.27
+- Release PAI Studio SDK.
+
 2022-06-30 Version: 1.0.26
 - Release PAI Studio SDK.
 
