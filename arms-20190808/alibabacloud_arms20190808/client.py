@@ -12043,7 +12043,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SearchAlertRulesResponse:
         """
-        Queries alert rules.
+        The current operation is no longer maintained. You can call the GetAlertRules operation of Alert Management (New) to query existing alert rules.
         
         @param request: SearchAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12098,7 +12098,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SearchAlertRulesResponse:
         """
-        Queries alert rules.
+        The current operation is no longer maintained. You can call the GetAlertRules operation of Alert Management (New) to query existing alert rules.
         
         @param request: SearchAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12152,7 +12152,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.SearchAlertRulesRequest,
     ) -> arms20190808_models.SearchAlertRulesResponse:
         """
-        Queries alert rules.
+        The current operation is no longer maintained. You can call the GetAlertRules operation of Alert Management (New) to query existing alert rules.
         
         @param request: SearchAlertRulesRequest
         @return: SearchAlertRulesResponse
@@ -12165,7 +12165,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.SearchAlertRulesRequest,
     ) -> arms20190808_models.SearchAlertRulesResponse:
         """
-        Queries alert rules.
+        The current operation is no longer maintained. You can call the GetAlertRules operation of Alert Management (New) to query existing alert rules.
         
         @param request: SearchAlertRulesRequest
         @return: SearchAlertRulesResponse
