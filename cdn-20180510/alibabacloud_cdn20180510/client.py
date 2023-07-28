@@ -3088,6 +3088,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cdn_certificate_list_with_options_async(request, runtime)
 
+    def describe_cdn_condition_ipbinfo_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCdnConditionIPBInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnConditionIPBInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnConditionIPBInfo',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnConditionIPBInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_condition_ipbinfo_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnConditionIPBInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnConditionIPBInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnConditionIPBInfo',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnConditionIPBInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_condition_ipbinfo(
+        self,
+        request: cdn_20180510_models.DescribeCdnConditionIPBInfoRequest,
+    ) -> cdn_20180510_models.DescribeCdnConditionIPBInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_condition_ipbinfo_with_options(request, runtime)
+
+    async def describe_cdn_condition_ipbinfo_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnConditionIPBInfoRequest,
+    ) -> cdn_20180510_models.DescribeCdnConditionIPBInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_condition_ipbinfo_with_options_async(request, runtime)
+
     def describe_cdn_deleted_domains_with_options(
         self,
         request: cdn_20180510_models.DescribeCdnDeletedDomainsRequest,
@@ -14438,6 +14508,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_realtime_log_delivery_infos_with_options_async(runtime)
 
+    def list_tag_resources_with_options(
+        self,
+        request: cdn_20180510_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.tag_owner_bid):
+            query['TagOwnerBid'] = request.tag_owner_bid
+        if not UtilClient.is_unset(request.tag_owner_uid):
+            query['TagOwnerUid'] = request.tag_owner_uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: cdn_20180510_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.tag_owner_bid):
+            query['TagOwnerBid'] = request.tag_owner_bid
+        if not UtilClient.is_unset(request.tag_owner_uid):
+            query['TagOwnerUid'] = request.tag_owner_uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: cdn_20180510_models.ListTagResourcesRequest,
+    ) -> cdn_20180510_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: cdn_20180510_models.ListTagResourcesRequest,
+    ) -> cdn_20180510_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
     def list_user_custom_log_config_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -14627,6 +14787,72 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cdn_domain_with_options_async(request, runtime)
+
+    def modify_cdn_domain_owner_with_options(
+        self,
+        request: cdn_20180510_models.ModifyCdnDomainOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.ModifyCdnDomainOwnerResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCdnDomainOwner',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.ModifyCdnDomainOwnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_cdn_domain_owner_with_options_async(
+        self,
+        request: cdn_20180510_models.ModifyCdnDomainOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.ModifyCdnDomainOwnerResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCdnDomainOwner',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.ModifyCdnDomainOwnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_cdn_domain_owner(
+        self,
+        request: cdn_20180510_models.ModifyCdnDomainOwnerRequest,
+    ) -> cdn_20180510_models.ModifyCdnDomainOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_cdn_domain_owner_with_options(request, runtime)
+
+    async def modify_cdn_domain_owner_async(
+        self,
+        request: cdn_20180510_models.ModifyCdnDomainOwnerRequest,
+    ) -> cdn_20180510_models.ModifyCdnDomainOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_cdn_domain_owner_with_options_async(request, runtime)
 
     def modify_cdn_domain_schdm_by_property_with_options(
         self,
