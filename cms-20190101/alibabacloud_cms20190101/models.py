@@ -13591,6 +13591,7 @@ class DescribeAlertLogCountRequest(TeaModel):
         rule_name: str = None,
         search_key: str = None,
         send_status: str = None,
+        source_type: str = None,
         start_time: int = None,
     ):
         # The alert group.
@@ -13649,6 +13650,7 @@ class DescribeAlertLogCountRequest(TeaModel):
         # 
         # When the value of the SendStatus parameter is 0, the value P4 of the Level parameter indicates a triggered alert and the value OK indicates a cleared alert.
         self.send_status = send_status
+        self.source_type = source_type
         # The name of the metric.
         # 
         # > For more information about the metrics of different cloud services, see [Appendix 1: Metrics](~~163515~~).
@@ -13693,6 +13695,8 @@ class DescribeAlertLogCountRequest(TeaModel):
             result['SearchKey'] = self.search_key
         if self.send_status is not None:
             result['SendStatus'] = self.send_status
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -13729,6 +13733,8 @@ class DescribeAlertLogCountRequest(TeaModel):
             self.search_key = m.get('SearchKey')
         if m.get('SendStatus') is not None:
             self.send_status = m.get('SendStatus')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -13943,6 +13949,7 @@ class DescribeAlertLogHistogramRequest(TeaModel):
         rule_name: str = None,
         search_key: str = None,
         send_status: str = None,
+        source_type: str = None,
         start_time: int = None,
     ):
         # The name of the metric.
@@ -13997,6 +14004,7 @@ class DescribeAlertLogHistogramRequest(TeaModel):
         self.search_key = search_key
         # The name of the alert rule.
         self.send_status = send_status
+        self.source_type = source_type
         # The number of the page to return. Default value: 1
         self.start_time = start_time
 
@@ -14039,6 +14047,8 @@ class DescribeAlertLogHistogramRequest(TeaModel):
             result['SearchKey'] = self.search_key
         if self.send_status is not None:
             result['SendStatus'] = self.send_status
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -14075,6 +14085,8 @@ class DescribeAlertLogHistogramRequest(TeaModel):
             self.search_key = m.get('SearchKey')
         if m.get('SendStatus') is not None:
             self.send_status = m.get('SendStatus')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -14252,6 +14264,7 @@ class DescribeAlertLogListRequest(TeaModel):
         rule_name: str = None,
         search_key: str = None,
         send_status: str = None,
+        source_type: str = None,
         start_time: int = None,
     ):
         # The start timestamp of the alert logs to be queried. Unit: milliseconds.
@@ -14301,6 +14314,7 @@ class DescribeAlertLogListRequest(TeaModel):
         self.search_key = search_key
         # The sending results of alert notifications.
         self.send_status = send_status
+        self.source_type = source_type
         # Indicates whether the alert level was changed. Valid values:
         # 
         # *   `P4->OK`: The alert level was changed from P4 to OK.
@@ -14348,6 +14362,8 @@ class DescribeAlertLogListRequest(TeaModel):
             result['SearchKey'] = self.search_key
         if self.send_status is not None:
             result['SendStatus'] = self.send_status
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -14386,6 +14402,8 @@ class DescribeAlertLogListRequest(TeaModel):
             self.search_key = m.get('SearchKey')
         if m.get('SendStatus') is not None:
             self.send_status = m.get('SendStatus')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -32702,6 +32720,7 @@ class DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus(TeaMod
         self,
         auto_install: bool = None,
         instance_id: str = None,
+        os_monitor_config: str = None,
         os_monitor_error_code: str = None,
         os_monitor_error_detail: str = None,
         os_monitor_status: str = None,
@@ -32719,6 +32738,7 @@ class DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus(TeaMod
         self.auto_install = auto_install
         # The ID of the request.
         self.instance_id = instance_id
+        self.os_monitor_config = os_monitor_config
         self.os_monitor_error_code = os_monitor_error_code
         self.os_monitor_error_detail = os_monitor_error_detail
         # For more information about common request parameters, see [Common parameters](~~199331~~).
@@ -32747,6 +32767,8 @@ class DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus(TeaMod
             result['AutoInstall'] = self.auto_install
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.os_monitor_config is not None:
+            result['OsMonitorConfig'] = self.os_monitor_config
         if self.os_monitor_error_code is not None:
             result['OsMonitorErrorCode'] = self.os_monitor_error_code
         if self.os_monitor_error_detail is not None:
@@ -32765,6 +32787,8 @@ class DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus(TeaMod
             self.auto_install = m.get('AutoInstall')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('OsMonitorConfig') is not None:
+            self.os_monitor_config = m.get('OsMonitorConfig')
         if m.get('OsMonitorErrorCode') is not None:
             self.os_monitor_error_code = m.get('OsMonitorErrorCode')
         if m.get('OsMonitorErrorDetail') is not None:

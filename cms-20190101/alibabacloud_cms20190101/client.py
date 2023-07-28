@@ -5089,6 +5089,8 @@ class Client(OpenApiClient):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.send_status):
             query['SendStatus'] = request.send_status
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5152,6 +5154,8 @@ class Client(OpenApiClient):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.send_status):
             query['SendStatus'] = request.send_status
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5241,6 +5245,8 @@ class Client(OpenApiClient):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.send_status):
             query['SendStatus'] = request.send_status
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5304,6 +5310,8 @@ class Client(OpenApiClient):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.send_status):
             query['SendStatus'] = request.send_status
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5397,6 +5405,8 @@ class Client(OpenApiClient):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.send_status):
             query['SendStatus'] = request.send_status
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5464,6 +5474,8 @@ class Client(OpenApiClient):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.send_status):
             query['SendStatus'] = request.send_status
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -13741,6 +13753,14 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.OpenCmsServiceResponse:
+        """
+        @deprecated
+        
+        @param request: OpenCmsServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenCmsServiceResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='OpenCmsService',
@@ -13762,6 +13782,14 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.OpenCmsServiceResponse:
+        """
+        @deprecated
+        
+        @param request: OpenCmsServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenCmsServiceResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='OpenCmsService',
@@ -13780,10 +13808,22 @@ class Client(OpenApiClient):
         )
 
     def open_cms_service(self) -> cms_20190101_models.OpenCmsServiceResponse:
+        """
+        @deprecated
+        
+        @return: OpenCmsServiceResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_cms_service_with_options(runtime)
 
     async def open_cms_service_async(self) -> cms_20190101_models.OpenCmsServiceResponse:
+        """
+        @deprecated
+        
+        @return: OpenCmsServiceResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_cms_service_with_options_async(runtime)
 

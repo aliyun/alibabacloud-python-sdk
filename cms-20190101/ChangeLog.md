@@ -1,3 +1,6 @@
+2023-07-28 Version: 2.0.8
+- Add batch create once task.
+
 2023-07-13 Version: 2.0.7
 - Add batch create once task.
 
