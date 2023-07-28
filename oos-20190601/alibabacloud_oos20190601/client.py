@@ -287,9 +287,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.alarm_config):
+            request.alarm_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alarm_config, 'AlarmConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.alarm_config_shrink):
+            query['AlarmConfig'] = request.alarm_config_shrink
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -329,9 +333,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.alarm_config):
+            request.alarm_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alarm_config, 'AlarmConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.alarm_config_shrink):
+            query['AlarmConfig'] = request.alarm_config_shrink
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -717,13 +725,27 @@ class Client(OpenApiClient):
 
     def create_patch_baseline_with_options(
         self,
-        request: oos_20190601_models.CreatePatchBaselineRequest,
+        tmp_req: oos_20190601_models.CreatePatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreatePatchBaselineResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.CreatePatchBaselineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.approved_patches):
+            request.approved_patches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.approved_patches, 'ApprovedPatches', 'json')
+        if not UtilClient.is_unset(tmp_req.rejected_patches):
+            request.rejected_patches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rejected_patches, 'RejectedPatches', 'json')
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.approval_rules):
             query['ApprovalRules'] = request.approval_rules
+        if not UtilClient.is_unset(request.approved_patches_shrink):
+            query['ApprovedPatches'] = request.approved_patches_shrink
+        if not UtilClient.is_unset(request.approved_patches_enable_non_security):
+            query['ApprovedPatchesEnableNonSecurity'] = request.approved_patches_enable_non_security
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -734,6 +756,14 @@ class Client(OpenApiClient):
             query['OperationSystem'] = request.operation_system
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rejected_patches_shrink):
+            query['RejectedPatches'] = request.rejected_patches_shrink
+        if not UtilClient.is_unset(request.rejected_patches_action):
+            query['RejectedPatchesAction'] = request.rejected_patches_action
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -755,13 +785,27 @@ class Client(OpenApiClient):
 
     async def create_patch_baseline_with_options_async(
         self,
-        request: oos_20190601_models.CreatePatchBaselineRequest,
+        tmp_req: oos_20190601_models.CreatePatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreatePatchBaselineResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.CreatePatchBaselineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.approved_patches):
+            request.approved_patches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.approved_patches, 'ApprovedPatches', 'json')
+        if not UtilClient.is_unset(tmp_req.rejected_patches):
+            request.rejected_patches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rejected_patches, 'RejectedPatches', 'json')
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.approval_rules):
             query['ApprovalRules'] = request.approval_rules
+        if not UtilClient.is_unset(request.approved_patches_shrink):
+            query['ApprovedPatches'] = request.approved_patches_shrink
+        if not UtilClient.is_unset(request.approved_patches_enable_non_security):
+            query['ApprovedPatchesEnableNonSecurity'] = request.approved_patches_enable_non_security
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -772,6 +816,14 @@ class Client(OpenApiClient):
             query['OperationSystem'] = request.operation_system
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rejected_patches_shrink):
+            query['RejectedPatches'] = request.rejected_patches_shrink
+        if not UtilClient.is_unset(request.rejected_patches_action):
+            query['RejectedPatchesAction'] = request.rejected_patches_action
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1988,6 +2040,8 @@ class Client(OpenApiClient):
     ) -> oos_20190601_models.GenerateExecutionPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ram_role):
+            query['RamRole'] = request.ram_role
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.template_name):
@@ -2020,6 +2074,8 @@ class Client(OpenApiClient):
     ) -> oos_20190601_models.GenerateExecutionPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ram_role):
+            query['RamRole'] = request.ram_role
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.template_name):
@@ -3256,8 +3312,6 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.product):
-            query['Product'] = request.product
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_id):
@@ -3300,8 +3354,6 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.product):
-            query['Product'] = request.product
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_id):
@@ -3354,6 +3406,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.application_type):
+            query['ApplicationType'] = request.application_type
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.name):
@@ -3396,6 +3450,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.application_type):
+            query['ApplicationType'] = request.application_type
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.name):
@@ -3446,6 +3502,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListExecutionLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListExecutionLogsResponse:
+        """
+        ***\
+        
+        @param request: ListExecutionLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExecutionLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.execution_id):
@@ -3484,6 +3547,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListExecutionLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListExecutionLogsResponse:
+        """
+        ***\
+        
+        @param request: ListExecutionLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExecutionLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.execution_id):
@@ -3521,6 +3591,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListExecutionLogsRequest,
     ) -> oos_20190601_models.ListExecutionLogsResponse:
+        """
+        ***\
+        
+        @param request: ListExecutionLogsRequest
+        @return: ListExecutionLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_execution_logs_with_options(request, runtime)
 
@@ -3528,6 +3604,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListExecutionLogsRequest,
     ) -> oos_20190601_models.ListExecutionLogsResponse:
+        """
+        ***\
+        
+        @param request: ListExecutionLogsRequest
+        @return: ListExecutionLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_execution_logs_with_options_async(request, runtime)
 
@@ -3616,8 +3698,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.categories):
+            query['Categories'] = request.categories
         if not UtilClient.is_unset(request.category):
             query['Category'] = request.category
+        if not UtilClient.is_unset(request.depth):
+            query['Depth'] = request.depth
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.end_date_after):
             query['EndDateAfter'] = request.end_date_after
         if not UtilClient.is_unset(request.end_date_before):
@@ -3690,8 +3778,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.categories):
+            query['Categories'] = request.categories
         if not UtilClient.is_unset(request.category):
             query['Category'] = request.category
+        if not UtilClient.is_unset(request.depth):
+            query['Depth'] = request.depth
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.end_date_after):
             query['EndDateAfter'] = request.end_date_after
         if not UtilClient.is_unset(request.end_date_before):
@@ -4238,6 +4332,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.share_type):
+            query['ShareType'] = request.share_type
         if not UtilClient.is_unset(request.sort_field):
             query['SortField'] = request.sort_field
         if not UtilClient.is_unset(request.sort_order):
@@ -4290,6 +4386,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.share_type):
+            query['ShareType'] = request.share_type
         if not UtilClient.is_unset(request.sort_field):
             query['SortField'] = request.sort_field
         if not UtilClient.is_unset(request.sort_order):
@@ -4333,11 +4431,23 @@ class Client(OpenApiClient):
 
     def list_patch_baselines_with_options(
         self,
-        request: oos_20190601_models.ListPatchBaselinesRequest,
+        tmp_req: oos_20190601_models.ListPatchBaselinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListPatchBaselinesResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.ListPatchBaselinesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.approved_patches):
+            request.approved_patches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.approved_patches, 'ApprovedPatches', 'json')
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.approved_patches_shrink):
+            query['ApprovedPatches'] = request.approved_patches_shrink
+        if not UtilClient.is_unset(request.approved_patches_enable_non_security):
+            query['ApprovedPatchesEnableNonSecurity'] = request.approved_patches_enable_non_security
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.name):
@@ -4350,6 +4460,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.share_type):
             query['ShareType'] = request.share_type
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4371,11 +4485,23 @@ class Client(OpenApiClient):
 
     async def list_patch_baselines_with_options_async(
         self,
-        request: oos_20190601_models.ListPatchBaselinesRequest,
+        tmp_req: oos_20190601_models.ListPatchBaselinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListPatchBaselinesResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.ListPatchBaselinesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.approved_patches):
+            request.approved_patches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.approved_patches, 'ApprovedPatches', 'json')
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.approved_patches_shrink):
+            query['ApprovedPatches'] = request.approved_patches_shrink
+        if not UtilClient.is_unset(request.approved_patches_enable_non_security):
+            query['ApprovedPatchesEnableNonSecurity'] = request.approved_patches_enable_non_security
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.name):
@@ -4388,6 +4514,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.share_type):
             query['ShareType'] = request.share_type
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4598,6 +4728,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListSecretParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListSecretParametersResponse:
+        """
+        Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
+        
+        @param tmp_req: ListSecretParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecretParametersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListSecretParametersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4648,6 +4785,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListSecretParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListSecretParametersResponse:
+        """
+        Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
+        
+        @param tmp_req: ListSecretParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecretParametersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListSecretParametersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4697,6 +4841,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListSecretParametersRequest,
     ) -> oos_20190601_models.ListSecretParametersResponse:
+        """
+        Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
+        
+        @param request: ListSecretParametersRequest
+        @return: ListSecretParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_secret_parameters_with_options(request, runtime)
 
@@ -4704,6 +4854,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListSecretParametersRequest,
     ) -> oos_20190601_models.ListSecretParametersResponse:
+        """
+        Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
+        
+        @param request: ListSecretParametersRequest
+        @return: ListSecretParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_secret_parameters_with_options_async(request, runtime)
 
@@ -5438,6 +5594,16 @@ class Client(OpenApiClient):
         request: oos_20190601_models.NotifyExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.NotifyExecutionResponse:
+        """
+        You can call this operation to notify an execution in the following scenarios:
+        *   If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
+        *   If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
+        *   If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
+        
+        @param request: NotifyExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: NotifyExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.execution_id):
@@ -5484,6 +5650,16 @@ class Client(OpenApiClient):
         request: oos_20190601_models.NotifyExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.NotifyExecutionResponse:
+        """
+        You can call this operation to notify an execution in the following scenarios:
+        *   If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
+        *   If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
+        *   If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
+        
+        @param request: NotifyExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: NotifyExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.execution_id):
@@ -5529,6 +5705,15 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.NotifyExecutionRequest,
     ) -> oos_20190601_models.NotifyExecutionResponse:
+        """
+        You can call this operation to notify an execution in the following scenarios:
+        *   If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
+        *   If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
+        *   If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
+        
+        @param request: NotifyExecutionRequest
+        @return: NotifyExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.notify_execution_with_options(request, runtime)
 
@@ -5536,6 +5721,15 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.NotifyExecutionRequest,
     ) -> oos_20190601_models.NotifyExecutionResponse:
+        """
+        You can call this operation to notify an execution in the following scenarios:
+        *   If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
+        *   If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
+        *   If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
+        
+        @param request: NotifyExecutionRequest
+        @return: NotifyExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.notify_execution_with_options_async(request, runtime)
 
@@ -6209,9 +6403,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.alarm_config):
+            request.alarm_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alarm_config, 'AlarmConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.alarm_config_shrink):
+            query['AlarmConfig'] = request.alarm_config_shrink
+        if not UtilClient.is_unset(request.delete_alarm_rules_before_update):
+            query['DeleteAlarmRulesBeforeUpdate'] = request.delete_alarm_rules_before_update
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
@@ -6247,9 +6447,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.alarm_config):
+            request.alarm_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alarm_config, 'AlarmConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.alarm_config_shrink):
+            query['AlarmConfig'] = request.alarm_config_shrink
+        if not UtilClient.is_unset(request.delete_alarm_rules_before_update):
+            query['DeleteAlarmRulesBeforeUpdate'] = request.delete_alarm_rules_before_update
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
@@ -6382,6 +6588,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.execution_id):
             query['ExecutionId'] = request.execution_id
         if not UtilClient.is_unset(request.parameters):
@@ -6416,6 +6624,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.execution_id):
             query['ExecutionId'] = request.execution_id
         if not UtilClient.is_unset(request.parameters):
@@ -6681,13 +6891,27 @@ class Client(OpenApiClient):
 
     def update_patch_baseline_with_options(
         self,
-        request: oos_20190601_models.UpdatePatchBaselineRequest,
+        tmp_req: oos_20190601_models.UpdatePatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdatePatchBaselineResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.UpdatePatchBaselineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.approved_patches):
+            request.approved_patches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.approved_patches, 'ApprovedPatches', 'json')
+        if not UtilClient.is_unset(tmp_req.rejected_patches):
+            request.rejected_patches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rejected_patches, 'RejectedPatches', 'json')
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.approval_rules):
             query['ApprovalRules'] = request.approval_rules
+        if not UtilClient.is_unset(request.approved_patches_shrink):
+            query['ApprovedPatches'] = request.approved_patches_shrink
+        if not UtilClient.is_unset(request.approved_patches_enable_non_security):
+            query['ApprovedPatchesEnableNonSecurity'] = request.approved_patches_enable_non_security
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -6696,6 +6920,14 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rejected_patches_shrink):
+            query['RejectedPatches'] = request.rejected_patches_shrink
+        if not UtilClient.is_unset(request.rejected_patches_action):
+            query['RejectedPatchesAction'] = request.rejected_patches_action
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6717,13 +6949,27 @@ class Client(OpenApiClient):
 
     async def update_patch_baseline_with_options_async(
         self,
-        request: oos_20190601_models.UpdatePatchBaselineRequest,
+        tmp_req: oos_20190601_models.UpdatePatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdatePatchBaselineResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.UpdatePatchBaselineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.approved_patches):
+            request.approved_patches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.approved_patches, 'ApprovedPatches', 'json')
+        if not UtilClient.is_unset(tmp_req.rejected_patches):
+            request.rejected_patches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rejected_patches, 'RejectedPatches', 'json')
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.approval_rules):
             query['ApprovalRules'] = request.approval_rules
+        if not UtilClient.is_unset(request.approved_patches_shrink):
+            query['ApprovedPatches'] = request.approved_patches_shrink
+        if not UtilClient.is_unset(request.approved_patches_enable_non_security):
+            query['ApprovedPatchesEnableNonSecurity'] = request.approved_patches_enable_non_security
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -6732,6 +6978,14 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rejected_patches_shrink):
+            query['RejectedPatches'] = request.rejected_patches_shrink
+        if not UtilClient.is_unset(request.rejected_patches_action):
+            query['RejectedPatchesAction'] = request.rejected_patches_action
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
