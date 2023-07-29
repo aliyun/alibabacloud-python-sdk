@@ -1402,13 +1402,23 @@ class Client(OpenApiClient):
 
     def change_check_config_with_options(
         self,
-        request: sas_20181203_models.ChangeCheckConfigRequest,
+        tmp_req: sas_20181203_models.ChangeCheckConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ChangeCheckConfigResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.ChangeCheckConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config_requirement_ids):
+            request.config_requirement_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_requirement_ids, 'ConfigRequirementIds', 'json')
+        if not UtilClient.is_unset(tmp_req.config_standard_ids):
+            request.config_standard_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_standard_ids, 'ConfigStandardIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.added_check):
             query['AddedCheck'] = request.added_check
+        if not UtilClient.is_unset(request.config_requirement_ids_shrink):
+            query['ConfigRequirementIds'] = request.config_requirement_ids_shrink
+        if not UtilClient.is_unset(request.config_standard_ids_shrink):
+            query['ConfigStandardIds'] = request.config_standard_ids_shrink
         if not UtilClient.is_unset(request.cycle_days):
             query['CycleDays'] = request.cycle_days
         if not UtilClient.is_unset(request.enable_add_check):
@@ -1446,13 +1456,23 @@ class Client(OpenApiClient):
 
     async def change_check_config_with_options_async(
         self,
-        request: sas_20181203_models.ChangeCheckConfigRequest,
+        tmp_req: sas_20181203_models.ChangeCheckConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ChangeCheckConfigResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.ChangeCheckConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config_requirement_ids):
+            request.config_requirement_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_requirement_ids, 'ConfigRequirementIds', 'json')
+        if not UtilClient.is_unset(tmp_req.config_standard_ids):
+            request.config_standard_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_standard_ids, 'ConfigStandardIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.added_check):
             query['AddedCheck'] = request.added_check
+        if not UtilClient.is_unset(request.config_requirement_ids_shrink):
+            query['ConfigRequirementIds'] = request.config_requirement_ids_shrink
+        if not UtilClient.is_unset(request.config_standard_ids_shrink):
+            query['ConfigStandardIds'] = request.config_standard_ids_shrink
         if not UtilClient.is_unset(request.cycle_days):
             query['CycleDays'] = request.cycle_days
         if not UtilClient.is_unset(request.enable_add_check):
@@ -7501,6 +7521,80 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeAssetsSecurityEventSummaryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_assets_security_event_summary_with_options_async(request, runtime)
+
+    def describe_attach_records_with_options(
+        self,
+        request: sas_20181203_models.DescribeAttachRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAttachRecordsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.ecs_uuidlist):
+            query['EcsUUIDList'] = request.ecs_uuidlist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAttachRecords',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAttachRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_attach_records_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeAttachRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAttachRecordsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.ecs_uuidlist):
+            query['EcsUUIDList'] = request.ecs_uuidlist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAttachRecords',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAttachRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_attach_records(
+        self,
+        request: sas_20181203_models.DescribeAttachRecordsRequest,
+    ) -> sas_20181203_models.DescribeAttachRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_attach_records_with_options(request, runtime)
+
+    async def describe_attach_records_async(
+        self,
+        request: sas_20181203_models.DescribeAttachRecordsRequest,
+    ) -> sas_20181203_models.DescribeAttachRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_attach_records_with_options_async(request, runtime)
 
     def describe_attack_analysis_data_with_options(
         self,
@@ -29416,6 +29510,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.install_pm_agent_with_options_async(request, runtime)
 
+    def install_rasp_attach_with_options(
+        self,
+        request: sas_20181203_models.InstallRaspAttachRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.InstallRaspAttachResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.ecs_uuidlist):
+            query['EcsUUIDList'] = request.ecs_uuidlist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InstallRaspAttach',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.InstallRaspAttachResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_rasp_attach_with_options_async(
+        self,
+        request: sas_20181203_models.InstallRaspAttachRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.InstallRaspAttachResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.ecs_uuidlist):
+            query['EcsUUIDList'] = request.ecs_uuidlist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InstallRaspAttach',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.InstallRaspAttachResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_rasp_attach(
+        self,
+        request: sas_20181203_models.InstallRaspAttachRequest,
+    ) -> sas_20181203_models.InstallRaspAttachResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.install_rasp_attach_with_options(request, runtime)
+
+    async def install_rasp_attach_async(
+        self,
+        request: sas_20181203_models.InstallRaspAttachRequest,
+    ) -> sas_20181203_models.InstallRaspAttachResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.install_rasp_attach_with_options_async(request, runtime)
+
     def install_uni_backup_agent_with_options(
         self,
         request: sas_20181203_models.InstallUniBackupAgentRequest,
@@ -29907,6 +30075,56 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ListAgentlessTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_agentless_task_with_options_async(request, runtime)
+
+    def list_asset_clean_config_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAssetCleanConfigResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListAssetCleanConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAssetCleanConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_asset_clean_config_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAssetCleanConfigResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListAssetCleanConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAssetCleanConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_asset_clean_config(self) -> sas_20181203_models.ListAssetCleanConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_asset_clean_config_with_options(runtime)
+
+    async def list_asset_clean_config_async(self) -> sas_20181203_models.ListAssetCleanConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_asset_clean_config_with_options_async(runtime)
 
     def list_asset_refresh_task_config_with_options(
         self,
@@ -30955,6 +31173,80 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ListCloudAssetInstancesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_cloud_asset_instances_with_options_async(request, runtime)
+
+    def list_cloud_vendor_regions_with_options(
+        self,
+        request: sas_20181203_models.ListCloudVendorRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListCloudVendorRegionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudVendorRegions',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListCloudVendorRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_vendor_regions_with_options_async(
+        self,
+        request: sas_20181203_models.ListCloudVendorRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListCloudVendorRegionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudVendorRegions',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListCloudVendorRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_vendor_regions(
+        self,
+        request: sas_20181203_models.ListCloudVendorRegionsRequest,
+    ) -> sas_20181203_models.ListCloudVendorRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_vendor_regions_with_options(request, runtime)
+
+    async def list_cloud_vendor_regions_async(
+        self,
+        request: sas_20181203_models.ListCloudVendorRegionsRequest,
+    ) -> sas_20181203_models.ListCloudVendorRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_vendor_regions_with_options_async(request, runtime)
 
     def list_cluster_cnnf_status_detail_with_options(
         self,
@@ -33293,6 +33585,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ModifyAppVulScanCycleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_vul_scan_cycle_with_options_async(request, runtime)
+
+    def modify_asset_clean_config_with_options(
+        self,
+        request: sas_20181203_models.ModifyAssetCleanConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyAssetCleanConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asset_clean_configs):
+            query['AssetCleanConfigs'] = request.asset_clean_configs
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAssetCleanConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyAssetCleanConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_asset_clean_config_with_options_async(
+        self,
+        request: sas_20181203_models.ModifyAssetCleanConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyAssetCleanConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asset_clean_configs):
+            query['AssetCleanConfigs'] = request.asset_clean_configs
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAssetCleanConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyAssetCleanConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_asset_clean_config(
+        self,
+        request: sas_20181203_models.ModifyAssetCleanConfigRequest,
+    ) -> sas_20181203_models.ModifyAssetCleanConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_asset_clean_config_with_options(request, runtime)
+
+    async def modify_asset_clean_config_async(
+        self,
+        request: sas_20181203_models.ModifyAssetCleanConfigRequest,
+    ) -> sas_20181203_models.ModifyAssetCleanConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_asset_clean_config_with_options_async(request, runtime)
 
     def modify_asset_group_with_options(
         self,
@@ -41189,6 +41551,80 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.UninstallBackupClientResponse:
         runtime = util_models.RuntimeOptions()
         return await self.uninstall_backup_client_with_options_async(request, runtime)
+
+    def uninstall_rasp_attach_with_options(
+        self,
+        request: sas_20181203_models.UninstallRaspAttachRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UninstallRaspAttachResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.ecs_uuidlist):
+            query['EcsUUIDList'] = request.ecs_uuidlist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UninstallRaspAttach',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UninstallRaspAttachResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def uninstall_rasp_attach_with_options_async(
+        self,
+        request: sas_20181203_models.UninstallRaspAttachRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UninstallRaspAttachResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.ecs_uuidlist):
+            query['EcsUUIDList'] = request.ecs_uuidlist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UninstallRaspAttach',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UninstallRaspAttachResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def uninstall_rasp_attach(
+        self,
+        request: sas_20181203_models.UninstallRaspAttachRequest,
+    ) -> sas_20181203_models.UninstallRaspAttachResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.uninstall_rasp_attach_with_options(request, runtime)
+
+    async def uninstall_rasp_attach_async(
+        self,
+        request: sas_20181203_models.UninstallRaspAttachRequest,
+    ) -> sas_20181203_models.UninstallRaspAttachResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.uninstall_rasp_attach_with_options_async(request, runtime)
 
     def uninstall_uni_backup_agent_with_options(
         self,
