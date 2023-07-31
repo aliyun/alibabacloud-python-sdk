@@ -1216,6 +1216,8 @@ class Client(OpenApiClient):
             query['AppSecret'] = request.app_secret
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.tag):
@@ -1256,6 +1258,8 @@ class Client(OpenApiClient):
             query['AppSecret'] = request.app_secret
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.tag):
@@ -4613,7 +4617,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiResponse:
         """
-        The ID of the public key.
+        This operation is intended for API providers.
         
         @param request: DescribeApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4652,7 +4656,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiResponse:
         """
-        The ID of the public key.
+        This operation is intended for API providers.
         
         @param request: DescribeApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4690,7 +4694,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiRequest,
     ) -> cloud_api20160714_models.DescribeApiResponse:
         """
-        The ID of the public key.
+        This operation is intended for API providers.
         
         @param request: DescribeApiRequest
         @return: DescribeApiResponse
@@ -4703,7 +4707,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiRequest,
     ) -> cloud_api20160714_models.DescribeApiResponse:
         """
-        The ID of the public key.
+        This operation is intended for API providers.
         
         @param request: DescribeApiRequest
         @return: DescribeApiResponse
@@ -6792,6 +6796,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.enable_tag_auth):
             query['EnableTagAuth'] = request.enable_tag_auth
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -6838,6 +6844,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.enable_tag_auth):
             query['EnableTagAuth'] = request.enable_tag_auth
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -12678,6 +12686,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.tag):
@@ -12714,6 +12724,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.tag):

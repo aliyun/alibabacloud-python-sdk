@@ -1,3 +1,9 @@
+2023-07-31 Version: 3.0.0
+- CreateApp add Extend parameter.
+- DescribeAppAttributes add Extend parameter.
+- DescribeApp add Extend parameter.
+- ModifyApp add Extend parameter.
+
 2023-06-19 Version: 2.2.20
 - Republish.
 
