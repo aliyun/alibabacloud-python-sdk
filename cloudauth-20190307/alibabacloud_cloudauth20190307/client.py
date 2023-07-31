@@ -1284,6 +1284,8 @@ class Client(OpenApiClient):
     ) -> cloudauth_20190307_models.InitFaceVerifyResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.birthday):
+            query['Birthday'] = request.birthday
         if not UtilClient.is_unset(request.callback_token):
             query['CallbackToken'] = request.callback_token
         if not UtilClient.is_unset(request.callback_url):
@@ -1296,6 +1298,8 @@ class Client(OpenApiClient):
             query['CertType'] = request.cert_type
         if not UtilClient.is_unset(request.certify_id):
             query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.certify_url_style):
+            query['CertifyUrlStyle'] = request.certify_url_style
         if not UtilClient.is_unset(request.certify_url_type):
             query['CertifyUrlType'] = request.certify_url_type
         if not UtilClient.is_unset(request.encrypt_type):
@@ -1308,6 +1312,8 @@ class Client(OpenApiClient):
             query['MetaInfo'] = request.meta_info
         if not UtilClient.is_unset(request.mobile):
             query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         if not UtilClient.is_unset(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not UtilClient.is_unset(request.oss_object_name):
@@ -1318,6 +1324,8 @@ class Client(OpenApiClient):
             query['ProcedurePriority'] = request.procedure_priority
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.read_img):
+            query['ReadImg'] = request.read_img
         if not UtilClient.is_unset(request.return_url):
             query['ReturnUrl'] = request.return_url
         if not UtilClient.is_unset(request.scene_id):
@@ -1326,6 +1334,8 @@ class Client(OpenApiClient):
             query['SuitableType'] = request.suitable_type
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.validity_date):
+            query['ValidityDate'] = request.validity_date
         if not UtilClient.is_unset(request.voluntary_customized_content):
             query['VoluntaryCustomizedContent'] = request.voluntary_customized_content
         body = {}
@@ -1364,6 +1374,8 @@ class Client(OpenApiClient):
     ) -> cloudauth_20190307_models.InitFaceVerifyResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.birthday):
+            query['Birthday'] = request.birthday
         if not UtilClient.is_unset(request.callback_token):
             query['CallbackToken'] = request.callback_token
         if not UtilClient.is_unset(request.callback_url):
@@ -1376,6 +1388,8 @@ class Client(OpenApiClient):
             query['CertType'] = request.cert_type
         if not UtilClient.is_unset(request.certify_id):
             query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.certify_url_style):
+            query['CertifyUrlStyle'] = request.certify_url_style
         if not UtilClient.is_unset(request.certify_url_type):
             query['CertifyUrlType'] = request.certify_url_type
         if not UtilClient.is_unset(request.encrypt_type):
@@ -1388,6 +1402,8 @@ class Client(OpenApiClient):
             query['MetaInfo'] = request.meta_info
         if not UtilClient.is_unset(request.mobile):
             query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         if not UtilClient.is_unset(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not UtilClient.is_unset(request.oss_object_name):
@@ -1398,6 +1414,8 @@ class Client(OpenApiClient):
             query['ProcedurePriority'] = request.procedure_priority
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.read_img):
+            query['ReadImg'] = request.read_img
         if not UtilClient.is_unset(request.return_url):
             query['ReturnUrl'] = request.return_url
         if not UtilClient.is_unset(request.scene_id):
@@ -1406,6 +1424,8 @@ class Client(OpenApiClient):
             query['SuitableType'] = request.suitable_type
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.validity_date):
+            query['ValidityDate'] = request.validity_date
         if not UtilClient.is_unset(request.voluntary_customized_content):
             query['VoluntaryCustomizedContent'] = request.voluntary_customized_content
         body = {}

@@ -1394,6 +1394,7 @@ class DescribeFaceVerifyResponseBodyResultObject(TeaModel):
         material_info: str = None,
         passed: str = None,
         sub_code: str = None,
+        success: str = None,
     ):
         self.device_risk = device_risk
         self.device_token = device_token
@@ -1401,6 +1402,7 @@ class DescribeFaceVerifyResponseBodyResultObject(TeaModel):
         self.material_info = material_info
         self.passed = passed
         self.sub_code = sub_code
+        self.success = success
 
     def validate(self):
         pass
@@ -1423,6 +1425,8 @@ class DescribeFaceVerifyResponseBodyResultObject(TeaModel):
             result['Passed'] = self.passed
         if self.sub_code is not None:
             result['SubCode'] = self.sub_code
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -1439,6 +1443,8 @@ class DescribeFaceVerifyResponseBodyResultObject(TeaModel):
             self.passed = m.get('Passed')
         if m.get('SubCode') is not None:
             self.sub_code = m.get('SubCode')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -2771,12 +2777,14 @@ class InitFaceVerifyRequest(TeaModel):
     def __init__(
         self,
         auth_id: str = None,
+        birthday: str = None,
         callback_token: str = None,
         callback_url: str = None,
         cert_name: str = None,
         cert_no: str = None,
         cert_type: str = None,
         certify_id: str = None,
+        certify_url_style: str = None,
         certify_url_type: str = None,
         crop: str = None,
         encrypt_type: str = None,
@@ -2785,25 +2793,30 @@ class InitFaceVerifyRequest(TeaModel):
         ip: str = None,
         meta_info: str = None,
         mobile: str = None,
+        mode: str = None,
         model: str = None,
         oss_bucket_name: str = None,
         oss_object_name: str = None,
         outer_order_no: str = None,
         procedure_priority: str = None,
         product_code: str = None,
+        read_img: str = None,
         return_url: str = None,
         scene_id: int = None,
         suitable_type: str = None,
         user_id: str = None,
+        validity_date: str = None,
         voluntary_customized_content: str = None,
     ):
         self.auth_id = auth_id
+        self.birthday = birthday
         self.callback_token = callback_token
         self.callback_url = callback_url
         self.cert_name = cert_name
         self.cert_no = cert_no
         self.cert_type = cert_type
         self.certify_id = certify_id
+        self.certify_url_style = certify_url_style
         self.certify_url_type = certify_url_type
         self.crop = crop
         self.encrypt_type = encrypt_type
@@ -2812,16 +2825,19 @@ class InitFaceVerifyRequest(TeaModel):
         self.ip = ip
         self.meta_info = meta_info
         self.mobile = mobile
+        self.mode = mode
         self.model = model
         self.oss_bucket_name = oss_bucket_name
         self.oss_object_name = oss_object_name
         self.outer_order_no = outer_order_no
         self.procedure_priority = procedure_priority
         self.product_code = product_code
+        self.read_img = read_img
         self.return_url = return_url
         self.scene_id = scene_id
         self.suitable_type = suitable_type
         self.user_id = user_id
+        self.validity_date = validity_date
         self.voluntary_customized_content = voluntary_customized_content
 
     def validate(self):
@@ -2835,6 +2851,8 @@ class InitFaceVerifyRequest(TeaModel):
         result = dict()
         if self.auth_id is not None:
             result['AuthId'] = self.auth_id
+        if self.birthday is not None:
+            result['Birthday'] = self.birthday
         if self.callback_token is not None:
             result['CallbackToken'] = self.callback_token
         if self.callback_url is not None:
@@ -2847,6 +2865,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['CertType'] = self.cert_type
         if self.certify_id is not None:
             result['CertifyId'] = self.certify_id
+        if self.certify_url_style is not None:
+            result['CertifyUrlStyle'] = self.certify_url_style
         if self.certify_url_type is not None:
             result['CertifyUrlType'] = self.certify_url_type
         if self.crop is not None:
@@ -2863,6 +2883,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['MetaInfo'] = self.meta_info
         if self.mobile is not None:
             result['Mobile'] = self.mobile
+        if self.mode is not None:
+            result['Mode'] = self.mode
         if self.model is not None:
             result['Model'] = self.model
         if self.oss_bucket_name is not None:
@@ -2875,6 +2897,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['ProcedurePriority'] = self.procedure_priority
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        if self.read_img is not None:
+            result['ReadImg'] = self.read_img
         if self.return_url is not None:
             result['ReturnUrl'] = self.return_url
         if self.scene_id is not None:
@@ -2883,6 +2907,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['SuitableType'] = self.suitable_type
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.validity_date is not None:
+            result['ValidityDate'] = self.validity_date
         if self.voluntary_customized_content is not None:
             result['VoluntaryCustomizedContent'] = self.voluntary_customized_content
         return result
@@ -2891,6 +2917,8 @@ class InitFaceVerifyRequest(TeaModel):
         m = m or dict()
         if m.get('AuthId') is not None:
             self.auth_id = m.get('AuthId')
+        if m.get('Birthday') is not None:
+            self.birthday = m.get('Birthday')
         if m.get('CallbackToken') is not None:
             self.callback_token = m.get('CallbackToken')
         if m.get('CallbackUrl') is not None:
@@ -2903,6 +2931,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.cert_type = m.get('CertType')
         if m.get('CertifyId') is not None:
             self.certify_id = m.get('CertifyId')
+        if m.get('CertifyUrlStyle') is not None:
+            self.certify_url_style = m.get('CertifyUrlStyle')
         if m.get('CertifyUrlType') is not None:
             self.certify_url_type = m.get('CertifyUrlType')
         if m.get('Crop') is not None:
@@ -2919,6 +2949,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.meta_info = m.get('MetaInfo')
         if m.get('Mobile') is not None:
             self.mobile = m.get('Mobile')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
         if m.get('Model') is not None:
             self.model = m.get('Model')
         if m.get('OssBucketName') is not None:
@@ -2931,6 +2963,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.procedure_priority = m.get('ProcedurePriority')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        if m.get('ReadImg') is not None:
+            self.read_img = m.get('ReadImg')
         if m.get('ReturnUrl') is not None:
             self.return_url = m.get('ReturnUrl')
         if m.get('SceneId') is not None:
@@ -2939,6 +2973,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.suitable_type = m.get('SuitableType')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('ValidityDate') is not None:
+            self.validity_date = m.get('ValidityDate')
         if m.get('VoluntaryCustomizedContent') is not None:
             self.voluntary_customized_content = m.get('VoluntaryCustomizedContent')
         return self
