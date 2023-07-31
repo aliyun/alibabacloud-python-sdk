@@ -51197,6 +51197,7 @@ class TrainOrderListQueryResponseBodyModule(TeaModel):
         self,
         apply_id: int = None,
         arr_city: str = None,
+        arr_city_ad_code: str = None,
         arr_station: str = None,
         arr_time: str = None,
         btrip_title: str = None,
@@ -51205,6 +51206,7 @@ class TrainOrderListQueryResponseBodyModule(TeaModel):
         corp_name: str = None,
         cost_center: TrainOrderListQueryResponseBodyModuleCostCenter = None,
         dep_city: str = None,
+        dep_city_ad_code: str = None,
         dep_station: str = None,
         dep_time: str = None,
         depart_id: str = None,
@@ -51234,6 +51236,7 @@ class TrainOrderListQueryResponseBodyModule(TeaModel):
     ):
         self.apply_id = apply_id
         self.arr_city = arr_city
+        self.arr_city_ad_code = arr_city_ad_code
         self.arr_station = arr_station
         self.arr_time = arr_time
         self.btrip_title = btrip_title
@@ -51242,6 +51245,7 @@ class TrainOrderListQueryResponseBodyModule(TeaModel):
         self.corp_name = corp_name
         self.cost_center = cost_center
         self.dep_city = dep_city
+        self.dep_city_ad_code = dep_city_ad_code
         self.dep_station = dep_station
         self.dep_time = dep_time
         self.depart_id = depart_id
@@ -51293,6 +51297,8 @@ class TrainOrderListQueryResponseBodyModule(TeaModel):
             result['apply_id'] = self.apply_id
         if self.arr_city is not None:
             result['arr_city'] = self.arr_city
+        if self.arr_city_ad_code is not None:
+            result['arr_city_ad_code'] = self.arr_city_ad_code
         if self.arr_station is not None:
             result['arr_station'] = self.arr_station
         if self.arr_time is not None:
@@ -51309,6 +51315,8 @@ class TrainOrderListQueryResponseBodyModule(TeaModel):
             result['cost_center'] = self.cost_center.to_map()
         if self.dep_city is not None:
             result['dep_city'] = self.dep_city
+        if self.dep_city_ad_code is not None:
+            result['dep_city_ad_code'] = self.dep_city_ad_code
         if self.dep_station is not None:
             result['dep_station'] = self.dep_station
         if self.dep_time is not None:
@@ -51373,6 +51381,8 @@ class TrainOrderListQueryResponseBodyModule(TeaModel):
             self.apply_id = m.get('apply_id')
         if m.get('arr_city') is not None:
             self.arr_city = m.get('arr_city')
+        if m.get('arr_city_ad_code') is not None:
+            self.arr_city_ad_code = m.get('arr_city_ad_code')
         if m.get('arr_station') is not None:
             self.arr_station = m.get('arr_station')
         if m.get('arr_time') is not None:
@@ -51390,6 +51400,8 @@ class TrainOrderListQueryResponseBodyModule(TeaModel):
             self.cost_center = temp_model.from_map(m['cost_center'])
         if m.get('dep_city') is not None:
             self.dep_city = m.get('dep_city')
+        if m.get('dep_city_ad_code') is not None:
+            self.dep_city_ad_code = m.get('dep_city_ad_code')
         if m.get('dep_station') is not None:
             self.dep_station = m.get('dep_station')
         if m.get('dep_time') is not None:
