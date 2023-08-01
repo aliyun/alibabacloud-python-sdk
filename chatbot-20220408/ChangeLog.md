@@ -1,3 +1,6 @@
+2023-08-01 Version: 1.0.11
+- GetAgentInfo,ListSaasInfo init.
+
 2023-04-27 Version: 1.0.10
 - Chat API support Sandbox parameter.
 

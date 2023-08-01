@@ -3341,6 +3341,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_user_access_token_with_options_async(request, runtime)
 
+    def get_agent_info_with_options(
+        self,
+        request: chatbot_20220408_models.GetAgentInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.GetAgentInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAgentInfo',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.GetAgentInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_info_with_options_async(
+        self,
+        request: chatbot_20220408_models.GetAgentInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.GetAgentInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAgentInfo',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.GetAgentInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_info(
+        self,
+        request: chatbot_20220408_models.GetAgentInfoRequest,
+    ) -> chatbot_20220408_models.GetAgentInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_agent_info_with_options(request, runtime)
+
+    async def get_agent_info_async(
+        self,
+        request: chatbot_20220408_models.GetAgentInfoRequest,
+    ) -> chatbot_20220408_models.GetAgentInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_agent_info_with_options_async(request, runtime)
+
     def get_async_result_with_options(
         self,
         request: chatbot_20220408_models.GetAsyncResultRequest,
@@ -4414,6 +4484,154 @@ class Client(OpenApiClient):
     ) -> chatbot_20220408_models.ListLgfResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_lgf_with_options_async(request, runtime)
+
+    def list_saas_info_with_options(
+        self,
+        request: chatbot_20220408_models.ListSaasInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ListSaasInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.saas_group_codes):
+            query['SaasGroupCodes'] = request.saas_group_codes
+        if not UtilClient.is_unset(request.saas_name):
+            query['SaasName'] = request.saas_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSaasInfo',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ListSaasInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_saas_info_with_options_async(
+        self,
+        request: chatbot_20220408_models.ListSaasInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ListSaasInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.saas_group_codes):
+            query['SaasGroupCodes'] = request.saas_group_codes
+        if not UtilClient.is_unset(request.saas_name):
+            query['SaasName'] = request.saas_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSaasInfo',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ListSaasInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_saas_info(
+        self,
+        request: chatbot_20220408_models.ListSaasInfoRequest,
+    ) -> chatbot_20220408_models.ListSaasInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_saas_info_with_options(request, runtime)
+
+    async def list_saas_info_async(
+        self,
+        request: chatbot_20220408_models.ListSaasInfoRequest,
+    ) -> chatbot_20220408_models.ListSaasInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_saas_info_with_options_async(request, runtime)
+
+    def list_saas_permission_group_infos_with_options(
+        self,
+        request: chatbot_20220408_models.ListSaasPermissionGroupInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ListSaasPermissionGroupInfosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSaasPermissionGroupInfos',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ListSaasPermissionGroupInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_saas_permission_group_infos_with_options_async(
+        self,
+        request: chatbot_20220408_models.ListSaasPermissionGroupInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ListSaasPermissionGroupInfosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSaasPermissionGroupInfos',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ListSaasPermissionGroupInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_saas_permission_group_infos(
+        self,
+        request: chatbot_20220408_models.ListSaasPermissionGroupInfosRequest,
+    ) -> chatbot_20220408_models.ListSaasPermissionGroupInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_saas_permission_group_infos_with_options(request, runtime)
+
+    async def list_saas_permission_group_infos_async(
+        self,
+        request: chatbot_20220408_models.ListSaasPermissionGroupInfosRequest,
+    ) -> chatbot_20220408_models.ListSaasPermissionGroupInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_saas_permission_group_infos_with_options_async(request, runtime)
 
     def list_sim_question_with_options(
         self,
