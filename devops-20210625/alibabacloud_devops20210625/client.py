@@ -11365,6 +11365,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_user_keys_with_options_async(request, headers, runtime)
 
+    def list_user_resources_with_options(
+        self,
+        request: devops_20210625_models.ListUserResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListUserResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.user_ids):
+            query['userIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserResources',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/user/vision/user_resources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListUserResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_resources_with_options_async(
+        self,
+        request: devops_20210625_models.ListUserResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListUserResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.user_ids):
+            query['userIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserResources',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/user/vision/user_resources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListUserResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_resources(
+        self,
+        request: devops_20210625_models.ListUserResourcesRequest,
+    ) -> devops_20210625_models.ListUserResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_user_resources_with_options(request, headers, runtime)
+
+    async def list_user_resources_async(
+        self,
+        request: devops_20210625_models.ListUserResourcesRequest,
+    ) -> devops_20210625_models.ListUserResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_user_resources_with_options_async(request, headers, runtime)
+
     def list_variable_groups_with_options(
         self,
         organization_id: str,
@@ -13062,6 +13154,94 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_vmdeploy_order_with_options_async(organization_id, pipeline_id, deploy_order_id, headers, runtime)
+
+    def transfer_repository_with_options(
+        self,
+        request: devops_20210625_models.TransferRepositoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.TransferRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.group_id):
+            query['groupId'] = request.group_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_id):
+            query['repositoryId'] = request.repository_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferRepository',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/repository/transfer',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.TransferRepositoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transfer_repository_with_options_async(
+        self,
+        request: devops_20210625_models.TransferRepositoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.TransferRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.group_id):
+            query['groupId'] = request.group_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_id):
+            query['repositoryId'] = request.repository_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferRepository',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/repository/transfer',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.TransferRepositoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transfer_repository(
+        self,
+        request: devops_20210625_models.TransferRepositoryRequest,
+    ) -> devops_20210625_models.TransferRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.transfer_repository_with_options(request, headers, runtime)
+
+    async def transfer_repository_async(
+        self,
+        request: devops_20210625_models.TransferRepositoryRequest,
+    ) -> devops_20210625_models.TransferRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.transfer_repository_with_options_async(request, headers, runtime)
 
     def trigger_repository_mirror_sync_with_options(
         self,
