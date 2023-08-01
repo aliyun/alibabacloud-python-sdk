@@ -1,3 +1,6 @@
+2023-08-01 Version: 2.0.2
+- Api update.
+
 2023-07-28 Version: 2.0.1
 - Api update.
 

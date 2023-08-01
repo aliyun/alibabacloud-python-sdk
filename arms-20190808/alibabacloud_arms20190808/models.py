@@ -198,6 +198,8 @@ class GrafanaWorkspace(TeaModel):
         ntm_id: str = None,
         personal_domain: str = None,
         personal_domain_prefix: str = None,
+        private_domain: str = None,
+        private_ip: str = None,
         protocol: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -223,6 +225,8 @@ class GrafanaWorkspace(TeaModel):
         self.ntm_id = ntm_id
         self.personal_domain = personal_domain
         self.personal_domain_prefix = personal_domain_prefix
+        self.private_domain = private_domain
+        self.private_ip = private_ip
         self.protocol = protocol
         self.region_id = region_id
         self.resource_group_id = resource_group_id
@@ -275,6 +279,10 @@ class GrafanaWorkspace(TeaModel):
             result['personalDomain'] = self.personal_domain
         if self.personal_domain_prefix is not None:
             result['personalDomainPrefix'] = self.personal_domain_prefix
+        if self.private_domain is not None:
+            result['privateDomain'] = self.private_domain
+        if self.private_ip is not None:
+            result['privateIp'] = self.private_ip
         if self.protocol is not None:
             result['protocol'] = self.protocol
         if self.region_id is not None:
@@ -329,6 +337,10 @@ class GrafanaWorkspace(TeaModel):
             self.personal_domain = m.get('personalDomain')
         if m.get('personalDomainPrefix') is not None:
             self.personal_domain_prefix = m.get('personalDomainPrefix')
+        if m.get('privateDomain') is not None:
+            self.private_domain = m.get('privateDomain')
+        if m.get('privateIp') is not None:
+            self.private_ip = m.get('privateIp')
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')
         if m.get('regionId') is not None:
@@ -8496,11 +8508,17 @@ class CreatePrometheusAlertRuleResponseBodyPrometheusAlertRule(TeaModel):
 class CreatePrometheusAlertRuleResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
+        message: str = None,
         prometheus_alert_rule: CreatePrometheusAlertRuleResponseBodyPrometheusAlertRule = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        self.code = code
+        self.message = message
         self.prometheus_alert_rule = prometheus_alert_rule
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.prometheus_alert_rule:
@@ -8512,19 +8530,31 @@ class CreatePrometheusAlertRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.prometheus_alert_rule is not None:
             result['PrometheusAlertRule'] = self.prometheus_alert_rule.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('PrometheusAlertRule') is not None:
             temp_model = CreatePrometheusAlertRuleResponseBodyPrometheusAlertRule()
             self.prometheus_alert_rule = temp_model.from_map(m['PrometheusAlertRule'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -12419,9 +12449,13 @@ class DeletePrometheusAlertRuleRequest(TeaModel):
 class DeletePrometheusAlertRuleResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
+        message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
+        self.code = code
+        self.message = message
         self.request_id = request_id
         # The ID of the request.
         self.success = success
@@ -12435,6 +12469,10 @@ class DeletePrometheusAlertRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.success is not None:
@@ -12443,6 +12481,10 @@ class DeletePrometheusAlertRuleResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
@@ -15466,11 +15508,17 @@ class DescribePrometheusAlertRuleResponseBodyPrometheusAlertRule(TeaModel):
 class DescribePrometheusAlertRuleResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
+        message: str = None,
         prometheus_alert_rule: DescribePrometheusAlertRuleResponseBodyPrometheusAlertRule = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        self.code = code
+        self.message = message
         self.prometheus_alert_rule = prometheus_alert_rule
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.prometheus_alert_rule:
@@ -15482,19 +15530,31 @@ class DescribePrometheusAlertRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.prometheus_alert_rule is not None:
             result['PrometheusAlertRule'] = self.prometheus_alert_rule.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('PrometheusAlertRule') is not None:
             temp_model = DescribePrometheusAlertRuleResponseBodyPrometheusAlertRule()
             self.prometheus_alert_rule = temp_model.from_map(m['PrometheusAlertRule'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -29505,11 +29565,17 @@ class ListPrometheusAlertRulesResponseBodyPrometheusAlertRules(TeaModel):
 class ListPrometheusAlertRulesResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
+        message: str = None,
         prometheus_alert_rules: List[ListPrometheusAlertRulesResponseBodyPrometheusAlertRules] = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        self.code = code
+        self.message = message
         self.prometheus_alert_rules = prometheus_alert_rules
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.prometheus_alert_rules:
@@ -29523,16 +29589,26 @@ class ListPrometheusAlertRulesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
         result['PrometheusAlertRules'] = []
         if self.prometheus_alert_rules is not None:
             for k in self.prometheus_alert_rules:
                 result['PrometheusAlertRules'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         self.prometheus_alert_rules = []
         if m.get('PrometheusAlertRules') is not None:
             for k in m.get('PrometheusAlertRules'):
@@ -29540,6 +29616,8 @@ class ListPrometheusAlertRulesResponseBody(TeaModel):
                 self.prometheus_alert_rules.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -40794,11 +40872,17 @@ class UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule(TeaModel):
 class UpdatePrometheusAlertRuleResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
+        message: str = None,
         prometheus_alert_rule: UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        self.code = code
+        self.message = message
         self.prometheus_alert_rule = prometheus_alert_rule
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.prometheus_alert_rule:
@@ -40810,19 +40894,31 @@ class UpdatePrometheusAlertRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.prometheus_alert_rule is not None:
             result['PrometheusAlertRule'] = self.prometheus_alert_rule.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('PrometheusAlertRule') is not None:
             temp_model = UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule()
             self.prometheus_alert_rule = temp_model.from_map(m['PrometheusAlertRule'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
