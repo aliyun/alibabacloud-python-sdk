@@ -1,3 +1,6 @@
+2023-08-01 Version: 1.0.8
+- Add video moderation api.
+
 2023-07-17 Version: 1.0.7
 - Add Query Upload Token API.
 
